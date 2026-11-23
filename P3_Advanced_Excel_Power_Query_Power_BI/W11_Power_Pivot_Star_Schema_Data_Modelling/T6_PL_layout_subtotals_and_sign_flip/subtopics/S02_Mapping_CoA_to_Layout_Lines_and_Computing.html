@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapping CoA to Layout Lines and Computing Subtotals by Sort Order · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S02_Mapping_CoA_to_Layout_Lines_and_Computing.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T6 · P&amp;L layout, subtotals and sign-flip</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · P&amp;L layout, subtotals and sign-flip</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_The_PL_Layout_Dimension_Lines_Sort_Order_Type_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S01_The_PL_Layout_Dimension_Lines_Sort_Order_Type_and.html">The P&amp;L Layout Dimension: Lines, Sort Order, Type and Sign</a></li><li><a href="S02_Mapping_CoA_to_Layout_Lines_and_Computing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S02_Mapping_CoA_to_Layout_Lines_and_Computing.html">Mapping CoA to Layout Lines and Computing Subtotals by Sort Order</a></li><li><a href="S03_Row_Level_Measure_Dispatch_with_SWITCHTRUE_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S03_Row_Level_Measure_Dispatch_with_SWITCHTRUE_and.html">Row-Level Measure Dispatch with SWITCH(TRUE()) and SELECTEDVALUE</a></li><li><a href="S04_Sign_Convention_Credits_Negative_in_the_GL_Flipped.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S04_Sign_Convention_Credits_Negative_in_the_GL_Flipped.html">Sign Convention: Credits Negative in the GL, Flipped for Presentation</a></li><li><a href="S05_Margin_Rows_GM_EBITDA_EBIT_with_Dynamic_Format.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S05_Margin_Rows_GM_EBITDA_EBIT_with_Dynamic_Format.html">Margin Rows (GM %, EBITDA %, EBIT %) with Dynamic Format Strings</a></li><li><a href="S06_Formatting_the_PL_Matrix_Layout_Spacers_Bold.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S06_Formatting_the_PL_Matrix_Layout_Spacers_Bold.html">Formatting the P&amp;L Matrix: Layout, Spacers, Bold Subtotals, Empty Rows</a></li><li><a href="S07_Alternatives_Calculation_Groups_Field_Parameters.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S07_Alternatives_Calculation_Groups_Field_Parameters.html">Alternatives: Calculation Groups, Field Parameters, Visual Calcs, Excel</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_The_PnL_Dispatcher_Measure_with_SWITCHTRUE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C01_The_PnL_Dispatcher_Measure_with_SWITCHTRUE.html">The PnL Dispatcher Measure with SWITCH(TRUE())</a></li><li><a href="../concepts/C02_Actual_Signed_Applying_the_CoA_Sign_Factor_Row_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C02_Actual_Signed_Applying_the_CoA_Sign_Factor_Row_by.html">Actual Signed: Applying the CoA Sign Factor Row by Row</a></li><li><a href="../concepts/C03_The_Subtotal_Measure_Removing_the_Layout_Filter_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C03_The_Subtotal_Measure_Removing_the_Layout_Filter_by.html">The Subtotal Measure: Removing the Layout Filter by Sort Order</a></li><li><a href="../concepts/C04_EBITDA_with_a_Dynamic_Format_String_in_the_PL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C04_EBITDA_with_a_Dynamic_Format_String_in_the_PL.html">EBITDA % with a Dynamic Format String in the P&amp;L Matrix</a></li><li><a href="../concepts/C05_Blanking_PL_Grand_Totals_with_ISINSCOPE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C05_Blanking_PL_Grand_Totals_with_ISINSCOPE.html">Blanking P&amp;L Grand Totals with ISINSCOPE</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Mapping CoA to Layout Lines and Computing Subtotals by Sort Order</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Mapping CoA to layout lines; computing subtotals (Gross Profit, EBITDA, EBIT, PBT, PAT) from sort-order ranges</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Once the layout table exists, two pieces of logic make the P&amp;L work: every GL account must land on exactly one printed
+line, and every subtotal row must compute the right aggregate of the lines above it. Get the mapping wrong and revenue
+leaks into "Unmapped" or EBITDA silently includes depreciation; get the subtotal logic wrong and the Gross Profit row is
+blank or double-counts. A sort-order-driven subtotal is the standard pattern because it lets the controller insert a new
+line ("Exceptional items" between EBIT and PBT) without changing any DAX.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="mapping-accounts-to-lines">Mapping accounts to lines</h3>
+<p>Add <code>LineID</code> to the CoA (one column per layout if you maintain several). Mapping rules:</p>
+<table>
+<thead>
+<tr>
+<th>Account group</th>
+<th>LineID</th>
+<th>Line</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4000–4099 Sales of products, 4100 Sale of services, 4150 Other operating revenue</td>
+<td>PL010</td>
+<td>Revenue from operations</td>
+</tr>
+<tr>
+<td>5000–5099 Raw material consumption</td>
+<td>PL020</td>
+<td>Cost of materials consumed</td>
+</tr>
+<tr>
+<td>5100 Changes in inventories of FG/WIP</td>
+<td>PL030</td>
+<td>Changes in inventories</td>
+</tr>
+<tr>
+<td>6000–6099 Salaries, PF, gratuity, staff welfare</td>
+<td>PL050</td>
+<td>Employee benefits expense</td>
+</tr>
+<tr>
+<td>6500–6999 Power, rent, repairs, travel, CSR, etc.</td>
+<td>PL060</td>
+<td>Other expenses</td>
+</tr>
+<tr>
+<td>7000 Depreciation, 7010 Amortisation, 7020 ROU depreciation</td>
+<td>PL080</td>
+<td>Depreciation and amortisation</td>
+</tr>
+<tr>
+<td>8000 Interest income, 8010 Dividend, 8020 FX gain</td>
+<td>PL100</td>
+<td>Other income</td>
+</tr>
+<tr>
+<td>7500 Interest on borrowings, 7510 Lease interest</td>
+<td>PL110</td>
+<td>Finance costs</td>
+</tr>
+<tr>
+<td>9000 Current tax, 9010 Deferred tax</td>
+<td>PL130</td>
+<td>Tax expense</td>
+</tr>
+</tbody>
+</table>
+<p>Mapping is maintained by the controller (Week 10: CoA mapping table with FS lines) and validated each refresh: zero
+unmapped P&amp;L accounts, and the sum over all Account lines equals the P&amp;L total of the GL.</p>
+<h3 id="the-subtotal-idea-running-totals-in-statement-order">The subtotal idea: running totals in statement order</h3>
+<p>In a profit-signed convention (income positive, expenses negative), each common P&amp;L subtotal is the <strong>sum of all account
+lines above it</strong>:</p>
+<p>\[
+\text{Subtotal}_{s} = \sum_{\ell \,:\, \text{Type}_{\ell} = \text{Account},\ \text{SortOrder}_{\ell} &lt; s} \text{Value}_{\ell}
+\]</p>
+<p>where \(s\) is the sort order of the subtotal row and \(\text{Value}_{\ell}\) the profit-signed value of account line
+\(\ell\). With the example layout (Topic overview / s01):</p>
+<ul>
+<li>Gross Profit (40) = Revenue (10) + Materials (20) + Changes in inventories (30)</li>
+<li>EBITDA (70) = Gross Profit lines + Employee (50) + Other expenses (60)</li>
+<li>EBIT (90) = EBITDA lines + D&amp;A (80)</li>
+<li>PBT (120) = EBIT lines + Other income (100) + Finance costs (110)</li>
+<li>PAT (140) = PBT lines + Tax (130)</li>
+</ul>
+<h3 id="dax">DAX</h3>
+<pre><code class="language-DAX">Actual Signed = SUMX ( GL, GL[Amount] * RELATED ( CoA[SignFactor] ) )
+
+Subtotal =
+VAR s = MAX ( Layout[SortOrder] )
+RETURN
+    CALCULATE (
+        [Actual Signed],
+        REMOVEFILTERS ( Layout ),
+        Layout[SortOrder] &lt; s,
+        Layout[Type] = &quot;Account&quot;
+    )
+</code></pre>
+<p>Why <code>REMOVEFILTERS(Layout)</code>: the matrix row "Gross Profit" filters <code>Layout[LineID] = "PL040"</code>, which has no CoA accounts;
+any measure evaluated under that filter returns blank. Removing the Layout filter and replacing it with "Account lines
+above sort order 40" sends the right accounts through CoA to GL. Note that the other filters (Date, Branch, Cost Centre,
+Scenario) stay intact — only the Layout filter is replaced.</p>
+<h3 id="explicit-ranges-for-non-cumulative-subtotals">Explicit ranges for non-cumulative subtotals</h3>
+<p>Some subtotals are not running totals: Schedule III "Total income" (revenue + other income), "Total expenses", or an MIS
+"Total opex" block. Store explicit range bounds on the subtotal row:</p>
+<pre><code class="language-DAX">Subtotal (range) =
+VAR fromS = SELECTEDVALUE ( Layout[SubtotalFrom] )
+VAR toS   = SELECTEDVALUE ( Layout[SubtotalTo] )
+RETURN
+    CALCULATE (
+        [Actual Signed],
+        REMOVEFILTERS ( Layout ),
+        Layout[SortOrder] &gt;= fromS,
+        Layout[SortOrder] &lt;= toS,
+        Layout[Type] = &quot;Account&quot;
+    )
+</code></pre>
+<p>Use the range version when <code>SubtotalFrom</code> is populated and the cumulative version otherwise. For "Total expenses" in
+profit-signed form, the value is negative; flip on display if the statement prints it positive (s04).</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>FY26 YTD December (₹ crore, profit-signed):</p>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>SortOrder</th>
+<th>Type</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue from operations</td>
+<td>10</td>
+<td>Account</td>
+<td>480.0</td>
+</tr>
+<tr>
+<td>Cost of materials consumed</td>
+<td>20</td>
+<td>Account</td>
+<td>−268.0</td>
+</tr>
+<tr>
+<td>Changes in inventories</td>
+<td>30</td>
+<td>Account</td>
+<td>6.0</td>
+</tr>
+<tr>
+<td>Gross Profit</td>
+<td>40</td>
+<td>Subtotal</td>
+<td>218.0</td>
+</tr>
+<tr>
+<td>Employee benefits expense</td>
+<td>50</td>
+<td>Account</td>
+<td>−62.0</td>
+</tr>
+<tr>
+<td>Other expenses</td>
+<td>60</td>
+<td>Account</td>
+<td>−74.0</td>
+</tr>
+<tr>
+<td>EBITDA</td>
+<td>70</td>
+<td>Subtotal</td>
+<td>82.0</td>
+</tr>
+<tr>
+<td>Depreciation and amortisation</td>
+<td>80</td>
+<td>Account</td>
+<td>−21.0</td>
+</tr>
+<tr>
+<td>EBIT</td>
+<td>90</td>
+<td>Subtotal</td>
+<td>61.0</td>
+</tr>
+<tr>
+<td>Other income</td>
+<td>100</td>
+<td>Account</td>
+<td>7.0</td>
+</tr>
+<tr>
+<td>Finance costs</td>
+<td>110</td>
+<td>Account</td>
+<td>−13.0</td>
+</tr>
+<tr>
+<td>PBT</td>
+<td>120</td>
+<td>Subtotal</td>
+<td>55.0</td>
+</tr>
+<tr>
+<td>Tax expense</td>
+<td>130</td>
+<td>Account</td>
+<td>−14.0</td>
+</tr>
+<tr>
+<td>PAT</td>
+<td>140</td>
+<td>Subtotal</td>
+<td>41.0</td>
+</tr>
+</tbody>
+</table>
+<p>Each subtotal equals the sum of all Account values with lower sort order; the ratio rows (s05) divide by revenue 480.0.
+A positive "Changes in inventories" reflects an inventory build-up (credit to P&amp;L).</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Sort-order gaps:</strong> number in tens so a new line (e.g., "Exceptional items" at 115) can be inserted; the cumulative
+  subtotal automatically includes it in PBT and PAT. Check that insertion is intended for every subtotal below.</li>
+<li><strong>Lines that should not flow into subtotals below:</strong> a memo line ("of which: CSR expense") placed in the statement must
+  have a Type other than Account (e.g., <code>Memo</code>) or it will be double-counted.</li>
+<li><strong>Ratio and Header rows</strong> are excluded by <code>Layout[Type] = "Account"</code>.</li>
+<li><strong>Account mapped to a subtotal line by mistake:</strong> its value vanishes from the subtotal (the subtotal row computes from
+  Account lines only) and appears nowhere. Validation: no CoA account may map to a non-Account line.</li>
+<li><strong>Performance:</strong> <code>MAX(Layout[SortOrder])</code> and <code>CALCULATE</code> per row is cheap — layout tables have tens of rows.</li>
+<li><strong>OCI and EPS:</strong> OCI items (Ind AS 1 paragraph on items that will/will not be reclassified) follow PAT; EPS (Ind AS 33)
+  is a ratio row with a share-count denominator, not a P&amp;L line sum.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Map every P&amp;L account to exactly one Account line; validate unmapped and mis-mapped accounts every refresh.</li>
+<li>In profit-signed form, GP/EBITDA/EBIT/PBT/PAT are running totals of Account lines above them.</li>
+<li>The subtotal measure replaces the Layout filter (<code>REMOVEFILTERS(Layout)</code>) with a sort-order condition.</li>
+<li>Use explicit <code>SubtotalFrom</code>/<code>SubtotalTo</code> ranges for non-cumulative totals.</li>
+<li>Number sort orders with gaps and exclude memo lines from the Account type.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-compute-the-subtotals-l1">Q1. Compute the subtotals [L1]</h3>
+<p>Q3 FY26 (₹ crore, profit-signed): revenue 172; materials −96; changes in inventories −3; employee −22; other expenses −27;
+D&amp;A −8; other income 2.5; finance costs −4.5; tax −3.6. Using the example layout, compute every subtotal and state which
+Account sort orders each includes.</p>
+<h3 id="q2-insert-exceptional-items-l2">Q2. Insert exceptional items [L2]</h3>
+<p>The company records an exceptional loss of ₹ 9 crore (voluntary retirement scheme) in Q3. Specify the new layout row(s),
+CoA mapping and any DAX change needed so that PBT and PAT include it but EBIT does not, and show the revised PBT and PAT
+from Q1's data.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider where in the sort order the new line must sit relative to EBIT and PBT.</p>
+</blockquote>
+<h3 id="q3-blank-gross-profit-row-l2">Q3. Blank Gross Profit row [L2]</h3>
+<p>A colleague's Gross Profit row is blank. Their measure is <code>CALCULATE([Actual Signed], Layout[SortOrder] &lt; MAX(Layout[SortOrder]),
+Layout[Type] = "Account")</code>. Explain why it returns blank (or why it might not), and correct it.</p>
+<h3 id="q4-total-income-and-total-expenses-l3">Q4. Total income and total expenses [L3]</h3>
+<p>Extend the model to render a Schedule III statement that shows Total income (revenue + other income) and Total expenses
+(all expense lines including finance costs and D&amp;A) followed by "Profit before exceptional items and tax". Specify the
+layout rows with SortOrder, SubtotalFrom and SubtotalTo, write a single subtotal measure that handles both cumulative and
+range subtotals, and explain how expenses are shown as positive numbers without breaking the arithmetic.</p></section>
+<nav class="pager"><a class="prev" href="S01_The_PL_Layout_Dimension_Lines_Sort_Order_Type_and.html">← The P&amp;L Layout Dimension: Lines, Sort Order, Type and Sign</a><a class="next" href="S03_Row_Level_Measure_Dispatch_with_SWITCHTRUE_and.html">Row-Level Measure Dispatch with SWITCH(TRUE()) and… →</a></nav>
+</main></div></body></html>

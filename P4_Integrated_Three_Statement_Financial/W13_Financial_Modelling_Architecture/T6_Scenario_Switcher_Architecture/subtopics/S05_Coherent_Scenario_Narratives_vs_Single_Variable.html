@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coherent Scenario Narratives vs Single-Variable Tweaks · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S05_Coherent_Scenario_Narratives_vs_Single_Variable.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T6 · Scenario Switcher Architecture</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · Scenario Switcher Architecture</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Single_Scenario_Selector_Cell_with_Data_Validation.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S01_Single_Scenario_Selector_Cell_with_Data_Validation.html">Single Scenario Selector Cell with Data-Validation Dropdown</a></li><li><a href="S02_Scenario_Driver_Blocks_Base_Bull_Bear_Rows_and_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S02_Scenario_Driver_Blocks_Base_Bull_Bear_Rows_and_the.html">Scenario Driver Blocks: Base, Bull, Bear Rows and the Live Row</a></li><li><a href="S03_Scenario_Selection_Functions_CHOOSE_INDEX_XLOOKUP.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S03_Scenario_Selection_Functions_CHOOSE_INDEX_XLOOKUP.html">Scenario Selection Functions: CHOOSE, INDEX, XLOOKUP, SWITCH</a></li><li><a href="S04_Which_Drivers_to_Flex_Volume_Price_Stores_Margin.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S04_Which_Drivers_to_Flex_Volume_Price_Stores_Margin.html">Which Drivers to Flex: Volume, Price, Stores, Margin, Wages, Capex, NWC</a></li><li><a href="S05_Coherent_Scenario_Narratives_vs_Single_Variable.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S05_Coherent_Scenario_Narratives_vs_Single_Variable.html">Coherent Scenario Narratives vs Single-Variable Tweaks</a></li><li><a href="S06_Capturing_Scenario_Outputs_Data_Tables_vs_Pasted.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S06_Capturing_Scenario_Outputs_Data_Tables_vs_Pasted.html">Capturing Scenario Outputs: Data Tables vs Pasted Static Values</a></li><li><a href="S07_Scenario_Labelling_on_Outputs_and_Documented_Case.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S07_Scenario_Labelling_on_Outputs_and_Documented_Case.html">Scenario Labelling on Outputs and Documented Case Rationale</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_The_Live_Row_CHOOSE_or_INDEX_on_the_Scenario_Code.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C01_The_Live_Row_CHOOSE_or_INDEX_on_the_Scenario_Code.html">The Live Row: CHOOSE or INDEX on the Scenario Code</a></li><li><a href="../concepts/C02_One_Switch_Only_No_Scenario_Logic_Outside_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C02_One_Switch_Only_No_Scenario_Logic_Outside_the.html">One Switch Only: No Scenario Logic Outside the Driver Block</a></li><li><a href="../concepts/C03_Scenario_Summary_via_a_One_Variable_Data_Table_on.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C03_Scenario_Summary_via_a_One_Variable_Data_Table_on.html">Scenario Summary via a One-Variable Data Table on the Switch</a></li><li><a href="../concepts/C04_Live_Scenario_Header_Label_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C04_Live_Scenario_Header_Label_Formula.html">Live Scenario Header Label Formula</a></li><li><a href="../concepts/C05_Internal_Consistency_of_Scenarios_Growth_Needs.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C05_Internal_Consistency_of_Scenarios_Growth_Needs.html">Internal Consistency of Scenarios: Growth Needs Capex, Stress Needs Funding</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Coherent Scenario Narratives vs Single-Variable Tweaks</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Coherent scenario narratives (demand slowdown, input-cost spike) vs independent single-variable tweaks</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A scenario is a story about the world in which several drivers move together for a common reason. "Bear" should not
+mean "every driver set 10% worse"; it should mean something like "urban discretionary demand slows for two years,
+competitors discount, and we slow store openings". The distinction matters because decisions made on scenarios —
+whether a company can service its debt, whether an acquisition still clears its hurdle, how much budget headroom to
+hold — depend on the combined, internally consistent effect. Investment committees and lenders routinely challenge
+scenarios that cannot be explained in one sentence. Single-variable tweaks still have a role, but that role is
+sensitivity analysis (Week 16), not scenarios.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="scenarios-vs-sensitivities">Scenarios vs sensitivities</h3>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Scenario</th>
+<th>Sensitivity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What changes</td>
+<td>A coherent set of drivers, linked by a narrative</td>
+<td>One or two drivers, others held constant</td>
+</tr>
+<tr>
+<td>Question answered</td>
+<td>"What if this world happens?"</td>
+<td>"How much does output depend on this variable?"</td>
+</tr>
+<tr>
+<td>Number of cases</td>
+<td>Few (3–5)</td>
+<td>Many points on a grid</td>
+</tr>
+<tr>
+<td>Mechanism</td>
+<td>Scenario switch and driver blocks</td>
+<td>Data tables, tornado charts</td>
+</tr>
+<tr>
+<td>Use</td>
+<td>Planning, credit, investment decision</td>
+<td>Identifying key drivers, valuation ranges</td>
+</tr>
+</tbody>
+</table>
+<h3 id="building-a-narrative">Building a narrative</h3>
+<p>Each case should have a written narrative of three to five sentences on the Assumptions sheet (or a Scenario notes
+sheet), then translate it into driver values:</p>
+<ol>
+<li><strong>Trigger</strong> — what happens and why (macro, industry, company-specific).</li>
+<li><strong>Transmission</strong> — which drivers move and in which direction, including second-order effects.</li>
+<li><strong>Management response</strong> — what the company would plausibly do (cut A&amp;P, slow openings, take price).</li>
+<li><strong>Duration</strong> — how long the shock lasts and how drivers recover.</li>
+<li><strong>Evidence</strong> — historical analogues (FY20–FY21 lockdowns, FY22–FY23 commodity spike, FY17 demonetisation and GST
+   transition) that calibrate magnitudes.</li>
+</ol>
+<h3 id="example-narrative-1-demand-slowdown-bear-for-trent">Example narrative 1 — demand slowdown (Bear for Trent)</h3>
+<p><em>Urban discretionary consumption slows for FY27–FY28 as real income growth weakens; value fashion competition
+intensifies with new entrants discounting. Trent slows store additions by a third and holds prices; LFL turns flat;
+markdowns rise. Recovery from FY29.</em></p>
+<table>
+<thead>
+<tr>
+<th>Driver</th>
+<th>Base</th>
+<th>Bear (demand slowdown)</th>
+<th>Linkage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LFL FY27/FY28</td>
+<td>6% / 6%</td>
+<td>0% / 1%</td>
+<td>Footfall and ticket size fall</td>
+</tr>
+<tr>
+<td>Store adds</td>
+<td>180 / 170</td>
+<td>120 / 110</td>
+<td>Management slows rollout</td>
+</tr>
+<tr>
+<td>Gross margin</td>
+<td>44.5%</td>
+<td>43.0%</td>
+<td>Higher markdowns</td>
+</tr>
+<tr>
+<td>Inventory days</td>
+<td>65</td>
+<td>75</td>
+<td>Slower sell-through</td>
+</tr>
+<tr>
+<td>Wage increment</td>
+<td>8%</td>
+<td>8%</td>
+<td>Labour market unchanged</td>
+</tr>
+<tr>
+<td>Capex per sq ft</td>
+<td>₹1,850</td>
+<td>₹1,850</td>
+<td>No change in unit cost</td>
+</tr>
+<tr>
+<td>A&amp;P %</td>
+<td>1.5%</td>
+<td>1.8%</td>
+<td>Defensive promotion</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-narrative-2-input-cost-spike-bear-for-pidilite">Example narrative 2 — input-cost spike (Bear for Pidilite)</h3>
+<p><em>Crude and VAM prices rise 35% over two quarters on supply disruption; the rupee depreciates 4%. Pidilite passes on
+40% of the cost increase in the first year and the rest over the following year; demand elasticity reduces UVG by
+two points in the first year. A&amp;P is trimmed to protect margins.</em></p>
+<table>
+<thead>
+<tr>
+<th>Driver</th>
+<th>Base</th>
+<th>Bear (input-cost spike)</th>
+<th>Linkage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VAM (USD/tonne)</td>
+<td>1,050</td>
+<td>1,420</td>
+<td>Trigger</td>
+</tr>
+<tr>
+<td>USD/INR</td>
+<td>86.0</td>
+<td>89.4</td>
+<td>Trigger</td>
+</tr>
+<tr>
+<td>Pass-through same year</td>
+<td>70%</td>
+<td>40%</td>
+<td>Price lags cost</td>
+</tr>
+<tr>
+<td>Price realisation</td>
+<td>+3%</td>
+<td>+6%</td>
+<td>Partial pass-through</td>
+</tr>
+<tr>
+<td>UVG</td>
+<td>9%</td>
+<td>7%</td>
+<td>Price elasticity</td>
+</tr>
+<tr>
+<td>A&amp;P %</td>
+<td>4.0%</td>
+<td>3.5%</td>
+<td>Management response</td>
+</tr>
+<tr>
+<td>DIO</td>
+<td>60</td>
+<td>66</td>
+<td>Higher-value raw material stock</td>
+</tr>
+</tbody>
+</table>
+<p>Each driver change is traceable to the narrative. In the model, the Bear rows in each driver block hold these values;
+the switch flips them together.</p>
+<h3 id="why-independent-tweaks-fail-as-scenarios">Why independent tweaks fail as scenarios</h3>
+<ul>
+<li><strong>Incoherence.</strong> Lower volume with <em>unchanged</em> capex and NWC days implies a company that keeps building stores into
+  a downturn and holds stock perfectly — implausible.</li>
+<li><strong>Double severity.</strong> Setting every driver to its 10th percentile simultaneously produces a case far more extreme
+  than any plausible world (joint probability is tiny); lenders reject it as unrealistic, and management ignores it.</li>
+<li><strong>Missed offsets.</strong> Real downturns carry offsets — commodity deflation in a demand slowdown, lower A&amp;P, slower
+  hiring. Ignoring them overstates the downside.</li>
+<li><strong>Unexplainable outputs.</strong> Without a narrative, an output change cannot be attributed to a cause.</li>
+</ul>
+<h3 id="macro-linked-scenarios">Macro-linked scenarios</h3>
+<p>Where drivers share a macro cause, flex the macro driver and let the model derive the rest: CPI affects price,
+wages and overheads; USD/INR affects import costs and international revenue; GDP growth affects UVG via elasticity
+(t4 s07). This enforces coherence automatically. Keep company-specific responses (store adds, A&amp;P) as explicit case
+inputs.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Bull case discipline.</strong> Bull narratives also need coherence — faster growth requires more capex, working capital,
+  hiring and possibly lower margins on new stores.</li>
+<li><strong>Management case vs Base.</strong> A management business plan is often more optimistic than an analyst Base; keep it as a
+  separate case with its own narrative rather than relabelling.</li>
+<li><strong>Stress tests.</strong> Lender stress cases (Week 15) may deliberately combine adverse moves beyond a coherent narrative to
+  test covenant headroom; label them as stress tests, not scenarios.</li>
+<li><strong>Probability weighting.</strong> If cases are probability-weighted for valuation, narratives should be mutually exclusive
+  and the weights justified.</li>
+<li><strong>Updating.</strong> Narratives age; refresh them when guidance or macro conditions change, and record changes in the
+  assumption log.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Scenarios are coherent stories moving several drivers together; sensitivities flex one variable at a time.</li>
+<li>Write a short narrative per case: trigger, transmission, management response, duration, evidence.</li>
+<li>Translate every driver change back to the narrative; untraceable changes do not belong.</li>
+<li>Avoid setting every driver to its worst value — implausible joint severity.</li>
+<li>Flex shared macro drivers and let the model derive dependent effects.</li>
+<li>Keep stress tests and management cases labelled separately.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-write-a-bull-narrative-l2">Q1. Write a Bull narrative [L2]</h3>
+<p>Write a coherent Bull narrative for Trent covering demand, store rollout, margins, capex and working capital, and
+translate it into a driver table with Base and Bull values for six drivers.</p>
+<h3 id="q2-diagnose-an-incoherent-bear-l2">Q2. Diagnose an incoherent Bear [L2]</h3>
+<p>A model's Bear case cuts UVG from 9% to 3% but keeps price realisation +3%, gross margin, A&amp;P %, capex, wage increment
+and DIO at Base values. List the inconsistencies and propose corrected Bear values with a one-paragraph narrative.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Ask how management and the supply chain would respond to sharply lower volume.</p>
+</blockquote>
+<h3 id="q3-scenario-vs-sensitivity-l1">Q3. Scenario vs sensitivity [L1]</h3>
+<p>Explain to a junior analyst the difference between a scenario and a sensitivity, with an example of each for a
+cement company, and state which mechanism in the model implements each.</p>
+<h3 id="q4-calibrating-from-history-l3">Q4. Calibrating from history [L3]</h3>
+<p>Using the FY22–FY23 commodity spike as an analogue, describe how you would calibrate the magnitude and duration of
+the input-cost-spike scenario for a paints or adhesives company: which data you would extract from quarterly results
+and concall transcripts, and how you would translate them into pass-through ratios and gross margin paths.</p></section>
+<nav class="pager"><a class="prev" href="S04_Which_Drivers_to_Flex_Volume_Price_Stores_Margin.html">← Which Drivers to Flex: Volume, Price, Stores, Margin,…</a><a class="next" href="S06_Capturing_Scenario_Outputs_Data_Tables_vs_Pasted.html">Capturing Scenario Outputs: Data Tables vs Pasted Static… →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LAMBDA Helpers and Array Reshaping Functions · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S07_LAMBDA_Helpers_and_Array_Reshaping_Functions.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T4 · Dynamic arrays and LET/LAMBDA</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Dynamic arrays and LET/LAMBDA</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Spill_Behaviour_SPILL_the_Operator_and_Implicit.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S01_Spill_Behaviour_SPILL_the_Operator_and_Implicit.html">Spill Behaviour, #SPILL!, the # Operator and Implicit Intersection</a></li><li><a href="S02_FILTER_with_ANDOR_Logic_for_Exception_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S02_FILTER_with_ANDOR_Logic_for_Exception_Lists.html">FILTER with AND/OR Logic for Exception Lists</a></li><li><a href="S03_UNIQUE_for_Dynamic_CoA_and_Department_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S03_UNIQUE_for_Dynamic_CoA_and_Department_Lists.html">UNIQUE for Dynamic CoA and Department Lists</a></li><li><a href="S04_SORT_and_SORTBY_for_Top_N_Expense_and_Ranked.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S04_SORT_and_SORTBY_for_Top_N_Expense_and_Ranked.html">SORT and SORTBY for Top-N Expense and Ranked Ageing Reports</a></li><li><a href="S05_SEQUENCE_for_Monthly_Timelines_Loan_Schedules_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S05_SEQUENCE_for_Monthly_Timelines_Loan_Schedules_and.html">SEQUENCE for Monthly Timelines, Loan Schedules and Period Counters</a></li><li><a href="S06_LET_for_Named_Steps_and_LAMBDA_Functions_in_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S06_LET_for_Named_Steps_and_LAMBDA_Functions_in_Name.html">LET for Named Steps and LAMBDA Functions in Name Manager</a></li><li><a href="S07_LAMBDA_Helpers_and_Array_Reshaping_Functions.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S07_LAMBDA_Helpers_and_Array_Reshaping_Functions.html">LAMBDA Helpers and Array Reshaping Functions</a></li><li><a href="S08_GROUPBY_and_PIVOTBY_as_Formula_Based_Pivots.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S08_GROUPBY_and_PIVOTBY_as_Formula_Based_Pivots.html">GROUPBY and PIVOTBY as Formula-Based Pivots</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_FILTER_with_Two_AND_Conditions_and_an_ifempty.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C01_FILTER_with_Two_AND_Conditions_and_an_ifempty.html">FILTER with Two AND Conditions and an if_empty Message</a></li><li><a href="../concepts/C02_Sorted_Unique_Account_List_for_a_Selected_FY.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C02_Sorted_Unique_Account_List_for_a_Selected_FY.html">Sorted Unique Account List for a Selected FY</a></li><li><a href="../concepts/C03_Top_10_Vendors_by_Spend_with_TAKE_and_SORTBY.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C03_Top_10_Vendors_by_Spend_with_TAKE_and_SORTBY.html">Top 10 Vendors by Spend with TAKE and SORTBY</a></li><li><a href="../concepts/C04_EOMONTH_with_SEQUENCE_for_Horizontal_Month_End.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C04_EOMONTH_with_SEQUENCE_for_Horizontal_Month_End.html">EOMONTH with SEQUENCE for Horizontal Month-End Headers</a></li><li><a href="../concepts/C05_LET_for_a_Safe_Gross_Margin_Calculation.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C05_LET_for_a_Safe_Gross_Margin_Calculation.html">LET for a Safe Gross Margin Calculation</a></li><li><a href="../concepts/C06_FYEND_A_Named_LAMBDA_for_the_Indian_Financial_Year.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C06_FYEND_A_Named_LAMBDA_for_the_Indian_Financial_Year.html">FYEND: A Named LAMBDA for the Indian Financial Year</a></li><li><a href="../concepts/C07_SCAN_for_Running_Closing_Balances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C07_SCAN_for_Running_Closing_Balances.html">SCAN for Running Closing Balances</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>LAMBDA Helpers and Array Reshaping Functions</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Helper functions BYROW, BYCOL, MAP, SCAN, REDUCE, MAKEARRAY; reshaping with VSTACK, HSTACK, TAKE, DROP, CHOOSECOLS</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Plain dynamic arrays handle "same operation on every element". Real schedules need more: a running closing balance (each row depends on the previous), a total per row of a spilled grid, a per-row MAX that ordinary MAX would collapse into a single value, or stitching an actuals block and a forecast block into one continuous output. The LAMBDA helper functions supply these iteration patterns without VBA, and the reshaping functions let you assemble report blocks — header row, body, total row — inside a single self-sizing formula. Together they are what make a "self-updating schedule" genuinely formula-only, from depreciation roll-forwards to deferred revenue waterfalls.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-lambda-helpers">The LAMBDA helpers</h3>
+<p>Each helper takes an array and a LAMBDA, and calls the LAMBDA repeatedly. The LAMBDA's parameter names are yours to choose.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Signature</th>
+<th>Calls LAMBDA with</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BYROW</td>
+<td><code>BYROW(array, LAMBDA(row, …))</code></td>
+<td>each row (1 × n)</td>
+<td>one value per row (column)</td>
+</tr>
+<tr>
+<td>BYCOL</td>
+<td><code>BYCOL(array, LAMBDA(col, …))</code></td>
+<td>each column (n × 1)</td>
+<td>one value per column (row)</td>
+</tr>
+<tr>
+<td>MAP</td>
+<td><code>MAP(arr1, [arr2 …], LAMBDA(a, [b …], …))</code></td>
+<td>each element (paired across arrays)</td>
+<td>array same size as inputs</td>
+</tr>
+<tr>
+<td>SCAN</td>
+<td><code>SCAN(initial, array, LAMBDA(acc, x, …))</code></td>
+<td>accumulator + each element</td>
+<td>every intermediate accumulator</td>
+</tr>
+<tr>
+<td>REDUCE</td>
+<td><code>REDUCE(initial, array, LAMBDA(acc, x, …))</code></td>
+<td>accumulator + each element</td>
+<td>final accumulator only</td>
+</tr>
+<tr>
+<td>MAKEARRAY</td>
+<td><code>MAKEARRAY(rows, cols, LAMBDA(r, c, …))</code></td>
+<td>each row and column index</td>
+<td>rows × cols array</td>
+</tr>
+</tbody>
+</table>
+<h3 id="byrow-and-bycol-totals-and-stats-per-rowcolumn-of-a-spill">BYROW and BYCOL — totals and stats per row/column of a spill</h3>
+<p>A department × month expense grid spills from G5 (<code>G5#</code>). Ordinary <code>=SUM(G5#)</code> gives one grand total. Per-department totals:</p>
+<pre><code class="language-excel">=BYROW(G5#, LAMBDA(r, SUM(r)))           row totals, spills down
+=BYCOL(G5#, LAMBDA(c, SUM(c)))           month totals, spills across
+=BYROW(G5#, LAMBDA(r, MAX(r)))           peak month spend per department
+=BYROW(G5#, LAMBDA(r, COUNTIF(r, &quot;&gt;0&quot;))) active months per department
+</code></pre>
+<p>BYROW must return a single value per row; returning an array produces #CALC!. In current builds you may pass a function name directly (<code>BYROW(G5#, SUM)</code>), known as eta-reduced LAMBDA.</p>
+<h3 id="map-element-wise-logic-that-ordinary-operators-cannot-express">MAP — element-wise logic that ordinary operators cannot express</h3>
+<p>Arithmetic like <code>A2#*B2#</code> is already element-wise. MAP is needed when the per-element logic uses functions that aggregate, such as AND/OR, or multi-step IFs.</p>
+<pre><code class="language-excel">=MAP(AR[DaysOverdue], AR[Balance],
+     LAMBDA(d, b, IF(AND(d&gt;90, b&gt;500000), &quot;Escalate&quot;, IF(d&gt;30, &quot;Follow up&quot;, &quot;OK&quot;))))
+</code></pre>
+<p><code>AND(AR[DaysOverdue]&gt;90, …)</code> without MAP would collapse the whole column to one TRUE/FALSE; MAP evaluates AND for each pair.</p>
+<h3 id="scan-running-balances">SCAN — running balances</h3>
+<p>SCAN carries an accumulator through the array and returns each step — exactly a roll-forward.</p>
+<pre><code class="language-excel">=SCAN(Opening, Movements, LAMBDA(acc, m, acc + m))
+</code></pre>
+<p>With an opening debtor balance of ₹80 lakh and monthly net movements {+12, −7, +5, −20} lakh, the result is {92, 85, 90, 70}. Uses: closing balances in a loan schedule (<code>Principal − cumulative PPMT</code>), cumulative capex, inventory roll-forward, cumulative YTD figures (<code>SCAN(0, monthly, LAMBDA(a,x,a+x))</code>).</p>
+<p>SCAN processes a 2-D array row by row, left to right, so a running total over a multi-row block threads through all rows — usually not what you want. Apply SCAN to a single row or column.</p>
+<h3 id="reduce-single-result-from-iteration-and-the-stacking-pattern">REDUCE — single result from iteration, and the stacking pattern</h3>
+<p>REDUCE is SCAN that returns only the end state:</p>
+<pre><code class="language-excel">=REDUCE(Opening, Movements, LAMBDA(acc, m, acc + m))      closing balance only
+=REDUCE(1, Rates, LAMBDA(acc, r, acc*(1+r)))              compound growth factor
+</code></pre>
+<p>A powerful finance pattern uses REDUCE with VSTACK to build a variable-length table by looping over a list:</p>
+<pre><code class="language-excel">=REDUCE({&quot;Dept&quot;,&quot;Ledger&quot;,&quot;Amount&quot;}, UNIQUE(GL[Dept]),
+   LAMBDA(acc, d, VSTACK(acc, TAKE(SORTBY(FILTER(GL[[Dept]:[Amount]], GL[Dept]=d),
+                                           FILTER(GL[Amount], GL[Dept]=d), -1), 3))))
+</code></pre>
+<p>This returns the top 3 entries for each department stacked under one header — something a single SORT/TAKE cannot do.</p>
+<h3 id="makearray-generating-grids-from-indices">MAKEARRAY — generating grids from indices</h3>
+<p>MAKEARRAY passes the row index r and column index c to the LAMBDA and builds the grid cell by cell. Simple case: <code>=MAKEARRAY(3, 4, LAMBDA(r, c, r*c))</code> returns a 3 × 4 multiplication grid. Finance case: a straight-line depreciation waterfall where capex added in year r is depreciated over <code>Life</code> years (here 5):</p>
+<pre><code class="language-excel">=MAKEARRAY(ROWS(Capex), Years,
+   LAMBDA(r, c, IF(AND(c &gt;= r, c &lt; r + Life), INDEX(Capex, r) / Life, 0)))
+</code></pre>
+<p>Row r is the vintage, column c the year; summing columns (BYCOL) gives total depreciation per year — the standard capex-vintage depreciation build in a 3-statement model.</p>
+<h3 id="reshaping-functions">Reshaping functions</h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Signature</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VSTACK</td>
+<td><code>VSTACK(a1, a2, …)</code></td>
+<td>Append arrays vertically (header + body + total; actuals over forecast)</td>
+</tr>
+<tr>
+<td>HSTACK</td>
+<td><code>HSTACK(a1, a2, …)</code></td>
+<td>Place arrays side by side (labels + amounts + %)</td>
+</tr>
+<tr>
+<td>TAKE</td>
+<td><code>TAKE(array, rows, [cols])</code></td>
+<td>First n rows (negative n = last n) — top-N, latest month</td>
+</tr>
+<tr>
+<td>DROP</td>
+<td><code>DROP(array, rows, [cols])</code></td>
+<td>Remove first n rows (negative = last n) — strip headers or total rows</td>
+</tr>
+<tr>
+<td>CHOOSECOLS</td>
+<td><code>CHOOSECOLS(array, c1, [c2 …])</code></td>
+<td>Pick and reorder columns; negative numbers count from the right</td>
+</tr>
+</tbody>
+</table>
+<p>Companion functions: CHOOSEROWS, TOCOL/TOROW (flatten), WRAPROWS/WRAPCOLS, EXPAND (pad an array to a size).</p>
+<p>Examples:</p>
+<pre><code class="language-excel">=VSTACK({&quot;FS line&quot;,&quot;Amount&quot;}, HSTACK(Lines, Amts), HSTACK(&quot;Total&quot;, SUM(Amts)))
+=TAKE(C5#, , -3)                  last three months of a P&amp;L grid
+=DROP(ImportRange, 1)             remove the ERP export's header row
+=CHOOSECOLS(GL, 1, 4, -1)         Date, Account and the last column (Amount)
+=VSTACK(Actuals_FY26, Forecast_FY26)   unified data set for a chart
+</code></pre>
+<p>VSTACK of arrays with different widths pads short rows with #N/A; wrap with <code>IFNA(…, "")</code>.</p>
+<h3 id="illustration-deferred-revenue-roll-forward">Illustration: deferred revenue roll-forward</h3>
+<p>A SaaS company bills annual contracts in advance. Opening deferred revenue ₹4.8 crore; monthly billings B and monthly revenue recognised R are spills of 12 values each.</p>
+<pre><code class="language-excel">=LET(mov, B - R,
+     close, SCAN(Opening, mov, LAMBDA(a, m, a + m)),
+     open,  VSTACK(Opening, DROP(close, -1)),
+     HSTACK(open, B, R, close))
+</code></pre>
+<p>Opening column = prior month's closing (built with VSTACK + DROP), closing = SCAN. The final closing should equal the deferred revenue ledger in the TB — a check cell.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Readability vs cleverness.</strong> A REDUCE/VSTACK loop is hard for reviewers. If a visible calculation sheet would do the job, prefer it; reserve helpers for repeated, well-tested patterns.</li>
+<li><strong>Performance.</strong> Helpers call the LAMBDA once per element; MAP over 100k rows with nested FILTERs is slow. Pre-aggregate.</li>
+<li><strong>#CALC! from nested arrays.</strong> BYROW/MAP cannot return arrays per element ("arrays of arrays"); restructure with REDUCE+VSTACK or MAKEARRAY.</li>
+<li><strong>Version.</strong> All functions in this note need current Microsoft 365 (or Excel 2024); Excel 2021 lacks the LAMBDA helpers and VSTACK family.</li>
+<li><strong>SCAN on 2-D arrays</strong> threads row-wise across the whole block; use BYROW-style logic or one SCAN per row.</li>
+<li><strong>DROP/TAKE beyond size.</strong> TAKE with n larger than the array returns all rows; DROP with n ≥ rows returns #CALC!.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>BYROW/BYCOL aggregate per row or column of a spill; MAP applies per-element logic that needs AND/OR or multi-step IF.</li>
+<li>SCAN returns running balances (roll-forwards); REDUCE returns the end state and can loop with VSTACK.</li>
+<li>MAKEARRAY builds grids from row/column indices, e.g. capex vintage depreciation waterfalls.</li>
+<li>VSTACK/HSTACK assemble report blocks; TAKE/DROP/CHOOSECOLS slice them.</li>
+<li>Use these for compact, self-sizing schedules, but keep them documented and testable.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-match-the-function-l1">Q1. Match the function [L1]</h3>
+<p>For each requirement, name the best function and write the formula: (a) total of each row of a spilled grid in B5#; (b) cumulative YTD revenue from a monthly spill in C10#; (c) final balance after applying 12 monthly movements to an opening ₹2.5 crore; (d) the last 6 months of a P&amp;L grid in D5#; (e) the GL export with its first two rows removed.</p>
+<h3 id="q2-capex-vintage-depreciation-l2">Q2. Capex vintage depreciation [L2]</h3>
+<p>Capex for FY26–FY30 is ₹10, ₹14, ₹8, ₹12 and ₹20 crore (named <code>Capex</code>, vertical). Assets are depreciated straight-line over 4 years with a full year's charge in the year of addition. Write a MAKEARRAY formula for the vintage × year depreciation grid and a BYCOL formula for total annual depreciation. Describe the check you would add.</p>
+<h3 id="q3-escalation-flags-with-map-l2">Q3. Escalation flags with MAP [L2]</h3>
+<p>Explain why <code>=IF(AND(AR[Days]&gt;90, AR[Bal]&gt;500000), "Escalate", "OK")</code> returns a single value instead of one per row, and give two fixes: one with MAP and one with Boolean multiplication.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> AND aggregates all its arguments into one result.</p>
+</blockquote>
+<h3 id="q4-lease-roll-forward-l3">Q4. Lease roll-forward [L3]</h3>
+<p>An Ind AS 116 lease liability opens at ₹3.6 crore. Monthly interest is 0.75% of the opening balance and the monthly payment is ₹7.5 lakh for 60 months. Design a formula-only schedule (opening, interest, payment, closing) using SCAN and VSTACK/DROP, and explain why the interest calculation makes a simple SCAN of fixed movements insufficient.</p>
+<h3 id="q5-top-3-per-department-l3">Q5. Top 3 per department [L3]</h3>
+<p>Using REDUCE with VSTACK, write a formula listing the three largest GL entries for each department with a header row. Then discuss whether you would put this in a monthly MIS pack used by six reviewers, and what alternative you would offer.</p></section>
+<nav class="pager"><a class="prev" href="S06_LET_for_Named_Steps_and_LAMBDA_Functions_in_Name.html">← LET for Named Steps and LAMBDA Functions in Name Manager</a><a class="next" href="S08_GROUPBY_and_PIVOTBY_as_Formula_Based_Pivots.html">GROUPBY and PIVOTBY as Formula-Based Pivots →</a></nav>
+</main></div></body></html>

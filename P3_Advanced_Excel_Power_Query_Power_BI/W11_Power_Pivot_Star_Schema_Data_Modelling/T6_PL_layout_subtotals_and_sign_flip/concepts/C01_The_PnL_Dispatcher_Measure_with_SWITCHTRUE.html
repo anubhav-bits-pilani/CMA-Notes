@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The PnL Dispatcher Measure with SWITCH(TRUE()) · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C01_The_PnL_Dispatcher_Measure_with_SWITCHTRUE.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T6 · P&amp;L layout, subtotals and sign-flip</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · P&amp;L layout, subtotals and sign-flip</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_The_PL_Layout_Dimension_Lines_Sort_Order_Type_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S01_The_PL_Layout_Dimension_Lines_Sort_Order_Type_and.html">The P&amp;L Layout Dimension: Lines, Sort Order, Type and Sign</a></li><li><a href="../subtopics/S02_Mapping_CoA_to_Layout_Lines_and_Computing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S02_Mapping_CoA_to_Layout_Lines_and_Computing.html">Mapping CoA to Layout Lines and Computing Subtotals by Sort Order</a></li><li><a href="../subtopics/S03_Row_Level_Measure_Dispatch_with_SWITCHTRUE_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S03_Row_Level_Measure_Dispatch_with_SWITCHTRUE_and.html">Row-Level Measure Dispatch with SWITCH(TRUE()) and SELECTEDVALUE</a></li><li><a href="../subtopics/S04_Sign_Convention_Credits_Negative_in_the_GL_Flipped.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S04_Sign_Convention_Credits_Negative_in_the_GL_Flipped.html">Sign Convention: Credits Negative in the GL, Flipped for Presentation</a></li><li><a href="../subtopics/S05_Margin_Rows_GM_EBITDA_EBIT_with_Dynamic_Format.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S05_Margin_Rows_GM_EBITDA_EBIT_with_Dynamic_Format.html">Margin Rows (GM %, EBITDA %, EBIT %) with Dynamic Format Strings</a></li><li><a href="../subtopics/S06_Formatting_the_PL_Matrix_Layout_Spacers_Bold.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S06_Formatting_the_PL_Matrix_Layout_Spacers_Bold.html">Formatting the P&amp;L Matrix: Layout, Spacers, Bold Subtotals, Empty Rows</a></li><li><a href="../subtopics/S07_Alternatives_Calculation_Groups_Field_Parameters.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S07_Alternatives_Calculation_Groups_Field_Parameters.html">Alternatives: Calculation Groups, Field Parameters, Visual Calcs, Excel</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_The_PnL_Dispatcher_Measure_with_SWITCHTRUE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C01_The_PnL_Dispatcher_Measure_with_SWITCHTRUE.html">The PnL Dispatcher Measure with SWITCH(TRUE())</a></li><li><a href="C02_Actual_Signed_Applying_the_CoA_Sign_Factor_Row_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C02_Actual_Signed_Applying_the_CoA_Sign_Factor_Row_by.html">Actual Signed: Applying the CoA Sign Factor Row by Row</a></li><li><a href="C03_The_Subtotal_Measure_Removing_the_Layout_Filter_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C03_The_Subtotal_Measure_Removing_the_Layout_Filter_by.html">The Subtotal Measure: Removing the Layout Filter by Sort Order</a></li><li><a href="C04_EBITDA_with_a_Dynamic_Format_String_in_the_PL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C04_EBITDA_with_a_Dynamic_Format_String_in_the_PL.html">EBITDA % with a Dynamic Format String in the P&amp;L Matrix</a></li><li><a href="C05_Blanking_PL_Grand_Totals_with_ISINSCOPE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C05_Blanking_PL_Grand_Totals_with_ISINSCOPE.html">Blanking P&amp;L Grand Totals with ISINSCOPE</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>The PnL Dispatcher Measure with SWITCH(TRUE())</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>PnL = VAR t = SELECTEDVALUE(Layout[Type]) RETURN SWITCH(TRUE(), t = "Account", [Actual Signed], t = "Subtotal", [Subtotal], t = "Ratio", [Margin %])</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-DAX">PnL =
+VAR t = SELECTEDVALUE ( Layout[Type] )
+RETURN
+    SWITCH (
+        TRUE (),
+        t = &quot;Account&quot;,  [Actual Signed],
+        t = &quot;Subtotal&quot;, [Subtotal],
+        t = &quot;Ratio&quot;,    [Margin %]
+    )
+</code></pre>
+<p>For a matrix row with layout type \(t\):</p>
+<p>\[
+\text{PnL} =
+\begin{cases}
+\text{Actual Signed} &amp; t = \text{Account} \\
+\text{Subtotal} &amp; t = \text{Subtotal} \\
+\text{Margin \%} &amp; t = \text{Ratio} \\
+\text{BLANK} &amp; \text{otherwise (Header, Spacer, totals)}
+\end{cases}
+\]</p>
+<h2 id="explanation">Explanation</h2>
+<p>The measure is a router. <code>SELECTEDVALUE(Layout[Type])</code> reads the type of the layout line in the current filter context;
+when exactly one line is visible (a matrix row) it returns that line's type, and at a grand total or a multi-line
+selection it returns BLANK. <code>SWITCH(TRUE(), …)</code> tests each condition in order and returns the result of the first TRUE
+one; with no else argument the result is BLANK, which covers Header and Spacer rows and the grand total.</p>
+<p>Why this design works:</p>
+<ul>
+<li><strong>One value field per column.</strong> The matrix uses <code>[PnL]</code> for every row, so Actual, Budget and PY columns each need only
+  one measure (or one calculation-group item applied to <code>[PnL]</code>).</li>
+<li><strong>Separation of concerns.</strong> Each branch is a small measure that can be tested independently: <code>[Actual Signed]</code> against
+  the TB, <code>[Subtotal]</code> against a manual sum, <code>[Margin %]</code> against Excel.</li>
+<li><strong>Layout-driven.</strong> Adding a line only requires a new layout row of an existing type; the dispatcher does not change.</li>
+</ul>
+<p>Conditions: the matrix rows must be at layout-line grain (unique labels), the Layout table must relate to CoA (so Account
+rows filter GL), and the branch measures must handle their own filter manipulation (<code>REMOVEFILTERS(Layout)</code> in
+<code>[Subtotal]</code>, line references in <code>[Margin %]</code>). All branches should return numbers; format with a dynamic format string
+(c04) rather than returning text.</p>
+<p><code>SWITCH(t, "Account", …, "Subtotal", …, "Ratio", …)</code> is equivalent here because every test is on <code>t</code>. The <code>TRUE()</code> form
+is preferred as a habit because rules soon combine conditions (<code>t = "Subtotal" &amp;&amp; hasRange</code>), and it reads like a
+<code>CASE WHEN</code> in SQL or an if-else chain in Java.</p>
+<h2 id="illustration">Illustration</h2>
+<p>November 2025 (₹ lakh, profit-signed):</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th><code>t</code></th>
+<th>Branch</th>
+<th><code>[PnL]</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue from operations</td>
+<td>Account</td>
+<td><code>[Actual Signed]</code></td>
+<td>4,100</td>
+</tr>
+<tr>
+<td>Cost of materials consumed</td>
+<td>Account</td>
+<td><code>[Actual Signed]</code></td>
+<td>−2,380</td>
+</tr>
+<tr>
+<td>Gross Profit</td>
+<td>Subtotal</td>
+<td><code>[Subtotal]</code></td>
+<td>1,720</td>
+</tr>
+<tr>
+<td>GM %</td>
+<td>Ratio</td>
+<td><code>[Margin %]</code></td>
+<td>0.4195 (41.95% before rounding)</td>
+</tr>
+<tr>
+<td>Spacer</td>
+<td>Spacer</td>
+<td>none</td>
+<td>blank</td>
+</tr>
+<tr>
+<td>Grand total</td>
+<td>BLANK</td>
+<td>none</td>
+<td>blank</td>
+</tr>
+</tbody>
+</table>
+<h2 id="connections">Connections</h2>
+<p>Developed in s03 (SELECTEDVALUE semantics, extended dispatch, debugging); its branches are c02 (<code>[Actual Signed]</code>), c03
+(<code>[Subtotal]</code>) and c04 (<code>[Margin %]</code> with a dynamic format string); c05 blanks totals explicitly with ISINSCOPE. The
+layout table it reads is s01. Weeks 17–20 reuse the same dispatcher for MIS P&amp;L with Actual / Budget / Variance columns.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-trace-three-rows-l1">Q1. Trace three rows [L1]</h3>
+<p>For the rows EBITDA, Employee benefits expense and a Header row "Expenses", state what <code>SELECTEDVALUE(Layout[Type])</code>
+returns, which branch runs and what filter manipulation (if any) that branch performs.</p>
+<h3 id="q2-add-a-memo-type-l2">Q2. Add a Memo type [L2]</h3>
+<p>The CFO wants memo rows under Other expenses showing "of which: CSR" and "of which: Legal and professional", without
+affecting subtotals. Extend the dispatcher and the layout, and explain why the memo rows must not be of type Account.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Check which rows the Subtotal measure includes.</p>
+</blockquote>
+<h3 id="q3-budget-column-l2">Q3. Budget column [L2]</h3>
+<p>Write <code>PnL Budget</code> reusing the dispatcher for a model where Budget is a separate fact with <code>[Budget Signed]</code>, without
+copying the whole SWITCH, and explain one maintenance risk of the copy-paste alternative.</p></section>
+<nav class="pager"><a class="prev" href="../subtopics/S07_Alternatives_Calculation_Groups_Field_Parameters.html">← Alternatives: Calculation Groups, Field Parameters, Visual…</a><a class="next" href="C02_Actual_Signed_Applying_the_CoA_Sign_Factor_Row_by.html">Actual Signed: Applying the CoA Sign Factor Row by Row →</a></nav>
+</main></div></body></html>

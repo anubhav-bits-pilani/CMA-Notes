@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What-if analysis and input controls · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/index.html" data-kind="topic">
+<header class="top"><a class="brand" href="../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../index.html">Home</a> <span>›</span> <a href="../../index.html">Phase 3</a> <span>›</span> <a href="../index.html">Week 9</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">Week 9</a></div><ul class="side-links"><li><a href="../T1_Multi_criteria_logic_and_GL_rollups/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/index.html">T1 · Multi-criteria logic and GL rollups</a></li><li><a href="../T2_Modern_lookups_and_scenario_switching/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/index.html">T2 · Modern lookups and scenario switching</a></li><li><a href="../T3_SUMPRODUCT_weighted_averages_and_matrix/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/index.html">T3 · SUMPRODUCT weighted averages and matrix math</a></li><li><a href="../T4_Dynamic_arrays_and_LETLAMBDA/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/index.html">T4 · Dynamic arrays and LET/LAMBDA</a></li><li><a href="../T5_Financial_and_date_functions/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/index.html">T5 · Financial and date functions</a></li><li><a href="index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/index.html">T6 · What-if analysis and input controls</a></li></ul></aside>
+<main class="content">
+<div class="kind">Topic</div>
+<h1>What-if analysis and input controls</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<section class="index"><h2>Notes in this topic</h2><div class="cols"><div><h3>Subtopics</h3><ul class="links num"><li><a href="subtopics/S01_One_and_Two_Variable_Data_Tables_for_Sensitivity.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S01_One_and_Two_Variable_Data_Tables_for_Sensitivity.html">S01 · One- and Two-Variable Data Tables for Sensitivity Analysis</a></li><li><a href="subtopics/S02_Goal_Seek_for_Break_Even_Target_Margin_Price_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S02_Goal_Seek_for_Break_Even_Target_Margin_Price_and.html">S02 · Goal Seek for Break-Even, Target-Margin Price and Required Growth</a></li><li><a href="subtopics/S03_Scenario_Manager_Scenarios_Changing_Cells_and_the.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S03_Scenario_Manager_Scenarios_Changing_Cells_and_the.html">S03 · Scenario Manager: Scenarios, Changing Cells and the Summary Report</a></li><li><a href="subtopics/S04_Data_Validation_Dropdowns_Dependent_Lists_Limits.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S04_Data_Validation_Dropdowns_Dependent_Lists_Limits.html">S04 · Data Validation: Dropdowns, Dependent Lists, Limits and Messages</a></li><li><a href="subtopics/S05_Formula_Based_Conditional_Formatting_for_Variances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S05_Formula_Based_Conditional_Formatting_for_Variances.html">S05 · Formula-Based Conditional Formatting for Variances and Scenarios</a></li><li><a href="subtopics/S06_Form_Controls_Linked_to_Cells_for_Model_Dashboards.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S06_Form_Controls_Linked_to_Cells_for_Model_Dashboards.html">S06 · Form Controls Linked to Cells for Model Dashboards</a></li><li><a href="subtopics/S07_Solver_for_Product_Mix_and_Capital_Rationing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S07_Solver_for_Product_Mix_and_Capital_Rationing.html">S07 · Solver for Product Mix and Capital Rationing</a></li><li><a href="subtopics/S08_Calculation_Mode_Automatic_Except_Data_Tables_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S08_Calculation_Mode_Automatic_Except_Data_Tables_and.html">S08 · Calculation Mode: Automatic Except Data Tables and F9 Recalculation</a></li></ul></div><div><h3>Key concepts & formulas</h3><ul class="links num"><li><a href="concepts/C01_The_TABLE_Array_Formula_and_the_Same_Sheet_Input.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C01_The_TABLE_Array_Formula_and_the_Same_Sheet_Input.html">C01 · The TABLE Array Formula and the Same-Sheet Input Rule</a></li><li><a href="concepts/C02_Goal_Seek_Rules_Formula_Set_Cell_Hard_Coded.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C02_Goal_Seek_Rules_Formula_Set_Cell_Hard_Coded.html">C02 · Goal Seek Rules: Formula Set Cell, Hard-Coded Changing Cell</a></li><li><a href="concepts/C03_Dependent_Dropdown_Sources_INDIRECT_vs_a_Spill.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C03_Dependent_Dropdown_Sources_INDIRECT_vs_a_Spill.html">C03 · Dependent Dropdown Sources: INDIRECT vs a Spill Reference</a></li><li><a href="concepts/C04_Conditional_Format_Rule_for_Negative_Rows_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C04_Conditional_Format_Rule_for_Negative_Rows_Column.html">C04 · Conditional Format Rule for Negative Rows: Column Locked, Row Relative</a></li><li><a href="concepts/C05_Variance_Flag_Rule_with_a_Named_Threshold_Input.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C05_Variance_Flag_Rule_with_a_Named_Threshold_Input.html">C05 · Variance Flag Rule with a Named Threshold Input</a></li><li><a href="concepts/C06_Scenario_Manager_Limits_32_Changing_Cells_and_a.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C06_Scenario_Manager_Limits_32_Changing_Cells_and_a.html">C06 · Scenario Manager Limits: 32 Changing Cells and a Static Summary</a></li></ul></div></div></section><article class="note"><blockquote>
+<p><strong>Roadmap topic:</strong> What-If Analysis &amp; Controls: 1D/2D Data Tables, Goal Seek, Scenario Manager, Data Validation dropdowns, and dynamic Conditional Formatting rules</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>A model is valuable less for its single answer than for what it says about how that answer moves. This topic covers Excel's tools for asking "what if?" and for controlling what goes into a model. On the analysis side: <strong>Data Tables</strong> re-run the model over one or two input ranges; <strong>Goal Seek</strong> back-solves a single input for a target; <strong>Scenario Manager</strong> stores and compares sets of inputs; <strong>Solver</strong> optimises many decision variables under constraints. On the control side: <strong>Data Validation</strong> restricts and documents inputs and creates dropdowns; <strong>conditional formatting</strong> makes variances, the live scenario and failed checks visible; <strong>form controls</strong> let non-Excel users flex a model safely; and <strong>calculation mode</strong> management keeps heavy sensitivity grids fast without letting them go stale.</p>
+<p>For the target roles, these tools appear in every serious deliverable. Valuation and corporate finance work needs WACC × growth grids, implied-assumption Goal Seeks and lender stress cases. FP&amp;A needs base/upside/downside budgets, price-volume sensitivities, break-even analysis and variance packs that highlight themselves. Reporting and audit work needs input templates that department heads cannot break and models whose state is obvious to a reviewer. Interviewers routinely ask why Data Table inputs must be on the same sheet, how Goal Seek differs from Solver, and why Scenario Manager is rarely used in professional models.</p>
+<p>The learning sequence: start with <strong>sensitivity mechanics</strong> — Data Tables (s01) and Goal Seek (s02) — then <strong>multi-input cases</strong> with Scenario Manager (s03). Move to the <strong>input layer</strong>: Data Validation (s04) and formula-based conditional formatting (s05), then <strong>dashboard controls</strong> (s06). Finish with <strong>optimisation</strong> using Solver (s07) and the operational discipline of <strong>calculation modes</strong> (s08), which ties back to Data Tables. The six key concepts pin down the rules most often tested: the TABLE formula and same-sheet rule (c01), Goal Seek's cell requirements (c02), dynamic dropdown sources (c03), mixed-reference CF rules (c04, c05) and Scenario Manager's limits (c06).</p>
+<h2 id="concept-map">Concept map</h2>
+<table>
+<thead>
+<tr>
+<th>Subtopic / concept</th>
+<th>Role in the topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s01 1D/2D Data Tables</td>
+<td>Full-model sensitivity over one or two inputs</td>
+</tr>
+<tr>
+<td>s02 Goal Seek</td>
+<td>Back-solving one input for a target output</td>
+</tr>
+<tr>
+<td>s03 Scenario Manager</td>
+<td>Stored multi-input cases and a static comparison report</td>
+</tr>
+<tr>
+<td>s04 Data Validation</td>
+<td>Restricting, guiding and documenting inputs; dropdowns</td>
+</tr>
+<tr>
+<td>s05 Formula-based conditional formatting</td>
+<td>Making variances, thresholds and the live scenario visible</td>
+</tr>
+<tr>
+<td>s06 Form controls</td>
+<td>Dashboard combo boxes, check boxes and scroll bars linked to cells</td>
+</tr>
+<tr>
+<td>s07 Solver</td>
+<td>Constrained optimisation: product mix and capital rationing</td>
+</tr>
+<tr>
+<td>s08 Calculation mode and F9</td>
+<td>Keeping sensitivity grids fast without staleness</td>
+</tr>
+<tr>
+<td>c01 TABLE formula, same-sheet inputs</td>
+<td>How Data Tables are stored and their key constraint</td>
+</tr>
+<tr>
+<td>c02 Goal Seek cell rules</td>
+<td>Formula Set cell, constant changing cell</td>
+</tr>
+<tr>
+<td>c03 INDIRECT vs spill-reference list sources</td>
+<td>Dependent and dynamic dropdowns</td>
+</tr>
+<tr>
+<td>c04 <code>=$E5&lt;0</code> row rule</td>
+<td>Column-locked conditional formatting across a block</td>
+</tr>
+<tr>
+<td>c05 <code>=ABS($F5)&gt;Threshold</code></td>
+<td>Two-sided variance flag with a named materiality input</td>
+</tr>
+<tr>
+<td>c06 Scenario Manager limits</td>
+<td>32 changing cells; static, unlinked summary</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-concepts-to-study">Related concepts to study</h2>
+<h3 id="wacc-terminal-growth-grid">WACC × terminal growth grid</h3>
+<p><em>→ Week 15–16: WACC × terminal growth sensitivity grid in the DCF</em></p>
+<p>The single most common Data Table in finance is the DCF grid of enterprise value or value per share against WACC (rows) and terminal growth (columns). In Weeks 15–16 you will build it on a full DCF where terminal value often contributes 60–80% of EV, so small changes in WACC − g produce large swings — the convexity seen in s01's illustration. Good practice: keep the base case in the centre, steps of 0.5%, guard against g ≥ WACC (return a blank or "n.m."), highlight the base cell with conditional formatting, and add a staleness check against the live EV. Some analysts add a second grid of EV against exit multiple for the terminal-multiple method.</p>
+<h3 id="cvp-break-even-with-goal-seek">CVP break-even with Goal Seek</h3>
+<p><em>→ Week 21: CVP break-even and margin of safety with Goal Seek</em></p>
+<p>Cost-volume-profit analysis from CMA cost accounting becomes a spreadsheet exercise in Week 21: break-even volume (fixed costs ÷ contribution per unit), break-even revenue (fixed costs ÷ P/V ratio) and margin of safety ((actual − break-even) ÷ actual). Closed-form formulas keep these live; Goal Seek is the tool when the cost structure includes step fixed costs, volume discounts or multi-product mixes where contribution depends on mix. A 1D Data Table of EBIT against volume, and a 2D table of EBIT against price and volume, extend CVP into a sensitivity view. Keep Goal Seek results in a log, since they do not update.</p>
+<h3 id="live-scenario-switches">Live scenario switches</h3>
+<p><em>CHOOSE/INDEX live scenario switches as an alternative to Scenario Manager → w9_t2</em></p>
+<p>A live switch stores every case's values side by side on the assumptions sheet (Base, Upside, Downside columns) and selects the active column with <code>CHOOSE(ScenIdx, …)</code> or <code>INDEX(CaseBlock, , ScenIdx)</code>, where <code>ScenIdx</code> comes from a dropdown via MATCH (s04) or a combo box (s06). Unlike Scenario Manager, there is no 32-cell limit, nothing is overwritten, every value is visible and auditable, and the selected case can be highlighted with a row-locked conditional formatting rule. A 1D Data Table over the scenario index then produces a live side-by-side comparison — the professional replacement for the static Scenario Summary.</p>
+<h3 id="tornado-charts">Tornado charts</h3>
+<p><em>Tornado charts for ranking sensitivities in presentations</em></p>
+<p>A tornado chart ranks inputs by their impact on one output. For each driver, the output is computed at a low and a high value (e.g. ±10% or P10/P90 estimates) with all other inputs at base; the swings are sorted largest first and plotted as horizontal bars around the base value, producing the tornado shape. In Excel, compute the low/high outputs with a 1D Data Table per driver or a single Data Table over a "driver selector" index, then sort with SORTBY (w9_t4) and chart as a clustered bar with the base as the axis crossing. Tornado charts focus board discussion on the two or three assumptions that actually matter.</p>
+<h3 id="model-hygiene-and-colour-coding">Model hygiene and colour coding</h3>
+<p><em>Model hygiene: input/calculation/output separation and colour coding (blue inputs, black formulas)</em></p>
+<p>The what-if tools only work reliably in a well-structured model. Separate inputs (assumptions, scenario blocks, controls' linked cells), calculations and outputs, ideally on different sheets with one-directional flow. Colour-code: blue font for hard-coded inputs, black for formulas, green for links to other sheets (a common banking convention). This makes Goal Seek and Data Table set-up obvious (inputs are blue), exposes hard-coded numbers in calculation areas, and helps reviewers. Add a checks sheet summarising TB balance, balance-sheet balance, cash tie-out and sensitivity staleness, and a cover sheet stating calculation mode and active scenario.</p>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<h3 id="slow-data-tables-and-forgotten-f9">Slow Data Tables and forgotten F9</h3>
+<p><em>Data Tables slow big models; teams set "Automatic except data tables" and then forget to press F9</em></p>
+<p><strong>Mistake:</strong> sensitivity grids distributed with stale values because calculation was set to "Automatic except for data tables" (or Manual) and nobody recalculated after the last input change. <strong>Why it happens:</strong> large Data Tables make every keystroke slow, so the mode is changed for speed; the status-bar "Calculate" indicator is easy to miss, and the mode persists across the session. <strong>Correct treatment:</strong> keep the mode deliberately, press F9 before reading or exporting results, add a staleness check comparing the grid's base-case cell with the live output, and display the calculation mode and "last calculated" on the cover sheet. Reduce the need for the mode by removing volatile functions and keeping grids small. <strong>Detection:</strong> the base-case cell of the grid disagrees with the live output; "Calculate" in the status bar.</p>
+<h3 id="goal-seek-leaves-no-audit-trail">Goal Seek leaves no audit trail</h3>
+<p><em>Goal Seek overwrites an input with no audit trail, and the result stops tracking later assumption changes</em></p>
+<p><strong>Mistake:</strong> an input like volume = 1,83,467.29 that was Goal Seeked months ago to hit a target, now stale because other assumptions changed. <strong>Why it happens:</strong> Goal Seek writes a constant into the changing cell, which looks like any other input. <strong>Correct treatment:</strong> use a dedicated solve cell or a switch between base and solved values; keep a gap cell (<code>Output − Target</code>) that should be zero; record each solve (date, target, result, owner) in a log; prefer closed-form or live formulas (break-even, required CAGR) where they exist; re-run solves in the close checklist. <strong>Detection:</strong> inputs with unusual decimals and no source note; non-zero gap cells; inquiry of the preparer; Inquire's cell-comparison between versions shows constant changes.</p>
+<h3 id="validation-bypassed-and-fixed-list-sources">Validation bypassed and fixed list sources</h3>
+<p><em>Pasting over Data Validation cells bypasses it; list sources on fixed ranges do not grow</em></p>
+<p><strong>Mistake:</strong> invalid values (non-existent cost centres, 800% growth) in validated cells, and dropdowns missing new items. <strong>Why it happens:</strong> Ctrl+V replaces the cell, including its validation rule; validation only checks typed entries; list sources point to fixed ranges like <code>Lists!B2:B20</code> that new items exceed. <strong>Correct treatment:</strong> protect input sheets, instruct users to paste values only, run Data → Circle Invalid Data and completeness checks before consolidation, and build list sources from Table-backed names or spill references (<code>UNIQUE</code> output with <code>#</code>). <strong>Detection:</strong> Circle Invalid Data; Go To Special → Data Validation to confirm coverage; COUNTIFS checks of entries against master lists.</p>
+<h3 id="duplicated-conditional-formatting-rules">Duplicated conditional formatting rules</h3>
+<p><em>Copy-pasting duplicates Conditional Formatting rules, which bloats the file and creates conflicting priorities</em></p>
+<p><strong>Mistake:</strong> Manage Rules shows hundreds of near-identical rules, each applied to small fragments of the range, with inconsistent formats and priorities. <strong>Why it happens:</strong> copying and pasting cells (or inserting copied rows) duplicates rules with fragmented Applies-to ranges; Format Painter spreads rules unintentionally. <strong>Correct treatment:</strong> maintain one rule per purpose applied to the full block; after restructuring, clear rules from the sheet and recreate them; paste values or formulas only (Paste Special) when copying within formatted blocks. <strong>Detection:</strong> Manage Rules with "This Worksheet" selected — look for repeated formulas and fragmented ranges; slow scrolling; file size growth without data growth.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-valuation-sensitivity-pack-l3">Q1. Valuation sensitivity pack [L3]</h3>
+<p>A DCF for an NSE-listed specialty chemicals company gives ₹2,340 per share at WACC 11.5% and terminal growth 5.5%; inputs are on an Inputs sheet, valuation on a Valuation sheet. Design: (a) a 2D Data Table of per-share value for WACC 10.5%–12.5% and growth 4.5%–6.5% in 0.5% steps, including how you satisfy the same-sheet rule; (b) a conditional formatting rule highlighting the base case and another shading values below the current market price of ₹2,050 (a named input); (c) a Goal Seek to find the market-implied WACC with controls so the base WACC is not overwritten; (d) the calculation mode and staleness check you would use. Write the key formulas and dialog entries.</p>
+<h3 id="q2-budget-template-for-25-departments-l2">Q2. Budget template for 25 departments [L2]</h3>
+<p>Design an FY27 department budget input template: department and cost-centre dependent dropdowns, monthly phasing that must sum to 100%, headcount as whole numbers between 0 and 500, salary increase between 0% and 15% with a warning above 12%, and conditional formatting that flags months where phased spend exceeds 15% of the annual budget. Specify each validation and CF rule and the checks you would run on returned templates before consolidation.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Remember that pasting can bypass validation, so plan detective checks as well as preventive rules.</p>
+</blockquote>
+<h3 id="q3-product-mix-and-break-even-l2">Q3. Product mix and break-even [L2]</h3>
+<p>A two-product plant: product X contributes ₹450 per unit using 3 machine hours; product Y contributes ₹380 per unit using 2 machine hours; capacity 18,000 machine hours; maximum demand X 4,000 units and Y 5,000 units; fixed costs ₹2.6 crore. Set up the Solver model for the optimal mix, state how you would read the shadow price of machine hours, then use Goal Seek on the optimal mix to find the uniform percentage fall in both contributions that would bring EBIT to zero.</p>
+<h3 id="q4-scenario-architecture-review-l3">Q4. Scenario architecture review [L3]</h3>
+<p>You inherit a budget model that uses Scenario Manager with three scenarios of 28 changing cells, a Scenario Summary pasted into the board pack, three Data Tables with "Automatic except data tables" set, and form controls linked to cells on a hidden sheet. Identify the risks, propose a redesigned architecture (live switch, live scenario comparison, dashboard controls, checks), and outline the migration steps so the board numbers do not change unexpectedly.</p>
+<h3 id="q5-interview-rapid-fire-l1">Q5. Interview rapid-fire [L1]</h3>
+<p>Answer briefly: (a) Why must Data Table inputs be on the same sheet? (b) Goal Seek vs Solver — two differences. (c) What does a combo box's linked cell return? (d) What does F9 recalculate compared with Shift+F9? (e) Why is Scenario Manager's summary risky in a board pack?</p></section>
+<nav class="pager"><a class="prev" href="../T5_Financial_and_date_functions/concepts/C07_FY_End_Date_and_Fiscal_Month_Formulas_for_an.html">← FY End Date and Fiscal Month Formulas for an April–March…</a><a class="next" href="subtopics/S01_One_and_Two_Variable_Data_Tables_for_Sensitivity.html">One- and Two-Variable Data Tables for Sensitivity Analysis →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign-Aware Variance % with VAR and ABS · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C05_Sign_Aware_Variance_with_VAR_and_ABS.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T3 · Core financial DAX functions</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Core financial DAX functions</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Row_Context_Filter_Context_and_Context_Transition.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S01_Row_Context_Filter_Context_and_Context_Transition.html">Row Context, Filter Context and Context Transition</a></li><li><a href="../subtopics/S02_CALCULATE_Filter_Arguments_and_Modifiers.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S02_CALCULATE_Filter_Arguments_and_Modifiers.html">CALCULATE Filter Arguments and Modifiers</a></li><li><a href="../subtopics/S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html">Iterators SUMX and AVERAGEX for Row-Level Maths</a></li><li><a href="../subtopics/S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html">FILTER vs Boolean Column Filters: Meaning and Performance</a></li><li><a href="../subtopics/S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html">ALL, ALLEXCEPT and ALLSELECTED for Share and Contribution Analysis</a></li><li><a href="../subtopics/S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html">RELATED and RELATEDTABLE in Columns and Iterators</a></li><li><a href="../subtopics/S07_DIVIDE_Measures_vs_Calculated_Columns_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S07_DIVIDE_Measures_vs_Calculated_Columns_and.html">DIVIDE, Measures vs Calculated Columns, and VAR/RETURN</a></li><li><a href="../subtopics/S08_Explicit_Measures_Display_Folders_and_LakhCrore.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S08_Explicit_Measures_Display_Folders_and_LakhCrore.html">Explicit Measures, Display Folders and ₹ Lakh/Crore Formats</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html">Base Actual Measure and a Filtered Revenue Measure</a></li><li><a href="C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html">Percentage of Total Opex with ALL on Cost Centre</a></li><li><a href="C03_Percentage_within_Statement_with_ALLEXCEPT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C03_Percentage_within_Statement_with_ALLEXCEPT.html">Percentage within Statement with ALLEXCEPT</a></li><li><a href="C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html">FX-Converted Revenue with SUMX and RELATED</a></li><li><a href="C05_Sign_Aware_Variance_with_VAR_and_ABS.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C05_Sign_Aware_Variance_with_VAR_and_ABS.html">Sign-Aware Variance % with VAR and ABS</a></li><li><a href="C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html">KEEPFILTERS to Intersect Rather Than Overwrite</a></li><li><a href="C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html">DIVIDE and Its BLANK Default for Zero Denominators</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Sign-Aware Variance % with VAR and ABS</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>Var % = VAR a = [Actual] VAR b = [Budget] RETURN DIVIDE(a - b, ABS(b))</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-DAX">Var % =
+VAR a = [Actual]
+VAR b = [Budget]
+RETURN
+    DIVIDE ( a - b, ABS ( b ) )
+</code></pre>
+<p>\[
+\text{Var\%} = \frac{a - b}{\lvert b \rvert}
+\]</p>
+<p>where \(a\) is actual and \(b\) is budget for the current filter context, both in the same sign convention. Returns
+BLANK when \(b\) is 0 or blank.</p>
+<h2 id="explanation">Explanation</h2>
+<p><strong>Why ABS.</strong> With the plain formula \((a - b)/b\), a negative denominator flips the sign of the result. Negative
+budgets are common: in a credit-negative GL convention revenue budgets are negative; in a sign-adjusted convention
+loss-making units have negative EBITDA budgets. Example: budget EBITDA −₹50 lakh (a planned loss), actual −₹30 lakh
+(a smaller loss). \((a - b) = +20\); divided by \(b = -50\) gives −40%, suggesting an adverse result when the unit
+actually beat budget. Dividing by \(\lvert b \rvert\) gives +40%: the sign of the result now follows the sign of
+\(a - b\).</p>
+<p><strong>What the sign then means.</strong> With ABS, a positive Var % means "actual is numerically higher than budget". Whether
+that is <strong>favourable</strong> depends on the line type:</p>
+<table>
+<thead>
+<tr>
+<th>Line type</th>
+<th>Higher actual is</th>
+<th>Favourable when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue, other income, profit lines</td>
+<td>Good</td>
+<td>\(a - b &gt; 0\)</td>
+</tr>
+<tr>
+<td>Expense lines</td>
+<td>Bad</td>
+<td>\(a - b &lt; 0\)</td>
+</tr>
+</tbody>
+</table>
+<p>So combine Var % with a favourable/adverse flag driven by a line attribute (e.g. <code>CoA[IsExpense]</code> or a layout sign
+factor) rather than reversing the percentage itself:</p>
+<pre><code class="language-DAX">Fav/Adv =
+VAR d = [Actual Signed] - [Budget Signed]
+VAR isExp = SELECTEDVALUE ( CoA[AccountType] ) = &quot;Expense&quot;
+RETURN
+    IF ( ISBLANK ( d ), BLANK (), IF ( ( d &gt;= 0 ) &lt;&gt; isExp, &quot;F&quot;, &quot;A&quot; ) )
+</code></pre>
+<p><strong>Variables.</strong> <code>a</code> and <code>b</code> are evaluated once in the current filter context; the measure is easy to read and debug
+(<code>RETURN b</code> temporarily to inspect budget).</p>
+<p><strong>Consistency.</strong> Actual and Budget must use the same sign convention. If budget is loaded as positive expenses while
+GL expenses are positive debits but revenue budget is positive while GL revenue is negative, \(a - b\) for revenue is
+nonsense. Normalise both through the same SignFactor.</p>
+<p><strong>Materiality and blanks.</strong> DIVIDE returns blank for zero budget; consider blanking variance % for tiny budgets
+(n.m. — not meaningful) to avoid 5,000% rows.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Sign-adjusted (income and expense positive), FY2025-26 Q2, ₹ lakh:</p>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Actual \(a\)</th>
+<th>Budget \(b\)</th>
+<th>\(a - b\)</th>
+<th>\((a - b)/b\)</th>
+<th>\((a - b)/\lvert b \rvert\)</th>
+<th>Fav/Adv</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue</td>
+<td>2,400</td>
+<td>2,500</td>
+<td>−100</td>
+<td>−4.0%</td>
+<td>−4.0%</td>
+<td>A</td>
+</tr>
+<tr>
+<td>Employee cost</td>
+<td>310</td>
+<td>300</td>
+<td>10</td>
+<td>3.3%</td>
+<td>3.3%</td>
+<td>A</td>
+</tr>
+<tr>
+<td>EBITDA (Unit X)</td>
+<td>−30</td>
+<td>−50</td>
+<td>20</td>
+<td>−40.0%</td>
+<td>40.0%</td>
+<td>F</td>
+</tr>
+<tr>
+<td>EBITDA (Unit Y)</td>
+<td>15</td>
+<td>−10</td>
+<td>25</td>
+<td>−250.0%</td>
+<td>250.0%</td>
+<td>F</td>
+</tr>
+</tbody>
+</table>
+<p>Unit Y's swing from a planned loss to a profit shows +250%; many MIS packs replace such values with "n.m." and show
+only the ₹ variance.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Subtopic s07 (DIVIDE and VAR/RETURN); concept c07 (DIVIDE's blank behaviour).</li>
+<li>Week cross-cutting item: <code>Variance ₹ = [Actual] - [Budget]</code> with a sign-aware Variance %.</li>
+<li>Topic pitfall: variance % on negative (expense) budgets flips the sign.</li>
+<li>Topic 6 (favourable/adverse logic reversed for expense lines) and Weeks 17–20 MIS variance packs.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-compute-and-interpret-l1">Q1. Compute and interpret [L1]</h3>
+<p>For a cost centre: budget opex ₹80 lakh, actual ₹92 lakh (both positive). Compute Var % using the formula, and
+state whether it is favourable, explaining how the measure and a Fav/Adv flag together communicate that.</p>
+<h3 id="q2-credit-negative-convention-l2">Q2. Credit-negative convention [L2]</h3>
+<p>In a raw-sign GL (credits negative), revenue budget is −₹500 crore and actual is −₹540 crore. Compute
+\((a - b)/b\) and \((a - b)/\lvert b \rvert\), interpret each, and state which sign convention you would use for MIS.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Watch the sign of \(a - b\) when both values are negative.</p>
+</blockquote>
+<h3 id="q3-nm-logic-l2">Q3. n.m. logic [L2]</h3>
+<p>Extend the measure so it returns blank when \(\lvert b \rvert\) is below ₹5 lakh or when budget and actual have
+opposite signs, and justify both rules to a CFO.</p></section>
+<nav class="pager"><a class="prev" href="C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html">← FX-Converted Revenue with SUMX and RELATED</a><a class="next" href="C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html">KEEPFILTERS to Intersect Rather Than Overwrite →</a></nav>
+</main></div></body></html>

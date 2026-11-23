@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hunting Hardcodes with Go To Special, Trace Precedents and Inquire · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S06_Hunting_Hardcodes_with_Go_To_Special_Trace.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 15</a> <span>›</span> <a href="../index.html">T4 · Balance Sheet Debugging Diagnostics</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Balance Sheet Debugging Diagnostics</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Clean_Historicals_First_Then_Find_the_First.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S01_Clean_Historicals_First_Then_Find_the_First.html">Clean Historicals First, Then Find the First Imbalanced Year</a></li><li><a href="S02_Reading_the_Pattern_of_the_Balance_Check_Across.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S02_Reading_the_Pattern_of_the_Balance_Check_Across.html">Reading the Pattern of the Balance Check Across Years</a></li><li><a href="S03_Halving_Test_for_Sign_Errors_and_Exact_Match.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S03_Halving_Test_for_Sign_Errors_and_Exact_Match.html">Halving Test for Sign Errors and Exact-Match Search for Omissions</a></li><li><a href="S04_Line_by_Line_ΔBS_vs_CFS_Reconciliation_Block.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S04_Line_by_Line_ΔBS_vs_CFS_Reconciliation_Block.html">Line-by-Line ΔBS vs CFS Reconciliation Block</a></li><li><a href="S05_Breaker_Off_Opening_Links_and_Sign_Conventions_in.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S05_Breaker_Off_Opening_Links_and_Sign_Conventions_in.html">Breaker Off, Opening Links and Sign Conventions in Corkscrews</a></li><li><a href="S06_Hunting_Hardcodes_with_Go_To_Special_Trace.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S06_Hunting_Hardcodes_with_Go_To_Special_Trace.html">Hunting Hardcodes with Go To Special, Trace Precedents and Inquire</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Difference_of_X_Means_Omission_2X_Means_Wrong_Sign.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C01_Difference_of_X_Means_Omission_2X_Means_Wrong_Sign.html">Difference of X Means Omission; 2X Means Wrong Sign</a></li><li><a href="../concepts/C02_Constant_vs_Growing_Difference_Opening_Error_or.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C02_Constant_vs_Growing_Difference_Opening_Error_or.html">Constant vs Growing Difference: Opening Error or Flow Error</a></li><li><a href="../concepts/C03_The_Cash_Check_Separating_CFS_Errors_from_BS_Link.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C03_The_Cash_Check_Separating_CFS_Errors_from_BS_Link.html">The Cash Check: Separating CFS Errors from BS Link Errors</a></li><li><a href="../concepts/C04_The_Transaction_Triad_PL_CFS_and_BS_Impact.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C04_The_Transaction_Triad_PL_CFS_and_BS_Impact.html">The Transaction Triad: P&amp;L, CFS and BS Impact</a></li><li><a href="../concepts/C05_Typical_Culprits_Behind_a_Balance_Sheet_Imbalance.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C05_Typical_Culprits_Behind_a_Balance_Sheet_Imbalance.html">Typical Culprits Behind a Balance Sheet Imbalance</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Hunting Hardcodes with Go To Special, Trace Precedents and Inquire</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Hunting hardcodes with Go To Special, Trace Precedents and Inquire</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A hardcode is a typed number where a formula should be. It is the most common cause of imbalances that appear only after an input changes. The model balanced when the number was typed, because the typed value happened to equal the formula result. Once growth, margins or the scenario change, the formula cells move and the hardcode does not. Common examples: FY28E capex overtyped with the management guidance figure, a ΔNWC cell pasted as a value from an older version, a CFS line with <code>=D45+3.2</code> to "fix" a past difference, or a BS opening balance typed instead of linked. Hardcodes are also an audit finding in their own right. Model review standards (FAST, ICAEW Financial Modelling Code, Big 4 model audit methodology) treat unflagged constants in calculation areas as defects. Being able to sweep a workbook for them in minutes is a core skill for the Saturday test and for any model review role.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="types-of-hardcode">Types of hardcode</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Example</th>
+<th>Detected by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pure constant in a calc row</td>
+<td>FY28E capex cell contains <code>450</code></td>
+<td>Go To Special → Constants</td>
+</tr>
+<tr>
+<td>Embedded constant</td>
+<td><code>=D22*1.05</code>, <code>=D45+3.2</code>, <code>=D30/365</code></td>
+<td>Inquire, FORMULATEXT search, manual review</td>
+</tr>
+<tr>
+<td>Pasted value from another version</td>
+<td>ΔNWC row: values only</td>
+<td>Go To Special → Constants, <code>ISFORMULA</code></td>
+</tr>
+<tr>
+<td>Link to an external workbook</td>
+<td><code>='[Model_v6.xlsx]CFS'!H20</code></td>
+<td>Data → Edit Links, Inquire</td>
+</tr>
+<tr>
+<td>Hardcoded reference to a fixed cell</td>
+<td><code>=$G$20</code> copied across</td>
+<td>Row differences, Trace Precedents</td>
+</tr>
+<tr>
+<td>Plug</td>
+<td>"Other adjustments" = check row</td>
+<td>Trace Precedents on suspicious lines</td>
+</tr>
+</tbody>
+</table>
+<p>Not every constant is a defect. Day counts (365), unit conversions (100 for lakh to crore) and the number of months (12) are acceptable only if they sit on the inputs sheet as named constants. The rule is that a constant lives in one labelled place.</p>
+<h3 id="go-to-special-f5-special-or-home-find-select-go-to-special">Go To Special (F5 → Special, or Home → Find &amp; Select → Go To Special)</h3>
+<p><strong>Finding constants:</strong></p>
+<ol>
+<li>Select the calculation range (for example, the forecast columns of the P&amp;L, CFS and BS, and all schedule tabs).</li>
+<li>F5 → Special → <strong>Constants</strong> → tick <strong>Numbers</strong> only (untick Text, Logicals, Errors).</li>
+<li>Excel selects every typed number. Apply a temporary fill colour (for example bright yellow) to see them all.</li>
+<li>Repeat on each calculation tab. Any forecast-column constant outside the inputs sheet needs justification.</li>
+</ol>
+<p><strong>Finding inconsistent formulas (row differences):</strong></p>
+<ol>
+<li>Select a single row across the forecast columns, starting with the first forecast year.</li>
+<li>F5 → Special → <strong>Row differences</strong> (shortcut: Ctrl+\ after selecting the row).</li>
+<li>Excel selects cells whose formula differs in relative structure from the active (first) cell. A FY28E capex cell overtyped with 450 or with <code>=G30*1.1</code> will be selected.</li>
+</ol>
+<p><strong>Other useful options:</strong> <em>Formulas → Errors</em> (find <code>#REF!</code> after deleted rows), <em>Precedents/Dependents</em> (select all cells feeding a check), <em>Blanks</em> (find missing links in a row that should be fully populated).</p>
+<h3 id="trace-precedents-and-related-tools">Trace Precedents and related tools</h3>
+<ul>
+<li><strong>Trace Precedents</strong> (Formulas → Trace Precedents, or Ctrl+[ to jump to the precedents directly). From a suspicious CFS line, it shows whether it links to the schedule (expected) or to something else (another CFS line, a BS cell, a constant). Dotted arrows with a sheet icon mean cross-sheet precedents. Double-click the arrow to open the Go To list.</li>
+<li><strong>Trace Dependents</strong> (Ctrl+]). From a schedule row, it confirms that the row actually feeds the CFS and BS. A schedule output with no dependents is an orphan, for example an ESOP charge computed but never linked into CFO.</li>
+<li><strong>Evaluate Formula.</strong> Steps through nested logic (<code>IF</code>, <code>MAX</code>, <code>MIN</code>, <code>CHOOSE</code>) to see which branch fires. This is useful for scenario selectors and floors.</li>
+<li><strong>Show Formulas</strong> (Ctrl+`). Displays formulas in place of values. Scan a row and constants stand out as plain numbers.</li>
+<li><strong>Watch Window.</strong> Keep the check row, cash check and the suspect cell visible while working elsewhere.</li>
+</ul>
+<h3 id="formula-based-detection">Formula-based detection</h3>
+<p>Add a temporary helper row or conditional format:</p>
+<pre><code class="language-excel">=ISFORMULA(H22)
+=NOT(ISFORMULA(H22))
+=ISNUMBER(SEARCH(&quot;+&quot;, FORMULATEXT(H22))) * ISNUMBER(--RIGHT(FORMULATEXT(H22), 1))
+</code></pre>
+<p>Applying conditional formatting with <code>=AND(ISNUMBER(H22), NOT(ISFORMULA(H22)))</code> to all forecast calculation areas, with a red fill, gives a permanent visual alarm for constants. For embedded constants, a helper using <code>FORMULATEXT</code> and a search for digit patterns after operators catches most <code>+3.2</code>-type fixes. Review hits manually, because references like <code>H22</code> also contain digits.</p>
+<h3 id="inquire-add-in">Inquire add-in</h3>
+<p>Inquire ships with Microsoft 365 Apps for enterprise and Office Professional Plus editions. Enable it via File → Options → Add-ins → Manage: COM Add-ins → tick <strong>Inquire</strong>. Key features:</p>
+<ul>
+<li><strong>Workbook Analysis.</strong> Produces a report with categories including <em>Formulas with hardcoded values</em> (embedded constants), <em>Formulas with numeric values</em>, <em>Inconsistent formulas</em>, <em>Formulas referencing blank cells</em>, <em>Formulas with errors</em>, <em>Hidden sheets/rows/columns</em>, <em>External references</em> and <em>Circular references</em>. Export it to Excel and filter by sheet. This is the fastest full-workbook sweep available.</li>
+<li><strong>Cell Relationship.</strong> A diagram of a cell's precedents and dependents across sheets and workbooks, several levels deep. Use it on the BS check cell to see every input chain at once.</li>
+<li><strong>Workbook Relationship / Worksheet Relationship.</strong> Map links between files and sheets. An unexpected external link is often a pasted-from-another-version block.</li>
+<li><strong>Compare Files</strong> (Spreadsheet Compare). Compares two versions cell by cell and highlights changed values, formulas and entered values. When v7 balanced and v8 does not, this shows exactly what changed.</li>
+<li><strong>Clean Excess Cell Formatting.</strong> Not a debugging tool, but it reduces file size before distribution.</li>
+</ul>
+<p>If Inquire is unavailable (Excel for Mac or some home/business editions), use Go To Special, <code>FORMULATEXT</code> helpers, and third-party auditing tools where your firm permits them.</p>
+<h3 id="a-15-minute-hardcode-sweep">A 15-minute hardcode sweep</h3>
+<ol>
+<li>Edit Links. Remove or justify any external links.</li>
+<li>Go To Special → Constants (Numbers) on every calculation sheet. Highlight the results.</li>
+<li>Row differences on each key row of the P&amp;L, CFS and BS forecast columns.</li>
+<li>Inquire Workbook Analysis (if available). Filter "Formulas with hardcoded values".</li>
+<li>Trace Precedents on every CFS line that has no obvious schedule source.</li>
+<li>Fix, then re-run the check row and the checks dashboard.</li>
+</ol>
+<h3 id="illustration">Illustration</h3>
+<p>Bhima Agro Ltd: the model balanced in Base. After switching to Bull (revenue growth from 10% to 18%), the FY28E check became +11.20 (assets too high). Row differences on the CFS "Increase in trade receivables" row selected FY28E. Its contents were <code>-38.4</code>, a pasted value. The Base formula result was −38.4, and the Bull result should have been −49.6. The CFS therefore understated the outflow by −38.4 − (−49.6) = 11.2, so cash was 11.2 too high, which is exactly the imbalance. Replace the value with the row formula and the check returns to zero in every scenario.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Constants in historical columns are correct.</strong> Restrict your Go To Special selection to forecast columns, or the results will be swamped by legitimate historical inputs.</li>
+<li><strong>Hardcoded management guidance.</strong> If capex for FY27E must equal guided ₹450 crore, put 450 on the inputs sheet as a labelled override with a switch (<code>=IF(Override_On, Override_Value, Driver_Formula)</code>). Do not type it in the schedule.</li>
+<li><strong>Constants in <code>IF</code> thresholds</strong> (for example, <code>=IF(Cash&lt;50, …)</code>). Minimum cash and covenant thresholds belong on the inputs sheet.</li>
+<li><strong>Array or spill formulas</strong> may appear as constants to some tools, or be flagged as inconsistent. Check them manually.</li>
+<li><strong>Hidden rows and very hidden sheets</strong> can hold plugs. Inquire lists them. Otherwise check Format → Hide &amp; Unhide, and the VBA project for <code>xlSheetVeryHidden</code>.</li>
+<li><strong>Data tables</strong> (<code>{=TABLE(…)}</code>) are flagged by some audits. They are not hardcodes but should sit on a separate sensitivity sheet.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>A hardcode in a calc area is the classic reason a model balances in Base and fails when inputs change. The imbalance equals the gap between the typed value and the current formula result.</li>
+<li>Go To Special → Constants finds pure typed numbers. Row differences (Ctrl+) finds cells that break a row's formula pattern.</li>
+<li>Trace Precedents/Dependents confirm every CFS line links to its schedule and every schedule output is used.</li>
+<li>Inquire Workbook Analysis finds embedded constants, inconsistent formulas, external links and hidden content across the whole workbook. Spreadsheet Compare isolates changes between versions.</li>
+<li>Legitimate constants (365, overrides, thresholds) live once, labelled, on the inputs sheet.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-choosing-the-right-tool-l1">Q1. Choosing the right tool [L1]</h3>
+<p>For each symptom, name the Excel feature you would use first and explain why. (a) You suspect someone typed a value over a formula in one year of the CFS. (b) You think the ESOP charge is calculated but not used anywhere. (c) v12 balanced and v13 does not, and nobody documented the changes. (d) The model asks to "update links" on opening. (e) A formula reads <code>=IF(AND(H10&gt;0,H12&lt;H14),MIN(H15,H16),0)</code> and you need to see which branch fires.</p>
+<h3 id="q2-imbalance-from-a-pasted-value-l2">Q2. Imbalance from a pasted value [L2]</h3>
+<p>In Base, the FY27E "Purchase of PPE" cell in the CFS of Penna Cement Ltd holds the value −320 (pasted). The schedule formula is capex = 8% of revenue. Base FY27E revenue is ₹4,000 crore and Bear FY27E revenue is ₹3,400 crore. Capex in the PPE schedule is linked to revenue correctly. (a) Compute the FY27E check in Bear. (b) State the pattern you would see across FY27E–FY30E if only this cell is wrong. (c) Describe two controls that would have prevented this.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> The schedule moves with revenue, but the pasted CFS cell does not.</p>
+</blockquote>
+<h3 id="q3-designing-a-permanent-hardcode-alarm-l2">Q3. Designing a permanent hardcode alarm [L2]</h3>
+<p>Write the conditional formatting rule (formula and application range) that highlights any numeric constant in the forecast columns H:L of the P&amp;L, CFS and BS sheets, rows 8 to 120. Then explain how you would extend the approach to flag formulas containing embedded constants, and the false positives you would expect.</p>
+<h3 id="q4-inquire-report-triage-l3">Q4. Inquire report triage [L3]</h3>
+<p>Inquire's Workbook Analysis on an inherited 18-tab model reports: 214 formulas with hardcoded values, 37 inconsistent formulas, 6 external references, 2 hidden sheets, 1 circular reference and 12 formulas referencing blank cells. The model balances in Base but not in Bear. You have 60 minutes. Prioritise these categories for investigation, justify the order, and describe what you would do with the 214 hardcoded-value hits to make the review manageable.</p></section>
+<nav class="pager"><a class="prev" href="S05_Breaker_Off_Opening_Links_and_Sign_Conventions_in.html">← Breaker Off, Opening Links and Sign Conventions in…</a><a class="next" href="../concepts/C01_Difference_of_X_Means_Omission_2X_Means_Wrong_Sign.html">Difference of X Means Omission; 2X Means Wrong Sign →</a></nav>
+</main></div></body></html>

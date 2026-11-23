@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day-Count Conventions with YEARFRAC Bases 0–4 · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S02_Day_Count_Conventions_with_YEARFRAC_Bases_04.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T5 · Financial and date functions</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Financial and date functions</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Period_End_Logic_with_EOMONTH_and_EDATE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S01_Period_End_Logic_with_EOMONTH_and_EDATE.html">Period-End Logic with EOMONTH and EDATE</a></li><li><a href="S02_Day_Count_Conventions_with_YEARFRAC_Bases_04.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S02_Day_Count_Conventions_with_YEARFRAC_Bases_04.html">Day-Count Conventions with YEARFRAC Bases 0–4</a></li><li><a href="S03_NPV_vs_XNPV_Periodic_and_Dated_Cash_Flows.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S03_NPV_vs_XNPV_Periodic_and_Dated_Cash_Flows.html">NPV vs XNPV: Periodic and Dated Cash Flows</a></li><li><a href="S04_IRR_vs_XIRR_vs_MIRR_for_Irregular_Project_Cash.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S04_IRR_vs_XIRR_vs_MIRR_for_Irregular_Project_Cash.html">IRR vs XIRR vs MIRR for Irregular Project Cash Flows</a></li><li><a href="S05_Loan_Amortisation_with_PMT_IPMT_PPMT_CUMIPMT_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S05_Loan_Amortisation_with_PMT_IPMT_PPMT_CUMIPMT_and.html">Loan Amortisation with PMT, IPMT, PPMT, CUMIPMT and CUMPRINC</a></li><li><a href="S06_EMI_Schedules_and_Ind_AS_116_Lease_Liability.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S06_EMI_Schedules_and_Ind_AS_116_Lease_Liability.html">EMI Schedules and Ind AS 116 Lease Liability Schedules</a></li><li><a href="S07_Close_Calendars_with_WORKDAYINTL_NETWORKDAYSINTL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S07_Close_Calendars_with_WORKDAYINTL_NETWORKDAYSINTL.html">Close Calendars with WORKDAY.INTL, NETWORKDAYS.INTL and Holidays</a></li><li><a href="S08_Fiscal_Year_Helpers_FY_Start_FY_End_and_Fiscal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S08_Fiscal_Year_Helpers_FY_Start_FY_End_and_Fiscal.html">Fiscal-Year Helpers: FY Start, FY End and Fiscal Month</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Month_End_Month_Start_and_Same_Day_Offsets_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C01_Month_End_Month_Start_and_Same_Day_Offsets_with.html">Month-End, Month-Start and Same-Day Offsets with EOMONTH and EDATE</a></li><li><a href="../concepts/C02_YEARFRAC_Basis_1_vs_Basis_3_for_Accruals.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C02_YEARFRAC_Basis_1_vs_Basis_3_for_Accruals.html">YEARFRAC Basis 1 vs Basis 3 for Accruals</a></li><li><a href="../concepts/C03_NPV_Plus_CF0_Why_NPV_Discounts_Its_First_Value.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C03_NPV_Plus_CF0_Why_NPV_Discounts_Its_First_Value.html">NPV Plus CF0: Why NPV Discounts Its First Value</a></li><li><a href="../concepts/C04_XNPV_and_XIRR_The_365_Day_Basis_from_the_First.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C04_XNPV_and_XIRR_The_365_Day_Basis_from_the_First.html">XNPV and XIRR: The 365-Day Basis from the First Date</a></li><li><a href="../concepts/C05_PMT_IPMT_and_PPMT_EMI_and_Its_InterestPrincipal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C05_PMT_IPMT_and_PPMT_EMI_and_Its_InterestPrincipal.html">PMT, IPMT and PPMT: EMI and Its Interest/Principal Split</a></li><li><a href="../concepts/C06_MIRR_Fixing_IRRs_Reinvestment_and_Multiple_Root.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C06_MIRR_Fixing_IRRs_Reinvestment_and_Multiple_Root.html">MIRR: Fixing IRR&#x27;s Reinvestment and Multiple-Root Problems</a></li><li><a href="../concepts/C07_FY_End_Date_and_Fiscal_Month_Formulas_for_an.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C07_FY_End_Date_and_Fiscal_Month_Formulas_for_an.html">FY End Date and Fiscal Month Formulas for an April–March Year</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Day-Count Conventions with YEARFRAC Bases 0–4</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Day-count conventions using YEARFRAC basis 0–4 for interest accruals and pro-rata depreciation</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Interest accruals at period-end, pro-rata depreciation on mid-year additions, time-apportioned bonuses, prorated annual maintenance contracts and stub periods in a DCF all need "what fraction of a year has elapsed?". The answer depends on the <strong>day-count convention</strong> in the contract or policy, and different conventions give visibly different numbers on large balances. A ₹500 crore borrowing book accrued on actual/360 instead of actual/365 overstates interest by about 1.4% — enough to be a misstatement in a close. YEARFRAC gives all five standard conventions in one function, so the convention becomes an explicit, reviewable input rather than an accident of <code>/365</code> or <code>/360</code> typed into formulas.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="syntax">Syntax</h3>
+<pre><code class="language-excel">=YEARFRAC(start_date, end_date, [basis])
+</code></pre>
+<p>The result is the fraction of a year between the two dates (end minus start; the start day is excluded, the end day included). Basis defaults to 0.</p>
+<table>
+<thead>
+<tr>
+<th>Basis</th>
+<th>Convention</th>
+<th>Numerator</th>
+<th>Denominator</th>
+<th>Typical use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 (default)</td>
+<td>US (NASD) 30/360</td>
+<td>30-day months, US end-of-month rules</td>
+<td>360</td>
+<td>US corporate bonds; rarely right for India</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Actual/actual</td>
+<td>Actual days</td>
+<td>Actual days in the year(s) spanned</td>
+<td>Precise pro-rata calculations; US Treasury-style bonds</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Actual/360</td>
+<td>Actual days</td>
+<td>360</td>
+<td>Money-market and many foreign-currency loans (SOFR, EURIBOR-linked ECBs)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Actual/365 (fixed)</td>
+<td>Actual days</td>
+<td>365</td>
+<td>Indian bank FDs and term loans, most rupee money-market accruals</td>
+</tr>
+<tr>
+<td>4</td>
+<td>European 30/360</td>
+<td>30-day months, European rules</td>
+<td>360</td>
+<td>Eurobonds</td>
+</tr>
+</tbody>
+</table>
+<p><strong>30/360 mechanics.</strong> Each month is treated as 30 days. With dates (D1, M1, Y1) → (D2, M2, Y2), days = 360(Y2−Y1) + 30(M2−M1) + (D2−D1) after adjustments: European (basis 4) changes any day 31 to 30; US (basis 0) changes D1 = 31 to 30, and changes D2 = 31 to 30 only if D1 is 30 or 31, plus special February-end rules.</p>
+<p><strong>Actual/actual (basis 1).</strong> For a period within one year, Excel uses 365 or 366 depending on whether the period includes a 29 February; for longer periods it averages the lengths of the calendar years spanned. This is close to, but not identical with, the ISDA actual/actual definition — if a contract specifies ISDA, compute day-by-year splits explicitly.</p>
+<h3 id="illustration-5-crore-deposit-at-725">Illustration: ₹5 crore deposit at 7.25%</h3>
+<p>Start 15-Jun-2025, accrual to FY-end 31-Mar-2026: actual days = 289.</p>
+<table>
+<thead>
+<tr>
+<th>Basis</th>
+<th>Year fraction</th>
+<th>Accrued interest (₹)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 — US 30/360 (286/360)</td>
+<td>0.794444</td>
+<td>28,79,861</td>
+</tr>
+<tr>
+<td>1 — Actual/actual (289/365)</td>
+<td>0.791781</td>
+<td>28,70,205</td>
+</tr>
+<tr>
+<td>2 — Actual/360 (289/360)</td>
+<td>0.802778</td>
+<td>29,10,069</td>
+</tr>
+<tr>
+<td>3 — Actual/365 (289/365)</td>
+<td>0.791781</td>
+<td>28,70,205</td>
+</tr>
+<tr>
+<td>4 — European 30/360 (285/360)</td>
+<td>0.791667</td>
+<td>28,69,792</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-excel">=Principal * Rate * YEARFRAC(Start, FYEnd, Basis)
+</code></pre>
+<p>The spread between basis 2 and basis 3 is ₹39,864 on one deposit — immaterial alone, material across a treasury book. Bases 1 and 3 coincide here because no 29 February falls in the period. For 1-Oct-2027 to 31-Mar-2028 (182 days, includes 29-Feb-2028), basis 3 gives 182/365 = 0.4986, while basis 1 gives 182/366 = 0.4973.</p>
+<h3 id="interest-accrual-design">Interest accrual design</h3>
+<p>For a deposit or loan register:</p>
+<pre><code class="language-excel">Accrual to date   =Principal * Rate * YEARFRAC(LastIntDate, ReportDate, Basis)
+Interest for month =Principal * Rate * YEARFRAC(MAX(Start, EOMONTH(Hdr,-1)), MIN(Maturity, Hdr), Basis)
+</code></pre>
+<p>The MAX/MIN clamps the month window to the instrument's life — this is how a monthly interest grid handles mid-month starts and maturities. Keep <code>Basis</code> as a column in the register, populated from the term sheet. Note that simple interest is used for accruals within a coupon/compounding period; compounding instruments (cumulative FDs compounding quarterly) need <code>(1+r/4)^(4×t) − 1</code> on the elapsed fraction or period-by-period compounding.</p>
+<p>For Ind AS 109 amortised-cost instruments, interest income or expense is recognised using the <strong>effective interest rate</strong> (EIR) on the amortised cost, not the coupon on face value. The day-count fraction still applies to apportion EIR interest across reporting dates (w9 related → Week 1–4).</p>
+<h3 id="pro-rata-depreciation">Pro-rata depreciation</h3>
+<p>Schedule II of the Companies Act 2013 requires depreciation on additions/disposals to be charged pro-rata from the date the asset is available for use (or up to the date of disposal). Typical implementation:</p>
+<pre><code class="language-excel">=AnnualDep * YEARFRAC(PutToUse, FYEnd, 3)
+</code></pre>
+<p>Asset ₹12 lakh put to use 15-Jun-2025, SLM over 10 years, residual 5%: annual depreciation ₹1,14,000; FY26 charge = 1,14,000 × 289/365 = ₹90,263. Many companies count the put-to-use day itself (290 days → ₹90,575); decide and document the policy. Contrast the <strong>Income-tax Act</strong> rule: assets put to use for less than 180 days in the previous year get 50% of the normal WDV rate — a binary test, not a day-count, which is one source of deferred tax timing differences.</p>
+<h3 id="other-day-count-uses">Other day-count uses</h3>
+<ul>
+<li><strong>Stub periods in a DCF</strong>: <code>YEARFRAC(ValuationDate, FirstFYEnd, 3)</code> gives the fraction of the first forecast year remaining.</li>
+<li><strong>Employee benefits and bonus pro-rating</strong>: days of service in the year ÷ days in the year.</li>
+<li><strong>Prepaid expenses</strong>: unexpired portion of an insurance premium at FY-end = Premium × <code>YEARFRAC(FYEnd, PolicyEnd, 3)</code> ÷ <code>YEARFRAC(PolicyStart, PolicyEnd, 3)</code>.</li>
+</ul>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Contract governs.</strong> The basis is a contractual term; check loan agreements and term sheets. Indian rupee bank lending commonly uses actual/365; ECBs linked to SOFR use actual/360; G-Sec coupons accrue on 30/360.</li>
+<li><strong>Inclusive vs exclusive days.</strong> YEARFRAC excludes the start day. Bank interest often counts from the date of deposit to the day before maturity — equivalent. For depreciation policies that include the first day, add one day explicitly.</li>
+<li><strong>Leap-year treatment</strong> differs between basis 1 and basis 3; basis 3 always divides by 365, so a full leap year gives 366/365 = 1.0027.</li>
+<li><strong>Reversed dates.</strong> YEARFRAC returns a positive fraction even if start &gt; end — it does not signal an error. Add a check that <code>End &gt;= Start</code>.</li>
+<li><strong>Text dates</strong> from exports give #VALUE!.</li>
+<li><strong>DAYS360</strong> exists as a separate function (US or European method); YEARFRAC basis 0/4 is equivalent to DAYS360 ÷ 360.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>YEARFRAC's basis argument encodes the day-count convention: 0 US 30/360, 1 actual/actual, 2 actual/360, 3 actual/365, 4 European 30/360.</li>
+<li>Indian bank deposits and loans commonly use actual/365 (basis 3); money-market and SOFR-linked loans use actual/360.</li>
+<li>Store the basis per instrument from the term sheet; never hard-code /360 or /365.</li>
+<li>Clamp accrual windows with MAX/MIN to handle instruments that start or mature mid-period.</li>
+<li>Schedule II pro-rata depreciation is a day-count; the Income-tax 180-day rule is a threshold test.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-five-bases-one-period-l1">Q1. Five bases, one period [L1]</h3>
+<p>Compute (or state the formula and the day counts you would expect for) YEARFRAC from 31-Jan-2026 to 31-Jul-2026 under each basis 0–4, explaining any adjustment to day 31 under the 30/360 methods.</p>
+<h3 id="q2-monthly-interest-grid-l2">Q2. Monthly interest grid [L2]</h3>
+<p>A loan register has four loans with Principal, Rate, Start, Maturity and Basis columns: ₹10 crore, 8.9%, 12-May-2025, 11-May-2028, basis 3; ₹4 crore, 7.6%, 01-Apr-2025, 31-Mar-2026, basis 3; USD-linked ECB equivalent ₹25 crore, 6.2%, 20-Jul-2025, 20-Jul-2030, basis 2; ₹6 crore, 9.4%, 15-Feb-2026, 14-Feb-2027, basis 3. Design the formula for a monthly interest grid for FY26 (month-end headers) that handles starts and maturities inside months, and state the checks you would add.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Clamp each month window between the later of the loan start and the prior month-end, and the earlier of maturity and the month-end; return zero if the window is negative.</p>
+</blockquote>
+<h3 id="q3-depreciation-policy-choice-l2">Q3. Depreciation policy choice [L2]</h3>
+<p>A plant costing ₹3.6 crore is put to use on 9-Oct-2025; useful life 15 years, nil residual, SLM. Calculate the FY26 book depreciation under exclusive and inclusive day counts on basis 3, and the tax depreciation if the WDV rate is 15%. Explain the deferred tax effect qualitatively.</p>
+<h3 id="q4-treasury-review-l3">Q4. Treasury review [L3]</h3>
+<p>A treasury analyst accrues all 85 deposits in the company's ₹640 crore book using <code>=P*R*(ReportDate-Start)/360</code>. Explain the direction and approximate size of the error if the banks use actual/365, how you would correct the schedule, and what disclosure or adjustment considerations arise at the year-end close.</p></section>
+<nav class="pager"><a class="prev" href="S01_Period_End_Logic_with_EOMONTH_and_EDATE.html">← Period-End Logic with EOMONTH and EDATE</a><a class="next" href="S03_NPV_vs_XNPV_Periodic_and_Dated_Cash_Flows.html">NPV vs XNPV: Periodic and Dated Cash Flows →</a></nav>
+</main></div></body></html>

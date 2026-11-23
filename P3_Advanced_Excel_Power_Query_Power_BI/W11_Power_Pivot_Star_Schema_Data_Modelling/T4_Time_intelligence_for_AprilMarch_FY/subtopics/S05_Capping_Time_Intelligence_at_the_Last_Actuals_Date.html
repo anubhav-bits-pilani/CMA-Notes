@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capping Time Intelligence at the Last Actuals Date · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S05_Capping_Time_Intelligence_at_the_Last_Actuals_Date.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T4 · Time intelligence for April–March FY</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Time intelligence for April–March FY</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_YTD_QTD_and_MTD_Measures_for_an_AprilMarch_Fiscal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S01_YTD_QTD_and_MTD_Measures_for_an_AprilMarch_Fiscal.html">YTD, QTD and MTD Measures for an April–March Fiscal Year</a></li><li><a href="S02_SAMEPERIODLASTYEAR_vs_DATEADD_vs_PARALLELPERIOD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S02_SAMEPERIODLASTYEAR_vs_DATEADD_vs_PARALLELPERIOD.html">SAMEPERIODLASTYEAR vs DATEADD vs PARALLELPERIOD</a></li><li><a href="S03_PY_YTD_YTD_Growth_MoM_and_YoY_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S03_PY_YTD_YTD_Growth_MoM_and_YoY_Measures.html">PY YTD, YTD Growth, MoM % and YoY % Measures</a></li><li><a href="S04_Rolling_12_Month_and_Trailing_3_Month_Windows_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S04_Rolling_12_Month_and_Trailing_3_Month_Windows_with.html">Rolling 12-Month and Trailing 3-Month Windows with DATESINPERIOD</a></li><li><a href="S05_Capping_Time_Intelligence_at_the_Last_Actuals_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S05_Capping_Time_Intelligence_at_the_Last_Actuals_Date.html">Capping Time Intelligence at the Last Actuals Date</a></li><li><a href="S06_Time_Intelligence_Prerequisites_Marked_Contiguous.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S06_Time_Intelligence_Prerequisites_Marked_Contiguous.html">Time-Intelligence Prerequisites: Marked, Contiguous Date Table</a></li><li><a href="S07_Calculation_Groups_and_Field_Parameters_for_Time.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S07_Calculation_Groups_and_Field_Parameters_for_Time.html">Calculation Groups and Field Parameters for Time-Intelligence Views</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_TOTALYTD_with_331_Equals_CALCULATE_with_DATESYTD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C01_TOTALYTD_with_331_Equals_CALCULATE_with_DATESYTD.html">TOTALYTD with &quot;3/31&quot; Equals CALCULATE with DATESYTD</a></li><li><a href="../concepts/C02_PY_YTD_via_SAMEPERIODLASTYEAR_and_the_YoY_Measure.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C02_PY_YTD_via_SAMEPERIODLASTYEAR_and_the_YoY_Measure.html">PY YTD via SAMEPERIODLASTYEAR and the YoY % Measure</a></li><li><a href="../concepts/C03_Prior_Month_Actual_with_DATEADD_and_the_MoM.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C03_Prior_Month_Actual_with_DATEADD_and_the_MoM.html">Prior-Month Actual with DATEADD and the MoM % Measure</a></li><li><a href="../concepts/C04_Rolling_12_Month_Measure_with_DATESINPERIOD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C04_Rolling_12_Month_Measure_with_DATESINPERIOD.html">Rolling 12-Month Measure with DATESINPERIOD</a></li><li><a href="../concepts/C05_Last_Actual_Date_and_Capping_YTD_at_Posted_Data.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C05_Last_Actual_Date_and_Capping_YTD_at_Posted_Data.html">Last Actual Date and Capping YTD at Posted Data</a></li><li><a href="../concepts/C06_Locale_Parsing_of_the_Year_End_String_in_DATESYTD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C06_Locale_Parsing_of_the_Year_End_String_in_DATESYTD.html">Locale Parsing of the Year-End String in DATESYTD</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Capping Time Intelligence at the Last Actuals Date</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Partial current month/year: capping measures at the last actuals date</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A Date table always covers whole fiscal years (topic t2), so in November 2025 it already contains December 2025 to
+March 2026. Actuals stop at the last posted date — for a monthly close, the last closed month-end; for a daily sales
+flash, yesterday. Without a cap, time-intelligence measures happily evaluate future dates: YTD shows a flat line from
+December to March, PY YTD at FY level shows the <em>full</em> prior year against eight months of current year, and YoY %
+for the year reads −35%. These are the numbers that get screenshotted into WhatsApp groups. Capping is not cosmetic;
+it is what makes comparatives like-for-like.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="step-1-define-the-last-actuals-date">Step 1: define the last actuals date</h3>
+<pre><code class="language-DAX">Last Actual Date =
+CALCULATE ( MAX ( GL[Date] ), REMOVEFILTERS () )
+</code></pre>
+<p><code>REMOVEFILTERS()</code> with no arguments clears every filter in the model, so the measure returns the latest posting date
+regardless of the slicer selection. Design choices:</p>
+<ul>
+<li><strong>Data-driven vs closed-period driven.</strong> <code>MAX(GL[Date])</code> picks up stray future-dated vouchers (a post-dated
+  cheque entered for 5 April, a provision dated 31 March during November). For monthly MIS, a better anchor is the
+  last <em>closed</em> period: <code>CALCULATE(MAX('Date'[Date]), 'Date'[IsClosedPeriod] = TRUE(), REMOVEFILTERS())</code>, where
+  the flag is maintained in a close-calendar table (t2 s08).</li>
+<li><strong>Global vs per-entity.</strong> <code>REMOVEFILTERS()</code> ignores the entity slicer; if Branch A has posted through
+  30 November and Branch B through 25 November, the global cap is 30 November. Use <code>REMOVEFILTERS('Date')</code> instead
+  if each entity should cap at its own last date — but then a consolidated view caps at the latest entity.</li>
+<li><strong>Parameter table.</strong> Some teams let the controller pick the as-of date in a disconnected "As-of" table — useful for
+  re-running October's pack in December.</li>
+</ul>
+<h3 id="step-2-blank-future-periods">Step 2: blank future periods</h3>
+<pre><code class="language-DAX">YTD Actual (capped) =
+VAR lastDate = [Last Actual Date]
+RETURN
+    IF (
+        MIN ( 'Date'[Date] ) &lt;= lastDate,
+        CALCULATE ( [Actual], DATESYTD ( 'Date'[Date], &quot;3/31&quot; ) )
+    )
+</code></pre>
+<p>The test uses <code>MIN('Date'[Date])</code>: a period is shown if <em>any</em> part of it is on or before the last actual date. So
+November (1–30 November) is shown when actuals run to 18 November, but December is blank.</p>
+<h3 id="step-3-cap-the-comparative-window">Step 3: cap the comparative window</h3>
+<p>Blanking future months is half the job. For a partial period, the PY comparative must also be cut at the same
+day-of-year, otherwise a partial current month or year is compared with a full prior one.</p>
+<pre><code class="language-DAX">PY YTD (like-for-like) =
+VAR lastDate   = [Last Actual Date]
+VAR lastDatePY = EDATE ( lastDate, -12 )
+RETURN
+    IF (
+        MIN ( 'Date'[Date] ) &lt;= lastDate,
+        CALCULATE (
+            [Actual],
+            DATESYTD ( SAMEPERIODLASTYEAR ( 'Date'[Date] ), &quot;3/31&quot; ),
+            'Date'[Date] &lt;= lastDatePY
+        )
+    )
+</code></pre>
+<p>Both filter arguments act on <code>'Date'[Date]</code>; <code>CALCULATE</code> intersects them, so the result is the PY YTD window cut at
+the PY equivalent of the last actual date. The variable is essential: storing the measure result in <code>lastDatePY</code>
+before <code>CALCULATE</code> means the boolean filter compares against a constant.</p>
+<p>An alternative uses a Date-table flag <code>IsYTD</code> (date's day-of-fiscal-year ≤ day-of-fiscal-year of the last actual
+date) and filters both periods with <code>'Date'[IsYTD] = TRUE()</code>, which also works for PY and PY-1 without <code>EDATE</code>.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>Actuals loaded to 18 November 2025. Revenue (₹ crore): FY26 1 April – 18 November = 268; FY25 1 April – 18 November
+2024 = 249; FY25 1 April – 30 November 2024 = 262; FY25 full year = 420.</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th>Uncapped YTD</th>
+<th>Uncapped PY YTD</th>
+<th>YoY</th>
+<th>Capped YTD</th>
+<th>Capped PY YTD</th>
+<th>YoY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nov 2025</td>
+<td>268</td>
+<td>262</td>
+<td>+2.3%</td>
+<td>268</td>
+<td>249</td>
+<td>+7.6%</td>
+</tr>
+<tr>
+<td>FY26 total</td>
+<td>268</td>
+<td>420</td>
+<td>−36.2%</td>
+<td>268</td>
+<td>249</td>
+<td>+7.6%</td>
+</tr>
+</tbody>
+</table>
+<p>The uncapped FY row is the classic "revenue collapsed" headline; the uncapped November row understates growth
+because the PY month is complete.</p>
+<h3 id="applying-the-cap-consistently">Applying the cap consistently</h3>
+<ul>
+<li>Wrap every time-intelligence measure (YTD, PY YTD, R12M, MoM) with the same <code>IF(MIN(...) &lt;= lastDate, ...)</code>
+  guard, or centralise the logic in a calculation group (s07) so it cannot be forgotten.</li>
+<li>For R12M, also cap the anchor: <code>MIN(MAX('Date'[Date]), [Last Actual Date])</code>.</li>
+<li>For Budget, do <strong>not</strong> cap: budget exists for all months; but a "YTD Budget" for a YTD variance must be cut at
+  the same date as YTD Actual (pro-rated for a partial month if the budget is monthly — e.g., 18/30 of November
+  budget, or better, a daily phasing profile).</li>
+<li>For full-year forecast (Weeks 17–20): <code>FY Forecast = YTD Actual (capped) + Budget for months after the last
+  closed month</code>.</li>
+</ul>
+<h3 id="visual-level-alternatives">Visual-level alternatives</h3>
+<p>Report authors sometimes use a relative date filter ("in the last 12 months") or a visual-level filter on
+<code>'Date'[IsYTD]</code>. These help on a single page but do not protect measures used elsewhere (exports, Analyze in Excel,
+other visuals). Measure-level capping is the robust solution.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Month-end accruals posted late:</strong> if October is closed on 7 November with entries dated 31 October, the last
+  posting date jumps around during close week. Use the closed-period flag for MIS and the data date only for flash
+  reports.</li>
+<li><strong>Pro-rating PY for partial months:</strong> cutting PY at the same calendar day is precise for daily data; for
+  businesses with strong weekday patterns (retail weekends), compare same number of weekdays instead.</li>
+<li><strong>Leap years:</strong> <code>EDATE(29 Feb 2024, 12)</code> returns 28 Feb 2025; acceptable.</li>
+<li><strong>Future-dated vouchers:</strong> a single voucher dated 31 March 2026 sets <code>Last Actual Date</code> to the year-end and
+  disables every cap. Add a data-quality check: count GL rows with date &gt; today.</li>
+<li><strong>Row-level security:</strong> <code>REMOVEFILTERS()</code> does not override RLS; a user restricted to one branch sees that branch's
+  last date — usually what you want.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>The Date table must cover whole FYs, so future dates always exist; measures must be capped.</li>
+<li>Define <code>Last Actual Date</code> deliberately: data-driven for flash, closed-period-driven for MIS.</li>
+<li>Blank periods that start after the last date; cut PY windows at the same day-of-year for like-for-like growth.</li>
+<li>Store the cap in a variable before using it as a <code>CALCULATE</code> filter.</li>
+<li>Cap every time-intelligence measure consistently, ideally centrally.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-write-the-capped-measures-l1">Q1. Write the capped measures [L1]</h3>
+<p>Write <code>Last Actual Date</code>, <code>YTD Actual (capped)</code> and <code>PY YTD (like-for-like)</code> measures for a model where the GL is
+loaded daily and the FY ends on 31 March.</p>
+<h3 id="q2-quantify-the-distortion-l2">Q2. Quantify the distortion [L2]</h3>
+<p>Actuals are posted to 12 December 2025. FY26 revenue 1 April – 12 December 2025 is ₹ 615 crore. FY25 revenue was
+₹ 590 crore for 1 April – 12 December 2024, ₹ 640 crore for 1 April – 31 December 2024, and ₹ 905 crore for the
+full year. Compute the YoY % that an uncapped model shows on the December 2025 row and on the FY26 total row, and
+the like-for-like YoY % a capped model shows.</p>
+<h3 id="q3-closed-period-versus-last-posting-date-l2">Q3. Closed period versus last posting date [L2]</h3>
+<p>During the November close, entries dated 30 November are posted between 1 and 6 December, while a sales team also
+posts invoices dated 1–4 December. Explain which anchor each of the following should use and why: (a) the board MIS
+for November; (b) the daily sales flash on 4 December; (c) a full-year forecast refreshed on 3 December.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Separate "what has been posted" from "what has been closed and signed off".</p>
+</blockquote>
+<h3 id="q4-budget-comparison-for-a-partial-month-l3">Q4. Budget comparison for a partial month [L3]</h3>
+<p>The November 2025 budget is ₹ 75 crore, phased monthly. Actuals are to 18 November. The sales head wants a YTD
+variance that is fair. Design the YTD Budget measure (including how you would pro-rate November), state the data
+you would need for a better phasing than straight-line, and describe the risk of each approach.</p></section>
+<nav class="pager"><a class="prev" href="S04_Rolling_12_Month_and_Trailing_3_Month_Windows_with.html">← Rolling 12-Month and Trailing 3-Month Windows with…</a><a class="next" href="S06_Time_Intelligence_Prerequisites_Marked_Contiguous.html">Time-Intelligence Prerequisites: Marked, Contiguous Date… →</a></nav>
+</main></div></body></html>

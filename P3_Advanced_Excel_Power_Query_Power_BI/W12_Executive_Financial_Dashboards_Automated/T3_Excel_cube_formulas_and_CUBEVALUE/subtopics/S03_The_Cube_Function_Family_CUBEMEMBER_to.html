@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Cube Function Family: CUBEMEMBER to CUBEMEMBERPROPERTY · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S03_The_Cube_Function_Family_CUBEMEMBER_to.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T3 · Excel cube formulas and CUBEVALUE</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Excel cube formulas and CUBEVALUE</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Connecting_Excel_to_the_Data_Model_or_a_Power_BI.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S01_Connecting_Excel_to_the_Data_Model_or_a_Power_BI.html">Connecting Excel to the Data Model or a Power BI Semantic Model</a></li><li><a href="S02_Converting_PivotTables_to_Cube_Formulas_with_OLAP.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S02_Converting_PivotTables_to_Cube_Formulas_with_OLAP.html">Converting PivotTables to Cube Formulas with OLAP Tools</a></li><li><a href="S03_The_Cube_Function_Family_CUBEMEMBER_to.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S03_The_Cube_Function_Family_CUBEMEMBER_to.html">The Cube Function Family: CUBEMEMBER to CUBEMEMBERPROPERTY</a></li><li><a href="S04_MDX_Unique_Names_for_Members_and_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S04_MDX_Unique_Names_for_Members_and_Measures.html">MDX Unique Names for Members and Measures</a></li><li><a href="S05_Connecting_Slicers_to_Cube_Formulas_by_Slicer_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S05_Connecting_Slicers_to_Cube_Formulas_by_Slicer_Name.html">Connecting Slicers to Cube Formulas by Slicer Name</a></li><li><a href="S06_Free_Form_Board_Pack_Layouts_with_Live_Cube.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S06_Free_Form_Board_Pack_Layouts_with_Live_Cube.html">Free-Form Board-Pack Layouts with Live Cube Numbers</a></li><li><a href="S07_Dynamic_Top_N_Lists_with_a_Sorted_CUBESET_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S07_Dynamic_Top_N_Lists_with_a_Sorted_CUBESET_and.html">Dynamic Top N Lists with a Sorted CUBESET and CUBERANKEDMEMBER</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_CUBEVALUE_with_Literal_Measure_and_Member_Strings.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C01_CUBEVALUE_with_Literal_Measure_and_Member_Strings.html">CUBEVALUE with Literal Measure and Member Strings</a></li><li><a href="../concepts/C02_Building_Cube_Members_from_Cell_Labels_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C02_Building_Cube_Members_from_Cell_Labels_with.html">Building Cube Members from Cell Labels with CUBEMEMBER</a></li><li><a href="../concepts/C03_Passing_a_Slicer_Name_as_a_CUBEVALUE_Member.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C03_Passing_a_Slicer_Name_as_a_CUBEVALUE_Member.html">Passing a Slicer Name as a CUBEVALUE Member Argument</a></li><li><a href="../concepts/C04_Sorted_CUBESET_of_Vendors_sortorder_2_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C04_Sorted_CUBESET_of_Vendors_sortorder_2_for.html">Sorted CUBESET of Vendors: sort_order 2 for Descending</a></li><li><a href="../concepts/C05_CUBERANKEDMEMBER_with_ROWS_and_CUBESETCOUNT_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C05_CUBERANKEDMEMBER_with_ROWS_and_CUBESETCOUNT_for.html">CUBERANKEDMEMBER with ROWS() and CUBESETCOUNT for Ranked Lists</a></li><li><a href="../concepts/C06_Connection_Names_for_Power_BI_Semantic_Models_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C06_Connection_Names_for_Power_BI_Semantic_Models_in.html">Connection Names for Power BI Semantic Models in Cube Formulas</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>The Cube Function Family: CUBEMEMBER to CUBEMEMBERPROPERTY</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> CUBEMEMBER, CUBEVALUE, CUBESET, CUBERANKEDMEMBER, CUBESETCOUNT, CUBEMEMBERPROPERTY</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Cube functions are Excel's formula interface to an OLAP or tabular model. They let a board pack be laid out cell by
+cell — Schedule III lines, variance columns, commentary — while every number is computed by the model's measures.
+Each of the six functions has a distinct job: identify a member, fetch a value, build a set, pick from a set, count
+a set, and read a member attribute. Knowing what each returns (a member, a set, or a value) is the key to combining
+them without #N/A or #VALUE! errors.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="common-behaviour">Common behaviour</h3>
+<ul>
+<li>The first argument is the <strong>connection</strong> name as text: <code>"ThisWorkbookDataModel"</code> for the workbook Data Model, or
+  the workbook connection name for a Power BI semantic model (Concept c06). Store it in a named cell <code>Conn</code>.</li>
+<li>Member and set arguments are <strong>MDX expressions as text</strong> (s04) or <strong>references to cells</strong> containing
+  CUBEMEMBER/CUBESET results, or <strong>slicer names</strong>.</li>
+<li>Results are computed asynchronously: cells show <code>#GETTING_DATA</code> until the model returns.</li>
+<li>Errors: <code>#N/A</code> for an invalid member or connection, <code>#NAME?</code> for a wrong slicer name, <code>#VALUE!</code> for a wrong
+  argument type (e.g. passing a value cell as a member).</li>
+</ul>
+<h3 id="cubemember-identify-a-member-or-tuple">CUBEMEMBER — identify a member or tuple</h3>
+<p><code>CUBEMEMBER(connection, member_expression, [caption])</code> returns a member (or a tuple if the expression is a
+tuple). The cell displays the member's caption (or your <code>caption</code>), but it holds the member for other formulas.</p>
+<pre><code>=CUBEMEMBER(Conn, &quot;[CoA].[FSLine].&amp;[Revenue from operations]&quot;, &quot;Revenue from operations&quot;)
+=CUBEMEMBER(Conn, &quot;[Measures].[Actual]&quot;)
+=CUBEMEMBER(Conn, &quot;([Date].[FY].&amp;[FY2025-26], [BU].[BusinessUnit].&amp;[Agro])&quot;)
+</code></pre>
+<p>Uses: row labels, column headers (measures), and members built from cell text (Concept c02).</p>
+<h3 id="cubevalue-fetch-an-aggregated-value">CUBEVALUE — fetch an aggregated value</h3>
+<p><code>CUBEVALUE(connection, [member_expression1], [member_expression2], …)</code> returns the value at the intersection of
+the given members (one per hierarchy), with all other hierarchies at their default (usually All). One argument
+should be a measure; otherwise the model's default measure is used, which is rarely what you want.</p>
+<pre><code>=CUBEVALUE(Conn, MsrActual, C$4, Slicer_FY, $A5)
+</code></pre>
+<p>Here <code>MsrActual</code> holds a measure member, <code>C$4</code> a column member (e.g. a month), <code>Slicer_FY</code> a slicer, and <code>$A5</code>
+the row member. Up to 255 member arguments are possible; Excel combines them into one query context.</p>
+<h3 id="cubeset-define-a-set">CUBESET — define a set</h3>
+<p><code>CUBESET(connection, set_expression, [caption], [sort_order], [sort_by])</code> returns a set of members or tuples. The
+cell shows the caption only. <code>sort_order</code>: 0 none, 1 ascending, 2 descending (both by <code>sort_by</code>), 3 alpha
+ascending, 4 alpha descending, 5 natural ascending, 6 natural descending. <code>sort_by</code> is required for 1 and 2.</p>
+<pre><code>=CUBESET(Conn, &quot;[Vendor].[Name].Children&quot;, &quot;Top vendors&quot;, 2, &quot;[Measures].[Expense]&quot;)
+=CUBESET(Conn, &quot;{[Date].[FiscalMonth].&amp;[Apr], [Date].[FiscalMonth].&amp;[May]}&quot;, &quot;Q1 to date&quot;)
+</code></pre>
+<p>A set can also be passed to CUBEVALUE as a filter: the value aggregates over all members of the set (e.g. a set of
+three BUs).</p>
+<h3 id="cuberankedmember-the-n-th-member-of-a-set">CUBERANKEDMEMBER — the n-th member of a set</h3>
+<p><code>CUBERANKEDMEMBER(connection, set_expression, rank, [caption])</code> returns the member at position <code>rank</code> of a set —
+the building block of Top N lists (s07, Concept c05):</p>
+<pre><code>=CUBERANKEDMEMBER(Conn, B$2, ROWS(A$5:A5))
+</code></pre>
+<p>Used with slicers too: <code>=CUBERANKEDMEMBER(Conn, Slicer_FY, 1)</code> returns the first selected FY, handy for titles.</p>
+<h3 id="cubesetcount-size-of-a-set">CUBESETCOUNT — size of a set</h3>
+<p><code>CUBESETCOUNT(set)</code> takes a cell containing a CUBESET (no connection argument) and returns the number of items. Use
+it to stop a Top N list from showing #N/A beyond the end of the set, and to show "Showing 10 of 214 vendors".</p>
+<h3 id="cubememberproperty-a-member-property">CUBEMEMBERPROPERTY — a member property</h3>
+<p><code>CUBEMEMBERPROPERTY(connection, member_expression, property)</code> returns a property of a member, e.g. a key or a
+custom member property in a multidimensional (SSAS MD) cube. Tabular models (Power Pivot, Power BI) generally do
+not expose column attributes as member properties, so this function is of limited use there — to fetch, say, a
+vendor's MSME status, use a measure (<code>[Vendor MSME] = SELECTEDVALUE(Vendor[MSMEFlag])</code>) and CUBEVALUE it. Learn it
+because it appears in interviews and legacy SSAS packs.</p>
+<h3 id="return-types-at-a-glance">Return types at a glance</h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Returns</th>
+<th>Can feed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CUBEMEMBER</td>
+<td>Member/tuple</td>
+<td>CUBEVALUE, CUBESET expressions (as reference), CUBEMEMBERPROPERTY</td>
+</tr>
+<tr>
+<td>CUBEVALUE</td>
+<td>Number/text value</td>
+<td>Excel arithmetic, charts</td>
+</tr>
+<tr>
+<td>CUBESET</td>
+<td>Set</td>
+<td>CUBERANKEDMEMBER, CUBESETCOUNT, CUBEVALUE</td>
+</tr>
+<tr>
+<td>CUBERANKEDMEMBER</td>
+<td>Member</td>
+<td>CUBEVALUE</td>
+</tr>
+<tr>
+<td>CUBESETCOUNT</td>
+<td>Number</td>
+<td>ROWS/IF logic</td>
+</tr>
+<tr>
+<td>CUBEMEMBERPROPERTY</td>
+<td>Property value</td>
+<td>Labels</td>
+</tr>
+</tbody>
+</table>
+<h3 id="illustration">Illustration</h3>
+<p>Board-pack strip for FY2025-26 (Slicer_FY = FY2025-26):</p>
+<table>
+<thead>
+<tr>
+<th>Cell</th>
+<th>Formula</th>
+<th>Displays</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B1</td>
+<td><code>=CUBEMEMBER(Conn,"[Measures].[Revenue]")</code></td>
+<td>Revenue</td>
+</tr>
+<tr>
+<td>A5</td>
+<td><code>=CUBEMEMBER(Conn,"[BU].[BusinessUnit].&amp;[Agro]")</code></td>
+<td>Agro</td>
+</tr>
+<tr>
+<td>B5</td>
+<td><code>=CUBEVALUE(Conn,B1,A5,Slicer_FY)/1e7</code></td>
+<td>512.3</td>
+</tr>
+<tr>
+<td>B2</td>
+<td><code>=CUBESET(Conn,"[BU].[BusinessUnit].Children","All BUs",2,"[Measures].[Revenue]")</code></td>
+<td>All BUs</td>
+</tr>
+<tr>
+<td>C2</td>
+<td><code>=CUBESETCOUNT(B2)</code></td>
+<td>3</td>
+</tr>
+<tr>
+<td>A9</td>
+<td><code>=CUBERANKEDMEMBER(Conn,B2,1)</code></td>
+<td>Agro</td>
+</tr>
+</tbody>
+</table>
+<p>(Better still, use a <code>[Revenue ₹ Cr]</code> measure rather than dividing in Excel.)</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Two members from one hierarchy</strong> in a CUBEVALUE (e.g. two FS lines) return #N/A or unexpected results; use a
+  set for "either of".</li>
+<li><strong>Slicer with no selection</strong> passes All; with multiple selections passes a set — values aggregate.</li>
+<li><strong>Text measures</strong> can be fetched with CUBEVALUE (dynamic labels), but Excel cannot do arithmetic on them.</li>
+<li><strong>Captions</strong> in CUBEMEMBER/CUBESET are display only; formulas still use the member.</li>
+<li><strong>Calculation mode</strong> manual: cube formulas do not refresh until recalculation; Refresh All plus calculation is
+  needed.</li>
+<li><strong>Large sets</strong> in CUBESET (e.g. 2 lakh customers) are slow to sort; pre-filter with MDX (TopCount, NonEmpty).</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>CUBEMEMBER identifies, CUBEVALUE fetches, CUBESET groups, CUBERANKEDMEMBER picks, CUBESETCOUNT counts,
+  CUBEMEMBERPROPERTY reads properties.</li>
+<li>Every value formula should include an explicit measure member.</li>
+<li>Store the connection, measures and slicers in named cells or names and reference them.</li>
+<li>CUBESET sort_order 2 with a sort_by measure produces descending ranked sets.</li>
+<li>In tabular models, fetch attributes with measures rather than CUBEMEMBERPROPERTY.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-identify-the-function-l1">Q1. Identify the function [L1]</h3>
+<p>For each requirement, name the cube function and write the formula: (a) header cell showing the Budget measure;
+(b) Agro's budget for the slicer-selected FY; (c) a set of all cost centres sorted by Actual descending; (d) the
+5th cost centre of that set; (e) how many cost centres are in it.</p>
+<h3 id="q2-debug-the-errors-l2">Q2. Debug the errors [L2]</h3>
+<p>Explain the likely cause of each: <code>#NAME?</code> in <code>=CUBEVALUE(Conn, MsrActual, Slicer_Fiscal_Year, $A5)</code>; <code>#N/A</code> in
+<code>=CUBEMEMBER(Conn, "[CoA].[FS Line].&amp;[Revenue]")</code> where the column is <code>FSLine</code>; <code>#VALUE!</code> in
+<code>=CUBEVALUE(Conn, B5, A5)</code> where B5 contains a CUBEVALUE result.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Match each error type to the kind of argument that is wrong.</p>
+</blockquote>
+<h3 id="q3-region-set-l2">Q3. Region set [L2]</h3>
+<p>Write formulas that return revenue for "North + West" combined, for the slicer-selected FY, without adding two
+CUBEVALUE results together, and explain why a set is better than two separate member arguments.</p>
+<h3 id="q4-interview-explanation-l3">Q4. Interview explanation [L3]</h3>
+<p>In under 150 words, explain to an interviewer how a cube-formula board pack differs from a PivotTable and from
+SUMIFS on an exported TB, covering source of truth, layout flexibility and refresh.</p></section>
+<nav class="pager"><a class="prev" href="S02_Converting_PivotTables_to_Cube_Formulas_with_OLAP.html">← Converting PivotTables to Cube Formulas with OLAP Tools</a><a class="next" href="S04_MDX_Unique_Names_for_Members_and_Measures.html">MDX Unique Names for Members and Measures →</a></nav>
+</main></div></body></html>

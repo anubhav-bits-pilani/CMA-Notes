@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Control Measures: Dr = Cr, TB Nets to Zero, A = L + E · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S01_Control_Measures_Dr_Cr_TB_Nets_to_Zero_A_L_E.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T4 · Data governance and audit-trail controls</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Data governance and audit-trail controls</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Control_Measures_Dr_Cr_TB_Nets_to_Zero_A_L_E.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S01_Control_Measures_Dr_Cr_TB_Nets_to_Zero_A_L_E.html">Control Measures: Dr = Cr, TB Nets to Zero, A = L + E</a></li><li><a href="S02_GL_to_Dashboard_Tie_Out_Against_Source_TB_Control.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S02_GL_to_Dashboard_Tie_Out_Against_Source_TB_Control.html">GL-to-Dashboard Tie-Out Against Source TB Control Totals</a></li><li><a href="S03_Completeness_Checks_Unmapped_Ledgers_Row_Counts.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S03_Completeness_Checks_Unmapped_Ledgers_Row_Counts.html">Completeness Checks: Unmapped Ledgers, Row Counts, Missing Months</a></li><li><a href="S04_Refresh_Metadata_Last_Refresh_Latest_Posting_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S04_Refresh_Metadata_Last_Refresh_Latest_Posting_Date.html">Refresh Metadata: Last Refresh, Latest Posting Date, Source Files</a></li><li><a href="S05_Control_Panel_Page_with_PassFail_Indicators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S05_Control_Panel_Page_with_PassFail_Indicators.html">Control Panel Page with Pass/Fail Indicators</a></li><li><a href="S06_Access_Governance_RLS_Roles_Labels_Endorsement.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S06_Access_Governance_RLS_Roles_Labels_Endorsement.html">Access Governance: RLS, Roles, Labels, Endorsement, Lineage</a></li><li><a href="S07_Change_Control_PBIP_in_Git_Measure_Docs_Deployment.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S07_Change_Control_PBIP_in_Git_Measure_Docs_Deployment.html">Change Control: PBIP in Git, Measure Docs, Deployment Pipelines</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Dr_Cr_Diff_and_Dr_Cr_Status_Control_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C01_Dr_Cr_Diff_and_Dr_Cr_Status_Control_Measures.html">Dr Cr Diff and Dr Cr Status Control Measures</a></li><li><a href="../concepts/C02_BS_Check_Assets_Minus_Liabilities_Minus_Equity.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C02_BS_Check_Assets_Minus_Liabilities_Minus_Equity.html">BS Check: Assets Minus Liabilities Minus Equity Equals Zero</a></li><li><a href="../concepts/C03_Unmapped_Count_with_EXCEPT_over_GL_and_CoA_Account.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C03_Unmapped_Count_with_EXCEPT_over_GL_and_CoA_Account.html">Unmapped Count with EXCEPT over GL and CoA Account Codes</a></li><li><a href="../concepts/C04_Tie_out_Diff_Dashboard_Revenue_vs_TB_Control.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C04_Tie_out_Diff_Dashboard_Revenue_vs_TB_Control.html">Tie-out Diff: Dashboard Revenue vs TB Control Totals</a></li><li><a href="../concepts/C05_IST_Last_Refresh_Table_in_Power_Query.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C05_IST_Last_Refresh_Table_in_Power_Query.html">IST Last-Refresh Table in Power Query</a></li><li><a href="../concepts/C06_Per_File_Control_Totals_with_TableGroup_on.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C06_Per_File_Control_Totals_with_TableGroup_on.html">Per-File Control Totals with Table.Group on Source.Name</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Control Measures: Dr = Cr, TB Nets to Zero, A = L + E</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Control measures: Total Debits = Total Credits, TB nets to zero, Assets = Liabilities + Equity</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A CFO dashboard is only as credible as the ledger beneath it. In an audit you would never sign off a trial balance
+that does not agree, yet many Power BI packs publish numbers without ever proving that the imported GL is
+arithmetically complete. Three accounting identities give you that proof cheaply and continuously:</p>
+<ul>
+<li>every voucher (and therefore every period) has equal debits and credits;</li>
+<li>the trial balance, stored with signed amounts, sums to zero;</li>
+<li>the balance sheet built from that TB balances.</li>
+</ul>
+<p>Building these as DAX measures turns a one-off month-end tick into a control that runs on every refresh. It also
+answers the interview question "how do you know the dashboard is right?" with something better than "I checked it
+once in Excel". Under the Companies Act IFC regime (s.134(5)(e), s.143(3)(i)) these are exactly the kind of
+automated, evidenced controls over financial reporting that auditors test, and they support the CFO certification
+under SEBI LODR Reg 17(8) and Reg 33 when the pack feeds results.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="control-1-total-debits-total-credits">Control 1 — Total Debits = Total Credits</h3>
+<p>Where the GL extract carries separate <code>GL[Debit]</code> and <code>GL[Credit]</code> columns (typical of Tally Day Book or SAP FBL3N
+exports), the base control is:</p>
+<pre><code class="language-DAX">Total Debits  = SUM ( GL[Debit] )
+Total Credits = SUM ( GL[Credit] )
+Dr Cr Diff    = [Total Debits] - [Total Credits]
+Dr Cr Status  = IF ( ABS ( [Dr Cr Diff] ) &lt; 1, &quot;PASS&quot;, &quot;FAIL&quot; )
+</code></pre>
+<p>The identity must hold at <strong>voucher</strong> level, so it also holds for any set of complete vouchers — a month, a branch,
+a company. It does <em>not</em> necessarily hold for a subset of lines inside a voucher: filter by cost centre or by FS
+line and the difference is legitimately non-zero (the other leg of a salary voucher sits in "Salaries payable", not
+in the cost centre). The control must therefore be evaluated with filters on accounts and cost centres removed:</p>
+<pre><code class="language-DAX">Dr Cr Diff (Period) =
+CALCULATE ( [Dr Cr Diff], REMOVEFILTERS ( CoA ), REMOVEFILTERS ( CostCentre ) )
+</code></pre>
+<p>Keep filters on Date, Company and (if every voucher is single-branch) Branch, because those are voucher-level
+attributes. If inter-branch vouchers exist, a branch-level Dr = Cr check will fail by design; either test at
+company level or verify that the inter-branch control account nets to zero across branches.</p>
+<p>A voucher-level drill helps root-cause failures:</p>
+<pre><code class="language-DAX">Unbalanced Vouchers =
+COUNTROWS (
+    FILTER (
+        VALUES ( GL[VoucherNo] ),
+        ABS ( CALCULATE ( [Dr Cr Diff] ) ) &gt;= 1
+    )
+)
+</code></pre>
+<h3 id="control-2-the-tb-nets-to-zero">Control 2 — The TB nets to zero</h3>
+<p>When the model stores a single signed column (<code>GL[Amount]</code>, Dr positive, Cr negative — the convention recommended in
+Week 11), the equivalent check is:</p>
+<pre><code class="language-DAX">TB Net = CALCULATE ( SUM ( GL[Amount] ), REMOVEFILTERS ( CoA ) )
+TB Status = IF ( ABS ( [TB Net] ) &lt; 1, &quot;PASS&quot;, &quot;FAIL&quot; )
+</code></pre>
+<p>Two different questions are answered depending on the date filter:</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Date context</th>
+<th>What a non-zero result means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Period TB (movements)</td>
+<td>A single month</td>
+<td>Unbalanced vouchers posted in that month, or a sign flip in the load</td>
+</tr>
+<tr>
+<td>Cumulative TB (closing)</td>
+<td>All dates up to month-end</td>
+<td>Opening balances missing or unbalanced, or a period dropped</td>
+</tr>
+</tbody>
+</table>
+<p>The closing version uses the Week 11 pattern <code>CALCULATE([TB Net], 'Date'[Date] &lt;= MAX('Date'[Date]))</code>, or with a
+fully cumulative ledger, <code>DATESBETWEEN('Date'[Date], BLANK(), MAX('Date'[Date]))</code>. Many failures are in opening
+balances: an FY2025-26 GL extract that starts on 1 April 2025 must be accompanied by an opening TB as at 31 March
+2025 (loaded as a separate "OB" voucher type), otherwise balance-sheet ledgers have no history.</p>
+<p>If the model keeps both Debit/Credit columns and a derived signed Amount, also add a consistency check
+<code>SUM(GL[Amount]) - ([Total Debits] - [Total Credits])</code>. A non-zero value reveals a Power Query transformation bug
+(for example, a Credit column imported as text in one file and coerced to null).</p>
+<h3 id="control-3-assets-liabilities-equity">Control 3 — Assets = Liabilities + Equity</h3>
+<p>The balance-sheet identity tests the <strong>mapping</strong> as well as the data. Even with a perfectly balanced TB, the BS will
+not balance if a ledger is unmapped, mapped to a P&amp;L line by mistake, or if current-year profit has not been carried
+into equity.</p>
+<pre><code class="language-DAX">Total Assets      = CALCULATE ( [Closing Balance], CoA[Statement] = &quot;BS&quot;, CoA[Side] = &quot;Asset&quot; )
+Total Liabilities = - CALCULATE ( [Closing Balance], CoA[Statement] = &quot;BS&quot;, CoA[Side] = &quot;Liability&quot; )
+Total Equity      = - CALCULATE ( [Closing Balance], CoA[Statement] = &quot;BS&quot;, CoA[Side] = &quot;Equity&quot; )
+                    - [Profit for the Period YTD]
+BS Check          = [Total Assets] - [Total Liabilities] - [Total Equity]
+</code></pre>
+<p>The critical line is the profit plug: during the year, P&amp;L ledgers have not been closed to retained earnings, so
+equity in the TB is opening equity only. Schedule III presents "Other equity — Retained earnings" including the
+current-year profit, so the measure must add YTD profit (which is a credit balance, hence the minus on a signed
+model). After the year-end closing entry, profit is already in retained earnings and adding it again would double
+count; a robust design adds only P&amp;L ledgers of the <em>current FY</em> and lets prior FY profits flow through the closing
+entry or a "brought-forward profit" calculation.</p>
+<h3 id="illustration">Illustration</h3>
+<p>A Pune-based NSE-listed auto-components company loads its March 2026 GL:</p>
+<table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Value (₹)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total Debits (March)</td>
+<td>4,82,15,63,210.40</td>
+</tr>
+<tr>
+<td>Total Credits (March)</td>
+<td>4,82,15,63,210.40</td>
+</tr>
+<tr>
+<td>TB Net (cumulative to 31-Mar-26)</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>Total Assets</td>
+<td>21,40,00,00,000 (₹2,140 crore)</td>
+</tr>
+<tr>
+<td>Total Liabilities</td>
+<td>12,15,00,00,000 (₹1,215 crore)</td>
+</tr>
+<tr>
+<td>Total Equity incl. YTD profit of ₹165 crore</td>
+<td>9,25,00,00,000 (₹925 crore)</td>
+</tr>
+<tr>
+<td>BS Check</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>Suppose a new ledger "GST Input – RCM Kerala" (Dr balance ₹38 lakh) is not yet in the CoA. Dr = Cr still passes and
+the TB still nets to zero, but <code>Total Assets</code> excludes the ₹38 lakh, so BS Check shows −₹38,00,000. The three
+controls are complementary: the first two test the data, the third tests the data plus the mapping.</p>
+<h3 id="presentation">Presentation</h3>
+<p>Show each control as a row in a control table (Control, Value, Tolerance, Status) rather than three separate cards;
+this scales to the completeness and tie-out checks of later subtopics. Use a consistent sign: display differences
+as signed ₹ with two decimals so paise-level issues are visible.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Tolerance.</strong> Tally and SAP store amounts to two decimals, but CSV exports and Power Query type conversions can
+  introduce floating-point noise (0.0000001). Use a tolerance of ₹1 for totals, or round in Power Query to 2 decimals
+  using <code>Currency.Type</code> (fixed decimal) on amount columns. Never widen the tolerance to "make it pass".</li>
+<li><strong>Foreign-currency ledgers.</strong> If the GL holds both transaction and functional currency amounts, run the controls on
+  the functional (INR) amount; transaction-currency amounts do not balance across currencies.</li>
+<li><strong>Multi-company consolidation.</strong> Dr = Cr must hold per company; intercompany eliminations are separate vouchers
+  that should themselves balance. A consolidated BS check fails if elimination entries are loaded for only one side.</li>
+<li><strong>Blank or zero rows.</strong> Header rows and narration-only rows in Tally exports carry no amount; they do not affect
+  sums but inflate row counts (relevant to completeness checks in s03).</li>
+<li><strong>Offsetting errors.</strong> A grand-total PASS can conceal a +₹5 lakh error in one month and −₹5 lakh in another. Always
+  evaluate the control by month (and by company) and count failing periods, not only the total.</li>
+<li><strong>Performance.</strong> <code>FILTER(VALUES(GL[VoucherNo]))</code> over millions of vouchers is expensive; keep the voucher-level
+  measure on the control page only, not on executive pages.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Dr = Cr, TB = 0 and A = L + E are three distinct tests: data arithmetic, period completeness, and mapping integrity.</li>
+<li>Evaluate Dr = Cr with account and cost-centre filters removed; it holds only for complete vouchers.</li>
+<li>The BS check must include current-year profit in equity until the year-end close.</li>
+<li>Run every control by period and entity, not only at grand total, to catch offsetting errors.</li>
+<li>Use a small, explicit tolerance (₹1) and fixed-decimal types instead of loose thresholds.</li>
+<li>Present controls in one table with value, tolerance and status so they scale.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-why-the-cost-centre-filter-breaks-dr-cr-l1">Q1. Why the cost-centre filter breaks Dr = Cr [L1]</h3>
+<p>A user places <code>[Dr Cr Status]</code> on a page filtered to cost centre "CC-210 Plant Maintenance" and sees FAIL with a
+difference of ₹12,40,500. The GL is known to be balanced. Explain why the measure fails in this context and rewrite
+the measure so it reports correctly regardless of cost-centre and FS-line slicers.</p>
+<h3 id="q2-locating-an-unbalanced-month-l2">Q2. Locating an unbalanced month [L2]</h3>
+<p>A GL for FY2025-26 shows a full-year Dr Cr Diff of ₹0.00. Monthly differences are: April +₹3,20,000, May 0,
+June −₹3,20,000, all other months 0. List two plausible data-load causes for this pattern and write the DAX measure
+that counts the number of months in the selected FY with a non-zero difference.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Think about vouchers dated at a month boundary and about iterating over months with a tolerance.</p>
+</blockquote>
+<h3 id="q3-building-the-bs-check-with-in-year-profit-l2">Q3. Building the BS check with in-year profit [L2]</h3>
+<p>At 30 September 2025 a company's signed TB (Dr positive) shows: asset ledgers ₹840 crore, liability ledgers
+−₹410 crore, equity ledgers (share capital and opening retained earnings) −₹350 crore, P&amp;L ledgers −₹80 crore.
+Write measures for Total Assets, Total Liabilities, Total Equity and BS Check that return a zero BS Check, and state
+what the BS Check would show if the P&amp;L adjustment were omitted.</p>
+<h3 id="q4-choosing-which-controls-to-build-l3">Q4. Choosing which controls to build [L3]</h3>
+<p>A group with three companies uses Tally for two of them and SAP for the third. The SAP extract has a signed Amount
+column; Tally exports have separate Debit and Credit columns. Design the set of control measures (names, logic, the
+filters each must remove or retain) you would put on the control page, including how you would handle
+intercompany vouchers and opening balances.</p>
+<h3 id="q5-interview-what-does-a-balanced-tb-not-prove-l1">Q5. Interview: what does a balanced TB not prove? [L1]</h3>
+<p>An interviewer says: "Your TB nets to zero every month, so your dashboard must be right." Give three distinct errors
+that would leave the TB balanced but make the dashboard wrong, and name the control that would detect each.</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← Data governance and audit-trail controls</a><a class="next" href="S02_GL_to_Dashboard_Tie_Out_Against_Source_TB_Control.html">GL-to-Dashboard Tie-Out Against Source TB Control Totals →</a></nav>
+</main></div></body></html>

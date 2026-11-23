@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Snapshot Facts vs Transaction Facts for Balances · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S02_Snapshot_Facts_vs_Transaction_Facts_for_Balances.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T5 · Semi-additive balance sheet measures</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Semi-additive balance sheet measures</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Additive_Semi_Additive_and_Non_Additive_Financial.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S01_Additive_Semi_Additive_and_Non_Additive_Financial.html">Additive, Semi-Additive and Non-Additive Financial Measures</a></li><li><a href="S02_Snapshot_Facts_vs_Transaction_Facts_for_Balances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S02_Snapshot_Facts_vs_Transaction_Facts_for_Balances.html">Snapshot Facts vs Transaction Facts for Balances</a></li><li><a href="S03_Closing_Balance_LASTDATE_vs_LASTNONBLANK_vs_a_MAX.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S03_Closing_Balance_LASTDATE_vs_LASTNONBLANK_vs_a_MAX.html">Closing Balance: LASTDATE vs LASTNONBLANK vs a MAX-Date Filter</a></li><li><a href="S04_Cumulative_Balances_from_GL_Movements_Including.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S04_Cumulative_Balances_from_GL_Movements_Including.html">Cumulative Balances from GL Movements, Including Opening Entries</a></li><li><a href="S05_Opening_Balances_with_OPENINGBALANCEMONTH_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S05_Opening_Balances_with_OPENINGBALANCEMONTH_and.html">Opening Balances with OPENINGBALANCEMONTH and OPENINGBALANCEYEAR</a></li><li><a href="S06_Average_Balances_for_DSO_Interest_Cost_and_Return.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S06_Average_Balances_for_DSO_Interest_Cost_and_Return.html">Average Balances for DSO, Interest Cost and Return Ratios</a></li><li><a href="S07_Cash_Net_Working_Capital_and_Net_Debt_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S07_Cash_Net_Working_Capital_and_Net_Debt_Measures.html">Cash, Net Working Capital and Net Debt Measures over Time</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Closing_Balance_with_LASTDATE_on_a_Snapshot_Fact.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C01_Closing_Balance_with_LASTDATE_on_a_Snapshot_Fact.html">Closing Balance with LASTDATE on a Snapshot Fact</a></li><li><a href="../concepts/C02_LASTNONBLANK_Closing_Balance_at_the_Last_Date_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C02_LASTNONBLANK_Closing_Balance_at_the_Last_Date_with.html">LASTNONBLANK: Closing Balance at the Last Date with Data</a></li><li><a href="../concepts/C03_Cumulative_Balance_with_FILTER_over_ALL_Dates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C03_Cumulative_Balance_with_FILTER_over_ALL_Dates.html">Cumulative Balance with FILTER over ALL Dates</a></li><li><a href="../concepts/C04_CLOSINGBALANCEYEAR_and_OPENINGBALANCEYEAR_with_a.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C04_CLOSINGBALANCEYEAR_and_OPENINGBALANCEYEAR_with_a.html">CLOSINGBALANCEYEAR and OPENINGBALANCEYEAR with a March Year-End</a></li><li><a href="../concepts/C05_Average_Receivables_with_AVERAGEX_over_Month_Ends.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C05_Average_Receivables_with_AVERAGEX_over_Month_Ends.html">Average Receivables with AVERAGEX over Month-Ends</a></li><li><a href="../concepts/C06_DSO_Measure_from_Average_Receivables_and_Days_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C06_DSO_Measure_from_Average_Receivables_and_Days_in.html">DSO Measure from Average Receivables and Days in Period</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Snapshot Facts vs Transaction Facts for Balances</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Snapshot facts (month-end TB balances) vs transaction facts (GL movements plus opening balance)</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>There are two ways to get a balance sheet into a model. You can load the <strong>trial balance at each month-end</strong> — a
+periodic snapshot where each row already holds a closing balance — or you can load <strong>every GL movement plus an
+opening balance</strong> and let DAX accumulate them. The choice decides which DAX pattern computes the closing balance,
+how heavy the model is, whether users can drill from a balance to vouchers, and how easily the model ties to the
+audited TB. In practice most Indian mid-market FP&amp;A models (Tally, SAP Business One, Oracle NetSuite, Zoho Books
+sources) use a hybrid, and you must be able to reason about both.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="snapshot-fact-periodic-snapshot">Snapshot fact (periodic snapshot)</h3>
+<p>Grain: <strong>one row per account × entity (× cost centre, if needed) × period-end date</strong>, holding the closing balance.</p>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>AccountKey</th>
+<th>EntityKey</th>
+<th>Balance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>31-Oct-2025</td>
+<td>1100 (Trade receivables)</td>
+<td>IN01</td>
+<td>1,480</td>
+</tr>
+<tr>
+<td>30-Nov-2025</td>
+<td>1100</td>
+<td>IN01</td>
+<td>1,390</td>
+</tr>
+<tr>
+<td>31-Dec-2025</td>
+<td>1100</td>
+<td>IN01</td>
+<td>1,520</td>
+</tr>
+</tbody>
+</table>
+<p>Typical sources: month-end TB exports (Tally "Trial Balance" as on date, SAP <code>FAGLFLEXT</code>-style period balances), or a
+balance table generated in SQL/Power Query from the GL.</p>
+<pre><code class="language-DAX">Closing Bal (snapshot) =
+CALCULATE ( SUM ( TB[Balance] ), LASTDATE ( 'Date'[Date] ) )
+</code></pre>
+<p>Strengths:</p>
+<ul>
+<li><strong>Ties to the TB by construction</strong> — each month's rows are the TB.</li>
+<li><strong>Simple and fast</strong> — closing balance is a filter on one date; no running totals.</li>
+<li><strong>Handles accounts with no movement</strong> — the balance is present even if nothing was posted that month.</li>
+</ul>
+<p>Weaknesses:</p>
+<ul>
+<li><strong>No drill-through to vouchers</strong> — a balance cannot be explained from the snapshot alone.</li>
+<li><strong>Storage grows with accounts × months</strong>, not with activity (acceptable for a TB of a few thousand accounts).</li>
+<li><strong>Restatements and late adjustments</strong> require reloading the affected snapshots (if November is reopened, every
+  later month changes too).</li>
+<li><strong>Only period-end dates</strong> — a daily balance (cash position) needs a daily snapshot.</li>
+</ul>
+<p>A subtle point for P&amp;L accounts: many ERP TBs report P&amp;L accounts as <strong>YTD cumulative</strong> balances. Snapshot P&amp;L
+values are then "YTD to that month", and the monthly P&amp;L is the difference between consecutive snapshots (with April
+equal to the April snapshot). Load P&amp;L from the GL movement fact instead, or convert in Power Query.</p>
+<h3 id="transaction-fact-movements-plus-opening">Transaction fact (movements plus opening)</h3>
+<p>Grain: <strong>one row per voucher line</strong> (or per account-day if pre-aggregated), holding the signed movement. An
+<strong>opening balance</strong> row per account is added at the start of the model's history (for example dated 1 April 2023,
+voucher type "Opening"), carrying the closing balance of the last pre-model year.</p>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>VoucherNo</th>
+<th>AccountKey</th>
+<th>Amount</th>
+<th>VoucherType</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01-Apr-2023</td>
+<td>OB-0001</td>
+<td>1100</td>
+<td>1,210</td>
+<td>Opening</td>
+</tr>
+<tr>
+<td>05-Apr-2023</td>
+<td>SI-0187</td>
+<td>1100</td>
+<td>118</td>
+<td>Sales</td>
+</tr>
+<tr>
+<td>12-Apr-2023</td>
+<td>RC-0042</td>
+<td>1100</td>
+<td>−240</td>
+<td>Receipt</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-DAX">Closing Bal (movements) =
+VAR d = MAX ( 'Date'[Date] )
+RETURN
+    CALCULATE ( SUM ( GL[Amount] ), REMOVEFILTERS ( 'Date' ), 'Date'[Date] &lt;= d )
+</code></pre>
+<p>Strengths:</p>
+<ul>
+<li><strong>Full drill-through</strong> from balance to vouchers; movement analysis (receipts, invoices) from the same fact.</li>
+<li><strong>Daily balances</strong> come free — any date can be an "as of" date.</li>
+<li><strong>Single source</strong> for P&amp;L and BS.</li>
+</ul>
+<p>Weaknesses:</p>
+<ul>
+<li><strong>Depends on the opening balance</strong> being complete and correct; any missing opening entry breaks every later
+  balance.</li>
+<li><strong>Running totals are heavier</strong> to compute (fine for millions of rows in VertiPaq, but noticeable in large
+  matrices).</li>
+<li><strong>P&amp;L-to-reserves logic</strong> is needed: P&amp;L accounts accumulate forever unless each year's profit is rolled into
+  retained earnings (s04, topic related item).</li>
+<li><strong>Ties to the TB only if</strong> every adjustment (including audit adjustments posted outside the ledger) is in the GL.</li>
+</ul>
+<h3 id="hybrid-patterns">Hybrid patterns</h3>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>How</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Opening snapshot + movements</td>
+<td>One snapshot row per account at the model start; GL movements after</td>
+<td>Most common; small history in GL</td>
+</tr>
+<tr>
+<td>Annual snapshots + movements</td>
+<td>Closing balance at each 31 March from the audited TB; movements within the year</td>
+<td>Audited balances are the anchor, GL detail for current year</td>
+</tr>
+<tr>
+<td>Movements in model, snapshot generated in Power Query/SQL</td>
+<td>Cumulative sum by account-month pre-computed at refresh</td>
+<td>Large GL, heavy matrices; keep drill-through via relationship to GL</td>
+</tr>
+</tbody>
+</table>
+<h3 id="reconciling-the-two">Reconciling the two</h3>
+<p>The control test is identical for both: for each month-end, the balance by account must equal the TB. Build a
+reconciliation table (account × month-end) with columns Model Balance, TB Balance and Difference; a correct model
+shows zero differences and a balance sheet that sums to zero (debits = credits) at every month-end.</p>
+<p>\[
+\text{Closing}_{t} = \text{Opening}_{\text{start}} + \sum_{d \le t} \text{Movement}_{d}
+\]</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>Trade receivables, entity IN01 (₹ lakh). Opening at 1 April 2025: 1,210. Movements April–October: invoices 8,640,
+receipts −8,370. Closing at 31 October = 1,210 + 8,640 − 8,370 = 1,480. The snapshot TB at 31 October shows 1,480. If
+the opening entry had been dated 31 March 2025 (outside a Date table starting 1 April 2025), it would not join to the
+calendar and would sit in the Date table's blank member. Whether a cumulative measure then picks it up depends on how
+its date filter is written: a measure that filters <code>DATESBETWEEN('Date'[Date], &lt;calendar start&gt;, d)</code> drops it and
+shows 270, while other forms may include it. A model whose balances depend on that kind of accident is fragile —
+date opening entries on the first date of the calendar and test that no GL row falls outside the Date table.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Unposted audit adjustments:</strong> statutory auditors' adjustments sometimes live in a "Schedule III adjustments"
+  workbook rather than the ledger. Load them as a separate adjustment fact (or GL voucher type) dated 31 March so both
+  patterns include them.</li>
+<li><strong>Multi-currency balances:</strong> a snapshot in INR at closing rates (Ind AS 21 monetary items) cannot be recomputed from
+  INR movements at transaction rates; revaluation entries must be in the GL.</li>
+<li><strong>Accounts re-mapped mid-year:</strong> with snapshots, history is as reported; with movements, the current CoA mapping
+  restates history automatically. Decide which the user expects (Type 1 vs Type 2 dimension, Topic 1).</li>
+<li><strong>Intra-month cash:</strong> treasury wants daily balances; a month-end snapshot cannot serve that — use movements or a
+  daily bank-balance snapshot from the bank statement feed.</li>
+<li><strong>Year-end closing entries:</strong> some ERPs post a closing entry transferring P&amp;L to retained earnings; Tally does not.
+  The movement pattern must know which applies.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Snapshot facts hold closing balances at period-ends; transaction facts hold movements plus an opening entry.</li>
+<li>Snapshots tie to the TB easily and are fast; movements allow drill-through and daily balances.</li>
+<li>Opening entries must fall within the Date table and include every BS account.</li>
+<li>ERP TB snapshots often hold YTD P&amp;L values — do not treat them as monthly flows.</li>
+<li>Whatever the pattern, reconcile model balances to the TB for every month-end.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-choose-the-fact-design-l2">Q1. Choose the fact design [L2]</h3>
+<p>For each scenario, recommend a snapshot, movement or hybrid design and justify it: (a) a board pack showing quarterly
+balance sheets for five years; (b) a treasury dashboard of daily bank balances; (c) a receivables ageing analysis by
+invoice; (d) a group consolidation where subsidiaries send month-end TBs in Excel.</p>
+<h3 id="q2-missing-opening-entry-l2">Q2. Missing opening entry [L2]</h3>
+<p>A movement-based model starts on 1 April 2024. Closing balances at 31 March 2024 were: Trade receivables ₹ 2,340 lakh,
+Inventory ₹ 3,110 lakh, Trade payables −₹ 1,960 lakh, Share capital −₹ 1,000 lakh, Retained earnings −₹ 2,490 lakh.
+Only receivables and payables were loaded as opening entries. Calculate the error in total assets and in total equity
+at 30 September 2024, and explain how the balance sheet check (sum of all BS accounts = 0) would reveal it.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Which accounts' openings are missing, and on which side of the balance sheet do they sit?</p>
+</blockquote>
+<h3 id="q3-ytd-pl-in-a-tb-snapshot-l2">Q3. YTD P&amp;L in a TB snapshot [L2]</h3>
+<p>Your month-end TB snapshot for FY26 shows the Revenue account at −₹ 1,200 lakh (April), −₹ 2,250 lakh (May) and −₹
+3,600 lakh (June). Explain what these values represent, what the monthly revenue was, and write a Power Query or DAX
+approach that derives monthly flows from such a snapshot.</p>
+<h3 id="q4-reconciliation-build-l3">Q4. Reconciliation build [L3]</h3>
+<p>Design a reconciliation page that proves a movement-based model ties to monthly TB exports for FY25 and FY26. Specify
+the tables, measures, visual layout and tolerance, and list three likely causes of differences and how the page would
+point to each.</p></section>
+<nav class="pager"><a class="prev" href="S01_Additive_Semi_Additive_and_Non_Additive_Financial.html">← Additive, Semi-Additive and Non-Additive Financial Measures</a><a class="next" href="S03_Closing_Balance_LASTDATE_vs_LASTNONBLANK_vs_a_MAX.html">Closing Balance: LASTDATE vs LASTNONBLANK vs a MAX-Date… →</a></nav>
+</main></div></body></html>

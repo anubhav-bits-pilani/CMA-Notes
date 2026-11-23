@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multi-criteria logic and GL rollups · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/index.html" data-kind="topic">
+<header class="top"><a class="brand" href="../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../index.html">Home</a> <span>›</span> <a href="../../index.html">Phase 3</a> <span>›</span> <a href="../index.html">Week 9</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">Week 9</a></div><ul class="side-links"><li><a href="index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/index.html">T1 · Multi-criteria logic and GL rollups</a></li><li><a href="../T2_Modern_lookups_and_scenario_switching/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/index.html">T2 · Modern lookups and scenario switching</a></li><li><a href="../T3_SUMPRODUCT_weighted_averages_and_matrix/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/index.html">T3 · SUMPRODUCT weighted averages and matrix math</a></li><li><a href="../T4_Dynamic_arrays_and_LETLAMBDA/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/index.html">T4 · Dynamic arrays and LET/LAMBDA</a></li><li><a href="../T5_Financial_and_date_functions/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/index.html">T5 · Financial and date functions</a></li><li><a href="../T6_What_if_analysis_and_input_controls/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/index.html">T6 · What-if analysis and input controls</a></li></ul></aside>
+<main class="content">
+<div class="kind">Topic</div>
+<h1>Multi-criteria logic and GL rollups</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<section class="index"><h2>Notes in this topic</h2><div class="cols"><div><h3>Subtopics</h3><ul class="links num"><li><a href="subtopics/S01_Nested_IF_vs_IFS_vs_SWITCH_for_Account_Code.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S01_Nested_IF_vs_IFS_vs_SWITCH_for_Account_Code.html">S01 · Nested IF vs IFS vs SWITCH for Account-Code Classification</a></li><li><a href="subtopics/S02_SUMIFS_for_Multi_Department_GL_Rollups_by_Group.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S02_SUMIFS_for_Multi_Department_GL_Rollups_by_Group.html">S02 · SUMIFS for Multi-Department GL Rollups by Group, Cost Centre and Month</a></li><li><a href="subtopics/S03_COUNTIFS_Data_Quality_Tests_on_GL_and_TB_Dumps.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S03_COUNTIFS_Data_Quality_Tests_on_GL_and_TB_Dumps.html">S03 · COUNTIFS Data-Quality Tests on GL and TB Dumps</a></li><li><a href="subtopics/S04_AVERAGEIFS_MAXIFS_and_MINIFS_for_ARAP_and_Sales.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S04_AVERAGEIFS_MAXIFS_and_MINIFS_for_ARAP_and_Sales.html">S04 · AVERAGEIFS, MAXIFS and MINIFS for AR/AP and Sales Analytics</a></li><li><a href="subtopics/S05_Criteria_Syntax_Operators_Concatenation_Wildcards.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S05_Criteria_Syntax_Operators_Concatenation_Wildcards.html">S05 · Criteria Syntax: Operators, Concatenation, Wildcards and Date Ranges</a></li><li><a href="subtopics/S06_OR_Logic_in_SUMIFS_with_Array_Constants_Wrapped_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S06_OR_Logic_in_SUMIFS_with_Array_Constants_Wrapped_in.html">S06 · OR Logic in SUMIFS with Array Constants Wrapped in SUM</a></li><li><a href="subtopics/S07_Excel_Tables_and_Structured_References_for_Self.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S07_Excel_Tables_and_Structured_References_for_Self.html">S07 · Excel Tables and Structured References for Self-Expanding Rollups</a></li><li><a href="subtopics/S08_Mixed_References_and_F4_Cycling_for_Copy_Across_PL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S08_Mixed_References_and_F4_Cycling_for_Copy_Across_PL.html">S08 · Mixed References and F4 Cycling for Copy-Across P&amp;L Grids</a></li></ul></div><div><h3>Key concepts & formulas</h3><ul class="links num"><li><a href="concepts/C01_The_Department_Account_Month_SUMIFS_Grid_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C01_The_Department_Account_Month_SUMIFS_Grid_Formula.html">C01 · The Department × Account × Month SUMIFS Grid Formula</a></li><li><a href="concepts/C02_IFS_with_a_TRUE_Catch_All_for_Account.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C02_IFS_with_a_TRUE_Catch_All_for_Account.html">C02 · IFS with a TRUE Catch-All for Account Classification</a></li><li><a href="concepts/C03_SUM_of_SUMIFS_with_an_Array_Constant_for_OR_Logic.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C03_SUM_of_SUMIFS_with_an_Array_Constant_for_OR_Logic.html">C03 · SUM of SUMIFS with an Array Constant for OR Logic</a></li><li><a href="concepts/C04_MAXIFS_and_MINIFS_Signature_and_the_Zero_When.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C04_MAXIFS_and_MINIFS_Signature_and_the_Zero_When.html">C04 · MAXIFS and MINIFS: Signature and the Zero-When-Empty Trap</a></li><li><a href="concepts/C05_COUNTIFS_Duplicate_Posting_Flag_in_a_Calculated.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C05_COUNTIFS_Duplicate_Posting_Flag_in_a_Calculated.html">C05 · COUNTIFS Duplicate-Posting Flag in a Calculated Column</a></li><li><a href="concepts/C06_AVERAGEIFS_and_the_DIV0_Result_on_No_Matches.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C06_AVERAGEIFS_and_the_DIV0_Result_on_No_Matches.html">C06 · AVERAGEIFS and the #DIV/0! Result on No Matches</a></li><li><a href="concepts/C07_Range_Criteria_for_Numeric_Account_Codes_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C07_Range_Criteria_for_Numeric_Account_Codes_vs.html">C07 · Range Criteria for Numeric Account Codes vs Wildcards on Text</a></li></ul></div></div></section><article class="note"><blockquote>
+<p><strong>Roadmap topic:</strong> Multi-Criteria Conditional Logic &amp; Aggregation: Nested IF, IFS, SUMIFS, COUNTIFS, AVERAGEIFS, MAXIFS/MINIFS for multi-department GL rollups</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>Every finance deliverable built in Excel — the monthly MIS, the department cost report, the TB-to-Schedule III mapping, the actuals feed of a forecast — is an aggregation of transaction-level data under conditions. This topic is about doing that aggregation with formulas that are correct, complete and self-updating: classifying ledgers with IF/IFS/SWITCH, summing them with SUMIFS across department, cost centre, account group and date ranges, testing the data with COUNTIFS, and producing behavioural KPIs (average ticket, largest open payment, oldest open invoice) with AVERAGEIFS, MAXIFS and MINIFS.</p>
+<p>For someone coming from audit and GL finalisation, the shift is from "I can filter Tally and get the number" to "I can build a grid that produces every number, every month, with no manual step, and proves its own completeness". Interviewers for FP&amp;A and reporting roles test exactly this: a blank grid, a GL dump and a stopwatch. Model reviewers test it differently — they look for one consistent formula per block, inputs referenced rather than typed, and check cells that tie the output back to the source.</p>
+<p>The subtopics form a sequence. Start with <strong>classification</strong> (s01), because a rollup needs a nature or group for each ledger. Then the core <strong>SUMIFS rollup</strong> (s02) and its grammar — <strong>criteria syntax</strong> (s05) and <strong>OR logic</strong> (s06). Before trusting any rollup, run <strong>COUNTIFS data-quality tests</strong> (s03), and extend the toolkit to <strong>averages and extremes</strong> (s04). Two structural skills make the whole thing robust and fast: <strong>Excel Tables</strong> so ranges grow with the data (s07), and <strong>mixed referencing</strong> so one formula fills a grid (s08). The seven key concepts are the exact formulas and behaviours you should be able to write from memory.</p>
+<p>The topic connects forward to SUMPRODUCT (for conditions SUMIFS cannot express), XLOOKUP mapping (to attach FS lines to ledgers), dynamic arrays (to generate row and column headers), and later to DAX in Power BI, where the same rollup becomes a measure evaluated in filter context.</p>
+<h2 id="concept-map">Concept map</h2>
+<table>
+<thead>
+<tr>
+<th>Subtopic / concept</th>
+<th>Role in the topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s01 Nested IF vs IFS vs SWITCH</td>
+<td>Assigns Asset/Liability/Income/Expense nature to account-code ranges, with a visible catch-all</td>
+</tr>
+<tr>
+<td>s02 SUMIFS multi-department rollups</td>
+<td>Core engine: sums the GL by group, department, cost centre and month window</td>
+</tr>
+<tr>
+<td>s03 COUNTIFS data-quality tests</td>
+<td>Proves the dump is clean: duplicates, unmapped ledgers, out-of-period postings</td>
+</tr>
+<tr>
+<td>s04 AVERAGEIFS, MAXIFS, MINIFS</td>
+<td>Behavioural KPIs: average ticket, largest open payment, oldest open invoice</td>
+</tr>
+<tr>
+<td>s05 Criteria syntax</td>
+<td>Grammar of operators-in-strings, concatenation, wildcards and date bounds</td>
+</tr>
+<tr>
+<td>s06 OR logic with array constants</td>
+<td>Extends AND-only SUMIFS to "this or that" lists</td>
+</tr>
+<tr>
+<td>s07 Excel Tables and structured references</td>
+<td>Makes every rollup auto-expand when new GL rows are pasted</td>
+</tr>
+<tr>
+<td>s08 Mixed referencing and F4</td>
+<td>Lets one formula fill an entire copy-across P&amp;L grid</td>
+</tr>
+<tr>
+<td>c01 Department × account × month SUMIFS</td>
+<td>The canonical grid-cell formula with two date criteria</td>
+</tr>
+<tr>
+<td>c02 IFS with TRUE catch-all</td>
+<td>IFS has no else; TRUE as the last test prevents <code>#N/A</code></td>
+</tr>
+<tr>
+<td>c03 SUM(SUMIFS) with an array constant</td>
+<td>Compact OR logic across criteria values</td>
+</tr>
+<tr>
+<td>c04 MAXIFS/MINIFS signature</td>
+<td>Same grammar as SUMIFS; return 0 when nothing matches</td>
+</tr>
+<tr>
+<td>c05 COUNTIFS duplicate flag</td>
+<td>Calculated-column test for duplicate postings</td>
+</tr>
+<tr>
+<td>c06 AVERAGEIFS and <code>#DIV/0!</code></td>
+<td>Guard with COUNTIFS rather than blanket IFERROR</td>
+</tr>
+<tr>
+<td>c07 Range criteria for numeric codes</td>
+<td>Wildcards work only on text; numeric codes need <code>&gt;=</code>/<code>&lt;</code> bounds</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-concepts-to-study">Related concepts to study</h2>
+<h3 id="sumproduct-for-conditions-sumifs-cannot-handle">SUMPRODUCT for conditions SUMIFS cannot handle</h3>
+<p><em>SUMPRODUCT for criteria SUMIFS cannot handle, such as <code>MONTH()</code> or <code>LEFT()</code> on ranges → w9_t3</em></p>
+<p>SUMIFS criteria ranges must be actual ranges, not computed arrays, so you cannot write <code>SUMIFS(GL[Amount], MONTH(GL[Date]), 4)</code> or test <code>LEFT(GL[Account],1)="5"</code>. SUMPRODUCT accepts any array expression: <code>SUMPRODUCT((MONTH(GL[Date])=4)*(LEFT(GL[Account],1)="5")*GL[Amount])</code>. It also handles OR logic with overlapping conditions, case-sensitive matches via <code>EXACT</code>, and conditions comparing two columns of the same row (e.g. amount above that row's credit limit). The trade-off is speed: SUMPRODUCT evaluates every row for every cell and cannot use SUMIFS's internal optimisations, so it should be used for the conditions SUMIFS genuinely cannot express, not as a default. Topic 3 develops it fully.</p>
+<h3 id="pivottables-and-getpivotdata-as-an-independent-check">PivotTables and GETPIVOTDATA as an independent check</h3>
+<p><em>PivotTables and GETPIVOTDATA as an independent cross-check of SUMIFS rollups</em></p>
+<p>A PivotTable built on the same GL Table aggregates the data by an entirely different engine, so agreement between a SUMIFS grid and a pivot is strong evidence that the formulas are complete and correctly anchored. GETPIVOTDATA retrieves a specific value from a pivot by field names — <code>=GETPIVOTDATA("Amount", Pivot!A3, "Dept", "Sales")</code>, where A3 is any cell inside the pivot, — and keeps pointing at the right item even when the pivot layout changes. A practical control is a hidden check column: SUMIFS result minus GETPIVOTDATA result, which must be zero for every row. Remember that pivots need a refresh (Data → Refresh All) after new data is pasted; an un-refreshed pivot will disagree for the wrong reason. Pivots are also the quickest way to discover new departments or groups missing from the grid's row headers.</p>
+<h3 id="tb-to-schedule-iii-mapping-and-close-rollups">TB-to-Schedule III mapping and close rollups</h3>
+<p><em>→ Week 1–4: TB-to-Schedule III mapping and month-end close rollups</em></p>
+<p>Weeks 1–4 established the classification rules: Ind AS 1 current/non-current, Schedule III Division II line items and note disclosures, and the month-end close sequence. This topic supplies the mechanics: a ledger-to-FS-line mapping table, an IFS or band-table nature classification, SUMIFS rollups from ledger to note line to face of the balance sheet and statement of profit and loss, and COUNTIFS checks that every ledger is mapped. The judgement calls from Weeks 1–4 — bank overdrafts presented under borrowings, debit balances in creditors reclassified as advances, current maturities of long-term debt — become explicit mapping rules or balance-sign reclassification columns rather than manual adjustments.</p>
+<h3 id="the-same-rollup-as-a-dax-calculate-measure">The same rollup as a DAX CALCULATE measure</h3>
+<p><em>→ Week 11: the same rollup as DAX <code>CALCULATE</code> with filter arguments</em></p>
+<p>In Power BI, the SUMIFS grid becomes a matrix visual and a measure such as <code>Actual = SUM(GL[Amount])</code>. The row (department), column (month) and slicer selections create filter context, so the measure needs no explicit criteria. When you need to override or add a filter — "Sales and Marketing only", "same period last year" — you use <code>CALCULATE(SUM(GL[Amount]), GL[Dept] IN {"Sales","Marketing"})</code> or time-intelligence functions with a proper Date table. Understanding SUMIFS as "sum under a set of filters" makes CALCULATE intuitive: each SUMIFS criteria pair corresponds to a filter argument, and the date-range pair corresponds to a relationship to a Date table.</p>
+<h3 id="department-wise-budget-vs-actual-mis-grids">Department-wise budget vs actual MIS grids</h3>
+<p><em>→ Week 17–20: department-wise budget vs actual MIS grids</em></p>
+<p>FP&amp;A's monthly BvA pack is the same grid built twice — once on the actuals GL and once on the budget table (which is usually at a coarser grain: department × MIS line × month). The SUMIFS skills here let both grids share one row/column structure, so variance, variance %, and YTD columns are simple relative formulas. Weeks 17–20 add the analysis layer: price/volume/mix bridges, flexed budgets, rolling forecasts and commentary thresholds. The data-quality checks from this topic (unmapped ledgers, out-of-period postings) are what make variance commentary credible — an unexplained variance is often just a mis-mapped ledger.</p>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<h3 id="unequal-ranges-and-sumif-vs-sumifs-argument-order">Unequal ranges and SUMIF vs SUMIFS argument order</h3>
+<p><em>Unequal-size criteria ranges give #VALUE!; sum_range comes last in SUMIF but first in SUMIFS</em></p>
+<p><strong>The mistake.</strong> Writing <code>SUMIFS(G2:G5000, D2:D4999, "Sales")</code> — ranges of different sizes — returns <code>#VALUE!</code>. Converting a SUMIF to SUMIFS without reordering (<code>SUMIF(range, criteria, sum_range)</code> vs <code>SUMIFS(sum_range, criteria_range, criteria)</code>) either errors or sums the wrong column. SUMIF, by contrast, does not error on unequal sizes: it silently resizes <code>sum_range</code> to match <code>range</code> from its top-left cell, which can misalign rows.</p>
+<p><strong>Why it happens.</strong> Ranges typed by hand or extended by dragging; muscle memory from SUMIF.</p>
+<p><strong>Correct treatment and review.</strong> Use Table column references so all ranges are automatically identical; standardise on SUMIFS even for one criterion. In review, inspect the first argument of every sum formula and use Evaluate Formula on any <code>#VALUE!</code>.</p>
+<h3 id="numbers-stored-as-text-in-erp-exports">Numbers stored as text in ERP exports</h3>
+<p><em>Numbers stored as text in ERP exports are silently left out of SUMIFS; check with <code>ISNUMBER</code> or convert with <code>VALUE</code></em></p>
+<p><strong>The mistake.</strong> CSV and Excel exports from Tally, SAP or bank portals often hold amounts as text ("1,25,000.00", amounts with trailing "Dr", or numbers with leading apostrophes). SUMIFS ignores text in the sum range, so the total is understated with no error.</p>
+<p><strong>Why it happens.</strong> Indian digit grouping and Dr/Cr suffixes are text by nature; regional settings change decimal separators; people trust the green-triangle-free look of formatted cells.</p>
+<p><strong>Correct treatment and review.</strong> Check <code>COUNT(GL[Amount])</code> against <code>ROWS(GL[Amount])</code> and <code>SUMPRODUCT(--ISTEXT(GL[Amount]))</code>; convert with <code>VALUE</code>, Text to Columns, Paste Special Multiply by 1, or — best for recurring dumps — a Power Query type change. Include a check cell that the dump's control total from the source system equals <code>SUM(GL[Amount])</code>.</p>
+<h3 id="hard-coding-month-dates-in-criteria">Hard-coding month dates in criteria</h3>
+<p><em>Hard-coding month dates in criteria instead of pointing to header cells</em></p>
+<p><strong>The mistake.</strong> Formulas such as <code>SUMIFS(GL[Amount], GL[Date], "&gt;=01-04-2025", GL[Date], "&lt;=30-04-2025")</code> or with <code>DATE(2025,4,1)</code> typed inside every cell.</p>
+<p><strong>Why it happens.</strong> It works for the first month built, and copying a working cell feels safe.</p>
+<p><strong>Correct treatment and review.</strong> Every period bound must derive from a header cell (<code>"&gt;="&amp;C$3</code>, <code>"&lt;="&amp;EOMONTH(C$3,0)</code>), and headers themselves from a single start-date input via EOMONTH/SEQUENCE. Typed date strings are also locale-dependent (dd-mm vs mm-dd). In review, use Ctrl+<code>and Find (Ctrl+F) for</code>"/20<code>or</code>DATE(` inside output formulas; a grid where columns differ only by typed dates is a red flag.</p>
+<h3 id="mixing-signed-amounts-with-separate-drcr-columns">Mixing signed amounts with separate Dr/Cr columns</h3>
+<p><em>Mixing signed amounts and separate Dr/Cr columns, which doubles or nets totals by mistake</em></p>
+<p><strong>The mistake.</strong> Summing a Debit column and a Credit column as if both were positive (doubling movements), or adding a signed Amount column to a Debit column, or netting income (credit) against expenses when a gross figure was needed.</p>
+<p><strong>Why it happens.</strong> Tally and SAP exports give Debit and Credit columns; some sheets add a signed column later; different team members build different parts of the grid.</p>
+<p><strong>Correct treatment and review.</strong> Create one signed <code>Amount = Debit − Credit</code> column in the Table (or Power Query) and use it exclusively; flip signs only in presentation for credit-natured lines. The control is that <code>SUM(GL[Amount])</code> for a complete GL, and <code>SUM(TB[Closing])</code> for a TB, equals zero; a non-zero result immediately exposes a doubled or one-sided column.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-month-end-mis-build-for-a-multi-branch-distributor-l3">Q1. Month-end MIS build for a multi-branch distributor [L3]</h3>
+<p>Shree Ganesh Distributors Ltd (FY ending 31 March) exports a GL Day Book from Tally Prime each month with columns Date, VchType, VchNo, Ledger, Branch (MUM, PUN, NSK), Dept (Sales, Warehouse, Admin), Debit, Credit. A ledger master maps 230 ledgers to account codes (six-digit numeric) and 18 MIS groups. Required: (a) specify the Tables and calculated columns you would create, including a signed amount and a nature classification using IFS with a catch-all; (b) write the grid formula for MIS group × branch × month for April 2025 to March 2026, with month-start headers in row 4 and labels in columns A and B; (c) add check cells for TB nets to zero, unmapped ledgers, duplicate vouchers (keyed correctly for Tally) and postings outside the selected FY; (d) explain how the grid updates when the October Day Book is pasted.</p>
+<h3 id="q2-working-capital-dashboard-from-ar-and-ap-open-items-l2">Q2. Working-capital dashboard from AR and AP open items [L2]</h3>
+<p>Table <code>AR</code> has Customer, InvNo, InvDate, DueDate, Amount, Status; Table <code>AP</code> has Vendor, MSE (Y/N), InvNo, InvDate, Amount, Status. Report date: 31-Mar-2026. Build formulas for each customer row: count of open invoices, open amount, average open invoice, largest open invoice and oldest open due date with its age in days — all guarded against no-match cases. For each MSE vendor row: open amount older than 45 days and the oldest open invoice date. Explain which of your formulas would silently mislead if unguarded and why.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Remember which functions return 0 and which return an error when nothing matches.</p>
+</blockquote>
+<h3 id="q3-debugging-an-inherited-department-cost-report-l2">Q3. Debugging an inherited department cost report [L2]</h3>
+<p>You inherit a department cost report whose FY26 total (₹18.42 crore) is ₹74.6 lakh lower than the expense total in the signed-off TB. On inspection you find: some formulas use <code>SUMIF</code> with ranges ending at row 41,000 while the GL has 44,850 rows; the Marketing row uses <code>=SUM(SUMIFS(…,GL[Ledger],{"*Digital*","*Ads*"}))</code>; account codes in the GL are a mix of numbers and text; and the February column criteria contain <code>"&gt;=01/02/2026"</code>. Explain how each issue affects the total (understatement, overstatement or locale risk), the order in which you would fix them, and the check cells you would add so the report can never again silently disagree with the TB.</p>
+<h3 id="q4-department-or-lists-and-cost-centre-drill-down-l2">Q4. Department OR lists and cost-centre drill-down [L2]</h3>
+<p>The CFO wants a "Commercial" cost line comprising departments Sales, Marketing and Key Accounts, by cost centre (12 cost centres) and month. Design (a) the assumptions-sheet list, (b) a single formula for one grid cell using that list with OR logic, (c) a cross-check of the grid against a PivotTable using GETPIVOTDATA, and (d) a COUNTIFS check that no GL posting for these departments has a blank cost centre. State one condition under which your OR formula would double count.</p>
+<h3 id="q5-timed-interview-exercise-l3">Q5. Timed interview exercise [L3]</h3>
+<p>In 20 minutes, from a 9,000-row GL (Date, Account, Dept, Amount — signed) and a 60-row account master (Account, Nature by code range, FS line), you must produce: a Nature column via IFS; an FS line × month grid for a selected department (dropdown in B1) and FY; a "Top line is income, shown positive" presentation; a row-consistency check; and a single "OK/ERRORS" master check. Describe your build sequence, keyboard shortcuts, the formula in the first grid cell and each check formula, and explain how you would demonstrate to the interviewer that the grid is complete.</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← Week 9: Advanced Financial Formulas, Dynamic Arrays &amp;…</a><a class="next" href="subtopics/S01_Nested_IF_vs_IFS_vs_SWITCH_for_Account_Code.html">Nested IF vs IFS vs SWITCH for Account-Code Classification →</a></nav>
+</main></div></body></html>

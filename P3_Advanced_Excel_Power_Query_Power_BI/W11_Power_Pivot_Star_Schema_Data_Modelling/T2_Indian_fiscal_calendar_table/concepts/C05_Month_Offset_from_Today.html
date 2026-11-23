@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Month Offset from Today · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C05_Month_Offset_from_Today.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T2 · Indian fiscal calendar table</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Indian fiscal calendar table</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Building_the_Date_Dimension_DAX_CALENDAR_vs_Power.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S01_Building_the_Date_Dimension_DAX_CALENDAR_vs_Power.html">Building the Date Dimension: DAX CALENDAR vs Power Query List.Dates</a></li><li><a href="../subtopics/S02_Contiguous_Whole_Fiscal_Year_Date_Range_Covering.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S02_Contiguous_Whole_Fiscal_Year_Date_Range_Covering.html">Contiguous Whole-Fiscal-Year Date Range Covering All Facts</a></li><li><a href="../subtopics/S03_Fiscal_Calendar_Columns_FY_Quarter_Month_Week_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S03_Fiscal_Calendar_Columns_FY_Quarter_Month_Week_and.html">Fiscal Calendar Columns: FY, Quarter, Month, Week and Period Key</a></li><li><a href="../subtopics/S04_Sort_by_Column_Fiscal_Month_Order_Starting_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S04_Sort_by_Column_Fiscal_Month_Order_Starting_in.html">Sort by Column: Fiscal Month Order Starting in April</a></li><li><a href="../subtopics/S05_Month_and_FY_Offset_Columns_for_Dynamic_Period.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S05_Month_and_FY_Offset_Columns_for_Dynamic_Period.html">Month and FY Offset Columns for Dynamic Period Filters</a></li><li><a href="../subtopics/S06_Mark_as_Date_Table_and_Turn_Off_Auto_DateTime.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S06_Mark_as_Date_Table_and_Turn_Off_Auto_DateTime.html">Mark as Date Table and Turn Off Auto Date/Time</a></li><li><a href="../subtopics/S07_Working_Day_Flags_and_Indian_Holidays_for_Close.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S07_Working_Day_Flags_and_Indian_Holidays_for_Close.html">Working-Day Flags and Indian Holidays for Close Metrics</a></li><li><a href="../subtopics/S08_IsClosedPeriod_and_IsYTD_Flags_for_Like_for_Like.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S08_IsClosedPeriod_and_IsYTD_Flags_for_Like_for_Like.html">IsClosedPeriod and IsYTD Flags for Like-for-Like Comparisons</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_DAX_Fiscal_Date_Table_with_an_FYEnd_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C01_DAX_Fiscal_Date_Table_with_an_FYEnd_Column.html">DAX Fiscal Date Table with an FYEnd Column</a></li><li><a href="C02_CALENDARAUTO3_for_Whole_March_Ending_Fiscal_Years.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C02_CALENDARAUTO3_for_Whole_March_Ending_Fiscal_Years.html">CALENDARAUTO(3) for Whole March-Ending Fiscal Years</a></li><li><a href="C03_Fiscal_Month_and_Fiscal_Quarter_Formulas.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C03_Fiscal_Month_and_Fiscal_Quarter_Formulas.html">Fiscal Month and Fiscal Quarter Formulas</a></li><li><a href="C04_Fiscal_Week_Number_Anchored_on_1_April.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C04_Fiscal_Week_Number_Anchored_on_1_April.html">Fiscal Week Number Anchored on 1 April</a></li><li><a href="C05_Month_Offset_from_Today.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C05_Month_Offset_from_Today.html">Month Offset from Today</a></li><li><a href="C06_Power_Query_Date_List_with_ListDates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C06_Power_Query_Date_List_with_ListDates.html">Power Query Date List with List.Dates</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Month Offset from Today</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Month offset: <code>(YEAR([Date]) - YEAR(TODAY())) * 12 + MONTH([Date]) - MONTH(TODAY())</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-DAX">MonthOffset =
+( YEAR ( 'Date'[Date] ) - YEAR ( TODAY () ) ) * 12
+    + MONTH ( 'Date'[Date] ) - MONTH ( TODAY () )
+</code></pre>
+<p>\[
+\text{MonthOffset}(d) = 12 \times (\text{YEAR}(d) - \text{YEAR}(r)) + \text{MONTH}(d) - \text{MONTH}(r)
+\]</p>
+<p>where \(d\) is the row date and \(r\) is the reference date (<code>TODAY()</code> here). Result: 0 for every day in the current
+month, −1 for last month, +1 for next month, −12 for the same month last year.</p>
+<h2 id="explanation">Explanation</h2>
+<p>The formula converts each date to a running month count (\(12 \times \text{year} + \text{month}\)) and subtracts the
+reference month's count. Because it uses absolute months, it is independent of the fiscal year: crossing 31 March
+or 31 December changes nothing. That makes it the backbone of:</p>
+<ul>
+<li><strong>Dynamic report filters:</strong> "last 3 months" = MonthOffset between −2 and 0; "last 12 months" = −11 to 0.</li>
+<li><strong>Calendar-agnostic rolling windows</strong> in measures (s05).</li>
+<li><strong>Default selections:</strong> a calculated column <code>IF([MonthOffset] = 0, "Current month", [MonthYear])</code> allows a
+  slicer to default to "Current month" and roll forward automatically.</li>
+</ul>
+<p>Key caveats:</p>
+<ul>
+<li><strong>Evaluated at refresh.</strong> As a calculated column, TODAY() is evaluated when the model refreshes, not when the
+  report is viewed. A failed refresh leaves the offsets stale.</li>
+<li><strong>UTC in the service.</strong> In the Power BI service, TODAY() returns the UTC date; between 00:00 and 05:30 IST it
+  is still the previous day in UTC. On the 1st of a month that shifts every offset by one.</li>
+<li><strong>Finance reference date.</strong> For MIS, "today" is usually wrong: the current month is not closed. Replace
+  <code>TODAY()</code> with the last closed month-end from a Close parameter table, giving <code>MonthOffsetClosed</code> (s05), so
+  offset 0 = latest closed month.</li>
+<li><strong>FY offset companion:</strong> <code>[FYEnd] - FYEnd(r)</code> gives 0 for the current fiscal year and −1 for last year.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>Refresh on 12-Nov-2025 (reference month count \(12 \times 2025 + 11 = 24{,}311\)):</p>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Month count</th>
+<th>MonthOffset</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>15-Nov-2025</td>
+<td>24,311</td>
+<td>0</td>
+</tr>
+<tr>
+<td>31-Oct-2025</td>
+<td>24,310</td>
+<td>−1</td>
+</tr>
+<tr>
+<td>01-Sep-2025</td>
+<td>24,309</td>
+<td>−2</td>
+</tr>
+<tr>
+<td>18-Aug-2025</td>
+<td>24,308</td>
+<td>−3</td>
+</tr>
+<tr>
+<td>20-Nov-2024</td>
+<td>24,299</td>
+<td>−12</td>
+</tr>
+<tr>
+<td>05-Jan-2026</td>
+<td>24,313</td>
+<td>+2</td>
+</tr>
+</tbody>
+</table>
+<p>A page filter "MonthOffset −3 to −1" shows August to October 2025 (offsets −3, −2, −1), i.e. the last three
+complete months — useful when the current month is open. On 2-Dec-2025, after a refresh, the same
+filter shows September to November.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Subtopic s05 (offset columns and as-of dates) and s08 (IsClosedPeriod).</li>
+<li>Concept c04 (fiscal week) for WeekOffset; c01 (FYEnd) for FYOffset.</li>
+<li>Related item: 4-4-5 and retail calendars use offsets instead of built-in time intelligence.</li>
+<li>Weeks 17–20: rolling forecast windows (next 12 months = offsets +1 to +12).</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-evaluate-offsets-l1">Q1. Evaluate offsets [L1]</h3>
+<p>With TODAY() = 3-Apr-2026, compute MonthOffset for 31-Mar-2026, 1-Apr-2025, 15-Oct-2026 and 28-Feb-2025, and FYOffset
+for the same dates.</p>
+<h3 id="q2-closed-month-version-l2">Q2. Closed-month version [L2]</h3>
+<p>Rewrite the column to use the last closed month-end from a one-row table <code>Close[LastClosedMonthEnd]</code>, and design a
+report filter that always shows the latest closed quarter in fiscal terms.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> A quarter filter needs a QuarterOffset built from FYEnd and FiscalQuarterNo, not months.</p>
+</blockquote>
+<h3 id="q3-service-refresh-issue-l2">Q3. Service refresh issue [L2]</h3>
+<p>A dataset refreshes at 01:00 IST daily. On 1-Jan-2026 users see December 2025 as "Current month" and on 2-Jan-2026
+they see January 2026. Explain the cause precisely and propose two fixes.</p></section>
+<nav class="pager"><a class="prev" href="C04_Fiscal_Week_Number_Anchored_on_1_April.html">← Fiscal Week Number Anchored on 1 April</a><a class="next" href="C06_Power_Query_Date_List_with_ListDates.html">Power Query Date List with List.Dates →</a></nav>
+</main></div></body></html>

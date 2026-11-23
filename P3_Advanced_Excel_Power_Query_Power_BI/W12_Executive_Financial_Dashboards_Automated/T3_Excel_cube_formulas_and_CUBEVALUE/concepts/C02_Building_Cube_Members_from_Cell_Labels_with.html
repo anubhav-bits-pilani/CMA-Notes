@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building Cube Members from Cell Labels with CUBEMEMBER · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C02_Building_Cube_Members_from_Cell_Labels_with.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T3 · Excel cube formulas and CUBEVALUE</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Excel cube formulas and CUBEVALUE</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Connecting_Excel_to_the_Data_Model_or_a_Power_BI.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S01_Connecting_Excel_to_the_Data_Model_or_a_Power_BI.html">Connecting Excel to the Data Model or a Power BI Semantic Model</a></li><li><a href="../subtopics/S02_Converting_PivotTables_to_Cube_Formulas_with_OLAP.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S02_Converting_PivotTables_to_Cube_Formulas_with_OLAP.html">Converting PivotTables to Cube Formulas with OLAP Tools</a></li><li><a href="../subtopics/S03_The_Cube_Function_Family_CUBEMEMBER_to.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S03_The_Cube_Function_Family_CUBEMEMBER_to.html">The Cube Function Family: CUBEMEMBER to CUBEMEMBERPROPERTY</a></li><li><a href="../subtopics/S04_MDX_Unique_Names_for_Members_and_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S04_MDX_Unique_Names_for_Members_and_Measures.html">MDX Unique Names for Members and Measures</a></li><li><a href="../subtopics/S05_Connecting_Slicers_to_Cube_Formulas_by_Slicer_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S05_Connecting_Slicers_to_Cube_Formulas_by_Slicer_Name.html">Connecting Slicers to Cube Formulas by Slicer Name</a></li><li><a href="../subtopics/S06_Free_Form_Board_Pack_Layouts_with_Live_Cube.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S06_Free_Form_Board_Pack_Layouts_with_Live_Cube.html">Free-Form Board-Pack Layouts with Live Cube Numbers</a></li><li><a href="../subtopics/S07_Dynamic_Top_N_Lists_with_a_Sorted_CUBESET_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S07_Dynamic_Top_N_Lists_with_a_Sorted_CUBESET_and.html">Dynamic Top N Lists with a Sorted CUBESET and CUBERANKEDMEMBER</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_CUBEVALUE_with_Literal_Measure_and_Member_Strings.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C01_CUBEVALUE_with_Literal_Measure_and_Member_Strings.html">CUBEVALUE with Literal Measure and Member Strings</a></li><li><a href="C02_Building_Cube_Members_from_Cell_Labels_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C02_Building_Cube_Members_from_Cell_Labels_with.html">Building Cube Members from Cell Labels with CUBEMEMBER</a></li><li><a href="C03_Passing_a_Slicer_Name_as_a_CUBEVALUE_Member.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C03_Passing_a_Slicer_Name_as_a_CUBEVALUE_Member.html">Passing a Slicer Name as a CUBEVALUE Member Argument</a></li><li><a href="C04_Sorted_CUBESET_of_Vendors_sortorder_2_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C04_Sorted_CUBESET_of_Vendors_sortorder_2_for.html">Sorted CUBESET of Vendors: sort_order 2 for Descending</a></li><li><a href="C05_CUBERANKEDMEMBER_with_ROWS_and_CUBESETCOUNT_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C05_CUBERANKEDMEMBER_with_ROWS_and_CUBESETCOUNT_for.html">CUBERANKEDMEMBER with ROWS() and CUBESETCOUNT for Ranked Lists</a></li><li><a href="C06_Connection_Names_for_Power_BI_Semantic_Models_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C06_Connection_Names_for_Power_BI_Semantic_Models_in.html">Connection Names for Power BI Semantic Models in Cube Formulas</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Building Cube Members from Cell Labels with CUBEMEMBER</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>=CUBEMEMBER("ThisWorkbookDataModel", "[CoA].[FSLine].&amp;[" &amp; $A5 &amp; "]")</code> builds members from cell labels</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code>=CUBEMEMBER(&quot;ThisWorkbookDataModel&quot;, &quot;[CoA].[FSLine].&amp;[&quot; &amp; $A5 &amp; &quot;]&quot;)
+</code></pre>
+<ul>
+<li>The second argument is an MDX member expression assembled by text concatenation: the fixed prefix
+  <code>[CoA].[FSLine].&amp;[</code>, the key text from cell A5, and the closing <code>]</code>.</li>
+<li><code>$A5</code> is column-anchored and row-relative, so the formula can be filled down a list of FS line keys in column A
+  and across columns without losing the key column.</li>
+<li>The cell returns a <strong>member</strong>; it displays the member's caption (here, the FS line name), and other formulas
+  (CUBEVALUE, CUBESET) can reference the cell as a member argument.</li>
+</ul>
+<h2 id="explanation">Explanation</h2>
+<p>A board pack's rows are defined by a list of keys. Typing the full unique name in every formula is error-prone;
+assembling it from a cell means:</p>
+<ul>
+<li><strong>One place to change.</strong> If the FS line "Revenue" is renamed in the model to "Revenue from operations", only the
+  key cell changes.</li>
+<li><strong>Copyable formulas.</strong> The same formula serves all 20 P&amp;L lines.</li>
+<li><strong>Readable layout.</strong> Column A holds keys (hidden or grey), column B the Schedule III wording, and CUBEVALUE cells
+  reference the member cell (column-anchored to the member column).</li>
+</ul>
+<p>Practical rules:</p>
+<ul>
+<li><strong>Keys must match exactly</strong> — no trailing spaces, same spelling. Wrap with <code>TRIM()</code> if labels are typed:
+  <code>"[CoA].[FSLine].&amp;[" &amp; TRIM($A5) &amp; "]"</code>.</li>
+<li><strong>Escape brackets.</strong> If keys can contain <code>]</code>, use <code>SUBSTITUTE($A5, "]", "]]")</code> inside the concatenation.</li>
+<li><strong>Captions.</strong> The optional third argument sets a display caption, e.g. <code>B5</code> for Schedule III wording:
+  <code>=CUBEMEMBER(Conn, "[CoA].[FSLine].&amp;[" &amp; $A5 &amp; "]", B5)</code> — wording on screen, key in the formula.</li>
+<li><strong>Validation.</strong> An invalid key returns #N/A in the member cell, and every CUBEVALUE referencing it also returns
+  #N/A — visible, which is good. Count errors in a check cell: <code>=SUMPRODUCT(--ISNA(C5:C40))</code>.</li>
+<li><strong>Dates.</strong> For date members, build the key with <code>TEXT(d,"yyyy-mm-dd") &amp; "T00:00:00"</code> (s04).</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<table>
+<thead>
+<tr>
+<th>A (key, hidden)</th>
+<th>B (Schedule III label)</th>
+<th>C (member)</th>
+<th>D (Actual ₹ Cr)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue</td>
+<td>Revenue from operations</td>
+<td><code>=CUBEMEMBER(Conn,"[CoA].[FSLine].&amp;["&amp;$A5&amp;"]",B5)</code></td>
+<td>1,240.6</td>
+</tr>
+<tr>
+<td>Other income</td>
+<td>Other income</td>
+<td>(same formula, row 6)</td>
+<td>10.4</td>
+</tr>
+<tr>
+<td>Material cost</td>
+<td>Cost of materials consumed</td>
+<td>(row 7)</td>
+<td>678.9</td>
+</tr>
+<tr>
+<td>Employee cost</td>
+<td>Employee benefits expense</td>
+<td>(row 8)</td>
+<td>110.2</td>
+</tr>
+</tbody>
+</table>
+<p>Column D: <code>=CUBEVALUE(Conn, MsrActualCr, Slicer_FY, $C5)</code> filled down. Renaming "Material cost" to "Materials
+consumed" in the model needs one edit in A7, and the check cell immediately shows any key that no longer matches.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Subtopic s04 (MDX grammar) and s06 (board-pack layout with hidden key columns).</li>
+<li>Concept c01 (literal strings) and c03 (slicers as member arguments).</li>
+<li>Week 10 data cleaning ensures keys from Tally/ERP exports are trimmed and consistent.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-row-and-column-members-l1">Q1. Row and column members [L1]</h3>
+<p>Write a CUBEMEMBER formula for the column headers in row 4 (months), building month members from text keys such as
+"2025-10" in row 3 of the <code>'Date'[MonthKey]</code> column, and state the anchoring.</p>
+<h3 id="q2-robust-member-formula-l2">Q2. Robust member formula [L2]</h3>
+<p>Rewrite the concept formula so that it trims the key, escapes closing brackets and shows the Schedule III wording
+from column B as the caption, and add a check cell that counts invalid members in C5:C40.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Combine TRIM, SUBSTITUTE and the caption argument.</p>
+</blockquote>
+<h3 id="q3-keys-vs-labels-l2">Q3. Keys vs labels [L2]</h3>
+<p>A colleague proposes using column B's Schedule III wording directly as the key. Explain two problems this causes
+and why a separate key column is better.</p></section>
+<nav class="pager"><a class="prev" href="C01_CUBEVALUE_with_Literal_Measure_and_Member_Strings.html">← CUBEVALUE with Literal Measure and Member Strings</a><a class="next" href="C03_Passing_a_Slicer_Name_as_a_CUBEVALUE_Member.html">Passing a Slicer Name as a CUBEVALUE Member Argument →</a></nav>
+</main></div></body></html>

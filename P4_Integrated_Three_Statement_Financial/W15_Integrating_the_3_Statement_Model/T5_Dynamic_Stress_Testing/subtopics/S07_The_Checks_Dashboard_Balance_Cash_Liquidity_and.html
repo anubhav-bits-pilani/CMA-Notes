@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Checks Dashboard: Balance, Cash, Liquidity and Convergence · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S07_The_Checks_Dashboard_Balance_Cash_Liquidity_and.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 15</a> <span>›</span> <a href="../index.html">T5 · Dynamic Stress Testing</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Dynamic Stress Testing</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Toggling_Base_Bull_and_Bear_with_a_Zero_Check_in.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S01_Toggling_Base_Bull_and_Bear_with_a_Zero_Check_in.html">Toggling Base, Bull and Bear with a Zero Check in Every Year</a></li><li><a href="S02_Extreme_Input_Stress_Tests_Growth_Margins_Capex.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S02_Extreme_Input_Stress_Tests_Growth_Margins_Capex.html">Extreme Input Stress Tests: Growth, Margins, Capex and WC Days</a></li><li><a href="S03_Revolver_Behaviour_in_a_Recession_Draw_Within.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S03_Revolver_Behaviour_in_a_Recession_Draw_Within.html">Revolver Behaviour in a Recession: Draw Within Limit, Flag Shortfall</a></li><li><a href="S04_Negative_PBT_Loss_Carry_Forward_No_Negative_Tax.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S04_Negative_PBT_Loss_Carry_Forward_No_Negative_Tax.html">Negative PBT: Loss Carry-Forward, No Negative Tax, DTA Recognition</a></li><li><a href="S05_Dividends_Under_Losses_Floored_at_Zero_Capped_by.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S05_Dividends_Under_Losses_Floored_at_Zero_Capped_by.html">Dividends Under Losses: Floored at Zero, Capped by Profits and Cash</a></li><li><a href="S06_Covenant_Flags_Net_DebtEBITDA_DSCR_and_ICR_Breach.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S06_Covenant_Flags_Net_DebtEBITDA_DSCR_and_ICR_Breach.html">Covenant Flags: Net Debt/EBITDA, DSCR and ICR Breach Years</a></li><li><a href="S07_The_Checks_Dashboard_Balance_Cash_Liquidity_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S07_The_Checks_Dashboard_Balance_Cash_Liquidity_and.html">The Checks Dashboard: Balance, Cash, Liquidity and Convergence</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Current_Tax_with_Loss_Set_Off_and_the_Sec_72_Loss.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C01_Current_Tax_with_Loss_Set_Off_and_the_Sec_72_Loss.html">Current Tax with Loss Set-Off and the Sec 72 Loss Corkscrew</a></li><li><a href="../concepts/C02_Dividend_Floor_and_Cash_Cap_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C02_Dividend_Floor_and_Cash_Cap_Formula.html">Dividend Floor and Cash Cap Formula</a></li><li><a href="../concepts/C03_The_Binary_Error_Flag_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C03_The_Binary_Error_Flag_Formula.html">The Binary Error Flag Formula</a></li><li><a href="../concepts/C04_Goal_Seek_and_Data_Tables_to_Find_Breaking_Points.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C04_Goal_Seek_and_Data_Tables_to_Find_Breaking_Points.html">Goal Seek and Data Tables to Find Breaking Points</a></li><li><a href="../concepts/C05_Scenario_Invariance_A_Linked_Model_Balances_for.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C05_Scenario_Invariance_A_Linked_Model_Balances_for.html">Scenario Invariance: A Linked Model Balances for Any Input</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>The Checks Dashboard: Balance, Cash, Liquidity and Convergence</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Checks dashboard: BS check, cash check, negative cash, revolver limit, circularity convergence</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A model with 15 tabs and 5 scenarios cannot be validated by scrolling. The checks dashboard is one block, usually at the top of a dedicated Checks sheet and summarised on the Cover, that tells any user at a glance whether the model is valid <strong>right now</strong>, for the live scenario and inputs. It lists every integrity test, shows the result per year, and rolls everything up into a single master flag. Reviewers look at it first. Users of a forecast (CFO, lenders, investment committee) are entitled to assume a model is wrong if it shows a red master flag. In the Week 15 project the dashboard is also the evidence for the "Check Row = 0.00 in all years and scenarios" requirement. In FP&amp;A, where models are re-run monthly by different people, it is the control that stops a broken forecast reaching the board pack.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-five-core-checks">The five core checks</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Check</th>
+<th>Formula per year</th>
+<th>Pass condition</th>
+<th>Catches</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Balance check</td>
+<td><code>=ROUND(Total_Assets - Total_Equity - Total_Liabilities, 3)</code></td>
+<td>= 0</td>
+<td>Any linking error</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Cash check</td>
+<td><code>=CFS_Close_Cash - BS_Cash</code></td>
+<td>ABS ≤ 0.001</td>
+<td>BS cash not linked to CFS, plugs</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Negative cash</td>
+<td><code>=--(BS_Cash &lt; 0)</code> (or <code>&lt; Min_Cash</code> as a warning)</td>
+<td>0</td>
+<td>Unfunded deficits</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Revolver limit</td>
+<td><code>=--(Rev_Close &gt; Rev_Limit + 0.001)</code></td>
+<td>0</td>
+<td>Unbounded revolver</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Circularity convergence</td>
+<td><code>=ABS(Interest_Used - Interest_Calc)</code></td>
+<td>≤ 0.001</td>
+<td>Unconverged or stale iteration</td>
+</tr>
+</tbody>
+</table>
+<h3 id="circularity-convergence-explained">Circularity convergence explained</h3>
+<p>With iterative calculation, Excel stops after the maximum number of iterations or when the change between iterations is below the maximum change setting. It does not tell you which happened. A convergence check recomputes interest outside the loop, from the final balances, and compares it with the interest used in the P&amp;L:</p>
+<pre><code class="language-excel">Interest_Calc = AVERAGE(Debt_Open, Debt_Close) * Rate * Circ_Switch + Debt_Open * Rate * (1 - Circ_Switch)
+Conv_Check    = ABS(PL_Interest - Interest_Calc)
+</code></pre>
+<p>If the model uses a copy-paste macro instead of iteration, <code>PL_Interest</code> is the pasted value and the check shows whether the macro has been run since the last input change. That is very useful, because stale pasted interest is a common silent error. Also add a check that <code>Circ_Switch = 1</code> in the delivered state, if the model is meant to be delivered with circularity on.</p>
+<h3 id="additional-checks-worth-adding">Additional checks worth adding</h3>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Formula idea</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Opening cash link</td>
+<td><code>=CFS_Open_Cash - BS_Cash_PY</code></td>
+<td>Cash roll-forward integrity</td>
+</tr>
+<tr>
+<td>Historical balance</td>
+<td>Check row on actual columns</td>
+<td>Input errors (Topic 4 s01)</td>
+</tr>
+<tr>
+<td>Negative current tax</td>
+<td><code>=--(Current_Tax &lt; 0)</code></td>
+<td>Implicit refunds (s04)</td>
+</tr>
+<tr>
+<td>Negative dividends</td>
+<td><code>=--(Dividends &lt; 0)</code></td>
+<td>Payout under losses (s05)</td>
+</tr>
+<tr>
+<td>Dividends &gt; free cash</td>
+<td><code>=--(Dividends &gt; Cash_Avail_Div + 0.001)</code></td>
+<td>Distribution capacity</td>
+</tr>
+<tr>
+<td>Negative NBV / inventory / receivables</td>
+<td><code>=--(MIN(NBV, Inventory, Receivables) &lt; 0)</code></td>
+<td>Extreme input robustness (s02)</td>
+</tr>
+<tr>
+<td>Loss pool non-negative</td>
+<td><code>=--(Loss_BF_Close &lt; -0.001)</code></td>
+<td>Over-utilisation of losses</td>
+</tr>
+<tr>
+<td>Covenant breaches</td>
+<td>Count of flags (s06)</td>
+<td>Information, not integrity</td>
+</tr>
+<tr>
+<td>Scenario label match</td>
+<td><code>=Cover_Label = INDEX(Scen_Names, Scen_Switch)</code></td>
+<td>Presentation</td>
+</tr>
+<tr>
+<td>Stress mode off</td>
+<td><code>=--(Stress_On = 1)</code></td>
+<td>Prevents delivery in stress mode</td>
+</tr>
+<tr>
+<td>Reconciliation block total</td>
+<td>ΔBS vs CFS block total = BS check</td>
+<td>Block completeness (Topic 4 s04)</td>
+</tr>
+</tbody>
+</table>
+<p>Separate <strong>integrity errors</strong> (the model is wrong: checks 1, 2, 5, negative tax, negative dividends, opening cash link) from <strong>business warnings</strong> (the model is right, but the company is in trouble: negative cash, revolver limit, covenant breaches, dividends above free cash). Both matter, but they mean different things. A Bear case with a covenant breach is a valid result. A Bear case with a BS check of 4.2 is an invalid model.</p>
+<h3 id="master-flag-and-layout">Master flag and layout</h3>
+<p>A compact layout on the Checks sheet:</p>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>FY26E</th>
+<th>FY27E</th>
+<th>FY28E</th>
+<th>FY29E</th>
+<th>FY30E</th>
+<th>Errors</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BS check</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>Cash check</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>Negative cash</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>WARNING</td>
+</tr>
+<tr>
+<td>Revolver &gt; limit</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>Convergence</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0</td>
+<td>OK</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-excel">Errors (row)    = SUMPRODUCT(--(ABS(Check_Row) &gt; Tol))
+Status (row)    = IF(Errors = 0, &quot;OK&quot;, IF(Is_Integrity, &quot;ERROR&quot;, &quot;WARNING&quot;))
+Total_Integrity = SUM(Integrity_Error_Counts)
+Total_Warnings  = SUM(Warning_Counts)
+Master_Flag     = IF(Total_Integrity &gt; 0, &quot;MODEL ERROR&quot;, IF(Total_Warnings &gt; 0, &quot;OK – WARNINGS&quot;, &quot;OK&quot;))
+</code></pre>
+<p>Link <code>Master_Flag</code> to the Cover, the top of every output sheet and the dashboard header. Conditional-format it red/amber/green. Some modellers also place a tiny master-check cell in the frozen header row of every sheet, so it is always visible.</p>
+<h3 id="tolerance">Tolerance</h3>
+<p>Use 0.001 in model units (₹ crore, so 0.001 = ₹10,000). That is tight enough to catch real errors and loose enough to avoid floating-point noise. Never use a tolerance like 1.0 or 0.5. It hides genuine omissions (Topic 4 pitfall on small differences).</p>
+<h3 id="illustration">Illustration</h3>
+<p>Kosi Agro Ltd, Bear case. The dashboard shows Total_Integrity = 0 and Total_Warnings = 3: negative cash in FY28E, revolver at limit in FY28E–FY29E, DSCR breach in FY28E. Master flag: "OK – WARNINGS". The model is valid, and the business needs a funding plan. If instead the convergence check showed 0.84 in FY28E, the model is invalid for that scenario: iteration did not converge because cash is deeply negative and interest on average negative cash is unstable. Fix the revolver/overdraft logic before presenting.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Checks that reference the checks.</strong> Do not let the master flag feed back into any calculation (for example, a dividend lock-up based on the master flag). That creates circularity and hides errors.</li>
+<li><strong>Too many checks.</strong> Fifty checks no one reads are as bad as none. Keep integrity checks complete, and keep warnings to the decision-relevant few.</li>
+<li><strong>Data tables and the dashboard.</strong> The live dashboard reflects only the live scenario. The scenario check table (s01) covers the others. Show both on the Checks sheet.</li>
+<li><strong>Rounding the check row.</strong> <code>ROUND(…, 3)</code> on the check is fine. Rounding the underlying statements is not, because it creates artificial differences.</li>
+<li><strong>Hiding checks.</strong> Never group-collapse or hide a failing check row in a delivered model. Peer reviewers treat hidden failing checks as a serious integrity issue.</li>
+<li><strong>Macro-run models.</strong> Add a "last run" timestamp and a check that inputs have not changed since (a hash or sum of inputs compared with the value stored at the last run).</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>The dashboard must include at least five checks: BS check, cash check, negative cash, revolver limit and circularity convergence, each by year.</li>
+<li>Separate integrity errors (the model is wrong) from business warnings (the company is stressed). The master flag should show both.</li>
+<li>The convergence check compares interest used with interest recomputed from final balances. It also catches stale pasted interest in macro-based models.</li>
+<li>Use a tolerance of 0.001 and link the master flag to the Cover and every output sheet.</li>
+<li>The live dashboard covers the current scenario. Pair it with the scenario check table for all cases.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-build-the-core-checks-l1">Q1. Build the core checks [L1]</h3>
+<p>Write the formulas for the five core checks for FY27E using named ranges of your choice. Then write a master flag formula that returns "MODEL ERROR", "OK – WARNINGS" or "OK". Explain which checks are integrity checks and which are warnings.</p>
+<h3 id="q2-convergence-failure-l2">Q2. Convergence failure [L2]</h3>
+<p>Iterative calculation is on (100 iterations, maximum change 0.001). In a Bear case, the FY28E P&amp;L interest is ₹46.82 crore, while interest recomputed from final average balances is ₹47.66 crore. The BS check is 0.000. (a) Explain how the BS can balance while the convergence check fails. (b) List two likely causes. (c) State what you would do before presenting the Bear case.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider what Excel does when it reaches the maximum number of iterations.</p>
+</blockquote>
+<h3 id="q3-dashboard-design-for-an-fpa-team-l3">Q3. Dashboard design for an FP&amp;A team [L3]</h3>
+<p>Design a checks dashboard for a monthly rolling-forecast model used by five FP&amp;A analysts across three business units of an Indian FMCG company. Specify (a) integrity checks and warnings, (b) how results roll up to a single status visible on every sheet, (c) the controls that ensure the model cannot be distributed with a failing check, and (d) how you would log check results each month for audit trail purposes.</p>
+<h3 id="q4-reviewers-first-five-minutes-l2">Q4. Reviewer's first five minutes [L2]</h3>
+<p>You receive a 5-year integrated model for review with a checks dashboard. Describe what you would do in the first five minutes to test whether the dashboard itself is trustworthy, covering at least four specific tests.</p></section>
+<nav class="pager"><a class="prev" href="S06_Covenant_Flags_Net_DebtEBITDA_DSCR_and_ICR_Breach.html">← Covenant Flags: Net Debt/EBITDA, DSCR and ICR Breach Years</a><a class="next" href="../concepts/C01_Current_Tax_with_Loss_Set_Off_and_the_Sec_72_Loss.html">Current Tax with Loss Set-Off and the Sec 72 Loss Corkscrew →</a></nav>
+</main></div></body></html>

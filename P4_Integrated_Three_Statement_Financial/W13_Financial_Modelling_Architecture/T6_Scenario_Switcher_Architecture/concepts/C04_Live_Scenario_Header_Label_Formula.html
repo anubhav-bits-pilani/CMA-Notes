@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Scenario Header Label Formula · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C04_Live_Scenario_Header_Label_Formula.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T6 · Scenario Switcher Architecture</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · Scenario Switcher Architecture</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Single_Scenario_Selector_Cell_with_Data_Validation.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S01_Single_Scenario_Selector_Cell_with_Data_Validation.html">Single Scenario Selector Cell with Data-Validation Dropdown</a></li><li><a href="../subtopics/S02_Scenario_Driver_Blocks_Base_Bull_Bear_Rows_and_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S02_Scenario_Driver_Blocks_Base_Bull_Bear_Rows_and_the.html">Scenario Driver Blocks: Base, Bull, Bear Rows and the Live Row</a></li><li><a href="../subtopics/S03_Scenario_Selection_Functions_CHOOSE_INDEX_XLOOKUP.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S03_Scenario_Selection_Functions_CHOOSE_INDEX_XLOOKUP.html">Scenario Selection Functions: CHOOSE, INDEX, XLOOKUP, SWITCH</a></li><li><a href="../subtopics/S04_Which_Drivers_to_Flex_Volume_Price_Stores_Margin.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S04_Which_Drivers_to_Flex_Volume_Price_Stores_Margin.html">Which Drivers to Flex: Volume, Price, Stores, Margin, Wages, Capex, NWC</a></li><li><a href="../subtopics/S05_Coherent_Scenario_Narratives_vs_Single_Variable.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S05_Coherent_Scenario_Narratives_vs_Single_Variable.html">Coherent Scenario Narratives vs Single-Variable Tweaks</a></li><li><a href="../subtopics/S06_Capturing_Scenario_Outputs_Data_Tables_vs_Pasted.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S06_Capturing_Scenario_Outputs_Data_Tables_vs_Pasted.html">Capturing Scenario Outputs: Data Tables vs Pasted Static Values</a></li><li><a href="../subtopics/S07_Scenario_Labelling_on_Outputs_and_Documented_Case.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S07_Scenario_Labelling_on_Outputs_and_Documented_Case.html">Scenario Labelling on Outputs and Documented Case Rationale</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_The_Live_Row_CHOOSE_or_INDEX_on_the_Scenario_Code.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C01_The_Live_Row_CHOOSE_or_INDEX_on_the_Scenario_Code.html">The Live Row: CHOOSE or INDEX on the Scenario Code</a></li><li><a href="C02_One_Switch_Only_No_Scenario_Logic_Outside_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C02_One_Switch_Only_No_Scenario_Logic_Outside_the.html">One Switch Only: No Scenario Logic Outside the Driver Block</a></li><li><a href="C03_Scenario_Summary_via_a_One_Variable_Data_Table_on.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C03_Scenario_Summary_via_a_One_Variable_Data_Table_on.html">Scenario Summary via a One-Variable Data Table on the Switch</a></li><li><a href="C04_Live_Scenario_Header_Label_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C04_Live_Scenario_Header_Label_Formula.html">Live Scenario Header Label Formula</a></li><li><a href="C05_Internal_Consistency_of_Scenarios_Growth_Needs.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C05_Internal_Consistency_of_Scenarios_Growth_Needs.html">Internal Consistency of Scenarios: Growth Needs Capex, Stress Needs Funding</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Live Scenario Header Label Formula</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Header label: <code>="Scenario: "&amp;INDEX(Scenario_Names,Scenario)</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>Every output sheet displays the active scenario through a formula:</p>
+<pre><code>=&quot;Scenario: &quot;&amp;INDEX(Scenario_Names,Scenario)
+</code></pre>
+<p>where <code>Scenario_Names</code> is a named one-dimensional range listing the case names in code order (Base, Bull, Bear) and
+<code>Scenario</code> is the named selector cell holding the active code. The <code>&amp;</code> operator concatenates the fixed text with the
+name returned by <code>INDEX</code>, so the header always matches the case actually running.</p>
+<h2 id="explanation">Explanation</h2>
+<p>Labels are controls, not decoration. A typed label ("Base case") is a hardcode that becomes false the moment the switch
+moves; a formula label cannot disagree with the model. The INDEX form is preferred because:</p>
+<ul>
+<li>It reads the same list used by the dropdown (s01), so adding or renaming a case updates every header.</li>
+<li>It is non-volatile and transparent — Trace Precedents shows the name list and the selector.</li>
+<li>It fails visibly: an invalid code returns #REF!, which is itself a warning on the page.</li>
+</ul>
+<p>Common extensions:</p>
+<pre><code>=&quot;Scenario: &quot;&amp;INDEX(Scenario_Names,Scenario)&amp;&quot; | &quot;&amp;Company&amp;&quot; (&quot;&amp;Basis&amp;&quot;) | &quot;&amp;Units&amp;&quot; | v&quot;&amp;Model_Version
+=IF(Scenario=1,&quot;&quot;,&quot;NON-BASE CASE ACTIVE — &quot;)&amp;&quot;Scenario: &quot;&amp;INDEX(Scenario_Names,Scenario)
+</code></pre>
+<p>The second prefixes a warning when a non-Base case is active. Pair it with conditional formatting (e.g., amber fill
+when <code>Scenario&lt;&gt;1</code>) for visibility.</p>
+<p>Placement conventions: the same cell on every output sheet (e.g., B2), inside the print area and in rows repeated at
+the top of printed pages; chart titles linked to the header cell so charts carry the label when pasted into decks.
+Calculation sheets may also carry the header — it is cheap and helps reviewers — but output sheets must.</p>
+<p>Alternatives: <code>CHOOSE(Scenario,"Base","Bull","Bear")</code> works but duplicates the names inside every formula — renaming a
+case means editing every header. XLOOKUP on a code/name table is fine in Microsoft 365. Avoid TEXT-based tricks or
+INDIRECT.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Scenario list on Inputs!B5:B7 named <code>Scenario_Names</code> = {Base; Bull; Bear}; <code>Scenario</code> = Cover!E6 = 3.</p>
+<table>
+<thead>
+<tr>
+<th>Sheet</th>
+<th>Header cell B2 formula</th>
+<th>Displays</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Exec Summary</td>
+<td><code>="Scenario: "&amp;INDEX(Scenario_Names,Scenario)</code></td>
+<td>Scenario: Bear</td>
+</tr>
+<tr>
+<td>DCF</td>
+<td><code>=IF(Scenario=1,"","NON-BASE CASE ACTIVE — ")&amp;"Scenario: "&amp;INDEX(Scenario_Names,Scenario)</code></td>
+<td>NON-BASE CASE ACTIVE — Scenario: Bear</td>
+</tr>
+<tr>
+<td>P&amp;L</td>
+<td><code>="Trent Ltd (Consolidated) / ₹ crore / Scenario: "&amp;INDEX(Scenario_Names,Scenario)</code></td>
+<td>Trent Ltd (Consolidated) / ₹ crore / Scenario: Bear</td>
+</tr>
+</tbody>
+</table>
+<p>Switching <code>Scenario</code> to 1 changes all three instantly, and the DCF warning disappears.</p>
+<h2 id="connections">Connections</h2>
+<p>The labelling mechanism of s07, using the name list created with the selector in s01. It supports the topic pitfall
+on files circulated with Bull/Bear active, the Cover conventions from w13 t1 s05 (company, basis, units, version) and
+the ICAEW Code principle of designing for the end user. In Power BI, the equivalent is a card showing the selected value
+of a scenario slicer.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-write-the-header-l1">Q1. Write the header [L1]</h3>
+<p>Write a header formula that displays "Pidilite Industries (Consolidated) | ₹ crore | Scenario: Bull | v2.3" using named
+ranges for every variable element.</p>
+<h3 id="q2-why-not-type-it-l1">Q2. Why not type it? [L1]</h3>
+<p>Explain why a typed header is a control failure, with an example of how it leads to a misreported valuation.</p>
+<h3 id="q3-renaming-a-case-l2">Q3. Renaming a case [L2]</h3>
+<p>The team renames "Bear" to "Downside — demand slowdown". Compare the work required and the error risk under an INDEX-based
+header versus a CHOOSE-based header with the names typed inside each formula.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Count the places where the name text lives under each design.</p>
+</blockquote></section>
+<nav class="pager"><a class="prev" href="C03_Scenario_Summary_via_a_One_Variable_Data_Table_on.html">← Scenario Summary via a One-Variable Data Table on the Switch</a><a class="next" href="C05_Internal_Consistency_of_Scenarios_Growth_Needs.html">Internal Consistency of Scenarios: Growth Needs Capex,… →</a></nav>
+</main></div></body></html>

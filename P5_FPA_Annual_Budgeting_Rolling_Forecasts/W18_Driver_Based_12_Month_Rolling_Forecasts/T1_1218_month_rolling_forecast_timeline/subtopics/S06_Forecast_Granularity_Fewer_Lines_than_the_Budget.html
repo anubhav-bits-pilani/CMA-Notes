@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forecast Granularity: Fewer Lines than the Budget · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S06_Forecast_Granularity_Fewer_Lines_than_the_Budget.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 5</a> <span>›</span> <a href="../../index.html">Week 18</a> <span>›</span> <a href="../index.html">T1 · 12/18-month rolling forecast timeline…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · 12/18-month rolling forecast timeline mechanics</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Rolling_Horizon_Design_12_Month_18_Month_and_5.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S01_Rolling_Horizon_Design_12_Month_18_Month_and_5.html">Rolling Horizon Design: 12-Month, 18-Month and 5-Quarter Windows</a></li><li><a href="S02_Reforecast_Cadence_and_Decoupling_from_the_AOP.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S02_Reforecast_Cadence_and_Decoupling_from_the_AOP.html">Reforecast Cadence and Decoupling from the AOP</a></li><li><a href="S03_Dynamic_Timeline_Headers_Driven_by_a_Single_Cutoff.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S03_Dynamic_Timeline_Headers_Driven_by_a_Single_Cutoff.html">Dynamic Timeline Headers Driven by a Single Cutoff Date</a></li><li><a href="S04_ActualForecast_Flags_and_Per_Column_Data_Source.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S04_ActualForecast_Flags_and_Per_Column_Data_Source.html">Actual/Forecast Flags and Per-Column Data Source Switching</a></li><li><a href="S05_Pulling_Actuals_from_a_Long_Format_Database_with.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S05_Pulling_Actuals_from_a_Long_Format_Database_with.html">Pulling Actuals from a Long-Format Database with SUMIFS</a></li><li><a href="S06_Forecast_Granularity_Fewer_Lines_than_the_Budget.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S06_Forecast_Granularity_Fewer_Lines_than_the_Budget.html">Forecast Granularity: Fewer Lines than the Budget</a></li><li><a href="S07_EPM_Support_for_Rolling_Forecasts_Anaplan_Adaptive.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S07_EPM_Support_for_Rolling_Forecasts_Anaplan_Adaptive.html">EPM Support for Rolling Forecasts: Anaplan, Adaptive and EPBCS</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_First_Forecast_Month_and_SEQUENCE_Driven_Month_End.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C01_First_Forecast_Month_and_SEQUENCE_Driven_Month_End.html">First Forecast Month and SEQUENCE-Driven Month-End Headers</a></li><li><a href="../concepts/C02_Non_Dynamic_Array_Header_Formula_Using_a_COLUMN.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C02_Non_Dynamic_Array_Header_Formula_Using_a_COLUMN.html">Non-Dynamic-Array Header Formula Using a COLUMN Offset</a></li><li><a href="../concepts/C03_Actual_Flag_and_the_IF_SUMIFS_Value_Switch.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C03_Actual_Flag_and_the_IF_SUMIFS_Value_Switch.html">Actual Flag and the IF-SUMIFS Value Switch</a></li><li><a href="../concepts/C04_Constant_Length_Rolling_Horizon.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C04_Constant_Length_Rolling_Horizon.html">Constant-Length Rolling Horizon</a></li><li><a href="../concepts/C05_Prefer_INDEXXLOOKUP_over_Volatile_OFFSETINDIRECT.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C05_Prefer_INDEXXLOOKUP_over_Volatile_OFFSETINDIRECT.html">Prefer INDEX/XLOOKUP over Volatile OFFSET/INDIRECT</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Forecast Granularity: Fewer Lines than the Budget</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Granularity: forecast fewer lines (key drivers, material accounts) than the budget</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>The single biggest reason rolling forecasts fail in practice is that teams try to reforecast the AOP at AOP detail every month. The AOP may legitimately be built at cost-centre × GL level because it is a resource-allocation and accountability document. A forecast is an expectation used for decisions; its value comes from speed, honesty and attention to what moves the result. Choosing the right granularity — which lines are forecast explicitly from drivers, which are forecast by simple rules, and which are not forecast at all below a reporting line — determines whether a 4-working-day cycle is achievable.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-principle">The principle</h3>
+<p>Forecast at the <strong>lowest level at which a decision is made or a driver is observable</strong>, and no lower. Typical outcome for a mid-sized Indian company:</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>AOP granularity</th>
+<th>Rolling forecast granularity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue</td>
+<td>SKU × customer × month</td>
+<td>Category/channel × month from volume and price drivers</td>
+</tr>
+<tr>
+<td>COGS</td>
+<td>BOM-level standard costs</td>
+<td>Gross margin % by category, adjusted for commodity indices</td>
+</tr>
+<tr>
+<td>Employee cost</td>
+<td>Employee-level CTC</td>
+<td>Headcount × average CTC by function; increments as a step</td>
+</tr>
+<tr>
+<td>Marketing</td>
+<td>Campaign-level</td>
+<td>Total by brand as % of revenue or fixed plan</td>
+</tr>
+<tr>
+<td>Other opex</td>
+<td>300 GL × 40 cost centres</td>
+<td>10–15 reporting lines, run-rate with known step changes</td>
+</tr>
+<tr>
+<td>Depreciation</td>
+<td>Asset-register based</td>
+<td>Run-rate plus capex additions × average rate</td>
+</tr>
+<tr>
+<td>Finance cost</td>
+<td>Facility-level</td>
+<td>Average debt × average rate</td>
+</tr>
+<tr>
+<td>Tax</td>
+<td>Computed</td>
+<td>Effective tax rate (e.g. 25.17% under Sec 115BAA) applied to PBT</td>
+</tr>
+</tbody>
+</table>
+<h3 id="pareto-selection">Pareto selection</h3>
+<p>Rank accounts by their contribution to <em>variance</em> (not just to size) over the last 12–24 months. Usually 15–25 lines explain about 80% of absolute forecast variance. Those lines get driver-based forecasts with named owners; the long tail is forecast by rule:</p>
+<ul>
+<li><strong>Run-rate:</strong> average of last 3 actual months, adjusted for known one-offs.</li>
+<li><strong>Budget ratio:</strong> remaining AOP × YTD actual/YTD AOP ratio (acceptable for stable, immaterial lines only — this is exactly the "budget-plug" if applied to material lines).</li>
+<li><strong>% of revenue:</strong> for semi-variable lines like consumables or packaging.</li>
+<li><strong>Contractual schedule:</strong> rent, AMC fees, lease payments (Ind AS 116 depreciation and interest from the lease schedule).</li>
+</ul>
+<h3 id="rolling-up-actuals-to-forecast-lines">Rolling up actuals to forecast lines</h3>
+<p>Actuals remain at GL detail in the ERP. The mapping table (s05) rolls them up to forecast lines so actual and forecast columns are like-for-like. If a report needs detail below the forecast line (e.g. by cost centre), allocate forecast lines down using YTD actual mix — and label the allocation clearly.</p>
+<h3 id="granularity-by-time">Granularity by time</h3>
+<p>Granularity applies to time too: months 1–6 monthly, months 7–18 quarterly (s01). Monthly phasing of outer quarters uses AOP seasonality weights.</p>
+<h3 id="granularity-and-accuracy">Granularity and accuracy</h3>
+<p>Forecasting at higher aggregation is often <em>more</em> accurate, because independent errors partially offset (portfolio effect) and because aggregate drivers are more stable. The trade-off is diagnostic power: if total opex misses, you need actual detail to explain it. Hence: forecast aggregated, analyse actuals in detail.</p>
+<h3 id="illustration">Illustration</h3>
+<p>A cement company's AOP has 640 P&amp;L lines. Analysis of FY25 forecast variances (₹ crore, absolute):</p>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Lines</th>
+<th>Share of absolute variance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Volume by region (5) and realisation per tonne (5)</td>
+<td>10</td>
+<td>46%</td>
+</tr>
+<tr>
+<td>Power and fuel (pet coke, coal price, kWh/tonne)</td>
+<td>4</td>
+<td>19%</td>
+</tr>
+<tr>
+<td>Freight (rail/road mix, ₹ per tonne-km, lead distance)</td>
+<td>4</td>
+<td>14%</td>
+</tr>
+<tr>
+<td>Raw material, employee cost, packing</td>
+<td>5</td>
+<td>8%</td>
+</tr>
+<tr>
+<td>Remaining 617 lines</td>
+<td>617</td>
+<td>13%</td>
+</tr>
+</tbody>
+</table>
+<p>The redesigned forecast models 23 lines from drivers and the rest as 8 rule-based reporting lines: 31 forecast lines in total, covering 87% of variance explicitly.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Statutory or covenant lines:</strong> some immaterial lines (e.g. CSR spend under Sec 135, at 2% of average net profit of the preceding three years) must be tracked separately because of compliance, even though they are small.</li>
+<li><strong>Lines that are small but volatile:</strong> FX gains/losses or ECL provisions can be small on average but swing sharply; give them their own line with a scenario rather than a run-rate.</li>
+<li><strong>Balance sheet and cash:</strong> for a cash forecast, working-capital days (DSO, DIO, DPO) by major segment replace account-level balance forecasts.</li>
+<li><strong>Political resistance:</strong> cost-centre owners may insist on line-level forecasts to protect budgets. Keep line-level <em>tracking</em> of actuals vs AOP in the MBR; it does not require line-level forecasting.</li>
+<li><strong>EPM templates:</strong> EPM tools make it easy to replicate AOP granularity; resist configuring forecast forms at the same level.</li>
+<li><strong>Revisit annually:</strong> materiality shifts (a new business line, a new commodity exposure) — refresh the Pareto analysis each AOP cycle.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Forecast at the level where decisions are made or drivers are observed, not at AOP detail.</li>
+<li>Use Pareto on historical variance to pick the 15–25 lines that deserve driver-based forecasts.</li>
+<li>Forecast the tail by explicit rules: run-rate, % of revenue, contractual schedules, or (immaterial only) budget ratio.</li>
+<li>Roll actuals up to forecast lines through the mapping table so comparisons are like-for-like.</li>
+<li>Aggregated forecasts are faster and often more accurate; detailed actuals still serve diagnosis.</li>
+<li>Keep compliance-sensitive and volatile small lines separate.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-pareto-analysis-for-line-selection-l2">Q1. Pareto analysis for line selection [L2]</h3>
+<p>From the following FY25 absolute forecast variances (₹ crore) — Revenue Domestic 42, Revenue Export 28, Raw material 31, Power 12, Freight 15, Employee 6, Marketing 9, Repairs 4, Rent 1, Travel 2, IT 2, Other 200 lines combined 18 — rank the lines, identify the set that explains at least 80% of variance, and propose a forecast method for each remaining line.</p>
+<h3 id="q2-rule-choice-for-tail-lines-l2">Q2. Rule choice for tail lines [L2]</h3>
+<p>For each line, choose and justify a forecast rule: (a) office rent under a 9-year lease with 15% escalation every 3 years, (b) printing and stationery, (c) packing material at 3.2% of revenue, (d) bank charges, (e) CSR expenditure, (f) FX gain/loss on USD payables.</p>
+<h3 id="q3-granularity-debate-in-an-interview-l3">Q3. Granularity debate in an interview [L3]</h3>
+<p>A Head of Sales insists the rolling forecast must be at SKU × distributor level (4,500 combinations) because "that's how we manage the business". Construct the argument for a coarser forecast, including the accuracy (portfolio) effect, cycle-time impact, and how SKU-level insight will still be available.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Separate what demand planning needs for supply decisions from what FP&amp;A needs for financial decisions.</p>
+</blockquote>
+<h3 id="q4-allocating-forecast-lines-down-l2">Q4. Allocating forecast lines down [L2]</h3>
+<p>The forecast has "Other opex" of ₹12 crore per month for November–March. The MBR needs it by 6 cost centres. YTD actual (Apr–Oct) other opex by cost centre is: A 18, B 14, C 22, D 9, E 11, F 6 (₹ crore). Describe the allocation, write the Excel formula for one cost centre-month, and state the caveat you would print on the report.</p></section>
+<nav class="pager"><a class="prev" href="S05_Pulling_Actuals_from_a_Long_Format_Database_with.html">← Pulling Actuals from a Long-Format Database with SUMIFS</a><a class="next" href="S07_EPM_Support_for_Rolling_Forecasts_Anaplan_Adaptive.html">EPM Support for Rolling Forecasts: Anaplan, Adaptive and… →</a></nav>
+</main></div></body></html>

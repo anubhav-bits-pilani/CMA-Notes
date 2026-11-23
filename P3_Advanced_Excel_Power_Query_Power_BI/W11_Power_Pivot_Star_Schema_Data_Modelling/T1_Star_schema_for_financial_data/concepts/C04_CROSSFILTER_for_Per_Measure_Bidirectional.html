@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CROSSFILTER for Per-Measure Bidirectional Filtering · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C04_CROSSFILTER_for_Per_Measure_Bidirectional.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T1 · Star schema for financial data</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Star schema for financial data</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Facts_vs_Dimensions_in_a_Financial_Star_Schema.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S01_Facts_vs_Dimensions_in_a_Financial_Star_Schema.html">Facts vs Dimensions in a Financial Star Schema</a></li><li><a href="../subtopics/S02_Defining_Fact_Grain_and_Handling_Mixed_Grain.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S02_Defining_Fact_Grain_and_Handling_Mixed_Grain.html">Defining Fact Grain and Handling Mixed Grain (Budget vs Actual)</a></li><li><a href="../subtopics/S03_Relationship_Properties_Cardinality_Direction.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S03_Relationship_Properties_Cardinality_Direction.html">Relationship Properties: Cardinality, Direction, Active Status</a></li><li><a href="../subtopics/S04_Role_Playing_Dates_via_Inactive_Relationships.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S04_Role_Playing_Dates_via_Inactive_Relationships.html">Role-Playing Dates via Inactive Relationships</a></li><li><a href="../subtopics/S05_CoA_Hierarchy_with_Sort_Order_and_Sign_Factor.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S05_CoA_Hierarchy_with_Sort_Order_and_Sign_Factor.html">CoA Hierarchy with Sort-Order and Sign-Factor Columns</a></li><li><a href="../subtopics/S06_Surrogate_Keys_and_an_Unmapped_Member_for_Missing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S06_Surrogate_Keys_and_an_Unmapped_Member_for_Missing.html">Surrogate Keys and an Unmapped Member for Missing Accounts</a></li><li><a href="../subtopics/S07_Avoiding_Snowflakes_and_Flat_Tables_Diagram_View.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S07_Avoiding_Snowflakes_and_Flat_Tables_Diagram_View.html">Avoiding Snowflakes and Flat Tables; Diagram View vs Model View</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_USERELATIONSHIP_to_Activate_an_Inactive_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C01_USERELATIONSHIP_to_Activate_an_Inactive_Date.html">USERELATIONSHIP to Activate an Inactive Date Relationship</a></li><li><a href="C02_Store_Budget_on_the_First_Day_of_the_Month.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C02_Store_Budget_on_the_First_Day_of_the_Month.html">Store Budget on the First Day of the Month</a></li><li><a href="C03_Virtual_Relationship_with_TREATAS_for_Month_Grain.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C03_Virtual_Relationship_with_TREATAS_for_Month_Grain.html">Virtual Relationship with TREATAS for Month-Grain Budget</a></li><li><a href="C04_CROSSFILTER_for_Per_Measure_Bidirectional.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C04_CROSSFILTER_for_Per_Measure_Bidirectional.html">CROSSFILTER for Per-Measure Bidirectional Filtering</a></li><li><a href="C05_Referential_Integrity_Test_with_EXCEPT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C05_Referential_Integrity_Test_with_EXCEPT.html">Referential Integrity Test with EXCEPT</a></li><li><a href="C06_Hide_Fact_Foreign_Keys_Expose_Attributes_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C06_Hide_Fact_Foreign_Keys_Expose_Attributes_and.html">Hide Fact Foreign Keys; Expose Attributes and Measures</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>CROSSFILTER for Per-Measure Bidirectional Filtering</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>CALCULATE([Actual], CROSSFILTER(GL[AccountKey], CoA[AccountKey], BOTH))</code> sets bidirectional filtering per measure, not in the model</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-DAX">Accounts with Postings =
+CALCULATE (
+    COUNTROWS ( CoA ),
+    CROSSFILTER ( GL[AccountKey], CoA[AccountKey], BOTH )
+)
+</code></pre>
+<p><code>CROSSFILTER(column1, column2, direction)</code> is a CALCULATE modifier that changes the cross-filter direction of an
+<strong>existing</strong> relationship between the two columns for that evaluation only. Direction values:</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BOTH</code></td>
+<td>Filters propagate both ways (fact filters dimension too)</td>
+</tr>
+<tr>
+<td><code>ONEWAY</code></td>
+<td>Standard one-side-to-many-side filtering</td>
+</tr>
+<tr>
+<td><code>ONEWAY_LEFTFILTERSRIGHT</code> / <code>ONEWAY_RIGHTFILTERSLEFT</code></td>
+<td>One-way in the stated column order</td>
+</tr>
+<tr>
+<td><code>NONE</code></td>
+<td>Relationship ignored for this evaluation</td>
+</tr>
+</tbody>
+</table>
+<p>The brief's form <code>CALCULATE([Actual], CROSSFILTER(GL[AccountKey], CoA[AccountKey], BOTH))</code> is syntactically the
+same pattern applied to <code>[Actual]</code>; it matters when <code>[Actual]</code> is evaluated in a context where filters on another
+table reach CoA only via GL.</p>
+<h2 id="explanation">Explanation</h2>
+<p>Model-level bidirectional relationships (s03) cause ambiguity and slower queries across the whole model. CROSSFILTER
+gives the same behaviour <strong>only where needed</strong>, keeping the model a clean single-direction star.</p>
+<p>Typical finance uses:</p>
+<ul>
+<li><strong>Counting dimension members with activity:</strong> number of accounts, cost centres or vendors that posted in the
+  selected period. Without BOTH, the Date filter reaches GL but not CoA, so <code>COUNTROWS(CoA)</code> returns all 650 accounts.</li>
+<li><strong>Dimension-to-dimension filtering through a fact:</strong> "which branches use cost centre X?" — Branch filtered by
+  CostCentre via GL.</li>
+<li><strong>Disabling a relationship (<code>NONE</code>)</strong> for an allocation measure that must ignore cost centre, e.g. total corporate
+  overhead to be allocated by revenue share.</li>
+</ul>
+<p>Rules:</p>
+<ul>
+<li>The relationship must exist (active or inactive); CROSSFILTER does not create one.</li>
+<li>Direction of a many-to-one relationship can be set to BOTH; for one-to-one it is already both.</li>
+<li>Row-level security filters still apply; Microsoft documents restrictions on changing relationship behaviour
+  for tables secured by RLS, so test any CROSSFILTER measure under each role (View as role).</li>
+<li>Prefer it in measures that return dimension counts or lists; for plain <code>[Actual]</code> it usually changes nothing,
+  because filters on CoA already reach GL.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>Model: Date → GL ← CoA, all single direction. FY2025-26 April selected.</p>
+<table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>COUNTROWS(CoA)</code></td>
+<td>650 (Date filter does not reach CoA)</td>
+</tr>
+<tr>
+<td><code>[Accounts with Postings]</code></td>
+<td>412 (Date filters GL; BOTH lets GL filter CoA)</td>
+</tr>
+<tr>
+<td><code>DISTINCTCOUNT(GL[AccountKey])</code></td>
+<td>412 (alternative without CROSSFILTER)</td>
+</tr>
+</tbody>
+</table>
+<p>The alternative in the last row is often simpler and faster; CROSSFILTER becomes necessary when you need CoA
+<strong>attributes</strong> (e.g. count of FS lines with postings: <code>CALCULATE(DISTINCTCOUNT(CoA[FSLine]), CROSSFILTER(...))</code>).</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Subtopic s03 (cross-filter direction) and topic pitfall "Bidirectional relationships everywhere".</li>
+<li>Concept c01: USERELATIONSHIP activates; CROSSFILTER changes direction — both are CALCULATE modifiers.</li>
+<li>Topic 3: CALCULATE modifiers (ALL, REMOVEFILTERS, KEEPFILTERS, USERELATIONSHIP).</li>
+<li>Data-quality pages: counts of accounts or cost centres with activity.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-fs-lines-with-activity-l1">Q1. FS lines with activity [L1]</h3>
+<p>Write a measure returning the number of distinct FS lines that had postings in the selected month, using CROSSFILTER,
+and a second version that avoids CROSSFILTER.</p>
+<h3 id="q2-allocation-with-none-l2">Q2. Allocation with NONE [L2]</h3>
+<p>Corporate overhead is posted to cost centre "HO-CORP". Write a measure that returns total corporate overhead for the
+period regardless of the cost centre on the matrix row, using CROSSFILTER with NONE, and compare it with an
+ALL(CostCentre) approach.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider whether other CostCentre attributes on the row would still filter GL.</p>
+</blockquote>
+<h3 id="q3-review-a-model-change-l3">Q3. Review a model change [L3]</h3>
+<p>A developer sets CoA–GL and CostCentre–GL to Both at model level "to make slicers show only relevant items". The
+model also contains Budget related to CoA and CostCentre. Explain the consequences and redesign the requirement
+using CROSSFILTER and visual-level filters.</p></section>
+<nav class="pager"><a class="prev" href="C03_Virtual_Relationship_with_TREATAS_for_Month_Grain.html">← Virtual Relationship with TREATAS for Month-Grain Budget</a><a class="next" href="C05_Referential_Integrity_Test_with_EXCEPT.html">Referential Integrity Test with EXCEPT →</a></nav>
+</main></div></body></html>

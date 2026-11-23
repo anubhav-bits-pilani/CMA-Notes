@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pivot Column as the Reverse of Unpivot, Including Don&#x27;t Aggregate · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S06_Pivot_Column_as_the_Reverse_of_Unpivot_Including.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T3 · Unpivoting wide budgets and TBs</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Unpivoting wide budgets and TBs</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Wide_Crosstab_vs_Long_Normalised_Data_and_Fact.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S01_Wide_Crosstab_vs_Long_Normalised_Data_and_Fact.html">Wide (Crosstab) vs Long (Normalised) Data and Fact Tables</a></li><li><a href="S02_Unpivot_Other_Columns_vs_Unpivot_Columns_vs_Only.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S02_Unpivot_Other_Columns_vs_Unpivot_Columns_vs_Only.html">Unpivot Other Columns vs Unpivot Columns vs Only Selected</a></li><li><a href="S03_Converting_Month_Header_Text_into_Real_Month_End.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S03_Converting_Month_Header_Text_into_Real_Month_End.html">Converting Month Header Text into Real Month-End Dates</a></li><li><a href="S04_Multi_Row_Headers_Transpose_Fill_Merge_Transpose.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S04_Multi_Row_Headers_Transpose_Fill_Merge_Transpose.html">Multi-Row Headers: Transpose, Fill, Merge, Transpose Back, Unpivot</a></li><li><a href="S05_Unpivoting_TB_Columns_Opening_Debit_Credit_Closing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S05_Unpivoting_TB_Columns_Opening_Debit_Credit_Closing.html">Unpivoting TB Columns (Opening, Debit, Credit, Closing)</a></li><li><a href="S06_Pivot_Column_as_the_Reverse_of_Unpivot_Including.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S06_Pivot_Column_as_the_Reverse_of_Unpivot_Including.html">Pivot Column as the Reverse of Unpivot, Including Don&#x27;t Aggregate</a></li><li><a href="S07_Target_Fact_Schema_Date_Account_Department.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S07_Target_Fact_Schema_Date_Account_Department.html">Target Fact Schema: Date, Account, Department, Scenario, Amount</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_TableUnpivotOtherColumns_with_Fixed_Identifier.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C01_TableUnpivotOtherColumns_with_Fixed_Identifier.html">Table.UnpivotOtherColumns with Fixed Identifier Columns</a></li><li><a href="../concepts/C02_Month_Label_to_Month_End_Date_with_DateFromText.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C02_Month_Label_to_Month_End_Date_with_DateFromText.html">Month Label to Month-End Date with Date.FromText and Format</a></li><li><a href="../concepts/C03_Multi_Row_Header_Recipe_Transpose_Fill_Combine.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C03_Multi_Row_Header_Recipe_Transpose_Fill_Combine.html">Multi-Row Header Recipe: Transpose, Fill, Combine, Unpivot, Split</a></li><li><a href="../concepts/C04_TablePivot_with_a_Dynamic_Value_List_and_ListSum.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C04_TablePivot_with_a_Dynamic_Value_List_and_ListSum.html">Table.Pivot with a Dynamic Value List and List.Sum</a></li><li><a href="../concepts/C05_Adding_a_Typed_Scenario_Column_Before_Appending_to.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C05_Adding_a_Typed_Scenario_Column_Before_Appending_to.html">Adding a Typed Scenario Column Before Appending to Actuals</a></li><li><a href="../concepts/C06_Unpivot_Drops_Null_Cells_Replace_Nulls_with_Zero.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C06_Unpivot_Drops_Null_Cells_Replace_Nulls_with_Zero.html">Unpivot Drops Null Cells: Replace Nulls with Zero When Needed</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Pivot Column as the Reverse of Unpivot, Including Don&#x27;t Aggregate</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Pivot Column as the reverse operation, including the "Don't Aggregate" option</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Unpivot turns columns into rows; <strong>Pivot</strong> turns rows back into columns. Finance pipelines need both: unpivot to store and model, pivot to produce a wide output for a board pack, to rebuild a check table (Opening/Debit/Credit/Closing side by side for a roll-forward test), to spread a "Measure" column into proper columns after loading key-value data, or to compare scenarios side by side (Actual vs Budget columns for variance). The <strong>aggregation choice</strong> in the Pivot dialog decides whether duplicates are summed, counted or treated as an error — and "Don't Aggregate" is the setting most likely to produce surprising errors.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-operation">The operation</h3>
+<p>Select the column whose <strong>values</strong> will become new column headers (the attribute, e.g. Month or Scenario), then Transform → <strong>Pivot Column</strong>, choose the <strong>Values Column</strong> (e.g. Amount) and, under Advanced options, the <strong>Aggregate Value Function</strong>: Sum, Count (All), Count (Not Blank), Minimum, Maximum, Median, Average, or <strong>Don't Aggregate</strong>.</p>
+<p>M generated:</p>
+<pre><code>// With aggregation
+Wide = Table.Pivot(Long, List.Distinct(Long[Scenario]), &quot;Scenario&quot;, &quot;Amount&quot;, List.Sum)
+
+// Don't Aggregate
+Wide = Table.Pivot(Long, List.Distinct(Long[Scenario]), &quot;Scenario&quot;, &quot;Amount&quot;)
+</code></pre>
+<p>Arguments: the table; the <strong>list of values</strong> that become columns (the UI hard-codes this list, e.g. <code>{"Actual", "Budget"}</code>; replace with <code>List.Distinct(t[Col])</code> for refresh safety); the attribute column; the value column; an optional aggregation function.</p>
+<p>All columns other than the attribute and value columns act as <strong>row keys</strong> — every distinct combination of them becomes one output row.</p>
+<h3 id="how-each-aggregation-behaves">How each aggregation behaves</h3>
+<table>
+<thead>
+<tr>
+<th>Aggregation</th>
+<th>Duplicate key rows (same row keys + same attribute)</th>
+<th>Typical use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sum (<code>List.Sum</code>)</td>
+<td>Added</td>
+<td>Budget by month from line-level detail</td>
+</tr>
+<tr>
+<td>Count (<code>List.Count</code>)</td>
+<td>Counted</td>
+<td>Number of vouchers per month per ledger</td>
+</tr>
+<tr>
+<td>Min / Max</td>
+<td>Smallest/largest</td>
+<td>Earliest/latest date per party</td>
+</tr>
+<tr>
+<td><strong>Don't Aggregate</strong></td>
+<td><strong>Error</strong> in the cell: "Expression.Error: There were too many elements in the enumeration to complete the operation."</td>
+<td>Reshaping data that is unique per key (e.g. key-value pairs)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Don't Aggregate</strong> is for genuinely unique data — for example, rebuilding a record per ledger from Measure/Value pairs. If any key has two values, the cell errors (often noticed only at load, or in Excel as blank cells with an error count). That is a feature: it reveals duplicates you did not know about. Sum would silently add them.</p>
+<h3 id="unpivotpivot-round-trip">Unpivot–pivot round trip</h3>
+<p>Unpivot followed by pivot with Sum returns the original wide table only if:</p>
+<ul>
+<li>no duplicate row keys existed (otherwise values are summed),</li>
+<li>nulls dropped by the unpivot are acceptable as nulls in the output,</li>
+<li>the pivot's column list includes all attribute values in the right order,</li>
+<li>extra columns added in between (Scenario, Date conversions) are accounted for as row keys.</li>
+</ul>
+<p>This makes the round trip a useful <strong>losslessness test</strong>: unpivot, pivot back, compare totals per row.</p>
+<h3 id="ordering-the-new-columns">Ordering the new columns</h3>
+<p><code>List.Distinct(t[Month])</code> gives columns in order of first appearance, which may not be chronological. Sort first, or supply an explicit sorted list:</p>
+<pre><code>Months = List.Sort(List.Distinct(t[Month])),          // dates sort chronologically
+Text   = Table.TransformColumns(t, {{&quot;Month&quot;, each Date.ToText(_, [Format=&quot;MMM-yy&quot;, Culture=&quot;en-IN&quot;]), type text}}),
+Wide   = Table.Pivot(Text, List.Transform(Months, each Date.ToText(_, [Format=&quot;MMM-yy&quot;, Culture=&quot;en-IN&quot;])), &quot;Month&quot;, &quot;Amount&quot;, List.Sum)
+</code></pre>
+<p>Pivot column names must be text — convert dates to labels for the pivot.</p>
+<h3 id="pivot-vs-reporting-tools">Pivot vs reporting tools</h3>
+<p>For presentation, a PivotTable on the Data Model or a Power BI matrix does the same job without changing the stored shape. Use <code>Table.Pivot</code> in Power Query when the <strong>output itself</strong> must be a wide table (export to a template, a check query, an input to another system), or when the source arrives as key-value pairs that need spreading into columns.</p>
+<h3 id="illustration-actual-vs-budget-variance-table">Illustration: Actual vs Budget variance table</h3>
+<p>Long fact rows (Date, Account, Scenario, Amount): (30-Apr-25, 610100, Actual, 12,40,000), (30-Apr-25, 610100, Budget, 12,00,000), (30-Apr-25, 620300, Actual, 1,62,000), (30-Apr-25, 620300, Budget, 1,50,000). Pivot Scenario with Sum → columns Actual, Budget; add Variance = Actual − Budget: 610100 → 40,000; 620300 → 12,000. If the actuals came from line-level GL (several rows per account-month), Sum is required; Don't Aggregate would error.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Hard-coded column list</strong>: a new Scenario ("Forecast") or month is ignored by the UI-generated list; use <code>List.Distinct</code> but be aware that column names then vary, which can break downstream steps that reference them by name.</li>
+<li><strong>Null attribute values</strong> cause errors ("cannot convert null to Text" for the column name) — replace nulls with a label such as "(blank)" first.</li>
+<li><strong>Attribute values with characters</strong> like leading spaces create near-duplicate columns ("Budget" vs "Budget "); clean before pivoting.</li>
+<li><strong>Large pivots</strong> (thousands of distinct values) create unwieldy tables; pivot only low-cardinality attributes.</li>
+<li><strong>Pivot does not fold</strong> on most file sources; on SQL sources it can fold to <code>PIVOT</code> in some cases, but expect local evaluation.</li>
+<li><strong>Error cells from Don't Aggregate</strong> — investigate duplicates with Group By (Count Rows) on the row keys plus attribute.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li><code>Table.Pivot</code> is the inverse of unpivot: attribute values become columns, the value column fills them.</li>
+<li>All other columns are row keys; duplicates on keys are aggregated by the chosen function.</li>
+<li>"Don't Aggregate" errors on duplicates — use it to assert uniqueness, use Sum when detail rows must be added.</li>
+<li>Replace the UI's hard-coded value list with a sorted dynamic list, converting dates to text labels.</li>
+<li>Pivot in Power Query for wide outputs and checks; otherwise let PivotTables/matrices present wide.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-choose-the-aggregation-l1">Q1. Choose the aggregation [L1]</h3>
+<p>For each, choose the aggregation and explain: (a) spreading Measure ∈ {Opening, Debit, Credit, Closing} into columns for a TB with one row per ledger per measure; (b) a monthly expense matrix from GL line items; (c) number of invoices per customer per month; (d) last payment date per vendor per quarter.</p>
+<h3 id="q2-diagnose-the-error-l2">Q2. Diagnose the error [L2]</h3>
+<p>A Don't Aggregate pivot of Scenario on a budget fact shows errors in 23 cells: "There were too many elements in the enumeration to complete the operation." Explain what this means and how you would find the offending rows.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Group on the row keys plus the attribute and count rows.</p>
+</blockquote>
+<h3 id="q3-chronological-wide-output-l2">Q3. Chronological wide output [L2]</h3>
+<p>Write M that pivots a long budget (Date as month-end, Account, Department, Amount) into a wide table with months as columns in Apr → Mar order, labelled "Apr-25" style, summing duplicates, and adds an FY Total column.</p>
+<h3 id="q4-round-trip-test-l2">Q4. Round-trip test [L2]</h3>
+<p>Design a check that unpivots a budget template, pivots it back and compares each row's month values and total with the original, and list three reasons the round trip might not reproduce the original exactly.</p>
+<h3 id="q5-variance-table-l3">Q5. Variance table [L3]</h3>
+<p>Build the specification for a Power Query output that shows, per Account and Department, Actual, Budget, Variance and Variance % for a selected month (parameter), from a long fact containing both scenarios at month grain. Address missing budget or actual rows and division by zero.</p></section>
+<nav class="pager"><a class="prev" href="S05_Unpivoting_TB_Columns_Opening_Debit_Credit_Closing.html">← Unpivoting TB Columns (Opening, Debit, Credit, Closing)</a><a class="next" href="S07_Target_Fact_Schema_Date_Account_Department.html">Target Fact Schema: Date, Account, Department, Scenario,… →</a></nav>
+</main></div></body></html>

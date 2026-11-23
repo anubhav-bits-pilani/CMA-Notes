@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free-Form Board-Pack Layouts with Live Cube Numbers · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S06_Free_Form_Board_Pack_Layouts_with_Live_Cube.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T3 · Excel cube formulas and CUBEVALUE</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Excel cube formulas and CUBEVALUE</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Connecting_Excel_to_the_Data_Model_or_a_Power_BI.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S01_Connecting_Excel_to_the_Data_Model_or_a_Power_BI.html">Connecting Excel to the Data Model or a Power BI Semantic Model</a></li><li><a href="S02_Converting_PivotTables_to_Cube_Formulas_with_OLAP.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S02_Converting_PivotTables_to_Cube_Formulas_with_OLAP.html">Converting PivotTables to Cube Formulas with OLAP Tools</a></li><li><a href="S03_The_Cube_Function_Family_CUBEMEMBER_to.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S03_The_Cube_Function_Family_CUBEMEMBER_to.html">The Cube Function Family: CUBEMEMBER to CUBEMEMBERPROPERTY</a></li><li><a href="S04_MDX_Unique_Names_for_Members_and_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S04_MDX_Unique_Names_for_Members_and_Measures.html">MDX Unique Names for Members and Measures</a></li><li><a href="S05_Connecting_Slicers_to_Cube_Formulas_by_Slicer_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S05_Connecting_Slicers_to_Cube_Formulas_by_Slicer_Name.html">Connecting Slicers to Cube Formulas by Slicer Name</a></li><li><a href="S06_Free_Form_Board_Pack_Layouts_with_Live_Cube.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S06_Free_Form_Board_Pack_Layouts_with_Live_Cube.html">Free-Form Board-Pack Layouts with Live Cube Numbers</a></li><li><a href="S07_Dynamic_Top_N_Lists_with_a_Sorted_CUBESET_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S07_Dynamic_Top_N_Lists_with_a_Sorted_CUBESET_and.html">Dynamic Top N Lists with a Sorted CUBESET and CUBERANKEDMEMBER</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_CUBEVALUE_with_Literal_Measure_and_Member_Strings.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C01_CUBEVALUE_with_Literal_Measure_and_Member_Strings.html">CUBEVALUE with Literal Measure and Member Strings</a></li><li><a href="../concepts/C02_Building_Cube_Members_from_Cell_Labels_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C02_Building_Cube_Members_from_Cell_Labels_with.html">Building Cube Members from Cell Labels with CUBEMEMBER</a></li><li><a href="../concepts/C03_Passing_a_Slicer_Name_as_a_CUBEVALUE_Member.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C03_Passing_a_Slicer_Name_as_a_CUBEVALUE_Member.html">Passing a Slicer Name as a CUBEVALUE Member Argument</a></li><li><a href="../concepts/C04_Sorted_CUBESET_of_Vendors_sortorder_2_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C04_Sorted_CUBESET_of_Vendors_sortorder_2_for.html">Sorted CUBESET of Vendors: sort_order 2 for Descending</a></li><li><a href="../concepts/C05_CUBERANKEDMEMBER_with_ROWS_and_CUBESETCOUNT_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C05_CUBERANKEDMEMBER_with_ROWS_and_CUBESETCOUNT_for.html">CUBERANKEDMEMBER with ROWS() and CUBESETCOUNT for Ranked Lists</a></li><li><a href="../concepts/C06_Connection_Names_for_Power_BI_Semantic_Models_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C06_Connection_Names_for_Power_BI_Semantic_Models_in.html">Connection Names for Power BI Semantic Models in Cube Formulas</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Free-Form Board-Pack Layouts with Live Cube Numbers</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Free-form board-pack layouts: Schedule III format, variance columns, commentary next to live numbers</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Board packs in India follow conventions that PivotTables cannot reproduce: Schedule III line order and wording,
+note references, a "Total income" line before expenses, profit before exceptional items, OCI below PAT, blank
+spacer rows, bold subtotals, and a commentary column beside each variance. Cube formulas let you design the sheet
+like a Word document while every number is live from the model. This is how FP&amp;A teams in listed companies produce
+monthly MIS that looks like the published results but refreshes in minutes.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="layout-skeleton">Layout skeleton</h3>
+<p>A board-pack page has four zones:</p>
+<table>
+<thead>
+<tr>
+<th>Zone</th>
+<th>Columns</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Keys (hidden)</td>
+<td>A</td>
+<td>Member keys or unique names per line (e.g. FS line key)</td>
+</tr>
+<tr>
+<td>Labels</td>
+<td>B</td>
+<td>Schedule III wording, note numbers, indentation</td>
+</tr>
+<tr>
+<td>Numbers</td>
+<td>C–H</td>
+<td>Actual, Budget, Var ₹, Var %, PY, YoY % for month and YTD</td>
+</tr>
+<tr>
+<td>Commentary</td>
+<td>I</td>
+<td>Variance explanations tied to the period</td>
+</tr>
+</tbody>
+</table>
+<p>Row 1–3 hold the title (<code>"Statement of Profit and Loss – " &amp; selected FY &amp; " – ₹ crore"</code>), the connection and
+measure header cells (<code>Conn</code>, <code>MsrActual</code>, <code>MsrBudget</code>, <code>MsrPY</code>), and the slicer reference.</p>
+<h3 id="schedule-iii-order-division-ii-pl">Schedule III order (Division II, P&amp;L)</h3>
+<p>Rows in the order of the published statement: Revenue from operations; Other income; <strong>Total income</strong>; Cost of
+materials consumed; Purchases of stock-in-trade; Changes in inventories of FG, WIP and stock-in-trade; Employee
+benefits expense; Finance costs; Depreciation and amortisation expense; Other expenses; <strong>Total expenses</strong>;
+<strong>Profit before exceptional items and tax</strong>; Exceptional items; <strong>Profit before tax</strong>; Current tax; Deferred tax;
+<strong>Profit for the period</strong>; Other comprehensive income (items that will not / will be reclassified); <strong>Total
+comprehensive income</strong>. A management pack adds EBITDA and EBITDA % as memo lines below or as a separate KPI block,
+clearly labelled as non-GAAP.</p>
+<p>Each line's number:</p>
+<pre><code>C8:  =CUBEVALUE(Conn, MsrActual, Slicer_FY, Slicer_BU, CUBEMEMBER(Conn, $A8))
+</code></pre>
+<p>where A8 holds <code>[CoA].[FSLine].&amp;[Revenue from operations]</code>. Subtotals use the model's subtotal measures or a
+parent member (e.g. <code>[CoA].[FSGroup].&amp;[Total income]</code>), not Excel SUM, so that a new FS line within the group is
+automatically included. If you do use Excel SUM for presentation, add a check against the parent-member value.</p>
+<h3 id="variance-columns">Variance columns</h3>
+<ul>
+<li><strong>Var ₹</strong> = a model measure <code>[Variance Fav/Adv]</code> (sign-adjusted) fetched by CUBEVALUE, or Excel <code>=C8-D8</code>
+  with a sign column for expense lines. Using the measure keeps one definition across Power BI and Excel.</li>
+<li><strong>Var %</strong> = <code>[Variance Fav/Adv %]</code> measure; suppress when the base is immaterial (<code>IF(ABS(D8)&lt;0.5,"n.m.",…)</code>).</li>
+<li><strong>Conditional formatting</strong> in Excel: red/green font based on the sign of Var ₹, with a ▲/▼ custom format
+  <code>[Color10]▲ 0.0;[Red]▼ 0.0;–</code>.</li>
+<li><strong>Month and YTD</strong> blocks side by side: YTD via a <code>[YTD Actual]</code> measure or a set of months; never by summing
+  month cells.</li>
+</ul>
+<h3 id="commentary-next-to-live-numbers">Commentary next to live numbers</h3>
+<p>Commentary is the analyst's value-add and the part most likely to go stale. Techniques:</p>
+<ol>
+<li><strong>Period-keyed commentary table.</strong> An Excel table <code>tblComments</code> with columns FY, Month, FSLine key, Comment,
+   Author, Date. Column I uses <code>=XLOOKUP(SelFY &amp; "|" &amp; SelMonth &amp; "|" &amp; A8, tblComments[Key], tblComments[Comment], "")</code>
+   so changing the slicer shows that period's comments (or blank). This prevents October's comment showing in
+   November.</li>
+<li><strong>Commentary in the model.</strong> Load the comment table into the model with relationships to Date and CoA, and
+   fetch with CUBEVALUE on a text measure (<code>[Comment] = SELECTEDVALUE(Comments[Text])</code>). Works with Power BI too.</li>
+<li><strong>Materiality triggers.</strong> A helper column flags lines where <code>ABS(Var ₹) &gt; 1 Cr</code> or <code>ABS(Var %) &gt; 5%</code> and no
+   comment exists — a review control ("comment required").</li>
+</ol>
+<h3 id="presentation-details">Presentation details</h3>
+<ul>
+<li>Units: ₹ crore with one decimal; title band states "₹ crore unless stated"; numbers from <code>[... ₹ Cr]</code> measures.</li>
+<li>Indentation via cell indent, not leading spaces (spaces would leak into keys if labels double as keys).</li>
+<li>Print setup: fit to one page wide, repeat title rows, footer with refresh timestamp (a cell fetching
+  <code>[Last Refresh IST]</code> text measure) and "Totals may not add due to rounding".</li>
+<li>Lock and protect formula cells; leave commentary cells unlocked.</li>
+<li>A checks block at the bottom: P&amp;L total vs model, BS check, TB tie-out status from the model's control measures.</li>
+</ul>
+<h3 id="illustration">Illustration</h3>
+<p>October 2025 YTD, ₹ crore (extract):</p>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Actual</th>
+<th>Budget</th>
+<th>Var ₹</th>
+<th>Var %</th>
+<th>Commentary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue from operations</td>
+<td>712.4</td>
+<td>735.2</td>
+<td>(22.8)</td>
+<td>(3.1%)</td>
+<td>Agro volumes delayed by late monsoon; Pharma +6%</td>
+</tr>
+<tr>
+<td>Other income</td>
+<td>5.9</td>
+<td>4.5</td>
+<td>1.4</td>
+<td>31.1%</td>
+<td>Treasury income on surplus funds</td>
+</tr>
+<tr>
+<td>Cost of materials consumed</td>
+<td>389.6</td>
+<td>405.7</td>
+<td>16.1</td>
+<td>4.0%</td>
+<td>Lower volumes; yields improved at Dahej</td>
+</tr>
+<tr>
+<td>Power and fuel (within Other expenses)</td>
+<td>47.1</td>
+<td>42.9</td>
+<td>(4.2)</td>
+<td>(9.8%)</td>
+<td>Grid tariff revision; DG usage in Sept outage</td>
+</tr>
+</tbody>
+</table>
+<p>Every number is a CUBEVALUE; the commentary column is keyed to FY2025-26|Oct|line.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Lines without data</strong> (e.g. Purchases of stock-in-trade = 0) still appear in Schedule III format; CUBEVALUE
+  returns blank — format to show "–".</li>
+<li><strong>Sign presentation.</strong> Schedule III shows expenses as positive numbers; the model's signed measures may store
+  them negative. Use presentation measures with the statement's sign convention.</li>
+<li><strong>Restated PY.</strong> If PY figures are restated, the <code>[PY]</code> measure must read restated data; footnote the
+  restatement.</li>
+<li><strong>Non-GAAP lines.</strong> SEBI and ICAI guidance expects EBITDA definitions to be stated; include the definition in a
+  footnote.</li>
+<li><strong>Commentary ownership.</strong> Comments typed directly into cells next to formulas get overwritten when rows move;
+  the keyed table approach survives layout changes.</li>
+<li><strong>Hard-coded plugs.</strong> Never type a number to "make it agree"; fix the mapping or add a documented adjustment
+  ledger in the source.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Design the sheet in Schedule III order with hidden key columns, labels, live numbers and commentary.</li>
+<li>Fetch subtotals from model measures or parent members, not Excel SUM, or check SUM against them.</li>
+<li>Use model variance measures so Excel and Power BI share sign logic.</li>
+<li>Key commentary by period and line so it changes with the slicer and never goes stale.</li>
+<li>Include a checks block, refresh stamp and rounding note on every printed page.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-lay-out-the-pl-l1">Q1. Lay out the P&amp;L [L1]</h3>
+<p>List the rows (with bold subtotals) of a Schedule III Division II statement of profit and loss for a board pack, and
+add the EBITDA memo lines with their definition footnote.</p>
+<h3 id="q2-commentary-that-follows-the-slicer-l2">Q2. Commentary that follows the slicer [L2]</h3>
+<p>Design <code>tblComments</code> and the formula in the commentary column so that selecting November FY2025-26 shows November's
+comments and blank where none exist; include how you would flag lines with variance above ₹1 crore and no
+comment.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Build one concatenated key from FY, month and the line's member key.</p>
+</blockquote>
+<h3 id="q3-subtotal-choice-l2">Q3. Subtotal choice [L2]</h3>
+<p>"Total expenses" in the pack is <code>=SUM(C12:C18)</code>. In December, a new FS line "Impairment of receivables" is mapped
+to the expenses group. Explain what the pack shows and redesign the subtotal to be robust, with a check.</p>
+<h3 id="q4-build-the-balance-sheet-page-l3">Q4. Build the balance sheet page [L3]</h3>
+<p>Design a Schedule III balance sheet page (as at the selected month-end) using cube formulas: rows, the measures it
+needs (closing balances, not sums), comparison columns (budget, previous year-end), NWC memo lines and the checks
+block.</p></section>
+<nav class="pager"><a class="prev" href="S05_Connecting_Slicers_to_Cube_Formulas_by_Slicer_Name.html">← Connecting Slicers to Cube Formulas by Slicer Name</a><a class="next" href="S07_Dynamic_Top_N_Lists_with_a_Sorted_CUBESET_and.html">Dynamic Top N Lists with a Sorted CUBESET and… →</a></nav>
+</main></div></body></html>

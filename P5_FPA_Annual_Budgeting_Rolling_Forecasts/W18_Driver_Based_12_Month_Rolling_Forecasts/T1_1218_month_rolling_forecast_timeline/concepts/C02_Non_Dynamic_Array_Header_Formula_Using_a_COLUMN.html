@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Non-Dynamic-Array Header Formula Using a COLUMN Offset · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C02_Non_Dynamic_Array_Header_Formula_Using_a_COLUMN.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 5</a> <span>›</span> <a href="../../index.html">Week 18</a> <span>›</span> <a href="../index.html">T1 · 12/18-month rolling forecast timeline…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · 12/18-month rolling forecast timeline mechanics</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Rolling_Horizon_Design_12_Month_18_Month_and_5.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S01_Rolling_Horizon_Design_12_Month_18_Month_and_5.html">Rolling Horizon Design: 12-Month, 18-Month and 5-Quarter Windows</a></li><li><a href="../subtopics/S02_Reforecast_Cadence_and_Decoupling_from_the_AOP.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S02_Reforecast_Cadence_and_Decoupling_from_the_AOP.html">Reforecast Cadence and Decoupling from the AOP</a></li><li><a href="../subtopics/S03_Dynamic_Timeline_Headers_Driven_by_a_Single_Cutoff.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S03_Dynamic_Timeline_Headers_Driven_by_a_Single_Cutoff.html">Dynamic Timeline Headers Driven by a Single Cutoff Date</a></li><li><a href="../subtopics/S04_ActualForecast_Flags_and_Per_Column_Data_Source.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S04_ActualForecast_Flags_and_Per_Column_Data_Source.html">Actual/Forecast Flags and Per-Column Data Source Switching</a></li><li><a href="../subtopics/S05_Pulling_Actuals_from_a_Long_Format_Database_with.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S05_Pulling_Actuals_from_a_Long_Format_Database_with.html">Pulling Actuals from a Long-Format Database with SUMIFS</a></li><li><a href="../subtopics/S06_Forecast_Granularity_Fewer_Lines_than_the_Budget.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S06_Forecast_Granularity_Fewer_Lines_than_the_Budget.html">Forecast Granularity: Fewer Lines than the Budget</a></li><li><a href="../subtopics/S07_EPM_Support_for_Rolling_Forecasts_Anaplan_Adaptive.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S07_EPM_Support_for_Rolling_Forecasts_Anaplan_Adaptive.html">EPM Support for Rolling Forecasts: Anaplan, Adaptive and EPBCS</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_First_Forecast_Month_and_SEQUENCE_Driven_Month_End.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C01_First_Forecast_Month_and_SEQUENCE_Driven_Month_End.html">First Forecast Month and SEQUENCE-Driven Month-End Headers</a></li><li><a href="C02_Non_Dynamic_Array_Header_Formula_Using_a_COLUMN.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C02_Non_Dynamic_Array_Header_Formula_Using_a_COLUMN.html">Non-Dynamic-Array Header Formula Using a COLUMN Offset</a></li><li><a href="C03_Actual_Flag_and_the_IF_SUMIFS_Value_Switch.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C03_Actual_Flag_and_the_IF_SUMIFS_Value_Switch.html">Actual Flag and the IF-SUMIFS Value Switch</a></li><li><a href="C04_Constant_Length_Rolling_Horizon.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C04_Constant_Length_Rolling_Horizon.html">Constant-Length Rolling Horizon</a></li><li><a href="C05_Prefer_INDEXXLOOKUP_over_Volatile_OFFSETINDIRECT.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C05_Prefer_INDEXXLOOKUP_over_Volatile_OFFSETINDIRECT.html">Prefer INDEX/XLOOKUP over Volatile OFFSET/INDIRECT</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Non-Dynamic-Array Header Formula Using a COLUMN Offset</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Non-dynamic-array header: <code>=EOMONTH($B$1,COLUMN()-COLUMN($C$1)+1)</code> copied across</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>Where dynamic arrays are unavailable or undesirable, put the cutoff in <code>$B$1</code> and enter in the first header cell (column C), then copy across:</p>
+<pre><code>=EOMONTH($B$1,COLUMN()-COLUMN($C$1)+1)
+</code></pre>
+<p>For the header in column \( j \):</p>
+<p>\[
+k_j = \text{COLUMN}(j) - \text{COLUMN}(C) + 1, \qquad H_j = \text{EOMONTH}(\text{Cutoff}, k_j)
+\]</p>
+<p>where \( \text{COLUMN}(j) \) is the column number of the cell containing the formula, \( \text{COLUMN}(C) \) is the column number of the anchor (the first header column, here 3), and \( k_j \) is the month offset (1 in column C, 2 in column D, … 12 in column N).</p>
+<h2 id="explanation">Explanation</h2>
+<p><code>COLUMN()</code> with no argument returns the column number of the cell the formula sits in. Subtracting the anchor column (absolute <code>$C$1</code>, so the reference does not move when copied) produces a counter starting at 0 in column C; adding 1 makes the first header the month after the cutoff. Because the cutoff reference <code>$B$1</code> is absolute, each copied cell reads the same cutoff and only the counter changes.</p>
+<p>Why use it:</p>
+<ul>
+<li><strong>Compatibility:</strong> works in every Excel version and in Google Sheets; dynamic arrays from Excel 365 appear as legacy array formulas or errors in Excel 2016/2019.</li>
+<li><strong>Cell-level formulas:</strong> each header is its own formula, which some audit and model-review tools handle better than spill ranges; individual columns can be formatted or grouped independently.</li>
+<li><strong>No spill collisions:</strong> nothing can block a spill.</li>
+</ul>
+<p>Robustness considerations:</p>
+<ul>
+<li>Anchoring with <code>COLUMN($C$1)</code> rather than a hard-coded 3 keeps the formula correct if columns are inserted <em>before</em> column C (both references shift). A literal <code>COLUMN()-2</code> breaks on insertion.</li>
+<li>Inserting a column <em>inside</em> the header range shifts subsequent counters correctly, but the inserted column is blank until the formula is copied into it — check for blanks.</li>
+<li>Prefer a named cutoff (<code>Cutoff</code>) over <code>$B$1</code> for readability; the logic is the same.</li>
+<li>An even more robust alternative chains each header to the previous: <code>D4: =EOMONTH(C4,1)</code>, with <code>C4: =EOMONTH(Cutoff,1)</code>. Chaining tolerates any column position but propagates an error from one cell to all following.</li>
+<li>For vertical timelines, use <code>ROW()-ROW($A$5)+1</code>.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p><code>B1</code> = 30-Sep-2025. Header formulas in C4:N4.</p>
+<table>
+<thead>
+<tr>
+<th>Cell</th>
+<th>Counter <code>COLUMN()-COLUMN($C$1)+1</code></th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C4</td>
+<td>3 − 3 + 1 = 1</td>
+<td>31-Oct-2025</td>
+</tr>
+<tr>
+<td>D4</td>
+<td>4 − 3 + 1 = 2</td>
+<td>30-Nov-2025</td>
+</tr>
+<tr>
+<td>H4</td>
+<td>8 − 3 + 1 = 6</td>
+<td>31-Mar-2026</td>
+</tr>
+<tr>
+<td>N4</td>
+<td>14 − 3 + 1 = 12</td>
+<td>30-Sep-2026</td>
+</tr>
+</tbody>
+</table>
+<p>A user inserts a new column before column C to add a "Description" column. Headers now sit in D4:O4; the anchor <code>$C$1</code> becomes <code>$D$1</code>, counters still start at 1, and all headers remain correct. Had the formula used <code>COLUMN()-2</code>, D4 would now return EOMONTH(Cutoff, 2) = 30-Nov-2025 — every header shifted one month, silently misaligning all <code>SUMIFS</code>.</p>
+<h2 id="connections">Connections</h2>
+<p>This is the legacy twin of c01 and supports s03 (dynamic headers). It ties to c05: <code>COLUMN()</code> is non-volatile, unlike <code>OFFSET</code>/<code>INDIRECT</code>, so this approach keeps recalculation fast. In Phase 4 model-build tests, timeline headers are frequently required in this copy-across form because test environments may run older Excel. The same counter idea underlies period-number rows used in DCF discounting (period \( t \) in \( 1/(1+r)^t \)).</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-counter-arithmetic-l1">Q1. Counter arithmetic [L1]</h3>
+<p>The first header is in cell F6 and the cutoff is named <code>Cutoff</code> = 31-Jan-2026. Write the copy-across header formula, and state the values in F6, K6 and Q6.</p>
+<h3 id="q2-insertion-stress-test-l2">Q2. Insertion stress test [L2]</h3>
+<p>A model uses <code>=EOMONTH($B$1,COLUMN()-3)</code> in C4:N4. A reviewer inserts two columns before C and one column between G and H. Describe what each header now shows and rewrite the formula to be robust to both insertions.</p>
+<h3 id="q3-chained-vs-counter-headers-l2">Q3. Chained vs counter headers [L2]</h3>
+<p>Compare the chained approach (<code>=EOMONTH(C4,1)</code>) with the counter approach for a 60-month model used in a lender case. Discuss error propagation, auditability, flexibility for a quarterly section after month 24, and which you would choose.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Think about what happens when the timeline must switch from monthly to quarterly steps partway along.</p>
+</blockquote></section>
+<nav class="pager"><a class="prev" href="C01_First_Forecast_Month_and_SEQUENCE_Driven_Month_End.html">← First Forecast Month and SEQUENCE-Driven Month-End Headers</a><a class="next" href="C03_Actual_Flag_and_the_IF_SUMIFS_Value_Switch.html">Actual Flag and the IF-SUMIFS Value Switch →</a></nav>
+</main></div></body></html>

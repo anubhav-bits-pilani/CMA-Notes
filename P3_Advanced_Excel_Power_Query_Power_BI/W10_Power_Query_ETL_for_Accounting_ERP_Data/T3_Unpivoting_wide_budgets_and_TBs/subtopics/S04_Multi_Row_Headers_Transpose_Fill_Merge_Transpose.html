@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multi-Row Headers: Transpose, Fill, Merge, Transpose Back, Unpivot · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S04_Multi_Row_Headers_Transpose_Fill_Merge_Transpose.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T3 · Unpivoting wide budgets and TBs</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Unpivoting wide budgets and TBs</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Wide_Crosstab_vs_Long_Normalised_Data_and_Fact.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S01_Wide_Crosstab_vs_Long_Normalised_Data_and_Fact.html">Wide (Crosstab) vs Long (Normalised) Data and Fact Tables</a></li><li><a href="S02_Unpivot_Other_Columns_vs_Unpivot_Columns_vs_Only.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S02_Unpivot_Other_Columns_vs_Unpivot_Columns_vs_Only.html">Unpivot Other Columns vs Unpivot Columns vs Only Selected</a></li><li><a href="S03_Converting_Month_Header_Text_into_Real_Month_End.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S03_Converting_Month_Header_Text_into_Real_Month_End.html">Converting Month Header Text into Real Month-End Dates</a></li><li><a href="S04_Multi_Row_Headers_Transpose_Fill_Merge_Transpose.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S04_Multi_Row_Headers_Transpose_Fill_Merge_Transpose.html">Multi-Row Headers: Transpose, Fill, Merge, Transpose Back, Unpivot</a></li><li><a href="S05_Unpivoting_TB_Columns_Opening_Debit_Credit_Closing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S05_Unpivoting_TB_Columns_Opening_Debit_Credit_Closing.html">Unpivoting TB Columns (Opening, Debit, Credit, Closing)</a></li><li><a href="S06_Pivot_Column_as_the_Reverse_of_Unpivot_Including.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S06_Pivot_Column_as_the_Reverse_of_Unpivot_Including.html">Pivot Column as the Reverse of Unpivot, Including Don&#x27;t Aggregate</a></li><li><a href="S07_Target_Fact_Schema_Date_Account_Department.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S07_Target_Fact_Schema_Date_Account_Department.html">Target Fact Schema: Date, Account, Department, Scenario, Amount</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_TableUnpivotOtherColumns_with_Fixed_Identifier.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C01_TableUnpivotOtherColumns_with_Fixed_Identifier.html">Table.UnpivotOtherColumns with Fixed Identifier Columns</a></li><li><a href="../concepts/C02_Month_Label_to_Month_End_Date_with_DateFromText.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C02_Month_Label_to_Month_End_Date_with_DateFromText.html">Month Label to Month-End Date with Date.FromText and Format</a></li><li><a href="../concepts/C03_Multi_Row_Header_Recipe_Transpose_Fill_Combine.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C03_Multi_Row_Header_Recipe_Transpose_Fill_Combine.html">Multi-Row Header Recipe: Transpose, Fill, Combine, Unpivot, Split</a></li><li><a href="../concepts/C04_TablePivot_with_a_Dynamic_Value_List_and_ListSum.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C04_TablePivot_with_a_Dynamic_Value_List_and_ListSum.html">Table.Pivot with a Dynamic Value List and List.Sum</a></li><li><a href="../concepts/C05_Adding_a_Typed_Scenario_Column_Before_Appending_to.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C05_Adding_a_Typed_Scenario_Column_Before_Appending_to.html">Adding a Typed Scenario Column Before Appending to Actuals</a></li><li><a href="../concepts/C06_Unpivot_Drops_Null_Cells_Replace_Nulls_with_Zero.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C06_Unpivot_Drops_Null_Cells_Replace_Nulls_with_Zero.html">Unpivot Drops Null Cells: Replace Nulls with Zero When Needed</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Multi-Row Headers: Transpose, Fill, Merge, Transpose Back, Unpivot</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Multi-row headers (department over month): transpose, fill down, merge headers, transpose back, unpivot</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Many budget and MIS workbooks have <strong>two (or more) header rows</strong>: departments or scenarios in row 1, often in merged cells spanning several columns, and months in row 2. For example, "Sales" over Apr-25 … Mar-26, then "Marketing" over Apr-25 … Mar-26, side by side. Power Query can promote only <strong>one</strong> row to headers, so a direct unpivot would lose the department. The standard technique — transpose, fill down, combine the header rows, transpose back, promote, unpivot, split — reconstructs both attributes for every value. It is a staple of interview tests and the Saturday assessment.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-input">The input</h3>
+<p>After reading the sheet (no header promotion), the top looks like this (merged cells arrive as a value in the first cell and nulls in the rest):</p>
+<table>
+<thead>
+<tr>
+<th>Column1</th>
+<th>Column2</th>
+<th>Column3</th>
+<th>Column4</th>
+<th>Column5</th>
+<th>Column6</th>
+<th>Column7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>null</td>
+<td>Sales</td>
+<td>null</td>
+<td>null</td>
+<td>Marketing</td>
+<td>null</td>
+<td>null</td>
+</tr>
+<tr>
+<td>Account</td>
+<td>Apr-25</td>
+<td>May-25</td>
+<td>Jun-25</td>
+<td>Apr-25</td>
+<td>May-25</td>
+<td>Jun-25</td>
+</tr>
+<tr>
+<td>610100 Salaries</td>
+<td>12,00,000</td>
+<td>12,00,000</td>
+<td>12,00,000</td>
+<td>6,00,000</td>
+<td>6,00,000</td>
+<td>6,50,000</td>
+</tr>
+<tr>
+<td>620300 Travel</td>
+<td>1,50,000</td>
+<td>1,20,000</td>
+<td>1,40,000</td>
+<td>80,000</td>
+<td>75,000</td>
+<td>90,000</td>
+</tr>
+</tbody>
+</table>
+<p>The department needs to be filled <strong>across</strong> to the right, but Power Query fills only <strong>down</strong>. Hence the transpose.</p>
+<h3 id="step-by-step">Step-by-step</h3>
+<ol>
+<li><strong>Transpose</strong> (<code>Table.Transpose</code>) — header rows become the first two columns; each original column becomes a row.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Column1</th>
+<th>Column2</th>
+<th>Column3</th>
+<th>Column4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>null</td>
+<td>Account</td>
+<td>610100 Salaries</td>
+<td>620300 Travel</td>
+</tr>
+<tr>
+<td>Sales</td>
+<td>Apr-25</td>
+<td>12,00,000</td>
+<td>1,50,000</td>
+</tr>
+<tr>
+<td>null</td>
+<td>May-25</td>
+<td>12,00,000</td>
+<td>1,20,000</td>
+</tr>
+<tr>
+<td>null</td>
+<td>Jun-25</td>
+<td>12,00,000</td>
+<td>1,40,000</td>
+</tr>
+<tr>
+<td>Marketing</td>
+<td>Apr-25</td>
+<td>6,00,000</td>
+<td>80,000</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+<ol start="2">
+<li>
+<p><strong>Fill Down</strong> Column1 (<code>Table.FillDown(t, {"Column1"})</code>) — "Sales" fills the May and Jun rows, "Marketing" its months. The first row (null over "Account") stays null — correct, it is the identifier column. Replace <code>""</code> with null first if the source has empty strings (Topic 2 c03).</p>
+</li>
+<li>
+<p><strong>Combine</strong> the two header columns into one (<code>Table.CombineColumns(t, {"Column1","Column2"}, Combiner.CombineTextByDelimiter("|", QuoteStyle.None), "Hdr")</code>). Rows become "Sales|Apr-25", "Sales|May-25", … and for the first row, <code>null</code> + "Account" — the combiner skips nulls in current versions and gives "Account", but be explicit: if Column1 is null, use Column2 alone.</p>
+</li>
+<li>
+<p><strong>Transpose back</strong> (<code>Table.Transpose</code>) — the Hdr values return to the first row.</p>
+</li>
+<li>
+<p><strong>Promote headers</strong> — columns are now Account, Sales|Apr-25, Sales|May-25, …, Marketing|Jun-25.</p>
+</li>
+<li>
+<p><strong>Unpivot Other Columns</strong> on Account → Attribute = "Sales|Apr-25", Value = amount.</p>
+</li>
+<li>
+<p><strong>Split</strong> Attribute on "|" into Department and Month; convert Month to a month-end date (s03); type Amount.</p>
+</li>
+</ol>
+<p>Full M (c03):</p>
+<pre><code>let
+    Source   = Excel.Workbook(File.Contents(pPath), null, true){[Item=&quot;Budget&quot;,Kind=&quot;Sheet&quot;]}[Data],
+    Top      = Table.Skip(Source, each [Column2] = null and [Column1] = null),   // drop leading blank rows
+    T1       = Table.Transpose(Top),
+    Filled   = Table.FillDown(T1, {&quot;Column1&quot;}),
+    Hdr      = Table.AddColumn(Filled, &quot;Hdr&quot;, each if [Column1] = null then [Column2] else [Column1] &amp; &quot;|&quot; &amp; [Column2], type text),
+    Reordered= Table.SelectColumns(Hdr, {&quot;Hdr&quot;} &amp; List.Skip(Table.ColumnNames(Filled), 2)),
+    T2       = Table.Transpose(Reordered),
+    Promoted = Table.PromoteHeaders(T2, [PromoteAllScalars=true]),
+    Long     = Table.UnpivotOtherColumns(Promoted, {&quot;Account&quot;}, &quot;Attribute&quot;, &quot;Amount&quot;),
+    Split    = Table.SplitColumn(Long, &quot;Attribute&quot;, Splitter.SplitTextByEachDelimiter({&quot;|&quot;}), {&quot;Department&quot;,&quot;Month&quot;}),
+    Dated    = Table.TransformColumns(Split, {{&quot;Month&quot;, each Date.EndOfMonth(Date.FromText(&quot;01-&quot; &amp; _, [Format=&quot;dd-MMM-yy&quot;, Culture=&quot;en-IN&quot;])), type date}}),
+    Typed    = Table.TransformColumnTypes(Dated, {{&quot;Amount&quot;, type number}, {&quot;Account&quot;, type text}, {&quot;Department&quot;, type text}}, &quot;en-IN&quot;)
+in
+    Typed
+</code></pre>
+<p>Here an added column replaces <code>Table.CombineColumns</code> to handle the null-department case explicitly; both approaches are valid.</p>
+<h3 id="choosing-the-delimiter">Choosing the delimiter</h3>
+<p>Use a character that never appears in department or month names: "|" is conventional. Do not use "-" (months contain it: "Apr-25") or a space.</p>
+<h3 id="three-header-rows">Three header rows</h3>
+<p>Scenario over Department over Month: transpose, fill down <strong>both</strong> upper columns (Column1 and Column2), combine all three with "|", transpose back, promote, unpivot, split into three. When filling the second level, reset it when the first level changes (otherwise the first department of "Forecast" inherits the last department of "Budget") — usually not an issue because every block repeats the department name in its first column, but check.</p>
+<h3 id="performance-and-limits">Performance and limits</h3>
+<p><code>Table.Transpose</code> materialises the whole table and does not fold. A budget of a few thousand rows is trivial; a 200,000-row sheet would be slow and memory-heavy. For large inputs, an alternative avoids transposing the data body: read only the two header rows, build the combined header list in a small query (<code>List.Zip</code> of filled-right row 1 and row 2), then rename the columns of the data body with <code>Table.RenameColumns(Body, List.Zip({Table.ColumnNames(Body), NewHeaders}))</code> and unpivot.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Totals per department block</strong> ("Sales Total") as extra columns: after combining, they look like "Sales|Total" — drop them before or after unpivot (filter Month that fails to parse) and use them as controls.</li>
+<li><strong>Merged cells over the identifier columns</strong> (e.g. "Account" and "Description" both under a blank top header) — the null-department rule handles them; list all identifier headers in the unpivot.</li>
+<li><strong>Empty spacer columns</strong> between blocks become rows of nulls after transpose; remove them (Hdr null) before transposing back.</li>
+<li><strong>Type detection after transpose</strong> — mixed types per column cause errors; keep everything untyped until the end.</li>
+<li><strong>Department names with trailing spaces</strong> in the merged cell — trim after split.</li>
+<li><strong>Header row position varies</strong> — locate header rows by condition (Topic 2 s01) before transposing.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Power Query promotes one header row, so multi-row headers must be combined into one first.</li>
+<li>Transpose turns "fill right" into "fill down"; fill the upper header, combine with a safe delimiter, transpose back, promote.</li>
+<li>Unpivot on the identifiers, then split the combined attribute back into Department and Month.</li>
+<li>Handle the null upper header over identifier columns and remove spacer/total columns explicitly.</li>
+<li>For large inputs, build the combined header list separately and rename columns instead of transposing the body.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-trace-the-steps-l1">Q1. Trace the steps [L1]</h3>
+<p>Using the input table in these notes, write out the first five rows of the table after step 2 (fill down) and after step 6 (unpivot), and state the expected number of rows in the final long table if there are 140 accounts, 3 departments and 12 months (no blanks).</p>
+<h3 id="q2-write-the-m-for-three-header-rows-l2">Q2. Write the M for three header rows [L2]</h3>
+<p>A forecast sheet has Scenario (Budget/Forecast) in row 1, Department in row 2 and Month in row 3, with merged cells across. Write the M to produce Scenario, Department, Month (month-end date), Account and Amount.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Fill down two columns after the first transpose and combine three.</p>
+</blockquote>
+<h3 id="q3-block-totals-l2">Q3. Block totals [L2]</h3>
+<p>Each department block ends with a "Total" column, and the sheet has a final "Grand Total" column. Modify the pipeline to exclude them from the fact table but produce a check table comparing each department's unpivoted sum with its Total column.</p>
+<h3 id="q4-large-sheet-alternative-l3">Q4. Large sheet alternative [L3]</h3>
+<p>A daily cash-forecast sheet has 6 bank accounts × 365 days as two header rows and 3,000 rows of line items. Describe and write the alternative approach that renames columns from a combined header list instead of transposing the body, and explain why it is faster.</p>
+<h3 id="q5-delimiter-choice-l1">Q5. Delimiter choice [L1]</h3>
+<p>Explain why "-" and " " are poor delimiters for combining Department and Month headers, and give an example of a department name that would break the split if "&amp;" were used.</p></section>
+<nav class="pager"><a class="prev" href="S03_Converting_Month_Header_Text_into_Real_Month_End.html">← Converting Month Header Text into Real Month-End Dates</a><a class="next" href="S05_Unpivoting_TB_Columns_Opening_Debit_Credit_Closing.html">Unpivoting TB Columns (Opening, Debit, Credit, Closing) →</a></nav>
+</main></div></body></html>

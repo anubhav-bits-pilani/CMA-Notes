@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAD and the Tracking Signal for Systematic Bias · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C04_MAD_and_the_Tracking_Signal_for_Systematic_Bias.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 5</a> <span>›</span> <a href="../../index.html">Week 18</a> <span>›</span> <a href="../index.html">T5 · Forecast accuracy: MAPE, WAPE, bias</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Forecast accuracy: MAPE, WAPE, bias</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Forecast_Error_Metrics_MAD_MAPE_WAPE_RMSE_Bias.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S01_Forecast_Error_Metrics_MAD_MAPE_WAPE_RMSE_Bias.html">Forecast Error Metrics: MAD, MAPE, WAPE, RMSE, Bias, Tracking Signal</a></li><li><a href="../subtopics/S02_Measurement_Lag_Lag_1_Lag_3_and_Lag_6_Forecast.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S02_Measurement_Lag_Lag_1_Lag_3_and_Lag_6_Forecast.html">Measurement Lag: Lag-1, Lag-3 and Lag-6 Forecast Accuracy</a></li><li><a href="../subtopics/S03_Aggregation_Level_and_Error_Netting_in_Forecast.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S03_Aggregation_Level_and_Error_Netting_in_Forecast.html">Aggregation Level and Error Netting in Forecast Accuracy</a></li><li><a href="../subtopics/S04_Detecting_Sandbagging_and_Over_Optimism_by.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S04_Detecting_Sandbagging_and_Over_Optimism_by.html">Detecting Sandbagging and Over-Optimism by Business Unit</a></li><li><a href="../subtopics/S05_Forecast_Value_Added_Does_Each_Step_Beat_the_Naive.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S05_Forecast_Value_Added_Does_Each_Step_Beat_the_Naive.html">Forecast Value Added: Does Each Step Beat the Naive Baseline?</a></li><li><a href="../subtopics/S06_Accuracy_Dashboards_Accountability_and_Tolerance.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S06_Accuracy_Dashboards_Accountability_and_Tolerance.html">Accuracy Dashboards, Accountability and Tolerance Bands per BU</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_MAPE_Mean_Absolute_Percentage_Error_and_Its.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C01_MAPE_Mean_Absolute_Percentage_Error_and_Its.html">MAPE: Mean Absolute Percentage Error and Its Weaknesses</a></li><li><a href="C02_WAPE_and_Forecast_Accuracy_Percentage.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C02_WAPE_and_Forecast_Accuracy_Percentage.html">WAPE and Forecast Accuracy Percentage</a></li><li><a href="C03_Bias_Percentage_Direction_of_Forecast_Error.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C03_Bias_Percentage_Direction_of_Forecast_Error.html">Bias Percentage: Direction of Forecast Error</a></li><li><a href="C04_MAD_and_the_Tracking_Signal_for_Systematic_Bias.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C04_MAD_and_the_Tracking_Signal_for_Systematic_Bias.html">MAD and the Tracking Signal for Systematic Bias</a></li><li><a href="C05_RMSE_Root_Mean_Square_Error_and_Large_Miss_Penalty.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C05_RMSE_Root_Mean_Square_Error_and_Large_Miss_Penalty.html">RMSE: Root Mean Square Error and Large-Miss Penalty</a></li><li><a href="C06_Forecast_Value_Added_Formula_and_Interpretation.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C06_Forecast_Value_Added_Formula_and_Interpretation.html">Forecast Value Added Formula and Interpretation</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>MAD and the Tracking Signal for Systematic Bias</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> MAD = Σ |A − F| ÷ n; Tracking signal = Σ (A − F) ÷ MAD; |TS| &gt; 4 signals systematic bias</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>\[
+\text{MAD} = \frac{1}{n} \sum_{t=1}^{n} \lvert A_t - F_t \rvert, \qquad \text{TS} = \frac{\sum_{t=1}^{n} (A_t - F_t)}{\text{MAD}}
+\]</p>
+<ul>
+<li>\(A_t, F_t\) — actual and forecast in period \(t\), at a fixed lag</li>
+<li>\(n\) — number of periods in the evaluation window (cumulative from a start date, or rolling)</li>
+<li>the numerator of TS is the <strong>running sum of forecast errors</strong> (RSFE), with error defined as \(A - F\)</li>
+<li>decision rule: \(\lvert \text{TS} \rvert &gt; 4\) indicates systematic bias (some organisations use ±3.75 or ±6); under this convention, TS &gt; +4 means persistent under-forecast and TS &lt; −4 persistent over-forecast</li>
+</ul>
+<h2 id="explanation">Explanation</h2>
+<p><strong>MAD</strong> is the average absolute miss in rupees (or units). It is robust to small denominators, easy to explain, and serves as a scale for the typical size of error. It is not comparable across BUs of different size; for that use WAPE (c02, which equals MAD ÷ mean actual).</p>
+<p><strong>Tracking signal logic.</strong> If errors are random (unbiased), positive and negative errors offset and the RSFE wanders around zero; dividing by MAD expresses it in "typical error" units, so TS stays within a few units. If errors are persistently one-signed, the RSFE grows roughly linearly — after \(n\) same-sign errors of similar size, RSFE ≈ \(n \times \text{MAD}\), so TS ≈ \(n\). Hence TS crossing ±4 corresponds to roughly four periods' worth of accumulated one-directional error: strong evidence of bias rather than noise. The ±4 threshold originates in inventory-control practice, where (with MAD ≈ 0.8σ for normally distributed errors) it corresponds to a statistically unusual cumulative error.</p>
+<p><strong>Why TS adds to bias %.</strong> Bias % (c03) measures the size of the net error relative to volume; TS measures its persistence relative to noise. A BU with bias −2% but very low noise can have a high TS (reliably biased); a BU with bias −2% but large noise has a low TS (not yet conclusive).</p>
+<p><strong>Practical use.</strong></p>
+<ul>
+<li>Compute TS monthly per BU and key line on a cumulative-since-reset or rolling 12-month basis; plot it as a control chart with ±4 limits.</li>
+<li>Reset the RSFE after a recalibration or process change so that old bias does not mask improvement.</li>
+<li>Investigate any breach: is it an external shock (one large error) or a pattern (many same-sign errors)? A single huge error can also push TS outside limits — inspect the error series.</li>
+</ul>
+<p><strong>Sign convention.</strong> TS uses \(A - F\); bias % uses \(F - A\). A sandbagging revenue BU therefore shows negative bias % and positive TS. State both conventions on the dashboard (s06).</p>
+<h2 id="illustration">Illustration</h2>
+<p>West BU monthly revenue, lag-3 (₹ crore):</p>
+<table>
+<thead>
+<tr>
+<th>Month</th>
+<th>A</th>
+<th>F</th>
+<th>A − F</th>
+<th>RSFE</th>
+<th>|A − F|</th>
+<th>MAD (cum.)</th>
+<th>TS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apr</td>
+<td>82</td>
+<td>80</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2.00</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>May</td>
+<td>85</td>
+<td>81</td>
+<td>4</td>
+<td>6</td>
+<td>4</td>
+<td>3.00</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>Jun</td>
+<td>79</td>
+<td>82</td>
+<td>−3</td>
+<td>3</td>
+<td>3</td>
+<td>3.00</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>Jul</td>
+<td>88</td>
+<td>83</td>
+<td>5</td>
+<td>8</td>
+<td>5</td>
+<td>3.50</td>
+<td>2.3</td>
+</tr>
+<tr>
+<td>Aug</td>
+<td>90</td>
+<td>85</td>
+<td>5</td>
+<td>13</td>
+<td>5</td>
+<td>3.80</td>
+<td>3.4</td>
+</tr>
+<tr>
+<td>Sep</td>
+<td>92</td>
+<td>87</td>
+<td>5</td>
+<td>18</td>
+<td>5</td>
+<td>4.00</td>
+<td>4.5</td>
+</tr>
+</tbody>
+</table>
+<p>By September, TS = 18 ÷ 4.0 = 4.5 &gt; 4: actuals have persistently exceeded forecasts, signalling revenue under-forecasting (possible sandbagging). Bias % for the half year = (498 − 516) ÷ 516 = −3.5%. The June miss in the other direction delayed but did not prevent the signal.</p>
+<p>Excel (cumulative, row 6 onward, errors in column E, absolute errors in G):</p>
+<pre><code>RSFE  =SUM($E$6:E6)
+MAD   =AVERAGE($G$6:G6)
+TS    =IFERROR(F6/H6, 0)
+Flag  =IF(ABS(I6)&gt;4, &quot;Bias alert&quot;, &quot;&quot;)
+</code></pre>
+<h2 id="connections">Connections</h2>
+<p>MAD belongs to the s01 metric set and underpins RMSE comparisons (c05). TS is a key detector of sandbagging and over-optimism (s04) and a component of the RAG rules in s06. It requires a consistent lag (s02) and locked forecast versions (Topic 4, c04). Statistical forecasting (Topic 3, s07) uses TS to decide when an exponential-smoothing model needs re-fitting.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-compute-mad-and-ts-l1">Q1. Compute MAD and TS [L1]</h3>
+<p>Monthly errors (A − F, ₹ lakh) for a cost centre are: −6, −4, −7, −3, −5, −6, −4, −5. Compute cumulative RSFE, MAD and TS after each month, identify the month in which the ±4 threshold is first crossed, and interpret the direction for a cost line.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Negative A − F on a cost line means actual spend was below forecast.</p>
+</blockquote>
+<h3 id="q2-noise-vs-persistence-l2">Q2. Noise vs persistence [L2]</h3>
+<p>BU X has six monthly errors (A − F, ₹ crore) of +1, +1, +1, +1, +1, +1; BU Y has +12, −10, +9, −11, +8, −3. Compute bias in ₹, MAD and TS for each. Explain which BU has the bigger forecasting problem and which has the more systematic one.</p>
+<h3 id="q3-single-shock-breach-l2">Q3. Single-shock breach [L2]</h3>
+<p>A BU's TS jumps from 1.2 to 4.8 in one month after an unforecast plant shutdown created a ₹30 crore miss (MAD previously ₹4 crore). Explain why the TS breached, whether it indicates systematic bias, and how you would adjust the tracking (exceptional-event flag, reset, or rolling window).</p></section>
+<nav class="pager"><a class="prev" href="C03_Bias_Percentage_Direction_of_Forecast_Error.html">← Bias Percentage: Direction of Forecast Error</a><a class="next" href="C05_RMSE_Root_Mean_Square_Error_and_Large_Miss_Penalty.html">RMSE: Root Mean Square Error and Large-Miss Penalty →</a></nav>
+</main></div></body></html>

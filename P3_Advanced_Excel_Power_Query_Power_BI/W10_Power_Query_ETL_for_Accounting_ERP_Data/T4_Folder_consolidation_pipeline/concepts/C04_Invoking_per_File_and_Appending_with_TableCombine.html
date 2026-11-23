@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invoking per File and Appending with Table.Combine · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C04_Invoking_per_File_and_Appending_with_TableCombine.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T4 · Folder consolidation pipeline</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Folder consolidation pipeline</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_FolderFiles_and_SharePointFiles_Sources_and_File.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S01_FolderFiles_and_SharePointFiles_Sources_and_File.html">Folder.Files and SharePoint.Files: Sources and File-Scope Filters</a></li><li><a href="../subtopics/S02_Combine_Files_Artefacts_Sample_Parameter_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S02_Combine_Files_Artefacts_Sample_Parameter_and.html">Combine Files Artefacts: Sample, Parameter and Transform Function</a></li><li><a href="../subtopics/S03_Writing_a_Custom_File_Cleaning_Function_by_Hand.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S03_Writing_a_Custom_File_Cleaning_Function_by_Hand.html">Writing a Custom File-Cleaning Function by Hand</a></li><li><a href="../subtopics/S04_Reading_Branch_and_Month_from_the_File_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S04_Reading_Branch_and_Month_from_the_File_Name.html">Reading Branch and Month from the File Name</a></li><li><a href="../subtopics/S05_Schema_Drift_Tolerant_Column_Selection_Across.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S05_Schema_Drift_Tolerant_Column_Selection_Across.html">Schema Drift: Tolerant Column Selection Across Branch Files</a></li><li><a href="../subtopics/S06_Multi_Bank_Statements_One_Function_per_Bank_Then.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S06_Multi_Bank_Statements_One_Function_per_Bank_Then.html">Multi-Bank Statements: One Function per Bank, Then Table.Combine</a></li><li><a href="../subtopics/S07_Monthly_Drop_In_Workflow_Archiving_and_Duplicate.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S07_Monthly_Drop_In_Workflow_Archiving_and_Duplicate.html">Monthly Drop-In Workflow, Archiving and Duplicate-File Detection</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_FolderFiles_Output_Columns_and_Which_to_Trust.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C01_FolderFiles_Output_Columns_and_Which_to_Trust.html">Folder.Files Output Columns and Which to Trust</a></li><li><a href="C02_Filtering_by_Extension_and_Excluding_Temp_Files.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C02_Filtering_by_Extension_and_Excluding_Temp_Files.html">Filtering by Extension and Excluding Temp Files</a></li><li><a href="C03_The_fxCleanTB_Function_Signature.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C03_The_fxCleanTB_Function_Signature.html">The fxCleanTB Function Signature</a></li><li><a href="C04_Invoking_per_File_and_Appending_with_TableCombine.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C04_Invoking_per_File_and_Appending_with_TableCombine.html">Invoking per File and Appending with Table.Combine</a></li><li><a href="C05_Tolerant_Column_Selection_with_MissingFieldUseNull.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C05_Tolerant_Column_Selection_with_MissingFieldUseNull.html">Tolerant Column Selection with MissingField.UseNull</a></li><li><a href="C06_Parsing_Branch_and_Period_with_Text_Delimiter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C06_Parsing_Branch_and_Period_with_Text_Delimiter.html">Parsing Branch and Period with Text Delimiter Functions</a></li><li><a href="C07_Guarding_the_Refresh_Against_One_Bad_File.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C07_Guarding_the_Refresh_Against_One_Bad_File.html">Guarding the Refresh Against One Bad File</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Invoking per File and Appending with Table.Combine</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>Table.AddColumn(Files, "Data", each fxCleanTB([Content]))</code> then <code>Table.Combine(Files[Data])</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-m">Files    = Table.AddColumn(InScope, &quot;Data&quot;, each fxCleanTB([Content]), type table),
+Combined = Table.Combine(Files[Data])
+</code></pre>
+<ul>
+<li><code>Table.AddColumn(table, newName, generator, optional columnType)</code> adds a column whose value for each row is <code>generator(row)</code>.</li>
+<li><code>each fxCleanTB([Content])</code> means <code>(_) =&gt; fxCleanTB(_[Content])</code>: call the function with that file row's binary.</li>
+<li>The new <code>Data</code> column holds one nested <strong>table value</strong> per file.</li>
+<li><code>Files[Data]</code> is column access on a table: it returns the column as a <strong>list</strong> of tables.</li>
+<li><code>Table.Combine(tables as list, optional columns)</code> appends the tables, aligning columns <strong>by name</strong>; a column absent from some tables is filled with null in those rows.</li>
+</ul>
+<h2 id="explanation">Explanation</h2>
+<p>This two-step pattern is the hand-written replacement for the Combine Files button. It separates <em>what to do to one file</em> (the function) from <em>how to stack many</em> (the combine), so each can be tested independently.</p>
+<p>Important behaviours:</p>
+<ul>
+<li><strong>Column alignment by name.</strong> Unlike SQL <code>UNION</code>, which matches by position, <code>Table.Combine</code> matches by name and unions the column set. Order follows the first table, with new names appended. This makes it robust to column-order drift and makes extra columns visible rather than dropped.</li>
+<li><strong>Provenance is lost.</strong> <code>Table.Combine</code> returns only the nested data; the <code>Name</code> column of the file row is not carried. Either add a SourceFile column inside each nested table before combining, or use <code>Table.ExpandTableColumn(Files, "Data", columnList)</code> which keeps outer columns but needs a fixed column list.</li>
+<li><strong>Fixed output.</strong> Pass a list of names or a table type as the second argument to fix the output schema: <code>Table.Combine(Files[Data], type table [Ledger = text, Debit = number, Credit = number])</code>.</li>
+<li><strong>Laziness and errors.</strong> Each nested table is evaluated when combined; if one function call errors, the combine errors. Guard with <code>try</code> (concept c07).</li>
+<li><strong>Type of the column.</strong> Declaring <code>type table</code> on the added column helps the editor; it does not validate contents.</li>
+</ul>
+<p>Logging is easy because the nested column is still available before combining: <code>Table.AddColumn(Files, "Rows", each Table.RowCount([Data]), Int64.Type)</code> and similar Dr/Cr sums produce a per-file control log.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Three branch files clean to:</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Columns</th>
+<th>Rows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MUM_2025-04.csv</code></td>
+<td>Ledger, Debit, Credit</td>
+<td>1,210</td>
+</tr>
+<tr>
+<td><code>DEL_2025-04.csv</code></td>
+<td>Ledger, Credit, Debit, CostCentre</td>
+<td>1,488</td>
+</tr>
+<tr>
+<td><code>BLR_2025-04.csv</code></td>
+<td>Ledger, Debit, Credit</td>
+<td>977</td>
+</tr>
+</tbody>
+</table>
+<p><code>Table.Combine</code> returns 3,675 rows with columns Ledger, Debit, Credit, CostCentre; CostCentre is null for 2,187 rows (Mumbai and Bengaluru) and Delhi's Debit/Credit are correctly aligned despite the reversed order. A sample-based <code>Table.ExpandTableColumn</code> using Mumbai's column list would have returned the same rows but without CostCentre.</p>
+<h2 id="connections">Connections</h2>
+<p>Subtopic s02 (why the generated expand step loses columns), s03 (functions), s05 (schema drift), s06 (<code>Table.Combine</code> across bank functions). In topic t5, <code>Table.Combine</code> is the Append operation and the SQL <code>UNION ALL</code> analogue. The per-file log feeds the week's control-totals query.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-predict-the-output-l1">Q1. Predict the output [L1]</h3>
+<p>Table A has columns Date, Ref, Amount (40 rows); Table B has Ref, Amount, Date, Narration (25 rows); Table C has Date, Amount (10 rows). State the column order and row count of <code>Table.Combine({A, B, C})</code> and which cells are null.</p>
+<h3 id="q2-keep-provenance-l2">Q2. Keep provenance [L2]</h3>
+<p>Rewrite the concept's two steps so that the combined output carries a SourceFile column with the file name, without using <code>Table.ExpandTableColumn</code>, and add a per-file log query with Rows, TotalDebit and TotalCredit.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Use a named lambda for the outer row so the inner <code>each</code> does not shadow it.</p>
+</blockquote>
+<h3 id="q3-union-vs-tablecombine-l2">Q3. UNION vs Table.Combine [L2]</h3>
+<p>Your MySQL colleague says "Append is just UNION". Explain two behavioural differences between SQL <code>UNION</code> and <code>Table.Combine</code>, and one situation where those differences change the result.</p></section>
+<nav class="pager"><a class="prev" href="C03_The_fxCleanTB_Function_Signature.html">← The fxCleanTB Function Signature</a><a class="next" href="C05_Tolerant_Column_Selection_with_MissingFieldUseNull.html">Tolerant Column Selection with MissingField.UseNull →</a></nav>
+</main></div></body></html>

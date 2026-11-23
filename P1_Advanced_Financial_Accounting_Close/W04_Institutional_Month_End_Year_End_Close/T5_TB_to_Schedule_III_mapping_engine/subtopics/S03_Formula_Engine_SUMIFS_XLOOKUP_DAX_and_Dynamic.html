@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formula Engine: SUMIFS, XLOOKUP, DAX and Dynamic Arrays · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T5_TB_to_Schedule_III_mapping_engine/subtopics/S03_Formula_Engine_SUMIFS_XLOOKUP_DAX_and_Dynamic.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 1</a> <span>›</span> <a href="../../index.html">Week 4</a> <span>›</span> <a href="../index.html">T5 · TB-to-Schedule III mapping engine</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · TB-to-Schedule III mapping engine</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Chart_of_Accounts_Design_for_a_Mapping_Driven.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T5_TB_to_Schedule_III_mapping_engine/subtopics/S01_Chart_of_Accounts_Design_for_a_Mapping_Driven.html">Chart of Accounts Design for a Mapping-Driven Close</a></li><li><a href="S02_Mapping_Table_Attributes_for_Schedule_III_Notes_CF.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T5_TB_to_Schedule_III_mapping_engine/subtopics/S02_Mapping_Table_Attributes_for_Schedule_III_Notes_CF.html">Mapping Table Attributes for Schedule III, Notes, CF and DT</a></li><li><a href="S03_Formula_Engine_SUMIFS_XLOOKUP_DAX_and_Dynamic.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T5_TB_to_Schedule_III_mapping_engine/subtopics/S03_Formula_Engine_SUMIFS_XLOOKUP_DAX_and_Dynamic.html">Formula Engine: SUMIFS, XLOOKUP, DAX and Dynamic Arrays</a></li><li><a href="S04_Adjustment_Layer_From_Unadjusted_TB_to_Final_TB.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T5_TB_to_Schedule_III_mapping_engine/subtopics/S04_Adjustment_Layer_From_Unadjusted_TB_to_Final_TB.html">Adjustment Layer: From Unadjusted TB to Final TB</a></li><li><a href="S05_Reclassification_Rules_for_Schedule_III.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T5_TB_to_Schedule_III_mapping_engine/subtopics/S05_Reclassification_Rules_for_Schedule_III.html">Reclassification Rules for Schedule III Presentation</a></li><li><a href="S06_Integrity_Checks_for_an_Automated_Financial.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T5_TB_to_Schedule_III_mapping_engine/subtopics/S06_Integrity_Checks_for_an_Automated_Financial.html">Integrity Checks for an Automated Financial Statement Build</a></li><li><a href="S07_Schedule_III_Presentation_Rounding_Comparatives.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T5_TB_to_Schedule_III_mapping_engine/subtopics/S07_Schedule_III_Presentation_Rounding_Comparatives.html">Schedule III Presentation: Rounding, Comparatives, 2021 Disclosures</a></li><li><a href="S08_Reusing_the_Mapping_for_MCA_and_SEBI_XBRL_Filings.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T5_TB_to_Schedule_III_mapping_engine/subtopics/S08_Reusing_the_Mapping_for_MCA_and_SEBI_XBRL_Filings.html">Reusing the Mapping for MCA and SEBI XBRL Filings</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Line_Value_Formula_and_Sign_Convention.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T5_TB_to_Schedule_III_mapping_engine/concepts/C01_Line_Value_Formula_and_Sign_Convention.html">Line Value Formula and Sign Convention</a></li><li><a href="../concepts/C02_Unmapped_Account_Check_and_New_Account_Review.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T5_TB_to_Schedule_III_mapping_engine/concepts/C02_Unmapped_Account_Check_and_New_Account_Review.html">Unmapped Account Check and New Account Review</a></li><li><a href="../concepts/C03_Balance_Sheet_and_Profit_to_Retained_Earnings.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T5_TB_to_Schedule_III_mapping_engine/concepts/C03_Balance_Sheet_and_Profit_to_Retained_Earnings.html">Balance Sheet and Profit-to-Retained-Earnings Checks</a></li><li><a href="../concepts/C04_Schedule_III_Rounding_Rules_by_Turnover.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T5_TB_to_Schedule_III_mapping_engine/concepts/C04_Schedule_III_Rounding_Rules_by_Turnover.html">Schedule III Rounding Rules by Turnover</a></li><li><a href="../concepts/C05_Schedule_III_Ratio_Note_and_the_25_Explanation.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T5_TB_to_Schedule_III_mapping_engine/concepts/C05_Schedule_III_Ratio_Note_and_the_25_Explanation.html">Schedule III Ratio Note and the 25% Explanation Rule</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Formula Engine: SUMIFS, XLOOKUP, DAX and Dynamic Arrays</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Formula engine: SUMIFS/XLOOKUP or Power Pivot/DAX from TB extract to BS, P&amp;L, SOCIE and notes; dynamic arrays for note tables</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>The formula engine is the layer that turns "TB + mapping" into statements. Done well, it is transparent (every number traces back to accounts), robust (new accounts and adjustments flow without editing formulas) and fast to review. Done badly, it is a maze of hard-coded cell references, pasted values and manual overrides that breaks every time the TB extract changes shape. Reviewers and auditors increasingly ask for a walkthrough of the engine, and in FP&amp;A the same engine converts historical actuals into model templates. Two implementation families exist: worksheet formulas (SUMIFS/XLOOKUP and dynamic arrays) and the data model (Power Query + Power Pivot/DAX or Power BI). Both should follow the same design.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="1-data-flow">1. Data flow</h3>
+<ol>
+<li><strong>TB extract</strong> (Power Query from ERP export/CSV): Entity, Account, Description, Debit, Credit, Closing balance (debits positive, credits negative), Period.</li>
+<li><strong>Mapping table</strong> (s02): Account → Line ID, Note, Sub-note, C/NC, CF tag, DT category, Sign.</li>
+<li><strong>Adjustment layer</strong> (s04): entries with reference, account, amount.</li>
+<li><strong>Final TB</strong> = TB + adjustments, merged with mapping (Power Query merge or XLOOKUP columns).</li>
+<li><strong>Outputs</strong>: BS, P&amp;L, SOCIE, notes, CF, checks — each pulling from the final TB by attribute.</li>
+</ol>
+<p>The rule: <strong>outputs reference attributes, never accounts or cells in the TB</strong>. A new account mapped to an existing line appears automatically.</p>
+<h3 id="2-worksheet-engine-sumifs-and-xlookup">2. Worksheet engine — SUMIFS and XLOOKUP</h3>
+<p>Structured tables: <code>FinalTB</code> (Account, Bal, Line, Note, SubNote, CNC, CFTag, Sign, Year); statement rows hold a Line ID in column B.</p>
+<p>Mapping attributes onto the TB:</p>
+<pre><code>=XLOOKUP([@Account], Map[Account], Map[Line], &quot;UNMAPPED&quot;)
+</code></pre>
+<p>Face line value (current year), with display sign so liabilities and income show positive:</p>
+<pre><code>=SUMIFS(FinalTB[Bal], FinalTB[Line], B12, FinalTB[Year], CurYear) * XLOOKUP(B12, Lines[LineID], Lines[DisplaySign])
+</code></pre>
+<p>Note sub-row:</p>
+<pre><code>=SUMIFS(FinalTB[Bal], FinalTB[SubNote], B30, FinalTB[Year], CurYear) * -1
+</code></pre>
+<p>Use a <code>Lines</code> table holding each Line ID's caption, order, display sign and parent so subtotals are SUMIFS on the parent attribute rather than hand-built additions. Avoid <code>SUMPRODUCT</code> over entire columns for speed; avoid <code>INDIRECT</code>/<code>OFFSET</code> (volatile and untraceable).</p>
+<h3 id="3-dynamic-arrays-for-note-tables">3. Dynamic arrays for note tables</h3>
+<p>Notes with a variable number of rows (e.g., borrowings by lender, investments by scrip, related-party balances by party) suit dynamic arrays:</p>
+<pre><code>=LET(
+  t, FILTER(FinalTB[[Description]:[Bal]], (FinalTB[Note]=&quot;N15&quot;)*(FinalTB[Year]=CurYear)),
+  g, GROUPBY(CHOOSECOLS(t,1), CHOOSECOLS(t,2)*-1, SUM, 0, 1),
+  g)
+</code></pre>
+<p><code>GROUPBY</code>/<code>PIVOTBY</code> are available in current Microsoft 365 builds; where not available use <code>UNIQUE</code> on the description plus <code>SUMIFS</code> against the spilled range (<code>=SUMIFS(FinalTB[Bal], FinalTB[Description], E5#, FinalTB[Note], "N15")</code>). <code>SORTBY</code> orders rows; <code>VSTACK</code> appends a total row. Spilled ranges referenced with <code>#</code> keep the note and its total in sync.</p>
+<h3 id="4-socie">4. SOCIE</h3>
+<p>The statement of changes in equity is generated from equity accounts mapped with a <em>movement type</em> attribute in a sub-ledger of equity movements (opening, profit for the year, OCI items, dividends, transfers to reserves, share issues, buy-backs). Profit for the year in SOCIE is linked to the P&amp;L output, not to the retained earnings account movement — that comparison is the integrity check (c03).</p>
+<h3 id="5-data-model-engine-power-pivot-dax">5. Data model engine — Power Pivot / DAX</h3>
+<p>Model: <code>FinalTB</code> fact table related to <code>Map</code> (Account) and <code>Lines</code> (LineID), <code>Calendar</code> (Period). Measures:</p>
+<pre><code>Balance := SUM ( FinalTB[Bal] )
+
+Line Value :=
+VAR s = SELECTEDVALUE ( Lines[DisplaySign], 1 )
+RETURN [Balance] * s
+
+Line Value PY :=
+CALCULATE ( [Line Value], SAMEPERIODLASTYEAR ( 'Calendar'[Date] ) )
+
+Unmapped Count :=
+COUNTROWS ( FILTER ( FinalTB, ISBLANK ( RELATED ( Map[Line] ) ) ) )
+</code></pre>
+<p>A matrix visual with <code>Lines[Caption]</code> on rows (sorted by <code>Lines[Order]</code>) and the measures in columns renders the BS/P&L; Excel <code>CUBEVALUE</code> formulas can place model values into a fixed Schedule III layout when exact formatting is needed. Balances are snapshots, so for balance sheet lines use period-end filtering (<code>LASTDATE</code> / closing balance in the extract) rather than summing movements across periods.</p>
+<h3 id="6-choosing-between-them">6. Choosing between them</h3>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>SUMIFS/XLOOKUP</th>
+<th>Power Pivot/DAX</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transparency to auditors</td>
+<td>High — formulas visible per cell</td>
+<td>Medium — measures need documentation</td>
+</tr>
+<tr>
+<td>Volume (multi-entity, monthly history)</td>
+<td>Slows beyond ~100k rows</td>
+<td>Scales to millions</td>
+</tr>
+<tr>
+<td>Fixed-format Schedule III layout</td>
+<td>Natural</td>
+<td>Needs CUBE functions or report layout</td>
+</tr>
+<tr>
+<td>Multi-period, multi-entity slicing</td>
+<td>Manual</td>
+<td>Native</td>
+</tr>
+<tr>
+<td>Skills needed</td>
+<td>Excel</td>
+<td>Power Query, DAX</td>
+</tr>
+</tbody>
+</table>
+<p>Many teams use Power Query for extract and merge, a worksheet engine for statutory statements, and Power BI for management and flux dashboards — all off the same final TB.</p>
+<h3 id="illustration">Illustration</h3>
+<p>Final TB lines mapped to BS.CL.FL.TP (trade payables): 520000 MSME (₹(4,20,00,000)), 521000 Others (₹(18,65,00,000)), 521500 Accrued GRNI (mapped to other financial liabilities, not TP). SUMIFS on Line "BS.CL.FL.TP" returns −22,85,00,000; display sign −1 gives ₹22,85,00,000 (₹22.85 crore) on the face. A new account 520100 "MSME – capital creditors" mapped to BS.CL.FL.TP and sub-note N18.1 is picked up by both the face and Note 18 next close without any formula change.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Sign handling</strong> in one place only — either the <code>Lines</code> display sign or the mapping — never both, or liabilities appear negative (topic pitfall).</li>
+<li><strong>Rounding</strong> after aggregation, not per account (s07, c04) — otherwise totals do not cast.</li>
+<li><strong>Prior-year columns</strong> must use the <em>current</em> mapping applied to prior-year TB, or regrouped comparatives will not be consistent (s07).</li>
+<li><strong>Circularity:</strong> current tax depends on PBT, which depends on the final TB; keep tax computations in a schedule that posts to the adjustment layer rather than formulas referencing the FS.</li>
+<li><strong>Performance:</strong> whole-column references in SUMIFS on large tables slow recalculation; structured references keep ranges tight.</li>
+<li><strong>Manual overrides</strong> in output cells are prohibited; use the adjustment layer (s04) — a check comparing each output cell's formula status (e.g., <code>ISFORMULA</code>) can detect hard-codes.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Outputs reference mapping attributes, never TB rows or cells, so new accounts and adjustments flow automatically.</li>
+<li>SUMIFS + XLOOKUP on structured tables is transparent and suits fixed Schedule III layouts; DAX scales for multi-entity, multi-period work.</li>
+<li>Dynamic arrays (FILTER, GROUPBY, UNIQUE, SORTBY, VSTACK) generate variable-length note tables.</li>
+<li>SOCIE profit links to the P&amp;L output so it can be checked against retained earnings.</li>
+<li>Keep sign, rounding and tax logic in single, documented places.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-write-the-face-formulas-l1">Q1. Write the face formulas [L1]</h3>
+<p>Given structured tables <code>FinalTB</code> (Account, Bal, Line, Year) and <code>Lines</code> (LineID, Caption, DisplaySign), write formulas for current-year and prior-year values of the line "BS.CA.FA.TR" (trade receivables) and a subtotal for "Total current assets" using a Parent attribute.</p>
+<h3 id="q2-dynamic-note-table-l2">Q2. Dynamic note table [L2]</h3>
+<p>Write a dynamic-array formula that produces the borrowings note: lender-wise list of term loans (from accounts mapped to sub-note N15.1) with current-year and prior-year balances shown positive, sorted by current-year balance descending, with a total row. State the fallback approach if GROUPBY is unavailable.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Build the unique list first, then calculate each column against the spilled range.</p>
+</blockquote>
+<h3 id="q3-dax-model-l2">Q3. DAX model [L2]</h3>
+<p>Design a Power Pivot model (tables, relationships, measures) that produces the Schedule III P&amp;L for three entities and 24 months, with a measure for unmapped accounts and a measure for the BS check. Explain how you would handle closing balances for BS lines versus movements for P&amp;L lines.</p>
+<h3 id="q4-engine-audit-l3">Q4. Engine audit [L3]</h3>
+<p>You inherit a reporting workbook in which 30% of BS cells reference specific TB rows (e.g., =TB!F214) and some are hard-coded. Describe how you would detect these, re-engineer the workbook to an attribute-driven engine without disrupting the quarter-end close, and evidence that the new engine reproduces the last audited FS.</p></section>
+<nav class="pager"><a class="prev" href="S02_Mapping_Table_Attributes_for_Schedule_III_Notes_CF.html">← Mapping Table Attributes for Schedule III, Notes, CF and DT</a><a class="next" href="S04_Adjustment_Layer_From_Unadjusted_TB_to_Final_TB.html">Adjustment Layer: From Unadjusted TB to Final TB →</a></nav>
+</main></div></body></html>

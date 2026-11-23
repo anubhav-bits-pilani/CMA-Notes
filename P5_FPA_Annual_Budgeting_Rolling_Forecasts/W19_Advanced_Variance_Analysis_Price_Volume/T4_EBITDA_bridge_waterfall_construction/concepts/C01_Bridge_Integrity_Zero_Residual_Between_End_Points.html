@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bridge Integrity: Zero Residual Between End Points · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/concepts/C01_Bridge_Integrity_Zero_Residual_Between_End_Points.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 5</a> <span>›</span> <a href="../../index.html">Week 19</a> <span>›</span> <a href="../index.html">T4 · EBITDA bridge waterfall construction</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · EBITDA bridge waterfall construction</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Standard_Step_Sequence_for_a_Budget_to_Actual.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S01_Standard_Step_Sequence_for_a_Budget_to_Actual.html">Standard Step Sequence for a Budget-to-Actual EBITDA Bridge</a></li><li><a href="../subtopics/S02_Bridges_for_AvB_AvPY_LE_vs_AOP_and_Forecast_to.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S02_Bridges_for_AvB_AvPY_LE_vs_AOP_and_Forecast_to.html">Bridges for AvB, AvPY, LE vs AOP and Forecast-to-Forecast</a></li><li><a href="../subtopics/S03_Excel_Waterfall_Charts_Native_Chart_and_Stacked.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S03_Excel_Waterfall_Charts_Native_Chart_and_Stacked.html">Excel Waterfall Charts: Native Chart and Stacked-Column Fallback</a></li><li><a href="../subtopics/S04_Power_BI_Waterfall_Visual_Breakdown_Ordering_and.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S04_Power_BI_Waterfall_Visual_Breakdown_Ordering_and.html">Power BI Waterfall Visual: Breakdown, Ordering and Bridge Measures</a></li><li><a href="../subtopics/S05_Grouping_Small_Items_into_Other_and_Labelling_in.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S05_Grouping_Small_Items_into_Other_and_Labelling_in.html">Grouping Small Items into &quot;Other&quot; and Labelling in ₹ Crore and bps</a></li><li><a href="../subtopics/S06_The_Reconciliation_Table_Behind_an_EBITDA_Bridge.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S06_The_Reconciliation_Table_Behind_an_EBITDA_Bridge.html">The Reconciliation Table Behind an EBITDA Bridge</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Bridge_Integrity_Zero_Residual_Between_End_Points.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/concepts/C01_Bridge_Integrity_Zero_Residual_Between_End_Points.html">Bridge Integrity: Zero Residual Between End Points</a></li><li><a href="C02_Valuation_Basis_of_Each_Bridge_Step.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/concepts/C02_Valuation_Basis_of_Each_Bridge_Step.html">Valuation Basis of Each Bridge Step</a></li><li><a href="C03_Stacked_Column_Waterfall_Arithmetic_Invisible_Base.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/concepts/C03_Stacked_Column_Waterfall_Arithmetic_Invisible_Base.html">Stacked-Column Waterfall Arithmetic: Invisible Base and Visible Bar</a></li><li><a href="C04_EBITDA_Margin_Bridge_in_Basis_Points.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/concepts/C04_EBITDA_Margin_Bridge_in_Basis_Points.html">EBITDA Margin Bridge in Basis Points</a></li><li><a href="C05_Order_Dependence_of_Bridge_Steps.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/concepts/C05_Order_Dependence_of_Bridge_Steps.html">Order Dependence of Bridge Steps</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Bridge Integrity: Zero Residual Between End Points</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Bridge integrity: Budget EBITDA + Σ bridge steps = Actual EBITDA (zero residual)</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>For any bridge from a base scenario B to a comparator scenario C with steps \(k = 1, \dots, n\):</p>
+<p>\[
+\text{EBITDA}^{B} + \sum_{k=1}^{n} \Delta_k = \text{EBITDA}^{C}
+\qquad\Longleftrightarrow\qquad
+R = \text{EBITDA}^{C} - \text{EBITDA}^{B} - \sum_{k=1}^{n} \Delta_k = 0
+\]</p>
+<p>where \(\text{EBITDA}^{B}\) is the base (budget) EBITDA, \(\text{EBITDA}^{C}\) is the comparator (actual) EBITDA, \(\Delta_k\) is the signed EBITDA effect of step \(k\) (positive raises EBITDA), and \(R\) is the residual. Integrity requires \(R = 0\) <strong>by construction</strong> of the formulas, not by adding a balancing step.</p>
+<h2 id="explanation">Explanation</h2>
+<p>A bridge is an exact decomposition of a difference. If the step formulas are chosen correctly — price at actual quantity, volume and mix at budget unit margin, cost at actual quantity, opex as budget minus actual — the algebra telescopes and the residual is identically zero for any data set. When the residual is non-zero, it is a symptom of one of a small number of methodology errors:</p>
+<ul>
+<li><strong>Joint (interaction) variance left out.</strong> Price computed at budget quantity and volume at budget price leaves \((P^{A} - P^{B}) \times (Q^{A} - Q^{B})\) unexplained.</li>
+<li><strong>Revenue volume used in an EBITDA bridge.</strong> Volume valued at budget price rather than unit margin overstates the bar by the budget unit cost of the incremental units.</li>
+<li><strong>Population mismatch.</strong> New SKUs (no budget price) or discontinued SKUs (no actual volume) dropped from the engine.</li>
+<li><strong>Sign errors.</strong> A cost step computed as Actual − Budget.</li>
+<li><strong>End-point mismatch.</strong> Actual EBITDA taken from the GL while the steps come from an MIS cube with different mapping or a later cut-off.</li>
+</ul>
+<p>Integrity has to hold at every level that the pack reports: revenue sub-bridge, gross-margin sub-bridge and EBITDA bridge, and at every slice (region, channel, month) if the bridge is sliceable in Power BI. A rounding difference in displayed labels is acceptable if footnoted; an unrounded residual is not.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Two SKUs (units in lakh, ₹ per unit, amounts ₹ lakh). Budget: A 60 units at ₹50 price, ₹35 cost; B 40 units at ₹80, ₹48. Actual: A 75 at ₹49, ₹37; B 35 at ₹84, ₹50. Budget opex 1,380, actual 1,330.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>₹ lakh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Budget EBITDA (2,180 GM − 1,380 opex)</td>
+<td>800</td>
+</tr>
+<tr>
+<td>Price: (49 − 50) × 75 + (84 − 80) × 35</td>
+<td>+65</td>
+</tr>
+<tr>
+<td>Volume: (110 − 100) × 21.8 budget avg margin</td>
+<td>+218</td>
+</tr>
+<tr>
+<td>Mix: (75 − 66) × 15 + (35 − 44) × 32</td>
+<td>−153</td>
+</tr>
+<tr>
+<td>Cost: (35 − 37) × 75 + (48 − 50) × 35</td>
+<td>−220</td>
+</tr>
+<tr>
+<td>Opex: 1,380 − 1,330</td>
+<td>+50</td>
+</tr>
+<tr>
+<td>Actual EBITDA (2,090 GM − 1,330 opex)</td>
+<td>760</td>
+</tr>
+</tbody>
+</table>
+<p>Check: \(800 + 65 + 218 - 153 - 220 + 50 = 760\), so \(R = 0\). Had the analyst computed price at budget quantity (\(-1 \times 60 + 4 \times 40 = +100\)), the steps would sum to 795 and a −35 "balancing" bar would appear — that −35 is the joint price × volume effect, which belongs to price under this formula set.</p>
+<h2 id="connections">Connections</h2>
+<p>Integrity is the first check in the reconciliation table (s06) and the reason the step valuation rules (c02) exist. It mirrors the CMA operating statement in which budgeted profit plus all sales and cost variances equals actual profit, and it extends to revenue PVM (topic 1, concept c04) and to the sign conventions of topic 5. In Power BI it is implemented as a check measure that should return zero for every slicer combination.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-residual-diagnosis-l2">Q1. Residual diagnosis [L2]</h3>
+<p>Budget: 1,00,000 units at ₹200, unit margin ₹60. Actual: 1,10,000 units at ₹210, unit cost unchanged. Opex unchanged. An analyst shows Price = (210 − 200) × 1,00,000 and Volume = 10,000 × ₹200, and adds a balancing bar. Compute the residual under the analyst's method, identify each error, and restate the bridge with zero residual.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> There are two separate errors: the quantity used for price and the unit value used for volume.</p>
+</blockquote>
+<h3 id="q2-integrity-under-slicing-l3">Q2. Integrity under slicing [L3]</h3>
+<p>Your Power BI bridge reconciles at total company but shows a residual of ₹3.4 crore when filtered to the Modern Trade channel. List four model or measure design issues that could cause a residual only at a filtered level, and the test you would run for each.</p></section>
+<nav class="pager"><a class="prev" href="../subtopics/S06_The_Reconciliation_Table_Behind_an_EBITDA_Bridge.html">← The Reconciliation Table Behind an EBITDA Bridge</a><a class="next" href="C02_Valuation_Basis_of_Each_Bridge_Step.html">Valuation Basis of Each Bridge Step →</a></nav>
+</main></div></body></html>

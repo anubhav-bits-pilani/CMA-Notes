@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TABLE() Row and Column Input Mapping · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C01_TABLE_Row_and_Column_Input_Mapping.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 16</a> <span>›</span> <a href="../index.html">T5 · Multi-Dimensional Sensitivity Tables</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Multi-Dimensional Sensitivity Tables</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Excel_Data_Tables_Row_and_Column_Input_Cells.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S01_Excel_Data_Tables_Row_and_Column_Input_Cells.html">Excel Data Tables: Row and Column Input Cells</a></li><li><a href="../subtopics/S02_Grid_1_WACC_vs_Terminal_Growth_on_Implied_Share.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S02_Grid_1_WACC_vs_Terminal_Growth_on_Implied_Share.html">Grid 1: WACC vs Terminal Growth on Implied Share Price</a></li><li><a href="../subtopics/S03_Grid_2_WACC_vs_Exit_Multiple_on_Implied_Share.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S03_Grid_2_WACC_vs_Exit_Multiple_on_Implied_Share.html">Grid 2: WACC vs Exit Multiple on Implied Share Price</a></li><li><a href="../subtopics/S04_Extra_Grids_Operating_Drivers_on_EV_and_Upside_vs.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S04_Extra_Grids_Operating_Drivers_on_EV_and_Upside_vs.html">Extra Grids: Operating Drivers on EV and Upside vs CMP</a></li><li><a href="../subtopics/S05_Heat_Map_Formatting_with_the_Base_Case_at_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S05_Heat_Map_Formatting_with_the_Base_Case_at_the.html">Heat-Map Formatting with the Base Case at the Centre</a></li><li><a href="../subtopics/S06_Calculation_Mode_and_F9_Refresh_Discipline_for.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S06_Calculation_Mode_and_F9_Refresh_Discipline_for.html">Calculation Mode and F9 Refresh Discipline for Data Tables</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_TABLE_Row_and_Column_Input_Mapping.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C01_TABLE_Row_and_Column_Input_Mapping.html">TABLE() Row and Column Input Mapping</a></li><li><a href="C02_Centre_Cell_Must_Equal_Model_Output.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C02_Centre_Cell_Must_Equal_Model_Output.html">Centre Cell Must Equal Model Output</a></li><li><a href="C03_Data_Table_Input_Cells_Must_Be_on_the_Same_Sheet.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C03_Data_Table_Input_Cells_Must_Be_on_the_Same_Sheet.html">Data Table Input Cells Must Be on the Same Sheet</a></li><li><a href="C04_Masking_Invalid_Grid_Cells_Where_g_WACC.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C04_Masking_Invalid_Grid_Cells_Where_g_WACC.html">Masking Invalid Grid Cells Where g ≥ WACC</a></li><li><a href="C05_Running_Grids_with_the_Circularity_Breaker_On.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C05_Running_Grids_with_the_Circularity_Breaker_On.html">Running Grids with the Circularity Breaker On</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>TABLE() Row and Column Input Mapping</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>{=TABLE(Row_Input,Col_Input)}</code>: row input = variable across top, column input = variable down side</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>For a two-variable data table occupying range \(R\), with the corner cell at the top-left, the body is filled with:</p>
+<pre><code>{=TABLE(Row_Input_Cell, Column_Input_Cell)}
+</code></pre>
+<ul>
+<li><strong>Row_Input_Cell</strong> is the model cell that receives the values listed <strong>across the top row</strong> of the table (the column headers).</li>
+<li><strong>Column_Input_Cell</strong> is the model cell that receives the values listed <strong>down the left column</strong> of the table (the row headers).</li>
+<li>The corner cell contains the output formula, for example <code>=Implied_Price</code>.</li>
+</ul>
+<p>For body cell \((i, j)\), Excel sets \(\text{Row\_Input} = h^{\text{top}}_j\) and \(\text{Column\_Input} = h^{\text{side}}_i\), recalculates, and returns the corner value.</p>
+<h2 id="explanation">Explanation</h2>
+<p>The naming is counter-intuitive. The "row input" is the variable whose values are laid out <strong>in a row</strong>, across the top, even though each value heads a <em>column</em> of results. A reliable mnemonic: <em>the row input cell is filled from the header row; the column input cell is filled from the header column.</em></p>
+<p>You cannot type <code>TABLE()</code> manually. Excel creates it through Data → What-If Analysis → Data Table. The function's first argument is always the row input and the second the column input. A 1D table has one argument blank: <code>{=TABLE(,D6)}</code> for values down a column, or <code>{=TABLE(D5,)}</code> for values across a row.</p>
+<p>When the mapping is swapped, Excel substitutes the WACC-axis values into the g cell and vice versa. The grid still computes, but every cell answers a different question from its labels. Detection checks:</p>
+<ul>
+<li><strong>centre cell = model output</strong> (concept c02). This passes only if the base values are in the same relative positions on both axes. With symmetric axes and the base at the centre, the centre can pass even when the axes are swapped, so it is not sufficient on its own.</li>
+<li><strong>directional test.</strong> Price must fall moving right along a WACC axis and rise moving down a g axis (if g increases downward).</li>
+<li><strong>off-centre spot check.</strong> Set WACC and g manually to one corner's values and compare.</li>
+<li><strong>magnitude test.</strong> Along the exit-multiple axis, steps should be large. Along WACC in Grid 2, steps should be small (topic t5, s03).</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>Layout: WACC 11%–13% in <code>I20:M20</code> (across), g 4.5%–6.5% in <code>H21:H25</code> (down), <code>=Implied_Price</code> in <code>H20</code>. WACC driver <code>D5</code>, g driver <code>D6</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Dialog entry</th>
+<th>Correct</th>
+<th>Swapped</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Row input cell</td>
+<td><code>$D$5</code> (WACC)</td>
+<td><code>$D$6</code> (g)</td>
+</tr>
+<tr>
+<td>Column input cell</td>
+<td><code>$D$6</code> (g)</td>
+<td><code>$D$5</code> (WACC)</td>
+</tr>
+<tr>
+<td>Formula created</td>
+<td><code>{=TABLE(D5,D6)}</code></td>
+<td><code>{=TABLE(D6,D5)}</code></td>
+</tr>
+</tbody>
+</table>
+<p>Consider cell <code>I21</code>, labelled WACC 11.0% and g 4.5%. In the swapped version it actually computes g = 11.0% and WACC = 4.5%. With g &gt; WACC, the Gordon formula gives a negative or nonsensical value. The top-left corner often reveals the swap immediately. For an offset design with symmetric offsets of ±1%, however, the swap gives plausible-looking but wrong numbers. That is why the directional test is essential.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>This concept implements subtopic s01. It underpins Grids 1 and 2 (s02, s03) and the topic pitfall on swapped inputs.</li>
+<li>It links to concept c02 (centre proof) and concept c03 (same-sheet inputs).</li>
+<li>The same row/column logic applies to 2D sensitivity tables in FP&amp;A budgets (Phase 5) and to Power BI matrix visuals with two what-if parameters (Phase 3).</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-write-the-formula-l1">Q1. Write the formula [L1]</h3>
+<p>A grid has exit multiples in <code>C31:C35</code> (down) and WACC values in <code>D30:H30</code> (across). The exit multiple driver is <code>DCF!G8</code> and the WACC driver is <code>DCF!G5</code>. Write the <code>TABLE()</code> formula that should appear in the body. State the dialog entries.</p>
+<h3 id="q2-detect-a-swap-with-symmetric-offsets-l2">Q2. Detect a swap with symmetric offsets [L2]</h3>
+<p>An offset grid uses WACC offsets of −1%, −0.5%, 0, +0.5%, +1% across and g offsets with the same values down. The centre equals the model output. Describe two tests that would reveal whether the inputs are swapped. Explain why the centre-cell test alone cannot.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider which direction value should move along each axis.</p>
+</blockquote>
+<h3 id="q3-1d-multi-output-mapping-l1">Q3. 1D multi-output mapping [L1]</h3>
+<p>You list terminal growth values in <code>B41:B47</code> and put three output formulas (price, EV, upside) in <code>C40:E40</code>. Which input box do you fill, and with which cell? Write the resulting <code>TABLE()</code> formula.</p></section>
+<nav class="pager"><a class="prev" href="../subtopics/S06_Calculation_Mode_and_F9_Refresh_Discipline_for.html">← Calculation Mode and F9 Refresh Discipline for Data Tables</a><a class="next" href="C02_Centre_Cell_Must_Equal_Model_Output.html">Centre Cell Must Equal Model Output →</a></nav>
+</main></div></body></html>

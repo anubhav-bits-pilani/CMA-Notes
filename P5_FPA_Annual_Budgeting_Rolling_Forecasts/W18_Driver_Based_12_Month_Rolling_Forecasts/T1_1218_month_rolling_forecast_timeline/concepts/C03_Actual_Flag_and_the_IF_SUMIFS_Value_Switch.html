@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Actual Flag and the IF-SUMIFS Value Switch · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C03_Actual_Flag_and_the_IF_SUMIFS_Value_Switch.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 5</a> <span>›</span> <a href="../../index.html">Week 18</a> <span>›</span> <a href="../index.html">T1 · 12/18-month rolling forecast timeline…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · 12/18-month rolling forecast timeline mechanics</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Rolling_Horizon_Design_12_Month_18_Month_and_5.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S01_Rolling_Horizon_Design_12_Month_18_Month_and_5.html">Rolling Horizon Design: 12-Month, 18-Month and 5-Quarter Windows</a></li><li><a href="../subtopics/S02_Reforecast_Cadence_and_Decoupling_from_the_AOP.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S02_Reforecast_Cadence_and_Decoupling_from_the_AOP.html">Reforecast Cadence and Decoupling from the AOP</a></li><li><a href="../subtopics/S03_Dynamic_Timeline_Headers_Driven_by_a_Single_Cutoff.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S03_Dynamic_Timeline_Headers_Driven_by_a_Single_Cutoff.html">Dynamic Timeline Headers Driven by a Single Cutoff Date</a></li><li><a href="../subtopics/S04_ActualForecast_Flags_and_Per_Column_Data_Source.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S04_ActualForecast_Flags_and_Per_Column_Data_Source.html">Actual/Forecast Flags and Per-Column Data Source Switching</a></li><li><a href="../subtopics/S05_Pulling_Actuals_from_a_Long_Format_Database_with.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S05_Pulling_Actuals_from_a_Long_Format_Database_with.html">Pulling Actuals from a Long-Format Database with SUMIFS</a></li><li><a href="../subtopics/S06_Forecast_Granularity_Fewer_Lines_than_the_Budget.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S06_Forecast_Granularity_Fewer_Lines_than_the_Budget.html">Forecast Granularity: Fewer Lines than the Budget</a></li><li><a href="../subtopics/S07_EPM_Support_for_Rolling_Forecasts_Anaplan_Adaptive.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S07_EPM_Support_for_Rolling_Forecasts_Anaplan_Adaptive.html">EPM Support for Rolling Forecasts: Anaplan, Adaptive and EPBCS</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_First_Forecast_Month_and_SEQUENCE_Driven_Month_End.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C01_First_Forecast_Month_and_SEQUENCE_Driven_Month_End.html">First Forecast Month and SEQUENCE-Driven Month-End Headers</a></li><li><a href="C02_Non_Dynamic_Array_Header_Formula_Using_a_COLUMN.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C02_Non_Dynamic_Array_Header_Formula_Using_a_COLUMN.html">Non-Dynamic-Array Header Formula Using a COLUMN Offset</a></li><li><a href="C03_Actual_Flag_and_the_IF_SUMIFS_Value_Switch.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C03_Actual_Flag_and_the_IF_SUMIFS_Value_Switch.html">Actual Flag and the IF-SUMIFS Value Switch</a></li><li><a href="C04_Constant_Length_Rolling_Horizon.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C04_Constant_Length_Rolling_Horizon.html">Constant-Length Rolling Horizon</a></li><li><a href="C05_Prefer_INDEXXLOOKUP_over_Volatile_OFFSETINDIRECT.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C05_Prefer_INDEXXLOOKUP_over_Volatile_OFFSETINDIRECT.html">Prefer INDEX/XLOOKUP over Volatile OFFSET/INDIRECT</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Actual Flag and the IF-SUMIFS Value Switch</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Actual flag: <code>=--(Hdr&lt;=Cutoff)</code>; value: <code>=IF(Flag,SUMIFS(Act[Amt],Act[Month],Hdr,Act[Acct],$A5),Fcst)</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>For each timeline column with month-end header <code>Hdr</code>:</p>
+<pre><code>Flag   =--(Hdr&lt;=Cutoff)
+Value  =IF(Flag,SUMIFS(Act[Amt],Act[Month],Hdr,Act[Acct],$A5),Fcst)
+</code></pre>
+<p>Mathematically, for account \( a \) and month \( t \):</p>
+<p>\[
+F_t = \begin{cases} 1 &amp; \text{if } H_t \le C \\ 0 &amp; \text{otherwise} \end{cases}
+\qquad
+V_{a,t} = F_t \times A_{a,t} + (1 - F_t) \times \hat{V}_{a,t}
+\]</p>
+<p>where \( H_t \) is the header date, \( C \) the cutoff, \( A_{a,t} \) the actual amount for account \( a \) in month \( t \) (sum of matching rows in table <code>Act</code>), \( \hat{V}_{a,t} \) the forecast for that cell, and \( V_{a,t} \) the reported value.</p>
+<h2 id="explanation">Explanation</h2>
+<p>The comparison <code>Hdr&lt;=Cutoff</code> yields TRUE/FALSE. The double unary <code>--</code> coerces it to 1/0 so the flag row can be summed (count of closed months), multiplied (masking) and used in <code>SUMPRODUCT</code> (YTD = values × flags). <code>IF</code> treats 1 as TRUE, so the same flag drives the switch.</p>
+<p>In the value formula, <code>SUMIFS</code> aggregates all actual rows that match both the month key and the account in column A (<code>$A5</code> locks the column, so the formula copies across months and down accounts). When the flag is 0, <code>Fcst</code> — a reference to the forecast calculation row for the same account and month — is returned. <code>IF</code> evaluates only the selected branch, so an error in a not-yet-built forecast row does not contaminate actual months.</p>
+<p>Conditions for correctness:</p>
+<ul>
+<li><code>Hdr</code> and <code>Act[Month]</code> must both be month-end date serials (c01, s05).</li>
+<li><code>Cutoff</code> must be the last <em>hard-closed</em> month.</li>
+<li>Account labels in column A must exactly match <code>Act[Acct]</code> (watch trailing spaces; <code>TRIM</code> on load).</li>
+<li>The forecast row must exist for every account; otherwise forecast months show 0 or blank.</li>
+</ul>
+<p>Variants: add <code>Act[Entity]</code> criteria for entity selection; replace <code>Act</code> with a combined <code>Fact</code> table and use a version criterion (<code>IF(Flag,"Actual","Working")</code>); the arithmetic form <code>=Flag*SUMIFS(…)+(1-Flag)*Fcst</code> is array-friendly but evaluates both parts.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Cutoff 31-Aug-2025. Row 5 = "Freight". Actuals table has freight (₹ lakh): Jul 48, Aug 52. Forecast row 25 = tonnes × ₹ per tonne: Sep 3,500 t × ₹1,550 = 54.25 lakh, Oct 3,800 t × ₹1,550 = 58.9 lakh.</p>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>31-Jul-25</th>
+<th>31-Aug-25</th>
+<th>30-Sep-25</th>
+<th>31-Oct-25</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Flag</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Source</td>
+<td><code>SUMIFS</code></td>
+<td><code>SUMIFS</code></td>
+<td>Fcst row</td>
+<td>Fcst row</td>
+</tr>
+<tr>
+<td>Value</td>
+<td>48.00</td>
+<td>52.00</td>
+<td>54.25</td>
+<td>58.90</td>
+</tr>
+</tbody>
+</table>
+<p>After the September close (actual freight 56.1), moving the cutoff to 30-Sep-2025 flips the September flag to 1, the cell returns 56.1, and the ₹1.85 lakh difference is September's actualisation variance.</p>
+<h2 id="connections">Connections</h2>
+<p>Core mechanic of s04 (flags and source switching), reading from the database built in s05 and using headers from c01/c02. The flag row produces YTD/YTG and the LE in Topic 2 (c01 there: LE = YTD actual + YTG forecast). In Topic 4, the version-criterion variant is the bridge to database-style version storage. In Power BI (Week 11), the same logic becomes a date-table <code>IsActual</code> column and a measure using <code>IF</code> or <code>CALCULATE</code> with a filter on it.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-writing-the-full-switch-with-entity-l1">Q1. Writing the full switch with entity [L1]</h3>
+<p>Write the value formula for cell D12 where D$4 is the header, $A12 the account, <code>SelEntity</code> the entity selector and row 40 the forecast for the same account, pulling actuals from table <code>Act</code> with columns Month, Entity, Acct, Amt.</p>
+<h3 id="q2-flag-arithmetic-l2">Q2. Flag arithmetic [L2]</h3>
+<p>For an FY26 April–March grid with cutoff 30-Nov-2025, write formulas for (a) the number of closed months from the flag row, (b) YTD and YTG for row 12 using <code>SUMPRODUCT</code>, and (c) the average monthly actual YTD. Compute (a) and state what (b) returns for a row whose values are ₹10 crore every month.</p>
+<h3 id="q3-choosing-if-vs-arithmetic-switch-l2">Q3. Choosing IF vs arithmetic switch [L2]</h3>
+<p>The forecast row for "Other income" contains <code>#DIV/0!</code> in months where the driver denominator is zero. Compare the result of the <code>IF</code> form and the <code>Flag*Actual+(1-Flag)*Fcst</code> form in actual and forecast months, and recommend a fix to the forecast row.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider which branches each form evaluates.</p>
+</blockquote></section>
+<nav class="pager"><a class="prev" href="C02_Non_Dynamic_Array_Header_Formula_Using_a_COLUMN.html">← Non-Dynamic-Array Header Formula Using a COLUMN Offset</a><a class="next" href="C04_Constant_Length_Rolling_Horizon.html">Constant-Length Rolling Horizon →</a></nav>
+</main></div></body></html>

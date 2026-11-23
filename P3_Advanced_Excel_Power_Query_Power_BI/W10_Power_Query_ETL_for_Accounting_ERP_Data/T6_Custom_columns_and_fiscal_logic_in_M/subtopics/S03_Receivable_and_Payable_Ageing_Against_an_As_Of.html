@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Receivable and Payable Ageing Against an As-Of-Date Parameter · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S03_Receivable_and_Payable_Ageing_Against_an_As_Of.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T6 · Custom columns and fiscal logic in M</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · Custom columns and fiscal logic in M</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Column_From_Examples_Custom_Column_and_Conditional.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S01_Column_From_Examples_Custom_Column_and_Conditional.html">Column From Examples, Custom Column and Conditional Column</a></li><li><a href="S02_Indian_FY_Attributes_Label_Fiscal_Month_Quarter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S02_Indian_FY_Attributes_Label_Fiscal_Month_Quarter.html">Indian FY Attributes: Label, Fiscal Month, Quarter and Sort Key</a></li><li><a href="S03_Receivable_and_Payable_Ageing_Against_an_As_Of.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S03_Receivable_and_Payable_Ageing_Against_an_As_Of.html">Receivable and Payable Ageing Against an As-Of-Date Parameter</a></li><li><a href="S04_Conditional_Logic_in_M_ifthenelse_andor_and_Null.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S04_Conditional_Logic_in_M_ifthenelse_andor_and_Null.html">Conditional Logic in M: if/then/else, and/or, and Null Coalescing</a></li><li><a href="S05_Type_Ascription_on_New_Columns.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S05_Type_Ascription_on_New_Columns.html">Type Ascription on New Columns</a></li><li><a href="S06_Group_By_Aggregations_for_Summary_Outputs_During.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S06_Group_By_Aggregations_for_Summary_Outputs_During.html">Group By Aggregations for Summary Outputs During Ingestion</a></li><li><a href="S07_Date_Functions_for_Fiscal_and_Ageing_Logic.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S07_Date_Functions_for_Fiscal_and_Ageing_Logic.html">Date Functions for Fiscal and Ageing Logic</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_FY_End_Year_and_FY_Label_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C01_FY_End_Year_and_FY_Label_Formula.html">FY End Year and FY Label Formula</a></li><li><a href="../concepts/C02_Fiscal_Month_Number_with_NumberMod.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C02_Fiscal_Month_Number_with_NumberMod.html">Fiscal Month Number with Number.Mod</a></li><li><a href="../concepts/C03_Fiscal_Quarter_with_NumberIntegerDivide.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C03_Fiscal_Quarter_with_NumberIntegerDivide.html">Fiscal Quarter with Number.IntegerDivide</a></li><li><a href="../concepts/C04_Ageing_Bucket_Expression_with_DurationDays.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C04_Ageing_Bucket_Expression_with_DurationDays.html">Ageing Bucket Expression with Duration.Days</a></li><li><a href="../concepts/C05_Null_Safe_Net_Amount_and_Operator_Precedence.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C05_Null_Safe_Net_Amount_and_Operator_Precedence.html">Null-Safe Net Amount and Operator Precedence</a></li><li><a href="../concepts/C06_TableGroup_by_FY_and_Ledger_with_a_Typed_Sum.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C06_TableGroup_by_FY_and_Ledger_with_a_Typed_Sum.html">Table.Group by FY and Ledger with a Typed Sum</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Receivable and Payable Ageing Against an As-Of-Date Parameter</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Receivable/payable ageing buckets measured against an as-of-date parameter</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Ageing is one of the most-used finance analyses: credit control chases overdue customers by bucket, treasury forecasts collections from it, auditors test it, the ECL provision matrix under Ind AS 109 multiplies it by loss rates, Schedule III requires receivable and payable ageing disclosures, and MSME payables must be monitored against the 45-day limit. An ageing is only meaningful <strong>as at a date</strong>: the March ageing must be the same whether you refresh it on 5 April or 5 June. Building ageing in Power Query against an as-of-date parameter, rather than against "today", makes it reproducible, testable and auditable.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-as-of-date-parameter">The as-of-date parameter</h3>
+<p>Create a parameter (Manage Parameters &gt; New): Name <code>AsOfDate</code>, Type <strong>Date</strong>, Current Value 31-03-2026. In Excel, a common alternative is a named cell on a Control sheet read into M:</p>
+<pre><code class="language-m">AsOfDate = Date.From(Excel.CurrentWorkbook(){[Name = &quot;AsOfDate&quot;]}[Content]{0}[Column1])
+</code></pre>
+<p>Either way, every ageing step references <code>AsOfDate</code>, and changing one value re-ages everything. Filter the open items to <code>[InvoiceDate] &lt;= AsOfDate</code> so invoices after the reporting date do not appear with negative ages.</p>
+<h3 id="days-outstanding-vs-days-past-due">Days outstanding vs days past due</h3>
+<table>
+<thead>
+<tr>
+<th>Basis</th>
+<th>Formula</th>
+<th>Used for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Days outstanding (from invoice date)</td>
+<td><code>Duration.Days(AsOfDate - [InvoiceDate])</code></td>
+<td>Credit-control ageing, DSO analysis</td>
+</tr>
+<tr>
+<td>Days past due (from due date)</td>
+<td><code>Duration.Days(AsOfDate - [DueDate])</code></td>
+<td>Overdue analysis, ECL provision matrix, Schedule III ageing</td>
+</tr>
+<tr>
+<td>Days from acceptance (MSME)</td>
+<td><code>Duration.Days(AsOfDate - [AcceptanceDate])</code></td>
+<td>MSMED Act Sec 15 compliance, Sec 43B(h)</td>
+</tr>
+</tbody>
+</table>
+<p>Subtracting two dates in M returns a <strong>duration</strong>; <code>Duration.Days</code> extracts whole days. Both operands must be dates (or both datetimes); a date minus a datetime raises an error, so convert with <code>Date.From</code> first. Due date, if not in the data, is <code>Date.AddDays([InvoiceDate], [CreditDays])</code>.</p>
+<h3 id="bucket-logic">Bucket logic</h3>
+<pre><code class="language-m">Aged = Table.AddColumn(Open, &quot;Bucket&quot;, each
+    let d = Duration.Days(AsOfDate - [InvoiceDate])
+    in  if d &lt;= 30 then &quot;0-30&quot;
+        else if d &lt;= 60 then &quot;31-60&quot;
+        else if d &lt;= 90 then &quot;61-90&quot;
+        else &quot;&gt;90&quot;, type text)
+</code></pre>
+<p>Because the conditions are evaluated in order, each <code>else if</code> only needs the upper bound. Add a sort column for buckets (1, 2, 3, 4) so that "&gt;90" does not sort before "0-30".</p>
+<p>For a days-past-due basis, include a "Not due" bucket:</p>
+<pre><code class="language-m">PastDue = Table.AddColumn(Open, &quot;DPDBucket&quot;, each
+    let d = Duration.Days(AsOfDate - [DueDate])
+    in  if d &lt;= 0 then &quot;Not due&quot;
+        else if d &lt;= 30 then &quot;1-30 DPD&quot;
+        else if d &lt;= 90 then &quot;31-90 DPD&quot;
+        else if d &lt;= 180 then &quot;91-180 DPD&quot;
+        else &quot;&gt;180 DPD&quot;, type text)
+</code></pre>
+<h3 id="configurable-buckets">Configurable buckets</h3>
+<p>Hard-coded thresholds are fine for one report; a bucket table makes them configurable:</p>
+<table>
+<thead>
+<tr>
+<th>LowerDays</th>
+<th>UpperDays</th>
+<th>Bucket</th>
+<th>SortOrder</th>
+<th>LossRate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-99999</td>
+<td>0</td>
+<td>Not due</td>
+<td>1</td>
+<td>0.5%</td>
+</tr>
+<tr>
+<td>1</td>
+<td>30</td>
+<td>1-30 DPD</td>
+<td>2</td>
+<td>1.5%</td>
+</tr>
+<tr>
+<td>31</td>
+<td>90</td>
+<td>31-90 DPD</td>
+<td>3</td>
+<td>4%</td>
+</tr>
+<tr>
+<td>91</td>
+<td>180</td>
+<td>91-180 DPD</td>
+<td>4</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>181</td>
+<td>99999</td>
+<td>&gt;180 DPD</td>
+<td>5</td>
+<td>50%</td>
+</tr>
+</tbody>
+</table>
+<p>Assign with a lookup function:</p>
+<pre><code class="language-m">fxBucket = (d as number) as record =&gt;
+    Table.First(Table.SelectRows(Buckets, each d &gt;= [LowerDays] and d &lt;= [UpperDays])),
+WithB = Table.AddColumn(PastDue, &quot;B&quot;, each fxBucket(Duration.Days(AsOfDate - [DueDate])), type record),
+Expanded = Table.ExpandRecordColumn(WithB, &quot;B&quot;, {&quot;Bucket&quot;, &quot;SortOrder&quot;, &quot;LossRate&quot;})
+</code></pre>
+<p>The loss rate column then gives an ECL provision per invoice: <code>[OpenAmount] * [LossRate]</code>. Buffer the bucket table (<code>Table.Buffer(Buckets)</code>) if it is read per row.</p>
+<h3 id="schedule-iii-ageing">Schedule III ageing</h3>
+<p>Schedule III (as amended in 2021) requires trade receivables and trade payables ageing "from the due date of payment" in the bands: less than 6 months, 6 months – 1 year, 1–2 years, 2–3 years, more than 3 years (for payables: less than 1 year, 1–2 years, 2–3 years, more than 3 years), split into disputed/undisputed and, for payables, MSME/others. If no due date is specified, the date of the transaction is used. Implement these bands with <code>Date.AddMonths(AsOfDate, -6)</code> style comparisons so that "6 months" means calendar months, or with day counts if the company's policy defines them so.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>As-of 31-03-2026. Invoices: A dated 15-03-2026 (₹4,00,000), B dated 10-01-2026 (₹2,50,000), C dated 20-11-2025 (₹1,80,000), D dated 02-04-2026 (₹90,000).</p>
+<ul>
+<li>A: \(31 - 15 = 16\) days → 0-30.</li>
+<li>B: 21 days left in January + 28 in February + 31 in March = 80 days → 61-90.</li>
+<li>C: 10 + 31 + 31 + 28 + 31 = 131 days → &gt;90.</li>
+<li>D: after the as-of date → excluded by the filter (otherwise −2 days would fall into 0-30 and overstate receivables at 31 March).</li>
+</ul>
+<p>Summary: 0-30 ₹4,00,000; 61-90 ₹2,50,000; &gt;90 ₹1,80,000.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Partial payments and unapplied credits.</strong> Age open amounts, not invoice amounts; unapplied receipts and credit notes should be allocated (FIFO or as per remittance) or shown separately, not netted into the oldest bucket blindly.</li>
+<li><strong>Disputed items.</strong> Schedule III separates disputed and undisputed; carry a dispute flag from the source.</li>
+<li><strong>Boundary definitions.</strong> "0-30" vs "1-30": decide whether day 0 (invoice dated on the as-of date) is in the first bucket and document it.</li>
+<li><strong>Time zones.</strong> In the Service, "now" is UTC; using a parameter avoids the issue entirely.</li>
+<li><strong>Refresh vs period change.</strong> Changing <code>AsOfDate</code> requires re-filtering open items as at that date; an open-items file extracted on 31 March cannot produce a correct 30 June ageing.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Always age against an <code>AsOfDate</code> parameter, never against <code>DateTime.LocalNow()</code>.</li>
+<li><code>Duration.Days(AsOfDate - [Date])</code> gives days; both operands must be the same type.</li>
+<li>Distinguish days outstanding (invoice date) from days past due (due date) and MSME days (acceptance date).</li>
+<li>Use ordered <code>if ... else if</code> chains or a bucket table with sort order and loss rates.</li>
+<li>Filter out items dated after the as-of date and age open amounts, not gross invoice values.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-age-the-invoices-l1">Q1. Age the invoices [L1]</h3>
+<p>As-of date 30-09-2025. Assign each invoice to 0-30, 31-60, 61-90 or &gt;90 by invoice date: 12-09-2025 ₹1,20,000; 31-07-2025 ₹2,40,000; 01-08-2025 ₹75,000; 15-05-2025 ₹3,10,000; 05-10-2025 ₹60,000.</p>
+<h3 id="q2-due-date-ageing-with-credit-days-l2">Q2. Due-date ageing with credit days [L2]</h3>
+<p>The open-items table has InvoiceDate, CreditDays (30, 45 or 60) and OpenAmount. Write M that derives DueDate, computes days past due against <code>AsOfDate</code>, assigns "Not due", "1-30", "31-90", "91-180", "&gt;180" buckets with a SortOrder column, and types every new column.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> <code>Date.AddDays([InvoiceDate], [CreditDays])</code> gives the due date.</p>
+</blockquote>
+<h3 id="q3-ecl-provision-matrix-l2">Q3. ECL provision matrix [L2]</h3>
+<p>Using the bucket table in the notes, compute the ECL provision at 31-03-2026 for receivables: Not due ₹3.20 crore, 1-30 DPD ₹1.10 crore, 31-90 DPD ₹0.65 crore, 91-180 DPD ₹0.28 crore, &gt;180 DPD ₹0.12 crore. Then explain how you would adjust the historical loss rates for forward-looking information as Ind AS 109 requires.</p>
+<h3 id="q4-reproducibility-challenge-l3">Q4. Reproducibility challenge [L3]</h3>
+<p>An auditor re-performs your March receivables ageing on 20 May and gets different bucket totals. List the possible causes (in M, in source data and in process), and design the controls that would make the ageing reproducible.</p></section>
+<nav class="pager"><a class="prev" href="S02_Indian_FY_Attributes_Label_Fiscal_Month_Quarter.html">← Indian FY Attributes: Label, Fiscal Month, Quarter and Sort…</a><a class="next" href="S04_Conditional_Logic_in_M_ifthenelse_andor_and_Null.html">Conditional Logic in M: if/then/else, and/or, and Null… →</a></nav>
+</main></div></body></html>

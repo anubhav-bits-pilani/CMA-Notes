@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scenario Summary via a One-Variable Data Table on the Switch · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C03_Scenario_Summary_via_a_One_Variable_Data_Table_on.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T6 · Scenario Switcher Architecture</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · Scenario Switcher Architecture</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Single_Scenario_Selector_Cell_with_Data_Validation.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S01_Single_Scenario_Selector_Cell_with_Data_Validation.html">Single Scenario Selector Cell with Data-Validation Dropdown</a></li><li><a href="../subtopics/S02_Scenario_Driver_Blocks_Base_Bull_Bear_Rows_and_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S02_Scenario_Driver_Blocks_Base_Bull_Bear_Rows_and_the.html">Scenario Driver Blocks: Base, Bull, Bear Rows and the Live Row</a></li><li><a href="../subtopics/S03_Scenario_Selection_Functions_CHOOSE_INDEX_XLOOKUP.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S03_Scenario_Selection_Functions_CHOOSE_INDEX_XLOOKUP.html">Scenario Selection Functions: CHOOSE, INDEX, XLOOKUP, SWITCH</a></li><li><a href="../subtopics/S04_Which_Drivers_to_Flex_Volume_Price_Stores_Margin.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S04_Which_Drivers_to_Flex_Volume_Price_Stores_Margin.html">Which Drivers to Flex: Volume, Price, Stores, Margin, Wages, Capex, NWC</a></li><li><a href="../subtopics/S05_Coherent_Scenario_Narratives_vs_Single_Variable.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S05_Coherent_Scenario_Narratives_vs_Single_Variable.html">Coherent Scenario Narratives vs Single-Variable Tweaks</a></li><li><a href="../subtopics/S06_Capturing_Scenario_Outputs_Data_Tables_vs_Pasted.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S06_Capturing_Scenario_Outputs_Data_Tables_vs_Pasted.html">Capturing Scenario Outputs: Data Tables vs Pasted Static Values</a></li><li><a href="../subtopics/S07_Scenario_Labelling_on_Outputs_and_Documented_Case.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S07_Scenario_Labelling_on_Outputs_and_Documented_Case.html">Scenario Labelling on Outputs and Documented Case Rationale</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_The_Live_Row_CHOOSE_or_INDEX_on_the_Scenario_Code.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C01_The_Live_Row_CHOOSE_or_INDEX_on_the_Scenario_Code.html">The Live Row: CHOOSE or INDEX on the Scenario Code</a></li><li><a href="C02_One_Switch_Only_No_Scenario_Logic_Outside_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C02_One_Switch_Only_No_Scenario_Logic_Outside_the.html">One Switch Only: No Scenario Logic Outside the Driver Block</a></li><li><a href="C03_Scenario_Summary_via_a_One_Variable_Data_Table_on.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C03_Scenario_Summary_via_a_One_Variable_Data_Table_on.html">Scenario Summary via a One-Variable Data Table on the Switch</a></li><li><a href="C04_Live_Scenario_Header_Label_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C04_Live_Scenario_Header_Label_Formula.html">Live Scenario Header Label Formula</a></li><li><a href="C05_Internal_Consistency_of_Scenarios_Growth_Needs.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C05_Internal_Consistency_of_Scenarios_Growth_Needs.html">Internal Consistency of Scenarios: Growth Needs Capex, Stress Needs Funding</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Scenario Summary via a One-Variable Data Table on the Switch</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Scenario summary: 1D data table with Scenario as column input returning EV, price, EBITDA, net debt</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>A one-variable (1D) data table with the scenario codes down a column and output links across the top row, built with
+What-If Analysis → Data Table and <strong>Column input cell = Scenario</strong>, returns for each code \(s\):</p>
+<p>\[
+\text{Table}(s, j) = f_j(\text{Model} \mid \text{Scenario} = s)
+\]</p>
+<p>where \(f_j\) is the \(j\)-th linked output — typically enterprise value (EV), equity value per share (price), EBITDA
+for key years and net debt. Excel fills the grid with <code>{=TABLE(,Scenario)}</code>; the table must be on the same sheet as the
+<code>Scenario</code> input cell.</p>
+<h2 id="explanation">Explanation</h2>
+<p>The data table recalculates the whole model for each code in turn, without changing the live selector, and stores the
+results in the table. It is the cleanest way to show all cases side by side while keeping them live.</p>
+<p>Mechanics and conditions:</p>
+<ul>
+<li><strong>Layout.</strong> Codes 1, 2, 3 in a column (say B11:B13); output links in the row above, starting one column to the right
+  (C10 <code>=EV</code>, D10 <code>=Price</code>, E10 <code>=EBITDA_FY27</code>, F10 <code>=Net_Debt_FY27</code>). Select B10:F13, then Data Table with Column input
+  cell = the Scenario cell; Row input cell blank.</li>
+<li><strong>Same-sheet rule.</strong> Excel only accepts an input cell on the table's own sheet. If <code>Scenario</code> lives on the Cover, the
+  table must be on the Cover; if it lives on Inputs, the table goes on Inputs. A cross-sheet design is the topic pitfall.</li>
+<li><strong>Recalculation.</strong> Each row recalculates the full model; with "Automatic except for data tables", press F9 to refresh
+  and show a "Press F9" warning on the Cover.</li>
+<li><strong>Circularity.</strong> Iterative calculations inside data tables can give unstable results; use the circularity breaker or
+  a static snapshot for circular models (Week 15).</li>
+<li><strong>Labels.</strong> Display scenario names beside the codes with <code>=INDEX(Scenario_Names, B11)</code> outside the table range.</li>
+<li><strong>Output choice.</strong> Include valuation (EV, price, implied multiples), operating (revenue, EBITDA, margin), and credit
+  outputs (net debt, net debt ÷ EBITDA, minimum DSCR) so the table answers both equity and lender questions.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>Illustrative summary for a Trent-style model (₹ crore unless stated):</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Scenario</th>
+<th>EV</th>
+<th>Value per share (₹)</th>
+<th>FY27E EBITDA</th>
+<th>FY27E net debt</th>
+<th>Net debt ÷ EBITDA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td><code>=EV</code></td>
+<td><code>=Price</code></td>
+<td><code>=EBITDA_FY27</code></td>
+<td><code>=Net_Debt_FY27</code></td>
+<td><code>=Lev_FY27</code></td>
+</tr>
+<tr>
+<td>1</td>
+<td>Base</td>
+<td>1,95,000</td>
+<td>5,480</td>
+<td>3,900</td>
+<td>(1,200)</td>
+<td>(0.3)x</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Bull</td>
+<td>2,48,000</td>
+<td>6,980</td>
+<td>4,450</td>
+<td>(900)</td>
+<td>(0.2)x</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Bear</td>
+<td>1,32,000</td>
+<td>3,710</td>
+<td>3,050</td>
+<td>600</td>
+<td>0.2x</td>
+</tr>
+</tbody>
+</table>
+<p>Values are illustrative. Note the internal consistency (c05): Bull has <em>less</em> net cash than Base despite higher EBITDA
+because faster rollout absorbs capex and working capital; Bear has net debt because inventory builds and EBITDA falls.</p>
+<h2 id="connections">Connections</h2>
+<p>Implements the live capture method in s06 and depends on the single selector (s01, c02). The same-sheet constraint is
+the topic pitfall on cross-sheet data tables. In Week 16, two-variable data tables (Scenario × WACC or Scenario × terminal
+growth) extend this idea to sensitivity grids; in Phase 5, the same summary structure presents budget versions.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-set-up-the-table-l1">Q1. Set up the table [L1]</h3>
+<p>Your <code>Scenario</code> cell is Cover!E6. Describe exactly where you would place a scenario summary data table, the cell layout,
+the dialog inputs, and the label formulas.</p>
+<h3 id="q2-calculation-settings-l2">Q2. Calculation settings [L2]</h3>
+<p>After switching to "Automatic except for data tables", a user changes the Bear store additions and copies the summary
+into an email. Explain what the email will contain and two controls that would prevent the error.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Think about when data tables recalculate in that mode and what the Cover can display.</p>
+</blockquote>
+<h3 id="q3-choosing-outputs-l2">Q3. Choosing outputs [L2]</h3>
+<p>A lender and an equity investor will both use the summary. Propose eight outputs for the table, justify each, and
+explain why per-share value alone is insufficient.</p></section>
+<nav class="pager"><a class="prev" href="C02_One_Switch_Only_No_Scenario_Logic_Outside_the.html">← One Switch Only: No Scenario Logic Outside the Driver Block</a><a class="next" href="C04_Live_Scenario_Header_Label_Formula.html">Live Scenario Header Label Formula →</a></nav>
+</main></div></body></html>

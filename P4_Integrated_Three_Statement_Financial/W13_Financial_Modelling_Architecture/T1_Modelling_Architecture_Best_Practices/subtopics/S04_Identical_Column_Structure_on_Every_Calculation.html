@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Identical Column Structure on Every Calculation Sheet · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S04_Identical_Column_Structure_on_Every_Calculation.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T1 · Modelling Architecture &amp; Best Practices</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Modelling Architecture &amp; Best Practices</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Tab_Flow_of_an_Institutional_Three_Statement_Model.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S01_Tab_Flow_of_an_Institutional_Three_Statement_Model.html">Tab Flow of an Institutional Three-Statement Model</a></li><li><a href="S02_Separating_Inputs_Calculations_and_Outputs.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S02_Separating_Inputs_Calculations_and_Outputs.html">Separating Inputs, Calculations and Outputs</a></li><li><a href="S03_Single_Master_Timeline_Row_and_Period_Flags.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S03_Single_Master_Timeline_Row_and_Period_Flags.html">Single Master Timeline Row and Period Flags</a></li><li><a href="S04_Identical_Column_Structure_on_Every_Calculation.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S04_Identical_Column_Structure_on_Every_Calculation.html">Identical Column Structure on Every Calculation Sheet</a></li><li><a href="S05_Cover_Sheet_Identity_Basis_Units_and_Change_Log.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S05_Cover_Sheet_Identity_Basis_Units_and_Change_Log.html">Cover Sheet: Identity, Basis, Units and Change Log</a></li><li><a href="S06_Checks_Sheet_and_the_Master_Integrity_Flag.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S06_Checks_Sheet_and_the_Master_Integrity_Flag.html">Checks Sheet and the Master Integrity Flag</a></li><li><a href="S07_Named_Ranges_for_Scalars_Direct_References_for.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S07_Named_Ranges_for_Scalars_Direct_References_for.html">Named Ranges for Scalars, Direct References for Rows</a></li><li><a href="S08_Version_Control_File_Naming_and_Transparent.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S08_Version_Control_File_Naming_and_Transparent.html">Version Control, File Naming and Transparent Protection</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_FAST_Standard_Flexible_Appropriate_Structured.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C01_FAST_Standard_Flexible_Appropriate_Structured.html">FAST Standard: Flexible, Appropriate, Structured, Transparent</a></li><li><a href="../concepts/C02_ICAEW_Financial_Modelling_Code_Principles_for.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C02_ICAEW_Financial_Modelling_Code_Principles_for.html">ICAEW Financial Modelling Code: Principles for Reliable Models</a></li><li><a href="../concepts/C03_Column_Consistency_Same_Column_Same_Period_Every.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C03_Column_Consistency_Same_Column_Same_Period_Every.html">Column Consistency: Same Column, Same Period, Every Sheet</a></li><li><a href="../concepts/C04_Master_Check_Formula_on_the_Cover.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C04_Master_Check_Formula_on_the_Cover.html">Master Check Formula on the Cover</a></li><li><a href="../concepts/C05_Sign_Convention_Declared_Once_and_Applied.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C05_Sign_Convention_Declared_Once_and_Applied.html">Sign Convention Declared Once and Applied Everywhere</a></li><li><a href="../concepts/C06_Units_Model_in_Crore_and_Convert_Before_Ingestion.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C06_Units_Model_in_Crore_and_Convert_Before_Ingestion.html">Units: Model in ₹ Crore and Convert Before Ingestion</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Identical Column Structure on Every Calculation Sheet</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Identical column structure on every calc sheet: label, units, constant column, then aligned timeline columns</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A model is a grid. If column H means FY21A on the Revenue tab but FY22A on the Working Capital tab, every link between them must be offset, and an offset link is indistinguishable at a glance from a wrong link. Identical column structure means a cross-sheet formula always points to the same column letter it sits in (<code>=Revenue!K25</code> sitting in column K), which makes errors visually obvious, lets formulas copy across and lets Inquire or a reviewer's macro test alignment mechanically. It is also what makes the "one formula per row" rule achievable.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-standard-layout">The standard layout</h3>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Content</th>
+<th>Width / format</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>Spacer / section marker</td>
+<td>Narrow</td>
+<td>Used for row grouping markers or check flags</td>
+</tr>
+<tr>
+<td>B</td>
+<td>Line-item label</td>
+<td>Wide</td>
+<td>Indented by level using cell indent, not leading spaces</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Sub-label / description or source</td>
+<td>Medium</td>
+<td>e.g., "per concall Q4FY25"</td>
+</tr>
+<tr>
+<td>D</td>
+<td>Units</td>
+<td>Narrow</td>
+<td>₹ crore, %, days, mn sq ft, # stores, x</td>
+</tr>
+<tr>
+<td>E</td>
+<td>Constant column</td>
+<td>Narrow, blue if input</td>
+<td>Scalars used across the row: tax rate, useful life, growth cap</td>
+</tr>
+<tr>
+<td>F</td>
+<td>Row total or check (optional)</td>
+<td>Narrow</td>
+<td>e.g., sum of forecast years</td>
+</tr>
+<tr>
+<td>G</td>
+<td>Spacer / pre-timeline</td>
+<td>Narrow</td>
+<td>Gives a "prior period" cell for corkscrews (opening balance column)</td>
+</tr>
+<tr>
+<td>H→Q</td>
+<td>Timeline: FY21A … FY30E</td>
+<td>Uniform width</td>
+<td>Identical on every sheet, linked from master timeline</td>
+</tr>
+</tbody>
+</table>
+<p>The exact letters are a house choice; the rule is that <strong>they are the same on every calculation sheet</strong>. A common Indian bank layout uses columns A–E for labels/units/constants and F onward for time; FAST examples often reserve a column for totals. Pick one and freeze it in a template.</p>
+<h3 id="each-element-explained">Each element explained</h3>
+<p><strong>Label.</strong> Describes the line in words that match the source (Schedule III caption for historical lines). Avoid abbreviations that only you understand.</p>
+<p><strong>Units.</strong> Every row states its unit. FAST forbids mixed units in a row — a row cannot be ₹ crore in actual years and ₹ lakh in forecast years, or % in some columns and absolute in others. A units column makes unit errors spot-able: multiplying a "mn sq ft" row by a "₹ per sq ft" row should produce "₹ mn", which must then be converted to ₹ crore (÷ 10).</p>
+<p><strong>Constant column.</strong> Holds values that do not vary with time — useful life, a cap, the base year's value, a link to a named scalar. Because it sits in the same column on every sheet, a formula can reference it with a column-anchored mixed reference, e.g. <code>=H20*$E20</code>, and copy across the timeline unchanged (topic t2, s04).</p>
+<p><strong>Aligned timeline columns.</strong> Rows 1–8 of each sheet link to the master timeline (s03). Column H is always FY21A; column M is always FY26E.</p>
+<h3 id="illustration-aligned-vs-misaligned-link">Illustration: aligned vs misaligned link</h3>
+<p>Working Capital tab, FY26E receivables in column M:</p>
+<pre><code>Aligned:     =Revenue!M40*M12/365      (M on both sheets is FY26E)
+Misaligned:  =Revenue!L40*M12/365      (Revenue tab starts one column later; L is FY26E there)
+</code></pre>
+<p>The misaligned version may even be <em>correct</em> numerically, but it is unauditable: a reviewer cannot distinguish an intentional offset from a lag error. Worse, if someone later inserts a column on one sheet only, every link breaks silently.</p>
+<p>With Revenue FY26E = ₹16,800 crore and DSO = 6 days, receivables = 16,800 × 6 / 365 = ₹276.2 crore. If the formula pointed at FY25A revenue of ₹14,600 crore by mistake, the result would be ₹240.0 crore — a plausible number, which is why misalignment is dangerous.</p>
+<h3 id="header-block">Header block</h3>
+<p>Every calc sheet starts with the same header rows:</p>
+<ol>
+<li>Sheet title and scenario label (<code>="Scenario: "&amp;INDEX(Scenario_Names,Scenario)</code>).</li>
+<li>Units statement ("₹ crore unless stated").</li>
+<li>Timeline rows linked from the master (period end, FY label, A/E flag, counter).</li>
+</ol>
+<p>Freeze panes at the first timeline column and below the header so labels and periods stay visible while scrolling.</p>
+<h3 id="building-and-enforcing-the-structure">Building and enforcing the structure</h3>
+<ol>
+<li>Build one <strong>template sheet</strong> with the header, columns and styles. Copy it (right-click → Move or Copy → Create a copy) to create each new calc sheet. Never build a sheet from scratch.</li>
+<li>Never insert or delete columns on one sheet in isolation. If a forecast year must be added, add it to the template and all sheets together (group sheets with Ctrl-click, then insert — with care, and ungroup immediately).</li>
+<li>Add an <strong>alignment check</strong> row on each sheet: <code>=--(H2&lt;&gt;Timeline!H2)</code> across the timeline, summed into the Checks sheet. Any non-zero means the sheet's period ends differ from the master.</li>
+<li>Use consistent row grouping (Data → Group) rather than hidden rows to collapse detail.</li>
+</ol>
+<h3 id="output-sheets">Output sheets</h3>
+<p>Outputs (dashboards, IC summaries) may use a different layout — e.g., only FY25A–FY28E, or years in rows for a chart. That is acceptable because outputs only display; but they should pull by lookup on the FY number (<code>=INDEX(Model!$H$40:$Q$40,MATCH(D$3,Model!$H$3:$Q$3,0))</code>), not by assumed column positions.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Quarterly and annual sheets in one model.</strong> Their columns cannot align; keep each family internally consistent and bridge with SUMIFS on the FY number.</li>
+<li><strong>Comps sheet.</strong> Peers are in rows and metrics in columns — it is a database, not a timeline sheet. Keep it outside the calc-sheet rule but label clearly.</li>
+<li><strong>Opening balance column.</strong> Leaving column G (pre-first-year) blank or with an opening balance lets corkscrews use one formula from the first column; otherwise the first column needs a different formula, breaking row consistency.</li>
+<li><strong>Many constants per row.</strong> If a row needs three constants, add constant columns consistently on all sheets, or move them to Inputs as named scalars.</li>
+<li><strong>Totals columns.</strong> A five-year forecast total (e.g., cumulative capex) in column F is useful but must be clearly separated so it is not confused with a period.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Same column = same period on every calc sheet; cross-sheet links point to their own column letter.</li>
+<li>Every row has a label, units and (if needed) a constant in fixed columns.</li>
+<li>Build every calc sheet from one template; never insert columns on one sheet alone.</li>
+<li>Add alignment checks comparing each sheet's period-end row to the master timeline.</li>
+<li>Output sheets may differ in layout but should retrieve data by FY lookup, not by assumed positions.</li>
+<li>Units column prevents mixed units and makes conversion errors visible.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-spot-the-misalignment-l1">Q1. Spot the misalignment [L1]</h3>
+<p>The PPE tab's timeline starts in column H (FY21A) and the Revenue tab's in column I (FY21A). The PPE tab's FY27E capex formula is <code>=Revenue!O30*$E15</code>. State which year of revenue this picks up, whether it is likely intended, and how you would fix the root cause.</p>
+<h3 id="q2-template-specification-l2">Q2. Template specification [L2]</h3>
+<p>Write a one-page template specification for calc sheets in a 10-year model (FY21A–FY30E) for an Indian paint company, including column letters, widths, header rows, freeze-pane position, units list, alignment check formula and the rule for adding a new forecast year.</p>
+<h3 id="q3-units-discipline-l2">Q3. Units discipline [L2]</h3>
+<p>A Trent store build has rows: average area (mn sq ft), revenue per sq ft (₹ per sq ft per year), and revenue (₹ crore). Average Zudio area in FY26E is 9.8 mn sq ft and revenue per sq ft is ₹9,500. Write the revenue formula with an explicit unit conversion and state what the units column should show for each row.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> mn sq ft × ₹ per sq ft gives ₹ mn; decide where the ÷10 lives.</p>
+</blockquote>
+<h3 id="q4-review-case-l3">Q4. Review case [L3]</h3>
+<p>You are reviewing a model where four of eleven calc sheets begin in column G and seven in column H, and several analysts have "fixed" links by offsetting. Draft a remediation plan that restores column consistency without breaking the model, including the order of steps, checks to run before and after, and how to document the change in the change log.</p></section>
+<nav class="pager"><a class="prev" href="S03_Single_Master_Timeline_Row_and_Period_Flags.html">← Single Master Timeline Row and Period Flags</a><a class="next" href="S05_Cover_Sheet_Identity_Basis_Units_and_Change_Log.html">Cover Sheet: Identity, Basis, Units and Change Log →</a></nav>
+</main></div></body></html>

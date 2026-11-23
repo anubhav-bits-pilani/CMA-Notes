@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Excel Iterative Calculation Settings for Circular Models · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/subtopics/S03_Excel_Iterative_Calculation_Settings_for_Circular.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 14</a> <span>›</span> <a href="../index.html">T4 · Managing Interest Circularity Safely</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Managing Interest Circularity Safely</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_The_InterestDebt_Circular_Loop_Through_PAT_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/subtopics/S01_The_InterestDebt_Circular_Loop_Through_PAT_and.html">The Interest–Debt Circular Loop Through PAT and Cash Flow</a></li><li><a href="S02_The_Second_Loop_Interest_Income_on_Average_Cash.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/subtopics/S02_The_Second_Loop_Interest_Income_on_Average_Cash.html">The Second Loop: Interest Income on Average Cash</a></li><li><a href="S03_Excel_Iterative_Calculation_Settings_for_Circular.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/subtopics/S03_Excel_Iterative_Calculation_Settings_for_Circular.html">Excel Iterative Calculation Settings for Circular Models</a></li><li><a href="S04_Building_the_Circuit_Breaker_Toggle_for_Interest.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/subtopics/S04_Building_the_Circuit_Breaker_Toggle_for_Interest.html">Building the Circuit-Breaker Toggle for Interest</a></li><li><a href="S05_Alternatives_to_Iterative_Circularity_in_Debt.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/subtopics/S05_Alternatives_to_Iterative_Circularity_in_Debt.html">Alternatives to Iterative Circularity in Debt Models</a></li><li><a href="S06_FAST_and_ICAEW_Stance_on_Circularity_vs_Banking.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/subtopics/S06_FAST_and_ICAEW_Stance_on_Circularity_vs_Banking.html">FAST and ICAEW Stance on Circularity vs Banking Practice</a></li><li><a href="S07_Recovering_a_Model_with_an_Error_Trapped_in_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/subtopics/S07_Recovering_a_Model_with_an_Error_Trapped_in_the.html">Recovering a Model with an Error Trapped in the Loop</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Circuit_Breaker_Interest_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/concepts/C01_Circuit_Breaker_Interest_Formula.html">Circuit-Breaker Interest Formula</a></li><li><a href="../concepts/C02_Copy_Paste_Macro_for_Solving_Interest_Without.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/concepts/C02_Copy_Paste_Macro_for_Solving_Interest_Without.html">Copy-Paste Macro for Solving Interest Without Circularity</a></li><li><a href="../concepts/C03_Iterative_Calculation_Is_an_Application_Level.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/concepts/C03_Iterative_Calculation_Is_an_Application_Level.html">Iterative Calculation Is an Application-Level Setting</a></li><li><a href="../concepts/C04_Materiality_of_Average_vs_Opening_Balance_Interest.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/concepts/C04_Materiality_of_Average_vs_Opening_Balance_Interest.html">Materiality of Average vs Opening-Balance Interest</a></li><li><a href="../concepts/C05_Convergence_Check_for_Circular_Interest.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/concepts/C05_Convergence_Check_for_Circular_Interest.html">Convergence Check for Circular Interest</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Excel Iterative Calculation Settings for Circular Models</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Excel iteration settings: File → Options → Formulas → Enable iterative calculation, 100 iterations, max change 0.001</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A circular model will not calculate at all until iteration is enabled — Excel shows a circular-reference warning and returns zero or the last value in the looped cells. Once iteration is enabled, the two parameters (maximum iterations and maximum change) decide how far Excel goes before stopping and whether it stops at a converged answer. Getting the settings wrong produces models that look fine but carry unconverged numbers, or models that take a minute to recalculate. In a modelling test or interview, being able to state the path and sensible values without hesitation signals that you have actually built circular models.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="where-the-setting-lives">Where the setting lives</h3>
+<ul>
+<li><strong>Windows Excel (Microsoft 365, 2019, 2016):</strong> File → Options → Formulas → Calculation options → tick <strong>Enable iterative calculation</strong> → set <strong>Maximum Iterations</strong> and <strong>Maximum Change</strong> → OK.</li>
+<li><strong>Mac Excel:</strong> Excel → Preferences (Settings) → Calculation → tick <strong>Use iterative calculation</strong> → set Maximum iterations and Maximum change.</li>
+<li><strong>Excel for the web:</strong> File → Options → Formulas (availability depends on version and tenancy settings); test before relying on it for client delivery.</li>
+<li><strong>VBA:</strong> <code>Application.Iteration = True</code>, <code>Application.MaxIterations = 100</code>, <code>Application.MaxChange = 0.001</code>.</li>
+</ul>
+<h3 id="what-the-two-parameters-mean">What the two parameters mean</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Meaning</th>
+<th>Recommended</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Maximum Iterations</td>
+<td>100</td>
+<td>Upper bound on loop recalculations per recalc event</td>
+<td>100 (enough for a damped loop; raising it hides problems)</td>
+</tr>
+<tr>
+<td>Maximum Change</td>
+<td>0.001</td>
+<td>Excel stops early when no cell in the loop changes by more than this between iterations</td>
+<td>0.001 in the model's units; tighten to 0.0001 if units are ₹ crore and precision matters</td>
+</tr>
+</tbody>
+</table>
+<p>Excel stops when <strong>either</strong> condition is met: the maximum change across looped cells falls below the threshold, or the iteration count is reached. Excel gives <strong>no warning</strong> when it stops because of the iteration cap without having converged — which is why the convergence check (c05) is mandatory.</p>
+<h3 id="units-matter-for-maximum-change">Units matter for maximum change</h3>
+<p>Maximum change is an absolute number, not a percentage. In a model in ₹ crore, 0.001 means ₹1 lakh — adequate. In a model in ₹ (rupees), 0.001 means one-tenth of a paisa — Excel may hit the iteration limit chasing meaningless precision on large balances, though for a damped loop it will still converge. In a model in ₹ lakh, 0.001 = ₹100. Choose the threshold with the units on the Cover tab in mind.</p>
+<h3 id="calculation-mode-interaction">Calculation mode interaction</h3>
+<ul>
+<li><strong>Automatic:</strong> each edit triggers a recalc, which runs the loop up to the cap. Normal setting for most models.</li>
+<li><strong>Automatic except for data tables:</strong> recommended for models with large sensitivity tables; press F9 to refresh the tables.</li>
+<li><strong>Manual:</strong> each F9 runs the loop once up to the cap. If the cap is reached without convergence, pressing F9 again continues from where it stopped — values drift towards convergence with each press, which can mislead a reviewer comparing printouts.</li>
+</ul>
+<h3 id="why-100-iterations-and-not-1000-or-10">Why 100 iterations and not 1,000 or 10</h3>
+<p>A well-built damped loop converges in fewer than 10 iterations (s01 multiplier analysis). Setting 100 gives headroom for multi-tranche models with several interacting MIN/MAX regimes. Setting 1,000 or 32,767 (the maximum) does not improve accuracy for a converging loop; it only lengthens recalculation when the loop <em>fails</em> to converge, masking the failure as slowness. Setting 1 iteration turns each recalculation into one step of the loop — sometimes used deliberately with manual calculation to watch convergence, but never as a delivery setting.</p>
+<h3 id="deliberate-settings-checklist-for-a-circular-model">Deliberate settings checklist for a circular model</h3>
+<ol>
+<li>Build the model with iteration <strong>off</strong> and the breaker set to opening-balance mode — catch unintended circularity while building.</li>
+<li>When the debt schedule is complete, enable iteration (100, 0.001) and switch the breaker on.</li>
+<li>Confirm convergence with the check row (c05).</li>
+<li>Record the settings on the Cover: "This model contains an intended circular reference (interest on average debt and cash). Iterative calculation must be enabled: 100 iterations, maximum change 0.001. Breaker cell: Cover!F12."</li>
+<li>Optionally add a Workbook_Open macro that sets the parameters and warns if iteration is off — remembering the application-level issue (c03).</li>
+</ol>
+<h3 id="visual-cue-in-the-workbook">Visual cue in the workbook</h3>
+<p>Add a cell on the Cover that reports whether iteration is active. There is no worksheet function that reads the setting directly, but a tiny intentional test loop can reveal it, or a VBA user-defined function returning <code>Application.Iteration</code> can be used in macro-enabled files. Many teams simply display the breaker state and a text instruction.</p>
+<h3 id="illustration">Illustration</h3>
+<p>A ₹ crore model with a revolver loop; true FY28E interest at convergence ₹42.3765 crore. With max change 0.001, Excel stops when successive interest values differ by less than ₹0.001 crore; at a multiplier of 0.035 per iteration starting from opening-balance interest of ₹38.0 crore, iterations go 38.0 → 42.22 → 42.371 → 42.3763 → 42.3765, stopping by the fifth pass. If units were rupees (₹423,765,000), the same threshold requires roughly four further passes — still trivial for a damped loop.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Settings shared with other workbooks:</strong> iteration is application-level (c03); opening a client file first may override your settings. Check after opening.</li>
+<li><strong>Excel Online/co-authoring:</strong> iterative behaviour in co-authoring sessions can differ; deliver circular models as desktop files with explicit instructions.</li>
+<li><strong>Power Query/Power Pivot loads:</strong> a refresh triggers recalculation of the whole loop; large models slow noticeably.</li>
+<li><strong>Google Sheets:</strong> has its own iterative-calculation setting (File → Settings → Calculation), with different defaults; models converted to Sheets need re-checking.</li>
+<li><strong>Precision and floating point:</strong> even converged values may show tiny differences at the 10th decimal; checks should use a tolerance, not equality.</li>
+<li><strong>Changing settings mid-review:</strong> a reviewer who tightens max change to 0.000001 and sees numbers move by more than tolerance has found an unconverged model.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Path: File → Options → Formulas → Enable iterative calculation; Mac: Preferences → Calculation.</li>
+<li>Use 100 iterations and maximum change 0.001 (in model units); higher caps hide non-convergence.</li>
+<li>Excel stops silently at the iteration cap — always build a convergence check.</li>
+<li>Maximum change is absolute, so interpret it in the model's units (₹ crore vs ₹).</li>
+<li>Build with iteration off and the breaker on opening mode; switch on only when the debt schedule is finished.</li>
+<li>Document the required settings and breaker location on the Cover tab.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-settings-from-memory-l1">Q1. Settings from memory [L1]</h3>
+<p>Write the exact menu path to enable iterative calculation on Windows and Mac Excel, and state the default values of the two parameters. Write the three-line VBA equivalent.</p>
+<h3 id="q2-units-and-tolerance-l2">Q2. Units and tolerance [L2]</h3>
+<p>A model is in ₹ lakh. The revolver loop has a multiplier of 0.04 per iteration; the starting error (opening vs converged interest) is ₹350 lakh. Determine how many iterations Excel will run before stopping with maximum change 0.001, and comment on whether 100 iterations is sufficient. Repeat if the multiplier were 0.95.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> The change after k iterations is roughly the starting error times the multiplier to the power k.</p>
+</blockquote>
+<h3 id="q3-manual-calculation-trap-l2">Q3. Manual calculation trap [L2]</h3>
+<p>A colleague sets calculation to manual, iteration to 5 and maximum change to 0.001, then prints the FY27E–FY31E P&amp;L after one F9. You print it after three F9 presses. Explain why the interest lines differ and what settings you would agree for the final version.</p>
+<h3 id="q4-cover-tab-documentation-l1">Q4. Cover-tab documentation [L1]</h3>
+<p>Draft the Cover-tab note (maximum 80 words) for a circular LBO model, covering the settings, breaker location, its states and what a user must do if errors appear.</p></section>
+<nav class="pager"><a class="prev" href="S02_The_Second_Loop_Interest_Income_on_Average_Cash.html">← The Second Loop: Interest Income on Average Cash</a><a class="next" href="S04_Building_the_Circuit_Breaker_Toggle_for_Interest.html">Building the Circuit-Breaker Toggle for Interest →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Excel Refresh Orchestration: Refresh All and Connection Settings · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S03_Excel_Refresh_Orchestration_Refresh_All_and.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T5 · Finalising Project 3: one-click refresh</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Finalising Project 3: one-click refresh</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_End_to_End_Architecture_Source_Folders_to_Report.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S01_End_to_End_Architecture_Source_Folders_to_Report.html">End-to-End Architecture: Source Folders to Report and Cube Pack</a></li><li><a href="S02_Parameters_for_Folder_Path_As_of_Date_FY_Start_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S02_Parameters_for_Folder_Path_As_of_Date_FY_Start_and.html">Parameters for Folder Path, As-of Date, FY Start and Environment</a></li><li><a href="S03_Excel_Refresh_Orchestration_Refresh_All_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S03_Excel_Refresh_Orchestration_Refresh_All_and.html">Excel Refresh Orchestration: Refresh All and Connection Settings</a></li><li><a href="S04_Publishing_Scheduled_Refresh_and_Gateways_for_On.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S04_Publishing_Scheduled_Refresh_and_Gateways_for_On.html">Publishing, Scheduled Refresh and Gateways for On-Prem and Tally</a></li><li><a href="S05_Incremental_Refresh_with_RangeStart_and_RangeEnd.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S05_Incremental_Refresh_with_RangeStart_and_RangeEnd.html">Incremental Refresh with RangeStart and RangeEnd for GL History</a></li><li><a href="S06_Performance_Tuning_Columns_Cardinality_Analyzer.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S06_Performance_Tuning_Columns_Cardinality_Analyzer.html">Performance Tuning: Columns, Cardinality, Analyzer Tools</a></li><li><a href="S07_Packaging_PBIXPBIP_pbit_Template_Documentation_CFO.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S07_Packaging_PBIXPBIP_pbit_Template_Documentation_CFO.html">Packaging: PBIX/PBIP, .pbit Template, Documentation, CFO Guide</a></li><li><a href="S08_Distribution_Apps_Subscriptions_Exports_and_Teams.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S08_Distribution_Apps_Subscriptions_Exports_and_Teams.html">Distribution: Apps, Subscriptions, Exports and Teams Embedding</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Incremental_Refresh_Filter_on_RangeStart_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C01_Incremental_Refresh_Filter_on_RangeStart_and.html">Incremental Refresh Filter on RangeStart and RangeEnd</a></li><li><a href="../concepts/C02_Scheduled_Refresh_Limits_8_per_Day_on_Pro_48_on.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C02_Scheduled_Refresh_Limits_8_per_Day_on_Pro_48_on.html">Scheduled Refresh Limits: 8 per Day on Pro, 48 on Premium</a></li><li><a href="../concepts/C03_SharePointFiles_for_Gateway_Free_Cloud_Refresh.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C03_SharePointFiles_for_Gateway_Free_Cloud_Refresh.html">SharePoint.Files for Gateway-Free Cloud Refresh</a></li><li><a href="../concepts/C04_One_Click_Excel_Refresh_Macro_or_Power_Automate.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C04_One_Click_Excel_Refresh_Macro_or_Power_Automate.html">One-Click Excel Refresh Macro or Power Automate Flow</a></li><li><a href="../concepts/C05_Performance_Analyzer_to_DAX_Studio_Server_Timings.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C05_Performance_Analyzer_to_DAX_Studio_Server_Timings.html">Performance Analyzer to DAX Studio Server Timings</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Excel Refresh Orchestration: Refresh All and Connection Settings</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Excel refresh orchestration: Refresh All, background refresh off, "Refresh data when opening the file"</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Half of Project 3's "one-click" promise lives in Excel: the CFO's board pack, built with Power Query outputs,
+PivotTables and cube formulas, must update completely with one action. Excel's refresh engine is less predictable than
+the Service: queries can run in the background, PivotTables can refresh before the queries feeding them finish, cube
+formulas calculate asynchronously, and a user may print the pack while half of it is stale. Knowing exactly which
+connection settings control order and completion is what separates a reliable pack from one that "usually works if
+you click Refresh All twice".</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="what-refresh-all-does">What Refresh All does</h3>
+<p>Data &gt; Refresh All (Ctrl+Alt+F5) refreshes every connection in the workbook that has "Refresh this connection on
+Refresh All" ticked: Power Query queries (each is a connection), the workbook Data Model, external connections (to a
+Power BI semantic model or SSAS), and PivotTables based on them. It then recalculates dependent formulas.</p>
+<p>The order is not guaranteed to be dependency-driven when background refresh is on: Excel starts refreshes and returns
+control while they run, so a PivotTable may refresh against a query table that has not yet reloaded. With the Data
+Model, Excel handles query-to-model dependencies better, but mixed workbooks (some queries loaded to sheets, some to
+the model, some PivotTables on sheet tables) remain risky.</p>
+<h3 id="connection-properties-that-matter">Connection properties that matter</h3>
+<p>Data &gt; Queries &amp; Connections &gt; right-click a query &gt; Properties (or Data &gt; Connections &gt; Properties):</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Recommended for board pack</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enable background refresh</td>
+<td><strong>Off</strong></td>
+<td>Forces synchronous refresh in sequence; Refresh All completes before control returns</td>
+</tr>
+<tr>
+<td>Refresh every n minutes</td>
+<td>Off</td>
+<td>Unexpected refreshes during review change numbers</td>
+</tr>
+<tr>
+<td>Refresh data when opening the file</td>
+<td>On for the cube connection (optional for queries)</td>
+<td>CFO opening the pack gets current numbers</td>
+</tr>
+<tr>
+<td>Remove data from the external data range before saving</td>
+<td>Optional</td>
+<td>Smaller file; forces refresh on open</td>
+</tr>
+<tr>
+<td>Refresh this connection on Refresh All</td>
+<td>On for all production queries; off for archival or slow reference queries</td>
+<td>Controls scope of one-click</td>
+</tr>
+<tr>
+<td>Enable Fast Data Load (Power Query, query options)</td>
+<td>Situational</td>
+<td>Faster but may freeze Excel during load</td>
+</tr>
+</tbody>
+</table>
+<p>Turning background refresh off for every query is the single most important setting. It is per connection, so check
+each one (Power Query &gt; Query Options &gt; Data Load can set defaults for new queries). With it off, Excel refreshes
+queries in turn and the user sees a modal progress state; when the status bar clears, everything is done.</p>
+<h3 id="pivottables-and-cube-formulas">PivotTables and cube formulas</h3>
+<ul>
+<li>PivotTables on the Data Model refresh when the model refreshes. PivotTables based on worksheet ranges need their
+  own refresh (Refresh All covers them), and PivotTable Options &gt; Data &gt; "Refresh data when opening the file" applies
+  to their cache.</li>
+<li><strong>Cube formulas</strong> (<code>CUBEVALUE</code>, <code>CUBEMEMBER</code>) are evaluated asynchronously; after Refresh All, cells can briefly show
+  <code>#GETTING_DATA</code>. In VBA, <code>Application.CalculateUntilAsyncQueriesDone</code> waits until they finish (concept c04). Printing
+  or exporting to PDF before that moment captures placeholders.</li>
+<li>The cube connection to a published Power BI semantic model does not re-run Power Query; it re-queries the model,
+  which reflects the last Service refresh. Refreshing the Excel pack therefore does <em>not</em> refresh the Service model —
+  orchestrate the Service refresh first.</li>
+</ul>
+<h3 id="sequencing-for-a-hybrid-pack">Sequencing for a hybrid pack</h3>
+<p>For a workbook that contains its own Power Query staging and a cube connection to the Service model:</p>
+<ol>
+<li>Service scheduled refresh completes (e.g. 06:30 IST).</li>
+<li>User opens the workbook — the cube connection refreshes on open (setting on).</li>
+<li>User clicks a "Refresh pack" button (macro) that runs <code>ThisWorkbook.RefreshAll</code>, waits for async cube queries, then
+   recalculates the checks and updates a "Pack refreshed at" cell.</li>
+<li>The "All checks OK" flag on the cover confirms Dr = Cr, BS check and tie-out values read from the model.</li>
+</ol>
+<h3 id="settings-checklist-in-practice">Settings checklist in practice</h3>
+<ul>
+<li>Workbook saved as <code>.xlsx</code> if no macros; <code>.xlsm</code> if using the button.</li>
+<li>Calculation mode Automatic (Formulas &gt; Calculation Options). In Manual mode cube formulas do not update after refresh.</li>
+<li>Data &gt; Get Data &gt; Query Options &gt; Privacy set consistently (Organizational for internal sources) to avoid firewall
+  prompts on other users' machines.</li>
+<li>Trust Center: external data connections enabled; for files opened from SharePoint, Protected View may block refresh
+  until "Enable Editing" is clicked — tell users.</li>
+<li>Credentials: each user's Excel authenticates as that user to SharePoint and Power BI; RLS applies to cube formulas.</li>
+</ul>
+<h3 id="illustration">Illustration</h3>
+<p>A CFO board pack has 6 Power Query queries (loaded to sheets for commentary tables), a cube connection to the
+certified model, 4 PivotTables and 220 cube formulas. With background refresh on, Refresh All returns control in
+2 seconds; the cover's EBITDA shows ₹41.10 crore (old) while the variance table, from a query still loading, shows
+May data. With background refresh off on all six queries and the macro from c04, refresh takes 48 seconds and every
+cell, including the check flag, reflects May.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Excel for the web.</strong> Supports refreshing some Power Query sources and Power BI-connected PivotTables, but
+  capabilities differ from desktop and VBA does not run; test the pack in the environment the CFO uses.</li>
+<li><strong>Long refreshes.</strong> Turning background refresh off blocks Excel; for a 10-minute refresh, schedule it (Power
+  Automate Desktop or a Windows task opening Excel) rather than make the CFO wait.</li>
+<li><strong>Refresh on open with RLS.</strong> Different users see different numbers in the same file — intended, but warn users not to
+  email refreshed copies across BUs.</li>
+<li><strong>Pasted values.</strong> If anyone pastes values over cube formulas, refresh silently stops updating those cells; protect
+  formula ranges (Topic 3 pitfall).</li>
+<li><strong>Query dependencies.</strong> A query that references another loaded query is refreshed after it when background refresh is
+  off; still, avoid sheet-table-to-query round trips (a query reading a table that another query writes).</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Refresh All refreshes every connection flagged for it, plus PivotTables and dependent calculations.</li>
+<li>Turn background refresh off on every production query so refresh is sequential and complete when control returns.</li>
+<li>Use "Refresh data when opening the file" for the cube connection so the pack opens current.</li>
+<li>Cube formulas are asynchronous; wait for them before printing or exporting.</li>
+<li>Refreshing Excel re-queries the published model; it does not refresh the model itself.</li>
+<li>Keep calculation Automatic and protect formula ranges.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-diagnosing-a-half-refreshed-pack-l1">Q1. Diagnosing a half-refreshed pack [L1]</h3>
+<p>After Refresh All, a board pack's cover shows April revenue while the detail sheet shows May. Explain the likely
+setting causing this and how you would verify and fix it for every query.</p>
+<h3 id="q2-designing-connection-settings-l2">Q2. Designing connection settings [L2]</h3>
+<p>A workbook has: (a) a cube connection to the Power BI model; (b) three Power Query queries loading commentary tables;
+(c) one large query loading five years of archive data that never changes; (d) two PivotTables on a sheet table.
+Specify, for each, background refresh, refresh on open and Refresh All participation, with reasons.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider which items change monthly and which only slow the refresh.</p>
+</blockquote>
+<h3 id="q3-stale-model-behind-excel-l2">Q3. Stale model behind Excel [L2]</h3>
+<p>The CFO refreshes the Excel board pack at 08:00 and sees last month's numbers, although new files were dropped at
+07:00. The Service schedule is 06:30. Explain what happened and propose two ways to orchestrate the sequence.</p>
+<h3 id="q4-user-guide-section-l3">Q4. User guide section [L3]</h3>
+<p>Write the "How to refresh the board pack" section of the CFO user guide: steps, what the user should see on success,
+three common error messages and what to do for each.</p></section>
+<nav class="pager"><a class="prev" href="S02_Parameters_for_Folder_Path_As_of_Date_FY_Start_and.html">← Parameters for Folder Path, As-of Date, FY Start and…</a><a class="next" href="S04_Publishing_Scheduled_Refresh_and_Gateways_for_On.html">Publishing, Scheduled Refresh and Gateways for On-Prem and… →</a></nav>
+</main></div></body></html>

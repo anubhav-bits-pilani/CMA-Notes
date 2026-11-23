@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Statistical Support: Regression, Moving Averages, Smoothing, FORECAST.ETS · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/subtopics/S07_Statistical_Support_Regression_Moving_Averages.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 5</a> <span>›</span> <a href="../../index.html">Week 18</a> <span>›</span> <a href="../index.html">T3 · Driver-based operational forecasting</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Driver-based operational forecasting</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Driver_Tree_Construction_From_Financial_Outcome_to.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/subtopics/S01_Driver_Tree_Construction_From_Financial_Outcome_to.html">Driver Tree Construction: From Financial Outcome to Leading Indicators</a></li><li><a href="S02_Retail_Drivers_and_Like_for_Like_vs_New_Store.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/subtopics/S02_Retail_Drivers_and_Like_for_Like_vs_New_Store.html">Retail Drivers and Like-for-Like vs New-Store Growth</a></li><li><a href="S03_B2BD2C_Funnel_Forecasting_with_Conversion_Rates.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/subtopics/S03_B2BD2C_Funnel_Forecasting_with_Conversion_Rates.html">B2B/D2C Funnel Forecasting with Conversion Rates and Lags</a></li><li><a href="S04_Manufacturing_Capacity_Drivers_and_the_SaaS_ARR.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/subtopics/S04_Manufacturing_Capacity_Drivers_and_the_SaaS_ARR.html">Manufacturing Capacity Drivers and the SaaS ARR Waterfall</a></li><li><a href="S05_Cost_Drivers_Freight_Commission_Payment_Gateway.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/subtopics/S05_Cost_Drivers_Freight_Commission_Payment_Gateway.html">Cost Drivers: Freight, Commission, Payment Gateway and Cost per Hire</a></li><li><a href="S06_Selecting_Drivers_Materiality_Controllability.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/subtopics/S06_Selecting_Drivers_Materiality_Controllability.html">Selecting Drivers: Materiality, Controllability, Predictability, Data</a></li><li><a href="S07_Statistical_Support_Regression_Moving_Averages.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/subtopics/S07_Statistical_Support_Regression_Moving_Averages.html">Statistical Support: Regression, Moving Averages, Smoothing, FORECAST.ETS</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Retail_Revenue_Identity_Stores_Footfall_Conversion.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/concepts/C01_Retail_Revenue_Identity_Stores_Footfall_Conversion.html">Retail Revenue Identity: Stores × Footfall × Conversion × ATV × Days</a></li><li><a href="../concepts/C02_Lagged_Funnel_Orders_from_Earlier_Leads_Revenue.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/concepts/C02_Lagged_Funnel_Orders_from_Earlier_Leads_Revenue.html">Lagged Funnel: Orders from Earlier Leads, Revenue from AOV</a></li><li><a href="../concepts/C03_ARR_Roll_Forward_and_Net_Revenue_Retention.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/concepts/C03_ARR_Roll_Forward_and_Net_Revenue_Retention.html">ARR Roll-Forward and Net Revenue Retention</a></li><li><a href="../concepts/C04_Capacity_Output_Identity_Capacity_Utilisation.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/concepts/C04_Capacity_Output_Identity_Capacity_Utilisation.html">Capacity Output Identity: Capacity × Utilisation × Yield</a></li><li><a href="../concepts/C05_Driver_Sensitivity_and_Tornado_Ranking.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/concepts/C05_Driver_Sensitivity_and_Tornado_Ranking.html">Driver Sensitivity and Tornado Ranking</a></li><li><a href="../concepts/C06_Leading_vs_Lagging_Indicators.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/concepts/C06_Leading_vs_Lagging_Indicators.html">Leading vs Lagging Indicators</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Statistical Support: Regression, Moving Averages, Smoothing, FORECAST.ETS</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Statistical support: regression, moving averages, exponential smoothing, Excel <code>FORECAST.ETS</code></p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Driver owners provide judgement; statistics provide a disciplined baseline and evidence for driver relationships. Regression tells you whether leads actually predict orders and with what lag; moving averages and exponential smoothing provide naive-to-intermediate baselines against which owner-submitted forecasts are tested (Forecast Value Added, Topic 5); <code>FORECAST.ETS</code> gives a seasonal statistical forecast in one Excel function. FP&amp;A teams do not need data-science models for most lines, but they must use these tools competently and know their limits — and interviewers increasingly ask how statistical baselines fit into a driver-based process.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="regression">Regression</h3>
+<p><strong>Simple linear regression</strong> estimates a driver relationship \( y = a + b x + \varepsilon \), where \( y \) is the outcome (e.g. monthly orders), \( x \) the driver (e.g. leads lagged two months), \( a \) the intercept, \( b \) the slope and \( \varepsilon \) the error.</p>
+<ul>
+<li>Excel: <code>SLOPE(y,x)</code>, <code>INTERCEPT(y,x)</code>, <code>RSQ(y,x)</code>, <code>FORECAST.LINEAR(x0,y,x)</code>, <code>STEYX(y,x)</code> (standard error of estimate). <code>LINEST(y,x,TRUE,TRUE)</code> returns coefficients with standard errors and statistics; multiple regression uses several x columns.</li>
+<li><strong>Interpretation checks:</strong> sign and size of coefficients are economically plausible; \( R^2 \) meaningful but not the only criterion; residuals show no pattern (plot them); t-statistics of coefficients (coefficient ÷ standard error) above about 2 in absolute value.</li>
+<li><strong>Lag selection:</strong> compute <code>CORREL</code> between y and x shifted by 0–6 months; choose the lag with the strongest, stable correlation (s03).</li>
+<li><strong>Pitfalls:</strong> spurious regression between trending series (both grow over time) — regress on changes or include a trend; multicollinearity between drivers; small samples (24 monthly points is minimal); structural breaks (COVID, GST introduction in July 2017).</li>
+</ul>
+<p><strong>Illustration.</strong> 24 months of data: orders vs leads two months earlier. <code>SLOPE</code> = 0.042, <code>INTERCEPT</code> = 6.5, <code>RSQ</code> = 0.71. Forecast for leads of 1,200: orders = 6.5 + 0.042 × 1,200 = 56.9. The intercept suggests a base of repeat orders independent of new leads — check that it is plausible.</p>
+<h3 id="moving-averages">Moving averages</h3>
+<ul>
+<li><strong>Simple moving average (SMA):</strong> \( \text{SMA}_t = \frac{1}{k} \sum_{i=0}^{k-1} y_{t-i} \). A 3-month SMA smooths noise; the forecast for next month is the latest SMA. It lags turning points by about \( (k-1)/2 \) periods.</li>
+<li><strong>Centred 12-month moving average:</strong> removes seasonality to reveal trend; used to derive seasonal indices (ratio-to-moving-average, Topic 2 s04).</li>
+<li><strong>Weighted moving average:</strong> heavier weight on recent months.</li>
+<li>Excel: <code>AVERAGE</code> over a moving range built with <code>INDEX</code> (not <code>OFFSET</code> — c05 of Topic 1), or dynamic arrays with <code>TAKE</code>.</li>
+</ul>
+<h3 id="exponential-smoothing">Exponential smoothing</h3>
+<p><strong>Simple exponential smoothing (SES):</strong></p>
+<p>\[
+S_t = \alpha y_t + (1 - \alpha) S_{t-1}, \qquad \hat{y}_{t+1} = S_t
+\]</p>
+<p>where \( S_t \) is the smoothed level, \( y_t \) the actual, \( \alpha \in (0,1) \) the smoothing constant (higher = more responsive). Holt's method adds a trend component; <strong>Holt-Winters</strong> (triple exponential smoothing) adds seasonality — the basis of <code>FORECAST.ETS</code>.</p>
+<p><strong>Illustration (SES, \( \alpha = 0.3 \)).</strong> \( S_{Jun} = 100 \); July actual 112 → \( S_{Jul} = 0.3 \times 112 + 0.7 \times 100 = 103.6 \); August forecast 103.6. August actual 98 → \( S_{Aug} = 0.3 \times 98 + 0.7 \times 103.6 = 101.9 \).</p>
+<h3 id="excel-forecastets-family">Excel FORECAST.ETS family</h3>
+<pre><code>=FORECAST.ETS(target_date, values, timeline, [seasonality], [data_completion], [aggregation])
+=FORECAST.ETS.CONFINT(target_date, values, timeline, [confidence_level], [seasonality], ...)
+=FORECAST.ETS.SEASONALITY(values, timeline)
+=FORECAST.ETS.STAT(values, timeline, statistic_type, [seasonality], ...)
+</code></pre>
+<ul>
+<li>Implements the AAA version of exponential triple smoothing (additive error, trend, seasonality).</li>
+<li><strong>Timeline:</strong> numeric dates at a constant step (month-end dates from <code>EOMONTH</code> work; Excel tolerates month-length differences when dates are month-based). Up to 30% missing points can be filled (<code>data_completion</code> 1 = interpolate, 0 = zeros).</li>
+<li><strong>Seasonality:</strong> 1 or omitted = auto-detect; 0 = none; 12 = fixed annual cycle for monthly data. Prefer explicitly setting 12 when the business is known to have annual seasonality — auto-detection on short or noisy history can pick odd cycle lengths.</li>
+<li><strong><code>CONFINT</code></strong> returns the half-width of the confidence interval (default 95%) — useful for presenting a forecast range.</li>
+<li><strong><code>STAT</code></strong> returns α (level), β (trend), γ (seasonality) and error metrics (MASE, SMAPE, MAE, RMSE) for evaluating fit.</li>
+<li><strong>Forecast Sheet</strong> (Data → Forecast Sheet) builds an ETS forecast table and chart automatically.</li>
+</ul>
+<p><strong>Illustration.</strong> 36 months of monthly revenue (Apr-22 to Mar-25) in B5:B40 with month-end dates in A5:A40. Forecast for 31-Oct-2025:</p>
+<pre><code>=FORECAST.ETS(DATE(2025,10,31),$B$5:$B$40,$A$5:$A$40,12)
+=FORECAST.ETS.CONFINT(DATE(2025,10,31),$B$5:$B$40,$A$5:$A$40,0.9,12)
+</code></pre>
+<p>The second returns the 90% half-width; present the forecast as point ± half-width.</p>
+<h3 id="combining-statistics-with-drivers-and-judgement">Combining statistics with drivers and judgement</h3>
+<ol>
+<li>Use statistics to estimate driver relationships (regression) and baselines for drivers themselves (ETS on footfall, leads).</li>
+<li>Let owners adjust the baseline for known events (launches, price changes, festivals shifting dates), recording each adjustment.</li>
+<li>Measure whether adjustments improve accuracy versus the statistical baseline (FVA, Topic 5).</li>
+</ol>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Structural breaks:</strong> COVID-affected FY21, a demerger, a new channel — exclude or adjust history; ETS will otherwise propagate the break.</li>
+<li><strong>Short history:</strong> fewer than two seasonal cycles (24 months) makes seasonal estimation unreliable.</li>
+<li><strong>Moving festivals:</strong> ETS assumes fixed calendar seasonality; Diwali shifting between October and November produces errors — adjust with event flags or post-forecast reallocation.</li>
+<li><strong>Regression is correlation, not causation:</strong> a statistical relationship must also make business sense before being used as a driver.</li>
+<li><strong>Over-fitting:</strong> high in-sample \( R^2 \) with many variables may forecast poorly; hold out the last 6 months to test.</li>
+<li><strong>Explainability:</strong> stakeholders must understand the baseline; simple methods with explained adjustments beat opaque ones.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Regression (<code>SLOPE</code>, <code>INTERCEPT</code>, <code>RSQ</code>, <code>LINEST</code>) quantifies driver relationships and lags; check plausibility and residuals.</li>
+<li>Moving averages smooth noise and derive trend/seasonality but lag turning points.</li>
+<li>Exponential smoothing weights recent data more; Holt-Winters adds trend and seasonality.</li>
+<li><code>FORECAST.ETS</code> (with seasonality 12 for monthly data) gives a seasonal baseline; <code>CONFINT</code> and <code>STAT</code> give ranges and fit statistics.</li>
+<li>Use statistics as baselines and evidence, then layer documented judgement; test whether judgement adds value.</li>
+<li>Watch structural breaks, short histories, moving festivals and over-fitting.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-regression-for-a-driver-relationship-l2">Q1. Regression for a driver relationship [L2]</h3>
+<p>Monthly data for 18 months show orders (y) and leads two months earlier (x). Summary statistics: \( \bar{x} = 1{,}050 \), \( \bar{y} = 48 \), \( \sum (x - \bar{x})(y - \bar{y}) = 36{,}400 \), \( \sum (x - \bar{x})^2 = 9{,}10{,}000 \). Compute the slope and intercept, forecast orders for 1,300 leads, and list three checks you would run before using the relationship in the forecast.</p>
+<h3 id="q2-ses-vs-3-month-sma-l2">Q2. SES vs 3-month SMA [L2]</h3>
+<p>Monthly actuals (₹ crore) Apr–Sep: 40, 44, 41, 47, 50, 46. Compute the 3-month SMA forecast for October and SES forecasts with \( \alpha = 0.2 \) and \( \alpha = 0.6 \) (initial level = April actual). Explain which method reacts faster and when that is desirable.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Start SES with the level equal to April's value and update month by month.</p>
+</blockquote>
+<h3 id="q3-forecastets-build-l2">Q3. FORECAST.ETS build [L2]</h3>
+<p>You have 42 months of month-end dates and footfall per store in A2:B43. Write formulas for (a) the forecast for each of the next 12 months, spilled from a header row built with <code>EOMONTH</code>, (b) the 95% confidence half-width, (c) the detected seasonality, and (d) the RMSE of the fit. Explain why you might override auto-detected seasonality.</p>
+<h3 id="q4-statistical-baseline-vs-judgement-l3">Q4. Statistical baseline vs judgement [L3]</h3>
+<p>The statistical ETS baseline for H2 revenue is ₹612 crore with a 90% interval of ±₹45 crore. The sales team submits ₹560 crore citing weak dealer sentiment. Last year the team's H2 forecast was 9% below actual while the statistical baseline was 3% above. Discuss how you would reconcile the two, what evidence you would request, and which number would go into the LE.</p></section>
+<nav class="pager"><a class="prev" href="S06_Selecting_Drivers_Materiality_Controllability.html">← Selecting Drivers: Materiality, Controllability,…</a><a class="next" href="../concepts/C01_Retail_Revenue_Identity_Stores_Footfall_Conversion.html">Retail Revenue Identity: Stores × Footfall × Conversion ×… →</a></nav>
+</main></div></body></html>

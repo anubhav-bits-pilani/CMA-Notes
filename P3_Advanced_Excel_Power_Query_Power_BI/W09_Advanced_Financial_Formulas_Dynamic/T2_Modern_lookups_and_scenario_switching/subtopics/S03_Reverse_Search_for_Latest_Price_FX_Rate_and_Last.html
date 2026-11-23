@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reverse Search for Latest Price, FX Rate and Last Payment Date · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S03_Reverse_Search_for_Latest_Price_FX_Rate_and_Last.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T2 · Modern lookups and scenario switching</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Modern lookups and scenario switching</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_XLOOKUP_Arguments_Not_Found_Value_Match_Mode_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S01_XLOOKUP_Arguments_Not_Found_Value_Match_Mode_and.html">XLOOKUP Arguments: Not-Found Value, Match Mode and Search Mode</a></li><li><a href="S02_Approximate_Match_Lookups_for_Slabs_TDS_Rates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S02_Approximate_Match_Lookups_for_Slabs_TDS_Rates.html">Approximate-Match Lookups for Slabs, TDS Rates, Tiers and Bands</a></li><li><a href="S03_Reverse_Search_for_Latest_Price_FX_Rate_and_Last.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S03_Reverse_Search_for_Latest_Price_FX_Rate_and_Last.html">Reverse Search for Latest Price, FX Rate and Last Payment Date</a></li><li><a href="S04_Two_Way_Lookups_on_Account_Month_Grids.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S04_Two_Way_Lookups_on_Account_Month_Grids.html">Two-Way Lookups on Account × Month Grids</a></li><li><a href="S05_XLOOKUP_Returning_Rows_Columns_and_Range.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S05_XLOOKUP_Returning_Rows_Columns_and_Range.html">XLOOKUP Returning Rows, Columns and Range References</a></li><li><a href="S06_XMATCH_and_INDEX_XMATCH_for_Dynamic_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S06_XMATCH_and_INDEX_XMATCH_for_Dynamic_Column.html">XMATCH and INDEX-XMATCH for Dynamic Column Selection</a></li><li><a href="S07_Live_Scenario_Switches_with_CHOOSE_INDEX_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S07_Live_Scenario_Switches_with_CHOOSE_INDEX_and.html">Live Scenario Switches with CHOOSE, INDEX and SWITCH</a></li><li><a href="S08_Multi_Key_Lookups_Helper_Keys_vs_Boolean_Arrays.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S08_Multi_Key_Lookups_Helper_Keys_vs_Boolean_Arrays.html">Multi-Key Lookups: Helper Keys vs Boolean Arrays</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_The_Fully_Specified_XLOOKUP_for_Ledger_Mapping.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C01_The_Fully_Specified_XLOOKUP_for_Ledger_Mapping.html">The Fully Specified XLOOKUP for Ledger Mapping</a></li><li><a href="../concepts/C02_Next_Smaller_XLOOKUP_for_Slab_Rates_Without.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C02_Next_Smaller_XLOOKUP_for_Slab_Rates_Without.html">Next-Smaller XLOOKUP for Slab Rates Without Sorting</a></li><li><a href="../concepts/C03_Nested_XLOOKUP_as_a_Two_Way_Lookup.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C03_Nested_XLOOKUP_as_a_Two_Way_Lookup.html">Nested XLOOKUP as a Two-Way Lookup</a></li><li><a href="../concepts/C04_INDEX_MATCH_MATCH_The_Version_Proof_Two_Way_Lookup.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C04_INDEX_MATCH_MATCH_The_Version_Proof_Two_Way_Lookup.html">INDEX-MATCH-MATCH: The Version-Proof Two-Way Lookup</a></li><li><a href="../concepts/C05_Boolean_Array_XLOOKUP_for_Multi_Criteria_Lookups.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C05_Boolean_Array_XLOOKUP_for_Multi_Criteria_Lookups.html">Boolean-Array XLOOKUP for Multi-Criteria Lookups</a></li><li><a href="../concepts/C06_CHOOSE_Driven_by_a_MATCH_Index_for_Scenario.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C06_CHOOSE_Driven_by_a_MATCH_Index_for_Scenario.html">CHOOSE Driven by a MATCH Index for Scenario Selection</a></li><li><a href="../concepts/C07_Dynamic_Period_Window_with_XLOOKUPXLOOKUP.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C07_Dynamic_Period_Window_with_XLOOKUPXLOOKUP.html">Dynamic Period Window with XLOOKUP:XLOOKUP</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Reverse Search for Latest Price, FX Rate and Last Payment Date</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Reverse search (last-to-first) for latest price, latest FX rate and last payment date</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Transaction logs are chronological: purchase registers, price lists with effective dates, RBI reference-rate or bank card-rate histories, vendor payment ledgers. Finance questions about them are usually "as at" questions: what is the latest purchase price of this SKU (for inventory valuation sanity checks or standard-cost updates), which FX rate applies to restate this foreign-currency payable at month-end (Ind AS 21 closing rate), when did this customer last pay (for credit-hold decisions and expected-credit-loss staging). A standard lookup returns the <strong>first</strong> match — the oldest record. Reverse search returns the <strong>last</strong>, and combined with a date condition it returns the latest record on or before any cut-off date.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="xlookup-with-search_mode-1">XLOOKUP with <code>search_mode</code> -1</h3>
+<pre><code class="language-excel">=XLOOKUP(F2, Px[SKU], Px[Rate], &quot;No price&quot;, 0, -1)
+</code></pre>
+<p><code>search_mode</code> -1 scans from the bottom of the lookup array upward and stops at the first match it meets — i.e. the last occurrence in the data. This gives the latest record <strong>only if the data is in chronological order</strong> (oldest at the top). If the log is appended monthly by pasting below, that holds; if the data is sorted by anything else, reverse search returns "the bottom-most", not "the latest".</p>
+<h3 id="latest-record-regardless-of-sort-order">Latest record regardless of sort order</h3>
+<p>When row order cannot be trusted, find the maximum date first, then look up the row with both conditions:</p>
+<pre><code class="language-excel">=LET(d, MAXIFS(Px[Date], Px[SKU], F2),
+     XLOOKUP(1, (Px[SKU]=F2)*(Px[Date]=d), Px[Rate], &quot;No price&quot;))
+</code></pre>
+<p>If several rows share the maximum date (two purchases on the same day at different rates), XLOOKUP returns the first such row — decide whether the business wants the first, last, or the average, and document it.</p>
+<h3 id="latest-on-or-before-a-cut-off-date">Latest on or before a cut-off date</h3>
+<p>Month-end restatement under Ind AS 21 uses the closing rate at the reporting date. If 31 March is a holiday or weekend with no published rate, the convention is usually the last available rate on or before that date (confirm the entity's policy — some use the bank's rate on the date):</p>
+<pre><code class="language-excel">=XLOOKUP(1, (FX[Ccy]=&quot;USD&quot;)*(FX[Date]&lt;=RptDate), FX[Rate], &quot;No rate&quot;, 0, -1)
+</code></pre>
+<p>The boolean array marks every USD row dated on or before the cut-off; reverse search on a chronological table returns the last of them. On a single-currency table sorted by date, approximate match is an alternative:</p>
+<pre><code class="language-excel">=XLOOKUP(RptDate, USD[Date], USD[Rate], &quot;No rate&quot;, -1)
+</code></pre>
+<p><code>match_mode</code> -1 finds the exact date or the next earlier date, independent of sort order (linear search).</p>
+<h3 id="last-payment-date">Last payment date</h3>
+<p>From a customer receipts Table <code>Rcpt</code> (Customer, Date, Amount):</p>
+<pre><code class="language-excel">=MAXIFS(Rcpt[Date], Rcpt[Customer], $A5)
+</code></pre>
+<p>MAXIFS is the simplest answer for a <strong>date</strong> — no sort assumption. Remember it returns 0 when the customer has never paid; guard with COUNTIFS. To get the <strong>amount</strong> of the last payment, use the reverse-search XLOOKUP or the MAXIFS-then-XLOOKUP pattern above.</p>
+<h3 id="legacy-pattern-lookup2-1">Legacy pattern: LOOKUP(2, 1/…)</h3>
+<p>Before XLOOKUP, the "last match" idiom was:</p>
+<pre><code class="language-excel">=LOOKUP(2, 1/(Px[SKU]=F2), Px[Rate])
+</code></pre>
+<p><code>1/(condition)</code> produces 1 for matches and <code>#DIV/0!</code> otherwise; LOOKUP looking for 2 in an array of 1s and errors ignores the errors and returns the position of the last 1. It works in all versions without Ctrl+Shift+Enter, and you will meet it in inherited models — but it is opaque, so replace it with XLOOKUP where all users have Microsoft 365 or Excel 2021+.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>Purchase price log for SKU "PKG-12" (chronological):</p>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>SKU</th>
+<th>Vendor</th>
+<th>Rate (₹/unit)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>08-Jan-2026</td>
+<td>PKG-12</td>
+<td>Shree Packaging</td>
+<td>18.40</td>
+</tr>
+<tr>
+<td>21-Feb-2026</td>
+<td>PKG-12</td>
+<td>Shree Packaging</td>
+<td>18.90</td>
+</tr>
+<tr>
+<td>14-Mar-2026</td>
+<td>PKG-12</td>
+<td>Pune Cartons</td>
+<td>19.25</td>
+</tr>
+<tr>
+<td>06-Apr-2026</td>
+<td>PKG-12</td>
+<td>Shree Packaging</td>
+<td>19.10</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Latest price overall (reverse search): ₹19.10.</li>
+<li>Latest price on or before 31-Mar-2026 (boolean + reverse search): ₹19.25 — this is the relevant figure for checking net realisable value or replacement-cost tests at the FY26 balance sheet date.</li>
+<li>First price (default search): ₹18.40 — what a plain VLOOKUP would have returned.</li>
+</ul>
+<p>FX example: USD/INR reference rates for 27-Mar-2026 (Fri) = 85.62 and 30-Mar-2026 (Mon) = 85.71, with 31-Mar-2026 assumed to be a holiday in this illustration. The on-or-before lookup for 31-Mar-2026 returns 85.71; a USD 2,40,000 payable is restated at ₹2,05,70,400.</p>
+<h3 id="building-it-into-a-model">Building it into a model</h3>
+<ul>
+<li>Keep price and FX histories as Tables appended at the bottom (or loaded by Power Query sorted by date ascending, with a sort step you can see).</li>
+<li>Put the cut-off date in one named input (<code>RptDate</code>) so every "as at" lookup uses the same date.</li>
+<li>Add a sort check such as <code>=AND(DROP(Px[Date],1)&gt;=DROP(Px[Date],-1))</code> (TRUE only if every date is on or after the one above it), or simply prefer the MAXIFS + boolean pattern when order is not guaranteed.</li>
+</ul>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Back-dated entries</strong> appended at the bottom break the "bottom = latest" assumption; reverse search returns the back-dated record. Use the date-based pattern.</li>
+<li><strong>Multiple records on the same date.</strong> Decide on first/last/average; reverse search returns the bottom-most.</li>
+<li><strong>Cut-off with no prior record</strong> (a new SKU first bought after the reporting date) returns the not-found value — make it visible ("No price at cut-off").</li>
+<li><strong>Ind AS 21 policy.</strong> The closing rate is the spot rate at the end of the reporting period; the source (RBI reference rate, FBIL, bank rate) should be consistent with policy and applied consistently across months.</li>
+<li><strong>Text dates</strong> in imported histories make the date comparisons fail silently; validate with COUNT vs ROWS.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li><code>search_mode</code> -1 returns the last occurrence — the latest record only if the data is chronological.</li>
+<li>For robustness, combine MAXIFS (latest date) with a two-condition XLOOKUP.</li>
+<li>"Latest on or before a cut-off" = boolean condition on the date plus reverse search, or <code>match_mode</code> -1 on a date column.</li>
+<li>MAXIFS alone is best for last payment <strong>date</strong>; reverse search retrieves the related amount.</li>
+<li><code>LOOKUP(2, 1/condition, result)</code> is the legacy last-match idiom you will see in older models.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-latest-vendor-rate-l1">Q1. Latest vendor rate [L1]</h3>
+<p>Table <code>PO</code> has PODate, Vendor, Item, Rate and is appended chronologically. Write formulas for (a) the latest rate for the item in B2 from any vendor, (b) the latest rate for that item from the vendor in C2, and (c) the date of that latest purchase.</p>
+<h3 id="q2-month-end-fx-restatement-l2">Q2. Month-end FX restatement [L2]</h3>
+<p>Table <code>FX</code> holds daily USD, EUR and GBP to INR rates from 01-Apr-2025 (Date, Ccy, Rate), but rates are missing for weekends and bank holidays. Foreign-currency payables at 31-Mar-2026 are USD 3,80,000 and EUR 1,15,000. Write the lookup formulas that return the applicable closing rates, compute the restated INR balances, and explain how your formula behaves if 31-Mar-2026 has a published rate.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> A boolean on currency and date, combined with last-to-first search, handles both cases with one formula.</p>
+</blockquote>
+<h3 id="q3-unsorted-log-trap-l2">Q3. Unsorted log trap [L2]</h3>
+<p>A price log is sorted by vendor name, not date. Explain what <code>XLOOKUP(F2, Px[SKU], Px[Rate], , 0, -1)</code> returns and write a sort-independent formula that returns the latest price for the SKU.</p>
+<h3 id="q4-credit-hold-flag-l2">Q4. Credit-hold flag [L2]</h3>
+<p>For each customer in a credit-control sheet, build formulas returning the last receipt date, the amount of that receipt and a flag "HOLD" if no receipt has been received in the last 60 days while the customer has open invoices. Data: Table <code>Rcpt</code> (Customer, Date, Amount), Table <code>AR</code> (Customer, Status, Amount), <code>RptDate</code>.</p>
+<h3 id="q5-decode-a-legacy-formula-l1">Q5. Decode a legacy formula [L1]</h3>
+<p>An inherited model contains <code>=LOOKUP(2,1/((Data!B2:B9000=A5)*(Data!D2:D9000&lt;=CutOff)),Data!E2:E9000)</code>, where <code>CutOff</code> is a named date cell. Explain step by step what it returns and rewrite it with XLOOKUP.</p></section>
+<nav class="pager"><a class="prev" href="S02_Approximate_Match_Lookups_for_Slabs_TDS_Rates.html">← Approximate-Match Lookups for Slabs, TDS Rates, Tiers and…</a><a class="next" href="S04_Two_Way_Lookups_on_Account_Month_Grids.html">Two-Way Lookups on Account × Month Grids →</a></nav>
+</main></div></body></html>

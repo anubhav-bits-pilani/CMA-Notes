@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Converting PivotTables to Cube Formulas with OLAP Tools · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S02_Converting_PivotTables_to_Cube_Formulas_with_OLAP.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T3 · Excel cube formulas and CUBEVALUE</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Excel cube formulas and CUBEVALUE</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Connecting_Excel_to_the_Data_Model_or_a_Power_BI.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S01_Connecting_Excel_to_the_Data_Model_or_a_Power_BI.html">Connecting Excel to the Data Model or a Power BI Semantic Model</a></li><li><a href="S02_Converting_PivotTables_to_Cube_Formulas_with_OLAP.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S02_Converting_PivotTables_to_Cube_Formulas_with_OLAP.html">Converting PivotTables to Cube Formulas with OLAP Tools</a></li><li><a href="S03_The_Cube_Function_Family_CUBEMEMBER_to.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S03_The_Cube_Function_Family_CUBEMEMBER_to.html">The Cube Function Family: CUBEMEMBER to CUBEMEMBERPROPERTY</a></li><li><a href="S04_MDX_Unique_Names_for_Members_and_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S04_MDX_Unique_Names_for_Members_and_Measures.html">MDX Unique Names for Members and Measures</a></li><li><a href="S05_Connecting_Slicers_to_Cube_Formulas_by_Slicer_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S05_Connecting_Slicers_to_Cube_Formulas_by_Slicer_Name.html">Connecting Slicers to Cube Formulas by Slicer Name</a></li><li><a href="S06_Free_Form_Board_Pack_Layouts_with_Live_Cube.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S06_Free_Form_Board_Pack_Layouts_with_Live_Cube.html">Free-Form Board-Pack Layouts with Live Cube Numbers</a></li><li><a href="S07_Dynamic_Top_N_Lists_with_a_Sorted_CUBESET_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S07_Dynamic_Top_N_Lists_with_a_Sorted_CUBESET_and.html">Dynamic Top N Lists with a Sorted CUBESET and CUBERANKEDMEMBER</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_CUBEVALUE_with_Literal_Measure_and_Member_Strings.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C01_CUBEVALUE_with_Literal_Measure_and_Member_Strings.html">CUBEVALUE with Literal Measure and Member Strings</a></li><li><a href="../concepts/C02_Building_Cube_Members_from_Cell_Labels_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C02_Building_Cube_Members_from_Cell_Labels_with.html">Building Cube Members from Cell Labels with CUBEMEMBER</a></li><li><a href="../concepts/C03_Passing_a_Slicer_Name_as_a_CUBEVALUE_Member.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C03_Passing_a_Slicer_Name_as_a_CUBEVALUE_Member.html">Passing a Slicer Name as a CUBEVALUE Member Argument</a></li><li><a href="../concepts/C04_Sorted_CUBESET_of_Vendors_sortorder_2_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C04_Sorted_CUBESET_of_Vendors_sortorder_2_for.html">Sorted CUBESET of Vendors: sort_order 2 for Descending</a></li><li><a href="../concepts/C05_CUBERANKEDMEMBER_with_ROWS_and_CUBESETCOUNT_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C05_CUBERANKEDMEMBER_with_ROWS_and_CUBESETCOUNT_for.html">CUBERANKEDMEMBER with ROWS() and CUBESETCOUNT for Ranked Lists</a></li><li><a href="../concepts/C06_Connection_Names_for_Power_BI_Semantic_Models_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C06_Connection_Names_for_Power_BI_Semantic_Models_in.html">Connection Names for Power BI Semantic Models in Cube Formulas</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Converting PivotTables to Cube Formulas with OLAP Tools</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Converting PivotTables to formulas with OLAP Tools &gt; Convert to Formulas</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Writing CUBEVALUE formulas from scratch requires exact MDX unique names, which are easy to get wrong. The fastest
+reliable start is to build a PivotTable on the model with the right rows, columns, filters and slicers, then let
+Excel convert it into formulas. The result is a grid of CUBEMEMBER and CUBEVALUE cells with correct syntax that
+you can then rearrange freely — insert blank rows, move subtotals, add commentary — which a PivotTable would never
+allow. Most professional cube-formula board packs start this way.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>The PivotTable must be <strong>OLAP-based</strong>: built on the workbook Data Model, a Power BI semantic model, or an
+  Analysis Services cube. Ordinary range/table PivotTables do not offer Convert to Formulas (the OLAP Tools button
+  is greyed out).</li>
+<li>Use explicit measures in Values.</li>
+<li>Arrange the pivot close to the target layout: rows = <code>CoA[FSLine]</code> (or a hierarchy), columns = scenario
+  measures or months, filters = FY, connected slicers for FY/BU/Region.</li>
+</ul>
+<h3 id="the-conversion">The conversion</h3>
+<p>Select a cell in the PivotTable &gt; <strong>PivotTable Analyze &gt; Calculations &gt; OLAP Tools &gt; Convert to Formulas</strong>.</p>
+<ul>
+<li>If the pivot has fields in the <strong>Filters</strong> area, a dialog asks whether to <em>Convert Report Filters</em>. If ticked,
+  filter cells become CUBEMEMBER formulas too and are referenced by every CUBEVALUE; if unticked, a residual
+  PivotTable holding only the report filter stays on the sheet and the CUBEVALUE formulas reference its filter
+  cell, so users can still change the filter with the pivot dropdown.</li>
+<li>Row and column labels become <code>CUBEMEMBER</code> formulas, values become <code>CUBEVALUE</code> formulas referencing the label cells,
+  the measure cell and any slicer names.</li>
+<li>The PivotTable object is removed; formatting is preserved (number formats, fonts) but PivotTable styles may be
+  lost.</li>
+<li>Slicers that were connected to the pivot stay on the sheet and are referenced by name in each CUBEVALUE.</li>
+</ul>
+<p>A typical converted cell (here, revenue for FY2025-26 in column C):</p>
+<pre><code>A5:  =CUBEMEMBER(&quot;ThisWorkbookDataModel&quot;,&quot;[CoA].[FSLine].&amp;[Revenue from operations]&quot;)
+C4:  =CUBEMEMBER(&quot;ThisWorkbookDataModel&quot;,&quot;[Measures].[Actual]&quot;)
+C5:  =CUBEVALUE(&quot;ThisWorkbookDataModel&quot;,C4,Slicer_FY,Slicer_BU,A5)
+</code></pre>
+<p>After conversion, review each formula's references: Excel writes relative references, so copying or moving cells
+can shift them. Make measure rows anchored (<code>C$4</code>) and row labels column-anchored (<code>$A5</code>) before copying across.</p>
+<h3 id="what-conversion-gives-and-takes-away">What conversion gives and takes away</h3>
+<table>
+<thead>
+<tr>
+<th>Gains</th>
+<th>Losses</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Free layout: insert rows, blank lines, custom subtotals, notes</td>
+<td>Automatic expansion when new members appear (new FS line, new BU)</td>
+</tr>
+<tr>
+<td>Mix measures from one model with Excel calculations</td>
+<td>Drill-down, sorting and filtering via pivot UI</td>
+</tr>
+<tr>
+<td>Cells referenceable by charts (including native waterfall)</td>
+<td>Pivot "Show values as" calculations (convert to measures first)</td>
+</tr>
+<tr>
+<td>Stable shape for printing and PDF</td>
+<td>Grand totals become ordinary CUBEVALUE cells that you must maintain</td>
+</tr>
+</tbody>
+</table>
+<p>The loss of auto-expansion is the key risk: if a new FS line "Exchange loss on operations" appears next month, a
+converted grid does not show it, and the totals computed by CUBEVALUE on the "All" member will include it — the
+displayed lines no longer add up to the total. Controls (below) catch this.</p>
+<h3 id="making-the-converted-grid-robust">Making the converted grid robust</h3>
+<ol>
+<li>Replace hard-coded member strings with references to label cells (Concept c02) so lines can be renamed in one
+   place.</li>
+<li>Keep a hidden "member key" column with the exact FS line keys; visible labels can then be Schedule III wording.</li>
+<li>Add a check row: total from CUBEVALUE on the parent member versus the sum of displayed lines — difference must
+   be zero.</li>
+<li>For lists that should expand (vendors, cost centres), use CUBESET-driven lists (s07) instead of converted
+   static members.</li>
+<li>Name key cells: measure cells (<code>MsrActual</code>, <code>MsrBudget</code>), connection (<code>Conn</code>).</li>
+</ol>
+<h3 id="illustration">Illustration</h3>
+<p>A pivot on Sahyadri's Data Model: rows = 14 Schedule III P&amp;L lines, columns = <code>[Actual]</code>, <code>[Budget]</code>, <code>[PY]</code>,
+filters = FY via a slicer <code>Slicer_FY</code>, BU via <code>Slicer_BU</code>. Convert to Formulas produces 14 CUBEMEMBER row labels,
+3 CUBEMEMBER measure headers and 42 CUBEVALUE cells plus a grand-total row. The analyst inserts blank rows between
+"Total income" and expenses, adds "Var" and "Var %" columns (as <code>[Variance]</code> measures added as CUBEVALUE, not
+Excel subtraction where sign logic matters), and a commentary column. A check cell compares the converted grand
+total revenue ₹1,240.6 Cr with <code>CUBEVALUE(Conn, MsrActual, "[CoA].[Statement].&amp;[Profit and Loss]", ...)</code>.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Converting with Values in rows.</strong> If measures are on rows ("Σ Values" in Rows), the measure becomes part of
+  each row member reference; layout can get confusing — put measures on columns.</li>
+<li><strong>Hierarchies.</strong> Converting a pivot with expanded hierarchies writes members with hierarchy-level unique names
+  (e.g. <code>[CoA].[FS Hierarchy].[FSLine].&amp;[...]</code>); keep consistent with the rest of the sheet.</li>
+<li><strong>Undo only.</strong> Conversion cannot be reversed except by Undo immediately; keep a copy of the pivot sheet.</li>
+<li><strong>Report filter multi-select.</strong> A multi-select report filter converts to a set reference; check that the set
+  is what you expect.</li>
+<li><strong>Data Model edits.</strong> Renaming a column in the model breaks member strings in converted formulas
+  (e.g. <code>[CoA].[FSLine]</code> → <code>[CoA].[FS Line]</code>); establish naming before converting.</li>
+<li><strong>Number formats</strong> from the measure's model format are not always carried; apply Excel formats deliberately.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Convert to Formulas works only for OLAP-based PivotTables (Data Model, Power BI, SSAS).</li>
+<li>It produces CUBEMEMBER labels and CUBEVALUE values with correct syntax — the safest way to start.</li>
+<li>Converted grids gain layout freedom but lose automatic expansion; add completeness checks.</li>
+<li>Anchor measure rows and label columns before copying; name key cells.</li>
+<li>Prefer measures for variance logic and CUBESET lists for members that change over time.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-convert-and-inspect-l1">Q1. Convert and inspect [L1]</h3>
+<p>Build a PivotTable on a Data Model with FS lines on rows, <code>[Actual]</code> and <code>[Budget]</code> on columns and an FY slicer,
+convert it to formulas, and write down the formula produced in one value cell. Identify each argument's role.</p>
+<h3 id="q2-report-filter-choice-l2">Q2. Report filter choice [L2]</h3>
+<p>Explain what happens to an FY field in the Filters area when you tick versus untick <em>Convert Report Filters</em>, and
+which you would choose for a board pack that must respond to a slicer.</p>
+<h3 id="q3-new-fs-line-next-month-l2">Q3. New FS line next month [L2]</h3>
+<p>After conversion in October, November data includes a new FS line "Exchange loss on operations" of ₹1.3 Cr.
+Describe what the converted grid shows, why the total no longer matches the displayed lines, and the check that
+would flag it.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Compare a CUBEVALUE on the parent member with the sum of the displayed children.</p>
+</blockquote>
+<h3 id="q4-pivot-or-formulas-l3">Q4. Pivot or formulas [L3]</h3>
+<p>A CFO wants a monthly pack with (a) a Schedule III P&amp;L in fixed format, (b) a vendor list that grows and shrinks
+with activity, and (c) an ad hoc analysis sheet for the FP&amp;A team. Decide for each whether to keep a PivotTable,
+convert to formulas or use CUBESET-driven formulas, and justify.</p></section>
+<nav class="pager"><a class="prev" href="S01_Connecting_Excel_to_the_Data_Model_or_a_Power_BI.html">← Connecting Excel to the Data Model or a Power BI Semantic…</a><a class="next" href="S03_The_Cube_Function_Family_CUBEMEMBER_to.html">The Cube Function Family: CUBEMEMBER to CUBEMEMBERPROPERTY →</a></nav>
+</main></div></body></html>

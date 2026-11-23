@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Table.UnpivotOtherColumns with Fixed Identifier Columns · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C01_TableUnpivotOtherColumns_with_Fixed_Identifier.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T3 · Unpivoting wide budgets and TBs</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Unpivoting wide budgets and TBs</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Wide_Crosstab_vs_Long_Normalised_Data_and_Fact.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S01_Wide_Crosstab_vs_Long_Normalised_Data_and_Fact.html">Wide (Crosstab) vs Long (Normalised) Data and Fact Tables</a></li><li><a href="../subtopics/S02_Unpivot_Other_Columns_vs_Unpivot_Columns_vs_Only.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S02_Unpivot_Other_Columns_vs_Unpivot_Columns_vs_Only.html">Unpivot Other Columns vs Unpivot Columns vs Only Selected</a></li><li><a href="../subtopics/S03_Converting_Month_Header_Text_into_Real_Month_End.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S03_Converting_Month_Header_Text_into_Real_Month_End.html">Converting Month Header Text into Real Month-End Dates</a></li><li><a href="../subtopics/S04_Multi_Row_Headers_Transpose_Fill_Merge_Transpose.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S04_Multi_Row_Headers_Transpose_Fill_Merge_Transpose.html">Multi-Row Headers: Transpose, Fill, Merge, Transpose Back, Unpivot</a></li><li><a href="../subtopics/S05_Unpivoting_TB_Columns_Opening_Debit_Credit_Closing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S05_Unpivoting_TB_Columns_Opening_Debit_Credit_Closing.html">Unpivoting TB Columns (Opening, Debit, Credit, Closing)</a></li><li><a href="../subtopics/S06_Pivot_Column_as_the_Reverse_of_Unpivot_Including.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S06_Pivot_Column_as_the_Reverse_of_Unpivot_Including.html">Pivot Column as the Reverse of Unpivot, Including Don&#x27;t Aggregate</a></li><li><a href="../subtopics/S07_Target_Fact_Schema_Date_Account_Department.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S07_Target_Fact_Schema_Date_Account_Department.html">Target Fact Schema: Date, Account, Department, Scenario, Amount</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_TableUnpivotOtherColumns_with_Fixed_Identifier.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C01_TableUnpivotOtherColumns_with_Fixed_Identifier.html">Table.UnpivotOtherColumns with Fixed Identifier Columns</a></li><li><a href="C02_Month_Label_to_Month_End_Date_with_DateFromText.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C02_Month_Label_to_Month_End_Date_with_DateFromText.html">Month Label to Month-End Date with Date.FromText and Format</a></li><li><a href="C03_Multi_Row_Header_Recipe_Transpose_Fill_Combine.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C03_Multi_Row_Header_Recipe_Transpose_Fill_Combine.html">Multi-Row Header Recipe: Transpose, Fill, Combine, Unpivot, Split</a></li><li><a href="C04_TablePivot_with_a_Dynamic_Value_List_and_ListSum.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C04_TablePivot_with_a_Dynamic_Value_List_and_ListSum.html">Table.Pivot with a Dynamic Value List and List.Sum</a></li><li><a href="C05_Adding_a_Typed_Scenario_Column_Before_Appending_to.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C05_Adding_a_Typed_Scenario_Column_Before_Appending_to.html">Adding a Typed Scenario Column Before Appending to Actuals</a></li><li><a href="C06_Unpivot_Drops_Null_Cells_Replace_Nulls_with_Zero.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C06_Unpivot_Drops_Null_Cells_Replace_Nulls_with_Zero.html">Unpivot Drops Null Cells: Replace Nulls with Zero When Needed</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Table.UnpivotOtherColumns with Fixed Identifier Columns</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>Table.UnpivotOtherColumns(t, {"Account", "Department"}, "Month", "Amount")</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p><code>Table.UnpivotOtherColumns(table as table, pivotColumns as list, attributeColumn as text, valueColumn as text) as table</code> keeps the columns named in <code>pivotColumns</code> as <strong>identifiers</strong> and turns <strong>every other column</strong> into attribute–value pairs:</p>
+<ul>
+<li>each original row produces one output row per non-identifier column whose value is <strong>not null</strong>;</li>
+<li><code>attributeColumn</code> ("Month") holds the former column header (text);</li>
+<li><code>valueColumn</code> ("Amount") holds the cell value.</li>
+</ul>
+<p>If the input has \(r\) rows and \(k\) non-identifier columns, the output has at most \(r \times k\) rows.</p>
+<h2 id="explanation">Explanation</h2>
+<p>The function hard-codes only the identifiers, so it adapts automatically when value columns are added, removed or renamed — the property that makes it the default choice for monthly budgets and rolling forecasts. The UI commands "Unpivot Other Columns" and "Unpivot Columns" both generate it (s02).</p>
+<p>Its weakness is the mirror image of its strength: <strong>any</strong> column that is not an identifier is unpivoted. FY Total, H1/H2 totals, "Remarks", "Prior Year", or a new identifier column ("Cost Centre") added to the template are all swept into Amount. Two defences:</p>
+<ol>
+<li>Remove known derived columns before the step with <code>Table.RemoveColumns(t, {...}, MissingField.Ignore)</code>, so their absence in a future file does not error.</li>
+<li>Validate the Month column after the step: every value must parse as a month (s03); route the rest to an exceptions query and fail if any appear.</li>
+</ol>
+<p>Other behaviours:</p>
+<ul>
+<li>Identifier names must exist — if "Department" is renamed to "Dept" in the template, the step errors ("column not found"). Normalise headers first if templates vary.</li>
+<li>Null values are dropped (c06); zeros and empty strings are kept.</li>
+<li>The Amount column inherits types loosely — after unpivoting mixed-type columns it is <code>any</code>; type it explicitly with culture.</li>
+<li>Column order of output: identifiers first, then attribute, then value.</li>
+<li>On SQL Server sources, it can fold into an <code>UNPIVOT</code> clause; on Excel/CSV sources, it runs locally (no folding).</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<table>
+<thead>
+<tr>
+<th>Account</th>
+<th>Department</th>
+<th>Apr-25</th>
+<th>May-25</th>
+<th>FY Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>610100</td>
+<td>Sales</td>
+<td>12,00,000</td>
+<td>null</td>
+<td>12,00,000</td>
+</tr>
+<tr>
+<td>620300</td>
+<td>Sales</td>
+<td>1,50,000</td>
+<td>1,20,000</td>
+<td>2,70,000</td>
+</tr>
+</tbody>
+</table>
+<p>Direct <code>Table.UnpivotOtherColumns(t, {"Account","Department"}, "Month", "Amount")</code> gives 5 rows (the null May value for 610100 is dropped): 610100/Apr-25/12,00,000; 610100/FY Total/12,00,000; 620300/Apr-25/1,50,000; 620300/May-25/1,20,000; 620300/FY Total/2,70,000. Sum = ₹29,40,000, of which ₹14,70,000 is FY Total — exactly double the true budget. After removing FY Total first: 3 rows summing to ₹14,70,000, which agrees with the sum of the FY Total column (12,00,000 + 2,70,000) — the control check that proves the unpivot is complete and free of double counting.</p>
+<h2 id="connections">Connections</h2>
+<p>Implements s02 (which unpivot survives new months) and s01 (wide to long). Followed by c02 (month text to dates) and c06 (nulls). The pitfalls on fixed month columns and on totals in the unpivot are about this function's selection logic. In Week 11 the output becomes the Budget fact.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-row-count-l1">Q1. Row count [L1]</h3>
+<p>A budget has 260 rows, identifiers Account, Department and Cost Centre, 12 month columns and an FY Total. 74 month cells and 3 FY Total cells are null. How many rows does <code>Table.UnpivotOtherColumns</code> with the three identifiers return, and how many after removing FY Total first?</p>
+<h3 id="q2-template-change-l2">Q2. Template change [L2]</h3>
+<p>Next year the template adds a "Region" identifier column after Department and renames "Department" to "Dept". Describe what happens to the current query at refresh and write a version that tolerates both changes.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Normalise header names first and validate the Month values after unpivoting.</p>
+</blockquote>
+<h3 id="q3-validation-query-l2">Q3. Validation query [L2]</h3>
+<p>Write M that, after the unpivot, separates rows whose Month value parses as "MMM-yy" from those that do not, loads the latter as an exceptions table, and raises an error if any non-month attribute carries a non-zero amount.</p></section>
+<nav class="pager"><a class="prev" href="../subtopics/S07_Target_Fact_Schema_Date_Account_Department.html">← Target Fact Schema: Date, Account, Department, Scenario,…</a><a class="next" href="C02_Month_Label_to_Month_End_Date_with_DateFromText.html">Month Label to Month-End Date with Date.FromText and Format →</a></nav>
+</main></div></body></html>

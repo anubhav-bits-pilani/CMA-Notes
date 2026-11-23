@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Defining Fact Grain and Handling Mixed Grain (Budget vs Actual) · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S02_Defining_Fact_Grain_and_Handling_Mixed_Grain.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T1 · Star schema for financial data</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Star schema for financial data</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Facts_vs_Dimensions_in_a_Financial_Star_Schema.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S01_Facts_vs_Dimensions_in_a_Financial_Star_Schema.html">Facts vs Dimensions in a Financial Star Schema</a></li><li><a href="S02_Defining_Fact_Grain_and_Handling_Mixed_Grain.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S02_Defining_Fact_Grain_and_Handling_Mixed_Grain.html">Defining Fact Grain and Handling Mixed Grain (Budget vs Actual)</a></li><li><a href="S03_Relationship_Properties_Cardinality_Direction.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S03_Relationship_Properties_Cardinality_Direction.html">Relationship Properties: Cardinality, Direction, Active Status</a></li><li><a href="S04_Role_Playing_Dates_via_Inactive_Relationships.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S04_Role_Playing_Dates_via_Inactive_Relationships.html">Role-Playing Dates via Inactive Relationships</a></li><li><a href="S05_CoA_Hierarchy_with_Sort_Order_and_Sign_Factor.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S05_CoA_Hierarchy_with_Sort_Order_and_Sign_Factor.html">CoA Hierarchy with Sort-Order and Sign-Factor Columns</a></li><li><a href="S06_Surrogate_Keys_and_an_Unmapped_Member_for_Missing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S06_Surrogate_Keys_and_an_Unmapped_Member_for_Missing.html">Surrogate Keys and an Unmapped Member for Missing Accounts</a></li><li><a href="S07_Avoiding_Snowflakes_and_Flat_Tables_Diagram_View.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S07_Avoiding_Snowflakes_and_Flat_Tables_Diagram_View.html">Avoiding Snowflakes and Flat Tables; Diagram View vs Model View</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_USERELATIONSHIP_to_Activate_an_Inactive_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C01_USERELATIONSHIP_to_Activate_an_Inactive_Date.html">USERELATIONSHIP to Activate an Inactive Date Relationship</a></li><li><a href="../concepts/C02_Store_Budget_on_the_First_Day_of_the_Month.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C02_Store_Budget_on_the_First_Day_of_the_Month.html">Store Budget on the First Day of the Month</a></li><li><a href="../concepts/C03_Virtual_Relationship_with_TREATAS_for_Month_Grain.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C03_Virtual_Relationship_with_TREATAS_for_Month_Grain.html">Virtual Relationship with TREATAS for Month-Grain Budget</a></li><li><a href="../concepts/C04_CROSSFILTER_for_Per_Measure_Bidirectional.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C04_CROSSFILTER_for_Per_Measure_Bidirectional.html">CROSSFILTER for Per-Measure Bidirectional Filtering</a></li><li><a href="../concepts/C05_Referential_Integrity_Test_with_EXCEPT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C05_Referential_Integrity_Test_with_EXCEPT.html">Referential Integrity Test with EXCEPT</a></li><li><a href="../concepts/C06_Hide_Fact_Foreign_Keys_Expose_Attributes_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C06_Hide_Fact_Foreign_Keys_Expose_Attributes_and.html">Hide Fact Foreign Keys; Expose Attributes and Measures</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Defining Fact Grain and Handling Mixed Grain (Budget vs Actual)</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Defining grain per fact (voucher line vs account-month) and handling mixed grain (monthly Budget vs daily Actual)</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>The grain of a fact — what exactly one row represents — determines which questions the table can answer and which
+dimensions it may legitimately relate to. Budget-versus-actual reporting is the textbook case of <strong>mixed grain</strong>:
+actuals are posted daily at voucher-line level, while the budget is set per account, cost centre and month. If the
+modeller ignores this, the budget either refuses to filter by date, or worse, repeats the monthly budget on every
+day of the month and inflates the total thirty-fold. Grain mistakes are also the root cause of most "the
+matrix total does not equal the sum of rows" complaints in MIS reviews.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="declaring-the-grain">Declaring the grain</h3>
+<p>Kimball's rule: <strong>declare the grain before choosing columns.</strong> Write it as a sentence:</p>
+<ul>
+<li>GL: "One row per voucher line, i.e. one debit or credit to one GL account on one posting date, for one cost
+  centre and branch."</li>
+<li>Budget: "One row per GL account × cost centre × fiscal month."</li>
+<li>TB: "One row per GL account × month-end date (closing balance)."</li>
+</ul>
+<p>Every column on the fact must be true <em>at that grain</em>. A GL row cannot carry "monthly budget" because budget is not
+defined at voucher-line level. A Budget row cannot carry VoucherNo.</p>
+<h3 id="voucher-line-grain-vs-account-month-grain">Voucher-line grain vs account-month grain</h3>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Voucher-line grain (GL)</th>
+<th>Account-month grain (Budget, TB, summarised GL)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Row count</td>
+<td>Very high (lakhs to crores)</td>
+<td>Low (accounts × CCs × months)</td>
+</tr>
+<tr>
+<td>Drill-through</td>
+<td>To voucher, narration, party</td>
+<td>None below month</td>
+</tr>
+<tr>
+<td>Date relationship</td>
+<td>Daily <code>'Date'[Date]</code></td>
+<td>Month level only</td>
+</tr>
+<tr>
+<td>Dimensions supported</td>
+<td>All, incl. party, voucher type</td>
+<td>Only those planned at that level</td>
+</tr>
+<tr>
+<td>Typical use</td>
+<td>Audit trail, ageing, daily sales</td>
+<td>Board MIS, variance, forecasting</td>
+</tr>
+</tbody>
+</table>
+<p>You can always aggregate a fine grain up to a coarser one (Power Query <em>Group By</em> account and month), but you cannot
+disaggregate a coarse grain down without inventing an allocation rule. Many FP&amp;A teams keep the GL at voucher grain
+for drill-through and additionally load a <strong>summarised GL</strong> at account-month grain for speed in board packs.</p>
+<h3 id="the-mixed-grain-problem">The mixed-grain problem</h3>
+<p>The Date dimension is at day grain (one row per date). Budget is at month grain. Three ways to bridge them:</p>
+<p><strong>Option 1 — Store budget on the first (or last) day of the month (recommended for most models).</strong>
+Add <code>MonthStart = #date(FY, month, 1)</code> in Power Query and relate <code>Budget[MonthStart]</code> to <code>'Date'[Date]</code> as a normal
+one-to-many relationship. Month, quarter and year filters work because each budget row sits on a real date inside
+the month. This is concept c02.</p>
+<p><strong>Option 2 — Virtual relationship with TREATAS.</strong> Keep Budget keyed on MonthEnd (or PeriodKey) with no physical
+relationship to Date, and transfer the filter in the measure:</p>
+<pre><code class="language-DAX">Budget =
+CALCULATE (
+    SUM ( Budget[Amount] ),
+    TREATAS ( VALUES ( 'Date'[MonthEnd] ), Budget[MonthEnd] )
+)
+</code></pre>
+<p>Useful when you cannot touch the source, or when the budget arrives with PeriodKey 202504 and you want no physical
+relationship (concept c03).</p>
+<p><strong>Option 3 — A separate Month dimension.</strong> Build <code>Month</code> (one row per PeriodKey) related to both Date (one Month,
+many dates) and Budget. This snowflakes the Date dimension and is rarely worth it in Power BI; it is common in
+SSAS multidimensional cubes.</p>
+<p><strong>What not to do:</strong> relate Budget[MonthName] or Budget[PeriodKey] to a Date-table column that is not unique. That
+creates a many-to-many relationship (both sides repeat the key), and Power BI's many-to-many semantics silently
+produce totals that look plausible but are hard to reason about. See pitfall "Budget keyed on month text".</p>
+<h3 id="showing-budget-only-at-valid-levels">Showing budget only at valid levels</h3>
+<p>With Option 1, a user filtering a single day (say 15 May) sees blank budget, and a filter on 1 May shows the entire
+May budget. To stop misleading day-level budget figures, guard the measure:</p>
+<pre><code class="language-DAX">Budget (Month+) =
+IF (
+    ISINSCOPE ( 'Date'[Date] ),
+    BLANK (),
+    [Budget]
+)
+</code></pre>
+<p>Alternatively allocate monthly budget to days by working-day weights in Power Query if daily run-rate tracking
+is genuinely required (rare outside retail and treasury).</p>
+<h3 id="mixed-grain-on-other-dimensions">Mixed grain on other dimensions</h3>
+<p>Grain mismatch is not only about dates. If budget is set at FSLine level (e.g. "Employee benefits expense" for
+the whole company), it cannot relate to <code>CoA[AccountKey]</code>. Choices:</p>
+<ul>
+<li>Map each budget line to a <strong>representative account</strong> (e.g. "Salaries – Budget") in CoA, so the key exists.</li>
+<li>Relate Budget to a separate <code>FSLine</code> dimension and use TREATAS from <code>CoA[FSLine]</code> to <code>Budget[FSLine]</code>.</li>
+<li>Allocate budget down to accounts by prior-year mix (only if management accepts the allocation).</li>
+</ul>
+<p>Similarly, budget by cost-centre group ("Sales – North") requires either a cost-centre-group key on CostCentre or
+TREATAS on the group attribute.</p>
+<h3 id="numerical-illustration">Numerical illustration</h3>
+<p>FY2025-26 opex budget for cost centre "MUM-ADM", account 520100 (Rent): ₹3,60,000 per month. If the budget is
+naively joined to every date in the month (a common error when people expand the budget to daily rows without
+dividing), April shows ₹\(30 \times 3{,}60{,}000 = 1{,}08{,}00{,}000\) instead of ₹3,60,000. With the MonthStart
+approach, April shows ₹3,60,000, Q1 shows ₹10,80,000, and FY shows ₹43,20,000 — all correct, because exactly
+twelve budget rows exist and each sits on one date.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Budget phasing changes.</strong> If the annual budget is phased in a later revision (RE1, RE2), add a <code>Version</code>
+  column and keep grain "account × CC × month × version"; filter version in the measure or via a slicer.</li>
+<li><strong>Daily-grain budget for sales.</strong> A retail chain may set daily sales targets; then budget grain equals the Date
+  grain and no bridging is needed.</li>
+<li><strong>TB at month-end vs GL at day.</strong> Relating <code>TB[MonthEnd]</code> to <code>'Date'[Date]</code> works because month-end is a real
+  date; but a filter on 1–15 March returns blank TB balances, which is correct for a snapshot fact.</li>
+<li><strong>13th period / audit adjustments.</strong> Tally and SAP may post year-end adjustments in a special period. Map them to
+  31 March with an <code>IsAdjustment</code> flag rather than inventing a non-existent date.</li>
+<li><strong>Late-arriving facts.</strong> Backdated vouchers in a closed month change the grain-level row count but not the
+  grain definition; your IsClosedPeriod logic must handle them (topic 2).</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Write the grain as a sentence before designing columns; every column must be true at that grain.</li>
+<li>GL is at voucher-line grain; Budget and TB are at account-month grain.</li>
+<li>Bridge month-grain budget to a day-grain Date table by storing it on MonthStart, or with TREATAS.</li>
+<li>Never relate on a non-unique month text or period column — it forces many-to-many.</li>
+<li>Guard day-level budget display with ISINSCOPE or an explicit allocation rule.</li>
+<li>Grain mismatches on account or cost centre need representative keys, separate dimensions or TREATAS.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-state-the-grain-l1">Q1. State the grain [L1]</h3>
+<p>Write the grain statement for each of: (a) a SAP ACDOCA extract, (b) a sales-invoice line table from Tally with
+item, qty and rate, (c) a monthly headcount file by cost centre, (d) a quarterly capex budget by project.</p>
+<h3 id="q2-inflated-budget-diagnosis-l2">Q2. Inflated budget diagnosis [L2]</h3>
+<p>A model shows FY2025-26 budget revenue of ₹1,824 crore against an approved budget of ₹60 crore. The budget table
+has 12 rows per account and cost centre, but someone joined it in Power Query to the Date table on MonthName before
+loading. Explain precisely how the inflation arose, estimate the multiplier you would expect, and describe the fix.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Count how many dates share each month name across the calendar range.</p>
+</blockquote>
+<h3 id="q3-budget-at-fs-line-level-l2">Q3. Budget at FS-line level [L2]</h3>
+<p>The budget for FY2025-26 is given at FSLine × Branch × month (e.g. "Other expenses", "Pune", April 2025, ₹14.5
+lakh). Actuals are at account × cost centre × branch × day. Design the model so that Actual vs Budget works by
+FSLine, Branch and month, and explain what the matrix shows when a user drills from FSLine to account.</p>
+<h3 id="q4-choose-a-bridging-option-l3">Q4. Choose a bridging option [L3]</h3>
+<p>You inherit a Power BI file where Budget has PeriodKey (e.g. 202504) and no relationship to Date. The source budget
+workbook is owned by the planning team and you cannot change it, but you can add Power Query steps. Compare the
+MonthStart relationship and the TREATAS measure for this situation on maintainability, performance and
+user-understandability, and recommend one.</p>
+<h3 id="q5-model-build-daily-run-rate-l3">Q5. Model-build: daily run-rate [L3]</h3>
+<p>Sales leadership wants a daily "budget run-rate" line in a chart. Specify, in steps, how you would allocate the
+monthly sales budget to days using working-day weights from the Date table, including how you avoid double-counting
+when the monthly budget measure is also shown.</p></section>
+<nav class="pager"><a class="prev" href="S01_Facts_vs_Dimensions_in_a_Financial_Star_Schema.html">← Facts vs Dimensions in a Financial Star Schema</a><a class="next" href="S03_Relationship_Properties_Cardinality_Direction.html">Relationship Properties: Cardinality, Direction, Active… →</a></nav>
+</main></div></body></html>

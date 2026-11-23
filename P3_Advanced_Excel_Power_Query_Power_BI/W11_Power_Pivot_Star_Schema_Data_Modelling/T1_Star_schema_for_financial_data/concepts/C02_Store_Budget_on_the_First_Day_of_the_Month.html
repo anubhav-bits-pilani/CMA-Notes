@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Store Budget on the First Day of the Month · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C02_Store_Budget_on_the_First_Day_of_the_Month.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T1 · Star schema for financial data</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Star schema for financial data</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Facts_vs_Dimensions_in_a_Financial_Star_Schema.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S01_Facts_vs_Dimensions_in_a_Financial_Star_Schema.html">Facts vs Dimensions in a Financial Star Schema</a></li><li><a href="../subtopics/S02_Defining_Fact_Grain_and_Handling_Mixed_Grain.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S02_Defining_Fact_Grain_and_Handling_Mixed_Grain.html">Defining Fact Grain and Handling Mixed Grain (Budget vs Actual)</a></li><li><a href="../subtopics/S03_Relationship_Properties_Cardinality_Direction.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S03_Relationship_Properties_Cardinality_Direction.html">Relationship Properties: Cardinality, Direction, Active Status</a></li><li><a href="../subtopics/S04_Role_Playing_Dates_via_Inactive_Relationships.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S04_Role_Playing_Dates_via_Inactive_Relationships.html">Role-Playing Dates via Inactive Relationships</a></li><li><a href="../subtopics/S05_CoA_Hierarchy_with_Sort_Order_and_Sign_Factor.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S05_CoA_Hierarchy_with_Sort_Order_and_Sign_Factor.html">CoA Hierarchy with Sort-Order and Sign-Factor Columns</a></li><li><a href="../subtopics/S06_Surrogate_Keys_and_an_Unmapped_Member_for_Missing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S06_Surrogate_Keys_and_an_Unmapped_Member_for_Missing.html">Surrogate Keys and an Unmapped Member for Missing Accounts</a></li><li><a href="../subtopics/S07_Avoiding_Snowflakes_and_Flat_Tables_Diagram_View.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S07_Avoiding_Snowflakes_and_Flat_Tables_Diagram_View.html">Avoiding Snowflakes and Flat Tables; Diagram View vs Model View</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_USERELATIONSHIP_to_Activate_an_Inactive_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C01_USERELATIONSHIP_to_Activate_an_Inactive_Date.html">USERELATIONSHIP to Activate an Inactive Date Relationship</a></li><li><a href="C02_Store_Budget_on_the_First_Day_of_the_Month.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C02_Store_Budget_on_the_First_Day_of_the_Month.html">Store Budget on the First Day of the Month</a></li><li><a href="C03_Virtual_Relationship_with_TREATAS_for_Month_Grain.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C03_Virtual_Relationship_with_TREATAS_for_Month_Grain.html">Virtual Relationship with TREATAS for Month-Grain Budget</a></li><li><a href="C04_CROSSFILTER_for_Per_Measure_Bidirectional.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C04_CROSSFILTER_for_Per_Measure_Bidirectional.html">CROSSFILTER for Per-Measure Bidirectional Filtering</a></li><li><a href="C05_Referential_Integrity_Test_with_EXCEPT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C05_Referential_Integrity_Test_with_EXCEPT.html">Referential Integrity Test with EXCEPT</a></li><li><a href="C06_Hide_Fact_Foreign_Keys_Expose_Attributes_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C06_Hide_Fact_Foreign_Keys_Expose_Attributes_and.html">Hide Fact Foreign Keys; Expose Attributes and Measures</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Store Budget on the First Day of the Month</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Simplest budget fix: store the budget on the first day of the month and relate it to <code>'Date'[Date]</code> like actuals</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>Given a Budget fact at month grain (AccountKey × CostCentreKey × fiscal month), add a real date column</p>
+<p>\[
+\text{MonthStart} = \text{DATE}(\text{CalendarYear}, \text{CalendarMonth}, 1)
+\]</p>
+<p>where CalendarYear and CalendarMonth are derived from the fiscal period (e.g. FY2025-26 month 10 = January 2026),
+and create a standard one-to-many, single-direction relationship <code>'Date'[Date]</code> (1) → <code>Budget[MonthStart]</code> (*).
+Then:</p>
+<pre><code class="language-DAX">Budget = SUM ( Budget[Amount] )
+</code></pre>
+<p>works with every Date attribute at month level or above (month, quarter, FY), exactly like <code>[Actual]</code>.</p>
+<h2 id="explanation">Explanation</h2>
+<p>The Date dimension is at day grain and must have a unique key, so a month-grain fact needs a key that exists in
+<code>'Date'[Date]</code>. Picking one canonical day per month — first day (MonthStart) or last day (MonthEnd) — gives each
+budget row a valid date inside its month. Filters on FiscalMonthNo, MonthName, FiscalQuarter, FY and IsYTD flow
+from Date to Budget through the relationship, and time intelligence (TOTALYTD with "3/31", SAMEPERIODLASTYEAR)
+works on Budget without any special code.</p>
+<p>Why it is the "simplest" fix:</p>
+<ul>
+<li>No TREATAS or virtual relationships; any analyst can read the model.</li>
+<li>One conformed Date dimension filters GL and Budget identically.</li>
+<li>YTD Budget = <code>TOTALYTD([Budget], 'Date'[Date], "3/31")</code> just works.</li>
+</ul>
+<p>Conditions and caveats:</p>
+<ul>
+<li><strong>Day-level filters mislead.</strong> A filter on 1 April shows the whole April budget; any other April day shows blank.
+  Hide budget below month level with <code>IF(ISINSCOPE('Date'[Date]), BLANK(), [Budget])</code> or keep Date on visuals at
+  month level.</li>
+<li><strong>Partial-month YTD.</strong> If IsYTD caps actuals at 15 March, budget for March is either fully in (MonthStart
+  1 March ≤ 15 March) or fully out (MonthEnd 31 March &gt; 15 March), so choose MonthStart vs MonthEnd deliberately and
+  document whether partial-month budget is pro-rated.</li>
+<li><strong>MonthStart vs MonthEnd.</strong> MonthEnd aligns with TB snapshots and LASTDATE logic; MonthStart is safer with
+  as-of-date caps because the budget row appears as soon as the month begins. Either is fine if consistent.</li>
+<li><strong>Data type.</strong> Store as Date (not Date/Time with a time part, not text).</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>Budget workbook (wide) for cost centre "PUN-PLANT", account 530200 Power &amp; fuel, FY2025-26: Apr ₹42 lakh, May
+₹45 lakh … Mar ₹40 lakh (annual ₹5.10 crore). After unpivoting in Power Query (Week 10) and adding MonthStart
+(1-Apr-2025, 1-May-2025 … 1-Mar-2026), the fact has 12 rows. In a matrix with FiscalQuarter on columns, Q1 shows
+the sum of April–June; FY2025-26 total shows ₹5.10 crore; <code>[Actual] - [Budget]</code> works in every cell. Compare the
+broken alternative: relating Budget[MonthName] "April" to a Date column that repeats "April" across five years —
+Power BI forces many-to-many and the April budget appears under every April in the calendar.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Subtopic s02 (mixed grain) and pitfall "Budget keyed on month text".</li>
+<li>Concept c03 is the alternative when you cannot add a date column.</li>
+<li>Topic 2 (fiscal calendar): MonthStart must be inside the calendar range.</li>
+<li>Weeks 17–20: forecast versions at month grain use the same pattern.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-derive-monthstart-l1">Q1. Derive MonthStart [L1]</h3>
+<p>A budget table has columns FY ("FY2025-26") and FiscalMonthNo (1 = April … 12 = March). Write a Power Query custom
+column expression that returns the correct MonthStart date for every row.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Fiscal months 10–12 fall in the second calendar year of the FY label.</p>
+</blockquote>
+<h3 id="q2-day-level-guard-l2">Q2. Day-level guard [L2]</h3>
+<p>Users drill a matrix from month to day and see the full monthly budget on the 1st and blanks on other days.
+Write a measure that hides budget below month level, and explain whether <code>ISINSCOPE</code> or <code>HASONEVALUE</code> is the better
+test here.</p>
+<h3 id="q3-partial-month-ytd-l2">Q3. Partial month YTD [L2]</h3>
+<p>Last actuals date is 15 March 2026. Full-year budget is ₹60 crore with March budget ₹6 crore. Explain what YTD
+Budget shows under MonthStart storage versus MonthEnd storage if YTD is capped at the last actuals date, and
+recommend how to present budget for a partial month in the MIS.</p></section>
+<nav class="pager"><a class="prev" href="C01_USERELATIONSHIP_to_Activate_an_Inactive_Date.html">← USERELATIONSHIP to Activate an Inactive Date Relationship</a><a class="next" href="C03_Virtual_Relationship_with_TREATAS_for_Month_Grain.html">Virtual Relationship with TREATAS for Month-Grain Budget →</a></nav>
+</main></div></body></html>

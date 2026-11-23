@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAXIFS and MINIFS: Signature and the Zero-When-Empty Trap · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C04_MAXIFS_and_MINIFS_Signature_and_the_Zero_When.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T1 · Multi-criteria logic and GL rollups</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Multi-criteria logic and GL rollups</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Nested_IF_vs_IFS_vs_SWITCH_for_Account_Code.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S01_Nested_IF_vs_IFS_vs_SWITCH_for_Account_Code.html">Nested IF vs IFS vs SWITCH for Account-Code Classification</a></li><li><a href="../subtopics/S02_SUMIFS_for_Multi_Department_GL_Rollups_by_Group.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S02_SUMIFS_for_Multi_Department_GL_Rollups_by_Group.html">SUMIFS for Multi-Department GL Rollups by Group, Cost Centre and Month</a></li><li><a href="../subtopics/S03_COUNTIFS_Data_Quality_Tests_on_GL_and_TB_Dumps.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S03_COUNTIFS_Data_Quality_Tests_on_GL_and_TB_Dumps.html">COUNTIFS Data-Quality Tests on GL and TB Dumps</a></li><li><a href="../subtopics/S04_AVERAGEIFS_MAXIFS_and_MINIFS_for_ARAP_and_Sales.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S04_AVERAGEIFS_MAXIFS_and_MINIFS_for_ARAP_and_Sales.html">AVERAGEIFS, MAXIFS and MINIFS for AR/AP and Sales Analytics</a></li><li><a href="../subtopics/S05_Criteria_Syntax_Operators_Concatenation_Wildcards.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S05_Criteria_Syntax_Operators_Concatenation_Wildcards.html">Criteria Syntax: Operators, Concatenation, Wildcards and Date Ranges</a></li><li><a href="../subtopics/S06_OR_Logic_in_SUMIFS_with_Array_Constants_Wrapped_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S06_OR_Logic_in_SUMIFS_with_Array_Constants_Wrapped_in.html">OR Logic in SUMIFS with Array Constants Wrapped in SUM</a></li><li><a href="../subtopics/S07_Excel_Tables_and_Structured_References_for_Self.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S07_Excel_Tables_and_Structured_References_for_Self.html">Excel Tables and Structured References for Self-Expanding Rollups</a></li><li><a href="../subtopics/S08_Mixed_References_and_F4_Cycling_for_Copy_Across_PL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S08_Mixed_References_and_F4_Cycling_for_Copy_Across_PL.html">Mixed References and F4 Cycling for Copy-Across P&amp;L Grids</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_The_Department_Account_Month_SUMIFS_Grid_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C01_The_Department_Account_Month_SUMIFS_Grid_Formula.html">The Department × Account × Month SUMIFS Grid Formula</a></li><li><a href="C02_IFS_with_a_TRUE_Catch_All_for_Account.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C02_IFS_with_a_TRUE_Catch_All_for_Account.html">IFS with a TRUE Catch-All for Account Classification</a></li><li><a href="C03_SUM_of_SUMIFS_with_an_Array_Constant_for_OR_Logic.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C03_SUM_of_SUMIFS_with_an_Array_Constant_for_OR_Logic.html">SUM of SUMIFS with an Array Constant for OR Logic</a></li><li><a href="C04_MAXIFS_and_MINIFS_Signature_and_the_Zero_When.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C04_MAXIFS_and_MINIFS_Signature_and_the_Zero_When.html">MAXIFS and MINIFS: Signature and the Zero-When-Empty Trap</a></li><li><a href="C05_COUNTIFS_Duplicate_Posting_Flag_in_a_Calculated.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C05_COUNTIFS_Duplicate_Posting_Flag_in_a_Calculated.html">COUNTIFS Duplicate-Posting Flag in a Calculated Column</a></li><li><a href="C06_AVERAGEIFS_and_the_DIV0_Result_on_No_Matches.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C06_AVERAGEIFS_and_the_DIV0_Result_on_No_Matches.html">AVERAGEIFS and the #DIV/0! Result on No Matches</a></li><li><a href="C07_Range_Criteria_for_Numeric_Account_Codes_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C07_Range_Criteria_for_Numeric_Account_Codes_vs.html">Range Criteria for Numeric Account Codes vs Wildcards on Text</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>MAXIFS and MINIFS: Signature and the Zero-When-Empty Trap</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>=MAXIFS(AP[Amount], AP[Vendor], F2, AP[Status], "Open")</code>: MINIFS has the same signature; both return 0 when nothing matches</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>\[
+\text{MAXIFS} = \max\{\, x_i : i \in S \,\}, \qquad \text{MINIFS} = \min\{\, x_i : i \in S \,\}
+\]</p>
+<p>where \(x_i\) is the numeric value in <code>max_range</code>/<code>min_range</code> for row \(i\), and \(S\) is the set of rows meeting <strong>all</strong> criteria (here: Vendor equals F2 and Status equals "Open"). Non-numeric values in the value range are excluded. If \(S\) is empty (or contains no numeric values), both functions return <strong>0</strong> rather than an error.</p>
+<p>Signature: <code>MAXIFS(max_range, criteria_range1, criteria1, [criteria_range2, criteria2], …)</code>; MINIFS is identical with <code>min_range</code>.</p>
+<h2 id="explanation">Explanation</h2>
+<p><strong>Same grammar as SUMIFS.</strong> The value range comes first; criteria pairs follow, ANDed together, each criteria range the same size as the value range (otherwise <code>#VALUE!</code>). Criteria accept operators, concatenated cells, wildcards and date bounds.</p>
+<p><strong>The zero trap.</strong> Returning 0 for "no match" makes an empty result indistinguishable from a genuine zero, and for dates it displays as 00-Jan-1900. A vendor with no open invoices shows "largest open payment: ₹0" — harmless — but "oldest open invoice: 00-Jan-1900" feeding an ageing formula produces an age of about 46,000 days and can push a vendor into the &gt;180-days bucket. Guard every MAXIFS/MINIFS with a COUNTIFS on the same criteria:</p>
+<pre><code class="language-excel">=IF(COUNTIFS(AP[Vendor],F2,AP[Status],&quot;Open&quot;)=0, &quot;&quot;, MAXIFS(AP[Amount],AP[Vendor],F2,AP[Status],&quot;Open&quot;))
+</code></pre>
+<p><strong>Sign conventions.</strong> On AP data stored as negative credits, MAXIFS returns the <em>smallest</em> liability (closest to zero) and MINIFS the largest. Know the sign of your sub-ledger extract.</p>
+<p><strong>Finding the row.</strong> MAXIFS returns the value, not the invoice. Use a boolean XLOOKUP — <code>XLOOKUP(1,(AP[Vendor]=F2)*(AP[Status]="Open")*(AP[Amount]=G2),AP[InvNo])</code> — or FILTER for ties.</p>
+<p><strong>Versions.</strong> Excel 2019 / Microsoft 365. In Excel 2016, the legacy equivalent is the array formula <code>MAX(IF((AP[Vendor]=F2)*(AP[Status]="Open"),AP[Amount]))</code> entered with Ctrl+Shift+Enter, or <code>AGGREGATE(14,6,AP[Amount]/((AP[Vendor]=F2)*(AP[Status]="Open")),1)</code>.</p>
+<h2 id="illustration">Illustration</h2>
+<p>AP open-items extract (₹):</p>
+<table>
+<thead>
+<tr>
+<th>Vendor</th>
+<th>InvNo</th>
+<th>InvDate</th>
+<th>Amount</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V-210 Ashok Logistics</td>
+<td>AL/88</td>
+<td>14-Jan-2026</td>
+<td>2,85,000</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>V-210 Ashok Logistics</td>
+<td>AL/95</td>
+<td>07-Feb-2026</td>
+<td>6,40,000</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>V-210 Ashok Logistics</td>
+<td>AL/97</td>
+<td>21-Feb-2026</td>
+<td>9,10,000</td>
+<td>Paid</td>
+</tr>
+<tr>
+<td>V-305 Sai Packers</td>
+<td>SP/12</td>
+<td>03-Mar-2026</td>
+<td>1,20,000</td>
+<td>Paid</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>F2 = V-210: MAXIFS = ₹6,40,000 (AL/97 is paid); MINIFS on InvDate = 14-Jan-2026.</li>
+<li>F2 = V-305: no open rows, so MAXIFS = 0 and MINIFS on InvDate = 0 (00-Jan-1900) — the guarded version shows blanks.</li>
+</ul>
+<h2 id="connections">Connections</h2>
+<p>Belongs to the AVERAGEIFS/MAXIFS/MINIFS subtopic; contrasts with AVERAGEIFS, which errors with <code>#DIV/0!</code> when nothing matches. The guard pattern links to the week's error-discipline theme. The "which row holds the max?" follow-up uses the boolean-array XLOOKUP from the lookups topic, and the oldest-invoice measure feeds working-capital and MSME (Section 43B(h)) ageing analysis in FP&amp;A reporting.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-vendor-exposure-row-l1">Q1. Vendor exposure row [L1]</h3>
+<p>For the vendor in F5, write guarded formulas for the largest open invoice amount, the earliest open due date and the invoice number of the largest open invoice, using Table <code>AP</code> (Vendor, InvNo, DueDate, Amount, Status).</p>
+<h3 id="q2-legacy-compatibility-l2">Q2. Legacy compatibility [L2]</h3>
+<p>Your vendor dashboard must also work for a plant accountant using Excel 2016. Rewrite <code>=MINIFS(AR[InvDate], AR[Customer], $A5, AR[Status], "Open")</code> in a form that works in Excel 2016, and explain how your version behaves when the customer has no open invoices.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> AGGREGATE with option 6 ignores errors created by dividing by a FALSE condition.</p>
+</blockquote>
+<h3 id="q3-negative-signed-sub-ledger-l1">Q3. Negative-signed sub-ledger [L1]</h3>
+<p>An SAP vendor line-item extract shows open items as negative values. A colleague's "largest open payment" column shows ₹-4,500 for a vendor whose open items are ₹-4,500, ₹-3,20,000 and ₹-11,75,000. Explain the result and correct the formula.</p></section>
+<nav class="pager"><a class="prev" href="C03_SUM_of_SUMIFS_with_an_Array_Constant_for_OR_Logic.html">← SUM of SUMIFS with an Array Constant for OR Logic</a><a class="next" href="C05_COUNTIFS_Duplicate_Posting_Flag_in_a_Calculated.html">COUNTIFS Duplicate-Posting Flag in a Calculated Column →</a></nav>
+</main></div></body></html>

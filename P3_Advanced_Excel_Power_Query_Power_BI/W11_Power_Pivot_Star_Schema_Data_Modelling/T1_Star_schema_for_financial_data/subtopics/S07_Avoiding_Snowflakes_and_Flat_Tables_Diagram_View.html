@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avoiding Snowflakes and Flat Tables; Diagram View vs Model View · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S07_Avoiding_Snowflakes_and_Flat_Tables_Diagram_View.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T1 · Star schema for financial data</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Star schema for financial data</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Facts_vs_Dimensions_in_a_Financial_Star_Schema.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S01_Facts_vs_Dimensions_in_a_Financial_Star_Schema.html">Facts vs Dimensions in a Financial Star Schema</a></li><li><a href="S02_Defining_Fact_Grain_and_Handling_Mixed_Grain.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S02_Defining_Fact_Grain_and_Handling_Mixed_Grain.html">Defining Fact Grain and Handling Mixed Grain (Budget vs Actual)</a></li><li><a href="S03_Relationship_Properties_Cardinality_Direction.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S03_Relationship_Properties_Cardinality_Direction.html">Relationship Properties: Cardinality, Direction, Active Status</a></li><li><a href="S04_Role_Playing_Dates_via_Inactive_Relationships.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S04_Role_Playing_Dates_via_Inactive_Relationships.html">Role-Playing Dates via Inactive Relationships</a></li><li><a href="S05_CoA_Hierarchy_with_Sort_Order_and_Sign_Factor.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S05_CoA_Hierarchy_with_Sort_Order_and_Sign_Factor.html">CoA Hierarchy with Sort-Order and Sign-Factor Columns</a></li><li><a href="S06_Surrogate_Keys_and_an_Unmapped_Member_for_Missing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S06_Surrogate_Keys_and_an_Unmapped_Member_for_Missing.html">Surrogate Keys and an Unmapped Member for Missing Accounts</a></li><li><a href="S07_Avoiding_Snowflakes_and_Flat_Tables_Diagram_View.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S07_Avoiding_Snowflakes_and_Flat_Tables_Diagram_View.html">Avoiding Snowflakes and Flat Tables; Diagram View vs Model View</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_USERELATIONSHIP_to_Activate_an_Inactive_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C01_USERELATIONSHIP_to_Activate_an_Inactive_Date.html">USERELATIONSHIP to Activate an Inactive Date Relationship</a></li><li><a href="../concepts/C02_Store_Budget_on_the_First_Day_of_the_Month.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C02_Store_Budget_on_the_First_Day_of_the_Month.html">Store Budget on the First Day of the Month</a></li><li><a href="../concepts/C03_Virtual_Relationship_with_TREATAS_for_Month_Grain.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C03_Virtual_Relationship_with_TREATAS_for_Month_Grain.html">Virtual Relationship with TREATAS for Month-Grain Budget</a></li><li><a href="../concepts/C04_CROSSFILTER_for_Per_Measure_Bidirectional.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C04_CROSSFILTER_for_Per_Measure_Bidirectional.html">CROSSFILTER for Per-Measure Bidirectional Filtering</a></li><li><a href="../concepts/C05_Referential_Integrity_Test_with_EXCEPT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C05_Referential_Integrity_Test_with_EXCEPT.html">Referential Integrity Test with EXCEPT</a></li><li><a href="../concepts/C06_Hide_Fact_Foreign_Keys_Expose_Attributes_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C06_Hide_Fact_Foreign_Keys_Expose_Attributes_and.html">Hide Fact Foreign Keys; Expose Attributes and Measures</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Avoiding Snowflakes and Flat Tables; Diagram View vs Model View</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Avoiding snowflakes and single flat tables; Power Pivot Diagram View vs Power BI Model view</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Two shapes dominate badly built finance models. The first is the <strong>single flat table</strong>: a giant Excel-style
+extract with every description repeated on every row, which feels simple until you need Budget alongside Actual.
+The second is the <strong>snowflake</strong>: dimensions normalised into chains (Account → SubLine → Line → Statement as four
+tables; CostCentre → Department → Function), often imported straight from an ERP or a MySQL schema. Both work
+for a first report and fail as the model grows. The star schema sits between them. The tool you use to see and edit
+the model — Excel's Power Pivot Diagram View or Power BI's Model view — shapes how easily you spot these problems.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="why-not-a-single-flat-table">Why not a single flat table</h3>
+<p>A flat table (GL with account name, FS line, cost centre name, branch city, month name … all on each row) has these
+problems:</p>
+<ol>
+<li><strong>No second fact.</strong> Budget cannot be appended to the same table without inventing blank columns and mixing
+   grains; joining Budget into GL multiplies rows.</li>
+<li><strong>Size.</strong> Repeated text in crore-row tables inflates memory and refresh time, even with dictionary encoding.</li>
+<li><strong>Time intelligence.</strong> DAX time-intelligence functions need a separate, contiguous Date table; dates inside a
+   fact have gaps (no postings on Sundays or holidays).</li>
+<li><strong>Slicer semantics.</strong> A slicer on a fact column lists only values that have transactions; you cannot show
+   "accounts with zero actual but non-zero budget".</li>
+<li><strong>Maintenance.</strong> A CoA remap means rewriting the fact instead of editing one dimension row.</li>
+</ol>
+<p>Flat tables are acceptable for one-off analysis of a single fact of modest size, or as a staging step in Power
+Query before splitting into facts and dimensions.</p>
+<h3 id="why-not-a-snowflake">Why not a snowflake</h3>
+<p>A snowflake normalises a dimension into several related tables:</p>
+<table>
+<thead>
+<tr>
+<th>Snowflake</th>
+<th>Star equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GL → Account → SubLine → FSLine → Statement</td>
+<td>GL → CoA (with SubLine, FSLine, Statement as columns)</td>
+</tr>
+<tr>
+<td>GL → CostCentre → Department → Function</td>
+<td>GL → CostCentre (with Department, Function columns)</td>
+</tr>
+<tr>
+<td>Budget → Month → Date</td>
+<td>Budget[MonthStart] → Date</td>
+</tr>
+</tbody>
+</table>
+<p>Problems in Power BI and Power Pivot:</p>
+<ul>
+<li><strong>Longer filter chains.</strong> A filter on Statement has to traverse three relationships to reach GL. Each hop costs
+  query time and adds a place for broken keys.</li>
+<li><strong>Hierarchies span tables.</strong> Power BI hierarchies must sit in one table, so a snowflaked CoA cannot have a
+  Statement → Line → SubLine → Account hierarchy without RELATED columns.</li>
+<li><strong>Shared intermediate tables.</strong> If both GL and Budget relate to Account, but Budget is at FSLine level and relates
+  to the FSLine table, the FSLine table now has two paths to the facts — a recipe for ambiguity.</li>
+<li><strong>User confusion.</strong> The field list shows many small tables whose purpose is unclear.</li>
+</ul>
+<p><strong>The fix is to denormalise in Power Query:</strong> merge SubLine, FSLine and Statement into CoA (Merge Queries → expand
+the needed columns), and do the same for CostCentre. Dimensions in a star are deliberately redundant — "Revenue
+from operations" repeats on every revenue account row — because dimensions are small and compression handles the
+repetition.</p>
+<p>Legitimate exceptions: a very large dimension (lakhs of customers) with a small attribute table used rarely; or a
+dimension shared at a coarser grain by another fact (Budget at FSLine level) where a separate FSLine dimension is
+cleaner than TREATAS. Even then, keep it to one hop.</p>
+<h3 id="power-pivot-diagram-view-excel">Power Pivot Diagram View (Excel)</h3>
+<p>Open via <em>Power Pivot → Manage → Home → Diagram View</em>.</p>
+<ul>
+<li>Tables appear as boxes; drag a column from the fact onto the matching dimension column to create a relationship.</li>
+<li>Relationships are one-to-many; Excel's UI does not expose bidirectional filtering (use <code>CROSSFILTER</code> in measures).</li>
+<li><em>Create Hierarchy</em> button on a table header builds hierarchies (CoA: Statement → FSLine → FSSubLine → Account).</li>
+<li><em>Mark as Date Table</em> is under <em>Design → Mark as Date Table</em> in Data View.</li>
+<li>Hide columns from client tools by right-click → <em>Hide from Client Tools</em>.</li>
+<li>Measures are created in the calculation area of Data View or via <em>Power Pivot → Measures → New Measure</em> from the
+  Excel ribbon.</li>
+<li>Results are consumed in PivotTables or CUBE formulas (<code>CUBEVALUE</code>, <code>CUBEMEMBER</code>), which suits fixed board-pack
+  layouts.</li>
+</ul>
+<h3 id="power-bi-model-view">Power BI Model view</h3>
+<ul>
+<li>Shows tables, relationships with cardinality markers (1 / *), direction arrows and active (solid) vs inactive
+  (dashed) lines.</li>
+<li><em>Manage relationships</em> dialog lists every relationship with its properties; double-click a line to edit.</li>
+<li><strong>Layouts</strong> (tabs at the bottom) let you create separate diagrams, e.g. "GL star", "Budget star", "Data quality",
+  so large models stay readable.</li>
+<li>Properties pane: set data category, format, display folder, Sort by column, Is hidden, synonyms (for Q&amp;A).</li>
+<li>Model explorer (in the Data pane / Model view) lists tables, relationships, measures, calculation groups, roles and
+  perspectives; calculation groups can be created here in current Power BI Desktop versions.</li>
+<li>The TMDL view (newer Desktop builds) shows the model as code, useful for bulk edits and source control.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Power Pivot (Excel)</th>
+<th>Power BI Desktop</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Create relationship</td>
+<td>Drag in Diagram View or Design → Create Relationship</td>
+<td>Drag in Model view or Manage relationships</td>
+</tr>
+<tr>
+<td>Bidirectional filter</td>
+<td>Not in UI; <code>CROSSFILTER</code> in a measure</td>
+<td>Relationship property or <code>CROSSFILTER</code></td>
+</tr>
+<tr>
+<td>Many-to-many</td>
+<td>Not supported natively</td>
+<td>Supported (limited relationship)</td>
+</tr>
+<tr>
+<td>Calculation groups</td>
+<td>Not supported</td>
+<td>Model explorer or Tabular Editor</td>
+</tr>
+<tr>
+<td>Layout diagrams</td>
+<td>One diagram</td>
+<td>Multiple layout tabs</td>
+</tr>
+<tr>
+<td>Consumption</td>
+<td>PivotTables, CUBE formulas</td>
+<td>Report visuals; Analyze in Excel</td>
+</tr>
+</tbody>
+</table>
+<h3 id="illustration">Illustration</h3>
+<p>A plant-accounting team's model has GL (60 lakh rows) with relationships GL → Ledger → LedgerGroup → PrimaryGroup
+(Tally's group structure imported as three tables), plus CostCentre → CostCategory. A P&amp;L matrix by PrimaryGroup
+takes 6 seconds and the hierarchy cannot be built. Flattening LedgerGroup and PrimaryGroup into the Ledger table as
+columns (and CostCategory into CostCentre) cuts the model to five tables, the matrix refreshes in under a second, and
+a single CoA hierarchy becomes possible.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Tally's multi-level groups.</strong> Tally allows nested groups of arbitrary depth; flatten to a fixed number of levels
+  (e.g. Level1–Level4) with a path-flattening step in Power Query, filling lower levels with the parent name.</li>
+<li><strong>Parent-child hierarchies.</strong> If the CoA arrives as parent-child (ParentAccount column), use <code>PATH</code> and
+  <code>PATHITEM</code> in calculated columns, or flatten in Power Query, to create fixed level columns.</li>
+<li><strong>Junk dimensions.</strong> Several low-cardinality flags (VoucherType, IsReversal, Source) can be combined into one small
+  "Transaction attributes" dimension rather than left in the fact or split into many tables.</li>
+<li><strong>Two facts at different grains</strong> sharing a dimension at different levels can justify one extra hop; document it.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Flat tables fail with a second fact, time intelligence and "zero actual, non-zero budget" analysis.</li>
+<li>Snowflakes lengthen filter chains, break single-table hierarchies and risk ambiguous paths; flatten in Power Query.</li>
+<li>Star dimensions are intentionally denormalised; repetition in small tables is cheap.</li>
+<li>Power Pivot Diagram View: single-direction 1:* only, hierarchies, Mark as Date Table, CUBE-formula consumption.</li>
+<li>Power BI Model view: cardinality/direction/active markers, multiple layouts, model explorer, calculation groups.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-flatten-the-snowflake-l2">Q1. Flatten the snowflake [L2]</h3>
+<p>A model imported from a MySQL finance database has tables <code>gl_lines</code>, <code>accounts</code>, <code>account_subgroups</code>,
+<code>account_groups</code>, <code>statements</code>, <code>cost_centres</code>, <code>departments</code>. Describe the Power Query merges needed to produce a star schema, the final
+list of tables with their keys, and the relationships to create.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Each chain of lookup tables collapses into one dimension.</p>
+</blockquote>
+<h3 id="q2-defend-against-a-flat-file-l2">Q2. Defend against a flat file [L2]</h3>
+<p>A business user exports a flat 25-column file from Tally every month and wants Power BI to "just use this". List
+four concrete report requirements in a monthly MIS that the flat file cannot meet, explaining the technical reason
+for each.</p>
+<h3 id="q3-tool-choice-l3">Q3. Tool choice [L3]</h3>
+<p>The CFO wants a fixed-format board pack in Excel with exact cell positions, plus an interactive dashboard for
+business heads. Compare building the model in Power Pivot versus Power BI (with Analyze in Excel) on features,
+maintenance and governance, and recommend an architecture.</p>
+<h3 id="q4-parent-child-coa-l3">Q4. Parent-child CoA [L3]</h3>
+<p>The CoA arrives as AccountCode, ParentCode, Name with up to five levels, and some branches stop at level 3. Design
+the transformation to fixed level columns suitable for a star-schema hierarchy, and explain how you handle ragged
+branches.</p>
+<h3 id="q5-model-view-reading-l1">Q5. Model view reading [L1]</h3>
+<p>List five things you can verify about a finance model in the Power BI Model view without writing any DAX.</p></section>
+<nav class="pager"><a class="prev" href="S06_Surrogate_Keys_and_an_Unmapped_Member_for_Missing.html">← Surrogate Keys and an Unmapped Member for Missing Accounts</a><a class="next" href="../concepts/C01_USERELATIONSHIP_to_Activate_an_Inactive_Date.html">USERELATIONSHIP to Activate an Inactive Date Relationship →</a></nav>
+</main></div></body></html>

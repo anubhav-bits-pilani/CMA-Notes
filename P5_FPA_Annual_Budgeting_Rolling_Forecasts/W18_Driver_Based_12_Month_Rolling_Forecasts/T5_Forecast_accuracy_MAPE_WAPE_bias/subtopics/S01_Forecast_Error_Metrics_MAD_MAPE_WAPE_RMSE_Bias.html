@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forecast Error Metrics: MAD, MAPE, WAPE, RMSE, Bias, Tracking Signal · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S01_Forecast_Error_Metrics_MAD_MAPE_WAPE_RMSE_Bias.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 5</a> <span>›</span> <a href="../../index.html">Week 18</a> <span>›</span> <a href="../index.html">T5 · Forecast accuracy: MAPE, WAPE, bias</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Forecast accuracy: MAPE, WAPE, bias</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Forecast_Error_Metrics_MAD_MAPE_WAPE_RMSE_Bias.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S01_Forecast_Error_Metrics_MAD_MAPE_WAPE_RMSE_Bias.html">Forecast Error Metrics: MAD, MAPE, WAPE, RMSE, Bias, Tracking Signal</a></li><li><a href="S02_Measurement_Lag_Lag_1_Lag_3_and_Lag_6_Forecast.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S02_Measurement_Lag_Lag_1_Lag_3_and_Lag_6_Forecast.html">Measurement Lag: Lag-1, Lag-3 and Lag-6 Forecast Accuracy</a></li><li><a href="S03_Aggregation_Level_and_Error_Netting_in_Forecast.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S03_Aggregation_Level_and_Error_Netting_in_Forecast.html">Aggregation Level and Error Netting in Forecast Accuracy</a></li><li><a href="S04_Detecting_Sandbagging_and_Over_Optimism_by.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S04_Detecting_Sandbagging_and_Over_Optimism_by.html">Detecting Sandbagging and Over-Optimism by Business Unit</a></li><li><a href="S05_Forecast_Value_Added_Does_Each_Step_Beat_the_Naive.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S05_Forecast_Value_Added_Does_Each_Step_Beat_the_Naive.html">Forecast Value Added: Does Each Step Beat the Naive Baseline?</a></li><li><a href="S06_Accuracy_Dashboards_Accountability_and_Tolerance.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S06_Accuracy_Dashboards_Accountability_and_Tolerance.html">Accuracy Dashboards, Accountability and Tolerance Bands per BU</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_MAPE_Mean_Absolute_Percentage_Error_and_Its.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C01_MAPE_Mean_Absolute_Percentage_Error_and_Its.html">MAPE: Mean Absolute Percentage Error and Its Weaknesses</a></li><li><a href="../concepts/C02_WAPE_and_Forecast_Accuracy_Percentage.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C02_WAPE_and_Forecast_Accuracy_Percentage.html">WAPE and Forecast Accuracy Percentage</a></li><li><a href="../concepts/C03_Bias_Percentage_Direction_of_Forecast_Error.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C03_Bias_Percentage_Direction_of_Forecast_Error.html">Bias Percentage: Direction of Forecast Error</a></li><li><a href="../concepts/C04_MAD_and_the_Tracking_Signal_for_Systematic_Bias.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C04_MAD_and_the_Tracking_Signal_for_Systematic_Bias.html">MAD and the Tracking Signal for Systematic Bias</a></li><li><a href="../concepts/C05_RMSE_Root_Mean_Square_Error_and_Large_Miss_Penalty.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C05_RMSE_Root_Mean_Square_Error_and_Large_Miss_Penalty.html">RMSE: Root Mean Square Error and Large-Miss Penalty</a></li><li><a href="../concepts/C06_Forecast_Value_Added_Formula_and_Interpretation.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C06_Forecast_Value_Added_Formula_and_Interpretation.html">Forecast Value Added Formula and Interpretation</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Forecast Error Metrics: MAD, MAPE, WAPE, RMSE, Bias, Tracking Signal</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Error metrics: MAD, MAPE, WAPE, RMSE, bias, tracking signal</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>"The forecast was 96% accurate" means nothing until you know which metric, at which level, over which period and at which lag. Each error metric answers a different question: how big is the typical miss in rupees, how big in percentage terms, are big misses frequent, and is the error consistently in one direction? FP&amp;A teams that report a single metric get gamed or misled. Choosing the right combination — usually WAPE (size), bias (direction) and tracking signal (persistence), with MAPE and RMSE in supporting roles — is the foundation of every accuracy dashboard, BU review and S&amp;OP reconciliation.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="notation-and-sign-convention">Notation and sign convention</h3>
+<p>For periods (or items) \(t = 1, \dots, n\), let \(A_t\) be the actual and \(F_t\) the forecast. Define the error as \(e_t = A_t - F_t\) (actual minus forecast). Under this convention a <strong>positive error means under-forecast</strong> and a negative error means over-forecast. Bias as defined in the brief uses \(F - A\), so its sign is the opposite — always state the convention on the dashboard.</p>
+<h3 id="1-mad-mean-absolute-deviation">1. MAD — Mean Absolute Deviation</h3>
+<p>\[
+\text{MAD} = \frac{1}{n} \sum_{t=1}^{n} \lvert A_t - F_t \rvert
+\]</p>
+<p>The average size of the miss in the unit of measurement (₹ lakh, tonnes). Easy to explain ("we miss revenue by ₹1.8 crore a month on average"), not distorted by small denominators, but not comparable across BUs of different size. Also called MAE (mean absolute error). It is the denominator of the tracking signal (c04).</p>
+<h3 id="2-mape-mean-absolute-percentage-error">2. MAPE — Mean Absolute Percentage Error</h3>
+<p>\[
+\text{MAPE} = \frac{100}{n} \sum_{t=1}^{n} \frac{\lvert A_t - F_t \rvert}{\lvert A_t \rvert}
+\]</p>
+<p>Each period's absolute error is scaled by that period's actual, then averaged. Scale-free, so comparable across BUs and lines. Weaknesses (c01): undefined when any \(A_t = 0\); explodes when actuals are small; gives equal weight to a ₹1 lakh line and a ₹100 crore line; and is asymmetric — over-forecasts can produce errors above 100% while under-forecasts of a positive quantity are capped at 100%.</p>
+<h3 id="3-wape-weighted-absolute-percentage-error">3. WAPE — Weighted Absolute Percentage Error</h3>
+<p>\[
+\text{WAPE} = \frac{\sum_{t} \lvert A_t - F_t \rvert}{\sum_{t} \lvert A_t \rvert}, \qquad \text{Accuracy} = \max(0, 1 - \text{WAPE})
+\]</p>
+<p>Total absolute error divided by total actual — equivalently MAD ÷ mean actual, or a MAPE weighted by the size of each actual. Large lines dominate, which matches financial materiality; small or zero actuals do not break it as long as the total is non-zero. This is the preferred headline accuracy metric for FP&amp;A (c02). Also called MAD/Mean ratio.</p>
+<h3 id="4-rmse-root-mean-square-error">4. RMSE — Root Mean Square Error</h3>
+<p>\[
+\text{RMSE} = \sqrt{\frac{1}{n} \sum_{t=1}^{n} (A_t - F_t)^2}
+\]</p>
+<p>Squaring penalises large misses disproportionately (c05). Useful when large errors are especially costly — cash forecasting near a covenant, inventory planning with capacity constraints — and as the loss function minimised by regression and exponential-smoothing models (Topic 3 statistical support). RMSE ≥ MAD always; the gap indicates how lumpy the errors are.</p>
+<h3 id="5-bias">5. Bias</h3>
+<p>\[
+\text{Bias \%} = \frac{\sum_{t} (F_t - A_t)}{\sum_{t} A_t}
+\]</p>
+<p>The <strong>signed</strong> aggregate error relative to actuals. Positive = over-forecast (forecast higher than actual), negative = under-forecast. For revenue, persistent negative bias is the signature of sandbagging; for costs, persistent positive bias (over-forecast spend) is the cost-side equivalent (c03, s04). Bias can be zero while accuracy is terrible (errors offset), which is why it must be paired with an absolute metric.</p>
+<h3 id="6-tracking-signal">6. Tracking signal</h3>
+<p>\[
+\text{TS} = \frac{\sum_{t=1}^{n} (A_t - F_t)}{\text{MAD}}
+\]</p>
+<p>Cumulative signed error measured in units of MAD. If errors are random, the running sum hovers near zero; if errors are persistently one-signed, TS grows by roughly one unit each period. A common rule is that \(\lvert \text{TS} \rvert &gt; 4\) (some use ±3.75 or ±6) signals systematic bias that should trigger investigation (c04). Under the \(A - F\) convention, positive TS = persistent under-forecast.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>A BU's lag-3 revenue forecast, Apr–Jun FY26 (₹ crore):</p>
+<table>
+<thead>
+<tr>
+<th>Month</th>
+<th>A</th>
+<th>F</th>
+<th>A − F</th>
+<th>|A − F|</th>
+<th>APE</th>
+<th>(A − F)²</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apr</td>
+<td>50</td>
+<td>45</td>
+<td>5</td>
+<td>5</td>
+<td>10.0%</td>
+<td>25</td>
+</tr>
+<tr>
+<td>May</td>
+<td>40</td>
+<td>44</td>
+<td>−4</td>
+<td>4</td>
+<td>10.0%</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Jun</td>
+<td>10</td>
+<td>16</td>
+<td>−6</td>
+<td>6</td>
+<td>60.0%</td>
+<td>36</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>100</td>
+<td>105</td>
+<td>−5</td>
+<td>15</td>
+<td></td>
+<td>77</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>MAD = 15 ÷ 3 = ₹5.0 crore</li>
+<li>MAPE = (10 + 10 + 60) ÷ 3 = 26.7%</li>
+<li>WAPE = 15 ÷ 100 = 15.0%; accuracy = 85.0%</li>
+<li>RMSE = √(77 ÷ 3) = √25.67 = ₹5.07 crore</li>
+<li>Bias % = (105 − 100) ÷ 100 = +5.0% (over-forecast)</li>
+<li>TS = −5 ÷ 5 = −1.0 (no systematic bias signal)</li>
+</ul>
+<p>The small June actual inflates MAPE to 26.7% while WAPE, weighted by size, gives 15%. RMSE is only slightly above MAD because errors are similar in size.</p>
+<h3 id="excel-implementation">Excel implementation</h3>
+<p>With actuals in <code>C5:C16</code> and forecasts in <code>D5:D16</code>:</p>
+<pre><code>MAD       =AVERAGE(ABS(C5:C16-D5:D16))
+MAPE      =AVERAGE(IF(C5:C16&lt;&gt;0, ABS(C5:C16-D5:D16)/ABS(C5:C16)))
+WAPE      =SUM(ABS(C5:C16-D5:D16))/SUM(ABS(C5:C16))
+Accuracy  =MAX(0, 1-WAPE)
+RMSE      =SQRT(SUMXMY2(C5:C16, D5:D16)/COUNT(C5:C16))
+Bias %    =(SUM(D5:D16)-SUM(C5:C16))/SUM(C5:C16)
+TS        =SUM(C5:C16-D5:D16)/MAD
+</code></pre>
+<p>These array formulas work natively in Excel 365; in older versions enter with Ctrl+Shift+Enter or use helper columns. <code>SUMXMY2</code> returns the sum of squared differences directly.</p>
+<h3 id="choosing-metrics">Choosing metrics</h3>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Metric</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>How big is the miss in ₹?</td>
+<td>MAD</td>
+</tr>
+<tr>
+<td>How big relative to size, portfolio-weighted?</td>
+<td>WAPE (headline)</td>
+</tr>
+<tr>
+<td>Average % miss per item, items equally important?</td>
+<td>MAPE</td>
+</tr>
+<tr>
+<td>Are large misses frequent?</td>
+<td>RMSE (vs MAD)</td>
+</tr>
+<tr>
+<td>Which direction?</td>
+<td>Bias %</td>
+</tr>
+<tr>
+<td>Is the direction persistent?</td>
+<td>Tracking signal</td>
+</tr>
+</tbody>
+</table>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Negative actuals.</strong> Lines such as other income, FX gain/loss or net working-capital change can be negative. MAPE and WAPE use \(\lvert A \rvert\) in the denominator, but percentages on swing lines are rarely meaningful; use MAD in ₹ for them.</li>
+<li><strong>Zero actuals.</strong> MAPE is undefined; exclude the item and report how many were excluded, or switch to WAPE.</li>
+<li><strong>Cost lines.</strong> Interpretation of sign flips: over-forecasting cost is the conservative ("padding") direction.</li>
+<li><strong>Symmetric MAPE (sMAPE)</strong> divides by \((\lvert A \rvert + \lvert F \rvert)/2\) to reduce asymmetry, but it is less intuitive and still unstable near zero; WAPE is usually preferable in finance.</li>
+<li><strong>Period vs cumulative.</strong> Accuracy of monthly figures differs from accuracy of the quarterly total (monthly timing errors net within the quarter). State which one is reported (s03).</li>
+<li><strong>Small samples.</strong> Six monthly observations give a noisy TS; combine with judgement and look at rolling 12-month windows.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Define the error sign convention explicitly; the brief uses \(A - F\) for MAD/TS and \(F - A\) for bias.</li>
+<li>MAD = average ₹ miss; MAPE = average % miss (fragile near zero); WAPE = size-weighted % miss and the best headline metric.</li>
+<li>RMSE penalises big misses; compare it with MAD to judge error lumpiness.</li>
+<li>Bias % shows direction; tracking signal shows persistence, with magnitude above about 4 as the alarm.</li>
+<li>Always report at least one size metric plus bias; never MAPE alone.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-compute-the-full-metric-set-l1">Q1. Compute the full metric set [L1]</h3>
+<p>A cost centre's monthly employee-cost forecasts and actuals for Oct–Mar FY26 (₹ lakh) are: Forecast 210, 212, 215, 218, 220, 225; Actual 202, 205, 211, 209, 214, 216. Compute MAD, MAPE, WAPE, accuracy %, RMSE, bias % and tracking signal, and interpret the direction of bias for a cost line.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> For a cost line, consider whether a persistent over-forecast is padding or prudence.</p>
+</blockquote>
+<h3 id="q2-which-metric-misleads-l2">Q2. Which metric misleads? [L2]</h3>
+<p>Two products: Product X actuals ₹500 lakh, ₹520 lakh, ₹510 lakh with forecasts ₹480, ₹540, ₹490; Product Y actuals ₹2, ₹5, ₹1 lakh with forecasts ₹6, ₹4, ₹4. Compute portfolio MAPE (averaging all six APEs) and portfolio WAPE. Explain which better represents financial forecast quality and why.</p>
+<h3 id="q3-build-the-metric-block-in-excel-l2">Q3. Build the metric block in Excel [L2]</h3>
+<p>Design a worksheet that computes MAD, MAPE (excluding zero actuals and reporting the count excluded), WAPE, RMSE, bias % and tracking signal for any BU selected from a drop-down, pulling actuals and lag-3 forecasts from a long-format table <code>Acc</code> with columns BU, Month, Lag, Actual and Forecast. Write the formulas using <code>FILTER</code> and <code>LET</code>.</p>
+<h3 id="q4-interview-why-not-rmse-as-the-headline-l2">Q4. Interview: why not RMSE as the headline? [L2]</h3>
+<p>An interviewer asks why you use WAPE rather than RMSE as the headline accuracy KPI for monthly revenue across eight BUs. Give a structured answer covering scale, interpretability, sensitivity to outliers and use in statistical model selection.</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← Forecast accuracy: MAPE, WAPE, bias</a><a class="next" href="S02_Measurement_Lag_Lag_1_Lag_3_and_Lag_6_Forecast.html">Measurement Lag: Lag-1, Lag-3 and Lag-6 Forecast Accuracy →</a></nav>
+</main></div></body></html>

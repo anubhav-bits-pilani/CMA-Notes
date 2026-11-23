@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Repeated Identical Amounts: Sequence Keys for One-to-One Matching · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S06_Repeated_Identical_Amounts_Sequence_Keys_for_One.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T5 · Merging, appending and reconciliation…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Merging, appending and reconciliation joins</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Append_vs_Merge_Union_vs_Join_with_SQL_Analogies.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S01_Append_vs_Merge_Union_vs_Join_with_SQL_Analogies.html">Append vs Merge: Union vs Join with SQL Analogies</a></li><li><a href="S02_The_Six_Join_Kinds_and_Their_Role_in_a.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S02_The_Six_Join_Kinds_and_Their_Role_in_a.html">The Six Join Kinds and Their Role in a Reconciliation</a></li><li><a href="S03_Bank_vs_Book_Matching_on_Amount_Reference_and_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S03_Bank_vs_Book_Matching_on_Amount_Reference_and_Date.html">Bank vs Book Matching on Amount, Reference and Date Window</a></li><li><a href="S04_Normalising_Composite_Keys_Before_Merging.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S04_Normalising_Composite_Keys_Before_Merging.html">Normalising Composite Keys Before Merging</a></li><li><a href="S05_Fuzzy_Merge_for_Vendor_and_Customer_Names.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S05_Fuzzy_Merge_for_Vendor_and_Customer_Names.html">Fuzzy Merge for Vendor and Customer Names</a></li><li><a href="S06_Repeated_Identical_Amounts_Sequence_Keys_for_One.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S06_Repeated_Identical_Amounts_Sequence_Keys_for_One.html">Repeated Identical Amounts: Sequence Keys for One-to-One Matching</a></li><li><a href="S07_Other_Reconciliations_GSTR_2B_AR_Control_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S07_Other_Reconciliations_GSTR_2B_AR_Control_and.html">Other Reconciliations: GSTR-2B, AR Control and Intercompany</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_LeftAnti_Join_Items_in_the_Bank_but_Not_in_the.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C01_LeftAnti_Join_Items_in_the_Bank_but_Not_in_the.html">LeftAnti Join: Items in the Bank but Not in the Books</a></li><li><a href="../concepts/C02_RightAnti_Join_Items_in_the_Books_but_Not_in_the.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C02_RightAnti_Join_Items_in_the_Books_but_Not_in_the.html">RightAnti Join: Items in the Books but Not in the Bank</a></li><li><a href="../concepts/C03_Expanding_Merged_Columns_with_Prefixed_Names.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C03_Expanding_Merged_Columns_with_Prefixed_Names.html">Expanding Merged Columns with Prefixed Names</a></li><li><a href="../concepts/C04_TableFuzzyNestedJoin_Syntax_and_Options.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C04_TableFuzzyNestedJoin_Syntax_and_Options.html">Table.FuzzyNestedJoin Syntax and Options</a></li><li><a href="../concepts/C05_Duplicate_Safe_Keys_with_Group_By_and_Index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C05_Duplicate_Safe_Keys_with_Group_By_and_Index.html">Duplicate-Safe Keys with Group By and Index</a></li><li><a href="../concepts/C06_Sign_Alignment_Between_Bank_and_Book.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C06_Sign_Alignment_Between_Bank_and_Book.html">Sign Alignment Between Bank and Book</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Repeated Identical Amounts: Sequence Keys for One-to-One Matching</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Repeated identical amounts (one-to-many): sequence numbers via Group By + Index before joining</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Bank and book data are full of repeated amounts: monthly rent of ₹1,50,000 to the same landlord, ten salary-advance recoveries of ₹5,000, three customer cheques of ₹25,000 deposited the same day, identical bank charges of ₹590. When a merge key is not unique, Power Query pairs every left row with every right row that shares the key. Expanding then multiplies rows, inflates totals and marks a single book entry as matched to several bank lines. A reconciliation must pair items <strong>one-to-one</strong>: the first ₹25,000 to the first ₹25,000, the second to the second, and any surplus becomes an exception. Sequence numbers within each duplicate group achieve exactly that.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-multiplication-problem">The multiplication problem</h3>
+<p>Bank has three rows of ₹25,000 on 12-Apr; Book has two rows of ₹25,000 dated 11-Apr and 12-Apr. Merging on Amount alone:</p>
+<ul>
+<li>Each of the three bank rows gets a nested table with two book rows.</li>
+<li>Expanding gives \(3 \times 2 = 6\) rows.</li>
+<li>A LeftAnti returns nothing (every bank row found a match), although one bank deposit has no book counterpart.</li>
+</ul>
+<p>So many-to-many keys break both the matched register and the anti-joins.</p>
+<h3 id="the-sequence-key-technique">The sequence-key technique</h3>
+<p>Within each group of identical keys, number the rows 1, 2, 3 in a defined order, on both sides; then join on Key + Seq.</p>
+<pre><code class="language-m">SortedBank = Table.Sort(Bank, {{&quot;AmtPaise&quot;, Order.Ascending}, {&quot;TxnDate&quot;, Order.Ascending}, {&quot;BankRowID&quot;, Order.Ascending}}),
+GroupedBank = Table.Group(SortedBank, {&quot;AmtPaise&quot;},
+    {{&quot;Rows&quot;, each Table.AddIndexColumn(_, &quot;Seq&quot;, 1, 1, Int64.Type), type table}}),
+BankSeq = Table.ExpandTableColumn(GroupedBank, &quot;Rows&quot;,
+    {&quot;BankRowID&quot;, &quot;TxnDate&quot;, &quot;Narration&quot;, &quot;Ref&quot;, &quot;Seq&quot;}),
+</code></pre>
+<p>Repeat for the book side (grouped on the same key, sorted by voucher date and voucher number), then:</p>
+<pre><code class="language-m">Matched  = Table.NestedJoin(BankSeq, {&quot;AmtPaise&quot;, &quot;Seq&quot;}, BookSeq, {&quot;AmtPaise&quot;, &quot;Seq&quot;}, &quot;Bk&quot;, JoinKind.Inner),
+BankOnly = Table.NestedJoin(BankSeq, {&quot;AmtPaise&quot;, &quot;Seq&quot;}, BookSeq, {&quot;AmtPaise&quot;, &quot;Seq&quot;}, &quot;Bk&quot;, JoinKind.LeftAnti),
+BookOnly = Table.NestedJoin(BookSeq, {&quot;AmtPaise&quot;, &quot;Seq&quot;}, BankSeq, {&quot;AmtPaise&quot;, &quot;Seq&quot;}, &quot;Bk&quot;, JoinKind.LeftAnti)
+</code></pre>
+<p>With three bank rows (Seq 1–3) and two book rows (Seq 1–2): Matched has 2 rows, BankOnly has 1 row (Seq 3), BookOnly is empty.</p>
+<h3 id="why-sorting-matters">Why sorting matters</h3>
+<p><code>Table.AddIndexColumn</code> numbers rows in their current order inside each group. Without an explicit sort, the order is whatever the source produced, which can differ between refreshes; the same bank row might be "Seq 1" this month and "Seq 3" after a re-download. Sort deterministically — by date, then by a stable row ID — before grouping. Note that <code>Table.Group</code> preserves the incoming order within groups in practice, but if in doubt, sort inside the group: <code>each Table.AddIndexColumn(Table.Sort(_, {"TxnDate", "BankRowID"}), "Seq", 1, 1)</code>.</p>
+<p>Sorting by date means the earliest bank item pairs with the earliest book item — a FIFO assumption that mirrors how most people tick a BRS manually. It is a convention, not truth: if the second ₹25,000 cheque in the books bounced, FIFO pairing may attribute the unmatched item to the wrong cheque. For cheques, prefer cheque-number keys; use sequence keys for amounts without references.</p>
+<h3 id="combining-with-date-windows">Combining with date windows</h3>
+<p>Sequence keys can be scoped more narrowly by including a date bucket in the group key: group on AmtPaise + Week or AmtPaise + TxnDate (exact day) so that a ₹590 charge in April does not pair with one in May. The trade-off: narrower groups reduce wrong pairings but miss matches that cross the bucket boundary (a deposit on 30-Apr cleared on 2-May). A common pattern: first sequence-match within the same day, then sequence-match the leftovers within the window.</p>
+<h3 id="checking-uniqueness">Checking uniqueness</h3>
+<p>Before any merge in a recon, test key uniqueness on both sides:</p>
+<pre><code class="language-m">DupCheck = Table.SelectRows(Table.Group(BankSeq, {&quot;AmtPaise&quot;, &quot;Seq&quot;},
+    {{&quot;n&quot;, each Table.RowCount(_), Int64.Type}}), each [n] &gt; 1)
+</code></pre>
+<p><code>DupCheck</code> must be empty. <code>Table.IsDistinct(Table.SelectColumns(BankSeq, {"AmtPaise", "Seq"}))</code> is a one-line alternative that returns true or false.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>Bank (April), amount ₹590 (charges): 7 rows. Book: 5 rows of ₹590. After sequencing: Seq 1–5 match, bank Seq 6–7 are bank-only — two charges (₹1,180 in total) not yet booked. Without sequencing, merging on amount would have produced \(7 \times 5 = 35\) expanded rows and a LeftAnti showing zero unbooked charges.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Grouping key must equal the join key minus Seq.</strong> If you group on Amount but join on Ref + Amount + Seq, sequences are meaningless.</li>
+<li><strong>Sign alignment first.</strong> Sequence after flipping signs; otherwise receipts and payments of equal magnitude share groups on one side but not the other.</li>
+<li><strong>Bulk vs individual.</strong> A ₹75,000 single bank credit versus three ₹25,000 book entries is a many-to-one aggregation problem, not a sequence problem; sequencing will not find it — aggregate by date first.</li>
+<li><strong>Stability across months.</strong> Recompute sequences on the current month's open items, including carried-forward unmatched items from prior months, so numbering stays consistent.</li>
+<li><strong>Performance.</strong> Group By with nested tables is in-memory; buffer inputs if the recon runs several sequence stages.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Non-unique keys make merges many-to-many: expanded rows multiply and anti-joins miss exceptions.</li>
+<li>Number rows within each key group with Group By + <code>Table.AddIndexColumn</code>, on both sides, then join on Key + Seq.</li>
+<li>Sort deterministically before numbering, so pairing is reproducible and FIFO by date.</li>
+<li>Narrow groups with a date bucket where appropriate, and run a second pass for cross-bucket items.</li>
+<li>Prove uniqueness of the final key on both sides before merging.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-predict-the-counts-l1">Q1. Predict the counts [L1]</h3>
+<p>Bank has four rows of ₹12,000 and book has six rows of ₹12,000 for the same account and month. State the number of rows after expanding a merge on Amount only, and the matched, bank-only and book-only counts with Amount + Seq keys.</p>
+<h3 id="q2-write-the-sequencing-step-l2">Q2. Write the sequencing step [L2]</h3>
+<p>Write M that adds a Seq column to the Book table, numbering rows within each AmtPaise group in order of VchDate then VchNo, and returns a flat table with all original columns plus Seq.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Sort inside the <code>each</code> before <code>Table.AddIndexColumn</code>, then expand with <code>Table.ColumnNames(Book)</code> plus "Seq".</p>
+</blockquote>
+<h3 id="q3-fifo-pairing-risk-l2">Q3. FIFO pairing risk [L2]</h3>
+<p>Three cheques of ₹40,000 were deposited on 7, 9 and 14 April and booked on those dates; the bank credited two of them on 9 and 11 April, and the 9-April cheque was returned unpaid. Explain how FIFO sequence matching on amount would pair these items, why the result could misidentify which cheque is outstanding, and what key would avoid this.</p>
+<h3 id="q4-many-to-one-detection-l3">Q4. Many-to-one detection [L3]</h3>
+<p>A payment gateway settles daily: one bank credit per day equals the sum of 150–400 book receipts (net of 1.8% MDR plus GST). Design the Power Query logic to match settlements to receipts, explain why sequence keys are not suitable here, and state the tolerance rule for the MDR.</p></section>
+<nav class="pager"><a class="prev" href="S05_Fuzzy_Merge_for_Vendor_and_Customer_Names.html">← Fuzzy Merge for Vendor and Customer Names</a><a class="next" href="S07_Other_Reconciliations_GSTR_2B_AR_Control_and.html">Other Reconciliations: GSTR-2B, AR Control and Intercompany →</a></nav>
+</main></div></body></html>

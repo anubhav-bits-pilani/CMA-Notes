@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Power Query Connectors for Accounting and ERP Data Sources · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S01_Power_Query_Connectors_for_Accounting_and_ERP_Data.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T1 · Power Query architecture and M basics</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Power Query architecture and M basics</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Power_Query_Connectors_for_Accounting_and_ERP_Data.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S01_Power_Query_Connectors_for_Accounting_and_ERP_Data.html">Power Query Connectors for Accounting and ERP Data Sources</a></li><li><a href="S02_Power_Query_Editor_Anatomy_Steps_Formula_Bar_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S02_Power_Query_Editor_Anatomy_Steps_Formula_Bar_and.html">Power Query Editor Anatomy: Steps, Formula Bar and Dependencies</a></li><li><a href="S03_M_Language_Structure_letin_Values_Records_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S03_M_Language_Structure_letin_Values_Records_Lists.html">M Language Structure: let/in, Values, Records, Lists and each</a></li><li><a href="S04_Data_Types_and_Controlling_Automatic_Type.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S04_Data_Types_and_Controlling_Automatic_Type.html">Data Types and Controlling Automatic Type Detection</a></li><li><a href="S05_Query_Folding_Which_Steps_Fold_Native_Query_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S05_Query_Folding_Which_Steps_Fold_Native_Query_and.html">Query Folding: Which Steps Fold, Native Query and Diagnostics</a></li><li><a href="S06_Parameters_Staging_Queries_and_Reference_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S06_Parameters_Staging_Queries_and_Reference_vs.html">Parameters, Staging Queries and Reference vs Duplicate</a></li><li><a href="S07_Load_Options_and_Refresh_Behaviour_in_Excel_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S07_Load_Options_and_Refresh_Behaviour_in_Excel_vs.html">Load Options and Refresh Behaviour in Excel vs Power BI</a></li><li><a href="S08_Privacy_Levels_and_FormulaFirewall_Errors.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S08_Privacy_Levels_and_FormulaFirewall_Errors.html">Privacy Levels and Formula.Firewall Errors</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_CsvDocument_with_FileContents_Delimiter_Encoding.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C01_CsvDocument_with_FileContents_Delimiter_Encoding.html">Csv.Document with File.Contents: Delimiter, Encoding, QuoteStyle</a></li><li><a href="../concepts/C02_ExcelWorkbook_Navigation_to_a_Named_Sheet_or_Table.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C02_ExcelWorkbook_Navigation_to_a_Named_Sheet_or_Table.html">Excel.Workbook Navigation to a Named Sheet or Table</a></li><li><a href="../concepts/C03_SqlDatabase_with_a_Native_Query_Blocks_Later.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C03_SqlDatabase_with_a_Native_Query_Blocks_Later.html">Sql.Database with a Native Query Blocks Later Folding</a></li><li><a href="../concepts/C04_ValueNativeQuery_with_Parameters_and_EnableFolding.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C04_ValueNativeQuery_with_Parameters_and_EnableFolding.html">Value.NativeQuery with Parameters and EnableFolding</a></li><li><a href="../concepts/C05_The_each_Keyword_and_the_Underscore_Parameter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C05_The_each_Keyword_and_the_Underscore_Parameter.html">The each Keyword and the Underscore Parameter</a></li><li><a href="../concepts/C06_Folding_Breakers_TableBuffer_Index_Columns_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C06_Folding_Breakers_TableBuffer_Index_Columns_and.html">Folding Breakers: Table.Buffer, Index Columns and Custom Functions</a></li><li><a href="../concepts/C07_MySQLDatabase_Connector_and_OdbcDataSource_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C07_MySQLDatabase_Connector_and_OdbcDataSource_for.html">MySQL.Database Connector and Odbc.DataSource for Tally</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Power Query Connectors for Accounting and ERP Data Sources</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Connectors: Text/CSV, Excel Workbook, Folder, SQL Server, MySQL/ODBC, SharePoint Folder</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Every finance automation starts with a connection. A month-end pack in an Indian mid-size company typically pulls a Tally trial balance exported to Excel, bank statement CSVs from HDFC/ICICI/SBI net-banking, SAP line-item downloads (FBL3N) saved as text, a budget workbook from the FP&amp;A team on SharePoint, and sometimes a direct read from a reporting database (SQL Server or MySQL behind a custom billing system). The connector you choose decides three things that matter later: whether the query can <strong>fold</strong> (push work back to the source), whether refresh will work on someone else's machine or in the Power BI Service, and how much clean-up the first few steps must do. Choosing "Folder" instead of "Text/CSV" for monthly bank files, for example, is the difference between editing a query every month and simply dropping a file in and pressing Refresh All.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="how-a-connector-maps-to-m">How a connector maps to M</h3>
+<p>Every item in <strong>Get Data</strong> generates a source function in M. The UI is just a wizard that writes the first one or two steps of the query. Knowing the underlying function lets you edit paths, add options (delimiter, encoding) and parameterise them.</p>
+<table>
+<thead>
+<tr>
+<th>Connector (UI)</th>
+<th>M function generated</th>
+<th>Folds?</th>
+<th>Typical finance use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Text/CSV</td>
+<td><code>Csv.Document(File.Contents(path), [...])</code></td>
+<td>No</td>
+<td>Bank statement CSV, SAP export saved as .csv/.txt</td>
+</tr>
+<tr>
+<td>Excel Workbook</td>
+<td><code>Excel.Workbook(File.Contents(path), null, true)</code></td>
+<td>No</td>
+<td>Tally TB export, budget template, CoA master</td>
+</tr>
+<tr>
+<td>Folder</td>
+<td><code>Folder.Files(path)</code></td>
+<td>No (file system metadata only)</td>
+<td>12 monthly branch TBs, 6 bank CSVs</td>
+</tr>
+<tr>
+<td>SQL Server</td>
+<td><code>Sql.Database(server, db)</code></td>
+<td>Yes</td>
+<td>ERP reporting DB, data warehouse</td>
+</tr>
+<tr>
+<td>MySQL</td>
+<td><code>MySQL.Database(server, db)</code></td>
+<td>Yes (with connector)</td>
+<td>Custom billing/POS systems</td>
+</tr>
+<tr>
+<td>ODBC</td>
+<td><code>Odbc.DataSource("dsn=...")</code></td>
+<td>Partial / driver dependent</td>
+<td>Tally ODBC, legacy ERPs</td>
+</tr>
+<tr>
+<td>SharePoint Folder</td>
+<td><code>SharePoint.Files(siteUrl, [ApiVersion=15])</code></td>
+<td>No</td>
+<td>Shared month-end folder on Microsoft 365</td>
+</tr>
+</tbody>
+</table>
+<h3 id="textcsv">Text/CSV</h3>
+<p>The CSV connector reads a binary with <code>File.Contents</code> and parses it with <code>Csv.Document</code>. The options record controls the delimiter (comma, tab, pipe — SAP downloads are often tab-delimited), the number of columns, the <strong>encoding</strong> (65001 = UTF-8, 1252 = Western Windows; Indian bank files with ₹ or Devanagari narrations need UTF-8) and the <strong>QuoteStyle</strong> (whether commas inside quotes, such as <code>"NEFT/ABC Traders, Pune"</code>, are treated as text or as delimiters). The UI preview sniffs these from the first 200 rows; it can guess wrong if the file starts with a report header. Note that Power BI hard-codes <code>Columns=n</code> in the generated step — if next month's file has an extra column it will be silently dropped, so delete that option when the layout can grow.</p>
+<h3 id="excel-workbook">Excel Workbook</h3>
+<p><code>Excel.Workbook</code> returns a <strong>navigation table</strong> — one row per sheet, defined table and named range, with columns <code>Name</code>, <code>Data</code>, <code>Item</code>, <code>Kind</code> and <code>Hidden</code>. The UI then drills into one item with <code>{[Item="TB",Kind="Sheet"]}[Data]</code>. Prefer Excel <strong>Tables</strong> (Kind = "Table") over sheets when you control the source: a table has a fixed header and a defined extent, so blank trailing rows and stray notes beyond the range are not picked up. Sheets bring in the used range, including Tally's report header rows. The third argument <code>true</code> (delayTypes) leaves columns untyped so you control typing; <code>null</code> for useHeaders means no auto-promotion.</p>
+<h3 id="folder">Folder</h3>
+<p><code>Folder.Files(path)</code> returns one row per file in the folder <strong>and its sub-folders</strong>, with <code>Content</code> (binary), <code>Name</code>, <code>Extension</code>, <code>Date accessed</code>, <code>Date modified</code>, <code>Date created</code>, <code>Attributes</code> and <code>Folder Path</code>. It does not read the files; you filter the list (extension, name pattern, exclude <code>~$</code> lock files) and then apply a transform function to each <code>Content</code>. Use <code>Folder.Contents</code> if you want only the top level as a navigable hierarchy. The <strong>Combine Files</strong> button generates a helper-query set (sample file, parameter, transform function) — covered in Topic 4.</p>
+<h3 id="sql-server">SQL Server</h3>
+<p><code>Sql.Database("server", "database")</code> returns a navigation table of schemas, tables and views. Navigating to <code>dbo.GLEntries</code> and then filtering rows and removing columns lets Power Query <strong>fold</strong> those steps into a single <code>SELECT ... WHERE</code> statement — the server does the work and only the filtered rows travel. Authentication options: Windows (current user), Database (SQL login), Microsoft account (Azure SQL). For Power BI Service refresh of an on-premises server you need a gateway (Week 12).</p>
+<h3 id="mysql-odbc">MySQL / ODBC</h3>
+<p><code>MySQL.Database(server, database)</code> requires the MySQL Connector/NET (Oracle) installed on the machine — Power BI Desktop throws "This connector requires one or more additional components" otherwise. Where no native connector exists, ODBC is the universal fallback: <code>Odbc.DataSource("dsn=TallyODBC", [HierarchicalNavigation=true])</code> or <code>Odbc.Query(dsn, "SELECT ...")</code>. Tally Prime exposes an ODBC server (default port 9000) when the company is open, which lets you pull ledgers without exporting. ODBC folding depends on the driver's SQL capabilities; assume little folding with Tally.</p>
+<h3 id="sharepoint-folder">SharePoint Folder</h3>
+<p><code>SharePoint.Files("https://contoso.sharepoint.com/sites/Finance", [ApiVersion=15])</code> takes the <strong>site URL</strong>, not the folder URL, and returns every file in every document library of that site, with a <code>Folder Path</code> column. You then filter on <code>Folder Path</code> (e.g. contains <code>/Shared Documents/MonthEnd/Bank/</code>). Because it is a cloud source, the Power BI Service can refresh it without a gateway, which is why finance teams move drop-folders from a local <code>C:\</code> path to SharePoint/OneDrive. <code>SharePoint.Contents</code> is faster on large sites because it navigates lazily instead of listing every file.</p>
+<h3 id="illustration-picking-connectors-for-a-close-pack">Illustration: picking connectors for a close pack</h3>
+<p>A company with 6 branches receives monthly: branch TB as .xlsx (Tally export), one HDFC and one SBI CSV per month, and a sales register from a MySQL billing system. Design: <strong>Folder</strong> (or SharePoint Folder) for branch TBs and bank CSVs, each with a custom cleaning function; <strong>MySQL</strong> for the sales register, navigating to the table and filtering FY and period so that the filter folds; <strong>Excel Workbook</strong> pointing to a single CoA mapping table. The query count stays fixed as months are added — only folder contents grow.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Excel open in another process</strong>: reading an Excel file that is open is usually fine, but files on a network share locked by Tally or an antivirus scan can fail with "The process cannot access the file". Copy-to-staging or SharePoint avoids this.</li>
+<li><strong>.xls (Excel 97-2003)</strong> needs the ACE OLEDB provider; 32/64-bit mismatch between Office and Power BI produces provider errors. Re-save as .xlsx where possible.</li>
+<li><strong>CSV that is really a report</strong>: many bank CSVs have 10–15 header lines (account number, period, opening balance). Do not rely on the connector's header promotion — skip rows by condition (Topic 2).</li>
+<li><strong>SharePoint site vs folder URL</strong>: pasting the full folder URL into <code>SharePoint.Files</code> fails; use the site root, then filter <code>Folder Path</code>.</li>
+<li><strong>Native SQL vs navigation</strong>: typing a SQL statement in the SQL Server dialog stops folding for later steps (see c03). Use navigation unless the query genuinely needs SQL the UI cannot express.</li>
+<li><strong>Credentials are stored per data source path</strong>, not per query; changing a server name requires new credentials in Data source settings.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Each connector is a wizard over a source M function; learn the function so you can parameterise and edit it.</li>
+<li>Files (CSV, Excel, Folder, SharePoint) never fold; databases (SQL Server, MySQL) fold; ODBC folds only as far as the driver allows.</li>
+<li>Use Folder/SharePoint Folder for recurring monthly drops so the query count stays constant.</li>
+<li>Prefer Excel Tables over sheets when you control the source layout.</li>
+<li>MySQL needs the separate connector; Tally is reachable over ODBC on port 9000.</li>
+<li>Cloud sources (SharePoint/OneDrive) refresh in the Service without a gateway; local paths and on-prem databases need one.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-connector-choice-for-a-close-pack-l1">Q1. Connector choice for a close pack [L1]</h3>
+<p>List the most appropriate Power Query connector and the M source function for each: (a) a single HDFC bank statement CSV; (b) a folder holding 12 monthly Tally TB exports; (c) the <code>gl_entries</code> table in a MySQL billing database; (d) a budget workbook stored in the Finance SharePoint site; (e) Tally Prime data read live without exporting.</p>
+<h3 id="q2-which-steps-fold-l2">Q2. Which steps fold? [L2]</h3>
+<p>A query connects to SQL Server table <code>dbo.GLLines</code> (40 million rows), filters <code>FiscalYear = 2026</code>, removes 30 of 38 columns, groups by <code>Account</code> summing <code>Amount</code>, then connects to a CSV of account mappings and merges it. Identify which steps can fold to SQL Server and which cannot, and explain what volume of data is transferred over the network.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Folding stops at the first step that the source cannot translate; think about where the CSV enters.</p>
+</blockquote>
+<h3 id="q3-sharepoint-folder-setup-l2">Q3. SharePoint Folder setup [L2]</h3>
+<p>Your drop-folder URL is <code>https://abcltd.sharepoint.com/sites/FinanceOps/Shared Documents/MonthEnd/BankCSV</code>. Write the M for the first two steps that list only the <code>.csv</code> files in that folder, and explain why the obvious first attempt using the full URL fails.</p>
+<h3 id="q4-csv-options-audit-l2">Q4. CSV options audit [L2]</h3>
+<p>A query built in Power BI Desktop on an April bank file contains <code>Csv.Document(File.Contents("C:\Users\ravi\Downloads\apr.csv"), [Delimiter=",", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None])</code>. In May the bank adds a "Value Date" column and narrations include commas inside quotes and the ₹ symbol. List every problem in this step and rewrite it.</p>
+<h3 id="q5-interview-database-vs-file-source-l3">Q5. Interview: database vs file source [L3]</h3>
+<p>An interviewer asks: "Your CFO wants the daily sales flash to come from the billing system. IT offers either a nightly CSV dump on a shared drive or read-only access to the MySQL reporting replica. Which do you choose for Power Query and why?" Structure an answer covering folding, refresh in the Service, data volume, security and dependency on IT.</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← Power Query architecture and M basics</a><a class="next" href="S02_Power_Query_Editor_Anatomy_Steps_Formula_Bar_and.html">Power Query Editor Anatomy: Steps, Formula Bar and… →</a></nav>
+</main></div></body></html>

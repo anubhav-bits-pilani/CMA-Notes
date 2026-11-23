@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Excel Waterfall Charts: Native Chart and Stacked-Column Fallback · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S03_Excel_Waterfall_Charts_Native_Chart_and_Stacked.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 5</a> <span>›</span> <a href="../../index.html">Week 19</a> <span>›</span> <a href="../index.html">T4 · EBITDA bridge waterfall construction</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · EBITDA bridge waterfall construction</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Standard_Step_Sequence_for_a_Budget_to_Actual.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S01_Standard_Step_Sequence_for_a_Budget_to_Actual.html">Standard Step Sequence for a Budget-to-Actual EBITDA Bridge</a></li><li><a href="S02_Bridges_for_AvB_AvPY_LE_vs_AOP_and_Forecast_to.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S02_Bridges_for_AvB_AvPY_LE_vs_AOP_and_Forecast_to.html">Bridges for AvB, AvPY, LE vs AOP and Forecast-to-Forecast</a></li><li><a href="S03_Excel_Waterfall_Charts_Native_Chart_and_Stacked.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S03_Excel_Waterfall_Charts_Native_Chart_and_Stacked.html">Excel Waterfall Charts: Native Chart and Stacked-Column Fallback</a></li><li><a href="S04_Power_BI_Waterfall_Visual_Breakdown_Ordering_and.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S04_Power_BI_Waterfall_Visual_Breakdown_Ordering_and.html">Power BI Waterfall Visual: Breakdown, Ordering and Bridge Measures</a></li><li><a href="S05_Grouping_Small_Items_into_Other_and_Labelling_in.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S05_Grouping_Small_Items_into_Other_and_Labelling_in.html">Grouping Small Items into &quot;Other&quot; and Labelling in ₹ Crore and bps</a></li><li><a href="S06_The_Reconciliation_Table_Behind_an_EBITDA_Bridge.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S06_The_Reconciliation_Table_Behind_an_EBITDA_Bridge.html">The Reconciliation Table Behind an EBITDA Bridge</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Bridge_Integrity_Zero_Residual_Between_End_Points.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/concepts/C01_Bridge_Integrity_Zero_Residual_Between_End_Points.html">Bridge Integrity: Zero Residual Between End Points</a></li><li><a href="../concepts/C02_Valuation_Basis_of_Each_Bridge_Step.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/concepts/C02_Valuation_Basis_of_Each_Bridge_Step.html">Valuation Basis of Each Bridge Step</a></li><li><a href="../concepts/C03_Stacked_Column_Waterfall_Arithmetic_Invisible_Base.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/concepts/C03_Stacked_Column_Waterfall_Arithmetic_Invisible_Base.html">Stacked-Column Waterfall Arithmetic: Invisible Base and Visible Bar</a></li><li><a href="../concepts/C04_EBITDA_Margin_Bridge_in_Basis_Points.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/concepts/C04_EBITDA_Margin_Bridge_in_Basis_Points.html">EBITDA Margin Bridge in Basis Points</a></li><li><a href="../concepts/C05_Order_Dependence_of_Bridge_Steps.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/concepts/C05_Order_Dependence_of_Bridge_Steps.html">Order Dependence of Bridge Steps</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Excel Waterfall Charts: Native Chart and Stacked-Column Fallback</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Excel native waterfall chart (2016+), setting start/end bars as totals, and stacked-column fallback method</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Most Indian FP&amp;A packs are still assembled in Excel and pasted into PowerPoint. The bridge is the chart most frequently rebuilt under time pressure on close day, and the one most often wrong in a way the CFO notices — an end bar floating instead of sitting on the axis, a cost saving pointing down, a bar crossing zero drawn from the wrong place. You need two techniques: the native waterfall chart for speed, and the stacked-column method for control (custom labels, IBCS styling, older Excel versions, and charts that must be linked into templated decks).</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-data-table">The data table</h3>
+<p>Both methods start from a two-column bridge table in which each step is already signed as its effect on EBITDA (positive raises EBITDA):</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>₹ crore</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Budget EBITDA</td>
+<td>420.0</td>
+</tr>
+<tr>
+<td>Price</td>
+<td>45.0</td>
+</tr>
+<tr>
+<td>Volume</td>
+<td>60.0</td>
+</tr>
+<tr>
+<td>Mix</td>
+<td>−28.0</td>
+</tr>
+<tr>
+<td>COGS inflation</td>
+<td>−95.0</td>
+</tr>
+<tr>
+<td>Efficiency</td>
+<td>18.0</td>
+</tr>
+<tr>
+<td>Opex</td>
+<td>22.0</td>
+</tr>
+<tr>
+<td>FX</td>
+<td>−9.0</td>
+</tr>
+<tr>
+<td>Others</td>
+<td>−5.0</td>
+</tr>
+<tr>
+<td>Actual EBITDA</td>
+<td>428.0</td>
+</tr>
+</tbody>
+</table>
+<p>The end value is a formula, not a hard-code: <code>=B2+SUM(B3:B10)</code>, and a separate check compares it with the reported actual from the MIS.</p>
+<h3 id="method-1-native-waterfall-chart-excel-2016-2019-2021-microsoft-365">Method 1: native waterfall chart (Excel 2016, 2019, 2021, Microsoft 365)</h3>
+<ol>
+<li>Select the table and choose <strong>Insert → Charts → Waterfall</strong> (in the "Waterfall, Funnel, Stock, Surface or Radar" group).</li>
+<li>Excel treats every value as a step from the previous cumulative position. The first bar (Budget) rises from zero correctly, but the last bar (Actual EBITDA = 428) would be stacked on top of the cumulative 428 as another +428 step.</li>
+<li><strong>Set the end bar as total:</strong> click the series once, then click the Actual EBITDA bar alone to select that single data point, right-click → <strong>Format Data Point</strong> → tick <strong>Set as total</strong>. The bar now drops to sit on the axis. Do the same for the start bar if it is not the first point, and for any subtotal bars (for example a "Revenue effects" subtotal or a "Gross margin" subtotal).</li>
+<li>Formatting: the legend has three entries — Increase, Decrease, Total. Click a legend entry to recolour all bars of that type (e.g., green for increase, red for decrease, dark grey for totals). Turn off <strong>Show connector lines</strong> if they add clutter, and remove gridlines.</li>
+<li>Data labels: add data labels; format the number as <code>#,##0.0;(#,##0.0)</code> so decreases show in brackets.</li>
+</ol>
+<p>Strengths: handles negative steps and zero-crossing correctly, sets colours by increase/decrease automatically, quick to build. Limitations to know:</p>
+<ul>
+<li>"Set as total" is attached to the data point position; if you insert or delete a step row, re-check which points are totals.</li>
+<li>Formatting options for this chart type are narrower than for classic charts — custom label text built in cells (for example "₹45 cr / +140 bps") and fine control of individual bar styling are harder; the treatment varies by Excel build, so test before standardising a template.</li>
+<li>Files opened in Excel 2013 or earlier show the chart as unsupported.</li>
+<li>Colour is driven by arithmetic sign. If your table stores costs as positive numbers (unsigned), cost increases appear as green "increase" bars — fix the sign in the table, never in the chart.</li>
+</ul>
+<h3 id="method-2-stacked-column-fallback">Method 2: stacked-column fallback</h3>
+<p>A classic stacked column chart with an invisible "Base" series and visible "Increase", "Decrease" and "Total" series. Helper columns:</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Formula idea (row r)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cum before</td>
+<td>Cumulative after the previous row</td>
+</tr>
+<tr>
+<td>Cum after</td>
+<td>Cum before + step</td>
+</tr>
+<tr>
+<td>Base</td>
+<td><code>=MIN(CumBefore,CumAfter)</code> for steps; 0 for totals</td>
+</tr>
+<tr>
+<td>Increase</td>
+<td><code>=MAX(Step,0)</code> for steps</td>
+</tr>
+<tr>
+<td>Decrease</td>
+<td><code>=MAX(-Step,0)</code> for steps</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>the value, for start and end rows only</td>
+</tr>
+</tbody>
+</table>
+<p>For our table: Budget row has Total = 420. Price row: before 420, after 465, Base 420, Increase 45. Mix row: before 525, after 497, Base 497, Decrease 28. COGS row: before 497, after 402, Base 402, Decrease 95. Actual row: Total 428.</p>
+<p>Build: select Step plus Base, Increase, Decrease, Total → <strong>Insert → Stacked Column</strong>. Format Base with <strong>No fill</strong> and <strong>No border</strong>; set gap width around 50–80%; colour Increase, Decrease and Total; add data labels only to Increase/Decrease/Total. Excel formulas, assuming steps in <code>B3:B10</code>, cumulative-after in column D and cumulative-before in column C:</p>
+<pre><code>C3: =D2
+D3: =C3+B3
+E3: =MIN(C3,D3)
+F3: =MAX(B3,0)
+G3: =MAX(-B3,0)
+</code></pre>
+<p>Connector lines can be added with a line series or error bars, though many IBCS-style templates omit them.</p>
+<h3 id="when-the-stacked-column-method-breaks">When the stacked-column method breaks</h3>
+<p>The stacked-column approach assumes every bar sits entirely above (or entirely below) zero. If a step takes the cumulative position across zero, Excel stacks negative values downward and positive values upward from the axis, and the bar renders in the wrong place (concept c03 covers the fix: split the visible bar into a positive portion and a negative portion with no base). For businesses or segments that can be loss-making, either use the native chart or build the split columns in from the start.</p>
+<h3 id="choosing-between-them">Choosing between them</h3>
+<table>
+<thead>
+<tr>
+<th>Need</th>
+<th>Native waterfall</th>
+<th>Stacked-column</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Speed, standard look</td>
+<td>Best</td>
+<td>Slower</td>
+</tr>
+<tr>
+<td>Zero-crossing bars</td>
+<td>Handles automatically</td>
+<td>Needs split-column logic</td>
+</tr>
+<tr>
+<td>Custom label text from cells</td>
+<td>Limited</td>
+<td>Full control</td>
+</tr>
+<tr>
+<td>IBCS styling (outlined budget bar, hatched forecast)</td>
+<td>Limited</td>
+<td>Possible per series</td>
+</tr>
+<tr>
+<td>Excel 2013 / older recipients</td>
+<td>Not supported</td>
+<td>Works</td>
+</tr>
+<tr>
+<td>Linking into PowerPoint templates (think-cell style)</td>
+<td>Works</td>
+<td>Works</td>
+</tr>
+</tbody>
+</table>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Subtotals inside a bridge.</strong> A "Revenue → GM → EBITDA" layered bridge needs intermediate totals; in the native chart set each one as total; in the stacked method give them Base = 0 and a Total value.</li>
+<li><strong>Axis not starting at zero.</strong> Truncating the axis makes small variances look dramatic. If you must (e.g., ₹420 cr base with ₹5 cr steps), show an explicit axis break and say so; IBCS recommends a scaling indicator.</li>
+<li><strong>Rounding.</strong> Labels at one decimal may not visibly add up. Round in the bridge table using a consistent method and absorb any rounding difference in Others with a footnote, or compute the end bar from rounded steps and show the unrounded actual in the reconciliation table.</li>
+<li><strong>Dynamic step lists.</strong> If the number of steps changes (e.g., "Others" disappears when zero), the native chart's total flags may shift; keep a fixed list and allow zero bars or hide them via filtering.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Sign every step as its effect on EBITDA in the source table; let the chart only draw.</li>
+<li>In the native waterfall, set start, end and subtotal bars with <strong>Format Data Point → Set as total</strong>.</li>
+<li>Stacked-column helper logic: Base = MIN(before, after), Increase = MAX(step, 0), Decrease = MAX(−step, 0), Total for end points.</li>
+<li>The stacked method needs extra logic for zero-crossing bars; the native chart does not.</li>
+<li>Choose the native chart for speed and the stacked method for labelling control, IBCS styling and older Excel.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-native-chart-total-bars-l1">Q1. Native chart total bars [L1]</h3>
+<p>You insert a native Excel waterfall for a bridge with eight steps and the Actual EBITDA bar floats far above the others. Explain why and list the exact steps to fix it, including how you would handle a "Gross margin" subtotal in the middle of the bridge.</p>
+<h3 id="q2-helper-columns-from-scratch-l2">Q2. Helper columns from scratch [L2]</h3>
+<p>Budget EBITDA is ₹95 crore. Steps: Price +7, Volume −4, Mix −3, COGS −11, Opex +5, Others +1 (₹ crore). Lay out the full helper-column table (Cum before, Cum after, Base, Increase, Decrease, Total) for a stacked-column waterfall and write the Excel formulas for the Price row.</p>
+<h3 id="q3-colour-driven-by-sign-l2">Q3. Colour driven by sign [L2]</h3>
+<p>A colleague's native waterfall shows a ₹12 crore opex overrun as a green bar. The source table lists "Opex variance: 12" because the cost-centre report uses positive = overspend. Explain what went wrong, where the correction should be made, and how you would prevent recurrence across the pack.</p>
+<h3 id="q4-template-design-for-monthly-reuse-l3">Q4. Template design for monthly reuse [L3]</h3>
+<p>Design a reusable Excel bridge template for a monthly pack that must (a) work in a recipient's Excel 2013, (b) show labels in the form "+45.0 | 140 bps", (c) survive a quarter in which divisional EBITDA turns negative, and (d) highlight the largest adverse bar. Describe the sheet layout, helper columns and formatting rules.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Requirement (a) rules out the native chart type; requirement (c) needs positive/negative split columns.</p>
+</blockquote></section>
+<nav class="pager"><a class="prev" href="S02_Bridges_for_AvB_AvPY_LE_vs_AOP_and_Forecast_to.html">← Bridges for AvB, AvPY, LE vs AOP and Forecast-to-Forecast</a><a class="next" href="S04_Power_BI_Waterfall_Visual_Breakdown_Ordering_and.html">Power BI Waterfall Visual: Breakdown, Ordering and Bridge… →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Folding Breakers: Table.Buffer, Index Columns and Custom Functions · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C06_Folding_Breakers_TableBuffer_Index_Columns_and.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T1 · Power Query architecture and M basics</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Power Query architecture and M basics</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Power_Query_Connectors_for_Accounting_and_ERP_Data.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S01_Power_Query_Connectors_for_Accounting_and_ERP_Data.html">Power Query Connectors for Accounting and ERP Data Sources</a></li><li><a href="../subtopics/S02_Power_Query_Editor_Anatomy_Steps_Formula_Bar_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S02_Power_Query_Editor_Anatomy_Steps_Formula_Bar_and.html">Power Query Editor Anatomy: Steps, Formula Bar and Dependencies</a></li><li><a href="../subtopics/S03_M_Language_Structure_letin_Values_Records_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S03_M_Language_Structure_letin_Values_Records_Lists.html">M Language Structure: let/in, Values, Records, Lists and each</a></li><li><a href="../subtopics/S04_Data_Types_and_Controlling_Automatic_Type.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S04_Data_Types_and_Controlling_Automatic_Type.html">Data Types and Controlling Automatic Type Detection</a></li><li><a href="../subtopics/S05_Query_Folding_Which_Steps_Fold_Native_Query_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S05_Query_Folding_Which_Steps_Fold_Native_Query_and.html">Query Folding: Which Steps Fold, Native Query and Diagnostics</a></li><li><a href="../subtopics/S06_Parameters_Staging_Queries_and_Reference_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S06_Parameters_Staging_Queries_and_Reference_vs.html">Parameters, Staging Queries and Reference vs Duplicate</a></li><li><a href="../subtopics/S07_Load_Options_and_Refresh_Behaviour_in_Excel_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S07_Load_Options_and_Refresh_Behaviour_in_Excel_vs.html">Load Options and Refresh Behaviour in Excel vs Power BI</a></li><li><a href="../subtopics/S08_Privacy_Levels_and_FormulaFirewall_Errors.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S08_Privacy_Levels_and_FormulaFirewall_Errors.html">Privacy Levels and Formula.Firewall Errors</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_CsvDocument_with_FileContents_Delimiter_Encoding.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C01_CsvDocument_with_FileContents_Delimiter_Encoding.html">Csv.Document with File.Contents: Delimiter, Encoding, QuoteStyle</a></li><li><a href="C02_ExcelWorkbook_Navigation_to_a_Named_Sheet_or_Table.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C02_ExcelWorkbook_Navigation_to_a_Named_Sheet_or_Table.html">Excel.Workbook Navigation to a Named Sheet or Table</a></li><li><a href="C03_SqlDatabase_with_a_Native_Query_Blocks_Later.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C03_SqlDatabase_with_a_Native_Query_Blocks_Later.html">Sql.Database with a Native Query Blocks Later Folding</a></li><li><a href="C04_ValueNativeQuery_with_Parameters_and_EnableFolding.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C04_ValueNativeQuery_with_Parameters_and_EnableFolding.html">Value.NativeQuery with Parameters and EnableFolding</a></li><li><a href="C05_The_each_Keyword_and_the_Underscore_Parameter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C05_The_each_Keyword_and_the_Underscore_Parameter.html">The each Keyword and the Underscore Parameter</a></li><li><a href="C06_Folding_Breakers_TableBuffer_Index_Columns_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C06_Folding_Breakers_TableBuffer_Index_Columns_and.html">Folding Breakers: Table.Buffer, Index Columns and Custom Functions</a></li><li><a href="C07_MySQLDatabase_Connector_and_OdbcDataSource_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C07_MySQLDatabase_Connector_and_OdbcDataSource_for.html">MySQL.Database Connector and Odbc.DataSource for Tally</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Folding Breakers: Table.Buffer, Index Columns and Custom Functions</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>Table.Buffer</code>, <code>Table.AddIndexColumn</code> and custom function calls usually break folding, so put them after foldable steps</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>For a foldable source, folding continues only while every step can be translated into the source's query language. Three common operations have <strong>no native translation</strong> on most relational connectors:</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Why it does not fold</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Table.Buffer(t)</code></td>
+<td>Explicitly materialises the table in local memory — by design the opposite of folding</td>
+</tr>
+<tr>
+<td><code>Table.AddIndexColumn(t, "Idx", 1, 1)</code></td>
+<td>Row numbering depends on an order the source does not guarantee; no generic SQL translation</td>
+</tr>
+<tr>
+<td>Invoking a custom M function per row (<code>each fxMap([Account])</code>)</td>
+<td>Arbitrary M logic cannot be expressed in SQL</td>
+</tr>
+</tbody>
+</table>
+<p>Rule: place them <strong>after</strong> all foldable steps (filters, column selection, group by, same-source joins), so that the expensive reduction happens at the source and the non-foldable step runs on the smallest possible table.</p>
+<h2 id="explanation">Explanation</h2>
+<p>Once folding stops, every later step is local even if foldable in principle (s05). So the position of a single breaker decides the volume transferred.</p>
+<p><strong><code>Table.Buffer</code></strong> reads the whole table into memory once and returns a stable copy. Benefits: repeated access (e.g. a table used in several merges or in a <code>List.Contains</code> lookup inside a row-by-row filter) does not re-evaluate the source each time; also it stabilises sort order before operations like <code>Table.Distinct</code> that keep the first occurrence. Costs: memory, loss of folding, and — with streaming sources — waiting for the full read. Use it on a <strong>small, already reduced</strong> lookup table referenced repeatedly, not on a 5-million-row fact.</p>
+<p><strong><code>Table.AddIndexColumn</code></strong> is needed for sequence numbers (duplicate-safe matching, Topic 5), row-position logic and stable IDs. Add it after grouping or filtering; if you need a server-side row number, use <code>ROW_NUMBER()</code> in a view or native query.</p>
+<p><strong>Custom functions</strong> (<code>fxCleanBank</code>, <code>fxFYLabel</code>) are evaluated by the mashup engine row by row or table by table. Even simple ones block folding. Where the logic is a simple conditional on database columns, a native <code>if ... then ... else</code> custom column may fold (as <code>CASE WHEN</code>); a function wrapper will not.</p>
+<p>Other frequent breakers: <code>Table.Transpose</code>, Fill Down, culture-specific type conversions, text functions without SQL equivalents, merges with a different source.</p>
+<h2 id="illustration">Illustration</h2>
+<p>SQL table <code>Receipts</code>, 12 million rows; FY26 customer receipts above ₹10 lakh are 3,800 rows.</p>
+<table>
+<thead>
+<tr>
+<th>Order</th>
+<th>Folding stops at</th>
+<th>Rows transferred</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source → <code>Table.Buffer</code> → Filter FY26 → Filter Amount &gt; 10,00,000 → Add Index</td>
+<td>Step 2</td>
+<td>12,000,000</td>
+</tr>
+<tr>
+<td>Source → Filter FY26 → Filter Amount &gt; 10,00,000 → Add Index → Buffer</td>
+<td>Step 4</td>
+<td>3,800</td>
+</tr>
+</tbody>
+</table>
+<p>In the bank-reconciliation pipeline, the book ledger lookup is built from a SQL extract and then used in two anti-joins and a duplicate-check merge. Buffering it <strong>after</strong> its filters (current bank account, FY) means one read of a few thousand rows instead of three reads.</p>
+<h2 id="connections">Connections</h2>
+<p>Applies s05 (folding) and s03 (functions). Connects to Topic 5 (buffering before repeated merges, index-based sequence numbers) and Topic 4 (custom functions over a folder — folding is irrelevant there because files never fold, but buffering still matters). The cross-cutting performance item for the week rests on this concept.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-reorder-the-steps-l2">Q1. Reorder the steps [L2]</h3>
+<p>A query: Source (SQL <code>dbo.VendorPayments</code>, 9 million rows) → Added Index → Invoked <code>fxPANCheck</code> on PAN → Filtered FY = 2026 → Filtered PaymentMode = "NEFT" → Removed Columns. Reorder the steps for performance and state where folding now stops.</p>
+<h3 id="q2-should-you-buffer-l2">Q2. Should you buffer? [L2]</h3>
+<p>For each case decide whether <code>Table.Buffer</code> helps and why: (a) a 2,000-row CoA mapping used in three merges; (b) a 6-million-row SQL GL fact before a single Group By; (c) a list of 400 book UTRs used inside <code>Table.SelectRows(Bank, each List.Contains(BookUTRs, [UTR]))</code>; (d) a sorted table before <code>Table.Distinct</code> to keep the latest record.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Buffering helps repeated access to small tables and order stability; it hurts when it stops folding on a large source.</p>
+</blockquote>
+<h3 id="q3-server-side-alternative-l3">Q3. Server-side alternative [L3]</h3>
+<p>You need a running sequence number per Amount value to make duplicate-safe keys for 4 million SQL ledger rows. Compare doing it with <code>Table.Group</code> + <code>Table.AddIndexColumn</code> in Power Query versus <code>ROW_NUMBER() OVER (PARTITION BY Amount ORDER BY PostingDate)</code> in a view, covering folding, refresh time and auditability.</p></section>
+<nav class="pager"><a class="prev" href="C05_The_each_Keyword_and_the_Underscore_Parameter.html">← The each Keyword and the Underscore Parameter</a><a class="next" href="C07_MySQLDatabase_Connector_and_OdbcDataSource_for.html">MySQL.Database Connector and Odbc.DataSource for Tally →</a></nav>
+</main></div></body></html>

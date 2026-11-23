@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KEEPFILTERS to Intersect Rather Than Overwrite · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T3 · Core financial DAX functions</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Core financial DAX functions</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Row_Context_Filter_Context_and_Context_Transition.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S01_Row_Context_Filter_Context_and_Context_Transition.html">Row Context, Filter Context and Context Transition</a></li><li><a href="../subtopics/S02_CALCULATE_Filter_Arguments_and_Modifiers.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S02_CALCULATE_Filter_Arguments_and_Modifiers.html">CALCULATE Filter Arguments and Modifiers</a></li><li><a href="../subtopics/S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html">Iterators SUMX and AVERAGEX for Row-Level Maths</a></li><li><a href="../subtopics/S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html">FILTER vs Boolean Column Filters: Meaning and Performance</a></li><li><a href="../subtopics/S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html">ALL, ALLEXCEPT and ALLSELECTED for Share and Contribution Analysis</a></li><li><a href="../subtopics/S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html">RELATED and RELATEDTABLE in Columns and Iterators</a></li><li><a href="../subtopics/S07_DIVIDE_Measures_vs_Calculated_Columns_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S07_DIVIDE_Measures_vs_Calculated_Columns_and.html">DIVIDE, Measures vs Calculated Columns, and VAR/RETURN</a></li><li><a href="../subtopics/S08_Explicit_Measures_Display_Folders_and_LakhCrore.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S08_Explicit_Measures_Display_Folders_and_LakhCrore.html">Explicit Measures, Display Folders and ₹ Lakh/Crore Formats</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html">Base Actual Measure and a Filtered Revenue Measure</a></li><li><a href="C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html">Percentage of Total Opex with ALL on Cost Centre</a></li><li><a href="C03_Percentage_within_Statement_with_ALLEXCEPT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C03_Percentage_within_Statement_with_ALLEXCEPT.html">Percentage within Statement with ALLEXCEPT</a></li><li><a href="C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html">FX-Converted Revenue with SUMX and RELATED</a></li><li><a href="C05_Sign_Aware_Variance_with_VAR_and_ABS.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C05_Sign_Aware_Variance_with_VAR_and_ABS.html">Sign-Aware Variance % with VAR and ABS</a></li><li><a href="C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html">KEEPFILTERS to Intersect Rather Than Overwrite</a></li><li><a href="C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html">DIVIDE and Its BLANK Default for Zero Denominators</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>KEEPFILTERS to Intersect Rather Than Overwrite</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>KEEPFILTERS(CoA[FSLine] IN {"Revenue","Other Income"})</code> intersects with existing filters instead of overwriting them</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-DAX">Total Income (row-aware) =
+CALCULATE (
+    [Actual],
+    KEEPFILTERS ( CoA[FSLine] IN { &quot;Revenue&quot;, &quot;Other Income&quot; } )
+)
+</code></pre>
+<ul>
+<li><code>CoA[FSLine] IN { … }</code> is a boolean filter equivalent to <code>FILTER(ALL(CoA[FSLine]), CoA[FSLine] IN { … })</code>.</li>
+<li>Without KEEPFILTERS, CALCULATE <strong>replaces</strong> the existing filter on <code>CoA[FSLine]</code> with this list.</li>
+<li>With KEEPFILTERS, the new filter is <strong>added alongside</strong> the existing one, and the result uses their
+  <strong>intersection</strong>:</li>
+</ul>
+<p>\[
+\text{Filter}_{new} = \text{Filter}_{existing} \cap \{\text{Revenue}, \text{Other Income}\}
+\]</p>
+<h2 id="explanation">Explanation</h2>
+<p>In a P&amp;L matrix with FSLine on rows:</p>
+<ul>
+<li>On the "Revenue" row, existing filter {Revenue} ∩ {Revenue, Other Income} = {Revenue} → revenue.</li>
+<li>On the "Other Income" row → other income.</li>
+<li>On the "Employee benefits expense" row → empty set → blank (row hidden if all measures blank).</li>
+<li>On the grand total (no FSLine filter) → both lines → total income.</li>
+</ul>
+<p>Without KEEPFILTERS every row would show total income (revenue + other income) — correct for a KPI card, misleading
+in a matrix.</p>
+<p>When to use KEEPFILTERS:</p>
+<ul>
+<li><strong>Row-aware line measures</strong> in matrices where users put FSLine or AccountName on rows.</li>
+<li><strong>Slicer-respecting measures.</strong> If a user has sliced FSLine to just "Revenue", a plain filter would bring "Other
+  Income" back; KEEPFILTERS respects the slicer.</li>
+<li><strong>Iterators:</strong> <code>SUMX(KEEPFILTERS(VALUES(Branch[Branch])), …)</code> and in <code>FILTER(KEEPFILTERS(ALL(col)), …)</code> patterns
+  to preserve outer filters on the iterated column.</li>
+</ul>
+<p>When not to use it: denominators of ratios (<code>DIVIDE([EBITDA], [Revenue])</code> must get revenue on every row — overwrite is
+what you want there), and KPI cards that must ignore an FSLine slicer.</p>
+<p>Alternative with the same intersection semantics but slower: <code>FILTER(VALUES(CoA[FSLine]), CoA[FSLine] IN {…})</code> — it
+iterates only visible values. <code>FILTER(GL, …)</code> also preserves filters but is expensive (s04).</p>
+<h2 id="illustration">Illustration</h2>
+<p>FY2025-26, sign-adjusted, ₹ crore: Revenue 640, Other Income 18, Employee benefits 74.</p>
+<table>
+<thead>
+<tr>
+<th>FSLine row</th>
+<th>Plain <code>IN</code> filter</th>
+<th>With KEEPFILTERS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue</td>
+<td>658</td>
+<td>640</td>
+</tr>
+<tr>
+<td>Other Income</td>
+<td>658</td>
+<td>18</td>
+</tr>
+<tr>
+<td>Employee benefits expense</td>
+<td>658</td>
+<td>blank</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>658</td>
+<td>658</td>
+</tr>
+</tbody>
+</table>
+<p>Slicer set to FSLine = Revenue, card visual: plain filter shows 658 (slicer overridden); KEEPFILTERS shows 640.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Subtopic s02 (CALCULATE filter arguments and modifiers) and s04 (FILTER vs boolean filters).</li>
+<li>Concept c01 (Revenue measure overwrite semantics).</li>
+<li>Topic 6 (P&amp;L line measures and subtotal logic).</li>
+<li><code>w11_t6</code> and SELECTEDVALUE/ISINSCOPE patterns for context-aware totals.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-predict-the-matrix-l1">Q1. Predict the matrix [L1]</h3>
+<p>A matrix with Branch on rows uses <code>West Sales = CALCULATE([Revenue], KEEPFILTERS(Branch[Region] = "West"))</code>. What
+does it show for a North-region branch and for the grand total? What changes without KEEPFILTERS?</p>
+<h3 id="q2-choose-overwrite-or-keep-l2">Q2. Choose overwrite or keep [L2]</h3>
+<p>For each measure decide whether to use KEEPFILTERS and why: (a) EBITDA margin denominator; (b) "Employee cost" line
+shown in a matrix by FSLine; (c) a KPI card showing total income regardless of an FSLine slicer; (d) count of active
+branches in the selected region.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Ask whether the measure should respond to the same column on rows or in slicers.</p>
+</blockquote>
+<h3 id="q3-iterator-use-l3">Q3. Iterator use [L3]</h3>
+<p>Explain what <code>SUMX(KEEPFILTERS(ALL(Branch[Branch])), [Revenue])</code> does differently from <code>SUMX(ALL(Branch[Branch]),
+[Revenue])</code> in a matrix with Branch on rows, and give a finance scenario where the KEEPFILTERS version is required.</p></section>
+<nav class="pager"><a class="prev" href="C05_Sign_Aware_Variance_with_VAR_and_ABS.html">← Sign-Aware Variance % with VAR and ABS</a><a class="next" href="C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html">DIVIDE and Its BLANK Default for Zero Denominators →</a></nav>
+</main></div></body></html>

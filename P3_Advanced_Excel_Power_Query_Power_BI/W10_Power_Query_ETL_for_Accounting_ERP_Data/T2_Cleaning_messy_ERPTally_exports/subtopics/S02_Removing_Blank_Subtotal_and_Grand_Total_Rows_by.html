@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Removing Blank, Subtotal and Grand Total Rows by Condition · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S02_Removing_Blank_Subtotal_and_Grand_Total_Rows_by.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T2 · Cleaning messy ERP/Tally exports</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Cleaning messy ERP/Tally exports</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Skipping_Report_Headers_Conditionally_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S01_Skipping_Report_Headers_Conditionally_and.html">Skipping Report Headers Conditionally and Promoting Headers</a></li><li><a href="S02_Removing_Blank_Subtotal_and_Grand_Total_Rows_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S02_Removing_Blank_Subtotal_and_Grand_Total_Rows_by.html">Removing Blank, Subtotal and Grand Total Rows by Condition</a></li><li><a href="S03_Filling_Down_Cost_Centre_and_Group_Headers_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S03_Filling_Down_Cost_Centre_and_Group_Headers_in.html">Filling Down Cost-Centre and Group Headers in Report Layouts</a></li><li><a href="S04_Splitting_Ledger_Code_and_Name_Parsing_Tally_DrCr.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S04_Splitting_Ledger_Code_and_Name_Parsing_Tally_DrCr.html">Splitting Ledger Code and Name; Parsing Tally Dr/Cr Amounts</a></li><li><a href="S05_Trimming_Non_Breaking_Spaces_and_Non_Printable.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S05_Trimming_Non_Breaking_Spaces_and_Non_Printable.html">Trimming Non-Breaking Spaces and Non-Printable Characters</a></li><li><a href="S06_Fixing_Date_Locales_and_Indian_Digit_Grouping_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S06_Fixing_Date_Locales_and_Indian_Digit_Grouping_in.html">Fixing Date Locales and Indian Digit Grouping in Text Amounts</a></li><li><a href="S07_Error_Handling_Remove_Errors_Keep_Errors_and_try.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S07_Error_Handling_Remove_Errors_Keep_Errors_and_try.html">Error Handling: Remove Errors, Keep Errors and try ... otherwise</a></li><li><a href="S08_Export_Layouts_Tally_Day_BookLedgerTB_SAP_FBL3N.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S08_Export_Layouts_Tally_Day_BookLedgerTB_SAP_FBL3N.html">Export Layouts: Tally Day Book/Ledger/TB, SAP FBL3N, S_ALR, Oracle TB</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Conditional_TableSkip_Followed_by_PromoteHeaders.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C01_Conditional_TableSkip_Followed_by_PromoteHeaders.html">Conditional Table.Skip Followed by PromoteHeaders</a></li><li><a href="../concepts/C02_Filtering_Out_Null_and_Total_Rows_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C02_Filtering_Out_Null_and_Total_Rows_with.html">Filtering Out Null and Total Rows with Table.SelectRows</a></li><li><a href="../concepts/C03_TableFillDown_Fills_Only_Nulls_Replace_Blanks.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C03_TableFillDown_Fills_Only_Nulls_Replace_Blanks.html">Table.FillDown Fills Only Nulls: Replace Blanks First</a></li><li><a href="../concepts/C04_TableSplitColumn_at_Each_Delimiter_into_Code_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C04_TableSplitColumn_at_Each_Delimiter_into_Code_and.html">Table.SplitColumn at Each Delimiter into Code and Name</a></li><li><a href="../concepts/C05_Cleaning_Text_Replace_Char_160_TextClean_TextTrim.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C05_Cleaning_Text_Replace_Char_160_TextClean_TextTrim.html">Cleaning Text: Replace Char 160, Text.Clean, Text.Trim</a></li><li><a href="../concepts/C06_TransformColumnTypes_with_an_Explicit_en_IN.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C06_TransformColumnTypes_with_an_Explicit_en_IN.html">TransformColumnTypes with an Explicit en-IN Culture</a></li><li><a href="../concepts/C07_Converting_Tally_DrCr_Suffix_Balances_into_Signed.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C07_Converting_Tally_DrCr_Suffix_Balances_into_Signed.html">Converting Tally Dr/Cr Suffix Balances into Signed Numbers</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Removing Blank, Subtotal and Grand Total Rows by Condition</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Removing blank, subtotal, "Grand Total" and page-break rows by condition, not by position</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Report-style exports interleave data rows with <strong>presentation rows</strong>: blank spacer lines, group subtotals ("Total Indirect Expenses"), a "Grand Total" at the end, and in paginated outputs a repeated header and "Page 3 of 17" lines every 50 rows. If these survive into a consolidated TB, every group is counted twice and the Dr = Cr check fails by exactly the grand total. If they are removed by position ("Remove Bottom Rows: 2"), next month's file with one extra footer line either keeps a total or deletes the last real ledger. Condition-based removal identifies presentation rows by what they <strong>are</strong>, so it works whatever their number or position.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-filter-function">The filter function</h3>
+<p><code>Table.SelectRows(table, condition)</code> keeps rows where the condition returns <code>true</code>. Removing rows means writing the condition for rows you <strong>keep</strong>:</p>
+<pre><code>Kept = Table.SelectRows(Promoted, each
+          [Particulars] &lt;&gt; null
+          and Text.Trim([Particulars]) &lt;&gt; &quot;&quot;
+          and not Text.StartsWith(Text.Trim([Particulars]), &quot;Total&quot;)
+          and Text.Trim([Particulars]) &lt;&gt; &quot;Grand Total&quot;)
+</code></pre>
+<p>Order of tests matters: the null test comes first so that text functions are never called on null (<code>and</code> short-circuits in M — if the left side is <code>false</code>, the right side is not evaluated).</p>
+<h3 id="categories-of-presentation-rows-and-their-tests">Categories of presentation rows and their tests</h3>
+<table>
+<thead>
+<tr>
+<th>Row type</th>
+<th>Typical appearance</th>
+<th>Test to identify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Blank</td>
+<td>All cells null or ""</td>
+<td><code>List.NonNullCount(List.RemoveItems(Record.FieldValues(_), {""})) = 0</code></td>
+</tr>
+<tr>
+<td>Blank in key column only</td>
+<td>Particulars null, amounts null</td>
+<td><code>[Particulars] = null and [Debit] = null and [Credit] = null</code></td>
+</tr>
+<tr>
+<td>Group subtotal</td>
+<td>"Total Current Liabilities", "Sub Total"</td>
+<td><code>Text.StartsWith(..., "Total")</code>, <code>Text.Contains(..., "Sub Total")</code></td>
+</tr>
+<tr>
+<td>Grand total</td>
+<td>"Grand Total", "Total" alone, "Closing Balance" in Day Book</td>
+<td>exact match list</td>
+</tr>
+<tr>
+<td>Page break / repeated header</td>
+<td>"Particulars" again, "Page 4 of 12", "Continued..."</td>
+<td><code>List.Contains({"Particulars","Continued..."}, [Particulars])</code>, <code>Text.StartsWith([Particulars], "Page ")</code></td>
+</tr>
+<tr>
+<td>Carried forward lines</td>
+<td>"B/F", "C/F", "Opening Balance"</td>
+<td>exact match list</td>
+</tr>
+</tbody>
+</table>
+<p>A convenient pattern keeps the rule list in one place:</p>
+<pre><code>DropExact   = {&quot;Grand Total&quot;, &quot;Total&quot;, &quot;Particulars&quot;, &quot;Continued...&quot;, &quot;C/F&quot;, &quot;B/F&quot;},
+DropPrefix  = {&quot;Total &quot;, &quot;Sub Total&quot;, &quot;Page &quot;},
+IsJunk      = (t as nullable text) as logical =&gt;
+                  let x = Text.Trim(t ?? &quot;&quot;) in
+                  x = &quot;&quot; or List.Contains(DropExact, x)
+                  or List.AnyTrue(List.Transform(DropPrefix, each Text.StartsWith(x, _))),
+Kept        = Table.SelectRows(Promoted, each not IsJunk([Particulars]))
+</code></pre>
+<p>Note the explicit lambda in <code>IsJunk</code> and the inner <code>each</code> — inside <code>List.Transform</code>, <code>_</code> is the prefix, while <code>x</code> is the cleaned ledger text.</p>
+<h3 id="structural-tests-are-stronger-than-text-tests">Structural tests are stronger than text tests</h3>
+<p>Text tests fail when a real ledger begins with "Total" (e.g. "Total Gas Pvt Ltd — Creditor" or "Totalisator Rentals"). Structural tests use properties of data rows:</p>
+<ul>
+<li>A data row in a Tally Ledger Vouchers report always has a <strong>voucher number</strong> or <strong>voucher type</strong>; subtotal lines do not: keep <code>each [Vch No.] &lt;&gt; null</code>.</li>
+<li>In SAP FBL3N, data rows have a <strong>document number</strong>; subtotal rows (marked with <code>*</code> or <code>**</code>) have none.</li>
+<li>In a Tally TB, group rows (when exported "in detailed" mode) can be recognised by <strong>indentation</strong> or by matching against the group master; ledgers are what you keep.</li>
+<li>A grand total equals the sum of the other rows — use it as a <strong>control total</strong> before removing it (Week 10 cross-cutting item).</li>
+</ul>
+<p>Combine both: structure first, text as a backstop.</p>
+<h3 id="using-totals-as-controls-before-removing-them">Using totals as controls before removing them</h3>
+<pre><code>GrandRow   = Table.SelectRows(Promoted, each Text.Trim([Particulars] ?? &quot;&quot;) = &quot;Grand Total&quot;),
+ReportDr   = Number.From(GrandRow{0}?[Debit]?),
+CleanDr    = List.Sum(Kept[Debit]),
+DrCheck    = Number.Abs((ReportDr ?? 0) - (CleanDr ?? 0)) &lt; 1
+</code></pre>
+<p>If <code>DrCheck</code> is false, you removed a real row or kept a subtotal. Expose this in a control-totals query rather than burying it.</p>
+<h3 id="why-not-remove-bottom-rows">Why not Remove Bottom Rows</h3>
+<p>"Remove Bottom Rows (3)" generates <code>Table.RemoveLastN(t, 3)</code>. It assumes a fixed footer. Tally adds a line when there is a difference in opening balances; SAP adds a page footer depending on row count; bank statements add a "Statement Summary" block whose length varies with the number of cheque returns. A positional step has no way to know. If you must use the UI, use <strong>Remove Rows → Remove Bottom Rows</strong> only on sources with a contractually fixed layout, and still verify with a control total. <code>Table.RemoveLastN</code> also accepts a condition (removes from the bottom while true) — a safer variant when the footer block is contiguous.</p>
+<h3 id="illustration">Illustration</h3>
+<p>Tally Group Summary export (12 lines): Capital Account (group header, no amount), Share Capital 5,00,00,000 Cr, Reserves 1,20,00,000 Cr, "Total Capital Account" 6,20,00,000 Cr, blank, Current Liabilities (header), Sundry Creditors 84,50,000 Cr, Duties &amp; Taxes 6,20,000 Cr, "Total Current Liabilities" 90,70,000 Cr, blank, "Grand Total" 7,10,70,000 Cr. Without cleaning, the Cr sum is 21,32,10,000 — three times the true total. After the condition filter (and dropping header-only rows with no amount, s03), four ledgers remain summing to 7,10,70,000, which equals the grand total captured before removal.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Real ledgers starting with "Total"</strong> — use structural tests or exact matches; review the list of removed rows (load a "removed rows" exceptions query with the inverse filter).</li>
+<li><strong>Negative/zero rows</strong>: a ledger with zero balance is still a data row; do not remove rows just because amounts are null if the ledger name is valid (it may matter for mapping completeness).</li>
+<li><strong>Grand total missing</strong> in some exports (e.g. filtered reports) — make the control-total step tolerant (<code>{0}?</code> optional item access).</li>
+<li><strong>Language/format variants</strong>: "Grand Total" vs "GRAND TOTAL" vs "Total :" — normalise case and trailing punctuation.</li>
+<li><strong>Page-break rows in CSVs</strong> produced from print layouts often carry the report title again; include the title in the drop list.</li>
+<li><strong>Filters and Fill Down</strong>: if you need group headers for Fill Down (s03), do the fill before removing header rows but after removing blanks and totals only if the total lines would otherwise be filled with a header — sequence deliberately.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Remove presentation rows with <code>Table.SelectRows</code> conditions, never with fixed row counts.</li>
+<li>Test nulls first; <code>and</code> short-circuits, which keeps text functions safe.</li>
+<li>Prefer structural tests (voucher number present, document number present) over text prefixes.</li>
+<li>Capture report totals as control totals before removing them, and reconcile the cleaned sum to them.</li>
+<li>Keep the drop-lists in one step so rules are reviewable and easy to extend.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-write-the-filter-l1">Q1. Write the filter [L1]</h3>
+<p>A Tally Ledger Vouchers export has columns Date, Particulars, Vch Type, Vch No., Debit, Credit. Rows to remove: blank lines, "Opening Balance", "Current Total", "Closing Balance" and repeated header lines where Date = "Date". Write a single <code>Table.SelectRows</code> step that keeps only voucher lines, using a structural test where possible.</p>
+<h3 id="q2-false-positive-l2">Q2. False positive [L2]</h3>
+<p>After filtering out rows starting with "Total", the cleaned TB of a Chennai branch is ₹14,62,300 lower on the credit side than Tally's grand total. Explain the most likely cause, how you would find the affected row(s) in Power Query, and the corrected rule.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Build the inverse filter and inspect what was removed.</p>
+</blockquote>
+<h3 id="q3-control-total-step-l2">Q3. Control-total step [L2]</h3>
+<p>Write M that captures the "Grand Total" row's Debit and Credit before removal, sums the cleaned Debit and Credit columns, and returns a one-row table with ReportDr, ReportCr, CleanDr, CleanCr, DiffDr, DiffCr and a Status column ("OK" if both differences are below ₹1).</p>
+<h3 id="q4-paginated-sap-list-l2">Q4. Paginated SAP list [L2]</h3>
+<p>An S_ALR_87012277 output saved as text repeats the report title, selection line and column header every 60 lines, and subtotal rows are marked with <code>*</code> in the first column. Describe the full set of conditions to remove all non-data rows without using row positions.</p>
+<h3 id="q5-review-judgement-l3">Q5. Review judgement [L3]</h3>
+<p>A reviewer insists the team should "just delete the last 3 rows, they are always totals". Write a short response explaining the risk with two realistic examples from Indian bank or Tally exports, and propose the control you would add if they still prefer the positional approach.</p></section>
+<nav class="pager"><a class="prev" href="S01_Skipping_Report_Headers_Conditionally_and.html">← Skipping Report Headers Conditionally and Promoting Headers</a><a class="next" href="S03_Filling_Down_Cost_Centre_and_Group_Headers_in.html">Filling Down Cost-Centre and Group Headers in Report Layouts →</a></nav>
+</main></div></body></html>

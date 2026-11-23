@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Power Query Editor Anatomy: Steps, Formula Bar and Dependencies · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S02_Power_Query_Editor_Anatomy_Steps_Formula_Bar_and.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T1 · Power Query architecture and M basics</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Power Query architecture and M basics</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Power_Query_Connectors_for_Accounting_and_ERP_Data.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S01_Power_Query_Connectors_for_Accounting_and_ERP_Data.html">Power Query Connectors for Accounting and ERP Data Sources</a></li><li><a href="S02_Power_Query_Editor_Anatomy_Steps_Formula_Bar_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S02_Power_Query_Editor_Anatomy_Steps_Formula_Bar_and.html">Power Query Editor Anatomy: Steps, Formula Bar and Dependencies</a></li><li><a href="S03_M_Language_Structure_letin_Values_Records_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S03_M_Language_Structure_letin_Values_Records_Lists.html">M Language Structure: let/in, Values, Records, Lists and each</a></li><li><a href="S04_Data_Types_and_Controlling_Automatic_Type.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S04_Data_Types_and_Controlling_Automatic_Type.html">Data Types and Controlling Automatic Type Detection</a></li><li><a href="S05_Query_Folding_Which_Steps_Fold_Native_Query_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S05_Query_Folding_Which_Steps_Fold_Native_Query_and.html">Query Folding: Which Steps Fold, Native Query and Diagnostics</a></li><li><a href="S06_Parameters_Staging_Queries_and_Reference_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S06_Parameters_Staging_Queries_and_Reference_vs.html">Parameters, Staging Queries and Reference vs Duplicate</a></li><li><a href="S07_Load_Options_and_Refresh_Behaviour_in_Excel_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S07_Load_Options_and_Refresh_Behaviour_in_Excel_vs.html">Load Options and Refresh Behaviour in Excel vs Power BI</a></li><li><a href="S08_Privacy_Levels_and_FormulaFirewall_Errors.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S08_Privacy_Levels_and_FormulaFirewall_Errors.html">Privacy Levels and Formula.Firewall Errors</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_CsvDocument_with_FileContents_Delimiter_Encoding.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C01_CsvDocument_with_FileContents_Delimiter_Encoding.html">Csv.Document with File.Contents: Delimiter, Encoding, QuoteStyle</a></li><li><a href="../concepts/C02_ExcelWorkbook_Navigation_to_a_Named_Sheet_or_Table.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C02_ExcelWorkbook_Navigation_to_a_Named_Sheet_or_Table.html">Excel.Workbook Navigation to a Named Sheet or Table</a></li><li><a href="../concepts/C03_SqlDatabase_with_a_Native_Query_Blocks_Later.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C03_SqlDatabase_with_a_Native_Query_Blocks_Later.html">Sql.Database with a Native Query Blocks Later Folding</a></li><li><a href="../concepts/C04_ValueNativeQuery_with_Parameters_and_EnableFolding.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C04_ValueNativeQuery_with_Parameters_and_EnableFolding.html">Value.NativeQuery with Parameters and EnableFolding</a></li><li><a href="../concepts/C05_The_each_Keyword_and_the_Underscore_Parameter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C05_The_each_Keyword_and_the_Underscore_Parameter.html">The each Keyword and the Underscore Parameter</a></li><li><a href="../concepts/C06_Folding_Breakers_TableBuffer_Index_Columns_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C06_Folding_Breakers_TableBuffer_Index_Columns_and.html">Folding Breakers: Table.Buffer, Index Columns and Custom Functions</a></li><li><a href="../concepts/C07_MySQLDatabase_Connector_and_OdbcDataSource_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C07_MySQLDatabase_Connector_and_OdbcDataSource_for.html">MySQL.Database Connector and Odbc.DataSource for Tally</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Power Query Editor Anatomy: Steps, Formula Bar and Dependencies</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Editor anatomy: Applied Steps, formula bar, Advanced Editor, Query Dependencies view</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Power Query is often taught as a click-through tool, but a finance pipeline that runs every month for years must be <strong>auditable</strong> — a reviewer (or you, six months later) must be able to see exactly what was done to the Tally export, in what order, and what each output depends on. The editor gives you four lenses for that: the Applied Steps pane (the recipe), the formula bar (one step's M), the Advanced Editor (the whole query as code) and the Query Dependencies view (the lineage between queries and sources). Treat them the way an auditor treats a working paper file: steps are tick-marks, dependencies are cross-references.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="layout-of-the-editor">Layout of the editor</h3>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>What it shows</th>
+<th>What you do there</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Queries pane (left)</td>
+<td>All queries, grouped into folders; italics = connection only / load disabled</td>
+<td>Organise into groups such as <code>01 Parameters</code>, <code>02 Staging</code>, <code>03 Clean</code>, <code>04 Output</code>, <code>99 Checks</code></td>
+</tr>
+<tr>
+<td>Data preview (centre)</td>
+<td>Result of the <strong>selected step</strong>, first 1,000 rows by default</td>
+<td>Inspect results, use column profiling</td>
+</tr>
+<tr>
+<td>Query Settings (right)</td>
+<td>Query name, Properties, <strong>Applied Steps</strong></td>
+<td>Rename, reorder, delete, insert steps</td>
+</tr>
+<tr>
+<td>Formula bar</td>
+<td>M expression of the selected step</td>
+<td>Edit options directly (e.g. add a locale)</td>
+</tr>
+<tr>
+<td>Ribbon</td>
+<td>Transformations that append a new step</td>
+<td>Home, Transform, Add Column, View</td>
+</tr>
+</tbody>
+</table>
+<p>Turn on <strong>View → Formula Bar</strong> (hidden by default in Excel), and <strong>Column quality / Column distribution / Column profile</strong> for quick checks.</p>
+<h3 id="applied-steps">Applied Steps</h3>
+<p>Each step is a named variable in the query's <code>let</code> expression and takes the previous step as its input (usually — any step may reference any earlier step). Key behaviours:</p>
+<ul>
+<li><strong>Selecting</strong> a step shows the data as at that step; adding a transformation while an earlier step is selected <strong>inserts</strong> a step after it, with a warning that later steps may break.</li>
+<li>The <strong>gear icon</strong> next to a step reopens its dialog (e.g. Split Column settings). Steps typed by hand have no gear.</li>
+<li><strong>Rename</strong> steps meaningfully (<code>RemovedSubtotalRows</code>, <code>TypedAmounts</code>), and use <strong>Properties → Description</strong> for a narrative note; descriptions show as tooltips, and as <code>///</code> comments in M. Do this before handing the file over.</li>
+<li><strong>Delete Until End</strong> removes a step and everything after it — useful when rebuilding from a known-good point.</li>
+<li>A yellow-triangle/warning icon on a step signals an error at that step; the preview shows the error message and, for row-level errors, an "errors" link.</li>
+<li>Steps shown with a <strong>database icon/“View Native Query”</strong> enabled indicate folding (Topic s05).</li>
+</ul>
+<h3 id="formula-bar">Formula bar</h3>
+<p>The formula bar shows the M for the selected step, e.g.</p>
+<pre><code>= Table.SelectRows(#&quot;Promoted Headers&quot;, each [Ledger] &lt;&gt; null and [Ledger] &lt;&gt; &quot;Grand Total&quot;)
+</code></pre>
+<p>Note the <code>#"..."</code> syntax: identifiers with spaces or special characters (all UI-generated step names such as <code>#"Changed Type"</code>) must be quoted this way. Editing here is the fastest way to add things the dialog does not expose: a culture argument to <code>Table.TransformColumnTypes</code>, <code>MissingField.Ignore</code> to a <code>Table.RemoveColumns</code>, or replacing a hard-coded list with a dynamic one.</p>
+<h3 id="advanced-editor">Advanced Editor</h3>
+<p><strong>Home → Advanced Editor</strong> shows the full <code>let ... in</code> expression. Use it to:</p>
+<ul>
+<li>Read the whole pipeline in sequence and spot hard-coded values (paths, dates, column lists).</li>
+<li>Paste a function or a reusable block from another file.</li>
+<li>Add comments (<code>//</code> single line, <code>/* ... */</code> block).</li>
+<li>Convert a query into a function by adding <code>(param as type) =&gt;</code> before <code>let</code>.</li>
+<li>Use <strong>Display Options</strong> (line numbers, word wrap) for review; the syntax checker at the bottom reports "No syntax errors have been detected" or the first error with a line position.</li>
+</ul>
+<p>The Advanced Editor is not a debugger — it does not evaluate. Any typo surfaces as an Expression.SyntaxError when you click Done.</p>
+<h3 id="query-dependencies-view">Query Dependencies view</h3>
+<p><strong>View → Query Dependencies</strong> draws a diagram from data sources (files, folders, servers) through staging queries to outputs, showing each query's load destination. Use it to:</p>
+<ul>
+<li>Confirm the <strong>layered pipeline</strong>: parameters → source/staging (connection only) → cleaned tables → outputs and checks.</li>
+<li>Trace the impact of renaming a column in a staging query — every arrow out of it is a query that might break.</li>
+<li>Spot <strong>duplicate source hits</strong>: two queries each reading the same 50 MB folder independently instead of referencing one staging query.</li>
+<li>Spot sources that will need gateway credentials or privacy levels.</li>
+</ul>
+<h3 id="illustration-a-reviewable-step-list">Illustration: a reviewable step list</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Step name</th>
+<th>M function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Source</td>
+<td><code>Excel.Workbook</code></td>
+<td>Read Tally TB export</td>
+</tr>
+<tr>
+<td>2</td>
+<td>TBSheet</td>
+<td>navigation <code>{[Item="TB",Kind="Sheet"]}[Data]</code></td>
+<td>Pick sheet</td>
+</tr>
+<tr>
+<td>3</td>
+<td>SkippedReportHeader</td>
+<td><code>Table.Skip(..., each [Column1] &lt;&gt; "Particulars")</code></td>
+<td>Drop company name/period rows</td>
+</tr>
+<tr>
+<td>4</td>
+<td>PromotedHeaders</td>
+<td><code>Table.PromoteHeaders</code></td>
+<td>Use "Particulars", "Debit", "Credit" as headers</td>
+</tr>
+<tr>
+<td>5</td>
+<td>RemovedTotals</td>
+<td><code>Table.SelectRows</code></td>
+<td>Drop "Grand Total" and blanks</td>
+</tr>
+<tr>
+<td>6</td>
+<td>TypedColumns</td>
+<td><code>Table.TransformColumnTypes(..., "en-IN")</code></td>
+<td>Type amounts and dates with Indian locale</td>
+</tr>
+</tbody>
+</table>
+<p>A reviewer reading only the step names understands the pipeline; that is the standard to aim for.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Inserting a step mid-query</strong> can break later steps that reference a column you just renamed or removed. Power Query warns once; it does not re-validate later steps until refresh.</li>
+<li><strong>Renaming a step</strong> in the Applied Steps pane updates references in that query automatically; renaming a <strong>query</strong> updates references in other queries in the same file, but not external references (another workbook or a DAX measure).</li>
+<li><strong>Preview vs refresh</strong>: the preview uses cached data and the top 1,000 rows. A step can look correct in the preview and fail at full refresh (e.g. a type error on row 40,000). Use Column profiling "based on entire data set" or a Keep Errors check query.</li>
+<li><strong>Excel vs Power BI editor</strong>: identical engine, slightly different ribbons. Excel's Query Dependencies diagram is less detailed and the formula bar is off by default.</li>
+<li><strong>Merged steps</strong>: Power Query sometimes merges consecutive identical operations (two Removed Columns steps) into one; do not be surprised when your step list compresses.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Applied Steps are named variables of a <code>let</code> expression; name and describe them for auditability.</li>
+<li>The formula bar edits one step and exposes options the dialogs hide (locales, MissingField, dynamic lists).</li>
+<li>The Advanced Editor is the place to read, comment, parameterise and convert queries into functions.</li>
+<li>Query Dependencies is your lineage map: use it before any rename and to enforce the staging → clean → output layering.</li>
+<li>The preview shows only cached top rows; validate on the full data before trusting a step.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-editor-navigation-l1">Q1. Editor navigation [L1]</h3>
+<p>Describe where in the Power Query Editor you would (a) see the M for only the "Promoted Headers" step, (b) add a comment explaining why five rows are skipped, (c) find out which output queries depend on <code>stg_BankHDFC</code>, and (d) see that a step has generated row-level errors.</p>
+<h3 id="q2-rename-impact-l2">Q2. Rename impact [L2]</h3>
+<p>You rename the column <code>Amt</code> to <code>Amount</code> in the staging query <code>stg_TB</code>, which is referenced by <code>TB_Clean</code>, <code>TB_Checks</code> and <code>BudgetVsActual</code>. Explain what happens at the next refresh in each dependent query, how the Query Dependencies view helps you, and the safest sequence of edits.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Renaming a column is different from renaming a step or query — only the latter are auto-updated.</p>
+</blockquote>
+<h3 id="q3-review-a-step-list-l2">Q3. Review a step list [L2]</h3>
+<p>A colleague's query has steps: Source, Navigation, Changed Type, Removed Top Rows, Promoted Headers, Changed Type1, Removed Bottom Rows, Filtered Rows, Changed Type2. Write a review note listing the risks you see from the names and order alone, and propose a renamed and reordered step list.</p>
+<h3 id="q4-turning-a-query-into-a-function-in-the-advanced-editor-l3">Q4. Turning a query into a function in the Advanced Editor [L3]</h3>
+<p>A query <code>CleanHDFC</code> begins <code>let Source = Csv.Document(File.Contents("D:\Bank\HDFC_Apr.csv"), [Delimiter=","]), ...</code>. Describe the exact edits in the Advanced Editor to convert it into a function <code>fxCleanHDFC</code> that accepts a binary, and explain how its display in the Queries pane and Applied Steps changes after conversion.</p></section>
+<nav class="pager"><a class="prev" href="S01_Power_Query_Connectors_for_Accounting_and_ERP_Data.html">← Power Query Connectors for Accounting and ERP Data Sources</a><a class="next" href="S03_M_Language_Structure_letin_Values_Records_Lists.html">M Language Structure: let/in, Values, Records, Lists and… →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weighted Average Inventory Cost and Weighted Credit Period / DSO · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S02_Weighted_Average_Inventory_Cost_and_Weighted.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T3 · SUMPRODUCT weighted averages and matrix…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · SUMPRODUCT weighted averages and matrix math</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Weighted_Average_Cost_of_Debt_Across_Borrowing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S01_Weighted_Average_Cost_of_Debt_Across_Borrowing.html">Weighted Average Cost of Debt Across Borrowing Tranches</a></li><li><a href="S02_Weighted_Average_Inventory_Cost_and_Weighted.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S02_Weighted_Average_Inventory_Cost_and_Weighted.html">Weighted Average Inventory Cost and Weighted Credit Period / DSO</a></li><li><a href="S03_Boolean_Array_Multi_Condition_Sums_Without_Helper.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S03_Boolean_Array_Multi_Condition_Sums_Without_Helper.html">Boolean-Array Multi-Condition Sums Without Helper Columns</a></li><li><a href="S04_Coercing_TRUEFALSE_to_10_Double_Unary_1_and_N.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S04_Coercing_TRUEFALSE_to_10_Double_Unary_1_and_N.html">Coercing TRUE/FALSE to 1/0: Double Unary, ×1 and N()</a></li><li><a href="S05_Cohort_Retention_Matrices_Acquisition_Month_Active.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S05_Cohort_Retention_Matrices_Acquisition_Month_Active.html">Cohort Retention Matrices: Acquisition Month × Active Month</a></li><li><a href="S06_MMULT_and_TRANSPOSE_for_Cost_Pool_Driver.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S06_MMULT_and_TRANSPOSE_for_Cost_Pool_Driver.html">MMULT and TRANSPOSE for Cost-Pool × Driver Allocations</a></li><li><a href="S07_SUMPRODUCT_vs_SUMIFS_Performance_on_Large_Ranges.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S07_SUMPRODUCT_vs_SUMIFS_Performance_on_Large_Ranges.html">SUMPRODUCT vs SUMIFS Performance on Large Ranges</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Pre_Tax_and_Post_Tax_Kd_with_SUMPRODUCT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C01_Pre_Tax_and_Post_Tax_Kd_with_SUMPRODUCT.html">Pre-Tax and Post-Tax Kd with SUMPRODUCT</a></li><li><a href="../concepts/C02_SUMPRODUCT_with_MONTH_and_LEFT_on_Whole_Columns.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C02_SUMPRODUCT_with_MONTH_and_LEFT_on_Whole_Columns.html">SUMPRODUCT with MONTH and LEFT on Whole Columns</a></li><li><a href="../concepts/C03_Comma_Form_SUMPRODUCT_and_Why_Arrays_Must_Be.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C03_Comma_Form_SUMPRODUCT_and_Why_Arrays_Must_Be.html">Comma-Form SUMPRODUCT and Why Arrays Must Be Numeric</a></li><li><a href="../concepts/C04_The_Cohort_Retention_Cell_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C04_The_Cohort_Retention_Cell_Formula.html">The Cohort Retention Cell Formula</a></li><li><a href="../concepts/C05_MMULT_Dimensions_1nnm_Gives_a_1m_Allocation.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C05_MMULT_Dimensions_1nnm_Gives_a_1m_Allocation.html">MMULT Dimensions: (1×n)·(n×m) Gives a 1×m Allocation</a></li><li><a href="../concepts/C06_The_General_Guarded_Weighted_Average_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C06_The_General_Guarded_Weighted_Average_Formula.html">The General Guarded Weighted-Average Formula</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Weighted Average Inventory Cost and Weighted Credit Period / DSO</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Weighted average inventory cost and weighted average credit period / DSO by customer</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Two of the most-reviewed working-capital numbers are weighted averages. Inventory under the weighted average cost formula (Ind AS 2.25 and 2.27) is valued at a rate that blends opening stock and receipts by quantity — and auditors re-perform that rate on the stock ledger. Receivables quality is judged on days: how long, on average, each rupee of receivables has been outstanding, by customer, and how long customers actually take to pay. Both are weighted by quantity or amount, not counted by line, and both reduce to a single SUMPRODUCT — optionally with a condition for an item or customer.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="weighted-average-inventory-cost">Weighted average inventory cost</h3>
+<p>Ind AS 2.25 permits FIFO or the weighted average cost formula for interchangeable items; Ind AS 2.27 notes that the average may be calculated on a <strong>periodic</strong> basis or <strong>as each additional shipment is received</strong> (moving average), depending on the circumstances of the entity.</p>
+<p>Periodic weighted average for an item:</p>
+<p>\[
+\bar{c} = \frac{Q_0 c_0 + \sum_{j} q_j c_j}{Q_0 + \sum_{j} q_j}
+\]</p>
+<p>where \(Q_0\) and \(c_0\) are opening quantity and rate, and \(q_j\), \(c_j\) the quantity and rate of receipt \(j\) in the period. With a receipts Table <code>Rcv</code> (Item, Date, Qty, Rate) that includes an opening-stock row:</p>
+<pre><code class="language-excel">=SUMPRODUCT((Rcv[Item]=A5)*Rcv[Qty]*Rcv[Rate]) / SUMIFS(Rcv[Qty], Rcv[Item], A5)
+</code></pre>
+<p>The boolean <code>(Rcv[Item]=A5)</code> restricts the product to one item without a helper column.</p>
+<p><strong>Worked illustration (periodic).</strong> Item "PP Granules":</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th>Qty (kg)</th>
+<th>Rate (₹/kg)</th>
+<th>Value (₹)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Opening</td>
+<td>2,000</td>
+<td>182.00</td>
+<td>3,64,000</td>
+</tr>
+<tr>
+<td>Receipt 10-Apr</td>
+<td>5,000</td>
+<td>190.00</td>
+<td>9,50,000</td>
+</tr>
+<tr>
+<td>Receipt 22-Apr</td>
+<td>3,000</td>
+<td>196.00</td>
+<td>5,88,000</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>10,000</strong></td>
+<td></td>
+<td><strong>19,02,000</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Weighted average rate = 19,02,000 ÷ 10,000 = <strong>₹190.20/kg</strong>. A simple average of the three rates is ₹189.33 — wrong, because it ignores that 5,000 kg came at ₹190. If 6,500 kg were issued in April, cost of issues = 6,500 × 190.20 = ₹12,36,300 and closing stock = 3,500 × 190.20 = ₹6,65,700.</p>
+<p><strong>Moving weighted average.</strong> The rate is recomputed after each receipt; issues are valued at the rate prevailing at the time of issue. In Excel this needs running quantity and value columns (or SCAN in Microsoft 365):</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Formula idea</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Running qty</td>
+<td>previous running qty + receipt qty − issue qty</td>
+</tr>
+<tr>
+<td>Running value</td>
+<td>previous running value + receipt value − issue qty × previous rate</td>
+</tr>
+<tr>
+<td>Rate</td>
+<td>running value ÷ running qty (guarded for zero qty)</td>
+</tr>
+</tbody>
+</table>
+<p>Tally's default "Average Cost" valuation for stock items follows a moving average logic; ERP systems (SAP moving average price) similarly. When re-performing, match the system's method or explain the difference.</p>
+<p><strong>Freight, duties and discounts.</strong> Ind AS 2.11 cost of purchase includes import duties, non-refundable taxes, freight and handling, less trade discounts and rebates; recoverable GST input credit is excluded. The rate in the weighting must be the landed cost, not the invoice rate.</p>
+<h3 id="weighted-average-credit-period-and-dso-by-customer">Weighted average credit period and DSO by customer</h3>
+<p><strong>Days outstanding of open receivables</strong> (amount-weighted ageing):</p>
+<p>\[
+\bar{d} = \frac{\sum_i A_i \times (T - D_i)}{\sum_i A_i}
+\]</p>
+<p>where \(A_i\) is the open amount of invoice \(i\), \(D_i\) its invoice (or due) date and \(T\) the reporting date. Per customer:</p>
+<pre><code class="language-excel">=SUMPRODUCT((AR[Customer]=A5)*AR[Open]*(RptDate-AR[InvDate])) / SUMIFS(AR[Open], AR[Customer], A5)
+</code></pre>
+<p>Use the due date instead of the invoice date to measure <strong>days overdue</strong>.</p>
+<p><strong>Weighted average collection period</strong> (behaviour of paid invoices):</p>
+<p>\[
+\bar{p} = \frac{\sum_i A_i \times (P_i - D_i)}{\sum_i A_i}
+\]</p>
+<p>where \(P_i\) is the payment date. This is the "how long does this customer really take to pay?" metric used to set credit terms and forecast collections.</p>
+<p><strong>DSO (balance-sheet method)</strong> for comparison:</p>
+<p>\[
+\text{DSO} = \frac{\text{Trade receivables}}{\text{Credit revenue for the period}} \times \text{Days in period}
+\]</p>
+<p>DSO is a portfolio ratio; the weighted days by customer explain <em>which</em> customers drive it. Note GST: receivables include GST while revenue excludes it, so either gross up revenue or strip GST from receivables to compare like with like.</p>
+<p><strong>Worked illustration.</strong> Customer "Metro Retail" open invoices at 31-Mar-2026:</p>
+<table>
+<thead>
+<tr>
+<th>Invoice</th>
+<th>Open (₹ lakh)</th>
+<th>Days outstanding</th>
+<th>Amount × days</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MR/411</td>
+<td>10.0</td>
+<td>15</td>
+<td>150</td>
+</tr>
+<tr>
+<td>MR/377</td>
+<td>4.0</td>
+<td>75</td>
+<td>300</td>
+</tr>
+<tr>
+<td>MR/302</td>
+<td>1.0</td>
+<td>140</td>
+<td>140</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>15.0</strong></td>
+<td></td>
+<td><strong>590</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Weighted days = 590 ÷ 15 = <strong>39.3 days</strong>; simple average of days = 76.7 days. The simple average overweights the small old invoice; the weighted figure reflects where the money is. But the ₹1 lakh at 140 days still matters for expected credit loss under Ind AS 109 (lifetime ECL using a provision matrix) — weighted averages summarise, ageing buckets classify.</p>
+<h3 id="model-and-dashboard-implementation">Model and dashboard implementation</h3>
+<ul>
+<li>Per-customer rows with SUMPRODUCT numerators and SUMIFS denominators, guarded: <code>=IF(SUMIFS(…)=0, "", SUMPRODUCT(…)/SUMIFS(…))</code>.</li>
+<li>A portfolio weighted days figure in one cell: <code>=SUMPRODUCT(AR[Open], RptDate-AR[InvDate]) / SUM(AR[Open])</code>.</li>
+<li>In FP&amp;A forecasts, weighted collection periods by customer segment drive the receivables roll-forward.</li>
+</ul>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Negative open items</strong> (unapplied receipts, credit notes) reduce both numerator and denominator and can produce odd days; net them against invoices or exclude them explicitly.</li>
+<li><strong>Disputed or retention amounts</strong> (common in EPC contracts) distort days; report them separately.</li>
+<li><strong>Opening stock at a different valuation</strong> (e.g. written down to NRV) enters the periodic average at the written-down rate.</li>
+<li><strong>Zero-quantity items</strong> — guard the division; an item fully issued has no closing rate.</li>
+<li><strong>Weighted average vs FIFO</strong> must be applied consistently for items of similar nature and use (Ind AS 2.26).</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Weighted average inventory cost = Σ(qty × landed rate) ÷ Σ qty, periodic or moving (Ind AS 2.27).</li>
+<li><code>SUMPRODUCT((Item=x)*Qty*Rate)/SUMIFS(Qty, Item, x)</code> gives an item rate with no helper column.</li>
+<li>Amount-weighted days outstanding and weighted collection period explain DSO by customer.</li>
+<li>Simple averages of rates or days overweight small lines and are almost always wrong.</li>
+<li>Guard divisions, and handle credits, disputes and GST consistently.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-periodic-weighted-average-rate-l1">Q1. Periodic weighted average rate [L1]</h3>
+<p>Item "Copper Rod" FY26 Q1: opening 1,200 kg at ₹742; receipts 3,000 kg at ₹765 and 1,800 kg at ₹781; import freight of ₹54,000 attributable to the 1,800 kg lot. Compute the periodic weighted average landed rate and the value of 3,900 kg issued, and write the SUMPRODUCT formula you would use on a receipts Table.</p>
+<h3 id="q2-moving-average-re-performance-l2">Q2. Moving average re-performance [L2]</h3>
+<p>Transactions for an item in April: opening 500 units at ₹1,000; 05-Apr receipt 1,000 at ₹1,060; 09-Apr issue 800; 15-Apr receipt 600 at ₹1,090; 25-Apr issue 900. Build the moving weighted average table with running quantity, value and rate, and compare closing stock with the periodic method. Explain which matches Tally's average cost valuation.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Issues leave the rate unchanged; only receipts change it.</p>
+</blockquote>
+<h3 id="q3-customer-days-dashboard-l2">Q3. Customer days dashboard [L2]</h3>
+<p>Table <code>AR</code> has Customer, InvNo, InvDate, DueDate, Open. Write per-customer formulas for amount-weighted days outstanding, amount-weighted days overdue, and the share of the customer's balance that is more than 90 days old, for <code>RptDate</code> = 31-Mar-2026. Guard every division.</p>
+<h3 id="q4-dso-vs-weighted-days-l2">Q4. DSO vs weighted days [L2]</h3>
+<p>A company reports FY26 credit revenue of ₹480 crore (excluding GST), closing receivables of ₹118 crore (including 18% GST) and amount-weighted days outstanding of 52 days. Compute DSO on a consistent GST basis, and explain why it may differ from the weighted days figure.</p>
+<h3 id="q5-collection-period-forecast-l3">Q5. Collection-period forecast [L3]</h3>
+<p>For an FP&amp;A receivables forecast, you have three years of paid-invoice history (Customer, Segment, InvDate, PayDate, Amount). Describe how you would compute amount-weighted collection periods by segment and by year, decide which to use in the forecast, and convert them into a monthly collections profile for the FY27 cash-flow model.</p></section>
+<nav class="pager"><a class="prev" href="S01_Weighted_Average_Cost_of_Debt_Across_Borrowing.html">← Weighted Average Cost of Debt Across Borrowing Tranches</a><a class="next" href="S03_Boolean_Array_Multi_Condition_Sums_Without_Helper.html">Boolean-Array Multi-Condition Sums Without Helper Columns →</a></nav>
+</main></div></body></html>

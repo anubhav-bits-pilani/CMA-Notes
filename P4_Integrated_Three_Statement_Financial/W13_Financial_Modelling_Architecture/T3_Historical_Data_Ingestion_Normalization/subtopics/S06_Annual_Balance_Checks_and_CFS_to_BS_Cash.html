@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Annual Balance Checks and CFS-to-BS Cash Reconciliation · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S06_Annual_Balance_Checks_and_CFS_to_BS_Cash.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T3 · Historical Data Ingestion &amp;…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Historical Data Ingestion &amp; Normalization</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Sources_of_Historical_Data_for_Indian_Listed.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S01_Sources_of_Historical_Data_for_Indian_Listed.html">Sources of Historical Data for Indian Listed Companies</a></li><li><a href="S02_Mapping_Schedule_III_Line_Items_to_a_Model_Chart.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S02_Mapping_Schedule_III_Line_Items_to_a_Model_Chart.html">Mapping Schedule III Line Items to a Model Chart of Accounts</a></li><li><a href="S03_Consolidated_vs_Standalone_Basis_NCI_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S03_Consolidated_vs_Standalone_Basis_NCI_and.html">Consolidated vs Standalone Basis, NCI and Associates</a></li><li><a href="S04_EBITDA_Normalisation_Exceptional_Other_Income.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S04_EBITDA_Normalisation_Exceptional_Other_Income.html">EBITDA Normalisation: Exceptional, Other Income, Leases, ESOPs, Forex</a></li><li><a href="S05_Restatements_Discontinued_Operations_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S05_Restatements_Discontinued_Operations_and.html">Restatements, Discontinued Operations and Acquisitions</a></li><li><a href="S06_Annual_Balance_Checks_and_CFS_to_BS_Cash.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S06_Annual_Balance_Checks_and_CFS_to_BS_Cash.html">Annual Balance Checks and CFS-to-BS Cash Reconciliation</a></li><li><a href="S07_Deriving_Historical_Ratios_as_Forecast_Anchors.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S07_Deriving_Historical_Ratios_as_Forecast_Anchors.html">Deriving Historical Ratios as Forecast Anchors</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Historical_Balance_Check_Assets_Equal_Equity_Plus.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C01_Historical_Balance_Check_Assets_Equal_Equity_Plus.html">Historical Balance Check: Assets Equal Equity Plus Liabilities</a></li><li><a href="../concepts/C02_CFS_Closing_Cash_to_Balance_Sheet_Cash.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C02_CFS_Closing_Cash_to_Balance_Sheet_Cash.html">CFS Closing Cash to Balance Sheet Cash Reconciliation</a></li><li><a href="../concepts/C03_Adjusted_EBITDA_Bridge_from_PBT.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C03_Adjusted_EBITDA_Bridge_from_PBT.html">Adjusted EBITDA Bridge from PBT</a></li><li><a href="../concepts/C04_Effective_Tax_Rate_with_Current_and_Deferred_Split.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C04_Effective_Tax_Rate_with_Current_and_Deferred_Split.html">Effective Tax Rate with Current and Deferred Split</a></li><li><a href="../concepts/C05_Operating_Net_Working_Capital_What_to_Exclude.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C05_Operating_Net_Working_Capital_What_to_Exclude.html">Operating Net Working Capital: What to Exclude</a></li><li><a href="../concepts/C06_Explicit_Rounding_Line_Instead_of_a_Balancing_Plug.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C06_Explicit_Rounding_Line_Instead_of_a_Balancing_Plug.html">Explicit Rounding Line Instead of a Balancing Plug</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Annual Balance Checks and CFS-to-BS Cash Reconciliation</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Balance checks every year and reconciliation of CFS closing cash to BS cash and cash equivalents</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Historicals are the foundation of the forecast: opening balances for FY26E come from FY25A, historical ratios set forecast drivers, and the forecast balance check can only work if the historical balance sheet itself balances. Loading errors — a missed line, a sign flip, a wrong unit, a standalone figure in a consolidated column — usually show up first as a historical balance or cash difference. Running both checks for <strong>every</strong> historical year, not only the latest, catches mapping errors before they propagate. The cash reconciliation also forces the precise Ind AS 7 definition of cash and cash equivalents, which matters later for the forecast CFS and the EV bridge.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="balance-check">Balance check</h3>
+<p>For every historical year \( t \):</p>
+<p>\[
+\text{Check}_t = \text{Total assets}_t - (\text{Total equity}_t + \text{Total liabilities}_t) = 0.00
+\]</p>
+<p>Total equity includes NCI (consolidated). The check compares <strong>model-mapped</strong> totals — sums of the model CoA lines — not the reported totals typed in; otherwise it proves nothing. A second check compares the model total assets to the <strong>reported</strong> total assets to confirm mapping completeness:</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th>Check</th>
+<th>Expected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>Σ model asset lines − Σ model equity and liability lines</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>B</td>
+<td>Σ model asset lines − reported total assets</td>
+<td>0.00 (± explicit rounding line, c06)</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Σ model P&amp;L lines → PAT − reported PAT</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>D</td>
+<td>Model PAT attributable to owners − reported</td>
+<td>0.00</td>
+</tr>
+</tbody>
+</table>
+<p>Run checks for FY21A–FY25A and roll them into the Checks sheet (topic t1, s06).</p>
+<h3 id="cash-reconciliation">Cash reconciliation</h3>
+<p><em>Ind AS 7.45</em> requires an entity to disclose the components of cash and cash equivalents and reconcile the CFS amounts with the equivalent items in the balance sheet. The CFS's closing "cash and cash equivalents" is defined by <em>Ind AS 7.6–7.8</em>:</p>
+<ul>
+<li><strong>Cash</strong>: cash on hand and demand deposits.</li>
+<li><strong>Cash equivalents</strong>: short-term, highly liquid investments readily convertible to known amounts of cash and subject to insignificant risk of changes in value — normally with <strong>original maturity of three months or less</strong> (<em>Ind AS 7.7</em>).</li>
+<li><strong>Bank overdrafts repayable on demand</strong> that form an integral part of the entity's cash management are included as a component of cash and cash equivalents (<em>Ind AS 7.8</em>) — they reduce CFS cash, while on the BS they sit in current borrowings.</li>
+</ul>
+<p>Schedule III BS line items:</p>
+<table>
+<thead>
+<tr>
+<th>BS line</th>
+<th>In CFS cash?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cash and cash equivalents (cash, balances with banks, deposits ≤ 3 months original maturity)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Bank balances other than cash and cash equivalents (deposits with original maturity &gt; 3 months up to 12 months; earmarked balances such as unpaid dividend accounts; margin money)</td>
+<td><strong>No</strong></td>
+</tr>
+<tr>
+<td>Current investments (liquid mutual funds)</td>
+<td><strong>No</strong> (generally treated as investments, even if very liquid; some companies classify overnight/liquid funds as cash equivalents — check policy)</td>
+</tr>
+<tr>
+<td>Bank overdraft / cash credit repayable on demand (in current borrowings)</td>
+<td>Deducted, if integral to cash management</td>
+</tr>
+<tr>
+<td>Non-current bank deposits (&gt; 12 months, in other financial assets)</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>Reconciliation (c02):</p>
+<p>\[
+\text{CFS closing cash}_t = \text{BS cash and cash equivalents}_t - \text{Bank overdrafts repayable on demand}_t
+\]</p>
+<p>The cash flow note in the annual report typically shows this reconciliation; replicate it on Historicals.</p>
+<h3 id="roll-forward-check-on-the-cfs">Roll-forward check on the CFS</h3>
+<p>Also check, every year:</p>
+<p>\[
+\text{Opening cash}_t + \text{CFO}_t + \text{CFI}_t + \text{CFF}_t + \text{FX effect}_t = \text{Closing cash}_t
+\]</p>
+<p>and \( \text{Opening cash}_t = \text{Closing cash}_{t-1} \) — in the latest comparatives. Effects of exchange rate changes on cash held in foreign currency are a separate reconciling line (<em>Ind AS 7.28</em>). Business combinations or disposals can bring acquired cash, which appears within investing (net of cash acquired).</p>
+<h3 id="illustration-crore-fy25-consolidated">Illustration (₹ crore, FY25, consolidated)</h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BS: Cash and cash equivalents</td>
+<td>285</td>
+</tr>
+<tr>
+<td>BS: Bank balances other than above (FDs 4–12 months 410; unpaid dividend 6)</td>
+<td>416</td>
+</tr>
+<tr>
+<td>BS: Current investments (liquid MFs)</td>
+<td>1,320</td>
+</tr>
+<tr>
+<td>BS: Current borrowings, of which cash credit repayable on demand</td>
+<td>45</td>
+</tr>
+<tr>
+<td>CFS: closing cash and cash equivalents</td>
+<td>240</td>
+</tr>
+</tbody>
+</table>
+<p>Reconciliation: 285 − 45 = 240 ✓. If an analyst had used 285 + 416 = 701 as "cash", the check would fail by ₹461 crore (topic pitfall). For the EV bridge, however, treasury assets of 285 + 416 + 1,320 = ₹2,021 crore (excluding earmarked ₹6 crore unpaid dividend balance, which is offset by a liability) may be treated as cash-like — a separate definition from CFS cash. Keep the two definitions on separate, labelled rows.</p>
+<h3 id="diagnosing-failures">Diagnosing failures</h3>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Likely cause</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Balance check fails by a round multiple (× 100, × 10)</td>
+<td>Unit mismatch (lakh vs crore)</td>
+</tr>
+<tr>
+<td>Fails by twice an item's value</td>
+<td>Sign flip</td>
+</tr>
+<tr>
+<td>Fails in one year only</td>
+<td>Missed line or mislabelled caption in that year's report</td>
+</tr>
+<tr>
+<td>Equals NCI amount</td>
+<td>NCI omitted from equity</td>
+</tr>
+<tr>
+<td>Cash check fails by "other bank balances"</td>
+<td>Definition error</td>
+</tr>
+<tr>
+<td>Cash check fails by overdraft amount</td>
+<td>Overdraft not netted</td>
+</tr>
+<tr>
+<td>Cash opening ≠ prior closing</td>
+<td>Mixing original and restated reports</td>
+</tr>
+</tbody>
+</table>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Restricted cash</strong> (escrow, margin money under lien) is excluded from cash and cash equivalents; disclose and consider as debt-like/offset in the bridge.</li>
+<li><strong>Liquid mutual funds</strong> are classified as investments by most Indian companies; a few classify overnight funds as cash equivalents — follow the company's policy for the reconciliation, apply your own for the bridge.</li>
+<li><strong>Cash held for sale</strong> in a disposal group sits within assets held for sale on the BS but may be within CFS cash — note <em>Ind AS 105</em> presentation.</li>
+<li><strong>Old Indian GAAP years</strong> used "cash and bank balances" including all FDs; the Ind AS split is not available — limit history or reclassify using notes.</li>
+<li><strong>Rounding</strong>: reported totals in ₹ crore may not foot; use an explicit rounding line (c06), never a plug.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Run balance, mapping-completeness, PAT and cash checks for every historical year.</li>
+<li>The balance check uses model-mapped totals; a separate check ties to reported totals.</li>
+<li>CFS cash = BS cash and cash equivalents − overdrafts repayable on demand (Ind AS 7.8); other bank balances and current investments are excluded.</li>
+<li>Treasury cash for the EV bridge is a separate, wider definition — label both.</li>
+<li>Use the failure pattern to locate errors: units, signs, NCI, definitions, single-year captions.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-reconcile-cash-l1">Q1. Reconcile cash [L1]</h3>
+<p>From the FY25 consolidated BS (₹ crore): cash on hand 3; balances with banks in current accounts 182; deposits with original maturity ≤ 3 months 90; deposits 3–12 months 260; earmarked unpaid dividend 4; liquid MFs 640; bank overdraft repayable on demand (integral to cash management) 28; working-capital demand loan 150. Compute CFS closing cash and list items excluded with reasons.</p>
+<h3 id="q2-diagnose-the-failures-l2">Q2. Diagnose the failures [L2]</h3>
+<p>Historical balance checks show (₹ crore): FY21 0.00; FY22 0.00; FY23 –182.40; FY24 0.00; FY25 0.00. Cash check: FY23 0.00. PAT tie-out FY23 0.00. List the most likely causes in order and the steps to locate the error.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> If P&amp;L and cash tie out, the error is likely a balance-sheet-only mapping issue in that year's report.</p>
+</blockquote>
+<h3 id="q3-build-the-check-block-l2">Q3. Build the check block [L2]</h3>
+<p>Write the formulas (row logic) for a Historicals check block covering balance, mapping completeness, PAT, PAT attributable to owners, CFS roll-forward, opening = prior closing, and CFS-to-BS cash, for FY21A–FY25A, and the roll-up into the Checks sheet.</p>
+<h3 id="q4-two-definitions-of-cash-l3">Q4. Two definitions of cash [L3]</h3>
+<p>A colleague argues that because Trent's liquid mutual funds can be redeemed in one day, they should be included in CFS cash in the model's historicals so that "cash" is consistent with the EV bridge. Write a response explaining the Ind AS 7 position, the risk to the cash reconciliation, and how to present both definitions in the model.</p></section>
+<nav class="pager"><a class="prev" href="S05_Restatements_Discontinued_Operations_and.html">← Restatements, Discontinued Operations and Acquisitions</a><a class="next" href="S07_Deriving_Historical_Ratios_as_Forecast_Anchors.html">Deriving Historical Ratios as Forecast Anchors →</a></nav>
+</main></div></body></html>

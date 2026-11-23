@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comma-Form SUMPRODUCT and Why Arrays Must Be Numeric · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C03_Comma_Form_SUMPRODUCT_and_Why_Arrays_Must_Be.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T3 · SUMPRODUCT weighted averages and matrix…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · SUMPRODUCT weighted averages and matrix math</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Weighted_Average_Cost_of_Debt_Across_Borrowing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S01_Weighted_Average_Cost_of_Debt_Across_Borrowing.html">Weighted Average Cost of Debt Across Borrowing Tranches</a></li><li><a href="../subtopics/S02_Weighted_Average_Inventory_Cost_and_Weighted.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S02_Weighted_Average_Inventory_Cost_and_Weighted.html">Weighted Average Inventory Cost and Weighted Credit Period / DSO</a></li><li><a href="../subtopics/S03_Boolean_Array_Multi_Condition_Sums_Without_Helper.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S03_Boolean_Array_Multi_Condition_Sums_Without_Helper.html">Boolean-Array Multi-Condition Sums Without Helper Columns</a></li><li><a href="../subtopics/S04_Coercing_TRUEFALSE_to_10_Double_Unary_1_and_N.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S04_Coercing_TRUEFALSE_to_10_Double_Unary_1_and_N.html">Coercing TRUE/FALSE to 1/0: Double Unary, ×1 and N()</a></li><li><a href="../subtopics/S05_Cohort_Retention_Matrices_Acquisition_Month_Active.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S05_Cohort_Retention_Matrices_Acquisition_Month_Active.html">Cohort Retention Matrices: Acquisition Month × Active Month</a></li><li><a href="../subtopics/S06_MMULT_and_TRANSPOSE_for_Cost_Pool_Driver.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S06_MMULT_and_TRANSPOSE_for_Cost_Pool_Driver.html">MMULT and TRANSPOSE for Cost-Pool × Driver Allocations</a></li><li><a href="../subtopics/S07_SUMPRODUCT_vs_SUMIFS_Performance_on_Large_Ranges.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S07_SUMPRODUCT_vs_SUMIFS_Performance_on_Large_Ranges.html">SUMPRODUCT vs SUMIFS Performance on Large Ranges</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Pre_Tax_and_Post_Tax_Kd_with_SUMPRODUCT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C01_Pre_Tax_and_Post_Tax_Kd_with_SUMPRODUCT.html">Pre-Tax and Post-Tax Kd with SUMPRODUCT</a></li><li><a href="C02_SUMPRODUCT_with_MONTH_and_LEFT_on_Whole_Columns.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C02_SUMPRODUCT_with_MONTH_and_LEFT_on_Whole_Columns.html">SUMPRODUCT with MONTH and LEFT on Whole Columns</a></li><li><a href="C03_Comma_Form_SUMPRODUCT_and_Why_Arrays_Must_Be.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C03_Comma_Form_SUMPRODUCT_and_Why_Arrays_Must_Be.html">Comma-Form SUMPRODUCT and Why Arrays Must Be Numeric</a></li><li><a href="C04_The_Cohort_Retention_Cell_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C04_The_Cohort_Retention_Cell_Formula.html">The Cohort Retention Cell Formula</a></li><li><a href="C05_MMULT_Dimensions_1nnm_Gives_a_1m_Allocation.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C05_MMULT_Dimensions_1nnm_Gives_a_1m_Allocation.html">MMULT Dimensions: (1×n)·(n×m) Gives a 1×m Allocation</a></li><li><a href="C06_The_General_Guarded_Weighted_Average_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C06_The_General_Guarded_Weighted_Average_Formula.html">The General Guarded Weighted-Average Formula</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Comma-Form SUMPRODUCT and Why Arrays Must Be Numeric</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>=SUMPRODUCT(--(Region="West"), --(FY="FY26"), Revenue)</code>: comma-separated arrays must be numeric</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>For \(k\) comma-separated arrays \(X^{(1)}, \dots, X^{(k)}\) of identical dimensions, SUMPRODUCT returns</p>
+<p>\[
+\text{SUMPRODUCT} = \sum_{i} \prod_{j=1}^{k} \tilde{x}^{(j)}_i, \qquad \tilde{x} = \begin{cases} x &amp; \text{if } x \text{ is a number} \\ 0 &amp; \text{otherwise (text, logical, blank)} \end{cases}
+\]</p>
+<p>where \(i\) runs over the positions of the arrays. Because non-numeric entries — including TRUE and FALSE — become 0, the logical arrays <code>Region="West"</code> and <code>FY="FY26"</code> must be converted to 1/0 with the double unary <code>--</code> before being passed as separate arguments.</p>
+<h2 id="explanation">Explanation</h2>
+<p><strong>Why the <code>--</code> is needed here.</strong> In the comma form, SUMPRODUCT receives three arrays and multiplies them internally. It does not coerce logicals: a raw <code>(Region="West")</code> array would be read as all zeros and the result would be 0. <code>--</code> converts TRUE to 1 and FALSE to 0 before SUMPRODUCT sees the array. Any equivalent coercion works (<code>(Region="West")*1</code>, <code>+0</code>).</p>
+<p><strong>The text-as-zero behaviour.</strong> The same rule applies to <code>Revenue</code>: a text entry such as "n/a" or a number stored as text ("1,25,000") is treated as 0 without warning. This is the defining difference from the multiplication form <code>SUMPRODUCT((Region="West")*(FY="FY26")*Revenue)</code>, where the <code>*</code> operator evaluates first: non-numeric text gives <code>#VALUE!</code> (loud failure) and numeric-looking text is coerced to a number.</p>
+<table>
+<thead>
+<tr>
+<th>Revenue cell content</th>
+<th>Comma form</th>
+<th>Multiplication form</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>420 (number)</td>
+<td>420</td>
+<td>420</td>
+</tr>
+<tr>
+<td>"n/a"</td>
+<td>0 (silent)</td>
+<td><code>#VALUE!</code></td>
+</tr>
+<tr>
+<td>"250" (number stored as text)</td>
+<td>0 (silent)</td>
+<td>250</td>
+</tr>
+<tr>
+<td>blank</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>#N/A</code></td>
+<td><code>#N/A</code></td>
+<td><code>#N/A</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Same dimensions.</strong> All arrays must be the same size and shape; otherwise <code>#VALUE!</code>. Table columns guarantee alignment.</p>
+<p><strong>Readability and style.</strong> Many modellers prefer the comma form for clarity — one argument per condition — and because it tolerates header text if ranges include headers. Others prefer the multiplication form because it fails loudly. Choose consciously and test the value column with <code>SUMPRODUCT(--ISTEXT(Revenue))</code>.</p>
+<p><strong>OR conditions in the comma form.</strong> Combine within one argument: <code>--(((Region="West")+(Region="South"))&gt;0)</code>.</p>
+<h2 id="illustration">Illustration</h2>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>FY</th>
+<th>Revenue (₹ lakh)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>West</td>
+<td>FY26</td>
+<td>420</td>
+</tr>
+<tr>
+<td>South</td>
+<td>FY26</td>
+<td>290</td>
+</tr>
+<tr>
+<td>West</td>
+<td>FY26</td>
+<td>"310" (text)</td>
+</tr>
+<tr>
+<td>West</td>
+<td>FY25</td>
+<td>365</td>
+</tr>
+<tr>
+<td>West</td>
+<td>FY26</td>
+<td>175</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>=SUMPRODUCT(--(Region="West"), --(FY="FY26"), Revenue)</code> → 420 + 0 + 175 = <strong>₹595 lakh</strong> (the text 310 is dropped).</li>
+<li><code>=SUMPRODUCT((Region="West")*(FY="FY26")*Revenue)</code> → 420 + 310 + 175 = <strong>₹905 lakh</strong>.</li>
+<li><code>=SUMPRODUCT((Region="West"), (FY="FY26"), Revenue)</code> (no coercion) → <strong>0</strong>.</li>
+<li><code>=SUMIFS(Revenue, Region, "West", FY, "FY26")</code> → ₹595 lakh (SUMIFS also ignores text).</li>
+</ul>
+<p>The ₹310 lakh gap between the two SUMPRODUCT forms is a data problem, not a formula choice — fix the type at import.</p>
+<h2 id="connections">Connections</h2>
+<p>Core of the coercion subtopic (double unary, ×1, N()) and the "text in the value range" pitfall of this topic. It underlies every SUMPRODUCT in the weighted-average and multi-condition subtopics, and the same coercion logic drives boolean XLOOKUP (topic 2) and FILTER conditions (topic 4). The "numbers stored as text" pitfalls in topics 1 and 2 are the upstream cause of the silent zero.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-predict-and-explain-l1">Q1. Predict and explain [L1]</h3>
+<p>Using the illustration table, state what <code>=SUMPRODUCT(--(Region="West"), Revenue)</code> and <code>=SUMPRODUCT(--(Region="West")*Revenue)</code> return, and explain the difference.</p>
+<h3 id="q2-control-check-design-l2">Q2. Control-check design [L2]</h3>
+<p>Design a three-cell control block for a regional revenue report: the comma-form total, the multiplication-form total and a count of text entries in the revenue column, with a status cell that reports "OK" only if all are consistent.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> If there is no text in the value column, the two forms must agree.</p>
+</blockquote>
+<h3 id="q3-converting-to-or-logic-l2">Q3. Converting to OR logic [L2]</h3>
+<p>Rewrite the concept formula to return FY26 revenue for West <strong>or</strong> South regions, in both comma and multiplication forms, and explain why simply adding a fourth argument <code>--(Region="South")</code> would return 0.</p></section>
+<nav class="pager"><a class="prev" href="C02_SUMPRODUCT_with_MONTH_and_LEFT_on_Whole_Columns.html">← SUMPRODUCT with MONTH and LEFT on Whole Columns</a><a class="next" href="C04_The_Cohort_Retention_Cell_Formula.html">The Cohort Retention Cell Formula →</a></nav>
+</main></div></body></html>

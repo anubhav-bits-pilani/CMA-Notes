@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Date Functions for Fiscal and Ageing Logic · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S07_Date_Functions_for_Fiscal_and_Ageing_Logic.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T6 · Custom columns and fiscal logic in M</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · Custom columns and fiscal logic in M</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Column_From_Examples_Custom_Column_and_Conditional.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S01_Column_From_Examples_Custom_Column_and_Conditional.html">Column From Examples, Custom Column and Conditional Column</a></li><li><a href="S02_Indian_FY_Attributes_Label_Fiscal_Month_Quarter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S02_Indian_FY_Attributes_Label_Fiscal_Month_Quarter.html">Indian FY Attributes: Label, Fiscal Month, Quarter and Sort Key</a></li><li><a href="S03_Receivable_and_Payable_Ageing_Against_an_As_Of.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S03_Receivable_and_Payable_Ageing_Against_an_As_Of.html">Receivable and Payable Ageing Against an As-Of-Date Parameter</a></li><li><a href="S04_Conditional_Logic_in_M_ifthenelse_andor_and_Null.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S04_Conditional_Logic_in_M_ifthenelse_andor_and_Null.html">Conditional Logic in M: if/then/else, and/or, and Null Coalescing</a></li><li><a href="S05_Type_Ascription_on_New_Columns.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S05_Type_Ascription_on_New_Columns.html">Type Ascription on New Columns</a></li><li><a href="S06_Group_By_Aggregations_for_Summary_Outputs_During.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S06_Group_By_Aggregations_for_Summary_Outputs_During.html">Group By Aggregations for Summary Outputs During Ingestion</a></li><li><a href="S07_Date_Functions_for_Fiscal_and_Ageing_Logic.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S07_Date_Functions_for_Fiscal_and_Ageing_Logic.html">Date Functions for Fiscal and Ageing Logic</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_FY_End_Year_and_FY_Label_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C01_FY_End_Year_and_FY_Label_Formula.html">FY End Year and FY Label Formula</a></li><li><a href="../concepts/C02_Fiscal_Month_Number_with_NumberMod.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C02_Fiscal_Month_Number_with_NumberMod.html">Fiscal Month Number with Number.Mod</a></li><li><a href="../concepts/C03_Fiscal_Quarter_with_NumberIntegerDivide.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C03_Fiscal_Quarter_with_NumberIntegerDivide.html">Fiscal Quarter with Number.IntegerDivide</a></li><li><a href="../concepts/C04_Ageing_Bucket_Expression_with_DurationDays.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C04_Ageing_Bucket_Expression_with_DurationDays.html">Ageing Bucket Expression with Duration.Days</a></li><li><a href="../concepts/C05_Null_Safe_Net_Amount_and_Operator_Precedence.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C05_Null_Safe_Net_Amount_and_Operator_Precedence.html">Null-Safe Net Amount and Operator Precedence</a></li><li><a href="../concepts/C06_TableGroup_by_FY_and_Ledger_with_a_Typed_Sum.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C06_TableGroup_by_FY_and_Ledger_with_a_Typed_Sum.html">Table.Group by FY and Ledger with a Typed Sum</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Date Functions for Fiscal and Ageing Logic</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Date functions: <code>Date.Month</code>, <code>Date.Year</code>, <code>Date.EndOfMonth</code>, <code>Date.AddMonths</code>, <code>Duration.Days</code></p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Fiscal attributes, ageing buckets, month-end keys, accrual periods, budget phasing and due dates are all built from a handful of M date functions. Each has behaviours that matter in finance: <code>Date.AddMonths</code> clips to month-end, <code>Date.EndOfMonth</code> returns a datetime when given a datetime, subtracting dates returns a duration rather than a number, and calendar quarter functions do not match the Indian fiscal year. Mastering these five functions and their edge cases removes most of the off-by-one and type errors in date logic.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="datemonth-and-dateyear">Date.Month and Date.Year</h3>
+<p><code>Date.Month(d)</code> returns the calendar month number (1–12); <code>Date.Year(d)</code> returns the year. Both accept date, datetime or datetimezone values. They are the inputs to the FY and fiscal-month formulas:</p>
+<pre><code class="language-m">FYEnd = Date.Year([Date]) + (if Date.Month([Date]) &gt;= 4 then 1 else 0)
+FM    = Number.Mod(Date.Month([Date]) + 8, 12) + 1
+</code></pre>
+<p>Related: <code>Date.Day</code>, <code>Date.DayOfWeek(d, Day.Monday)</code> (0-based), <code>Date.QuarterOfYear</code> (calendar quarter — April returns 2, so do not use it for fiscal quarters), <code>Date.WeekOfYear</code>.</p>
+<h3 id="dateendofmonth-and-friends">Date.EndOfMonth (and friends)</h3>
+<p><code>Date.EndOfMonth(d)</code> returns the last day of the month containing <code>d</code>. Given a date it returns a date; given a datetime it returns the <strong>last instant</strong> of the month (e.g. 30-04-2025 23:59:59.9999999), which will not equal a date key. Convert first: <code>Date.EndOfMonth(Date.From([PostingDate]))</code>.</p>
+<p>Siblings: <code>Date.StartOfMonth</code>, <code>Date.StartOfQuarter</code>, <code>Date.EndOfQuarter</code> (calendar quarters, whose end dates coincide with Indian fiscal quarter ends: 30 June, 30 September, 31 December, 31 March), <code>Date.StartOfYear</code>/<code>Date.EndOfYear</code> (calendar year — not FY).</p>
+<p>FY start and end dates from FY end year:</p>
+<pre><code class="language-m">FYStart = #date([FYEndYear] - 1, 4, 1),
+FYEndDt = #date([FYEndYear], 3, 31)
+</code></pre>
+<p><code>#date(y, m, d)</code> constructs a date literal; it is the safest way to build boundary dates.</p>
+<h3 id="dateaddmonths">Date.AddMonths</h3>
+<p><code>Date.AddMonths(d, n)</code> shifts by <code>n</code> months (negative for backwards). If the target month is shorter, the day is <strong>clipped to the month-end</strong>: <code>Date.AddMonths(#date(2025, 1, 31), 1)</code> = 28-02-2025; <code>Date.AddMonths(#date(2025, 2, 28), 1)</code> = 28-03-2025 (not 31-03). So repeatedly adding one month to a month-end drifts away from month-ends. To step month-ends reliably, add months to the <strong>start</strong> of the month and take the end:</p>
+<pre><code class="language-m">NextMonthEnd = Date.EndOfMonth(Date.AddMonths(Date.StartOfMonth([MonthEnd]), 1))
+</code></pre>
+<p>Uses: budget phasing (<code>List.Transform({0..11}, each Date.EndOfMonth(Date.AddMonths(#date(2025, 4, 1), _)))</code> gives the 12 month-ends of FY2025-26), Schedule III "6 months" boundaries (<code>Date.AddMonths(AsOfDate, -6)</code>), lease and loan schedules, and prior-year comparatives (<code>Date.AddMonths(d, -12)</code> or <code>Date.AddYears(d, -1)</code>).</p>
+<p><code>Date.AddDays(d, n)</code> adds days (due dates from credit days); <code>Date.AddYears</code> and <code>Date.AddWeeks</code> also exist.</p>
+<h3 id="durationdays">Duration.Days</h3>
+<p>Subtracting two dates gives a <strong>duration</strong>, not a number: <code>#date(2026, 3, 31) - #date(2026, 1, 10)</code> = <code>#duration(80, 0, 0, 0)</code>. <code>Duration.Days(dur)</code> returns the days component as a number (80). For datetimes, <code>Duration.Days</code> returns whole days only (the remaining hours are in <code>Duration.Hours</code>); <code>Duration.TotalDays</code> returns a fractional total. Both operands must be the same kind — date minus datetime raises an error.</p>
+<pre><code class="language-m">Days = Duration.Days(AsOfDate - [InvoiceDate])
+</code></pre>
+<p>Months between dates (for "1–2 years" bands) are better computed by comparing against <code>Date.AddMonths</code>/<code>Date.AddYears</code> boundaries than by dividing days by 30 or 365.</p>
+<h3 id="building-month-end-keys-and-calendars">Building month-end keys and calendars</h3>
+<p>A month-end date is the standard grain key for monthly facts (TB balances, budgets). A date list for a calendar dimension:</p>
+<pre><code class="language-m">Dates = List.Dates(#date(2024, 4, 1), Duration.Days(#date(2027, 3, 31) - #date(2024, 4, 1)) + 1, #duration(1, 0, 0, 0)),
+Cal   = Table.FromList(Dates, Splitter.SplitByNothing(), type table [Date = date])
+</code></pre>
+<p>Fiscal columns are then added with the formulas above (Week 11 builds this fully).</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<table>
+<thead>
+<tr>
+<th>Expression</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Date.Month(#date(2026, 2, 15))</code></td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>Date.Year(#date(2026, 2, 15)) + (if 2 &gt;= 4 then 1 else 0)</code></td>
+<td>2026 (FY2025-26)</td>
+</tr>
+<tr>
+<td><code>Date.EndOfMonth(#date(2024, 2, 10))</code></td>
+<td>29-02-2024 (leap year)</td>
+</tr>
+<tr>
+<td><code>Date.AddMonths(#date(2025, 8, 31), 1)</code></td>
+<td>30-09-2025</td>
+</tr>
+<tr>
+<td><code>Date.AddMonths(#date(2026, 3, 31), -6)</code></td>
+<td>30-09-2025</td>
+</tr>
+<tr>
+<td><code>Duration.Days(#date(2026, 3, 31) - #date(2025, 3, 31))</code></td>
+<td>365</td>
+</tr>
+<tr>
+<td><code>Duration.Days(#date(2024, 3, 31) - #date(2023, 3, 31))</code></td>
+<td>366 (includes 29-Feb-2024)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Leap years.</strong> Day-count bands of 365 days differ from calendar-year bands across 29 February; choose month-based boundaries where the definition says "year".</li>
+<li><strong>Datetime inputs from ERPs.</strong> SAP and SQL extracts often carry datetimes; convert with <code>Date.From</code> once, early.</li>
+<li><strong>Time zones.</strong> <code>DateTimeZone</code> values from APIs must be switched to IST (<code>DateTimeZone.SwitchZone(x, 5, 30)</code>) before taking the date, or transactions near midnight shift days.</li>
+<li><strong>Text dates.</strong> These functions require real dates; parse text dates with an explicit culture first (topic t2).</li>
+<li><strong>Clipping in schedules.</strong> For EMI or lease schedules starting on the 31st, decide whether payment dates are "same day, clipped" or "month-end", and implement deliberately.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li><code>Date.Month</code> and <code>Date.Year</code> drive FY end year and fiscal month; <code>Date.QuarterOfYear</code> is calendar-based and wrong for Indian FY quarters.</li>
+<li><code>Date.EndOfMonth</code> gives month-end keys; convert datetimes to dates first.</li>
+<li><code>Date.AddMonths</code> clips to month-end; step month-ends via start-of-month then end-of-month.</li>
+<li>Date subtraction returns a duration; <code>Duration.Days</code> extracts days; operands must be the same type.</li>
+<li>Build boundary dates with <code>#date</code> and month-based comparisons for "months/years" bands.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-evaluate-l1">Q1. Evaluate [L1]</h3>
+<p>Give the results: (a) <code>Date.AddMonths(#date(2025, 5, 31), 1)</code>; (b) <code>Date.EndOfMonth(Date.AddMonths(#date(2025, 5, 1), 1))</code>; (c) <code>Duration.Days(#date(2025, 10, 1) - #date(2025, 4, 1))</code>; (d) <code>Date.QuarterOfYear(#date(2025, 11, 5))</code> and the correct Indian fiscal quarter for that date.</p>
+<h3 id="q2-month-end-list-for-a-budget-l2">Q2. Month-end list for a budget [L2]</h3>
+<p>Write M that generates a table with one row per month-end of FY2025-26 (typed date) plus FY label, fiscal month and PeriodKey, starting only from a parameter <code>FYEndYear</code> = 2026.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Start from <code>#date(FYEndYear - 1, 4, 1)</code> and transform the list <code>{0..11}</code>.</p>
+</blockquote>
+<h3 id="q3-schedule-iii-bands-with-months-l2">Q3. Schedule III bands with months [L2]</h3>
+<p>Write a Custom Column that assigns Schedule III receivable bands (less than 6 months, 6 months–1 year, 1–2 years, 2–3 years, more than 3 years) from DueDate as at <code>AsOfDate</code>, using <code>Date.AddMonths</code> and <code>Date.AddYears</code> boundaries rather than day counts, with "Not due" for future due dates.</p>
+<h3 id="q4-datetime-defect-l2">Q4. Datetime defect [L2]</h3>
+<p>An ageing query raises "We cannot apply operator - to types Date and DateTime" for some refreshes, and in others month-end keys fail to relate to the Calendar table. Diagnose both symptoms and give the fix.</p></section>
+<nav class="pager"><a class="prev" href="S06_Group_By_Aggregations_for_Summary_Outputs_During.html">← Group By Aggregations for Summary Outputs During Ingestion</a><a class="next" href="../concepts/C01_FY_End_Year_and_FY_Label_Formula.html">FY End Year and FY Label Formula →</a></nav>
+</main></div></body></html>

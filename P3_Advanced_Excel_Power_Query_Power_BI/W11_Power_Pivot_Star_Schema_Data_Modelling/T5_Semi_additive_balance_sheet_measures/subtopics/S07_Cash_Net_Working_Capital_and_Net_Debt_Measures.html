@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cash, Net Working Capital and Net Debt Measures over Time · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S07_Cash_Net_Working_Capital_and_Net_Debt_Measures.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T5 · Semi-additive balance sheet measures</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Semi-additive balance sheet measures</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Additive_Semi_Additive_and_Non_Additive_Financial.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S01_Additive_Semi_Additive_and_Non_Additive_Financial.html">Additive, Semi-Additive and Non-Additive Financial Measures</a></li><li><a href="S02_Snapshot_Facts_vs_Transaction_Facts_for_Balances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S02_Snapshot_Facts_vs_Transaction_Facts_for_Balances.html">Snapshot Facts vs Transaction Facts for Balances</a></li><li><a href="S03_Closing_Balance_LASTDATE_vs_LASTNONBLANK_vs_a_MAX.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S03_Closing_Balance_LASTDATE_vs_LASTNONBLANK_vs_a_MAX.html">Closing Balance: LASTDATE vs LASTNONBLANK vs a MAX-Date Filter</a></li><li><a href="S04_Cumulative_Balances_from_GL_Movements_Including.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S04_Cumulative_Balances_from_GL_Movements_Including.html">Cumulative Balances from GL Movements, Including Opening Entries</a></li><li><a href="S05_Opening_Balances_with_OPENINGBALANCEMONTH_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S05_Opening_Balances_with_OPENINGBALANCEMONTH_and.html">Opening Balances with OPENINGBALANCEMONTH and OPENINGBALANCEYEAR</a></li><li><a href="S06_Average_Balances_for_DSO_Interest_Cost_and_Return.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S06_Average_Balances_for_DSO_Interest_Cost_and_Return.html">Average Balances for DSO, Interest Cost and Return Ratios</a></li><li><a href="S07_Cash_Net_Working_Capital_and_Net_Debt_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S07_Cash_Net_Working_Capital_and_Net_Debt_Measures.html">Cash, Net Working Capital and Net Debt Measures over Time</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Closing_Balance_with_LASTDATE_on_a_Snapshot_Fact.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C01_Closing_Balance_with_LASTDATE_on_a_Snapshot_Fact.html">Closing Balance with LASTDATE on a Snapshot Fact</a></li><li><a href="../concepts/C02_LASTNONBLANK_Closing_Balance_at_the_Last_Date_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C02_LASTNONBLANK_Closing_Balance_at_the_Last_Date_with.html">LASTNONBLANK: Closing Balance at the Last Date with Data</a></li><li><a href="../concepts/C03_Cumulative_Balance_with_FILTER_over_ALL_Dates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C03_Cumulative_Balance_with_FILTER_over_ALL_Dates.html">Cumulative Balance with FILTER over ALL Dates</a></li><li><a href="../concepts/C04_CLOSINGBALANCEYEAR_and_OPENINGBALANCEYEAR_with_a.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C04_CLOSINGBALANCEYEAR_and_OPENINGBALANCEYEAR_with_a.html">CLOSINGBALANCEYEAR and OPENINGBALANCEYEAR with a March Year-End</a></li><li><a href="../concepts/C05_Average_Receivables_with_AVERAGEX_over_Month_Ends.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C05_Average_Receivables_with_AVERAGEX_over_Month_Ends.html">Average Receivables with AVERAGEX over Month-Ends</a></li><li><a href="../concepts/C06_DSO_Measure_from_Average_Receivables_and_Days_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C06_DSO_Measure_from_Average_Receivables_and_Days_in.html">DSO Measure from Average Receivables and Days in Period</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Cash, Net Working Capital and Net Debt Measures over Time</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Cash, net working capital and Net Debt measures over time</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Cash, net working capital (NWC) and net debt are the three balance-sheet numbers a CFO, lender or investor looks at
+first. They drive the cash-flow statement (changes in NWC are the bridge from EBITDA to operating cash flow), covenant
+tests (Net Debt / EBITDA), the 3-statement model's balance sheet schedules and the DCF's free cash flow. In a Power BI
+model they are composite semi-additive measures: sums of several FS lines' closing balances, with sign conventions
+and definitional choices that must be explicit and consistent across periods.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="building-blocks">Building blocks</h3>
+<p>Start with one closing-balance base measure (snapshot or cumulative, s02–s04) and filter it by FS line. Present
+balances with assets positive and liabilities positive by flipping credits:</p>
+<pre><code class="language-DAX">Closing Bal = CALCULATE ( SUM ( TB[Balance] ), LASTDATE ( 'Date'[Date] ) )   -- Dr +, Cr −
+
+Cash &amp; CE        = CALCULATE ( [Closing Bal], CoA[FSLine] = &quot;Cash and cash equivalents&quot; )
+Other Bank Bal   = CALCULATE ( [Closing Bal], CoA[FSLine] = &quot;Bank balances other than cash and cash equivalents&quot; )
+Trade Receivables= CALCULATE ( [Closing Bal], CoA[FSLine] = &quot;Trade receivables&quot; )
+Inventories      = CALCULATE ( [Closing Bal], CoA[FSLine] = &quot;Inventories&quot; )
+Trade Payables   = - CALCULATE ( [Closing Bal], CoA[FSLine] = &quot;Trade payables&quot; )
+Borrowings       = - CALCULATE ( [Closing Bal], CoA[FSLine] IN { &quot;Non-current borrowings&quot;, &quot;Current borrowings&quot; } )
+Lease Liabilities= - CALCULATE ( [Closing Bal], CoA[FSLine] = &quot;Lease liabilities&quot; )
+</code></pre>
+<p>FS line names follow Schedule III Division II. Under Schedule III (as amended in 2021), current maturities of long-term
+borrowings are presented within current borrowings, and lease liabilities are presented separately.</p>
+<h3 id="cash">Cash</h3>
+<p><em>Ind AS 7</em> defines cash and cash equivalents as cash on hand, demand deposits and short-term, highly liquid
+investments readily convertible to known amounts of cash and subject to insignificant risk of changes in value (deposits
+with original maturity of three months or less are the usual benchmark). Schedule III separately presents "Bank
+balances other than cash and cash equivalents" (FDs of 3–12 months, earmarked balances, unpaid dividend accounts).
+Decide and document:</p>
+<ul>
+<li><strong>Cash for the cash-flow statement:</strong> Ind AS 7 C&amp;CE, net of bank overdrafts repayable on demand that form an integral
+  part of cash management (<em>Ind AS 7.8</em>).</li>
+<li><strong>Cash for net debt:</strong> often C&amp;CE + other bank balances + liquid mutual fund investments, excluding earmarked or
+  lien-marked balances.</li>
+</ul>
+<h3 id="net-working-capital">Net working capital</h3>
+<p>Operating NWC excludes cash, debt and tax/dividend items so that it isolates the trading cycle:</p>
+<pre><code class="language-DAX">NWC =
+[Trade Receivables] + [Inventories] + [Other Operating Current Assets]
+    - [Trade Payables] - [Other Operating Current Liabilities]
+</code></pre>
+<p>Define "other operating" lines through a CoA attribute (<code>CoA[NWCClass] = "Operating CA" / "Operating CL" / "Excluded"</code>)
+rather than hard-coding FS lines in the measure:</p>
+<pre><code class="language-DAX">NWC (by class) =
+CALCULATE ( [Closing Bal], CoA[NWCClass] IN { &quot;Operating CA&quot;, &quot;Operating CL&quot; } )
+</code></pre>
+<p>Because liabilities are credits (negative) in the GL, summing the raw signed balances of operating assets and
+liabilities gives NWC directly — no flips needed. That is the elegance of the sign convention: NWC = net debit balance
+of the operating working-capital accounts.</p>
+<p>Change in NWC for the cash-flow bridge:</p>
+<pre><code class="language-DAX">NWC Change = [NWC (by class)] - OPENINGBALANCEYEAR ( [NWC (by class)], 'Date'[Date], &quot;3/31&quot; )
+</code></pre>
+<p>An increase in NWC is a use of cash (negative in the indirect cash flow).</p>
+<h3 id="net-debt">Net debt</h3>
+<pre><code class="language-DAX">Net Debt =
+[Borrowings] + [Lease Liabilities] - [Cash &amp; CE] - [Other Bank Bal] - [Liquid Investments]
+</code></pre>
+<p>Definitional choices to make explicit (they vary between companies, lenders and analysts):</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Common treatment</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Current maturities of long-term debt</td>
+<td>Include</td>
+<td>In current borrowings under Schedule III</td>
+</tr>
+<tr>
+<td>Lease liabilities (Ind AS 116)</td>
+<td>Include for reported net debt; exclude for "pre-Ind AS 116" covenant tests</td>
+<td>Must match EBITDA definition (EBITDA after Ind AS 116 excludes rent)</td>
+</tr>
+<tr>
+<td>Interest accrued but not due</td>
+<td>Often included in loan-agreement definitions</td>
+<td>Other financial liabilities</td>
+</tr>
+<tr>
+<td>Liquid mutual funds</td>
+<td>Often deducted</td>
+<td>Ind AS 109 FVTPL investments</td>
+</tr>
+<tr>
+<td>Lien-marked FDs / margin money</td>
+<td>Exclude from cash</td>
+<td>Not freely available</td>
+</tr>
+<tr>
+<td>Preference shares classified as liabilities (Ind AS 32)</td>
+<td>Include</td>
+<td>Debt-like</td>
+</tr>
+</tbody>
+</table>
+<p>Leverage measures combine semi-additive net debt with an additive LTM flow:</p>
+<pre><code class="language-DAX">Net Debt / LTM EBITDA = DIVIDE ( [Net Debt], [R12M EBITDA] )
+</code></pre>
+<h3 id="over-time">Over time</h3>
+<p>All three measures inherit their time behaviour from <code>[Closing Bal]</code>: month rows show month-ends, quarter rows the
+quarter-end, FY rows 31 March. For trend lines, plot them at month-end on a continuous axis. For averages (average NWC
+days, average net debt for interest cost), use <code>AVERAGEX(VALUES('Date'[MonthEnd]), ...)</code> as in s06. Cap at the last
+closed date so the FY26 row shows the latest closed balance (or blank), never a blank-induced "zero debt".</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>Balances at 30 September 2025 (₹ crore, presentation signs): C&amp;CE 42; other bank balances 18 (of which 6 margin money);
+liquid MFs 25; trade receivables 210; inventories 165; other operating CA 34; trade payables 140; other operating CL 48;
+non-current borrowings 260; current borrowings 95 (including current maturities 40); lease liabilities 36.</p>
+<ul>
+<li>NWC = 210 + 165 + 34 − 140 − 48 = 221.</li>
+<li>Net debt (incl. leases, excluding margin money from cash) = 260 + 95 + 36 − 42 − 12 − 25 = 312.</li>
+<li>Net debt excluding leases = 276.</li>
+</ul>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Overdrafts:</strong> a bank account with a credit balance at month-end is a borrowing, not negative cash. Map OD accounts
+  to borrowings, or classify dynamically with a measure that tests the sign (rarely worth it — map them).</li>
+<li><strong>GST balances:</strong> electronic credit ledger (input tax credit) and GST payable are often netted in TB exports; for NWC
+  they are operating items, but for statutory presentation they are separate assets and liabilities.</li>
+<li><strong>Capital creditors:</strong> payables for capex are not operating working capital; tag them separately or NWC change will
+  hide capex timing in operating cash flow.</li>
+<li><strong>Customer advances and contract liabilities (Ind AS 115):</strong> operating current liabilities — include in NWC.</li>
+<li><strong>Window dressing:</strong> quarter-end balances can be managed (stretching payables in the last week of March); average
+  NWC and average net debt reveal it.</li>
+<li><strong>Consolidation:</strong> inter-company receivables/payables must be eliminated before NWC, or both sides inflate NWC in
+  entity-level sums.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Cash, NWC and net debt are composites of closing-balance measures filtered by FS line or CoA attribute.</li>
+<li>Use CoA attributes (<code>NWCClass</code>, <code>NetDebtClass</code>) rather than hard-coded lines; definitions change with lenders.</li>
+<li>Raw signed balances make NWC a simple sum; presentation flips belong in the final measures only.</li>
+<li>Make net debt choices (leases, liquid MFs, lien-marked deposits, interest accrued) explicit and match EBITDA.</li>
+<li>Over time, these measures inherit semi-additive behaviour; average them for ratio denominators.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-compute-nwc-and-net-debt-l1">Q1. Compute NWC and net debt [L1]</h3>
+<p>Balances at 31 March 2026 (₹ crore): C&amp;CE 28; FDs of 6 months 15; trade receivables 180; inventories 140; contract
+liabilities 22; trade payables 120; employee provisions (current) 9; capital creditors 14; borrowings (non-current 150,
+current 60); lease liabilities 25. Compute operating NWC and net debt with and without leases, stating each
+classification you made.</p>
+<h3 id="q2-design-the-coa-attributes-l2">Q2. Design the CoA attributes [L2]</h3>
+<p>Design <code>NWCClass</code> and <code>NetDebtClass</code> columns for a CoA with 40 BS accounts of an Indian manufacturing company. List the
+allowed values, classify ten representative accounts (including GST ITC, TDS receivable, capital advances, unpaid
+dividend account and an overdraft), and write the NWC and Net Debt measures that use them.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Some accounts belong in neither measure; give them an explicit "Excluded" value rather than leaving blanks.</p>
+</blockquote>
+<h3 id="q3-nwc-change-in-the-cash-flow-bridge-l2">Q3. NWC change in the cash-flow bridge [L2]</h3>
+<p>NWC was ₹ 196 crore at 31 March 2025 and ₹ 221 crore at 30 September 2025; EBITDA for H1 FY26 was ₹ 88 crore and tax
+paid ₹ 14 crore. Write the DAX for NWC Change YTD and compute operating cash flow for H1 using a simple EBITDA-based
+bridge, explaining the sign of the NWC term.</p>
+<h3 id="q4-covenant-definition-mismatch-l3">Q4. Covenant definition mismatch [L3]</h3>
+<p>A sanction letter defines Net Debt as total borrowings plus interest accrued less unencumbered cash and bank balances,
+and EBITDA as before Ind AS 116 adjustments (rent treated as an expense). Your dashboard's net debt includes lease
+liabilities and deducts liquid MFs, and its EBITDA is post-Ind AS 116. Explain how each mismatch moves the reported
+leverage ratio and redesign the measures so the dashboard shows both the reported and the covenant-basis ratio.</p></section>
+<nav class="pager"><a class="prev" href="S06_Average_Balances_for_DSO_Interest_Cost_and_Return.html">← Average Balances for DSO, Interest Cost and Return Ratios</a><a class="next" href="../concepts/C01_Closing_Balance_with_LASTDATE_on_a_Snapshot_Fact.html">Closing Balance with LASTDATE on a Snapshot Fact →</a></nav>
+</main></div></body></html>

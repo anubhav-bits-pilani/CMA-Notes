@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formula-Based Conditional Formatting for Variances and Scenarios · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S05_Formula_Based_Conditional_Formatting_for_Variances.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T6 · What-if analysis and input controls</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · What-if analysis and input controls</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_One_and_Two_Variable_Data_Tables_for_Sensitivity.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S01_One_and_Two_Variable_Data_Tables_for_Sensitivity.html">One- and Two-Variable Data Tables for Sensitivity Analysis</a></li><li><a href="S02_Goal_Seek_for_Break_Even_Target_Margin_Price_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S02_Goal_Seek_for_Break_Even_Target_Margin_Price_and.html">Goal Seek for Break-Even, Target-Margin Price and Required Growth</a></li><li><a href="S03_Scenario_Manager_Scenarios_Changing_Cells_and_the.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S03_Scenario_Manager_Scenarios_Changing_Cells_and_the.html">Scenario Manager: Scenarios, Changing Cells and the Summary Report</a></li><li><a href="S04_Data_Validation_Dropdowns_Dependent_Lists_Limits.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S04_Data_Validation_Dropdowns_Dependent_Lists_Limits.html">Data Validation: Dropdowns, Dependent Lists, Limits and Messages</a></li><li><a href="S05_Formula_Based_Conditional_Formatting_for_Variances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S05_Formula_Based_Conditional_Formatting_for_Variances.html">Formula-Based Conditional Formatting for Variances and Scenarios</a></li><li><a href="S06_Form_Controls_Linked_to_Cells_for_Model_Dashboards.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S06_Form_Controls_Linked_to_Cells_for_Model_Dashboards.html">Form Controls Linked to Cells for Model Dashboards</a></li><li><a href="S07_Solver_for_Product_Mix_and_Capital_Rationing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S07_Solver_for_Product_Mix_and_Capital_Rationing.html">Solver for Product Mix and Capital Rationing</a></li><li><a href="S08_Calculation_Mode_Automatic_Except_Data_Tables_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S08_Calculation_Mode_Automatic_Except_Data_Tables_and.html">Calculation Mode: Automatic Except Data Tables and F9 Recalculation</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_The_TABLE_Array_Formula_and_the_Same_Sheet_Input.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C01_The_TABLE_Array_Formula_and_the_Same_Sheet_Input.html">The TABLE Array Formula and the Same-Sheet Input Rule</a></li><li><a href="../concepts/C02_Goal_Seek_Rules_Formula_Set_Cell_Hard_Coded.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C02_Goal_Seek_Rules_Formula_Set_Cell_Hard_Coded.html">Goal Seek Rules: Formula Set Cell, Hard-Coded Changing Cell</a></li><li><a href="../concepts/C03_Dependent_Dropdown_Sources_INDIRECT_vs_a_Spill.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C03_Dependent_Dropdown_Sources_INDIRECT_vs_a_Spill.html">Dependent Dropdown Sources: INDIRECT vs a Spill Reference</a></li><li><a href="../concepts/C04_Conditional_Format_Rule_for_Negative_Rows_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C04_Conditional_Format_Rule_for_Negative_Rows_Column.html">Conditional Format Rule for Negative Rows: Column Locked, Row Relative</a></li><li><a href="../concepts/C05_Variance_Flag_Rule_with_a_Named_Threshold_Input.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C05_Variance_Flag_Rule_with_a_Named_Threshold_Input.html">Variance Flag Rule with a Named Threshold Input</a></li><li><a href="../concepts/C06_Scenario_Manager_Limits_32_Changing_Cells_and_a.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C06_Scenario_Manager_Limits_32_Changing_Cells_and_a.html">Scenario Manager Limits: 32 Changing Cells and a Static Summary</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Formula-Based Conditional Formatting for Variances and Scenarios</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Formula-based Conditional Formatting: negative variances, threshold bands, highlighting the selected scenario column</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A budget-vs-actual pack with 60 lines × 12 months is unreadable unless the eye is drawn to what matters: adverse variances, lines breaching a materiality threshold, the scenario currently driving the model, failed check cells. Built-in "Highlight Cells Rules" work on a cell's own value; formula-based rules can test <em>other</em> cells, combine conditions, and reference named thresholds — so formatting follows the model's logic rather than the cell's content. In FP&amp;A reporting this is how you get a variance report that highlights itself after every refresh, and in modelling it is how a reviewer instantly sees which scenario column is live and whether every check is green.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="how-formula-rules-evaluate">How formula rules evaluate</h3>
+<p>Home → Conditional Formatting → New Rule → "Use a formula to determine which cells to format" (Alt, H, L, N). You write a formula that returns TRUE/FALSE <strong>as if for the top-left cell of the Applies-to range</strong>. Excel then adjusts relative references for every other cell, exactly like copying a formula. That is why mixed references are the core skill:</p>
+<table>
+<thead>
+<tr>
+<th>Reference</th>
+<th>Locks</th>
+<th>Effect across the block</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$E5</code></td>
+<td>Column</td>
+<td>Every cell in row 5 tests E5 — the whole row is formatted by one column's value</td>
+</tr>
+<tr>
+<td><code>E$4</code></td>
+<td>Row</td>
+<td>Every cell in column E tests E4 — the whole column is formatted by a header</td>
+</tr>
+<tr>
+<td><code>E5</code></td>
+<td>Neither</td>
+<td>Each cell tests itself (relative)</td>
+</tr>
+<tr>
+<td>Named cell (<code>Thr</code>)</td>
+<td>Both</td>
+<td>Every cell tests the same input</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rule-1-negative-adverse-variances-whole-row">Rule 1: negative (adverse) variances — whole row</h3>
+<p>P&amp;L block B5:H64 with variance in column E (Actual − Budget, sign-adjusted so negative = adverse).</p>
+<ul>
+<li>Applies to: <code>=B5:H64</code> (written by Excel in absolute form).</li>
+<li>Formula: <code>=$E5&lt;0</code></li>
+<li>Format: light red fill, dark red font.</li>
+</ul>
+<p>Because the column is locked and the row is relative, each row looks at its own column E value, and the whole row from B to H is shaded. Writing <code>=E5&lt;0</code> instead would test a different column for each cell (C tests E, D tests F …) — the most common CF error.</p>
+<p><strong>Sign convention:</strong> for revenue lines, adverse = actual below budget; for cost lines, adverse = actual above budget. Normalise in the variance column (e.g. <code>=IF(Type="Cost", Budget-Actual, Actual-Budget)</code>) so a single rule works for all lines.</p>
+<h3 id="rule-2-threshold-bands">Rule 2: threshold bands</h3>
+<p>Highlight variances by size relative to materiality inputs <code>Thr_Amber</code> (₹10 lakh) and <code>Thr_Red</code> (₹25 lakh):</p>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Formula</th>
+<th>Format</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>=ABS($F5)&gt;=Thr_Red</code></td>
+<td>Red fill, Stop If True</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>=ABS($F5)&gt;=Thr_Amber</code></td>
+<td>Amber fill</td>
+</tr>
+</tbody>
+</table>
+<p>Column F holds the ₹ variance. Rules are evaluated in priority order (Manage Rules → move up/down); "Stop If True" prevents a red cell from also being tested for amber (only matters where formats conflict). Percentage bands are similar: <code>=ABS($G5)&gt;=Pct_Red</code> on a variance % column — but guard tiny budgets, where % variances explode; combine with an absolute floor using AND inside a single rule, e.g. <code>=AND(ABS(F5)&gt;=Thr_Amber, ABS(G5)&gt;=Pct_Amber)</code> applied to a single column, or with mixed references applied to the row.</p>
+<p>Threshold cells should be named inputs, not typed into the rule, so materiality can be changed by the controller without editing rules.</p>
+<h3 id="rule-3-highlight-the-selected-scenario-column">Rule 3: highlight the selected scenario column</h3>
+<p>Assumptions block with Base / Upside / Downside in columns E:G, headers in row 4, and a dropdown <code>SelScen</code> (s04):</p>
+<ul>
+<li>Applies to: <code>=E4:G40</code></li>
+<li>Formula: <code>=E$4=SelScen</code></li>
+<li>Format: pale blue fill, bold.</li>
+</ul>
+<p>Row is locked, so each column compares its own header with the selection. Change the dropdown to "Downside" and column G lights up — the reviewer sees which values are driving the model.</p>
+<h3 id="rule-4-base-case-in-a-sensitivity-grid">Rule 4: base case in a sensitivity grid</h3>
+<p>2D Data Table with growth rates across row 5 (D5:F5) and WACC down column C (C6:C8); highlight the cell matching live inputs <code>TG</code> and <code>WACC</code>:</p>
+<ul>
+<li>Applies to: <code>=D6:F8</code></li>
+<li>Formula: <code>=AND(D$5=TG, $C6=WACC)</code></li>
+</ul>
+<p>Use ROUND on both sides if inputs are calculated (floating-point mismatch can prevent a match): <code>=AND(ROUND(D$5,4)=ROUND(TG,4), ROUND($C6,4)=ROUND(WACC,4))</code>.</p>
+<h3 id="rule-5-check-cells-and-data-quality">Rule 5: check cells and data quality</h3>
+<ul>
+<li>Check cell turns red when not zero: <code>=ABS(C3)&gt;0.5</code> (tolerance for rounding).</li>
+<li>Unmapped ledger rows in the TB: <code>=ISNA(XMATCH($A5, Map[Ledger]))</code> — conditional formatting cannot use structured references directly in some versions; use a defined name for <code>Map[Ledger]</code>.</li>
+<li>Future dates in an actuals block: <code>=C$4&gt;LastClose</code> greys out forecast columns.</li>
+</ul>
+<h3 id="management-of-rules">Management of rules</h3>
+<ul>
+<li><strong>Manage Rules</strong> (Alt, H, L, R) with "Show formatting rules for: This Worksheet" lists every rule, its formula, format, Applies-to range and order.</li>
+<li>Keep one rule per purpose applied to the whole block, rather than many small rules.</li>
+<li>Clear rules from a range before re-applying; copy formats with Format Painter or Paste Special → Formats knowingly (this duplicates rules — see pitfalls).</li>
+</ul>
+<h3 id="accessibility-and-design">Accessibility and design</h3>
+<p>Do not rely on red/green alone (colour blindness affects roughly 8% of men); pair fills with icon sets, bold, or a text flag column ("Adverse"). Keep the palette consistent across the pack: red = adverse/failed check, amber = watch, blue = input/selected scenario.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Relative reference drift.</strong> If the Applies-to range starts at row 6 but the formula was written for row 5, every cell tests the row above. Always write the formula for the top-left cell of the Applies-to range.</li>
+<li><strong>Blank cells.</strong> <code>=$E5&lt;0</code> is FALSE for blanks, but <code>=ABS($F5)&gt;=Thr</code> errors on text; wrap with <code>N()</code> or ISNUMBER.</li>
+<li><strong>Performance.</strong> Thousands of rules or volatile functions (TODAY, INDIRECT, OFFSET) inside rules slow scrolling and recalculation.</li>
+<li><strong>Cross-sheet references</strong> in CF formulas are allowed in modern Excel, but defined names are clearer and survive sheet renames.</li>
+<li><strong>Inserted rows</strong> extend the Applies-to range if inserted inside it; rows appended below are not covered — format the full reserved area or use a Table.</li>
+<li><strong>Printing/PDF</strong>: fills print, but some icon sets and data bars render poorly in PDF board packs; test.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Formula rules are written for the top-left cell of the Applies-to range and adjust like copied formulas.</li>
+<li><code>=$E5&lt;0</code> (column locked) formats whole rows; <code>=E$4=SelScen</code> (row locked) formats whole columns.</li>
+<li>Put thresholds in named input cells; order rules by priority and use Stop If True for bands.</li>
+<li>Highlight the live scenario column and the base case in sensitivity grids so reviewers see what drives outputs.</li>
+<li>Manage rules centrally, avoid duplicates, and do not rely on colour alone.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-write-the-rules-l1">Q1. Write the rules [L1]</h3>
+<p>A budget-vs-actual block occupies B6:N80 with the variance (₹, sign-normalised) in column M and variance % in column N. Write formula rules and Applies-to ranges for: (a) shading the whole row when the variance is adverse; (b) bold red text in column N where the absolute variance % exceeds a named input <code>PctThr</code>; (c) greying out rows where the budget is zero.</p>
+<h3 id="q2-why-is-the-wrong-column-shaded-l2">Q2. Why is the wrong column shaded? [L2]</h3>
+<p>A colleague applied <code>=E6&lt;0</code> to B6:H60 to shade rows with negative variances in column E. Describe what actually happens in columns B, C, D and H, and give the corrected rule.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Treat the rule as a formula written in B6 and copied across the range.</p>
+</blockquote>
+<h3 id="q3-scenario-and-sensitivity-highlights-l2">Q3. Scenario and sensitivity highlights [L2]</h3>
+<p>Design two rules: one that highlights the active scenario column in an assumptions block (Base/Upside/Downside/Stress in F:I, headers in row 5, selection in <code>SelScen</code>), and one that highlights the base-case cell in a 7 × 7 WACC × growth Data Table. Explain why you might need ROUND in the second rule.</p>
+<h3 id="q4-rag-status-pack-l3">Q4. RAG status pack [L3]</h3>
+<p>The CFO wants a monthly department pack with red/amber/green status per department for cost variances: red if the adverse variance exceeds both ₹20 lakh and 10% of budget, amber if it exceeds either, green otherwise. Design the variance columns, the CF rules and their priority, and an accessible non-colour indicator.</p></section>
+<nav class="pager"><a class="prev" href="S04_Data_Validation_Dropdowns_Dependent_Lists_Limits.html">← Data Validation: Dropdowns, Dependent Lists, Limits and…</a><a class="next" href="S06_Form_Controls_Linked_to_Cells_for_Model_Dashboards.html">Form Controls Linked to Cells for Model Dashboards →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Percentage of Total Opex with ALL on Cost Centre · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T3 · Core financial DAX functions</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Core financial DAX functions</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Row_Context_Filter_Context_and_Context_Transition.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S01_Row_Context_Filter_Context_and_Context_Transition.html">Row Context, Filter Context and Context Transition</a></li><li><a href="../subtopics/S02_CALCULATE_Filter_Arguments_and_Modifiers.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S02_CALCULATE_Filter_Arguments_and_Modifiers.html">CALCULATE Filter Arguments and Modifiers</a></li><li><a href="../subtopics/S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html">Iterators SUMX and AVERAGEX for Row-Level Maths</a></li><li><a href="../subtopics/S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html">FILTER vs Boolean Column Filters: Meaning and Performance</a></li><li><a href="../subtopics/S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html">ALL, ALLEXCEPT and ALLSELECTED for Share and Contribution Analysis</a></li><li><a href="../subtopics/S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html">RELATED and RELATEDTABLE in Columns and Iterators</a></li><li><a href="../subtopics/S07_DIVIDE_Measures_vs_Calculated_Columns_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S07_DIVIDE_Measures_vs_Calculated_Columns_and.html">DIVIDE, Measures vs Calculated Columns, and VAR/RETURN</a></li><li><a href="../subtopics/S08_Explicit_Measures_Display_Folders_and_LakhCrore.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S08_Explicit_Measures_Display_Folders_and_LakhCrore.html">Explicit Measures, Display Folders and ₹ Lakh/Crore Formats</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html">Base Actual Measure and a Filtered Revenue Measure</a></li><li><a href="C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html">Percentage of Total Opex with ALL on Cost Centre</a></li><li><a href="C03_Percentage_within_Statement_with_ALLEXCEPT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C03_Percentage_within_Statement_with_ALLEXCEPT.html">Percentage within Statement with ALLEXCEPT</a></li><li><a href="C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html">FX-Converted Revenue with SUMX and RELATED</a></li><li><a href="C05_Sign_Aware_Variance_with_VAR_and_ABS.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C05_Sign_Aware_Variance_with_VAR_and_ABS.html">Sign-Aware Variance % with VAR and ABS</a></li><li><a href="C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html">KEEPFILTERS to Intersect Rather Than Overwrite</a></li><li><a href="C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html">DIVIDE and Its BLANK Default for Zero Denominators</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Percentage of Total Opex with ALL on Cost Centre</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>% of Total Opex = DIVIDE([Actual], CALCULATE([Actual], ALL(CostCentre)))</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-DAX">% of Total Opex =
+DIVIDE (
+    [Actual],
+    CALCULATE ( [Actual], ALL ( CostCentre ) )
+)
+</code></pre>
+<p>\[
+\text{Share}_{cc} = \frac{A(cc)}{A(\text{all cost centres})}
+\]</p>
+<p>where \(A(\cdot)\) is <code>[Actual]</code> evaluated in the current filter context, and the denominator is the same measure
+with <strong>all filters on the CostCentre table removed</strong> — filters on Date, CoA, Branch remain.</p>
+<h2 id="explanation">Explanation</h2>
+<p>The numerator responds to the matrix row (one cost centre); the denominator ignores every CostCentre filter —
+rows, slicers on CostCentre columns, page filters on CostCentre — so it is the total for all cost centres within the
+other active filters. For this to be "opex", the visual or the measure must also filter CoA to operating expense lines
+(e.g. a page filter <code>CoA[Statement] = "Profit and Loss"</code> and FS lines for expenses), because a denominator of all
+accounts in a balanced GL nets to nil.</p>
+<p>Points:</p>
+<ul>
+<li><strong>Slicer behaviour.</strong> If the user slices <code>CostCentre[Function] = "Sales"</code>, the denominator still includes Admin and
+  Plant — visible shares sum to the sales share of the total (say 42%), not 100%. Use <code>ALLSELECTED(CostCentre)</code> for
+  "share of selection" (s05).</li>
+<li><strong>Grand total row</strong> shows the share of total for all visible cost centres — 100% without slicers.</li>
+<li><strong>Explicit opex filter</strong> makes it robust:</li>
+</ul>
+<pre><code class="language-DAX">Opex = CALCULATE ( [Actual Signed], CoA[FSLine] IN { &quot;Employee benefits expense&quot;, &quot;Other expenses&quot; } )
+% of Total Opex (robust) = DIVIDE ( [Opex], CALCULATE ( [Opex], REMOVEFILTERS ( CostCentre ) ) )
+</code></pre>
+<ul>
+<li><strong>ALL(CostCentre) vs ALL(GL[CostCentreKey]).</strong> Remove filters on the dimension; a visible fact key would be a
+  separate filter (and should be hidden).</li>
+<li><strong>Snowflakes.</strong> If Department is a separate table filtering CostCentre, ALL(CostCentre) does not remove the
+  Department filter; flatten the model or remove both.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>FY2025-26 opex (₹ crore), all cost centres:</p>
+<table>
+<thead>
+<tr>
+<th>Cost centre</th>
+<th>Function</th>
+<th>Opex</th>
+<th>% of Total Opex</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HO-FIN</td>
+<td>Admin</td>
+<td>9.0</td>
+<td>15.0%</td>
+</tr>
+<tr>
+<td>HO-HR</td>
+<td>Admin</td>
+<td>6.0</td>
+<td>10.0%</td>
+</tr>
+<tr>
+<td>MUM-SALES</td>
+<td>Sales</td>
+<td>15.0</td>
+<td>25.0%</td>
+</tr>
+<tr>
+<td>DEL-SALES</td>
+<td>Sales</td>
+<td>12.0</td>
+<td>20.0%</td>
+</tr>
+<tr>
+<td>PUN-PLANT</td>
+<td>Plant</td>
+<td>18.0</td>
+<td>30.0%</td>
+</tr>
+<tr>
+<td>Total</td>
+<td></td>
+<td>60.0</td>
+<td>100.0%</td>
+</tr>
+</tbody>
+</table>
+<p>With a slicer Function = Sales: MUM-SALES 25%, DEL-SALES 20%, total 45%.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Subtopic s05 (ALL vs ALLEXCEPT vs ALLSELECTED) and s07 (DIVIDE).</li>
+<li>Concept c03 (% within Statement with ALLEXCEPT).</li>
+<li>Topic 1 (cost-centre dimension design; hidden fact keys).</li>
+<li>FP&amp;A practice: cost allocation bases and overhead absorption reviews in Weeks 17–20.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-share-of-selection-l1">Q1. Share of selection [L1]</h3>
+<p>Rewrite the measure so that shares always sum to 100% of whatever cost centres the user has selected in slicers, and
+describe one situation where the original ALL version is preferable.</p>
+<h3 id="q2-department-share-l2">Q2. Department share [L2]</h3>
+<p>Write a measure showing each cost centre's share of its own Department's opex (CostCentre has a Department column),
+and explain why <code>ALL(CostCentre)</code> is not suitable.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Keep the Department filter while removing the cost-centre-level filter.</p>
+</blockquote>
+<h3 id="q3-balanced-gl-denominator-l2">Q3. Balanced GL denominator [L2]</h3>
+<p>A colleague's version shows 0% or blank everywhere when the page has no CoA filter. Explain why, using double-entry
+logic, and fix the measure so it works on any page.</p></section>
+<nav class="pager"><a class="prev" href="C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html">← Base Actual Measure and a Filtered Revenue Measure</a><a class="next" href="C03_Percentage_within_Statement_with_ALLEXCEPT.html">Percentage within Statement with ALLEXCEPT →</a></nav>
+</main></div></body></html>

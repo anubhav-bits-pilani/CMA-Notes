@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Row Context, Filter Context and Context Transition · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S01_Row_Context_Filter_Context_and_Context_Transition.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T3 · Core financial DAX functions</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Core financial DAX functions</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Row_Context_Filter_Context_and_Context_Transition.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S01_Row_Context_Filter_Context_and_Context_Transition.html">Row Context, Filter Context and Context Transition</a></li><li><a href="S02_CALCULATE_Filter_Arguments_and_Modifiers.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S02_CALCULATE_Filter_Arguments_and_Modifiers.html">CALCULATE Filter Arguments and Modifiers</a></li><li><a href="S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html">Iterators SUMX and AVERAGEX for Row-Level Maths</a></li><li><a href="S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html">FILTER vs Boolean Column Filters: Meaning and Performance</a></li><li><a href="S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html">ALL, ALLEXCEPT and ALLSELECTED for Share and Contribution Analysis</a></li><li><a href="S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html">RELATED and RELATEDTABLE in Columns and Iterators</a></li><li><a href="S07_DIVIDE_Measures_vs_Calculated_Columns_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S07_DIVIDE_Measures_vs_Calculated_Columns_and.html">DIVIDE, Measures vs Calculated Columns, and VAR/RETURN</a></li><li><a href="S08_Explicit_Measures_Display_Folders_and_LakhCrore.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S08_Explicit_Measures_Display_Folders_and_LakhCrore.html">Explicit Measures, Display Folders and ₹ Lakh/Crore Formats</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html">Base Actual Measure and a Filtered Revenue Measure</a></li><li><a href="../concepts/C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html">Percentage of Total Opex with ALL on Cost Centre</a></li><li><a href="../concepts/C03_Percentage_within_Statement_with_ALLEXCEPT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C03_Percentage_within_Statement_with_ALLEXCEPT.html">Percentage within Statement with ALLEXCEPT</a></li><li><a href="../concepts/C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html">FX-Converted Revenue with SUMX and RELATED</a></li><li><a href="../concepts/C05_Sign_Aware_Variance_with_VAR_and_ABS.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C05_Sign_Aware_Variance_with_VAR_and_ABS.html">Sign-Aware Variance % with VAR and ABS</a></li><li><a href="../concepts/C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html">KEEPFILTERS to Intersect Rather Than Overwrite</a></li><li><a href="../concepts/C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html">DIVIDE and Its BLANK Default for Zero Denominators</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Row Context, Filter Context and Context Transition</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Row context vs filter context, and context transition when an iterator wraps a measure or CALCULATE</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Almost every surprising DAX result in a finance model — a variance that totals wrongly, a calculated column showing
+the grand total on every row, an FX-converted revenue twenty times too large — comes from misunderstanding
+<strong>evaluation context</strong>. Excel formulas refer to cells; DAX expressions are evaluated "in a context" that is set by the
+visual, the slicers, CALCULATE and iterators. If you can say, for any expression, <em>which rows are visible</em> (filter
+context) and <em>which row is current</em> (row context), you can predict its result. Context transition — the conversion
+of row context into filter context — is the single concept that separates people who debug DAX by trial and error
+from those who reason about it.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="filter-context">Filter context</h3>
+<p>The <strong>filter context</strong> is the set of filters active on the model's columns when an expression is evaluated. It
+comes from:</p>
+<ul>
+<li>visual coordinates — the row and column headers of a matrix cell (e.g. <code>CoA[FSLine] = "Revenue from operations"</code>,
+  <code>'Date'[FY] = "FY2025-26"</code>);</li>
+<li>slicers, page, report and visual filters;</li>
+<li>CALCULATE / CALCULATETABLE filter arguments and modifiers;</li>
+<li>RLS roles.</li>
+</ul>
+<p>Filters on dimension columns propagate through relationships (one → many) to facts. <code>SUM(GL[Amount])</code> then sums only
+GL rows that survive all filters. In SQL terms, filter context is the WHERE clause plus the GROUP BY values of the
+current cell.</p>
+<h3 id="row-context">Row context</h3>
+<p>A <strong>row context</strong> exists when DAX iterates a table row by row and an expression refers to "the current row". It is
+created by:</p>
+<ul>
+<li><strong>calculated columns</strong> (each row of the table being computed);</li>
+<li><strong>iterator functions</strong>: SUMX, AVERAGEX, MINX, MAXX, COUNTX, FILTER, ADDCOLUMNS, SELECTCOLUMNS, GENERATE, RANKX …</li>
+</ul>
+<p>In a row context, <code>GL[Amount]</code> means "the Amount of the current row". Crucially, <strong>row context does not filter
+anything</strong>. It does not propagate through relationships (use RELATED to reach the one side) and it does not affect
+aggregations: inside a calculated column on CoA, <code>SUM(GL[Amount])</code> returns the <strong>total of the entire GL</strong> on every
+row, because no filter context exists in a calculated column.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Filter context</th>
+<th>Row context</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Created by</td>
+<td>Visuals, slicers, CALCULATE</td>
+<td>Calculated columns, iterators</td>
+</tr>
+<tr>
+<td>Meaning</td>
+<td>Which rows are visible</td>
+<td>Which row is current</td>
+</tr>
+<tr>
+<td>Propagates through relationships</td>
+<td>Yes (one → many, or both if set)</td>
+<td>No (use RELATED / RELATEDTABLE)</td>
+</tr>
+<tr>
+<td>Affects SUM, COUNTROWS</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="context-transition">Context transition</h3>
+<p><strong>Context transition</strong> is the transformation of every row context active at that point into an equivalent filter
+context. It happens:</p>
+<ol>
+<li>whenever <strong>CALCULATE</strong> (or CALCULATETABLE) is invoked inside a row context; and</li>
+<li>whenever a <strong>measure reference</strong> is evaluated inside a row context — because every measure is implicitly wrapped
+   in CALCULATE.</li>
+</ol>
+<p>The current row's values on <strong>all columns of the iterated table</strong> become filters (for a table with a unique key,
+effectively a filter on that row), and those filters then propagate through relationships.</p>
+<p>Example, a calculated column on CoA:</p>
+<pre><code class="language-DAX">-- Calculated column on CoA
+Total GL (wrong)   = SUM ( GL[Amount] )               -- same grand total on every row
+Total GL (correct) = CALCULATE ( SUM ( GL[Amount] ) ) -- context transition: this account only
+Total GL (measure) = [Actual]                         -- same as above; measure implies CALCULATE
+</code></pre>
+<p>In an iterator:</p>
+<pre><code class="language-DAX">Sales by Customer (correct) = SUMX ( Customers, [Sales] )
+Sales by Customer (wrong)   = SUMX ( Customers, SUM ( Sales[Amount] ) )
+</code></pre>
+<p>In the first, <code>[Sales]</code> triggers context transition for each customer row, so it returns that customer's sales; the
+SUMX adds them, giving the correct total (and the same result as <code>[Sales]</code> itself when customers are unique). In the
+second, <code>SUM(Sales[Amount])</code> ignores the row context and returns the total sales in the current filter context for
+<strong>every</strong> customer; SUMX then multiplies the total by the number of customers.</p>
+<h3 id="costs-and-traps-of-context-transition">Costs and traps of context transition</h3>
+<ul>
+<li><strong>Duplicate rows.</strong> If the iterated table has duplicate rows (no unique key, e.g. iterating a fact table with
+  identical lines), context transition filters on all column values, so each duplicate's evaluation sees <em>all</em> the
+  identical rows — the result is multiplied. Iterate dimension tables or <code>VALUES(column)</code>, not raw facts, when
+  calling measures.</li>
+<li><strong>Performance.</strong> Context transition over crore-row facts is expensive; iterate the smallest table that gives the
+  needed granularity (<code>VALUES('Date'[MonthEnd])</code>, <code>VALUES(CoA[AccountKey])</code>).</li>
+<li><strong>Calculated columns referencing measures</strong> in fact tables can create circular dependencies and are slow at refresh.</li>
+<li><strong>Transition removes nothing.</strong> Context transition <em>adds</em> filters; existing filters from the visual remain unless
+  overridden on the same columns.</li>
+</ul>
+<h3 id="illustration">Illustration</h3>
+<p>Data: three customers in the current filter (FY2025-26, Branch = Pune) with sales ₹40 lakh, ₹25 lakh and ₹15 lakh
+(total ₹80 lakh).</p>
+<table>
+<thead>
+<tr>
+<th>Expression</th>
+<th>Result</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[Sales]</code></td>
+<td>₹80 lakh</td>
+<td>Filter context: Pune, FY2025-26</td>
+</tr>
+<tr>
+<td><code>SUMX(Customers, [Sales])</code></td>
+<td>₹80 lakh</td>
+<td>Context transition per customer: 40 + 25 + 15</td>
+</tr>
+<tr>
+<td><code>SUMX(Customers, SUM(Sales[Amount]))</code></td>
+<td>₹240 lakh</td>
+<td>80 evaluated three times (row context ignored)</td>
+</tr>
+<tr>
+<td><code>AVERAGEX(Customers, [Sales])</code></td>
+<td>₹26.67 lakh</td>
+<td>Average sales per customer</td>
+</tr>
+</tbody>
+</table>
+<p>(Strictly, <code>Customers</code> inside SUMX here means the customers visible in the filter context; if the Customers table is
+not filtered by the Branch slicer — e.g. Branch filters Sales but not Customers — SUMX iterates <em>all</em> customers, but
+customers without Pune sales contribute zero to the correct version and ₹80 lakh each to the wrong one.)</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Nested row contexts.</strong> In <code>SUMX(CoA, SUMX(RELATEDTABLE(GL), ...))</code> two row contexts exist; EARLIER or, better,
+  VAR captures the outer value.</li>
+<li><strong>ALLSELECTED and iterators.</strong> ALLSELECTED reads the "shadow" filter context left by visual filters; inside
+  iterators with context transition, its result can surprise — test carefully (s05).</li>
+<li><strong>Measures in calculated columns</strong> of the Date table are fine for small tables (e.g. IsYTD flags), but avoid them
+  on GL.</li>
+<li><strong>Blank rows from relationships.</strong> Iterating <code>VALUES(CoA[AccountKey])</code> includes the blank member if orphans exist;
+  <code>DISTINCT</code> excludes it.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Filter context decides which rows are visible; row context decides which row is current.</li>
+<li>Row context does not filter and does not follow relationships; aggregations ignore it.</li>
+<li>CALCULATE and every measure reference convert row context into filter context (context transition).</li>
+<li><code>SUMX(Customers, [Sales])</code> sums per-customer sales; <code>SUMX(Customers, SUM(Sales[Amount]))</code> repeats the total.</li>
+<li>Iterate small, unique-keyed tables when calling measures to avoid duplication and slow queries.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-predict-the-column-l1">Q1. Predict the column [L1]</h3>
+<p>On the CoA table (650 accounts), you add three calculated columns: <code>A = SUM(GL[Amount])</code>, <code>B = CALCULATE(SUM(GL[Amount]))</code>
+and <code>C = [Actual]</code>. GL total is ₹0 (balanced) and account 400100 has −₹12 crore. State the value of A, B and C on the
+400100 row and explain why.</p>
+<h3 id="q2-explain-the-inflated-total-l2">Q2. Explain the inflated total [L2]</h3>
+<p>A measure <code>Revenue INR = SUMX(Sales, SUM(Sales[AmountFC]) * RELATED(FX[Rate]))</code> returns ₹3,400 crore for April 2025
+while the expected figure is about ₹42 crore. Explain the cause using context terminology and correct the measure.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Decide which part of the expression should be row-level.</p>
+</blockquote>
+<h3 id="q3-duplicates-and-context-transition-l2">Q3. Duplicates and context transition [L2]</h3>
+<p>GL has two identical rows (same voucher, account, date, cost centre, amount ₹50,000). <code>SUMX(GL, [Actual])</code> returns
+₹2,00,000 for them instead of ₹1,00,000. Explain why and propose two ways to avoid the problem.</p>
+<h3 id="q4-interview-sumx-vs-sum-l1">Q4. Interview: SUMX vs SUM [L1]</h3>
+<p>In an interview, explain the difference between <code>SUMX(Customers, [Sales])</code> and <code>SUMX(Customers, SUM(Sales[Amount]))</code>
+in under 100 words, using the phrase "context transition".</p>
+<h3 id="q5-choose-the-iteration-grain-l3">Q5. Choose the iteration grain [L3]</h3>
+<p>You need average monthly opex per cost centre for FY2025-26 (sum of opex per month, averaged over 12 months, then
+shown by cost centre with a total row). Write the measure, state which table you iterate and why, and describe how the
+total row is computed.</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← Core financial DAX functions</a><a class="next" href="S02_CALCULATE_Filter_Arguments_and_Modifiers.html">CALCULATE Filter Arguments and Modifiers →</a></nav>
+</main></div></body></html>

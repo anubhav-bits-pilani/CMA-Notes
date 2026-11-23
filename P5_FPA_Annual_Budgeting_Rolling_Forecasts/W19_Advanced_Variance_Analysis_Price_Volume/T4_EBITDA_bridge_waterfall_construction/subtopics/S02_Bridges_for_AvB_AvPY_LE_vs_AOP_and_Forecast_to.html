@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bridges for AvB, AvPY, LE vs AOP and Forecast-to-Forecast · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S02_Bridges_for_AvB_AvPY_LE_vs_AOP_and_Forecast_to.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 5</a> <span>›</span> <a href="../../index.html">Week 19</a> <span>›</span> <a href="../index.html">T4 · EBITDA bridge waterfall construction</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · EBITDA bridge waterfall construction</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Standard_Step_Sequence_for_a_Budget_to_Actual.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S01_Standard_Step_Sequence_for_a_Budget_to_Actual.html">Standard Step Sequence for a Budget-to-Actual EBITDA Bridge</a></li><li><a href="S02_Bridges_for_AvB_AvPY_LE_vs_AOP_and_Forecast_to.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S02_Bridges_for_AvB_AvPY_LE_vs_AOP_and_Forecast_to.html">Bridges for AvB, AvPY, LE vs AOP and Forecast-to-Forecast</a></li><li><a href="S03_Excel_Waterfall_Charts_Native_Chart_and_Stacked.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S03_Excel_Waterfall_Charts_Native_Chart_and_Stacked.html">Excel Waterfall Charts: Native Chart and Stacked-Column Fallback</a></li><li><a href="S04_Power_BI_Waterfall_Visual_Breakdown_Ordering_and.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S04_Power_BI_Waterfall_Visual_Breakdown_Ordering_and.html">Power BI Waterfall Visual: Breakdown, Ordering and Bridge Measures</a></li><li><a href="S05_Grouping_Small_Items_into_Other_and_Labelling_in.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S05_Grouping_Small_Items_into_Other_and_Labelling_in.html">Grouping Small Items into &quot;Other&quot; and Labelling in ₹ Crore and bps</a></li><li><a href="S06_The_Reconciliation_Table_Behind_an_EBITDA_Bridge.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S06_The_Reconciliation_Table_Behind_an_EBITDA_Bridge.html">The Reconciliation Table Behind an EBITDA Bridge</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Bridge_Integrity_Zero_Residual_Between_End_Points.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/concepts/C01_Bridge_Integrity_Zero_Residual_Between_End_Points.html">Bridge Integrity: Zero Residual Between End Points</a></li><li><a href="../concepts/C02_Valuation_Basis_of_Each_Bridge_Step.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/concepts/C02_Valuation_Basis_of_Each_Bridge_Step.html">Valuation Basis of Each Bridge Step</a></li><li><a href="../concepts/C03_Stacked_Column_Waterfall_Arithmetic_Invisible_Base.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/concepts/C03_Stacked_Column_Waterfall_Arithmetic_Invisible_Base.html">Stacked-Column Waterfall Arithmetic: Invisible Base and Visible Bar</a></li><li><a href="../concepts/C04_EBITDA_Margin_Bridge_in_Basis_Points.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/concepts/C04_EBITDA_Margin_Bridge_in_Basis_Points.html">EBITDA Margin Bridge in Basis Points</a></li><li><a href="../concepts/C05_Order_Dependence_of_Bridge_Steps.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/concepts/C05_Order_Dependence_of_Bridge_Steps.html">Order Dependence of Bridge Steps</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Bridges for AvB, AvPY, LE vs AOP and Forecast-to-Forecast</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Bridges for different comparisons: Actual vs Budget, Actual vs PY, LE vs AOP, forecast-to-forecast</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>The same EBITDA bridge engine answers four different management questions. Actual vs Budget asks "did we deliver what we committed to?". Actual vs Prior Year asks "did the business grow?" — the question analysts and the board's audit committee ask of a listed company. LE vs AOP asks "where will we land for the year against the commitment?". Forecast-to-forecast asks "what changed in our view since last month?". Each comparison uses a different base, a different set of unit economics for valuing volume and mix, and different "special" steps. An FP&amp;A analyst who can switch the engine between them without rebuilding the model saves days at every close.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-general-rule-value-at-the-base-scenarios-unit-economics">The general rule: value at the base scenario's unit economics</h3>
+<p>Whatever the comparison, call the left-hand bar the <strong>base</strong> (B) and the right-hand bar the <strong>comparator</strong> (C). The generic formulas are:</p>
+<p>\[
+\text{Price} = \sum_i (P^{C}_i - P^{B}_i)\times Q^{C}_i
+\qquad
+\text{Volume} = (Q^{C}_{\text{tot}} - Q^{B}_{\text{tot}})\times \bar{m}^{B}
+\]</p>
+<p>\[
+\text{Mix} = \sum_i (s^{C}_i - s^{B}_i)\times Q^{C}_{\text{tot}}\times m^{B}_i
+\qquad
+\text{Cost} = \sum_i (c^{B}_i - c^{C}_i)\times Q^{C}_i
+\]</p>
+<p>where \(P_i\) is unit price, \(c_i\) unit cost, \(m_i = P_i - c_i\) unit margin, \(Q_i\) units, \(s_i = Q_i / Q_{\text{tot}}\) mix share, and \(\bar{m}^{B} = \sum_i Q^{B}_i m^{B}_i / Q^{B}_{\text{tot}}\) the base weighted-average unit margin. Superscript B is whatever sits on the left: budget, PY or the earlier forecast. Because the formulas are written generically, you switch comparison by pointing the B and C columns at different scenarios in the data table.</p>
+<h3 id="actual-vs-budget-avb">Actual vs Budget (AvB)</h3>
+<ul>
+<li><strong>Base:</strong> AOP budget for the same period (month, quarter, YTD).</li>
+<li><strong>Unit economics:</strong> budget price, budget unit cost, budget FX rate.</li>
+<li><strong>Special steps:</strong> usually none beyond FX and one-offs. Timing effects in opex (topic 3) are a key commentary point because budget phasing is a construct.</li>
+<li><strong>Use:</strong> accountability; incentive scorecards; monthly business review.</li>
+</ul>
+<h3 id="actual-vs-prior-year-avpy">Actual vs Prior Year (AvPY)</h3>
+<ul>
+<li><strong>Base:</strong> last year's actual for the same period.</li>
+<li><strong>Unit economics:</strong> PY realised price and PY unit cost. The "price" bar now captures the year's price increases, and "COGS inflation" captures actual year-on-year input inflation — the same language used in analyst calls.</li>
+<li><strong>Special steps:</strong></li>
+<li><em>Acquisitions/divestments (inorganic).</em> An acquired business has no PY base; show its EBITDA as a separate "Acquisition" bar so the remaining bars are like-for-like (organic). A divested business's PY EBITDA becomes a negative "Divestment" bar.</li>
+<li><em>Accounting or definition changes.</em> If PY was prepared on a different basis (for example a reclassification between COGS and opex, or a change in the EBITDA definition), restate PY or show a "Restatement" bar.</li>
+<li><em>Calendar effects.</em> An extra selling day, a Diwali shift between October and November, or a leap year can be a separate "Calendar/phasing" bar in quarterly or monthly AvPY bridges.</li>
+<li><strong>Use:</strong> growth story, investor presentations, segment analysis.</li>
+</ul>
+<h3 id="le-vs-aop">LE vs AOP</h3>
+<ul>
+<li><strong>Base:</strong> full-year AOP.</li>
+<li><strong>Comparator:</strong> latest estimate (LE) for the full year = YTD actuals + forecast for remaining months.</li>
+<li><strong>Unit economics:</strong> AOP. The bridge shows where the full-year landing differs from the commitment, combining realised variances (YTD) and expected variances (rest of year). A useful refinement splits each bar into "YTD actual" and "Rest-of-year forecast" segments, or shows two bridges side by side.</li>
+<li><strong>Special steps:</strong> "Management actions / initiatives" (price increases announced, cost programmes) and "Risks and opportunities" if the LE is presented before risk adjustments.</li>
+<li><strong>Use:</strong> quarterly board updates, guidance setting, re-forecast sign-off.</li>
+</ul>
+<h3 id="forecast-to-forecast-le-n-vs-le-n1">Forecast-to-forecast (LE n vs LE n−1)</h3>
+<ul>
+<li><strong>Base:</strong> previous forecast (e.g., the September LE).</li>
+<li><strong>Comparator:</strong> current forecast (e.g., the October LE).</li>
+<li><strong>Unit economics:</strong> the previous forecast's assumptions.</li>
+<li><strong>Special step — "Actualisation":</strong> the month that has just closed moved from forecast to actual. Its variance (October actual vs October in the September LE) is a separate bar from changes in the outlook for November–March. This tells management whether the forecast moved because of what <em>happened</em> or because of what they now <em>expect</em>.</li>
+<li><strong>Use:</strong> forecast accuracy tracking, rolling-forecast governance (Week 18).</li>
+</ul>
+<h3 id="illustration">Illustration</h3>
+<p>Narmada Polymers Ltd, full-year EBITDA (₹ crore):</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>LE vs AOP</th>
+<th>Oct LE vs Sep LE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base</td>
+<td>AOP 640</td>
+<td>Sep LE 612</td>
+</tr>
+<tr>
+<td>Actualisation (October)</td>
+<td>—</td>
+<td>−6</td>
+</tr>
+<tr>
+<td>Price</td>
+<td>+22</td>
+<td>+4</td>
+</tr>
+<tr>
+<td>Volume</td>
+<td>−35</td>
+<td>−8</td>
+</tr>
+<tr>
+<td>Mix</td>
+<td>−4</td>
+<td>0</td>
+</tr>
+<tr>
+<td>COGS inflation (crude derivatives)</td>
+<td>−41</td>
+<td>+5</td>
+</tr>
+<tr>
+<td>Efficiency</td>
+<td>+9</td>
+<td>+1</td>
+</tr>
+<tr>
+<td>Opex</td>
+<td>+12</td>
+<td>−2</td>
+</tr>
+<tr>
+<td>FX</td>
+<td>+3</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Comparator</td>
+<td>Oct LE 606</td>
+<td>Oct LE 606</td>
+</tr>
+</tbody>
+</table>
+<p>The LE vs AOP bridge says the year is ₹34 cr short of AOP, mainly on volume and feedstock. The forecast-to-forecast bridge says that, in the last month, the view deteriorated by ₹6 cr, entirely due to a weak October (actualisation −6), while the outlook for November–March is unchanged in aggregate (+4 − 8 + 5 + 1 − 2 = 0).</p>
+<h3 id="implementation-one-engine-a-scenario-switch">Implementation: one engine, a scenario switch</h3>
+<p>In Excel, keep the data table in long format (Scenario, Period, SKU, Units, Revenue, COGS, Opex) and pull B and C columns with <code>SUMIFS</code> driven by two dropdown cells (Base scenario, Comparator scenario). For example:</p>
+<pre><code>=SUMIFS(Data[Units],Data[Scenario],$C$2,Data[SKU],$A8,Data[Period],$C$3)
+</code></pre>
+<p>In Power BI, use two disconnected scenario slicers (Base, Comparator) and measures that evaluate under each with <code>CALCULATE</code> and <code>TREATAS</code>. Only the special steps (Acquisition, Actualisation) need comparison-specific logic.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>YTD vs month vs full year.</strong> A monthly AvB bridge can be dominated by phasing; the YTD bridge is more stable. Packs usually show the month and YTD bridges side by side, and LE vs AOP for the full year.</li>
+<li><strong>PY price as base for an inflationary year.</strong> In an AvPY bridge, a 6% price increase that merely passed through 6% input inflation shows as two large offsetting bars. That is correct and informative — do not net them.</li>
+<li><strong>Budget rate vs PY rate for FX.</strong> In AvPY bridges, FX is measured against the PY average rate, not the budget rate.</li>
+<li><strong>Acquisition mid-year.</strong> Only the post-acquisition months are inorganic in the year of acquisition; the next year, months already owned in PY are organic. Keep a month-level flag.</li>
+<li><strong>Forecast-to-forecast with re-phased AOP.</strong> If the AOP itself was re-phased (not changed in total), the full-year LE vs AOP bridge is unaffected, but month-level bridges are — document re-phasing.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>One generic engine, driven by Base and Comparator selectors, serves all four comparisons.</li>
+<li>Always value volume and mix at the <strong>base</strong> scenario's unit margin and price/cost at the <strong>comparator's</strong> volumes.</li>
+<li>AvPY bridges need inorganic (acquisition/divestment) and restatement steps to stay like-for-like.</li>
+<li>LE vs AOP combines realised and expected variances; splitting YTD from rest-of-year improves insight.</li>
+<li>Forecast-to-forecast bridges must isolate actualisation of the closed month from changes in outlook.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-matching-comparison-to-question-l1">Q1. Matching comparison to question [L1]</h3>
+<p>For each of the following management questions, state which bridge (AvB, AvPY, LE vs AOP, forecast-to-forecast) answers it and what the base scenario's unit economics are: (a) "Will we hit the full-year EBITDA we guided?"; (b) "How much of this quarter's growth was organic?"; (c) "Why did our year-end view drop ₹10 crore since last month?"; (d) "Did the North region deliver its March plan?"</p>
+<h3 id="q2-organic-vs-inorganic-avpy-l2">Q2. Organic vs inorganic AvPY [L2]</h3>
+<p>Q2 FY26 EBITDA is ₹185 crore versus ₹160 crore in Q2 FY25. On 1 July 2025 the company acquired a brand that contributed ₹12 crore EBITDA in Q2 FY26. In Q4 FY25 it sold a loss-making unit that had EBITDA of −₹3 crore in Q2 FY25. The remaining drivers are Price +₹14 crore, Volume +₹6 crore, Mix −₹2 crore, COGS −₹9 crore, Opex +₹1 crore. Build the AvPY bridge with inorganic steps and compute the organic EBITDA growth %.</p>
+<h3 id="q3-actualisation-bar-l2">Q3. Actualisation bar [L2]</h3>
+<p>The September LE forecast October EBITDA at ₹48 crore and November–March at ₹260 crore. October actual EBITDA is ₹43 crore. The October LE forecasts November–March at ₹268 crore. YTD April–September actual is ₹290 crore. Compute the September and October full-year LEs and lay out a forecast-to-forecast bridge with an actualisation bar and an outlook-change bar.</p>
+<h3 id="q4-excel-scenario-switch-l3">Q4. Excel scenario switch [L3]</h3>
+<p>Design the Excel layout for a bridge engine that switches between AvB, AvPY and LE vs AOP using two dropdowns. Specify the long-format data table columns, the <code>SUMIFS</code> structure for base and comparator units and margins, and the check cells you would include. Explain how the Acquisition step would be switched on only for the AvPY comparison.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider a step-applicability table (Step × Comparison) that returns 1 or 0 and multiplies each step.</p>
+</blockquote></section>
+<nav class="pager"><a class="prev" href="S01_Standard_Step_Sequence_for_a_Budget_to_Actual.html">← Standard Step Sequence for a Budget-to-Actual EBITDA Bridge</a><a class="next" href="S03_Excel_Waterfall_Charts_Native_Chart_and_Stacked.html">Excel Waterfall Charts: Native Chart and Stacked-Column… →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Table.FuzzyNestedJoin Syntax and Options · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C04_TableFuzzyNestedJoin_Syntax_and_Options.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T5 · Merging, appending and reconciliation…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Merging, appending and reconciliation joins</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Append_vs_Merge_Union_vs_Join_with_SQL_Analogies.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S01_Append_vs_Merge_Union_vs_Join_with_SQL_Analogies.html">Append vs Merge: Union vs Join with SQL Analogies</a></li><li><a href="../subtopics/S02_The_Six_Join_Kinds_and_Their_Role_in_a.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S02_The_Six_Join_Kinds_and_Their_Role_in_a.html">The Six Join Kinds and Their Role in a Reconciliation</a></li><li><a href="../subtopics/S03_Bank_vs_Book_Matching_on_Amount_Reference_and_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S03_Bank_vs_Book_Matching_on_Amount_Reference_and_Date.html">Bank vs Book Matching on Amount, Reference and Date Window</a></li><li><a href="../subtopics/S04_Normalising_Composite_Keys_Before_Merging.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S04_Normalising_Composite_Keys_Before_Merging.html">Normalising Composite Keys Before Merging</a></li><li><a href="../subtopics/S05_Fuzzy_Merge_for_Vendor_and_Customer_Names.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S05_Fuzzy_Merge_for_Vendor_and_Customer_Names.html">Fuzzy Merge for Vendor and Customer Names</a></li><li><a href="../subtopics/S06_Repeated_Identical_Amounts_Sequence_Keys_for_One.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S06_Repeated_Identical_Amounts_Sequence_Keys_for_One.html">Repeated Identical Amounts: Sequence Keys for One-to-One Matching</a></li><li><a href="../subtopics/S07_Other_Reconciliations_GSTR_2B_AR_Control_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S07_Other_Reconciliations_GSTR_2B_AR_Control_and.html">Other Reconciliations: GSTR-2B, AR Control and Intercompany</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_LeftAnti_Join_Items_in_the_Bank_but_Not_in_the.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C01_LeftAnti_Join_Items_in_the_Bank_but_Not_in_the.html">LeftAnti Join: Items in the Bank but Not in the Books</a></li><li><a href="C02_RightAnti_Join_Items_in_the_Books_but_Not_in_the.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C02_RightAnti_Join_Items_in_the_Books_but_Not_in_the.html">RightAnti Join: Items in the Books but Not in the Bank</a></li><li><a href="C03_Expanding_Merged_Columns_with_Prefixed_Names.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C03_Expanding_Merged_Columns_with_Prefixed_Names.html">Expanding Merged Columns with Prefixed Names</a></li><li><a href="C04_TableFuzzyNestedJoin_Syntax_and_Options.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C04_TableFuzzyNestedJoin_Syntax_and_Options.html">Table.FuzzyNestedJoin Syntax and Options</a></li><li><a href="C05_Duplicate_Safe_Keys_with_Group_By_and_Index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C05_Duplicate_Safe_Keys_with_Group_By_and_Index.html">Duplicate-Safe Keys with Group By and Index</a></li><li><a href="C06_Sign_Alignment_Between_Bank_and_Book.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C06_Sign_Alignment_Between_Bank_and_Book.html">Sign Alignment Between Bank and Book</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Table.FuzzyNestedJoin Syntax and Options</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>Table.FuzzyNestedJoin(t1, {"Party"}, t2, {"Party"}, "M", JoinKind.LeftOuter, [Threshold=0.85, IgnoreCase=true])</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-m">Fuzzy = Table.FuzzyNestedJoin(t1, {&quot;Party&quot;}, t2, {&quot;Party&quot;}, &quot;M&quot;, JoinKind.LeftOuter,
+    [Threshold = 0.85, IgnoreCase = true])
+</code></pre>
+<p><code>Table.FuzzyNestedJoin(table1, key1, table2, key2, newColumnName, optional joinKind, optional joinOptions)</code> joins rows whose key values are <strong>similar</strong> rather than equal. Arguments mirror <code>Table.NestedJoin</code>; the last argument is an options record:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Threshold</code></td>
+<td>Similarity score from 0.00 to 1.00 required to match (default 0.80)</td>
+</tr>
+<tr>
+<td><code>IgnoreCase</code></td>
+<td>Case-insensitive comparison (default true)</td>
+</tr>
+<tr>
+<td><code>IgnoreSpace</code></td>
+<td>Ignore spaces when comparing ("match by combining text parts", default true)</td>
+</tr>
+<tr>
+<td><code>NumberOfMatches</code></td>
+<td>Maximum matches returned per left row</td>
+</tr>
+<tr>
+<td><code>TransformationTable</code></td>
+<td>Table with From/To columns applied before scoring</td>
+</tr>
+<tr>
+<td><code>ConcurrentRequests</code>, <code>Culture</code></td>
+<td>Performance and culture settings</td>
+</tr>
+</tbody>
+</table>
+<h2 id="explanation">Explanation</h2>
+<p>Fuzzy join answers "which master record most probably corresponds to this name?". Each left row's nested <code>M</code> column contains the right rows whose similarity is at or above the threshold. With <code>JoinKind.LeftOuter</code>, rows with no candidate get an empty table.</p>
+<p>Practical rules:</p>
+<ul>
+<li><strong>Text keys only.</strong> Fuzzy matching works on text columns; convert other types first.</li>
+<li><strong>Pre-clean.</strong> Upper-case, remove punctuation, strip legal-form words ("PRIVATE", "LIMITED", "PVT", "LTD", "LLP") on both sides. Common words otherwise dominate similarity.</li>
+<li><strong>Run on leftovers.</strong> First match exactly on codes (GSTIN, PAN, customer code) and on cleaned names; fuzzy-match only the remainder. This limits false matches and runtime.</li>
+<li><strong>Limit candidates.</strong> <code>NumberOfMatches = 1</code> gives the best candidate for a mapping suggestion; 2–3 gives reviewers alternatives.</li>
+<li><strong>No folding, in-memory.</strong> Fuzzy joins are computed by the mashup engine; on large tables, fuzzy-match a distinct list of names, then merge back exactly.</li>
+<li><strong>Not for references or amounts.</strong> Similar invoice numbers are different invoices.</li>
+<li><strong>Persist results.</strong> Load suggestions for review and store confirmed pairs in a mapping table; next month, the exact merge on the mapping table handles known names.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>Bank narration parties (left) vs customer master (right), after cleaning that strips "PVT", "LTD", "PRIVATE", "LIMITED" and punctuation:</p>
+<table>
+<thead>
+<tr>
+<th>Left (cleaned)</th>
+<th>Right candidate (cleaned)</th>
+<th>Likely outcome at 0.85</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KRISHNA AGRO FOODS</td>
+<td>KRISHNA AGRO FOODS</td>
+<td>Match (identical after cleaning)</td>
+</tr>
+<tr>
+<td>KRISHNA AGRO FOOD</td>
+<td>KRISHNA AGRO FOODS</td>
+<td>Match (one-character difference in a long name)</td>
+</tr>
+<tr>
+<td>SAI ENTERPRISE</td>
+<td>SAI ENTERPRISES</td>
+<td>Match — but the master also has SAI ENTERPRISES (two firms in different cities)</td>
+</tr>
+<tr>
+<td>BLUE DART</td>
+<td>BLUEDART EXPRESS</td>
+<td>Possibly below threshold; transformation table "BLUE DART" → "BLUEDART EXPRESS" fixes it</td>
+</tr>
+</tbody>
+</table>
+<p>The third row shows why a second attribute (city, GSTIN state code) or human review is needed for short or generic names.</p>
+<h2 id="connections">Connections</h2>
+<p>Subtopic s05 (fuzzy merge workflow and threshold calibration), s04 (normalisation before any merge). Topic t5's related forensic tests use fuzzy self-merges on vendor names to detect duplicate vendors. In Week 11, the confirmed mapping table becomes a dimension bridge between bank parties and the customer dimension.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-configure-the-options-l1">Q1. Configure the options [L1]</h3>
+<p>Write a <code>Table.FuzzyNestedJoin</code> call that matches <code>Receipts[Payer]</code> to <code>Customers[Name]</code> with threshold 0.90, case-insensitive, returning at most 2 candidates per row, and using a transformation table query named <code>NameSynonyms</code>.</p>
+<h3 id="q2-distinct-then-merge-pattern-l2">Q2. Distinct-then-merge pattern [L2]</h3>
+<p><code>Receipts</code> has 1,20,000 rows but only 3,900 distinct payer names. Write the M that fuzzy-matches the distinct names to the customer master and then brings the matched customer code back to all 1,20,000 rows with an exact merge.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> <code>Table.Distinct(Table.SelectColumns(Receipts, {"Payer"}))</code> is the small table to fuzzy-match.</p>
+</blockquote>
+<h3 id="q3-audit-concern-l3">Q3. Audit concern [L3]</h3>
+<p>An auditor objects that the fuzzy match is "non-deterministic and unreviewed". Propose changes to the pipeline and process that address the objection while keeping the time saving.</p></section>
+<nav class="pager"><a class="prev" href="C03_Expanding_Merged_Columns_with_Prefixed_Names.html">← Expanding Merged Columns with Prefixed Names</a><a class="next" href="C05_Duplicate_Safe_Keys_with_Group_By_and_Index.html">Duplicate-Safe Keys with Group By and Index →</a></nav>
+</main></div></body></html>

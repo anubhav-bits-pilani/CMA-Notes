@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Load Options and Refresh Behaviour in Excel vs Power BI · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S07_Load_Options_and_Refresh_Behaviour_in_Excel_vs.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T1 · Power Query architecture and M basics</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Power Query architecture and M basics</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Power_Query_Connectors_for_Accounting_and_ERP_Data.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S01_Power_Query_Connectors_for_Accounting_and_ERP_Data.html">Power Query Connectors for Accounting and ERP Data Sources</a></li><li><a href="S02_Power_Query_Editor_Anatomy_Steps_Formula_Bar_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S02_Power_Query_Editor_Anatomy_Steps_Formula_Bar_and.html">Power Query Editor Anatomy: Steps, Formula Bar and Dependencies</a></li><li><a href="S03_M_Language_Structure_letin_Values_Records_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S03_M_Language_Structure_letin_Values_Records_Lists.html">M Language Structure: let/in, Values, Records, Lists and each</a></li><li><a href="S04_Data_Types_and_Controlling_Automatic_Type.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S04_Data_Types_and_Controlling_Automatic_Type.html">Data Types and Controlling Automatic Type Detection</a></li><li><a href="S05_Query_Folding_Which_Steps_Fold_Native_Query_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S05_Query_Folding_Which_Steps_Fold_Native_Query_and.html">Query Folding: Which Steps Fold, Native Query and Diagnostics</a></li><li><a href="S06_Parameters_Staging_Queries_and_Reference_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S06_Parameters_Staging_Queries_and_Reference_vs.html">Parameters, Staging Queries and Reference vs Duplicate</a></li><li><a href="S07_Load_Options_and_Refresh_Behaviour_in_Excel_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S07_Load_Options_and_Refresh_Behaviour_in_Excel_vs.html">Load Options and Refresh Behaviour in Excel vs Power BI</a></li><li><a href="S08_Privacy_Levels_and_FormulaFirewall_Errors.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S08_Privacy_Levels_and_FormulaFirewall_Errors.html">Privacy Levels and Formula.Firewall Errors</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_CsvDocument_with_FileContents_Delimiter_Encoding.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C01_CsvDocument_with_FileContents_Delimiter_Encoding.html">Csv.Document with File.Contents: Delimiter, Encoding, QuoteStyle</a></li><li><a href="../concepts/C02_ExcelWorkbook_Navigation_to_a_Named_Sheet_or_Table.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C02_ExcelWorkbook_Navigation_to_a_Named_Sheet_or_Table.html">Excel.Workbook Navigation to a Named Sheet or Table</a></li><li><a href="../concepts/C03_SqlDatabase_with_a_Native_Query_Blocks_Later.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C03_SqlDatabase_with_a_Native_Query_Blocks_Later.html">Sql.Database with a Native Query Blocks Later Folding</a></li><li><a href="../concepts/C04_ValueNativeQuery_with_Parameters_and_EnableFolding.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C04_ValueNativeQuery_with_Parameters_and_EnableFolding.html">Value.NativeQuery with Parameters and EnableFolding</a></li><li><a href="../concepts/C05_The_each_Keyword_and_the_Underscore_Parameter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C05_The_each_Keyword_and_the_Underscore_Parameter.html">The each Keyword and the Underscore Parameter</a></li><li><a href="../concepts/C06_Folding_Breakers_TableBuffer_Index_Columns_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C06_Folding_Breakers_TableBuffer_Index_Columns_and.html">Folding Breakers: Table.Buffer, Index Columns and Custom Functions</a></li><li><a href="../concepts/C07_MySQLDatabase_Connector_and_OdbcDataSource_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C07_MySQLDatabase_Connector_and_OdbcDataSource_for.html">MySQL.Database Connector and Odbc.DataSource for Tally</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Load Options and Refresh Behaviour in Excel vs Power BI</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Load options (Connection only, Table, Data Model) and how refresh differs in Excel vs Power BI</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Where a query's result lands decides file size, whether users can pivot it, whether it hits Excel's 1,048,576-row limit, and how it refreshes. A consolidated GL of 3 million lines cannot go to a worksheet; a list of 40 unreconciled bank items should go to a sheet the reviewer can annotate; staging queries should go nowhere. Refresh mechanics also differ sharply between Excel (manual, desktop, per-user credentials) and Power BI (Desktop refresh, then Service scheduled refresh through gateways), which matters when you hand a close pack over to someone else or promise the CFO a 7 a.m. dashboard.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="load-destinations-in-excel">Load destinations in Excel</h3>
+<p><strong>Home → Close &amp; Load To…</strong> (or right-click query → Load To…) offers:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>What happens</th>
+<th>Use for</th>
+<th>Limits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Table</strong></td>
+<td>Result written to an Excel table on a sheet</td>
+<td>Exceptions lists, small mappings, outputs to annotate</td>
+<td>1,048,576 rows; file bloats; slower refresh</td>
+</tr>
+<tr>
+<td><strong>PivotTable Report</strong> / <strong>PivotChart</strong></td>
+<td>Loads to Data Model and creates a pivot</td>
+<td>Quick analysis</td>
+<td>Data Model rules apply</td>
+</tr>
+<tr>
+<td><strong>Only Create Connection</strong></td>
+<td>No output; query available to reference</td>
+<td>Staging, functions, parameters</td>
+<td>None</td>
+</tr>
+<tr>
+<td><strong>Add this data to the Data Model</strong> (checkbox)</td>
+<td>Loads to Power Pivot (VertiPaq, compressed)</td>
+<td>Large facts, relationships, DAX measures</td>
+<td>Memory; 2 GB file practical limit in 32-bit, much larger in 64-bit</td>
+</tr>
+</tbody>
+</table>
+<p>Table and Data Model can both be ticked, but doing so doubles storage — avoid. Change destinations later via <strong>Data → Queries &amp; Connections → right-click → Load To</strong>. Connection-only queries show "Connection only" in the pane.</p>
+<p>Columns you add manually next to a loaded table (e.g. a "Reviewer comment" column) are kept and stay aligned row-by-row only if the table refreshes with the same sort order and row count — a fragile pattern. A better approach for annotated exceptions is a separate comments table keyed by a stable ID, merged back in.</p>
+<h3 id="load-settings-in-power-bi-desktop">Load settings in Power BI Desktop</h3>
+<p>Every query loads to the model by default. Right-click → uncheck <strong>Enable load</strong> to make it connection-only (shown in italics). Also: <strong>Include in report refresh</strong> — unchecking it freezes a query's data (useful for a static FX table, dangerous if forgotten). Functions and parameters never load.</p>
+<h3 id="refresh-in-excel">Refresh in Excel</h3>
+<ul>
+<li><strong>Refresh</strong> (single query) or <strong>Data → Refresh All</strong> (Ctrl+Alt+F5). Refresh All refreshes every connection, including pivots — but pivots based on worksheet tables refreshed by queries may refresh before the query completes; set background refresh off (Query Properties → uncheck <em>Enable background refresh</em>) or refresh twice.</li>
+<li><strong>Query Properties</strong>: refresh every n minutes, refresh on file open, enable background refresh, refresh this connection on Refresh All.</li>
+<li><strong>Credentials</strong> are stored per user per machine (Data source settings). A colleague opening your file is prompted for their own credentials and must have access to the same paths — hence parameters.</li>
+<li><strong>Privacy levels</strong> are evaluated locally (s08).</li>
+<li>No native scheduling. Options: Power Automate Desktop/Office Scripts (limited for Power Query), a VBA <code>ThisWorkbook.RefreshAll</code> on open, or move to Power BI/Dataflows.</li>
+<li><strong>Excel for the web</strong> can refresh some cloud sources (SharePoint, OneDrive, certain online sources), not local files or on-prem databases.</li>
+</ul>
+<h3 id="refresh-in-power-bi">Refresh in Power BI</h3>
+<ul>
+<li><strong>Desktop</strong>: Home → Refresh refreshes all loaded queries in parallel (subject to parallel-load settings). Results land in the model; visuals update.</li>
+<li><strong>Service</strong>: after publishing, the semantic model (dataset) refreshes on demand or on a <strong>schedule</strong> (up to 8 per day on Pro, 48 on Premium/Fabric capacity). Credentials are set in the dataset's data source settings. On-premises sources (local folders, on-prem SQL, Tally ODBC) need an <strong>on-premises data gateway</strong>; cloud sources (SharePoint Online, OneDrive, Azure SQL) do not.</li>
+<li><strong>Incremental refresh</strong> (partition by date using <code>RangeStart</code>/<code>RangeEnd</code>) refreshes only recent periods — requires folding.</li>
+<li><strong>Refresh failure</strong> emails the owner; a failed refresh leaves the previous data in place.</li>
+</ul>
+<h3 id="comparison-summary">Comparison summary</h3>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Excel</th>
+<th>Power BI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Destinations</td>
+<td>Sheet table, Data Model, connection only</td>
+<td>Model (Enable load) or none</td>
+</tr>
+<tr>
+<td>Size</td>
+<td>Sheet ≤ ~1.05m rows; Data Model larger</td>
+<td>Model; dataset size limits per licence</td>
+</tr>
+<tr>
+<td>Trigger</td>
+<td>User clicks / on open / timer while open</td>
+<td>Desktop click; Service schedule/API</td>
+</tr>
+<tr>
+<td>Credentials</td>
+<td>Per user, per machine</td>
+<td>Stored in Service / gateway</td>
+</tr>
+<tr>
+<td>On-prem sources</td>
+<td>Direct</td>
+<td>Gateway required in Service</td>
+</tr>
+<tr>
+<td>Annotating outputs</td>
+<td>Easy (but fragile)</td>
+<td>Not intended — use write-back tools</td>
+</tr>
+<tr>
+<td>Consumers</td>
+<td>Whoever has the file</td>
+<td>Workspace/app permissions, RLS</td>
+</tr>
+</tbody>
+</table>
+<h3 id="illustration">Illustration</h3>
+<p>The bank recon pipeline: <code>stg_BankFiles</code>, <code>stg_TallyBank</code>, <code>fxCleanBank</code> — connection only. <code>BankAll</code> (≈18,000 rows a year) — Data Model only, for a pivot of receipts by month. <code>Exceptions_BankNotInBooks</code> and <code>Exceptions_BooksNotInBank</code> (tens of rows) — sheet tables for review. <code>chk_ControlTotals</code> — sheet table on a "Checks" tab with conditional formatting on the difference column. In Power BI the same design would load <code>BankAll</code> and the two exception queries to the model and disable load on staging.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Loading to sheet then pointing another query at that sheet</strong> (<code>Excel.CurrentWorkbook</code>) creates a hidden two-stage refresh dependency; reference the query directly instead.</li>
+<li><strong>Disabling load on a query that a visual uses</strong> in Power BI deletes the table from the model and breaks visuals and measures.</li>
+<li><strong>"Include in report refresh" off</strong> is useful for slow, static tables but must be documented; stale FX rates are a classic audit finding.</li>
+<li><strong>Data Model in Excel and Power BI share VertiPaq</strong>: the Excel model can be imported into Power BI Desktop (File → Import → Power Query, Power Pivot, Power View).</li>
+<li><strong>Row-order assumptions</strong>: loaded tables do not guarantee order unless you sort as the final step.</li>
+<li><strong>Gateway mode</strong>: personal gateway does not support all features (e.g. DirectQuery); standard gateway is preferred for team datasets.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Staging, functions and parameters: connection only. Large facts: Data Model. Small review lists: sheet tables.</li>
+<li>Never load to both a sheet and the Data Model by accident.</li>
+<li>Excel refresh is user-driven with per-user credentials; Power BI Service refresh is scheduled with stored credentials and gateways for on-prem sources.</li>
+<li>Cloud folders (SharePoint/OneDrive) avoid the gateway; local paths and on-prem databases need one.</li>
+<li>Turn off background refresh in Excel when pivots depend on query outputs.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-assign-load-destinations-l1">Q1. Assign load destinations [L1]</h3>
+<p>For each query in an Excel close workbook choose a load destination and justify: <code>pFolderPath</code>, <code>fxCleanTB</code>, <code>stg_TBFiles</code>, <code>TB_Consolidated</code> (2.4 million rows), <code>CoA_Map</code> (1,200 rows), <code>Exceptions_UnmappedLedgers</code> (35 rows), <code>chk_ControlTotals</code> (12 rows).</p>
+<h3 id="q2-refresh-order-problem-l2">Q2. Refresh order problem [L2]</h3>
+<p>After Refresh All, a pivot on the "Exceptions" sheet still shows last month's numbers until you press Refresh All a second time. Explain why and give two fixes.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Think about background refresh and what the pivot's source is.</p>
+</blockquote>
+<h3 id="q3-moving-from-excel-to-power-bi-service-l2">Q3. Moving from Excel to Power BI Service [L2]</h3>
+<p>Your Excel bank recon reads CSVs from <code>D:\Bank\</code> and the Tally ledger via ODBC. The CFO wants a Power BI report refreshed daily at 7 a.m. List every change required in sources, credentials, infrastructure and load settings.</p>
+<h3 id="q4-annotated-exceptions-l3">Q4. Annotated exceptions [L3]</h3>
+<p>Reviewers type comments in a column beside the loaded <code>Exceptions</code> table; after the next refresh, comments are misaligned with rows. Design a robust alternative using Power Query so that comments stay attached to the correct exception across refreshes.</p>
+<h3 id="q5-licence-and-refresh-limits-l2">Q5. Licence and refresh limits [L2]</h3>
+<p>A Pro-licensed dataset must refresh hourly during the last 3 days of the close. State whether this is possible and two alternatives if not.</p></section>
+<nav class="pager"><a class="prev" href="S06_Parameters_Staging_Queries_and_Reference_vs.html">← Parameters, Staging Queries and Reference vs Duplicate</a><a class="next" href="S08_Privacy_Levels_and_FormulaFirewall_Errors.html">Privacy Levels and Formula.Firewall Errors →</a></nav>
+</main></div></body></html>

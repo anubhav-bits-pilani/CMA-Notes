@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Virtual Relationship with TREATAS for Month-Grain Budget · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C03_Virtual_Relationship_with_TREATAS_for_Month_Grain.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T1 · Star schema for financial data</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Star schema for financial data</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Facts_vs_Dimensions_in_a_Financial_Star_Schema.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S01_Facts_vs_Dimensions_in_a_Financial_Star_Schema.html">Facts vs Dimensions in a Financial Star Schema</a></li><li><a href="../subtopics/S02_Defining_Fact_Grain_and_Handling_Mixed_Grain.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S02_Defining_Fact_Grain_and_Handling_Mixed_Grain.html">Defining Fact Grain and Handling Mixed Grain (Budget vs Actual)</a></li><li><a href="../subtopics/S03_Relationship_Properties_Cardinality_Direction.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S03_Relationship_Properties_Cardinality_Direction.html">Relationship Properties: Cardinality, Direction, Active Status</a></li><li><a href="../subtopics/S04_Role_Playing_Dates_via_Inactive_Relationships.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S04_Role_Playing_Dates_via_Inactive_Relationships.html">Role-Playing Dates via Inactive Relationships</a></li><li><a href="../subtopics/S05_CoA_Hierarchy_with_Sort_Order_and_Sign_Factor.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S05_CoA_Hierarchy_with_Sort_Order_and_Sign_Factor.html">CoA Hierarchy with Sort-Order and Sign-Factor Columns</a></li><li><a href="../subtopics/S06_Surrogate_Keys_and_an_Unmapped_Member_for_Missing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S06_Surrogate_Keys_and_an_Unmapped_Member_for_Missing.html">Surrogate Keys and an Unmapped Member for Missing Accounts</a></li><li><a href="../subtopics/S07_Avoiding_Snowflakes_and_Flat_Tables_Diagram_View.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S07_Avoiding_Snowflakes_and_Flat_Tables_Diagram_View.html">Avoiding Snowflakes and Flat Tables; Diagram View vs Model View</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_USERELATIONSHIP_to_Activate_an_Inactive_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C01_USERELATIONSHIP_to_Activate_an_Inactive_Date.html">USERELATIONSHIP to Activate an Inactive Date Relationship</a></li><li><a href="C02_Store_Budget_on_the_First_Day_of_the_Month.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C02_Store_Budget_on_the_First_Day_of_the_Month.html">Store Budget on the First Day of the Month</a></li><li><a href="C03_Virtual_Relationship_with_TREATAS_for_Month_Grain.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C03_Virtual_Relationship_with_TREATAS_for_Month_Grain.html">Virtual Relationship with TREATAS for Month-Grain Budget</a></li><li><a href="C04_CROSSFILTER_for_Per_Measure_Bidirectional.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C04_CROSSFILTER_for_Per_Measure_Bidirectional.html">CROSSFILTER for Per-Measure Bidirectional Filtering</a></li><li><a href="C05_Referential_Integrity_Test_with_EXCEPT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C05_Referential_Integrity_Test_with_EXCEPT.html">Referential Integrity Test with EXCEPT</a></li><li><a href="C06_Hide_Fact_Foreign_Keys_Expose_Attributes_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C06_Hide_Fact_Foreign_Keys_Expose_Attributes_and.html">Hide Fact Foreign Keys; Expose Attributes and Measures</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Virtual Relationship with TREATAS for Month-Grain Budget</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Virtual relationship: <code>CALCULATE(SUM(Budget[Amount]), TREATAS(VALUES('Date'[MonthEnd]), Budget[MonthEnd]))</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-DAX">Budget =
+CALCULATE (
+    SUM ( Budget[Amount] ),
+    TREATAS ( VALUES ( 'Date'[MonthEnd] ), Budget[MonthEnd] )
+)
+</code></pre>
+<ul>
+<li><code>VALUES('Date'[MonthEnd])</code> returns the distinct month-end dates visible in the current filter context (one for
+  a month cell, three for a quarter, twelve for a fiscal year).</li>
+<li><code>TREATAS(table, column)</code> applies that table of values <strong>as if</strong> it were a filter on <code>Budget[MonthEnd]</code>, even
+  though there is no physical relationship between Date and Budget.</li>
+<li>CALCULATE adds this filter to the Budget evaluation, so only budget rows for the visible month-ends are summed.</li>
+</ul>
+<h2 id="explanation">Explanation</h2>
+<p>A <strong>virtual relationship</strong> transfers a filter from one table to another inside a measure, without a model
+relationship. TREATAS is the efficient way to do it (older patterns used <code>INTERSECT</code> or
+<code>FILTER(..., CONTAINS(...))</code>, which are slower).</p>
+<p>When to use it:</p>
+<ul>
+<li>Budget arrives keyed by MonthEnd or PeriodKey and you cannot or prefer not to add a physical relationship.</li>
+<li>Budget is at a coarser grain on another dimension too — e.g. <code>TREATAS(VALUES(CoA[FSLine]), Budget[FSLine])</code> for
+  FS-line-level budgets — so a physical relationship to CoA's account-level key is impossible.</li>
+<li>Avoiding a many-to-many relationship: <code>'Date'[MonthEnd]</code> is not unique in Date (≈30 rows per month), so a
+  physical relationship from it to Budget would be many-to-many; TREATAS sidesteps that.</li>
+</ul>
+<p>Rules and behaviour:</p>
+<ul>
+<li>Column lineage: TREATAS ignores the lineage of the source values and maps them positionally to the target
+  columns; data types must be compatible (Date to Date).</li>
+<li>Multiple columns: <code>TREATAS(SUMMARIZE('Date', 'Date'[FY], 'Date'[FiscalMonthNo]), Budget[FY], Budget[FiscalMonthNo])</code>
+  maps a two-column combination.</li>
+<li>Other dimensions still need their own path to Budget. If CostCentre physically relates to Budget, CostCentre
+  filters apply normally; if not, add another TREATAS argument.</li>
+<li><strong>Time intelligence:</strong> <code>TOTALYTD([Budget], 'Date'[Date], "3/31")</code> works because TOTALYTD modifies the Date filter,
+  and the inner VALUES('Date'[MonthEnd]) then reflects the YTD date set.</li>
+<li>Totals: at grand total with no Date filter, VALUES returns all MonthEnds in Date; budget rows with MonthEnd
+  outside the calendar range are excluded — a silent loss if the calendar is too short.</li>
+<li>Performance is good for small Budget tables; for very large facts, a physical relationship is faster.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>Budget table (PeriodKey converted to MonthEnd), Opex, cost centre "DEL-SALES":</p>
+<table>
+<thead>
+<tr>
+<th>MonthEnd</th>
+<th>Amount (₹ lakh)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30-Apr-2025</td>
+<td>18.0</td>
+</tr>
+<tr>
+<td>31-May-2025</td>
+<td>18.5</td>
+</tr>
+<tr>
+<td>30-Jun-2025</td>
+<td>19.0</td>
+</tr>
+</tbody>
+</table>
+<p>In a matrix with FiscalQuarter on rows filtered to FY2025-26 Q1, <code>VALUES('Date'[MonthEnd])</code> returns {30-Apr-2025,
+31-May-2025, 30-Jun-2025}; TREATAS filters Budget to those three rows; the measure returns ₹55.5 lakh. In the April
+row it returns ₹18.0 lakh. No relationship line exists in the Model view between Date and Budget.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Subtopic s02 (mixed grain): Option 2. Concept c02 is the physical-relationship alternative.</li>
+<li>Pitfall "Budget keyed on month text": TREATAS avoids the forced many-to-many.</li>
+<li>Topic 3 (CALCULATE filter arguments): TREATAS is a table filter argument.</li>
+<li>Weeks 17–20: forecast and budget facts at FS-line or cost-centre-group level use multi-column TREATAS.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-two-column-treatas-l2">Q1. Two-column TREATAS [L2]</h3>
+<p>Budget is keyed by FY ("FY2025-26"), FiscalMonthNo and FSLine, with no relationships to any dimension. Write a
+Budget measure that responds to Date and CoA filters, and state what it returns when a user drills from FSLine to
+account level.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Think about what VALUES(CoA[FSLine]) returns when a single account is in context.</p>
+</blockquote>
+<h3 id="q2-missing-months-l2">Q2. Missing months [L2]</h3>
+<p>The grand total of the TREATAS-based Budget measure is ₹4.2 crore lower than the budget workbook total of ₹96 crore.
+The Date table runs 1-Apr-2022 to 31-Mar-2026, and the budget workbook includes FY2026-27 months. Explain the
+difference and how you would detect such losses routinely.</p>
+<h3 id="q3-choose-the-approach-l3">Q3. Choose the approach [L3]</h3>
+<p>Compare a TREATAS virtual relationship with storing budget on MonthStart and relating it physically, for a model
+with 3 crore GL rows and 80,000 budget rows, considering performance, readability, RLS by cost centre and
+time-intelligence behaviour. Recommend one with reasons.</p></section>
+<nav class="pager"><a class="prev" href="C02_Store_Budget_on_the_First_Day_of_the_Month.html">← Store Budget on the First Day of the Month</a><a class="next" href="C04_CROSSFILTER_for_Per_Measure_Bidirectional.html">CROSSFILTER for Per-Measure Bidirectional Filtering →</a></nav>
+</main></div></body></html>

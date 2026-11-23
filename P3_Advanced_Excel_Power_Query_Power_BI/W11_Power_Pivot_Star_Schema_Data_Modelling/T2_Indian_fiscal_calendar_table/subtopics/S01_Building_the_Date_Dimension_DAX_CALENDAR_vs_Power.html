@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building the Date Dimension: DAX CALENDAR vs Power Query List.Dates · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S01_Building_the_Date_Dimension_DAX_CALENDAR_vs_Power.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T2 · Indian fiscal calendar table</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Indian fiscal calendar table</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Building_the_Date_Dimension_DAX_CALENDAR_vs_Power.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S01_Building_the_Date_Dimension_DAX_CALENDAR_vs_Power.html">Building the Date Dimension: DAX CALENDAR vs Power Query List.Dates</a></li><li><a href="S02_Contiguous_Whole_Fiscal_Year_Date_Range_Covering.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S02_Contiguous_Whole_Fiscal_Year_Date_Range_Covering.html">Contiguous Whole-Fiscal-Year Date Range Covering All Facts</a></li><li><a href="S03_Fiscal_Calendar_Columns_FY_Quarter_Month_Week_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S03_Fiscal_Calendar_Columns_FY_Quarter_Month_Week_and.html">Fiscal Calendar Columns: FY, Quarter, Month, Week and Period Key</a></li><li><a href="S04_Sort_by_Column_Fiscal_Month_Order_Starting_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S04_Sort_by_Column_Fiscal_Month_Order_Starting_in.html">Sort by Column: Fiscal Month Order Starting in April</a></li><li><a href="S05_Month_and_FY_Offset_Columns_for_Dynamic_Period.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S05_Month_and_FY_Offset_Columns_for_Dynamic_Period.html">Month and FY Offset Columns for Dynamic Period Filters</a></li><li><a href="S06_Mark_as_Date_Table_and_Turn_Off_Auto_DateTime.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S06_Mark_as_Date_Table_and_Turn_Off_Auto_DateTime.html">Mark as Date Table and Turn Off Auto Date/Time</a></li><li><a href="S07_Working_Day_Flags_and_Indian_Holidays_for_Close.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S07_Working_Day_Flags_and_Indian_Holidays_for_Close.html">Working-Day Flags and Indian Holidays for Close Metrics</a></li><li><a href="S08_IsClosedPeriod_and_IsYTD_Flags_for_Like_for_Like.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S08_IsClosedPeriod_and_IsYTD_Flags_for_Like_for_Like.html">IsClosedPeriod and IsYTD Flags for Like-for-Like Comparisons</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_DAX_Fiscal_Date_Table_with_an_FYEnd_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C01_DAX_Fiscal_Date_Table_with_an_FYEnd_Column.html">DAX Fiscal Date Table with an FYEnd Column</a></li><li><a href="../concepts/C02_CALENDARAUTO3_for_Whole_March_Ending_Fiscal_Years.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C02_CALENDARAUTO3_for_Whole_March_Ending_Fiscal_Years.html">CALENDARAUTO(3) for Whole March-Ending Fiscal Years</a></li><li><a href="../concepts/C03_Fiscal_Month_and_Fiscal_Quarter_Formulas.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C03_Fiscal_Month_and_Fiscal_Quarter_Formulas.html">Fiscal Month and Fiscal Quarter Formulas</a></li><li><a href="../concepts/C04_Fiscal_Week_Number_Anchored_on_1_April.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C04_Fiscal_Week_Number_Anchored_on_1_April.html">Fiscal Week Number Anchored on 1 April</a></li><li><a href="../concepts/C05_Month_Offset_from_Today.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C05_Month_Offset_from_Today.html">Month Offset from Today</a></li><li><a href="../concepts/C06_Power_Query_Date_List_with_ListDates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C06_Power_Query_Date_List_with_ListDates.html">Power Query Date List with List.Dates</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Building the Date Dimension: DAX CALENDAR vs Power Query List.Dates</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Building the Date dimension in DAX (<code>CALENDAR</code> + <code>ADDCOLUMNS</code>) vs Power Query (<code>List.Dates</code>): trade-offs</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Every time-intelligence measure — YTD, PY YTD, rolling 12 months, closing balance — needs a dedicated Date
+dimension. Indian books add a twist: the fiscal year runs April–March, so the built-in "Auto date/time" hierarchy
+(calendar years) is useless and you must build your own table with FY labels, fiscal quarters and fiscal month
+numbers. There are two places to build it: as a <strong>DAX calculated table</strong> or as a <strong>Power Query (M) query</strong>. Both work;
+the choice affects refresh behaviour, reuse across files, Excel compatibility and whether the table can depend on
+the facts. FP&amp;A teams typically standardise one Date table and reuse it across every model, so the choice is made
+once and lived with for years.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="option-a-dax-calculated-table">Option A — DAX calculated table</h3>
+<p>Modelling → <em>New table</em> in Power BI (or <em>Design → Date Table → New</em> in Power Pivot, which generates a basic
+calendar you can extend):</p>
+<pre><code class="language-DAX">Date =
+VAR StartDate = DATE ( 2022, 4, 1 )
+VAR EndDate   = DATE ( 2027, 3, 31 )
+RETURN
+ADDCOLUMNS (
+    CALENDAR ( StartDate, EndDate ),
+    &quot;FYEnd&quot;,          IF ( MONTH ( [Date] ) &gt;= 4, YEAR ( [Date] ) + 1, YEAR ( [Date] ) ),
+    &quot;FY&quot;,             &quot;FY&quot; &amp; ( IF ( MONTH ( [Date] ) &gt;= 4, YEAR ( [Date] ), YEAR ( [Date] ) - 1 ) )
+                          &amp; &quot;-&quot; &amp; RIGHT ( IF ( MONTH ( [Date] ) &gt;= 4, YEAR ( [Date] ) + 1, YEAR ( [Date] ) ), 2 ),
+    &quot;FiscalMonthNo&quot;,  MOD ( MONTH ( [Date] ) + 8, 12 ) + 1,
+    &quot;MonthName&quot;,      FORMAT ( [Date], &quot;mmm&quot; ),
+    &quot;MonthEnd&quot;,       EOMONTH ( [Date], 0 ),
+    &quot;PeriodKey&quot;,      YEAR ( [Date] ) * 100 + MONTH ( [Date] )
+)
+</code></pre>
+<ul>
+<li><code>CALENDAR(start, end)</code> returns a one-column table named <code>Date</code> with every date in the range.</li>
+<li><code>ADDCOLUMNS</code> adds computed columns row by row (row context over the calendar).</li>
+<li>Columns that depend on earlier added columns (e.g. FiscalQuarter from FiscalMonthNo) cannot reference a column
+  added in the same ADDCOLUMNS; either nest ADDCOLUMNS, repeat the expression, or add them later as calculated
+  columns on the table.</li>
+<li><code>CALENDARAUTO(3)</code> can replace CALENDAR to derive the range from the model's dates (concept c02).</li>
+</ul>
+<p>Strengths: fast to write; can reference model data (e.g. <code>MAX(GL[PostingDate])</code> for the end date); formulas are DAX,
+which FP&amp;A analysts already know; works identically in Power Pivot.</p>
+<p>Weaknesses: calculated tables are computed after data refresh, are not compressed as optimally as imported tables
+(minor for a ~2,000-row Date table), cannot be reused in another file except by copy-paste, and dependencies on fact
+tables can create circular-dependency errors when you later add calculated columns that reference the Date table.</p>
+<h3 id="option-b-power-query-m">Option B — Power Query (M)</h3>
+<p>New Blank Query:</p>
+<pre><code class="language-M">let
+    StartDate = #date(2022, 4, 1),
+    EndDate   = #date(2027, 3, 31),
+    Dates     = List.Dates(StartDate, Duration.Days(EndDate - StartDate) + 1, #duration(1, 0, 0, 0)),
+    ToTable   = Table.FromList(Dates, Splitter.SplitByNothing(), {&quot;Date&quot;}, null, ExtraValues.Error),
+    Typed     = Table.TransformColumnTypes(ToTable, {{&quot;Date&quot;, type date}}),
+    AddFYEnd  = Table.AddColumn(Typed, &quot;FYEnd&quot;,
+                    each if Date.Month([Date]) &gt;= 4 then Date.Year([Date]) + 1 else Date.Year([Date]), Int64.Type),
+    AddFY     = Table.AddColumn(AddFYEnd, &quot;FY&quot;,
+                    each &quot;FY&quot; &amp; Text.From([FYEnd] - 1) &amp; &quot;-&quot; &amp; Text.End(Text.From([FYEnd]), 2), type text),
+    AddFMNo   = Table.AddColumn(AddFY, &quot;FiscalMonthNo&quot;,
+                    each Number.Mod(Date.Month([Date]) + 8, 12) + 1, Int64.Type),
+    AddMonth  = Table.AddColumn(AddFMNo, &quot;MonthName&quot;, each Date.ToText([Date], &quot;MMM&quot;, &quot;en-IN&quot;), type text),
+    AddMEnd   = Table.AddColumn(AddMonth, &quot;MonthEnd&quot;, each Date.EndOfMonth([Date]), type date)
+in
+    AddMEnd
+</code></pre>
+<ul>
+<li><code>List.Dates(start, count, step)</code> generates the list (concept c06).</li>
+<li>Each column is typed explicitly, so the model receives Date, Int64 and Text — no time component.</li>
+<li>Start and end can be <strong>parameters</strong> (Manage Parameters) or derived from the GL query
+  (<code>List.Min(GL[PostingDate])</code>), though referencing a large fact query from Date forces Power Query to evaluate it
+  twice unless buffered.</li>
+</ul>
+<p>Strengths: one place for all ETL; the query can be saved as a Dataflow (Power BI service) and reused by many models,
+guaranteeing a single corporate fiscal calendar; holiday tables can be merged in from SharePoint/Excel; imported
+tables compress normally; easy to parameterise.</p>
+<p>Weaknesses: M syntax is less familiar; locale-sensitive text functions need the culture argument (<code>"en-IN"</code>);
+dynamic columns such as "offset from today" are computed only at refresh (true also for DAX calculated columns).</p>
+<h3 id="trade-offs-summary">Trade-offs summary</h3>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>DAX <code>CALENDAR</code> + <code>ADDCOLUMNS</code></th>
+<th>Power Query <code>List.Dates</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ease for finance users</td>
+<td>High (Excel-like formulas)</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Reuse across models</td>
+<td>Copy-paste only</td>
+<td>Dataflow / shared query, template</td>
+</tr>
+<tr>
+<td>Can depend on model data</td>
+<td>Yes (risk of circular dependencies)</td>
+<td>Yes, via queries (costs refresh time)</td>
+</tr>
+<tr>
+<td>Holiday merge from file</td>
+<td>Possible via LOOKUPVALUE or a related table</td>
+<td>Natural (Merge Queries)</td>
+</tr>
+<tr>
+<td>Works in Excel Power Pivot</td>
+<td>Calculated tables are not available in Excel's data model; use Power Query or <em>Design → Date Table → New</em></td>
+<td>Yes (Get &amp; Transform)</td>
+</tr>
+<tr>
+<td>Typing control</td>
+<td>Implicit; check data types after creation</td>
+<td>Explicit per column</td>
+</tr>
+<tr>
+<td>Refresh</td>
+<td>Recalculated after every refresh</td>
+<td>Re-imported at refresh</td>
+</tr>
+<tr>
+<td>Governance / single source</td>
+<td>Weak</td>
+<td>Strong (central dataflow)</td>
+</tr>
+</tbody>
+</table>
+<p>Practitioner default: <strong>Power Query (or a central dataflow / SQL view) for the corporate Date table</strong>, DAX for
+quick prototypes and for calculated columns that genuinely need DAX (e.g. flags that read the last actuals date
+from GL). A third option, a Date table maintained in the data warehouse (SQL), is common in larger groups and
+behaves like Option B.</p>
+<h3 id="illustration">Illustration</h3>
+<p>A five-year calendar 1-Apr-2022 to 31-Mar-2027 contains 1,826 rows (FY2023-24 has 366 days because of
+29-Feb-2024). Whether built in DAX or M, check the row count equals 1,826, the minimum date is 1 April and the
+maximum is 31 March, and that <code>FiscalMonthNo</code> for 1-Apr-2025 is 1 and for 15-Mar-2026 is 12.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Excel Power Pivot</strong> does not support DAX calculated tables; there you must use Power Query or the built-in
+  <em>Date Table → New</em> feature and add columns as calculated columns.</li>
+<li><strong>Locale of month names.</strong> <code>FORMAT([Date], "mmm")</code> follows the model culture; M's <code>Date.ToText</code> takes an explicit
+  culture. Hindi or regional-language month labels are possible but complicate sort columns.</li>
+<li><strong>Calculated columns on a Power Query Date table</strong> are fine — e.g. IsYTD depending on GL — and keep the base
+  table governed while allowing model-dependent flags.</li>
+<li><strong>Mixed approach risk.</strong> Do not build FY logic in both places with different rules (e.g. one labels FY by start
+  year "FY2025", the other by end year "FY2026"). Pick one convention: Indian practice labels by both years
+  ("FY2025-26") or by end year ("FY26").</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Both DAX (<code>CALENDAR</code> + <code>ADDCOLUMNS</code>) and Power Query (<code>List.Dates</code>) produce a valid fiscal Date table.</li>
+<li>DAX is quick and can read model data; Power Query is explicit, typed, reusable and governs better.</li>
+<li>Excel Power Pivot lacks calculated tables, so Power Query is the portable choice.</li>
+<li>Verify row count, first date 1 April, last date 31 March and fiscal month numbering after building.</li>
+<li>Standardise one corporate fiscal calendar and FY label convention across models.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-write-the-dax-table-l1">Q1. Write the DAX table [L1]</h3>
+<p>Write a DAX calculated table for 1-Apr-2023 to 31-Mar-2026 with columns Date, FYEnd, FY label in the form
+"FY2024-25", FiscalMonthNo, MonthName and MonthEnd. State how many rows it should contain.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Check which of the three fiscal years contains a 29 February.</p>
+</blockquote>
+<h3 id="q2-convert-to-power-query-l2">Q2. Convert to Power Query [L2]</h3>
+<p>Rewrite the table from Q1 in Power Query M with explicit data types, using parameters pStart and pEnd for the range,
+and add a FiscalQuarter column ("Q1"–"Q4").</p>
+<h3 id="q3-choose-for-a-group-l3">Q3. Choose for a group [L3]</h3>
+<p>A group with six Indian subsidiaries (all FY April–March) and one US subsidiary (calendar year) runs eight Power BI
+models maintained by different analysts. Recommend where and how to build the Date dimension, how to handle the
+US entity's calendar, and how to enforce one FY label convention.</p>
+<h3 id="q4-circular-dependency-l2">Q4. Circular dependency [L2]</h3>
+<p>A DAX Date table is defined with <code>CALENDAR(DATE(2022,4,1), MAX(GL[PostingDate]))</code>. Later, a calculated column on GL
+uses <code>RELATED('Date'[FY])</code>, and another on Date computes IsYTD from GL. Explain the circular-dependency risk and how
+you would restructure.</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← Indian fiscal calendar table</a><a class="next" href="S02_Contiguous_Whole_Fiscal_Year_Date_Range_Covering.html">Contiguous Whole-Fiscal-Year Date Range Covering All Facts →</a></nav>
+</main></div></body></html>

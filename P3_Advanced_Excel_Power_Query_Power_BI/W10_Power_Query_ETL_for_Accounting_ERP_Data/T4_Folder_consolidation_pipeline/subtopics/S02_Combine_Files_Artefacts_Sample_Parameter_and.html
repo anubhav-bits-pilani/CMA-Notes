@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Combine Files Artefacts: Sample, Parameter and Transform Function · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S02_Combine_Files_Artefacts_Sample_Parameter_and.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T4 · Folder consolidation pipeline</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Folder consolidation pipeline</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_FolderFiles_and_SharePointFiles_Sources_and_File.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S01_FolderFiles_and_SharePointFiles_Sources_and_File.html">Folder.Files and SharePoint.Files: Sources and File-Scope Filters</a></li><li><a href="S02_Combine_Files_Artefacts_Sample_Parameter_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S02_Combine_Files_Artefacts_Sample_Parameter_and.html">Combine Files Artefacts: Sample, Parameter and Transform Function</a></li><li><a href="S03_Writing_a_Custom_File_Cleaning_Function_by_Hand.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S03_Writing_a_Custom_File_Cleaning_Function_by_Hand.html">Writing a Custom File-Cleaning Function by Hand</a></li><li><a href="S04_Reading_Branch_and_Month_from_the_File_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S04_Reading_Branch_and_Month_from_the_File_Name.html">Reading Branch and Month from the File Name</a></li><li><a href="S05_Schema_Drift_Tolerant_Column_Selection_Across.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S05_Schema_Drift_Tolerant_Column_Selection_Across.html">Schema Drift: Tolerant Column Selection Across Branch Files</a></li><li><a href="S06_Multi_Bank_Statements_One_Function_per_Bank_Then.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S06_Multi_Bank_Statements_One_Function_per_Bank_Then.html">Multi-Bank Statements: One Function per Bank, Then Table.Combine</a></li><li><a href="S07_Monthly_Drop_In_Workflow_Archiving_and_Duplicate.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S07_Monthly_Drop_In_Workflow_Archiving_and_Duplicate.html">Monthly Drop-In Workflow, Archiving and Duplicate-File Detection</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_FolderFiles_Output_Columns_and_Which_to_Trust.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C01_FolderFiles_Output_Columns_and_Which_to_Trust.html">Folder.Files Output Columns and Which to Trust</a></li><li><a href="../concepts/C02_Filtering_by_Extension_and_Excluding_Temp_Files.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C02_Filtering_by_Extension_and_Excluding_Temp_Files.html">Filtering by Extension and Excluding Temp Files</a></li><li><a href="../concepts/C03_The_fxCleanTB_Function_Signature.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C03_The_fxCleanTB_Function_Signature.html">The fxCleanTB Function Signature</a></li><li><a href="../concepts/C04_Invoking_per_File_and_Appending_with_TableCombine.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C04_Invoking_per_File_and_Appending_with_TableCombine.html">Invoking per File and Appending with Table.Combine</a></li><li><a href="../concepts/C05_Tolerant_Column_Selection_with_MissingFieldUseNull.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C05_Tolerant_Column_Selection_with_MissingFieldUseNull.html">Tolerant Column Selection with MissingField.UseNull</a></li><li><a href="../concepts/C06_Parsing_Branch_and_Period_with_Text_Delimiter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C06_Parsing_Branch_and_Period_with_Text_Delimiter.html">Parsing Branch and Period with Text Delimiter Functions</a></li><li><a href="../concepts/C07_Guarding_the_Refresh_Against_One_Bad_File.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C07_Guarding_the_Refresh_Against_One_Bad_File.html">Guarding the Refresh Against One Bad File</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Combine Files Artefacts: Sample, Parameter and Transform Function</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Combine Files artefacts: Sample File, Parameter, Transform Sample File, Transform File function</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Clicking <strong>Combine Files</strong> (or <strong>Combine &amp; Transform Data</strong> in Excel's Get Data &gt; From Folder) generates a group of helper queries that most users never read. When a consolidation breaks next month — a branch disappears, a column goes missing, refresh throws <code>Expression.Error</code> — the fault is almost always in these helpers. Knowing what each artefact does, how they are wired, and when to discard them for a hand-written function is the difference between a pipeline you maintain and one you rebuild every quarter.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="what-gets-generated">What gets generated</h3>
+<p>After you connect to a folder and click Combine, Power Query creates a <strong>Helper Queries</strong> group plus modifications to your main query:</p>
+<table>
+<thead>
+<tr>
+<th>Artefact</th>
+<th>Type</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Sample File</code></td>
+<td>Query returning binary</td>
+<td>Navigates to one file in the filtered folder list, by default the first (<code>Source{0}[Content]</code>)</td>
+</tr>
+<tr>
+<td><code>Parameter1</code> (Sample File Parameter)</td>
+<td>Parameter of type binary</td>
+<td>A parameter whose current value is <code>Sample File</code></td>
+</tr>
+<tr>
+<td><code>Transform Sample File</code></td>
+<td>Query</td>
+<td>The editable transformation; its first step reads <code>Parameter1</code> instead of a fixed file</td>
+</tr>
+<tr>
+<td><code>Transform File</code></td>
+<td>Function</td>
+<td>Generated from <code>Transform Sample File</code>; same steps, but <code>Parameter1</code> becomes the function argument</td>
+</tr>
+</tbody>
+</table>
+<p>The function is linked to the sample query: in the editor, <code>Transform File</code> shows "This query contains transformations that are applied to every file... edit Transform Sample File". Any step you add to <code>Transform Sample File</code> is automatically reflected in <code>Transform File</code>. You should not edit <code>Transform File</code> directly; doing so breaks the link.</p>
+<h3 id="the-main-query-steps">The main query steps</h3>
+<p>Typical generated M in the main query:</p>
+<pre><code class="language-m">let
+    Source = Folder.Files(FolderPath),
+    #&quot;Filtered Hidden Files1&quot; = Table.SelectRows(Source, each [Attributes]?[Hidden]? &lt;&gt; true),
+    #&quot;Invoke Custom Function1&quot; = Table.AddColumn(#&quot;Filtered Hidden Files1&quot;, &quot;Transform File&quot;,
+        each #&quot;Transform File&quot;([Content])),
+    #&quot;Renamed Columns1&quot; = Table.RenameColumns(#&quot;Invoke Custom Function1&quot;, {&quot;Name&quot;, &quot;Source.Name&quot;}),
+    #&quot;Removed Other Columns1&quot; = Table.SelectColumns(#&quot;Renamed Columns1&quot;,
+        {&quot;Source.Name&quot;, &quot;Transform File&quot;}),
+    #&quot;Expanded Table Column1&quot; = Table.ExpandTableColumn(#&quot;Removed Other Columns1&quot;, &quot;Transform File&quot;,
+        Table.ColumnNames(#&quot;Transform File&quot;(#&quot;Sample File&quot;))),
+    #&quot;Changed Type&quot; = Table.TransformColumnTypes(#&quot;Expanded Table Column1&quot;,
+        {{&quot;Source.Name&quot;, type text}, {&quot;Ledger&quot;, type text}, {&quot;Debit&quot;, type number}, {&quot;Credit&quot;, type number}})
+in
+    #&quot;Changed Type&quot;
+</code></pre>
+<p>Three things to read carefully:</p>
+<ol>
+<li><strong>Invoke Custom Function</strong> calls the function once per file row, producing a nested table per file.</li>
+<li><strong>Source.Name</strong> is simply the renamed <code>Name</code> column — the only provenance kept by default.</li>
+<li><strong>Expanded Table Column</strong> takes its column list from running the function on the <strong>sample file</strong>. Columns that exist only in other files are dropped without any error; columns that exist in the sample but not in another file come through as null.</li>
+</ol>
+<p>The trailing <strong>Changed Type</strong> step hard-codes column names and fails with "The column 'X' of the table wasn't found" if a column disappears.</p>
+<h3 id="how-the-sample-is-chosen">How the sample is chosen</h3>
+<p><code>Sample File</code> uses the first row of the filtered list at the time of creation. The list is ordered by the file system (usually by name), so if a new file sorts before your chosen sample, the "sample" changes on its own. To stabilise it, edit <code>Sample File</code> to select by name:</p>
+<pre><code class="language-m">Source = Folder.Files(FolderPath),
+Navigation = Source{[Name = &quot;DEL_2025-04.csv&quot;]}[Content]
+</code></pre>
+<p>Choose the messiest representative file — the one with the most caption rows, subtotals and blank lines — so the recorded steps are tested against the hardest case.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>Mumbai's file (the sample) has columns Ledger, Debit, Credit. Pune's file has Ledger, Cost Centre, Debit, Credit. After combining, Pune's rows show Ledger, Debit and Credit correctly, but Cost Centre is absent from the output. If the sample were Pune, Mumbai's rows would show Cost Centre = null — preferable, because the column exists and the nulls are visible. If Chennai's file uses "Dr Amount" instead of "Debit", its Debit column is entirely null and Chennai's TB appears as all credits; a Dr = Cr check per file catches this immediately.</p>
+<h3 id="when-to-keep-and-when-to-replace-the-helpers">When to keep and when to replace the helpers</h3>
+<p>Keep the generated helpers when files are genuinely uniform (a single ERP extract with a fixed layout) and the users who maintain the file prefer the UI. Replace them with a hand-written function (next subtopic) when layouts vary, when you need a defined output schema, when you want error isolation per file, or when several pipelines should share one cleaning function. A common middle path: keep <code>Transform Sample File</code> for UI-driven editing but change the main query's expand step to <code>Table.Combine</code> over the nested column, which unions all columns.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Renaming helper queries.</strong> Renaming <code>Transform File</code> to <code>fxCleanTB</code> is fine; Power Query updates references. Deleting <code>Sample File</code> breaks the parameter's current value.</li>
+<li><strong>Duplicated pipelines.</strong> Combining a second folder creates <code>Transform File (2)</code>, <code>Parameter2</code> and so on; the workbook fills with near-identical helpers. Consolidate them into one named function.</li>
+<li><strong>Excel sources.</strong> For an Excel folder, Combine Files asks which sheet or table to use from the sample; the generated navigation (<code>Source{[Item="TB",Kind="Sheet"]}[Data]</code>) fails on files where the sheet is named differently. Normalise sheet names or navigate by position with care.</li>
+<li><strong>Promote Headers in the function.</strong> If the sample's header row is detected automatically, files with different caption rows will promote the wrong row; replace with a conditional <code>Table.Skip</code>.</li>
+<li><strong>Load settings.</strong> The helper queries are connection-only by default; keep them so, otherwise a single file's sample loads to a sheet and confuses users.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Combine Files generates Sample File, a binary Parameter, Transform Sample File and the linked Transform File function.</li>
+<li>Edit Transform Sample File, never Transform File, while the link is in place.</li>
+<li>The expand step uses the sample's column names, so columns unique to other files are silently lost.</li>
+<li>Pin the sample to a named, messy file rather than position 0.</li>
+<li>Replace the scaffolding with a hand-written function and <code>Table.Combine</code> when layouts vary or control matters.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-name-the-artefacts-l1">Q1. Name the artefacts [L1]</h3>
+<p>List the four helper artefacts created by Combine Files, state the type of each (query, parameter, function), and explain in one line how <code>Transform File</code> stays in sync with <code>Transform Sample File</code>.</p>
+<h3 id="q2-silent-column-loss-l2">Q2. Silent column loss [L2]</h3>
+<p>Eight branch files are combined. The sample (<code>AHM_2025-04.csv</code>) has columns Ledger, Group, Debit, Credit. Three branches added a "Branch GSTIN" column in May. Explain what the consolidated output shows for May, why no error occurs, and rewrite the expand step so all columns from all files come through.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> <code>Table.Combine</code> aligns by column name and fills missing columns with null.</p>
+</blockquote>
+<h3 id="q3-the-sample-moved-l2">Q3. The sample moved [L2]</h3>
+<p>In June a new file <code>AAA_Test.csv</code> was dropped in the folder and the refresh started failing with "The column 'Particulars' of the table wasn't found". Explain the chain of cause and effect through the Sample File query, and give two fixes: one in the folder filter and one in the Sample File query.</p>
+<h3 id="q4-refactor-decision-l3">Q4. Refactor decision [L3]</h3>
+<p>Your workbook has five folder pipelines (branch TBs, bank CSVs, GST registers, payroll, fixed-asset additions), each with its own generated helper group. Propose a refactoring plan that reduces maintenance, describing which helpers to delete, which functions to write, how to name and group queries, and how you would regression-test the refactor against the old outputs.</p></section>
+<nav class="pager"><a class="prev" href="S01_FolderFiles_and_SharePointFiles_Sources_and_File.html">← Folder.Files and SharePoint.Files: Sources and File-Scope…</a><a class="next" href="S03_Writing_a_Custom_File_Cleaning_Function_by_Hand.html">Writing a Custom File-Cleaning Function by Hand →</a></nav>
+</main></div></body></html>

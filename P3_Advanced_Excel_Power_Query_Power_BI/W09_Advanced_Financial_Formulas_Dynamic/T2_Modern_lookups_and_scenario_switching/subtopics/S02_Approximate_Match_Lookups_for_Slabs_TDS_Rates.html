@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Approximate-Match Lookups for Slabs, TDS Rates, Tiers and Bands · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S02_Approximate_Match_Lookups_for_Slabs_TDS_Rates.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T2 · Modern lookups and scenario switching</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Modern lookups and scenario switching</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_XLOOKUP_Arguments_Not_Found_Value_Match_Mode_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S01_XLOOKUP_Arguments_Not_Found_Value_Match_Mode_and.html">XLOOKUP Arguments: Not-Found Value, Match Mode and Search Mode</a></li><li><a href="S02_Approximate_Match_Lookups_for_Slabs_TDS_Rates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S02_Approximate_Match_Lookups_for_Slabs_TDS_Rates.html">Approximate-Match Lookups for Slabs, TDS Rates, Tiers and Bands</a></li><li><a href="S03_Reverse_Search_for_Latest_Price_FX_Rate_and_Last.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S03_Reverse_Search_for_Latest_Price_FX_Rate_and_Last.html">Reverse Search for Latest Price, FX Rate and Last Payment Date</a></li><li><a href="S04_Two_Way_Lookups_on_Account_Month_Grids.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S04_Two_Way_Lookups_on_Account_Month_Grids.html">Two-Way Lookups on Account × Month Grids</a></li><li><a href="S05_XLOOKUP_Returning_Rows_Columns_and_Range.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S05_XLOOKUP_Returning_Rows_Columns_and_Range.html">XLOOKUP Returning Rows, Columns and Range References</a></li><li><a href="S06_XMATCH_and_INDEX_XMATCH_for_Dynamic_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S06_XMATCH_and_INDEX_XMATCH_for_Dynamic_Column.html">XMATCH and INDEX-XMATCH for Dynamic Column Selection</a></li><li><a href="S07_Live_Scenario_Switches_with_CHOOSE_INDEX_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S07_Live_Scenario_Switches_with_CHOOSE_INDEX_and.html">Live Scenario Switches with CHOOSE, INDEX and SWITCH</a></li><li><a href="S08_Multi_Key_Lookups_Helper_Keys_vs_Boolean_Arrays.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S08_Multi_Key_Lookups_Helper_Keys_vs_Boolean_Arrays.html">Multi-Key Lookups: Helper Keys vs Boolean Arrays</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_The_Fully_Specified_XLOOKUP_for_Ledger_Mapping.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C01_The_Fully_Specified_XLOOKUP_for_Ledger_Mapping.html">The Fully Specified XLOOKUP for Ledger Mapping</a></li><li><a href="../concepts/C02_Next_Smaller_XLOOKUP_for_Slab_Rates_Without.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C02_Next_Smaller_XLOOKUP_for_Slab_Rates_Without.html">Next-Smaller XLOOKUP for Slab Rates Without Sorting</a></li><li><a href="../concepts/C03_Nested_XLOOKUP_as_a_Two_Way_Lookup.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C03_Nested_XLOOKUP_as_a_Two_Way_Lookup.html">Nested XLOOKUP as a Two-Way Lookup</a></li><li><a href="../concepts/C04_INDEX_MATCH_MATCH_The_Version_Proof_Two_Way_Lookup.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C04_INDEX_MATCH_MATCH_The_Version_Proof_Two_Way_Lookup.html">INDEX-MATCH-MATCH: The Version-Proof Two-Way Lookup</a></li><li><a href="../concepts/C05_Boolean_Array_XLOOKUP_for_Multi_Criteria_Lookups.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C05_Boolean_Array_XLOOKUP_for_Multi_Criteria_Lookups.html">Boolean-Array XLOOKUP for Multi-Criteria Lookups</a></li><li><a href="../concepts/C06_CHOOSE_Driven_by_a_MATCH_Index_for_Scenario.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C06_CHOOSE_Driven_by_a_MATCH_Index_for_Scenario.html">CHOOSE Driven by a MATCH Index for Scenario Selection</a></li><li><a href="../concepts/C07_Dynamic_Period_Window_with_XLOOKUPXLOOKUP.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C07_Dynamic_Period_Window_with_XLOOKUPXLOOKUP.html">Dynamic Period Window with XLOOKUP:XLOOKUP</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Approximate-Match Lookups for Slabs, TDS Rates, Tiers and Bands</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Approximate match for tax slabs, TDS rates, commission tiers and depreciation rate bands</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Large parts of Indian finance run on banded rules: income-tax slabs, TDS thresholds by section, sales commission tiers, credit-period bands, depreciation rules that depend on days in use, and interest-rate grids by tenure. Hard-coding these into nested IFs makes every Budget or policy change a formula-surgery exercise. The professional pattern is a small <strong>band table</strong> maintained as an input, plus an <strong>approximate-match lookup</strong> that finds the band a value falls into. Payroll models, TDS working papers, sales incentive calculators and tax provisions all rely on it, and getting the boundary right (is ₹12,00,000 in the lower or upper band?) is a classic test question.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="band-table-design">Band table design</h3>
+<p>A band table has one row per band, keyed on the band's <strong>lower bound</strong> ("From"), sorted ascending, starting at the lowest possible value (usually 0):</p>
+<table>
+<thead>
+<tr>
+<th>From</th>
+<th>Rate</th>
+<th>BaseTax (cumulative tax at From)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0%</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4,00,000</td>
+<td>5%</td>
+<td>0</td>
+</tr>
+<tr>
+<td>8,00,000</td>
+<td>10%</td>
+<td>20,000</td>
+</tr>
+<tr>
+<td>12,00,000</td>
+<td>15%</td>
+<td>60,000</td>
+</tr>
+<tr>
+<td>16,00,000</td>
+<td>20%</td>
+<td>1,20,000</td>
+</tr>
+<tr>
+<td>20,00,000</td>
+<td>25%</td>
+<td>2,00,000</td>
+</tr>
+<tr>
+<td>24,00,000</td>
+<td>30%</td>
+<td>3,00,000</td>
+</tr>
+</tbody>
+</table>
+<p>These are the new-regime slabs under Section 115BAC for FY 2025-26 (AY 2026-27), as amended by the Finance Act 2025 — date-sensitive; update the table, not the formula, when the Finance Act changes. <code>BaseTax</code> is the cumulative tax on all lower bands, computed in the table itself (<code>=prior BaseTax + (this From − prior From) × prior Rate</code>).</p>
+<h3 id="the-lookup">The lookup</h3>
+<pre><code class="language-excel">=XLOOKUP(Income, Slab[From], Slab[Rate], , -1)
+</code></pre>
+<p><code>match_mode</code> -1 returns an exact match or else the next smaller From. An income of ₹18,00,000 finds From = 16,00,000 → 20%. An income of exactly ₹16,00,000 finds the exact row → 20%, which means the From value belongs to the <strong>upper</strong> band. That matches statutory wording such as "₹12,00,001 to ₹16,00,000: 15%" closely enough for rupee incomes but not for fractional values — define the boundary convention explicitly.</p>
+<p>Legacy equivalents: <code>VLOOKUP(Income, SlabTable, 2, TRUE)</code> or <code>INDEX(Rate, MATCH(Income, From, 1))</code> — both require ascending sort, while XLOOKUP's linear search does not. <code>LOOKUP(Income, From, Rate)</code> also works on sorted data and is common in older models.</p>
+<h3 id="marginal-progressive-tax-vs-single-rate-bands">Marginal (progressive) tax vs single-rate bands</h3>
+<p>A slab rate is the marginal rate; the tax is not income × rate. Two correct approaches:</p>
+<ol>
+<li><strong>Base-plus-marginal</strong>:</li>
+</ol>
+<pre><code class="language-excel">=LET(i, Income,
+     f, XLOOKUP(i, Slab[From], Slab[From], , -1),
+     b, XLOOKUP(i, Slab[From], Slab[BaseTax], , -1),
+     r, XLOOKUP(i, Slab[From], Slab[Rate], , -1),
+     b + (i - f) * r)
+</code></pre>
+<ol start="2">
+<li><strong>Differential-rate SUMPRODUCT</strong>: add a column <code>Diff</code> = this rate − previous rate (0% on the first row, then 5% on each of the six later rows), then <code>=SUMPRODUCT((Income&gt;Slab[From]) * (Income-Slab[From]) * Slab[Diff])</code>.</li>
+</ol>
+<p>Worked illustration: taxable income ₹18,00,000. Lookup returns From 16,00,000, BaseTax 1,20,000, rate 20%. Tax = 1,20,000 + 2,00,000 × 20% = ₹1,60,000, plus 4% health and education cess = ₹1,66,400. Income × 20% (₹3,60,000) would be badly wrong.</p>
+<h3 id="tds-threshold-then-rate-logic">TDS: threshold-then-rate logic</h3>
+<p>TDS is mostly a <strong>threshold</strong> rule, not a progressive slab: once the threshold is crossed, the rate applies to the whole amount (for most sections). A band table per section:</p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Nature</th>
+<th>From</th>
+<th>Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>194J(b)</td>
+<td>Professional fees</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>194J(b)</td>
+<td>Professional fees</td>
+<td>50,000</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>194H</td>
+<td>Commission</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>194H</td>
+<td>Commission</td>
+<td>20,000</td>
+<td>2%</td>
+</tr>
+</tbody>
+</table>
+<p>(Thresholds per Finance Act 2025, effective 1 April 2025; aggregate annual payments per payee are compared, and the rules differ by section — verify the current position before use.) The lookup combines the section key with an approximate match on amount:</p>
+<pre><code class="language-excel">=XLOOKUP(1, (TDS[Section]=[@Section]) * (TDS[From]&lt;=[@AnnualPaid]), TDS[Rate], &quot;Check&quot;, 0, -1)
+</code></pre>
+<p>The boolean array keeps only the section's rows at or below the aggregate paid; searching last-to-first (<code>search_mode</code> -1) on a From-ascending table returns the highest qualifying band. Alternatively, keep one table per section or a helper key.</p>
+<h3 id="commission-tiers-slab-vs-whole-amount">Commission tiers: slab vs whole-amount</h3>
+<table>
+<thead>
+<tr>
+<th>Achievement</th>
+<th>Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1.0%</td>
+</tr>
+<tr>
+<td>25,00,000</td>
+<td>1.5%</td>
+</tr>
+<tr>
+<td>50,00,000</td>
+<td>2.0%</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Whole-amount (retro) tier</strong>: sales of ₹60,00,000 earn 2.0% on everything = ₹1,20,000 — a single approximate lookup times sales.</li>
+<li><strong>Incremental (slab) tier</strong>: 1.0% on 25 lakh + 1.5% on next 25 lakh + 2.0% on 10 lakh = 25,000 + 37,500 + 20,000 = ₹82,500 — use the base-plus-marginal pattern.</li>
+</ul>
+<p>Read the incentive policy carefully: the formula type is a policy question, and retro tiers create a cliff effect (₹1 of extra sales can raise commission sharply), which affects sales behaviour near quarter-end.</p>
+<h3 id="depreciation-rate-bands">Depreciation-rate bands</h3>
+<p>Band logic appears in depreciation in several places:</p>
+<ul>
+<li><strong>Income-tax half-rate rule</strong> (proviso to Section 32(1)): an asset put to use for less than 180 days in the year of acquisition gets 50% of the normal rate. Band table on days in use: From 0 → 50%, From 180 → 100% multiplier.</li>
+<li><strong>Capitalisation policy</strong>: items below a policy threshold (say ₹5,000) are expensed or fully depreciated in year one; above it, the normal Schedule II useful life applies.</li>
+<li><strong>Useful-life-to-rate tables</strong> for SLM/WDV rates by asset class, looked up with exact match on class, then approximate match on cost or life where policy bands exist.</li>
+</ul>
+<pre><code class="language-excel">=XLOOKUP(EOMONTH(FYStart,11)-[@PutToUse]+1, HalfRate[From], HalfRate[Multiplier], , -1) * [@BlockRate]
+</code></pre>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Boundary convention.</strong> "Up to ₹4,00,000" means 4,00,000 itself is in the lower band; with a From-based -1 lookup, an exact 4,00,000 lands in the upper band. Because the upper band's rate applies only to income above From, the tax computed by base-plus-marginal is unaffected — but a single-rate threshold (TDS) at exactly the threshold may differ. Test boundary values explicitly.</li>
+<li><strong>Rebates and marginal relief.</strong> Under the new regime the Section 87A rebate makes tax nil up to ₹12,00,000 of taxable income (resident individuals), with marginal relief just above it; these are overlays on the slab calculation, not more slabs.</li>
+<li><strong>Below the first From</strong> (negative values, losses) returns <code>#N/A</code>; start the table at 0 or a large negative number.</li>
+<li><strong>Upper-bound ("Up to") tables</strong> use <code>match_mode</code> 1 (next larger) instead; mixing conventions in one model is a common error.</li>
+<li><strong>Unsorted tables</strong> are safe with XLOOKUP linear search but wrong with VLOOKUP TRUE, MATCH 1 and LOOKUP.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Store bands as a From-ascending table and use <code>XLOOKUP(value, From, Rate, , -1)</code>.</li>
+<li>Progressive tax needs base-plus-marginal or differential SUMPRODUCT — never income × marginal rate.</li>
+<li>TDS thresholds apply a single rate once crossed; combine a section key with the amount band.</li>
+<li>Commission tiers can be whole-amount or incremental — decide from the policy, not the formula.</li>
+<li>Test exact boundary values; define whether a From value belongs to the upper or lower band.</li>
+<li>Rate tables are dated inputs (Finance Act changes) — update the table, never the formula.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-new-regime-tax-calculator-l2">Q1. New-regime tax calculator [L2]</h3>
+<p>Build the FY 2025-26 new-regime slab table with From, Rate and BaseTax columns and write a single formula that returns tax before rebate and cess for taxable income in B2. List the test incomes you would use to validate the formula, including all slab boundaries.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> BaseTax for each row is the previous row's BaseTax plus the previous band's width times its rate.</p>
+</blockquote>
+<h3 id="q2-commission-plan-comparison-l2">Q2. Commission plan comparison [L2]</h3>
+<p>A sales head earns commission on quarterly sales: 0–₹40 lakh at 0.8%, ₹40–80 lakh at 1.2%, above ₹80 lakh at 1.6%. For quarterly sales of ₹36 lakh, ₹79.5 lakh and ₹81 lakh, set up formulas computing commission under (a) a whole-amount tier and (b) an incremental slab. Explain the behavioural risk each design creates near ₹80 lakh.</p>
+<h3 id="q3-tds-band-table-for-multiple-sections-l2">Q3. TDS band table for multiple sections [L2]</h3>
+<p>Design a single TDS table covering 194C (individual/HUF and others), 194H, 194I (plant and machinery; land and building) and 194J (technical; professional) with thresholds and rates, and write the lookup that returns the applicable rate given Section, Payee type and aggregate payment. State which values are date-sensitive.</p>
+<h3 id="q4-half-rate-depreciation-l1">Q4. Half-rate depreciation [L1]</h3>
+<p>A CNC machine (block rate 15% WDV for Income-tax) costing ₹48,00,000 is put to use on 22-Oct-2025. Write formulas that compute days in use in FY 2025-26 and the applicable rate using a band table, and identify what changes if it had been put to use on 30-Sep-2025.</p>
+<h3 id="q5-choosing-the-lookup-convention-l1">Q5. Choosing the lookup convention [L1]</h3>
+<p>A credit-period policy says: invoices "up to ₹1,00,000: 30 days; up to ₹10,00,000: 45 days; above: 60 days". Build the band table in "Up to" form and write the XLOOKUP. Then rebuild it in "From" form with the corresponding match mode.</p></section>
+<nav class="pager"><a class="prev" href="S01_XLOOKUP_Arguments_Not_Found_Value_Match_Mode_and.html">← XLOOKUP Arguments: Not-Found Value, Match Mode and Search…</a><a class="next" href="S03_Reverse_Search_for_Latest_Price_FX_Rate_and_Last.html">Reverse Search for Latest Price, FX Rate and Last Payment… →</a></nav>
+</main></div></body></html>

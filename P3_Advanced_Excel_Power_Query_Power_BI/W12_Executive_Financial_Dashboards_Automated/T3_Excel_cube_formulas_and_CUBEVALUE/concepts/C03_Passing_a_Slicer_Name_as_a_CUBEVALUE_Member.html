@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Passing a Slicer Name as a CUBEVALUE Member Argument · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C03_Passing_a_Slicer_Name_as_a_CUBEVALUE_Member.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T3 · Excel cube formulas and CUBEVALUE</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Excel cube formulas and CUBEVALUE</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Connecting_Excel_to_the_Data_Model_or_a_Power_BI.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S01_Connecting_Excel_to_the_Data_Model_or_a_Power_BI.html">Connecting Excel to the Data Model or a Power BI Semantic Model</a></li><li><a href="../subtopics/S02_Converting_PivotTables_to_Cube_Formulas_with_OLAP.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S02_Converting_PivotTables_to_Cube_Formulas_with_OLAP.html">Converting PivotTables to Cube Formulas with OLAP Tools</a></li><li><a href="../subtopics/S03_The_Cube_Function_Family_CUBEMEMBER_to.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S03_The_Cube_Function_Family_CUBEMEMBER_to.html">The Cube Function Family: CUBEMEMBER to CUBEMEMBERPROPERTY</a></li><li><a href="../subtopics/S04_MDX_Unique_Names_for_Members_and_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S04_MDX_Unique_Names_for_Members_and_Measures.html">MDX Unique Names for Members and Measures</a></li><li><a href="../subtopics/S05_Connecting_Slicers_to_Cube_Formulas_by_Slicer_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S05_Connecting_Slicers_to_Cube_Formulas_by_Slicer_Name.html">Connecting Slicers to Cube Formulas by Slicer Name</a></li><li><a href="../subtopics/S06_Free_Form_Board_Pack_Layouts_with_Live_Cube.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S06_Free_Form_Board_Pack_Layouts_with_Live_Cube.html">Free-Form Board-Pack Layouts with Live Cube Numbers</a></li><li><a href="../subtopics/S07_Dynamic_Top_N_Lists_with_a_Sorted_CUBESET_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S07_Dynamic_Top_N_Lists_with_a_Sorted_CUBESET_and.html">Dynamic Top N Lists with a Sorted CUBESET and CUBERANKEDMEMBER</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_CUBEVALUE_with_Literal_Measure_and_Member_Strings.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C01_CUBEVALUE_with_Literal_Measure_and_Member_Strings.html">CUBEVALUE with Literal Measure and Member Strings</a></li><li><a href="C02_Building_Cube_Members_from_Cell_Labels_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C02_Building_Cube_Members_from_Cell_Labels_with.html">Building Cube Members from Cell Labels with CUBEMEMBER</a></li><li><a href="C03_Passing_a_Slicer_Name_as_a_CUBEVALUE_Member.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C03_Passing_a_Slicer_Name_as_a_CUBEVALUE_Member.html">Passing a Slicer Name as a CUBEVALUE Member Argument</a></li><li><a href="C04_Sorted_CUBESET_of_Vendors_sortorder_2_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C04_Sorted_CUBESET_of_Vendors_sortorder_2_for.html">Sorted CUBESET of Vendors: sort_order 2 for Descending</a></li><li><a href="C05_CUBERANKEDMEMBER_with_ROWS_and_CUBESETCOUNT_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C05_CUBERANKEDMEMBER_with_ROWS_and_CUBESETCOUNT_for.html">CUBERANKEDMEMBER with ROWS() and CUBESETCOUNT for Ranked Lists</a></li><li><a href="C06_Connection_Names_for_Power_BI_Semantic_Models_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C06_Connection_Names_for_Power_BI_Semantic_Models_in.html">Connection Names for Power BI Semantic Models in Cube Formulas</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Passing a Slicer Name as a CUBEVALUE Member Argument</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>=CUBEVALUE("ThisWorkbookDataModel", &#36;B&#36;1, &#36;A5, C&#36;4, Slicer_FY)</code> passes a slicer name as a member argument</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>The formula, laid out one argument per line (the order of member arguments does not matter):</p>
+<pre><code>=CUBEVALUE("ThisWorkbookDataModel",
+           &#36;B&#36;1,       ' measure member cell, fully anchored
+           &#36;A5,         ' row member cell, column A anchored
+           C&#36;4,         ' column member cell, row 4 anchored
+           Slicer\_FY)    ' slicer passed by its formula name
+</code></pre>
+
+<ul>
+<li><strong>B1</strong> (absolute reference) holds <code>=CUBEMEMBER("ThisWorkbookDataModel", "[Measures].[Actual]")</code> — the measure.</li>
+<li><strong>A5</strong> (column-anchored) holds a row member, e.g. an FS line built with CUBEMEMBER.</li>
+<li><strong>C4</strong> (row-anchored) holds a column member, e.g. a month or a BU.</li>
+<li><strong>Slicer_FY</strong> is the slicer's <em>Name to use in formulas</em>; unquoted, it contributes the slicer's current
+  selection as a set.</li>
+</ul>
+<p>The value returned is</p>
+<p>\[
+\text{Measure}_{B1}\big(\text{row member}_{A5} \cap \text{column member}_{C4} \cap \text{selection}(\text{Slicer\_FY})\big)
+\]</p>
+<h2 id="explanation">Explanation</h2>
+<p>This is the workhorse formula of a cube-formula board pack: write it once in the top-left value cell and fill it
+right and down. The mixed references are what make the fill work — the measure stays fixed, each row picks its own
+FS line, each column its own month, and the slicer applies everywhere. It is exactly the shape that <em>Convert to
+Formulas</em> generates (s02), tidied with anchors.</p>
+<p>Points to note:</p>
+<ul>
+<li><strong>Slicer semantics.</strong> No selection = All (every FY aggregated — usually wrong for flow measures, so add a
+  warning); one item = that FY; multiple = aggregated over the selected FYs.</li>
+<li><strong>Same connection.</strong> The slicer must be built on the same connection as the formula; otherwise #N/A or #VALUE!.</li>
+<li><strong>One hierarchy per argument.</strong> If C4 is a FY member and the slicer is also on FY, the two conflict; the column
+  members must come from a different hierarchy than the slicer (months, BUs, scenarios-as-measures).</li>
+<li><strong>Several slicers.</strong> Add <code>Slicer_BusinessUnit</code>, <code>Slicer_Region</code> as further arguments; each must be connected.</li>
+<li><strong>Measures as columns.</strong> Alternatively, C4 can hold measure members (Actual, Budget, PY) and B1 is omitted —
+  then the column carries the measure. Do not supply two measures in one formula.</li>
+<li><strong>Named cells.</strong> Replacing the anchors with names (<code>MsrActual</code>, <code>Conn</code>) improves readability and avoids
+  anchor mistakes when copying sections.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>Layout on the "P&amp;L by month" sheet:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Actual (measure member)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td></td>
+<td>Apr</td>
+<td>May</td>
+<td>Jun</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Revenue</td>
+<td>101.6</td>
+<td>97.3</td>
+<td>95.8</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Material cost</td>
+<td>55.4</td>
+<td>53.1</td>
+<td>52.0</td>
+</tr>
+</tbody>
+</table>
+<p>Cell C5 holds the concept formula (A5 = Revenue member, C4 = April member of <code>'Date'[FiscalMonth]</code>, B1 = Actual).
+With <code>Slicer_FY</code> on FY2025-26 the grid shows FY2025-26 months; selecting FY2024-25 changes every cell to the prior
+year (April 2024 revenue ₹92.4 Cr).</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Subtopic s05 (slicer names and selection behaviour), s02 (Convert to Formulas output).</li>
+<li>Concept c02 (building the A5 members from keys) and c06 (connection names for Power BI).</li>
+<li>Topic 2 s01: Power BI's synced FY slicer is the equivalent behaviour.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-fill-the-grid-l1">Q1. Fill the grid [L1]</h3>
+<p>Describe the anchoring of each reference in the concept formula and what goes wrong if A5 is written fully relative
+and then the formula is filled right.</p>
+<h3 id="q2-slicer-conflict-l2">Q2. Slicer conflict [L2]</h3>
+<p>A sheet uses FY members in row 4 (FY2024-25, FY2025-26) and the concept formula with <code>Slicer_FY</code>. With
+FY2025-26 selected on the slicer, the FY2024-25 column shows unexpected values. Explain why and how to redesign the
+sheet.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Two arguments are trying to set the same hierarchy.</p>
+</blockquote>
+<h3 id="q3-add-bu-and-region-l2">Q3. Add BU and Region [L2]</h3>
+<p>Extend the formula to respond to BU and Region slicers and to show Budget in a second block of columns without
+writing a second formula pattern.</p></section>
+<nav class="pager"><a class="prev" href="C02_Building_Cube_Members_from_Cell_Labels_with.html">← Building Cube Members from Cell Labels with CUBEMEMBER</a><a class="next" href="C04_Sorted_CUBESET_of_Vendors_sortorder_2_for.html">Sorted CUBESET of Vendors: sortorder 2 for Descending →</a></nav>
+</main></div></body></html>

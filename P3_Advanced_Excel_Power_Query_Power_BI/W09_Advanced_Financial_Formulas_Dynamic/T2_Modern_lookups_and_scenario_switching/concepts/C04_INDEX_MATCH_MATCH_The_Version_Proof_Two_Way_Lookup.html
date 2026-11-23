@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INDEX-MATCH-MATCH: The Version-Proof Two-Way Lookup · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C04_INDEX_MATCH_MATCH_The_Version_Proof_Two_Way_Lookup.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T2 · Modern lookups and scenario switching</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Modern lookups and scenario switching</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_XLOOKUP_Arguments_Not_Found_Value_Match_Mode_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S01_XLOOKUP_Arguments_Not_Found_Value_Match_Mode_and.html">XLOOKUP Arguments: Not-Found Value, Match Mode and Search Mode</a></li><li><a href="../subtopics/S02_Approximate_Match_Lookups_for_Slabs_TDS_Rates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S02_Approximate_Match_Lookups_for_Slabs_TDS_Rates.html">Approximate-Match Lookups for Slabs, TDS Rates, Tiers and Bands</a></li><li><a href="../subtopics/S03_Reverse_Search_for_Latest_Price_FX_Rate_and_Last.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S03_Reverse_Search_for_Latest_Price_FX_Rate_and_Last.html">Reverse Search for Latest Price, FX Rate and Last Payment Date</a></li><li><a href="../subtopics/S04_Two_Way_Lookups_on_Account_Month_Grids.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S04_Two_Way_Lookups_on_Account_Month_Grids.html">Two-Way Lookups on Account × Month Grids</a></li><li><a href="../subtopics/S05_XLOOKUP_Returning_Rows_Columns_and_Range.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S05_XLOOKUP_Returning_Rows_Columns_and_Range.html">XLOOKUP Returning Rows, Columns and Range References</a></li><li><a href="../subtopics/S06_XMATCH_and_INDEX_XMATCH_for_Dynamic_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S06_XMATCH_and_INDEX_XMATCH_for_Dynamic_Column.html">XMATCH and INDEX-XMATCH for Dynamic Column Selection</a></li><li><a href="../subtopics/S07_Live_Scenario_Switches_with_CHOOSE_INDEX_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S07_Live_Scenario_Switches_with_CHOOSE_INDEX_and.html">Live Scenario Switches with CHOOSE, INDEX and SWITCH</a></li><li><a href="../subtopics/S08_Multi_Key_Lookups_Helper_Keys_vs_Boolean_Arrays.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S08_Multi_Key_Lookups_Helper_Keys_vs_Boolean_Arrays.html">Multi-Key Lookups: Helper Keys vs Boolean Arrays</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_The_Fully_Specified_XLOOKUP_for_Ledger_Mapping.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C01_The_Fully_Specified_XLOOKUP_for_Ledger_Mapping.html">The Fully Specified XLOOKUP for Ledger Mapping</a></li><li><a href="C02_Next_Smaller_XLOOKUP_for_Slab_Rates_Without.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C02_Next_Smaller_XLOOKUP_for_Slab_Rates_Without.html">Next-Smaller XLOOKUP for Slab Rates Without Sorting</a></li><li><a href="C03_Nested_XLOOKUP_as_a_Two_Way_Lookup.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C03_Nested_XLOOKUP_as_a_Two_Way_Lookup.html">Nested XLOOKUP as a Two-Way Lookup</a></li><li><a href="C04_INDEX_MATCH_MATCH_The_Version_Proof_Two_Way_Lookup.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C04_INDEX_MATCH_MATCH_The_Version_Proof_Two_Way_Lookup.html">INDEX-MATCH-MATCH: The Version-Proof Two-Way Lookup</a></li><li><a href="C05_Boolean_Array_XLOOKUP_for_Multi_Criteria_Lookups.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C05_Boolean_Array_XLOOKUP_for_Multi_Criteria_Lookups.html">Boolean-Array XLOOKUP for Multi-Criteria Lookups</a></li><li><a href="C06_CHOOSE_Driven_by_a_MATCH_Index_for_Scenario.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C06_CHOOSE_Driven_by_a_MATCH_Index_for_Scenario.html">CHOOSE Driven by a MATCH Index for Scenario Selection</a></li><li><a href="C07_Dynamic_Period_Window_with_XLOOKUPXLOOKUP.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C07_Dynamic_Period_Window_with_XLOOKUPXLOOKUP.html">Dynamic Period Window with XLOOKUP:XLOOKUP</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>INDEX-MATCH-MATCH: The Version-Proof Two-Way Lookup</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>=INDEX(Data, MATCH($A5, Codes, 0),
+MATCH(C$4, Months, 0))</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>\[
+\text{Result} = D_{r,c}, \qquad r = \text{MATCH}(a, \text{Codes}, 0), \qquad c = \text{MATCH}(h, \text{Months}, 0)
+\]</p>
+<p>where \(a\) is the account code in column A of the current row, \(h\) the month header in row 4 of the current column, \(r\) the 1-based position of \(a\) within <code>Codes</code>, \(c\) the 1-based position of \(h\) within <code>Months</code>, and \(D_{r,c}\) the cell of <code>Data</code> at row \(r\), column \(c\). Match type 0 means exact match; if either key is absent, MATCH returns <code>#N/A</code> and so does the formula.</p>
+<h2 id="explanation">Explanation</h2>
+<p><strong>Division of labour.</strong> MATCH answers "where?" and INDEX answers "what is there?". Separating the two makes the formula robust to inserted columns and rows (no hard-coded column index as in VLOOKUP), able to look left or up, and fast — each MATCH runs once per cell.</p>
+<p><strong>The 0 is not optional.</strong> MATCH's third argument defaults to 1 (approximate: largest value ≤ lookup value, assuming ascending order). On unsorted account codes or month headers, omitting 0 returns a plausible wrong position without any error. Reviewers should treat every MATCH without an explicit 0 (or -1/1 with a documented reason) as a defect.</p>
+<p><strong>Alignment.</strong> <code>Codes</code> must span exactly the rows of <code>Data</code>, and <code>Months</code> exactly its columns, starting at the same row/column. A header range that includes a label cell (A4) while <code>Data</code> starts in C means every column position is off by two.</p>
+<p><strong>Compatibility and auditability.</strong> This form works in every Excel version since the 1990s, which matters for files shared with subsidiaries, auditors or clients on older installations. It is also the form most reviewers recognise instantly.</p>
+<p><strong>Error handling.</strong> Wrap with IFNA (not IFERROR) when a missing key is a legitimate state: <code>=IFNA(INDEX(…), 0)</code> for "no budget line"; leave other errors visible.</p>
+<p><strong>Speed trick.</strong> On large grids, compute the row position once in a helper column (e.g. B5 <code>=MATCH($A5, Codes, 0)</code>) and the column position once in a helper row;
+the grid cells then become <code>=INDEX(Data, $B5,
+C$3)</code>, which is extremely fast and makes position errors visible.</p>
+<h2 id="illustration">Illustration</h2>
+<p><code>Codes</code> = Budget!A6:A8, <code>Months</code> = Budget!C4:E4, <code>Data</code> = Budget!C6:E8:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>C (Apr)</th>
+<th>D (May)</th>
+<th>E (Jun)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6: 610100</td>
+<td>82.0</td>
+<td>82.0</td>
+<td>86.5</td>
+</tr>
+<tr>
+<td>7: 640500</td>
+<td>21.0</td>
+<td>21.0</td>
+<td>21.0</td>
+</tr>
+<tr>
+<td>8: 650200</td>
+<td>6.4</td>
+<td>7.1</td>
+<td>5.8</td>
+</tr>
+</tbody>
+</table>
+<p>For A5 = 640500 and C4 = 01-Jun-2025: row position 2, column position 3, result ₹21.0 lakh.</p>
+<p>Now suppose the codes in the budget file are not sorted (650200, 610100, 640500 in rows 6–8) and the formula omits the 0 in the first MATCH. <code>MATCH(640500, Codes)</code> treats the list as ascending, and can stop at the wrong row — returning the 610100 row's value, ₹86.5 lakh, as "rent". No error is shown.</p>
+<h2 id="connections">Connections</h2>
+<p>The legacy counterpart of the nested-XLOOKUP concept, covered in the two-way lookup subtopic; XMATCH (the modern MATCH subtopic) can replace both MATCHes. The match-type pitfall of this topic ("MATCH defaults to 1") is demonstrated directly. The helper-position technique also underpins fast INDEX-based scenario switches and the INDEX:INDEX dynamic ranges used for YTD windows.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-build-with-helper-positions-l1">Q1. Build with helper positions [L1]</h3>
+<p>A 60-line × 12-month budget block is on sheet <code>Bud</code>. Design a report grid that uses a helper column of row positions and a helper row of column positions, and write the three formulas (row helper, column helper, grid cell).</p>
+<h3 id="q2-audit-three-variants-l2">Q2. Audit three variants [L2]</h3>
+<p>Explain what can go wrong with each: (a) <code>=INDEX(Data, MATCH(A5, Codes, 0), MATCH(C4, Months))</code>; (b) <code>=INDEX(Data, MATCH(A5, Budget!A:A, 0), MATCH(C4, Months, 0))</code> where <code>Data</code> starts in row 6; (c) <code>=IFERROR(INDEX(Data, MATCH(A5, Codes, 0), MATCH(C4, Months, 0)), 0)</code>.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> One is a match-type issue, one an alignment issue, and one an error-masking issue.</p>
+</blockquote>
+<h3 id="q3-interview-comparison-l1">Q3. Interview comparison [L1]</h3>
+<p>"Why do many modellers still prefer INDEX-MATCH over XLOOKUP?" Give a balanced answer covering compatibility, performance, readability and the risks specific to each.</p></section>
+<nav class="pager"><a class="prev" href="C03_Nested_XLOOKUP_as_a_Two_Way_Lookup.html">← Nested XLOOKUP as a Two-Way Lookup</a><a class="next" href="C05_Boolean_Array_XLOOKUP_for_Multi_Criteria_Lookups.html">Boolean-Array XLOOKUP for Multi-Criteria Lookups →</a></nav>
+</main></div></body></html>

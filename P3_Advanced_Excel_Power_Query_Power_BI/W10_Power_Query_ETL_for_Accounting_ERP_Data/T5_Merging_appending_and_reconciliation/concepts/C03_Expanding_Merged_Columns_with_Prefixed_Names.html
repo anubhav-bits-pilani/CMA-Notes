@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expanding Merged Columns with Prefixed Names · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C03_Expanding_Merged_Columns_with_Prefixed_Names.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T5 · Merging, appending and reconciliation…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Merging, appending and reconciliation joins</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Append_vs_Merge_Union_vs_Join_with_SQL_Analogies.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S01_Append_vs_Merge_Union_vs_Join_with_SQL_Analogies.html">Append vs Merge: Union vs Join with SQL Analogies</a></li><li><a href="../subtopics/S02_The_Six_Join_Kinds_and_Their_Role_in_a.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S02_The_Six_Join_Kinds_and_Their_Role_in_a.html">The Six Join Kinds and Their Role in a Reconciliation</a></li><li><a href="../subtopics/S03_Bank_vs_Book_Matching_on_Amount_Reference_and_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S03_Bank_vs_Book_Matching_on_Amount_Reference_and_Date.html">Bank vs Book Matching on Amount, Reference and Date Window</a></li><li><a href="../subtopics/S04_Normalising_Composite_Keys_Before_Merging.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S04_Normalising_Composite_Keys_Before_Merging.html">Normalising Composite Keys Before Merging</a></li><li><a href="../subtopics/S05_Fuzzy_Merge_for_Vendor_and_Customer_Names.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S05_Fuzzy_Merge_for_Vendor_and_Customer_Names.html">Fuzzy Merge for Vendor and Customer Names</a></li><li><a href="../subtopics/S06_Repeated_Identical_Amounts_Sequence_Keys_for_One.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S06_Repeated_Identical_Amounts_Sequence_Keys_for_One.html">Repeated Identical Amounts: Sequence Keys for One-to-One Matching</a></li><li><a href="../subtopics/S07_Other_Reconciliations_GSTR_2B_AR_Control_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S07_Other_Reconciliations_GSTR_2B_AR_Control_and.html">Other Reconciliations: GSTR-2B, AR Control and Intercompany</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_LeftAnti_Join_Items_in_the_Bank_but_Not_in_the.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C01_LeftAnti_Join_Items_in_the_Bank_but_Not_in_the.html">LeftAnti Join: Items in the Bank but Not in the Books</a></li><li><a href="C02_RightAnti_Join_Items_in_the_Books_but_Not_in_the.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C02_RightAnti_Join_Items_in_the_Books_but_Not_in_the.html">RightAnti Join: Items in the Books but Not in the Bank</a></li><li><a href="C03_Expanding_Merged_Columns_with_Prefixed_Names.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C03_Expanding_Merged_Columns_with_Prefixed_Names.html">Expanding Merged Columns with Prefixed Names</a></li><li><a href="C04_TableFuzzyNestedJoin_Syntax_and_Options.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C04_TableFuzzyNestedJoin_Syntax_and_Options.html">Table.FuzzyNestedJoin Syntax and Options</a></li><li><a href="C05_Duplicate_Safe_Keys_with_Group_By_and_Index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C05_Duplicate_Safe_Keys_with_Group_By_and_Index.html">Duplicate-Safe Keys with Group By and Index</a></li><li><a href="C06_Sign_Alignment_Between_Bank_and_Book.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C06_Sign_Alignment_Between_Bank_and_Book.html">Sign Alignment Between Bank and Book</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Expanding Merged Columns with Prefixed Names</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>Table.ExpandTableColumn(t, "Book", {"Date","Narration"}, {"Book.Date","Book.Narration"})</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-m">Expanded = Table.ExpandTableColumn(t, &quot;Book&quot;, {&quot;Date&quot;, &quot;Narration&quot;}, {&quot;Book.Date&quot;, &quot;Book.Narration&quot;})
+</code></pre>
+<p><code>Table.ExpandTableColumn(table, column, columnNames, optional newColumnNames)</code>:</p>
+<ul>
+<li><code>table</code> — the merged table containing a nested-table column.</li>
+<li><code>column</code> — the name of that nested column (<code>"Book"</code>).</li>
+<li><code>columnNames</code> — which columns of the nested tables to bring out (<code>{"Date","Narration"}</code>).</li>
+<li><code>newColumnNames</code> — the names to give them in the output, paired by position (<code>{"Book.Date","Book.Narration"}</code>).</li>
+</ul>
+<p>Each outer row is repeated once per row in its nested table; a row whose nested table is empty is kept once with nulls in the new columns.</p>
+<h2 id="explanation">Explanation</h2>
+<p>After <code>Table.NestedJoin</code>, the matched right-side rows are hidden inside a nested table. Expanding brings selected columns out. The UI's expand button offers "Use original column name as prefix", which generates exactly the <code>Book.Date</code> style names. Prefixes matter because both sides usually share column names (Date, Narration, Amount); without new names, expansion would fail with a duplicate-column error or force awkward renames later.</p>
+<p>Points to control:</p>
+<ul>
+<li><strong>Explicit column list.</strong> The list is hard-coded; columns added to the Book query later are not expanded. That is usually what you want in a recon (a stable output), but be aware of it.</li>
+<li><strong>Row multiplication.</strong> Expansion multiplies rows when a left row has several matches. Compare <code>Table.RowCount</code> before and after; if it grows in a step you expected to be one-to-one, the key is not unique (see sequence keys).</li>
+<li><strong>Aggregating instead of expanding.</strong> When you only need counts or sums from the right side, use <code>Table.AggregateTableColumn(t, "Book", {{"Amount", List.Sum, "Book.Amount"}, {"Amount", List.Count, "Book.Matches"}})</code> — this cannot multiply rows.</li>
+<li><strong>Empty nested tables.</strong> In a LeftOuter merge, unmatched rows expand to nulls; <code>[Book.Date] = null</code> is then a quick way to flag unmatched rows (equivalent to an anti-join).</li>
+<li><strong>Types.</strong> Expanded columns carry the nested table's declared types only if the nested column had a typed table type; otherwise they may arrive as <code>any</code>. Re-type after expanding.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>Bank row: Ref "417", Amount −1,20,000, Date 08-Apr-2025, Narration "CHQ PAID 000417". Merged LeftOuter with Book on Ref + Amount; the nested Book table holds one row: VchNo "PMT/0412", Date 02-Apr-2025, Narration "Paid to Sharma Builders".</p>
+<p>After <code>Table.ExpandTableColumn(t, "Book", {"VchNo","Date","Narration"}, {"Book.VchNo","Book.Date","Book.Narration"})</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Ref</th>
+<th>Amount</th>
+<th>Date</th>
+<th>Narration</th>
+<th>Book.VchNo</th>
+<th>Book.Date</th>
+<th>Book.Narration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>417</td>
+<td>−1,20,000</td>
+<td>08-04-2025</td>
+<td>CHQ PAID 000417</td>
+<td>PMT/0412</td>
+<td>02-04-2025</td>
+<td>Paid to Sharma Builders</td>
+</tr>
+</tbody>
+</table>
+<p>A derived column <code>ClearingDays = Duration.Days([Date] - [Book.Date])</code> = 6 days is then possible because both dates are on one row.</p>
+<h2 id="connections">Connections</h2>
+<p>Subtopic s01 (merge produces nested columns), s03 (date windows need both dates on one row), s06 (row multiplication). In topic t4, the generated Combine Files expand step uses the same function with a list derived from the sample file — the root of the "new columns silently dropped" pitfall.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-write-the-expand-l1">Q1. Write the expand [L1]</h3>
+<p>After merging Invoices (left) with VendorMaster (right) into a nested column "VM", write the step that brings out VendorName, PAN and MSMEStatus with the prefix "VM.".</p>
+<h3 id="q2-expand-or-aggregate-l2">Q2. Expand or aggregate? [L2]</h3>
+<p>For each need, choose expand or <code>Table.AggregateTableColumn</code> and write the step: (a) number of book matches per bank row; (b) the book voucher number of the matched entry; (c) total book amount per bank settlement row.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Aggregation is safer whenever you do not need individual right-side rows.</p>
+</blockquote>
+<h3 id="q3-row-count-jump-l2">Q3. Row-count jump [L2]</h3>
+<p>Before expanding, the merged table has 2,310 rows; after expanding "Book" it has 2,486 rows. Explain what this tells you about the keys, how to list the offending keys, and two ways to fix the design.</p></section>
+<nav class="pager"><a class="prev" href="C02_RightAnti_Join_Items_in_the_Books_but_Not_in_the.html">← RightAnti Join: Items in the Books but Not in the Bank</a><a class="next" href="C04_TableFuzzyNestedJoin_Syntax_and_Options.html">Table.FuzzyNestedJoin Syntax and Options →</a></nav>
+</main></div></body></html>

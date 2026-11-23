@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Filtering by Extension and Excluding Temp Files · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C02_Filtering_by_Extension_and_Excluding_Temp_Files.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T4 · Folder consolidation pipeline</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Folder consolidation pipeline</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_FolderFiles_and_SharePointFiles_Sources_and_File.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S01_FolderFiles_and_SharePointFiles_Sources_and_File.html">Folder.Files and SharePoint.Files: Sources and File-Scope Filters</a></li><li><a href="../subtopics/S02_Combine_Files_Artefacts_Sample_Parameter_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S02_Combine_Files_Artefacts_Sample_Parameter_and.html">Combine Files Artefacts: Sample, Parameter and Transform Function</a></li><li><a href="../subtopics/S03_Writing_a_Custom_File_Cleaning_Function_by_Hand.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S03_Writing_a_Custom_File_Cleaning_Function_by_Hand.html">Writing a Custom File-Cleaning Function by Hand</a></li><li><a href="../subtopics/S04_Reading_Branch_and_Month_from_the_File_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S04_Reading_Branch_and_Month_from_the_File_Name.html">Reading Branch and Month from the File Name</a></li><li><a href="../subtopics/S05_Schema_Drift_Tolerant_Column_Selection_Across.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S05_Schema_Drift_Tolerant_Column_Selection_Across.html">Schema Drift: Tolerant Column Selection Across Branch Files</a></li><li><a href="../subtopics/S06_Multi_Bank_Statements_One_Function_per_Bank_Then.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S06_Multi_Bank_Statements_One_Function_per_Bank_Then.html">Multi-Bank Statements: One Function per Bank, Then Table.Combine</a></li><li><a href="../subtopics/S07_Monthly_Drop_In_Workflow_Archiving_and_Duplicate.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S07_Monthly_Drop_In_Workflow_Archiving_and_Duplicate.html">Monthly Drop-In Workflow, Archiving and Duplicate-File Detection</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_FolderFiles_Output_Columns_and_Which_to_Trust.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C01_FolderFiles_Output_Columns_and_Which_to_Trust.html">Folder.Files Output Columns and Which to Trust</a></li><li><a href="C02_Filtering_by_Extension_and_Excluding_Temp_Files.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C02_Filtering_by_Extension_and_Excluding_Temp_Files.html">Filtering by Extension and Excluding Temp Files</a></li><li><a href="C03_The_fxCleanTB_Function_Signature.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C03_The_fxCleanTB_Function_Signature.html">The fxCleanTB Function Signature</a></li><li><a href="C04_Invoking_per_File_and_Appending_with_TableCombine.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C04_Invoking_per_File_and_Appending_with_TableCombine.html">Invoking per File and Appending with Table.Combine</a></li><li><a href="C05_Tolerant_Column_Selection_with_MissingFieldUseNull.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C05_Tolerant_Column_Selection_with_MissingFieldUseNull.html">Tolerant Column Selection with MissingField.UseNull</a></li><li><a href="C06_Parsing_Branch_and_Period_with_Text_Delimiter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C06_Parsing_Branch_and_Period_with_Text_Delimiter.html">Parsing Branch and Period with Text Delimiter Functions</a></li><li><a href="C07_Guarding_the_Refresh_Against_One_Bad_File.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C07_Guarding_the_Refresh_Against_One_Bad_File.html">Guarding the Refresh Against One Bad File</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Filtering by Extension and Excluding Temp Files</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>Table.SelectRows(Source, each [Extension] = ".csv" and not Text.StartsWith([Name], "~$"))</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-m">InScope = Table.SelectRows(Source, each [Extension] = &quot;.csv&quot; and not Text.StartsWith([Name], &quot;~$&quot;))
+</code></pre>
+<ul>
+<li><code>Source</code> is the <code>Folder.Files</code> (or <code>SharePoint.Files</code>) inventory.</li>
+<li><code>Table.SelectRows(table, condition)</code> keeps rows for which <code>condition(row)</code> is <code>true</code>.</li>
+<li><code>each ...</code> is a one-argument function of the current row <code>_</code>; <code>[Extension]</code> is <code>_[Extension]</code>.</li>
+<li><code>[Extension] = ".csv"</code> keeps only CSV files (case-sensitive comparison).</li>
+<li><code>not Text.StartsWith([Name], "~$")</code> removes Office owner/lock files, whose names begin with a tilde and a dollar sign.</li>
+</ul>
+<h2 id="explanation">Explanation</h2>
+<p>The filter defines which files are in the population. Two failure modes motivate it. First, the folder holds things other than data: notes, screenshots, an Excel working file. Second, Office writes an owner/lock file in the same folder when a workbook is open (for example while a branch accountant reviews their TB). That lock file is tiny, often hidden, and has the same extension as the real workbook, so an extension filter alone does not exclude it. Reading it fails or returns garbage and can break the whole refresh.</p>
+<p>Hardening the basic expression:</p>
+<ul>
+<li><strong>Case.</strong> <code>.CSV</code> from some systems fails <code>= ".csv"</code>. Use <code>Text.Lower([Extension]) = ".csv"</code>.</li>
+<li><strong>Hidden attribute.</strong> Lock files are usually hidden; add <code>[Attributes]?[Hidden]? &lt;&gt; true</code>, which the Combine Files UI also generates.</li>
+<li><strong>Subfolders.</strong> Add a <code>[Folder Path]</code> condition because <code>Folder.Files</code> is recursive.</li>
+<li><strong>Multiple formats.</strong> <code>List.Contains({".csv", ".xlsx"}, Text.Lower([Extension]))</code>, then route each format to its parser.</li>
+<li><strong>Logical precedence.</strong> <code>not</code> binds tighter than <code>and</code>, and <code>and</code> tighter than <code>or</code>; when mixing <code>or</code>, add parentheses: <code>(a or b) and not c</code>.</li>
+</ul>
+<p>Filter on metadata before any step reads <code>Content</code>; otherwise rejected files are still opened.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Folder contents and the effect of each version of the filter:</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Basic filter</th>
+<th>Hardened filter (lower-case, hidden, no subfolders)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DEL_2025-06.csv</code></td>
+<td>Kept</td>
+<td>Kept</td>
+</tr>
+<tr>
+<td><code>DEL_2025-07.CSV</code></td>
+<td>Dropped (case)</td>
+<td>Kept</td>
+</tr>
+<tr>
+<td><code>~$DEL_2025-07.xlsx</code></td>
+<td>Dropped (extension)</td>
+<td>Dropped</td>
+</tr>
+<tr>
+<td><code>DEL_2025-07.xlsx</code></td>
+<td>Dropped</td>
+<td>Dropped (or routed to Excel parser if allowed)</td>
+</tr>
+<tr>
+<td><code>Archive\DEL_2025-05.csv</code></td>
+<td>Kept (recursive)</td>
+<td>Dropped</td>
+</tr>
+</tbody>
+</table>
+<p>The basic filter misses July entirely and double-includes May's archived file in a cumulative pipeline — two silent errors in one folder.</p>
+<h2 id="connections">Connections</h2>
+<p>Underpins subtopic s01 (source filtering), s07 (archives and duplicates) and the topic pitfall on temp and lock files. The <code>each</code> shorthand is covered in topic t1 (M structure). In audit language, this step is the population-definition control; a RejectedFiles query showing what was excluded makes it reviewable.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-fix-the-filter-l1">Q1. Fix the filter [L1]</h3>
+<p>Rewrite the concept's expression so that it keeps <code>.csv</code> and <code>.txt</code> files in any case, excludes lock files and hidden files, and ignores everything in subfolders of <code>FolderPath</code>.</p>
+<h3 id="q2-precedence-trap-l2">Q2. Precedence trap [L2]</h3>
+<p>A colleague wrote <code>each [Extension] = ".csv" or [Extension] = ".CSV" and not Text.StartsWith([Name], "~$")</code>. Explain how M groups this expression, which files would slip through, and give the corrected expression.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> <code>and</code> binds more tightly than <code>or</code>.</p>
+</blockquote>
+<h3 id="q3-rejected-files-instead-of-silent-drops-l2">Q3. Rejected files instead of silent drops [L2]</h3>
+<p>Write a companion query that returns the files excluded by your hardened filter, with a Reason column, so that the month-end preparer sees them on a Controls sheet.</p></section>
+<nav class="pager"><a class="prev" href="C01_FolderFiles_Output_Columns_and_Which_to_Trust.html">← Folder.Files Output Columns and Which to Trust</a><a class="next" href="C03_The_fxCleanTB_Function_Signature.html">The fxCleanTB Function Signature →</a></nav>
+</main></div></body></html>

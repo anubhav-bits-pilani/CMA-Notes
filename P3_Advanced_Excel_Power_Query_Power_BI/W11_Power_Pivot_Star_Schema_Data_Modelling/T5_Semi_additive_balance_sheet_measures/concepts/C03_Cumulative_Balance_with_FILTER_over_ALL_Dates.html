@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cumulative Balance with FILTER over ALL Dates · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C03_Cumulative_Balance_with_FILTER_over_ALL_Dates.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T5 · Semi-additive balance sheet measures</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Semi-additive balance sheet measures</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Additive_Semi_Additive_and_Non_Additive_Financial.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S01_Additive_Semi_Additive_and_Non_Additive_Financial.html">Additive, Semi-Additive and Non-Additive Financial Measures</a></li><li><a href="../subtopics/S02_Snapshot_Facts_vs_Transaction_Facts_for_Balances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S02_Snapshot_Facts_vs_Transaction_Facts_for_Balances.html">Snapshot Facts vs Transaction Facts for Balances</a></li><li><a href="../subtopics/S03_Closing_Balance_LASTDATE_vs_LASTNONBLANK_vs_a_MAX.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S03_Closing_Balance_LASTDATE_vs_LASTNONBLANK_vs_a_MAX.html">Closing Balance: LASTDATE vs LASTNONBLANK vs a MAX-Date Filter</a></li><li><a href="../subtopics/S04_Cumulative_Balances_from_GL_Movements_Including.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S04_Cumulative_Balances_from_GL_Movements_Including.html">Cumulative Balances from GL Movements, Including Opening Entries</a></li><li><a href="../subtopics/S05_Opening_Balances_with_OPENINGBALANCEMONTH_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S05_Opening_Balances_with_OPENINGBALANCEMONTH_and.html">Opening Balances with OPENINGBALANCEMONTH and OPENINGBALANCEYEAR</a></li><li><a href="../subtopics/S06_Average_Balances_for_DSO_Interest_Cost_and_Return.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S06_Average_Balances_for_DSO_Interest_Cost_and_Return.html">Average Balances for DSO, Interest Cost and Return Ratios</a></li><li><a href="../subtopics/S07_Cash_Net_Working_Capital_and_Net_Debt_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S07_Cash_Net_Working_Capital_and_Net_Debt_Measures.html">Cash, Net Working Capital and Net Debt Measures over Time</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Closing_Balance_with_LASTDATE_on_a_Snapshot_Fact.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C01_Closing_Balance_with_LASTDATE_on_a_Snapshot_Fact.html">Closing Balance with LASTDATE on a Snapshot Fact</a></li><li><a href="C02_LASTNONBLANK_Closing_Balance_at_the_Last_Date_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C02_LASTNONBLANK_Closing_Balance_at_the_Last_Date_with.html">LASTNONBLANK: Closing Balance at the Last Date with Data</a></li><li><a href="C03_Cumulative_Balance_with_FILTER_over_ALL_Dates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C03_Cumulative_Balance_with_FILTER_over_ALL_Dates.html">Cumulative Balance with FILTER over ALL Dates</a></li><li><a href="C04_CLOSINGBALANCEYEAR_and_OPENINGBALANCEYEAR_with_a.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C04_CLOSINGBALANCEYEAR_and_OPENINGBALANCEYEAR_with_a.html">CLOSINGBALANCEYEAR and OPENINGBALANCEYEAR with a March Year-End</a></li><li><a href="C05_Average_Receivables_with_AVERAGEX_over_Month_Ends.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C05_Average_Receivables_with_AVERAGEX_over_Month_Ends.html">Average Receivables with AVERAGEX over Month-Ends</a></li><li><a href="C06_DSO_Measure_from_Average_Receivables_and_Days_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C06_DSO_Measure_from_Average_Receivables_and_Days_in.html">DSO Measure from Average Receivables and Days in Period</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Cumulative Balance with FILTER over ALL Dates</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>Cum Bal = CALCULATE(SUM(GL[Amount]), FILTER(ALL('Date'[Date]), 'Date'[Date] &lt;= MAX('Date'[Date])))</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-DAX">Cum Bal =
+CALCULATE (
+    SUM ( GL[Amount] ),
+    FILTER ( ALL ( 'Date'[Date] ), 'Date'[Date] &lt;= MAX ( 'Date'[Date] ) )
+)
+</code></pre>
+<p>\[
+\text{CumBal}(P) = \sum_{r \in \text{GL} \,:\, \text{Date}_{r} \le \max(P)} \text{Amount}_{r}
+\]</p>
+<p>where \(P\) is the set of visible dates and \(\text{Amount}_{r}\) is the signed movement (debit positive, credit
+negative) on GL row \(r\), including opening-balance entries. Other filters (account, entity, cost centre) remain.</p>
+<h2 id="explanation">Explanation</h2>
+<p>The measure is a running total from inception to the period end:</p>
+<ul>
+<li><code>ALL('Date'[Date])</code> returns every date in the calendar, ignoring the current period filter.</li>
+<li><code>FILTER</code> iterates those dates; in its condition <code>'Date'[Date]</code> is the iterated row's value, while
+  <code>MAX('Date'[Date])</code> is an aggregation evaluated in the <strong>filter context</strong> — which is still the outer cell's period,
+  because a row context does not filter. So the condition keeps every date up to the period end.</li>
+<li><code>CALCULATE</code> applies that list to the date column. On a marked Date table, filters on other Date columns (month, FY)
+  are removed as well, so the result is not clipped to the visible month.</li>
+</ul>
+<p>The result is semi-additive by construction: month rows show month-end balances, quarter rows quarter-end, FY rows 31
+March. It is correct only if:</p>
+<ul>
+<li><strong>Opening entries</strong> exist for every BS account and fall inside the Date table (date them on the last day before the
+  model's first FY with an extended calendar, or on the calendar's first day).</li>
+<li><strong>All adjustments</strong> (audit entries, revaluations, eliminations) are in the GL fact.</li>
+<li><strong>P&amp;L accounts are rolled into retained earnings</strong> for presentation (topic pitfall); on their own, P&amp;L accounts
+  accumulate since inception.</li>
+<li><strong>Future periods are capped</strong>: for months after the last posting the measure repeats the latest balance, which can be
+  mistaken for an actual month-end.</li>
+</ul>
+<p>A readable equivalent that avoids iterating with <code>FILTER</code>:</p>
+<pre><code class="language-DAX">Cum Bal =
+VAR asOf = MAX ( 'Date'[Date] )
+RETURN
+    CALCULATE ( SUM ( GL[Amount] ), REMOVEFILTERS ( 'Date' ), 'Date'[Date] &lt;= asOf )
+</code></pre>
+<p>If the Date table is <em>not</em> marked and the relationship uses an integer key, <code>ALL('Date'[Date])</code> leaves filters on
+<code>'Date'[MonthName]</code> or <code>'Date'[FY]</code> in place; the cumulative sum is then restricted to that month — a typical
+"cumulative equals monthly" bug. <code>REMOVEFILTERS('Date')</code> in the second form avoids that dependency.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Cash account (₹ lakh). Opening entry 31 March 2025: 400. Net movements: April +120, May −80, June +45.</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th><code>MAX('Date'[Date])</code></th>
+<th>Cum Bal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apr 2025</td>
+<td>30 Apr 2025</td>
+<td>520</td>
+</tr>
+<tr>
+<td>May 2025</td>
+<td>31 May 2025</td>
+<td>440</td>
+</tr>
+<tr>
+<td>Jun 2025</td>
+<td>30 Jun 2025</td>
+<td>485</td>
+</tr>
+<tr>
+<td>Q1 FY26</td>
+<td>30 Jun 2025</td>
+<td>485</td>
+</tr>
+<tr>
+<td>Jul 2025 (no postings yet)</td>
+<td>31 Jul 2025</td>
+<td>485 (cap needed)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="connections">Connections</h2>
+<p>Developed in s04 (opening entries, P&amp;L roll into reserves, TB check) and used as the expression inside
+OPENINGBALANCEYEAR in s05 and c04, and inside daily averages in s06. The FILTER-vs-boolean discussion in Topic 3 (s04)
+explains why the <code>REMOVEFILTERS</code> form is usually preferred. In Week 14, the same running-total logic is the balance
+sheet column of the 3-statement model: closing = opening + movements.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-why-max-sees-the-cell-l1">Q1. Why MAX sees the cell [L1]</h3>
+<p>Explain, in terms of row context and filter context, why <code>MAX('Date'[Date])</code> inside the <code>FILTER</code> condition returns the
+period end of the cell rather than the date of the row being iterated. What would change if it were written as
+<code>CALCULATE(MAX('Date'[Date]))</code>?</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Context transition would turn the iterated row into a filter.</p>
+</blockquote>
+<h3 id="q2-cumulative-equals-monthly-l2">Q2. Cumulative equals monthly [L2]</h3>
+<p>In a model where GL relates to Date through <code>DateKey</code> (integer) and the Date table is not marked, a matrix with
+<code>'Date'[MonthName]</code> and <code>'Date'[FY]</code> on rows shows <code>Cum Bal</code> identical to the monthly movement. Explain why and give two
+fixes.</p>
+<h3 id="q3-compute-cumulative-balances-l1">Q3. Compute cumulative balances [L1]</h3>
+<p>Borrowings (credit balances negative, ₹ crore): opening entry 31 March 2025 −250; drawdown 12 May 2025 −40; repayment 30
+June 2025 +25; repayment 30 September 2025 +25. Compute <code>Cum Bal</code> for April, May, June, Q1, Q2 and H1 FY26 rows, and
+state how a presentation measure would display them.</p></section>
+<nav class="pager"><a class="prev" href="C02_LASTNONBLANK_Closing_Balance_at_the_Last_Date_with.html">← LASTNONBLANK: Closing Balance at the Last Date with Data</a><a class="next" href="C04_CLOSINGBALANCEYEAR_and_OPENINGBALANCEYEAR_with_a.html">CLOSINGBALANCEYEAR and OPENINGBALANCEYEAR with a March… →</a></nav>
+</main></div></body></html>

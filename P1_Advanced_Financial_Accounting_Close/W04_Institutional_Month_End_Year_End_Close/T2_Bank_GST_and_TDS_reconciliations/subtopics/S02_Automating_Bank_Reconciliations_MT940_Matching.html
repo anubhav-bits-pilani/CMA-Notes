@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automating Bank Reconciliations: MT940, Matching Rules and Ageing · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T2_Bank_GST_and_TDS_reconciliations/subtopics/S02_Automating_Bank_Reconciliations_MT940_Matching.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 1</a> <span>›</span> <a href="../../index.html">Week 4</a> <span>›</span> <a href="../index.html">T2 · Bank, GST and TDS reconciliations</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Bank, GST and TDS reconciliations</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Multi_Currency_Bank_Reconciliations_EEFC_Overseas.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T2_Bank_GST_and_TDS_reconciliations/subtopics/S01_Multi_Currency_Bank_Reconciliations_EEFC_Overseas.html">Multi-Currency Bank Reconciliations: EEFC, Overseas Accounts and FX</a></li><li><a href="S02_Automating_Bank_Reconciliations_MT940_Matching.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T2_Bank_GST_and_TDS_reconciliations/subtopics/S02_Automating_Bank_Reconciliations_MT940_Matching.html">Automating Bank Reconciliations: MT940, Matching Rules and Ageing</a></li><li><a href="S03_ITC_Reconciliation_Purchase_Register_vs_GSTR_2B.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T2_Bank_GST_and_TDS_reconciliations/subtopics/S03_ITC_Reconciliation_Purchase_Register_vs_GSTR_2B.html">ITC Reconciliation: Purchase Register vs GSTR-2B and IMS Actions</a></li><li><a href="S04_Output_Tax_Reconciliation_Books_E_Invoice_GSTR_1.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T2_Bank_GST_and_TDS_reconciliations/subtopics/S04_Output_Tax_Reconciliation_Books_E_Invoice_GSTR_1.html">Output Tax Reconciliation: Books, E-Invoice, GSTR-1, GSTR-3B and DRC-01B/01C</a></li><li><a href="S05_ITC_Reversals_Rules_37_37A_42_43_and_GST_Ledgers.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T2_Bank_GST_and_TDS_reconciliations/subtopics/S05_ITC_Reversals_Rules_37_37A_42_43_and_GST_Ledgers.html">ITC Reversals (Rules 37, 37A, 42, 43) and GST Ledgers vs GL</a></li><li><a href="S06_TDS_Receivable_vs_Form_26ASAIS_Form_16A_and_Write.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T2_Bank_GST_and_TDS_reconciliations/subtopics/S06_TDS_Receivable_vs_Form_26ASAIS_Form_16A_and_Write.html">TDS Receivable vs Form 26AS/AIS, Form 16A and Write-off Policy</a></li><li><a href="S07_TDS_Payable_vs_24Q26Q_Challans_TRACES_Defaults_and.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T2_Bank_GST_and_TDS_reconciliations/subtopics/S07_TDS_Payable_vs_24Q26Q_Challans_TRACES_Defaults_and.html">TDS Payable vs 24Q/26Q, Challans, TRACES Defaults and Section Remapping</a></li><li><a href="S08_Reconciliation_Sign_off_Standards_Evidence_Ageing.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T2_Bank_GST_and_TDS_reconciliations/subtopics/S08_Reconciliation_Sign_off_Standards_Evidence_Ageing.html">Reconciliation Sign-off Standards: Evidence, Ageing and Escalation</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Bank_Reconciliation_Identity.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T2_Bank_GST_and_TDS_reconciliations/concepts/C01_Bank_Reconciliation_Identity.html">Bank Reconciliation Identity</a></li><li><a href="../concepts/C02_FX_Revaluation_of_Monetary_Items_Only.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T2_Bank_GST_and_TDS_reconciliations/concepts/C02_FX_Revaluation_of_Monetary_Items_Only.html">FX Revaluation of Monetary Items Only</a></li><li><a href="../concepts/C03_ITC_Reconciliation_Bridge_Books_to_GSTR_2B.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T2_Bank_GST_and_TDS_reconciliations/concepts/C03_ITC_Reconciliation_Bridge_Books_to_GSTR_2B.html">ITC Reconciliation Bridge: Books to GSTR-2B</a></li><li><a href="../concepts/C04_TDS_Receivable_Bridge_Books_to_Form_26AS.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T2_Bank_GST_and_TDS_reconciliations/concepts/C04_TDS_Receivable_Bridge_Books_to_Form_26AS.html">TDS Receivable Bridge: Books to Form 26AS</a></li><li><a href="../concepts/C05_TDS_Credit_Matched_to_the_Year_Income_Is_Offered.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T2_Bank_GST_and_TDS_reconciliations/concepts/C05_TDS_Credit_Matched_to_the_Year_Income_Is_Offered.html">TDS Credit Matched to the Year Income Is Offered (Rule 37BA)</a></li><li><a href="../concepts/C06_ITC_Time_Limit_Under_Sec_164.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T2_Bank_GST_and_TDS_reconciliations/concepts/C06_ITC_Time_Limit_Under_Sec_164.html">ITC Time Limit Under Sec 16(4)</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Automating Bank Reconciliations: MT940, Matching Rules and Ageing</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Automation: MT940/CSV statement import, rule-based matching, Power Query, unmatched-item ageing</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A company with 25 bank accounts and 40,000 monthly bank lines cannot reconcile manually within a T+4 window. Automation shifts effort from ticking to investigating exceptions: statements are imported in a structured format, matched to the GL by deterministic rules, and only unmatched items reach a human, with ageing that drives escalation. Auditors increasingly rely on automated recs as evidence for IFC, provided the matching rules are controlled and the completeness of imported data is proven. For a CMA with SQL and Power Query exposure, this is a natural place to demonstrate automation value in a controller or FP&amp;A role.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="statement-formats">Statement formats</h3>
+<ul>
+<li><strong>MT940 (SWIFT customer statement message):</strong> a tagged text format. Key tags: <code>:20:</code> transaction reference, <code>:25:</code> account identification, <code>:28C:</code> statement number, <code>:60F:</code> opening balance (D/C mark, date, currency, amount), <code>:61:</code> statement line (value date, entry date, D/C, amount, transaction type, references), <code>:86:</code> information to account owner (narrative, often containing UTR, cheque number or remitter name), <code>:62F:</code> closing balance. MT942 is the intraday equivalent.</li>
+<li><strong>ISO 20022 camt.053:</strong> XML bank-to-customer statement, increasingly offered by Indian banks for host-to-host connectivity; richer structured remittance data.</li>
+<li><strong>CSV/Excel from net banking:</strong> most common for smaller entities; column layouts differ by bank and change without notice, so the import must validate headers.</li>
+</ul>
+<p>Completeness control: for each statement import, check that opening balance = prior closing balance, that \(\text{Opening} + \sum \text{Credits} - \sum \text{Debits} = \text{Closing}\), and that statement numbers are sequential. An import that fails these checks must not be reconciled.</p>
+<h3 id="rule-based-matching">Rule-based matching</h3>
+<p>Matching runs in passes from strictest to loosest, each pass removing matched items from the pool:</p>
+<table>
+<thead>
+<tr>
+<th>Pass</th>
+<th>Rule</th>
+<th>Typical items</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Exact reference (UTR/cheque number/payment run ID) + exact amount</td>
+<td>Vendor payments, cheques</td>
+<td>High — auto-clear</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Exact amount + date within ±3 days + same counterparty</td>
+<td>Customer receipts</td>
+<td>High — auto-clear</td>
+</tr>
+<tr>
+<td>3</td>
+<td>One-to-many / many-to-one: sum of book items = bank item with common reference</td>
+<td>Bulk payment files, batched card settlements</td>
+<td>Medium — auto-propose, reviewer approves</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Narrative rules: text contains "CHGS", "GST ON CHGS", "INT CR", "NEFT RTN"</td>
+<td>Bank charges, interest, returns</td>
+<td>Auto-post bank-only item via template</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Tolerance match: amount within ₹10 or 0.1%, same reference</td>
+<td>FX short-receipts, rounding</td>
+<td>Medium — reviewer approves</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Unmatched</td>
+<td>Everything else</td>
+<td>Manual investigation and ageing</td>
+</tr>
+</tbody>
+</table>
+<p>Rules are controlled objects: changes require approval and testing, since a loose rule (e.g., amount-only matching) can clear unrelated items and hide errors.</p>
+<h3 id="power-query-implementation">Power Query implementation</h3>
+<p>A practical workflow in Excel/Power BI:</p>
+<ol>
+<li><strong>Import:</strong> Folder connector pointing to the statements folder; combine files; for MT940, parse lines by tag using Text.StartsWith and split <code>:61:</code> lines into value date, D/C mark and amount.</li>
+<li><strong>Normalise:</strong> convert amounts to signed numbers (credits positive for bank, debits negative), trim and upper-case narratives, extract UTR (e.g., 22-character NEFT/RTGS references) with Text.Middle or Text.Select.</li>
+<li><strong>Load GL:</strong> bank GL lines from the ERP extract, with the same signed convention (receipts positive).</li>
+<li><strong>Merge for pass 1:</strong> inner join on Reference and Amount; the anti-joins (left anti, right anti) produce unmatched lists for the next pass.</li>
+<li><strong>Pass 2:</strong> join on Amount and Counterparty, then filter on date difference ≤ 3 days.</li>
+<li><strong>Output:</strong> matched register, unmatched bank items, unmatched book items, with an ageing column.</li>
+</ol>
+<pre><code class="language-m">let
+    Bank   = Excel.CurrentWorkbook(){[Name=&quot;BankLines&quot;]}[Content],
+    GL     = Excel.CurrentWorkbook(){[Name=&quot;GLLines&quot;]}[Content],
+    P1     = Table.NestedJoin(Bank, {&quot;UTR&quot;,&quot;Amount&quot;}, GL, {&quot;UTR&quot;,&quot;Amount&quot;}, &quot;GLMatch&quot;, JoinKind.LeftAnti),
+    Aged   = Table.AddColumn(P1, &quot;AgeDays&quot;, each Duration.Days(#date(2027,3,31) - [ValueDate]), Int64.Type),
+    Bucket = Table.AddColumn(Aged, &quot;Bucket&quot;, each if [AgeDays] &lt;= 30 then &quot;0-30&quot; else if [AgeDays] &lt;= 60 then &quot;31-60&quot; else if [AgeDays] &lt;= 90 then &quot;61-90&quot; else &quot;&gt;90&quot;, type text)
+in
+    Bucket
+</code></pre>
+<p>In Excel, a quick check on whether each bank line has a GL partner:</p>
+<pre><code class="language-excel">=XLOOKUP([@UTR]&amp;&quot;|&quot;&amp;TEXT([@Amount],&quot;0.00&quot;), GL[UTR]&amp;&quot;|&quot;&amp;TEXT(GL[Amount],&quot;0.00&quot;), GL[DocNo], &quot;UNMATCHED&quot;)
+</code></pre>
+<h3 id="unmatched-item-ageing">Unmatched-item ageing</h3>
+<p>Ageing is computed from the transaction date of each unmatched item to the reconciliation date, on a gross (item-by-item) basis — never on the net difference (topic pitfall 4). Standard buckets: 0–30, 31–60, 61–90, over 90 days. Treatment:</p>
+<table>
+<thead>
+<tr>
+<th>Unmatched type</th>
+<th>Typical cause</th>
+<th>Action</th>
+<th>Escalation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bank credit, no book entry</td>
+<td>Unidentified customer receipt</td>
+<td>Post to unidentified receipts (Topic 4), contact bank for remitter details</td>
+<td>&gt; 30 days: controller</td>
+</tr>
+<tr>
+<td>Bank debit, no book entry</td>
+<td>Charges, direct debits, fraud</td>
+<td>Book or dispute with bank</td>
+<td>Any unknown debit: immediate</td>
+</tr>
+<tr>
+<td>Book receipt, not in bank</td>
+<td>Deposit in transit or fictitious receipt</td>
+<td>Verify with bank deposit slip</td>
+<td>&gt; 7 days: investigate</td>
+</tr>
+<tr>
+<td>Book payment, not in bank</td>
+<td>Unpresented cheque</td>
+<td>Cheques stale after three months — reverse to liability</td>
+<td>&gt; 90 days: write back to vendor liability</td>
+</tr>
+</tbody>
+</table>
+<p>Illustration: on 31 March, unmatched bank credits total ₹1.84 crore across 63 items: ₹1.21 crore (0–30 days), ₹0.38 crore (31–60), ₹0.17 crore (61–90), ₹0.08 crore (&gt;90). The &gt;60-day items (₹0.25 crore) require controller approval to remain open, and the &gt;90-day items are reviewed for refund to the remitter or recognition per policy.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Value date vs entry date:</strong> use value date for interest and cash-pooling purposes, entry date for reconciliation consistency; document the choice.</li>
+<li><strong>Bulk payment files:</strong> a single bank debit for 300 salary credits must be matched to the payroll batch total, with rejected credits (account closed) returning as separate credits.</li>
+<li><strong>Payment gateway settlements:</strong> gross sales, MDR, GST on MDR and refunds net into a single credit; match against the gateway settlement report first, then to the bank.</li>
+<li><strong>Format changes:</strong> a bank silently changing CSV column order can shift amounts into the wrong field; header validation and control totals catch this.</li>
+<li><strong>Rule drift:</strong> if auto-match rates fall sharply, investigate customer reference behaviour or a broken parser rather than loosening rules.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Import structured statements (MT940/camt.053/CSV) with balance and sequence completeness checks.</li>
+<li>Match in passes from strict to loose; treat matching rules as controlled configuration.</li>
+<li>Power Query merges and anti-joins implement passes; XLOOKUP on composite keys gives quick checks.</li>
+<li>Age unmatched items gross, by type, with defined escalation and resolution actions.</li>
+<li>Automation is evidence for IFC only if import completeness and rule changes are controlled.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-mt940-parsing-l1">Q1. MT940 parsing [L1]</h3>
+<p>Explain the purpose of tags <code>:60F:</code>, <code>:61:</code>, <code>:86:</code> and <code>:62F:</code> in an MT940 statement and describe the completeness checks you would perform before reconciling.</p>
+<h3 id="q2-matching-design-l2">Q2. Matching design [L2]</h3>
+<p>A company receives 9,000 customer receipts a month via NEFT, UPI collections and a payment gateway. Design a five-pass matching logic with keys, tolerances and auto-clear/approve settings, and explain the controls over rule changes.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Treat the payment gateway as a separate sub-reconciliation before matching to bank.</p>
+</blockquote>
+<h3 id="q3-power-query-build-l3">Q3. Power Query build [L3]</h3>
+<p>Build specification: from a folder of daily CSV statements (columns Date, Narration, ChqRef, Debit, Credit, Balance) and a GL extract (DocNo, PostingDate, Reference, Amount), produce matched, unmatched-bank and unmatched-book tables with ageing buckets. Specify each query step, merge kind and the validation that daily balances roll forward.</p>
+<h3 id="q4-ageing-analysis-l2">Q4. Ageing analysis [L2]</h3>
+<p>Unmatched items at 31 March: bank credits — 14 items, ₹42 lakh (all ≤ 30 days), 6 items ₹19 lakh (45–80 days), 3 items ₹7 lakh (&gt; 120 days); book payments not in bank — 22 cheques, ₹31 lakh, of which 5 cheques of ₹6.4 lakh are older than 3 months. State the actions, entries (if any) and escalations for each group.</p></section>
+<nav class="pager"><a class="prev" href="S01_Multi_Currency_Bank_Reconciliations_EEFC_Overseas.html">← Multi-Currency Bank Reconciliations: EEFC, Overseas…</a><a class="next" href="S03_ITC_Reconciliation_Purchase_Register_vs_GSTR_2B.html">ITC Reconciliation: Purchase Register vs GSTR-2B and IMS… →</a></nav>
+</main></div></body></html>

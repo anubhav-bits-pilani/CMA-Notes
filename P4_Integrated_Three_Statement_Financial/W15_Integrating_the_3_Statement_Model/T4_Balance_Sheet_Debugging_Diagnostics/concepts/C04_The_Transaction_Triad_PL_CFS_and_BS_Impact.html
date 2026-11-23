@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Transaction Triad: P&amp;L, CFS and BS Impact · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C04_The_Transaction_Triad_PL_CFS_and_BS_Impact.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 15</a> <span>›</span> <a href="../index.html">T4 · Balance Sheet Debugging Diagnostics</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Balance Sheet Debugging Diagnostics</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Clean_Historicals_First_Then_Find_the_First.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S01_Clean_Historicals_First_Then_Find_the_First.html">Clean Historicals First, Then Find the First Imbalanced Year</a></li><li><a href="../subtopics/S02_Reading_the_Pattern_of_the_Balance_Check_Across.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S02_Reading_the_Pattern_of_the_Balance_Check_Across.html">Reading the Pattern of the Balance Check Across Years</a></li><li><a href="../subtopics/S03_Halving_Test_for_Sign_Errors_and_Exact_Match.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S03_Halving_Test_for_Sign_Errors_and_Exact_Match.html">Halving Test for Sign Errors and Exact-Match Search for Omissions</a></li><li><a href="../subtopics/S04_Line_by_Line_ΔBS_vs_CFS_Reconciliation_Block.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S04_Line_by_Line_ΔBS_vs_CFS_Reconciliation_Block.html">Line-by-Line ΔBS vs CFS Reconciliation Block</a></li><li><a href="../subtopics/S05_Breaker_Off_Opening_Links_and_Sign_Conventions_in.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S05_Breaker_Off_Opening_Links_and_Sign_Conventions_in.html">Breaker Off, Opening Links and Sign Conventions in Corkscrews</a></li><li><a href="../subtopics/S06_Hunting_Hardcodes_with_Go_To_Special_Trace.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S06_Hunting_Hardcodes_with_Go_To_Special_Trace.html">Hunting Hardcodes with Go To Special, Trace Precedents and Inquire</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Difference_of_X_Means_Omission_2X_Means_Wrong_Sign.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C01_Difference_of_X_Means_Omission_2X_Means_Wrong_Sign.html">Difference of X Means Omission; 2X Means Wrong Sign</a></li><li><a href="C02_Constant_vs_Growing_Difference_Opening_Error_or.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C02_Constant_vs_Growing_Difference_Opening_Error_or.html">Constant vs Growing Difference: Opening Error or Flow Error</a></li><li><a href="C03_The_Cash_Check_Separating_CFS_Errors_from_BS_Link.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C03_The_Cash_Check_Separating_CFS_Errors_from_BS_Link.html">The Cash Check: Separating CFS Errors from BS Link Errors</a></li><li><a href="C04_The_Transaction_Triad_PL_CFS_and_BS_Impact.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C04_The_Transaction_Triad_PL_CFS_and_BS_Impact.html">The Transaction Triad: P&amp;L, CFS and BS Impact</a></li><li><a href="C05_Typical_Culprits_Behind_a_Balance_Sheet_Imbalance.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C05_Typical_Culprits_Behind_a_Balance_Sheet_Imbalance.html">Typical Culprits Behind a Balance Sheet Imbalance</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>The Transaction Triad: P&amp;L, CFS and BS Impact</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Every transaction triad: P&amp;L impact, CFS impact and BS impact must all exist</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>For every transaction or forecast flow modelled, three questions must have a consistent answer:</p>
+<ol>
+<li><strong>P&amp;L impact.</strong> Does it hit revenue, expense, other income, finance cost, tax or OCI? If yes, by how much?</li>
+<li><strong>CFS impact.</strong> Does cash move? If yes, in which section (CFO, CFI, CFF), and if the item hits the P&amp;L but is not cash, is it reversed in CFO?</li>
+<li><strong>BS impact.</strong> Which balance(s) move, and does the net BS movement equal the cash movement plus the non-cash P&amp;L effect carried into equity?</li>
+</ol>
+<p>Formally, for each transaction:</p>
+<p>\[
+\Delta \text{Cash} = \Delta \text{Equity via P\&amp;L} + \Delta \text{Liabilities} - \Delta \text{Non-cash assets}
+\]</p>
+<p>Here \( \Delta \text{Equity via P\&amp;L} \) is the after-tax effect on retained earnings (or OCI/reserves), and the other terms are the movements of the specific BS lines the transaction touches. If any leg is missing, or the legs do not satisfy the identity, the model will not balance.</p>
+<h2 id="explanation">Explanation</h2>
+<p>Double-entry guarantees the identity in a ledger. In a model, each leg is built by a different formula, often on a different sheet, by a different person or at a different time. The triad is a completeness test you apply to every new line you add. Some legs are legitimately zero. A reclassification (current maturities of debt) has no P&amp;L or cash leg. A cash-settled working capital movement has no P&amp;L leg. The point is to state each leg explicitly.</p>
+<p>Applying the triad to common forecast items:</p>
+<table>
+<thead>
+<tr>
+<th>Transaction</th>
+<th>P&amp;L</th>
+<th>CFS</th>
+<th>BS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Depreciation ₹10 (t = 25.17%)</td>
+<td>EBIT −10, tax −2.52, PAT −7.48</td>
+<td>CFO: PAT −7.48, D&amp;A add-back +10, net +2.52</td>
+<td>PPE −10, cash +2.52, equity −7.48 (and lower current tax liability or tax paid)</td>
+</tr>
+<tr>
+<td>ESOP charge 5</td>
+<td>Employee cost +5</td>
+<td>CFO add-back +5</td>
+<td>Share-based payment reserve +5 (within other equity)</td>
+</tr>
+<tr>
+<td>New lease ROU 40</td>
+<td>None at inception</td>
+<td>None (non-cash transaction, Ind AS 7.43)</td>
+<td>ROU +40, lease liability +40</td>
+</tr>
+<tr>
+<td>Lease payment 12 (interest 3)</td>
+<td>Interest 3 (plus ROU depreciation separately)</td>
+<td>CFF −12 (principal 9, interest 3)</td>
+<td>Lease liability −9, cash −12, equity −3 via PAT</td>
+</tr>
+<tr>
+<td>Dividend declared 30, paid next year</td>
+<td>None</td>
+<td>None this year</td>
+<td>Other equity −30, dividends payable +30</td>
+</tr>
+<tr>
+<td>Increase in DTL 4</td>
+<td>Deferred tax expense +4</td>
+<td>CFO add-back +4</td>
+<td>DTL +4</td>
+</tr>
+<tr>
+<td>Capex into CWIP 50</td>
+<td>None</td>
+<td>CFI −50</td>
+<td>CWIP +50, cash −50</td>
+</tr>
+<tr>
+<td>CWIP capitalised 50</td>
+<td>None</td>
+<td>None</td>
+<td>CWIP −50, PPE +50</td>
+</tr>
+<tr>
+<td>NCI share of profit 8</td>
+<td>Below PAT allocation</td>
+<td>None (within PAT if CFS starts at consolidated PAT)</td>
+<td>NCI +8, owners' other equity correspondingly lower</td>
+</tr>
+</tbody>
+</table>
+<p>The interview flow test for depreciation is the triad in action. Increase depreciation by ₹10 at 25.17% tax. PAT falls by 7.48, CFO rises by 2.52 (the tax saving: −7.48 + 10), PPE falls by 10, cash rises by 2.52, and equity falls by 7.48. Assets change by −10 + 2.52 = −7.48 and equity changes by −7.48, so the BS balances. This assumes the tax saving is realised in cash in the same year. If tax is paid with a lag, the current tax liability falls instead, and cash timing differs.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Mahi Pharma Ltd adds a new line: "Provision for warranty, ₹6 crore per year, utilised ₹4 crore per year in cash". Triad:</p>
+<ul>
+<li>P&amp;L: other expenses +6 each year. PAT falls by 6 × (1 − 0.2517) = 4.49, assuming the provision is tax-deductible only when utilised, so a DTA arises on the timing difference.</li>
+<li>CFS: PAT −4.49, add back the provision charge +6, deduct utilisation −4. Alternatively, show Δ provision +2 as a working capital line (avoid doing both). Adjust for ΔDTA: deferred tax credit of 2 × 25.17% = 0.50, deducted in CFO as non-cash income.</li>
+<li>BS: provision +2, DTA +0.50, equity −4.49, cash −4 + (current tax saving on the 4 utilised: 1.01) = −2.99.</li>
+</ul>
+<p>Check: assets −2.99 + 0.50 = −2.49. Liabilities +2, equity −4.49, total −2.49. Balanced. A modeller who added the P&amp;L line and the BS provision but skipped the DTA leg would see an imbalance of 0.50, exactly the missing leg.</p>
+<h2 id="connections">Connections</h2>
+<p>The triad is the conceptual basis of the BS–CFS mapping table from t3 and of the reconciliation block (s04). It explains the typical culprits in c05: each is a transaction where one leg is commonly forgotten. It also underlies the week's cross-cutting interview flow test and checklist item "trace any single input change through all three statements verbally". It connects back to Phase 1 double-entry and the Ind AS 7 requirement to exclude non-cash investing and financing transactions from the CFS (Ind AS 7.43).</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-three-statement-walk-l2">Q1. Three-statement walk [L2]</h3>
+<p>Walk through the P&amp;L, CFS and BS effects of each change in a model taxed at 25.17%, assuming tax is paid in the same year. (a) Trade receivables days increase so receivables rise by ₹20 crore. (b) Interest expense rises by ₹8 crore due to a higher rate. (c) A ₹15 crore impairment of goodwill (not tax-deductible). (d) A ₹50 crore equity issue at a ₹2 crore issue cost charged to securities premium.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> For (c), think about whether any deferred tax arises.</p>
+</blockquote>
+<h3 id="q2-missing-leg-l2">Q2. Missing leg [L2]</h3>
+<p>A model adds an ESOP scheme with an annual charge of ₹7.5 crore. The P&amp;L employee cost includes it, the CFS adds it back, but the equity schedule has no share-based payment reserve. (a) Compute the FY26E and FY28E checks if the scheme starts in FY26E. (b) Identify the missing leg and its correct BS location under Schedule III. (c) Explain how the reserve is treated when options are exercised.</p>
+<h3 id="q3-interview-rent-to-lease-l3">Q3. Interview: rent to lease [L3]</h3>
+<p>An interviewer asks: "A company converts a ₹24 crore annual rent agreement into a 5-year lease recognised under Ind AS 116 with an ROU asset of ₹90 crore at inception. Walk me through the year-1 changes to the three statements, assuming an interest rate of 10% and straight-line ROU depreciation." Structure your answer by triad leg, and state what happens to EBITDA, EBIT, PAT, CFO and CFF compared with the rent treatment.</p></section>
+<nav class="pager"><a class="prev" href="C03_The_Cash_Check_Separating_CFS_Errors_from_BS_Link.html">← The Cash Check: Separating CFS Errors from BS Link Errors</a><a class="next" href="C05_Typical_Culprits_Behind_a_Balance_Sheet_Imbalance.html">Typical Culprits Behind a Balance Sheet Imbalance →</a></nav>
+</main></div></body></html>

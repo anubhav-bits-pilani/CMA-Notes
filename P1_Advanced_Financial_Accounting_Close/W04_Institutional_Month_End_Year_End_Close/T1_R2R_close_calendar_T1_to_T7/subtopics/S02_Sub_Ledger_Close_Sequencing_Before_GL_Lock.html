@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sub-Ledger Close Sequencing Before GL Lock · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T1_R2R_close_calendar_T1_to_T7/subtopics/S02_Sub_Ledger_Close_Sequencing_Before_GL_Lock.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 1</a> <span>›</span> <a href="../../index.html">Week 4</a> <span>›</span> <a href="../index.html">T1 · R2R close calendar, T+1 to T+7</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · R2R close calendar, T+1 to T+7</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Pre_Close_Window_T3_to_T0_Cut_off_Accruals_IC_and.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T1_R2R_close_calendar_T1_to_T7/subtopics/S01_Pre_Close_Window_T3_to_T0_Cut_off_Accruals_IC_and.html">Pre-Close Window (T−3 to T0): Cut-off, Accruals, IC and Master Data</a></li><li><a href="S02_Sub_Ledger_Close_Sequencing_Before_GL_Lock.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T1_R2R_close_calendar_T1_to_T7/subtopics/S02_Sub_Ledger_Close_Sequencing_Before_GL_Lock.html">Sub-Ledger Close Sequencing Before GL Lock</a></li><li><a href="S03_T1_to_T7_Day_Plan_From_Sub_Ledgers_to_Reporting.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T1_R2R_close_calendar_T1_to_T7/subtopics/S03_T1_to_T7_Day_Plan_From_Sub_Ledgers_to_Reporting.html">T+1 to T+7 Day Plan: From Sub-Ledgers to Reporting Pack</a></li><li><a href="S04_Cut_off_Controls_Incoterms_GRN_Dates_Counts_and.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T1_R2R_close_calendar_T1_to_T7/subtopics/S04_Cut_off_Controls_Incoterms_GRN_Dates_Counts_and.html">Cut-off Controls: Incoterms, GRN Dates, Counts and Unbilled Revenue</a></li><li><a href="S05_ERP_Period_Controls_Soft_vs_Hard_Close_and_Post.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T1_R2R_close_calendar_T1_to_T7/subtopics/S05_ERP_Period_Controls_Soft_vs_Hard_Close_and_Post.html">ERP Period Controls, Soft vs Hard Close and Post-Close Adjustments</a></li><li><a href="S06_Close_Governance_RACI_Maker_Checker_JE_Approvals.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T1_R2R_close_calendar_T1_to_T7/subtopics/S06_Close_Governance_RACI_Maker_Checker_JE_Approvals.html">Close Governance: RACI, Maker-Checker, JE Approvals and IFC</a></li><li><a href="S07_Regulatory_Clock_LODR_Reg_33_Reg_29_and_the_PIT.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T1_R2R_close_calendar_T1_to_T7/subtopics/S07_Regulatory_Clock_LODR_Reg_33_Reg_29_and_the_PIT.html">Regulatory Clock: LODR Reg 33, Reg 29 and the PIT Trading Window</a></li><li><a href="S08_Audit_Trail_Edit_Log_Rule_31_and_Auditor_Reporting.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T1_R2R_close_calendar_T1_to_T7/subtopics/S08_Audit_Trail_Edit_Log_Rule_31_and_Auditor_Reporting.html">Audit Trail (Edit Log): Rule 3(1) and Auditor Reporting Under Rule 11(g)</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Close_Critical_Path_The_Longest_Dependency_Chain.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T1_R2R_close_calendar_T1_to_T7/concepts/C01_Close_Critical_Path_The_Longest_Dependency_Chain.html">Close Critical Path: The Longest Dependency Chain</a></li><li><a href="../concepts/C02_Close_KPIs_Speed_Quality_and_Reconciliation_Health.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T1_R2R_close_calendar_T1_to_T7/concepts/C02_Close_KPIs_Speed_Quality_and_Reconciliation_Health.html">Close KPIs: Speed, Quality and Reconciliation Health</a></li><li><a href="../concepts/C03_JE_and_Estimate_Materiality_Thresholds_Aligned.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T1_R2R_close_calendar_T1_to_T7/concepts/C03_JE_and_Estimate_Materiality_Thresholds_Aligned.html">JE and Estimate Materiality Thresholds Aligned With Audit Materiality</a></li><li><a href="../concepts/C04_Trading_Window_Closure_From_Quarter_End_to_48.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T1_R2R_close_calendar_T1_to_T7/concepts/C04_Trading_Window_Closure_From_Quarter_End_to_48.html">Trading Window Closure From Quarter-End to 48 Hours After Results</a></li><li><a href="../concepts/C05_Soft_Close_vs_Hard_Close.html" data-uid="P1_Advanced_Financial_Accounting_Close/W04_Institutional_Month_End_Year_End_Close/T1_R2R_close_calendar_T1_to_T7/concepts/C05_Soft_Close_vs_Hard_Close.html">Soft Close vs Hard Close</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Sub-Ledger Close Sequencing Before GL Lock</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Sub-ledger sequencing: AR/billing and revenue cut-off, AP/GRN, inventory costing, payroll, FA capitalisation and depreciation, then GL lock</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>The general ledger only holds summarised postings from sub-ledgers (AR, AP, inventory, payroll, fixed assets). If the GL is locked before a sub-ledger finishes, the missing amounts arrive later as manual top-side journals, which have weaker audit trails, higher misstatement risk and no link back to transaction detail. Sequencing also matters because sub-ledgers depend on each other: inventory costing needs all GRNs and production confirmations; FA capitalisation needs AP invoices for capital items; depreciation needs capitalisation; COGS needs costing. The order of closure is therefore a technical dependency, not a preference. In audit you test sub-ledger-to-GL reconciliations; in a controller role you own them.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-standard-sequence">The standard sequence</h3>
+<table>
+<thead>
+<tr>
+<th>Order</th>
+<th>Sub-ledger</th>
+<th>Key closing activities</th>
+<th>Output to GL</th>
+<th>Depends on</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>AR / billing</td>
+<td>Final invoicing of T0 dispatches, revenue cut-off review, unbilled revenue and contract asset/liability updates, credit notes, AR ageing</td>
+<td>Revenue, trade receivables, contract balances, output GST</td>
+<td>Dispatch/delivery data, Week 1 revenue waterfall</td>
+</tr>
+<tr>
+<td>2</td>
+<td>AP / GRN</td>
+<td>All GRNs for goods received by T0, invoice matching (2-way/3-way), GR/IR clearing, input GST</td>
+<td>Inventory/expense, trade payables, GR/IR, ITC</td>
+<td>Stores receipts, cut-off memo</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Inventory costing</td>
+<td>Production confirmations, actual costing or variance settlement, overhead absorption, NRV write-downs, stock count adjustments</td>
+<td>Inventory, COGS, variances</td>
+<td>AR (issues), AP (receipts and prices)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Payroll</td>
+<td>Final payroll register, variable pay, statutory deductions (PF, ESI, PT, TDS u/s 192 equivalent), accruals for leave and bonus</td>
+<td>Employee costs, payroll payables, statutory dues</td>
+<td>HR inputs, attendance</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Fixed assets</td>
+<td>CWIP capitalisation, asset additions/disposals, depreciation run, impairment indicators, lease ROU updates</td>
+<td>PPE, ROU, depreciation, CWIP</td>
+<td>AP (capital invoices), project completion certificates</td>
+</tr>
+<tr>
+<td>6</td>
+<td>GL lock</td>
+<td>Sub-ledger to GL reconciliations clean; period closed for sub-ledger account types</td>
+<td>Locked sub-ledger postings; GL open only for adjustments</td>
+<td>All above</td>
+</tr>
+</tbody>
+</table>
+<p>Payroll can run in parallel with AR/AP because its inputs are independent; FA must follow AP; costing must follow both AR (goods issued) and AP (goods received, prices).</p>
+<h3 id="arbilling-and-revenue-cut-off">AR/billing and revenue cut-off</h3>
+<p>The AR close confirms that every performance obligation satisfied by T0 has been invoiced or accrued as unbilled revenue (contract asset), and that nothing billed belongs to the next period. Revenue cut-off follows Ind AS 115: for goods, revenue is recognised when control transfers (Ind AS 115.38 indicators — present right to payment, legal title, physical possession, risks and rewards, customer acceptance), which depends on Incoterms and delivery terms rather than dispatch alone (see s04). Billing systems should block posting invoices dated T0 after the cut-off timestamp except via an exception queue. The output to GL is reconciled: AR sub-ledger total = trade receivables control account; revenue per billing register = revenue GL after manual accruals.</p>
+<h3 id="apgrn">AP/GRN</h3>
+<p>The AP close ensures that liabilities exist for every receipt up to T0. Three-way match (PO, GRN, invoice) controls price and quantity; the GR/IR clearing account holds received-not-invoiced (credit) and invoiced-not-received (debit) items. Before the lock, the AP team posts all T0 GRNs, reviews GR/IR ageing, and passes service-entry sheets for services received. GR/IR is a clearing account — its balance is analysed and, for reporting, the credit side is presented as trade payables (accrued) and old debit items are investigated, not left netted.</p>
+<h3 id="inventory-costing">Inventory costing</h3>
+<p>Costing runs only once quantities and prices are final. Steps: confirm production orders, post scrap and by-products, settle variances (standard costing) or run actual costing (e.g., SAP Material Ledger), absorb overheads at normal capacity (Ind AS 2.13 — unallocated fixed overheads expensed), and test NRV (Ind AS 2.28–33). If the entity had a physical count near T0, count adjustments are posted here with roll-forward/roll-back (see s04). Inventory sub-ledger valuation must reconcile to the inventory GL; differences usually come from manual GL postings to inventory accounts, which should be blocked.</p>
+<h3 id="payroll">Payroll</h3>
+<p>Payroll closes with the final register, statutory deductions and employer contributions, and accruals for items not paid in the month (bonus, incentives, leave encashment, gratuity per actuarial run-rate). Payroll clearing accounts (salary payable, PF payable, TDS payable) must reconcile to the register and subsequent payments. Under the Labour Codes in force from 21 November 2025, wage definitions affect PF and gratuity bases, so payroll inputs should be reviewed for the "50% wages" rule.</p>
+<h3 id="fa-capitalisation-and-depreciation">FA capitalisation and depreciation</h3>
+<p>Assets are capitalised from CWIP when available for use (Ind AS 16.55: depreciation begins when the asset is in the location and condition necessary to operate as intended), evidenced by a commissioning or completion certificate. The FA close: capitalise completed projects, post additions from AP capital invoices, record disposals, run depreciation, review useful lives at year-end (Ind AS 16.51), and check impairment indicators (Ind AS 36). Week 2 lease schedules update ROU assets and lease liabilities in the same window.</p>
+<h3 id="gl-lock">GL lock</h3>
+<p>Once all sub-ledgers are closed and reconciled, the period is closed for sub-ledger account types (customers, vendors, assets, materials) while remaining open for GL-only adjustments by authorised users until T+5/T+6. In SAP terms, OB52 is set so that D, K, A and M account types are closed and S (GL) remains open for a restricted authorisation group (see s05). The lock is the point after which every change is a journal with approval, reference and reason.</p>
+<h3 id="illustration-cost-of-a-premature-lock">Illustration — cost of a premature lock</h3>
+<p>A company locked the GL on T+2 but the plant's variance settlement ran on T+3. Variances of ₹1.36 crore (unfavourable) had to be booked as a manual entry Dr COGS ₹1.36 crore, Cr Inventory — price difference ₹1.36 crore, with no material-level split. At year-end the auditor could not trace the variance to products for NRV testing, and the inventory sub-ledger no longer agreed to the GL by ₹1.36 crore — a reconciling item that recurred each month.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Goods in transit at T0:</strong> decide at contract level — FOB destination or DDP sales remain inventory of the seller; FOB shipping-point purchases are the buyer's inventory even without a GRN (record via an in-transit GRN or accrual).</li>
+<li><strong>Capital invoices arriving late:</strong> if an asset is in use but the vendor invoice is pending, capitalise on an accrual basis using the PO value adjusted for actual work done; do not delay depreciation.</li>
+<li><strong>Retrospective price changes:</strong> vendor price revisions after costing should be handled as next-period variances unless material, in which case rerun costing before lock.</li>
+<li><strong>Shared service centres:</strong> different time zones may require AR/AP cut-offs at local midnight; define one cut-off time per entity in the calendar.</li>
+<li><strong>Payroll processed after T0:</strong> where salaries are paid on the 7th of the following month, accrue the full month at T0 from the HR attendance data.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Sub-ledger closing order is driven by data dependencies: AR and AP first, then inventory costing, with payroll in parallel and FA after AP.</li>
+<li>Revenue cut-off is a control-transfer test under Ind AS 115, not a dispatch-date test.</li>
+<li>GR/IR is the key AP clearing account; analyse both sides and do not net stale debits against credits.</li>
+<li>Costing runs only after quantities and prices are final; premature locks generate unsupported manual variances.</li>
+<li>The GL lock closes sub-ledger account types; GL-only adjustments then continue under restricted authorisation.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-sequencing-logic-l1">Q1. Sequencing logic [L1]</h3>
+<p>Arrange the following in the correct closing order and state the dependency that drives each step: depreciation run, final billing, variance settlement, GR/IR review, payroll register lock, CWIP capitalisation, GL lock for sub-ledger account types.</p>
+<h3 id="q2-grir-analysis-l2">Q2. GR/IR analysis [L2]</h3>
+<p>At 31 March, the GR/IR account shows a net credit of ₹2.40 crore, made up of credits (GRN not invoiced) of ₹3.15 crore, of which ₹0.42 crore is over 180 days, and debits (invoice not received) of ₹0.75 crore, of which ₹0.31 crore is over 180 days. Explain how each component should be investigated, presented under Schedule III and dealt with in the close.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider whether old credits still represent obligations and whether old debits represent receipts that never happened.</p>
+</blockquote>
+<h3 id="q3-late-capitalisation-l2">Q3. Late capitalisation [L2]</h3>
+<p>A ₹12.6 crore packaging line was commissioned on 10 March but the commissioning certificate reached accounts on 6 April, after the GL lock on T+3. Useful life is 15 years, straight-line, nil residual value. Explain the required treatment, the journal entries and the control change you would recommend.</p>
+<h3 id="q4-designing-a-sequencing-plan-l3">Q4. Designing a sequencing plan [L3]</h3>
+<p>A consumer-goods company with three plants, a central distribution warehouse and outsourced payroll wants a T+4 sub-ledger close. Draft a day-wise sub-ledger sequence with owners, hand-offs, the sub-ledger-to-GL reconciliation required at each step and the condition that must be satisfied before the GL lock.</p>
+<h3 id="q5-inventory-sub-ledger-vs-gl-difference-l2">Q5. Inventory sub-ledger vs GL difference [L2]</h3>
+<p>The inventory sub-ledger shows ₹48.72 crore and the inventory GL shows ₹49.18 crore at month-end. Manual journals to inventory accounts during the month total ₹0.53 crore (debit) and ₹0.07 crore (credit). Describe how you would reconcile the difference and the preventive control you would implement.</p></section>
+<nav class="pager"><a class="prev" href="S01_Pre_Close_Window_T3_to_T0_Cut_off_Accruals_IC_and.html">← Pre-Close Window (T−3 to T0): Cut-off, Accruals, IC and…</a><a class="next" href="S03_T1_to_T7_Day_Plan_From_Sub_Ledgers_to_Reporting.html">T+1 to T+7 Day Plan: From Sub-Ledgers to Reporting Pack →</a></nav>
+</main></div></body></html>

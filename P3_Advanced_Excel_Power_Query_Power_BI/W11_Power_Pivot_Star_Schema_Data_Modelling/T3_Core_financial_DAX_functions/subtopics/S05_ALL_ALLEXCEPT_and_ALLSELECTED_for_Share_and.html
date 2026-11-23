@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALL, ALLEXCEPT and ALLSELECTED for Share and Contribution Analysis · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T3 · Core financial DAX functions</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Core financial DAX functions</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Row_Context_Filter_Context_and_Context_Transition.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S01_Row_Context_Filter_Context_and_Context_Transition.html">Row Context, Filter Context and Context Transition</a></li><li><a href="S02_CALCULATE_Filter_Arguments_and_Modifiers.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S02_CALCULATE_Filter_Arguments_and_Modifiers.html">CALCULATE Filter Arguments and Modifiers</a></li><li><a href="S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html">Iterators SUMX and AVERAGEX for Row-Level Maths</a></li><li><a href="S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html">FILTER vs Boolean Column Filters: Meaning and Performance</a></li><li><a href="S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html">ALL, ALLEXCEPT and ALLSELECTED for Share and Contribution Analysis</a></li><li><a href="S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html">RELATED and RELATEDTABLE in Columns and Iterators</a></li><li><a href="S07_DIVIDE_Measures_vs_Calculated_Columns_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S07_DIVIDE_Measures_vs_Calculated_Columns_and.html">DIVIDE, Measures vs Calculated Columns, and VAR/RETURN</a></li><li><a href="S08_Explicit_Measures_Display_Folders_and_LakhCrore.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S08_Explicit_Measures_Display_Folders_and_LakhCrore.html">Explicit Measures, Display Folders and ₹ Lakh/Crore Formats</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html">Base Actual Measure and a Filtered Revenue Measure</a></li><li><a href="../concepts/C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html">Percentage of Total Opex with ALL on Cost Centre</a></li><li><a href="../concepts/C03_Percentage_within_Statement_with_ALLEXCEPT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C03_Percentage_within_Statement_with_ALLEXCEPT.html">Percentage within Statement with ALLEXCEPT</a></li><li><a href="../concepts/C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html">FX-Converted Revenue with SUMX and RELATED</a></li><li><a href="../concepts/C05_Sign_Aware_Variance_with_VAR_and_ABS.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C05_Sign_Aware_Variance_with_VAR_and_ABS.html">Sign-Aware Variance % with VAR and ABS</a></li><li><a href="../concepts/C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html">KEEPFILTERS to Intersect Rather Than Overwrite</a></li><li><a href="../concepts/C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html">DIVIDE and Its BLANK Default for Zero Denominators</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>ALL, ALLEXCEPT and ALLSELECTED for Share and Contribution Analysis</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> ALL, ALLEXCEPT and ALLSELECTED for % of total, % of parent and contribution analysis</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>FP&amp;A commentary is full of shares: "Employee cost is 14.2% of revenue", "Pune contributes 23% of West-zone sales",
+"Top 10 customers account for 61% of receivables". Each is a ratio of the current cell to a <strong>denominator computed
+in a wider context</strong>: the grand total, the parent in a hierarchy, or the total of what the user has selected.
+ALL, ALLEXCEPT and ALLSELECTED are the three tools for constructing those denominators. Picking the wrong one gives
+shares that do not add to 100%, change when an unrelated slicer moves, or show 100% on every row.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="all-ignore-filters-entirely-on-the-named-tablecolumns">ALL — ignore filters entirely (on the named table/columns)</h3>
+<pre><code class="language-DAX">% of Total Opex =
+DIVIDE ( [Actual], CALCULATE ( [Actual], ALL ( CostCentre ) ) )
+</code></pre>
+<p>The denominator removes every filter on CostCentre (rows, slicers, page filters on CostCentre columns) but keeps
+filters on other tables (Date, CoA). So in a matrix of cost centres for FY2025-26 opex, each cost centre's share of
+total FY2025-26 opex is shown; if the user slices CostCentre[Function] = "Sales", the denominator <strong>still</strong> includes
+non-sales cost centres — shares no longer sum to 100% of the visible rows. That is ALL's defining behaviour: total of
+everything, regardless of user selection on that dimension.</p>
+<p>Variants:</p>
+<ul>
+<li><code>ALL(CostCentre[Department])</code> — remove filters only on one column (other CostCentre columns still filter).</li>
+<li><code>REMOVEFILTERS(CostCentre)</code> — same as ALL as a modifier, clearer intent.</li>
+<li><code>ALL()</code> with no arguments — removes all filters in the model (use with care; only as a modifier).</li>
+</ul>
+<h3 id="allexcept-keep-only-the-parent">ALLEXCEPT — keep only the parent</h3>
+<pre><code class="language-DAX">% within Statement =
+DIVIDE ( [Actual], CALCULATE ( [Actual], ALLEXCEPT ( CoA, CoA[Statement] ) ) )
+</code></pre>
+<p><code>ALLEXCEPT(table, col1, col2…)</code> removes all filters on <code>table</code> <strong>except</strong> those on the listed columns. In a matrix
+with Statement → FSLine → Account, the denominator for any account row is the total of its Statement — "% of parent at
+the top level". For % of immediate parent at each level, use ISINSCOPE to branch:</p>
+<pre><code class="language-DAX">% of Parent =
+SWITCH (
+    TRUE (),
+    ISINSCOPE ( CoA[AccountName] ), DIVIDE ( [Actual], CALCULATE ( [Actual], ALLEXCEPT ( CoA, CoA[Statement], CoA[FSLine] ) ) ),
+    ISINSCOPE ( CoA[FSLine] ),      DIVIDE ( [Actual], CALCULATE ( [Actual], ALLEXCEPT ( CoA, CoA[Statement] ) ) ),
+    ISINSCOPE ( CoA[Statement] ),   1
+)
+</code></pre>
+<p>Caveats:</p>
+<ul>
+<li>ALLEXCEPT keeps filters on the listed columns <strong>only if they exist</strong>; if a slicer filters <code>CoA[AccountType]</code>,
+  ALLEXCEPT removes it (since AccountType is not listed), which may surprise users.</li>
+<li>A safer pattern for "remove only the levels below the parent" is
+  <code>REMOVEFILTERS(CoA[FSLine], CoA[AccountName])</code> combined with <code>VALUES(CoA[Statement])</code> — or
+  <code>CALCULATE([Actual], REMOVEFILTERS(CoA), VALUES(CoA[Statement]))</code>, which restores exactly the visible statements.</li>
+</ul>
+<h3 id="allselected-total-of-what-the-user-selected">ALLSELECTED — total of what the user selected</h3>
+<pre><code class="language-DAX">% of Selected =
+DIVIDE ( [Actual], CALCULATE ( [Actual], ALLSELECTED ( CostCentre ) ) )
+</code></pre>
+<p>ALLSELECTED removes filters coming from the <strong>visual's own rows and columns</strong> but keeps filters from slicers, page
+and report filters (the "outer" selection). With CostCentre[Function] = "Sales" sliced, each sales cost centre's share
+is of the sales total, and visible rows sum to 100%. This is "contribution analysis" as users intuitively expect.</p>
+<p>Cautions:</p>
+<ul>
+<li>Its result depends on the query's shadow filter context; inside iterators or measures called by other measures it
+  can behave unexpectedly. Use it at the top level of a measure used directly in visuals.</li>
+<li>Visual-level filters (e.g. Top N filter on the visual) are part of the "selection" — a Top 10 visual's shares then
+  sum to 100% of the top 10, not of all customers. Decide which you want and label it.</li>
+</ul>
+<h3 id="comparison">Comparison</h3>
+<p>Matrix: cost centres in rows, slicer Function = "Sales", FY2025-26 opex (₹ crore): MUM-SALES 12, DEL-SALES 8,
+BLR-SALES 5 (sales total 25); all cost centres total 100.</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th><code>[Actual]</code></th>
+<th>ALL denominator</th>
+<th>% ALL</th>
+<th>ALLSELECTED denominator</th>
+<th>% ALLSELECTED</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MUM-SALES</td>
+<td>12</td>
+<td>100</td>
+<td>12%</td>
+<td>25</td>
+<td>48%</td>
+</tr>
+<tr>
+<td>DEL-SALES</td>
+<td>8</td>
+<td>100</td>
+<td>8%</td>
+<td>25</td>
+<td>32%</td>
+</tr>
+<tr>
+<td>BLR-SALES</td>
+<td>5</td>
+<td>100</td>
+<td>5%</td>
+<td>25</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>25</td>
+<td>100</td>
+<td>25%</td>
+<td>25</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="contribution-and-cumulative-share-pareto">Contribution and cumulative share (Pareto)</h3>
+<pre><code class="language-DAX">Cumulative Share of Receivables =
+VAR CurrentAR = [Closing AR]
+VAR Cum =
+    CALCULATE (
+        [Closing AR],
+        FILTER ( ALLSELECTED ( Customer[CustomerName] ), [Closing AR] &gt;= CurrentAR )
+    )
+RETURN
+    DIVIDE ( Cum, CALCULATE ( [Closing AR], ALLSELECTED ( Customer[CustomerName] ) ) )
+</code></pre>
+<p>Ranks customers by balance and shows the running share — the basis of ABC analysis and concentration disclosures
+(Ind AS 107 concentration of credit risk; Ind AS 108.34 disclosure of reliance on major customers with 10% or more of
+revenue).</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Negative values.</strong> Shares of a P&amp;L where some cost centres have credits (recoveries) can exceed 100% or be
+  negative; use ABS or present with commentary.</li>
+<li><strong>Sign conventions.</strong> Revenue is negative in the GL; <code>DIVIDE([Employee cost], [Revenue])</code> gives a negative % unless
+  sign-adjusted (topic 6 sign flip).</li>
+<li><strong>Hierarchy totals.</strong> In the grand total row, ALLEXCEPT-based "% of parent" may show 100% or be meaningless; blank it
+  with ISINSCOPE.</li>
+<li><strong>Removing sort-by columns.</strong> ALL on a label column must also clear its sort-by column (topic 2 s04); ALL on the whole
+  table avoids this.</li>
+<li><strong>Double-entry totals.</strong> ALL(CoA) across both statements nets to zero; always anchor the denominator to Statement
+  or a specific FSLine (e.g. revenue for cost ratios).</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>ALL: share of everything on that dimension, ignoring user selections — shares may not sum to 100% of visible rows.</li>
+<li>ALLEXCEPT: share of the retained parent columns; removes every other filter on the table, including slicers.</li>
+<li>ALLSELECTED: share of the user's selection; visible rows sum to 100%.</li>
+<li>Use ISINSCOPE to compute % of immediate parent at each hierarchy level and to blank meaningless totals.</li>
+<li>Anchor finance denominators to a statement or revenue line; ALL(CoA) on a balanced GL is zero.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-pick-the-function-l1">Q1. Pick the function [L1]</h3>
+<p>For each requirement, choose ALL, ALLEXCEPT or ALLSELECTED and write the denominator: (a) each branch's share of
+company revenue regardless of a Region slicer; (b) each branch's share of the selected region's revenue; (c) each
+account's share of its FS line.</p>
+<h3 id="q2-shares-not-adding-up-l2">Q2. Shares not adding up [L2]</h3>
+<p>A % of Total measure using <code>ALL(Branch)</code> shows shares summing to 38% when the Zone slicer is set to "South". The
+business wants 100%. Explain the behaviour and give two alternative measures with the trade-offs.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider what "total" the business actually means and where the Zone filter sits.</p>
+</blockquote>
+<h3 id="q3-cost-ratios-to-revenue-l2">Q3. Cost ratios to revenue [L2]</h3>
+<p>Write a measure "% of Revenue" that, for every P&amp;L row (FSLine on rows), divides the row's sign-adjusted actual by
+total Revenue from operations for the same period and branch, ignoring the row's FSLine filter.</p>
+<h3 id="q4-pareto-of-receivables-l3">Q4. Pareto of receivables [L3]</h3>
+<p>Using a Customer dimension and a <code>[Closing AR]</code> measure at 31-Mar-2026, design a visual and measures to show how many
+customers make up 80% of receivables, and explain how ALLSELECTED interacts with a visual-level Top N filter.</p>
+<h3 id="q5-of-parent-at-every-level-l3">Q5. % of parent at every level [L3]</h3>
+<p>Write a single measure that, in a matrix with Statement → FSLine → FSSubLine → AccountName, returns each row's share of
+its immediate parent and blanks at the grand total, and explain how ISINSCOPE determines the level.</p></section>
+<nav class="pager"><a class="prev" href="S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html">← FILTER vs Boolean Column Filters: Meaning and Performance</a><a class="next" href="S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html">RELATED and RELATEDTABLE in Columns and Iterators →</a></nav>
+</main></div></body></html>

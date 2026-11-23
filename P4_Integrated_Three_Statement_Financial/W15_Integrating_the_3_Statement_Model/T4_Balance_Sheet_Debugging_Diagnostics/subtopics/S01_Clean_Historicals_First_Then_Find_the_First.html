@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clean Historicals First, Then Find the First Imbalanced Year · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S01_Clean_Historicals_First_Then_Find_the_First.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 15</a> <span>›</span> <a href="../index.html">T4 · Balance Sheet Debugging Diagnostics</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Balance Sheet Debugging Diagnostics</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Clean_Historicals_First_Then_Find_the_First.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S01_Clean_Historicals_First_Then_Find_the_First.html">Clean Historicals First, Then Find the First Imbalanced Year</a></li><li><a href="S02_Reading_the_Pattern_of_the_Balance_Check_Across.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S02_Reading_the_Pattern_of_the_Balance_Check_Across.html">Reading the Pattern of the Balance Check Across Years</a></li><li><a href="S03_Halving_Test_for_Sign_Errors_and_Exact_Match.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S03_Halving_Test_for_Sign_Errors_and_Exact_Match.html">Halving Test for Sign Errors and Exact-Match Search for Omissions</a></li><li><a href="S04_Line_by_Line_ΔBS_vs_CFS_Reconciliation_Block.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S04_Line_by_Line_ΔBS_vs_CFS_Reconciliation_Block.html">Line-by-Line ΔBS vs CFS Reconciliation Block</a></li><li><a href="S05_Breaker_Off_Opening_Links_and_Sign_Conventions_in.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S05_Breaker_Off_Opening_Links_and_Sign_Conventions_in.html">Breaker Off, Opening Links and Sign Conventions in Corkscrews</a></li><li><a href="S06_Hunting_Hardcodes_with_Go_To_Special_Trace.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S06_Hunting_Hardcodes_with_Go_To_Special_Trace.html">Hunting Hardcodes with Go To Special, Trace Precedents and Inquire</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Difference_of_X_Means_Omission_2X_Means_Wrong_Sign.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C01_Difference_of_X_Means_Omission_2X_Means_Wrong_Sign.html">Difference of X Means Omission; 2X Means Wrong Sign</a></li><li><a href="../concepts/C02_Constant_vs_Growing_Difference_Opening_Error_or.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C02_Constant_vs_Growing_Difference_Opening_Error_or.html">Constant vs Growing Difference: Opening Error or Flow Error</a></li><li><a href="../concepts/C03_The_Cash_Check_Separating_CFS_Errors_from_BS_Link.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C03_The_Cash_Check_Separating_CFS_Errors_from_BS_Link.html">The Cash Check: Separating CFS Errors from BS Link Errors</a></li><li><a href="../concepts/C04_The_Transaction_Triad_PL_CFS_and_BS_Impact.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C04_The_Transaction_Triad_PL_CFS_and_BS_Impact.html">The Transaction Triad: P&amp;L, CFS and BS Impact</a></li><li><a href="../concepts/C05_Typical_Culprits_Behind_a_Balance_Sheet_Imbalance.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C05_Typical_Culprits_Behind_a_Balance_Sheet_Imbalance.html">Typical Culprits Behind a Balance Sheet Imbalance</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Clean Historicals First, Then Find the First Imbalanced Year</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Confirm historicals balance, then locate the first forecast year with an imbalance</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Every forecast Balance Sheet is built on the last actual BS. Opening receivables, opening PPE, opening debt, opening equity and opening cash all come from FY25A (or whatever the last reported year is). If that column does not balance, every forecast year starts out of balance by the same amount, and anything you do in the forecast cannot remove it. A modeller who starts debugging in FY28E without checking FY25A can spend an hour chasing a "forecast" error that is really a mis-keyed historical input. The second principle, going to the <strong>first</strong> forecast year with a non-zero check, matters because the BS is a stock. An error made in FY26E is carried into FY27E, FY28E and beyond, and any new errors in later years add to it. The first broken year is the only year where the difference reflects a single, uncontaminated set of errors.</p>
+<p>In the Saturday troubleshooting test, the examiner may plant one error in the historicals and five in the forecast. Candidates who skip the historical check either never find the sixth error or keep "finding" it again in every forecast year.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="step-1-make-the-historical-check-visible">Step 1: Make the historical check visible</h3>
+<p>The check row should run across the full timeline, actuals included:</p>
+<pre><code class="language-excel">=ROUND(Total_Assets - Total_Equity - Total_Liabilities, 3)
+</code></pre>
+<p>Historical columns use reported numbers keyed from the annual report (Schedule III Division II format). So a non-zero historical check is an <strong>input</strong> error, not a logic error. Typical causes:</p>
+<ul>
+<li><strong>Keying or transposition error.</strong> For example ₹1,284.6 crore entered as ₹1,248.6 crore. The difference (36.0) is divisible by 9, the same test you use on a TB.</li>
+<li><strong>Sub-total typed instead of computed.</strong> The analyst keyed "Total non-current assets" as a number, then later corrected one component without updating the total.</li>
+<li><strong>Missing line.</strong> A small line in the published BS (for example "Income tax assets (net)", "Other bank balances", "Contract liabilities") was not mapped to any model row.</li>
+<li><strong>Wrong sign on a negative balance.</strong> Accumulated losses in other equity, or treasury shares held by an ESOP trust shown as a deduction, entered as positive.</li>
+<li><strong>Restated vs originally reported.</strong> FY24 figures taken from the FY24 annual report while FY25 comparatives were restated in the FY25 annual report (for example after an Ind AS 8 correction or a common-control merger under Appendix C of Ind AS 103). Use the latest restated comparatives for every historical year.</li>
+<li><strong>Consolidated vs standalone mix.</strong> NCI taken from the consolidated BS but borrowings from standalone.</li>
+<li><strong>Units.</strong> One block in ₹ lakh, the rest in ₹ crore.</li>
+</ul>
+<h3 id="step-2-reconcile-historical-cash-and-equity">Step 2: Reconcile historical cash and equity</h3>
+<p>Two extra historical checks catch problems before they reach the forecast:</p>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Formula</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cash tie-out</td>
+<td>BS cash and cash equivalents − CFS closing cash per annual report</td>
+<td>Ind AS 7.45 requires a reconciliation. Differences usually mean bank overdrafts or other bank balances (fixed deposits over 3 months) were treated inconsistently</td>
+</tr>
+<tr>
+<td>Equity roll</td>
+<td>Opening equity + PAT + OCI − dividends + issues − buyback − closing equity</td>
+<td>Confirms that the opening equity corkscrew for FY26E will work</td>
+</tr>
+</tbody>
+</table>
+<p>If FY25A cash in the model includes "Other bank balances" (Schedule III shows these separately from cash and cash equivalents), the FY26E CFS opening cash will not match. Decide the definition once and apply it to both statements.</p>
+<h3 id="step-3-confirm-the-opening-links">Step 3: Confirm the opening links</h3>
+<p>The first forecast column must open from the last actual column on every schedule. Check a sample of each type:</p>
+<ul>
+<li>Opening PPE gross block, accumulated depreciation, CWIP and ROU = FY25A closing.</li>
+<li>Opening term loans, NCDs, revolver and lease liabilities = FY25A closing.</li>
+<li>Opening share capital, other equity and NCI = FY25A closing.</li>
+<li>CFS opening cash for FY26E = FY25A BS cash.</li>
+</ul>
+<p>A quick test is to temporarily set all forecast drivers to produce zero activity (zero growth, zero capex, zero D&amp;A, zero debt movement, PAT forced to zero). A well-linked model should then show FY26E BS = FY25A BS line by line and a check of 0. Any line that moves under zero activity has a broken opening link or a hardcoded flow.</p>
+<h3 id="step-4-locate-the-first-imbalanced-forecast-year">Step 4: Locate the first imbalanced forecast year</h3>
+<p>Add a helper that returns the first year with a non-zero check:</p>
+<pre><code class="language-excel">=IFERROR(INDEX(Year_Row, MATCH(TRUE, INDEX(ABS(Check_Row)&gt;0.001, 0), 0)), &quot;None&quot;)
+</code></pre>
+<p>In Microsoft 365 you can write <code>=XLOOKUP(TRUE, ABS(Check_Row)&gt;0.001, Year_Row, "None")</code>. Put this on the checks dashboard so the starting point is visible without scrolling.</p>
+<p>Once you have the year, do all further work in that column. Ignore later years until this year is zero. Use the Watch Window (Formulas → Watch Window) to keep that year's check cell visible while you navigate the schedules.</p>
+<h3 id="illustration">Illustration</h3>
+<p>Mahanadi Foods Ltd, ₹ crore:</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>FY24A</th>
+<th>FY25A</th>
+<th>FY26E</th>
+<th>FY27E</th>
+<th>FY28E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BS check</td>
+<td>0.00</td>
+<td>9.00</td>
+<td>9.00</td>
+<td>21.40</td>
+<td>33.80</td>
+</tr>
+</tbody>
+</table>
+<p>Reading: FY24A balances, so the problem in FY25A is a historical input error of 9.00. The figure is divisible by 9, which suggests a transposition such as 1,423 keyed as 1,432. Fix it first. After the fix the row becomes 0.00, 0.00, 0.00, 12.40, 24.80. The first forecast imbalance is in <strong>FY27E</strong>, with a recurring 12.40 per year (the subject of s02). If you had started in FY28E, you would have been looking for 33.80, which is not a single item and would never have matched anything.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Historical BS genuinely does not "balance" in your mapping because of a presentation choice.</strong> For example, an entity nets deferred tax assets and liabilities by jurisdiction under Ind AS 12.74, while you split them. Re-map to the reported presentation instead of forcing a difference.</li>
+<li><strong>Stub periods or a 15-month year</strong> after a change in financial year (permitted under Sec 2(41) with Tribunal approval in specified cases). The opening link still works, but flow-based ratios will look odd. Flag it separately.</li>
+<li><strong>Acquisition in the last actual year.</strong> Opening forecast balances include the acquiree, but the historical P&amp;L includes it only from the acquisition date. The BS still balances, but your forecast drivers need care.</li>
+<li><strong>Two historical years balancing but a third not.</strong> You only need the last actual year to balance for the forecast to work, but an unbalanced earlier year undermines historical ratios and trend-based drivers. Fix it anyway.</li>
+<li><strong>Rounding in published accounts.</strong> Annual reports in ₹ crore to two decimals can leave a 0.01 cast difference. Key the exact reported total, then carry the immaterial cast difference in an explicitly labelled "rounding in published accounts" historical-only cell. Never extend it into the forecast. Better still, key from the XBRL or the ₹ lakh financials where available.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>A non-zero historical check is an input error. Fix it before touching the forecast, because it contaminates every forecast year as a constant.</li>
+<li>Use a consistent definition of cash (cash and cash equivalents vs other bank balances) in both the historical BS and the CFS opening cash.</li>
+<li>Test opening links by forcing zero activity. The FY26E BS should then reproduce FY25A exactly.</li>
+<li>Always debug the <strong>first</strong> forecast year with a non-zero check. Later years contain compounded errors.</li>
+<li>Put a "first imbalanced year" formula and a Watch Window on the check cell so you never lose sight of the target.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-historical-difference-divisible-by-nine-l1">Q1. Historical difference divisible by nine [L1]</h3>
+<p>Your FY25A BS for Ganga Textiles Ltd shows total assets of ₹4,862.35 crore and total equity and liabilities of ₹4,826.35 crore. FY24A balances. (a) State the most likely type of input error and why. (b) List four BS lines you would check first, and explain how you would confirm the fix using the published annual report.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Divide the difference by nine.</p>
+</blockquote>
+<h3 id="q2-cash-definition-mismatch-l2">Q2. Cash definition mismatch [L2]</h3>
+<p>The FY25A Schedule III balance sheet of Coromandel Pharma Ltd shows cash and cash equivalents ₹212 crore and other bank balances ₹88 crore (fixed deposits of 4–12 months and earmarked unpaid dividend accounts). The Ind AS 7 statement shows closing cash and cash equivalents of ₹212 crore. Your model's BS "Cash" row is ₹300 crore and the FY26E CFS opens at ₹212 crore. (a) Explain what the FY26E balance check will show and why. (b) Propose two alternative fixes and state which is preferable for a model that forecasts interest income on deposits.</p>
+<h3 id="q3-zero-activity-test-design-l3">Q3. Zero-activity test design [L3]</h3>
+<p>Design a zero-activity test for a 5-year model with these schedules: revenue, working capital, PPE with CWIP, intangibles, ROU/lease, term loan, revolver, tax with DTL, equity with dividends and ESOP, NCI. (a) Specify which input you would override on each schedule and to what value. (b) State what the FY26E BS should look like if all opening links are correct. (c) Explain how you would implement the overrides so they can be switched off in one step without damaging the model.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> A single "Test_Mode" switch multiplied into each driver avoids overtyping inputs.</p>
+</blockquote>
+<h3 id="q4-first-imbalanced-year-formula-l2">Q4. First imbalanced year formula [L2]</h3>
+<p>Your check row is in cells <code>E40:L40</code> (FY23A to FY30E) and years are in <code>E4:L4</code>. Write an Excel formula that returns the first year whose absolute check exceeds 0.001, or "None" if all years balance. Explain why you use a tolerance rather than testing for exactly zero, and why the tolerance should be no larger than 0.001.</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← Balance Sheet Debugging Diagnostics</a><a class="next" href="S02_Reading_the_Pattern_of_the_Balance_Check_Across.html">Reading the Pattern of the Balance Check Across Years →</a></nav>
+</main></div></body></html>

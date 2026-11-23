@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Historical Data Ingestion &amp; Normalization · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/index.html" data-kind="topic">
+<header class="top"><a class="brand" href="../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../index.html">Home</a> <span>›</span> <a href="../../index.html">Phase 4</a> <span>›</span> <a href="../index.html">Week 13</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">Week 13</a></div><ul class="side-links"><li><a href="../T1_Modelling_Architecture_Best_Practices/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/index.html">T1 · Modelling Architecture &amp; Best Practices</a></li><li><a href="../T2_Color_Coding_Formula_Integrity_Rules/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/index.html">T2 · Color Coding &amp; Formula Integrity Rules</a></li><li><a href="index.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/index.html">T3 · Historical Data Ingestion &amp; Normalization</a></li><li><a href="../T4_Granular_Revenue_Forecasting/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/index.html">T4 · Granular Revenue Forecasting</a></li><li><a href="../T5_Cost_Structure_Forecasting/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T5_Cost_Structure_Forecasting/index.html">T5 · Cost Structure Forecasting</a></li><li><a href="../T6_Scenario_Switcher_Architecture/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/index.html">T6 · Scenario Switcher Architecture</a></li></ul></aside>
+<main class="content">
+<div class="kind">Topic</div>
+<h1>Historical Data Ingestion &amp; Normalization</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<section class="index"><h2>Notes in this topic</h2><div class="cols"><div><h3>Subtopics</h3><ul class="links num"><li><a href="subtopics/S01_Sources_of_Historical_Data_for_Indian_Listed.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S01_Sources_of_Historical_Data_for_Indian_Listed.html">S01 · Sources of Historical Data for Indian Listed Companies</a></li><li><a href="subtopics/S02_Mapping_Schedule_III_Line_Items_to_a_Model_Chart.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S02_Mapping_Schedule_III_Line_Items_to_a_Model_Chart.html">S02 · Mapping Schedule III Line Items to a Model Chart of Accounts</a></li><li><a href="subtopics/S03_Consolidated_vs_Standalone_Basis_NCI_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S03_Consolidated_vs_Standalone_Basis_NCI_and.html">S03 · Consolidated vs Standalone Basis, NCI and Associates</a></li><li><a href="subtopics/S04_EBITDA_Normalisation_Exceptional_Other_Income.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S04_EBITDA_Normalisation_Exceptional_Other_Income.html">S04 · EBITDA Normalisation: Exceptional, Other Income, Leases, ESOPs, Forex</a></li><li><a href="subtopics/S05_Restatements_Discontinued_Operations_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S05_Restatements_Discontinued_Operations_and.html">S05 · Restatements, Discontinued Operations and Acquisitions</a></li><li><a href="subtopics/S06_Annual_Balance_Checks_and_CFS_to_BS_Cash.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S06_Annual_Balance_Checks_and_CFS_to_BS_Cash.html">S06 · Annual Balance Checks and CFS-to-BS Cash Reconciliation</a></li><li><a href="subtopics/S07_Deriving_Historical_Ratios_as_Forecast_Anchors.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S07_Deriving_Historical_Ratios_as_Forecast_Anchors.html">S07 · Deriving Historical Ratios as Forecast Anchors</a></li></ul></div><div><h3>Key concepts & formulas</h3><ul class="links num"><li><a href="concepts/C01_Historical_Balance_Check_Assets_Equal_Equity_Plus.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C01_Historical_Balance_Check_Assets_Equal_Equity_Plus.html">C01 · Historical Balance Check: Assets Equal Equity Plus Liabilities</a></li><li><a href="concepts/C02_CFS_Closing_Cash_to_Balance_Sheet_Cash.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C02_CFS_Closing_Cash_to_Balance_Sheet_Cash.html">C02 · CFS Closing Cash to Balance Sheet Cash Reconciliation</a></li><li><a href="concepts/C03_Adjusted_EBITDA_Bridge_from_PBT.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C03_Adjusted_EBITDA_Bridge_from_PBT.html">C03 · Adjusted EBITDA Bridge from PBT</a></li><li><a href="concepts/C04_Effective_Tax_Rate_with_Current_and_Deferred_Split.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C04_Effective_Tax_Rate_with_Current_and_Deferred_Split.html">C04 · Effective Tax Rate with Current and Deferred Split</a></li><li><a href="concepts/C05_Operating_Net_Working_Capital_What_to_Exclude.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C05_Operating_Net_Working_Capital_What_to_Exclude.html">C05 · Operating Net Working Capital: What to Exclude</a></li><li><a href="concepts/C06_Explicit_Rounding_Line_Instead_of_a_Balancing_Plug.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C06_Explicit_Rounding_Line_Instead_of_a_Balancing_Plug.html">C06 · Explicit Rounding Line Instead of a Balancing Plug</a></li></ul></div></div></section><article class="note"><blockquote>
+<p><strong>Roadmap topic:</strong> Historical Data Ingestion &amp; Normalization: Structuring 3–5 years of historical P&amp;L, Balance Sheet, and Cash Flow with explicit balance checks</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>Historical ingestion is the step where the model meets reality. It turns published statements — annual reports, XBRL filings, SEBI LODR Reg 33 results, investor presentations and concall transcripts — into a clean, checked, normalised three-statement history in the model's own chart of accounts, in ₹ crore, on one entity basis, for 3–5 years. Everything downstream depends on it: opening balances for the forecast, historical ratios that anchor every driver, the normalised EBITDA base for margins and multiples, and the definitions of cash, debt and working capital that will be used in the DCF bridge. Most forecasting errors that survive review are, on inspection, historical errors: a mixed basis, an unnormalised one-off, a mis-defined cash balance.</p>
+<p>For a CMA with audit and GL-finalisation experience, this is the topic where existing skills transfer most directly. Tracing reported figures to notes, understanding Schedule III captions, reconciling cash, identifying exceptional and non-recurring items, and recognising Ind AS 116, 105, 12 and 7 presentation effects are audit skills. What changes is the purpose: instead of verifying that the statements are fairly presented, you are restructuring them into a forecastable, comparable form, and documenting every judgement so that a reviewer can follow it.</p>
+<p>The subtopics follow the ingestion pipeline. First, choose and prioritise <strong>sources</strong> (s01). Then <strong>map Schedule III line items</strong> into a stable model chart of accounts across the history (s02), on a single <strong>consolidated or standalone basis</strong>, with NCI and equity-accounted investees presented correctly (s03). Next, <strong>normalise EBITDA</strong> for exceptional items, other income, Ind AS 116 leases, ESOP charges and forex (s04), and handle <strong>restatements, reclassifications, discontinued operations and acquisitions</strong> so the series is comparable (s05). Prove the result with <strong>balance checks and CFS-to-BS cash reconciliation</strong> for every year (s06), and finally <strong>derive the historical ratios</strong> — growth, margins, working-capital days, capex intensity, depreciation rate and effective tax rate — that will anchor the forecast (s07). The concepts formalise the checks and definitions: the balance check (c01), cash reconciliation under Ind AS 7.8 (c02), the adjusted EBITDA bridge (c03), effective tax rate (c04), operating NWC exclusions (c05) and the explicit rounding line (c06).</p>
+<p>The output of this topic is the Historicals tab of the week's exercise model: five years of mapped, checked statements with a ratio block and a documented normalisation bridge, feeding the revenue and cost builds of topics t4 and t5.</p>
+<h2 id="concept-map">Concept map</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Role in the topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s01 Sources</td>
+<td>Annual reports, XBRL, Reg 33 results, presentations, concall transcripts — hierarchy and use</td>
+</tr>
+<tr>
+<td>s02 Schedule III mapping</td>
+<td>Stable, forecastable model chart of accounts with a mapping table</td>
+</tr>
+<tr>
+<td>s03 Basis, NCI and associates</td>
+<td>Consolidated vs standalone; NCI and equity-method presentation and model treatment</td>
+</tr>
+<tr>
+<td>s04 EBITDA normalisation</td>
+<td>Exceptional, other income, Ind AS 116, ESOP and forex adjustments</td>
+</tr>
+<tr>
+<td>s05 Restatements and structural changes</td>
+<td>Latest comparatives, Ind AS 105 discontinued operations, acquisitions</td>
+</tr>
+<tr>
+<td>s06 Balance and cash checks</td>
+<td>Every-year balance check and CFS-to-BS cash reconciliation</td>
+</tr>
+<tr>
+<td>s07 Historical ratios</td>
+<td>Growth, margins, DSO/DIO/DPO, capex/sales, D&amp;A rate, ETR as forecast anchors</td>
+</tr>
+<tr>
+<td>c01 Balance check</td>
+<td>Assets − (equity + liabilities) = 0.00 on mapped lines, every year</td>
+</tr>
+<tr>
+<td>c02 Cash reconciliation</td>
+<td>CFS cash = BS cash and cash equivalents − overdrafts repayable on demand</td>
+</tr>
+<tr>
+<td>c03 Adjusted EBITDA</td>
+<td>Bridge from PBT; pre/post Ind AS 116 stated</td>
+</tr>
+<tr>
+<td>c04 Effective tax rate</td>
+<td>Total tax ÷ PBT, current/deferred split, vs 25.168%</td>
+</tr>
+<tr>
+<td>c05 Operating NWC</td>
+<td>Exclusions of cash, investments, debt, leases, dividends payable</td>
+</tr>
+<tr>
+<td>c06 Rounding line</td>
+<td>Explicit, small, checked — never a plug</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-concepts-to-study">Related concepts to study</h2>
+<h3 id="phase-1-presentation-effects">Phase 1 presentation effects</h3>
+<p><em>→ Phase 1 (W1–4): Ind AS 7, 12, 105, 116 presentation effects on reported numbers</em></p>
+<p>Phase 1 covered how four standards shape the numbers you now ingest. Ind AS 7 defines cash and cash equivalents (three-month original maturity, overdrafts repayable on demand) and, for non-financial entities, fixes interest paid as financing and interest/dividends received as investing — so the cash reconciliation and CFS mapping depend on it. Ind AS 12 drives the tax note: current vs deferred tax and the rate reconciliation used for the ETR. Ind AS 105 re-presents P&amp;L and CFS comparatives for discontinued operations but not the BS, creating the series breaks handled in s05. Ind AS 116 moves fixed rent out of opex into depreciation and interest, inflating EBITDA and adding lease liabilities — the main normalisation for retailers like Trent.</p>
+<h3 id="phase-2-analysis-toolkit">Phase 2 analysis toolkit</h3>
+<p><em>→ Phase 2 (W5–8): common-size statements, ratio derivation, forensic flags (other income, capitalised costs)</em></p>
+<p>Phase 2's financial-statement analysis supplies the methods applied in s07: common-size P&amp;L and BS (each line as a % of revenue or total assets), consistent ratio definitions and peer benchmarking. Its forensic flags become normalisation tests here. Rising other income relative to treasury balances may indicate non-operating gains classified to flatter profit; capitalisation of employee or borrowing costs to CWIP lifts EBITDA; recurring "exceptional" items suggest normal costs being moved below the line; and widening gaps between EBITDA and CFO indicate aggressive revenue or working-capital practices. Applying these flags during ingestion stops you from forecasting an inflated base.</p>
+<h3 id="phase-3-power-query-ingestion">Phase 3 Power Query ingestion</h3>
+<p><em>→ Phase 3 (W9–12): Power Query to ingest and unpivot XBRL/Excel exports</em></p>
+<p>Power Query is the practical engine for s01–s02. Typical steps are: connect to downloaded XBRL/Excel files (or a folder of them), promote headers, filter the statement contexts (consolidated vs standalone, period), unpivot year columns into a long table (Company, Statement, Line/Tag, Period, Value), set locale to English (India) for number parsing, apply unit conversion factors to ₹ crore and sign rules, merge with the mapping table, and load to a visible raw-data tab. Historicals then aggregate via SUMIFS. Refreshing for a new year or a new peer becomes a one-click operation, and unmapped tags are listed by a query step rather than silently dropped.</p>
+<h3 id="ind-as-108-segments-as-build-basis">Ind AS 108 segments as build basis</h3>
+<p><em>Ind AS 108 segment reporting as the basis for segment-level revenue builds</em></p>
+<p>Ind AS 108 requires disclosure of operating segments as reviewed by the chief operating decision maker, with segment revenue, results, and often assets and liabilities, plus entity-wide disclosures of revenue by geography and major customers. For modelling, the segment note is the bridge between consolidated history and driver-based forecasts: Pidilite's Consumer &amp; Bazaar vs B2B split, or a group's domestic vs international revenue, can be modelled separately with different growth and margin drivers and reconciled back to consolidated totals (inter-segment eliminations and unallocated items). Segment definitions change occasionally; use the latest comparatives and note any resegmentation as a series break.</p>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<h3 id="mixing-standalone-and-consolidated-figures">Mixing standalone and consolidated figures</h3>
+<p><em>Mixing standalone and consolidated figures across years or across statements</em></p>
+<p><strong>The mistake:</strong> loading some years (or some statements, e.g., the BS) from standalone accounts and others from consolidated. <strong>Why it happens:</strong> one basis is easier to find for older years; vendor databases default to one basis; Reg 33 results present both side by side. <strong>Correct treatment:</strong> choose one basis (normally consolidated for valuation), declare it on the Cover, load every year and every statement from that basis; for older years use earlier annual reports' consolidated statements. <strong>Detection:</strong> jumps in revenue or net debt in a single year; NCI or "share of associates" appearing only in some years; cash reconciliation failures; compare a few lines to both reports.</p>
+<h3 id="other-bank-balances-treated-as-cash">Other bank balances treated as cash</h3>
+<p><em>Treating fixed deposits over 3 months (other bank balances) as cash in the CFS reconciliation</em></p>
+<p><strong>The mistake:</strong> adding "Bank balances other than cash and cash equivalents" to cash when reconciling to the CFS, or using it as opening cash in the forecast CFS. <strong>Why it happens:</strong> in economic terms FDs are cash-like, and Indian GAAP once grouped all bank balances together. <strong>Correct treatment:</strong> CFS cash follows <em>Ind AS 7.6–7.8</em> — original maturity ≤ 3 months, less overdrafts repayable on demand; other bank balances move through investing activities. Keep a separate "treasury cash" row for the EV bridge. <strong>Detection:</strong> cash check fails by the other-bank-balances amount; CFS investing section shows FD placements that do not match your cash definition.</p>
+<h3 id="treasury-income-left-in-ebitda">Treasury income left in EBITDA</h3>
+<p><em>Leaving treasury/other income inside operating EBITDA</em></p>
+<p><strong>The mistake:</strong> computing EBITDA as PBT + finance cost + D&amp;A without deducting other income, or adopting a management/vendor EBITDA that includes it. <strong>Why it happens:</strong> many Indian companies' presentations show EBITDA including other income, and vendor data is not always clear. <strong>Correct treatment:</strong> deduct all treasury income (interest, dividends, MF gains) and non-operating gains; add the corresponding treasury assets in the EV bridge; reclassify only clearly operating, recurring items to other operating revenue. <strong>Detection:</strong> EBITDA margin higher than peers for cash-rich companies; margin moves correlated with treasury balances or interest rates; reconcile to the bridge in c03.</p>
+<h3 id="plugging-the-balance-sheet">Plugging the balance sheet</h3>
+<p><em>Forcing balance via "other liabilities" instead of fixing mapping errors</em></p>
+<p><strong>The mistake:</strong> making "other liabilities" (or "other assets") the residual so that the BS always balances. <strong>Why it happens:</strong> time pressure; a mapping error that is hard to find; misunderstanding that a balanced BS is the goal rather than a test. <strong>Correct treatment:</strong> compute every line from the mapping; use an explicit rounding line limited to tiny differences (c06); investigate larger differences line by line. <strong>Detection:</strong> the residual line differs from the note value; it jumps in one year; it is the only line computed by subtraction; the rounding check exceeds tolerance once the plug is removed.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-five-year-ingestion-case-l3">Q1. Five-year ingestion case [L3]</h3>
+<p>You are building Pidilite Industries' consolidated historicals for FY21–FY25. During ingestion you find: (i) FY21–FY22 were downloaded from a vendor in ₹ million, FY23–FY25 from annual reports in ₹ crore; (ii) FY23's annual report regrouped "packing materials consumed" from other expenses into materials consumed and restated FY22 only; (iii) a subsidiary was acquired on 1-Oct-2023 with ₹240 crore of revenue in H2 FY24 and pro forma FY24 combined revenue disclosed; (iv) other income includes MF gains of ₹110–190 crore a year; (v) FY24 shows an exceptional gain of ₹65 crore on sale of land; (vi) cash in the CFS does not match BS cash in any year by amounts equal to "bank overdraft". (a) Set out the ingestion steps and adjustments for each issue. (b) Design the Historicals tab rows for the normalisation bridge and checks. (c) Explain how each issue would distort FY26E forecasts if left uncorrected.</p>
+<h3 id="q2-trent-normalisation-and-basis-l3">Q2. Trent normalisation and basis [L3]</h3>
+<p>For Trent Ltd (consolidated), FY25 (₹ crore, illustrative): revenue from operations 17,600; other income 300 (interest and MF gains 270, profit on sale of PPE 30); EBITDA as reported in the presentation 3,050; finance costs 410 (lease interest 330); D&amp;A 1,020 (ROU 620); PBT 2,080 (including share of JV loss of –40 and no exceptional items); lease cash outflow 1,050; ESOP expense 15; NCI in PAT 5. (a) Build adjusted EBITDA post- and pre-Ind AS 116 from PBT. (b) Reconcile to the presentation EBITDA. (c) Compute the ETR given total tax of ₹520 crore. (d) Explain how the Star JV should appear in revenue, EBITDA, PAT and the EV bridge.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Remove the JV share from PBT first, then work the bridge; check whether presentation EBITDA includes other income.</p>
+</blockquote>
+<h3 id="q3-cash-nwc-and-net-debt-definitions-l2">Q3. Cash, NWC and net debt definitions [L2]</h3>
+<p>From an FY25 consolidated BS (₹ crore): cash and cash equivalents 410; other bank balances 650 (FDs 4–12 months 630, unpaid dividends 20); current investments 1,100; inventories 2,300; receivables 380; other CA 520 (current tax asset 30); current borrowings 520 (of which overdraft repayable on demand 40, CMLTD 180); current lease liabilities 290; non-current borrowings 600; non-current lease liabilities 2,400; trade payables 1,900; other financial liabilities 610 (capital creditors 120, interest accrued 15, unpaid dividends 20); other CL 330; provisions 140. CFS closing cash 370. (a) Reconcile CFS cash. (b) Compute operating NWC. (c) Compute net debt excluding and including leases, stating which items you treat as cash-like. (d) Explain which net-debt definition pairs with which EBITDA basis.</p>
+<h3 id="q4-review-of-a-colleagues-historicals-tab-l2">Q4. Review of a colleague's Historicals tab [L2]</h3>
+<p>A colleague's Historicals tab shows a balanced BS in every year but: "Other current liabilities" is computed as a residual; the balance check is <code>=Total_Assets_Reported - Total_EL_Reported</code>; EBITDA includes other income; FY22 figures come from the FY22 annual report although the FY23 report restated FY22; and DIO is computed on revenue while the forecast uses COGS. Write review comments for each issue (observation, risk, fix) and propose the revised check block.</p>
+<h3 id="q5-interview-walk-me-through-your-historicals-l1">Q5. Interview: walk me through your historicals [L1]</h3>
+<p>An interviewer asks: "You have two hours to load five years of historicals for an NSE-listed company. Walk me through what you do, in order, and how you know you are done." Prepare a structured two-minute answer covering sources, basis, mapping, normalisation, checks and ratios.</p></section>
+<nav class="pager"><a class="prev" href="../T2_Color_Coding_Formula_Integrity_Rules/concepts/C06_Timeline_Flags_for_Switching_Logic_Without.html">← Timeline Flags for Switching Logic Without Breaking Rows</a><a class="next" href="subtopics/S01_Sources_of_Historical_Data_for_Indian_Listed.html">Sources of Historical Data for Indian Listed Companies →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spill Behaviour, #SPILL!, the # Operator and Implicit Intersection · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S01_Spill_Behaviour_SPILL_the_Operator_and_Implicit.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T4 · Dynamic arrays and LET/LAMBDA</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Dynamic arrays and LET/LAMBDA</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Spill_Behaviour_SPILL_the_Operator_and_Implicit.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S01_Spill_Behaviour_SPILL_the_Operator_and_Implicit.html">Spill Behaviour, #SPILL!, the # Operator and Implicit Intersection</a></li><li><a href="S02_FILTER_with_ANDOR_Logic_for_Exception_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S02_FILTER_with_ANDOR_Logic_for_Exception_Lists.html">FILTER with AND/OR Logic for Exception Lists</a></li><li><a href="S03_UNIQUE_for_Dynamic_CoA_and_Department_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S03_UNIQUE_for_Dynamic_CoA_and_Department_Lists.html">UNIQUE for Dynamic CoA and Department Lists</a></li><li><a href="S04_SORT_and_SORTBY_for_Top_N_Expense_and_Ranked.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S04_SORT_and_SORTBY_for_Top_N_Expense_and_Ranked.html">SORT and SORTBY for Top-N Expense and Ranked Ageing Reports</a></li><li><a href="S05_SEQUENCE_for_Monthly_Timelines_Loan_Schedules_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S05_SEQUENCE_for_Monthly_Timelines_Loan_Schedules_and.html">SEQUENCE for Monthly Timelines, Loan Schedules and Period Counters</a></li><li><a href="S06_LET_for_Named_Steps_and_LAMBDA_Functions_in_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S06_LET_for_Named_Steps_and_LAMBDA_Functions_in_Name.html">LET for Named Steps and LAMBDA Functions in Name Manager</a></li><li><a href="S07_LAMBDA_Helpers_and_Array_Reshaping_Functions.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S07_LAMBDA_Helpers_and_Array_Reshaping_Functions.html">LAMBDA Helpers and Array Reshaping Functions</a></li><li><a href="S08_GROUPBY_and_PIVOTBY_as_Formula_Based_Pivots.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S08_GROUPBY_and_PIVOTBY_as_Formula_Based_Pivots.html">GROUPBY and PIVOTBY as Formula-Based Pivots</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_FILTER_with_Two_AND_Conditions_and_an_ifempty.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C01_FILTER_with_Two_AND_Conditions_and_an_ifempty.html">FILTER with Two AND Conditions and an if_empty Message</a></li><li><a href="../concepts/C02_Sorted_Unique_Account_List_for_a_Selected_FY.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C02_Sorted_Unique_Account_List_for_a_Selected_FY.html">Sorted Unique Account List for a Selected FY</a></li><li><a href="../concepts/C03_Top_10_Vendors_by_Spend_with_TAKE_and_SORTBY.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C03_Top_10_Vendors_by_Spend_with_TAKE_and_SORTBY.html">Top 10 Vendors by Spend with TAKE and SORTBY</a></li><li><a href="../concepts/C04_EOMONTH_with_SEQUENCE_for_Horizontal_Month_End.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C04_EOMONTH_with_SEQUENCE_for_Horizontal_Month_End.html">EOMONTH with SEQUENCE for Horizontal Month-End Headers</a></li><li><a href="../concepts/C05_LET_for_a_Safe_Gross_Margin_Calculation.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C05_LET_for_a_Safe_Gross_Margin_Calculation.html">LET for a Safe Gross Margin Calculation</a></li><li><a href="../concepts/C06_FYEND_A_Named_LAMBDA_for_the_Indian_Financial_Year.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C06_FYEND_A_Named_LAMBDA_for_the_Indian_Financial_Year.html">FYEND: A Named LAMBDA for the Indian Financial Year</a></li><li><a href="../concepts/C07_SCAN_for_Running_Closing_Balances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C07_SCAN_for_Running_Closing_Balances.html">SCAN for Running Closing Balances</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Spill Behaviour, #SPILL!, the # Operator and Implicit Intersection</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Spill behaviour, #SPILL! errors, the spill reference operator <code>#</code> and implicit intersection <code>@</code></p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Every self-updating schedule you build this week — a dynamic CoA list, an unmapped-ledger exception report, a 12-month header row, a top-10 vendor table — depends on one formula returning many values into neighbouring cells. That is <em>spilling</em>. If you do not understand how a spill range is sized, what blocks it and how other formulas should point at it, you will build reports that silently truncate when the GL grows, or that break with #SPILL! the moment a colleague types a note in the wrong cell. Implicit intersection (<code>@</code>) matters for the opposite reason: legacy workbooks from Excel 2016/2019 open in Microsoft 365 with <code>@</code> sprinkled through them, and you must know whether removing it will change results before you "clean up" a client's model.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="what-spilling-is">What spilling is</h3>
+<p>In Microsoft 365 (and Excel 2021+), the calculation engine is array-native. Any formula that evaluates to more than one value writes the whole result into a rectangular block starting at the formula cell. Only the top-left cell (the <em>anchor</em>) holds the formula; the other cells show the values in grey "ghost" formula text in the formula bar and cannot be edited individually.</p>
+<ul>
+<li><code>=UNIQUE(GL[Dept])</code> in H2 returns, say, 9 departments into H2:H10.</li>
+<li><code>=GL[Amount]*1.18</code> in a cell outside the Table spills the full column of grossed-up amounts.</li>
+<li><code>=SEQUENCE(1,12)</code> spills horizontally across 12 columns.</li>
+</ul>
+<p>The spill range resizes automatically on each recalculation: add a tenth department to the GL Table and the UNIQUE output becomes H2:H11 with no edit. This is the property that removes manual filters and copy-down from MIS packs.</p>
+<h3 id="the-spill-error-and-its-causes">The #SPILL! error and its causes</h3>
+<p>Excel computes the size of the result first, then checks whether the destination block is free. If not, the anchor shows #SPILL! and the yellow warning icon tells you which cause applies. Clicking "Select Obstructing Cells" jumps to the blocker.</p>
+<table>
+<thead>
+<tr>
+<th>Cause</th>
+<th>Typical finance scenario</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Spill range isn't blank</td>
+<td>A hard-typed subtotal or note sits below a FILTER exception list</td>
+<td>Move the output to a dedicated area or delete the obstruction; reserve blank rows/columns</td>
+</tr>
+<tr>
+<td>Spill range in a Table</td>
+<td>FILTER written inside the GL Table's calculated column</td>
+<td>Place dynamic arrays outside Tables; convert the destination Table to a range if needed</td>
+</tr>
+<tr>
+<td>Spill range unknown / volatile size</td>
+<td>A formula wrapped in RANDARRAY or OFFSET whose size keeps changing between passes</td>
+<td>Remove the volatile sizing; make size deterministic</td>
+</tr>
+<tr>
+<td>Spill range too big</td>
+<td><code>=A:A*2</code> written in row 2 would need 1,048,576 rows from row 2</td>
+<td>Point at the Table column or a bounded range, not the whole column</td>
+</tr>
+<tr>
+<td>Merged cells</td>
+<td>The report template has merged title cells in the spill path</td>
+<td>Unmerge; use Centre Across Selection instead</td>
+</tr>
+<tr>
+<td>Out of memory</td>
+<td>Huge cross-joins (e.g. 50,000 × 50,000 comparisons)</td>
+<td>Reduce dimensionality or move to Power Query</td>
+</tr>
+</tbody>
+</table>
+<p>A single space typed into a cell counts as an obstruction, which is why "the cells look empty" is never a defence. Use Go To Special → Constants on the destination area to find them.</p>
+<h3 id="the-spill-reference-operator">The spill reference operator <code>#</code></h3>
+<p>Once a formula spills, refer to its <em>entire, current</em> output with the anchor address followed by <code>#</code>:</p>
+<pre><code class="language-excel">=SUM(H2#)                       total of whatever UNIQUE returned
+=COUNTA(H2#)                    number of departments currently listed
+=SUMIFS(GL[Amount], GL[Dept], H2#)   one SUMIFS per department, spills alongside
+=XLOOKUP(H2#, Map[Dept], Map[Head])  looks up every department at once
+</code></pre>
+<p><code>H2#</code> grows and shrinks with the spill. Pointing at <code>H2:H10</code> instead freezes the reference at today's size: when the tenth department arrives, it is excluded from totals with no error. The <code>#</code> operator works in charts' series ranges via a defined name (e.g. name <code>DeptList</code> <code>=Sheet1!H2#</code>), in Data Validation list sources, in conditional formatting "Applies to" logic through formulas, and inside other dynamic functions.</p>
+<p>You can also reference a column or row within a spilled block by combining with INDEX or CHOOSECOLS:</p>
+<pre><code class="language-excel">=INDEX(K2#, , 3)                third column of a multi-column spill
+=CHOOSECOLS(K2#, 1, 4)          first and fourth columns
+=TAKE(K2#, -1)                  last row of the spill (e.g. latest month)
+</code></pre>
+<h3 id="implicit-intersection-and-the-operator">Implicit intersection and the <code>@</code> operator</h3>
+<p>Before dynamic arrays, a formula like <code>=GL[Amount]</code> typed in row 7 outside the Table returned the single value from row 7 — Excel "implicitly intersected" the range with the formula's row. Legacy Excel did this silently whenever a function expected a single value but received a range.</p>
+<p>Dynamic Excel instead spills by default, so to keep old workbooks calculating identically, Microsoft 365 inserts <code>@</code> wherever the legacy formula relied on implicit intersection. Examples:</p>
+<table>
+<thead>
+<tr>
+<th>Legacy formula (Excel 2016)</th>
+<th>Opened in Microsoft 365</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>=A2:A10</code> in row 5</td>
+<td><code>=@A2:A10</code></td>
+<td>Return A5 only</td>
+</tr>
+<tr>
+<td><code>=INDEX(Rates, 0, 2)</code> returning a column</td>
+<td><code>=@INDEX(Rates, 0, 2)</code></td>
+<td>Single value (intersection)</td>
+</tr>
+<tr>
+<td>A user-defined VBA function returning a range</td>
+<td><code>=@MyFunc(x)</code></td>
+<td>Single value</td>
+</tr>
+</tbody>
+</table>
+<p>Inside Tables, <code>[@Amount]</code> is the structured-reference version of the same idea — "this row's Amount". That is a deliberate, correct use.</p>
+<p>Rules for practitioners:</p>
+<ol>
+<li>Do not blindly delete <code>@</code> from inherited models. Removing it changes <code>=@A2:A10</code> from one value into a 9-row spill, which may throw #SPILL! or, worse, spill into empty cells and alter totals.</li>
+<li>If you type <code>@</code> in front of a function that already returns one value, it does nothing.</li>
+<li>If you share a dynamic-array formula with an Excel 2019 user, their Excel shows it as a legacy CSE array formula <code>{=…}</code> sized to the spill at save time — it will not resize on their machine.</li>
+</ol>
+<h3 id="illustration-department-expense-summary">Illustration: department expense summary</h3>
+<p>GL Table has 18,400 lines for FY26 across 9 departments.</p>
+<table>
+<thead>
+<tr>
+<th>Cell</th>
+<th>Formula</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H2</td>
+<td><code>=SORT(UNIQUE(GL[Dept]))</code></td>
+<td>9 departments, H2:H10</td>
+</tr>
+<tr>
+<td>I2</td>
+<td><code>=SUMIFS(GL[Amount], GL[Dept], H2#)</code></td>
+<td>9 totals, I2:I10</td>
+</tr>
+<tr>
+<td>J2</td>
+<td><code>=I2#/SUM(I2#)</code></td>
+<td>share of total, J2:J10</td>
+</tr>
+<tr>
+<td>I12</td>
+<td><code>=SUM(I2#)</code></td>
+<td>₹48.6 crore, ties to TB expense total</td>
+</tr>
+</tbody>
+</table>
+<p>In April FY27 the "ESG" department is created. After pasting the new GL rows into the Table, all four outputs extend to 10 rows. If I12 had been <code>=SUM(I2:I10)</code>, ESG's ₹0.4 crore would be missing and the check cell against the TB would fail — that failure is exactly what a TB tie-out check is designed to catch.</p>
+<h3 id="layout-discipline">Layout discipline</h3>
+<p>Put each spilling formula in its own reserved block with a header above it and nothing below or to the right within the maximum plausible size. A common convention is a dedicated "Calc" or "Lists" sheet holding all UNIQUE/SEQUENCE outputs, and output sheets that reference them via <code>#</code>. Leave at least one empty column between side-by-side spills so one cannot block another when it widens.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Totals below a spill.</strong> You cannot place a hard total row immediately under a spill because the spill may grow into it. Either put totals <em>above</em> the list, or append the total inside the formula with <code>VSTACK(list, HSTACK("Total", SUM(...)))</code>.</li>
+<li><strong>Sorting or filtering a spill with the ribbon</strong> is not possible; the user must change the formula. Educate report consumers or provide parameter cells.</li>
+<li><strong>Copy-paste values of a spill</strong> produces a static block — fine for archived month-end packs, wrong for live models. Label archived tabs clearly.</li>
+<li><strong><code>#</code> on a non-spilling cell</strong> returns #REF!. If the anchor cell's formula is edited to return a single value, every dependent <code>#</code> reference breaks.</li>
+<li><strong>Charts</strong> cannot take <code>H2#</code> directly in the series box; use a defined name whose Refers To is the spill reference.</li>
+<li><strong>Excel for the web and Mac</strong> support spills identically in Microsoft 365, but Excel 2019 perpetual does not; recipients see static CSE arrays.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>A spilling formula lives only in the anchor cell; the spill range resizes on every recalculation.</li>
+<li>
+<h1 id="spill-has-a-finite-list-of-causes-obstruction-table-merged-cells-unknown-size-too-big-and-each-has-a-layout-fix">SPILL! has a finite list of causes — obstruction, Table, merged cells, unknown size, too big — and each has a layout fix.</h1>
+</li>
+<li>Always reference spills with <code>anchor#</code>, never a fixed range, so downstream totals self-update.</li>
+<li><code>@</code> forces single-value implicit intersection; it is inserted to preserve legacy behaviour and should not be deleted without testing.</li>
+<li>Reserve dedicated, obstruction-free zones for dynamic arrays and keep them outside Excel Tables.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-diagnose-five-spill-errors-l1">Q1. Diagnose five #SPILL! errors [L1]</h3>
+<p>A colleague's MIS workbook shows #SPILL! in five places: (a) <code>=FILTER(GL, GL[Mapped]="No")</code> in A20, with a "Reviewed by" note typed in C25; (b) <code>=UNIQUE(GL[Vendor])</code> typed in the first row of a new column inside the GL Table; (c) <code>=SEQUENCE(1,12)</code> in B3, with B3:M3 merged for a title; (d) <code>=D:D*1.18</code> in E2; (e) <code>=SORTBY(Exp[Vendor], RANDARRAY(ROWS(Exp[Vendor])))</code> that flickers between sizes. For each, state the cause shown in the warning menu and the fix.</p>
+<h3 id="q2-fixed-range-versus-spill-reference-l2">Q2. Fixed range versus spill reference [L2]</h3>
+<p>UNIQUE in H2 lists 14 cost centres (H2:H15). Column I has <code>=SUMIFS(GL[Amount], GL[CC], H2:H15)</code> and I17 has <code>=SUM(I2:I15)</code>. Next month two new cost centres with expenses of ₹6.2 lakh and ₹3.8 lakh are added to the GL. Describe exactly what the output shows, what the TB tie-out check shows, and rewrite both formulas so the issue cannot recur.</p>
+<h3 id="q3-inherited-model-with-symbols-l2">Q3. Inherited model with @ symbols [L2]</h3>
+<p>You open a 2018-built forecasting model in Microsoft 365 and see <code>=@Rates</code> in E10:E30, where <code>Rates</code> is a named range D10:D30, and <code>=@INDEX(Assumptions, 0, 3)</code> in F5. Explain what each formula returns now, what would happen if you deleted the <code>@</code> in each, and how you would test the change safely before saving.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Think about which row each formula sits in and whether the named range intersects it.</p>
+</blockquote>
+<h3 id="q4-totals-for-a-growing-list-l3">Q4. Totals for a growing list [L3]</h3>
+<p>Design a department expense summary where the department list, amounts and a grand total row all live in one self-sizing block, so that nothing can ever obstruct the spill. Write the formula(s) and explain how you would reference just the amount column of the block in a separate check cell that compares it with the TB expense total.</p>
+<h3 id="q5-interview-explain-spilling-to-a-manager-l1">Q5. Interview: explain spilling to a manager [L1]</h3>
+<p>In under 100 words, explain to a finance manager who uses Excel 2016 why the department list you send in a Microsoft 365 workbook "won't update" on their machine, and what they would see in the formula bar.</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← Dynamic arrays and LET/LAMBDA</a><a class="next" href="S02_FILTER_with_ANDOR_Logic_for_Exception_Lists.html">FILTER with AND/OR Logic for Exception Lists →</a></nav>
+</main></div></body></html>

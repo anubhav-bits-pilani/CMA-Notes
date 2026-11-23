@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Performance Analyzer to DAX Studio Server Timings · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C05_Performance_Analyzer_to_DAX_Studio_Server_Timings.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T5 · Finalising Project 3: one-click refresh</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Finalising Project 3: one-click refresh</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_End_to_End_Architecture_Source_Folders_to_Report.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S01_End_to_End_Architecture_Source_Folders_to_Report.html">End-to-End Architecture: Source Folders to Report and Cube Pack</a></li><li><a href="../subtopics/S02_Parameters_for_Folder_Path_As_of_Date_FY_Start_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S02_Parameters_for_Folder_Path_As_of_Date_FY_Start_and.html">Parameters for Folder Path, As-of Date, FY Start and Environment</a></li><li><a href="../subtopics/S03_Excel_Refresh_Orchestration_Refresh_All_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S03_Excel_Refresh_Orchestration_Refresh_All_and.html">Excel Refresh Orchestration: Refresh All and Connection Settings</a></li><li><a href="../subtopics/S04_Publishing_Scheduled_Refresh_and_Gateways_for_On.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S04_Publishing_Scheduled_Refresh_and_Gateways_for_On.html">Publishing, Scheduled Refresh and Gateways for On-Prem and Tally</a></li><li><a href="../subtopics/S05_Incremental_Refresh_with_RangeStart_and_RangeEnd.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S05_Incremental_Refresh_with_RangeStart_and_RangeEnd.html">Incremental Refresh with RangeStart and RangeEnd for GL History</a></li><li><a href="../subtopics/S06_Performance_Tuning_Columns_Cardinality_Analyzer.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S06_Performance_Tuning_Columns_Cardinality_Analyzer.html">Performance Tuning: Columns, Cardinality, Analyzer Tools</a></li><li><a href="../subtopics/S07_Packaging_PBIXPBIP_pbit_Template_Documentation_CFO.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S07_Packaging_PBIXPBIP_pbit_Template_Documentation_CFO.html">Packaging: PBIX/PBIP, .pbit Template, Documentation, CFO Guide</a></li><li><a href="../subtopics/S08_Distribution_Apps_Subscriptions_Exports_and_Teams.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S08_Distribution_Apps_Subscriptions_Exports_and_Teams.html">Distribution: Apps, Subscriptions, Exports and Teams Embedding</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Incremental_Refresh_Filter_on_RangeStart_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C01_Incremental_Refresh_Filter_on_RangeStart_and.html">Incremental Refresh Filter on RangeStart and RangeEnd</a></li><li><a href="C02_Scheduled_Refresh_Limits_8_per_Day_on_Pro_48_on.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C02_Scheduled_Refresh_Limits_8_per_Day_on_Pro_48_on.html">Scheduled Refresh Limits: 8 per Day on Pro, 48 on Premium</a></li><li><a href="C03_SharePointFiles_for_Gateway_Free_Cloud_Refresh.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C03_SharePointFiles_for_Gateway_Free_Cloud_Refresh.html">SharePoint.Files for Gateway-Free Cloud Refresh</a></li><li><a href="C04_One_Click_Excel_Refresh_Macro_or_Power_Automate.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C04_One_Click_Excel_Refresh_Macro_or_Power_Automate.html">One-Click Excel Refresh Macro or Power Automate Flow</a></li><li><a href="C05_Performance_Analyzer_to_DAX_Studio_Server_Timings.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C05_Performance_Analyzer_to_DAX_Studio_Server_Timings.html">Performance Analyzer to DAX Studio Server Timings</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Performance Analyzer to DAX Studio Server Timings</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Performance Analyzer → Copy query → DAX Studio Server Timings to separate storage-engine from formula-engine time</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>Workflow:</p>
+<ol>
+<li>Power BI Desktop &gt; View &gt; <strong>Performance Analyzer</strong> &gt; Start recording &gt; Refresh visuals.</li>
+<li>Expand the slow visual &gt; <strong>Copy query</strong> (the DAX query the visual sends to the engine).</li>
+<li>Open <strong>DAX Studio</strong> connected to the open Desktop model; paste the query.</li>
+<li>Enable <strong>Server Timings</strong> (and <em>Clear cache then run</em>), run the query.</li>
+<li>Read the split:</li>
+</ol>
+<p>\[
+T_{\text{total}} = T_{\text{FE}} + T_{\text{SE}}
+\]</p>
+<p>where \(T_{\text{SE}}\) is storage-engine time (VertiPaq scans that retrieve and aggregate data, potentially
+multi-threaded and cached) and \(T_{\text{FE}}\) is formula-engine time (single-threaded evaluation of DAX logic that
+the storage engine cannot do, such as complex iterations, context transitions and row-by-row conditions). DAX Studio
+also shows the number of SE queries, SE CPU time, and cache hits.</p>
+<h2 id="explanation">Explanation</h2>
+<p>Performance Analyzer tells you <em>which visual</em> is slow and whether the time is in the DAX query or in rendering. Server
+Timings tells you <em>why the query</em> is slow:</p>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Likely cause</th>
+<th>Typical fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>High SE time, few SE queries</td>
+<td>Large scans: big fact, high-cardinality columns</td>
+<td>Reduce model (s06), aggregations, filter earlier</td>
+</tr>
+<tr>
+<td>High SE time, many SE queries</td>
+<td>Measure evaluated per row of a large iterator, generating a "callback" or many small scans</td>
+<td>Rewrite to set-based logic; avoid iterating high-cardinality columns</td>
+</tr>
+<tr>
+<td>High FE time, low SE time</td>
+<td>Complex DAX evaluated row by row in the formula engine (nested IFs inside SUMX, FILTER over whole tables)</td>
+<td>Use variables, column filters in CALCULATE, pre-compute in Power Query</td>
+</tr>
+<tr>
+<td><code>CallbackDataID</code> in SE query text</td>
+<td>Storage engine calling back to the formula engine for each row (e.g. IF or DIVIDE inside an iterator)</td>
+<td>Move the condition outside the iterator or into a column</td>
+</tr>
+</tbody>
+</table>
+<p>Practical notes:</p>
+<ul>
+<li><strong>Clear the cache</strong> before each timed run; otherwise warm-cache results look unrealistically fast. Compare cold and
+  warm runs; users experience both.</li>
+<li><strong>Run several times</strong> and take the median.</li>
+<li><strong>Query Plan</strong> (logical/physical) in DAX Studio gives deeper detail when the timings are not enough.</li>
+<li>The copied query includes the visual's filters (slicers, page filters) — test with realistic selections, e.g.
+  FY2025-26 with all BUs, the CFO's default view.</li>
+<li>Results from Desktop on a laptop are indicative; the Service under concurrent load may differ.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>The expense-page matrix (BU × cost centre, measure <code>[Vendor Rank]</code> and <code>[Expense vs Budget %]</code>) takes 3,400 ms in
+Performance Analyzer (DAX query 3,150 ms, visual display 250 ms). In DAX Studio with cold cache:</p>
+<table>
+<thead>
+<tr>
+<th>Run</th>
+<th>Total</th>
+<th>FE</th>
+<th>SE</th>
+<th>SE queries</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Original</td>
+<td>3,120 ms</td>
+<td>2,640 ms (85%)</td>
+<td>480 ms</td>
+<td>1,212</td>
+</tr>
+<tr>
+<td>After rewrite</td>
+<td>410 ms</td>
+<td>95 ms</td>
+<td>315 ms</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+<p>The original <code>[Expense vs Budget %]</code> iterated <code>SUMX(GL, IF(RELATED(Budget...)...))</code> row by row, generating callbacks.
+Rewriting as <code>DIVIDE([Expense] - [Budget Expense], [Budget Expense])</code> using two base measures moved the work to the
+storage engine.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>s06 (performance tuning): VertiPaq Analyzer in the same tool addresses model size; Server Timings addresses query
+  logic.</li>
+<li>Topic 2: RANKX-based Top N and drill-through tables are common FE-heavy visuals.</li>
+<li>Week 11: the base-measure pattern (simple SUMs reused by derived measures) is naturally SE-friendly.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-reading-timings-l1">Q1. Reading timings [L1]</h3>
+<p>A query shows total 2,400 ms, FE 300 ms, SE 2,100 ms, 4 SE queries, no callbacks. What does this suggest about the
+cause, and which tool view would you use next?</p>
+<h3 id="q2-callback-diagnosis-l2">Q2. Callback diagnosis [L2]</h3>
+<p>A measure <code>Adj Expense = SUMX(GL, IF(GL[VoucherType] = "Journal", GL[Amount] * 0.98, GL[Amount]))</code> is slow on a
+40-million-row GL. Explain why DAX Studio would likely show CallbackDataID, and propose two faster formulations.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider splitting the sum by voucher type with CALCULATE, or computing the adjusted amount in Power Query.</p>
+</blockquote>
+<h3 id="q3-performance-test-protocol-l2">Q3. Performance test protocol [L2]</h3>
+<p>Write a short test protocol (steps, settings, number of runs, what to record) for measuring the three pages of the
+Executive Finance Pack before and after tuning, suitable for inclusion in the project documentation.</p></section>
+<nav class="pager"><a class="prev" href="C04_One_Click_Excel_Refresh_Macro_or_Power_Automate.html">← One-Click Excel Refresh Macro or Power Automate Flow</a><a class="next" href="../../../../P4_Integrated_Three_Statement_Financial/index.html">Phase 4: Integrated Three-Statement Financial Modelling &amp;… →</a></nav>
+</main></div></body></html>

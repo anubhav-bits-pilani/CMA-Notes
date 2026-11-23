@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FILTER vs Boolean Column Filters: Meaning and Performance · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T3 · Core financial DAX functions</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Core financial DAX functions</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Row_Context_Filter_Context_and_Context_Transition.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S01_Row_Context_Filter_Context_and_Context_Transition.html">Row Context, Filter Context and Context Transition</a></li><li><a href="S02_CALCULATE_Filter_Arguments_and_Modifiers.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S02_CALCULATE_Filter_Arguments_and_Modifiers.html">CALCULATE Filter Arguments and Modifiers</a></li><li><a href="S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html">Iterators SUMX and AVERAGEX for Row-Level Maths</a></li><li><a href="S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html">FILTER vs Boolean Column Filters: Meaning and Performance</a></li><li><a href="S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html">ALL, ALLEXCEPT and ALLSELECTED for Share and Contribution Analysis</a></li><li><a href="S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html">RELATED and RELATEDTABLE in Columns and Iterators</a></li><li><a href="S07_DIVIDE_Measures_vs_Calculated_Columns_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S07_DIVIDE_Measures_vs_Calculated_Columns_and.html">DIVIDE, Measures vs Calculated Columns, and VAR/RETURN</a></li><li><a href="S08_Explicit_Measures_Display_Folders_and_LakhCrore.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S08_Explicit_Measures_Display_Folders_and_LakhCrore.html">Explicit Measures, Display Folders and ₹ Lakh/Crore Formats</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html">Base Actual Measure and a Filtered Revenue Measure</a></li><li><a href="../concepts/C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html">Percentage of Total Opex with ALL on Cost Centre</a></li><li><a href="../concepts/C03_Percentage_within_Statement_with_ALLEXCEPT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C03_Percentage_within_Statement_with_ALLEXCEPT.html">Percentage within Statement with ALLEXCEPT</a></li><li><a href="../concepts/C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html">FX-Converted Revenue with SUMX and RELATED</a></li><li><a href="../concepts/C05_Sign_Aware_Variance_with_VAR_and_ABS.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C05_Sign_Aware_Variance_with_VAR_and_ABS.html">Sign-Aware Variance % with VAR and ABS</a></li><li><a href="../concepts/C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html">KEEPFILTERS to Intersect Rather Than Overwrite</a></li><li><a href="../concepts/C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html">DIVIDE and Its BLANK Default for Zero Denominators</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>FILTER vs Boolean Column Filters: Meaning and Performance</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> FILTER vs boolean column filters: differences in meaning and performance</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>There are two ways to restrict a CALCULATE: a <strong>boolean column filter</strong> (<code>CoA[FSLine] = "Revenue from operations"</code>)
+or an explicit <strong>FILTER</strong> over a table (<code>FILTER(GL, RELATED(CoA[FSLine]) = "Revenue from operations")</code>). They look
+interchangeable, and in a small test file they return the same number. In a production finance model with crores of
+GL lines they differ in <strong>meaning</strong> — which existing filters survive — and in <strong>performance</strong> by orders of magnitude.
+Choosing correctly is a core competency tested in DAX interviews and the main fix for slow MIS dashboards.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="what-a-boolean-filter-really-is">What a boolean filter really is</h3>
+<pre><code class="language-DAX">CALCULATE ( [Actual], CoA[FSLine] = &quot;Revenue from operations&quot; )
+-- is shorthand for
+CALCULATE ( [Actual], FILTER ( ALL ( CoA[FSLine] ), CoA[FSLine] = &quot;Revenue from operations&quot; ) )
+</code></pre>
+<ul>
+<li>It iterates only the <strong>distinct values of one column</strong> (a few dozen FS lines), not rows.</li>
+<li>It <strong>replaces</strong> any existing filter on <code>CoA[FSLine]</code> (because of ALL), but leaves filters on all other columns —
+  including other CoA columns — intact.</li>
+<li>The storage engine can resolve it efficiently as a simple filter on a dictionary-encoded column.</li>
+</ul>
+<h3 id="what-filter-over-a-table-does">What FILTER over a table does</h3>
+<pre><code class="language-DAX">CALCULATE ( [Actual], FILTER ( GL, RELATED ( CoA[FSLine] ) = &quot;Revenue from operations&quot; ) )
+</code></pre>
+<ul>
+<li>FILTER iterates <strong>every row of GL visible in the current filter context</strong> (possibly crores), evaluating the
+  predicate per row (with RELATED per row).</li>
+<li>It returns a table of GL rows — <strong>all columns of GL</strong> (in fact, the expanded table, including related dimension
+  columns). Used as a CALCULATE filter, that table becomes a filter on every one of those columns.</li>
+<li>Because FILTER(GL) is evaluated in the existing filter context, it <strong>keeps</strong> existing filters (it only sees visible
+  rows) — the opposite of the boolean filter's overwrite on FSLine.</li>
+<li>But the filter it applies covers all columns of the expanded GL table, which can <strong>override</strong> later or inner
+  filters in unexpected ways (e.g. an inner <code>REMOVEFILTERS('Date')</code> no longer "frees" dates because the GL rows
+  themselves carry the date filter). This is the "unexpected filter overrides" pitfall.</li>
+</ul>
+<h3 id="meaning-differences-side-by-side">Meaning differences — side by side</h3>
+<p>Matrix rows = <code>CoA[FSLine]</code>, FY2025-26.</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th><code>CALCULATE([Actual], CoA[FSLine] = "Revenue from operations")</code></th>
+<th><code>CALCULATE([Actual], FILTER(GL, RELATED(CoA[FSLine]) = "Revenue from operations"))</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue from operations</td>
+<td>Revenue</td>
+<td>Revenue</td>
+</tr>
+<tr>
+<td>Other income</td>
+<td>Revenue (filter replaced)</td>
+<td>Blank (row filter kept; no revenue rows visible)</td>
+</tr>
+<tr>
+<td>Employee benefits expense</td>
+<td>Revenue</td>
+<td>Blank</td>
+</tr>
+</tbody>
+</table>
+<p>So FILTER over the fact behaves like <code>KEEPFILTERS(CoA[FSLine] = …)</code> here — but at a far higher cost. If you want
+intersect semantics, use KEEPFILTERS with a column filter (concept c06).</p>
+<h3 id="performance">Performance</h3>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Iterates</th>
+<th>Typical cost on 2 crore GL rows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CoA[FSLine] = "X"</code></td>
+<td>~40 FS-line values</td>
+<td>Milliseconds</td>
+</tr>
+<tr>
+<td><code>FILTER(ALL(CoA[FSLine]), …)</code></td>
+<td>~40 values</td>
+<td>Milliseconds</td>
+</tr>
+<tr>
+<td><code>FILTER(VALUES(CoA[AccountKey]), [Actual] &gt; 0)</code></td>
+<td>~650 accounts, measure per account</td>
+<td>Fast to moderate</td>
+</tr>
+<tr>
+<td><code>FILTER(GL, RELATED(CoA[FSLine]) = "X")</code></td>
+<td>2 crore rows, formula engine</td>
+<td>Seconds, high memory</td>
+</tr>
+<tr>
+<td><code>FILTER(GL, GL[Amount] &gt; 100000)</code></td>
+<td>2 crore rows (may be pushed to storage engine)</td>
+<td>Slower than a column filter</td>
+</tr>
+</tbody>
+</table>
+<p>Rules of thumb:</p>
+<ol>
+<li><strong>Filter columns, not tables.</strong> Use boolean filters or <code>FILTER(ALL(col), …)</code> / <code>FILTER(VALUES(col), …)</code>.</li>
+<li><strong>Filter the dimension, not the fact.</strong> Conditions on account attributes go on CoA, not via RELATED inside
+   FILTER(GL).</li>
+<li><strong>Use FILTER only when needed:</strong> conditions involving a measure (<code>[Actual] &gt; [Budget]</code>), multiple columns from
+   different tables in one OR condition, or complex expressions. Even then, iterate the smallest table — VALUES of a
+   dimension key — not the fact.</li>
+<li><strong>Multi-column conditions on one table:</strong> since 2021, <code>CALCULATE([Actual], CoA[FSLine] = "A" || CoA[Statement] = "B")</code>
+   is allowed as a boolean (columns from the same table); it is translated to a filter over the combination of those
+   columns.</li>
+<li><strong>Measure the difference</strong> with Performance Analyzer and DAX Studio server timings (storage engine vs formula
+   engine time).</li>
+</ol>
+<h3 id="correct-pattern-for-a-measure-based-condition">Correct pattern for a measure-based condition</h3>
+<pre><code class="language-DAX">Overspent Accounts Actual =
+CALCULATE (
+    [Actual],
+    FILTER ( VALUES ( CoA[AccountKey] ), [Actual] &gt; [Budget] )
+)
+</code></pre>
+<p>FILTER iterates visible account keys (hundreds), evaluates the measures per account by context transition, and
+returns qualifying keys as a filter on one column.</p>
+<h3 id="illustration">Illustration</h3>
+<p>A Gurugram-based services company's MIS page had twelve measures written as
+<code>CALCULATE([Actual], FILTER(GL, RELATED(CoA[MISLine]) = "…"))</code> over a 1.6 crore-row GL. The page took 14 seconds to
+render. Rewriting them as <code>CALCULATE([Actual], CoA[MISLine] = "…")</code> reduced it to under one second; two measures then
+showed different numbers on non-matching rows (they now repeated the line total), which was fixed by wrapping the
+filter in KEEPFILTERS where row-aware behaviour was intended.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Blank-member effects.</strong> <code>FILTER(GL, …)</code> sees GL rows with orphan keys; a column filter on CoA excludes the blank
+  member unless the predicate matches blank. Totals can differ when RI is broken.</li>
+<li><strong>Expanded-table side effects.</strong> A FILTER(GL) table filter also filters CoA, Date and CostCentre columns implicitly;
+  a later <code>ALL(CostCentre)</code> inside a nested measure will not restore cost centres excluded by the GL rows.</li>
+<li><strong>Calculated tables and calculated columns</strong> may need FILTER over tables; performance matters less at refresh, but
+  still avoid it on huge facts.</li>
+<li><strong>DirectQuery</strong> translates column filters into efficient SQL WHERE clauses; FILTER over a fact may generate heavy SQL.</li>
+<li><strong>Readability</strong> sometimes favours FILTER for complex OR logic; document why.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>A boolean filter is <code>FILTER(ALL(column), predicate)</code>: few values, overwrites that column's filter only.</li>
+<li><code>FILTER(GL, …)</code> iterates every visible fact row and filters the whole expanded table — slow and can override filters.</li>
+<li>FILTER over a fact keeps existing filters; for intersect semantics, prefer KEEPFILTERS with a column filter.</li>
+<li>Use FILTER only for measure-based or complex conditions, over the smallest table (VALUES of a key).</li>
+<li>Verify performance with Performance Analyzer and DAX Studio server timings.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-rewrite-for-speed-l1">Q1. Rewrite for speed [L1]</h3>
+<p>Rewrite <code>CALCULATE([Actual], FILTER(GL, RELATED(CostCentre[Function]) = "Sales" &amp;&amp; RELATED('Date'[FY]) = "FY2025-26"))</code>
+using column filters, and state any change in behaviour on a matrix with CostCentre on rows.</p>
+<h3 id="q2-predict-the-difference-l2">Q2. Predict the difference [L2]</h3>
+<p>A matrix has Branch on rows. Measure A = <code>CALCULATE([Actual], Branch[Region] = "West")</code>; Measure B =
+<code>CALCULATE([Actual], FILTER(GL, RELATED(Branch[Region]) = "West"))</code>. Describe what each shows on the row for a branch in
+the North region and on the grand total.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Ask whether the row's Branch filter is replaced or retained in each case.</p>
+</blockquote>
+<h3 id="q3-measure-based-filter-l2">Q3. Measure-based filter [L2]</h3>
+<p>Write a measure that returns budget for cost centres whose YTD actual exceeds YTD budget, iterating the smallest
+appropriate table, and explain why <code>FILTER(Budget, …)</code> would be a poor choice.</p>
+<h3 id="q4-performance-investigation-l3">Q4. Performance investigation [L3]</h3>
+<p>A Power BI MIS report page takes 20 seconds. Describe how you would use Performance Analyzer and DAX Studio to isolate
+the slow measure, what you would look for in server timings (storage engine vs formula engine, callbacks), and three
+rewrites you would try first.</p></section>
+<nav class="pager"><a class="prev" href="S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html">← Iterators SUMX and AVERAGEX for Row-Level Maths</a><a class="next" href="S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html">ALL, ALLEXCEPT and ALLSELECTED for Share and Contribution… →</a></nav>
+</main></div></body></html>

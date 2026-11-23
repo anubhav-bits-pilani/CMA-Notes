@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weighted Average Cost of Debt Across Borrowing Tranches · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S01_Weighted_Average_Cost_of_Debt_Across_Borrowing.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T3 · SUMPRODUCT weighted averages and matrix…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · SUMPRODUCT weighted averages and matrix math</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Weighted_Average_Cost_of_Debt_Across_Borrowing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S01_Weighted_Average_Cost_of_Debt_Across_Borrowing.html">Weighted Average Cost of Debt Across Borrowing Tranches</a></li><li><a href="S02_Weighted_Average_Inventory_Cost_and_Weighted.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S02_Weighted_Average_Inventory_Cost_and_Weighted.html">Weighted Average Inventory Cost and Weighted Credit Period / DSO</a></li><li><a href="S03_Boolean_Array_Multi_Condition_Sums_Without_Helper.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S03_Boolean_Array_Multi_Condition_Sums_Without_Helper.html">Boolean-Array Multi-Condition Sums Without Helper Columns</a></li><li><a href="S04_Coercing_TRUEFALSE_to_10_Double_Unary_1_and_N.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S04_Coercing_TRUEFALSE_to_10_Double_Unary_1_and_N.html">Coercing TRUE/FALSE to 1/0: Double Unary, ×1 and N()</a></li><li><a href="S05_Cohort_Retention_Matrices_Acquisition_Month_Active.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S05_Cohort_Retention_Matrices_Acquisition_Month_Active.html">Cohort Retention Matrices: Acquisition Month × Active Month</a></li><li><a href="S06_MMULT_and_TRANSPOSE_for_Cost_Pool_Driver.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S06_MMULT_and_TRANSPOSE_for_Cost_Pool_Driver.html">MMULT and TRANSPOSE for Cost-Pool × Driver Allocations</a></li><li><a href="S07_SUMPRODUCT_vs_SUMIFS_Performance_on_Large_Ranges.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S07_SUMPRODUCT_vs_SUMIFS_Performance_on_Large_Ranges.html">SUMPRODUCT vs SUMIFS Performance on Large Ranges</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Pre_Tax_and_Post_Tax_Kd_with_SUMPRODUCT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C01_Pre_Tax_and_Post_Tax_Kd_with_SUMPRODUCT.html">Pre-Tax and Post-Tax Kd with SUMPRODUCT</a></li><li><a href="../concepts/C02_SUMPRODUCT_with_MONTH_and_LEFT_on_Whole_Columns.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C02_SUMPRODUCT_with_MONTH_and_LEFT_on_Whole_Columns.html">SUMPRODUCT with MONTH and LEFT on Whole Columns</a></li><li><a href="../concepts/C03_Comma_Form_SUMPRODUCT_and_Why_Arrays_Must_Be.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C03_Comma_Form_SUMPRODUCT_and_Why_Arrays_Must_Be.html">Comma-Form SUMPRODUCT and Why Arrays Must Be Numeric</a></li><li><a href="../concepts/C04_The_Cohort_Retention_Cell_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C04_The_Cohort_Retention_Cell_Formula.html">The Cohort Retention Cell Formula</a></li><li><a href="../concepts/C05_MMULT_Dimensions_1nnm_Gives_a_1m_Allocation.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C05_MMULT_Dimensions_1nnm_Gives_a_1m_Allocation.html">MMULT Dimensions: (1×n)·(n×m) Gives a 1×m Allocation</a></li><li><a href="../concepts/C06_The_General_Guarded_Weighted_Average_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C06_The_General_Guarded_Weighted_Average_Formula.html">The General Guarded Weighted-Average Formula</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Weighted Average Cost of Debt Across Borrowing Tranches</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Weighted average cost of debt across tranches (balance × rate) and weighted average interest rate</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Indian corporates rarely have one loan. A typical mid-cap balance sheet carries a rupee term loan from a public-sector bank, listed NCDs, an ECB, cash-credit or WCDL limits, commercial paper and perhaps promoter ICDs — each at a different rate. Three numbers depend on combining them correctly: the <strong>pre-tax cost of debt (Kd)</strong> in WACC and DCF work, the <strong>weighted average interest rate</strong> reported in MIS, rating-agency submissions and lender presentations, and the <strong>capitalisation rate</strong> for general borrowings under Ind AS 23. A simple average of rates is the classic mistake; the correct answer weights each rate by the amount of debt carrying it, which is exactly what SUMPRODUCT computes in one cell.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-formula">The formula</h3>
+<p>\[
+K_d = \frac{\sum_{i=1}^{n} B_i \times r_i}{\sum_{i=1}^{n} B_i}
+\]</p>
+<p>where \(B_i\) is the balance of tranche \(i\), \(r_i\) its annual interest rate, and \(n\) the number of tranches. The numerator is the annual interest the portfolio would cost at those balances; dividing by total debt gives the blended rate.</p>
+<p>In Excel, with a Table <code>Debt</code> (Tranche, Lender, Balance, Rate):</p>
+<pre><code class="language-excel">=SUMPRODUCT(Debt[Balance], Debt[Rate]) / SUM(Debt[Balance])
+</code></pre>
+<p>SUMPRODUCT multiplies the two columns row by row and adds the products, so no helper column of "balance × rate" is needed. Post-tax cost of debt:</p>
+<p>\[
+K_d^{\text{post-tax}} = K_d \times (1 - t)
+\]</p>
+<p>where \(t\) is the marginal tax rate at which interest is deductible — 25.168% for a company under Section 115BAA (22% + 10% surcharge + 4% cess), 34.944% for a company under the old regime with income above ₹10 crore (30% + 12% surcharge + 4% cess).</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<table>
+<thead>
+<tr>
+<th>Tranche</th>
+<th>Balance (₹ crore)</th>
+<th>Rate</th>
+<th>Balance × Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rupee term loan (SBI)</td>
+<td>100</td>
+<td>9.40%</td>
+<td>9.400</td>
+</tr>
+<tr>
+<td>Listed NCDs</td>
+<td>250</td>
+<td>7.95%</td>
+<td>19.875</td>
+</tr>
+<tr>
+<td>ECB (all-in hedged cost)</td>
+<td>60</td>
+<td>8.60%</td>
+<td>5.160</td>
+</tr>
+<tr>
+<td>Cash credit / WCDL</td>
+<td>40</td>
+<td>10.25%</td>
+<td>4.100</td>
+</tr>
+<tr>
+<td>Promoter ICD</td>
+<td>10</td>
+<td>12.00%</td>
+<td>1.200</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>460</strong></td>
+<td></td>
+<td><strong>39.735</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Weighted pre-tax Kd = 39.735 ÷ 460 = <strong>8.64%</strong>.</li>
+<li>Simple average of the five rates = 48.20% ÷ 5 = 9.64% — overstated by 100 bps because the cheapest tranche (NCDs) is also the largest.</li>
+<li>Post-tax Kd at 25.168% = 8.64% × 0.74832 = <strong>6.46%</strong>.</li>
+</ul>
+<h3 id="what-rate-should-mean">What "rate" should mean</h3>
+<p>The weighting mechanics are trivial; the judgement is in the inputs.</p>
+<table>
+<thead>
+<tr>
+<th>Purpose</th>
+<th>Rate to use</th>
+<th>Balance to use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WACC / DCF (forward-looking)</td>
+<td><strong>Marginal</strong> cost: current yield on the company's NCDs, fresh-borrowing quotes, or rating-based spread over G-sec</td>
+<td>Target or market-value debt mix</td>
+</tr>
+<tr>
+<td>MIS "weighted average interest rate"</td>
+<td>Contractual coupon / current reset rate</td>
+<td>Closing or, better, average balance</td>
+</tr>
+<tr>
+<td>Effective cost for the year</td>
+<td>Interest + amortised fees (Ind AS 109 effective interest rate)</td>
+<td><strong>Average</strong> balance over the year</td>
+</tr>
+<tr>
+<td>Ind AS 23 capitalisation rate for general borrowings</td>
+<td>Borrowing costs ÷ weighted average general borrowings outstanding during the period, excluding specific borrowings (Ind AS 23.14)</td>
+<td>Time-weighted outstanding</td>
+</tr>
+</tbody>
+</table>
+<p>For the ECB, the relevant rate is the <strong>all-in rupee cost</strong>: SOFR plus spread, withholding tax gross-up where borne by the borrower, and hedging cost. Using the bare USD coupon understates Kd materially.</p>
+<h3 id="weighted-average-interest-rate-from-the-pl">Weighted average interest rate from the P&amp;L</h3>
+<p>An alternative, backward-looking measure is the effective rate actually paid:</p>
+<p>\[
+r_{\text{eff}} = \frac{\text{Finance cost on borrowings for the year}}{\text{Average borrowings}}
+\]</p>
+<p>where average borrowings is ideally a monthly average, e.g. <code>=AVERAGE(MonthEndDebt)</code> across 13 month-ends (opening plus 12), not the simple mean of opening and closing. For a company that drew most of its debt in March, the opening/closing average badly overstates the debt that was actually outstanding during the year. Exclude non-borrowing finance costs (interest on lease liabilities under Ind AS 116, unwinding of discount on provisions, interest on income-tax) when the aim is the cost of borrowings — or include them consistently if lease liabilities are treated as debt in the WACC.</p>
+<h3 id="building-it-in-a-model">Building it in a model</h3>
+<ul>
+<li>Keep the debt schedule as a Table with one row per tranche and columns for opening balance, drawdowns, repayments, closing balance, average balance, rate and interest.</li>
+<li>Compute interest per tranche as average balance × rate (or using a monthly schedule) and Kd as <code>SUMPRODUCT</code> of average balances and rates divided by total average balance.</li>
+<li>For a projection, Kd can vary by year as the mix changes — compute it per column with <code>SUMPRODUCT(AvgBal_col, Rate_col)/SUM(AvgBal_col)</code>.</li>
+<li>Guard the division for years with no debt: <code>=IF(SUM(w)=0, 0, SUMPRODUCT(w, x)/SUM(w))</code>.</li>
+</ul>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Floating-rate tranches</strong> (MCLR- or repo-linked loans) — use the current reset rate for a point estimate and the forward view for projections.</li>
+<li><strong>Zero-coupon or deep-discount bonds</strong> — the coupon is zero; use the yield to maturity.</li>
+<li><strong>Undrawn limits</strong> — commitment fees are a cost but the balance is zero; include them in the effective rate, not in the weighting of drawn rates.</li>
+<li><strong>Subsidised or related-party debt</strong> (interest-free promoter loans) — Ind AS 109 measures them at fair value with an imputed rate; for WACC, consider whether the subsidy will continue.</li>
+<li><strong>Book vs market weights</strong> — for WACC, weights should reflect market values or a target structure; for MIS reporting, book balances are standard. Say which you are using.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Kd = Σ(balance × rate) ÷ Σ balance; <code>SUMPRODUCT</code> does it in one cell without helper columns.</li>
+<li>Post-tax Kd = Kd × (1 − t); under 115BAA, t = 25.168%.</li>
+<li>A simple average of rates is wrong whenever tranche sizes differ.</li>
+<li>Use marginal, all-in rates for WACC; contractual or effective rates on average balances for MIS and historical analysis.</li>
+<li>Average balances (monthly) beat opening/closing averages when debt moves during the year.</li>
+<li>Guard against zero total debt with an IF around the division.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-blended-kd-for-a-mid-cap-l1">Q1. Blended Kd for a mid-cap [L1]</h3>
+<p>Debt at 31-Mar-2026: term loan ₹180 crore at 9.15%, NCDs ₹120 crore at 8.10%, CC ₹35 crore at 10.40%, CP ₹50 crore at 7.35%. Set up the Table and the SUMPRODUCT formula for pre-tax Kd, and the post-tax Kd for a company under Section 115BAA. Also compute the simple average rate and explain the direction of the difference.</p>
+<h3 id="q2-effective-rate-on-average-balances-l2">Q2. Effective rate on average balances [L2]</h3>
+<p>A company's borrowings were ₹40 crore from April to December 2025 and ₹160 crore from January to March 2026 (a capex loan was drawn on 1 January). Finance cost on borrowings for FY26 was ₹4.62 crore. Compute the effective interest rate using (a) the average of opening and closing balances and (b) a 12-month average of month-end balances, and explain which is meaningful.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Write out the twelve month-end balances and use AVERAGE before dividing.</p>
+</blockquote>
+<h3 id="q3-ecb-all-in-cost-l2">Q3. ECB all-in cost [L2]</h3>
+<p>An ECB of USD 15 million carries interest at 3-month Term SOFR (assume 4.30%) + 1.85%. The company bears withholding tax gross-up of 5% on interest and pays a hedging premium of 2.4% a year. Estimate the all-in rupee cost to use in the Kd table and explain why the bare coupon would understate WACC.</p>
+<h3 id="q4-ind-as-23-capitalisation-rate-l3">Q4. Ind AS 23 capitalisation rate [L3]</h3>
+<p>During FY26 a company had general borrowings: ₹100 crore at 9% outstanding all year, and ₹60 crore at 10% drawn on 1 October 2025. It also has a specific project loan of ₹80 crore at 8.5%. Explain how you would compute the capitalisation rate for general borrowings in Excel (including time-weighting), which balances are excluded, and how the rate is applied to expenditure on a qualifying asset.</p>
+<h3 id="q5-model-build-l3">Q5. Model build [L3]</h3>
+<p>Build the specification for a five-year debt schedule tab (FY27–FY31) with five tranches, each with opening balance, drawdowns, repayments, closing balance, average balance, rate and interest. Write the formula for the yearly weighted average pre-tax and post-tax Kd, including the guard for years with no debt, and describe two checks that ensure the interest line in the P&amp;L ties to the schedule.</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← SUMPRODUCT weighted averages and matrix math</a><a class="next" href="S02_Weighted_Average_Inventory_Cost_and_Weighted.html">Weighted Average Inventory Cost and Weighted Credit Period… →</a></nav>
+</main></div></body></html>

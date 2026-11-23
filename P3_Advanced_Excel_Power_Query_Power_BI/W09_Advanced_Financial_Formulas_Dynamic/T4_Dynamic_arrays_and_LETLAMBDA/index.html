@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic arrays and LET/LAMBDA · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/index.html" data-kind="topic">
+<header class="top"><a class="brand" href="../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../index.html">Home</a> <span>›</span> <a href="../../index.html">Phase 3</a> <span>›</span> <a href="../index.html">Week 9</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">Week 9</a></div><ul class="side-links"><li><a href="../T1_Multi_criteria_logic_and_GL_rollups/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/index.html">T1 · Multi-criteria logic and GL rollups</a></li><li><a href="../T2_Modern_lookups_and_scenario_switching/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/index.html">T2 · Modern lookups and scenario switching</a></li><li><a href="../T3_SUMPRODUCT_weighted_averages_and_matrix/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/index.html">T3 · SUMPRODUCT weighted averages and matrix math</a></li><li><a href="index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/index.html">T4 · Dynamic arrays and LET/LAMBDA</a></li><li><a href="../T5_Financial_and_date_functions/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/index.html">T5 · Financial and date functions</a></li><li><a href="../T6_What_if_analysis_and_input_controls/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/index.html">T6 · What-if analysis and input controls</a></li></ul></aside>
+<main class="content">
+<div class="kind">Topic</div>
+<h1>Dynamic arrays and LET/LAMBDA</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<section class="index"><h2>Notes in this topic</h2><div class="cols"><div><h3>Subtopics</h3><ul class="links num"><li><a href="subtopics/S01_Spill_Behaviour_SPILL_the_Operator_and_Implicit.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S01_Spill_Behaviour_SPILL_the_Operator_and_Implicit.html">S01 · Spill Behaviour, #SPILL!, the # Operator and Implicit Intersection</a></li><li><a href="subtopics/S02_FILTER_with_ANDOR_Logic_for_Exception_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S02_FILTER_with_ANDOR_Logic_for_Exception_Lists.html">S02 · FILTER with AND/OR Logic for Exception Lists</a></li><li><a href="subtopics/S03_UNIQUE_for_Dynamic_CoA_and_Department_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S03_UNIQUE_for_Dynamic_CoA_and_Department_Lists.html">S03 · UNIQUE for Dynamic CoA and Department Lists</a></li><li><a href="subtopics/S04_SORT_and_SORTBY_for_Top_N_Expense_and_Ranked.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S04_SORT_and_SORTBY_for_Top_N_Expense_and_Ranked.html">S04 · SORT and SORTBY for Top-N Expense and Ranked Ageing Reports</a></li><li><a href="subtopics/S05_SEQUENCE_for_Monthly_Timelines_Loan_Schedules_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S05_SEQUENCE_for_Monthly_Timelines_Loan_Schedules_and.html">S05 · SEQUENCE for Monthly Timelines, Loan Schedules and Period Counters</a></li><li><a href="subtopics/S06_LET_for_Named_Steps_and_LAMBDA_Functions_in_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S06_LET_for_Named_Steps_and_LAMBDA_Functions_in_Name.html">S06 · LET for Named Steps and LAMBDA Functions in Name Manager</a></li><li><a href="subtopics/S07_LAMBDA_Helpers_and_Array_Reshaping_Functions.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S07_LAMBDA_Helpers_and_Array_Reshaping_Functions.html">S07 · LAMBDA Helpers and Array Reshaping Functions</a></li><li><a href="subtopics/S08_GROUPBY_and_PIVOTBY_as_Formula_Based_Pivots.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S08_GROUPBY_and_PIVOTBY_as_Formula_Based_Pivots.html">S08 · GROUPBY and PIVOTBY as Formula-Based Pivots</a></li></ul></div><div><h3>Key concepts & formulas</h3><ul class="links num"><li><a href="concepts/C01_FILTER_with_Two_AND_Conditions_and_an_ifempty.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C01_FILTER_with_Two_AND_Conditions_and_an_ifempty.html">C01 · FILTER with Two AND Conditions and an if_empty Message</a></li><li><a href="concepts/C02_Sorted_Unique_Account_List_for_a_Selected_FY.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C02_Sorted_Unique_Account_List_for_a_Selected_FY.html">C02 · Sorted Unique Account List for a Selected FY</a></li><li><a href="concepts/C03_Top_10_Vendors_by_Spend_with_TAKE_and_SORTBY.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C03_Top_10_Vendors_by_Spend_with_TAKE_and_SORTBY.html">C03 · Top 10 Vendors by Spend with TAKE and SORTBY</a></li><li><a href="concepts/C04_EOMONTH_with_SEQUENCE_for_Horizontal_Month_End.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C04_EOMONTH_with_SEQUENCE_for_Horizontal_Month_End.html">C04 · EOMONTH with SEQUENCE for Horizontal Month-End Headers</a></li><li><a href="concepts/C05_LET_for_a_Safe_Gross_Margin_Calculation.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C05_LET_for_a_Safe_Gross_Margin_Calculation.html">C05 · LET for a Safe Gross Margin Calculation</a></li><li><a href="concepts/C06_FYEND_A_Named_LAMBDA_for_the_Indian_Financial_Year.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C06_FYEND_A_Named_LAMBDA_for_the_Indian_Financial_Year.html">C06 · FYEND: A Named LAMBDA for the Indian Financial Year</a></li><li><a href="concepts/C07_SCAN_for_Running_Closing_Balances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C07_SCAN_for_Running_Closing_Balances.html">C07 · SCAN for Running Closing Balances</a></li></ul></div></div></section><article class="note"><blockquote>
+<p><strong>Roadmap topic:</strong> Dynamic Array Functions: FILTER, SORT, SORTBY, UNIQUE, SEQUENCE, and LET/LAMBDA basics for self-updating schedules</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>Dynamic arrays changed Excel from a grid of single-value cells into an array-native calculation engine. One formula can now return a whole list, table or timeline, and that output resizes itself every time the source data changes. For finance work this is the difference between a monthly MIS pack that needs an afternoon of copy-down, re-filtering and re-sorting, and one that refreshes the moment the next month's GL is pasted into its Table. The functions in this topic — FILTER, UNIQUE, SORT, SORTBY, SEQUENCE, the reshaping family (VSTACK, HSTACK, TAKE, DROP, CHOOSECOLS), GROUPBY/PIVOTBY, and LET/LAMBDA with their helper functions — are the toolkit for "self-updating schedules": exception lists, dynamic CoA axes, top-N tables, month headers, loan and lease schedules, and roll-forwards.</p>
+<p>For the target roles this matters in three ways. In <strong>financial reporting and close</strong>, exception lists (unmapped ledgers, postings outside the period, overdue debtors) become live controls rather than one-off filters. In <strong>FP&amp;A</strong>, the time axis of every forecast is generated from a start-date input, so a 12-month budget becomes an 18-month rolling forecast by changing one cell. In <strong>modelling</strong>, LET and LAMBDA make long formulas reviewable and reusable, which is the essence of "zero-error formula engineering" and a frequent interview discussion point.</p>
+<p>Learn the topic in this order. Start with <strong>spill mechanics</strong> (s01): how a spill is sized, why #SPILL! happens and how the <code>#</code> operator and <code>@</code> behave — everything else depends on it. Then the three list builders: <strong>FILTER</strong> for exceptions (s02), <strong>UNIQUE</strong> for dynamic axes and one-off items (s03), and <strong>SORT/SORTBY</strong> for ranked outputs (s04). Next, <strong>SEQUENCE</strong> (s05) generates time axes and schedule rows. With those in place, <strong>LET and LAMBDA</strong> (s06) make formulas readable and reusable, and the <strong>helper and reshaping functions</strong> (s07) handle iteration (running balances) and report assembly. Finish with <strong>GROUPBY/PIVOTBY</strong> (s08), the formula-based pivot that both summarises and cross-checks a SUMIFS P&amp;L. The week's exercise pattern — UNIQUE FS lines × EOMONTH/SEQUENCE headers × SUMIFS on the XLOOKUP-mapped GL, with FILTER for drill-down — uses almost every subtopic.</p>
+<h2 id="concept-map">Concept map</h2>
+<table>
+<thead>
+<tr>
+<th>Subtopic / concept</th>
+<th>Role in the topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s01 Spill behaviour, #SPILL!, <code>#</code> and <code>@</code></td>
+<td>Foundation: how multi-cell results are placed, referenced and protected</td>
+</tr>
+<tr>
+<td>s02 FILTER with AND/OR</td>
+<td>Builds exception lists from Boolean logic</td>
+</tr>
+<tr>
+<td>s03 UNIQUE and exactly_once</td>
+<td>Builds dynamic row axes and isolates one-off items</td>
+</tr>
+<tr>
+<td>s04 SORT/SORTBY</td>
+<td>Ranks aggregated data for top-N and ageing reports</td>
+</tr>
+<tr>
+<td>s05 SEQUENCE</td>
+<td>Generates timelines, counters and schedule rows</td>
+</tr>
+<tr>
+<td>s06 LET and LAMBDA</td>
+<td>Names intermediate steps; packages reusable custom functions</td>
+</tr>
+<tr>
+<td>s07 BYROW … MAKEARRAY; VSTACK … CHOOSECOLS</td>
+<td>Iteration (roll-forwards, per-row aggregation) and report assembly</td>
+</tr>
+<tr>
+<td>s08 GROUPBY and PIVOTBY</td>
+<td>Formula-based pivots for summaries and cross-checks</td>
+</tr>
+<tr>
+<td>c01 FILTER on Dept and Amount</td>
+<td>Canonical AND-logic exception list with if_empty</td>
+</tr>
+<tr>
+<td>c02 SORT(UNIQUE(FILTER()))</td>
+<td>Dynamic account axis for a selected FY</td>
+</tr>
+<tr>
+<td>c03 TAKE(SORTBY(), 10)</td>
+<td>Top-N vendor ranking (aggregate first)</td>
+</tr>
+<tr>
+<td>c04 EOMONTH(SEQUENCE)</td>
+<td>Horizontal month-end headers as real dates</td>
+</tr>
+<tr>
+<td>c05 LET gross margin</td>
+<td>Compute-once, zero-guarded ratio formula</td>
+</tr>
+<tr>
+<td>c06 FYEND LAMBDA</td>
+<td>Reusable Indian FY tag stored in Name Manager</td>
+</tr>
+<tr>
+<td>c07 SCAN running balance</td>
+<td>One-formula roll-forward of opening + movements</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-concepts-to-study">Related concepts to study</h2>
+<h3 id="self-updating-schedules-in-the-3-statement-model">Self-updating schedules in the 3-statement model</h3>
+<p><em>→ Week 13–16: self-updating depreciation, loan amortisation and deferred revenue schedules</em></p>
+<p>In Weeks 13–16 the 3-statement model needs supporting schedules that extend with the forecast horizon. The techniques here are the building blocks: SEQUENCE/EOMONTH generates the period axis; MAKEARRAY builds a capex-vintage depreciation waterfall (each year's additions depreciated over their useful life); IPMT/PPMT with a SEQUENCE period array spill an amortisation schedule; and SCAN produces closing balances for debt, deferred revenue and fixed assets from opening plus movements. The model then links balance-sheet closings to these spills via <code>#</code> or TAKE(…, −1). Build them now in small form so that, in the modelling weeks, you concentrate on linkages and circularity (interest on average debt) rather than mechanics.</p>
+<h3 id="when-to-move-to-power-query">When to move to Power Query</h3>
+<p><em>→ Week 10: Power Query is the better choice once data passes roughly 100k rows</em></p>
+<p>Dynamic arrays recalculate in the worksheet on every change. With a few thousand GL lines that is instant; beyond roughly 100,000 rows, chains of FILTER, UNIQUE and SUMIFS over full columns slow the workbook and every keystroke triggers recalculation. Power Query (Week 10) moves extraction, cleaning (TRIM, type conversion, unpivoting) and mapping joins (Merge Queries replacing XLOOKUP) to a refresh-on-demand ETL step, and can load to the Data Model for millions of rows. The practical design: Power Query cleans and maps the raw GL; dynamic arrays and SUMIFS work on the smaller, summarised output for presentation. Threshold is indicative — complexity of formulas matters as much as row count.</p>
+<h3 id="excel-tables-versus-spill-ranges">Excel Tables versus spill ranges</h3>
+<p><em>Excel Tables vs spill ranges: how each one auto-expands, and when to use which</em></p>
+<p>Both auto-expand, but differently. An <strong>Excel Table</strong> (Ctrl+T) grows when you paste or type rows directly beneath it; its calculated columns fill down automatically and structured references (<code>GL[Amount]</code>) always cover all rows. It is the right container for <strong>input data</strong> — GL dumps, mapping tables, assumption lists — that users edit or paste into. A <strong>spill range</strong> grows when its formula's result grows; it cannot be typed into and cannot live inside a Table. It is the right container for <strong>derived outputs</strong> — lists, exception reports, headers, schedules. The standard architecture is therefore Table in, spill out: GL and Map are Tables; UNIQUE, FILTER and SEQUENCE outputs are spills that reference Table columns. Never try to put a dynamic array formula in a Table column.</p>
+<h3 id="rolling-forecast-headers">Rolling forecast headers</h3>
+<p><em>→ Week 17–20: rolling 12-month forecast headers driven by SEQUENCE/EOMONTH</em></p>
+<p>FP&amp;A teams in Weeks 17–20 run rolling forecasts: each month, one actual month is closed and the forecast horizon rolls forward so there are always 12 (or 18) forward months. With headers built as <code>EOMONTH(LastClose, SEQUENCE(1, 12, 1))</code> and an actual/forecast flag row <code>=IF(C4#&lt;=LastClose, "A", "F")</code>, the roll happens by updating a single input cell. Value rows then use <code>IF(flag="A", SUMIFS(actuals…), forecast driver…)</code>. Combined with SCAN for balance roll-forwards and LET for driver logic, this delivers a rolling forecast that needs no column insertion each month — the core design pattern for the driver-based models later in the phase.</p>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<h3 id="spilling-into-occupied-cells-or-inside-an-excel-table">Spilling into occupied cells or inside an Excel Table</h3>
+<p><em>Spilling into occupied cells or inside an Excel Table (dynamic arrays cannot spill within Tables)</em></p>
+<p><strong>Mistake:</strong> writing FILTER or UNIQUE where cells below or to the right already contain data (often a total row, a note or a single stray space), or in a Table column. <strong>Why it happens:</strong> users build outputs next to existing layouts, or treat a Table as a general-purpose area. <strong>Correct treatment:</strong> reserve dedicated, empty output zones (often a "Lists" or "Calc" sheet), keep spills outside Tables, put totals above lists or inside the formula with VSTACK, and leave a blank buffer column between side-by-side spills. <strong>Detection:</strong> #SPILL! with the warning "Spill range isn't blank" or "Spill range in table"; use "Select Obstructing Cells", and Go To Special → Constants to find invisible blockers.</p>
+<h3 id="filter-returning-calc-on-empty-results">FILTER returning #CALC! on empty results</h3>
+<p><em>FILTER returns #CALC! on an empty result when if_empty is left out</em></p>
+<p><strong>Mistake:</strong> omitting the third argument of FILTER. <strong>Why it happens:</strong> during development the filter always returns rows, so the empty case is never seen — until a clean month, when the exception list (correctly) has nothing to show and the whole dashboard fills with #CALC! cascading through dependent formulas. <strong>Correct treatment:</strong> always supply if_empty, e.g. <code>"None"</code> or <code>"All ledgers mapped"</code>; for numeric outputs feeding sums, consider returning 0 or an HSTACK of placeholders the right width. <strong>Detection:</strong> test every FILTER with a criterion guaranteed to match nothing (e.g. a future FY) before release; search the workbook (Ctrl+F, look in formulas) for <code>FILTER(</code> and check argument counts.</p>
+<h3 id="fixed-ranges-pointing-at-spills">Fixed ranges pointing at spills</h3>
+<p><em>Pointing at a spill with a fixed range (<code>H2:H50</code>) instead of <code>H2#</code>, which stops it updating itself</em></p>
+<p><strong>Mistake:</strong> downstream formulas, charts or validation lists referencing a spill as a fixed range. <strong>Why it happens:</strong> users click-and-drag to select the current output, which Excel records as a fixed address. <strong>Correct treatment:</strong> reference the anchor with the spill operator (<code>H2#</code>), or a defined name whose Refers To is <code>=Lists!H2#</code> (needed for charts). <strong>Detection:</strong> the list grows but totals do not move; a TB tie-out check fails by exactly the amount of the new items; or trailing blank rows appear when the list shrinks. Trace Dependents from the anchor cell and inspect each reference.</p>
+<h3 id="name-for-recipients-on-older-excel">#NAME? for recipients on older Excel</h3>
+<p><em>LAMBDA helpers and GROUPBY are missing in older perpetual Excel versions, so recipients see #NAME?</em></p>
+<p><strong>Mistake:</strong> sending a workbook using LAMBDA, MAP, SCAN, VSTACK, TAKE, GROUPBY or PIVOTBY to users on Excel 2016/2019 (and, for the newest functions, 2021/2024 perpetual). <strong>Why it happens:</strong> the author's Microsoft 365 shows everything working; compatibility is not tested. <strong>Correct treatment:</strong> confirm the recipients' versions; for wide distribution, send a values-only copy (or PDF) of output tabs, or keep presentation layers on SUMIFS/XLOOKUP-era functions; record the minimum Excel version on the cover sheet. <strong>Detection:</strong> Excel's compatibility checker (File → Info → Check for Issues → Check Compatibility), or open the file in an older version or Excel for the web with a restricted build before release.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-self-updating-monthly-expense-pack-l3">Q1. Self-updating monthly expense pack [L3]</h3>
+<p>An unlisted Pune-based engineering company pastes its monthly Tally GL into Table <code>GL</code> (Date, Voucher, Ledger, Dept, Amount; expenses positive). Mapping Table <code>Map</code> has Ledger, FSLine, SortKey. Design a formula-only expense pack on a separate sheet with: (a) an FY selector and month-end headers for the selected FY; (b) an FS-line row axis in SortKey order showing only lines with postings; (c) a department-wise top-5 vendor list for a selected department and month; (d) an unmapped-ledger exception list with status cell. For each part write the key formula, state where it is placed to avoid #SPILL!, and explain how every part updates when May's GL is pasted after April's.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Keep inputs in Tables and outputs as spills on a Lists/Output sheet; reference spills with <code>#</code>.</p>
+</blockquote>
+<h3 id="q2-debt-schedule-with-let-and-scan-l2">Q2. Debt schedule with LET and SCAN [L2]</h3>
+<p>A ₹15 crore term loan is drawn on 1-Apr-2025 at 9.25% p.a., repayable in 20 equal quarterly principal instalments starting 30-Jun-2025, with interest on the opening balance each quarter. Using SEQUENCE for the quarter-end dates, LET for the rate and instalment, and SCAN for the closing balance, design the schedule (columns: quarter-end, opening, interest, principal, closing). State two check cells and explain how the schedule changes if the number of instalments is changed to 24.</p>
+<h3 id="q3-exception-reporting-under-time-pressure-l2">Q3. Exception reporting under time pressure [L2]</h3>
+<p>You have 20 minutes in the Saturday speed test. Table <code>AR</code> (Customer, InvoiceNo, InvoiceDate, DueDate, Balance) and an input <code>RptDate</code> = 31-Mar-2026 are given. Produce: (a) invoices more than 90 days overdue with balance above ₹2 lakh, sorted by balance descending, returning "None" if empty; (b) the number of distinct customers in that list; (c) customers with exactly one open invoice; (d) a GROUPBY of total overdue balance by customer with a grand total. Describe how you would verify each output in under a minute.</p>
+<h3 id="q4-review-a-colleagues-workbook-l3">Q4. Review a colleague's workbook [L3]</h3>
+<p>A colleague's MIS workbook uses <code>=UNIQUE(GL[Dept])</code> in H2, <code>=SUMIFS(GL[Amount], GL[Dept], H2:H12)</code> in I2, a total <code>=SUM(I2:I12)</code> in I13, a chart on H2:I12, a <code>FILTER</code> without if_empty for over-budget departments, and a named LAMBDA <code>FYEND</code> defined as <code>=LAMBDA(d, YEAR(d)+(MONTH(d)&gt;4))</code>. It will be emailed to a regional head on Excel 2019. List every defect, its consequence, and the fix, and prioritise them by risk of misstatement in the MIS.</p>
+<h3 id="q5-interview-why-dynamic-arrays-l1">Q5. Interview: why dynamic arrays? [L1]</h3>
+<p>An interviewer at a Big-4 FP&amp;A advisory practice asks: "We already have PivotTables and Power Query. What do dynamic arrays and LAMBDA add to a finance team's toolkit, and where would you not use them?" Prepare a structured answer covering refresh behaviour, auditability, data size, version compatibility and governance.</p></section>
+<nav class="pager"><a class="prev" href="../T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C06_The_General_Guarded_Weighted_Average_Formula.html">← The General Guarded Weighted-Average Formula</a><a class="next" href="subtopics/S01_Spill_Behaviour_SPILL_the_Operator_and_Implicit.html">Spill Behaviour, #SPILL!, the # Operator and Implicit… →</a></nav>
+</main></div></body></html>

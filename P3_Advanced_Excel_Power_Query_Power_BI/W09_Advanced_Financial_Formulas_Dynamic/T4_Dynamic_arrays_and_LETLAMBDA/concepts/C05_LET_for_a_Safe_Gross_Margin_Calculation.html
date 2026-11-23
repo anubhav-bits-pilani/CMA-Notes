@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LET for a Safe Gross Margin Calculation · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C05_LET_for_a_Safe_Gross_Margin_Calculation.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T4 · Dynamic arrays and LET/LAMBDA</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Dynamic arrays and LET/LAMBDA</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Spill_Behaviour_SPILL_the_Operator_and_Implicit.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S01_Spill_Behaviour_SPILL_the_Operator_and_Implicit.html">Spill Behaviour, #SPILL!, the # Operator and Implicit Intersection</a></li><li><a href="../subtopics/S02_FILTER_with_ANDOR_Logic_for_Exception_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S02_FILTER_with_ANDOR_Logic_for_Exception_Lists.html">FILTER with AND/OR Logic for Exception Lists</a></li><li><a href="../subtopics/S03_UNIQUE_for_Dynamic_CoA_and_Department_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S03_UNIQUE_for_Dynamic_CoA_and_Department_Lists.html">UNIQUE for Dynamic CoA and Department Lists</a></li><li><a href="../subtopics/S04_SORT_and_SORTBY_for_Top_N_Expense_and_Ranked.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S04_SORT_and_SORTBY_for_Top_N_Expense_and_Ranked.html">SORT and SORTBY for Top-N Expense and Ranked Ageing Reports</a></li><li><a href="../subtopics/S05_SEQUENCE_for_Monthly_Timelines_Loan_Schedules_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S05_SEQUENCE_for_Monthly_Timelines_Loan_Schedules_and.html">SEQUENCE for Monthly Timelines, Loan Schedules and Period Counters</a></li><li><a href="../subtopics/S06_LET_for_Named_Steps_and_LAMBDA_Functions_in_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S06_LET_for_Named_Steps_and_LAMBDA_Functions_in_Name.html">LET for Named Steps and LAMBDA Functions in Name Manager</a></li><li><a href="../subtopics/S07_LAMBDA_Helpers_and_Array_Reshaping_Functions.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S07_LAMBDA_Helpers_and_Array_Reshaping_Functions.html">LAMBDA Helpers and Array Reshaping Functions</a></li><li><a href="../subtopics/S08_GROUPBY_and_PIVOTBY_as_Formula_Based_Pivots.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S08_GROUPBY_and_PIVOTBY_as_Formula_Based_Pivots.html">GROUPBY and PIVOTBY as Formula-Based Pivots</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_FILTER_with_Two_AND_Conditions_and_an_ifempty.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C01_FILTER_with_Two_AND_Conditions_and_an_ifempty.html">FILTER with Two AND Conditions and an if_empty Message</a></li><li><a href="C02_Sorted_Unique_Account_List_for_a_Selected_FY.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C02_Sorted_Unique_Account_List_for_a_Selected_FY.html">Sorted Unique Account List for a Selected FY</a></li><li><a href="C03_Top_10_Vendors_by_Spend_with_TAKE_and_SORTBY.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C03_Top_10_Vendors_by_Spend_with_TAKE_and_SORTBY.html">Top 10 Vendors by Spend with TAKE and SORTBY</a></li><li><a href="C04_EOMONTH_with_SEQUENCE_for_Horizontal_Month_End.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C04_EOMONTH_with_SEQUENCE_for_Horizontal_Month_End.html">EOMONTH with SEQUENCE for Horizontal Month-End Headers</a></li><li><a href="C05_LET_for_a_Safe_Gross_Margin_Calculation.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C05_LET_for_a_Safe_Gross_Margin_Calculation.html">LET for a Safe Gross Margin Calculation</a></li><li><a href="C06_FYEND_A_Named_LAMBDA_for_the_Indian_Financial_Year.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C06_FYEND_A_Named_LAMBDA_for_the_Indian_Financial_Year.html">FYEND: A Named LAMBDA for the Indian Financial Year</a></li><li><a href="C07_SCAN_for_Running_Closing_Balances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C07_SCAN_for_Running_Closing_Balances.html">SCAN for Running Closing Balances</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>LET for a Safe Gross Margin Calculation</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>=LET(rev, SUMIFS(...), cogs, SUMIFS(...), IF(rev=0, 0, (rev-cogs)/rev))</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-excel">=LET(
+   rev,  SUMIFS(GLm[Amount], GLm[FSLine], &quot;Revenue from operations&quot;,
+                GLm[MonthEnd], C$4, GLm[Dept], $B5),
+   cogs, SUMIFS(GLm[Amount], GLm[FSLine], &quot;Cost of materials consumed&quot;,
+                GLm[MonthEnd], C$4, GLm[Dept], $B5),
+   IF(rev = 0, 0, (rev - cogs) / rev))
+</code></pre>
+<ul>
+<li><code>rev</code>, <code>cogs</code> — names bound to the results of two SUMIFS; each is evaluated once.</li>
+<li>The last argument is the result: gross margin</li>
+</ul>
+<p>\[
+\text{GM} = \begin{cases} 0 &amp; \text{if } R = 0 \\ \dfrac{R - C}{R} &amp; \text{otherwise} \end{cases}
+\]</p>
+<p>where \(R\) is revenue and \(C\) is cost of goods sold for the department and month.</p>
+<p>The row-locked <code>C$4</code> holds the month-end header and the column-locked <code>$B5</code> the department label, so the same formula copies across a department × month grid.</p>
+<h2 id="explanation">Explanation</h2>
+<p>Without LET, the margin formula needs the revenue SUMIFS three times (test, numerator, denominator). That is three full scans of the GL per cell, and three places to update if criteria change — the classic way a reviewer "fixes" one copy and leaves the others inconsistent. LET:</p>
+<ul>
+<li><strong>Computes once, reuses many times</strong> — the revenue SUMIFS runs once per cell, roughly halving calculation time on a large grid.</li>
+<li><strong>Documents the logic</strong> — names like <code>rev</code> and <code>cogs</code> read like a working paper.</li>
+<li><strong>Guards the division</strong> — <code>IF(rev=0, 0, …)</code> avoids #DIV/0! for departments with no sales (service departments, dormant months). Returning 0 is a presentation choice; some teams prefer <code>""</code> (blank) or <code>NA()</code> so that charts skip the point. Choose deliberately: a 0% margin is a value that will be averaged; a blank is not.</li>
+<li><strong>Supports debugging</strong> — temporarily replace the final argument with <code>rev</code> or <code>cogs</code> to see the intermediate value.</li>
+</ul>
+<p>Why not <code>IFERROR((rev-cogs)/rev, 0)</code>? IFERROR also hides #VALUE! or #REF! caused by broken references, so a genuine model error would show as a 0% margin. The explicit zero test only handles the expected condition — the same reasoning as preferring IFNA to IFERROR for lookups.</p>
+<p>Sign conventions matter: if revenue is stored as a negative credit, <code>rev</code> must be negated (<code>-SUMIFS(...)</code>) before the margin is computed, or margins will appear above 100% or negative.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Department "Retail", month 30-Jun-25:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Value (₹ lakh)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rev</td>
+<td>420</td>
+</tr>
+<tr>
+<td>cogs</td>
+<td>273</td>
+</tr>
+<tr>
+<td>result</td>
+<td>(420 − 273) ÷ 420 = 35.0%</td>
+</tr>
+</tbody>
+</table>
+<p>Department "Corporate", same month: rev = 0 → result 0 (no #DIV/0!).</p>
+<p>Department "Online", where revenue is mis-signed as −180 and cogs 117: result (−180 − 117) ÷ −180 = 165% — an impossible margin that signals the sign error. A check cell <code>=COUNTIF(C5#,"&gt;1")</code> counting margins above 100% makes such errors visible.</p>
+<h2 id="connections">Connections</h2>
+<p>Implements s06 (LET). Pairs with the SUMIFS mixed-reference grid of w9_t1 and the error-discipline cross-cutting concept (IFNA vs IFERROR, check cells). The same calculation in DAX uses <code>VAR rev = … VAR cogs = … RETURN DIVIDE(rev - cogs, rev, 0)</code> (Week 11), where <code>DIVIDE</code> plays the role of the zero guard. In FP&amp;A, departmental gross margin grids are a core MIS output (Weeks 17–20).</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-extend-to-ebitda-margin-l2">Q1. Extend to EBITDA margin [L2]</h3>
+<p>Rewrite the formula to return EBITDA margin, where EBITDA = revenue − COGS − employee benefits − other expenses, each from a separate SUMIFS on FS line, with revenue stored as negative credits and expenses as positive debits.</p>
+<h3 id="q2-blank-or-zero-l2">Q2. Blank or zero? [L2]</h3>
+<p>The margin chart for 15 departments shows a sharp dip to 0% for three service departments every month. Explain the cause and propose two alternative return values for the zero-revenue case, stating the effect of each on an AVERAGE of margins and on a line chart.</p>
+<h3 id="q3-iferror-objection-l1">Q3. IFERROR objection [L1]</h3>
+<p>A colleague proposes replacing the LET with <code>=IFERROR((SUMIFS(...)-SUMIFS(...))/SUMIFS(...), 0)</code>. Give two reasons, one about performance and one about control, for rejecting this.</p></section>
+<nav class="pager"><a class="prev" href="C04_EOMONTH_with_SEQUENCE_for_Horizontal_Month_End.html">← EOMONTH with SEQUENCE for Horizontal Month-End Headers</a><a class="next" href="C06_FYEND_A_Named_LAMBDA_for_the_Indian_Financial_Year.html">FYEND: A Named LAMBDA for the Indian Financial Year →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Table.Pivot with a Dynamic Value List and List.Sum · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C04_TablePivot_with_a_Dynamic_Value_List_and_ListSum.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T3 · Unpivoting wide budgets and TBs</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Unpivoting wide budgets and TBs</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Wide_Crosstab_vs_Long_Normalised_Data_and_Fact.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S01_Wide_Crosstab_vs_Long_Normalised_Data_and_Fact.html">Wide (Crosstab) vs Long (Normalised) Data and Fact Tables</a></li><li><a href="../subtopics/S02_Unpivot_Other_Columns_vs_Unpivot_Columns_vs_Only.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S02_Unpivot_Other_Columns_vs_Unpivot_Columns_vs_Only.html">Unpivot Other Columns vs Unpivot Columns vs Only Selected</a></li><li><a href="../subtopics/S03_Converting_Month_Header_Text_into_Real_Month_End.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S03_Converting_Month_Header_Text_into_Real_Month_End.html">Converting Month Header Text into Real Month-End Dates</a></li><li><a href="../subtopics/S04_Multi_Row_Headers_Transpose_Fill_Merge_Transpose.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S04_Multi_Row_Headers_Transpose_Fill_Merge_Transpose.html">Multi-Row Headers: Transpose, Fill, Merge, Transpose Back, Unpivot</a></li><li><a href="../subtopics/S05_Unpivoting_TB_Columns_Opening_Debit_Credit_Closing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S05_Unpivoting_TB_Columns_Opening_Debit_Credit_Closing.html">Unpivoting TB Columns (Opening, Debit, Credit, Closing)</a></li><li><a href="../subtopics/S06_Pivot_Column_as_the_Reverse_of_Unpivot_Including.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S06_Pivot_Column_as_the_Reverse_of_Unpivot_Including.html">Pivot Column as the Reverse of Unpivot, Including Don&#x27;t Aggregate</a></li><li><a href="../subtopics/S07_Target_Fact_Schema_Date_Account_Department.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S07_Target_Fact_Schema_Date_Account_Department.html">Target Fact Schema: Date, Account, Department, Scenario, Amount</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_TableUnpivotOtherColumns_with_Fixed_Identifier.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C01_TableUnpivotOtherColumns_with_Fixed_Identifier.html">Table.UnpivotOtherColumns with Fixed Identifier Columns</a></li><li><a href="C02_Month_Label_to_Month_End_Date_with_DateFromText.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C02_Month_Label_to_Month_End_Date_with_DateFromText.html">Month Label to Month-End Date with Date.FromText and Format</a></li><li><a href="C03_Multi_Row_Header_Recipe_Transpose_Fill_Combine.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C03_Multi_Row_Header_Recipe_Transpose_Fill_Combine.html">Multi-Row Header Recipe: Transpose, Fill, Combine, Unpivot, Split</a></li><li><a href="C04_TablePivot_with_a_Dynamic_Value_List_and_ListSum.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C04_TablePivot_with_a_Dynamic_Value_List_and_ListSum.html">Table.Pivot with a Dynamic Value List and List.Sum</a></li><li><a href="C05_Adding_a_Typed_Scenario_Column_Before_Appending_to.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C05_Adding_a_Typed_Scenario_Column_Before_Appending_to.html">Adding a Typed Scenario Column Before Appending to Actuals</a></li><li><a href="C06_Unpivot_Drops_Null_Cells_Replace_Nulls_with_Zero.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C06_Unpivot_Drops_Null_Cells_Replace_Nulls_with_Zero.html">Unpivot Drops Null Cells: Replace Nulls with Zero When Needed</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Table.Pivot with a Dynamic Value List and List.Sum</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>Table.Pivot(t, List.Distinct(t[Month]), "Month", "Amount", List.Sum)</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p><code>Table.Pivot(table as table, pivotValues as list, attributeColumn as text, valueColumn as text, optional aggregationFunction as function) as table</code>:</p>
+<ul>
+<li>creates one new column for each value in <code>pivotValues</code> (here every distinct Month in the data);</li>
+<li>groups rows by <strong>all other columns</strong> (row keys);</li>
+<li>fills each new column with the <code>valueColumn</code> values for that key and attribute, combined using <code>aggregationFunction</code> — <code>List.Sum</code> adds duplicates.</li>
+</ul>
+<p>Without the aggregation function ("Don't Aggregate"), more than one value per key and attribute raises an error in that cell.</p>
+<h2 id="explanation">Explanation</h2>
+<p><strong>Dynamic list</strong>: the UI writes a hard-coded list (<code>{"Apr-25","May-25",...}</code>), which ignores new months and errors on removed ones in downstream references. <code>List.Distinct(t[Month])</code> creates a column for whatever months exist. Two consequences:</p>
+<ol>
+<li><strong>Order</strong> is order of first appearance; sort the list (<code>List.Sort</code>) or sort the table first if column order matters.</li>
+<li><strong>Column names vary</strong> by refresh, so downstream steps that reference a specific month column break. Keep pivoted outputs at the end of the pipeline (presentation or check tables).</li>
+</ol>
+<p><strong>Column names must be text</strong>: if Month is a date, convert to a label first (<code>Date.ToText(_, [Format="MMM-yy", Culture="en-IN"])</code>) or pass <code>List.Transform(List.Distinct(t[Month]), Text.From)</code> and convert the column likewise.</p>
+<p><strong>Row keys</strong>: every column other than Month and Amount becomes part of the key. An unexpected extra column (e.g. a Source file name or a line ID) prevents rows from collapsing and produces a sparse wide table with one non-null per row. Select only the intended key columns before pivoting.</p>
+<p><strong>Aggregation choice</strong>:</p>
+<ul>
+<li><code>List.Sum</code> for amounts from detail rows.</li>
+<li><code>List.Count</code> for counts (note it counts nulls too; use <code>each List.NonNullCount(_)</code> to skip them).</li>
+<li><code>List.Max</code>/<code>List.Min</code> for dates.</li>
+<li>No function to assert uniqueness — errors flag duplicates.</li>
+</ul>
+<p><strong>Nulls</strong>: keys with no row for a month get null in that column — not zero. Replace with 0 if the output feeds formulas.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Long table (Account, Month, Amount): (610100, Apr-25, 7,00,000), (610100, Apr-25, 5,00,000), (610100, May-25, 12,00,000), (620300, May-25, 1,20,000).</p>
+<p><code>Table.Pivot(t, List.Distinct(t[Month]), "Month", "Amount", List.Sum)</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Account</th>
+<th>Apr-25</th>
+<th>May-25</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>610100</td>
+<td>12,00,000</td>
+<td>12,00,000</td>
+</tr>
+<tr>
+<td>620300</td>
+<td>null</td>
+<td>1,20,000</td>
+</tr>
+</tbody>
+</table>
+<p>Without <code>List.Sum</code>, the 610100/Apr-25 cell errors because two values exist. With a hard-coded <code>{"Apr-25"}</code> list, the May column would be missing entirely.</p>
+<h2 id="connections">Connections</h2>
+<p>Implements s06 (pivot as the reverse of unpivot). Uses the roll-forward check in s05 (pivot Measure into columns) and the variance table pattern for Weeks 17–20. Compare Excel's PIVOTBY/GROUPBY and PivotTables (Week 9) and the matrix visual in Power BI.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-predict-the-output-l1">Q1. Predict the output [L1]</h3>
+<p>For the illustration data plus a row (620300, Jun-25, 1,40,000), write the pivoted table with <code>List.Sum</code>, and state what changes if the pivot values list is the hard-coded <code>{"Apr-25","May-25"}</code>.</p>
+<h3 id="q2-unexpected-sparse-output-l2">Q2. Unexpected sparse output [L2]</h3>
+<p>After pivoting Scenario on a plan-actual fact, every row has a value in only one of the Actual/Budget columns, and the row count barely falls. Diagnose the likely cause and fix it.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Look at which columns are acting as row keys.</p>
+</blockquote>
+<h3 id="q3-sorted-date-columns-l2">Q3. Sorted date columns [L2]</h3>
+<p>Write M to pivot a long table with Month as real dates into columns labelled "MMM-yy" in chronological order, replacing nulls with 0 and adding a Total column that sums the month columns dynamically.</p></section>
+<nav class="pager"><a class="prev" href="C03_Multi_Row_Header_Recipe_Transpose_Fill_Combine.html">← Multi-Row Header Recipe: Transpose, Fill, Combine, Unpivot,…</a><a class="next" href="C05_Adding_a_Typed_Scenario_Column_Before_Appending_to.html">Adding a Typed Scenario Column Before Appending to Actuals →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scenario Manager: Scenarios, Changing Cells and the Summary Report · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S03_Scenario_Manager_Scenarios_Changing_Cells_and_the.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T6 · What-if analysis and input controls</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · What-if analysis and input controls</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_One_and_Two_Variable_Data_Tables_for_Sensitivity.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S01_One_and_Two_Variable_Data_Tables_for_Sensitivity.html">One- and Two-Variable Data Tables for Sensitivity Analysis</a></li><li><a href="S02_Goal_Seek_for_Break_Even_Target_Margin_Price_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S02_Goal_Seek_for_Break_Even_Target_Margin_Price_and.html">Goal Seek for Break-Even, Target-Margin Price and Required Growth</a></li><li><a href="S03_Scenario_Manager_Scenarios_Changing_Cells_and_the.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S03_Scenario_Manager_Scenarios_Changing_Cells_and_the.html">Scenario Manager: Scenarios, Changing Cells and the Summary Report</a></li><li><a href="S04_Data_Validation_Dropdowns_Dependent_Lists_Limits.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S04_Data_Validation_Dropdowns_Dependent_Lists_Limits.html">Data Validation: Dropdowns, Dependent Lists, Limits and Messages</a></li><li><a href="S05_Formula_Based_Conditional_Formatting_for_Variances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S05_Formula_Based_Conditional_Formatting_for_Variances.html">Formula-Based Conditional Formatting for Variances and Scenarios</a></li><li><a href="S06_Form_Controls_Linked_to_Cells_for_Model_Dashboards.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S06_Form_Controls_Linked_to_Cells_for_Model_Dashboards.html">Form Controls Linked to Cells for Model Dashboards</a></li><li><a href="S07_Solver_for_Product_Mix_and_Capital_Rationing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S07_Solver_for_Product_Mix_and_Capital_Rationing.html">Solver for Product Mix and Capital Rationing</a></li><li><a href="S08_Calculation_Mode_Automatic_Except_Data_Tables_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S08_Calculation_Mode_Automatic_Except_Data_Tables_and.html">Calculation Mode: Automatic Except Data Tables and F9 Recalculation</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_The_TABLE_Array_Formula_and_the_Same_Sheet_Input.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C01_The_TABLE_Array_Formula_and_the_Same_Sheet_Input.html">The TABLE Array Formula and the Same-Sheet Input Rule</a></li><li><a href="../concepts/C02_Goal_Seek_Rules_Formula_Set_Cell_Hard_Coded.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C02_Goal_Seek_Rules_Formula_Set_Cell_Hard_Coded.html">Goal Seek Rules: Formula Set Cell, Hard-Coded Changing Cell</a></li><li><a href="../concepts/C03_Dependent_Dropdown_Sources_INDIRECT_vs_a_Spill.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C03_Dependent_Dropdown_Sources_INDIRECT_vs_a_Spill.html">Dependent Dropdown Sources: INDIRECT vs a Spill Reference</a></li><li><a href="../concepts/C04_Conditional_Format_Rule_for_Negative_Rows_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C04_Conditional_Format_Rule_for_Negative_Rows_Column.html">Conditional Format Rule for Negative Rows: Column Locked, Row Relative</a></li><li><a href="../concepts/C05_Variance_Flag_Rule_with_a_Named_Threshold_Input.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C05_Variance_Flag_Rule_with_a_Named_Threshold_Input.html">Variance Flag Rule with a Named Threshold Input</a></li><li><a href="../concepts/C06_Scenario_Manager_Limits_32_Changing_Cells_and_a.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C06_Scenario_Manager_Limits_32_Changing_Cells_and_a.html">Scenario Manager Limits: 32 Changing Cells and a Static Summary</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Scenario Manager: Scenarios, Changing Cells and the Summary Report</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Scenario Manager: scenarios, changing cells, and the Scenario Summary report</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Boards, lenders and rating agencies ask for cases — Base, Upside, Downside, sometimes a lender's "stress" case — where several assumptions move together (volume, price, raw-material cost, working-capital days, capex). A Data Table flexes one or two inputs; Scenario Manager stores named sets of up to 32 input values and swaps them into the model, then produces a Scenario Summary report comparing chosen outputs across all scenarios. It is quick for one-off analysis on a model that was not designed with a scenario switch, and it appears in CMA/CFA-style Excel tests. Understanding its limits — the summary is a static snapshot, and scenarios overwrite inputs — explains why professional models usually prefer a live CHOOSE/INDEX switch.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="concepts">Concepts</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scenario</td>
+<td>A named set of values for the changing cells (e.g. "Downside")</td>
+</tr>
+<tr>
+<td>Changing cells</td>
+<td>The input cells the scenario overwrites — up to 32 per scenario; contiguous or Ctrl-selected</td>
+</tr>
+<tr>
+<td>Result cells</td>
+<td>Output formulas shown in the Summary report (chosen when the report is generated)</td>
+</tr>
+<tr>
+<td>Show</td>
+<td>Writes the scenario's values into the changing cells (the model recalculates)</td>
+</tr>
+<tr>
+<td>Summary</td>
+<td>Creates a new sheet comparing changing-cell values and result cells for all scenarios</td>
+</tr>
+<tr>
+<td>Merge</td>
+<td>Imports scenarios from another sheet or workbook with the same layout</td>
+</tr>
+</tbody>
+</table>
+<p>Path: Data → What-If Analysis → Scenario Manager (Alt, A, W, S).</p>
+<h3 id="step-by-step">Step-by-step</h3>
+<ol>
+<li><strong>Name the cells first.</strong> Give each changing cell and result cell a defined name (e.g. <code>Vol_Growth</code>, <code>RM_Inflation</code>, <code>EBITDA_FY27</code>). The summary report uses names as row labels; without names, it shows absolute cell addresses (C7 with dollar signs on both parts), which are unreadable.</li>
+<li><strong>Save the base case as a scenario before anything else.</strong> Scenario Manager overwrites inputs; if you never saved Base, the original values are lost once you Show another scenario.</li>
+<li><strong>Add scenarios.</strong> Add → name ("Downside"), select changing cells (up to 32), optionally add a comment (author, date, source). Enter values for each changing cell. Values are stored as constants; if you type a formula like <code>=0.05*2</code>, it is converted to its value.</li>
+<li><strong>Protection options</strong>: "Prevent changes" and "Hide" take effect only when the sheet is protected.</li>
+<li><strong>Show</strong> a scenario to load it into the model — useful for walking a committee through a case live.</li>
+<li><strong>Summary</strong>: choose "Scenario summary" (or "Scenario PivotTable report") and the result cells. Excel creates a new sheet.</li>
+</ol>
+<h3 id="illustration">Illustration</h3>
+<p>FY27 budget for a packaged-foods company (NSE-listed), three scenarios, four changing cells, three result cells:</p>
+<table>
+<thead>
+<tr>
+<th>Changing cell</th>
+<th>Base</th>
+<th>Upside</th>
+<th>Downside</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vol_Growth</td>
+<td>8%</td>
+<td>12%</td>
+<td>3%</td>
+</tr>
+<tr>
+<td>Price_Increase</td>
+<td>4%</td>
+<td>5%</td>
+<td>2%</td>
+</tr>
+<tr>
+<td>RM_Inflation</td>
+<td>6%</td>
+<td>4%</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>Receivable_Days</td>
+<td>38</td>
+<td>35</td>
+<td>45</td>
+</tr>
+</tbody>
+</table>
+<p>Summary report (₹ crore, illustrative):</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Current values</th>
+<th>Base</th>
+<th>Upside</th>
+<th>Downside</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue_FY27</td>
+<td>1,894</td>
+<td>1,894</td>
+<td>2,000</td>
+<td>1,770</td>
+</tr>
+<tr>
+<td>EBITDA_FY27</td>
+<td>246</td>
+<td>246</td>
+<td>292</td>
+<td>168</td>
+</tr>
+<tr>
+<td>FCF_FY27</td>
+<td>112</td>
+<td>112</td>
+<td>151</td>
+<td>48</td>
+</tr>
+</tbody>
+</table>
+<p>The "Current values" column reflects whatever scenario (or manual inputs) the model held when the summary was generated. The report is formatted with outline grouping and the scenario comments.</p>
+<h3 id="the-summary-is-static">The summary is static</h3>
+<p>The Summary sheet contains <strong>values, not formulas</strong>. If you later change a non-scenario assumption (say the tax rate or capex), the summary does not update; you must regenerate it (and delete the old sheet). This is the central weakness: a board pack built from an old summary can silently disagree with the model. Date-stamp every summary and regenerate as a close step.</p>
+<h3 id="scenario-manager-vs-a-live-scenario-switch">Scenario Manager vs a live scenario switch</h3>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Scenario Manager</th>
+<th>CHOOSE/INDEX switch (w9_t2)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Storage of case values</td>
+<td>Hidden inside the scenario objects</td>
+<td>Visible on an assumptions sheet, side by side</td>
+</tr>
+<tr>
+<td>Changing cells</td>
+<td>Up to 32</td>
+<td>Unlimited</td>
+</tr>
+<tr>
+<td>Output comparison</td>
+<td>Static summary</td>
+<td>Live; or a Data Table over the scenario index for a live comparison</td>
+</tr>
+<tr>
+<td>Audit</td>
+<td>Hard — values only visible via Edit dialog</td>
+<td>Easy — every case value is a cell</td>
+</tr>
+<tr>
+<td>Setup on an existing model</td>
+<td>Fast, no restructuring</td>
+<td>Requires building case columns and switch formulas</td>
+</tr>
+<tr>
+<td>Risk</td>
+<td>Overwrites inputs</td>
+<td>Inputs untouched; selected via dropdown</td>
+</tr>
+</tbody>
+</table>
+<p>A powerful hybrid: build a live switch with a scenario index cell, then use a <strong>1D Data Table</strong> with the index (1, 2, 3) as the column input and outputs across the top. That gives a live, always-current scenario comparison — the professional replacement for the Scenario Summary.</p>
+<h3 id="scenarios-across-sheets">Scenarios across sheets</h3>
+<p>Scenarios are stored per sheet; changing cells must be on the active sheet. For models with inputs on a dedicated Inputs sheet, define scenarios there. Merge (from another sheet or workbook) brings in scenarios built by colleagues — common when regional heads submit their own downside cases on a template.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Overwriting the base.</strong> Showing a scenario replaces live inputs; if the model is saved in that state, the next user may think the downside is the base. Always Show Base before saving, and display the active scenario name in the header (a cell that compares inputs with stored case values).</li>
+<li><strong>More than 32 drivers.</strong> Not supported; this alone pushes serious models to a switch design.</li>
+<li><strong>Formulas in changing cells</strong> are replaced by constants when a scenario is shown — never select formula cells as changing cells.</li>
+<li><strong>Names matter.</strong> Without defined names, the summary is unreadable; with renamed or deleted names, the summary shows addresses.</li>
+<li><strong>Version control.</strong> Scenario values are invisible in the grid, so file comparison tools (Inquire, Spreadsheet Compare) are the only way to diff them.</li>
+<li><strong>Lender cases.</strong> Banks' stress cases often require DSCR outputs per year; Summary shows only single cells, so create result cells for minimum and average DSCR.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Scenario Manager stores named sets of up to 32 changing-cell values and swaps them into the model.</li>
+<li>Name changing and result cells first, and save the Base case before showing any other scenario.</li>
+<li>The Scenario Summary is a static values snapshot — regenerate it whenever any assumption changes.</li>
+<li>For production models, prefer a live CHOOSE/INDEX switch plus a Data Table over the scenario index.</li>
+<li>Scenario Manager remains useful for quick, one-off case analysis on models without a switch.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-set-up-three-scenarios-l1">Q1. Set up three scenarios [L1]</h3>
+<p>List the exact steps (including naming and the base-case precaution) to create Base, Upside and Downside scenarios with five changing cells — volume growth, price increase, RM inflation, employee cost increase and capex — and a summary showing FY27 revenue, EBITDA, PAT and closing net debt.</p>
+<h3 id="q2-stale-summary-l2">Q2. Stale summary [L2]</h3>
+<p>A board pack shows a Scenario Summary dated 12-Jan-2026. On 20-Jan-2026 the effective tax rate assumption was changed from 25.17% to 26.5% to reflect expected disallowances, and capex was cut by ₹40 crore. Neither input is a changing cell in the scenarios. Explain which numbers in the summary are now wrong, how a reviewer could detect it, and the process change you would recommend.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Distinguish the stored changing-cell values, which are still valid, from the result values, which depend on inputs outside the scenarios.</p>
+</blockquote>
+<h3 id="q3-convert-to-a-live-switch-l2">Q3. Convert to a live switch [L2]</h3>
+<p>Describe how you would convert a model that uses Scenario Manager (4 scenarios × 12 changing cells) into a live scenario switch with a dropdown, and how you would reproduce the Scenario Summary as a live table.</p>
+<h3 id="q4-lender-stress-case-l3">Q4. Lender stress case [L3]</h3>
+<p>A bank requires a stress case with volume −10%, price −3%, interest rate +200 bp and debtor days +20 for a ₹350 crore term loan model, and wants minimum DSCR, average DSCR and the year of minimum DSCR. Explain how you would deliver this using Scenario Manager, what result cells you would build, and the risks of delivering the bank a static summary.</p>
+<h3 id="q5-interview-scenario-manager-limits-l1">Q5. Interview: Scenario Manager limits [L1]</h3>
+<p>Give three limitations of Scenario Manager that an interviewer would expect you to know, and one situation in which you would still use it.</p></section>
+<nav class="pager"><a class="prev" href="S02_Goal_Seek_for_Break_Even_Target_Margin_Price_and.html">← Goal Seek for Break-Even, Target-Margin Price and Required…</a><a class="next" href="S04_Data_Validation_Dropdowns_Dependent_Lists_Limits.html">Data Validation: Dropdowns, Dependent Lists, Limits and… →</a></nav>
+</main></div></body></html>

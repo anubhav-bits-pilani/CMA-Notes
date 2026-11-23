@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SUMPRODUCT weighted averages and matrix math · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/index.html" data-kind="topic">
+<header class="top"><a class="brand" href="../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../index.html">Home</a> <span>›</span> <a href="../../index.html">Phase 3</a> <span>›</span> <a href="../index.html">Week 9</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">Week 9</a></div><ul class="side-links"><li><a href="../T1_Multi_criteria_logic_and_GL_rollups/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/index.html">T1 · Multi-criteria logic and GL rollups</a></li><li><a href="../T2_Modern_lookups_and_scenario_switching/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/index.html">T2 · Modern lookups and scenario switching</a></li><li><a href="index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/index.html">T3 · SUMPRODUCT weighted averages and matrix math</a></li><li><a href="../T4_Dynamic_arrays_and_LETLAMBDA/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/index.html">T4 · Dynamic arrays and LET/LAMBDA</a></li><li><a href="../T5_Financial_and_date_functions/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/index.html">T5 · Financial and date functions</a></li><li><a href="../T6_What_if_analysis_and_input_controls/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/index.html">T6 · What-if analysis and input controls</a></li></ul></aside>
+<main class="content">
+<div class="kind">Topic</div>
+<h1>SUMPRODUCT weighted averages and matrix math</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<section class="index"><h2>Notes in this topic</h2><div class="cols"><div><h3>Subtopics</h3><ul class="links num"><li><a href="subtopics/S01_Weighted_Average_Cost_of_Debt_Across_Borrowing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S01_Weighted_Average_Cost_of_Debt_Across_Borrowing.html">S01 · Weighted Average Cost of Debt Across Borrowing Tranches</a></li><li><a href="subtopics/S02_Weighted_Average_Inventory_Cost_and_Weighted.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S02_Weighted_Average_Inventory_Cost_and_Weighted.html">S02 · Weighted Average Inventory Cost and Weighted Credit Period / DSO</a></li><li><a href="subtopics/S03_Boolean_Array_Multi_Condition_Sums_Without_Helper.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S03_Boolean_Array_Multi_Condition_Sums_Without_Helper.html">S03 · Boolean-Array Multi-Condition Sums Without Helper Columns</a></li><li><a href="subtopics/S04_Coercing_TRUEFALSE_to_10_Double_Unary_1_and_N.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S04_Coercing_TRUEFALSE_to_10_Double_Unary_1_and_N.html">S04 · Coercing TRUE/FALSE to 1/0: Double Unary, ×1 and N()</a></li><li><a href="subtopics/S05_Cohort_Retention_Matrices_Acquisition_Month_Active.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S05_Cohort_Retention_Matrices_Acquisition_Month_Active.html">S05 · Cohort Retention Matrices: Acquisition Month × Active Month</a></li><li><a href="subtopics/S06_MMULT_and_TRANSPOSE_for_Cost_Pool_Driver.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S06_MMULT_and_TRANSPOSE_for_Cost_Pool_Driver.html">S06 · MMULT and TRANSPOSE for Cost-Pool × Driver Allocations</a></li><li><a href="subtopics/S07_SUMPRODUCT_vs_SUMIFS_Performance_on_Large_Ranges.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S07_SUMPRODUCT_vs_SUMIFS_Performance_on_Large_Ranges.html">S07 · SUMPRODUCT vs SUMIFS Performance on Large Ranges</a></li></ul></div><div><h3>Key concepts & formulas</h3><ul class="links num"><li><a href="concepts/C01_Pre_Tax_and_Post_Tax_Kd_with_SUMPRODUCT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C01_Pre_Tax_and_Post_Tax_Kd_with_SUMPRODUCT.html">C01 · Pre-Tax and Post-Tax Kd with SUMPRODUCT</a></li><li><a href="concepts/C02_SUMPRODUCT_with_MONTH_and_LEFT_on_Whole_Columns.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C02_SUMPRODUCT_with_MONTH_and_LEFT_on_Whole_Columns.html">C02 · SUMPRODUCT with MONTH and LEFT on Whole Columns</a></li><li><a href="concepts/C03_Comma_Form_SUMPRODUCT_and_Why_Arrays_Must_Be.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C03_Comma_Form_SUMPRODUCT_and_Why_Arrays_Must_Be.html">C03 · Comma-Form SUMPRODUCT and Why Arrays Must Be Numeric</a></li><li><a href="concepts/C04_The_Cohort_Retention_Cell_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C04_The_Cohort_Retention_Cell_Formula.html">C04 · The Cohort Retention Cell Formula</a></li><li><a href="concepts/C05_MMULT_Dimensions_1nnm_Gives_a_1m_Allocation.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C05_MMULT_Dimensions_1nnm_Gives_a_1m_Allocation.html">C05 · MMULT Dimensions: (1×n)·(n×m) Gives a 1×m Allocation</a></li><li><a href="concepts/C06_The_General_Guarded_Weighted_Average_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C06_The_General_Guarded_Weighted_Average_Formula.html">C06 · The General Guarded Weighted-Average Formula</a></li></ul></div></div></section><article class="note"><blockquote>
+<p><strong>Roadmap topic:</strong> SUMPRODUCT for Weighted Averages &amp; Matrix Math: Computing weighted average cost of debt, multi-condition sums without helper columns, and cohort retention</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>SUMPRODUCT multiplies arrays element by element and adds the results. That one operation covers three families of finance work. First, <strong>weighted averages</strong>: cost of debt across tranches, weighted average inventory cost under Ind AS 2, amount-weighted days outstanding, blended margins and realisations — each is Σ(weight × value) ÷ Σ weight. Second, <strong>multi-condition sums</strong> that SUMIFS cannot express: conditions on functions of columns (<code>MONTH</code>, <code>LEFT</code>, <code>SEARCH</code>), row-against-row comparisons, overlapping OR logic, case-sensitive matches. Third, <strong>matrix calculations</strong>: cohort retention matrices built from boolean products, and cost allocations where pools × driver shares is literally matrix multiplication, handled by MMULT and TRANSPOSE.</p>
+<p>For the target roles, these are high-frequency skills. A WACC or DCF build needs a correct post-tax Kd; a working-capital review needs weighted DSO by customer and a re-performed inventory rate; FP&amp;A for consumer or SaaS businesses lives on cohort matrices; and every cost accountant moving into FP&amp;A will rebuild secondary distribution and shared-service allocations as MMULT models. Interviewers like this area because it exposes whether a candidate understands what a formula computes, not just how to type it.</p>
+<p>The subtopics form a sequence. Start with the two <strong>weighted-average</strong> applications (s01 cost of debt; s02 inventory and DSO), then learn the <strong>boolean multi-condition sum</strong> (s03) and the <strong>coercion</strong> rules that make it work (s04). Apply both to <strong>cohort retention</strong> (s05), move to true matrix algebra with <strong>MMULT and TRANSPOSE</strong> (s06), and finish with <strong>performance</strong> (s07) — when SUMPRODUCT is the right tool and when SUMIFS with helper columns is far better. The six key concepts are the exact formulas and rules to know by heart.</p>
+<h2 id="concept-map">Concept map</h2>
+<table>
+<thead>
+<tr>
+<th>Subtopic / concept</th>
+<th>Role in the topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s01 Weighted average cost of debt</td>
+<td>Balance × rate across tranches; pre-tax and post-tax Kd; weighted average interest rate</td>
+</tr>
+<tr>
+<td>s02 Weighted inventory cost and DSO</td>
+<td>Ind AS 2 weighted average rate; amount-weighted days and collection period by customer</td>
+</tr>
+<tr>
+<td>s03 Boolean multi-condition sums</td>
+<td>Conditions on functions of ranges (MONTH, LEFT) without helper columns</td>
+</tr>
+<tr>
+<td>s04 Coercion</td>
+<td>How TRUE/FALSE become 1/0: <code>--</code>, ×1, N(); comma vs multiplication forms</td>
+</tr>
+<tr>
+<td>s05 Cohort retention matrices</td>
+<td>Acquisition month × months since acquisition, from a customer-month table</td>
+</tr>
+<tr>
+<td>s06 MMULT and TRANSPOSE</td>
+<td>Cost-pool × driver allocations; reciprocal services via MINVERSE</td>
+</tr>
+<tr>
+<td>s07 SUMPRODUCT vs SUMIFS performance</td>
+<td>Why SUMPRODUCT is slow on large ranges and how to redesign</td>
+</tr>
+<tr>
+<td>c01 Kd with SUMPRODUCT</td>
+<td>Weighted pre-tax Kd and post-tax Kd × (1 − t)</td>
+</tr>
+<tr>
+<td>c02 MONTH and LEFT inside SUMPRODUCT</td>
+<td>The canonical function-on-range conditional sum</td>
+</tr>
+<tr>
+<td>c03 Comma-form SUMPRODUCT</td>
+<td>Separate arrays must be numeric; text silently becomes 0</td>
+</tr>
+<tr>
+<td>c04 Retention cell</td>
+<td>Boolean product with EDATE ÷ cohort size</td>
+</tr>
+<tr>
+<td>c05 MMULT dimensions</td>
+<td>(1×n)·(n×m) = 1×m, spilling in Microsoft 365</td>
+</tr>
+<tr>
+<td>c06 Guarded weighted average</td>
+<td><code>IF(SUM(w)=0, 0, SUMPRODUCT(w,x)/SUM(w))</code> template</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-concepts-to-study">Related concepts to study</h2>
+<h3 id="wacc-build-up-and-post-tax-kd-in-the-dcf">WACC build-up and post-tax Kd in the DCF</h3>
+<p><em>→ Week 15–16: WACC build-up and post-tax cost of debt in the DCF</em></p>
+<p>In Weeks 15–16 the Kd from this topic becomes one input of \(\text{WACC} = \frac{E}{D+E}K_e + \frac{D}{D+E}K_d(1-t)\). The weighting skills carry over directly — WACC is itself a SUMPRODUCT of capital-structure weights and component costs — but the inputs change character: weights should be market values or a target structure (not book balances), Kd should be a current marginal rate (traded NCD yields, rating-based spreads over the G-sec curve, all-in ECB cost) and t the marginal rate expected over the forecast (25.168% under Section 115BAA, adjusted if losses defer the shield). The debt schedule built here also supplies interest expense and the debt balances needed for leverage and covenant analysis.</p>
+<h3 id="cohort-and-retention-kpis-for-fpa">Cohort and retention KPIs for FP&amp;A</h3>
+<p><em>→ Week 17–20: cohort and retention KPIs for FP&amp;A</em></p>
+<p>FP&amp;A teams in consumer internet, SaaS, D2C, NBFC and insurance businesses report cohort-based KPIs monthly: logo retention, net revenue retention, repeat-purchase rate, LTV, CAC payback and contribution margin by cohort. The matrix built in this topic is the base table; Weeks 17–20 add the analysis — size-weighted retention curves used to forecast future cohorts, LTV = average revenue per user × gross margin × expected lifetime, CAC payback months, and channel or product cuts. Board decks often show the triangle with a colour scale; the analyst's job is to explain whether newer cohorts are improving and how that changes the revenue forecast.</p>
+<h3 id="activity-based-cost-allocation-as-matrix-multiplication">Activity-based cost allocation as matrix multiplication</h3>
+<p><em>Activity-based cost allocation (CMA cost accounting) expressed as matrix multiplication</em></p>
+<p>CMA cost accounting allocates overheads in stages: primary distribution to departments, secondary distribution of service departments (direct, step-down, repeated distribution or simultaneous equations) and absorption into products. Activity-based costing assigns resource costs to activity pools, then activity costs to products using cost-driver rates (₹ per setup, per inspection, per purchase order). Each stage is a matrix product: pools × share matrix, or driver rates × driver-volume matrix. MMULT executes a stage in one formula, MINVERSE solves the reciprocal service problem exactly (the simultaneous-equation method), and Cost Accounting Standards (e.g. CAS on overheads) still govern the choice of drivers — the Excel model only implements the costing judgement transparently.</p>
+<h3 id="dax-sumx-as-the-row-by-row-equivalent">DAX SUMX as the row-by-row equivalent</h3>
+<p><em>→ Week 11: DAX <code>SUMX</code> as the row-by-row equivalent</em></p>
+<p>SUMPRODUCT's "evaluate per row, then add" logic is exactly what DAX iterator functions do. <code>SUMX(Debt, Debt[Balance] * Debt[Rate])</code> iterates the Debt table, computes balance × rate for each row and sums the results; <code>DIVIDE(SUMX(Debt, Debt[Balance]*Debt[Rate]), SUM(Debt[Balance]))</code> is the weighted Kd measure, with DIVIDE handling the zero denominator. Conditions become filter context (slicers, CALCULATE filters) rather than boolean multipliers. Learning SUMPRODUCT well therefore makes DAX iterators intuitive — and the performance lesson carries over too: iterators over large tables with complex row expressions are slower than simple aggregations over pre-computed columns.</p>
+<h3 id="native-array-evaluation-in-microsoft-365">Native array evaluation in Microsoft 365</h3>
+<p><em>In Microsoft 365, <code>=SUM((cond)*(values))</code> evaluates natively, so SUMPRODUCT is optional</em></p>
+<p>Before dynamic arrays, <code>SUM((cond)*(values))</code> needed Ctrl+Shift+Enter; SUMPRODUCT was popular precisely because it handled arrays natively without CSE. In Microsoft 365 (and Excel 2021/2024) every formula is array-capable, so <code>=SUM((MONTH(GL[Date])=4)*GL[Amount])</code> works directly, and FILTER-based forms (<code>SUM(FILTER(GL[Amount], MONTH(GL[Date])=4, 0))</code>) are often more readable. SUMPRODUCT remains useful for compatibility with older versions and for its comma form, which tolerates text. The calculation cost is the same either way — native array evaluation does not make boolean-array formulas faster than SUMIFS.</p>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<h3 id="unequal-array-sizes-and-whole-column-references">Unequal array sizes and whole-column references</h3>
+<p><em>Arrays of different sizes give #VALUE!; whole-column references (<code>A:A</code>) make SUMPRODUCT very slow</em></p>
+<p><strong>The mistake.</strong> <code>SUMPRODUCT(A2:A5000, B2:B4999)</code> — arrays one row apart — returns <code>#VALUE!</code>. Fixing it with whole columns (<code>SUMPRODUCT((A:A="West")*C:C)</code>) makes every formula process 10,48,576 rows per array.</p>
+<p><strong>Why it happens.</strong> Hand-typed ranges drift as data grows; whole columns feel "safe" because they never need extending, and SUMIFS tolerates them, so people assume SUMPRODUCT does too.</p>
+<p><strong>Correct treatment and review.</strong> Use Excel Table columns (always equal-sized and auto-expanding) or exact named ranges. In review, search for <code>SUMPRODUCT(</code> with <code>:A</code>-style column references, time a full recalculation (Ctrl+Alt+F9), and replace slow grids with helper columns plus SUMIFS.</p>
+<h3 id="text-in-the-value-range">Text in the value range</h3>
+<p><em>Text in the value range: the <code>*</code> form returns #VALUE!, while the comma form quietly treats text as zero</em></p>
+<p><strong>The mistake.</strong> Using a SUMPRODUCT form without knowing how it handles text. The multiplication form errors on non-numeric text ("n/a") and coerces numeric text ("1,25,000" may fail, "125000" is coerced); the comma form silently treats any text — including numbers stored as text — as zero.</p>
+<p><strong>Why it happens.</strong> Exports from ERPs, marketplaces and bank portals mix text placeholders and text-formatted numbers; both forms "work" on clean test data.</p>
+<p><strong>Correct treatment and review.</strong> Clean the value column at import (Power Query type setting, VALUE). Add a control: <code>=SUMPRODUCT(--ISTEXT(Revenue))</code> must be 0; in critical checks compute both forms and require them to agree. Prefer the loud-failing form for controls.</p>
+<h3 id="weighting-on-the-wrong-base">Weighting on the wrong base</h3>
+<p><em>Weighting on the wrong base, e.g. a simple average of rates or closing balances instead of average balances</em></p>
+<p><strong>The mistake.</strong> Averaging rates without weights; weighting interest rates by <strong>closing</strong> balances when the debt changed during the year; weighting inventory rates by number of receipts instead of quantity; averaging percentages across cohorts or products without size weights.</p>
+<p><strong>Why it happens.</strong> AVERAGE is one click; closing balances are readily available on the balance sheet; the error is invisible unless tranche sizes or timing differ sharply.</p>
+<p><strong>Correct treatment and review.</strong> Decide what the average represents and choose the matching weight: average (ideally monthly) balances for the effective interest rate, quantities for inventory rates, open amounts for days outstanding, revenue for margins, cohort sizes for retention curves. In review, recompute the metric with an alternative base and investigate large differences; a debt drawn in March is the classic case where closing-balance weights overstate the year's debt.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-debt-schedule-and-kd-for-a-valuation-l3">Q1. Debt schedule and Kd for a valuation [L3]</h3>
+<p>Sahyadri Cement Ltd (FY ending 31 March, taxed under Section 115BAA) has at 31-Mar-2026: a rupee term loan of ₹420 crore at 9.20% (repaid ₹60 crore every 31 March), listed NCDs of ₹300 crore with a 7.40% coupon now trading at a YTM of 8.35%, an ECB of USD 25 million (all-in hedged cost 8.75%, USD/INR 85.50) and a CC limit averaging ₹55 crore drawn at 10.10%. Required: (a) build the Kd table with balances and both book (coupon) and market (current) rates and compute weighted pre-tax and post-tax Kd on each basis; (b) explain which belongs in the DCF and why; (c) for FY26, the company's borrowings were ₹380 crore until 31 December 2025 and ₹880 crore thereafter, with finance cost on borrowings of ₹43.6 crore — compute the effective interest rate on closing and on monthly-average balances and comment.</p>
+<h3 id="q2-working-capital-pack-from-sub-ledgers-l2">Q2. Working-capital pack from sub-ledgers [L2]</h3>
+<p>From a stock receipts Table (Item, Date, Qty, LandedRate, with opening rows) and an AR Table (Customer, Segment, InvDate, DueDate, Open), specify the formulas for: the periodic weighted average rate for each item; closing stock value given closing quantities; amount-weighted days outstanding and days overdue per customer and per segment at 31-Mar-2026; and the share of each segment's receivables beyond 90 days. Include guards for zero weights and explain how you would treat unapplied receipts.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Each weighted metric is a conditional SUMPRODUCT divided by a SUMIFS of the same weight with the same condition.</p>
+</blockquote>
+<h3 id="q3-d2c-cohort-analysis-and-its-performance-l3">Q3. D2C cohort analysis and its performance [L3]</h3>
+<p>A D2C skincare brand has 6.8 lakh orders from April 2024 to March 2026 (OrderID, CustomerID, OrderDate, NetValue). Required: (a) design the customer-month table and the cohort and active-month logic; (b) write the retention cell for a 24 × 24 triangle with blanking beyond the last complete month; (c) compute size-weighted M3 retention for the FY26 cohorts; (d) explain why a SUMPRODUCT-based triangle on this data would be slow, and redesign it with COUNTIFS or Power Query; (e) list three checks that would catch duplicate customer-months or mis-dated cohorts.</p>
+<h3 id="q4-plant-overhead-allocation-with-reciprocal-services-l2">Q4. Plant overhead allocation with reciprocal services [L2]</h3>
+<p>A plant has service departments Power (₹84 lakh primary cost), Maintenance (₹46 lakh) and Stores (₹22 lakh), and production departments Melting, Rolling and Finishing. Power supplies Maintenance 10% and Stores 5%, the rest to production 45/30/10; Maintenance serves Power 15%, the rest to production 40/30/15; Stores serves Power 5% and Maintenance 10%, the rest to production 35/30/20. Required: set up the inter-service matrix and the MINVERSE/MMULT formulas to find total service-department costs, then the MMULT allocation to production departments; state the checks proving completeness; and explain how the result differs from a direct-distribution method.</p>
+<h3 id="q5-interview-conditional-sums-three-ways-l2">Q5. Interview: conditional sums three ways [L2]</h3>
+<p>For a GL Table (Date, Account, Dept, Narration, Amount), write the formula for "April 2025 postings to 5-series accounts in departments Sales or Marketing whose narration contains 'freight'" using (a) SUMPRODUCT in multiplication form, (b) SUMPRODUCT in comma form, and (c) SUMIFS with helper columns. Then explain to the interviewer how each behaves if some amounts are stored as text, and which you would use in a 40 × 12 monthly grid on 3 lakh rows.</p></section>
+<nav class="pager"><a class="prev" href="../T2_Modern_lookups_and_scenario_switching/concepts/C07_Dynamic_Period_Window_with_XLOOKUPXLOOKUP.html">← Dynamic Period Window with XLOOKUP:XLOOKUP</a><a class="next" href="subtopics/S01_Weighted_Average_Cost_of_Debt_Across_Borrowing.html">Weighted Average Cost of Debt Across Borrowing Tranches →</a></nav>
+</main></div></body></html>

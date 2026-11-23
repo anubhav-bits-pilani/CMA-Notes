@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAPE: Mean Absolute Percentage Error and Its Weaknesses · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C01_MAPE_Mean_Absolute_Percentage_Error_and_Its.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 5</a> <span>›</span> <a href="../../index.html">Week 18</a> <span>›</span> <a href="../index.html">T5 · Forecast accuracy: MAPE, WAPE, bias</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Forecast accuracy: MAPE, WAPE, bias</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Forecast_Error_Metrics_MAD_MAPE_WAPE_RMSE_Bias.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S01_Forecast_Error_Metrics_MAD_MAPE_WAPE_RMSE_Bias.html">Forecast Error Metrics: MAD, MAPE, WAPE, RMSE, Bias, Tracking Signal</a></li><li><a href="../subtopics/S02_Measurement_Lag_Lag_1_Lag_3_and_Lag_6_Forecast.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S02_Measurement_Lag_Lag_1_Lag_3_and_Lag_6_Forecast.html">Measurement Lag: Lag-1, Lag-3 and Lag-6 Forecast Accuracy</a></li><li><a href="../subtopics/S03_Aggregation_Level_and_Error_Netting_in_Forecast.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S03_Aggregation_Level_and_Error_Netting_in_Forecast.html">Aggregation Level and Error Netting in Forecast Accuracy</a></li><li><a href="../subtopics/S04_Detecting_Sandbagging_and_Over_Optimism_by.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S04_Detecting_Sandbagging_and_Over_Optimism_by.html">Detecting Sandbagging and Over-Optimism by Business Unit</a></li><li><a href="../subtopics/S05_Forecast_Value_Added_Does_Each_Step_Beat_the_Naive.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S05_Forecast_Value_Added_Does_Each_Step_Beat_the_Naive.html">Forecast Value Added: Does Each Step Beat the Naive Baseline?</a></li><li><a href="../subtopics/S06_Accuracy_Dashboards_Accountability_and_Tolerance.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S06_Accuracy_Dashboards_Accountability_and_Tolerance.html">Accuracy Dashboards, Accountability and Tolerance Bands per BU</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_MAPE_Mean_Absolute_Percentage_Error_and_Its.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C01_MAPE_Mean_Absolute_Percentage_Error_and_Its.html">MAPE: Mean Absolute Percentage Error and Its Weaknesses</a></li><li><a href="C02_WAPE_and_Forecast_Accuracy_Percentage.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C02_WAPE_and_Forecast_Accuracy_Percentage.html">WAPE and Forecast Accuracy Percentage</a></li><li><a href="C03_Bias_Percentage_Direction_of_Forecast_Error.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C03_Bias_Percentage_Direction_of_Forecast_Error.html">Bias Percentage: Direction of Forecast Error</a></li><li><a href="C04_MAD_and_the_Tracking_Signal_for_Systematic_Bias.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C04_MAD_and_the_Tracking_Signal_for_Systematic_Bias.html">MAD and the Tracking Signal for Systematic Bias</a></li><li><a href="C05_RMSE_Root_Mean_Square_Error_and_Large_Miss_Penalty.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C05_RMSE_Root_Mean_Square_Error_and_Large_Miss_Penalty.html">RMSE: Root Mean Square Error and Large-Miss Penalty</a></li><li><a href="C06_Forecast_Value_Added_Formula_and_Interpretation.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C06_Forecast_Value_Added_Formula_and_Interpretation.html">Forecast Value Added Formula and Interpretation</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>MAPE: Mean Absolute Percentage Error and Its Weaknesses</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> MAPE = (1/n) × Σ |Actual − Forecast| ÷ |Actual| × 100; undefined at zero actuals, skewed by small denominators</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>\[
+\text{MAPE} = \frac{1}{n} \sum_{t=1}^{n} \frac{\lvert A_t - F_t \rvert}{\lvert A_t \rvert} \times 100
+\]</p>
+<ul>
+<li>\(A_t\) — actual value for period or item \(t\)</li>
+<li>\(F_t\) — forecast for the same period or item, at a stated lag</li>
+<li>\(n\) — number of periods/items with non-zero actuals</li>
+<li>\(\lvert A_t - F_t \rvert \div \lvert A_t \rvert\) — the absolute percentage error (APE) of observation \(t\)</li>
+</ul>
+<p>MAPE is the simple (unweighted) average of the APEs, expressed in per cent.</p>
+<h2 id="explanation">Explanation</h2>
+<p><strong>Why it is popular.</strong> MAPE is scale-free and intuitive ("on average we miss by 6%"), so it can compare a ₹50 crore BU with a ₹500 crore BU, or revenue with headcount. It is the default in many planning tools and in S&amp;OP literature.</p>
+<p><strong>Weakness 1 — undefined at zero.</strong> If any \(A_t = 0\) (a product with no sales in a month, a cost line with no spend, a new BU before launch), the APE is division by zero. Practitioners either exclude such observations (which silently changes \(n\) and hides errors) or cap APE at an arbitrary value. Both are judgement calls that must be disclosed.</p>
+<p><strong>Weakness 2 — small denominators dominate.</strong> An APE of 300% on a ₹2 lakh line carries the same weight as an APE of 3% on a ₹200 crore line. In a portfolio, a handful of tiny lines can drive MAPE, making the metric reflect immaterial items. This is the topic pitfall "using MAPE on low-volume or near-zero lines".</p>
+<p><strong>Weakness 3 — asymmetry.</strong> For a positive quantity, under-forecasting can at most produce an APE of 100% (forecast 0), while over-forecasting is unbounded (forecast 3 × actual gives 200%). Models or people optimised on MAPE therefore tend to under-forecast.</p>
+<p><strong>Weakness 4 — no direction.</strong> As an absolute measure, MAPE cannot reveal sandbagging or optimism; pair with bias (c03).</p>
+<p><strong>Weakness 5 — negative actuals.</strong> Using \(\lvert A_t \rvert\) keeps the formula computable, but percentage errors on swing lines (FX gain/loss, other income) are not meaningful.</p>
+<p><strong>When to use it.</strong> Items of broadly similar size and importance, with actuals comfortably away from zero — for example, monthly revenue of a single stable BU, or comparing forecast accuracy across BUs where each BU's own MAPE is computed over months. For portfolios of unequal items, prefer WAPE (c02).</p>
+<h2 id="illustration">Illustration</h2>
+<p>Three products, one month, lag-3 (₹ lakh):</p>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Actual</th>
+<th>Forecast</th>
+<th>|A − F|</th>
+<th>APE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>800</td>
+<td>760</td>
+<td>40</td>
+<td>5.0%</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>400</td>
+<td>420</td>
+<td>20</td>
+<td>5.0%</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>5</td>
+<td>20</td>
+<td>15</td>
+<td>300.0%</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>0</td>
+<td>3</td>
+<td>3</td>
+<td>undefined</td>
+</tr>
+</tbody>
+</table>
+<p>MAPE (excluding P4, \(n = 3\)) = (5.0 + 5.0 + 300.0) ÷ 3 = 103.3%. The portfolio's financial forecast was excellent — total absolute error ₹78 lakh on ₹1,205 lakh actual, a WAPE of 6.5% — yet MAPE reports over 100% because of a ₹5 lakh product. Excluding P3 as immaterial gives MAPE = 5.0%, illustrating how sensitive the metric is to small-line policy.</p>
+<p>Excel, excluding zero actuals:</p>
+<pre><code>=AVERAGE(IF(Act&lt;&gt;0, ABS(Act-Fcst)/ABS(Act)))
+</code></pre>
+<h2 id="connections">Connections</h2>
+<p>Defined among the s01 metric family; its small-denominator and zero problems motivate WAPE (c02) and the aggregation rules of s03. Its lack of direction is why the dashboards in s06 always pair it with bias (c03). In Week 11 DAX, MAPE is <code>AVERAGEX(FILTER(Fact, [Actual] &lt;&gt; 0), ABS([Actual] - [Forecast]) / ABS([Actual]))</code>, iterated at the intended grain.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-compute-and-critique-mape-l1">Q1. Compute and critique MAPE [L1]</h3>
+<p>Monthly revenue for a BU, Oct–Dec FY26 (₹ crore): Actual 62, 75, 48; Forecast 58, 80, 55. Compute the APE for each month and the MAPE. Then compute MAPE if the forecasts were 66, 70, 41 instead, and comment on whether MAPE distinguishes the two cases' direction of error.</p>
+<h3 id="q2-small-line-policy-l2">Q2. Small-line policy [L2]</h3>
+<p>A portfolio of 40 SKUs has MAPE of 46%; WAPE is 8%. Six SKUs with actuals below ₹1 lakh each have APEs above 150%. Propose a materiality policy for MAPE reporting, explain how you would disclose it on the dashboard, and state which metric you would use as the headline.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider excluding or grouping lines below a threshold and reporting their absolute ₹ error separately.</p>
+</blockquote>
+<h3 id="q3-asymmetry-demonstration-l2">Q3. Asymmetry demonstration [L2]</h3>
+<p>Actual sales are ₹100 crore. Compute the APE for forecasts of ₹50 crore, ₹0, ₹200 crore and ₹300 crore. Explain why a forecaster rewarded on low MAPE may be nudged towards under-forecasting, and how this interacts with incentive-driven sandbagging.</p></section>
+<nav class="pager"><a class="prev" href="../subtopics/S06_Accuracy_Dashboards_Accountability_and_Tolerance.html">← Accuracy Dashboards, Accountability and Tolerance Bands per…</a><a class="next" href="C02_WAPE_and_Forecast_Accuracy_Percentage.html">WAPE and Forecast Accuracy Percentage →</a></nav>
+</main></div></body></html>

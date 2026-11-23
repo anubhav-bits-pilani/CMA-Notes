@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Circuit-Breaker Interest Formula · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/concepts/C01_Circuit_Breaker_Interest_Formula.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 14</a> <span>›</span> <a href="../index.html">T4 · Managing Interest Circularity Safely</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Managing Interest Circularity Safely</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_The_InterestDebt_Circular_Loop_Through_PAT_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/subtopics/S01_The_InterestDebt_Circular_Loop_Through_PAT_and.html">The Interest–Debt Circular Loop Through PAT and Cash Flow</a></li><li><a href="../subtopics/S02_The_Second_Loop_Interest_Income_on_Average_Cash.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/subtopics/S02_The_Second_Loop_Interest_Income_on_Average_Cash.html">The Second Loop: Interest Income on Average Cash</a></li><li><a href="../subtopics/S03_Excel_Iterative_Calculation_Settings_for_Circular.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/subtopics/S03_Excel_Iterative_Calculation_Settings_for_Circular.html">Excel Iterative Calculation Settings for Circular Models</a></li><li><a href="../subtopics/S04_Building_the_Circuit_Breaker_Toggle_for_Interest.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/subtopics/S04_Building_the_Circuit_Breaker_Toggle_for_Interest.html">Building the Circuit-Breaker Toggle for Interest</a></li><li><a href="../subtopics/S05_Alternatives_to_Iterative_Circularity_in_Debt.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/subtopics/S05_Alternatives_to_Iterative_Circularity_in_Debt.html">Alternatives to Iterative Circularity in Debt Models</a></li><li><a href="../subtopics/S06_FAST_and_ICAEW_Stance_on_Circularity_vs_Banking.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/subtopics/S06_FAST_and_ICAEW_Stance_on_Circularity_vs_Banking.html">FAST and ICAEW Stance on Circularity vs Banking Practice</a></li><li><a href="../subtopics/S07_Recovering_a_Model_with_an_Error_Trapped_in_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/subtopics/S07_Recovering_a_Model_with_an_Error_Trapped_in_the.html">Recovering a Model with an Error Trapped in the Loop</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Circuit_Breaker_Interest_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/concepts/C01_Circuit_Breaker_Interest_Formula.html">Circuit-Breaker Interest Formula</a></li><li><a href="C02_Copy_Paste_Macro_for_Solving_Interest_Without.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/concepts/C02_Copy_Paste_Macro_for_Solving_Interest_Without.html">Copy-Paste Macro for Solving Interest Without Circularity</a></li><li><a href="C03_Iterative_Calculation_Is_an_Application_Level.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/concepts/C03_Iterative_Calculation_Is_an_Application_Level.html">Iterative Calculation Is an Application-Level Setting</a></li><li><a href="C04_Materiality_of_Average_vs_Opening_Balance_Interest.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/concepts/C04_Materiality_of_Average_vs_Opening_Balance_Interest.html">Materiality of Average vs Opening-Balance Interest</a></li><li><a href="C05_Convergence_Check_for_Circular_Interest.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/concepts/C05_Convergence_Check_for_Circular_Interest.html">Convergence Check for Circular Interest</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Circuit-Breaker Interest Formula</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Breaker: <code>=IF(Circ=1,Rate*AVERAGE(Open_Debt,Close_Debt),Rate*Open_Debt)</code> or zero when off</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>Interest for each tranche in period \(t\) is computed through a switch \(C\):</p>
+<p>\[
+I_t =
+\begin{cases}
+r_t \times \dfrac{D_{t-1} + D_t}{2} &amp; \text{if } C = 1 \ (\text{circular}) \\[4pt]
+r_t \times D_{t-1} &amp; \text{if } C = 2 \ (\text{opening balance}) \\[4pt]
+0 &amp; \text{if } C = 0 \ (\text{off})
+\end{cases}
+\]</p>
+<p>where \(I_t\) is interest expense, \(r_t\) the period interest rate, \(D_{t-1}\) opening debt (prior closing), \(D_t\) closing debt and \(C\) the breaker switch cell. In Excel the two-state version is</p>
+<pre><code>=IF(Circ=1, Rate*AVERAGE(Open_Debt,Close_Debt), Rate*Open_Debt)
+</code></pre>
+<p>and the zero-when-off version replaces the false branch with 0.</p>
+<h2 id="explanation">Explanation</h2>
+<p>The switch converts the loop into a choice. When \(C = 1\), interest depends on closing debt, which depends on cash after interest — the loop is live and iteration must be enabled. When \(C\) is anything else, interest depends only on opening debt (known before the period) or on nothing at all, so the model is a straight dependency chain that Excel calculates in one pass.</p>
+<p><strong>Which "off" state to use.</strong> The roadmap allows either opening-balance or zero as the off state:</p>
+<ul>
+<li><em>Opening-balance off-state</em> keeps outputs realistic (understatement or overstatement ≈ Rate × ΔDebt ÷ 2, see c04). It is best for data tables and for users who cannot enable iteration.</li>
+<li><em>Zero off-state</em> guarantees the loop and any error in it are completely flushed, and isolates financing from operating issues when debugging imbalances. It must never be the presented state.</li>
+</ul>
+<p>A three-state switch supports both, as shown in the Statement.</p>
+<p><strong>Implementation rules:</strong></p>
+<ul>
+<li>One named cell (<code>Circ</code>), on Cover or Inputs, with data validation restricting it to the allowed values.</li>
+<li>Every loop-closing formula references it: interest on revolver and swept tranches, commitment fees, interest income on cash.</li>
+<li>Ratios that use interest and sit inside the loop must be guarded against the zero state (<code>IF(Interest=0,…)</code>).</li>
+<li>A status label and conditional formatting showing the current mode.</li>
+</ul>
+<p><strong>Why <code>AVERAGE</code> rather than <code>(Open+Close)/2</code>:</strong> functionally equivalent for two numbers; <code>AVERAGE</code> reads more clearly. Note that <code>AVERAGE</code> ignores blank cells — if <code>Close_Debt</code> were ever blank, <code>AVERAGE</code> would return opening debt silently, whereas <code>(Open+Close)/2</code> would return half of opening. Neither is a substitute for proper links; check for blanks.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Term loan B: opening ₹640 crore; mandatory repayment ₹80 crore; cash sweep ₹65 crore (converged); closing ₹495 crore; rate 9.4%.</p>
+<table>
+<thead>
+<tr>
+<th>Circ</th>
+<th>Formula branch</th>
+<th>Interest (₹ crore)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>9.4% × (640 + 495) ÷ 2</td>
+<td>53.35</td>
+</tr>
+<tr>
+<td>2</td>
+<td>9.4% × 640</td>
+<td>60.16</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0.00</td>
+</tr>
+</tbody>
+</table>
+<p>Switching from 1 to 2 raises FY27E interest by ₹6.81 crore and cuts PAT by about ₹5.10 crore at the 25.168% rate — before second-round effects on the sweep. (With the switch on 2, the sweep itself would be smaller because more cash goes to interest, so the closing balance would also change.)</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>s04 explains switch design, states and the flushing procedure; s07 uses the switch in error recovery.</li>
+<li>c04 quantifies the materiality of the opening-balance off-state; c05 checks convergence once \(C = 1\).</li>
+<li>t3 (debt schedule) supplies <code>Open_Debt</code>, <code>Close_Debt</code> and the revolver/sweep that make closing debt circular.</li>
+<li>Week 15 (balance-sheet debugging) and Week 16 (data tables) both start with "set the breaker".</li>
+<li>FP&amp;A practice: the switch lets a treasury team share a non-circular version of the plan with business-unit finance.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-write-the-formula-family-l1">Q1. Write the formula family [L1]</h3>
+<p>Using <code>Circ</code>, <code>Rate_TLA</code>, <code>TLA_Open</code>, <code>TLA_Close</code>, write the three-state interest formula with IF and with CHOOSE. State one advantage of each.</p>
+<h3 id="q2-off-state-choice-l2">Q2. Off-state choice [L2]</h3>
+<p>Revolver: opening ₹25 crore, converged closing ₹110 crore, rate 10.0%. Compute interest in each of the three switch states, the PAT difference between states 1 and 2 at 25.168% tax, and say which off-state you would use for a 9 × 9 WACC/terminal-growth data table, with reasons.</p>
+<h3 id="q3-blank-cell-behaviour-l2">Q3. Blank-cell behaviour [L2]</h3>
+<p>The closing-debt cell for FY31E is accidentally blank. Compare what <code>=Rate*AVERAGE(Open,Close)</code> and <code>=Rate*(Open+Close)/2</code> return with opening ₹300 crore and rate 9%, and propose a check that would catch the blank.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Recall how AVERAGE treats empty cells versus how arithmetic treats them.</p>
+</blockquote></section>
+<nav class="pager"><a class="prev" href="../subtopics/S07_Recovering_a_Model_with_an_Error_Trapped_in_the.html">← Recovering a Model with an Error Trapped in the Loop</a><a class="next" href="C02_Copy_Paste_Macro_for_Solving_Interest_Without.html">Copy-Paste Macro for Solving Interest Without Circularity →</a></nav>
+</main></div></body></html>

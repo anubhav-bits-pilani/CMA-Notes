@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interest Circularity: Average Debt, Iteration and Circuit Breakers · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T1_Timed_Capstone_3_Statement_DCF_Build/concepts/C06_Interest_Circularity_Average_Debt_Iteration_and.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 6</a> <span>›</span> <a href="../../index.html">Week 23</a> <span>›</span> <a href="../index.html">T1 · Timed Capstone: 3-Statement + DCF Build</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Timed Capstone: 3-Statement + DCF Build</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Choosing_an_Unfamiliar_NSE_Mid_Cap_for_the.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T1_Timed_Capstone_3_Statement_DCF_Build/subtopics/S01_Choosing_an_Unfamiliar_NSE_Mid_Cap_for_the.html">Choosing an Unfamiliar NSE Mid-Cap for the Capstone Build</a></li><li><a href="../subtopics/S02_Data_Sourcing_Hierarchy_for_an_Indian_Listed.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T1_Timed_Capstone_3_Statement_DCF_Build/subtopics/S02_Data_Sourcing_Hierarchy_for_an_Indian_Listed.html">Data Sourcing Hierarchy for an Indian Listed-Company Model</a></li><li><a href="../subtopics/S03_Standardising_Five_Years_of_Historicals_Before.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T1_Timed_Capstone_3_Statement_DCF_Build/subtopics/S03_Standardising_Five_Years_of_Historicals_Before.html">Standardising Five Years of Historicals Before Forecasting</a></li><li><a href="../subtopics/S04_Capstone_Model_Architecture_The_17_Tab_Blueprint.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T1_Timed_Capstone_3_Statement_DCF_Build/subtopics/S04_Capstone_Model_Architecture_The_17_Tab_Blueprint.html">Capstone Model Architecture: The 17-Tab Blueprint</a></li><li><a href="../subtopics/S05_Revenue_and_Cost_Driver_Selection_for_the_Forecast.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T1_Timed_Capstone_3_Statement_DCF_Build/subtopics/S05_Revenue_and_Cost_Driver_Selection_for_the_Forecast.html">Revenue and Cost Driver Selection for the Forecast</a></li><li><a href="../subtopics/S06_DCF_Build_FCFF_Indian_WACC_Inputs_Terminal_Value.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T1_Timed_Capstone_3_Statement_DCF_Build/subtopics/S06_DCF_Build_FCFF_Indian_WACC_Inputs_Terminal_Value.html">DCF Build: FCFF, Indian WACC Inputs, Terminal Value, Mid-Year</a></li><li><a href="../subtopics/S07_Two_Day_Time_Plan_for_the_Capstone_Simulation.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T1_Timed_Capstone_3_Statement_DCF_Build/subtopics/S07_Two_Day_Time_Plan_for_the_Capstone_Simulation.html">Two-Day Time Plan for the Capstone Simulation</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_FCFF_and_FCFE_Formulas_and_Their_Reconciliation.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T1_Timed_Capstone_3_Statement_DCF_Build/concepts/C01_FCFF_and_FCFE_Formulas_and_Their_Reconciliation.html">FCFF and FCFE Formulas and Their Reconciliation</a></li><li><a href="C02_Terminal_Value_Gordon_Growth_and_Exit_Multiple.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T1_Timed_Capstone_3_Statement_DCF_Build/concepts/C02_Terminal_Value_Gordon_Growth_and_Exit_Multiple.html">Terminal Value: Gordon Growth and Exit Multiple Methods</a></li><li><a href="C03_Enterprise_to_Equity_Value_Bridge_with_Ind_AS_116.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T1_Timed_Capstone_3_Statement_DCF_Build/concepts/C03_Enterprise_to_Equity_Value_Bridge_with_Ind_AS_116.html">Enterprise-to-Equity Value Bridge with Ind AS 116 Leases</a></li><li><a href="C04_CAPM_Cost_of_Equity_and_WACC_with_the_115BAA_Tax.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T1_Timed_Capstone_3_Statement_DCF_Build/concepts/C04_CAPM_Cost_of_Equity_and_WACC_with_the_115BAA_Tax.html">CAPM Cost of Equity and WACC with the 115BAA Tax Rate</a></li><li><a href="C05_Balance_Sheet_Check_and_Cash_Tie_Out.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T1_Timed_Capstone_3_Statement_DCF_Build/concepts/C05_Balance_Sheet_Check_and_Cash_Tie_Out.html">Balance Sheet Check and Cash Tie-Out</a></li><li><a href="C06_Interest_Circularity_Average_Debt_Iteration_and.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T1_Timed_Capstone_3_Statement_DCF_Build/concepts/C06_Interest_Circularity_Average_Debt_Iteration_and.html">Interest Circularity: Average Debt, Iteration and Circuit Breakers</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Interest Circularity: Average Debt, Iteration and Circuit Breakers</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Circularity: interest on average debt solved via iterative calculation with a circuit-breaker switch, or interest on opening balances</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>Interest on average debt creates a loop:</p>
+<p>\[
+\text{Interest}_t = r \times \frac{D_{t-1} + D_t}{2}, \qquad D_t = f(\text{Cash}_t), \qquad \text{Cash}_t = g(\text{PAT}_t), \qquad \text{PAT}_t = h(\text{Interest}_t)
+\]</p>
+<p>where \(r\) is the interest rate, \(D_{t-1}\) and \(D_t\) are opening and closing debt, and closing debt depends
+(through a revolver or cash sweep) on cash generated, which depends on interest. Two accepted solutions:</p>
+<ol>
+<li><strong>Iterative calculation</strong> (File → Options → Formulas → Enable iterative calculation, e.g. maximum 100
+   iterations, maximum change 0.001) with a <strong>circuit breaker</strong>:</li>
+</ol>
+<p>\[
+\text{Interest}_t = \text{CB} \times r \times \frac{D_{t-1} + D_t}{2} + (1 - \text{CB}) \times r \times D_{t-1}
+\]</p>
+<p>where CB = 1 enables average-balance interest and CB = 0 falls back to opening balances.</p>
+<ol start="2">
+<li><strong>Interest on opening balances only</strong>: \(\text{Interest}_t = r \times D_{t-1}\), which has no loop.</li>
+</ol>
+<h2 id="explanation">Explanation</h2>
+<p>Average-balance interest is more accurate when debt changes significantly within a year (large drawdowns for
+capex, scheduled repayments). Opening-balance interest understates interest when debt rises and overstates it
+when debt falls. The error is roughly \(r \times \Delta D / 2\), which is small for stable debt and material for a
+capex-funded expansion.</p>
+<p>The danger of iteration is <strong>error propagation</strong>. If any cell in the loop returns an error (a <code>#DIV/0!</code> from a
+zero denominator, a <code>#REF!</code>), the error circulates and Excel cannot recover even after the cause is fixed, because
+every cell in the loop keeps feeding the error back. The circuit breaker cuts the loop: set CB = 0, let the model
+recalculate cleanly, fix the cause and set CB = 1 again.</p>
+<p>Good practice:</p>
+<ul>
+<li>Put the CB switch on the Inputs sheet (blue input, data validation 0/1) and show its state on the Cover.</li>
+<li>Build and balance the model with CB = 0 first (s07, block D2-2). Turn on CB = 1 afterwards and confirm both checks
+  remain 0.</li>
+<li>Confine the circularity to <strong>one loop</strong> (interest ↔ cash/debt). Interest income on average cash creates a second
+  loop, so include it in the same switch.</li>
+<li>Document iteration settings on the Cover. Iterative calculation is an application-level setting saved with the
+  workbook, and a recipient's Excel may open with it off, triggering circular reference warnings.</li>
+<li>Alternatives that avoid iteration: opening-balance interest, a copy-paste macro that pastes the computed interest as
+  values until convergence (Week 15), or an algebraic closed-form solution for a simple revolver.</li>
+</ul>
+<p>Many institutional standards (FAST, some bank modelling guides) discourage circularity entirely and prefer
+opening-balance interest or a macro. In a timed capstone, either approach is acceptable if it is disclosed and
+the switch works.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Term loan opening FY28 ₹600 crore, drawdown ₹300 crore during FY28, repayment ₹50 crore, so closing ₹850 crore.
+Rate 9.0%.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Interest FY28 (₹ crore)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Opening balance: 9% × 600</td>
+<td>54.0</td>
+</tr>
+<tr>
+<td>Average balance: 9% × (600 + 850) ÷ 2</td>
+<td>65.3</td>
+</tr>
+<tr>
+<td>Difference (pre-tax)</td>
+<td>11.3</td>
+</tr>
+<tr>
+<td>After tax at 25.17%</td>
+<td>8.4</td>
+</tr>
+</tbody>
+</table>
+<p>If the drawdown is funded by a revolver that depends on year-end cash, closing debt depends on interest, so
+iteration is needed. With a fixed drawdown schedule, average interest is not circular at all, because closing
+debt does not depend on interest. Circularity only arises when debt or cash balances are themselves outputs of
+the cash flow.</p>
+<h2 id="connections">Connections</h2>
+<p>The Debt schedule (s04) hosts this logic, and the time plan (s07) sequences it after the first balance. The
+balance and cash checks (c05) must hold with CB = 0 and CB = 1, which is one of the flex tests in Week 23 t2 (c04,
+s03 on circular references). Week 15 covers copy-paste macro alternatives and the t2 topic's related item
+discusses them further.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-circuit-breaker-formula-l1">Q1. Circuit-breaker formula [L1]</h3>
+<p>Write the Excel formula for FY28 interest in F40, with opening debt in E35, closing debt in F35, rate in a named cell
+<code>Int_Rate</code> and the circuit breaker in a named cell <code>CB</code>.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> One formula should produce both behaviours depending on the switch.</p>
+</blockquote>
+<h3 id="q2-when-is-it-circular-l2">Q2. When is it circular? [L2]</h3>
+<p>For each case, state whether average-balance interest creates a circular reference and why: (a) fixed repayment
+schedule; (b) cash sweep repaying debt from excess cash; (c) revolver drawn to maintain minimum cash of ₹50 crore;
+(d) interest income on average cash balances.</p>
+<h3 id="q3-recovering-a-broken-loop-l2">Q3. Recovering a broken loop [L2]</h3>
+<p>After you delete a row on the Debt tab, every cell in the IS, BS and CFS shows <code>#REF!</code> and fixing the deleted
+reference does not clear it. Explain why, and list the recovery steps.</p>
+<h3 id="q4-choosing-the-method-l3">Q4. Choosing the method [L3]</h3>
+<p>A reviewer insists on no circularity. Your company draws ₹1,200 crore of debt in FY28 for a new plant (opening debt
+₹400 crore) at 9.5%. Quantify the interest understatement under opening-balance interest, and propose a non-circular
+method that gets close to average-balance accuracy.</p></section>
+<nav class="pager"><a class="prev" href="C05_Balance_Sheet_Check_and_Cash_Tie_Out.html">← Balance Sheet Check and Cash Tie-Out</a><a class="next" href="../../T2_Model_Audit_and_QA_Checklist/index.html">Model Audit and QA Checklist →</a></nav>
+</main></div></body></html>

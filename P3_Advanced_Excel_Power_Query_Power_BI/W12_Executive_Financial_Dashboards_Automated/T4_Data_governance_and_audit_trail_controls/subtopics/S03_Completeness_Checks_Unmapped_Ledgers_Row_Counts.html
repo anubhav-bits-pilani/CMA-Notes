@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Completeness Checks: Unmapped Ledgers, Row Counts, Missing Months · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S03_Completeness_Checks_Unmapped_Ledgers_Row_Counts.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T4 · Data governance and audit-trail controls</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Data governance and audit-trail controls</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Control_Measures_Dr_Cr_TB_Nets_to_Zero_A_L_E.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S01_Control_Measures_Dr_Cr_TB_Nets_to_Zero_A_L_E.html">Control Measures: Dr = Cr, TB Nets to Zero, A = L + E</a></li><li><a href="S02_GL_to_Dashboard_Tie_Out_Against_Source_TB_Control.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S02_GL_to_Dashboard_Tie_Out_Against_Source_TB_Control.html">GL-to-Dashboard Tie-Out Against Source TB Control Totals</a></li><li><a href="S03_Completeness_Checks_Unmapped_Ledgers_Row_Counts.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S03_Completeness_Checks_Unmapped_Ledgers_Row_Counts.html">Completeness Checks: Unmapped Ledgers, Row Counts, Missing Months</a></li><li><a href="S04_Refresh_Metadata_Last_Refresh_Latest_Posting_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S04_Refresh_Metadata_Last_Refresh_Latest_Posting_Date.html">Refresh Metadata: Last Refresh, Latest Posting Date, Source Files</a></li><li><a href="S05_Control_Panel_Page_with_PassFail_Indicators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S05_Control_Panel_Page_with_PassFail_Indicators.html">Control Panel Page with Pass/Fail Indicators</a></li><li><a href="S06_Access_Governance_RLS_Roles_Labels_Endorsement.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S06_Access_Governance_RLS_Roles_Labels_Endorsement.html">Access Governance: RLS, Roles, Labels, Endorsement, Lineage</a></li><li><a href="S07_Change_Control_PBIP_in_Git_Measure_Docs_Deployment.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S07_Change_Control_PBIP_in_Git_Measure_Docs_Deployment.html">Change Control: PBIP in Git, Measure Docs, Deployment Pipelines</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Dr_Cr_Diff_and_Dr_Cr_Status_Control_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C01_Dr_Cr_Diff_and_Dr_Cr_Status_Control_Measures.html">Dr Cr Diff and Dr Cr Status Control Measures</a></li><li><a href="../concepts/C02_BS_Check_Assets_Minus_Liabilities_Minus_Equity.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C02_BS_Check_Assets_Minus_Liabilities_Minus_Equity.html">BS Check: Assets Minus Liabilities Minus Equity Equals Zero</a></li><li><a href="../concepts/C03_Unmapped_Count_with_EXCEPT_over_GL_and_CoA_Account.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C03_Unmapped_Count_with_EXCEPT_over_GL_and_CoA_Account.html">Unmapped Count with EXCEPT over GL and CoA Account Codes</a></li><li><a href="../concepts/C04_Tie_out_Diff_Dashboard_Revenue_vs_TB_Control.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C04_Tie_out_Diff_Dashboard_Revenue_vs_TB_Control.html">Tie-out Diff: Dashboard Revenue vs TB Control Totals</a></li><li><a href="../concepts/C05_IST_Last_Refresh_Table_in_Power_Query.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C05_IST_Last_Refresh_Table_in_Power_Query.html">IST Last-Refresh Table in Power Query</a></li><li><a href="../concepts/C06_Per_File_Control_Totals_with_TableGroup_on.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C06_Per_File_Control_Totals_with_TableGroup_on.html">Per-File Control Totals with Table.Group on Source.Name</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Completeness Checks: Unmapped Ledgers, Row Counts, Missing Months</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Completeness checks: unmapped ledgers, row counts per file/branch, missing months</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Accuracy controls (Dr = Cr, tie-out) answer "are the numbers that arrived correct?". Completeness controls answer
+"did everything arrive, and does every number land on a reporting line?". In audit language this is the
+<em>completeness</em> assertion, and it is where automated packs fail most often in practice: a branch forgets to drop its
+file, a new ledger is created in Tally without being added to the mapping, or a month is skipped in a folder that
+holds 36 monthly files. None of these necessarily unbalances the TB, so s01 checks will not catch them.</p>
+<p>Completeness checks are cheap to build in Power Query and DAX, and they are the controls a CFO will notice first
+when they fail ("why is Kolkata branch revenue zero this month?"). Showing them proactively on a control page turns
+an embarrassing surprise into a managed exception.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="1-unmapped-ledgers">1. Unmapped ledgers</h3>
+<p>Every GL account code must map to exactly one CoA row carrying FS line, statement, sign and sub-group. A ledger
+that exists in the GL but not in the CoA mapping is "unmapped"; its amount falls into the blank row of the CoA
+dimension (Power BI's automatically added blank member when the many-side key has no match).</p>
+<p>Three complementary measures:</p>
+<pre><code class="language-DAX">Unmapped Count =
+COUNTROWS ( EXCEPT ( VALUES ( GL[AccountCode] ), VALUES ( CoA[AccountCode] ) ) )
+
+Unmapped Amount =
+CALCULATE ( SUM ( GL[Amount] ), ISBLANK ( CoA[AccountCode] ) )
+
+Unmapped Abs Amount =
+CALCULATE (
+    SUMX ( VALUES ( GL[AccountCode] ), ABS ( CALCULATE ( SUM ( GL[Amount] ) ) ) ),
+    ISBLANK ( CoA[AccountCode] )
+)
+</code></pre>
+<p><code>Unmapped Count</code> is the headline control (target 0). <code>Unmapped Abs Amount</code> shows materiality: ten unmapped
+ledgers with ₹200 each matter less than one with ₹4 crore. The plain signed sum can net to near zero if a debit and
+a credit ledger are both unmapped, so do not use it as the status driver. Filtering <code>CoA[AccountCode]</code> to blank
+selects the blank member, which is exactly where unmatched GL rows land; iterating <code>VALUES(GL[AccountCode])</code> inside
+that filter then sums each unmapped code's absolute balance. An alternative is an <code>IsMapped</code> flag column added in
+Power Query by merging GL with CoA — often the better design because it also produces the list of unmapped codes.</p>
+<p><strong>Filter context trap.</strong> If a user selects an FS line in a slicer, the CoA filter excludes the blank row and the
+unmapped amount disappears from view — the control falsely shows 0. Evaluate completeness measures with
+<code>REMOVEFILTERS(CoA)</code> or keep them on a control page with no CoA slicers.</p>
+<p><strong>Mapping the other way.</strong> Also check for CoA rows mapped to more than one FS line (duplicate keys break the
+one-to-many relationship at refresh — Power BI errors with "column contains duplicate values") and for CoA entries
+with a blank FS line, which are technically mapped but still land nowhere in the P&amp;L layout.</p>
+<p>In Power Query, a left anti-join produces the exception list for the reviewer:</p>
+<pre><code class="language-M">Unmapped = Table.NestedJoin(GL_Accounts, {&quot;AccountCode&quot;}, CoA, {&quot;AccountCode&quot;}, &quot;m&quot;, JoinKind.LeftAnti)
+</code></pre>
+<h3 id="2-row-counts-per-file-and-per-branch">2. Row counts per file and per branch</h3>
+<p>The Week 10 folder-consolidation pattern keeps <code>Source.Name</code> (the file name) on every row. Group by it to produce
+a per-file control table (see concept c06): rows, total debits, total credits, min and max posting date. Compare
+against an <strong>expected-files register</strong> — a small table listing, for every branch and month, the file you expect
+(<code>BLR_2026-03.csv</code>, <code>DEL_2026-03.csv</code> …).</p>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Logic</th>
+<th>Fails when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>File present</td>
+<td>Expected register left-anti-joined to actual files</td>
+<td>A branch file is missing</td>
+</tr>
+<tr>
+<td>Duplicate file</td>
+<td>Count of files per Branch × Month greater than 1</td>
+<td><code>DEL_2026-03.csv</code> and <code>DEL_2026-03 (1).csv</code> both loaded</td>
+</tr>
+<tr>
+<td>Row-count reasonableness</td>
+<td>Rows this month vs average of last 3 months</td>
+<td>Rows fall below 50% or exceed 200% of average</td>
+</tr>
+<tr>
+<td>Empty file</td>
+<td>Rows = 0 or only header</td>
+<td>Export ran but returned nothing</td>
+</tr>
+<tr>
+<td>Date range inside file</td>
+<td>Min/Max posting date within the file's month</td>
+<td>March file contains April entries</td>
+</tr>
+</tbody>
+</table>
+<p>The row-count band is a judgement threshold, not an accounting identity; set it per branch from history and label it
+"WARN" rather than "FAIL". A month-end with heavy provisioning legitimately has more rows.</p>
+<p>In DAX, if the model has a <code>Branch</code> dimension and a Date table, row counts can be checked directly:</p>
+<pre><code class="language-DAX">GL Rows = COUNTROWS ( GL )
+Branches With No Rows =
+COUNTROWS ( FILTER ( VALUES ( Branch[BranchCode] ), ISBLANK ( [GL Rows] ) ) )
+</code></pre>
+<p>Placed in a matrix by Month, this shows which branches have no data for which months.</p>
+<h3 id="3-missing-months">3. Missing months</h3>
+<p>A continuous Date table (Week 11) has every month; the GL may not. Detect gaps:</p>
+<pre><code class="language-DAX">Months Expected =
+COUNTROWS (
+    FILTER (
+        VALUES ( 'Date'[MonthKey] ),
+        'Date'[MonthKey] &lt;= [Last Closed MonthKey]
+    )
+)
+
+Months With Data =
+COUNTROWS ( FILTER ( VALUES ( 'Date'[MonthKey] ), NOT ISBLANK ( [GL Rows] ) ) )
+
+Missing Months = [Months Expected] - [Months With Data]
+</code></pre>
+<p><code>[Last Closed MonthKey]</code> comes from a parameter or a control table set by the accountant, not from <code>TODAY()</code>, so that
+the current open month is not flagged. Evaluate per company and per branch, because a group total will show data in
+every month even if one branch is missing.</p>
+<p>For balance-sheet completeness, also check that the opening-balance voucher exists for the first month of the FY.</p>
+<h3 id="illustration">Illustration</h3>
+<p>A retail chain with 14 branches drops monthly Tally exports. For February 2026 the control table shows:</p>
+<table>
+<thead>
+<tr>
+<th>Branch</th>
+<th>Expected file</th>
+<th>Loaded</th>
+<th>Rows</th>
+<th>3-month avg rows</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BLR</td>
+<td><code>BLR_2026-02.csv</code></td>
+<td>Yes</td>
+<td>18,420</td>
+<td>17,950</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>CHN</td>
+<td><code>CHN_2026-02.csv</code></td>
+<td>Yes</td>
+<td>6,110</td>
+<td>16,800</td>
+<td>WARN (36%)</td>
+</tr>
+<tr>
+<td>KOL</td>
+<td><code>KOL_2026-02.csv</code></td>
+<td>No</td>
+<td>0</td>
+<td>9,400</td>
+<td>FAIL</td>
+</tr>
+<tr>
+<td>HYD</td>
+<td><code>HYD_2026-02.csv</code></td>
+<td>Yes ×2</td>
+<td>25,860</td>
+<td>12,900</td>
+<td>FAIL (duplicate)</td>
+</tr>
+</tbody>
+</table>
+<p>Unmapped Count = 2 (ledgers 41057 "Sales – Q-commerce" and 62310 "Platform fees") with absolute value ₹1.84 crore.
+Every one of these issues passes Dr = Cr.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>New ledgers created mid-month.</strong> Accountants create ledgers freely in Tally; an "unmapped" exception is normal at
+  first refresh. Route the exception list to the mapping owner and require mapping before the pack is published.</li>
+<li><strong>Inactive branches.</strong> A closed branch is not "missing". Maintain an effective-to date in the expected-files register.</li>
+<li><strong>Case and whitespace in keys.</strong> <code>"41057 "</code> and <code>"41057"</code> do not match; trim and standardise keys in Power Query
+  before the join, or the unmapped count is inflated.</li>
+<li><strong>Numeric vs text keys.</strong> Codes with leading zeros (<code>0045</code>) lose them if typed as numbers in one source.</li>
+<li><strong>Row counts in incremental refresh.</strong> Historical partitions are not reloaded, so row-count checks should target the
+  refreshed window.</li>
+<li><strong>Sub-ledger completeness.</strong> GL completeness does not prove AR/AP sub-ledger completeness; tie the debtors control
+  account to the AR ageing total separately if Page 2 shows DSO.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Completeness failures (missing files, unmapped ledgers, gaps) usually pass Dr = Cr; they need their own controls.</li>
+<li>Use unmapped count for status and absolute unmapped amount for materiality; evaluate both with CoA filters removed.</li>
+<li>Compare loaded files with an expected-files register; check duplicates, empties and date ranges inside files.</li>
+<li>Row-count bands are warnings based on history, not hard failures.</li>
+<li>Missing-month checks must run per entity and must stop at the last closed month.</li>
+<li>Standardise keys (trim, text type, leading zeros) before mapping joins.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-why-unmapped-amounts-vanish-l1">Q1. Why unmapped amounts vanish [L1]</h3>
+<p>On the P&amp;L page, a user filters FS Line = "Other expenses". The <code>Unmapped Amount</code> card shows ₹0, but the control
+page shows ₹26,40,000. Explain the discrepancy in terms of filter context and the blank CoA row, and state how the
+measure should be written.</p>
+<h3 id="q2-expected-files-register-l2">Q2. Expected-files register [L2]</h3>
+<p>A company has 6 branches and receives one CSV per branch per month for FY2025-26 (April to March). Two branches
+opened on 1 October 2025 and one closed on 31 December 2025. Design the expected-files register (columns and logic),
+calculate how many files are expected for the full year, and write the Power Query join that lists missing files.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Count branch-months that fall within each branch's active window.</p>
+</blockquote>
+<h3 id="q3-setting-row-count-thresholds-l2">Q3. Setting row-count thresholds [L2]</h3>
+<p>Branch HYD has had monthly row counts of 11,200, 12,800, 13,600, 12,100 and 24,900 (the last being March, a year-end
+month with heavy accruals). Propose a warning rule that would not flag March as abnormal but would flag a February
+file with only 4,000 rows. Explain your reasoning.</p>
+<h3 id="q4-completeness-design-for-a-new-pack-l3">Q4. Completeness design for a new pack [L3]</h3>
+<p>You inherit a pack that loads 3 years of GL from 36 monthly SAP files plus a CoA mapping maintained in Excel. No
+completeness checks exist. Specify every completeness measure and Power Query exception table you would add, the
+filter context each must use, and who should own each exception.</p>
+<h3 id="q5-interview-completeness-vs-accuracy-l1">Q5. Interview: completeness vs accuracy [L1]</h3>
+<p>Explain the difference between completeness and accuracy controls in a reporting pack, giving one example of an
+error each catches that the other misses.</p></section>
+<nav class="pager"><a class="prev" href="S02_GL_to_Dashboard_Tie_Out_Against_Source_TB_Control.html">← GL-to-Dashboard Tie-Out Against Source TB Control Totals</a><a class="next" href="S04_Refresh_Metadata_Last_Refresh_Latest_Posting_Date.html">Refresh Metadata: Last Refresh, Latest Posting Date, Source… →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Power BI Waterfall Visual: Breakdown, Ordering and Bridge Measures · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S04_Power_BI_Waterfall_Visual_Breakdown_Ordering_and.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 5</a> <span>›</span> <a href="../../index.html">Week 19</a> <span>›</span> <a href="../index.html">T4 · EBITDA bridge waterfall construction</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · EBITDA bridge waterfall construction</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Standard_Step_Sequence_for_a_Budget_to_Actual.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S01_Standard_Step_Sequence_for_a_Budget_to_Actual.html">Standard Step Sequence for a Budget-to-Actual EBITDA Bridge</a></li><li><a href="S02_Bridges_for_AvB_AvPY_LE_vs_AOP_and_Forecast_to.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S02_Bridges_for_AvB_AvPY_LE_vs_AOP_and_Forecast_to.html">Bridges for AvB, AvPY, LE vs AOP and Forecast-to-Forecast</a></li><li><a href="S03_Excel_Waterfall_Charts_Native_Chart_and_Stacked.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S03_Excel_Waterfall_Charts_Native_Chart_and_Stacked.html">Excel Waterfall Charts: Native Chart and Stacked-Column Fallback</a></li><li><a href="S04_Power_BI_Waterfall_Visual_Breakdown_Ordering_and.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S04_Power_BI_Waterfall_Visual_Breakdown_Ordering_and.html">Power BI Waterfall Visual: Breakdown, Ordering and Bridge Measures</a></li><li><a href="S05_Grouping_Small_Items_into_Other_and_Labelling_in.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S05_Grouping_Small_Items_into_Other_and_Labelling_in.html">Grouping Small Items into &quot;Other&quot; and Labelling in ₹ Crore and bps</a></li><li><a href="S06_The_Reconciliation_Table_Behind_an_EBITDA_Bridge.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S06_The_Reconciliation_Table_Behind_an_EBITDA_Bridge.html">The Reconciliation Table Behind an EBITDA Bridge</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Bridge_Integrity_Zero_Residual_Between_End_Points.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/concepts/C01_Bridge_Integrity_Zero_Residual_Between_End_Points.html">Bridge Integrity: Zero Residual Between End Points</a></li><li><a href="../concepts/C02_Valuation_Basis_of_Each_Bridge_Step.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/concepts/C02_Valuation_Basis_of_Each_Bridge_Step.html">Valuation Basis of Each Bridge Step</a></li><li><a href="../concepts/C03_Stacked_Column_Waterfall_Arithmetic_Invisible_Base.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/concepts/C03_Stacked_Column_Waterfall_Arithmetic_Invisible_Base.html">Stacked-Column Waterfall Arithmetic: Invisible Base and Visible Bar</a></li><li><a href="../concepts/C04_EBITDA_Margin_Bridge_in_Basis_Points.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/concepts/C04_EBITDA_Margin_Bridge_in_Basis_Points.html">EBITDA Margin Bridge in Basis Points</a></li><li><a href="../concepts/C05_Order_Dependence_of_Bridge_Steps.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/concepts/C05_Order_Dependence_of_Bridge_Steps.html">Order Dependence of Bridge Steps</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Power BI Waterfall Visual: Breakdown, Ordering and Bridge Measures</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Power BI waterfall visual with breakdown and category ordering</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Once a company moves its monthly pack to Power BI, the EBITDA bridge becomes interactive: a regional head slices by channel, the CFO drills from total EBITDA into the SKU driving the mix bar. The native Power BI waterfall can do this, but its default behaviour — sorting bars by value, adding an automatic "Total", treating the Breakdown well as a variance-by-member tool — produces a chart that looks nothing like the agreed bridge unless you model it deliberately. Getting the ordering and step logic right is a common interview task for FP&amp;A roles that list Power BI.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="how-the-native-waterfall-works">How the native waterfall works</h3>
+<p>The waterfall visual has these field wells:</p>
+<table>
+<thead>
+<tr>
+<th>Well</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Category</td>
+<td>The bars (steps) along the x-axis</td>
+</tr>
+<tr>
+<td>Breakdown</td>
+<td>Optional field whose members' changes are shown between consecutive categories</td>
+</tr>
+<tr>
+<td>Y-axis (Values)</td>
+<td>The measure plotted</td>
+</tr>
+<tr>
+<td>Tooltips</td>
+<td>Extra measures shown on hover (e.g., bps, % of budget)</td>
+</tr>
+</tbody>
+</table>
+<p>Without Breakdown, each Category member is one bar of height equal to the measure, stacked cumulatively from zero, and the visual appends an automatic <strong>Total</strong> bar at the end. With Breakdown, the visual treats Category as a sequence of periods/scenarios and shows, between each pair, how each Breakdown member changed — the top contributors individually and the rest grouped.</p>
+<h3 id="pattern-a-driver-step-bridge-the-standard-ebitda-bridge">Pattern A: driver-step bridge (the standard EBITDA bridge)</h3>
+<ol>
+<li><strong>Create a disconnected step table</strong> (Enter Data or a DAX table):</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>SortOrder</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Budget EBITDA</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Price</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Volume</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Mix</td>
+<td>4</td>
+</tr>
+<tr>
+<td>COGS inflation</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Efficiency</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Opex</td>
+<td>7</td>
+</tr>
+<tr>
+<td>FX</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Others</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+<ol start="2">
+<li>Select the Step column → <strong>Column tools → Sort by column → SortOrder</strong>.</li>
+<li>Write one measure per driver (from the Week 11 PVM measures) and a switch measure:</li>
+</ol>
+<pre><code>Bridge Value =
+VAR s = SELECTEDVALUE ( 'Bridge Step'[Step] )
+RETURN
+    SWITCH (
+        s,
+        &quot;Budget EBITDA&quot;, [EBITDA Budget],
+        &quot;Price&quot;, [Price Effect],
+        &quot;Volume&quot;, [Volume Effect GM],
+        &quot;Mix&quot;, [Mix Effect GM],
+        &quot;COGS inflation&quot;, [COGS Inflation Effect],
+        &quot;Efficiency&quot;, [Efficiency Effect],
+        &quot;Opex&quot;, [Opex Budget] - [Opex Actual],
+        &quot;FX&quot;, [FX Effect],
+        &quot;Others&quot;, [Others Effect]
+    )
+</code></pre>
+<p>with a driver measure such as:</p>
+<pre><code>Price Effect =
+SUMX (
+    VALUES ( 'Product'[SKU] ),
+    ( [Actual Price] - [Budget Price] ) * [Actual Units]
+)
+</code></pre>
+<ol start="4">
+<li>Put Step in Category and Bridge Value in Y-axis. In the visual's <strong>More options (…) → Sort axis</strong>, sort by <strong>Step</strong> ascending (not by Bridge Value, which is often the default and scrambles the bridge).</li>
+<li>The automatic total bar equals Budget + Σ steps = Actual EBITDA. Add a card or a check measure <code>[EBITDA Actual] - ( [EBITDA Budget] + Σ steps )</code> on the page (or in a hidden validation page) that must show zero.</li>
+<li><strong>Formatting:</strong> under the visual's sentiment colours set Increase (green), Decrease (red), Total (dark grey). The Budget bar is drawn as an increase from zero; to make it look like a total, many teams accept the green start bar, set the colour of the start bar via conditional formatting where supported, or switch to a certified custom visual. Rename the automatic total via the format pane if your version offers a total-label option; otherwise state "Actual EBITDA" in the subtitle or data label.</li>
+</ol>
+<p>Because <code>SELECTEDVALUE</code> returns the step name per bar, the whole bridge responds to slicers on month, region or channel — the driver measures must respect those filters (they will, if written with <code>SUMX</code> over the filtered SKU table).</p>
+<h3 id="pattern-b-breakdown-variance-by-member">Pattern B: Breakdown (variance by member)</h3>
+<p>Put a Scenario field (Budget, Actual) on Category, an EBITDA-by-scenario measure on Y-axis, and SKU (or Channel, Region) on Breakdown. The visual shows Budget EBITDA, then one bar per SKU for its change from Budget to Actual, then Actual. Settings:</p>
+<ul>
+<li><strong>Breakdown → Max breakdowns</strong>: the number of members shown individually (default 5); the rest are grouped into an "Other" bar automatically.</li>
+<li>Category order must be Budget then Actual: add a Scenario sort column.</li>
+</ul>
+<p>This is not a price/volume/mix bridge — it is a "who contributed" bridge. It is valuable as a second visual next to the driver bridge, and for drill-through ("which SKUs drove the mix bar?").</p>
+<h3 id="ordering-and-sorting-traps">Ordering and sorting traps</h3>
+<ul>
+<li><strong>Sort axis by value</strong> is often the default; switch to the category field.</li>
+<li><strong>Text sorting</strong> puts "COGS" before "Mix" alphabetically; always use a numeric sort column.</li>
+<li><strong>Blank steps</strong> disappear; if FX is blank for a domestic-only filter, the bar vanishes and the bridge still totals correctly. Return <code>0</code> instead of <code>BLANK()</code> if you want a fixed layout.</li>
+<li><strong>Breakdown with period Category</strong> (e.g., Jan, Feb, Mar on Category) shows month-on-month changes by member — useful for trend walks, not for AvB.</li>
+</ul>
+<h3 id="labels-and-tooltips">Labels and tooltips</h3>
+<p>Data labels show the bar value; Power BI's built-in display units are thousands/millions/billions, not lakh/crore, so the cleanest approach is a display measure that divides the rupee value by 1,00,00,000 and is formatted <code>#,##0.0</code>. Add bps of actual revenue and % of budget EBITDA as tooltip measures:</p>
+<pre><code>Step bps =
+DIVIDE ( [Bridge Value], [Revenue Actual] ) * 10000
+</code></pre>
+<p>Exclude the Budget step from the bps tooltip (return <code>BLANK()</code> for it).</p>
+<h3 id="when-to-use-custom-visuals">When to use custom visuals</h3>
+<p>Native limitations — limited control over total labels, start-bar colour, IBCS notation and negative-crossing labels — lead many Indian corporates to use certified custom visuals (for example IBCS-oriented ones such as Zebra BI or Inforiver). They add licensing cost and governance review (data residency, certified status). The native visual with a properly designed step table is adequate for most internal packs.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Cost signs.</strong> If the Opex measure returns Actual − Budget, savings show as red decrease bars. Each step measure must return the EBITDA effect (topic 5).</li>
+<li><strong>Multiple scenarios.</strong> For AvPY and LE vs AOP, parameterise the base and comparator with disconnected scenario slicers rather than duplicating measures.</li>
+<li><strong>Row-level security.</strong> If RLS limits a user to one region, the bridge recalculates for that region; ensure the budget table is secured on the same dimension or the bridge will mix regional actuals with total budget.</li>
+<li><strong>Performance.</strong> <code>SUMX</code> over SKU × month with many scenarios can be slow; pre-aggregate unit prices/costs in the model or use aggregation tables.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Use a disconnected step table with a numeric SortOrder and "Sort by column"; sort the visual by Step, not by value.</li>
+<li>A <code>SWITCH</code> measure returns the right driver per step; the automatic total equals Actual EBITDA if the steps reconcile.</li>
+<li>Breakdown shows member contributions between scenarios and groups the tail into "Other" via Max breakdowns.</li>
+<li>Return signed EBITDA effects from every measure; colours follow sign.</li>
+<li>Put a zero-residual check measure on the page.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-fix-a-scrambled-bridge-l1">Q1. Fix a scrambled bridge [L1]</h3>
+<p>A Power BI waterfall shows the steps in the order Volume, Price, Opex, Others, Mix, FX, Budget EBITDA, COGS. List the two causes that typically produce this and the steps to fix them.</p>
+<h3 id="q2-step-table-and-switch-measure-l2">Q2. Step table and switch measure [L2]</h3>
+<p>Write the step table and the DAX <code>SWITCH</code> measure skeleton for a bridge with steps: LE (Sep) EBITDA, Actualisation, Price, Volume, Mix, RM inflation, Conversion efficiency, Opex, FX. Assume measures already exist for each driver. State how the visual's automatic total should relate to the October LE.</p>
+<h3 id="q3-breakdown-visual-design-l2">Q3. Breakdown visual design [L2]</h3>
+<p>The sales director wants to see which five channels contributed most to the change in gross margin from Budget to Actual, with the remainder grouped. Describe the Category, Breakdown and Y-axis fields, the settings you would change, and the limitation of this visual compared with a PVM driver bridge.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Breakdown shows change per member between consecutive category values; it does not separate price from volume.</p>
+</blockquote>
+<h3 id="q4-rls-and-the-bridge-l3">Q4. RLS and the bridge [L3]</h3>
+<p>After deploying the bridge with row-level security by region, the West region head reports that her bridge starts at total-company budget EBITDA of ₹420 crore but ends at West actual EBITDA of ₹96 crore, with a large negative "Volume" bar. Diagnose the cause in model terms and specify the fix.</p></section>
+<nav class="pager"><a class="prev" href="S03_Excel_Waterfall_Charts_Native_Chart_and_Stacked.html">← Excel Waterfall Charts: Native Chart and Stacked-Column…</a><a class="next" href="S05_Grouping_Small_Items_into_Other_and_Labelling_in.html">Grouping Small Items into &quot;Other&quot; and Labelling in ₹ Crore… →</a></nav>
+</main></div></body></html>

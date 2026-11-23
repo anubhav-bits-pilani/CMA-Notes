@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M Language Structure: let/in, Values, Records, Lists and each · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S03_M_Language_Structure_letin_Values_Records_Lists.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T1 · Power Query architecture and M basics</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Power Query architecture and M basics</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Power_Query_Connectors_for_Accounting_and_ERP_Data.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S01_Power_Query_Connectors_for_Accounting_and_ERP_Data.html">Power Query Connectors for Accounting and ERP Data Sources</a></li><li><a href="S02_Power_Query_Editor_Anatomy_Steps_Formula_Bar_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S02_Power_Query_Editor_Anatomy_Steps_Formula_Bar_and.html">Power Query Editor Anatomy: Steps, Formula Bar and Dependencies</a></li><li><a href="S03_M_Language_Structure_letin_Values_Records_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S03_M_Language_Structure_letin_Values_Records_Lists.html">M Language Structure: let/in, Values, Records, Lists and each</a></li><li><a href="S04_Data_Types_and_Controlling_Automatic_Type.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S04_Data_Types_and_Controlling_Automatic_Type.html">Data Types and Controlling Automatic Type Detection</a></li><li><a href="S05_Query_Folding_Which_Steps_Fold_Native_Query_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S05_Query_Folding_Which_Steps_Fold_Native_Query_and.html">Query Folding: Which Steps Fold, Native Query and Diagnostics</a></li><li><a href="S06_Parameters_Staging_Queries_and_Reference_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S06_Parameters_Staging_Queries_and_Reference_vs.html">Parameters, Staging Queries and Reference vs Duplicate</a></li><li><a href="S07_Load_Options_and_Refresh_Behaviour_in_Excel_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S07_Load_Options_and_Refresh_Behaviour_in_Excel_vs.html">Load Options and Refresh Behaviour in Excel vs Power BI</a></li><li><a href="S08_Privacy_Levels_and_FormulaFirewall_Errors.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S08_Privacy_Levels_and_FormulaFirewall_Errors.html">Privacy Levels and Formula.Firewall Errors</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_CsvDocument_with_FileContents_Delimiter_Encoding.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C01_CsvDocument_with_FileContents_Delimiter_Encoding.html">Csv.Document with File.Contents: Delimiter, Encoding, QuoteStyle</a></li><li><a href="../concepts/C02_ExcelWorkbook_Navigation_to_a_Named_Sheet_or_Table.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C02_ExcelWorkbook_Navigation_to_a_Named_Sheet_or_Table.html">Excel.Workbook Navigation to a Named Sheet or Table</a></li><li><a href="../concepts/C03_SqlDatabase_with_a_Native_Query_Blocks_Later.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C03_SqlDatabase_with_a_Native_Query_Blocks_Later.html">Sql.Database with a Native Query Blocks Later Folding</a></li><li><a href="../concepts/C04_ValueNativeQuery_with_Parameters_and_EnableFolding.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C04_ValueNativeQuery_with_Parameters_and_EnableFolding.html">Value.NativeQuery with Parameters and EnableFolding</a></li><li><a href="../concepts/C05_The_each_Keyword_and_the_Underscore_Parameter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C05_The_each_Keyword_and_the_Underscore_Parameter.html">The each Keyword and the Underscore Parameter</a></li><li><a href="../concepts/C06_Folding_Breakers_TableBuffer_Index_Columns_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C06_Folding_Breakers_TableBuffer_Index_Columns_and.html">Folding Breakers: Table.Buffer, Index Columns and Custom Functions</a></li><li><a href="../concepts/C07_MySQLDatabase_Connector_and_OdbcDataSource_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C07_MySQLDatabase_Connector_and_OdbcDataSource_for.html">MySQL.Database Connector and Odbc.DataSource for Tally</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>M Language Structure: let/in, Values, Records, Lists and each</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> M structure: <code>let ... in</code>, step references, records, lists, tables, <code>each</code> and <code>_</code></p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>The UI generates M for you, but every robust finance pipeline eventually needs hand-written M: a dynamic column list for unpivoting, a custom function per bank, a guard against a missing column, a parameterised as-of date. Reading M fluently also lets you review someone else's query in minutes rather than clicking through 40 steps. Coming from Java and SQL, the shift is that M is a <strong>functional, lazily evaluated expression language</strong>: there are no loops or mutable variables, every step is an immutable value, and the engine evaluates only what the final result needs.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-let-in-expression">The <code>let ... in</code> expression</h3>
+<p>A query is a single expression. <code>let</code> binds names to expressions; <code>in</code> returns one of them (normally the last).</p>
+<pre><code>let
+    Source        = Excel.Workbook(File.Contents(FilePath), null, true),
+    TB            = Source{[Item=&quot;TB&quot;, Kind=&quot;Sheet&quot;]}[Data],
+    Promoted      = Table.PromoteHeaders(TB, [PromoteAllScalars=true]),
+    NonBlank      = Table.SelectRows(Promoted, each [Particulars] &lt;&gt; null),
+    Result        = NonBlank
+in
+    Result
+</code></pre>
+<p>Rules worth internalising:</p>
+<ul>
+<li>Steps are separated by <strong>commas</strong>; the last step before <code>in</code> has <strong>no</strong> comma — the most common syntax error.</li>
+<li>Names are case-sensitive (<code>Source</code> ≠ <code>source</code>), as are function names (<code>Table.SelectRows</code>, not <code>table.selectrows</code>).</li>
+<li>Names with spaces need <code>#"Changed Type"</code> quoting.</li>
+<li>Order in the text does not dictate evaluation; dependencies do. A step that nothing downstream references is <strong>never evaluated</strong> (lazy evaluation), which is why a broken unused step does not fail the refresh.</li>
+<li><code>let</code> expressions nest — a step can itself be a <code>let ... in</code> block, which is how you keep helper values local.</li>
+</ul>
+<h3 id="step-references">Step references</h3>
+<p>Each step usually references the previous one, but it may reference <strong>any earlier step</strong> or another <strong>query by name</strong>. Example: keep the raw source for a control total while cleaning:</p>
+<pre><code>RowCountRaw = Table.RowCount(TB),
+...
+Check = [Raw = RowCountRaw, Clean = Table.RowCount(Result)]
+</code></pre>
+<p>Referencing another query (<code>stg_Bank</code>) creates a dependency visible in Query Dependencies.</p>
+<h3 id="primitive-values-and-operators">Primitive values and operators</h3>
+<p>Numbers, text (<code>"Sales"</code>), logical (<code>true</code>/<code>false</code>), <code>null</code>, dates <code>#date(2026,3,31)</code>, datetimes <code>#datetime(2026,3,31,23,59,0)</code>, durations <code>#duration(30,0,0,0)</code>. Text concatenation uses <code>&amp;</code>, not <code>+</code>: <code>"FY" &amp; Text.From(2026)</code>. Arithmetic with <code>null</code> returns <code>null</code> (<code>null + 5 = null</code>), which is why net-amount calculations use <code>??</code> (Topic 6). Comparisons are type-strict: <code>"100" = 100</code> is <code>false</code>, not an error.</p>
+<h3 id="records">Records</h3>
+<p>A record is a set of named fields: <code>[Code = "400100", Name = "Sales Domestic", Amount = 125000]</code>. Access a field with <code>Rec[Code]</code>; optional access <code>Rec[Code]?</code> returns <code>null</code> instead of an error when the field is missing. <strong>Every row of a table, seen inside a row function, is a record</strong> — this is why <code>[Amount]</code> works inside <code>each</code>. Option arguments to library functions are also records: <code>[Delimiter=",", Encoding=65001]</code>.</p>
+<h3 id="lists">Lists</h3>
+<p>A list is an ordered sequence in braces: <code>{"Apr-25", "May-25"}</code>, <code>{1..12}</code>, <code>{"0".."9"}</code>. Access an item with zero-based <code>{}</code>: <code>MyList{0}</code>. A <strong>column of a table is a list</strong>: <code>Table[Amount]</code> returns the list of amounts, so <code>List.Sum(TB[Debit])</code> is a Dr control total. Common list functions: <code>List.Sum</code>, <code>List.Count</code>, <code>List.Distinct</code>, <code>List.Contains</code>, <code>List.Select</code>, <code>List.Transform</code>, <code>List.RemoveItems</code>.</p>
+<p>Dynamic column lists are built from lists — the heart of refresh-safe M:</p>
+<pre><code>MonthCols = List.RemoveItems(Table.ColumnNames(t), {&quot;Account&quot;, &quot;Department&quot;, &quot;FY Total&quot;})
+</code></pre>
+<h3 id="tables">Tables</h3>
+<p>A table is a list of records with a shared set of column names (and optional types). Ways to address it:</p>
+<table>
+<thead>
+<tr>
+<th>Expression</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>t{0}</code></td>
+<td>First row as a record</td>
+</tr>
+<tr>
+<td><code>t[Amount]</code></td>
+<td>Column as a list</td>
+</tr>
+<tr>
+<td><code>t{0}[Amount]</code></td>
+<td>One cell</td>
+</tr>
+<tr>
+<td><code>t{[Code="400100"]}</code></td>
+<td>The single row matching a key (error if 0 or &gt;1 match)</td>
+</tr>
+<tr>
+<td><code>Table.ColumnNames(t)</code></td>
+<td>List of column names</td>
+</tr>
+</tbody>
+</table>
+<p>The navigation pattern <code>Source{[Item="TB",Kind="Sheet"]}[Data]</code> is exactly this: find the row of the navigation table whose Item and Kind match, then take its <code>Data</code> cell, which is itself a table. <strong>Nested tables</strong> in cells (after a Group By with All Rows, or a merge) are normal in M and are expanded later.</p>
+<h3 id="functions-each-and-_">Functions, <code>each</code> and <code>_</code></h3>
+<p>A function is written <code>(x) =&gt; expression</code>, e.g. <code>(amt as number) as number =&gt; amt * -1</code>. <code>each</code> is syntactic sugar for a one-parameter function whose parameter is named <code>_</code>:</p>
+<p>\[
+\texttt{each } [\text{Amount}] &gt; 0 \;\equiv\; (\_) \Rightarrow \_[\text{Amount}] &gt; 0
+\]</p>
+<p>Inside <code>each</code>, <code>[Amount]</code> is shorthand for <code>_[Amount]</code> because field access on the implicit <code>_</code> can drop the underscore. Where the function receives a non-record (e.g. a single cell value in <code>Table.TransformColumns</code>), use <code>_</code> directly: <code>each Text.Trim(_)</code>.</p>
+<p>Contexts and what <code>_</code> is:</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th><code>_</code> is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Table.SelectRows(t, each ...)</code></td>
+<td>the current row (record)</td>
+</tr>
+<tr>
+<td><code>Table.AddColumn(t, "X", each ...)</code></td>
+<td>the current row (record)</td>
+</tr>
+<tr>
+<td><code>Table.TransformColumns(t, {{"Name", each ...}})</code></td>
+<td>the cell value</td>
+</tr>
+<tr>
+<td><code>List.Transform(list, each ...)</code></td>
+<td>the list item</td>
+</tr>
+<tr>
+<td><code>Table.Group(t, keys, {{"Total", each ...}})</code></td>
+<td>the sub-table of the group</td>
+</tr>
+</tbody>
+</table>
+<p>The last row is a classic trap: inside Group By, <code>each List.Sum([Amount])</code> works because <code>[Amount]</code> on a table returns the column as a list.</p>
+<h3 id="comments-and-error-values">Comments and error values</h3>
+<p><code>//</code> and <code>/* */</code> are comments. <code>error "message"</code> raises an error; <code>try x otherwise y</code> catches it (Topic 2).</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong><code>each</code> nested inside <code>each</code></strong> makes the inner <code>_</code> shadow the outer one. Write an explicit lambda for the outer function: <code>(row) =&gt; List.Select(..., each _ &gt; row[Limit])</code>.</li>
+<li><strong>Key lookup <code>t{[Code="X"]}</code></strong> errors if the key is duplicated — useful as an integrity check but dangerous in production. Use <code>Table.SelectRows</code> then <code>{0}?</code> when duplicates are tolerable.</li>
+<li><strong>Lazy evaluation and side effects</strong>: an unreferenced validation step never runs. Make checks a separate loaded query, or reference them in the output.</li>
+<li><strong>Performance of repeated references</strong>: referencing the same expensive step twice can evaluate it twice unless buffered (Topic s05/c06).</li>
+<li><strong><code>=</code> is comparison, not assignment</strong> outside <code>let</code>; there is no <code>==</code>.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>A query is one <code>let ... in</code> expression of immutable, lazily evaluated steps; commas separate steps, none before <code>in</code>.</li>
+<li>Records <code>[ ]</code>, lists <code>{ }</code> and tables are the three structured values; a table row is a record and a column is a list.</li>
+<li><code>each</code> means <code>(_) =&gt;</code>; <code>[Col]</code> inside it reads a field of <code>_</code>.</li>
+<li>What <code>_</code> represents depends on the calling function — row, cell, list item or group sub-table.</li>
+<li>Dynamic lists from <code>Table.ColumnNames</code> and <code>List.RemoveItems</code> are the basis of refresh-safe code.</li>
+<li>Use <code>?</code> optional access and <code>try ... otherwise</code> to make code tolerant of missing fields.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-fix-the-syntax-l1">Q1. Fix the syntax [L1]</h3>
+<p>Identify every syntax error in this query and rewrite it correctly:
+<code>let Source = Csv.Document(File.Contents(Path), [Delimiter=","]) Promoted = table.PromoteHeaders(Source), Filtered = Table.SelectRows(Promoted, each [Amount] &lt;&gt; null), in Filtered</code></p>
+<h3 id="q2-what-does-it-return-l2">Q2. What does it return? [L2]</h3>
+<p>Given a table <code>TB</code> with columns Code, Name, Debit, Credit and 3 rows: (400100, Sales, null, 500000), (500100, Purchases, 300000, null), (600100, Rent, 60000, null), state the value and type returned by each: (a) <code>TB{1}</code>; (b) <code>TB[Debit]</code>; (c) <code>List.Sum(TB[Debit])</code>; (d) <code>TB{[Code=600100]}[Name]</code>; (e) <code>TB{0}[Debit] + 10</code>.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Remember how null behaves in arithmetic and in <code>List.Sum</code>.</p>
+</blockquote>
+<h3 id="q3-dynamic-month-list-l2">Q3. Dynamic month list [L2]</h3>
+<p>A budget table has columns Account, Department, Apr-25 … Mar-26 and FY Total. Write a step that produces the list of month column names without hard-coding any month, and a second step that sums the April column only if it exists.</p>
+<h3 id="q4-_-in-different-contexts-l2">Q4. <code>_</code> in different contexts [L2]</h3>
+<p>Write the M for (a) a filter keeping rows where Debit exceeds ₹1 lakh; (b) a transformation that upper-cases the Narration column; (c) a Group By on Ledger summing Amount. For each, state what <code>_</code> refers to.</p>
+<h3 id="q5-interview-m-vs-java-l3">Q5. Interview: M vs Java [L3]</h3>
+<p>An interviewer with a Java background asks you to explain how a Power Query step list differs from a sequence of Java statements, covering mutability, evaluation order, loops and lambdas. Prepare a 2-minute answer with one finance example.</p></section>
+<nav class="pager"><a class="prev" href="S02_Power_Query_Editor_Anatomy_Steps_Formula_Bar_and.html">← Power Query Editor Anatomy: Steps, Formula Bar and…</a><a class="next" href="S04_Data_Types_and_Controlling_Automatic_Type.html">Data Types and Controlling Automatic Type Detection →</a></nav>
+</main></div></body></html>

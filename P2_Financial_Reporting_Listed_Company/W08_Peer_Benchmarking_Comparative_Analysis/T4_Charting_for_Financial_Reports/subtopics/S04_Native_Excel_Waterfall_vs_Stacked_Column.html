@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Native Excel Waterfall vs Stacked-Column Workaround · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S04_Native_Excel_Waterfall_vs_Stacked_Column.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 2</a> <span>›</span> <a href="../../index.html">Week 8</a> <span>›</span> <a href="../index.html">T4 · Charting for Financial Reports</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Charting for Financial Reports</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_EBITDA_Bridge_Waterfalls_Price_Volume_Mix_and_Cost.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S01_EBITDA_Bridge_Waterfalls_Price_Volume_Mix_and_Cost.html">EBITDA Bridge Waterfalls: Price, Volume, Mix and Cost Drivers</a></li><li><a href="S02_Clustered_Column_Trends_and_Combo_Charts_with_a.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S02_Clustered_Column_Trends_and_Combo_Charts_with_a.html">Clustered Column Trends and Combo Charts with a Margin Axis</a></li><li><a href="S03_ROIC_vs_Revenue_Growth_Bubble_Charts_with_Median.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S03_ROIC_vs_Revenue_Growth_Bubble_Charts_with_Median.html">ROIC vs Revenue Growth Bubble Charts with Median Quadrants</a></li><li><a href="S04_Native_Excel_Waterfall_vs_Stacked_Column.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S04_Native_Excel_Waterfall_vs_Stacked_Column.html">Native Excel Waterfall vs Stacked-Column Workaround</a></li><li><a href="S05_Chart_Hygiene_for_Peer_Financial_Reports.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S05_Chart_Hygiene_for_Peer_Financial_Reports.html">Chart Hygiene for Peer Financial Reports</a></li><li><a href="S06_Linking_Chart_Titles_and_Labels_to_Cells_for.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S06_Linking_Chart_Titles_and_Labels_to_Cells_for.html">Linking Chart Titles and Labels to Cells for Dynamic Updates</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Bridge_Integrity_The_Zero_Check_Cell.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/concepts/C01_Bridge_Integrity_The_Zero_Check_Cell.html">Bridge Integrity: The Zero-Check Cell</a></li><li><a href="../concepts/C02_Price_and_Volume_Effects_in_a_Revenue_or_EBITDA.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/concepts/C02_Price_and_Volume_Effects_in_a_Revenue_or_EBITDA.html">Price and Volume Effects in a Revenue or EBITDA Bridge</a></li><li><a href="../concepts/C03_Gross_Margin_Effect_Isolating_Raw_Material.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/concepts/C03_Gross_Margin_Effect_Isolating_Raw_Material.html">Gross Margin Effect: Isolating Raw Material Inflation</a></li><li><a href="../concepts/C04_IBCS_SUCCESS_Notation_and_Tuftes_Data_Ink_Ratio.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/concepts/C04_IBCS_SUCCESS_Notation_and_Tuftes_Data_Ink_Ratio.html">IBCS SUCCESS Notation and Tufte&#x27;s Data-Ink Ratio</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Native Excel Waterfall vs Stacked-Column Workaround</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Excel native waterfall (2016+) with "set as total" vs stacked-column workaround for older versions</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Every EBITDA bridge, net-debt walk, cash-flow bridge and budget-versus-actual variance in Project 2 and in
+later FP&amp;A work is drawn as a waterfall. Excel offers two routes: the native Waterfall chart (Excel 2016 and
+Microsoft 365) and the older stacked-column construction. Practitioners need both — the native chart is fast,
+but many corporate environments, banks' model templates and clients' files still require charts that open
+correctly in older versions, support cell-linked labels and allow fine formatting control. Knowing the
+trade-offs, and being able to build the workaround from scratch, is a frequent test in modelling interviews.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="native-waterfall-excel-2016">Native waterfall (Excel 2016+)</h3>
+<p><strong>Build steps</strong></p>
+<ol>
+<li>Lay out two columns: labels (FY24 EBITDA, Volume, Price, Raw material, Employee cost, Other opex, FY25
+   EBITDA) and values. Driver values carry their sign (cost increases negative); the start total is the
+   opening value; the end total can be the closing value or left to Excel.</li>
+<li>Select the range → Insert → <em>Insert Waterfall, Funnel, Stock, Surface or Radar Chart</em> → <strong>Waterfall</strong>.</li>
+<li>Excel plots every value as a floating step. The first and last bars must be converted to totals:
+   double-click the bar (select the single data point), right-click → <strong>Set as Total</strong>, or in Format Data
+   Point → Series Options tick <strong>Set as total</strong>. A total bar is anchored to zero and shows the cumulative
+   value at that point.</li>
+<li>Subtotals (e.g., "Gross profit FY25" midway in a long bridge) are also created with Set as Total. Excel
+   does <strong>not</strong> compute the running total for a total bar: it plots the cell value from zero, and later
+   drivers float from that value. The subtotal and end-total cells must therefore be formulas equal to the
+   running total, otherwise the chart silently "resets" at that bar.</li>
+<li>Format: the legend shows <em>Increase</em>, <em>Decrease</em>, <em>Total</em>; click a legend entry to recolour all bars of
+   that type (e.g., increases in dark grey, decreases in red/orange, totals in the company colour). Delete
+   the legend afterward and use the action title instead. Show connector lines (Series Options) for
+   readability.</li>
+</ol>
+<p><strong>Strengths</strong></p>
+<ul>
+<li>Fast; handles bars crossing zero (e.g., a net-debt walk from net cash to net debt) automatically.</li>
+<li>Increase/decrease colouring is automatic and updates when signs flip.</li>
+<li>Values update from the source range, so it is still formula-driven.</li>
+</ul>
+<p><strong>Limitations</strong> (version-dependent; test in your build)</p>
+<ul>
+<li>Not available or not editable in Excel 2013 and earlier — the chart appears as an unsupported object.</li>
+<li>The new chart family (waterfall, histogram, treemap, sunburst, box &amp; whisker, funnel) has historically not
+  supported <strong>Value From Cells</strong> data labels, secondary axes or combination with other chart types, and in
+  many builds chart titles could not be linked to cells.</li>
+<li>Set as Total is a manual, per-point setting; if the number of driver rows changes, totals must be reset.</li>
+<li>Limited control over individual label placement and over category gap behaviour.</li>
+<li>Cannot easily add a target or prior-year reference marker.</li>
+</ul>
+<h3 id="stacked-column-workaround-any-version">Stacked-column workaround (any version)</h3>
+<p>The idea: a stacked column chart with an <strong>invisible base series</strong> that lifts each driver bar to float at the
+right height, plus visible series for increases, decreases and totals.</p>
+<p><strong>Helper table</strong> — for each row \(k\), with signed driver \(d_k\) and cumulative before the step
+\(C_{k-1}\) and after \(C_k = C_{k-1} + d_k\):</p>
+<table>
+<thead>
+<tr>
+<th>Series</th>
+<th>Formula (driver rows)</th>
+<th>Formula (total rows)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base (no fill)</td>
+<td>\(\min(C_{k-1}, C_k)\)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Increase</td>
+<td>\(\max(d_k, 0)\)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Decrease</td>
+<td>\(\max(-d_k, 0)\)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>0</td>
+<td>the total value</td>
+</tr>
+</tbody>
+</table>
+<p>In Excel (with named columns in a Table called <code>Bridge</code>):</p>
+<pre><code>Cum    = IF([@Type]=&quot;Total&quot;, [@Value], previous Cum + [@Value])
+Base   = IF([@Type]=&quot;Total&quot;, 0, MIN(previous Cum, [@Cum]))
+Up     = IF([@Type]=&quot;Total&quot;, 0, MAX([@Value], 0))
+Down   = IF([@Type]=&quot;Total&quot;, 0, MAX(-[@Value], 0))
+Total  = IF([@Type]=&quot;Total&quot;, [@Value], 0)
+</code></pre>
+<p>Insert a <strong>Stacked Column</strong> chart on Base, Up, Down, Total; format Base with <em>No fill</em> and <em>No border</em>; set
+gap width ≈ 50%; colour Up, Down and Total; add data labels to Up and Down (and use Value From Cells pointing
+at a signed-label column so decreases show "(27.0)" rather than "27.0").</p>
+<p><strong>Worked helper table (₹ crore)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Type</th>
+<th>Value</th>
+<th>Cum</th>
+<th>Base</th>
+<th>Up</th>
+<th>Down</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY24 EBITDA</td>
+<td>Total</td>
+<td>70.0</td>
+<td>70.0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>70.0</td>
+</tr>
+<tr>
+<td>Volume</td>
+<td>Driver</td>
+<td>16.0</td>
+<td>86.0</td>
+<td>70.0</td>
+<td>16.0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Price</td>
+<td>Driver</td>
+<td>21.6</td>
+<td>107.6</td>
+<td>86.0</td>
+<td>21.6</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Raw material</td>
+<td>Driver</td>
+<td>−27.0</td>
+<td>80.6</td>
+<td>80.6</td>
+<td>0</td>
+<td>27.0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Employee cost</td>
+<td>Driver</td>
+<td>−6.0</td>
+<td>74.6</td>
+<td>74.6</td>
+<td>0</td>
+<td>6.0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Other opex</td>
+<td>Driver</td>
+<td>−4.0</td>
+<td>70.6</td>
+<td>70.6</td>
+<td>0</td>
+<td>4.0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>FY25 EBITDA</td>
+<td>Total</td>
+<td>70.6</td>
+<td>70.6</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>70.6</td>
+</tr>
+</tbody>
+</table>
+<h3 id="bars-that-cross-zero">Bars that cross zero</h3>
+<p>The simple base method fails when the cumulative path crosses zero (a stacked negative and positive value
+stack separately on each side of the axis). Options:</p>
+<ul>
+<li><strong>Up/down bars on a line chart</strong>: create two line series, <em>Start of step</em> \(C_{k-1}\) and <em>End of step</em>
+  \(C_k\); add Up/Down Bars (Chart Design → Add Chart Element → Up/Down Bars); hide both lines. Excel draws a
+  bar between the two values regardless of sign; up-bars and down-bars take different fills. Totals are
+  handled by setting start = 0 and end = total.</li>
+<li><strong>Split series</strong>: separate positive-side and negative-side base and bar series (four to six helper columns).
+  Works but is fiddly.</li>
+<li><strong>Error-bar method</strong>: plot the end-of-step value as an invisible series and draw a custom minus error bar of
+  length \(d_k\); thick error bars look like columns. Rarely worth the complexity.</li>
+</ul>
+<h3 id="choosing-between-them">Choosing between them</h3>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Native waterfall</th>
+<th>Stacked workaround</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Build time</td>
+<td>Minutes</td>
+<td>20–30 minutes first time; reusable template thereafter</td>
+</tr>
+<tr>
+<td>Older Excel / client compatibility</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Crossing zero</td>
+<td>Automatic</td>
+<td>Needs up/down bars or split series</td>
+</tr>
+<tr>
+<td>Cell-linked labels and title</td>
+<td>Limited, version-dependent</td>
+<td>Full</td>
+</tr>
+<tr>
+<td>Fine formatting, reference markers</td>
+<td>Limited</td>
+<td>Full</td>
+</tr>
+<tr>
+<td>Robust to adding rows</td>
+<td>Totals must be re-set</td>
+<td>Formula-driven via Type column</td>
+</tr>
+</tbody>
+</table>
+<p>A practical rule for Project 2: use the stacked or up/down-bar method for the report exhibits (full control,
+cell-linked labels), and the native chart for quick analysis.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Subtotal values</strong>: in the native chart, if the cell value of a "Set as Total" bar differs from the running
+  total of the preceding bars, the total bar is still drawn at the cell value, so the connector from the
+  previous bar does not meet it — a visible jump that is easy to miss in a busy bridge. Drive the subtotal
+  cell from the running total and add a zero-check.</li>
+<li><strong>Zero-value drivers</strong> still occupy a category slot; drop or group them.</li>
+<li><strong>Label signs</strong>: decreases should display with a minus sign or parentheses; the stacked method shows absolute
+  heights, so labels must come from a signed label column.</li>
+<li><strong>Copying to PowerPoint</strong>: paste as linked chart or picture consistently; native waterfalls pasted into older
+  PowerPoint builds may not render.</li>
+<li><strong>Vertical vs horizontal bridges</strong>: IBCS recommends horizontal waterfalls for structural (line-item) bridges
+  with long labels; Excel's native chart is vertical only, whereas a stacked <em>bar</em> workaround can be horizontal.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Native waterfall: insert, then Set as Total for start, subtotals and end; fast and sign-aware.</li>
+<li>Its limitations are compatibility, cell-linked labels, and manual total settings.</li>
+<li>The stacked workaround uses an invisible Base = MIN(cumulative before, after), plus Up, Down and Total series.</li>
+<li>For paths crossing zero, use up/down bars on two hidden line series.</li>
+<li>Drive every helper column by formula from a Type column so rows can be added safely.</li>
+<li>Labels for decreases must come from a signed label column.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-helper-table-build-l2">Q1. Helper table build [L2]</h3>
+<p>Build the full Base/Up/Down/Total helper table for this net-debt walk (₹ crore): Opening net debt 450;
+EBITDA −620; working capital increase +140; capex +310; dividends +180; lease payments +60; tax paid +95;
+Closing net debt (total). State whether the cumulative path crosses zero and, if so, which construction you
+would use.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> In a net-debt walk, cash generation reduces net debt, so check the sign convention before computing the cumulative.</p>
+</blockquote>
+<h3 id="q2-native-chart-anomaly-l1">Q2. Native chart anomaly [L1]</h3>
+<p>In a native waterfall, the "Gross profit FY25" subtotal bar shows ₹4,820 crore, but the connector line from
+the preceding driver bar ends at ₹4,780 crore, leaving a visible step. Explain the cause and the permanent
+fix.</p>
+<h3 id="q3-updown-bar-construction-l2">Q3. Up/down-bar construction [L2]</h3>
+<p>Describe step by step how to build a bridge from FY24 PAT of −₹35 crore to FY25 PAT of +₹48 crore with
+drivers EBITDA +110, depreciation −12, finance cost +8 and tax −23, using up/down bars on a line chart.
+Specify the start and end series values for every category.</p>
+<h3 id="q4-template-decision-l3">Q4. Template decision [L3]</h3>
+<p>Your firm's Project 2 template must open correctly for a lender using Excel 2013 and must support
+cell-linked dynamic titles. Write a short decision memo choosing the waterfall method and listing the
+controls you would add so the chart cannot silently go out of sync with the bridge calculation.</p></section>
+<nav class="pager"><a class="prev" href="S03_ROIC_vs_Revenue_Growth_Bubble_Charts_with_Median.html">← ROIC vs Revenue Growth Bubble Charts with Median Quadrants</a><a class="next" href="S05_Chart_Hygiene_for_Peer_Financial_Reports.html">Chart Hygiene for Peer Financial Reports →</a></nav>
+</main></div></body></html>

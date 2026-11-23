@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Constant vs Growing Difference: Opening Error or Flow Error · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C02_Constant_vs_Growing_Difference_Opening_Error_or.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 15</a> <span>›</span> <a href="../index.html">T4 · Balance Sheet Debugging Diagnostics</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Balance Sheet Debugging Diagnostics</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Clean_Historicals_First_Then_Find_the_First.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S01_Clean_Historicals_First_Then_Find_the_First.html">Clean Historicals First, Then Find the First Imbalanced Year</a></li><li><a href="../subtopics/S02_Reading_the_Pattern_of_the_Balance_Check_Across.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S02_Reading_the_Pattern_of_the_Balance_Check_Across.html">Reading the Pattern of the Balance Check Across Years</a></li><li><a href="../subtopics/S03_Halving_Test_for_Sign_Errors_and_Exact_Match.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S03_Halving_Test_for_Sign_Errors_and_Exact_Match.html">Halving Test for Sign Errors and Exact-Match Search for Omissions</a></li><li><a href="../subtopics/S04_Line_by_Line_ΔBS_vs_CFS_Reconciliation_Block.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S04_Line_by_Line_ΔBS_vs_CFS_Reconciliation_Block.html">Line-by-Line ΔBS vs CFS Reconciliation Block</a></li><li><a href="../subtopics/S05_Breaker_Off_Opening_Links_and_Sign_Conventions_in.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S05_Breaker_Off_Opening_Links_and_Sign_Conventions_in.html">Breaker Off, Opening Links and Sign Conventions in Corkscrews</a></li><li><a href="../subtopics/S06_Hunting_Hardcodes_with_Go_To_Special_Trace.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S06_Hunting_Hardcodes_with_Go_To_Special_Trace.html">Hunting Hardcodes with Go To Special, Trace Precedents and Inquire</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Difference_of_X_Means_Omission_2X_Means_Wrong_Sign.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C01_Difference_of_X_Means_Omission_2X_Means_Wrong_Sign.html">Difference of X Means Omission; 2X Means Wrong Sign</a></li><li><a href="C02_Constant_vs_Growing_Difference_Opening_Error_or.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C02_Constant_vs_Growing_Difference_Opening_Error_or.html">Constant vs Growing Difference: Opening Error or Flow Error</a></li><li><a href="C03_The_Cash_Check_Separating_CFS_Errors_from_BS_Link.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C03_The_Cash_Check_Separating_CFS_Errors_from_BS_Link.html">The Cash Check: Separating CFS Errors from BS Link Errors</a></li><li><a href="C04_The_Transaction_Triad_PL_CFS_and_BS_Impact.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C04_The_Transaction_Triad_PL_CFS_and_BS_Impact.html">The Transaction Triad: P&amp;L, CFS and BS Impact</a></li><li><a href="C05_Typical_Culprits_Behind_a_Balance_Sheet_Imbalance.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C05_Typical_Culprits_Behind_a_Balance_Sheet_Imbalance.html">Typical Culprits Behind a Balance Sheet Imbalance</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Constant vs Growing Difference: Opening Error or Flow Error</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Constant difference → first-year/opening balance error; growing difference → recurring flow error</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>Let \( \text{Check}_t \) be the balance-check value in forecast year \( t \), and \( e_t \) the error created by flows in year \( t \). Because the BS is cumulative:</p>
+<p>\[
+\text{Check}_t = \text{Check}_0 + \sum_{k=1}^{t} e_k
+\]</p>
+<p>where \( \text{Check}_0 \) is any error in the opening (last actual) balance sheet or opening links. Then:</p>
+<ul>
+<li><strong>Constant difference</strong> (\( \text{Check}_t = c \) for all \( t \ge 1 \)) means \( e_t = 0 \) for \( t \ge 2 \). The error is in the opening balances or a one-off first-year flow.</li>
+<li><strong>Growing difference</strong> (\( \text{Check}_t \) rising each year) means \( e_t \neq 0 \) every year. The error is a recurring flow: a line missing or mis-signed in every year's CFS or schedule.</li>
+</ul>
+<h2 id="explanation">Explanation</h2>
+<p>The BS shows stocks and the CFS shows flows. A wrong opening balance (for example, the FY26E opening term loan typed as 500 when FY25A closing is 514) creates one discrepancy. Every later year rolls forward from the wrong number, so the discrepancy is carried unchanged. The flows are all correct, so nothing adds to it. The check is flat.</p>
+<p>A recurring flow error adds something every year. If the annual ESOP charge of 4 is never added back in CFO, cash is understated by 4 in FY26E, by 8 in FY27E and so on. The check grows linearly. If the omitted item grows with a driver (receivables movement, ΔDTL), the yearly error \( e_t \) grows too, and the check accelerates.</p>
+<p>Refinements:</p>
+<ul>
+<li><strong>Constant from a later year</strong> (0, 0, 9, 9, 9): one-off flow in the first year it appears, such as a bullet repayment, a disposal, a CWIP capitalisation or an equity raise.</li>
+<li><strong>Growing from a later year:</strong> a recurring item that starts mid-forecast, such as a new loan's repayments, a new lease or the first year tax losses are used.</li>
+<li><strong>Step changes in growth:</strong> two recurring errors with different start years, or one recurring and one one-off error.</li>
+<li><strong>Decreasing differences:</strong> a recurring error that reverses, for example a timing difference unwinding or working capital releasing in a downturn with a sign error.</li>
+</ul>
+<p>Use the Δ check row (\( e_t = \text{Check}_t - \text{Check}_{t-1} \)) to read the pattern directly. A constant check has a Δ row of (c, 0, 0, 0). A linear check has a flat Δ row.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Two models for Godavari Paper Ltd (₹ crore):</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>FY26E</th>
+<th>FY27E</th>
+<th>FY28E</th>
+<th>FY29E</th>
+<th>FY30E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model A check</td>
+<td>14.0</td>
+<td>14.0</td>
+<td>14.0</td>
+<td>14.0</td>
+<td>14.0</td>
+</tr>
+<tr>
+<td>Model B check</td>
+<td>3.5</td>
+<td>7.0</td>
+<td>10.5</td>
+<td>14.0</td>
+<td>17.5</td>
+</tr>
+</tbody>
+</table>
+<p>Checks use the convention Assets − Liabilities − Equity.</p>
+<p>Model A: look at opening links and FY26E one-off items. The cause was a CFS opening cash of 196, typed from a draft annual report, while the final FY25A BS cash is 182. All other schedules open from the final FY25A balances. BS cash, linked from the CFS closing, is therefore 14 too high in FY26E. Every later year rolls forward from that overstated figure while all flows are correct, so the check stays at +14.</p>
+<p>Model B: look for a recurring flat item of 3.5. The cause was the principal repayment of a lease, 3.5 per year, which reduced the lease liability on the BS but was never deducted in CFF. Cash is overstated by 3.5 more each year, so the check grows by 3.5 every year. If your model's check shows −3.5, −7.0 for the same error, its convention is L + E − A. Always confirm the convention before reading the direction.</p>
+<h2 id="connections">Connections</h2>
+<p>This rule underpins s02 (pattern reading) and directs where s05 looks (opening links for constant errors, flow lines and sign conventions for growing ones). It pairs with c01 (size: X or 2X) to name the line, and with c03 (cash check) to decide whether the error is in the CFS or on the BS. It also links to s01: a constant difference that equals the FY25A check is a historical input error. In Topic 5 stress testing, errors often appear as growing differences because stress inputs make dormant flows (revolver, losses) active in later years.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-classify-and-hypothesise-l1">Q1. Classify and hypothesise [L1]</h3>
+<p>For each check row (A − L − E, FY26E–FY30E), state whether it indicates an opening, one-off, recurring flat or recurring growing error, and give one specific example of a cause. (a) −22, −22, −22, −22, −22. (b) 0, 0, 0, 12, 12. (c) 2, 4, 6, 8, 10. (d) 1.0, 2.2, 3.6, 5.3, 7.3. (e) 0, 5, 10, 10, 10.</p>
+<h3 id="q2-two-errors-in-one-row-l2">Q2. Two errors in one row [L2]</h3>
+<p>The check row is 9.0, 13.5, 18.0, 22.5, 27.0. (a) Compute the Δ check row and decompose the check into an opening/one-off component and a recurring component. (b) Propose a cause for each component consistent with a model that has a new ₹45 crore 10-year lease starting in FY26E and an opening DTL hardcoded from a draft annual report.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> The recurring component is the flat part of the Δ row.</p>
+</blockquote>
+<h3 id="q3-explaining-to-a-reviewer-l2">Q3. Explaining to a reviewer [L2]</h3>
+<p>In two or three sentences each, explain to a non-modeller reviewer (a) why an opening error produces a constant check, and (b) why an omitted recurring non-cash expense produces a check that grows every year. Use a simple numerical example in each answer.</p></section>
+<nav class="pager"><a class="prev" href="C01_Difference_of_X_Means_Omission_2X_Means_Wrong_Sign.html">← Difference of X Means Omission; 2X Means Wrong Sign</a><a class="next" href="C03_The_Cash_Check_Separating_CFS_Errors_from_BS_Link.html">The Cash Check: Separating CFS Errors from BS Link Errors →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flex Testing: Stressing Inputs to Extremes · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/concepts/C04_Flex_Testing_Stressing_Inputs_to_Extremes.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 6</a> <span>›</span> <a href="../../index.html">Week 23</a> <span>›</span> <a href="../index.html">T2 · Model Audit and QA Checklist</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Model Audit and QA Checklist</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Modelling_Standards_FAST_ICAEW_Code_and_One.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/subtopics/S01_Modelling_Standards_FAST_ICAEW_Code_and_One.html">Modelling Standards: FAST, ICAEW Code and One Formula per Row</a></li><li><a href="../subtopics/S02_Integrity_Checks_Balance_Cash_Roll_Forwards_and.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/subtopics/S02_Integrity_Checks_Balance_Cash_Roll_Forwards_and.html">Integrity Checks: Balance, Cash, Roll-Forwards and Signs</a></li><li><a href="../subtopics/S03_Error_Detection_Hard_Codes_Broken_Links_REF.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/subtopics/S03_Error_Detection_Hard_Codes_Broken_Links_REF.html">Error Detection: Hard-Codes, Broken Links, #REF!, IFERROR, Circularity</a></li><li><a href="../subtopics/S04_Excel_Audit_Toolkit_Tracing_Evaluate_Go_To_Special.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/subtopics/S04_Excel_Audit_Toolkit_Tracing_Evaluate_Go_To_Special.html">Excel Audit Toolkit: Tracing, Evaluate, Go To Special, Inquire</a></li><li><a href="../subtopics/S05_Sensitivity_Integrity_Live_Data_Tables_and_Tested.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/subtopics/S05_Sensitivity_Integrity_Live_Data_Tables_and_Tested.html">Sensitivity Integrity: Live Data Tables and Tested Scenarios</a></li><li><a href="../subtopics/S06_Presentation_Standards_Colour_Codes_Units_Freeze.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/subtopics/S06_Presentation_Standards_Colour_Codes_Units_Freeze.html">Presentation Standards: Colour Codes, Units, Freeze Panes, Grouping</a></li><li><a href="../subtopics/S07_Print_Ready_Page_Setup_for_Models_and_Output_Packs.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/subtopics/S07_Print_Ready_Page_Setup_for_Models_and_Output_Packs.html">Print-Ready Page Setup for Models and Output Packs</a></li><li><a href="../subtopics/S08_The_Executive_Cover_Sheet_Purpose_Outputs_Checks.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/subtopics/S08_The_Executive_Cover_Sheet_Purpose_Outputs_Checks.html">The Executive Cover Sheet: Purpose, Outputs, Checks, Versions</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_The_Master_Check_Aggregating_Every_Integrity_Test.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/concepts/C01_The_Master_Check_Aggregating_Every_Integrity_Test.html">The Master Check: Aggregating Every Integrity Test</a></li><li><a href="C02_Row_Consistency_Test_with_FORMULATEXT_and_R1C1.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/concepts/C02_Row_Consistency_Test_with_FORMULATEXT_and_R1C1.html">Row Consistency Test with FORMULATEXT and R1C1 View</a></li><li><a href="C03_Cash_Check_and_Retained_Earnings_Roll_Forward.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/concepts/C03_Cash_Check_and_Retained_Earnings_Roll_Forward.html">Cash Check and Retained-Earnings Roll-Forward Check</a></li><li><a href="C04_Flex_Testing_Stressing_Inputs_to_Extremes.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/concepts/C04_Flex_Testing_Stressing_Inputs_to_Extremes.html">Flex Testing: Stressing Inputs to Extremes</a></li><li><a href="C05_Calculation_Mode_Automatic_Except_for_Data_Tables.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/concepts/C05_Calculation_Mode_Automatic_Except_for_Data_Tables.html">Calculation Mode: Automatic Except for Data Tables</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Flex Testing: Stressing Inputs to Extremes</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Flex test: change key inputs to extreme values (zero revenue, 100% capex) and confirm the model stays balanced</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>A flex test applies a set of extreme input values \(x_i^{\text{ext}}\), one at a time and then in combination, and
+requires that for each test</p>
+<p>\[
+\text{Master check}\left(x_i^{\text{ext}}\right) = 0 \quad \text{and} \quad \text{Outputs move in the expected direction}
+\]</p>
+<p>where the master check is the aggregate of all integrity checks (c01) and the expected direction is defined before
+the test (e.g. higher capex leads to lower FCFF in the year, higher PPE and higher later depreciation). Typical extremes
+are zero revenue, revenue growth of −50% or +100%, capex at 100% of revenue, a tax rate of 0% or 50%, a debt
+repayment greater than the outstanding balance, a WACC equal to g + 0.1%, and a commissioning delay to beyond the
+forecast horizon.</p>
+<h2 id="explanation">Explanation</h2>
+<p>Normal inputs exercise only the "comfortable" paths through the logic. Extreme inputs force the model through
+the edges: negative EBIT (does tax go negative, or is there a loss carry-forward?), negative cash (does the revolver
+draw, or does cash just go negative?), division by zero in margins and days, and <code>MIN</code>/<code>MAX</code> caps that never bind
+in the base case. A model that stays balanced and behaves sensibly at the extremes is structurally sound. A
+model that breaks reveals a hidden assumption.</p>
+<p>What each classic test reveals:</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>What should happen</th>
+<th>What breaks in weak models</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Zero revenue</td>
+<td>EBITDA = −fixed costs; tax nil (or DTA), cash falls, revolver draws; checks pass</td>
+<td>Days calculations <code>#DIV/0!</code>; tax goes negative as a cash refund; masked <code>IFERROR</code> hides failure</td>
+</tr>
+<tr>
+<td>Capex = 100% of revenue</td>
+<td>FCFF deeply negative; PPE and depreciation rise; funding gap shows</td>
+<td>CFS uses capitalisations not capex; cash goes negative without funding; balance breaks</td>
+</tr>
+<tr>
+<td>Revenue growth +100%</td>
+<td>WC investment spikes; capacity cap binds if modelled</td>
+<td>Utilisation above 100% not capped</td>
+</tr>
+<tr>
+<td>Repayment &gt; balance</td>
+<td>Debt floors at zero (<code>MIN</code> logic)</td>
+<td>Negative debt, i.e. the company "lends" to itself</td>
+</tr>
+<tr>
+<td>Tax rate 0%</td>
+<td>NOPAT = EBIT</td>
+<td>Hard-coded 25.17% somewhere ignores the input</td>
+</tr>
+<tr>
+<td>WACC → g</td>
+<td>TV explodes; input validation flag trips</td>
+<td>No guard: negative or infinite TV</td>
+</tr>
+<tr>
+<td>All scenarios</td>
+<td>Checks pass in each</td>
+<td>Scenario-specific drivers not wired (s05)</td>
+</tr>
+</tbody>
+</table>
+<p>Process:</p>
+<ol>
+<li>Save a copy, or use a "flex" scenario, so base inputs are not overwritten.</li>
+<li>Record expected outcomes before each test.</li>
+<li>Change one input, press F9, and record the master check and key outputs.</li>
+<li>Restore the input and confirm the outputs return exactly to base (a reversibility test).</li>
+<li>Log the results in a flex test table on the Checks sheet or in the QA log, and fix any failures.</li>
+</ol>
+<p>Flex tests are a model-risk control in their own right. They are part of the QA checklist (week cross-cutting
+exercise) and an expected spreadsheet control under ICFR (topic related item).</p>
+<h2 id="illustration">Illustration</h2>
+<p>Flex test log extract (base value per share ₹612):</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Input change</th>
+<th>Expected</th>
+<th>Master check</th>
+<th>Observed</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F1</td>
+<td>FY28 revenue growth −100% (zero revenue)</td>
+<td>Loss, cash falls, revolver draws</td>
+<td>ERROR (BS −38.6 FY28)</td>
+<td>Tax row shows −₹38.6 crore (refund) booked as a reduction in current tax payable but not in the CFS</td>
+<td>Fail → fixed by <code>MAX(0, …)</code> with a loss carry-forward row</td>
+</tr>
+<tr>
+<td>F2</td>
+<td>Capex 100% of revenue FY28</td>
+<td>FCFF negative, PPE up</td>
+<td>OK</td>
+<td>Cash −₹1,950 crore (no revolver)</td>
+<td>Fail (logic) → add minimum cash and revolver</td>
+</tr>
+<tr>
+<td>F3</td>
+<td>Tax rate 0%</td>
+<td>NOPAT = EBIT</td>
+<td>OK</td>
+<td>NOPAT &lt; EBIT on DCF</td>
+<td>Fail → DCF had hard-coded 0.2517</td>
+</tr>
+<tr>
+<td>F4</td>
+<td>Restore all inputs</td>
+<td>Value per share ₹612</td>
+<td>OK</td>
+<td>₹612</td>
+<td>Pass</td>
+</tr>
+</tbody>
+</table>
+<p>Each failure exposed a different weakness: an unguarded tax formula, a missing funding mechanism and a hard-code.</p>
+<h2 id="connections">Connections</h2>
+<p>Flex tests use the master check (c01) and the integrity checks (s02, c03) as the pass criteria, and they find the
+error classes of s03 (hard-codes, masked <code>IFERROR</code>). They extend the scenario testing of s05 to the extremes.
+In the Week 23 t1 capstone (s07, block D2-5) they are part of the QA pass before freezing. The revolver and minimum
+cash logic they often reveal as missing is covered in Week 15.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-design-a-flex-test-set-l2">Q1. Design a flex test set [L2]</h3>
+<p>For a capstone with a revenue build (volume × realisation), cost build, PPE, WC, leases, debt (two term loans, no
+revolver), tax and DCF, design ten flex tests with the expected result for each and the check that should
+detect failure.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Aim each test at a specific formula edge (division, floor, cap, sign).</p>
+</blockquote>
+<h3 id="q2-interpreting-a-failure-l2">Q2. Interpreting a failure [L2]</h3>
+<p>When you set FY29 volume to zero, the balance check stays at 0, but receivable days on the WC sheet show <code>#DIV/0!</code> and
+the Cover still says "OK". Explain what this reveals about the model's check design and how to fix both problems.</p>
+<h3 id="q3-reversibility-l1">Q3. Reversibility [L1]</h3>
+<p>Explain why restoring inputs after a flex test might not return the model exactly to base values, giving two
+possible causes, and how you would detect them.</p></section>
+<nav class="pager"><a class="prev" href="C03_Cash_Check_and_Retained_Earnings_Roll_Forward.html">← Cash Check and Retained-Earnings Roll-Forward Check</a><a class="next" href="C05_Calculation_Mode_Automatic_Except_for_Data_Tables.html">Calculation Mode: Automatic Except for Data Tables →</a></nav>
+</main></div></body></html>

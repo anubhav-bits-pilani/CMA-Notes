@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Balance Sheet Debugging Diagnostics · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/index.html" data-kind="topic">
+<header class="top"><a class="brand" href="../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../index.html">Home</a> <span>›</span> <a href="../../index.html">Phase 4</a> <span>›</span> <a href="../index.html">Week 15</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">Week 15</a></div><ul class="side-links"><li><a href="../T1_Linking_the_Income_Statement/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T1_Linking_the_Income_Statement/index.html">T1 · Linking the Income Statement</a></li><li><a href="../T2_Building_the_Indirect_Cash_Flow/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T2_Building_the_Indirect_Cash_Flow/index.html">T2 · Building the Indirect Cash Flow Statement</a></li><li><a href="../T3_Linking_the_Balance_Sheet/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T3_Linking_the_Balance_Sheet/index.html">T3 · Linking the Balance Sheet</a></li><li><a href="index.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/index.html">T4 · Balance Sheet Debugging Diagnostics</a></li><li><a href="../T5_Dynamic_Stress_Testing/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/index.html">T5 · Dynamic Stress Testing</a></li><li><a href="../T6_Finalizing_Project_4_Model/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T6_Finalizing_Project_4_Model/index.html">T6 · Finalizing Project 4 Model</a></li></ul></aside>
+<main class="content">
+<div class="kind">Topic</div>
+<h1>Balance Sheet Debugging Diagnostics</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<section class="index"><h2>Notes in this topic</h2><div class="cols"><div><h3>Subtopics</h3><ul class="links num"><li><a href="subtopics/S01_Clean_Historicals_First_Then_Find_the_First.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S01_Clean_Historicals_First_Then_Find_the_First.html">S01 · Clean Historicals First, Then Find the First Imbalanced Year</a></li><li><a href="subtopics/S02_Reading_the_Pattern_of_the_Balance_Check_Across.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S02_Reading_the_Pattern_of_the_Balance_Check_Across.html">S02 · Reading the Pattern of the Balance Check Across Years</a></li><li><a href="subtopics/S03_Halving_Test_for_Sign_Errors_and_Exact_Match.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S03_Halving_Test_for_Sign_Errors_and_Exact_Match.html">S03 · Halving Test for Sign Errors and Exact-Match Search for Omissions</a></li><li><a href="subtopics/S04_Line_by_Line_ΔBS_vs_CFS_Reconciliation_Block.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S04_Line_by_Line_ΔBS_vs_CFS_Reconciliation_Block.html">S04 · Line-by-Line ΔBS vs CFS Reconciliation Block</a></li><li><a href="subtopics/S05_Breaker_Off_Opening_Links_and_Sign_Conventions_in.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S05_Breaker_Off_Opening_Links_and_Sign_Conventions_in.html">S05 · Breaker Off, Opening Links and Sign Conventions in Corkscrews</a></li><li><a href="subtopics/S06_Hunting_Hardcodes_with_Go_To_Special_Trace.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S06_Hunting_Hardcodes_with_Go_To_Special_Trace.html">S06 · Hunting Hardcodes with Go To Special, Trace Precedents and Inquire</a></li></ul></div><div><h3>Key concepts & formulas</h3><ul class="links num"><li><a href="concepts/C01_Difference_of_X_Means_Omission_2X_Means_Wrong_Sign.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C01_Difference_of_X_Means_Omission_2X_Means_Wrong_Sign.html">C01 · Difference of X Means Omission; 2X Means Wrong Sign</a></li><li><a href="concepts/C02_Constant_vs_Growing_Difference_Opening_Error_or.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C02_Constant_vs_Growing_Difference_Opening_Error_or.html">C02 · Constant vs Growing Difference: Opening Error or Flow Error</a></li><li><a href="concepts/C03_The_Cash_Check_Separating_CFS_Errors_from_BS_Link.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C03_The_Cash_Check_Separating_CFS_Errors_from_BS_Link.html">C03 · The Cash Check: Separating CFS Errors from BS Link Errors</a></li><li><a href="concepts/C04_The_Transaction_Triad_PL_CFS_and_BS_Impact.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C04_The_Transaction_Triad_PL_CFS_and_BS_Impact.html">C04 · The Transaction Triad: P&amp;L, CFS and BS Impact</a></li><li><a href="concepts/C05_Typical_Culprits_Behind_a_Balance_Sheet_Imbalance.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C05_Typical_Culprits_Behind_a_Balance_Sheet_Imbalance.html">C05 · Typical Culprits Behind a Balance Sheet Imbalance</a></li></ul></div></div></section><article class="note"><blockquote>
+<p><strong>Roadmap topic:</strong> Balance Sheet Debugging Diagnostics: Systematic troubleshooting when Assets ≠ Liabilities + Equity (sign errors on ΔNWC, omitted non-cash items, broken corkscrew links)</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>An integrated three-statement model balances only when every Balance Sheet movement has exactly one counterpart, either a cash flow line in the CFS or a non-cash entry that runs through the P&amp;L or straight to equity. When the check row shows anything other than 0.00, the model is telling you that one or more movements has no counterpart, the wrong counterpart, or a counterpart with the wrong sign. Debugging is the disciplined process of turning that single number into the exact cell that caused it. It is an audit skill applied to a spreadsheet. You start from the evidence (the size and pattern of the difference), form a hypothesis (omission, sign flip, opening-balance break), and test it against the population (every BS line and every CFS line), the way you would vouch and trace an imbalance in a trial balance during finalisation.</p>
+<p>For FP&amp;A and modelling roles this skill matters more than speed of building. Interviewers and model reviewers hand candidates broken models because the time it takes you to find a 2X sign error shows whether you understand how the statements connect. At work, a forecast that stopped balancing after a scenario change, or a budget model inherited from a predecessor, needs the same systematic approach. Random clicking through 40 tabs does not work. The Week 15 Saturday assessment (six hidden sign and linking errors in 75 minutes) is built to reward method over intuition.</p>
+<p>The subtopics form a sequence you should follow on every imbalance. First confirm that the historicals balance, then find the <strong>first</strong> forecast year that breaks (s01). Read the <strong>pattern</strong> of the difference across years to classify the error as an opening-balance or a recurring-flow problem (s02, c02). Use the <strong>size</strong> of the difference: an exact match points to an omission and a halved match points to a sign error (s03, c01). Use the <strong>cash check</strong> to decide whether the CFS or the BS link is wrong (c03). If those quick tests fail, build a <strong>line-by-line ΔBS vs CFS reconciliation</strong> that pinpoints the line (s04). Before any of this, switch the <strong>circularity breaker off</strong> and verify the corkscrew opening links and sign conventions (s05). Finally, hunt down <strong>hardcodes</strong> and broken links with Go To Special, Trace Precedents and Inquire (s06). The concepts give you the vocabulary for this: the transaction triad (c04) and the list of typical culprits (c05) you should check first.</p>
+<p>The aim is not just a zero check row. It is a zero check row for the right reason, with no plug, rounding line or suppressed difference left in the model.</p>
+<h2 id="concept-map">Concept map</h2>
+<table>
+<thead>
+<tr>
+<th>Subtopic / concept</th>
+<th>Role in the topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s01 Confirm historicals balance, then first imbalanced forecast year</td>
+<td>Establishes a clean baseline and the starting point for the search</td>
+</tr>
+<tr>
+<td>s02 Pattern reading across years</td>
+<td>Classifies the error as opening, recurring, growing or oscillating</td>
+</tr>
+<tr>
+<td>s03 Halving test and exact-match search</td>
+<td>Uses the size of the difference to name candidate lines</td>
+</tr>
+<tr>
+<td>s04 Line-by-line ΔBS vs CFS reconciliation block</td>
+<td>Systematic fallback that isolates the line when quick tests fail</td>
+</tr>
+<tr>
+<td>s05 Breaker off; corkscrew opening links and sign conventions</td>
+<td>Removes circular noise and checks the most common structural breaks</td>
+</tr>
+<tr>
+<td>s06 Hardcode hunting with Go To Special, Trace Precedents, Inquire</td>
+<td>Finds pasted values and broken references that cause silent errors</td>
+</tr>
+<tr>
+<td>c01 Difference = X (omitted) vs 2X (wrong sign)</td>
+<td>Core arithmetic rule behind the halving test</td>
+</tr>
+<tr>
+<td>c02 Constant vs growing difference</td>
+<td>Diagnostic rule linking pattern to error type</td>
+</tr>
+<tr>
+<td>c03 Cash check: CFS closing cash − BS cash</td>
+<td>Separates CFS logic errors from BS link errors</td>
+</tr>
+<tr>
+<td>c04 Transaction triad: P&amp;L, CFS, BS impact</td>
+<td>The completeness test every transaction must pass</td>
+</tr>
+<tr>
+<td>c05 Typical culprits</td>
+<td>Prioritised list of where imbalances usually sit</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-concepts-to-study">Related concepts to study</h2>
+<h3 id="week-13-formula-integrity">Week 13 formula integrity</h3>
+<p><em>→ Week 13 (w13_t2): formula integrity prevents most imbalances</em></p>
+<p>Week 13 set the build standards: one formula per row copied consistently across the timeline, inputs only on the inputs sheet in blue font, no hardcodes inside formulas, consistent sign convention, and named ranges for key switches. Most imbalances you will debug this week break one of these rules. A typical case is a row where FY28 was overtyped with a number, a formula that adds <code>+15</code> to "fix" an earlier problem, or a column that references the wrong year because someone inserted a column without copying across. If you apply the Week 13 discipline during the build, debugging shrinks from hours to minutes. If you inherit a model, run the integrity checks first (row-consistency test, hardcode scan, colour audit). They often expose the culprit before you start any accounting analysis.</p>
+<h3 id="double-entry-fundamentals">Double-entry fundamentals</h3>
+<p><em>→ Phase 1 (W1–4): double-entry fundamentals</em></p>
+<p>The balance check is the accounting equation applied to forecast stocks. Each forecast year, closing equity equals opening equity plus profit plus capital raised less distributions. Closing assets and liabilities equal opening balances plus movements. Cash is the residual that the CFS explains. Every journal has a debit and a credit, and in a model every BS movement must have a counterpart in cash (CFS) or in another non-cash account (P&amp;L non-cash item, equity reserve, or a reclassification within the BS). Your trial-balance experience transfers directly. A model that does not balance is a TB with a one-sided entry, and the size of the difference tells you the entry, just as a TB difference divisible by 9 hints at a transposition. Thinking "what is the other leg?" is the basis of every diagnostic in this topic.</p>
+<h3 id="excel-auditing-tools-and-inquire">Excel auditing tools and Inquire</h3>
+<p><em>→ Phase 3 (W9–12): Excel auditing tools and Inquire add-in</em></p>
+<p>Phase 3 introduced Excel's Formula Auditing group (Trace Precedents/Dependents, Evaluate Formula, Watch Window, Show Formulas, Error Checking) and the Inquire add-in (Workbook Analysis, Cell Relationships, Compare Files). In debugging these become your vouching tools. Trace Precedents tells you where the CFS ΔDTL line actually comes from. Evaluate Formula steps through a nested <code>IF</code> that flips a sign. The Watch Window keeps the check row visible while you edit a schedule on another tab. Inquire's Workbook Analysis lists hardcoded constants in formulas, formulas referencing empty cells and inconsistent formulas across a whole workbook in one report. Spreadsheet Compare shows exactly what changed between version 7 (balanced) and version 8 (broken). Knowing these tools well saves time in the Saturday test.</p>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<h3 id="debugging-with-circularity-on">Debugging with circularity on</h3>
+<p><em>Debugging with circularity on, so errors oscillate across iterations</em></p>
+<p><strong>The mistake:</strong> the modeller leaves iterative calculation on and interest linked to average balances while hunting the imbalance. Each edit triggers up to 100 iterations, the difference changes after each recalculation, and sometimes the model blows up to <code>#NUM!</code> or <code>#REF!</code> that spreads through every statement. <strong>Why it happens:</strong> the breaker switch is buried on the inputs sheet, or the model has no breaker at all. <strong>Correct treatment:</strong> set the circularity switch to 0 so interest is computed on opening balances (or set to zero), confirm the check is stable, debug, then switch back and confirm it still balances. If the model balances with the breaker off but not on, the error is in the interest or revolver block itself. <strong>Detection in review:</strong> check that a breaker exists, that it is named (for example <code>Circ_Switch</code>), and that the checks dashboard shows the circularity convergence check.</p>
+<h3 id="plugs-and-rounding-lines">Plugs and rounding lines</h3>
+<p><em>Using rounding lines or plugs instead of fixing root cause</em></p>
+<p><strong>The mistake:</strong> adding a "balancing figure", "other adjustments" or "rounding difference" line on the BS or CFS equal to the check-row difference, or computing cash as total liabilities and equity minus other assets. <strong>Why it happens:</strong> deadline pressure, and the false belief that a small difference is harmless. <strong>Correct treatment:</strong> a properly linked model needs no rounding line because the check is computed on unrounded values. Display rounding never creates an imbalance in the underlying cells. Delete the plug and follow the diagnostic sequence. A plug hides the error in the current scenario, and the error comes back, usually larger, under Bull or Bear inputs. <strong>Detection in review:</strong> search for labels like "balancing", "plug", "adjustment", "rounding", and for any BS line whose formula references the check row or the total of the other side. Also test scenarios: a plugged model often "balances" only in the case it was plugged for.</p>
+<h3 id="ignoring-small-differences-and-starting-in-later-years">Ignoring small differences and starting in later years</h3>
+<p><em>Ignoring small differences that signal real omissions; debugging later years first</em></p>
+<p><strong>The mistake:</strong> dismissing a difference of ₹0.8 crore on a ₹12,000 crore balance sheet as immaterial, or opening FY30 because the difference there is largest. <strong>Why it happens:</strong> audit materiality instincts carried over wrongly. In a model, materiality does not apply to the balance check because any non-zero value is a logic error. Large later-year numbers also look more urgent. <strong>Correct treatment:</strong> a ₹0.8 crore difference is often exactly one ESOP charge, one ΔDTL or one dividend-payable movement, and the next scenario can make it ₹80 crore. Always go to the <strong>first</strong> forecast year with a non-zero check, because later years contain the first-year error compounded with any new ones. <strong>Detection in review:</strong> use a check tolerance of 0.001 (not 1 or 0.5), and add a "first year of imbalance" output on the checks dashboard.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-diagnosing-a-five-year-check-row-l2">Q1. Diagnosing a five-year check row [L2]</h3>
+<p>Arjun Polymers Ltd (NSE-listed, ₹ crore) has FY25A balancing perfectly. The BS check row (Assets − Liabilities − Equity) for FY26E–FY30E reads: 0.00, 6.40, 6.40, 6.40, 6.40. The CFS closing cash equals BS cash in every year. In FY27E the model introduces a new ESOP scheme with a share-based payment expense of ₹3.20 crore per year, a new 5-year finance lease with ROU additions of ₹6.40 crore in FY27E, and a final dividend of ₹12.00 crore declared in FY27E and paid in FY28E. (a) Classify the pattern and state what it implies about the timing and nature of the error. (b) Use the size of the difference to shortlist candidate items and state which test (exact match or halving) points to each. (c) Describe the two specific cells you would inspect first and what you expect to find.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> A constant difference that starts in one year and never grows suggests a one-time movement, so check which of the three items is genuinely one-off.</p>
+</blockquote>
+<h3 id="q2-building-the-reconciliation-block-l3">Q2. Building the reconciliation block [L3]</h3>
+<p>For a model with these FY27E movements (₹ crore): trade receivables up 42, inventory up 18, trade payables up 25, net PPE up 60 after depreciation of 85, DTL up 4, other equity up 96 (PAT 140, dividends 44), borrowings down 30, cash up 8. The CFS shows: PAT 140, D&amp;A 85, ΔDTL 0, ΔNWC −35, capex −145, debt repayment −30, dividends −44, net change in cash −29. (a) Lay out a ΔBS vs CFS reconciliation block with columns for BS line, ΔBS, cash-flow sign convention, CFS amount, and difference. (b) Identify every line with a non-zero difference and the nature of each error. (c) State the expected BS check value before fixing and confirm it equals the sum of your differences.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Convert each BS movement to its cash effect first (asset increase is negative) and compare it with the CFS line that should explain it.</p>
+</blockquote>
+<h3 id="q3-oscillating-check-after-scenario-toggle-l3">Q3. Oscillating check after scenario toggle [L3]</h3>
+<p>A model balances in Base. After switching to Bear, the check row reads FY26E 0.00, FY27E −2.15, FY28E 3.90, FY29E −1.12, FY30E 4.70, and the numbers change slightly each time you press F9. Iterative calculation is on (100 iterations, 0.001 max change) and interest is on average debt including a revolver. (a) Explain why the check is moving on F9 and what you must do before debugging. (b) After you switch the breaker off, the check row becomes 0.00, −3.00, −3.00, −3.00, −3.00. Explain what this new pattern tells you. (c) List the three most likely culprits in a Bear case revolver/interest block and how you would test each.</p>
+<h3 id="q4-interview-walkthrough-the-six-error-model-l3">Q4. Interview walkthrough: the six-error model [L3]</h3>
+<p>You receive a model with these symptoms: historical FY25A check = 1.50; FY26E–FY30E check = 1.50, 19.50, 37.50, 55.50, 73.50; cash check is 0.00 for FY26E and then 18.00 in every year from FY27E. (a) Explain why you must fix FY25A first and where the 1.50 typically comes from in historical input sheets. (b) Strip out the FY25A effect and analyse the residual pattern (level, growth, year-on-year increment). (c) Use the cash check to say whether the residual error is in the CFS or in BS linking. (d) Propose a debugging order and a timebox for each step consistent with a 75-minute test window.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Take the first difference of the check row after removing the opening error, and compare it with the cash check series.</p>
+</blockquote></section>
+<nav class="pager"><a class="prev" href="../T3_Linking_the_Balance_Sheet/concepts/C05_Revolver_Draw_Prevents_Negative_Cash_Flag_Any.html">← Revolver Draw Prevents Negative Cash; Flag Any Residual</a><a class="next" href="subtopics/S01_Clean_Historicals_First_Then_Find_the_First.html">Clean Historicals First, Then Find the First Imbalanced Year →</a></nav>
+</main></div></body></html>

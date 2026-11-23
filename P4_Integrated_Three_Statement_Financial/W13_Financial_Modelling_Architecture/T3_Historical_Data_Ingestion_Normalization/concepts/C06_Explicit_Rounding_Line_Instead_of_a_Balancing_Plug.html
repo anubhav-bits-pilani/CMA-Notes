@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explicit Rounding Line Instead of a Balancing Plug · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C06_Explicit_Rounding_Line_Instead_of_a_Balancing_Plug.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T3 · Historical Data Ingestion &amp;…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Historical Data Ingestion &amp; Normalization</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Sources_of_Historical_Data_for_Indian_Listed.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S01_Sources_of_Historical_Data_for_Indian_Listed.html">Sources of Historical Data for Indian Listed Companies</a></li><li><a href="../subtopics/S02_Mapping_Schedule_III_Line_Items_to_a_Model_Chart.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S02_Mapping_Schedule_III_Line_Items_to_a_Model_Chart.html">Mapping Schedule III Line Items to a Model Chart of Accounts</a></li><li><a href="../subtopics/S03_Consolidated_vs_Standalone_Basis_NCI_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S03_Consolidated_vs_Standalone_Basis_NCI_and.html">Consolidated vs Standalone Basis, NCI and Associates</a></li><li><a href="../subtopics/S04_EBITDA_Normalisation_Exceptional_Other_Income.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S04_EBITDA_Normalisation_Exceptional_Other_Income.html">EBITDA Normalisation: Exceptional, Other Income, Leases, ESOPs, Forex</a></li><li><a href="../subtopics/S05_Restatements_Discontinued_Operations_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S05_Restatements_Discontinued_Operations_and.html">Restatements, Discontinued Operations and Acquisitions</a></li><li><a href="../subtopics/S06_Annual_Balance_Checks_and_CFS_to_BS_Cash.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S06_Annual_Balance_Checks_and_CFS_to_BS_Cash.html">Annual Balance Checks and CFS-to-BS Cash Reconciliation</a></li><li><a href="../subtopics/S07_Deriving_Historical_Ratios_as_Forecast_Anchors.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S07_Deriving_Historical_Ratios_as_Forecast_Anchors.html">Deriving Historical Ratios as Forecast Anchors</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Historical_Balance_Check_Assets_Equal_Equity_Plus.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C01_Historical_Balance_Check_Assets_Equal_Equity_Plus.html">Historical Balance Check: Assets Equal Equity Plus Liabilities</a></li><li><a href="C02_CFS_Closing_Cash_to_Balance_Sheet_Cash.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C02_CFS_Closing_Cash_to_Balance_Sheet_Cash.html">CFS Closing Cash to Balance Sheet Cash Reconciliation</a></li><li><a href="C03_Adjusted_EBITDA_Bridge_from_PBT.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C03_Adjusted_EBITDA_Bridge_from_PBT.html">Adjusted EBITDA Bridge from PBT</a></li><li><a href="C04_Effective_Tax_Rate_with_Current_and_Deferred_Split.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C04_Effective_Tax_Rate_with_Current_and_Deferred_Split.html">Effective Tax Rate with Current and Deferred Split</a></li><li><a href="C05_Operating_Net_Working_Capital_What_to_Exclude.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C05_Operating_Net_Working_Capital_What_to_Exclude.html">Operating Net Working Capital: What to Exclude</a></li><li><a href="C06_Explicit_Rounding_Line_Instead_of_a_Balancing_Plug.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C06_Explicit_Rounding_Line_Instead_of_a_Balancing_Plug.html">Explicit Rounding Line Instead of a Balancing Plug</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Explicit Rounding Line Instead of a Balancing Plug</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Rounding differences shown on an explicit, small "rounding" line, never absorbed into a balancing plug</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>When published statements are rounded (e.g., to ₹ crore with one or two decimals) and their components do not sum exactly to reported totals, the difference is recorded on a dedicated line:</p>
+<p>\[
+R_t = \text{Reported total}_t - \sum_i \text{Mapped components}_{i,t}
+\]</p>
+<p>with a validation rule:</p>
+<p>\[
+\lvert R_t \rvert \le \varepsilon
+\]</p>
+<p>where \( \varepsilon \) is a small materiality threshold related to the reporting precision (e.g., ₹0.05 crore when statements are in ₹ crore with two decimals, or a few units of the last reported digit). Any difference larger than \( \varepsilon \) is a mapping error to be fixed, not a rounding item. The rounding line is labelled, visible and flagged by a check; it never sits inside an operating line such as "other liabilities".</p>
+<h2 id="explanation">Explanation</h2>
+<p><strong>Why rounding differences arise.</strong> Companies round each line independently; totals are rounded from unrounded sums. Statements in ₹ crore with two decimals commonly show 0.01–0.03 differences; those rounded to whole crore can show 1–2. XBRL values may carry more precision than the PDF.</p>
+<p><strong>Why a plug is dangerous.</strong> A balancing plug — forcing assets to equal liabilities by adjusting "other current liabilities" — hides mapping errors of any size (topic pitfall). A missed ₹140 crore borrowing line would be absorbed into "other liabilities", flowing into NWC, so forecast FCFF and net debt are both wrong, and the model still balances.</p>
+<p><strong>Design:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rounding row</td>
+<td>Separate line at the bottom of the asset or liability side on Historicals, e.g., "Rounding difference (reported vs mapped)"</td>
+</tr>
+<tr>
+<td>Formula</td>
+<td>Reported total (blue, from source) − sum of mapped lines</td>
+</tr>
+<tr>
+<td>Check</td>
+<td><code>=--(ABS(Rounding_t)&gt;Rounding_Tolerance)</code> rolled into the master check</td>
+</tr>
+<tr>
+<td>Tolerance</td>
+<td>Named input (e.g., 0.05), justified by reporting precision</td>
+</tr>
+<tr>
+<td>Forecast</td>
+<td>Rounding line is zero in forecast years (or carried as a constant last-actual value only if it is in opening balances — preferably absorbed into equity/other reserves at the boundary with a note)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Where to place it.</strong> Either side of the BS (one line), or per statement for the P&amp;L and CFS. Some modellers place the BS rounding within "other equity" for the last actual year so that forecast opening balances are clean; whichever is chosen, it must be visible and small.</p>
+<p><strong>Distinguish from genuine reclassification.</strong> If a reported subtotal combines items (e.g., "other current liabilities" includes current lease liabilities in an older format), reclassify explicitly with a labelled adjustment row — that is not rounding.</p>
+<h2 id="illustration">Illustration</h2>
+<p>FY24 consolidated BS (₹ crore, reported to two decimals): reported total assets 12,846.37; sum of mapped asset lines 12,846.35 → R = 0.02, within ε = 0.05 ✓. Reported total equity and liabilities 12,846.37; mapped sum 12,706.37 → R = 140.00 ✗ — an error, not rounding. Investigation finds "Lease liabilities — current" (₹140.00 crore) shown on the face of the BS but not in the mapping table. Fix the mapping; R becomes 0.00.</p>
+<h2 id="connections">Connections</h2>
+<p>Supports the balance check (c01) and cash reconciliation (c02); mapping discipline in s02; the Checks sheet and tolerance naming in topic t1 (s06, c04). Pitfall link: forcing balance via other liabilities.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-rounding-or-error-l1">Q1. Rounding or error? [L1]</h3>
+<p>For statements reported in ₹ crore with two decimals and a tolerance of 0.05, classify each difference (reported − mapped) as rounding or error: (a) 0.01; (b) –0.03; (c) 0.09; (d) 2.40; (e) –0.05.</p>
+<h3 id="q2-remove-a-plug-l2">Q2. Remove a plug [L2]</h3>
+<p>A model's FY21–FY25 historicals balance because "Other current liabilities" is computed as total liabilities minus all other mapped liability lines. The plugged amounts are ₹212, ₹228, ₹590, ₹251 and ₹266 crore while the notes show other current liabilities of ₹210, ₹229, ₹245, ₹250 and ₹267 crore. Explain what the plug is hiding in FY23, how you would find it, and redesign the rows.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Compare plugged values with note values year by year; the outlier year points to a missing line.</p>
+</blockquote>
+<h3 id="q3-forecast-boundary-l2">Q3. Forecast boundary [L2]</h3>
+<p>Your FY25A rounding difference on the BS is ₹0.03 crore. Explain two acceptable ways to handle it at the actual/forecast boundary so that the forecast balance check is exactly zero, and which you prefer.</p></section>
+<nav class="pager"><a class="prev" href="C05_Operating_Net_Working_Capital_What_to_Exclude.html">← Operating Net Working Capital: What to Exclude</a><a class="next" href="../../T4_Granular_Revenue_Forecasting/index.html">Granular Revenue Forecasting →</a></nav>
+</main></div></body></html>

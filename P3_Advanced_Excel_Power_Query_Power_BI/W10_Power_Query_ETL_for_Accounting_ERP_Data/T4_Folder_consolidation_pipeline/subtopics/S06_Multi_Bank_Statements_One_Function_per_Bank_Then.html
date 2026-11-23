@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multi-Bank Statements: One Function per Bank, Then Table.Combine · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S06_Multi_Bank_Statements_One_Function_per_Bank_Then.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T4 · Folder consolidation pipeline</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Folder consolidation pipeline</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_FolderFiles_and_SharePointFiles_Sources_and_File.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S01_FolderFiles_and_SharePointFiles_Sources_and_File.html">Folder.Files and SharePoint.Files: Sources and File-Scope Filters</a></li><li><a href="S02_Combine_Files_Artefacts_Sample_Parameter_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S02_Combine_Files_Artefacts_Sample_Parameter_and.html">Combine Files Artefacts: Sample, Parameter and Transform Function</a></li><li><a href="S03_Writing_a_Custom_File_Cleaning_Function_by_Hand.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S03_Writing_a_Custom_File_Cleaning_Function_by_Hand.html">Writing a Custom File-Cleaning Function by Hand</a></li><li><a href="S04_Reading_Branch_and_Month_from_the_File_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S04_Reading_Branch_and_Month_from_the_File_Name.html">Reading Branch and Month from the File Name</a></li><li><a href="S05_Schema_Drift_Tolerant_Column_Selection_Across.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S05_Schema_Drift_Tolerant_Column_Selection_Across.html">Schema Drift: Tolerant Column Selection Across Branch Files</a></li><li><a href="S06_Multi_Bank_Statements_One_Function_per_Bank_Then.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S06_Multi_Bank_Statements_One_Function_per_Bank_Then.html">Multi-Bank Statements: One Function per Bank, Then Table.Combine</a></li><li><a href="S07_Monthly_Drop_In_Workflow_Archiving_and_Duplicate.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S07_Monthly_Drop_In_Workflow_Archiving_and_Duplicate.html">Monthly Drop-In Workflow, Archiving and Duplicate-File Detection</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_FolderFiles_Output_Columns_and_Which_to_Trust.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C01_FolderFiles_Output_Columns_and_Which_to_Trust.html">Folder.Files Output Columns and Which to Trust</a></li><li><a href="../concepts/C02_Filtering_by_Extension_and_Excluding_Temp_Files.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C02_Filtering_by_Extension_and_Excluding_Temp_Files.html">Filtering by Extension and Excluding Temp Files</a></li><li><a href="../concepts/C03_The_fxCleanTB_Function_Signature.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C03_The_fxCleanTB_Function_Signature.html">The fxCleanTB Function Signature</a></li><li><a href="../concepts/C04_Invoking_per_File_and_Appending_with_TableCombine.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C04_Invoking_per_File_and_Appending_with_TableCombine.html">Invoking per File and Appending with Table.Combine</a></li><li><a href="../concepts/C05_Tolerant_Column_Selection_with_MissingFieldUseNull.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C05_Tolerant_Column_Selection_with_MissingFieldUseNull.html">Tolerant Column Selection with MissingField.UseNull</a></li><li><a href="../concepts/C06_Parsing_Branch_and_Period_with_Text_Delimiter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C06_Parsing_Branch_and_Period_with_Text_Delimiter.html">Parsing Branch and Period with Text Delimiter Functions</a></li><li><a href="../concepts/C07_Guarding_the_Refresh_Against_One_Bad_File.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C07_Guarding_the_Refresh_Against_One_Bad_File.html">Guarding the Refresh Against One Bad File</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Multi-Bank Statements: One Function per Bank, Then Table.Combine</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Bank statements from banks with different layouts: one function per bank, then <code>Table.Combine</code></p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>An Indian mid-size company typically banks with three to six banks — a PSU bank for statutory payments and collections, two private banks for operating accounts, perhaps a foreign bank for forex. Each bank's net-banking CSV has a different header block, column names, date format, amount convention and footer. A bank reconciliation, cash-flow forecast or treasury dashboard needs all of them in one standard transaction table. Trying to write one function that handles every layout leads to an unreadable tangle of conditions; the robust pattern is one small, testable cleaning function per bank, each emitting an identical target schema, followed by a single <code>Table.Combine</code>.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="typical-layout-differences">Typical layout differences</h3>
+<p>Exact layouts change when banks upgrade portals, so treat the following as illustrative of the kinds of difference you will meet rather than a permanent specification:</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Bank A (private, CSV)</th>
+<th>Bank B (private, XLS)</th>
+<th>Bank C (PSU, CSV)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Header block</td>
+<td>~20 rows of customer details</td>
+<td>~12 rows</td>
+<td>~18 rows, account number in a caption</td>
+</tr>
+<tr>
+<td>Date column</td>
+<td><code>Date</code> (dd/MM/yy)</td>
+<td><code>Transaction Date</code> (dd/MM/yyyy)</td>
+<td><code>Txn Date</code> (d MMM yyyy)</td>
+</tr>
+<tr>
+<td>Value date</td>
+<td><code>Value Dt</code></td>
+<td><code>Value Date</code></td>
+<td><code>Value Date</code></td>
+</tr>
+<tr>
+<td>Reference</td>
+<td><code>Chq./Ref.No.</code> (UTR embedded in narration)</td>
+<td><code>Cheque Number</code></td>
+<td><code>Ref No./Cheque No.</code></td>
+</tr>
+<tr>
+<td>Amounts</td>
+<td>Separate Withdrawal / Deposit</td>
+<td>Separate Withdrawal / Deposit with "(INR )" suffix in headers</td>
+<td>Separate Debit / Credit</td>
+</tr>
+<tr>
+<td>Footer</td>
+<td>A row of asterisks, then a "STATEMENT SUMMARY" block</td>
+<td>Legends and disclaimers</td>
+<td>"Closing balance" line</td>
+</tr>
+<tr>
+<td>Numbers</td>
+<td>Plain decimals</td>
+<td>Indian grouping "1,23,456.00" as text</td>
+<td>Indian grouping</td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-target-schema">The target schema</h3>
+<p>Define the target first, as a contract all bank functions must satisfy:</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bank</td>
+<td>text</td>
+<td>Bank code from file name</td>
+</tr>
+<tr>
+<td>AccountNo</td>
+<td>text</td>
+<td>Account number (text, keeps leading zeros)</td>
+</tr>
+<tr>
+<td>TxnDate</td>
+<td>date</td>
+<td>Transaction (posting) date</td>
+</tr>
+<tr>
+<td>ValueDate</td>
+<td>date</td>
+<td>Value date</td>
+</tr>
+<tr>
+<td>Narration</td>
+<td>text</td>
+<td>Cleaned narration</td>
+</tr>
+<tr>
+<td>Ref</td>
+<td>text</td>
+<td>Cheque number or UTR, normalised</td>
+</tr>
+<tr>
+<td>Withdrawal</td>
+<td>number</td>
+<td>Outflow, positive</td>
+</tr>
+<tr>
+<td>Deposit</td>
+<td>number</td>
+<td>Inflow, positive</td>
+</tr>
+<tr>
+<td>Amount</td>
+<td>number</td>
+<td>Deposit minus Withdrawal (signed from the company's view)</td>
+</tr>
+<tr>
+<td>SourceFile</td>
+<td>text</td>
+<td>File name</td>
+</tr>
+</tbody>
+</table>
+<p>Encoding the target as a type makes it explicit:</p>
+<pre><code class="language-m">BankSchema = type table [Bank = text, AccountNo = text, TxnDate = date, ValueDate = date,
+    Narration = text, Ref = text, Withdrawal = number, Deposit = number, Amount = number, SourceFile = text]
+</code></pre>
+<h3 id="one-function-per-bank">One function per bank</h3>
+<p>Each function knows its own quirks and ends with the same selection:</p>
+<pre><code class="language-m">fxBankA = (file as binary) as table =&gt;
+let
+    Raw      = Csv.Document(file, [Delimiter = &quot;,&quot;, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+    Skipped  = Table.Skip(Raw, each [Column1] &lt;&gt; &quot;Date&quot;),
+    Promoted = Table.PromoteHeaders(Skipped, [PromoteAllScalars = true]),
+    Data     = Table.FirstN(Promoted, each not Text.StartsWith([Date] ?? &quot;&quot;, &quot;*&quot;)),
+    Renamed  = Table.RenameColumns(Data, {{&quot;Date&quot;, &quot;TxnDate&quot;}, {&quot;Value Dt&quot;, &quot;ValueDate&quot;},
+                 {&quot;Chq./Ref.No.&quot;, &quot;Ref&quot;}, {&quot;Withdrawal Amt.&quot;, &quot;Withdrawal&quot;}, {&quot;Deposit Amt.&quot;, &quot;Deposit&quot;}}),
+    Typed    = Table.TransformColumnTypes(Renamed, {{&quot;TxnDate&quot;, type date}, {&quot;ValueDate&quot;, type date},
+                 {&quot;Withdrawal&quot;, type number}, {&quot;Deposit&quot;, type number}}, &quot;en-IN&quot;),
+    Amt      = Table.AddColumn(Typed, &quot;Amount&quot;, each ([Deposit] ?? 0) - ([Withdrawal] ?? 0), type number),
+    Result   = Table.SelectColumns(Amt, {&quot;TxnDate&quot;, &quot;ValueDate&quot;, &quot;Narration&quot;, &quot;Ref&quot;,
+                 &quot;Withdrawal&quot;, &quot;Deposit&quot;, &quot;Amount&quot;}, MissingField.UseNull)
+in
+    Result
+</code></pre>
+<p><code>Table.FirstN</code> with a condition keeps rows <strong>until</strong> the condition first fails — ideal for cutting a footer without counting rows. Functions for other banks differ in the skip marker, the rename list, the date culture/format and any text-to-number parsing, but end in the same <code>Table.SelectColumns</code>.</p>
+<h3 id="routing-each-file-to-its-function">Routing each file to its function</h3>
+<p>Parse the bank code from the file name, then look the function up in a record of functions:</p>
+<pre><code class="language-m">Parsers = [HDFC = fxBankA, ICICI = fxBankB, SBI = fxBankC],
+Files   = Table.AddColumn(InScope, &quot;Bank&quot;, each Text.BeforeDelimiter([Name], &quot;_&quot;), type text),
+WithData = Table.AddColumn(Files, &quot;Data&quot;, (f) =&gt;
+    let fn = Record.FieldOrDefault(Parsers, f[Bank], null),
+        t  = if fn = null then error &quot;No parser for bank &quot; &amp; f[Bank] else fn(f[Content])
+    in  Table.AddColumn(Table.AddColumn(t, &quot;Bank&quot;, each f[Bank], type text),
+                        &quot;SourceFile&quot;, each f[Name], type text)),
+Combined = Table.Combine(WithData[Data], BankSchema)
+</code></pre>
+<p>Functions are first-class values in M, so a record field can hold a function. <code>Record.FieldOrDefault</code> returns null for an unknown bank, which you turn into an explicit error (and catch with <code>try</code> into the failure log). <code>Table.Combine(tables, columns)</code> accepts an optional table type, which fixes the output column set and types.</p>
+<h3 id="account-number-and-other-header-facts">Account number and other header facts</h3>
+<p>The account number usually appears in the header block, not in the rows. Extract it inside the bank function from the raw table before skipping — e.g. find the row whose first column starts with "Account No" and take the second column — and add it as a column. If it is not reliably present, use the file-name convention (<code>HDFC_4521_2025-04.csv</code>) and map last-four digits to the full account through a bank-account master.</p>
+<h3 id="opening-and-closing-balance-check">Opening and closing balance check</h3>
+<p>Every bank file implies a control: opening balance + deposits − withdrawals = closing balance. Capture opening and closing from the header/footer (or from the first and last running-balance values), and build a per-file check. A failure means rows were lost in cleaning (often the footer cut was too aggressive or a page-break header row was filtered out with data).</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>April files: Bank A, 1,284 rows, deposits ₹6.42 crore, withdrawals ₹5.97 crore, opening ₹1.10 crore, closing ₹1.55 crore. Check: \(1.10 + 6.42 - 5.97 = 1.55\), so the file passes. Bank C: 3,911 rows, opening ₹0.84 crore, deposits ₹12.30 crore, withdrawals ₹12.61 crore, statement closing ₹0.48 crore, but cleaned rows imply \(0.84 + 12.30 - 12.61 = 0.53\). The ₹5 lakh gap points to a dropped row — on inspection, a withdrawal whose narration began with "Total" was removed by an over-broad subtotal filter.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Portal changes.</strong> Banks change exports without notice; a function failing in <code>try</code> with a clear "header marker not found" message is far better than wrong output.</li>
+<li><strong>XLS vs CSV.</strong> Some banks give legacy <code>.xls</code>; <code>Excel.Workbook</code> reads it, but formats and merged cells differ — build that bank's function on the binary format actually received.</li>
+<li><strong>Single amount column with Dr/Cr flag.</strong> Some statements use "Amount" plus "Dr/Cr" indicator; derive Withdrawal/Deposit inside that bank's function.</li>
+<li><strong>Multiple accounts per bank.</strong> Same function, different files; never encode an account number inside a function.</li>
+<li><strong>Time zones and dates.</strong> Statements are in IST; the date-only columns are safe, but datetime stamps in some exports should be converted with <code>Date.From</code>.</li>
+<li><strong>Combining types.</strong> If one function returns Amount as text, <code>Table.Combine</code> with a type ascribes but does not convert; type inside each function.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Define a target bank schema first; every bank function must end by emitting exactly that schema.</li>
+<li>Write one small function per bank; route files to functions with a record of functions keyed on the bank code.</li>
+<li><code>Table.FirstN</code> with a condition and <code>Table.Skip</code> with a condition cut headers and footers without row counts.</li>
+<li>Extract account numbers and opening/closing balances from the header block and run a balance roll-forward per file.</li>
+<li><code>Table.Combine(list, tableType)</code> appends by name and fixes the output columns.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-target-schema-decisions-l1">Q1. Target schema decisions [L1]</h3>
+<p>Explain why AccountNo and Ref should be typed as text, why both Withdrawal/Deposit and a signed Amount are kept, and why SourceFile belongs in the bank transaction table.</p>
+<h3 id="q2-write-the-psu-bank-function-l2">Q2. Write the PSU bank function [L2]</h3>
+<p>Bank C's CSV has 18 caption rows (row 6 reads "Account Number :,00000031245678901"), a header row starting "Txn Date", date format "5 Apr 2025", Debit and Credit amounts as text with Indian grouping ("1,23,456.00"), and a last line beginning "**Computer generated". Write <code>fxBankC</code> returning the target schema including AccountNo.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Read the account number from the raw table before <code>Table.Skip</code>, and convert amounts with an explicit "en-IN" culture.</p>
+</blockquote>
+<h3 id="q3-roll-forward-check-failure-l2">Q3. Roll-forward check failure [L2]</h3>
+<p>For a Bank B file, opening balance is ₹42,18,350.00, the statement closing balance is ₹38,06,120.50, cleaned deposits total ₹1,94,62,800.00 and cleaned withdrawals total ₹1,99,24,529.50. Determine whether the file passes the roll-forward check, and if not, list three likely cleaning causes to investigate.</p>
+<h3 id="q4-adding-a-fifth-bank-l3">Q4. Adding a fifth bank [L3]</h3>
+<p>A new Kotak account opens in November. Describe every change needed in the pipeline — function, routing record, naming convention, masters, checks — and how you would ensure the existing four banks' outputs are unchanged after the change.</p></section>
+<nav class="pager"><a class="prev" href="S05_Schema_Drift_Tolerant_Column_Selection_Across.html">← Schema Drift: Tolerant Column Selection Across Branch Files</a><a class="next" href="S07_Monthly_Drop_In_Workflow_Archiving_and_Duplicate.html">Monthly Drop-In Workflow, Archiving and Duplicate-File… →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unpivot Drops Null Cells: Replace Nulls with Zero When Needed · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C06_Unpivot_Drops_Null_Cells_Replace_Nulls_with_Zero.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T3 · Unpivoting wide budgets and TBs</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Unpivoting wide budgets and TBs</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Wide_Crosstab_vs_Long_Normalised_Data_and_Fact.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S01_Wide_Crosstab_vs_Long_Normalised_Data_and_Fact.html">Wide (Crosstab) vs Long (Normalised) Data and Fact Tables</a></li><li><a href="../subtopics/S02_Unpivot_Other_Columns_vs_Unpivot_Columns_vs_Only.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S02_Unpivot_Other_Columns_vs_Unpivot_Columns_vs_Only.html">Unpivot Other Columns vs Unpivot Columns vs Only Selected</a></li><li><a href="../subtopics/S03_Converting_Month_Header_Text_into_Real_Month_End.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S03_Converting_Month_Header_Text_into_Real_Month_End.html">Converting Month Header Text into Real Month-End Dates</a></li><li><a href="../subtopics/S04_Multi_Row_Headers_Transpose_Fill_Merge_Transpose.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S04_Multi_Row_Headers_Transpose_Fill_Merge_Transpose.html">Multi-Row Headers: Transpose, Fill, Merge, Transpose Back, Unpivot</a></li><li><a href="../subtopics/S05_Unpivoting_TB_Columns_Opening_Debit_Credit_Closing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S05_Unpivoting_TB_Columns_Opening_Debit_Credit_Closing.html">Unpivoting TB Columns (Opening, Debit, Credit, Closing)</a></li><li><a href="../subtopics/S06_Pivot_Column_as_the_Reverse_of_Unpivot_Including.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S06_Pivot_Column_as_the_Reverse_of_Unpivot_Including.html">Pivot Column as the Reverse of Unpivot, Including Don&#x27;t Aggregate</a></li><li><a href="../subtopics/S07_Target_Fact_Schema_Date_Account_Department.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S07_Target_Fact_Schema_Date_Account_Department.html">Target Fact Schema: Date, Account, Department, Scenario, Amount</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_TableUnpivotOtherColumns_with_Fixed_Identifier.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C01_TableUnpivotOtherColumns_with_Fixed_Identifier.html">Table.UnpivotOtherColumns with Fixed Identifier Columns</a></li><li><a href="C02_Month_Label_to_Month_End_Date_with_DateFromText.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C02_Month_Label_to_Month_End_Date_with_DateFromText.html">Month Label to Month-End Date with Date.FromText and Format</a></li><li><a href="C03_Multi_Row_Header_Recipe_Transpose_Fill_Combine.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C03_Multi_Row_Header_Recipe_Transpose_Fill_Combine.html">Multi-Row Header Recipe: Transpose, Fill, Combine, Unpivot, Split</a></li><li><a href="C04_TablePivot_with_a_Dynamic_Value_List_and_ListSum.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C04_TablePivot_with_a_Dynamic_Value_List_and_ListSum.html">Table.Pivot with a Dynamic Value List and List.Sum</a></li><li><a href="C05_Adding_a_Typed_Scenario_Column_Before_Appending_to.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C05_Adding_a_Typed_Scenario_Column_Before_Appending_to.html">Adding a Typed Scenario Column Before Appending to Actuals</a></li><li><a href="C06_Unpivot_Drops_Null_Cells_Replace_Nulls_with_Zero.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C06_Unpivot_Drops_Null_Cells_Replace_Nulls_with_Zero.html">Unpivot Drops Null Cells: Replace Nulls with Zero When Needed</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Unpivot Drops Null Cells: Replace Nulls with Zero When Needed</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Unpivot drops null cells, so replace nulls with 0 first if zero rows must stay</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p><code>Table.UnpivotOtherColumns</code> and <code>Table.Unpivot</code> emit an output row only for cells whose value is <strong>not null</strong>. A wide table with \(r\) rows and \(k\) value columns therefore yields</p>
+<p>\[
+N_{\text{out}} = r \times k - n_{\text{null}}
+\]</p>
+<p>rows, where \(n_{\text{null}}\) is the number of null value cells. Zeros (0) and empty strings ("") are not null and <strong>are</strong> kept. If every account-department-month combination must appear in the long table (including those with no budget), replace nulls with 0 in the value columns <strong>before</strong> unpivoting:</p>
+<pre><code>MonthCols = List.RemoveItems(Table.ColumnNames(t), {&quot;Account&quot;,&quot;Department&quot;}),
+Zeroed    = Table.ReplaceValue(t, null, 0, Replacer.ReplaceValue, MonthCols),
+Long      = Table.UnpivotOtherColumns(Zeroed, {&quot;Account&quot;,&quot;Department&quot;}, &quot;Month&quot;, &quot;Amount&quot;)
+</code></pre>
+<h2 id="explanation">Explanation</h2>
+<p><strong>When dropping nulls is fine (usually)</strong>: for a fact table, a missing row and a zero row give the same SUM. Dropping nulls keeps the fact smaller and is the default for good reason. Most budget-vs-actual reporting works without zero rows.</p>
+<p><strong>When zero rows must stay</strong>:</p>
+<ul>
+<li><strong>Completeness checks and row-count controls</strong>: if the control expects \(r \times k\) rows, nulls make it fail.</li>
+<li><strong>Distinguishing "budgeted zero" from "not budgeted"</strong>: if a blank means "department did not submit", replacing with 0 hides the gap. In that case, keep nulls dropped and run a separate completeness check, or replace with 0 only after confirming submission.</li>
+<li><strong>Averages and counts</strong>: AVERAGE over months, or "number of months with budget", differ when zero rows are absent.</li>
+<li><strong>Downstream pivots and templates</strong> that expect every month column to exist for every account.</li>
+<li><strong>Rolling calculations in Excel outputs</strong> where missing rows misalign row-by-row formulas.</li>
+</ul>
+<p><strong>Replace only the value columns</strong>: replacing nulls in identifier columns (Department null → 0) would corrupt keys. Build the column list dynamically (as above), excluding identifiers.</p>
+<p><strong>Empty strings and text</strong>: Excel cells with "" or "-" are not null; they survive unpivot as text in Amount and then fail typing. Convert "" and "-" to null (or 0) according to the rule before unpivoting.</p>
+<p><strong>After unpivot, in DAX</strong>: an alternative to zero rows is handling blanks in measures (<code>COALESCE(SUM(...), 0)</code>) and using a Calendar dimension to show every month — often the better model design (Week 11).</p>
+<h2 id="illustration">Illustration</h2>
+<p>Budget: 3 accounts × 12 months = 36 cells; 7 are null (no budget for Travel in 7 months).</p>
+<table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>Long rows</th>
+<th>Sum</th>
+<th>Months with budget for Travel (COUNT)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unpivot directly</td>
+<td>29</td>
+<td>₹18,60,000</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Replace nulls with 0 then unpivot</td>
+<td>36</td>
+<td>₹18,60,000</td>
+<td>12 (counts zero rows)</td>
+</tr>
+</tbody>
+</table>
+<p>Totals agree; counts and completeness checks differ. If the FP&amp;A team computes "average monthly travel budget", the first gives ₹X / 5 (where X is Travel's total) and the second ₹X / 12 — a policy decision, not a technical one.</p>
+<h2 id="connections">Connections</h2>
+<p>Part of s02 (unpivot behaviour) and s01 (row-count expectations). Interacts with Topic 2 s07 (error/blank handling) and Topic 1 s04 (types). In Week 11, the Calendar dimension and DAX blank handling offer the model-side alternative; Weeks 17–20 rolling forecasts often need complete grids.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-row-count-check-l1">Q1. Row count check [L1]</h3>
+<p>A wide budget has 180 rows, identifiers Account and Department, 12 month columns; 214 month cells are null and 31 contain 0. How many rows does a direct unpivot produce, and how many after replacing nulls with 0?</p>
+<h3 id="q2-policy-decision-l2">Q2. Policy decision [L2]</h3>
+<p>Departments leave cells blank when they have not yet submitted, and type 0 when they deliberately budget nothing. Design the Power Query treatment that preserves this distinction and produces a "submission completeness" check per department.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Decide the treatment of blanks before the unpivot and keep a flag rather than a zero.</p>
+</blockquote>
+<h3 id="q3-dynamic-replace-l2">Q3. Dynamic replace [L2]</h3>
+<p>Write M that replaces nulls, empty strings and "-" with 0 only in columns whose headers parse as months, leaving identifier and remark columns untouched, then unpivots.</p></section>
+<nav class="pager"><a class="prev" href="C05_Adding_a_Typed_Scenario_Column_Before_Appending_to.html">← Adding a Typed Scenario Column Before Appending to Actuals</a><a class="next" href="../../T4_Folder_consolidation_pipeline/index.html">Folder consolidation pipeline →</a></nav>
+</main></div></body></html>

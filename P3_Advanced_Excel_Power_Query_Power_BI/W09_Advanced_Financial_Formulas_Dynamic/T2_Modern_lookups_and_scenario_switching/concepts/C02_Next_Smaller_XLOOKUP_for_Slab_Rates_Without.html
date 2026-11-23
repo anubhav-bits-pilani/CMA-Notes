@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Next-Smaller XLOOKUP for Slab Rates Without Sorting · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C02_Next_Smaller_XLOOKUP_for_Slab_Rates_Without.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T2 · Modern lookups and scenario switching</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Modern lookups and scenario switching</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_XLOOKUP_Arguments_Not_Found_Value_Match_Mode_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S01_XLOOKUP_Arguments_Not_Found_Value_Match_Mode_and.html">XLOOKUP Arguments: Not-Found Value, Match Mode and Search Mode</a></li><li><a href="../subtopics/S02_Approximate_Match_Lookups_for_Slabs_TDS_Rates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S02_Approximate_Match_Lookups_for_Slabs_TDS_Rates.html">Approximate-Match Lookups for Slabs, TDS Rates, Tiers and Bands</a></li><li><a href="../subtopics/S03_Reverse_Search_for_Latest_Price_FX_Rate_and_Last.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S03_Reverse_Search_for_Latest_Price_FX_Rate_and_Last.html">Reverse Search for Latest Price, FX Rate and Last Payment Date</a></li><li><a href="../subtopics/S04_Two_Way_Lookups_on_Account_Month_Grids.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S04_Two_Way_Lookups_on_Account_Month_Grids.html">Two-Way Lookups on Account × Month Grids</a></li><li><a href="../subtopics/S05_XLOOKUP_Returning_Rows_Columns_and_Range.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S05_XLOOKUP_Returning_Rows_Columns_and_Range.html">XLOOKUP Returning Rows, Columns and Range References</a></li><li><a href="../subtopics/S06_XMATCH_and_INDEX_XMATCH_for_Dynamic_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S06_XMATCH_and_INDEX_XMATCH_for_Dynamic_Column.html">XMATCH and INDEX-XMATCH for Dynamic Column Selection</a></li><li><a href="../subtopics/S07_Live_Scenario_Switches_with_CHOOSE_INDEX_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S07_Live_Scenario_Switches_with_CHOOSE_INDEX_and.html">Live Scenario Switches with CHOOSE, INDEX and SWITCH</a></li><li><a href="../subtopics/S08_Multi_Key_Lookups_Helper_Keys_vs_Boolean_Arrays.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S08_Multi_Key_Lookups_Helper_Keys_vs_Boolean_Arrays.html">Multi-Key Lookups: Helper Keys vs Boolean Arrays</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_The_Fully_Specified_XLOOKUP_for_Ledger_Mapping.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C01_The_Fully_Specified_XLOOKUP_for_Ledger_Mapping.html">The Fully Specified XLOOKUP for Ledger Mapping</a></li><li><a href="C02_Next_Smaller_XLOOKUP_for_Slab_Rates_Without.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C02_Next_Smaller_XLOOKUP_for_Slab_Rates_Without.html">Next-Smaller XLOOKUP for Slab Rates Without Sorting</a></li><li><a href="C03_Nested_XLOOKUP_as_a_Two_Way_Lookup.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C03_Nested_XLOOKUP_as_a_Two_Way_Lookup.html">Nested XLOOKUP as a Two-Way Lookup</a></li><li><a href="C04_INDEX_MATCH_MATCH_The_Version_Proof_Two_Way_Lookup.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C04_INDEX_MATCH_MATCH_The_Version_Proof_Two_Way_Lookup.html">INDEX-MATCH-MATCH: The Version-Proof Two-Way Lookup</a></li><li><a href="C05_Boolean_Array_XLOOKUP_for_Multi_Criteria_Lookups.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C05_Boolean_Array_XLOOKUP_for_Multi_Criteria_Lookups.html">Boolean-Array XLOOKUP for Multi-Criteria Lookups</a></li><li><a href="C06_CHOOSE_Driven_by_a_MATCH_Index_for_Scenario.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C06_CHOOSE_Driven_by_a_MATCH_Index_for_Scenario.html">CHOOSE Driven by a MATCH Index for Scenario Selection</a></li><li><a href="C07_Dynamic_Period_Window_with_XLOOKUPXLOOKUP.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C07_Dynamic_Period_Window_with_XLOOKUPXLOOKUP.html">Dynamic Period Window with XLOOKUP:XLOOKUP</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Next-Smaller XLOOKUP for Slab Rates Without Sorting</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>=XLOOKUP(Income, Slab[From], Slab[Rate], , -1)</code>: exact match or next smaller; data only needs sorting for binary search_mode</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>With match mode -1, XLOOKUP returns the rate of the row whose From value is the largest value not exceeding the income:</p>
+<p>\[
+\text{Rate}(I) = R_{j^*}, \qquad j^* = \arg\max_{j} \{\, F_j : F_j \le I \,\}
+\]</p>
+<p>where \(I\) is the income looked up, \(F_j\) the From value of slab row \(j\), and \(R_j\) its rate. If no \(F_j \le I\) exists, the result is <code>#N/A</code> (the fourth argument is skipped, so the default not-found behaviour applies). With the default linear search modes (1 or -1) the rows may be in <strong>any order</strong>; only binary search modes (2, -2) require the From column to be sorted.</p>
+<h2 id="explanation">Explanation</h2>
+<p><strong>The skipped argument.</strong> The double comma <code>, ,</code> leaves <code>if_not_found</code> empty so that a value below the lowest From (for example a negative income) shows <code>#N/A</code> instead of a misleading default. For slab tables starting at 0, this only fires for genuinely invalid inputs.</p>
+<p><strong>No sort requirement — and why it matters.</strong> VLOOKUP with TRUE, MATCH with type 1 and LOOKUP all use a binary-search-like algorithm that assumes ascending order; on an unsorted table they return wrong rows without an error. XLOOKUP with -1 and linear search examines every row and keeps the best candidate, so a slab table someone re-ordered (e.g. sorted by rate, or with a new slab appended at the bottom) still returns the right rate. If you add <code>search_mode</code> 2 for speed, the sort requirement returns — and so does the silent-error risk.</p>
+<p><strong>Marginal vs average rate.</strong> The lookup returns the <strong>marginal</strong> slab rate. Progressive tax is BaseTax at From plus the marginal rate on the excess over From — the same -1 lookup pattern applied to the From and BaseTax columns. Multiplying income by the returned rate overstates tax.</p>
+<p><strong>Ties and duplicates.</strong> If two rows share the same From, linear search (mode 1) returns the first. Keep From values unique.</p>
+<p><strong>Boundary.</strong> An income exactly equal to a From value matches that row (exact match wins), so From values belong to the upper band.</p>
+<h2 id="illustration">Illustration</h2>
+<p>New-regime slabs, FY 2025-26 (Section 115BAC as amended by Finance Act 2025), deliberately stored out of order:</p>
+<table>
+<thead>
+<tr>
+<th>From</th>
+<th>Rate</th>
+<th>BaseTax</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12,00,000</td>
+<td>15%</td>
+<td>60,000</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0%</td>
+<td>0</td>
+</tr>
+<tr>
+<td>24,00,000</td>
+<td>30%</td>
+<td>3,00,000</td>
+</tr>
+<tr>
+<td>4,00,000</td>
+<td>5%</td>
+<td>0</td>
+</tr>
+<tr>
+<td>16,00,000</td>
+<td>20%</td>
+<td>1,20,000</td>
+</tr>
+<tr>
+<td>8,00,000</td>
+<td>10%</td>
+<td>20,000</td>
+</tr>
+<tr>
+<td>20,00,000</td>
+<td>25%</td>
+<td>2,00,000</td>
+</tr>
+</tbody>
+</table>
+<p>For income ₹13,75,000: candidates with From ≤ income are 0, 4,00,000, 8,00,000 and 12,00,000; the largest is 12,00,000, so the rate is 15% and BaseTax ₹60,000. Tax before rebate and cess = 60,000 + 1,75,000 × 15% = ₹86,250. <code>VLOOKUP(1375000, Slab, 2, TRUE)</code> on this unsorted table would return an unreliable result.</p>
+<h2 id="connections">Connections</h2>
+<p>Core formula of the approximate-match subtopic (tax slabs, TDS, commission tiers, depreciation bands) and of the search-mode rules in the XLOOKUP-arguments subtopic. It contrasts with the MATCH-defaults-to-approximate pitfall. In DCF and payroll models (Weeks 13–16) the same pattern drives tax-rate and slab lookups; in Power Query it is replaced by a merge plus a "between" condition or a sorted fill-down.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-progressive-tax-with-three-lookups-l1">Q1. Progressive tax with three lookups [L1]</h3>
+<p>Using the slab table above, write a formula (with or without LET) that returns tax before rebate and cess for income in B4. Then list the test incomes you would run to verify every band.</p>
+<h3 id="q2-unsorted-table-audit-l2">Q2. Unsorted table audit [L2]</h3>
+<p>An inherited payroll file uses <code>VLOOKUP(Income, SlabTbl, 2, TRUE)</code> and the HR team recently inserted the new ₹20–24 lakh slab at the bottom of the table. Explain which incomes are now likely to be mis-rated and why, and rewrite the formula so that row order no longer matters.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider how an algorithm that assumes ascending order behaves when the last row is out of place.</p>
+</blockquote>
+<h3 id="q3-speed-vs-safety-l2">Q3. Speed vs safety [L2]</h3>
+<p>A colleague proposes adding <code>search_mode</code> 2 to 25,000 slab lookups in an employee-level tax projection "for speed". Evaluate the proposal, including the size of the slab table, the actual performance gain and the control you would require if it is adopted.</p></section>
+<nav class="pager"><a class="prev" href="C01_The_Fully_Specified_XLOOKUP_for_Ledger_Mapping.html">← The Fully Specified XLOOKUP for Ledger Mapping</a><a class="next" href="C03_Nested_XLOOKUP_as_a_Two_Way_Lookup.html">Nested XLOOKUP as a Two-Way Lookup →</a></nav>
+</main></div></body></html>

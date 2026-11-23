@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explicit Measures, Display Folders and ₹ Lakh/Crore Formats · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S08_Explicit_Measures_Display_Folders_and_LakhCrore.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T3 · Core financial DAX functions</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Core financial DAX functions</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Row_Context_Filter_Context_and_Context_Transition.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S01_Row_Context_Filter_Context_and_Context_Transition.html">Row Context, Filter Context and Context Transition</a></li><li><a href="S02_CALCULATE_Filter_Arguments_and_Modifiers.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S02_CALCULATE_Filter_Arguments_and_Modifiers.html">CALCULATE Filter Arguments and Modifiers</a></li><li><a href="S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html">Iterators SUMX and AVERAGEX for Row-Level Maths</a></li><li><a href="S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html">FILTER vs Boolean Column Filters: Meaning and Performance</a></li><li><a href="S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html">ALL, ALLEXCEPT and ALLSELECTED for Share and Contribution Analysis</a></li><li><a href="S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html">RELATED and RELATEDTABLE in Columns and Iterators</a></li><li><a href="S07_DIVIDE_Measures_vs_Calculated_Columns_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S07_DIVIDE_Measures_vs_Calculated_Columns_and.html">DIVIDE, Measures vs Calculated Columns, and VAR/RETURN</a></li><li><a href="S08_Explicit_Measures_Display_Folders_and_LakhCrore.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S08_Explicit_Measures_Display_Folders_and_LakhCrore.html">Explicit Measures, Display Folders and ₹ Lakh/Crore Formats</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html">Base Actual Measure and a Filtered Revenue Measure</a></li><li><a href="../concepts/C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html">Percentage of Total Opex with ALL on Cost Centre</a></li><li><a href="../concepts/C03_Percentage_within_Statement_with_ALLEXCEPT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C03_Percentage_within_Statement_with_ALLEXCEPT.html">Percentage within Statement with ALLEXCEPT</a></li><li><a href="../concepts/C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html">FX-Converted Revenue with SUMX and RELATED</a></li><li><a href="../concepts/C05_Sign_Aware_Variance_with_VAR_and_ABS.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C05_Sign_Aware_Variance_with_VAR_and_ABS.html">Sign-Aware Variance % with VAR and ABS</a></li><li><a href="../concepts/C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html">KEEPFILTERS to Intersect Rather Than Overwrite</a></li><li><a href="../concepts/C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html">DIVIDE and Its BLANK Default for Zero Denominators</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Explicit Measures, Display Folders and ₹ Lakh/Crore Formats</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Explicit measures, display folders and format strings (₹, lakhs/crores)</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A finance semantic model is used by many report authors and read by CFOs, auditors and business heads. If users
+drag raw columns and get implicit sums, numbers have no sign logic, no format and no budget counterpart. If fifty
+measures sit in one alphabetical list, nobody finds "EBITDA Margin %". If revenue shows as 4823719442.17 instead of
+₹482.37 crore, the board pack is rejected. <strong>Explicit measures</strong>, organised in <strong>display folders</strong>, with <strong>format
+strings</strong> that match Indian reporting conventions (₹, lakh, crore, brackets for negatives) are the presentation layer
+of the model — the equivalent of a well-laid-out Schedule III note.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="explicit-vs-implicit-measures">Explicit vs implicit measures</h3>
+<ul>
+<li><strong>Implicit measure:</strong> created when a user drags a numeric column (e.g. <code>GL[Amount]</code>) into a visual; Power BI applies
+  a default aggregation (Sum, Average…). No name, no format control in the model, not reusable in other measures, and
+  not usable in calculation groups or Excel's Analyze in Excel reliably.</li>
+<li><strong>Explicit measure:</strong> written in DAX with a name, home table, format string, description and folder:</li>
+</ul>
+<pre><code class="language-DAX">Actual = SUM ( GL[Amount] )
+Budget = SUM ( Budget[Amount] )
+Variance ₹ = [Actual] - [Budget]
+</code></pre>
+<p>Good practice:</p>
+<ol>
+<li>Write explicit measures for every number shown in reports; hide the underlying numeric columns (topic 1 c06).</li>
+<li>Set the model property <strong>Discourage implicit measures</strong> (Model view → model properties), which stops users
+   dragging columns as values. It is enforced automatically once calculation groups exist.</li>
+<li>Add a <strong>description</strong> to each measure (shown as a tooltip in the field list) stating sign convention and source.</li>
+<li>Build <strong>base measures</strong> (Actual, Budget, Signed Actual) and branch derived measures from them; never repeat SUM
+   logic.</li>
+</ol>
+<h3 id="measure-home-table-and-display-folders">Measure home table and display folders</h3>
+<ul>
+<li><strong>Home table:</strong> each measure belongs to a table. Many teams create a dedicated, otherwise empty table (Home → Enter
+  data → one dummy column, then hide the column) named <code>_Measures</code> or <code>Fin Measures</code> so measures appear at the top of
+  the field list, separate from dimensions.</li>
+<li><strong>Display folders:</strong> in Model view, select measures → Properties → <em>Display folder</em>. Use backslash for nesting:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Folder</th>
+<th>Measures</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>01 Base</code></td>
+<td>Actual, Budget, Actual Signed, Budget Signed</td>
+</tr>
+<tr>
+<td><code>02 Variance</code></td>
+<td>Variance ₹, Variance %, Fav/Adv flag</td>
+</tr>
+<tr>
+<td><code>03 Time Intelligence\YTD</code></td>
+<td>YTD Actual, YTD Budget, PY YTD, YoY %</td>
+</tr>
+<tr>
+<td><code>03 Time Intelligence\Rolling</code></td>
+<td>R12M Revenue, T3M Opex</td>
+</tr>
+<tr>
+<td><code>04 P&amp;L Lines</code></td>
+<td>Revenue, Gross Profit, EBITDA, EBIT, PBT, PAT</td>
+</tr>
+<tr>
+<td><code>05 Ratios</code></td>
+<td>GM %, EBITDA %, DSO, ROCE</td>
+</tr>
+<tr>
+<td><code>09 Data Quality</code></td>
+<td>Unmapped Amount, RI Orphans, TB Difference</td>
+</tr>
+</tbody>
+</table>
+<p>Numeric prefixes force the order. Multiple folders per measure are allowed by separating with semicolons. Power Pivot
+in Excel supports display folders only through external tools; the measure list is flatter there.</p>
+<h3 id="format-strings">Format strings</h3>
+<p>Power BI measure format strings follow .NET/VBA-style custom formats:</p>
+<table>
+<thead>
+<tr>
+<th>Format string</th>
+<th>12345678.9 displays</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>#,0</code></td>
+<td>12,345,679 or 1,23,45,679</td>
+<td>Digit grouping follows locale; with en-IN the default thousands separator groups as lakh/crore in most visuals — verify in your Desktop/service version</td>
+</tr>
+<tr>
+<td><code>₹#,0</code></td>
+<td>₹12,345,679</td>
+<td>Literal ₹ prefix</td>
+</tr>
+<tr>
+<td><code>₹#,0;(₹#,0);-</code></td>
+<td>positive; negative in brackets; zero as dash</td>
+<td>Three sections: positive; negative; zero</td>
+</tr>
+<tr>
+<td><code>0.0%</code></td>
+<td>1234567890.0%</td>
+<td>For ratios: value 0.153 shows 15.3%</td>
+</tr>
+<tr>
+<td><code>#,0.00,,"M"</code></td>
+<td>12.35M</td>
+<td>Each comma before the decimal point scales by 1,000 — only thousands/millions/billions</td>
+</tr>
+</tbody>
+</table>
+<p>Lakhs (\(10^5\)) and crores (\(10^7\)) are <strong>not powers of 1,000</strong>, so comma scaling cannot produce them. Options:</p>
+<ol>
+<li><strong>Divide in the measure:</strong></li>
+</ol>
+<pre><code class="language-DAX">Revenue ₹ Cr = DIVIDE ( [Revenue], 1E7 )        -- format: #,0.00 &quot;Cr&quot;
+Revenue ₹ L  = [Revenue] / 1E5                 -- format: #,0.00 &quot;L&quot;
+</code></pre>
+<ol start="2">
+<li><strong>Units selector:</strong> a disconnected table <code>Units</code> (Rupees = 1, Lakhs = 1E5, Crores = 1E7) and a pattern
+   <code>[Revenue] / SELECTEDVALUE(Units[Divisor], 1)</code>, or a calculation group "Units" whose items divide
+   <code>SELECTEDMEASURE()</code> and set the format string — one switch for the whole page.</li>
+<li><strong>Dynamic format strings</strong> (measure property <em>Format → Dynamic</em>): the format string is a DAX expression, e.g.
+   percentage for ratio rows and ₹ for amount rows in a P&amp;L (topic 6). It changes the display pattern, not the
+   underlying value.</li>
+</ol>
+<p>Excel PivotTables on Power Pivot can use Excel's conditional custom format to show Indian grouping:
+<code>[&gt;=10000000]##\,##\,##\,##0;[&gt;=100000]##\,##\,##0;##,##0</code> — a well-known trick limited to positives (two conditions
+plus a default), so negative amounts need care.</p>
+<p>Always state units on the page ("₹ crore") and keep the <strong>same unit in a whole table</strong>; mixing lakh and crore rows
+in one P&amp;L is a review error.</p>
+<h3 id="illustration">Illustration</h3>
+<p>Revenue FY2025-26 = ₹4,82,37,19,442. Presentations:</p>
+<table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Value</th>
+<th>Format</th>
+<th>Display</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue</td>
+<td>4823719442</td>
+<td><code>₹#,0</code> (en-IN grouping)</td>
+<td>₹4,82,37,19,442</td>
+</tr>
+<tr>
+<td>Revenue ₹ Cr</td>
+<td>482.3719442</td>
+<td><code>#,0.00 "Cr"</code></td>
+<td>482.37 Cr</td>
+</tr>
+<tr>
+<td>Revenue ₹ L</td>
+<td>48237.19442</td>
+<td><code>#,0.0 "L"</code></td>
+<td>48,237.2 L</td>
+</tr>
+<tr>
+<td>GM %</td>
+<td>0.3812</td>
+<td><code>0.0%</code></td>
+<td>38.1%</td>
+</tr>
+</tbody>
+</table>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Formatting does not round values.</strong> Totals are computed on unrounded values; a column of figures rounded to
+  crores may not foot visually. Disclose "figures may not add due to rounding" or round in the measure (<code>ROUND(x, 2)</code>)
+  at the line level, consciously.</li>
+<li><strong>Analyze in Excel</strong> honours model format strings only partially; dynamic format strings may not carry to Excel
+  pivots — test.</li>
+<li><strong>Locale settings.</strong> Model culture (set when the file was created) and report/browser locale both affect display;
+  a model created with en-US culture may show 3-digit grouping for en-IN users. Check <em>File → Options → Regional
+  settings</em>.</li>
+<li><strong>Sign display.</strong> Showing expenses as positive with brackets for credits is a presentation choice; combine with sign
+  factors (topic 6), not by format string alone.</li>
+<li><strong>Measure names with ₹ or %.</strong> Allowed, but keep them stable — renaming breaks report-level references in some
+  external tools and Excel CUBE formulas.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Write explicit measures for every reported number; discourage implicit measures and hide numeric columns.</li>
+<li>Use a dedicated measures table and numbered display folders (Base, Variance, Time Intelligence, P&amp;L, Ratios, DQ).</li>
+<li>Format strings control display only; brackets for negatives use three-section formats.</li>
+<li>Lakh and crore scaling needs division in measures, a units selector or a calculation group — not comma scaling.</li>
+<li>State units on every page and keep one unit per table; watch rounding and locale.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-folder-design-l1">Q1. Folder design [L1]</h3>
+<p>Propose a display-folder structure for 45 measures covering base amounts, variances, YTD/PY, rolling windows, P&amp;L
+subtotals, margins, working-capital ratios and data-quality checks, and explain how numbering controls order.</p>
+<h3 id="q2-units-switch-l2">Q2. Units switch [L2]</h3>
+<p>Design a "Units" slicer that lets users switch a P&amp;L page between ₹, ₹ lakh and ₹ crore. Describe the table, the
+measure or calculation-group logic, and the format strings, and explain how ratios (GM %) must be excluded from the
+division.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> A ratio should not be divided by the unit divisor.</p>
+</blockquote>
+<h3 id="q3-format-strings-l2">Q3. Format strings [L2]</h3>
+<p>Write format strings for: (a) ₹ amounts with negatives in brackets and zero as "–"; (b) percentages with one decimal
+and negatives in brackets; (c) days with no decimals and the suffix " days". State the display for −2,50,000, 0.1234
+and 47.6 respectively.</p>
+<h3 id="q4-review-findings-l3">Q4. Review findings [L3]</h3>
+<p>In a model review you find: users building visuals with <code>GL[Amount]</code>; 60 measures in one list; revenue shown in rupees
+on one page and crores on another; Excel board-pack pivots showing 3-digit grouping. Write review comments with the
+fix for each, in the order you would prioritise them.</p></section>
+<nav class="pager"><a class="prev" href="S07_DIVIDE_Measures_vs_Calculated_Columns_and.html">← DIVIDE, Measures vs Calculated Columns, and VAR/RETURN</a><a class="next" href="../concepts/C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html">Base Actual Measure and a Filtered Revenue Measure →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Value.NativeQuery with Parameters and EnableFolding · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C04_ValueNativeQuery_with_Parameters_and_EnableFolding.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T1 · Power Query architecture and M basics</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Power Query architecture and M basics</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Power_Query_Connectors_for_Accounting_and_ERP_Data.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S01_Power_Query_Connectors_for_Accounting_and_ERP_Data.html">Power Query Connectors for Accounting and ERP Data Sources</a></li><li><a href="../subtopics/S02_Power_Query_Editor_Anatomy_Steps_Formula_Bar_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S02_Power_Query_Editor_Anatomy_Steps_Formula_Bar_and.html">Power Query Editor Anatomy: Steps, Formula Bar and Dependencies</a></li><li><a href="../subtopics/S03_M_Language_Structure_letin_Values_Records_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S03_M_Language_Structure_letin_Values_Records_Lists.html">M Language Structure: let/in, Values, Records, Lists and each</a></li><li><a href="../subtopics/S04_Data_Types_and_Controlling_Automatic_Type.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S04_Data_Types_and_Controlling_Automatic_Type.html">Data Types and Controlling Automatic Type Detection</a></li><li><a href="../subtopics/S05_Query_Folding_Which_Steps_Fold_Native_Query_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S05_Query_Folding_Which_Steps_Fold_Native_Query_and.html">Query Folding: Which Steps Fold, Native Query and Diagnostics</a></li><li><a href="../subtopics/S06_Parameters_Staging_Queries_and_Reference_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S06_Parameters_Staging_Queries_and_Reference_vs.html">Parameters, Staging Queries and Reference vs Duplicate</a></li><li><a href="../subtopics/S07_Load_Options_and_Refresh_Behaviour_in_Excel_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S07_Load_Options_and_Refresh_Behaviour_in_Excel_vs.html">Load Options and Refresh Behaviour in Excel vs Power BI</a></li><li><a href="../subtopics/S08_Privacy_Levels_and_FormulaFirewall_Errors.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S08_Privacy_Levels_and_FormulaFirewall_Errors.html">Privacy Levels and Formula.Firewall Errors</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_CsvDocument_with_FileContents_Delimiter_Encoding.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C01_CsvDocument_with_FileContents_Delimiter_Encoding.html">Csv.Document with File.Contents: Delimiter, Encoding, QuoteStyle</a></li><li><a href="C02_ExcelWorkbook_Navigation_to_a_Named_Sheet_or_Table.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C02_ExcelWorkbook_Navigation_to_a_Named_Sheet_or_Table.html">Excel.Workbook Navigation to a Named Sheet or Table</a></li><li><a href="C03_SqlDatabase_with_a_Native_Query_Blocks_Later.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C03_SqlDatabase_with_a_Native_Query_Blocks_Later.html">Sql.Database with a Native Query Blocks Later Folding</a></li><li><a href="C04_ValueNativeQuery_with_Parameters_and_EnableFolding.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C04_ValueNativeQuery_with_Parameters_and_EnableFolding.html">Value.NativeQuery with Parameters and EnableFolding</a></li><li><a href="C05_The_each_Keyword_and_the_Underscore_Parameter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C05_The_each_Keyword_and_the_Underscore_Parameter.html">The each Keyword and the Underscore Parameter</a></li><li><a href="C06_Folding_Breakers_TableBuffer_Index_Columns_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C06_Folding_Breakers_TableBuffer_Index_Columns_and.html">Folding Breakers: Table.Buffer, Index Columns and Custom Functions</a></li><li><a href="C07_MySQLDatabase_Connector_and_OdbcDataSource_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C07_MySQLDatabase_Connector_and_OdbcDataSource_for.html">MySQL.Database Connector and Odbc.DataSource for Tally</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Value.NativeQuery with Parameters and EnableFolding</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>Value.NativeQuery(Source, "SELECT * FROM gl WHERE fy = @fy", [fy="FY26"], [EnableFolding=true])</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p><code>Value.NativeQuery(target as any, query as text, optional parameters as any, optional options as record)</code> runs a native query against a data source (<code>target</code> is usually the database returned by <code>Sql.Database</code> or another connector):</p>
+<ul>
+<li><code>query</code>: SQL text, with named placeholders such as <code>@fy</code>.</li>
+<li><code>parameters</code>: a record (or list) whose fields bind to placeholders — <code>[fy="FY26"]</code> binds <code>@fy</code>. Values are passed as <strong>parameters</strong>, not concatenated into SQL text.</li>
+<li><code>options</code>: <code>[EnableFolding=true]</code> asks the engine to treat the native query as a foldable subquery, so <strong>later steps can fold on top of it</strong> (supported on SQL Server, PostgreSQL, Snowflake, Databricks, Oracle and several others; connector support varies).</li>
+</ul>
+<h2 id="explanation">Explanation</h2>
+<p><code>Value.NativeQuery</code> solves the two problems of the <code>[Query=...]</code> option of <code>Sql.Database</code> (c03).</p>
+<p><strong>1. Folding after native SQL.</strong> With <code>EnableFolding=true</code>, the engine wraps your SQL as a derived table: later filters and column selections become <code>select ... from ( &lt;your SQL&gt; ) as [_] where ...</code>. This only works if your SQL is wrappable — a single <code>SELECT</code> without <code>ORDER BY</code> (unless with TOP), no stored procedure calls, no multiple statements. If the connector does not support the option, the call errors or simply does not fold.</p>
+<p><strong>2. Safe parameterisation.</strong> Building SQL by concatenation, e.g. <code>"... WHERE fy = '" &amp; pFY &amp; "'"</code>, invites SQL injection and breaks on quotes, and every distinct text triggers a new native-query approval prompt. Bound parameters keep the SQL text constant, with values supplied separately; the engine handles quoting and types. Combined with a Power Query parameter: <code>[fy = pFYLabel]</code>.</p>
+<p>Conditions and caveats:</p>
+<ul>
+<li>Placeholder syntax is source-specific: <code>@name</code> for SQL Server; other databases may differ.</li>
+<li>Parameterisation with values from <strong>another query</strong> (not a simple parameter) can trigger Formula.Firewall partition errors (s08).</li>
+<li>Native query permission must be granted (Data source settings or the "require user approval for new native database queries" option).</li>
+<li>Check folding with View Native Query or the folding indicators on later steps.</li>
+</ul>
+<p>Template:</p>
+<pre><code>let
+    Source = Sql.Database(ServerName, &quot;FinanceDW&quot;),
+    GL     = Value.NativeQuery(Source,
+               &quot;SELECT PostingDate, Account, CostCentre, Amount, FY FROM dbo.GL WHERE FY = @fy&quot;,
+               [fy = pFYLabel],
+               [EnableFolding = true]),
+    IN01   = Table.SelectRows(GL, each [CostCentre] &lt;&gt; &quot;ELIM&quot;),
+    ByAcct = Table.Group(IN01, {&quot;Account&quot;}, {{&quot;Amount&quot;, each List.Sum([Amount]), type number}})
+in
+    ByAcct
+</code></pre>
+<p>With folding enabled, <code>IN01</code> and <code>ByAcct</code> fold into an outer <code>WHERE</code> and <code>GROUP BY</code> around the native SQL.</p>
+<h2 id="illustration">Illustration</h2>
+<p><code>dbo.GL</code> holds 30 million rows; FY26 is 3.1 million; after excluding cost centre ELIM and grouping by account there are 2,450 rows. Without <code>EnableFolding</code>, 3.1 million rows are transferred and grouped locally. With <code>EnableFolding=true</code>, 2,450 rows are transferred. Changing <code>pFYLabel</code> to "FY25" in the Power BI Service re-runs the same SQL text with a different bound value — no new approval prompt and no injection risk if someone types <code>FY25' OR 1=1 --</code>.</p>
+<h2 id="connections">Connections</h2>
+<p>Extends c03 and s05 (folding) and s06 (parameters). Relevant to Week 12 (Service parameters and gateway refresh) and to the MySQL refresher — the bound-parameter idea mirrors prepared statements (<code>PreparedStatement</code> in Java JDBC).</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-rewrite-concatenated-sql-l2">Q1. Rewrite concatenated SQL [L2]</h3>
+<p>Rewrite <code>Sql.Database("fin-sql", "DW", [Query="SELECT * FROM dbo.AP WHERE VendorCode = '" &amp; pVendor &amp; "' AND FY = '" &amp; pFY &amp; "'"])</code> using <code>Value.NativeQuery</code> with bound parameters and folding enabled, and list three benefits.</p>
+<h3 id="q2-will-it-fold-l2">Q2. Will it fold? [L2]</h3>
+<p>For each native query, state whether <code>EnableFolding=true</code> can make later steps fold and why: (a) <code>SELECT * FROM dbo.GL WHERE FY = @fy</code>; (b) <code>EXEC dbo.usp_TB @fy</code>; (c) <code>SELECT ... FROM dbo.GL ORDER BY PostingDate</code>; (d) a statement starting with a CTE (<code>WITH x AS (...) SELECT ...</code>).</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Think about whether the statement can legally appear inside <code>SELECT ... FROM ( ... ) AS t</code>.</p>
+</blockquote>
+<h3 id="q3-jdbc-parallel-l1">Q3. JDBC parallel [L1]</h3>
+<p>Explain to a Java developer colleague how <code>Value.NativeQuery</code> parameter binding is analogous to <code>PreparedStatement</code>, and why this matters for a finance dataset whose FY parameter is editable in the Power BI Service.</p></section>
+<nav class="pager"><a class="prev" href="C03_SqlDatabase_with_a_Native_Query_Blocks_Later.html">← Sql.Database with a Native Query Blocks Later Folding</a><a class="next" href="C05_The_each_Keyword_and_the_Underscore_Parameter.html">The each Keyword and the Underscore Parameter →</a></nav>
+</main></div></body></html>

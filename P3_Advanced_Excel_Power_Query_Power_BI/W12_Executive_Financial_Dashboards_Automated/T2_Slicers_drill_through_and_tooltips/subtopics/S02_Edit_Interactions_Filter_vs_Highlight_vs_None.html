@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edit Interactions: Filter vs Highlight vs None · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S02_Edit_Interactions_Filter_vs_Highlight_vs_None.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T2 · Slicers, drill-through and tooltips</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Slicers, drill-through and tooltips</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_FY_BU_and_Region_Slicers_Hierarchy_Relative_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S01_FY_BU_and_Region_Slicers_Hierarchy_Relative_Date.html">FY, BU and Region Slicers: Hierarchy, Relative Date and Sync</a></li><li><a href="S02_Edit_Interactions_Filter_vs_Highlight_vs_None.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S02_Edit_Interactions_Filter_vs_Highlight_vs_None.html">Edit Interactions: Filter vs Highlight vs None</a></li><li><a href="S03_Drill_Down_vs_Drill_Through_PL_Hierarchy_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S03_Drill_Down_vs_Drill_Through_PL_Hierarchy_and.html">Drill-Down vs Drill-Through: P&amp;L Hierarchy and Voucher Detail</a></li><li><a href="S04_Drill_Through_Setup_Fields_Keep_All_Filters_Cross.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S04_Drill_Through_Setup_Fields_Keep_All_Filters_Cross.html">Drill-Through Setup: Fields, Keep All Filters, Cross-Report, Back Button</a></li><li><a href="S05_Report_Page_Tooltips_Canvas_Size_Allow_Use_as.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S05_Report_Page_Tooltips_Canvas_Size_Allow_Use_as.html">Report Page Tooltips: Canvas Size, &quot;Allow Use as Tooltip&quot;, Field Tooltips</a></li><li><a href="S06_Bookmarks_Buttons_and_the_Selection_Pane_for_View.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S06_Bookmarks_Buttons_and_the_Selection_Pane_for_View.html">Bookmarks, Buttons and the Selection Pane for View Toggles</a></li><li><a href="S07_Field_Parameters_for_User_Selected_Dimensions_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S07_Field_Parameters_for_User_Selected_Dimensions_and.html">Field Parameters for User-Selected Dimensions and Measures</a></li><li><a href="S08_Visual_Page_and_Report_Filters_and_Top_N_Filters.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S08_Visual_Page_and_Report_Filters_and_Top_N_Filters.html">Visual, Page and Report Filters, and Top N Filters</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Drill_Through_Page_on_Ledger_with_a_Voucher_Detail.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C01_Drill_Through_Page_on_Ledger_with_a_Voucher_Detail.html">Drill-Through Page on Ledger with a Voucher Detail Table</a></li><li><a href="../concepts/C02_Selected_FY_Measure_for_Dynamic_Titles.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C02_Selected_FY_Measure_for_Dynamic_Titles.html">Selected FY Measure for Dynamic Titles</a></li><li><a href="../concepts/C03_Field_Parameter_Tables_Built_with_NAMEOF.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C03_Field_Parameter_Tables_Built_with_NAMEOF.html">Field Parameter Tables Built with NAMEOF</a></li><li><a href="../concepts/C04_ISFILTERED_and_ISCROSSFILTERED_for_Context_Aware.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C04_ISFILTERED_and_ISCROSSFILTERED_for_Context_Aware.html">ISFILTERED and ISCROSSFILTERED for Context-Aware Labels</a></li><li><a href="../concepts/C05_Slicer_Responsive_Vendor_Ranking_with_RANKX_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C05_Slicer_Responsive_Vendor_Ranking_with_RANKX_and.html">Slicer-Responsive Vendor Ranking with RANKX and ALLSELECTED</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Edit Interactions: Filter vs Highlight vs None</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Edit interactions per visual: filter vs highlight vs none</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>In Power BI, clicking a data point in one visual cross-filters or cross-highlights every other visual on the page.
+That is powerful for exploration — click "Pharma" on a BU bar and the whole page re-scopes — but on an executive
+page it can also destroy context: clicking a waterfall bar should not blank the KPI cards, and clicking a month in
+the trend chart should probably not change the rolling 12-month line. Edit interactions is the control that
+decides, for every pair of visuals, whether a selection filters, highlights or does nothing. Getting it right is
+part of making the pack behave predictably for a CFO.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-three-interaction-types">The three interaction types</h3>
+<p>Select the <em>source</em> visual, then <strong>Format &gt; Edit interactions</strong> (the ribbon button shows small icons on every
+other visual on the page). For each <em>target</em> visual choose:</p>
+<table>
+<thead>
+<tr>
+<th>Icon</th>
+<th>Interaction</th>
+<th>Effect on target</th>
+<th>Typical finance use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Filter (funnel)</td>
+<td>Cross-filter</td>
+<td>Target recalculates for the selected item only</td>
+<td>Click BU in a bar chart → P&amp;L matrix shows that BU</td>
+</tr>
+<tr>
+<td>Highlight (chart)</td>
+<td>Cross-highlight</td>
+<td>Target keeps totals but highlights the selected portion; the rest is dimmed</td>
+<td>Click a BU → stacked column trend shows BU share of each month</td>
+</tr>
+<tr>
+<td>None (circle-slash)</td>
+<td>No interaction</td>
+<td>Target ignores the selection</td>
+<td>KPI cards should keep company totals when a detail visual is clicked</td>
+</tr>
+</tbody>
+</table>
+<p>Highlight is available only on visuals that can show a part-of-whole (column, bar, pie); cards, tables and
+matrices offer Filter or None. Slicers are sources too: each slicer can be set to filter or not filter each visual
+— this is how one visual can ignore the FY slicer.</p>
+<h3 id="default-behaviour-and-report-level-setting">Default behaviour and report-level setting</h3>
+<p>By default, most visuals cross-highlight. <strong>File &gt; Options and settings &gt; Options &gt; Current file &gt; Report
+settings &gt; "Change default visual interaction from cross highlighting to cross filtering"</strong> switches the default
+to filter for the whole report. For finance packs, cross-filter is usually more intuitive, because highlighted
+partial bars with measures like variance or margin can be misleading (a highlighted portion of a margin bar is
+meaningless).</p>
+<h3 id="designing-interactions-for-the-executive-page">Designing interactions for the executive page</h3>
+<p>A sensible pattern for Page 1:</p>
+<table>
+<thead>
+<tr>
+<th>Source → Target</th>
+<th>KPI cards</th>
+<th>Trend combo</th>
+<th>R12M line</th>
+<th>P&amp;L matrix</th>
+<th>EBITDA waterfall</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY/BU/Region slicers</td>
+<td>Filter</td>
+<td>Filter</td>
+<td>Filter (BU/Region only)</td>
+<td>Filter</td>
+<td>Filter</td>
+</tr>
+<tr>
+<td>Trend combo (click a month)</td>
+<td>None</td>
+<td>—</td>
+<td>None</td>
+<td>Filter</td>
+<td>Filter</td>
+</tr>
+<tr>
+<td>P&amp;L matrix (click a line)</td>
+<td>None</td>
+<td>Filter</td>
+<td>Filter</td>
+<td>—</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Waterfall (click a step)</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>The logic: headline cards show the slicer scope and should not flicker when a user explores; clicking a month on
+the trend lets the matrix and bridge explain that month; clicking an FS line in the matrix shows that line's trend.
+The waterfall's own steps are categories from a disconnected table, so it cannot meaningfully filter other
+visuals — set None to avoid confusing blanks.</p>
+<h3 id="interactions-with-disconnected-tables-and-measures">Interactions with disconnected tables and measures</h3>
+<p>Cross-filtering works through the model. If a visual is built on a disconnected table (bridge steps, field
+parameters, units), clicking it filters only that table; measures in target visuals change only if they read the
+selection with <code>SELECTEDVALUE</code> or <code>TREATAS</code>. This can be useful (clicking a step in a bridge could drive a detail
+table via a measure) but must be deliberate.</p>
+<h3 id="interactions-and-drill">Interactions and drill</h3>
+<p>Visuals with drill-down enabled (matrix hierarchy, s03) have a further option under **Format &gt; Edit interactions</p>
+<blockquote>
+<p>Drilling filters other visuals**: when on, drilling into a level filters other visuals to that level's selection.
+On an expense page, drilling from BU to cost centre in a matrix can then filter the vendor Top N chart.</p>
+</blockquote>
+<h3 id="ctrlclick-and-multi-select">Ctrl+click and multi-select</h3>
+<p>Users can Ctrl+click several data points to filter on multiple items. Clearing selection is by clicking the same
+point again or an empty area. Novice users often leave a selection active and think numbers are wrong — a dynamic
+title or an <code>ISFILTERED</code>-based warning ("Filtered by: Pharma") helps (Concept c04).</p>
+<h3 id="illustration">Illustration</h3>
+<p>On the Sahyadri expense page, a bar chart "Opex by BU" filters the vendor Top N chart and the cost-centre matrix,
+highlights the monthly stacked column trend, and does nothing to the "Total opex vs budget" cards. A user clicks
+Performance Polymers: vendor ranks recompute within Polymers (because <code>RANKX(ALLSELECTED(...))</code> respects the
+cross-filter), the trend shows Polymers' share of each month's opex, and the cards still show company opex of
+₹261.6 Cr against budget ₹264.8 Cr.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Highlight with ratio measures.</strong> Highlighting a portion of an EBITDA % column shows a meaningless partial bar;
+  use Filter.</li>
+<li><strong>Cards that must ignore a slicer.</strong> Setting a slicer → card interaction to None means the card ignores that
+  slicer entirely; label it ("Company total, all BUs") to avoid misinterpretation.</li>
+<li><strong>Interactions do not carry across pages.</strong> Cross-filter selections are page-specific; to carry context, use
+  synced slicers or drill-through.</li>
+<li><strong>Bookmarks</strong> capture the current selection state of visuals if "Data" and "Current page" are included; a
+  bookmark may restore a cross-filter the user did not expect.</li>
+<li><strong>Performance.</strong> Each cross-filter click re-queries every target visual; on pages with heavy matrices, setting
+  None on non-essential targets speeds up interaction.</li>
+<li><strong>Mobile layout</strong> inherits interactions; test that taps do not blank key cards.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Edit interactions sets, per source-target pair, Filter, Highlight or None.</li>
+<li>Switch the report default to cross-filtering for finance packs.</li>
+<li>Headline KPI cards usually ignore visual clicks; detail visuals respond.</li>
+<li>Disconnected-table visuals filter only through measures that read their selection.</li>
+<li>Use titles or warnings so users see when a cross-filter is active.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-interaction-matrix-l1">Q1. Interaction matrix [L1]</h3>
+<p>For Page 2 (Balance Sheet &amp; Working Capital) with visuals: Closing balances matrix, NWC card row, DSO/DIO/DPO
+trend, Net Debt trend and FY/BU slicers, design the interaction matrix and justify each None.</p>
+<h3 id="q2-highlight-misleads-l2">Q2. Highlight misleads [L2]</h3>
+<p>A stacked column chart of monthly revenue by BU is highlighted when a user clicks "Agro" in a BU bar chart showing
+EBITDA %. The highlighted portion of the March column is 44% of the bar height. Explain what the user might
+wrongly conclude and the interaction setting you would use instead.</p>
+<h3 id="q3-bridge-driven-detail-l3">Q3. Bridge-driven detail [L3]</h3>
+<p>Design how clicking the "Power &amp; fuel" step in the disconnected-table EBITDA waterfall could make a detail table
+show power and fuel ledgers only, given that the waterfall cannot cross-filter the GL table through relationships.
+Specify the measure logic.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> The detail visual's measure must read the step selection and map it to CoA lines.</p>
+</blockquote>
+<h3 id="q4-one-visual-ignores-fy-l2">Q4. One visual ignores FY [L2]</h3>
+<p>The CFO wants a 24-month revenue trend on Page 1 that ignores the FY slicer but respects BU and Region slicers.
+Explain how to achieve this with Edit interactions, and the alternative using DAX, and state the trade-offs.</p></section>
+<nav class="pager"><a class="prev" href="S01_FY_BU_and_Region_Slicers_Hierarchy_Relative_Date.html">← FY, BU and Region Slicers: Hierarchy, Relative Date and Sync</a><a class="next" href="S03_Drill_Down_vs_Drill_Through_PL_Hierarchy_and.html">Drill-Down vs Drill-Through: P&amp;L Hierarchy and Voucher… →</a></nav>
+</main></div></body></html>

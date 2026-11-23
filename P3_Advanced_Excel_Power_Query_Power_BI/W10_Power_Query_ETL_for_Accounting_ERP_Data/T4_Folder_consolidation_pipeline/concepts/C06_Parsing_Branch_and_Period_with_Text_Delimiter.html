@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parsing Branch and Period with Text Delimiter Functions · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C06_Parsing_Branch_and_Period_with_Text_Delimiter.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T4 · Folder consolidation pipeline</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Folder consolidation pipeline</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_FolderFiles_and_SharePointFiles_Sources_and_File.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S01_FolderFiles_and_SharePointFiles_Sources_and_File.html">Folder.Files and SharePoint.Files: Sources and File-Scope Filters</a></li><li><a href="../subtopics/S02_Combine_Files_Artefacts_Sample_Parameter_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S02_Combine_Files_Artefacts_Sample_Parameter_and.html">Combine Files Artefacts: Sample, Parameter and Transform Function</a></li><li><a href="../subtopics/S03_Writing_a_Custom_File_Cleaning_Function_by_Hand.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S03_Writing_a_Custom_File_Cleaning_Function_by_Hand.html">Writing a Custom File-Cleaning Function by Hand</a></li><li><a href="../subtopics/S04_Reading_Branch_and_Month_from_the_File_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S04_Reading_Branch_and_Month_from_the_File_Name.html">Reading Branch and Month from the File Name</a></li><li><a href="../subtopics/S05_Schema_Drift_Tolerant_Column_Selection_Across.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S05_Schema_Drift_Tolerant_Column_Selection_Across.html">Schema Drift: Tolerant Column Selection Across Branch Files</a></li><li><a href="../subtopics/S06_Multi_Bank_Statements_One_Function_per_Bank_Then.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S06_Multi_Bank_Statements_One_Function_per_Bank_Then.html">Multi-Bank Statements: One Function per Bank, Then Table.Combine</a></li><li><a href="../subtopics/S07_Monthly_Drop_In_Workflow_Archiving_and_Duplicate.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S07_Monthly_Drop_In_Workflow_Archiving_and_Duplicate.html">Monthly Drop-In Workflow, Archiving and Duplicate-File Detection</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_FolderFiles_Output_Columns_and_Which_to_Trust.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C01_FolderFiles_Output_Columns_and_Which_to_Trust.html">Folder.Files Output Columns and Which to Trust</a></li><li><a href="C02_Filtering_by_Extension_and_Excluding_Temp_Files.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C02_Filtering_by_Extension_and_Excluding_Temp_Files.html">Filtering by Extension and Excluding Temp Files</a></li><li><a href="C03_The_fxCleanTB_Function_Signature.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C03_The_fxCleanTB_Function_Signature.html">The fxCleanTB Function Signature</a></li><li><a href="C04_Invoking_per_File_and_Appending_with_TableCombine.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C04_Invoking_per_File_and_Appending_with_TableCombine.html">Invoking per File and Appending with Table.Combine</a></li><li><a href="C05_Tolerant_Column_Selection_with_MissingFieldUseNull.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C05_Tolerant_Column_Selection_with_MissingFieldUseNull.html">Tolerant Column Selection with MissingField.UseNull</a></li><li><a href="C06_Parsing_Branch_and_Period_with_Text_Delimiter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C06_Parsing_Branch_and_Period_with_Text_Delimiter.html">Parsing Branch and Period with Text Delimiter Functions</a></li><li><a href="C07_Guarding_the_Refresh_Against_One_Bad_File.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C07_Guarding_the_Refresh_Against_One_Bad_File.html">Guarding the Refresh Against One Bad File</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Parsing Branch and Period with Text Delimiter Functions</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>Text.BeforeDelimiter([Name], "_")</code> gives the branch; <code>Text.BetweenDelimiters([Name], "_", ".")</code> gives the period</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>For a file named <code>BRANCH_PERIOD.ext</code>:</p>
+<pre><code class="language-m">Branch     = Text.BeforeDelimiter([Name], &quot;_&quot;)
+PeriodText = Text.BetweenDelimiters([Name], &quot;_&quot;, &quot;.&quot;)
+PeriodEnd  = Date.EndOfMonth(Date.FromText(PeriodText &amp; &quot;-01&quot;))
+</code></pre>
+<ul>
+<li><code>Text.BeforeDelimiter(text, delimiter, optional index)</code> returns the text before the chosen occurrence of <code>delimiter</code> (default: the first).</li>
+<li><code>Text.AfterDelimiter(text, delimiter, optional index)</code> returns the text after it.</li>
+<li><code>Text.BetweenDelimiters(text, startDelimiter, endDelimiter, optional startIndex, optional endIndex)</code> returns the text between the chosen start delimiter and the chosen end delimiter that follows it.</li>
+<li><code>index</code> / <code>startIndex</code> can be a number (0 = first occurrence) or a list <code>{n, RelativePosition.FromEnd}</code> to count from the end.</li>
+</ul>
+<h2 id="explanation">Explanation</h2>
+<p>The file name is often the only place the branch and period exist once caption rows have been removed. Parsing it with delimiter functions is simple and readable, but it is only as reliable as the naming convention.</p>
+<p>Occurrence control matters when names have several underscores. For <code>HDFC_4521_2025-04.csv</code>:</p>
+<ul>
+<li><code>Text.BeforeDelimiter([Name], "_")</code> → "HDFC" (correct bank).</li>
+<li><code>Text.BetweenDelimiters([Name], "_", ".")</code> → "4521_2025-04" (start at the first underscore, stop at the first dot after it: wrong).</li>
+<li><code>Text.BetweenDelimiters([Name], "_", ".", {0, RelativePosition.FromEnd}, 0)</code> → "2025-04" (start at the last underscore).</li>
+<li><code>Text.BetweenDelimiters([Name], "_", "_")</code> → "4521" (account suffix).</li>
+</ul>
+<p>Behaviour when a delimiter is missing: the functions do not raise an error; they return the whole text or an empty string, so a name like <code>Mumbai April.csv</code> produces a meaningless Branch value without any warning. Always validate parsed values — branch against a master list, period by attempting a date conversion inside <code>try</code> — and send failures to a rejected-files list.</p>
+<p>Parsing belongs on the file inventory (one row per file), not on the combined data, both for speed and because the outer row's values can then be added to every nested row.</p>
+<h2 id="illustration">Illustration</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Branch</th>
+<th>Period text</th>
+<th>PeriodEnd</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MUM_2025-04.csv</code></td>
+<td>MUM</td>
+<td>2025-04</td>
+<td>30-04-2025</td>
+</tr>
+<tr>
+<td><code>DEL_2026-02.csv</code></td>
+<td>DEL</td>
+<td>2026-02</td>
+<td>28-02-2026</td>
+</tr>
+<tr>
+<td><code>BLR_2025-13.csv</code></td>
+<td>BLR</td>
+<td>2025-13</td>
+<td>error → rejected</td>
+</tr>
+<tr>
+<td><code>Pune-2025-05.csv</code></td>
+<td>not a valid code</td>
+<td>not a valid period</td>
+<td>rejected</td>
+</tr>
+</tbody>
+</table>
+<p>For the Pune file, the delimiter functions find no underscore and return text that is not a branch code or a period; no error is raised, so it is the branch-master check and the period <code>try</code> that reject the file, which is the desired outcome.</p>
+<h2 id="connections">Connections</h2>
+<p>Subtopic s04 (reading Branch and Month) and s07 (duplicate detection on parsed keys); concept c01 (why not Date modified). Topic t2's related item on <code>Text.BetweenDelimiters</code> / <code>Text.AfterDelimiter</code> / <code>Text.PositionOf</code> uses the same functions for narration parsing — e.g. extracting a UTR from "NEFT-UTIB0001234-ACME LTD". Topic t6 derives FY and quarter from the resulting PeriodEnd date.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-evaluate-the-expressions-l1">Q1. Evaluate the expressions [L1]</h3>
+<p>For <code>ICICI_0098_FY26_M07.csv</code>, give the result of: (a) <code>Text.BeforeDelimiter([Name], "_")</code>; (b) <code>Text.BetweenDelimiters([Name], "_", "_")</code>; (c) <code>Text.AfterDelimiter([Name], "_", {0, RelativePosition.FromEnd})</code>; (d) <code>Text.BetweenDelimiters([Name], "_", ".", {0, RelativePosition.FromEnd}, 0)</code>.</p>
+<h3 id="q2-fiscal-period-names-l2">Q2. Fiscal-period names [L2]</h3>
+<p>Names follow <code>BRANCH_FY26_M07.csv</code>, where M01 is April 2025 and M12 is March 2026 for FY26. Write the M that converts the name into a month-end date, with a <code>try</code> guard returning null for unparseable names.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> FY26 starts on 1 April 2025; add (month number − 1) months, then take the month end.</p>
+</blockquote>
+<h3 id="q3-validation-design-l2">Q3. Validation design [L2]</h3>
+<p>Write a step that adds a Status column ("OK", "Unknown branch", "Bad period") using <code>BranchMaster[Code]</code> and the parsed period, and explain why validating parsed values is necessary even when a naming convention exists.</p></section>
+<nav class="pager"><a class="prev" href="C05_Tolerant_Column_Selection_with_MissingFieldUseNull.html">← Tolerant Column Selection with MissingField.UseNull</a><a class="next" href="C07_Guarding_the_Refresh_Against_One_Bad_File.html">Guarding the Refresh Against One Bad File →</a></nav>
+</main></div></body></html>

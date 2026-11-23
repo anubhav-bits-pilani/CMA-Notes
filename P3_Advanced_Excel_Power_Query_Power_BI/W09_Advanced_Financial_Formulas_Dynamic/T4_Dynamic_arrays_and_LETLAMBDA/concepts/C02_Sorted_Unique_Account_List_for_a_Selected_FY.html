@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sorted Unique Account List for a Selected FY · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C02_Sorted_Unique_Account_List_for_a_Selected_FY.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T4 · Dynamic arrays and LET/LAMBDA</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Dynamic arrays and LET/LAMBDA</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Spill_Behaviour_SPILL_the_Operator_and_Implicit.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S01_Spill_Behaviour_SPILL_the_Operator_and_Implicit.html">Spill Behaviour, #SPILL!, the # Operator and Implicit Intersection</a></li><li><a href="../subtopics/S02_FILTER_with_ANDOR_Logic_for_Exception_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S02_FILTER_with_ANDOR_Logic_for_Exception_Lists.html">FILTER with AND/OR Logic for Exception Lists</a></li><li><a href="../subtopics/S03_UNIQUE_for_Dynamic_CoA_and_Department_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S03_UNIQUE_for_Dynamic_CoA_and_Department_Lists.html">UNIQUE for Dynamic CoA and Department Lists</a></li><li><a href="../subtopics/S04_SORT_and_SORTBY_for_Top_N_Expense_and_Ranked.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S04_SORT_and_SORTBY_for_Top_N_Expense_and_Ranked.html">SORT and SORTBY for Top-N Expense and Ranked Ageing Reports</a></li><li><a href="../subtopics/S05_SEQUENCE_for_Monthly_Timelines_Loan_Schedules_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S05_SEQUENCE_for_Monthly_Timelines_Loan_Schedules_and.html">SEQUENCE for Monthly Timelines, Loan Schedules and Period Counters</a></li><li><a href="../subtopics/S06_LET_for_Named_Steps_and_LAMBDA_Functions_in_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S06_LET_for_Named_Steps_and_LAMBDA_Functions_in_Name.html">LET for Named Steps and LAMBDA Functions in Name Manager</a></li><li><a href="../subtopics/S07_LAMBDA_Helpers_and_Array_Reshaping_Functions.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S07_LAMBDA_Helpers_and_Array_Reshaping_Functions.html">LAMBDA Helpers and Array Reshaping Functions</a></li><li><a href="../subtopics/S08_GROUPBY_and_PIVOTBY_as_Formula_Based_Pivots.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S08_GROUPBY_and_PIVOTBY_as_Formula_Based_Pivots.html">GROUPBY and PIVOTBY as Formula-Based Pivots</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_FILTER_with_Two_AND_Conditions_and_an_ifempty.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C01_FILTER_with_Two_AND_Conditions_and_an_ifempty.html">FILTER with Two AND Conditions and an if_empty Message</a></li><li><a href="C02_Sorted_Unique_Account_List_for_a_Selected_FY.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C02_Sorted_Unique_Account_List_for_a_Selected_FY.html">Sorted Unique Account List for a Selected FY</a></li><li><a href="C03_Top_10_Vendors_by_Spend_with_TAKE_and_SORTBY.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C03_Top_10_Vendors_by_Spend_with_TAKE_and_SORTBY.html">Top 10 Vendors by Spend with TAKE and SORTBY</a></li><li><a href="C04_EOMONTH_with_SEQUENCE_for_Horizontal_Month_End.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C04_EOMONTH_with_SEQUENCE_for_Horizontal_Month_End.html">EOMONTH with SEQUENCE for Horizontal Month-End Headers</a></li><li><a href="C05_LET_for_a_Safe_Gross_Margin_Calculation.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C05_LET_for_a_Safe_Gross_Margin_Calculation.html">LET for a Safe Gross Margin Calculation</a></li><li><a href="C06_FYEND_A_Named_LAMBDA_for_the_Indian_Financial_Year.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C06_FYEND_A_Named_LAMBDA_for_the_Indian_Financial_Year.html">FYEND: A Named LAMBDA for the Indian Financial Year</a></li><li><a href="C07_SCAN_for_Running_Closing_Balances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C07_SCAN_for_Running_Closing_Balances.html">SCAN for Running Closing Balances</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Sorted Unique Account List for a Selected FY</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>=SORT(UNIQUE(FILTER(GL[Account], GL[FY]=H1)))</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-excel">=SORT(UNIQUE(FILTER(GL[Account], GL[FY]=H1)))
+</code></pre>
+<p>Evaluated inside-out:</p>
+<ol>
+<li><code>FILTER(GL[Account], GL[FY]=H1)</code> — the account code on every GL row whose FY equals the selection in H1 (e.g. "FY26"). Many duplicates.</li>
+<li><code>UNIQUE(…)</code> — each distinct account once, in order of first appearance.</li>
+<li><code>SORT(…)</code> — ascending order (default sort_index 1, sort_order 1).</li>
+</ol>
+<p>The result is a vertical spill: the list of accounts that actually had postings in the selected financial year.</p>
+<h2 id="explanation">Explanation</h2>
+<p>This three-function nest is the standard way to build a <strong>dynamic row axis</strong> for a TB, P&amp;L or ledger-scrutiny report. A hard-typed account list goes stale when new ledgers are opened; this list is derived from the data, so a ledger created mid-year appears the moment its first posting lands in the GL Table.</p>
+<p>Why the order of nesting matters:</p>
+<ul>
+<li><strong>FILTER first</strong> reduces the data before de-duplication. <code>UNIQUE(FILTER(…))</code> is correct; <code>FILTER(UNIQUE(GL[Account]), …)</code> fails because the include array (<code>GL[FY]=H1</code>) is the full GL height while the UNIQUE output is much shorter — #VALUE!.</li>
+<li><strong>SORT last</strong> sorts the short distinct list, which is cheaper than sorting the whole GL.</li>
+</ul>
+<p>Practical points:</p>
+<ul>
+<li><strong>Missing if_empty</strong>: if H1 holds an FY with no postings (say "FY28"), FILTER returns #CALC!, and SORT/UNIQUE pass the error through. Add <code>"No postings"</code> as the third FILTER argument in production.</li>
+<li><strong>Numeric vs text codes</strong>: if Tally or SAP exported some account codes as text and others as numbers, SORT places numbers before text and UNIQUE treats 40010 and "40010" as different items. Normalise with <code>VALUE</code> or in Power Query.</li>
+<li><strong>Code vs name</strong>: build the axis on codes; fetch names with <code>XLOOKUP(K2#, CoA[Code], CoA[Name])</code> beside the spill.</li>
+<li><strong>Statement order</strong>: ascending numeric order coincides with Schedule III order only if the chart of accounts was designed that way (e.g. 1xxxxx assets … 5xxxxx expenses). Otherwise sort by a mapping sort key with SORTBY.</li>
+<li><strong>FY column</strong>: the GL needs an FY field. Derive it with the <code>FYEND</code> LAMBDA (c06) or <code>="FY"&amp;RIGHT(YEAR(Date)+(MONTH(Date)&gt;=4),2)</code> rather than relying on a typed column.</li>
+</ul>
+<p>Downstream, the SUMIFS block references the axis as <code>K2#</code> (spill operator), so it resizes with the list.</p>
+<h2 id="illustration">Illustration</h2>
+<p>GL Table (extract), H1 = "FY26":</p>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>FY</th>
+<th>Account</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12-Mar-25</td>
+<td>FY25</td>
+<td>510200</td>
+</tr>
+<tr>
+<td>03-Apr-25</td>
+<td>FY26</td>
+<td>510200</td>
+</tr>
+<tr>
+<td>03-Apr-25</td>
+<td>FY26</td>
+<td>400100</td>
+</tr>
+<tr>
+<td>19-Jun-25</td>
+<td>FY26</td>
+<td>510200</td>
+</tr>
+<tr>
+<td>02-Sep-25</td>
+<td>FY26</td>
+<td>530450</td>
+</tr>
+<tr>
+<td>11-Jan-26</td>
+<td>FY26</td>
+<td>400100</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>FILTER → 510200, 400100, 510200, 530450, 400100</li>
+<li>UNIQUE → 510200, 400100, 530450</li>
+<li>SORT → 400100, 510200, 530450</li>
+</ul>
+<p>Changing H1 to "FY25" returns 510200 only. When a new ledger 540900 (CSR expenditure, under Sec 135) gets its first FY26 posting, the list grows to four rows without edits.</p>
+<h2 id="connections">Connections</h2>
+<p>Combines s02 (FILTER), s03 (UNIQUE) and s04 (SORT). The H1 selector is a Data Validation list (w9_t6), and the output feeds the P&amp;L generator in the week's exercise as the UNIQUE FS-line/account axis × EOMONTH headers × SUMIFS. In Power BI the equivalent is <code>VALUES(GL[Account])</code> filtered by a slicer (Week 11). In audit, the same list against the prior-year list (via a set difference with <code>ISNA(XMATCH(...))</code>) identifies new ledgers that need scrutiny.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-fix-the-nesting-l1">Q1. Fix the nesting [L1]</h3>
+<p>Explain why <code>=SORT(FILTER(UNIQUE(GL[Account]), GL[FY]=H1))</code> returns #VALUE! and rewrite it correctly with an if_empty message.</p>
+<h3 id="q2-new-ledgers-this-year-l2">Q2. New ledgers this year [L2]</h3>
+<p>Using the same GL Table, write a formula listing accounts with postings in FY26 that had no postings in FY25, sorted ascending. Explain why an auditor would ask for this list.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Build both years' unique lists with LET, then filter one by non-membership in the other.</p>
+</blockquote>
+<h3 id="q3-mixed-type-codes-l2">Q3. Mixed-type codes [L2]</h3>
+<p>The FY26 list returns 400100, 510200, 530450, "400100", "540900" (the last two stored as text). Describe what the downstream SUMIFS grid will show for each code and two ways to fix the source.</p></section>
+<nav class="pager"><a class="prev" href="C01_FILTER_with_Two_AND_Conditions_and_an_ifempty.html">← FILTER with Two AND Conditions and an ifempty Message</a><a class="next" href="C03_Top_10_Vendors_by_Spend_with_TAKE_and_SORTBY.html">Top 10 Vendors by Spend with TAKE and SORTBY →</a></nav>
+</main></div></body></html>

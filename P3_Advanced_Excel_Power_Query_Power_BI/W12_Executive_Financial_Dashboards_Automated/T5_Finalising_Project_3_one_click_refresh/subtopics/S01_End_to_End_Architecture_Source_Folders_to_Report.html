@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>End-to-End Architecture: Source Folders to Report and Cube Pack · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S01_End_to_End_Architecture_Source_Folders_to_Report.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T5 · Finalising Project 3: one-click refresh</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Finalising Project 3: one-click refresh</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_End_to_End_Architecture_Source_Folders_to_Report.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S01_End_to_End_Architecture_Source_Folders_to_Report.html">End-to-End Architecture: Source Folders to Report and Cube Pack</a></li><li><a href="S02_Parameters_for_Folder_Path_As_of_Date_FY_Start_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S02_Parameters_for_Folder_Path_As_of_Date_FY_Start_and.html">Parameters for Folder Path, As-of Date, FY Start and Environment</a></li><li><a href="S03_Excel_Refresh_Orchestration_Refresh_All_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S03_Excel_Refresh_Orchestration_Refresh_All_and.html">Excel Refresh Orchestration: Refresh All and Connection Settings</a></li><li><a href="S04_Publishing_Scheduled_Refresh_and_Gateways_for_On.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S04_Publishing_Scheduled_Refresh_and_Gateways_for_On.html">Publishing, Scheduled Refresh and Gateways for On-Prem and Tally</a></li><li><a href="S05_Incremental_Refresh_with_RangeStart_and_RangeEnd.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S05_Incremental_Refresh_with_RangeStart_and_RangeEnd.html">Incremental Refresh with RangeStart and RangeEnd for GL History</a></li><li><a href="S06_Performance_Tuning_Columns_Cardinality_Analyzer.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S06_Performance_Tuning_Columns_Cardinality_Analyzer.html">Performance Tuning: Columns, Cardinality, Analyzer Tools</a></li><li><a href="S07_Packaging_PBIXPBIP_pbit_Template_Documentation_CFO.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S07_Packaging_PBIXPBIP_pbit_Template_Documentation_CFO.html">Packaging: PBIX/PBIP, .pbit Template, Documentation, CFO Guide</a></li><li><a href="S08_Distribution_Apps_Subscriptions_Exports_and_Teams.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S08_Distribution_Apps_Subscriptions_Exports_and_Teams.html">Distribution: Apps, Subscriptions, Exports and Teams Embedding</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Incremental_Refresh_Filter_on_RangeStart_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C01_Incremental_Refresh_Filter_on_RangeStart_and.html">Incremental Refresh Filter on RangeStart and RangeEnd</a></li><li><a href="../concepts/C02_Scheduled_Refresh_Limits_8_per_Day_on_Pro_48_on.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C02_Scheduled_Refresh_Limits_8_per_Day_on_Pro_48_on.html">Scheduled Refresh Limits: 8 per Day on Pro, 48 on Premium</a></li><li><a href="../concepts/C03_SharePointFiles_for_Gateway_Free_Cloud_Refresh.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C03_SharePointFiles_for_Gateway_Free_Cloud_Refresh.html">SharePoint.Files for Gateway-Free Cloud Refresh</a></li><li><a href="../concepts/C04_One_Click_Excel_Refresh_Macro_or_Power_Automate.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C04_One_Click_Excel_Refresh_Macro_or_Power_Automate.html">One-Click Excel Refresh Macro or Power Automate Flow</a></li><li><a href="../concepts/C05_Performance_Analyzer_to_DAX_Studio_Server_Timings.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C05_Performance_Analyzer_to_DAX_Studio_Server_Timings.html">Performance Analyzer to DAX Studio Server Timings</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>End-to-End Architecture: Source Folders to Report and Cube Pack</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> End-to-end architecture: source folders (SharePoint/OneDrive) → Power Query → model → Power BI report + Excel cube pack</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Project 3 is judged on one thing: a new month's files go in, one refresh runs, and every number in both the Power BI
+pack and the Excel board pack updates correctly with all controls passing. That only works if the architecture is
+deliberate — each layer has one job, data flows in one direction, and both front ends read from one model. In
+interviews, "walk me through your data lineage" is a standard question; a clear layered answer (sources → staging →
+model → presentation) shows you can build something a finance team can run without you.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-layers">The layers</h3>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Tool</th>
+<th>Responsibility</th>
+<th>Week built</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Sources</td>
+<td>SharePoint document library or OneDrive for Business folders</td>
+<td>Monthly GL CSVs per branch, CoA mapping, budget, TB control totals, AR/AP ageing</td>
+<td>Week 10</td>
+</tr>
+<tr>
+<td>2. Ingestion &amp; staging</td>
+<td>Power Query (in Power BI Desktop, or a dataflow)</td>
+<td>Folder combine, type, clean, unpivot, validate, exception outputs</td>
+<td>Week 10</td>
+</tr>
+<tr>
+<td>3. Semantic model</td>
+<td>Power BI semantic model (VertiPaq)</td>
+<td>Star schema, fiscal Date table, relationships, measure library, RLS</td>
+<td>Week 11</td>
+</tr>
+<tr>
+<td>4a. Report</td>
+<td>Power BI report (3 pages + control page)</td>
+<td>Executive P&amp;L &amp; variance, BS &amp; working capital, expense drill-down</td>
+<td>Week 12 T1–T2</td>
+</tr>
+<tr>
+<td>4b. Board pack</td>
+<td>Excel workbook with cube formulas connected to the published model</td>
+<td>Schedule III layouts, variance columns, commentary</td>
+<td>Week 12 T3</td>
+</tr>
+<tr>
+<td>5. Distribution</td>
+<td>Power BI App, subscriptions, exports</td>
+<td>Audience-specific access</td>
+<td>Week 12 T5</td>
+</tr>
+</tbody>
+</table>
+<h3 id="source-folder-design">Source folder design</h3>
+<p>Use a SharePoint site owned by Finance (not a personal OneDrive, which dies with the employee's account). A practical
+structure:</p>
+<table>
+<thead>
+<tr>
+<th>Folder</th>
+<th>Content</th>
+<th>Naming rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/GL/</code></td>
+<td>One file per branch per month</td>
+<td><code>GL_&lt;Branch&gt;_&lt;YYYY-MM&gt;.csv</code></td>
+</tr>
+<tr>
+<td><code>/Budget/</code></td>
+<td>Annual budget and re-forecasts</td>
+<td><code>Budget_FY2025-26_v3.xlsx</code></td>
+</tr>
+<tr>
+<td><code>/Mapping/</code></td>
+<td>CoA mapping, BU and cost-centre masters</td>
+<td>Single current file; history via SharePoint versioning</td>
+</tr>
+<tr>
+<td><code>/Controls/</code></td>
+<td>ERP TB/P&amp;L control totals per company-month</td>
+<td><code>TB_&lt;Company&gt;_&lt;YYYY-MM&gt;.csv</code></td>
+</tr>
+<tr>
+<td><code>/Archive/</code></td>
+<td>Superseded files</td>
+<td>Excluded by the folder filter</td>
+</tr>
+</tbody>
+</table>
+<p>Rules: one schema per folder, no ad hoc files dropped beside the data, filter by extension and folder path in the
+query, and require a naming convention that encodes branch and month (s03 completeness checks depend on it).</p>
+<p>Connect with <code>SharePoint.Files</code> (or <code>SharePoint.Contents</code>) using the site URL, not the OneDrive sync path on a laptop
+(<code>C:\Users\...\OneDrive - Contoso\...</code>). The sync path works in Desktop but needs a gateway for Service refresh; the
+SharePoint connector refreshes in the cloud (concept c03).</p>
+<h3 id="power-query-staging-pattern">Power Query staging pattern</h3>
+<ol>
+<li><code>Src_GL_Files</code> — SharePoint file list filtered to <code>/GL/</code> and <code>.csv</code> (connection only).</li>
+<li><code>fx_TransformGLFile</code> — custom function applied to each file's binary (promote headers, types, trim codes).</li>
+<li><code>Stg_GL</code> — combined table with <code>Source.Name</code>, standardised columns, <code>Currency.Type</code> amounts.</li>
+<li><code>GL</code> — loaded fact; <code>File_Control</code>, <code>Unmapped_Exceptions</code> — loaded control tables.</li>
+<li>Dimensions (<code>CoA</code>, <code>BU</code>, <code>CostCentre</code>, <code>Vendor</code>) from mapping files; <code>Date</code> from M or DAX with FY start parameter.</li>
+</ol>
+<p>Keep heavy transforms upstream (Power Query) and calculations downstream (DAX measures). Disable load for
+intermediate queries.</p>
+<h3 id="one-model-two-front-ends">One model, two front ends</h3>
+<p>Publish the PBIX/PBIP to the Service; the semantic model becomes the single source of truth.</p>
+<ul>
+<li>The <strong>Power BI report</strong> is bound to it (in the same file, or as a thin report with a live connection).</li>
+<li>The <strong>Excel cube pack</strong> connects via <em>Analyze in Excel</em> or Excel's Data &gt; Get Data &gt; From Power Platform &gt; From Power
+  BI. Cube formulas reference the connection name and the same measures (<code>[Measures].[Actual]</code>), so the board pack and
+  the dashboard cannot disagree.</li>
+</ul>
+<p>Avoid a second copy of the model inside the Excel workbook (Power Pivot) for production: two models drift. The
+workbook Data Model is fine for prototyping (Topic 3) but the production board pack should point to the published
+semantic model.</p>
+<h3 id="lineage-in-one-picture">Lineage in one picture</h3>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>From</th>
+<th>Mechanism</th>
+<th>To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>SharePoint <code>/GL</code>, <code>/Budget</code>, <code>/Mapping</code>, <code>/Controls</code></td>
+<td><code>SharePoint.Files</code> (cloud, OAuth)</td>
+<td>Power Query source queries</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Power Query: Src → fx Transform → Stg</td>
+<td>Staging and validation</td>
+<td>Loaded tables: GL, Budget, CoA, <code>TB_Control</code>, <code>File_Control</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Loaded tables</td>
+<td>Scheduled refresh in the Service</td>
+<td>Semantic model "Finance Pack – Prod" (certified, RLS)</td>
+</tr>
+<tr>
+<td>4a</td>
+<td>Semantic model</td>
+<td>Live binding</td>
+<td>Power BI report → App (CXO / BU / Finance audiences)</td>
+</tr>
+<tr>
+<td>4b</td>
+<td>Semantic model</td>
+<td>Analyze in Excel connection, <code>CUBEVALUE</code></td>
+<td>Excel board pack</td>
+</tr>
+</tbody>
+</table>
+<h3 id="where-tally-fits">Where Tally fits</h3>
+<p>Tally Prime data reaches the folder either by scheduled export (XML/CSV to a synced folder, then uploaded to SharePoint
+by a script or Power Automate Desktop), or directly through Tally's ODBC interface (port 9000) queried by Power BI.
+The direct route requires the Tally application to be running on a machine with an on-premises data gateway (s04).
+For a month-end pack, the export-to-SharePoint route is usually simpler and more auditable, because the exported file
+is itself evidence.</p>
+<h3 id="illustration">Illustration</h3>
+<p>A Bengaluru IT-services company with 4 delivery centres: 48 GL files per year, one budget file, one mapping file and
+12 control files. After adding May 2026, the folder holds 4 new GL files and 1 control file. One scheduled refresh
+at 06:30 IST updates the model; the App shows May; the CFO's Excel board pack, opened at 09:00 with
+"Refresh data when opening the file" on, shows the same EBITDA of ₹38.42 crore as the Power BI card.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Dataflows vs in-model Power Query.</strong> A dataflow (Gen1 or Fabric Gen2) centralises staging for several models
+  but adds a refresh dependency: the model refresh must run after the dataflow completes.</li>
+<li><strong>Multiple models.</strong> Separate models for finance and sales are acceptable if they share conformed dimensions;
+  avoid duplicating GL logic.</li>
+<li><strong>Large files.</strong> CSVs of several hundred MB per month push towards incremental refresh (s05) or Fabric.</li>
+<li><strong>SharePoint permissions.</strong> The refresh credential must have read access to every folder; a restricted
+  sub-folder causes refresh failures that look like missing data.</li>
+<li><strong>Excel-only users.</strong> Users without Power BI licences cannot use Analyze in Excel against a Pro workspace; plan
+  licensing for board-pack consumers (Premium/Fabric capacity at F64 or above allows free-licence viewing of reports,
+  but building in Excel generally needs Build permission and a licence).</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Five layers: sources, Power Query staging, semantic model, presentation (report + Excel), distribution.</li>
+<li>Store sources in a Finance-owned SharePoint site with one schema per folder and encoded file names.</li>
+<li>Connect through the SharePoint connector, not a local sync path, to refresh in the cloud without a gateway.</li>
+<li>One published semantic model feeds both the Power BI report and the Excel cube pack.</li>
+<li>Keep transformations in Power Query and business logic in DAX measures.</li>
+<li>Prefer exported Tally files in SharePoint over live ODBC for auditable month-end packs.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-draw-the-lineage-l1">Q1. Draw the lineage [L1]</h3>
+<p>Draw (as a text diagram or table) the lineage for a pack with GL, budget, CoA mapping and TB control files, naming each
+Power Query query, the semantic model, the report, the App and the Excel workbook, and the refresh trigger between
+layers.</p>
+<h3 id="q2-folder-hygiene-failure-l2">Q2. Folder hygiene failure [L2]</h3>
+<p>An analyst saves <code>GL_BLR_2026-04 - Copy.csv</code> and <code>Notes on April.xlsx</code> in the <code>/GL/</code> folder. Describe what happens at
+the next refresh with a naive folder query, and specify the filters and naming checks that would prevent or detect
+each problem.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider both the extension filter and the duplicate-period check.</p>
+</blockquote>
+<h3 id="q3-two-models-drifting-l2">Q3. Two models drifting [L2]</h3>
+<p>The CFO's office has an Excel board pack with its own Power Pivot model loading the same GL files, while FP&amp;A
+maintains the Power BI model. In March, Excel shows EBITDA ₹1.6 crore higher. List likely causes and argue for the
+target architecture.</p>
+<h3 id="q4-architecture-for-tally-plus-sap-l3">Q4. Architecture for Tally plus SAP [L3]</h3>
+<p>Two subsidiaries run Tally Prime on on-premises servers; the parent uses SAP S/4HANA in the cloud. Design the source
+layer and ingestion approach (export vs ODBC, gateway need, folder structure, schedules) so that a single 07:00 IST
+refresh produces a consolidated pack, and identify the failure points.</p>
+<h3 id="q5-interview-why-sharepoint-l1">Q5. Interview: why SharePoint? [L1]</h3>
+<p>Explain in four sentences why you used a SharePoint library rather than a shared network drive or a personal OneDrive
+for the source files.</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← Finalising Project 3: one-click refresh</a><a class="next" href="S02_Parameters_for_Folder_Path_As_of_Date_FY_Start_and.html">Parameters for Folder Path, As-of Date, FY Start and… →</a></nav>
+</main></div></body></html>

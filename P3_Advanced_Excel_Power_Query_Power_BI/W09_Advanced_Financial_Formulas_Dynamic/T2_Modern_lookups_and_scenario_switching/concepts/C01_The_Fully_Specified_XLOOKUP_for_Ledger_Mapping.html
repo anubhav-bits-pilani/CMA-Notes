@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Fully Specified XLOOKUP for Ledger Mapping · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C01_The_Fully_Specified_XLOOKUP_for_Ledger_Mapping.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T2 · Modern lookups and scenario switching</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Modern lookups and scenario switching</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_XLOOKUP_Arguments_Not_Found_Value_Match_Mode_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S01_XLOOKUP_Arguments_Not_Found_Value_Match_Mode_and.html">XLOOKUP Arguments: Not-Found Value, Match Mode and Search Mode</a></li><li><a href="../subtopics/S02_Approximate_Match_Lookups_for_Slabs_TDS_Rates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S02_Approximate_Match_Lookups_for_Slabs_TDS_Rates.html">Approximate-Match Lookups for Slabs, TDS Rates, Tiers and Bands</a></li><li><a href="../subtopics/S03_Reverse_Search_for_Latest_Price_FX_Rate_and_Last.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S03_Reverse_Search_for_Latest_Price_FX_Rate_and_Last.html">Reverse Search for Latest Price, FX Rate and Last Payment Date</a></li><li><a href="../subtopics/S04_Two_Way_Lookups_on_Account_Month_Grids.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S04_Two_Way_Lookups_on_Account_Month_Grids.html">Two-Way Lookups on Account × Month Grids</a></li><li><a href="../subtopics/S05_XLOOKUP_Returning_Rows_Columns_and_Range.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S05_XLOOKUP_Returning_Rows_Columns_and_Range.html">XLOOKUP Returning Rows, Columns and Range References</a></li><li><a href="../subtopics/S06_XMATCH_and_INDEX_XMATCH_for_Dynamic_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S06_XMATCH_and_INDEX_XMATCH_for_Dynamic_Column.html">XMATCH and INDEX-XMATCH for Dynamic Column Selection</a></li><li><a href="../subtopics/S07_Live_Scenario_Switches_with_CHOOSE_INDEX_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S07_Live_Scenario_Switches_with_CHOOSE_INDEX_and.html">Live Scenario Switches with CHOOSE, INDEX and SWITCH</a></li><li><a href="../subtopics/S08_Multi_Key_Lookups_Helper_Keys_vs_Boolean_Arrays.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S08_Multi_Key_Lookups_Helper_Keys_vs_Boolean_Arrays.html">Multi-Key Lookups: Helper Keys vs Boolean Arrays</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_The_Fully_Specified_XLOOKUP_for_Ledger_Mapping.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C01_The_Fully_Specified_XLOOKUP_for_Ledger_Mapping.html">The Fully Specified XLOOKUP for Ledger Mapping</a></li><li><a href="C02_Next_Smaller_XLOOKUP_for_Slab_Rates_Without.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C02_Next_Smaller_XLOOKUP_for_Slab_Rates_Without.html">Next-Smaller XLOOKUP for Slab Rates Without Sorting</a></li><li><a href="C03_Nested_XLOOKUP_as_a_Two_Way_Lookup.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C03_Nested_XLOOKUP_as_a_Two_Way_Lookup.html">Nested XLOOKUP as a Two-Way Lookup</a></li><li><a href="C04_INDEX_MATCH_MATCH_The_Version_Proof_Two_Way_Lookup.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C04_INDEX_MATCH_MATCH_The_Version_Proof_Two_Way_Lookup.html">INDEX-MATCH-MATCH: The Version-Proof Two-Way Lookup</a></li><li><a href="C05_Boolean_Array_XLOOKUP_for_Multi_Criteria_Lookups.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C05_Boolean_Array_XLOOKUP_for_Multi_Criteria_Lookups.html">Boolean-Array XLOOKUP for Multi-Criteria Lookups</a></li><li><a href="C06_CHOOSE_Driven_by_a_MATCH_Index_for_Scenario.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C06_CHOOSE_Driven_by_a_MATCH_Index_for_Scenario.html">CHOOSE Driven by a MATCH Index for Scenario Selection</a></li><li><a href="C07_Dynamic_Period_Window_with_XLOOKUPXLOOKUP.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C07_Dynamic_Period_Window_with_XLOOKUPXLOOKUP.html">Dynamic Period Window with XLOOKUP:XLOOKUP</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>The Fully Specified XLOOKUP for Ledger Mapping</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>=XLOOKUP(key, lookup_array, return_array, "Not mapped", 0, 1)</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>\[
+\text{XLOOKUP}(k, L, R, f, 0, 1) =
+\begin{cases}
+R_{j^*} &amp; \text{if } \exists\, j : L_j = k, \text{ with } j^* = \min\{\, j : L_j = k \,\} \\
+f &amp; \text{otherwise}
+\end{cases}
+\]</p>
+<p>where \(k\) is the key (e.g. a TB ledger name), \(L\) the lookup array (mapping-table ledgers), \(R\) the return array (FS line, aligned with \(L\)), \(f\) the not-found value ("Not mapped"), match mode 0 means exact equality (case-insensitive for text), and search mode 1 means scanning from first to last so the <strong>first</strong> matching row \(j^*\) is returned.</p>
+<h2 id="explanation">Explanation</h2>
+<p><strong>Why write the defaults explicitly.</strong> Match mode 0 and search mode 1 are XLOOKUP's defaults, so <code>XLOOKUP(key, L, R, "Not mapped")</code> behaves identically. Writing all six arguments in a mapping template documents intent — "exact, first match, flag misses" — and stops a later editor from "optimising" with binary search or approximate match without noticing what changes.</p>
+<p><strong>The not-found value as a control.</strong> "Not mapped" is deliberately a text flag, not 0 or blank:</p>
+<ul>
+<li>It is visible in the TB and in any PivotTable of the mapped data.</li>
+<li>It can be counted: <code>=COUNTIF(TB[FSLine], "Not mapped")</code> is a check cell that must be zero.</li>
+<li>It flows into SUMIFS rollups as its own FS line, so its amount appears rather than vanishing: <code>=SUMIFS(TB[Closing], TB[FSLine], "Not mapped")</code>.</li>
+<li>It catches only the not-found case. A <code>#REF!</code> from a deleted mapping column still shows — unlike <code>IFERROR(…,"Not mapped")</code>, which would disguise a broken model as an unmapped ledger.</li>
+</ul>
+<p><strong>What "first match" implies.</strong> If the mapping table accidentally holds the same ledger twice with different FS lines, the first wins silently. Pair the formula with a duplicate check on the mapping table: <code>=COUNTIF(Map[Ledger],[@Ledger])&gt;1</code>.</p>
+<p><strong>Exactness traps.</strong> Exact match is strict on content and type: "Rent " (trailing space) ≠ "Rent"; the number 410100 ≠ the text "410100"; non-breaking spaces (CHAR(160)) from web/PDF exports look like spaces but are not removed by TRIM. Clean keys at import (Power Query Trim/Clean, type setting) rather than inside every lookup.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Mapping table <code>Map</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Ledger</th>
+<th>FSLine</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sales – Domestic</td>
+<td>Revenue from operations</td>
+</tr>
+<tr>
+<td>Sales – Export</td>
+<td>Revenue from operations</td>
+</tr>
+<tr>
+<td>Rent</td>
+<td>Other expenses</td>
+</tr>
+<tr>
+<td>Interest on Term Loan</td>
+<td>Finance costs</td>
+</tr>
+</tbody>
+</table>
+<p>TB rows and results with <code>=XLOOKUP([@Ledger], Map[Ledger], Map[FSLine], "Not mapped", 0, 1)</code>:</p>
+<table>
+<thead>
+<tr>
+<th>TB ledger</th>
+<th>Closing (₹ lakh)</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sales – Domestic</td>
+<td>-1,240.0</td>
+<td>Revenue from operations</td>
+</tr>
+<tr>
+<td>Rent</td>
+<td>86.4</td>
+<td>Other expenses</td>
+</tr>
+<tr>
+<td>Interest on CC</td>
+<td>19.8</td>
+<td>Not mapped</td>
+</tr>
+<tr>
+<td>Rent␠ (trailing space)</td>
+<td>3.6</td>
+<td>Not mapped</td>
+</tr>
+</tbody>
+</table>
+<p>Check cells: count of "Not mapped" = 2; amount = ₹23.4 lakh. The second row is a data-cleaning issue; the first is a genuinely new ledger that needs a mapping row (Finance costs).</p>
+<h2 id="connections">Connections</h2>
+<p>This is the mapping step of the week's exercise (ledger → FS line → Schedule III line) and the unmapped-ledger check in the cross-cutting concepts. It applies the argument rules of the XLOOKUP-arguments subtopic and is the safer alternative to VLOOKUP covered under related concepts. The duplicate-key and trailing-space pitfalls of this topic are exactly the failure modes it is exposed to. At ETL scale (Week 10) the same mapping is a Power Query left-outer merge with null-checks.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-mapping-with-control-totals-l1">Q1. Mapping with control totals [L1]</h3>
+<p>Write the mapping formula for a TB Table with columns Ledger, Closing, and the three check cells (count of unmapped, net amount unmapped, absolute amount unmapped) you would place on the control sheet.</p>
+<h3 id="q2-iferror-vs-the-not-found-argument-l2">Q2. IFERROR vs the not-found argument [L2]</h3>
+<p>A reviewer replaced <code>XLOOKUP([@Ledger], Map[Ledger], Map[FSLine], "Not mapped", 0, 1)</code> with <code>IFERROR(XLOOKUP([@Ledger], Map[Ledger], Map[FSLine]), "Not mapped")</code> "for consistency". Describe a realistic sequence of events in which the IFERROR version produces a materially wrong draft balance sheet without anyone noticing, and how the original would have exposed it.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Think about what happens to every row if the mapping Table's FSLine column is renamed or deleted.</p>
+</blockquote>
+<h3 id="q3-cleaning-before-mapping-l2">Q3. Cleaning before mapping [L2]</h3>
+<p>A TB pasted from a PDF has 61 of 480 ledgers showing "Not mapped", although they look identical to mapping-table entries. Write formulas to test for trailing spaces, non-breaking spaces and number-versus-text mismatches, and describe the permanent fix.</p></section>
+<nav class="pager"><a class="prev" href="../subtopics/S08_Multi_Key_Lookups_Helper_Keys_vs_Boolean_Arrays.html">← Multi-Key Lookups: Helper Keys vs Boolean Arrays</a><a class="next" href="C02_Next_Smaller_XLOOKUP_for_Slab_Rates_Without.html">Next-Smaller XLOOKUP for Slab Rates Without Sorting →</a></nav>
+</main></div></body></html>

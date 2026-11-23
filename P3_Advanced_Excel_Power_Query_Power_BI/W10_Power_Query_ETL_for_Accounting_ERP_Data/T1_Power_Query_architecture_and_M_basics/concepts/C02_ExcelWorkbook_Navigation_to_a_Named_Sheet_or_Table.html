@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Excel.Workbook Navigation to a Named Sheet or Table · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C02_ExcelWorkbook_Navigation_to_a_Named_Sheet_or_Table.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T1 · Power Query architecture and M basics</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Power Query architecture and M basics</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Power_Query_Connectors_for_Accounting_and_ERP_Data.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S01_Power_Query_Connectors_for_Accounting_and_ERP_Data.html">Power Query Connectors for Accounting and ERP Data Sources</a></li><li><a href="../subtopics/S02_Power_Query_Editor_Anatomy_Steps_Formula_Bar_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S02_Power_Query_Editor_Anatomy_Steps_Formula_Bar_and.html">Power Query Editor Anatomy: Steps, Formula Bar and Dependencies</a></li><li><a href="../subtopics/S03_M_Language_Structure_letin_Values_Records_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S03_M_Language_Structure_letin_Values_Records_Lists.html">M Language Structure: let/in, Values, Records, Lists and each</a></li><li><a href="../subtopics/S04_Data_Types_and_Controlling_Automatic_Type.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S04_Data_Types_and_Controlling_Automatic_Type.html">Data Types and Controlling Automatic Type Detection</a></li><li><a href="../subtopics/S05_Query_Folding_Which_Steps_Fold_Native_Query_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S05_Query_Folding_Which_Steps_Fold_Native_Query_and.html">Query Folding: Which Steps Fold, Native Query and Diagnostics</a></li><li><a href="../subtopics/S06_Parameters_Staging_Queries_and_Reference_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S06_Parameters_Staging_Queries_and_Reference_vs.html">Parameters, Staging Queries and Reference vs Duplicate</a></li><li><a href="../subtopics/S07_Load_Options_and_Refresh_Behaviour_in_Excel_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S07_Load_Options_and_Refresh_Behaviour_in_Excel_vs.html">Load Options and Refresh Behaviour in Excel vs Power BI</a></li><li><a href="../subtopics/S08_Privacy_Levels_and_FormulaFirewall_Errors.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S08_Privacy_Levels_and_FormulaFirewall_Errors.html">Privacy Levels and Formula.Firewall Errors</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_CsvDocument_with_FileContents_Delimiter_Encoding.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C01_CsvDocument_with_FileContents_Delimiter_Encoding.html">Csv.Document with File.Contents: Delimiter, Encoding, QuoteStyle</a></li><li><a href="C02_ExcelWorkbook_Navigation_to_a_Named_Sheet_or_Table.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C02_ExcelWorkbook_Navigation_to_a_Named_Sheet_or_Table.html">Excel.Workbook Navigation to a Named Sheet or Table</a></li><li><a href="C03_SqlDatabase_with_a_Native_Query_Blocks_Later.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C03_SqlDatabase_with_a_Native_Query_Blocks_Later.html">Sql.Database with a Native Query Blocks Later Folding</a></li><li><a href="C04_ValueNativeQuery_with_Parameters_and_EnableFolding.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C04_ValueNativeQuery_with_Parameters_and_EnableFolding.html">Value.NativeQuery with Parameters and EnableFolding</a></li><li><a href="C05_The_each_Keyword_and_the_Underscore_Parameter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C05_The_each_Keyword_and_the_Underscore_Parameter.html">The each Keyword and the Underscore Parameter</a></li><li><a href="C06_Folding_Breakers_TableBuffer_Index_Columns_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C06_Folding_Breakers_TableBuffer_Index_Columns_and.html">Folding Breakers: Table.Buffer, Index Columns and Custom Functions</a></li><li><a href="C07_MySQLDatabase_Connector_and_OdbcDataSource_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C07_MySQLDatabase_Connector_and_OdbcDataSource_for.html">MySQL.Database Connector and Odbc.DataSource for Tally</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Excel.Workbook Navigation to a Named Sheet or Table</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>Excel.Workbook(File.Contents(FilePath), null, true){[Item="TB", Kind="Sheet"]}[Data]</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p><code>Excel.Workbook(workbook as binary, optional useHeaders, optional delayTypes)</code> returns a <strong>navigation table</strong> with one row per object in the file and columns:</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Name</code></td>
+<td>Object name (sheet name, table name, defined name)</td>
+</tr>
+<tr>
+<td><code>Data</code></td>
+<td>The object's contents as a nested table</td>
+</tr>
+<tr>
+<td><code>Item</code></td>
+<td>Item identifier used for navigation</td>
+</tr>
+<tr>
+<td><code>Kind</code></td>
+<td><code>"Sheet"</code>, <code>"Table"</code> or <code>"DefinedName"</code></td>
+</tr>
+<tr>
+<td><code>Hidden</code></td>
+<td>Whether the sheet/object is hidden</td>
+</tr>
+</tbody>
+</table>
+<p><code>{[Item="TB", Kind="Sheet"]}</code> selects the single row whose Item is "TB" and Kind is "Sheet" (key lookup on a table); <code>[Data]</code> returns that row's nested table. Arguments: <code>useHeaders = null</code> (or <code>false</code>) means do not promote the first row; <code>delayTypes = true</code> means leave columns untyped so that typing is done deliberately later.</p>
+<h2 id="explanation">Explanation</h2>
+<p>The key-lookup syntax <code>table{[field=value, ...]}</code> returns exactly one record and <strong>errors if zero or more than one row matches</strong>. That is why both Item and Kind are specified — a workbook can contain a sheet "TB" and a table "TB" at the same time.</p>
+<p>Choosing the object:</p>
+<ul>
+<li><strong>Kind = "Table"</strong> (an Excel ListObject) is the most robust: fixed header row, defined range, no stray notes. Use it for CoA masters and mappings you control.</li>
+<li><strong>Kind = "Sheet"</strong> brings the used range: Tally/SAP report headers, blank rows, totals and any notes typed to the right. Fine for exports you do not control, but plan header-skipping and column selection by name.</li>
+<li><strong>Kind = "DefinedName"</strong> reads a named range, useful for a fixed input block.</li>
+</ul>
+<p><strong>Sheet-name drift</strong> is the main recurring risk: Tally exports may name the sheet "Trial Balance" one month and "TB" another, or the sheet may be renamed by a user. Tolerant alternatives:</p>
+<pre><code>Source  = Excel.Workbook(File.Contents(FilePath), null, true),
+Sheets  = Table.SelectRows(Source, each [Kind] = &quot;Sheet&quot; and not [Hidden]),
+TB      = Sheets{0}[Data]          // first visible sheet
+// or by pattern
+TB2     = Table.SelectRows(Sheets, each Text.Contains([Name], &quot;Trial&quot;, Comparer.OrdinalIgnoreCase)){0}[Data]
+</code></pre>
+<p><code>delayTypes = true</code> interacts with s04: it prevents the connector's own type guesses, keeping all columns as <code>any</code> until your explicit typing step with locale.</p>
+<p>In a folder pipeline, <code>File.Contents(FilePath)</code> is replaced by the binary <code>[Content]</code> from <code>Folder.Files</code>, and the navigation is placed inside the cleaning function so every branch file is navigated the same way.</p>
+<h2 id="illustration">Illustration</h2>
+<p><code>Branch_Pune_Mar26.xlsx</code> contains sheets "TB" and "Notes" and a hidden sheet "Old". The navigation table therefore has three Sheet rows. <code>{[Item="TB",Kind="Sheet"]}[Data]</code> returns the TB used range: row 1 "ABC Industries Ltd – Pune", row 2 "Trial Balance as at 31-Mar-2026", row 4 headers "Particulars | Debit | Credit", then ledger rows and a "Grand Total" row. These rows are handled next with conditional skip and filter (Topic 2). If April's file names the sheet "Trial Balance", the hard-coded lookup errors with <code>Expression.Error: The key didn't match any rows in the table</code>; the pattern-based selection survives.</p>
+<h2 id="connections">Connections</h2>
+<p>Builds on s01 (Excel Workbook connector) and s03 (records, key lookup, nested tables). Feeds Topic 2 (skipping report headers) and Topic 4 (applying the same navigation to every file in a folder). In FP&amp;A practice, budget templates should be distributed with a named Excel Table so that collection is robust.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-key-lookup-errors-l1">Q1. Key lookup errors [L1]</h3>
+<p>State what happens when the lookup <code>{[Item="TB", Kind="Sheet"]}</code> is applied to a workbook that (a) has no "TB" sheet, (b) has both a sheet and a table named "TB", (c) has the sheet "TB" hidden.</p>
+<h3 id="q2-robust-navigation-l2">Q2. Robust navigation [L2]</h3>
+<p>Branch TB workbooks arrive with sheet names "TB", "Trial Balance", "TB Mar26" and occasionally an extra "Notes" sheet. Write M that reliably picks the trial balance sheet in every case, and explain the fallback you would use if no sheet name contains "TB" or "Trial".</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Filter the navigation table first, then take the first match with optional access.</p>
+</blockquote>
+<h3 id="q3-sheet-vs-table-for-budgets-l2">Q3. Sheet vs Table for budgets [L2]</h3>
+<p>You design a department budget template that 14 department heads will fill. Argue whether the collection query should navigate to a Sheet or a Table, and list the template design choices that make the Power Query side refresh-safe.</p></section>
+<nav class="pager"><a class="prev" href="C01_CsvDocument_with_FileContents_Delimiter_Encoding.html">← Csv.Document with File.Contents: Delimiter, Encoding,…</a><a class="next" href="C03_SqlDatabase_with_a_Native_Query_Blocks_Later.html">Sql.Database with a Native Query Blocks Later Folding →</a></nav>
+</main></div></body></html>

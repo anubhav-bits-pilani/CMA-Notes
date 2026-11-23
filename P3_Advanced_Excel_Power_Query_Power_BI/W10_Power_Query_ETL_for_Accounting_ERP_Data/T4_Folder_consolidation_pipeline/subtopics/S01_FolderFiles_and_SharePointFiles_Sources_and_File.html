@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Folder.Files and SharePoint.Files: Sources and File-Scope Filters · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S01_FolderFiles_and_SharePointFiles_Sources_and_File.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T4 · Folder consolidation pipeline</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Folder consolidation pipeline</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_FolderFiles_and_SharePointFiles_Sources_and_File.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S01_FolderFiles_and_SharePointFiles_Sources_and_File.html">Folder.Files and SharePoint.Files: Sources and File-Scope Filters</a></li><li><a href="S02_Combine_Files_Artefacts_Sample_Parameter_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S02_Combine_Files_Artefacts_Sample_Parameter_and.html">Combine Files Artefacts: Sample, Parameter and Transform Function</a></li><li><a href="S03_Writing_a_Custom_File_Cleaning_Function_by_Hand.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S03_Writing_a_Custom_File_Cleaning_Function_by_Hand.html">Writing a Custom File-Cleaning Function by Hand</a></li><li><a href="S04_Reading_Branch_and_Month_from_the_File_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S04_Reading_Branch_and_Month_from_the_File_Name.html">Reading Branch and Month from the File Name</a></li><li><a href="S05_Schema_Drift_Tolerant_Column_Selection_Across.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S05_Schema_Drift_Tolerant_Column_Selection_Across.html">Schema Drift: Tolerant Column Selection Across Branch Files</a></li><li><a href="S06_Multi_Bank_Statements_One_Function_per_Bank_Then.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S06_Multi_Bank_Statements_One_Function_per_Bank_Then.html">Multi-Bank Statements: One Function per Bank, Then Table.Combine</a></li><li><a href="S07_Monthly_Drop_In_Workflow_Archiving_and_Duplicate.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S07_Monthly_Drop_In_Workflow_Archiving_and_Duplicate.html">Monthly Drop-In Workflow, Archiving and Duplicate-File Detection</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_FolderFiles_Output_Columns_and_Which_to_Trust.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C01_FolderFiles_Output_Columns_and_Which_to_Trust.html">Folder.Files Output Columns and Which to Trust</a></li><li><a href="../concepts/C02_Filtering_by_Extension_and_Excluding_Temp_Files.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C02_Filtering_by_Extension_and_Excluding_Temp_Files.html">Filtering by Extension and Excluding Temp Files</a></li><li><a href="../concepts/C03_The_fxCleanTB_Function_Signature.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C03_The_fxCleanTB_Function_Signature.html">The fxCleanTB Function Signature</a></li><li><a href="../concepts/C04_Invoking_per_File_and_Appending_with_TableCombine.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C04_Invoking_per_File_and_Appending_with_TableCombine.html">Invoking per File and Appending with Table.Combine</a></li><li><a href="../concepts/C05_Tolerant_Column_Selection_with_MissingFieldUseNull.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C05_Tolerant_Column_Selection_with_MissingFieldUseNull.html">Tolerant Column Selection with MissingField.UseNull</a></li><li><a href="../concepts/C06_Parsing_Branch_and_Period_with_Text_Delimiter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C06_Parsing_Branch_and_Period_with_Text_Delimiter.html">Parsing Branch and Period with Text Delimiter Functions</a></li><li><a href="../concepts/C07_Guarding_the_Refresh_Against_One_Bad_File.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C07_Guarding_the_Refresh_Against_One_Bad_File.html">Guarding the Refresh Against One Bad File</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Folder.Files and SharePoint.Files: Sources and File-Scope Filters</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> <code>Folder.Files</code> and <code>SharePoint.Files</code> as sources; filtering by extension and name pattern; excluding <code>~$</code> temp files</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Every folder pipeline starts with a file inventory: a table with one row per file and a binary <code>Content</code> column. What enters that inventory decides what gets consolidated. If a lock file, a "v2" copy or last year's archive slips through, the consolidated TB is overstated and nothing errors. In audit terms, the file filter is the completeness-and-occurrence control of the pipeline: all in-scope files in, nothing else in. Getting the source right also determines whether the Power BI Service can refresh without a gateway (SharePoint) or needs one (local or network folder).</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="folderfiles">Folder.Files</h3>
+<p><code>Folder.Files(path)</code> returns a table of every file in the folder <strong>and all its subfolders</strong> (it is recursive). Each row has <code>Content</code> (binary), <code>Name</code>, <code>Extension</code>, <code>Date accessed</code>, <code>Date modified</code>, <code>Date created</code>, <code>Attributes</code> (a record with fields such as <code>Hidden</code>, <code>ReadOnly</code>, <code>Directory</code>) and <code>Folder Path</code>. Its sibling <code>Folder.Contents(path)</code> is non-recursive and returns files plus a <code>Table</code> column for navigating into subfolders; the UI's Folder connector uses <code>Folder.Files</code>.</p>
+<pre><code class="language-m">let
+    Source = Folder.Files(FolderPath)
+in
+    Source
+</code></pre>
+<p><code>FolderPath</code> should be a text parameter (or read from a named cell with <code>Excel.CurrentWorkbook(){[Name="FolderPath"]}[Content]{0}[Column1]</code>), never a hard-coded <code>C:\Users\...</code> string. A trailing backslash matters only when you compare against <code>[Folder Path]</code>, which always ends with one.</p>
+<h3 id="sharepointfiles">SharePoint.Files</h3>
+<p><code>SharePoint.Files(siteUrl, [ApiVersion = 15])</code> takes the <strong>site</strong> URL (for example <code>https://contoso.sharepoint.com/sites/Finance</code>), not the folder URL, and returns every file in every document library of that site, with the same column set; <code>Folder Path</code> holds the full URL. You then filter on <code>Folder Path</code>:</p>
+<pre><code class="language-m">let
+    Source = SharePoint.Files(&quot;https://contoso.sharepoint.com/sites/Finance&quot;, [ApiVersion = 15]),
+    InFolder = Table.SelectRows(Source, each Text.StartsWith([Folder Path],
+        &quot;https://contoso.sharepoint.com/sites/Finance/Shared Documents/Close/BankCSV/&quot;))
+in
+    InFolder
+</code></pre>
+<p>On a large site, <code>SharePoint.Files</code> enumerates everything before filtering and can be slow; <code>SharePoint.Contents</code> navigates library by library and is faster for deep structures. OneDrive for Business is a personal SharePoint site, so the same connector works with the <code>-my.sharepoint.com/personal/...</code> URL. The practical advantage is refresh: SharePoint Online is a cloud source, so the Service refreshes it without an on-premises gateway.</p>
+<h3 id="filtering-by-extension">Filtering by extension</h3>
+<p><code>Extension</code> includes the dot and keeps the original case: <code>.csv</code>, <code>.CSV</code>, <code>.xlsx</code>. Always normalise:</p>
+<pre><code class="language-m">CsvOnly = Table.SelectRows(Source, each Text.Lower([Extension]) = &quot;.csv&quot;)
+</code></pre>
+<p>If the folder legitimately mixes formats (some branches send <code>.xlsx</code>), keep both and route each to the right parser later, rather than dropping files silently.</p>
+<h3 id="filtering-by-name-pattern">Filtering by name pattern</h3>
+<p>Name filters enforce the naming convention, for example <code>BRANCH_YYYY-MM.csv</code>. M has no regular expressions, so build the pattern from text functions:</p>
+<pre><code class="language-m">Pattern = Table.SelectRows(CsvOnly, each
+    let n = Text.BeforeDelimiter([Name], &quot;.&quot;, {0, RelativePosition.FromEnd}),
+        parts = Text.Split(n, &quot;_&quot;)
+    in  List.Count(parts) = 2
+        and Text.Length(parts{0}) = 3
+        and (try Date.FromText(parts{1} &amp; &quot;-01&quot;) otherwise null) &lt;&gt; null)
+</code></pre>
+<p>A stricter design does <strong>not</strong> silently drop files that fail the pattern; it routes them to a <code>RejectedFiles</code> query loaded to a sheet so the preparer sees "<code>Delhi April.csv</code> rejected: name does not match convention".</p>
+<h3 id="excluding-temp-lock-and-hidden-files">Excluding temp, lock and hidden files</h3>
+<p>When a workbook is open, Excel creates an owner/lock file in the same folder whose name starts with the <code>~$</code> prefix. It has the <code>.xlsx</code> extension, so an extension filter alone lets it through, and reading it fails or returns garbage. Exclude it explicitly, along with hidden and system files and anything in an archive subfolder:</p>
+<pre><code class="language-m">InScope = Table.SelectRows(Source, each
+    Text.Lower([Extension]) = &quot;.csv&quot;
+    and not Text.StartsWith([Name], &quot;~$&quot;)
+    and ([Attributes]?[Hidden]? &lt;&gt; true)
+    and not Text.Contains([Folder Path], &quot;\Archive\&quot;))
+</code></pre>
+<p>The generated Combine Files code already adds <code>Table.SelectRows(Source, each [Attributes]?[Hidden]? &lt;&gt; true)</code>; the <code>?</code> operators make the field access safe when <code>Attributes</code> is null. Other noise to exclude: <code>Thumbs.db</code>, <code>desktop.ini</code>, <code>.tmp</code> files, and OneDrive conflict copies whose names contain the machine name.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>A folder contains: <code>MUM_2025-04.csv</code>, <code>MUM_2025-05.csv</code>, <code>DEL_2025-04.CSV</code>, the lock file <code>~$DEL_2025-05.xlsx</code>, <code>DEL_2025-05.xlsx</code>, <code>Archive\MUM_2025-03.csv</code> and <code>Notes.txt</code>. With <code>Folder.Files</code> the inventory has 7 rows. After the lower-case <code>.csv</code> filter: 4 rows (both MUM files, the upper-case DEL file and the archived March file). After the archive exclusion: 3 rows. <code>DEL_2025-05.xlsx</code> is excluded by extension, which is a business decision — if Delhi is allowed to send Excel, widen the filter and route by extension; otherwise flag it in <code>RejectedFiles</code>.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Recursion surprises.</strong> A colleague creates <code>Close\Old\</code> inside the drop folder; <code>Folder.Files</code> picks it up. Filter on exact <code>[Folder Path] = FolderPath</code> if subfolders must be ignored.</li>
+<li><strong>Network paths vs mapped drives.</strong> <code>S:\Finance</code> works only where <code>S:</code> is mapped; prefer the UNC path <code>\\server\share\Finance</code> for gateway refresh.</li>
+<li><strong>SharePoint URL encoding.</strong> <code>Folder Path</code> returns spaces as spaces in most cases, but copied browser URLs contain <code>%20</code>; compare using the form Power Query returns.</li>
+<li><strong>Folder permissions.</strong> In Excel, refresh runs as the user; in the Service via a gateway, it runs as the gateway's credentials, which may not see a personal folder.</li>
+<li><strong>Filtering before reading content.</strong> Apply all metadata filters before invoking the function so that rejected files are never opened; this is both faster and safer.</li>
+<li><strong>Case of names.</strong> <code>Text.StartsWith</code> is case-sensitive; use <code>Text.Upper</code> if branch codes may come in mixed case.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li><code>Folder.Files</code> is recursive and returns Content, Name, Extension, dates, Attributes and Folder Path for every file.</li>
+<li><code>SharePoint.Files</code> takes the site URL and is filtered on <code>Folder Path</code>; it refreshes in the Service without a gateway.</li>
+<li>Normalise extension case and exclude the <code>~$</code> lock-file prefix, hidden files and archive subfolders.</li>
+<li>Enforce a naming convention with text functions, and route non-conforming files to a visible rejection list.</li>
+<li>Keep the folder path in a parameter or named cell so the pipeline moves between machines.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-inventory-after-filters-l1">Q1. Inventory after filters [L1]</h3>
+<p>A drop folder contains <code>BLR_2025-06.csv</code>, <code>BLR_2025-07.CSV</code>, <code>HYD_2025-06.csv</code>, <code>~$HYD_2025-07.xlsx</code>, <code>HYD_2025-07.xlsx</code>, <code>Archive\BLR_2025-05.csv</code>, <code>Archive\HYD_2025-05.csv</code> and <code>ReadMe.docx</code>. State how many rows <code>Folder.Files</code> returns, then how many remain after each of these filters applied in order: (i) <code>[Extension] = ".csv"</code>, (ii) lower-cased extension equals <code>.csv</code>, (iii) archive exclusion.</p>
+<h3 id="q2-write-the-scope-filter-l2">Q2. Write the scope filter [L2]</h3>
+<p>Write a single <code>Table.SelectRows</code> step that keeps only CSV or XLSX files (any case), excludes lock files and hidden files, ignores any subfolder, and keeps only names beginning with one of the branch codes in a list query <code>BranchCodes</code> (for example <code>{"MUM","DEL","BLR"}</code>).</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> <code>List.Contains(BranchCodes, Text.Start([Name], 3))</code> and an exact comparison of <code>[Folder Path]</code> with the parameter.</p>
+</blockquote>
+<h3 id="q3-migrating-to-sharepoint-l2">Q3. Migrating to SharePoint [L2]</h3>
+<p>Your consolidated bank feed uses <code>Folder.Files("D:\Treasury\BankCSV")</code> and is being published to the Power BI Service. The files will move to the "Treasury" site, library "Shared Documents", folder "BankCSV". Rewrite the source and filter steps, explain why the parameter should hold the site URL, and state one performance consideration if the site contains 40,000 files.</p>
+<h3 id="q4-rejected-files-log-l3">Q4. Rejected-files log [L3]</h3>
+<p>Design a <code>RejectedFiles</code> query that lists every file in the folder that is not consolidated, with a <code>Reason</code> column ("Wrong extension", "Lock file", "Bad name", "Archive"). Explain how you would surface it to the month-end preparer in Excel and why silently dropping files is a control weakness.</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← Folder consolidation pipeline</a><a class="next" href="S02_Combine_Files_Artefacts_Sample_Parameter_and.html">Combine Files Artefacts: Sample, Parameter and Transform… →</a></nav>
+</main></div></body></html>

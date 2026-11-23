@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Filling Down Cost-Centre and Group Headers in Report Layouts · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S03_Filling_Down_Cost_Centre_and_Group_Headers_in.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T2 · Cleaning messy ERP/Tally exports</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Cleaning messy ERP/Tally exports</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Skipping_Report_Headers_Conditionally_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S01_Skipping_Report_Headers_Conditionally_and.html">Skipping Report Headers Conditionally and Promoting Headers</a></li><li><a href="S02_Removing_Blank_Subtotal_and_Grand_Total_Rows_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S02_Removing_Blank_Subtotal_and_Grand_Total_Rows_by.html">Removing Blank, Subtotal and Grand Total Rows by Condition</a></li><li><a href="S03_Filling_Down_Cost_Centre_and_Group_Headers_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S03_Filling_Down_Cost_Centre_and_Group_Headers_in.html">Filling Down Cost-Centre and Group Headers in Report Layouts</a></li><li><a href="S04_Splitting_Ledger_Code_and_Name_Parsing_Tally_DrCr.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S04_Splitting_Ledger_Code_and_Name_Parsing_Tally_DrCr.html">Splitting Ledger Code and Name; Parsing Tally Dr/Cr Amounts</a></li><li><a href="S05_Trimming_Non_Breaking_Spaces_and_Non_Printable.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S05_Trimming_Non_Breaking_Spaces_and_Non_Printable.html">Trimming Non-Breaking Spaces and Non-Printable Characters</a></li><li><a href="S06_Fixing_Date_Locales_and_Indian_Digit_Grouping_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S06_Fixing_Date_Locales_and_Indian_Digit_Grouping_in.html">Fixing Date Locales and Indian Digit Grouping in Text Amounts</a></li><li><a href="S07_Error_Handling_Remove_Errors_Keep_Errors_and_try.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S07_Error_Handling_Remove_Errors_Keep_Errors_and_try.html">Error Handling: Remove Errors, Keep Errors and try ... otherwise</a></li><li><a href="S08_Export_Layouts_Tally_Day_BookLedgerTB_SAP_FBL3N.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S08_Export_Layouts_Tally_Day_BookLedgerTB_SAP_FBL3N.html">Export Layouts: Tally Day Book/Ledger/TB, SAP FBL3N, S_ALR, Oracle TB</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Conditional_TableSkip_Followed_by_PromoteHeaders.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C01_Conditional_TableSkip_Followed_by_PromoteHeaders.html">Conditional Table.Skip Followed by PromoteHeaders</a></li><li><a href="../concepts/C02_Filtering_Out_Null_and_Total_Rows_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C02_Filtering_Out_Null_and_Total_Rows_with.html">Filtering Out Null and Total Rows with Table.SelectRows</a></li><li><a href="../concepts/C03_TableFillDown_Fills_Only_Nulls_Replace_Blanks.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C03_TableFillDown_Fills_Only_Nulls_Replace_Blanks.html">Table.FillDown Fills Only Nulls: Replace Blanks First</a></li><li><a href="../concepts/C04_TableSplitColumn_at_Each_Delimiter_into_Code_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C04_TableSplitColumn_at_Each_Delimiter_into_Code_and.html">Table.SplitColumn at Each Delimiter into Code and Name</a></li><li><a href="../concepts/C05_Cleaning_Text_Replace_Char_160_TextClean_TextTrim.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C05_Cleaning_Text_Replace_Char_160_TextClean_TextTrim.html">Cleaning Text: Replace Char 160, Text.Clean, Text.Trim</a></li><li><a href="../concepts/C06_TransformColumnTypes_with_an_Explicit_en_IN.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C06_TransformColumnTypes_with_an_Explicit_en_IN.html">TransformColumnTypes with an Explicit en-IN Culture</a></li><li><a href="../concepts/C07_Converting_Tally_DrCr_Suffix_Balances_into_Signed.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C07_Converting_Tally_DrCr_Suffix_Balances_into_Signed.html">Converting Tally Dr/Cr Suffix Balances into Signed Numbers</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Filling Down Cost-Centre and Group Headers in Report Layouts</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Filling down cost-centre or group headers in report-style layouts, then removing header-only rows</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Report layouts carry context in <strong>header rows</strong> rather than in columns. A Tally Cost Centre Breakup prints "Mumbai HO" once, then the ledgers below it; a Group Summary prints "Indirect Expenses" above its ledgers; an SAP hierarchy report prints the profit centre on a line of its own. A fact table needs that context on <strong>every</strong> row (Ledger, CostCentre, Amount), otherwise you cannot slice by cost centre or map groups to Schedule III line items. The pattern is: move the header text into its own column, fill it down over the detail rows, then delete the now-redundant header-only rows.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-three-step-pattern">The three-step pattern</h3>
+<ol>
+<li><strong>Isolate the header value into a new column</strong> — only on header rows; null elsewhere.</li>
+<li><strong>Fill Down</strong> that column (<code>Table.FillDown</code>) so each detail row inherits the last header above it.</li>
+<li><strong>Remove header-only rows</strong> — rows that were headers carry no amounts.</li>
+</ol>
+<pre><code>let
+    // after skipping report header and promoting
+    Flagged  = Table.AddColumn(Promoted, &quot;CostCentre&quot;, each
+                  if [Debit] = null and [Credit] = null and [Particulars] &lt;&gt; null
+                  then Text.Trim([Particulars]) else null, type nullable text),
+    Filled   = Table.FillDown(Flagged, {&quot;CostCentre&quot;}),
+    Details  = Table.SelectRows(Filled, each [Debit] &lt;&gt; null or [Credit] &lt;&gt; null),
+    Cleaned  = Table.SelectRows(Details, each not Text.StartsWith(Text.Trim([Particulars]), &quot;Total&quot;))
+in
+    Cleaned
+</code></pre>
+<h3 id="how-to-identify-a-header-row">How to identify a header row</h3>
+<table>
+<thead>
+<tr>
+<th>Signal</th>
+<th>Example</th>
+<th>Test</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No amounts on the row</td>
+<td>"Mumbai HO" with Debit/Credit null</td>
+<td><code>[Debit] = null and [Credit] = null</code></td>
+</tr>
+<tr>
+<td>Header in a different column</td>
+<td>Cost centre in Column1, ledgers in Column2</td>
+<td><code>[Column1] &lt;&gt; null and [Column2] = null</code></td>
+</tr>
+<tr>
+<td>Prefix or pattern</td>
+<td>"CC: 1010 – Mumbai HO", "Profit Center 2000"</td>
+<td><code>Text.StartsWith([Particulars], "CC:")</code></td>
+</tr>
+<tr>
+<td>Membership of a master list</td>
+<td>Cost-centre master or group master</td>
+<td><code>List.Contains(CCMaster[Name], [Particulars])</code></td>
+</tr>
+<tr>
+<td>Indentation / formatting</td>
+<td>Groups in bold, ledgers indented with spaces</td>
+<td>Count leading spaces before trimming: <code>Text.Length(x) - Text.Length(Text.TrimStart(x))</code></td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>master-list test</strong> is the most reliable for Tally: Tally's cost-centre and group names are master data, so match against an exported list. The <strong>leading-space test</strong> works for exports where Tally indents ledgers under groups — capture the indent <strong>before</strong> any trimming step.</p>
+<h3 id="tablefilldown-semantics"><code>Table.FillDown</code> semantics</h3>
+<p><code>Table.FillDown(table, columns)</code> replaces each <strong>null</strong> in the listed columns with the most recent non-null value above it, in the table's current row order. Two consequences:</p>
+<ul>
+<li>Empty strings <code>""</code> are not null, so they are <strong>not filled</strong> and they stop the fill (an empty string becomes the "last value"). Excel exports frequently contain <code>""</code> in apparently blank cells — replace <code>""</code> with null first (c03).</li>
+<li>Order matters: the fill uses the physical row order at that step. Any sort, merge, or filter that reorders rows <strong>before</strong> the fill associates detail rows with the wrong header. Fill first, sort later.</li>
+</ul>
+<p><code>Table.FillUp</code> exists for layouts where the label appears <strong>below</strong> the detail (e.g. a subtotal line that names the group — "Total Indirect Expenses" — and nothing above).</p>
+<h3 id="multi-level-headers">Multi-level headers</h3>
+<p>A Cost Category → Cost Centre → Ledger layout needs two columns filled, and the lower level must <strong>reset</strong> when a new upper-level header appears; otherwise the first cost centre of a new category inherits the last cost centre of the previous one. Technique: flag both levels, fill the upper level, then fill the lower level <strong>within</strong> each upper-level group:</p>
+<pre><code>Lvl1   = Table.FillDown(Flagged, {&quot;Category&quot;}),
+Grp    = Table.Group(Lvl1, {&quot;Category&quot;}, {{&quot;Rows&quot;, each Table.FillDown(_, {&quot;CostCentre&quot;}), type table}},
+                     GroupKind.Local),
+Expand = Table.Combine(Grp[Rows])
+</code></pre>
+<p><code>GroupKind.Local</code> groups consecutive rows only, preserving file order — important when the same category name appears in separate blocks.</p>
+<h3 id="illustration">Illustration</h3>
+<p>Tally Cost Centre Breakup for "Travelling Expenses":</p>
+<table>
+<thead>
+<tr>
+<th>Particulars</th>
+<th>Debit</th>
+<th>Credit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mumbai HO</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Air Fare</td>
+<td>3,45,000.00</td>
+<td></td>
+</tr>
+<tr>
+<td>Hotel</td>
+<td>1,20,500.00</td>
+<td></td>
+</tr>
+<tr>
+<td>Total</td>
+<td>4,65,500.00</td>
+<td></td>
+</tr>
+<tr>
+<td>Pune Plant</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Air Fare</td>
+<td>85,000.00</td>
+<td></td>
+</tr>
+<tr>
+<td>Local Conveyance</td>
+<td>22,400.00</td>
+<td></td>
+</tr>
+<tr>
+<td>Total</td>
+<td>1,07,400.00</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>After the pattern: four rows — (Air Fare, Mumbai HO, 3,45,000), (Hotel, Mumbai HO, 1,20,500), (Air Fare, Pune Plant, 85,000), (Local Conveyance, Pune Plant, 22,400). Sum ₹5,72,900 equals the two totals combined. Note the "Total" rows have amounts, so they are not mistaken for headers; they must be removed by a separate condition — and they must not be flagged as headers, or the next block's detail rows would inherit "Total".</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Header row that also has an amount</strong> (some reports print the group total on the header line). Then "no amount" is not a valid signal — use the master list or indentation.</li>
+<li><strong>Detail rows with both amounts null</strong> (zero-balance ledgers) are misread as headers. Use a master-list test or a structural column (ledger code present) instead of amounts alone.</li>
+<li><strong>First rows before any header</strong> get null after fill; decide whether that is "Unallocated" (replace null) or an error.</li>
+<li><strong>Fill Down on a column that has genuine nulls</strong> (e.g. optional narration) wrongly propagates values; fill only the header column you created.</li>
+<li><strong>Removing header rows before the fill</strong> loses the header text — the sequence is flag → fill → remove.</li>
+<li><strong>Performance</strong>: Fill Down never folds; on file sources this is irrelevant, but do not place it early in a database query.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Move header text into its own column on header rows only, then <code>Table.FillDown</code>, then remove header-only rows.</li>
+<li>Fill Down fills nulls only and follows current row order — replace blanks with null first and never sort before filling.</li>
+<li>Identify headers by master-list membership or indentation where amounts are unreliable.</li>
+<li>For nested hierarchies, fill the upper level first and reset the lower level within each block (<code>GroupKind.Local</code>).</li>
+<li>Reconcile the filled detail back to the report totals.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-write-the-pattern-l1">Q1. Write the pattern [L1]</h3>
+<p>An SAP profit-centre report has rows like "Profit Center 1000 Mumbai" (no amounts) followed by GL account rows with an Amount column. Write the M to produce GL, ProfitCenter, Amount rows, with the profit centre code (1000) as a separate column.</p>
+<h3 id="q2-wrong-header-assignment-l2">Q2. Wrong header assignment [L2]</h3>
+<p>After a Fill Down, the expenses of "Delhi Branch" appear under "Bengaluru Branch" in the output. The steps were: Promoted → Sorted Rows (by Particulars) → Added CostCentre column → Filled Down → Filtered. Explain the error and fix the step order.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Fill Down depends on the physical order of rows at that step.</p>
+</blockquote>
+<h3 id="q3-two-level-hierarchy-l2">Q3. Two-level hierarchy [L2]</h3>
+<p>A Tally report has Cost Category rows (e.g. "Branches"), Cost Centre rows (e.g. "Kolkata") and ledger rows; header rows have no amounts, and the category rows are in uppercase. Write M that fills both levels correctly so that the first cost centre of each new category does not inherit the previous category's last cost centre.</p>
+<h3 id="q4-zero-balance-ledgers-l2">Q4. Zero-balance ledgers [L2]</h3>
+<p>In a TB-by-group export, three ledgers have zero balances (both Debit and Credit blank). Your header test "both amounts null" treats them as group headers, and the following ledgers are assigned to the wrong group. Propose two alternative header tests and the data you would need for each.</p>
+<h3 id="q5-reconciliation-of-filled-output-l3">Q5. Reconciliation of filled output [L3]</h3>
+<p>Design a check query that proves the filled-down cost-centre detail is complete: per cost centre, compare the sum of detail rows with the report's "Total" line for that block, and list any mismatches. Describe how you will associate each "Total" line with its cost centre.</p></section>
+<nav class="pager"><a class="prev" href="S02_Removing_Blank_Subtotal_and_Grand_Total_Rows_by.html">← Removing Blank, Subtotal and Grand Total Rows by Condition</a><a class="next" href="S04_Splitting_Ledger_Code_and_Name_Parsing_Tally_DrCr.html">Splitting Ledger Code and Name; Parsing Tally Dr/Cr Amounts →</a></nav>
+</main></div></body></html>

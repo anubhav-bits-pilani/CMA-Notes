@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Waterfall Bridges: EBITDA, Revenue and Cash Flow · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S04_Waterfall_Bridges_EBITDA_Revenue_and_Cash_Flow.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T1 · Executive dashboard visual architecture</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Executive dashboard visual architecture</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Executive_Page_Layout_KPI_Row_Trend_Row_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S01_Executive_Page_Layout_KPI_Row_Trend_Row_and.html">Executive Page Layout: KPI Row, Trend Row and Variance Row</a></li><li><a href="S02_Card_Visuals_New_Card_KPI_Visual_and_Reference.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S02_Card_Visuals_New_Card_KPI_Visual_and_Reference.html">Card Visuals: New Card, KPI Visual and Reference Labels</a></li><li><a href="S03_Trend_Visuals_Actual_vs_Budget_vs_PY_Combos_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S03_Trend_Visuals_Actual_vs_Budget_vs_PY_Combos_and.html">Trend Visuals: Actual vs Budget vs PY Combos and Rolling 12 Months</a></li><li><a href="S04_Waterfall_Bridges_EBITDA_Revenue_and_Cash_Flow.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S04_Waterfall_Bridges_EBITDA_Revenue_and_Cash_Flow.html">Waterfall Bridges: EBITDA, Revenue and Cash Flow</a></li><li><a href="S05_Variance_Visuals_Diverging_Bars_FavAdv_Colours_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S05_Variance_Visuals_Diverging_Bars_FavAdv_Colours_and.html">Variance Visuals: Diverging Bars, Fav/Adv Colours and IBCS Notation</a></li><li><a href="S06_Indian_Number_Formatting_Crore_and_Lakh_Units.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S06_Indian_Number_Formatting_Crore_and_Lakh_Units.html">Indian Number Formatting: ₹ Crore and Lakh Units, Consistent Decimals</a></li><li><a href="S07_Theme_JSON_Canvas_Size_Accessibility_and_Mobile.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S07_Theme_JSON_Canvas_Size_Accessibility_and_Mobile.html">Theme JSON, Canvas Size, Accessibility and Mobile Layout</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Waterfall_Visual_CategoryBreakdown_or_a_Bridge.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C01_Waterfall_Visual_CategoryBreakdown_or_a_Bridge.html">Waterfall Visual: Category/Breakdown or a Bridge-Step Table</a></li><li><a href="../concepts/C02_Variance_Colour_Measure_via_fx_Conditional.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C02_Variance_Colour_Measure_via_fx_Conditional.html">Variance Colour Measure via fx Conditional Formatting</a></li><li><a href="../concepts/C03_Crore_Measures_and_Dynamic_Format_Strings_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C03_Crore_Measures_and_Dynamic_Format_Strings_for.html">Crore Measures and Dynamic Format Strings for Indian Units</a></li><li><a href="../concepts/C04_Net_Debt_Measure_Closing_Borrowings_Less_Cash_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C04_Net_Debt_Measure_Closing_Borrowings_Less_Cash_and.html">Net Debt Measure: Closing Borrowings Less Cash and Equivalents</a></li><li><a href="../concepts/C05_Margin_Variance_in_Percentage_Points_EBITDA_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C05_Margin_Variance_in_Percentage_Points_EBITDA_vs.html">Margin Variance in Percentage Points: EBITDA % vs Budget</a></li><li><a href="../concepts/C06_Excel_Native_Waterfall_Chart_with_Set_as_Total.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C06_Excel_Native_Waterfall_Chart_with_Set_as_Total.html">Excel Native Waterfall Chart with &quot;Set as Total&quot;</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Waterfall Bridges: EBITDA, Revenue and Cash Flow</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Waterfalls: Budget-to-Actual EBITDA bridge, PY-to-CY revenue bridge, cash flow bridge</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>"What drove the variance?" is the CFO's second question after "are we on budget?". A bridge (waterfall) answers it
+in one picture: start value, the drivers that moved it up or down, end value. Boards see three standard bridges:
+Budget-to-Actual EBITDA, PY-to-CY revenue (growth decomposition) and a cash flow bridge from opening to closing
+cash (or Net Debt). Analysts in FP&amp;A spend a large part of month-end building these; in Power BI, a well-designed
+bridge is a measure plus a small steps table that refreshes automatically.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="anatomy-of-a-bridge">Anatomy of a bridge</h3>
+<p>Every bridge has the identity:</p>
+<p>\[
+\text{End} = \text{Start} + \sum_{i=1}^{n} \Delta_i
+\]</p>
+<p>where Start is the opening value (Budget EBITDA, PY revenue, opening cash), each \(\Delta_i\) is a driver
+contribution (positive = increase), and End is the closing value (Actual EBITDA, CY revenue, closing cash). If the
+steps do not sum exactly, the bridge is wrong — there must be no unexplained "other" except a deliberately labelled
+residual.</p>
+<h3 id="1-budget-to-actual-ebitda-bridge">1. Budget-to-Actual EBITDA bridge</h3>
+<p>Start = Budget EBITDA, End = Actual EBITDA, steps = variance by P&amp;L line, sign-adjusted so that a favourable
+variance increases EBITDA:</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Variance (Actual − Budget), EBITDA impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue from operations</td>
+<td>Actual revenue − Budget revenue</td>
+</tr>
+<tr>
+<td>Material cost (COGS)</td>
+<td>−(Actual COGS − Budget COGS)</td>
+</tr>
+<tr>
+<td>Employee benefits</td>
+<td>−(Actual − Budget)</td>
+</tr>
+<tr>
+<td>Power and fuel</td>
+<td>−(Actual − Budget)</td>
+</tr>
+<tr>
+<td>Other expenses</td>
+<td>−(Actual − Budget)</td>
+</tr>
+</tbody>
+</table>
+<p>With expenses stored as positive debits, a cost overrun is a negative EBITDA step. Using the Week 11 signed
+measure (<code>[Actual Signed]</code> with SignFactor), the step is simply <code>[Actual Signed] - [Budget Signed]</code> for each line.
+Later (Weeks 17–20), the revenue step splits into price, volume and mix; the material step into price and usage.</p>
+<h3 id="2-py-to-cy-revenue-bridge">2. PY-to-CY revenue bridge</h3>
+<p>Start = PY revenue, End = CY revenue. Steps can be by BU/region (where growth came from) or by driver (volume,
+price, mix, FX, new products, acquisitions). The BU version is purely data-driven: step = CY − PY per BU. The driver
+version requires volume and price data (Weeks 17–20). For a listed company, an acquisitions step separates organic
+growth — important for investor commentary.</p>
+<h3 id="3-cash-flow-bridge">3. Cash flow bridge</h3>
+<p>Start = opening cash and cash equivalents (or opening Net Debt), End = closing. Steps follow the indirect-method
+logic of Ind AS 7:</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EBITDA</td>
+<td>P&amp;L</td>
+</tr>
+<tr>
+<td>Change in NWC (receivables, inventory, payables)</td>
+<td>Balance sheet movements, increase in assets negative</td>
+</tr>
+<tr>
+<td>Taxes paid</td>
+<td>Cash flow / tax ledgers</td>
+</tr>
+<tr>
+<td>Capex</td>
+<td>Additions to PPE and CWIP net of disposals</td>
+</tr>
+<tr>
+<td>Interest paid</td>
+<td>Finance cost cash portion</td>
+</tr>
+<tr>
+<td>Borrowings raised / repaid</td>
+<td>Movement in borrowings</td>
+</tr>
+<tr>
+<td>Dividends paid</td>
+<td>Equity ledgers</td>
+</tr>
+</tbody>
+</table>
+<p>A Net Debt bridge (opening Net Debt → closing Net Debt) is often preferred by CFOs because it is unaffected by
+moving cash between debt repayment and deposits; in that case debt movements are not steps, and free cash flow
+reduces Net Debt.</p>
+<h3 id="implementation-options-in-power-bi">Implementation options in Power BI</h3>
+<p>There are two patterns (detailed in Concept c01):</p>
+<ol>
+<li><strong>Native waterfall with Category and Breakdown.</strong> Category = a step field (e.g. FS line), Y-axis = variance
+   measure. The visual adds an automatic Total bar. With <em>Breakdown</em> = a driver field and Category = scenario
+   (Budget, Actual), the visual computes the bridge from Budget to Actual by breakdown items, and shows the top N
+   drivers with the rest grouped as "Other".</li>
+<li><strong>Disconnected bridge-step table + SWITCH measure.</strong> A small table <code>Bridge Steps</code> (StepNo, Step, Type) lists
+   Start and each driver (the visual's own Total bar is End). One measure returns the right number for each step. This gives exact control over
+   order, labels, subtotal points and residual lines.</li>
+</ol>
+<p>The table pattern is usually right for board bridges because the order of steps is fixed by policy, not by
+magnitude.</p>
+<h3 id="formatting">Formatting</h3>
+<ul>
+<li><em>Sentiment colours:</em> Increase green, Decrease red, Total dark grey/blue (<strong>Columns &gt; Colors</strong>). For
+  cost-oriented bridges, increase must still mean "favourable to EBITDA", which the sign-adjusted measure ensures.</li>
+<li>Data labels on every bar in ₹ crore, one decimal.</li>
+<li>Sort by the StepNo column (<em>Sort axis</em> by StepNo ascending), never by value, so the bridge reads Budget → drivers
+  → Actual.</li>
+<li>Category labels short ("Revenue", "Power", "Other opex"); full names in tooltips.</li>
+</ul>
+<h3 id="worked-illustration-budget-to-actual-ebitda-october-2025-ytd-cr">Worked illustration: Budget-to-Actual EBITDA, October 2025 YTD (₹ Cr)</h3>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Budget EBITDA</td>
+<td>122.6</td>
+</tr>
+<tr>
+<td>Revenue variance</td>
+<td>−22.8</td>
+</tr>
+<tr>
+<td>Material cost saving (lower volume and better yields)</td>
+<td>+16.1</td>
+</tr>
+<tr>
+<td>Employee cost overrun</td>
+<td>−1.4</td>
+</tr>
+<tr>
+<td>Power and fuel overrun</td>
+<td>−4.2</td>
+</tr>
+<tr>
+<td>Other expenses saving</td>
+<td>+2.9</td>
+</tr>
+<tr>
+<td>Actual EBITDA</td>
+<td>113.2</td>
+</tr>
+</tbody>
+</table>
+<p>Check: \(122.6 - 22.8 + 16.1 - 1.4 - 4.2 + 2.9 = 113.2\). The Actual EBITDA bar must equal the Page 1 card and the
+P&amp;L matrix; in the model this is enforced by a check measure <code>[Bridge Check] = [Bridge End] - [EBITDA]</code>.</p>
+<p>Note that the revenue step here is the full revenue variance (₹712.4 Cr vs ₹735.2 Cr), so the material step is
+the full material cost variance, part of which is simply lower volume. If the CFO prefers a contribution-based
+revenue step (revenue shortfall × budget contribution margin), the material step must then contain only price and
+usage variances. Mixing a contribution-based revenue step with a full material cost step double-counts the volume
+effect.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Steps that do not add up.</strong> If one P&amp;L line is missing from the step table (for example, a new CoA FSLine
+  "Exchange loss on operations"), the bridge silently breaks. Add a residual step computed as End − Start − sum of
+  named steps and make the check measure fail if the residual exceeds tolerance.</li>
+<li><strong>Too many steps.</strong> More than 8–10 bars become unreadable; group small items into "Other" in the step table.</li>
+<li><strong>Period selection.</strong> Month bridge vs YTD bridge must be explicit; use the same Month/YTD toggle as the cards.</li>
+<li><strong>Negative start or end.</strong> A loss-making budget (negative EBITDA) shows the total bar below zero; the native
+  visual handles it, but labels must show the minus sign.</li>
+<li><strong>Cash bridge mismatches.</strong> Non-cash items (Ind AS 116 lease additions, unrealised FX) should not appear as
+  cash steps; reconcile the bridge to the cash flow statement.</li>
+<li><strong>Excel equivalent.</strong> For the board pack, the Excel native waterfall needs "Set as total" on Start and End points
+  (Concept c06).</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>A bridge must satisfy End = Start + sum of steps exactly; build a check measure.</li>
+<li>Budget-to-Actual EBITDA steps are sign-adjusted variances so favourable means up.</li>
+<li>PY-to-CY revenue bridges show growth by BU or by driver; cash bridges follow Ind AS 7 logic or Net Debt.</li>
+<li>Prefer a disconnected step table with a SWITCH measure for fixed-order board bridges.</li>
+<li>Sort by step number, colour by sentiment, and keep to fewer than ten steps.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-build-a-revenue-bridge-l1">Q1. Build a revenue bridge [L1]</h3>
+<p>FY2024-25 revenue ₹1,128.0 Cr; FY2025-26 revenue by BU: Agro ₹512.3 Cr (PY ₹498.7 Cr), Pharma Intermediates
+₹401.9 Cr (PY ₹352.0 Cr), Performance Polymers ₹325.8 Cr (PY ₹277.3 Cr). List the bridge steps and values and
+verify the end value.</p>
+<h3 id="q2-cash-bridge-from-balances-l2">Q2. Cash bridge from balances [L2]</h3>
+<p>Opening cash ₹96.6 Cr; EBITDA ₹204.6 Cr; receivables up ₹18.2 Cr; inventory down ₹6.4 Cr; payables up ₹9.0 Cr;
+taxes paid ₹38.5 Cr; capex ₹92.0 Cr; interest paid ₹27.9 Cr; net borrowings repaid ₹40.0 Cr; dividend paid
+₹24.0 Cr. Lay out the bridge steps with signs and the closing cash, and state which steps would disappear in a Net
+Debt bridge.</p>
+<h3 id="q3-missing-step-l2">Q3. Missing step [L2]</h3>
+<p>The October EBITDA bridge ends at ₹115.1 Cr while the EBITDA card shows ₹113.2 Cr. The step table has Revenue,
+Material, Employee, Power, Other expenses. Explain the most likely causes, and design a residual step and check
+measure that would have exposed the issue.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Look for FS lines in CoA that are inside EBITDA but not in the step table.</p>
+</blockquote>
+<h3 id="q4-choose-the-bridge-design-l3">Q4. Choose the bridge design [L3]</h3>
+<p>The CFO wants a Budget-to-Actual EBITDA bridge where the revenue step is further split into Agro, Pharma and
+Polymers, with steps always in the same order and a subtotal "Contribution" bar after material cost. Compare the
+native Category/Breakdown approach with a step-table approach and recommend one, with the table structure.</p></section>
+<nav class="pager"><a class="prev" href="S03_Trend_Visuals_Actual_vs_Budget_vs_PY_Combos_and.html">← Trend Visuals: Actual vs Budget vs PY Combos and Rolling 12…</a><a class="next" href="S05_Variance_Visuals_Diverging_Bars_FavAdv_Colours_and.html">Variance Visuals: Diverging Bars, Fav/Adv Colours and IBCS… →</a></nav>
+</main></div></body></html>

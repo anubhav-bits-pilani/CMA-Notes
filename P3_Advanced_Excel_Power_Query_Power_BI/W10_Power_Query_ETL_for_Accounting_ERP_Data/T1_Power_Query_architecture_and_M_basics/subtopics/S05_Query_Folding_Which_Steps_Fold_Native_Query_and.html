@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Query Folding: Which Steps Fold, Native Query and Diagnostics · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S05_Query_Folding_Which_Steps_Fold_Native_Query_and.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T1 · Power Query architecture and M basics</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Power Query architecture and M basics</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Power_Query_Connectors_for_Accounting_and_ERP_Data.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S01_Power_Query_Connectors_for_Accounting_and_ERP_Data.html">Power Query Connectors for Accounting and ERP Data Sources</a></li><li><a href="S02_Power_Query_Editor_Anatomy_Steps_Formula_Bar_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S02_Power_Query_Editor_Anatomy_Steps_Formula_Bar_and.html">Power Query Editor Anatomy: Steps, Formula Bar and Dependencies</a></li><li><a href="S03_M_Language_Structure_letin_Values_Records_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S03_M_Language_Structure_letin_Values_Records_Lists.html">M Language Structure: let/in, Values, Records, Lists and each</a></li><li><a href="S04_Data_Types_and_Controlling_Automatic_Type.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S04_Data_Types_and_Controlling_Automatic_Type.html">Data Types and Controlling Automatic Type Detection</a></li><li><a href="S05_Query_Folding_Which_Steps_Fold_Native_Query_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S05_Query_Folding_Which_Steps_Fold_Native_Query_and.html">Query Folding: Which Steps Fold, Native Query and Diagnostics</a></li><li><a href="S06_Parameters_Staging_Queries_and_Reference_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S06_Parameters_Staging_Queries_and_Reference_vs.html">Parameters, Staging Queries and Reference vs Duplicate</a></li><li><a href="S07_Load_Options_and_Refresh_Behaviour_in_Excel_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S07_Load_Options_and_Refresh_Behaviour_in_Excel_vs.html">Load Options and Refresh Behaviour in Excel vs Power BI</a></li><li><a href="S08_Privacy_Levels_and_FormulaFirewall_Errors.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S08_Privacy_Levels_and_FormulaFirewall_Errors.html">Privacy Levels and Formula.Firewall Errors</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_CsvDocument_with_FileContents_Delimiter_Encoding.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C01_CsvDocument_with_FileContents_Delimiter_Encoding.html">Csv.Document with File.Contents: Delimiter, Encoding, QuoteStyle</a></li><li><a href="../concepts/C02_ExcelWorkbook_Navigation_to_a_Named_Sheet_or_Table.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C02_ExcelWorkbook_Navigation_to_a_Named_Sheet_or_Table.html">Excel.Workbook Navigation to a Named Sheet or Table</a></li><li><a href="../concepts/C03_SqlDatabase_with_a_Native_Query_Blocks_Later.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C03_SqlDatabase_with_a_Native_Query_Blocks_Later.html">Sql.Database with a Native Query Blocks Later Folding</a></li><li><a href="../concepts/C04_ValueNativeQuery_with_Parameters_and_EnableFolding.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C04_ValueNativeQuery_with_Parameters_and_EnableFolding.html">Value.NativeQuery with Parameters and EnableFolding</a></li><li><a href="../concepts/C05_The_each_Keyword_and_the_Underscore_Parameter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C05_The_each_Keyword_and_the_Underscore_Parameter.html">The each Keyword and the Underscore Parameter</a></li><li><a href="../concepts/C06_Folding_Breakers_TableBuffer_Index_Columns_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C06_Folding_Breakers_TableBuffer_Index_Columns_and.html">Folding Breakers: Table.Buffer, Index Columns and Custom Functions</a></li><li><a href="../concepts/C07_MySQLDatabase_Connector_and_OdbcDataSource_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C07_MySQLDatabase_Connector_and_OdbcDataSource_for.html">MySQL.Database Connector and Odbc.DataSource for Tally</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Query Folding: Which Steps Fold, Native Query and Diagnostics</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Query folding: which steps fold, View Native Query, Query Diagnostics</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>When a GL table in SQL Server holds 60 million lines across ten financial years, the difference between Power Query asking the server for "FY26, account class 4–6, summarised by month" and pulling all 60 million rows to the laptop before filtering is the difference between a 20-second refresh and a timeout. <strong>Query folding</strong> is Power Query's ability to translate your applied steps into the source's native language (SQL) so that the source does the work. It is also a prerequisite for <strong>incremental refresh</strong> in Power BI and for DirectQuery. Finance analysts who connect to ERP reporting databases must be able to say which steps fold, prove it, and reorder steps so that folding survives as long as possible.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="what-folding-is">What folding is</h3>
+<p>Power Query builds a logical plan from the step list. For a foldable source, the engine translates as many leading steps as it can into one native query. At the first step it cannot translate, folding stops: the result of the folded part is streamed back, and <strong>every subsequent step runs locally in the mashup engine</strong>, even if that later step would itself be foldable.</p>
+<p>Three outcomes per query: <strong>full folding</strong> (everything runs at the source), <strong>partial folding</strong> (a prefix folds, the rest is local), <strong>no folding</strong> (all local — always the case for CSV, Excel, Folder, SharePoint files, JSON).</p>
+<h3 id="which-steps-typically-fold-relational-sources">Which steps typically fold (relational sources)</h3>
+<table>
+<thead>
+<tr>
+<th>Folds (usually)</th>
+<th>SQL equivalent</th>
+<th>Breaks folding (usually)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Navigate to table/view</td>
+<td><code>FROM</code></td>
+<td>Native SQL query typed in the connector (c03)</td>
+</tr>
+<tr>
+<td>Choose/Remove columns</td>
+<td><code>SELECT col list</code></td>
+<td><code>Table.Buffer</code></td>
+</tr>
+<tr>
+<td>Filter rows (<code>Table.SelectRows</code>) with simple comparisons</td>
+<td><code>WHERE</code></td>
+<td><code>Table.AddIndexColumn</code></td>
+</tr>
+<tr>
+<td>Sort</td>
+<td><code>ORDER BY</code></td>
+<td>Invoking a custom M function per row</td>
+</tr>
+<tr>
+<td>Keep top rows</td>
+<td><code>TOP n</code></td>
+<td>Most text functions on columns that have no SQL equivalent (e.g. <code>Text.Proper</code>, <code>Text.Select</code>)</td>
+</tr>
+<tr>
+<td>Group By with Sum/Count/Min/Max</td>
+<td><code>GROUP BY</code></td>
+<td>Merging with a different source (CSV mapping)</td>
+</tr>
+<tr>
+<td>Merge with a table <strong>from the same source</strong></td>
+<td><code>JOIN</code></td>
+<td>Changing type with a culture argument; some type conversions</td>
+</tr>
+<tr>
+<td>Append tables from same source</td>
+<td><code>UNION ALL</code></td>
+<td><code>Table.Transpose</code>, <code>Table.Pivot</code> with complex aggregations, Fill Down</td>
+</tr>
+<tr>
+<td>Simple custom columns (arithmetic, <code>if</code>)</td>
+<td>computed column / <code>CASE</code></td>
+<td><code>Table.Distinct</code> on some sources, <code>Table.RowCount</code> patterns vary</td>
+</tr>
+<tr>
+<td>Change type (simple)</td>
+<td><code>CAST</code>/<code>CONVERT</code></td>
+<td>Unpivot on some connectors (SQL Server does fold it)</td>
+</tr>
+</tbody>
+</table>
+<p>The table is a heuristic: folding depends on the connector and version. Always verify.</p>
+<h3 id="view-native-query">View Native Query</h3>
+<p>Right-click a step in Applied Steps → <strong>View Native Query</strong>. If enabled, the step folds and you can read the generated SQL:</p>
+<pre><code class="language-sql">select [_].[Account], sum([_].[Amount]) as [Amount]
+from [dbo].[GLLines] as [_]
+where [_].[FiscalYear] = 2026 and [_].[CompanyCode] = 'IN01'
+group by [_].[Account]
+</code></pre>
+<p>If greyed out, either the step does not fold or the connector does not expose the query (some ODBC/OData connectors fold without showing it). Check from the <strong>last</strong> step backwards: the last step that shows a native query marks the boundary.</p>
+<h3 id="folding-indicators-power-bi-desktop-dataflows">Folding indicators (Power BI Desktop / Dataflows)</h3>
+<p>Newer versions show a <strong>step folding indicator</strong> beside each step: a database-with-lightning icon (folds), a crossed icon (does not fold), or an indeterminate icon. The <strong>Query plan</strong> view (right-click → View query plan) shows which nodes are "Remote" (folded) versus "Full scan"/local. These are clearer than View Native Query for partial folding.</p>
+<h3 id="query-diagnostics">Query Diagnostics</h3>
+<p><strong>Tools → Start Diagnostics / Diagnose Step</strong> (Power BI Desktop and Excel's Power Query in Microsoft 365) records what the engine actually did during an evaluation:</p>
+<ul>
+<li><strong>Detailed</strong> and <strong>Aggregated</strong> logs: each operation, duration, data source query sent, rows returned.</li>
+<li><strong>Performance counters</strong> and <strong>Partitions</strong> (privacy partition evaluation — relevant to s08).</li>
+</ul>
+<p>Use it to find which step is slow, confirm the SQL sent to the server, and see whether the engine is hitting the source more than once (repeated evaluation of an unbuffered step referenced twice). Diagnostics results load as queries you can filter in the editor.</p>
+<h3 id="ordering-steps-to-preserve-folding">Ordering steps to preserve folding</h3>
+<ol>
+<li>Navigate to the table (no native SQL).</li>
+<li>Filter rows (FY, company code, posting period) and remove columns <strong>first</strong> — the biggest reduction.</li>
+<li>Group/summarise if the output grain allows it.</li>
+<li>Merge with other tables from the <strong>same</strong> database at the source.</li>
+<li>Only then: index columns, buffers, text cleaning, custom functions, merges with files.</li>
+</ol>
+<p>Illustration: a 60-million-row <code>GLLines</code> table. Sequence A: Source → Add Index → Filter FY26 → Group by Account. The index step breaks folding at step 2, so all 60 million rows travel and filter locally. Sequence B: Source → Filter FY26 (folds) → Remove columns (folds) → Group by Account (folds) → Add Index (local on 1,800 summarised rows). Same result, a tiny fraction of the transfer.</p>
+<h3 id="folding-and-incremental-refresh">Folding and incremental refresh</h3>
+<p>Power BI incremental refresh filters on <code>RangeStart</code>/<code>RangeEnd</code> datetime parameters. If that filter does not fold, the service imports all data for every partition — defeating the purpose. Power BI warns "Unable to confirm if the M query can be folded".</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Files never fold</strong> — no amount of step-ordering helps a CSV; reduce work by filtering early and removing columns early anyway (it still reduces local memory).</li>
+<li><strong>Type change with culture</strong> stops folding on SQL sources; type on the database side or apply culture-based typing after the folded part.</li>
+<li><strong>Merging a SQL table with an Excel mapping</strong> breaks folding and may also trigger privacy-level combination rules (s08). Consider pushing the mapping into the database or doing the merge after aggregation.</li>
+<li><strong>Folding is not always faster</strong>: a badly indexed view can make the server slower than local processing on a small table — measure with diagnostics.</li>
+<li><strong><code>Value.NativeQuery</code> with <code>EnableFolding=true</code></strong> lets a native SQL query remain foldable for later steps on supported connectors (c04).</li>
+<li><strong>ODBC folding</strong> depends on the driver's SQL capability reporting; Tally ODBC folds very little.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Folding translates leading steps into native SQL; it stops at the first non-translatable step and everything afterwards runs locally.</li>
+<li>CSV, Excel, Folder and SharePoint file sources never fold.</li>
+<li>Verify with View Native Query, folding indicators/query plan, and Query Diagnostics — do not assume.</li>
+<li>Put filters, column removal and group-bys first; buffers, indexes and custom functions last.</li>
+<li>Folding is mandatory for efficient incremental refresh on large GL tables.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-folding-boundary-l1">Q1. Folding boundary [L1]</h3>
+<p>For the query Source (SQL Server <code>dbo.APInvoices</code>) → Removed Columns → Filtered Rows (InvoiceDate ≥ 1-Apr-2025) → Added Index → Grouped Rows (by Vendor, sum Amount) → Merged with <code>VendorMaster.xlsx</code>, state which steps fold and where View Native Query becomes greyed out.</p>
+<h3 id="q2-reorder-for-performance-l2">Q2. Reorder for performance [L2]</h3>
+<p>A query on a 25-million-row SQL GL table: Source → Trimmed Text on Narration → Filtered Rows (CompanyCode = "IN02", FiscalYear = 2026) → Removed Columns (keeps 6 of 41) → Grouped Rows (Account, Period). Refresh takes 14 minutes. Rewrite the step order, justify each move, and describe how you would prove the improvement.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Ask which step forces local evaluation and whether it needs to happen before the aggregation at all.</p>
+</blockquote>
+<h3 id="q3-diagnostics-reading-l2">Q3. Diagnostics reading [L2]</h3>
+<p>Query Diagnostics for a refresh shows the same <code>select ... from dbo.Bank</code> statement sent to the server three times, each taking 40 seconds. Give two plausible causes in the query design and the fix for each.</p>
+<h3 id="q4-incremental-refresh-readiness-l3">Q4. Incremental refresh readiness [L3]</h3>
+<p>Your FP&amp;A lead wants incremental refresh on a 7-year GL fact sourced from MySQL, partitioned by month. List the checks you would perform on the Power Query side before enabling it, including how you will confirm folding of the <code>RangeStart</code>/<code>RangeEnd</code> filter and what would make it fail.</p>
+<h3 id="q5-interview-question-l2">Q5. Interview question [L2]</h3>
+<p>"Explain query folding to a finance manager who has never used Power Query, and tell me one situation where you deliberately broke folding." Write your answer in under 200 words.</p></section>
+<nav class="pager"><a class="prev" href="S04_Data_Types_and_Controlling_Automatic_Type.html">← Data Types and Controlling Automatic Type Detection</a><a class="next" href="S06_Parameters_Staging_Queries_and_Reference_vs.html">Parameters, Staging Queries and Reference vs Duplicate →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Converting Tally Dr/Cr Suffix Balances into Signed Numbers · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C07_Converting_Tally_DrCr_Suffix_Balances_into_Signed.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T2 · Cleaning messy ERP/Tally exports</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Cleaning messy ERP/Tally exports</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Skipping_Report_Headers_Conditionally_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S01_Skipping_Report_Headers_Conditionally_and.html">Skipping Report Headers Conditionally and Promoting Headers</a></li><li><a href="../subtopics/S02_Removing_Blank_Subtotal_and_Grand_Total_Rows_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S02_Removing_Blank_Subtotal_and_Grand_Total_Rows_by.html">Removing Blank, Subtotal and Grand Total Rows by Condition</a></li><li><a href="../subtopics/S03_Filling_Down_Cost_Centre_and_Group_Headers_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S03_Filling_Down_Cost_Centre_and_Group_Headers_in.html">Filling Down Cost-Centre and Group Headers in Report Layouts</a></li><li><a href="../subtopics/S04_Splitting_Ledger_Code_and_Name_Parsing_Tally_DrCr.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S04_Splitting_Ledger_Code_and_Name_Parsing_Tally_DrCr.html">Splitting Ledger Code and Name; Parsing Tally Dr/Cr Amounts</a></li><li><a href="../subtopics/S05_Trimming_Non_Breaking_Spaces_and_Non_Printable.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S05_Trimming_Non_Breaking_Spaces_and_Non_Printable.html">Trimming Non-Breaking Spaces and Non-Printable Characters</a></li><li><a href="../subtopics/S06_Fixing_Date_Locales_and_Indian_Digit_Grouping_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S06_Fixing_Date_Locales_and_Indian_Digit_Grouping_in.html">Fixing Date Locales and Indian Digit Grouping in Text Amounts</a></li><li><a href="../subtopics/S07_Error_Handling_Remove_Errors_Keep_Errors_and_try.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S07_Error_Handling_Remove_Errors_Keep_Errors_and_try.html">Error Handling: Remove Errors, Keep Errors and try ... otherwise</a></li><li><a href="../subtopics/S08_Export_Layouts_Tally_Day_BookLedgerTB_SAP_FBL3N.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S08_Export_Layouts_Tally_Day_BookLedgerTB_SAP_FBL3N.html">Export Layouts: Tally Day Book/Ledger/TB, SAP FBL3N, S_ALR, Oracle TB</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Conditional_TableSkip_Followed_by_PromoteHeaders.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C01_Conditional_TableSkip_Followed_by_PromoteHeaders.html">Conditional Table.Skip Followed by PromoteHeaders</a></li><li><a href="C02_Filtering_Out_Null_and_Total_Rows_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C02_Filtering_Out_Null_and_Total_Rows_with.html">Filtering Out Null and Total Rows with Table.SelectRows</a></li><li><a href="C03_TableFillDown_Fills_Only_Nulls_Replace_Blanks.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C03_TableFillDown_Fills_Only_Nulls_Replace_Blanks.html">Table.FillDown Fills Only Nulls: Replace Blanks First</a></li><li><a href="C04_TableSplitColumn_at_Each_Delimiter_into_Code_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C04_TableSplitColumn_at_Each_Delimiter_into_Code_and.html">Table.SplitColumn at Each Delimiter into Code and Name</a></li><li><a href="C05_Cleaning_Text_Replace_Char_160_TextClean_TextTrim.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C05_Cleaning_Text_Replace_Char_160_TextClean_TextTrim.html">Cleaning Text: Replace Char 160, Text.Clean, Text.Trim</a></li><li><a href="C06_TransformColumnTypes_with_an_Explicit_en_IN.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C06_TransformColumnTypes_with_an_Explicit_en_IN.html">TransformColumnTypes with an Explicit en-IN Culture</a></li><li><a href="C07_Converting_Tally_DrCr_Suffix_Balances_into_Signed.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C07_Converting_Tally_DrCr_Suffix_Balances_into_Signed.html">Converting Tally Dr/Cr Suffix Balances into Signed Numbers</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Converting Tally Dr/Cr Suffix Balances into Signed Numbers</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Dr/Cr: <code>(if Text.EndsWith([Bal], "Cr") then -1 else 1) * Number.From(Text.Select([Bal], {"0".."9", "."}))</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>For a text balance <code>[Bal]</code> such as "1,23,456.00 Dr" or "45,000.00 Cr":</p>
+<p>\[
+\text{Amount} = s \times v, \quad s = \begin{cases} -1 &amp; \text{if Bal ends with "Cr"} \\ +1 &amp; \text{otherwise} \end{cases}, \quad v = \text{Number}\big(\text{digits and "." of Bal}\big)
+\]</p>
+<ul>
+<li><code>Text.Select([Bal], {"0".."9", "."})</code> keeps only the characters 0–9 and the decimal point, removing grouping commas, spaces, ₹ and the Dr/Cr letters.</li>
+<li><code>Number.From(...)</code> converts the result to a number.</li>
+<li>The sign multiplier implements the convention <strong>Debit positive, Credit negative</strong>.</li>
+</ul>
+<h2 id="explanation">Explanation</h2>
+<p>The convention matters for everything downstream: a TB of signed amounts nets to zero; assets and expenses are positive, liabilities, equity and income negative; P&amp;L total is negative for a profit. Choose it once for the whole model and document it.</p>
+<p><code>{"0".."9", "."}</code> is a list built with a character range — <code>"0".."9"</code> expands to the ten digit characters. <code>Text.Select</code> accepts a list of characters to keep.</p>
+<p>Weaknesses of the bare formula and how to harden it:</p>
+<table>
+<thead>
+<tr>
+<th>Issue</th>
+<th>Example</th>
+<th>Effect of bare formula</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Null or blank</td>
+<td>null, ""</td>
+<td>Error / <code>Number.From("")</code> error</td>
+<td>Return null when blank</td>
+</tr>
+<tr>
+<td>Lower/mixed case, trailing dot</td>
+<td>"45,000.00 cr", "45,000.00 Cr."</td>
+<td>Sign wrong (+)</td>
+<td>Upper-case, trim, test "CR" and "CR."</td>
+</tr>
+<tr>
+<td>Prefix style</td>
+<td>"Cr 45,000.00"</td>
+<td>Sign wrong</td>
+<td>Also test <code>Text.StartsWith</code></td>
+</tr>
+<tr>
+<td>Minus or brackets</td>
+<td>"-45,000.00", "(45,000.00)"</td>
+<td>Sign stripped</td>
+<td>Detect "-" or "(" first</td>
+</tr>
+<tr>
+<td>Non-breaking spaces</td>
+<td>"45,000.00" + char 160 + "Cr"</td>
+<td>Works (letters stripped) but <code>EndsWith</code> may fail on trailing char 160</td>
+<td>Clean text first (c05)</td>
+</tr>
+<tr>
+<td>Multiple dots</td>
+<td>"1.234.567,00" (European)</td>
+<td>Wrong value</td>
+<td>Not a Tally format — reject</td>
+</tr>
+</tbody>
+</table>
+<p>Hardened version:</p>
+<pre><code>Amount = Table.AddColumn(t, &quot;Amount&quot;, each
+  let raw = [Bal],
+      x   = if raw = null then &quot;&quot; else Text.Upper(Text.Trim(Text.Replace(Text.From(raw), Character.FromNumber(160), &quot; &quot;))),
+      isCr = Text.EndsWith(x, &quot;CR&quot;) or Text.EndsWith(x, &quot;CR.&quot;) or Text.StartsWith(x, &quot;CR&quot;),
+      neg  = Text.Contains(x, &quot;(&quot;) or Text.StartsWith(x, &quot;-&quot;),
+      num  = Text.Select(x, {&quot;0&quot;..&quot;9&quot;, &quot;.&quot;})
+  in  if num = &quot;&quot; then null
+      else (if isCr then -1 else 1) * (if neg then -1 else 1) * Number.FromText(num, &quot;en-US&quot;),
+  type nullable number)
+</code></pre>
+<p>Whether brackets plus "Cr" should double-negate is a <strong>data question</strong> — check how the source produced it, and log such rows rather than guess.</p>
+<h2 id="illustration">Illustration</h2>
+<table>
+<thead>
+<tr>
+<th>Bal</th>
+<th>Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"4,82,36,190.00 Cr"</td>
+<td>−48236190.00</td>
+</tr>
+<tr>
+<td>"3,12,45,600.50 Dr"</td>
+<td>31245600.50</td>
+</tr>
+<tr>
+<td>"1,69,46,089.00 Dr"</td>
+<td>16946089.00</td>
+</tr>
+<tr>
+<td>"44,500.50 Dr"</td>
+<td>44500.50</td>
+</tr>
+<tr>
+<td>Sum</td>
+<td>0.00</td>
+</tr>
+</tbody>
+</table>
+<p>A four-ledger TB nets to zero (−4,82,36,190.00 + 3,12,45,600.50 + 1,69,46,089.00 + 44,500.50 = 0.00), confirming the parse and sign convention. If any Cr row were misread as Dr, the sum would equal twice that row's value — a useful clue when tracing an imbalance.</p>
+<h2 id="connections">Connections</h2>
+<p>Implements s04 (Tally Dr/Cr parsing). Uses c05 (cleaning) and s06 (number parsing culture). Feeds the Week 1–4 TB integrity check (Dr = Cr after cleaning), Topic 5 sign alignment (bank credits vs book debits) and Topic 6 net amount <code>([Debit] ?? 0) - ([Credit] ?? 0)</code> for two-column layouts.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-apply-the-formula-l1">Q1. Apply the formula [L1]</h3>
+<p>Compute (showing the intermediate <code>Text.Select</code> result) the Amount produced by the bare formula for: "2,35,000.00 Dr", "18,750.25 Cr", "₹ 9,999.00 Cr", "56,000.00 cr".</p>
+<h3 id="q2-imbalance-tracing-l2">Q2. Imbalance tracing [L2]</h3>
+<p>After parsing, a 920-ledger TB nets to +₹3,75,000.00. Explain how the "twice the row value" property helps you find the misparsed row(s), and write a Power Query step that lists candidate rows.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Look for rows whose absolute amount equals half the imbalance, or sets of rows that sum to it.</p>
+</blockquote>
+<h3 id="q3-convention-choice-l2">Q3. Convention choice [L2]</h3>
+<p>Your FP&amp;A model expects revenue as positive numbers in P&amp;L reports while the TB convention is Dr positive. Explain where in the pipeline (Power Query vs data model vs report) the sign flip for presentation should happen, and why you would not change the Power Query convention.</p></section>
+<nav class="pager"><a class="prev" href="C06_TransformColumnTypes_with_an_Explicit_en_IN.html">← TransformColumnTypes with an Explicit en-IN Culture</a><a class="next" href="../../T3_Unpivoting_wide_budgets_and_TBs/index.html">Unpivoting wide budgets and TBs →</a></nav>
+</main></div></body></html>

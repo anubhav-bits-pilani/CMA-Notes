@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Six Join Kinds and Their Role in a Reconciliation · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S02_The_Six_Join_Kinds_and_Their_Role_in_a.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T5 · Merging, appending and reconciliation…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Merging, appending and reconciliation joins</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Append_vs_Merge_Union_vs_Join_with_SQL_Analogies.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S01_Append_vs_Merge_Union_vs_Join_with_SQL_Analogies.html">Append vs Merge: Union vs Join with SQL Analogies</a></li><li><a href="S02_The_Six_Join_Kinds_and_Their_Role_in_a.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S02_The_Six_Join_Kinds_and_Their_Role_in_a.html">The Six Join Kinds and Their Role in a Reconciliation</a></li><li><a href="S03_Bank_vs_Book_Matching_on_Amount_Reference_and_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S03_Bank_vs_Book_Matching_on_Amount_Reference_and_Date.html">Bank vs Book Matching on Amount, Reference and Date Window</a></li><li><a href="S04_Normalising_Composite_Keys_Before_Merging.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S04_Normalising_Composite_Keys_Before_Merging.html">Normalising Composite Keys Before Merging</a></li><li><a href="S05_Fuzzy_Merge_for_Vendor_and_Customer_Names.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S05_Fuzzy_Merge_for_Vendor_and_Customer_Names.html">Fuzzy Merge for Vendor and Customer Names</a></li><li><a href="S06_Repeated_Identical_Amounts_Sequence_Keys_for_One.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S06_Repeated_Identical_Amounts_Sequence_Keys_for_One.html">Repeated Identical Amounts: Sequence Keys for One-to-One Matching</a></li><li><a href="S07_Other_Reconciliations_GSTR_2B_AR_Control_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S07_Other_Reconciliations_GSTR_2B_AR_Control_and.html">Other Reconciliations: GSTR-2B, AR Control and Intercompany</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_LeftAnti_Join_Items_in_the_Bank_but_Not_in_the.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C01_LeftAnti_Join_Items_in_the_Bank_but_Not_in_the.html">LeftAnti Join: Items in the Bank but Not in the Books</a></li><li><a href="../concepts/C02_RightAnti_Join_Items_in_the_Books_but_Not_in_the.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C02_RightAnti_Join_Items_in_the_Books_but_Not_in_the.html">RightAnti Join: Items in the Books but Not in the Bank</a></li><li><a href="../concepts/C03_Expanding_Merged_Columns_with_Prefixed_Names.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C03_Expanding_Merged_Columns_with_Prefixed_Names.html">Expanding Merged Columns with Prefixed Names</a></li><li><a href="../concepts/C04_TableFuzzyNestedJoin_Syntax_and_Options.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C04_TableFuzzyNestedJoin_Syntax_and_Options.html">Table.FuzzyNestedJoin Syntax and Options</a></li><li><a href="../concepts/C05_Duplicate_Safe_Keys_with_Group_By_and_Index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C05_Duplicate_Safe_Keys_with_Group_By_and_Index.html">Duplicate-Safe Keys with Group By and Index</a></li><li><a href="../concepts/C06_Sign_Alignment_Between_Bank_and_Book.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C06_Sign_Alignment_Between_Bank_and_Book.html">Sign Alignment Between Bank and Book</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>The Six Join Kinds and Their Role in a Reconciliation</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Join kinds LeftOuter, RightOuter, FullOuter, Inner, LeftAnti, RightAnti, and what each does in a recon</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>The join kind decides which rows survive a merge. In a reconciliation, each join kind answers a different control question: "what matched?", "what is in the bank but not in the books?", "show me everything side by side". Choosing the wrong one either hides exceptions (Inner drops them silently) or buries them among thousands of matched rows (LeftOuter without a filter). Interviewers often ask candidates to name the join that gives "unpresented cheques" — the expected answer is an anti-join, with the correct direction.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="definitions">Definitions</h3>
+<p>For <code>Table.NestedJoin(Left, keys, Right, keys, "R", kind)</code>:</p>
+<table>
+<thead>
+<tr>
+<th>JoinKind</th>
+<th>Rows returned</th>
+<th>SQL equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LeftOuter</code></td>
+<td>All left rows; nested R holds matches (empty table if none)</td>
+<td><code>LEFT JOIN</code></td>
+</tr>
+<tr>
+<td><code>RightOuter</code></td>
+<td>All right rows; left columns null where no left match</td>
+<td><code>RIGHT JOIN</code></td>
+</tr>
+<tr>
+<td><code>FullOuter</code></td>
+<td>All rows from both; nulls on the side without a match</td>
+<td><code>FULL OUTER JOIN</code> (not in MySQL; emulate with UNION)</td>
+</tr>
+<tr>
+<td><code>Inner</code></td>
+<td>Only rows with a match on both sides</td>
+<td><code>INNER JOIN</code></td>
+</tr>
+<tr>
+<td><code>LeftAnti</code></td>
+<td>Left rows with <strong>no</strong> match; nested R is empty</td>
+<td><code>LEFT JOIN ... WHERE r.key IS NULL</code></td>
+</tr>
+<tr>
+<td><code>RightAnti</code></td>
+<td>Right rows with <strong>no</strong> match</td>
+<td><code>RIGHT JOIN ... WHERE l.key IS NULL</code></td>
+</tr>
+</tbody>
+</table>
+<p>The numeric enum values (Inner 0, LeftOuter 1, RightOuter 2, FullOuter 3, LeftAnti 4, RightAnti 5) sometimes appear in generated code.</p>
+<h3 id="how-the-nested-result-looks">How the nested result looks</h3>
+<p><code>Table.NestedJoin</code> always returns the <strong>left</strong> table's columns plus the nested column. For kinds that return right-only rows (RightOuter, FullOuter, RightAnti), those rows have <strong>null in every left column</strong> and carry the right row inside the nested column. You must expand the nested column to see the right side's data. This catches people out with RightAnti: the result looks like a table of nulls until you expand. A clearer alternative for "right rows with no left match" is to swap the inputs and use LeftAnti.</p>
+<h3 id="what-each-does-in-a-bank-reconciliation">What each does in a bank reconciliation</h3>
+<p>Take Bank as left and Book as right, keyed on normalised Ref + aligned Amount:</p>
+<table>
+<thead>
+<tr>
+<th>JoinKind</th>
+<th>Recon use</th>
+<th>Typical contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Inner</code></td>
+<td>Matched pairs register</td>
+<td>Cleared cheques, NEFT/RTGS receipts and payments booked correctly</td>
+</tr>
+<tr>
+<td><code>LeftOuter</code></td>
+<td>Bank statement annotated with book voucher numbers</td>
+<td>All bank lines; blanks are exceptions</td>
+</tr>
+<tr>
+<td><code>LeftAnti</code></td>
+<td><strong>Bank-only items</strong> (entries not in books)</td>
+<td>Bank charges, interest credited, NACH/ECS debits, direct customer credits, dishonoured cheques, GST on charges</td>
+</tr>
+<tr>
+<td><code>RightAnti</code></td>
+<td><strong>Book-only items</strong> (entries not in bank)</td>
+<td>Cheques issued not presented, deposits in transit, wrong postings in books</td>
+</tr>
+<tr>
+<td><code>FullOuter</code></td>
+<td>One complete recon view</td>
+<td>All lines from both sides, with match status</td>
+</tr>
+<tr>
+<td><code>RightOuter</code></td>
+<td>Book ledger annotated with bank dates</td>
+<td>Clearing-date analysis for issued cheques</td>
+</tr>
+</tbody>
+</table>
+<p>A common deliverable is a single exceptions table:</p>
+<pre><code class="language-m">BankOnly = Table.AddColumn(Table.NestedJoin(Bank, {&quot;Key&quot;}, Book, {&quot;Key&quot;}, &quot;B&quot;, JoinKind.LeftAnti),
+              &quot;Side&quot;, each &quot;In bank, not in books&quot;, type text),
+BookOnly = Table.AddColumn(Table.NestedJoin(Book, {&quot;Key&quot;}, Bank, {&quot;Key&quot;}, &quot;K&quot;, JoinKind.LeftAnti),
+              &quot;Side&quot;, each &quot;In books, not in bank&quot;, type text),
+Exceptions = Table.Combine({Table.RemoveColumns(BankOnly, {&quot;B&quot;}), Table.RemoveColumns(BookOnly, {&quot;K&quot;})})
+</code></pre>
+<p>Using LeftAnti in both directions (with inputs swapped) avoids the null-left-columns behaviour of RightAnti and gives each list its own columns.</p>
+<h3 id="building-the-brs-from-the-outputs">Building the BRS from the outputs</h3>
+<p>Starting from balance per books:</p>
+<p>\[
+\text{Balance per bank} = \text{Balance per books} + \text{Unpresented cheques} - \text{Deposits in transit} + \text{Bank-only credits} - \text{Bank-only debits}
+\]</p>
+<p>where unpresented cheques and deposits in transit come from the book-only list, and bank-only credits/debits from the bank-only list (before they are booked). After the month's adjusting entries are passed for bank-only items, only timing items should remain.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>April, HDFC current account. Balance per books ₹52,40,000. Book-only list: cheques issued not presented ₹6,80,000; deposit in transit ₹2,10,000. Bank-only list: bank charges ₹4,720 debit; interest ₹18,300 credit; NACH insurance debit ₹45,000; direct customer NEFT credit ₹3,25,000.</p>
+<p>\[
+52{,}40{,}000 + 6{,}80{,}000 - 2{,}10{,}000 + (18{,}300 + 3{,}25{,}000) - (4{,}720 + 45{,}000) = 60{,}03{,}580
+\]</p>
+<p>If the bank statement closing balance is ₹60,03,580, the recon closes; any difference means a missed or mis-keyed item.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Inner hides exceptions.</strong> Never use Inner alone in a recon; always produce both anti-joins.</li>
+<li><strong>FullOuter for small data, anti-joins for review.</strong> FullOuter is a convenient single table but harder to review; reviewers prefer two short exception lists.</li>
+<li><strong>Null keys.</strong> M matches null to null; rows with blank Ref on both sides can pair arbitrarily. Exclude null-key rows from reference matching and route them to the amount + date tier.</li>
+<li><strong>Partial matches.</strong> A row matching on Ref but not Amount lands in both anti-joins; detect these by a second merge on Ref alone and classify as "amount difference".</li>
+<li><strong>Folding.</strong> On SQL sources, anti-joins can fold to <code>LEFT JOIN ... IS NULL</code>; on CSVs they run in memory.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>LeftOuter keeps all left rows; Inner keeps matches; FullOuter keeps everything; the anti-joins keep non-matches.</li>
+<li><code>Table.NestedJoin</code> returns left columns plus a nested column; right-only rows show nulls in left columns.</li>
+<li>For bank-not-in-books and books-not-in-bank, LeftAnti in both directions with swapped inputs is clearest.</li>
+<li>Map bank-only items to adjusting entries and book-only items to timing differences in the BRS.</li>
+<li>Prove the BRS arithmetic closes using totals from the exception lists.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-name-the-join-l1">Q1. Name the join [L1]</h3>
+<p>Which join kind (and which table on the left) returns: (a) cheques issued but not yet presented; (b) bank charges not yet booked; (c) all book entries with their bank clearing date where available; (d) only matched items for a cleared-items register?</p>
+<h3 id="q2-prove-the-brs-closes-l2">Q2. Prove the BRS closes [L2]</h3>
+<p>Balance per books on 31-Mar-2026: ₹1,18,62,450 (debit). Book-only items: unpresented cheques ₹14,26,000; deposits in transit ₹9,80,500. Bank-only items: interest ₹42,600 credit; TDS on interest ₹4,260 debit; NACH loan EMI ₹2,85,000 debit; unidentified NEFT credit ₹1,60,000. Bank statement closing balance: ₹1,22,21,790 (credit). Determine whether the BRS closes and, if not, the unexplained difference.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Use the identity in the notes and keep careful track of which side each item increases.</p>
+</blockquote>
+<h3 id="q3-rightanti-puzzle-l2">Q3. RightAnti puzzle [L2]</h3>
+<p>A colleague's RightAnti merge shows 64 rows where every visible column is null. Explain why, show the expand step that reveals the data, and rewrite the query using LeftAnti with swapped inputs.</p>
+<h3 id="q4-exceptions-table-design-l3">Q4. Exceptions table design [L3]</h3>
+<p>Design a single exceptions table for a six-account bank reconciliation that a controller reviews monthly: columns, the Side and Category classification logic, how amount-only differences are flagged, and how prior-month unresolved items are carried forward.</p></section>
+<nav class="pager"><a class="prev" href="S01_Append_vs_Merge_Union_vs_Join_with_SQL_Analogies.html">← Append vs Merge: Union vs Join with SQL Analogies</a><a class="next" href="S03_Bank_vs_Book_Matching_on_Amount_Reference_and_Date.html">Bank vs Book Matching on Amount, Reference and Date Window →</a></nav>
+</main></div></body></html>

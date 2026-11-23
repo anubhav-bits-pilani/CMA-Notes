@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Constant-Length Rolling Horizon · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C04_Constant_Length_Rolling_Horizon.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 5</a> <span>›</span> <a href="../../index.html">Week 18</a> <span>›</span> <a href="../index.html">T1 · 12/18-month rolling forecast timeline…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · 12/18-month rolling forecast timeline mechanics</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Rolling_Horizon_Design_12_Month_18_Month_and_5.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S01_Rolling_Horizon_Design_12_Month_18_Month_and_5.html">Rolling Horizon Design: 12-Month, 18-Month and 5-Quarter Windows</a></li><li><a href="../subtopics/S02_Reforecast_Cadence_and_Decoupling_from_the_AOP.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S02_Reforecast_Cadence_and_Decoupling_from_the_AOP.html">Reforecast Cadence and Decoupling from the AOP</a></li><li><a href="../subtopics/S03_Dynamic_Timeline_Headers_Driven_by_a_Single_Cutoff.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S03_Dynamic_Timeline_Headers_Driven_by_a_Single_Cutoff.html">Dynamic Timeline Headers Driven by a Single Cutoff Date</a></li><li><a href="../subtopics/S04_ActualForecast_Flags_and_Per_Column_Data_Source.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S04_ActualForecast_Flags_and_Per_Column_Data_Source.html">Actual/Forecast Flags and Per-Column Data Source Switching</a></li><li><a href="../subtopics/S05_Pulling_Actuals_from_a_Long_Format_Database_with.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S05_Pulling_Actuals_from_a_Long_Format_Database_with.html">Pulling Actuals from a Long-Format Database with SUMIFS</a></li><li><a href="../subtopics/S06_Forecast_Granularity_Fewer_Lines_than_the_Budget.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S06_Forecast_Granularity_Fewer_Lines_than_the_Budget.html">Forecast Granularity: Fewer Lines than the Budget</a></li><li><a href="../subtopics/S07_EPM_Support_for_Rolling_Forecasts_Anaplan_Adaptive.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S07_EPM_Support_for_Rolling_Forecasts_Anaplan_Adaptive.html">EPM Support for Rolling Forecasts: Anaplan, Adaptive and EPBCS</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_First_Forecast_Month_and_SEQUENCE_Driven_Month_End.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C01_First_Forecast_Month_and_SEQUENCE_Driven_Month_End.html">First Forecast Month and SEQUENCE-Driven Month-End Headers</a></li><li><a href="C02_Non_Dynamic_Array_Header_Formula_Using_a_COLUMN.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C02_Non_Dynamic_Array_Header_Formula_Using_a_COLUMN.html">Non-Dynamic-Array Header Formula Using a COLUMN Offset</a></li><li><a href="C03_Actual_Flag_and_the_IF_SUMIFS_Value_Switch.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C03_Actual_Flag_and_the_IF_SUMIFS_Value_Switch.html">Actual Flag and the IF-SUMIFS Value Switch</a></li><li><a href="C04_Constant_Length_Rolling_Horizon.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C04_Constant_Length_Rolling_Horizon.html">Constant-Length Rolling Horizon</a></li><li><a href="C05_Prefer_INDEXXLOOKUP_over_Volatile_OFFSETINDIRECT.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C05_Prefer_INDEXXLOOKUP_over_Volatile_OFFSETINDIRECT.html">Prefer INDEX/XLOOKUP over Volatile OFFSET/INDIRECT</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Constant-Length Rolling Horizon</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Rolling forecast horizon stays constant length: each close drops one actual month and adds one forecast month</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>At every close the window shifts by one month while its length \( N \) is unchanged:</p>
+<p>\[
+W(C) = \{\, \text{EOMONTH}(C, k) : k = 1, \ldots, N \,\}, \qquad W(C') = W(C) \setminus \{H_1\} \cup \{\text{EOMONTH}(C, N+1)\}
+\]</p>
+<p>where \( C \) is the current cutoff, \( C' = \text{EOMONTH}(C,1) \) the next cutoff after one more month closes, \( H_1 = \text{EOMONTH}(C,1) \) the month that has just become actual (and leaves the forward window), and \( \text{EOMONTH}(C, N+1) \) the new month appended at the far end. The number of forecast months is always \( N \).</p>
+<p>Contrast with a static fiscal-year forecast, where the forecast months remaining equal \( 12 - m \) and shrink to zero, with \( m \) the number of closed months in the FY.</p>
+<h2 id="explanation">Explanation</h2>
+<p>The constant horizon is the defining property of a rolling forecast and the reason it exists: forward visibility never decays. In April and in February the organisation sees the same distance ahead. This changes behaviour — managers must think about the month 12 ahead every month, which forces a perpetual view of capacity, hiring and cash rather than an annual scramble during AOP season.</p>
+<p>Mechanically, the month that "drops" is not deleted; it moves from the forward window into actuals. Two views coexist:</p>
+<ol>
+<li><strong>Forward window (rolling 12/18):</strong> always \( N \) forecast months; the just-closed month leaves it.</li>
+<li><strong>FY grid (LE view):</strong> fixed April–March columns; the just-closed month flips its flag from forecast to actual (Topic 2).</li>
+</ol>
+<p>The newly added far month needs a forecast. Practical rules: seed it from the AOP-style driver logic (prior-year same month × growth), from the 18-month view if one exists, or from statistical baselines — not left blank, otherwise the NTM total falls by one month's value.</p>
+<p>Before overwriting, the forecast for the dropped month must already be preserved in a snapshot, because that is what accuracy measurement (lag-n) compares with the actual.</p>
+<p>Exceptions and nuances: hybrid windows (months then quarters) roll monthly in the near section and add a quarter only when a quarter boundary passes; 5-quarter windows add one quarter each quarter-end, not each month.</p>
+<h2 id="illustration">Illustration</h2>
+<p>12-month window, revenue (₹ crore):</p>
+<table>
+<thead>
+<tr>
+<th>Cutoff</th>
+<th>Window</th>
+<th>Months dropped / added</th>
+<th>NTM total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30-Sep-2025</td>
+<td>Oct-25 to Sep-26</td>
+<td>—</td>
+<td>1,284</td>
+</tr>
+<tr>
+<td>31-Oct-2025</td>
+<td>Nov-25 to Oct-26</td>
+<td>Drop Oct-25 (forecast was 128), add Oct-26 (new forecast 140)</td>
+<td>1,284 − 128 + 140 + Δ revisions</td>
+</tr>
+</tbody>
+</table>
+<p>If November–September forecasts are revised down by ₹10 crore in aggregate in the October cycle, the new NTM = 1,284 − 128 + 140 − 10 = 1,286. The October-25 forecast of 128 is compared with its actual (say 121) in the accuracy tracker using the snapshot saved at the September cycle.</p>
+<h2 id="connections">Connections</h2>
+<p>Explains the behaviour of the headers built in c01/c02 and s03 and the design choice of horizon in s01. The dropped-month mechanics link to the pitfall "overwriting actuals with forecast formulas" and to Topic 4 version snapshots and Topic 5 lag-n accuracy. TTM/NTM metrics (related item) are the same constant-length idea applied backwards and forwards. The Beyond Budgeting view (Hope &amp; Fraser, Bogsnes) relies on this constant visibility for dynamic resource allocation.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-window-evolution-l1">Q1. Window evolution [L1]</h3>
+<p>For an 18-month rolling window, list the window at cutoffs 31-Jan-2026, 28-Feb-2026 and 31-Mar-2026 and identify the month dropped and added at each step.</p>
+<h3 id="q2-ntm-movement-reconciliation-l2">Q2. NTM movement reconciliation [L2]</h3>
+<p>NTM EBITDA at cutoff 31-Dec-2025 was ₹412 crore. In the January cycle: January's forecast EBITDA was ₹33 crore, the newly added January 2027 month is forecast at ₹37 crore, and revisions to February 2026–December 2026 total −₹14 crore. Compute the new NTM EBITDA and lay out the reconciliation in a table.</p>
+<h3 id="q3-seeding-the-new-far-month-l2">Q3. Seeding the new far month [L2]</h3>
+<p>Propose three methods for forecasting the newly added month 12 ahead (e.g. September 2026 at cutoff 30-Sep-2025) for a seasonal apparel retailer, state the data each needs, and recommend one with reasons.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> The prior-year same month already exists in actuals; think about growth and store-count adjustments.</p>
+</blockquote></section>
+<nav class="pager"><a class="prev" href="C03_Actual_Flag_and_the_IF_SUMIFS_Value_Switch.html">← Actual Flag and the IF-SUMIFS Value Switch</a><a class="next" href="C05_Prefer_INDEXXLOOKUP_over_Volatile_OFFSETINDIRECT.html">Prefer INDEX/XLOOKUP over Volatile OFFSET/INDIRECT →</a></nav>
+</main></div></body></html>

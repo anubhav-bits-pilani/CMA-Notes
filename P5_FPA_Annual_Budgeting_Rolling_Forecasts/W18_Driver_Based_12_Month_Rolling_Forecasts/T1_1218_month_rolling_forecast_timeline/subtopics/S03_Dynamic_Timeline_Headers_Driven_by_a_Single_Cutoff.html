@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic Timeline Headers Driven by a Single Cutoff Date · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S03_Dynamic_Timeline_Headers_Driven_by_a_Single_Cutoff.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 5</a> <span>›</span> <a href="../../index.html">Week 18</a> <span>›</span> <a href="../index.html">T1 · 12/18-month rolling forecast timeline…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · 12/18-month rolling forecast timeline mechanics</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Rolling_Horizon_Design_12_Month_18_Month_and_5.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S01_Rolling_Horizon_Design_12_Month_18_Month_and_5.html">Rolling Horizon Design: 12-Month, 18-Month and 5-Quarter Windows</a></li><li><a href="S02_Reforecast_Cadence_and_Decoupling_from_the_AOP.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S02_Reforecast_Cadence_and_Decoupling_from_the_AOP.html">Reforecast Cadence and Decoupling from the AOP</a></li><li><a href="S03_Dynamic_Timeline_Headers_Driven_by_a_Single_Cutoff.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S03_Dynamic_Timeline_Headers_Driven_by_a_Single_Cutoff.html">Dynamic Timeline Headers Driven by a Single Cutoff Date</a></li><li><a href="S04_ActualForecast_Flags_and_Per_Column_Data_Source.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S04_ActualForecast_Flags_and_Per_Column_Data_Source.html">Actual/Forecast Flags and Per-Column Data Source Switching</a></li><li><a href="S05_Pulling_Actuals_from_a_Long_Format_Database_with.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S05_Pulling_Actuals_from_a_Long_Format_Database_with.html">Pulling Actuals from a Long-Format Database with SUMIFS</a></li><li><a href="S06_Forecast_Granularity_Fewer_Lines_than_the_Budget.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S06_Forecast_Granularity_Fewer_Lines_than_the_Budget.html">Forecast Granularity: Fewer Lines than the Budget</a></li><li><a href="S07_EPM_Support_for_Rolling_Forecasts_Anaplan_Adaptive.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S07_EPM_Support_for_Rolling_Forecasts_Anaplan_Adaptive.html">EPM Support for Rolling Forecasts: Anaplan, Adaptive and EPBCS</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_First_Forecast_Month_and_SEQUENCE_Driven_Month_End.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C01_First_Forecast_Month_and_SEQUENCE_Driven_Month_End.html">First Forecast Month and SEQUENCE-Driven Month-End Headers</a></li><li><a href="../concepts/C02_Non_Dynamic_Array_Header_Formula_Using_a_COLUMN.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C02_Non_Dynamic_Array_Header_Formula_Using_a_COLUMN.html">Non-Dynamic-Array Header Formula Using a COLUMN Offset</a></li><li><a href="../concepts/C03_Actual_Flag_and_the_IF_SUMIFS_Value_Switch.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C03_Actual_Flag_and_the_IF_SUMIFS_Value_Switch.html">Actual Flag and the IF-SUMIFS Value Switch</a></li><li><a href="../concepts/C04_Constant_Length_Rolling_Horizon.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C04_Constant_Length_Rolling_Horizon.html">Constant-Length Rolling Horizon</a></li><li><a href="../concepts/C05_Prefer_INDEXXLOOKUP_over_Volatile_OFFSETINDIRECT.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C05_Prefer_INDEXXLOOKUP_over_Volatile_OFFSETINDIRECT.html">Prefer INDEX/XLOOKUP over Volatile OFFSET/INDIRECT</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Dynamic Timeline Headers Driven by a Single Cutoff Date</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Dynamic timeline headers driven by a single cutoff date</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>The header row is the spine of every time-based model: every <code>SUMIFS</code> keyed on a month, every flag, every FY subtotal and every chart axis reads it. If headers are typed, each cycle requires manual edits, and one missed edit silently misaligns data. A single cutoff cell that regenerates all headers is what makes a rolling forecast repeatable in four working days instead of eight, and it is a standard modelling-test question ("make this timeline dynamic").</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-control-cell">The control cell</h3>
+<p>Create a <strong>Control</strong> sheet with a cell named <code>Cutoff</code> holding the last closed month-end (e.g. 30-Sep-2025). Make it robust:</p>
+<ul>
+<li>Data validation: Allow → Custom: <code>=Cutoff=EOMONTH(Cutoff,0)</code> to force month-end dates, or a list of month-ends from a helper column <code>=EOMONTH(DATE(2024,3,31),SEQUENCE(36))</code>.</li>
+<li>Optional: derive <code>Cutoff</code> from the latest month present in the actuals table, <code>=MAX(Act[Month])</code>, with an override switch — useful but dangerous if partial or test postings exist for an unclosed month. Prefer a manual, validated input with a check against <code>MAX(Act[Month])</code>.</li>
+</ul>
+<p>Derived control values (all via formulas, named):</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Formula</th>
+<th>Value at 30-Sep-2025</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>FirstFcst</code></td>
+<td><code>=EOMONTH(Cutoff,0)+1</code></td>
+<td>01-Oct-2025</td>
+</tr>
+<tr>
+<td><code>FirstFcstME</code></td>
+<td><code>=EOMONTH(Cutoff,1)</code></td>
+<td>31-Oct-2025</td>
+</tr>
+<tr>
+<td><code>FY</code></td>
+<td><code>=YEAR(EOMONTH(Cutoff,-3))+1</code></td>
+<td>2026</td>
+</tr>
+<tr>
+<td><code>FYStart</code></td>
+<td><code>=DATE(FY-1,4,1)</code></td>
+<td>01-Apr-2025</td>
+</tr>
+<tr>
+<td><code>ClosedMonths</code></td>
+<td><code>=MOD(MONTH(Cutoff)-4,12)+1</code></td>
+<td>6</td>
+</tr>
+<tr>
+<td><code>LELabel</code></td>
+<td><code>=ClosedMonths&amp;"+"&amp;12-ClosedMonths&amp;" LE FY"&amp;RIGHT(FY,2)</code></td>
+<td>6+6 LE FY26</td>
+</tr>
+</tbody>
+</table>
+<p>Note <code>ClosedMonths</code> returns 12 at a March cutoff (12+0 — the year is fully actual).</p>
+<h3 id="rolling-window-headers">Rolling window headers</h3>
+<p>Dynamic-array version (one cell, spills 12 columns):</p>
+<pre><code>=EOMONTH(Cutoff,SEQUENCE(1,12))
+</code></pre>
+<p>This returns 31-Oct-2025 … 30-Sep-2026. Format as <code>mmm-yy</code>. Using month-end dates as keys (not first-of-month) matches the convention of the actuals table (s05) and of <code>EOMONTH</code>.</p>
+<p>Legacy version (copied across from C4 to N4):</p>
+<pre><code>=EOMONTH(Cutoff,COLUMN()-COLUMN($C$4)+1)
+</code></pre>
+<h3 id="fixed-fiscal-year-headers">Fixed fiscal-year headers</h3>
+<p>The LE grid (Topic 2) needs April–March of the current FY, which only moves when the FY changes:</p>
+<pre><code>=EOMONTH(FYStart,SEQUENCE(1,12,0))
+</code></pre>
+<p>returning 30-Apr-2025 … 31-Mar-2026. When the cutoff moves to 30-Apr-2026, <code>FY</code> becomes 2027 and the grid rolls to FY27 automatically.</p>
+<h3 id="supporting-header-rows">Supporting header rows</h3>
+<p>Build helper rows under the date row, all formula-driven:</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th>Purpose</th>
+<th>Formula (for column C)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>Month-end date</td>
+<td>spilled from <code>EOMONTH</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Fiscal year</td>
+<td><code>=YEAR(EOMONTH(C4,-3))+1</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Fiscal quarter</td>
+<td><code>="Q"&amp;ROUNDUP((MOD(MONTH(C4)-4,12)+1)/3,0)</code></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Actual/forecast flag</td>
+<td><code>=--(C4&lt;=Cutoff)</code></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Display label</td>
+<td><code>=IF(C7,"Act","Fcst")&amp;" "&amp;TEXT(C4,"mmm-yy")</code></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Days in month</td>
+<td><code>=DAY(C4)</code></td>
+</tr>
+</tbody>
+</table>
+<p>With dynamic arrays these can reference the spill: <code>=YEAR(EOMONTH(C4#,-3))+1</code> spills across automatically. Days in month feeds daily-rate drivers (retail footfall × days, Topic 3).</p>
+<h3 id="labels-and-chart-titles">Labels and chart titles</h3>
+<p>Headers alone are not enough; text elements must also move: sheet titles (<code>="Rolling forecast: "&amp;TEXT(FirstFcst,"mmm-yy")&amp;" to "&amp;TEXT(EOMONTH(Cutoff,12),"mmm-yy")</code>), column group labels ("YTD Sep-25"), and chart titles linked to cells (select the title, type <code>=Control!B10</code>).</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>Cutoff moves from 30-Sep-2025 to 31-Oct-2025:</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Before</th>
+<th>After</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rolling header first/last</td>
+<td>Oct-25 / Sep-26</td>
+<td>Nov-25 / Oct-26</td>
+</tr>
+<tr>
+<td>FY grid</td>
+<td>Apr-25 … Mar-26</td>
+<td>unchanged</td>
+</tr>
+<tr>
+<td>Flag row (FY grid)</td>
+<td>1 for Apr–Sep</td>
+<td>1 for Apr–Oct</td>
+</tr>
+<tr>
+<td><code>LELabel</code></td>
+<td>6+6 LE FY26</td>
+<td>7+5 LE FY26</td>
+</tr>
+</tbody>
+</table>
+<p>No formula is edited; only <code>Cutoff</code> changes.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Text vs date headers:</strong> typed "Oct-25" is text and will never match a date key; <code>DATEVALUE</code> conversions are fragile across regional settings (Indian <code>dd-mm-yyyy</code> vs US <code>mm/dd/yyyy</code>). Always store true dates.</li>
+<li><strong>Dates with time components:</strong> extracts from some ERPs carry timestamps; <code>EOMONTH</code> strips time, so normalise keys with <code>EOMONTH(x,0)</code> in Power Query or a helper column.</li>
+<li><strong>Spill blockers:</strong> any typed value in the spill path produces <code>#SPILL!</code>; keep header rows free and protect them.</li>
+<li><strong>Mixed users:</strong> if some stakeholders open the file in Excel 2016/2019, dynamic arrays may fail; use the <code>COLUMN()</code> variant.</li>
+<li><strong>Leap years:</strong> <code>EOMONTH</code> handles 29-Feb-2028 correctly; <code>DATE(y,m,30)</code>-style constructions do not.</li>
+<li><strong>Cutoff beyond the FY grid:</strong> at 31-Mar the FY grid is fully actual; ensure YTG formulas return zero, not errors.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>One validated, named <code>Cutoff</code> cell drives every header, flag, label and FY reference.</li>
+<li>Use month-end date serials as keys everywhere; format for display only.</li>
+<li>Rolling headers: <code>EOMONTH(Cutoff,SEQUENCE(1,12))</code>; FY headers: <code>EOMONTH(FYStart,SEQUENCE(1,12,0))</code>.</li>
+<li>Build helper rows (FY, quarter, flag, days) from the date row, never typed.</li>
+<li>Link titles and labels to cells so text moves with the cutoff.</li>
+<li>Test by moving the cutoff one month and confirming nothing needs editing.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-control-sheet-formulas-l1">Q1. Control sheet formulas [L1]</h3>
+<p>Write formulas for <code>FirstFcst</code>, <code>FY</code>, <code>FYStart</code>, <code>ClosedMonths</code> and <code>LELabel</code> given <code>Cutoff</code>, and state their values at cutoffs 31-Dec-2025 and 31-Mar-2026.</p>
+<h3 id="q2-quarter-and-half-year-helper-rows-l2">Q2. Quarter and half-year helper rows [L2]</h3>
+<p>Extend the header block with a fiscal half-year row (H1 = Apr–Sep) and a "quarter-end" flag that is 1 only for June, September, December and March. Write the formulas and show how you would use the quarter-end flag in a <code>SUMIFS</code> to build a quarterly summary block from monthly columns.</p>
+<h3 id="q3-fixing-a-fragile-header-row-l2">Q3. Fixing a fragile header row [L2]</h3>
+<p>A model has headers typed as text "Apr-25"…"Mar-26", a flag row <code>=IF(C4="Oct-25",0,1)</code> edited manually each month and a chart titled "H1 FY26 Actual vs Budget" typed into the chart. List each weakness and rewrite the block so that a single cutoff drives all three elements.</p>
+<h3 id="q4-auto-detecting-the-cutoff-l3">Q4. Auto-detecting the cutoff [L3]</h3>
+<p>Your controller proposes <code>Cutoff = MAX(Act[Month])</code> so nobody has to change it. In the October close, provisional entries for November accruals were posted on WD 2. Explain the failure, design a safer approach combining a manual input with an automated check, and write the check formula.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Think about what the actuals table should contain versus what the ERP extract contains.</p>
+</blockquote></section>
+<nav class="pager"><a class="prev" href="S02_Reforecast_Cadence_and_Decoupling_from_the_AOP.html">← Reforecast Cadence and Decoupling from the AOP</a><a class="next" href="S04_ActualForecast_Flags_and_Per_Column_Data_Source.html">Actual/Forecast Flags and Per-Column Data Source Switching →</a></nav>
+</main></div></body></html>

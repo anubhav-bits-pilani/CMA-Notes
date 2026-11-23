@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detecting Sandbagging and Over-Optimism by Business Unit · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S04_Detecting_Sandbagging_and_Over_Optimism_by.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 5</a> <span>›</span> <a href="../../index.html">Week 18</a> <span>›</span> <a href="../index.html">T5 · Forecast accuracy: MAPE, WAPE, bias</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Forecast accuracy: MAPE, WAPE, bias</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Forecast_Error_Metrics_MAD_MAPE_WAPE_RMSE_Bias.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S01_Forecast_Error_Metrics_MAD_MAPE_WAPE_RMSE_Bias.html">Forecast Error Metrics: MAD, MAPE, WAPE, RMSE, Bias, Tracking Signal</a></li><li><a href="S02_Measurement_Lag_Lag_1_Lag_3_and_Lag_6_Forecast.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S02_Measurement_Lag_Lag_1_Lag_3_and_Lag_6_Forecast.html">Measurement Lag: Lag-1, Lag-3 and Lag-6 Forecast Accuracy</a></li><li><a href="S03_Aggregation_Level_and_Error_Netting_in_Forecast.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S03_Aggregation_Level_and_Error_Netting_in_Forecast.html">Aggregation Level and Error Netting in Forecast Accuracy</a></li><li><a href="S04_Detecting_Sandbagging_and_Over_Optimism_by.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S04_Detecting_Sandbagging_and_Over_Optimism_by.html">Detecting Sandbagging and Over-Optimism by Business Unit</a></li><li><a href="S05_Forecast_Value_Added_Does_Each_Step_Beat_the_Naive.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S05_Forecast_Value_Added_Does_Each_Step_Beat_the_Naive.html">Forecast Value Added: Does Each Step Beat the Naive Baseline?</a></li><li><a href="S06_Accuracy_Dashboards_Accountability_and_Tolerance.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S06_Accuracy_Dashboards_Accountability_and_Tolerance.html">Accuracy Dashboards, Accountability and Tolerance Bands per BU</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_MAPE_Mean_Absolute_Percentage_Error_and_Its.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C01_MAPE_Mean_Absolute_Percentage_Error_and_Its.html">MAPE: Mean Absolute Percentage Error and Its Weaknesses</a></li><li><a href="../concepts/C02_WAPE_and_Forecast_Accuracy_Percentage.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C02_WAPE_and_Forecast_Accuracy_Percentage.html">WAPE and Forecast Accuracy Percentage</a></li><li><a href="../concepts/C03_Bias_Percentage_Direction_of_Forecast_Error.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C03_Bias_Percentage_Direction_of_Forecast_Error.html">Bias Percentage: Direction of Forecast Error</a></li><li><a href="../concepts/C04_MAD_and_the_Tracking_Signal_for_Systematic_Bias.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C04_MAD_and_the_Tracking_Signal_for_Systematic_Bias.html">MAD and the Tracking Signal for Systematic Bias</a></li><li><a href="../concepts/C05_RMSE_Root_Mean_Square_Error_and_Large_Miss_Penalty.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C05_RMSE_Root_Mean_Square_Error_and_Large_Miss_Penalty.html">RMSE: Root Mean Square Error and Large-Miss Penalty</a></li><li><a href="../concepts/C06_Forecast_Value_Added_Formula_and_Interpretation.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C06_Forecast_Value_Added_Formula_and_Interpretation.html">Forecast Value Added Formula and Interpretation</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Detecting Sandbagging and Over-Optimism by Business Unit</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Detecting sandbagging (persistent under-forecast of revenue) and over-optimism by BU</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A forecast error is either noise or bias. Noise is unavoidable and averages out; bias is systematic and, in finance forecasts, frequently behavioural. <strong>Sandbagging</strong> — persistently under-forecasting revenue (or over-forecasting costs) so that results "beat" the forecast — protects the forecaster's incentive and reputation but starves the organisation of accurate information: plants are under-loaded, working capital is mis-planned, and the company under-guides the market and then repeatedly "surprises" analysts, which itself damages credibility. <strong>Over-optimism</strong> — persistently over-forecasting revenue or under-forecasting costs — leads to over-production, excess inventory, unachieved guidance and late-year cost cuts. Detecting both by BU, with evidence robust enough to discuss with a BU head, is a core FP&amp;A capability and a frequent interview case.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="definitions-and-direction">Definitions and direction</h3>
+<p>Using Bias % \(= \sum (F - A) \div \sum A\) (c03):</p>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Bias sign</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue</td>
+<td>Negative, persistent</td>
+<td>Sandbagging (under-forecast)</td>
+</tr>
+<tr>
+<td>Revenue</td>
+<td>Positive, persistent</td>
+<td>Over-optimism</td>
+</tr>
+<tr>
+<td>Cost</td>
+<td>Positive, persistent</td>
+<td>Padding / cost sandbagging (over-forecast spend)</td>
+</tr>
+<tr>
+<td>Cost</td>
+<td>Negative, persistent</td>
+<td>Under-estimation (optimism about cost control)</td>
+</tr>
+</tbody>
+</table>
+<p>The key word is <strong>persistent</strong>. One quarter of negative bias is not sandbagging; six consecutive quarters is a pattern.</p>
+<h3 id="statistical-detection-tools">Statistical detection tools</h3>
+<ol>
+<li><strong>Bias % by BU over rolling windows</strong> — e.g., rolling 6 or 12 months at lag-3. Flag BUs whose bias exceeds a tolerance (say ±3%) for three or more consecutive windows.</li>
+<li><strong>Tracking signal</strong> (c04) — cumulative \((A - F)\) ÷ MAD. For revenue, \(\text{TS} &gt; +4\) (actuals persistently above forecast) indicates sandbagging; \(\text{TS} &lt; -4\) indicates over-optimism.</li>
+<li><strong>Sign test / run count</strong> — count the months in which actual exceeded forecast. Under no bias, the probability of a beat is about 50% each month, so ten or more beats out of twelve has a binomial probability of about 1.9% (formula below) — strong evidence of bias.</li>
+<li><strong>Forecast evolution pattern</strong> — a sandbagging BU's forecasts for a given month typically <em>rise</em> as the month approaches (it releases the cushion late); an over-optimistic BU's forecasts <em>fall</em> late. Visible in the forecast triangle (s02).</li>
+<li><strong>Beat size relative to noise</strong> — beats consistently 5–10% above forecast, with low dispersion, suggest a deliberate cushion rather than forecasting difficulty.</li>
+<li><strong>Comparison with statistical baseline</strong> — if a seasonal-naive or exponential-smoothing forecast (Topic 3, s07) is unbiased while the BU's submission is biased, the bias is introduced by judgement (FVA analysis, s05).</li>
+</ol>
+<p>The sign-test probability in item 3, with \(X\) the number of beats in 12 months:</p>
+<p>\[
+P(X \ge 10) = \sum_{k=10}^{12} \binom{12}{k} 0.5^{12} = \frac{66 + 12 + 1}{4{,}096} \approx 1.9\%
+\]</p>
+<p>In Excel: <code>=1-BINOM.DIST(9,12,0.5,TRUE)</code>.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>Quarterly lag-3 revenue for two BUs, FY25 Q1 to FY26 Q2 (₹ crore):</p>
+<table>
+<thead>
+<tr>
+<th>Quarter</th>
+<th>North F</th>
+<th>North A</th>
+<th>South F</th>
+<th>South A</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY25 Q1</td>
+<td>200</td>
+<td>214</td>
+<td>160</td>
+<td>151</td>
+</tr>
+<tr>
+<td>FY25 Q2</td>
+<td>210</td>
+<td>228</td>
+<td>168</td>
+<td>155</td>
+</tr>
+<tr>
+<td>FY25 Q3</td>
+<td>250</td>
+<td>268</td>
+<td>190</td>
+<td>178</td>
+</tr>
+<tr>
+<td>FY25 Q4</td>
+<td>230</td>
+<td>245</td>
+<td>175</td>
+<td>169</td>
+</tr>
+<tr>
+<td>FY26 Q1</td>
+<td>215</td>
+<td>233</td>
+<td>170</td>
+<td>158</td>
+</tr>
+<tr>
+<td>FY26 Q2</td>
+<td>225</td>
+<td>240</td>
+<td>178</td>
+<td>166</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>1,330</td>
+<td>1,428</td>
+<td>1,041</td>
+<td>977</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>North: bias % = (1,330 − 1,428) ÷ 1,428 = −6.9%; beat in 6 of 6 quarters; average beat ₹16.3 crore with little variation → consistent with sandbagging.</li>
+<li>South: bias % = (1,041 − 977) ÷ 977 = +6.6%; missed in 6 of 6 quarters → consistent with over-optimism.</li>
+<li>Company: forecast 2,371 vs actual 2,405 → bias −1.4%. The two BUs largely offset at company level (s03), which is why BU-level analysis is essential.</li>
+</ul>
+<h3 id="behavioural-and-organisational-root-causes">Behavioural and organisational root causes</h3>
+<ul>
+<li><strong>Incentive design</strong>: bonuses paid on beating a self-set forecast or on budget attainment where the BU influences the budget. Indian sales-incentive schemes often pay slabs at 90%/100%/110% of target, which rewards a cushion.</li>
+<li><strong>Asymmetric penalties</strong>: a miss is punished more than a beat is rewarded, so forecasters build a buffer.</li>
+<li><strong>Resource protection</strong>: over-optimism in revenue (or under-forecast cost) can protect headcount, A&amp;P or capex allocations ("if we show growth, we keep the budget").</li>
+<li><strong>Anchoring to budget</strong>: forecasts that stay close to the AOP long after conditions changed; bias then flips sign with the economic cycle.</li>
+<li><strong>Hockey-stick culture</strong>: H2-loaded forecasts each quarter ("the recovery is next quarter") — a classic over-optimism pattern.</li>
+</ul>
+<h3 id="remedies">Remedies</h3>
+<ol>
+<li><strong>Publish bias by BU</strong> in the forecast-accuracy dashboard (s06); transparency alone reduces sandbagging.</li>
+<li><strong>Decouple incentives from forecasts</strong>: base bonuses on externally set targets (AOP approved top-down, relative performance, prior-year growth), and add a forecast-accuracy component (e.g., 10% of variable pay for WAPE and bias within tolerance).</li>
+<li><strong>Statistical baselines</strong>: require BUs to explain deviations from a statistical forecast; judgement must add value (FVA).</li>
+<li><strong>Central overlay</strong>: FP&amp;A applies a documented bias correction (e.g., North +5%) to the consolidated forecast used for guidance, while still recording the BU's own submission for accountability.</li>
+<li><strong>Pre-mortems and reference-class forecasting</strong> for optimism-prone areas such as new launches and projects.</li>
+</ol>
+<h3 id="accounting-and-governance-link">Accounting and governance link</h3>
+<p>Sandbagged LEs can understate the year-end bonus accrual under Ind AS 19 short-term employee benefits (where bonuses depend on attainment) until late in the year, causing Q4 catch-ups; over-optimistic forecasts can support impairment tests (Ind AS 36) or deferred-tax asset recognition (Ind AS 12) that later prove unfounded — auditors examine historical forecast accuracy for exactly this reason ("management's track record").</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Genuine structural change.</strong> A BU in a rapidly growing market may under-forecast persistently because growth keeps surprising; check whether external indicators (market data, competitor growth) also surprised. Bias still needs correcting, but the conversation differs.</li>
+<li><strong>Lumpy B2B revenue.</strong> A BU with few large contracts will show large errors with random sign; require more periods before concluding bias, and analyse at contract-pipeline level.</li>
+<li><strong>Cost sandbagging is often invisible.</strong> Under-spends are celebrated as savings. Track cost bias as rigorously as revenue bias.</li>
+<li><strong>Prudence vs sandbagging.</strong> A deliberately conservative <em>external</em> guidance is a legitimate policy decision made centrally and disclosed as such; the internal forecast should still be unbiased.</li>
+<li><strong>Small samples.</strong> Use sign tests and rolling windows; three quarters are rarely enough for a confident conclusion.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Sandbagging = persistent negative revenue bias (or positive cost bias); over-optimism = persistent positive revenue bias.</li>
+<li>Detect with rolling bias %, tracking signal, sign/run tests, forecast-evolution patterns and comparison with statistical baselines.</li>
+<li>Measure at BU level: offsetting biases disappear at company level.</li>
+<li>Root causes are usually incentive design, asymmetric penalties, resource protection and anchoring.</li>
+<li>Remedies: publish bias, decouple incentives from self-set forecasts, add an accuracy component, require explanation versus statistical baselines.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-diagnose-two-bus-l2">Q1. Diagnose two BUs [L2]</h3>
+<p>Monthly lag-1 revenue for Apr–Sep FY26 (₹ crore). BU A: F 42, 44, 45, 47, 50, 52; A 45, 47, 48, 51, 53, 56. BU B: F 30, 32, 35, 38, 40, 44; A 29, 30, 31, 33, 34, 36. (a) Compute bias %, MAD and tracking signal for each. (b) Compute the probability of BU A's beat record under the no-bias assumption. (c) Classify each BU and propose one remedy for each.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> For the sign test, count the months where actual exceeded forecast and use the binomial distribution with p = 0.5.</p>
+</blockquote>
+<h3 id="q2-forecast-evolution-evidence-l2">Q2. Forecast-evolution evidence [L2]</h3>
+<p>The North BU's successive forecasts for December 2025 revenue were: Q1F ₹180 crore; LE Sep ₹182 crore; LE Oct ₹186 crore; LE Nov ₹195 crore. Actual was ₹201 crore. The South BU's successive forecasts for the same month were ₹150, ₹148, ₹141 and ₹136 crore against actual ₹131 crore. Interpret the patterns and explain what each suggests about the BU's forecasting behaviour.</p>
+<h3 id="q3-incentive-scheme-redesign-l3">Q3. Incentive scheme redesign [L3]</h3>
+<p>An NSE-listed paints company pays regional managers 0% bonus below 95% of their own quarterly forecast, 100% at 100%, and 150% at 110% or above. Four of six regions show persistent negative revenue bias of 5–9%. Redesign the scheme to reduce sandbagging while retaining motivation, specify an accuracy component, and explain the implications for the Ind AS 19 bonus provision estimation at each quarter-end.</p>
+<h3 id="q4-interview-sandbagging-conversation-l3">Q4. Interview: sandbagging conversation [L3]</h3>
+<p>You must present evidence of sandbagging to a senior BU head who has a strong track record of "beating forecast". Outline the evidence pack you would prepare, how you would frame the discussion, and the specific process changes you would propose.</p></section>
+<nav class="pager"><a class="prev" href="S03_Aggregation_Level_and_Error_Netting_in_Forecast.html">← Aggregation Level and Error Netting in Forecast Accuracy</a><a class="next" href="S05_Forecast_Value_Added_Does_Each_Step_Beat_the_Naive.html">Forecast Value Added: Does Each Step Beat the Naive… →</a></nav>
+</main></div></body></html>

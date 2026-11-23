@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Table.SplitColumn at Each Delimiter into Code and Name · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C04_TableSplitColumn_at_Each_Delimiter_into_Code_and.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T2 · Cleaning messy ERP/Tally exports</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Cleaning messy ERP/Tally exports</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Skipping_Report_Headers_Conditionally_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S01_Skipping_Report_Headers_Conditionally_and.html">Skipping Report Headers Conditionally and Promoting Headers</a></li><li><a href="../subtopics/S02_Removing_Blank_Subtotal_and_Grand_Total_Rows_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S02_Removing_Blank_Subtotal_and_Grand_Total_Rows_by.html">Removing Blank, Subtotal and Grand Total Rows by Condition</a></li><li><a href="../subtopics/S03_Filling_Down_Cost_Centre_and_Group_Headers_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S03_Filling_Down_Cost_Centre_and_Group_Headers_in.html">Filling Down Cost-Centre and Group Headers in Report Layouts</a></li><li><a href="../subtopics/S04_Splitting_Ledger_Code_and_Name_Parsing_Tally_DrCr.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S04_Splitting_Ledger_Code_and_Name_Parsing_Tally_DrCr.html">Splitting Ledger Code and Name; Parsing Tally Dr/Cr Amounts</a></li><li><a href="../subtopics/S05_Trimming_Non_Breaking_Spaces_and_Non_Printable.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S05_Trimming_Non_Breaking_Spaces_and_Non_Printable.html">Trimming Non-Breaking Spaces and Non-Printable Characters</a></li><li><a href="../subtopics/S06_Fixing_Date_Locales_and_Indian_Digit_Grouping_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S06_Fixing_Date_Locales_and_Indian_Digit_Grouping_in.html">Fixing Date Locales and Indian Digit Grouping in Text Amounts</a></li><li><a href="../subtopics/S07_Error_Handling_Remove_Errors_Keep_Errors_and_try.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S07_Error_Handling_Remove_Errors_Keep_Errors_and_try.html">Error Handling: Remove Errors, Keep Errors and try ... otherwise</a></li><li><a href="../subtopics/S08_Export_Layouts_Tally_Day_BookLedgerTB_SAP_FBL3N.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S08_Export_Layouts_Tally_Day_BookLedgerTB_SAP_FBL3N.html">Export Layouts: Tally Day Book/Ledger/TB, SAP FBL3N, S_ALR, Oracle TB</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Conditional_TableSkip_Followed_by_PromoteHeaders.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C01_Conditional_TableSkip_Followed_by_PromoteHeaders.html">Conditional Table.Skip Followed by PromoteHeaders</a></li><li><a href="C02_Filtering_Out_Null_and_Total_Rows_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C02_Filtering_Out_Null_and_Total_Rows_with.html">Filtering Out Null and Total Rows with Table.SelectRows</a></li><li><a href="C03_TableFillDown_Fills_Only_Nulls_Replace_Blanks.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C03_TableFillDown_Fills_Only_Nulls_Replace_Blanks.html">Table.FillDown Fills Only Nulls: Replace Blanks First</a></li><li><a href="C04_TableSplitColumn_at_Each_Delimiter_into_Code_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C04_TableSplitColumn_at_Each_Delimiter_into_Code_and.html">Table.SplitColumn at Each Delimiter into Code and Name</a></li><li><a href="C05_Cleaning_Text_Replace_Char_160_TextClean_TextTrim.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C05_Cleaning_Text_Replace_Char_160_TextClean_TextTrim.html">Cleaning Text: Replace Char 160, Text.Clean, Text.Trim</a></li><li><a href="C06_TransformColumnTypes_with_an_Explicit_en_IN.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C06_TransformColumnTypes_with_an_Explicit_en_IN.html">TransformColumnTypes with an Explicit en-IN Culture</a></li><li><a href="C07_Converting_Tally_DrCr_Suffix_Balances_into_Signed.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C07_Converting_Tally_DrCr_Suffix_Balances_into_Signed.html">Converting Tally Dr/Cr Suffix Balances into Signed Numbers</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Table.SplitColumn at Each Delimiter into Code and Name</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>Table.SplitColumn(t, "Ledger", Splitter.SplitTextByEachDelimiter({" - "}), {"Code", "Name"})</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p><code>Table.SplitColumn(table, sourceColumn, splitter, columnNamesOrNumber)</code> replaces <code>sourceColumn</code> with new columns produced by applying <code>splitter</code> to each value.</p>
+<p><code>Splitter.SplitTextByEachDelimiter(delimiters as list, optional quoteStyle, optional startAtEnd as logical)</code> returns a splitter that splits <strong>once per delimiter in the list, in sequence</strong>. With the one-item list <code>{" - "}</code>, the text splits at the <strong>first</strong> occurrence of " - " only (or the last, if <code>startAtEnd = true</code>), producing at most two parts. The fourth argument names the resulting columns: Code and Name.</p>
+<p>Contrast: <code>Splitter.SplitTextByDelimiter(" - ")</code> splits at <strong>every</strong> occurrence.</p>
+<h2 id="explanation">Explanation</h2>
+<p>Ledger names often contain the delimiter themselves: "400200 - Sales - Exports - SEZ". Splitting at every occurrence would produce four parts, and with only two target column names the extra parts are <strong>silently discarded</strong> — the name becomes "Sales", losing "Exports - SEZ". <code>SplitTextByEachDelimiter({" - "})</code> gives Code = "400200", Name = "Sales - Exports - SEZ".</p>
+<p>If the format is name-first ("Sales Domestic - 400100"), use <code>startAtEnd = true</code> so the split happens at the last delimiter.</p>
+<p>Behaviour on edge values:</p>
+<table>
+<thead>
+<tr>
+<th>Input</th>
+<th>Code</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"400100 - Sales Domestic"</td>
+<td>400100</td>
+<td>Sales Domestic</td>
+</tr>
+<tr>
+<td>"400200 - Sales - Exports - SEZ"</td>
+<td>400200</td>
+<td>Sales - Exports - SEZ</td>
+</tr>
+<tr>
+<td>"Round Off"</td>
+<td>Round Off</td>
+<td>null</td>
+</tr>
+<tr>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+</tr>
+<tr>
+<td>"400300 -Sales Misc" (no space after dash)</td>
+<td>"400300 -Sales Misc"</td>
+<td>null</td>
+</tr>
+</tbody>
+</table>
+<p>The last two rows of real data show why a split must be followed by checks: rows without the exact delimiter put the whole text into Code. Add a validation column — Code must be all digits (<code>Text.Select([Code], {"0".."9"}) = [Code]</code>) — and route failures to an exceptions list.</p>
+<p>After splitting:</p>
+<ul>
+<li><strong>Type Code as text</strong> (the UI may auto-detect it as a whole number and drop leading zeros if auto type detection is on).</li>
+<li><strong>Trim both parts</strong> — splitting at " - " leaves no spaces, but a variant like " -  " would.</li>
+<li><strong>Keep the original</strong> if you need it for audit: use <code>Text.BeforeDelimiter</code>/<code>Text.AfterDelimiter</code> in added columns instead of a destructive split.</li>
+</ul>
+<p>Delimiter variants (en-dash "–", em-dash "—", colon) can be normalised first: <code>Text.Replace(Text.Replace(x, "–", "-"), "—", "-")</code>.</p>
+<h2 id="illustration">Illustration</h2>
+<p>A SAP-derived mapping list of 1,200 accounts includes 36 names with internal hyphens. Using "Split Column by Delimiter → Each occurrence" truncates all 36 names; the Schedule III mapping by name then fails for 11 of them where the truncated names collide ("Sales" appearing for three different accounts). Using "Left-most delimiter" (the UI option that generates <code>SplitTextByEachDelimiter</code> with <code>startAtEnd = false</code>) keeps all names intact and the code-based mapping covers all 1,200.</p>
+<h2 id="connections">Connections</h2>
+<p>Implements s04 (splitting code and name). Linked to Topic 1 s04 (codes as text), the related item on <code>Text.BeforeDelimiter</code>/<code>Text.AfterDelimiter</code>/<code>Text.PositionOf</code>, Topic 4 (reading branch and month from file names with the same delimiter functions), and the CoA mapping step in the Saturday assessment.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-choose-the-splitter-l1">Q1. Choose the splitter [L1]</h3>
+<p>For each label format, write the splitter call that yields code and name correctly: (a) "510100 - Purchases - Raw Material"; (b) "Purchases - Raw Material - 510100"; (c) "510100Purchases RM" (no delimiter, 6-digit code); (d) "510100 | Purchases RM" with a pipe and spaces.</p>
+<h3 id="q2-validation-after-split-l2">Q2. Validation after split [L2]</h3>
+<p>Write M that splits Ledger into Code and Name with the concept's splitter, then adds a column ValidCode (true when Code is exactly six digits), and creates an exceptions query listing invalid rows with the original label reconstructed.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Reconstruct the label with <code>Text.Combine</code> on the two parts, skipping nulls.</p>
+</blockquote>
+<h3 id="q3-silent-truncation-l2">Q3. Silent truncation [L2]</h3>
+<p>Explain why splitting "at each occurrence" into two named columns loses data without any error, and describe a Power Query check that would detect this in a monthly review.</p></section>
+<nav class="pager"><a class="prev" href="C03_TableFillDown_Fills_Only_Nulls_Replace_Blanks.html">← Table.FillDown Fills Only Nulls: Replace Blanks First</a><a class="next" href="C05_Cleaning_Text_Replace_Char_160_TextClean_TextTrim.html">Cleaning Text: Replace Char 160, Text.Clean, Text.Trim →</a></nav>
+</main></div></body></html>

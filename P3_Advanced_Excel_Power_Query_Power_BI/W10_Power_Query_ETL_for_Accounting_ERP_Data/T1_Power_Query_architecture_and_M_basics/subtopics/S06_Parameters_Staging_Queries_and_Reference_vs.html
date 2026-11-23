@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parameters, Staging Queries and Reference vs Duplicate · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S06_Parameters_Staging_Queries_and_Reference_vs.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T1 · Power Query architecture and M basics</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Power Query architecture and M basics</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Power_Query_Connectors_for_Accounting_and_ERP_Data.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S01_Power_Query_Connectors_for_Accounting_and_ERP_Data.html">Power Query Connectors for Accounting and ERP Data Sources</a></li><li><a href="S02_Power_Query_Editor_Anatomy_Steps_Formula_Bar_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S02_Power_Query_Editor_Anatomy_Steps_Formula_Bar_and.html">Power Query Editor Anatomy: Steps, Formula Bar and Dependencies</a></li><li><a href="S03_M_Language_Structure_letin_Values_Records_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S03_M_Language_Structure_letin_Values_Records_Lists.html">M Language Structure: let/in, Values, Records, Lists and each</a></li><li><a href="S04_Data_Types_and_Controlling_Automatic_Type.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S04_Data_Types_and_Controlling_Automatic_Type.html">Data Types and Controlling Automatic Type Detection</a></li><li><a href="S05_Query_Folding_Which_Steps_Fold_Native_Query_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S05_Query_Folding_Which_Steps_Fold_Native_Query_and.html">Query Folding: Which Steps Fold, Native Query and Diagnostics</a></li><li><a href="S06_Parameters_Staging_Queries_and_Reference_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S06_Parameters_Staging_Queries_and_Reference_vs.html">Parameters, Staging Queries and Reference vs Duplicate</a></li><li><a href="S07_Load_Options_and_Refresh_Behaviour_in_Excel_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S07_Load_Options_and_Refresh_Behaviour_in_Excel_vs.html">Load Options and Refresh Behaviour in Excel vs Power BI</a></li><li><a href="S08_Privacy_Levels_and_FormulaFirewall_Errors.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S08_Privacy_Levels_and_FormulaFirewall_Errors.html">Privacy Levels and Formula.Firewall Errors</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_CsvDocument_with_FileContents_Delimiter_Encoding.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C01_CsvDocument_with_FileContents_Delimiter_Encoding.html">Csv.Document with File.Contents: Delimiter, Encoding, QuoteStyle</a></li><li><a href="../concepts/C02_ExcelWorkbook_Navigation_to_a_Named_Sheet_or_Table.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C02_ExcelWorkbook_Navigation_to_a_Named_Sheet_or_Table.html">Excel.Workbook Navigation to a Named Sheet or Table</a></li><li><a href="../concepts/C03_SqlDatabase_with_a_Native_Query_Blocks_Later.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C03_SqlDatabase_with_a_Native_Query_Blocks_Later.html">Sql.Database with a Native Query Blocks Later Folding</a></li><li><a href="../concepts/C04_ValueNativeQuery_with_Parameters_and_EnableFolding.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C04_ValueNativeQuery_with_Parameters_and_EnableFolding.html">Value.NativeQuery with Parameters and EnableFolding</a></li><li><a href="../concepts/C05_The_each_Keyword_and_the_Underscore_Parameter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C05_The_each_Keyword_and_the_Underscore_Parameter.html">The each Keyword and the Underscore Parameter</a></li><li><a href="../concepts/C06_Folding_Breakers_TableBuffer_Index_Columns_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C06_Folding_Breakers_TableBuffer_Index_Columns_and.html">Folding Breakers: Table.Buffer, Index Columns and Custom Functions</a></li><li><a href="../concepts/C07_MySQLDatabase_Connector_and_OdbcDataSource_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C07_MySQLDatabase_Connector_and_OdbcDataSource_for.html">MySQL.Database Connector and Odbc.DataSource for Tally</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Parameters, Staging Queries and Reference vs Duplicate</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Parameters (file path, as-of date) and staging vs referenced queries (Reference vs Duplicate)</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A month-end pipeline must run on the controller's laptop, the analyst's laptop and in the Power BI Service, for April and for March, without anyone editing M. Two design tools make that possible. <strong>Parameters</strong> remove hard-coded values (folder paths, as-of dates, FY labels, server names) from query logic. <strong>Staging and referenced queries</strong> separate "get the data once" from "shape it several ways", so that the bank file is read and cleaned once and then feeds the reconciliation, the exceptions list and the control-total check. Getting Reference vs Duplicate wrong is a common cause of logic drift (two copies of cleaning steps diverge) and slow refresh.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="parameters">Parameters</h3>
+<p>Create via <strong>Home → Manage Parameters → New Parameter</strong>. A parameter has a name, description, <strong>Required</strong> flag, <strong>Type</strong> (Text, Date, Decimal, etc.), <strong>Suggested values</strong> (any value / list of values / query), and <strong>Current value</strong>. In M it is just a query whose value carries metadata:</p>
+<pre><code>&quot;D:\Finance\MonthEnd\BankCSV\&quot; meta [IsParameterQuery=true, Type=&quot;Text&quot;, IsParameterQueryRequired=true]
+</code></pre>
+<p>Typical finance parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Example</th>
+<th>Used by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>FolderPath</code></td>
+<td>Text</td>
+<td><code>D:\Finance\MonthEnd\TB\</code></td>
+<td><code>Folder.Files(FolderPath)</code></td>
+</tr>
+<tr>
+<td><code>AsOfDate</code></td>
+<td>Date</td>
+<td><code>#date(2026,3,31)</code></td>
+<td>Ageing buckets, cut-off filters</td>
+</tr>
+<tr>
+<td><code>FYLabel</code></td>
+<td>Text</td>
+<td><code>"FY2025-26"</code></td>
+<td>Filtering budget scenario</td>
+</tr>
+<tr>
+<td><code>ServerName</code>/<code>DatabaseName</code></td>
+<td>Text</td>
+<td><code>"sql-fin-prod"</code></td>
+<td><code>Sql.Database(ServerName, DatabaseName)</code></td>
+</tr>
+<tr>
+<td><code>Tolerance</code></td>
+<td>Decimal</td>
+<td><code>1.00</code></td>
+<td>Reconciliation matching tolerance</td>
+</tr>
+</tbody>
+</table>
+<p>Use them by name in any step: <code>Folder.Files(FolderPath)</code>, <code>Table.SelectRows(t, each [DocDate] &lt;= AsOfDate)</code>.</p>
+<p><strong>In Power BI</strong>, parameters can be changed in the Service (Dataset settings → Parameters) and are required for incremental refresh (<code>RangeStart</code>/<code>RangeEnd</code>) and for deployment pipelines (switching dev/prod servers). Parameters typed as Text used in a source path also allow the Service to bind the right data source credentials.</p>
+<p><strong>In Excel</strong>, a common alternative is a <strong>named cell</strong> driving the path, so users change it on a "Control" sheet without opening the editor:</p>
+<pre><code>FolderPath = Excel.CurrentWorkbook(){[Name=&quot;rngFolderPath&quot;]}[Content]{0}[Column1]
+</code></pre>
+<p>Or derive the path relative to the workbook location using a <code>CELL("filename")</code> formula in the named cell, so the whole folder (workbook + data subfolder) can be moved or emailed.</p>
+<p>Note that a query reading a named cell from the current workbook combined with an external file can trigger <strong>Formula.Firewall</strong> errors (s08); set privacy levels or keep the parameter query simple.</p>
+<h3 id="staging-queries-and-layering">Staging queries and layering</h3>
+<p>A <strong>staging query</strong> connects to a source, does the minimum source-specific work (navigate, skip report header, promote headers, select needed columns, type) and is set to <strong>Connection only</strong> (disable load). Downstream queries <strong>reference</strong> it. Recommended layering:</p>
+<ol>
+<li><strong>Parameters</strong> — paths, dates, tolerances.</li>
+<li><strong>Source/staging</strong> — <code>stg_BankHDFC</code>, <code>stg_BookLedger</code>, <code>stg_CoA</code> (connection only).</li>
+<li><strong>Cleaned/conformed tables</strong> — <code>BankAll</code>, <code>BookCash</code> with standard columns: Date, Ref, Amount, Narration, Source.</li>
+<li><strong>Outputs</strong> — <code>Exceptions_BankNotInBooks</code>, <code>Exceptions_BooksNotInBank</code>, <code>TB_Consolidated</code> (loaded to sheet/model).</li>
+<li><strong>Checks</strong> — <code>chk_ControlTotals</code> (loaded so it is visible).</li>
+</ol>
+<p>Benefits: one place to fix a source layout change, readable lineage in Query Dependencies, fewer source hits, and outputs that read like business logic rather than cleaning.</p>
+<h3 id="reference-vs-duplicate">Reference vs Duplicate</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Reference</th>
+<th>Duplicate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What it creates</td>
+<td>New query whose Source step is <code>= stg_Bank</code></td>
+<td>Independent copy of all steps</td>
+</tr>
+<tr>
+<td>Changes to the original</td>
+<td>Flow through</td>
+<td>Do not flow through</td>
+</tr>
+<tr>
+<td>Lineage</td>
+<td>Dependency arrow in Query Dependencies</td>
+<td>No link</td>
+</tr>
+<tr>
+<td>Typical use</td>
+<td>Several outputs from one cleaned table</td>
+<td>Starting point for a similar but different source (e.g. adapting HDFC cleaning for SBI)</td>
+</tr>
+<tr>
+<td>Risk</td>
+<td>Breaking the base breaks all children</td>
+<td>Logic drift — fixes applied to one copy only</td>
+</tr>
+</tbody>
+</table>
+<p>Choose <strong>Reference</strong> whenever the outputs should share logic. Choose <strong>Duplicate</strong> only when you deliberately want to fork — and then consider turning the shared part into a function instead.</p>
+<h3 id="does-reference-re-read-the-source">Does Reference re-read the source?</h3>
+<p>Logically a referenced query re-evaluates its base. In Power BI Desktop each loaded query refreshes in its own evaluation, so if three outputs reference <code>stg_Bank</code>, the source may be read three times (caching helps within a refresh but is not guaranteed across separate evaluations). In Excel, likewise each loaded query evaluates separately. Mitigations: keep staging light, consolidate outputs where possible, buffer inside a query that references the same table multiple times (c06), or in Power BI use Dataflows/linked entities for heavy shared staging. Do not assume referencing equals caching.</p>
+<h3 id="illustration">Illustration</h3>
+<p>The bank recon file has <code>FolderPath</code> and <code>AsOfDate</code> parameters. <code>stg_BankFiles = Folder.Files(FolderPath)</code> filtered to <code>.csv</code> (connection only). <code>BankAll</code> references it and applies <code>fxCleanBank</code>. <code>BookCash</code> references <code>stg_TallyLedger</code>. <code>Exceptions_Bank</code> and <code>Exceptions_Book</code> both reference <code>BankAll</code> and <code>BookCash</code> with different anti-joins. Moving to a colleague's laptop requires changing one parameter value; the six queries are untouched.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Parameters typed "Any"</strong> do not appear as parameters in the Power BI Service; set an explicit type.</li>
+<li><strong>Trailing backslash</strong> in folder parameters: be consistent; concatenations like <code>FolderPath &amp; "CoA.xlsx"</code> break if the slash is missing. Use <code>Text.EndsWith</code> to guard.</li>
+<li><strong>As-of date parameter vs <code>DateTime.LocalNow()</code></strong>: a parameter makes ageing reproducible for audit; <code>LocalNow</code> makes yesterday's report different today (Topic 6).</li>
+<li><strong>Circular references</strong>: a staging query cannot reference an output that references it — Power Query raises a cyclic reference error.</li>
+<li><strong>Duplicate after converting to function</strong>: duplicating a query that calls a function is fine; duplicating the function itself forks the logic.</li>
+<li><strong>Deleting a referenced query</strong> is blocked until dependants are removed or repointed.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Parameterise every value that differs by machine, period or environment: paths, as-of date, server, tolerance.</li>
+<li>In Excel, a named cell is a user-friendly parameter; in Power BI, typed parameters are editable in the Service.</li>
+<li>Layer queries: parameters → connection-only staging → cleaned tables → outputs → checks.</li>
+<li>Reference shares logic; Duplicate forks it. Default to Reference; use functions for shared logic across sources.</li>
+<li>Referencing does not guarantee the source is read only once; design and measure.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-parameterise-a-query-l1">Q1. Parameterise a query [L1]</h3>
+<p>Rewrite this source step using parameters for the folder and as-of date, and create the parameter definitions: <code>Source = Folder.Files("C:\Users\priya\OneDrive\Close\Mar26\")</code>, followed by a filter <code>each [Posting Date] &lt;= #date(2026,3,31)</code>.</p>
+<h3 id="q2-reference-or-duplicate-l2">Q2. Reference or Duplicate? [L2]</h3>
+<p>For each, choose Reference or Duplicate and justify: (a) a summary by ledger and a detail list, both from the cleaned Tally Day Book; (b) a new query for Axis Bank statements whose layout is similar to the existing HDFC query; (c) a Dr/Cr control-total check on the cleaned TB; (d) a "what-if" copy to experiment with a new mapping without disturbing the live report.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Ask whether a future fix to the base should flow into the new query.</p>
+</blockquote>
+<h3 id="q3-design-the-layering-l2">Q3. Design the layering [L2]</h3>
+<p>Design the query list (names, layer, load setting) for a pipeline that reads 12 branch TB files from a folder, a CoA mapping workbook and a budget workbook, and produces a consolidated TB, a budget fact, a mapping-gap exceptions list and a control-totals table.</p>
+<h3 id="q4-named-cell-path-in-excel-l2">Q4. Named-cell path in Excel [L2]</h3>
+<p>Write the M to read a folder path from a named range <code>rngPath</code> on a Control sheet, and explain how to make the path follow the workbook when the whole close folder is copied to a new month's location. State the privacy-level issue you may encounter.</p>
+<h3 id="q5-performance-case-l3">Q5. Performance case [L3]</h3>
+<p>Five output queries reference <code>stg_GL</code>, which reads a 300 MB CSV and does 14 cleaning steps. Refresh All in Excel takes 9 minutes. Explain why, and propose two redesigns with their trade-offs.</p></section>
+<nav class="pager"><a class="prev" href="S05_Query_Folding_Which_Steps_Fold_Native_Query_and.html">← Query Folding: Which Steps Fold, Native Query and…</a><a class="next" href="S07_Load_Options_and_Refresh_Behaviour_in_Excel_vs.html">Load Options and Refresh Behaviour in Excel vs Power BI →</a></nav>
+</main></div></body></html>

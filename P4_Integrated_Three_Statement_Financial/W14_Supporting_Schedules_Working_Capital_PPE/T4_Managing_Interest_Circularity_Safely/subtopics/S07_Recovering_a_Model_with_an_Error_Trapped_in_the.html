@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recovering a Model with an Error Trapped in the Loop · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/subtopics/S07_Recovering_a_Model_with_an_Error_Trapped_in_the.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 14</a> <span>›</span> <a href="../index.html">T4 · Managing Interest Circularity Safely</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Managing Interest Circularity Safely</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_The_InterestDebt_Circular_Loop_Through_PAT_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/subtopics/S01_The_InterestDebt_Circular_Loop_Through_PAT_and.html">The Interest–Debt Circular Loop Through PAT and Cash Flow</a></li><li><a href="S02_The_Second_Loop_Interest_Income_on_Average_Cash.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/subtopics/S02_The_Second_Loop_Interest_Income_on_Average_Cash.html">The Second Loop: Interest Income on Average Cash</a></li><li><a href="S03_Excel_Iterative_Calculation_Settings_for_Circular.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/subtopics/S03_Excel_Iterative_Calculation_Settings_for_Circular.html">Excel Iterative Calculation Settings for Circular Models</a></li><li><a href="S04_Building_the_Circuit_Breaker_Toggle_for_Interest.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/subtopics/S04_Building_the_Circuit_Breaker_Toggle_for_Interest.html">Building the Circuit-Breaker Toggle for Interest</a></li><li><a href="S05_Alternatives_to_Iterative_Circularity_in_Debt.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/subtopics/S05_Alternatives_to_Iterative_Circularity_in_Debt.html">Alternatives to Iterative Circularity in Debt Models</a></li><li><a href="S06_FAST_and_ICAEW_Stance_on_Circularity_vs_Banking.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/subtopics/S06_FAST_and_ICAEW_Stance_on_Circularity_vs_Banking.html">FAST and ICAEW Stance on Circularity vs Banking Practice</a></li><li><a href="S07_Recovering_a_Model_with_an_Error_Trapped_in_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/subtopics/S07_Recovering_a_Model_with_an_Error_Trapped_in_the.html">Recovering a Model with an Error Trapped in the Loop</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Circuit_Breaker_Interest_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/concepts/C01_Circuit_Breaker_Interest_Formula.html">Circuit-Breaker Interest Formula</a></li><li><a href="../concepts/C02_Copy_Paste_Macro_for_Solving_Interest_Without.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/concepts/C02_Copy_Paste_Macro_for_Solving_Interest_Without.html">Copy-Paste Macro for Solving Interest Without Circularity</a></li><li><a href="../concepts/C03_Iterative_Calculation_Is_an_Application_Level.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/concepts/C03_Iterative_Calculation_Is_an_Application_Level.html">Iterative Calculation Is an Application-Level Setting</a></li><li><a href="../concepts/C04_Materiality_of_Average_vs_Opening_Balance_Interest.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/concepts/C04_Materiality_of_Average_vs_Opening_Balance_Interest.html">Materiality of Average vs Opening-Balance Interest</a></li><li><a href="../concepts/C05_Convergence_Check_for_Circular_Interest.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/concepts/C05_Convergence_Check_for_Circular_Interest.html">Convergence Check for Circular Interest</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Recovering a Model with an Error Trapped in the Loop</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Recovery procedure when #REF!/#DIV/0! gets trapped in the loop</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>The most common circularity disaster is not non-convergence — it is a single error value that enters the loop and never leaves. A deleted row creates #REF!, a ratio with a zero denominator produces #DIV/0!, a text cell creates #VALUE!; because the error feeds back into interest, which feeds cash, which feeds debt, which feeds interest, every subsequent iteration reproduces it. Fixing the original cause does not help: the loop's own cells still contain the error and keep recycling it. Analysts under deadline then hardcode interest or delete and retype formulas, damaging the model. A disciplined recovery procedure takes minutes and leaves no scars.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="why-errors-persist">Why errors persist</h3>
+<p>Excel's iteration uses the current values of loop cells as the seed for the next pass. If interest currently equals #REF!, then PAT = #REF!, cash = #REF!, revolver = #REF!, closing debt = #REF!, average debt = #REF!, interest = #REF!. Even after the deleted reference is restored, the loop cells' values are still errors, and since every formula in the loop depends on another loop cell, no cell can compute a clean number. The loop needs an external "cut" that supplies a clean value — the breaker.</p>
+<h3 id="common-causes">Common causes</h3>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Typical trigger in a three-statement model</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>#REF!</td>
+<td>Row/column deleted on a schedule; sheet deleted; cut-paste over a referenced range</td>
+</tr>
+<tr>
+<td>#DIV/0!</td>
+<td>DSCR or interest cover with zero interest (e.g., breaker in zero mode feeding a ratio inside the loop); days calculations on zero revenue; average rate with zero balance</td>
+</tr>
+<tr>
+<td>#VALUE!</td>
+<td>Text in an input cell ("n.a.", a space); dates stored as text</td>
+</tr>
+<tr>
+<td>#N/A</td>
+<td>Lookup on a scenario name that no longer exists</td>
+</tr>
+<tr>
+<td>#NUM!</td>
+<td>IRR/XIRR inside the loop failing to converge; negative number under a square root</td>
+</tr>
+</tbody>
+</table>
+<p>Note the trap in the second row: if the breaker sets interest to zero and a ratio inside the loop divides by interest, the breaker itself creates #DIV/0!. Guard every ratio inside the loop with IFERROR or an explicit zero test.</p>
+<h3 id="the-recovery-procedure">The recovery procedure</h3>
+<ol>
+<li><strong>Stop and save a copy.</strong> Save As with a suffix (e.g., <code>_ERR_backup</code>), so any repair can be compared or reversed. Do not keep pressing Undo after a save — the stack may be gone anyway.</li>
+<li><strong>Switch the breaker off.</strong> Set <code>Circ = 0</code> (zero interest) or 2 (opening balance). The loop is now cut.</li>
+<li><strong>Recalculate fully.</strong> Press F9; if errors remain, use Ctrl+Alt+F9 (full recalculation of all formulas in all open workbooks). The loop cells now compute from clean inputs.</li>
+<li><strong>Find the root cause if errors remain.</strong> With the loop cut, any remaining error is upstream, not in the loop. Use Go To Special (F5 → Special → Formulas → Errors) to select every error cell; use Formulas → Error Checking → Trace Error from the first error in calculation order (leftmost tab, top row, earliest period).</li>
+<li><strong>Repair the cause.</strong> Restore the deleted reference (rebuild the formula from the adjacent period, copy across), replace text with numbers, add guards to denominators.</li>
+<li><strong>Confirm checks in non-circular state.</strong> Balance sheet balances, cash ties, all checks green.</li>
+<li><strong>Switch the breaker back on</strong> (<code>Circ = 1</code>). The loop restarts from clean values.</li>
+<li><strong>Run the convergence check</strong> (c05) and compare key outputs (PAT, closing debt, DSCR) with the last good version.</li>
+<li><strong>Log the incident</strong> in the change log: cause, cells repaired, comparison to prior version.</li>
+</ol>
+<h3 id="when-there-is-no-breaker">When there is no breaker</h3>
+<p>If the model has no breaker, create one temporarily:</p>
+<ul>
+<li><strong>Option A:</strong> disable iterative calculation (File → Options → Formulas → untick). Excel then stops iterating; loop cells may display zero or the last value plus a circular-reference warning. Select the interest row and temporarily replace average-balance formulas with opening-balance formulas (or zero), recalculate, then restore the original formulas by copying from a backup row. This is laborious and error-prone — the reason breakers exist.</li>
+<li><strong>Option B:</strong> insert a breaker cell, edit the interest formulas to reference it (find-and-replace <code>AVERAGE(</code> patterns carefully), then follow the procedure above. Add the breaker permanently.</li>
+</ul>
+<p>Never fix by typing values into the interest row: the hardcode survives into the next version, the model stops responding to debt changes, and a reviewer will find it.</p>
+<h3 id="preventing-recurrence">Preventing recurrence</h3>
+<ul>
+<li><strong>Guard denominators inside the loop:</strong> <code>=IF(Interest=0, 0, CFADS/Debt_Service)</code> or IFERROR with a visible flag.</li>
+<li><strong>Keep ratios outside the loop</strong> where possible — compute DSCR on an outputs block that the cash waterfall does not reference.</li>
+<li><strong>Error check on Checks tab:</strong> <code>=IF(ISERROR(SUM(Debt_Tab_Range)),1,0)</code> flags any error in the financing block.</li>
+<li><strong>Protect structure:</strong> lock rows on schedules, or avoid row deletion in the financing block; use Delete-row discipline (insert/delete only within bounded ranges).</li>
+<li><strong>Version control:</strong> save versioned copies before structural edits.</li>
+</ul>
+<h3 id="illustration">Illustration</h3>
+<p>An analyst deletes row 47 ("Other operating income") on the P&amp;L tab. EBITDA now shows #REF!, which feeds CFO, cash available and the revolver; average-balance interest on the revolver becomes #REF! and loops. The analyst restores the line by re-inserting a row and re-linking it — but the P&amp;L, Debt and BS tabs still show #REF!. Following the procedure: set <code>Circ = 0</code>, press Ctrl+Alt+F9 — the errors vanish everywhere except the re-inserted row, whose formula references a deleted helper. Fix that formula, all checks pass at zero interest, set <code>Circ = 1</code>, recalculate: interest converges to ₹38.42 crore, matching the last good version (₹38.42 crore), and the change log records the repair.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Error originating inside the breaker formula itself:</strong> if <code>Rate</code> or <code>Open_Debt</code> errors, the breaker cannot cut it — that is an upstream issue; trace it in step 4.</li>
+<li><strong>Multiple loops, one switch missing:</strong> if interest income is not routed through the switch (s02), errors keep circulating through cash; extend the breaker.</li>
+<li><strong>Errors in data tables:</strong> a data table may display errors from a trapped state even after recovery; recalculate tables (F9 in automatic-except-tables mode).</li>
+<li><strong>Links to external workbooks:</strong> a closed source file may return #REF! on update; break or update links before recovery.</li>
+<li><strong>Auto-trip breakers</strong> recover transient errors automatically but persistent errors silently leave interest at zero; check the effective switch.</li>
+<li><strong>Ctrl+Alt+Shift+F9</strong> rebuilds the dependency tree and recalculates — use if Ctrl+Alt+F9 does not clear stale values.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Errors persist because each loop cell's error value seeds the next iteration; fixing the cause is not enough.</li>
+<li>Recovery: back up → breaker off → full recalculation → trace and fix remaining errors → checks green → breaker on → convergence check → log.</li>
+<li>Use Go To Special → Formulas → Errors and Trace Error to locate the first error.</li>
+<li>Guard ratios inside the loop against zero interest, or the breaker itself can create #DIV/0!.</li>
+<li>Never hardcode interest to escape a locked model.</li>
+<li>Add an error flag on the Checks tab and versioned backups to prevent silent recurrence.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-recovery-steps-under-pressure-l1">Q1. Recovery steps under pressure [L1]</h3>
+<p>List, in order, the nine steps you would follow when a model with a breaker shows #REF! across the Debt, P&amp;L, BS and CFS tabs after a colleague deleted a column on the PPE tab.</p>
+<h3 id="q2-the-breaker-that-creates-an-error-l2">Q2. The breaker that creates an error [L2]</h3>
+<p>A model's cash sweep is suspended when interest cover (EBITDA ÷ interest) is below 2.0×. When the analyst sets the breaker to zero mode to flush an error, the whole model shows #DIV/0!. Explain why, and rewrite the cash-sweep condition so that the breaker can be used safely.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider what the ratio evaluates to when the denominator is set to zero by the breaker.</p>
+</blockquote>
+<h3 id="q3-no-breaker-model-l2">Q3. No-breaker model [L2]</h3>
+<p>You inherit a circular LBO with no breaker; a #VALUE! is trapped after someone typed "TBD" into the FY29E capex input. Describe how you would recover the model without hardcoding, and what permanent changes you would make.</p>
+<h3 id="q4-post-recovery-assurance-l3">Q4. Post-recovery assurance [L3]</h3>
+<p>After recovering a model, how would you demonstrate to the engagement manager that the repaired file is identical in outputs to the last good version? Specify the comparison method, the outputs compared, the tolerance and how you would document it.</p></section>
+<nav class="pager"><a class="prev" href="S06_FAST_and_ICAEW_Stance_on_Circularity_vs_Banking.html">← FAST and ICAEW Stance on Circularity vs Banking Practice</a><a class="next" href="../concepts/C01_Circuit_Breaker_Interest_Formula.html">Circuit-Breaker Interest Formula →</a></nav>
+</main></div></body></html>

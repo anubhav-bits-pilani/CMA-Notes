@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Export Layouts: Tally Day Book/Ledger/TB, SAP FBL3N, SALR, Oracle TB · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S08_Export_Layouts_Tally_Day_BookLedgerTB_SAP_FBL3N.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T2 · Cleaning messy ERP/Tally exports</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Cleaning messy ERP/Tally exports</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Skipping_Report_Headers_Conditionally_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S01_Skipping_Report_Headers_Conditionally_and.html">Skipping Report Headers Conditionally and Promoting Headers</a></li><li><a href="S02_Removing_Blank_Subtotal_and_Grand_Total_Rows_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S02_Removing_Blank_Subtotal_and_Grand_Total_Rows_by.html">Removing Blank, Subtotal and Grand Total Rows by Condition</a></li><li><a href="S03_Filling_Down_Cost_Centre_and_Group_Headers_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S03_Filling_Down_Cost_Centre_and_Group_Headers_in.html">Filling Down Cost-Centre and Group Headers in Report Layouts</a></li><li><a href="S04_Splitting_Ledger_Code_and_Name_Parsing_Tally_DrCr.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S04_Splitting_Ledger_Code_and_Name_Parsing_Tally_DrCr.html">Splitting Ledger Code and Name; Parsing Tally Dr/Cr Amounts</a></li><li><a href="S05_Trimming_Non_Breaking_Spaces_and_Non_Printable.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S05_Trimming_Non_Breaking_Spaces_and_Non_Printable.html">Trimming Non-Breaking Spaces and Non-Printable Characters</a></li><li><a href="S06_Fixing_Date_Locales_and_Indian_Digit_Grouping_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S06_Fixing_Date_Locales_and_Indian_Digit_Grouping_in.html">Fixing Date Locales and Indian Digit Grouping in Text Amounts</a></li><li><a href="S07_Error_Handling_Remove_Errors_Keep_Errors_and_try.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S07_Error_Handling_Remove_Errors_Keep_Errors_and_try.html">Error Handling: Remove Errors, Keep Errors and try ... otherwise</a></li><li><a href="S08_Export_Layouts_Tally_Day_BookLedgerTB_SAP_FBL3N.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S08_Export_Layouts_Tally_Day_BookLedgerTB_SAP_FBL3N.html">Export Layouts: Tally Day Book/Ledger/TB, SAP FBL3N, S_ALR, Oracle TB</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Conditional_TableSkip_Followed_by_PromoteHeaders.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C01_Conditional_TableSkip_Followed_by_PromoteHeaders.html">Conditional Table.Skip Followed by PromoteHeaders</a></li><li><a href="../concepts/C02_Filtering_Out_Null_and_Total_Rows_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C02_Filtering_Out_Null_and_Total_Rows_with.html">Filtering Out Null and Total Rows with Table.SelectRows</a></li><li><a href="../concepts/C03_TableFillDown_Fills_Only_Nulls_Replace_Blanks.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C03_TableFillDown_Fills_Only_Nulls_Replace_Blanks.html">Table.FillDown Fills Only Nulls: Replace Blanks First</a></li><li><a href="../concepts/C04_TableSplitColumn_at_Each_Delimiter_into_Code_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C04_TableSplitColumn_at_Each_Delimiter_into_Code_and.html">Table.SplitColumn at Each Delimiter into Code and Name</a></li><li><a href="../concepts/C05_Cleaning_Text_Replace_Char_160_TextClean_TextTrim.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C05_Cleaning_Text_Replace_Char_160_TextClean_TextTrim.html">Cleaning Text: Replace Char 160, Text.Clean, Text.Trim</a></li><li><a href="../concepts/C06_TransformColumnTypes_with_an_Explicit_en_IN.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C06_TransformColumnTypes_with_an_Explicit_en_IN.html">TransformColumnTypes with an Explicit en-IN Culture</a></li><li><a href="../concepts/C07_Converting_Tally_DrCr_Suffix_Balances_into_Signed.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C07_Converting_Tally_DrCr_Suffix_Balances_into_Signed.html">Converting Tally Dr/Cr Suffix Balances into Signed Numbers</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Export Layouts: Tally Day Book/Ledger/TB, SAP FBL3N, SALR, Oracle TB</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Source layouts: Tally Day Book / Ledger Vouchers / TB, SAP FBL3N and S_ALR_87012277, Oracle TB exports</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Cleaning logic is source-specific. Before writing a single step you need to know where the header row sits, what a data row looks like, which rows are subtotals, how signs are expressed and which fields act as keys. Indian finance teams routinely work across Tally (SMEs, branches, subsidiaries), SAP (large groups and MNC subsidiaries) and Oracle EBS/Fusion (some large corporates and shared-service centres). A consolidation or audit analytics pipeline typically receives at least two of these. Recognising each layout lets you write one staging query or cleaning function per layout and conform them all to a common schema: Date, Entity, Account Code, Account Name, Cost Centre, Debit, Credit, Amount (Dr positive), Document/Voucher No., Narration.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="tally-prime-trial-balance">Tally Prime: Trial Balance</h3>
+<ul>
+<li><strong>Export</strong>: Display → Trial Balance → Export (Alt+E) → Excel (xlsx) or CSV; options include "Show Opening Balance", "Show Transactions (Dr/Cr)", "Detailed" vs "Condensed", and whether to include zero balances.</li>
+<li><strong>Header</strong>: company name, address lines, "Trial Balance", period line ("1-Apr-25 to 31-Mar-26"), then a two-line caption: "Particulars" | "Closing Balance" over "Debit" | "Credit" (plus Opening/Transactions pairs if selected).</li>
+<li><strong>Rows</strong>: in <strong>Condensed</strong> mode only primary groups appear (Capital Account, Current Liabilities, …); in <strong>Detailed</strong> mode groups are followed by indented sub-groups/ledgers. Groups carry totals on their own line, so detailed exports double count unless you keep ledgers only (use the ledger master or indentation — s03).</li>
+<li><strong>Footer</strong>: "Grand Total" row; possibly "Difference in opening balances".</li>
+<li><strong>Signs</strong>: separate Debit and Credit columns (text with Indian grouping), or a single balance with Dr/Cr suffix in some report configurations.</li>
+<li><strong>Key</strong>: ledger name (Tally has no mandatory ledger code — codes, if used, are embedded in names or aliases).</li>
+</ul>
+<h3 id="tally-prime-day-book">Tally Prime: Day Book</h3>
+<ul>
+<li><strong>Content</strong>: every voucher for a date range. Columns: Date, Particulars (first/party ledger in condensed mode), Vch Type, Vch No., Debit Amount, Credit Amount (and Inwards/Outwards quantities for inventory vouchers).</li>
+<li><strong>Detailed mode</strong> shows each ledger line of a voucher on its own row: the first row has Date/Vch Type/Vch No., following rows have only Particulars and amounts — those blanks must be <strong>filled down</strong> (s03) to make each line self-describing. Narrations appear on a separate line under the voucher if enabled.</li>
+<li><strong>Use</strong>: journal analytics, cut-off testing, duplicate-voucher tests, GST reconciliations.</li>
+</ul>
+<h3 id="tally-prime-ledger-vouchers">Tally Prime: Ledger Vouchers</h3>
+<ul>
+<li><strong>Content</strong>: one ledger's transactions. Columns: Date, Particulars (contra ledger, prefixed "To"/"By" in older styles), Vch Type, Vch No., Debit, Credit; optional running balance with Dr/Cr suffix.</li>
+<li><strong>Special rows</strong>: "Opening Balance" at the top, "Current Total" and "Closing Balance" at the bottom — exclude by condition but capture as control totals.</li>
+<li><strong>Use</strong>: bank book for BRS (exported for the bank ledger), party ledgers for confirmations.</li>
+</ul>
+<h3 id="sap-fbl3n-gl-account-line-items">SAP: FBL3N (G/L Account Line Items)</h3>
+<ul>
+<li><strong>Export</strong>: List → Export → Spreadsheet (xlsx) or Local File (unconverted/text, tab-delimited). Output depends on the user's <strong>layout variant</strong> — different users produce different columns, a classic schema-drift issue; agree a standard layout (e.g. /FINRECON).</li>
+<li><strong>Typical columns</strong>: Company Code, G/L Account, Assignment, Document Number, Document Type, Posting Date, Document Date, Posting Key, Amount in Local Currency, Local Currency, Tax Code, Text, Cost Center, Profit Center, Clearing Document, Clearing Date, User Name.</li>
+<li><strong>Signs</strong>: credits are <strong>negative</strong> in local-currency amount (posting keys 50 etc.), so Amount is already Dr positive.</li>
+<li><strong>Special rows</strong> in spreadsheet export from the ALV list: subtotals and totals marked with <code>*</code>/<code>**</code> when totals are active; in text exports, page headers repeat.</li>
+<li><strong>Key</strong>: Company Code + Document Number + Fiscal Year + Line Item uniquely identifies a line.</li>
+<li><strong>Amount format</strong> depends on the user's decimal notation setting (1,234,567.89 vs 1.234.567,89 vs Indian grouping) — fix per user profile or parse with care (s06).</li>
+</ul>
+<h3 id="sap-s_alr_87012277-gl-account-balances">SAP: S_ALR_87012277 (G/L Account Balances)</h3>
+<ul>
+<li><strong>Content</strong>: per company code and account — balance carryforward, debit and credit for the reporting periods, period balance and <strong>accumulated balance</strong>. Selection screen sets fiscal year, reporting periods and output type.</li>
+<li><strong>Layout</strong>: classic list output with report header (title, company code, fiscal year, periods), column captions, one line per account per currency/business area, then subtotals by company code and totals marked with asterisks. Exported to spreadsheet or text, headers repeat per page in text form.</li>
+<li><strong>Use</strong>: TB source for consolidation; reconciles to FBL3N detail by account.</li>
+<li><strong>Note</strong>: accumulated balance already includes carryforward — do not add carryforward and accumulated balance together.</li>
+</ul>
+<h3 id="oracle-ebs-fusion-trial-balance">Oracle EBS / Fusion: Trial Balance</h3>
+<ul>
+<li><strong>Reports</strong>: EBS "Trial Balance - Detail" / "Trial Balance - Summary 1" (often BI Publisher output to Excel); Fusion "Trial Balance Report" or Financial Reporting Studio/Smart View extracts.</li>
+<li><strong>Account</strong>: a <strong>code combination</strong> of segments, e.g. <code>01-110-4001-000-IN</code> (Company-CostCentre-Account-SubAccount-Country); segment structure is defined per ledger's chart of accounts. Split by segment delimiter with care (s04).</li>
+<li><strong>Columns</strong>: Account, Description, Beginning Balance, Period Debits, Period Credits, Ending Balance; amounts usually signed (credit balances negative) in ending balance, but debits/credits are both positive.</li>
+<li><strong>Header/footers</strong>: report parameters (ledger, period, currency, amount type PTD/YTD), page headers in Excel outputs, totals per balancing segment.</li>
+</ul>
+<h3 id="layout-comparison">Layout comparison</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Tally TB</th>
+<th>Tally Day Book</th>
+<th>SAP FBL3N</th>
+<th>SAP S_ALR_87012277</th>
+<th>Oracle TB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Grain</td>
+<td>Ledger balance</td>
+<td>Voucher / voucher line</td>
+<td>Document line</td>
+<td>Account × period balance</td>
+<td>Code combination balance</td>
+</tr>
+<tr>
+<td>Header rows</td>
+<td>4–8 + 2-line caption</td>
+<td>4–6</td>
+<td>0–few (spreadsheet)</td>
+<td>Many, repeating in text</td>
+<td>Parameters + page headers</td>
+</tr>
+<tr>
+<td>Subtotals</td>
+<td>Groups (detailed) + Grand Total</td>
+<td>Day totals optional</td>
+<td><code>*</code>/<code>**</code></td>
+<td>Company code totals</td>
+<td>Balancing-segment totals</td>
+</tr>
+<tr>
+<td>Sign</td>
+<td>Dr/Cr columns or suffix</td>
+<td>Dr/Cr columns</td>
+<td>Signed</td>
+<td>Dr/Cr columns + signed balance</td>
+<td>Signed ending balance</td>
+</tr>
+<tr>
+<td>Account key</td>
+<td>Ledger name</td>
+<td>Ledger name</td>
+<td>G/L account number</td>
+<td>G/L account number</td>
+<td>Segment string</td>
+</tr>
+<tr>
+<td>Fill-down need</td>
+<td>Groups (detailed)</td>
+<td>Date/Vch No. (detailed)</td>
+<td>None</td>
+<td>Sometimes company code</td>
+<td>Sometimes balancing segment</td>
+</tr>
+</tbody>
+</table>
+<h3 id="illustration-conforming-two-sources">Illustration: conforming two sources</h3>
+<p>Branch A (Tally TB): "Sundry Debtors – Rao Enterprises", Debit "4,56,700.00". Entity B (SAP S_ALR): account 130100, accumulated balance 12,34,500.00. After cleaning, both rows conform to (Entity, AccountCode, AccountName, Amount): (A, null → mapped via ledger-name mapping to 130100, Rao Enterprises, 456700) and (B, 130100, Trade Receivables, 1234500). The mapping table bridges Tally's name-based ledgers to the group CoA.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Tally export settings drift</strong>: one branch exports with Opening Balance columns, another without — select columns by name and tolerate missing ones (<code>MissingField.UseNull</code>).</li>
+<li><strong>Tally multi-currency</strong> ledgers show forex amounts in extra columns; decide whether to use base currency only.</li>
+<li><strong>SAP layout variants</strong> are user-specific; require a fixed variant name in the close calendar.</li>
+<li><strong>Period 13–16 (SAP special periods)</strong> for audit adjustments: include them for year-end TB.</li>
+<li><strong>Oracle PTD vs YTD</strong> amount type determines whether balances are period or cumulative — read the parameter line and capture it as a column.</li>
+<li><strong>CSV vs Excel exports</strong> of the same report differ in how numbers arrive (text vs typed) — standardise one format per source.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Learn each source's header, data-row signature, subtotal markers, sign convention and key before writing steps.</li>
+<li>Tally detailed reports need ledger-only selection or fill-down; Ledger Vouchers carry opening/closing control rows.</li>
+<li>SAP FBL3N is signed line-item data whose columns depend on the layout variant; S_ALR_87012277 is balance data with carryforward and accumulated columns.</li>
+<li>Oracle TBs use segment code combinations and PTD/YTD parameters that must be captured.</li>
+<li>Conform every source to one common schema with Dr-positive amounts before appending.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-identify-the-layout-l1">Q1. Identify the layout [L1]</h3>
+<p>For each description, name the likely report and the first two cleaning steps: (a) columns Date, Particulars, Vch Type, Vch No., Debit Amount, Credit Amount, where most rows have blank Date; (b) a file whose amounts are negative for credits and which has a Clearing Document column; (c) a file with "Balance Carryforward", "Debit Rep. Period", "Credit Rep. Period" and "Accumulated Balance"; (d) accounts like "01-210-5101-000".</p>
+<h3 id="q2-detailed-tb-double-counting-l2">Q2. Detailed TB double counting [L2]</h3>
+<p>A Tally TB exported in Detailed mode for a Pune branch sums to ₹18.4 crore on the debit side while the Grand Total shows ₹7.9 crore. Explain why and describe two ways to keep only ledger rows in Power Query.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Think about which rows are groups and how they can be recognised.</p>
+</blockquote>
+<h3 id="q3-common-schema-design-l2">Q3. Common schema design [L2]</h3>
+<p>Design the common output schema (column names and types) for consolidating a Tally TB (two branches), an SAP S_ALR_87012277 extract (one subsidiary) and an Oracle TB (one subsidiary), and for each source list the transformations needed to conform.</p>
+<h3 id="q4-fbl3n-schema-drift-l2">Q4. FBL3N schema drift [L2]</h3>
+<p>Three users export FBL3N for the same accounts with different layout variants: one lacks Cost Center, one has "Amount in LC" instead of "Amount in Local Currency", one includes 6 extra columns. Describe how your cleaning query should handle this and what process control you would recommend.</p>
+<h3 id="q5-day-book-for-cut-off-testing-l3">Q5. Day Book for cut-off testing [L3]</h3>
+<p>As part of a year-end audit you receive the Tally Day Book for 25 March to 10 April 2026 in detailed mode. Design the Power Query transformation that produces one row per voucher line with Date, Voucher Type, Voucher No., Ledger, Dr/Cr amount and Narration, and list the cut-off analyses you would then run.</p></section>
+<nav class="pager"><a class="prev" href="S07_Error_Handling_Remove_Errors_Keep_Errors_and_try.html">← Error Handling: Remove Errors, Keep Errors and try ...…</a><a class="next" href="../concepts/C01_Conditional_TableSkip_Followed_by_PromoteHeaders.html">Conditional Table.Skip Followed by PromoteHeaders →</a></nav>
+</main></div></body></html>

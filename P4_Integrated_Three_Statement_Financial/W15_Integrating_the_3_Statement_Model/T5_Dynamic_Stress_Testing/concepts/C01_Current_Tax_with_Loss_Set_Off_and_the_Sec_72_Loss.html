@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Current Tax with Loss Set-Off and the Sec 72 Loss Corkscrew · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C01_Current_Tax_with_Loss_Set_Off_and_the_Sec_72_Loss.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 15</a> <span>›</span> <a href="../index.html">T5 · Dynamic Stress Testing</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Dynamic Stress Testing</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Toggling_Base_Bull_and_Bear_with_a_Zero_Check_in.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S01_Toggling_Base_Bull_and_Bear_with_a_Zero_Check_in.html">Toggling Base, Bull and Bear with a Zero Check in Every Year</a></li><li><a href="../subtopics/S02_Extreme_Input_Stress_Tests_Growth_Margins_Capex.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S02_Extreme_Input_Stress_Tests_Growth_Margins_Capex.html">Extreme Input Stress Tests: Growth, Margins, Capex and WC Days</a></li><li><a href="../subtopics/S03_Revolver_Behaviour_in_a_Recession_Draw_Within.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S03_Revolver_Behaviour_in_a_Recession_Draw_Within.html">Revolver Behaviour in a Recession: Draw Within Limit, Flag Shortfall</a></li><li><a href="../subtopics/S04_Negative_PBT_Loss_Carry_Forward_No_Negative_Tax.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S04_Negative_PBT_Loss_Carry_Forward_No_Negative_Tax.html">Negative PBT: Loss Carry-Forward, No Negative Tax, DTA Recognition</a></li><li><a href="../subtopics/S05_Dividends_Under_Losses_Floored_at_Zero_Capped_by.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S05_Dividends_Under_Losses_Floored_at_Zero_Capped_by.html">Dividends Under Losses: Floored at Zero, Capped by Profits and Cash</a></li><li><a href="../subtopics/S06_Covenant_Flags_Net_DebtEBITDA_DSCR_and_ICR_Breach.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S06_Covenant_Flags_Net_DebtEBITDA_DSCR_and_ICR_Breach.html">Covenant Flags: Net Debt/EBITDA, DSCR and ICR Breach Years</a></li><li><a href="../subtopics/S07_The_Checks_Dashboard_Balance_Cash_Liquidity_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S07_The_Checks_Dashboard_Balance_Cash_Liquidity_and.html">The Checks Dashboard: Balance, Cash, Liquidity and Convergence</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Current_Tax_with_Loss_Set_Off_and_the_Sec_72_Loss.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C01_Current_Tax_with_Loss_Set_Off_and_the_Sec_72_Loss.html">Current Tax with Loss Set-Off and the Sec 72 Loss Corkscrew</a></li><li><a href="C02_Dividend_Floor_and_Cash_Cap_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C02_Dividend_Floor_and_Cash_Cap_Formula.html">Dividend Floor and Cash Cap Formula</a></li><li><a href="C03_The_Binary_Error_Flag_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C03_The_Binary_Error_Flag_Formula.html">The Binary Error Flag Formula</a></li><li><a href="C04_Goal_Seek_and_Data_Tables_to_Find_Breaking_Points.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C04_Goal_Seek_and_Data_Tables_to_Find_Breaking_Points.html">Goal Seek and Data Tables to Find Breaking Points</a></li><li><a href="C05_Scenario_Invariance_A_Linked_Model_Balances_for.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C05_Scenario_Invariance_A_Linked_Model_Balances_for.html">Scenario Invariance: A Linked Model Balances for Any Input</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Current Tax with Loss Set-Off and the Sec 72 Loss Corkscrew</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Current tax = MAX(0, Taxable income − Loss b/f utilised) × t; loss c/f corkscrew (Sec 72: 8 years)</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>For each year \( t \):</p>
+<p>\[
+U_t = \min\left(L^{\text{open}}_t,\; \max(0, TI_t)\right)
+\]</p>
+<p>\[
+\text{Current tax}_t = \max\left(0,\; TI_t - U_t\right) \times \tau
+\]</p>
+<p>\[
+L^{\text{close}}_t = L^{\text{open}}_t + \max(0, -TI_t) - U_t - E_t
+\]</p>
+<p>where \( TI_t \) is taxable income (PBT adjusted for permanent and timing differences), \( L^{\text{open}}_t \) and \( L^{\text{close}}_t \) are the opening and closing pools of business losses brought forward, \( U_t \) is the loss utilised, \( E_t \) is loss expiring unused, and \( \tau \) is the tax rate (25.168% under Sec 115BAA, including 10% surcharge and 4% cess). Under Sec 72 of the Income-tax Act, 1961, a business loss can be carried forward for 8 assessment years after the year in which it arose.</p>
+<h2 id="explanation">Explanation</h2>
+<p>The formula embodies three legal facts. There is no refund of tax on a current-year business loss, so the <code>MAX(0, …)</code> applies. A loss reduces future taxable income, through \( U_t \). And its use is time-limited, through \( E_t \).</p>
+<ul>
+<li><strong>Utilisation</strong> is capped by both the available pool and the positive taxable income of the year. In a loss year \( U_t = 0 \).</li>
+<li><strong>Expiry</strong> requires tracking loss vintages. A loss arising in FY26 (AY 2026–27) can be set off up to AY 2034–35. In a 5-year forecast with no legacy losses no vintage can expire, but legacy losses from historical years may. Track each vintage and use them FIFO (oldest first), because the oldest losses are closest to expiry.</li>
+<li><strong>Unabsorbed depreciation</strong> (Sec 32(2)) is not time-limited. Keep it as a separate pool, used after brought-forward business losses.</li>
+<li><strong>Timely filing:</strong> losses are carried forward only if the return is filed by the Sec 139(1) due date (Sec 80). Models assume compliance.</li>
+<li><strong>Sec 115BAA restriction:</strong> losses attributable to disallowed deductions (such as additional depreciation) from years before opting in cannot be set off after opting in.</li>
+<li><strong>New Act:</strong> the Income-tax Act, 2025 (effective 1 April 2026) renumbers these sections and uses the "tax year" concept. The 8-year rule is retained in substance. Check the current mapping before citing.</li>
+</ul>
+<p>Accounting link: the closing pool times \( \tau \) is the gross DTA on losses. Whether it is recognised depends on Ind AS 12.34–36 (probable future taxable profit), which is a separate switch from the tax computation (s04).</p>
+<p>Excel implementation (vintage-free version):</p>
+<pre><code class="language-excel">Loss_Utilised = MIN(Loss_Open, MAX(0, Taxable_Income))
+Current_Tax   = MAX(0, Taxable_Income - Loss_Utilised) * Tax_Rate
+Loss_Created  = MAX(0, -Taxable_Income)
+Loss_Close    = Loss_Open + Loss_Created - Loss_Utilised - Loss_Expired
+</code></pre>
+<p>With vintages, use a triangle: rows for each origin year, columns for each forecast year, utilisation allocated oldest-first with <code>MIN</code> against remaining taxable income, and expiry when <code>Year - Origin_Year &gt; 8</code>.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Mahi Textiles Ltd (₹ crore, τ = 25.17%). Legacy loss from FY19 (AY 2019–20) of ₹60 crore, available up to AY 2027–28, which is FY27. Forecast taxable income: FY26E +20, FY27E +15, FY28E +90.</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th>FY26E</th>
+<th>FY27E</th>
+<th>FY28E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Loss opening</td>
+<td>60</td>
+<td>40</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Utilised</td>
+<td>20</td>
+<td>15</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Expired</td>
+<td>0</td>
+<td>25</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Loss closing</td>
+<td>40</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Current tax</td>
+<td>0</td>
+<td>0</td>
+<td>22.65</td>
+</tr>
+</tbody>
+</table>
+<p>The ₹25 crore balance expires unused at the end of FY27, the last eligible year. Without vintage tracking the model would have used it in FY28E, understating FY28E tax by 25 × 25.17% = ₹6.29 crore.</p>
+<h2 id="connections">Connections</h2>
+<p>This formula is the core of s04 (negative PBT and DTA) and prevents the topic pitfall of negative tax in loss years. It links to the related concept on unabsorbed depreciation vs business losses, to Week 14's tax schedule (DTL on depreciation timing differences) and to Week 16's DCF, where the tax shield from accumulated losses must be included in FCFF until the pool is used. In FP&amp;A it drives the cash tax forecast and the advance tax plan.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-apply-the-formula-l1">Q1. Apply the formula [L1]</h3>
+<p>Taxable income for FY26E–FY30E is −₹120, −₹30, +₹50, +₹70 and +₹90 crore. There are no opening losses and the tax rate is 25.17%. Compute utilised loss, current tax and closing loss pool for each year, and state the gross DTA at the end of FY27E.</p>
+<h3 id="q2-vintage-expiry-l2">Q2. Vintage expiry [L2]</h3>
+<p>Opening losses at 1 April 2025 are: FY18 vintage ₹40 crore, FY21 vintage ₹55 crore and FY24 vintage ₹30 crore. Forecast taxable income is ₹30 crore in each of FY26E to FY30E. Assume each vintage can be set off in the 8 financial years following the year of loss. (a) Build the vintage triangle with FIFO utilisation. (b) Identify any loss that expires unused, the year of expiry and its tax value at 25.17%. (c) Write the Excel logic you would use for expiry.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> List the last usable year for each vintage before allocating utilisation.</p>
+</blockquote>
+<h3 id="q3-interview-why-max0-l1">Q3. Interview: why MAX(0)? [L1]</h3>
+<p>In two to three sentences, explain to an interviewer why current tax is floored at zero even though Ind AS 12 can produce a negative total tax expense in a loss year. State where the tax benefit of the loss appears in the financial statements.</p></section>
+<nav class="pager"><a class="prev" href="../subtopics/S07_The_Checks_Dashboard_Balance_Cash_Liquidity_and.html">← The Checks Dashboard: Balance, Cash, Liquidity and…</a><a class="next" href="C02_Dividend_Floor_and_Cash_Cap_Formula.html">Dividend Floor and Cash Cap Formula →</a></nav>
+</main></div></body></html>

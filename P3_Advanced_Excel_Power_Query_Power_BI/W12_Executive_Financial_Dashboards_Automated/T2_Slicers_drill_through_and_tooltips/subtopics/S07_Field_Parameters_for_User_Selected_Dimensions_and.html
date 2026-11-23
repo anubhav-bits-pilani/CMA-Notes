@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Field Parameters for User-Selected Dimensions and Measures · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S07_Field_Parameters_for_User_Selected_Dimensions_and.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T2 · Slicers, drill-through and tooltips</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Slicers, drill-through and tooltips</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_FY_BU_and_Region_Slicers_Hierarchy_Relative_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S01_FY_BU_and_Region_Slicers_Hierarchy_Relative_Date.html">FY, BU and Region Slicers: Hierarchy, Relative Date and Sync</a></li><li><a href="S02_Edit_Interactions_Filter_vs_Highlight_vs_None.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S02_Edit_Interactions_Filter_vs_Highlight_vs_None.html">Edit Interactions: Filter vs Highlight vs None</a></li><li><a href="S03_Drill_Down_vs_Drill_Through_PL_Hierarchy_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S03_Drill_Down_vs_Drill_Through_PL_Hierarchy_and.html">Drill-Down vs Drill-Through: P&amp;L Hierarchy and Voucher Detail</a></li><li><a href="S04_Drill_Through_Setup_Fields_Keep_All_Filters_Cross.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S04_Drill_Through_Setup_Fields_Keep_All_Filters_Cross.html">Drill-Through Setup: Fields, Keep All Filters, Cross-Report, Back Button</a></li><li><a href="S05_Report_Page_Tooltips_Canvas_Size_Allow_Use_as.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S05_Report_Page_Tooltips_Canvas_Size_Allow_Use_as.html">Report Page Tooltips: Canvas Size, &quot;Allow Use as Tooltip&quot;, Field Tooltips</a></li><li><a href="S06_Bookmarks_Buttons_and_the_Selection_Pane_for_View.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S06_Bookmarks_Buttons_and_the_Selection_Pane_for_View.html">Bookmarks, Buttons and the Selection Pane for View Toggles</a></li><li><a href="S07_Field_Parameters_for_User_Selected_Dimensions_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S07_Field_Parameters_for_User_Selected_Dimensions_and.html">Field Parameters for User-Selected Dimensions and Measures</a></li><li><a href="S08_Visual_Page_and_Report_Filters_and_Top_N_Filters.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S08_Visual_Page_and_Report_Filters_and_Top_N_Filters.html">Visual, Page and Report Filters, and Top N Filters</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Drill_Through_Page_on_Ledger_with_a_Voucher_Detail.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C01_Drill_Through_Page_on_Ledger_with_a_Voucher_Detail.html">Drill-Through Page on Ledger with a Voucher Detail Table</a></li><li><a href="../concepts/C02_Selected_FY_Measure_for_Dynamic_Titles.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C02_Selected_FY_Measure_for_Dynamic_Titles.html">Selected FY Measure for Dynamic Titles</a></li><li><a href="../concepts/C03_Field_Parameter_Tables_Built_with_NAMEOF.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C03_Field_Parameter_Tables_Built_with_NAMEOF.html">Field Parameter Tables Built with NAMEOF</a></li><li><a href="../concepts/C04_ISFILTERED_and_ISCROSSFILTERED_for_Context_Aware.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C04_ISFILTERED_and_ISCROSSFILTERED_for_Context_Aware.html">ISFILTERED and ISCROSSFILTERED for Context-Aware Labels</a></li><li><a href="../concepts/C05_Slicer_Responsive_Vendor_Ranking_with_RANKX_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C05_Slicer_Responsive_Vendor_Ranking_with_RANKX_and.html">Slicer-Responsive Vendor Ranking with RANKX and ALLSELECTED</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Field Parameters for User-Selected Dimensions and Measures</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Field parameters for user-selected dimensions and measures</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>The Page 3 expense analysis needs to show spend by BU, by cost centre, by vendor or by region — and sometimes
+Actual, Budget, Variance or PY. Building one visual per combination bloats the page; bookmarks (s06) multiply
+maintenance. Field parameters let the user choose the dimension on the axis and the measure on the values of a
+single visual through a slicer. They are the standard modern technique for "analyse by …" selectors in finance
+dashboards.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="what-a-field-parameter-is">What a field parameter is</h3>
+<p><strong>Modeling &gt; New parameter &gt; Fields</strong> opens a dialog where you pick fields (columns or measures) and order them.
+Power BI generates a calculated table using <code>NAMEOF</code> (Concept c03):</p>
+<pre><code class="language-DAX">Expense By = {
+    ( &quot;Business Unit&quot;, NAMEOF ( BU[BusinessUnit] ), 0 ),
+    ( &quot;Cost Centre&quot;,   NAMEOF ( CostCentre[Name] ), 1 ),
+    ( &quot;Vendor&quot;,        NAMEOF ( Vendor[Name] ),     2 ),
+    ( &quot;Region&quot;,        NAMEOF ( Region[Region] ),   3 )
+}
+</code></pre>
+<p>The table has three columns — display name, field reference, order — with special metadata that tells visuals to
+swap in the referenced field. Ticking "Add slicer to this page" creates a slicer on the display-name column.</p>
+<h3 id="dimension-parameters">Dimension parameters</h3>
+<p>Put the parameter's field column (shown as <code>Expense By</code>) on a visual's axis or rows. Selecting "Vendor" in the
+slicer makes the axis <code>Vendor[Name]</code>; selecting several values in a matrix's rows creates a dynamic hierarchy in the
+selected order. Uses:</p>
+<ul>
+<li>Bar chart "Opex by [selected dimension]" with Top N (s08).</li>
+<li>Matrix rows switching between CoA hierarchy levels.</li>
+<li>Decomposition-tree-like exploration without the decomposition tree.</li>
+</ul>
+<h3 id="measure-parameters">Measure parameters</h3>
+<p>A parameter of measures:</p>
+<pre><code class="language-DAX">Expense Metric = {
+    ( &quot;Actual&quot;,       NAMEOF ( [Expense] ),            0 ),
+    ( &quot;Budget&quot;,       NAMEOF ( [Expense Budget] ),     1 ),
+    ( &quot;Var vs Budget&quot;, NAMEOF ( [Expense Var Fav/Adv] ), 2 ),
+    ( &quot;PY&quot;,           NAMEOF ( [Expense PY] ),         3 )
+}
+</code></pre>
+<p>Put the parameter on the Values well; the visual shows whichever measures are selected (several selected = several
+series/columns). Each measure keeps its own format string, so ₹ crore and % measures display correctly.</p>
+<h3 id="combining-both">Combining both</h3>
+<p>A single bar chart with <code>Expense By</code> on the axis and <code>Expense Metric</code> on values gives 4 × 4 = 16 views from one
+visual and two slicers. Pair with a dynamic title:</p>
+<pre><code class="language-DAX">Expense Title =
+&quot;Expense &quot; &amp; SELECTEDVALUE ( 'Expense Metric'[Expense Metric], &quot;Actual&quot; )
+    &amp; &quot; by &quot; &amp; SELECTEDVALUE ( 'Expense By'[Expense By], &quot;Business Unit&quot; )
+    &amp; &quot; – &quot; &amp; [Selected FY]
+</code></pre>
+<h3 id="reading-the-selection-in-dax">Reading the selection in DAX</h3>
+<p>The display-name column can be read with <code>SELECTEDVALUE</code>. To branch logic on the selected field, use the order
+column or the hidden fields column:</p>
+<pre><code class="language-DAX">Selected Dim No = SELECTEDVALUE ( 'Expense By'[Expense By Order] )
+</code></pre>
+<p>Field parameter tables cannot be referenced in calculated columns of other tables in a way that changes
+dynamically; logic stays in measures.</p>
+<h3 id="editing-parameters">Editing parameters</h3>
+<p>The generated table is ordinary DAX; edit it in the formula bar to add fields, rename display names (e.g.
+"Vendor (top 20)"), or reorder. Add a grouping column (e.g. "Dimension" vs "Measure" type) if you want a hierarchy
+in the slicer. Renaming the underlying field breaks nothing because <code>NAMEOF</code> updates with renames.</p>
+<h3 id="illustration">Illustration</h3>
+<p>Page 3: slicer "Analyse by" (BU, Cost Centre, Vendor, Region), slicer "Show" (Actual, Budget, Var, PY). User picks
+Cost Centre + Var: the bar chart shows 38 cost centres' favourable/adverse variance, sorted ascending, with the
+<code>[Var Colour]</code> measure colouring bars (fx works because the measure is fixed for colour). Switching to Vendor shows
+the top 10 vendors (visual Top N filter on the parameter field by <code>[Expense]</code>).</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Drill-through and field parameters.</strong> If the axis is the parameter field, the visual carries the underlying
+  field (e.g. <code>Vendor[Name]</code>) only when that option is selected; a drill-through page expecting <code>CoA[Ledger]</code>
+  becomes available only for the matching choice.</li>
+<li><strong>Conditional formatting</strong> applies to the field parameter values well as a whole in some versions; per-measure
+  rules may not behave as expected — test.</li>
+<li><strong>Sorting.</strong> Sort settings persist per field; switching parameters can reset sort order. Use a sort measure if
+  order matters.</li>
+<li><strong>Analyze in Excel.</strong> Field parameters do not translate to Excel PivotTables meaningfully; the Excel pack uses
+  real fields.</li>
+<li><strong>RLS and parameters.</strong> Parameters do not bypass RLS; a BU head choosing "Business Unit" sees only their BU.</li>
+<li><strong>Too many choices.</strong> Six dimensions × six measures overwhelms users; offer the four that answer CFO questions.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Field parameters generate a NAMEOF-based table that lets slicers swap fields in visuals.</li>
+<li>Dimension parameters switch axes/rows; measure parameters switch values, keeping each measure's format.</li>
+<li>Combine both with a dynamic title for a compact "analyse by" visual.</li>
+<li>Read selections with SELECTEDVALUE or the order column; keep logic in measures.</li>
+<li>Test drill-through, sorting and conditional formatting for every parameter option.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-create-a-dimension-parameter-l1">Q1. Create a dimension parameter [L1]</h3>
+<p>Write the DAX table for a field parameter "Revenue By" with Business Unit, Region, Customer Segment and Product
+Group, and describe where you would place it.</p>
+<h3 id="q2-measure-parameter-with-formats-l2">Q2. Measure parameter with formats [L2]</h3>
+<p>A measure parameter includes <code>[Expense]</code> (₹ crore format), <code>[Expense % of Revenue]</code> (0.0%) and
+<code>[Expense Var Fav/Adv]</code> (₹ crore, signed). Explain how formats and the y-axis behave when a user selects all three
+on a clustered bar, and propose a better design.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider what a shared axis does to values with different scales.</p>
+</blockquote>
+<h3 id="q3-drill-through-by-parameter-l2">Q3. Drill-through by parameter [L2]</h3>
+<p>A bar chart uses <code>Expense By</code> on the axis. Users can drill through to GL Detail only when "Vendor" is selected.
+Explain why and propose how to make drill-through work for Cost Centre as well.</p>
+<h3 id="q4-replace-bookmarks-l3">Q4. Replace bookmarks [L3]</h3>
+<p>Page 3 currently has eight bar charts hidden/shown by bookmarks (four dimensions × Actual/Var). Redesign with field
+parameters, listing the tables, slicers, visuals, titles and the tests you would run before releasing.</p></section>
+<nav class="pager"><a class="prev" href="S06_Bookmarks_Buttons_and_the_Selection_Pane_for_View.html">← Bookmarks, Buttons and the Selection Pane for View Toggles</a><a class="next" href="S08_Visual_Page_and_Report_Filters_and_Top_N_Filters.html">Visual, Page and Report Filters, and Top N Filters →</a></nav>
+</main></div></body></html>

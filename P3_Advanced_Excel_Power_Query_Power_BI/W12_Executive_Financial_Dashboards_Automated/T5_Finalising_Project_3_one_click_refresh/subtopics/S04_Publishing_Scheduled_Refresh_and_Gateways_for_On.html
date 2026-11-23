@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Publishing, Scheduled Refresh and Gateways for On-Prem and Tally · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S04_Publishing_Scheduled_Refresh_and_Gateways_for_On.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T5 · Finalising Project 3: one-click refresh</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Finalising Project 3: one-click refresh</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_End_to_End_Architecture_Source_Folders_to_Report.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S01_End_to_End_Architecture_Source_Folders_to_Report.html">End-to-End Architecture: Source Folders to Report and Cube Pack</a></li><li><a href="S02_Parameters_for_Folder_Path_As_of_Date_FY_Start_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S02_Parameters_for_Folder_Path_As_of_Date_FY_Start_and.html">Parameters for Folder Path, As-of Date, FY Start and Environment</a></li><li><a href="S03_Excel_Refresh_Orchestration_Refresh_All_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S03_Excel_Refresh_Orchestration_Refresh_All_and.html">Excel Refresh Orchestration: Refresh All and Connection Settings</a></li><li><a href="S04_Publishing_Scheduled_Refresh_and_Gateways_for_On.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S04_Publishing_Scheduled_Refresh_and_Gateways_for_On.html">Publishing, Scheduled Refresh and Gateways for On-Prem and Tally</a></li><li><a href="S05_Incremental_Refresh_with_RangeStart_and_RangeEnd.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S05_Incremental_Refresh_with_RangeStart_and_RangeEnd.html">Incremental Refresh with RangeStart and RangeEnd for GL History</a></li><li><a href="S06_Performance_Tuning_Columns_Cardinality_Analyzer.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S06_Performance_Tuning_Columns_Cardinality_Analyzer.html">Performance Tuning: Columns, Cardinality, Analyzer Tools</a></li><li><a href="S07_Packaging_PBIXPBIP_pbit_Template_Documentation_CFO.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S07_Packaging_PBIXPBIP_pbit_Template_Documentation_CFO.html">Packaging: PBIX/PBIP, .pbit Template, Documentation, CFO Guide</a></li><li><a href="S08_Distribution_Apps_Subscriptions_Exports_and_Teams.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S08_Distribution_Apps_Subscriptions_Exports_and_Teams.html">Distribution: Apps, Subscriptions, Exports and Teams Embedding</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Incremental_Refresh_Filter_on_RangeStart_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C01_Incremental_Refresh_Filter_on_RangeStart_and.html">Incremental Refresh Filter on RangeStart and RangeEnd</a></li><li><a href="../concepts/C02_Scheduled_Refresh_Limits_8_per_Day_on_Pro_48_on.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C02_Scheduled_Refresh_Limits_8_per_Day_on_Pro_48_on.html">Scheduled Refresh Limits: 8 per Day on Pro, 48 on Premium</a></li><li><a href="../concepts/C03_SharePointFiles_for_Gateway_Free_Cloud_Refresh.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C03_SharePointFiles_for_Gateway_Free_Cloud_Refresh.html">SharePoint.Files for Gateway-Free Cloud Refresh</a></li><li><a href="../concepts/C04_One_Click_Excel_Refresh_Macro_or_Power_Automate.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C04_One_Click_Excel_Refresh_Macro_or_Power_Automate.html">One-Click Excel Refresh Macro or Power Automate Flow</a></li><li><a href="../concepts/C05_Performance_Analyzer_to_DAX_Studio_Server_Timings.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C05_Performance_Analyzer_to_DAX_Studio_Server_Timings.html">Performance Analyzer to DAX Studio Server Timings</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Publishing, Scheduled Refresh and Gateways for On-Prem and Tally</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Publishing to the Power BI Service: semantic model, scheduled refresh, standard vs personal gateway for on-prem/Tally</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A pack that refreshes only on the developer's laptop is not a reporting system. Publishing to the Power BI Service
+separates the <strong>semantic model</strong> (data + measures, refreshed on a schedule) from the <strong>reports</strong> and Excel workbooks
+that consume it, so the CFO sees current numbers every morning without anyone opening Desktop. Whether that works
+depends on credentials, gateway setup for anything on-premises (Tally servers, network drives, SQL Server in the
+office), and refresh limits. These are exactly the details interviewers probe with "how does your dashboard refresh?".</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="publishing-what-goes-where">Publishing: what goes where</h3>
+<p>Publishing a PBIX from Desktop (Home &gt; Publish, choose workspace) creates two items in the workspace:</p>
+<ul>
+<li>a <strong>semantic model</strong> (formerly "dataset") — tables, relationships, measures, RLS roles, Power Query definitions and
+  the imported data;</li>
+<li>a <strong>report</strong> bound to it.</li>
+</ul>
+<p>Subsequent reports can be "thin": built in Desktop with Get Data &gt; Power BI semantic models (live connection), they
+contain only visuals. This lets several reports and the Excel cube pack share one model, which is the single source of
+truth for the pack. Republishing the same PBIX replaces both items (with a warning); keeping the model PBIX and report
+PBIXs separate avoids accidental overwrites of a shared model.</p>
+<p>File size limits: the published PBIX must be within the workspace limit (1 GB on Pro/shared capacity; larger on
+Premium/Fabric with large semantic model storage format). Data volumes beyond this need incremental refresh (s05),
+model reduction (s06) or Fabric.</p>
+<h3 id="configuring-the-semantic-model-in-the-service">Configuring the semantic model in the Service</h3>
+<p>Semantic model &gt; Settings:</p>
+<ol>
+<li><strong>Data source credentials</strong> — for each source, set the authentication method (OAuth2 for SharePoint/OneDrive;
+   Windows or Basic for gateway sources) and the <strong>privacy level</strong> (Organizational for internal finance sources).</li>
+<li><strong>Gateway and cloud connections</strong> — map each on-premises source to a gateway data source; cloud sources need no
+   gateway.</li>
+<li><strong>Parameters</strong> — edit values such as <code>SiteUrl</code> (s02).</li>
+<li><strong>Scheduled refresh</strong> — on/off, frequency (daily/weekly), time zone (choose "(UTC+05:30) Chennai, Kolkata, Mumbai,
+   New Delhi"), times, and failure notification recipients (owner plus additional contacts).</li>
+<li><strong>Refresh history</strong> — status, duration, errors.</li>
+</ol>
+<p>Refresh limits (concept c02): up to 8 scheduled refreshes per day on shared capacity with Pro, up to 48 on
+Premium/Fabric capacity. Refresh time-outs are 2 hours on shared capacity and 5 hours on Premium per refresh. After
+repeated consecutive failures the Service disables the schedule, and models with no report views for two months have
+scheduled refresh paused — both reasons why an owner must watch failure emails (topic pitfall).</p>
+<p>Schedule the refresh after the source files are final: if branch files arrive by 05:00 IST, schedule 06:30, with a
+second slot at 13:00 for late adjustments during close week.</p>
+<h3 id="gateways">Gateways</h3>
+<p>An on-premises data gateway is a Windows service that brokers queries from the Service to sources the cloud cannot
+reach directly (on-prem databases, file shares, local folders, ODBC sources). Two modes:</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Standard mode</th>
+<th>Personal mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Users</td>
+<td>Shared; managed by gateway admins; data sources shared with users</td>
+<td>One user only</td>
+</tr>
+<tr>
+<td>Refresh types</td>
+<td>Scheduled refresh, DirectQuery, live connection to SSAS, dataflows, paginated reports</td>
+<td>Import scheduled refresh only</td>
+</tr>
+<tr>
+<td>Runs as</td>
+<td>Windows service (service account)</td>
+<td>App/service under the user's account</td>
+</tr>
+<tr>
+<td>Recovery and clustering</td>
+<td>Supports clusters for high availability</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Governance</td>
+<td>Centrally visible, data sources and permissions managed</td>
+<td>Tied to an individual; hard to audit</td>
+</tr>
+<tr>
+<td>Fit for Project 3</td>
+<td>Production finance pack</td>
+<td>Personal prototypes only</td>
+</tr>
+</tbody>
+</table>
+<p>Install the standard gateway on an always-on server (not a laptop), close to the data source, with a recovery key
+stored securely. Add the source under Manage connections and gateways, then map it in the model settings. Name an
+owner and a backup admin.</p>
+<h3 id="tally-prime-with-a-gateway">Tally Prime with a gateway</h3>
+<p>Tally exposes data through ODBC (Tally ODBC driver, default port 9000) and XML over HTTP on the same port. For Power BI:</p>
+<ol>
+<li>Tally must be <strong>running</strong> with the company loaded and ODBC enabled (F1 Help &gt; Settings &gt; Connectivity, or the
+   Tally.ini setting), on a machine reachable by the gateway.</li>
+<li>Create an ODBC DSN for Tally on the gateway machine (the 32/64-bit driver must match the gateway's
+   architecture — a common failure).</li>
+<li>In Desktop, Get Data &gt; ODBC with the same DSN; query ledger, voucher or TB collections.</li>
+<li>In the Service, add an ODBC data source to the standard gateway with the identical connection string, and map it.</li>
+</ol>
+<p>Practical risks: Tally closed overnight, a different company loaded, licence mode issues, and performance on large
+voucher collections. Many teams therefore schedule a Tally export (XML/CSV/Excel) to SharePoint and refresh in the
+cloud without a gateway (s01, c03). Third-party Tally connectors also exist; evaluate them for support and security.</p>
+<h3 id="cloud-vs-on-prem-in-one-model">Cloud vs on-prem in one model</h3>
+<p>A model combining SharePoint (cloud) and an on-prem SQL server must route the on-prem source through a gateway; the
+SharePoint source can refresh as a cloud connection if the tenant setting "Allow user's cloud data sources to refresh
+through this gateway cluster" is configured appropriately, or via its own cloud credentials. Privacy levels must be set
+for both; combining sources with different privacy levels can raise firewall errors only in the Service.</p>
+<h3 id="illustration">Illustration</h3>
+<p>A Kolkata FMCG company publishes <code>Finance Pack.pbix</code> to <em>Finance – Prod</em>. Sources: SharePoint <code>/GL</code> (cloud, OAuth),
+<code>/Budget</code> (cloud), and the HR cost table on an on-prem SQL Server (<code>HRSQL01</code>, via standard gateway <code>GW-KOL-01</code>).
+Scheduled refresh: 06:30 and 13:00 IST. On 3 April the 06:30 refresh fails: the gateway server was patched and
+restarted; the failure email to the owner prompts a manual refresh at 07:10 that succeeds. Refresh history records
+both.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Personal gateway in production.</strong> Works until the developer's account is disabled or the laptop sleeps — then the
+  CFO pack stops. Avoid.</li>
+<li><strong>Credential expiry.</strong> OAuth tokens and passwords expire; use a service account where policy allows, and document
+  renewal.</li>
+<li><strong>On-demand refresh limits.</strong> How manual "Refresh now" and REST API refreshes count against the 8-per-day shared
+  capacity limit has been documented differently over time; check current Microsoft documentation before planning on
+  extra manual refreshes during close. XMLA-based refreshes on Premium/Fabric are not bound by the scheduler's limit.</li>
+<li><strong>DirectQuery and live connections</strong> need no scheduled import refresh but require the gateway always on and add
+  query latency; for month-end finance packs, Import is usually right.</li>
+<li><strong>Time-zone of the schedule</strong> is separate from M refresh stamps; set both to IST.</li>
+<li><strong>Dataflow dependency.</strong> If staging runs in a dataflow, the model refresh must be scheduled after the dataflow ends,
+  or chained with Power Automate.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Publishing creates a semantic model and a report; thin reports and Excel packs connect to the one model.</li>
+<li>Configure credentials, privacy levels, gateway mapping, parameters and the refresh schedule (in IST) per model.</li>
+<li>Pro allows 8 scheduled refreshes a day, Premium/Fabric 48; repeated failures and inactivity pause schedules.</li>
+<li>Use a standard-mode gateway on an always-on server for on-prem sources; personal mode is for prototypes.</li>
+<li>Tally via ODBC needs Tally running and a matching DSN on the gateway; scheduled exports to SharePoint are often more
+  robust.</li>
+<li>Name owners for the gateway, credentials and refresh failure emails.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-choosing-a-gateway-mode-l1">Q1. Choosing a gateway mode [L1]</h3>
+<p>A developer used a personal gateway on her laptop to refresh a pack reading a network share. Explain three risks of
+this setup for a production CFO pack and specify the replacement.</p>
+<h3 id="q2-tally-refresh-failing-in-the-service-l2">Q2. Tally refresh failing in the Service [L2]</h3>
+<p>Desktop refresh from Tally ODBC (DSN <code>TallyODBC64_9000</code>) works; the Service refresh through the standard gateway fails
+with "data source not found". List the configuration checks on the gateway machine and in the Service, in the order
+you would perform them.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Compare the exact connection string and driver architecture in both environments.</p>
+</blockquote>
+<h3 id="q3-designing-a-refresh-schedule-l2">Q3. Designing a refresh schedule [L2]</h3>
+<p>Branch files land in SharePoint by 05:00 IST on working days; late adjustment files arrive until 15:00 on the first
+five working days of each month. The workspace is on Pro. Design the scheduled refresh times, explain how you stay
+within limits, and specify failure notification recipients.</p>
+<h3 id="q4-hybrid-source-architecture-l3">Q4. Hybrid source architecture [L3]</h3>
+<p>A company's pack needs SAP S/4HANA cloud extracts (exported to SharePoint), an on-prem SQL Server for payroll costs and
+Tally for one subsidiary. Design the publishing and refresh architecture (gateway, credentials, privacy levels,
+schedules), and identify three single points of failure and their mitigations.</p>
+<h3 id="q5-interview-semantic-model-vs-report-l1">Q5. Interview: semantic model vs report [L1]</h3>
+<p>Explain the difference between a semantic model and a report in the Power BI Service and why you publish the model
+separately from reports in a shared finance pack.</p></section>
+<nav class="pager"><a class="prev" href="S03_Excel_Refresh_Orchestration_Refresh_All_and.html">← Excel Refresh Orchestration: Refresh All and Connection…</a><a class="next" href="S05_Incremental_Refresh_with_RangeStart_and_RangeEnd.html">Incremental Refresh with RangeStart and RangeEnd for GL… →</a></nav>
+</main></div></body></html>

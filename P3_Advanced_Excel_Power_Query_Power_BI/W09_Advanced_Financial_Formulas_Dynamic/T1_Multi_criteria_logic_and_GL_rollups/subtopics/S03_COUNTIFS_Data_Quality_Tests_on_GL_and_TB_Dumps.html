@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COUNTIFS Data-Quality Tests on GL and TB Dumps · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S03_COUNTIFS_Data_Quality_Tests_on_GL_and_TB_Dumps.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T1 · Multi-criteria logic and GL rollups</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Multi-criteria logic and GL rollups</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Nested_IF_vs_IFS_vs_SWITCH_for_Account_Code.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S01_Nested_IF_vs_IFS_vs_SWITCH_for_Account_Code.html">Nested IF vs IFS vs SWITCH for Account-Code Classification</a></li><li><a href="S02_SUMIFS_for_Multi_Department_GL_Rollups_by_Group.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S02_SUMIFS_for_Multi_Department_GL_Rollups_by_Group.html">SUMIFS for Multi-Department GL Rollups by Group, Cost Centre and Month</a></li><li><a href="S03_COUNTIFS_Data_Quality_Tests_on_GL_and_TB_Dumps.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S03_COUNTIFS_Data_Quality_Tests_on_GL_and_TB_Dumps.html">COUNTIFS Data-Quality Tests on GL and TB Dumps</a></li><li><a href="S04_AVERAGEIFS_MAXIFS_and_MINIFS_for_ARAP_and_Sales.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S04_AVERAGEIFS_MAXIFS_and_MINIFS_for_ARAP_and_Sales.html">AVERAGEIFS, MAXIFS and MINIFS for AR/AP and Sales Analytics</a></li><li><a href="S05_Criteria_Syntax_Operators_Concatenation_Wildcards.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S05_Criteria_Syntax_Operators_Concatenation_Wildcards.html">Criteria Syntax: Operators, Concatenation, Wildcards and Date Ranges</a></li><li><a href="S06_OR_Logic_in_SUMIFS_with_Array_Constants_Wrapped_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S06_OR_Logic_in_SUMIFS_with_Array_Constants_Wrapped_in.html">OR Logic in SUMIFS with Array Constants Wrapped in SUM</a></li><li><a href="S07_Excel_Tables_and_Structured_References_for_Self.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S07_Excel_Tables_and_Structured_References_for_Self.html">Excel Tables and Structured References for Self-Expanding Rollups</a></li><li><a href="S08_Mixed_References_and_F4_Cycling_for_Copy_Across_PL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S08_Mixed_References_and_F4_Cycling_for_Copy_Across_PL.html">Mixed References and F4 Cycling for Copy-Across P&amp;L Grids</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_The_Department_Account_Month_SUMIFS_Grid_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C01_The_Department_Account_Month_SUMIFS_Grid_Formula.html">The Department × Account × Month SUMIFS Grid Formula</a></li><li><a href="../concepts/C02_IFS_with_a_TRUE_Catch_All_for_Account.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C02_IFS_with_a_TRUE_Catch_All_for_Account.html">IFS with a TRUE Catch-All for Account Classification</a></li><li><a href="../concepts/C03_SUM_of_SUMIFS_with_an_Array_Constant_for_OR_Logic.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C03_SUM_of_SUMIFS_with_an_Array_Constant_for_OR_Logic.html">SUM of SUMIFS with an Array Constant for OR Logic</a></li><li><a href="../concepts/C04_MAXIFS_and_MINIFS_Signature_and_the_Zero_When.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C04_MAXIFS_and_MINIFS_Signature_and_the_Zero_When.html">MAXIFS and MINIFS: Signature and the Zero-When-Empty Trap</a></li><li><a href="../concepts/C05_COUNTIFS_Duplicate_Posting_Flag_in_a_Calculated.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C05_COUNTIFS_Duplicate_Posting_Flag_in_a_Calculated.html">COUNTIFS Duplicate-Posting Flag in a Calculated Column</a></li><li><a href="../concepts/C06_AVERAGEIFS_and_the_DIV0_Result_on_No_Matches.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C06_AVERAGEIFS_and_the_DIV0_Result_on_No_Matches.html">AVERAGEIFS and the #DIV/0! Result on No Matches</a></li><li><a href="../concepts/C07_Range_Criteria_for_Numeric_Account_Codes_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C07_Range_Criteria_for_Numeric_Account_Codes_vs.html">Range Criteria for Numeric Account Codes vs Wildcards on Text</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>COUNTIFS Data-Quality Tests on GL and TB Dumps</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> COUNTIFS for data-quality tests: duplicate voucher numbers, unmapped ledgers, postings outside the period</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A rollup is only as good as the dump it sits on. Before any SUMIFS grid is trusted, an auditor or controller asks three questions of the raw data: are any vouchers duplicated, does every ledger have a mapping, and do all postings belong to the period being reported? COUNTIFS answers all three with formulas that re-run automatically every time a new dump is pasted. These are the same tests an internal auditor runs in IDEA or ACL, and the same "journal entry testing" procedures expected under SA 240 (fraud risk — unusual entries) and SA 500 (reliability of information produced by the entity); building them in Excel makes them part of every close rather than a once-a-year exercise.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="countifs-mechanics">COUNTIFS mechanics</h3>
+<pre><code class="language-excel">=COUNTIFS(criteria_range1, criteria1, [criteria_range2, criteria2], …)
+</code></pre>
+<ul>
+<li>Counts rows where <strong>all</strong> criteria are met (AND logic); up to 127 pairs.</li>
+<li>Every criteria range must be the same size, or <code>#VALUE!</code>.</li>
+<li>Criteria use the same string syntax as SUMIFS (<code>"&gt;="&amp;date</code>, wildcards, <code>"&lt;&gt;"</code>).</li>
+<li><code>COUNTIF</code> (single criterion) and <code>COUNTIFS</code> treat criteria that look like numbers as numbers: <code>"0012"</code> matches the number 12 and the text <code>"12"</code>. This is a known trap with voucher numbers that have leading zeros.</li>
+</ul>
+<h3 id="test-1-duplicate-voucher-numbers">Test 1 — Duplicate voucher numbers</h3>
+<p>Add a calculated column to the GL Table:</p>
+<pre><code class="language-excel">=COUNTIFS(GL[Voucher], [@Voucher], GL[VchType], [@VchType])&gt;1
+</code></pre>
+<p>Voucher numbers in Tally restart per voucher type (Sales 1, Purchase 1, Journal 1…), so a duplicate test on number alone flags false positives. Key on number + type (and + FY if the dump spans years).</p>
+<p>Variants:</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Formula idea</th>
+<th>What it catches</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Same voucher number, same type</td>
+<td><code>COUNTIFS(GL[Voucher],[@Voucher],GL[VchType],[@VchType])&gt;1</code></td>
+<td>Re-imported batches, manual renumbering</td>
+</tr>
+<tr>
+<td>Same vendor, same invoice number</td>
+<td><code>COUNTIFS(AP[Vendor],[@Vendor],AP[InvNo],[@InvNo])&gt;1</code></td>
+<td>Duplicate purchase booking — classic fraud and GST ITC risk</td>
+</tr>
+<tr>
+<td>Same vendor, amount and date</td>
+<td>three criteria pairs</td>
+<td>Double payment through two vouchers</td>
+</tr>
+<tr>
+<td>Same voucher and amount</td>
+<td><code>COUNTIFS(GL[Voucher],[@Voucher],GL[Amount],[@Amount])&gt;1</code></td>
+<td>Duplicate line within a multi-line JV</td>
+</tr>
+</tbody>
+</table>
+<p>Note that a multi-line voucher legitimately repeats its voucher number on every line (Dr and Cr legs). The duplicate test therefore belongs at the <strong>voucher header</strong> level (one row per voucher) or must include line-level fields such as Account and Amount.</p>
+<p>A count over the whole column gives the dashboard figure:</p>
+<pre><code class="language-excel">=SUMPRODUCT(--(COUNTIFS(AP[Vendor],AP[Vendor],AP[InvNo],AP[InvNo])&gt;1))
+</code></pre>
+<p>Passing the whole column as the criteria returns one count per row (an array); comparing to 1 and summing gives the number of rows involved in duplicates.</p>
+<h3 id="test-2-unmapped-ledgers">Test 2 — Unmapped ledgers</h3>
+<p>Every ledger in the TB must appear in the mapping table. In the TB Table:</p>
+<pre><code class="language-excel">=COUNTIFS(Map[Ledger], [@Ledger])=0
+</code></pre>
+<p>TRUE means the ledger has no mapping. Summarise with <code>=COUNTIFS(TB[Unmapped], TRUE)</code>, and also test <strong>amount at risk</strong>: <code>=SUMIFS(TB[Closing], TB[Unmapped], TRUE)</code>. A ₹0 closing ledger that is unmapped is a housekeeping issue; a ₹2 crore one is a misstatement in the draft financial statements.</p>
+<p>The reverse test — mapping rows that no longer exist in the TB — catches renamed ledgers (Tally ledger names are the key, and a renaming breaks the link): <code>=COUNTIFS(TB[Ledger], [@Ledger])=0</code> inside the mapping Table.</p>
+<h3 id="test-3-postings-outside-the-period">Test 3 — Postings outside the period</h3>
+<p>With period start and end in named cells <code>PStart</code> and <code>PEnd</code>:</p>
+<pre><code class="language-excel">=COUNTIFS(GL[Date], &quot;&lt;&quot;&amp;PStart) + COUNTIFS(GL[Date], &quot;&gt;&quot;&amp;PEnd)
+</code></pre>
+<p>Two COUNTIFS are added because COUNTIFS criteria are ANDed; "before start OR after end" needs two separate counts. Also count non-dates: <code>=ROWS(GL[Date]) - COUNT(GL[Date])</code> gives the number of blank or text dates, which no date criterion will ever catch.</p>
+<p>Related period tests:</p>
+<ul>
+<li>Postings dated on Sundays or national holidays: helper column <code>=WEEKDAY([@Date],2)=7</code> and count it.</li>
+<li>Entries posted after close (needs a system "entered on" field): <code>COUNTIFS(GL[EnteredOn], "&gt;"&amp;CloseDate, GL[Date], "&lt;="&amp;PEnd)</code> — back-dated entries.</li>
+<li>Round-sum journals: <code>COUNTIFS(GL[VchType],"Journal",GL[Amount],"&gt;=1000000")</code> combined with a <code>MOD(Amount,100000)=0</code> helper.</li>
+</ul>
+<h3 id="a-data-quality-dashboard">A data-quality dashboard</h3>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Formula</th>
+<th>Expected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rows in dump</td>
+<td><code>=ROWS(GL[Date])</code></td>
+<td>matches Tally row count</td>
+</tr>
+<tr>
+<td>Duplicate voucher rows</td>
+<td><code>=COUNTIFS(GL[DupFlag],TRUE)</code></td>
+<td>0</td>
+</tr>
+<tr>
+<td>Unmapped ledgers</td>
+<td><code>=COUNTIFS(TB[Unmapped],TRUE)</code></td>
+<td>0</td>
+</tr>
+<tr>
+<td>Out-of-period postings</td>
+<td>two-COUNTIFS formula above</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Text/blank dates</td>
+<td><code>=ROWS(GL[Date])-COUNT(GL[Date])</code></td>
+<td>0</td>
+</tr>
+<tr>
+<td>TB nets to zero</td>
+<td><code>=ROUND(SUM(TB[Closing]),2)</code></td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>A master check cell <code>=IF(SUM(checks)=0,"OK","ERRORS")</code> with conditional formatting sits at the top of the output sheet so no one reads a P&amp;L built on failed data.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>A purchase register of 4,820 lines for Q1 FY26 contains vendor "Shree Packaging" invoice "SP/245" twice — once on 12-May for ₹4,72,000 and again on 19-May for ₹4,72,000 under a different voucher number. The vendor+invoice COUNTIFS flags both rows (count = 2); the dashboard shows 2 rows involved. Without this test the duplicate also inflates GST input credit claimed in GSTR-3B for May, which would fail reconciliation with GSTR-2B.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Leading zeros and long numbers.</strong> COUNTIFS coerces numeric-looking text, so <code>"00123"</code> and <code>"123"</code> count as the same voucher. Worse, criteria above 15 significant digits (bank reference numbers, 16-digit card numbers) are compared as numbers and truncated, so different references can falsely match. Use <code>SUMPRODUCT(--(range=value))</code> or <code>EXACT</code> for exact text comparison of such keys.</li>
+<li><strong>Wildcard characters in data.</strong> An invoice number like <code>INV*12</code> is treated as a wildcard pattern; escape with <code>~</code> (see criteria syntax).</li>
+<li><strong>Performance.</strong> A COUNTIFS calculated column over 2 lakh rows is O(n²) — 2 lakh × 2 lakh comparisons — and can take minutes. Sort and compare adjacent rows, or use Power Query Group By for large dumps.</li>
+<li><strong>Legitimate duplicates.</strong> Recurring rent invoices with the same number each month from small landlords; decide whether to add the month as a criterion rather than suppress the test.</li>
+<li><strong>Materiality.</strong> Pair every count with a SUMIFS of the amount so reviewers can prioritise.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>COUNTIFS gives re-runnable, formula-based journal-entry tests: duplicates, unmapped ledgers, out-of-period dates.</li>
+<li>Key duplicate tests on the right combination (voucher + type, vendor + invoice), not on voucher number alone.</li>
+<li>"Outside the period" needs two COUNTIFS added together, plus a separate count of non-date values.</li>
+<li>COUNTIFS coerces numeric text and truncates beyond 15 digits — use SUMPRODUCT or EXACT for long text keys.</li>
+<li>Always pair a count with the rupee amount involved, and surface all checks in one master check cell.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-duplicate-purchase-invoice-test-l1">Q1. Duplicate purchase invoice test [L1]</h3>
+<p>A Table <code>PR</code> (purchase register) has columns Date, VchNo, Vendor, GSTIN, InvNo, Taxable, GST. Write (a) a calculated-column formula flagging rows where the same GSTIN and invoice number appear more than once, and (b) a single-cell formula returning the total GST amount on flagged rows.</p>
+<h3 id="q2-out-of-period-postings-for-a-quarter-l2">Q2. Out-of-period postings for a quarter [L2]</h3>
+<p>The Q2 FY26 GL dump should contain only postings dated 01-Jul-2025 to 30-Sep-2025, in named cells <code>QStart</code> and <code>QEnd</code>. Write formulas to count (a) postings before the quarter, (b) postings after the quarter, (c) rows whose Date is blank or text. Explain why a single COUNTIFS cannot do (a) and (b) together.</p>
+<h3 id="q3-bank-reference-false-duplicates-l2">Q3. Bank reference false duplicates [L2]</h3>
+<p>A bank statement import has a 16-digit UTR column. Your COUNTIFS duplicate test flags 312 duplicates out of 9,400 rows, but manual inspection shows the UTRs are different. Explain the cause and write a replacement formula that tests duplicates correctly.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider how COUNTIFS treats numeric-looking criteria and Excel's 15-digit precision.</p>
+</blockquote>
+<h3 id="q4-unmapped-ledger-impact-l2">Q4. Unmapped ledger impact [L2]</h3>
+<p>After pasting the FY26 TB (612 ledgers), the unmapped flag shows 9 ledgers. Their closing balances are: ₹0, ₹0, ₹1,250, ₹-48,000, ₹3,10,000, ₹-12,40,000, ₹85,60,000, ₹0, ₹-2,15,000. Design the check-cell block (count, net amount, absolute amount) and explain which ledgers you would resolve before releasing draft financial statements and why.</p>
+<h3 id="q5-journal-entry-testing-scope-l3">Q5. Journal-entry testing scope [L3]</h3>
+<p>The statutory auditor asks you to prepare formula-based JE tests on 1.8 lakh GL lines for FY26: duplicates, weekend postings, entries posted after the 5 April close date into FY26, round-amount journals above ₹10 lakh and postings by users outside Finance. Specify the columns you need in the export, the formula for each test, how you would avoid slow O(n²) COUNTIFS on this volume, and how you would present the results.</p></section>
+<nav class="pager"><a class="prev" href="S02_SUMIFS_for_Multi_Department_GL_Rollups_by_Group.html">← SUMIFS for Multi-Department GL Rollups by Group, Cost…</a><a class="next" href="S04_AVERAGEIFS_MAXIFS_and_MINIFS_for_ARAP_and_Sales.html">AVERAGEIFS, MAXIFS and MINIFS for AR/AP and Sales Analytics →</a></nav>
+</main></div></body></html>

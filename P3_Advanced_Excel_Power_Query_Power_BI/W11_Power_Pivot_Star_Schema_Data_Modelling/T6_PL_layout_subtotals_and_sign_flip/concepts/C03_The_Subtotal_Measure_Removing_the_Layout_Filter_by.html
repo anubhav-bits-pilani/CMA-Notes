@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Subtotal Measure: Removing the Layout Filter by Sort Order · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C03_The_Subtotal_Measure_Removing_the_Layout_Filter_by.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T6 · P&amp;L layout, subtotals and sign-flip</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · P&amp;L layout, subtotals and sign-flip</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_The_PL_Layout_Dimension_Lines_Sort_Order_Type_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S01_The_PL_Layout_Dimension_Lines_Sort_Order_Type_and.html">The P&amp;L Layout Dimension: Lines, Sort Order, Type and Sign</a></li><li><a href="../subtopics/S02_Mapping_CoA_to_Layout_Lines_and_Computing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S02_Mapping_CoA_to_Layout_Lines_and_Computing.html">Mapping CoA to Layout Lines and Computing Subtotals by Sort Order</a></li><li><a href="../subtopics/S03_Row_Level_Measure_Dispatch_with_SWITCHTRUE_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S03_Row_Level_Measure_Dispatch_with_SWITCHTRUE_and.html">Row-Level Measure Dispatch with SWITCH(TRUE()) and SELECTEDVALUE</a></li><li><a href="../subtopics/S04_Sign_Convention_Credits_Negative_in_the_GL_Flipped.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S04_Sign_Convention_Credits_Negative_in_the_GL_Flipped.html">Sign Convention: Credits Negative in the GL, Flipped for Presentation</a></li><li><a href="../subtopics/S05_Margin_Rows_GM_EBITDA_EBIT_with_Dynamic_Format.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S05_Margin_Rows_GM_EBITDA_EBIT_with_Dynamic_Format.html">Margin Rows (GM %, EBITDA %, EBIT %) with Dynamic Format Strings</a></li><li><a href="../subtopics/S06_Formatting_the_PL_Matrix_Layout_Spacers_Bold.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S06_Formatting_the_PL_Matrix_Layout_Spacers_Bold.html">Formatting the P&amp;L Matrix: Layout, Spacers, Bold Subtotals, Empty Rows</a></li><li><a href="../subtopics/S07_Alternatives_Calculation_Groups_Field_Parameters.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S07_Alternatives_Calculation_Groups_Field_Parameters.html">Alternatives: Calculation Groups, Field Parameters, Visual Calcs, Excel</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_The_PnL_Dispatcher_Measure_with_SWITCHTRUE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C01_The_PnL_Dispatcher_Measure_with_SWITCHTRUE.html">The PnL Dispatcher Measure with SWITCH(TRUE())</a></li><li><a href="C02_Actual_Signed_Applying_the_CoA_Sign_Factor_Row_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C02_Actual_Signed_Applying_the_CoA_Sign_Factor_Row_by.html">Actual Signed: Applying the CoA Sign Factor Row by Row</a></li><li><a href="C03_The_Subtotal_Measure_Removing_the_Layout_Filter_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C03_The_Subtotal_Measure_Removing_the_Layout_Filter_by.html">The Subtotal Measure: Removing the Layout Filter by Sort Order</a></li><li><a href="C04_EBITDA_with_a_Dynamic_Format_String_in_the_PL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C04_EBITDA_with_a_Dynamic_Format_String_in_the_PL.html">EBITDA % with a Dynamic Format String in the P&amp;L Matrix</a></li><li><a href="C05_Blanking_PL_Grand_Totals_with_ISINSCOPE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C05_Blanking_PL_Grand_Totals_with_ISINSCOPE.html">Blanking P&amp;L Grand Totals with ISINSCOPE</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>The Subtotal Measure: Removing the Layout Filter by Sort Order</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>Subtotal = VAR s = MAX(Layout[SortOrder]) RETURN CALCULATE([Actual Signed], REMOVEFILTERS(Layout), Layout[SortOrder] &lt; s, Layout[Type] = "Account")</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-DAX">Subtotal =
+VAR s = MAX ( Layout[SortOrder] )
+RETURN
+    CALCULATE (
+        [Actual Signed],
+        REMOVEFILTERS ( Layout ),
+        Layout[SortOrder] &lt; s,
+        Layout[Type] = &quot;Account&quot;
+    )
+</code></pre>
+<p>\[
+\text{Subtotal}(s) = \sum_{\ell \,:\, \text{Type}_{\ell} = \text{Account},\ \text{SortOrder}_{\ell} &lt; s} \text{ActualSigned}_{\ell}
+\]</p>
+<p>where \(s\) is the sort order of the subtotal row being evaluated and \(\ell\) ranges over account lines of the layout.</p>
+<h2 id="explanation">Explanation</h2>
+<p>On a subtotal row (say Gross Profit, SortOrder 40) the filter context contains <code>Layout[LineID] = "PL040"</code>. No CoA account
+maps to that line, so any measure evaluated as-is returns blank. The subtotal measure:</p>
+<ol>
+<li><strong>Captures the row's position</strong> in a variable (<code>s = 40</code>) <em>before</em> changing the context — <code>MAX</code> is evaluated in the
+   original filter context.</li>
+<li><strong>Removes all Layout filters</strong> (<code>REMOVEFILTERS(Layout)</code>) — the subtotal line, its label and its sort order are no longer
+   filtering.</li>
+<li><strong>Applies a new Layout filter</strong>: account lines whose sort order is below 40. These lines have CoA accounts, which carry
+   the filter through to GL.</li>
+<li><strong>Evaluates <code>[Actual Signed]</code></strong> in that context, with all non-Layout filters (Date, Branch, Scenario) unchanged.</li>
+</ol>
+<p>Because the convention is profit-signed (income positive, expenses negative), the sum of everything above is the profit
+measure at that point: Gross Profit, then EBITDA, EBIT, PBT, PAT as sort order increases.</p>
+<p>Requirements and refinements:</p>
+<ul>
+<li><strong><code>REMOVEFILTERS(Layout)</code> is essential.</strong> Without it, the boolean filter <code>Layout[SortOrder] &lt; s</code> replaces only the
+  filter on <code>SortOrder</code>; the filter on <code>Layout[Line]</code> or <code>LineID</code> from the matrix row stays, intersects, and leaves no
+  accounts — the topic's "blank subtotal" pitfall.</li>
+<li><strong>Variable before CALCULATE.</strong> Writing <code>Layout[SortOrder] &lt; MAX(Layout[SortOrder])</code> inline also evaluates <code>MAX</code> in the
+  outer context, but the variable makes intent explicit and avoids confusion.</li>
+<li><strong>Non-cumulative subtotals</strong> ("Total expenses") need explicit range columns (s02).</li>
+<li><strong>Memo lines</strong> must not be of type Account, or they are double-counted.</li>
+<li><strong>Budget and PY</strong> reuse it by swapping the inner measure, or through a calculation group applied to <code>[PnL]</code>.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>YTD December FY26 (₹ crore), sort orders from the s01 layout:</p>
+<table>
+<thead>
+<tr>
+<th>Subtotal row</th>
+<th>s</th>
+<th>Account lines included</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gross Profit</td>
+<td>40</td>
+<td>10, 20, 30</td>
+<td>480.0 − 268.0 + 6.0 = 218.0</td>
+</tr>
+<tr>
+<td>EBITDA</td>
+<td>70</td>
+<td>10–60</td>
+<td>218.0 − 62.0 − 74.0 = 82.0</td>
+</tr>
+<tr>
+<td>EBIT</td>
+<td>90</td>
+<td>10–80</td>
+<td>82.0 − 21.0 = 61.0</td>
+</tr>
+<tr>
+<td>PBT</td>
+<td>120</td>
+<td>10–110</td>
+<td>61.0 + 7.0 − 13.0 = 55.0</td>
+</tr>
+<tr>
+<td>PAT</td>
+<td>140</td>
+<td>10–130</td>
+<td>55.0 − 14.0 = 41.0</td>
+</tr>
+</tbody>
+</table>
+<p>Inserting "Exceptional items" (−9.0) at sort order 115 changes PBT to 46.0 and PAT to 32.0 with no DAX change, while
+EBIT stays 61.0.</p>
+<h2 id="connections">Connections</h2>
+<p>Detailed in s02 (CoA mapping, range subtotals); called by the dispatcher (c01) and by the margin measure (c04) through
+the referenced numerator line. <code>REMOVEFILTERS</code> and boolean filter semantics come from Topic 3 (s02, s04). The pitfall of
+blank subtotal rows and the pitfall of hard-coded LineIDs are both avoided by this pattern.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-missing-removefilters-l1">Q1. Missing REMOVEFILTERS [L1]</h3>
+<p>Explain, in terms of the filters on the matrix row, why <code>CALCULATE([Actual Signed], Layout[SortOrder] &lt; s, Layout[Type] =
+"Account")</code> returns blank on the EBITDA row, and show the corrected measure.</p>
+<h3 id="q2-subtotals-by-quarter-l2">Q2. Subtotals by quarter [L2]</h3>
+<p>Quarterly profit-signed values for FY26 (₹ crore) — Revenue Q1 150, Q2 158, Q3 172; Materials −84, −88, −96; Changes in
+inventories 2, 1, 3; Employee −20, −20, −22; Other expenses −23, −24, −27; D&amp;A −6.5, −6.5, −8. Compute Gross Profit,
+EBITDA and EBIT for each quarter and YTD, and confirm that the YTD column equals the sum of the quarters for subtotals.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Subtotals are additive over time even though margin rows are not.</p>
+</blockquote>
+<h3 id="q3-range-or-cumulative-l2">Q3. Range or cumulative [L2]</h3>
+<p>For a Schedule III layout, decide for each of these rows whether the cumulative <code>Subtotal</code> or a range subtotal is
+correct, and specify SubtotalFrom/SubtotalTo where needed: Total income, Total expenses, Profit before exceptional items
+and tax, Profit before tax, Profit for the period, Total comprehensive income.</p></section>
+<nav class="pager"><a class="prev" href="C02_Actual_Signed_Applying_the_CoA_Sign_Factor_Row_by.html">← Actual Signed: Applying the CoA Sign Factor Row by Row</a><a class="next" href="C04_EBITDA_with_a_Dynamic_Format_String_in_the_PL.html">EBITDA % with a Dynamic Format String in the P&amp;L Matrix →</a></nav>
+</main></div></body></html>

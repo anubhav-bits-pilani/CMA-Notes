@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Field Parameter Tables Built with NAMEOF · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C03_Field_Parameter_Tables_Built_with_NAMEOF.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T2 · Slicers, drill-through and tooltips</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Slicers, drill-through and tooltips</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_FY_BU_and_Region_Slicers_Hierarchy_Relative_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S01_FY_BU_and_Region_Slicers_Hierarchy_Relative_Date.html">FY, BU and Region Slicers: Hierarchy, Relative Date and Sync</a></li><li><a href="../subtopics/S02_Edit_Interactions_Filter_vs_Highlight_vs_None.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S02_Edit_Interactions_Filter_vs_Highlight_vs_None.html">Edit Interactions: Filter vs Highlight vs None</a></li><li><a href="../subtopics/S03_Drill_Down_vs_Drill_Through_PL_Hierarchy_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S03_Drill_Down_vs_Drill_Through_PL_Hierarchy_and.html">Drill-Down vs Drill-Through: P&amp;L Hierarchy and Voucher Detail</a></li><li><a href="../subtopics/S04_Drill_Through_Setup_Fields_Keep_All_Filters_Cross.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S04_Drill_Through_Setup_Fields_Keep_All_Filters_Cross.html">Drill-Through Setup: Fields, Keep All Filters, Cross-Report, Back Button</a></li><li><a href="../subtopics/S05_Report_Page_Tooltips_Canvas_Size_Allow_Use_as.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S05_Report_Page_Tooltips_Canvas_Size_Allow_Use_as.html">Report Page Tooltips: Canvas Size, &quot;Allow Use as Tooltip&quot;, Field Tooltips</a></li><li><a href="../subtopics/S06_Bookmarks_Buttons_and_the_Selection_Pane_for_View.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S06_Bookmarks_Buttons_and_the_Selection_Pane_for_View.html">Bookmarks, Buttons and the Selection Pane for View Toggles</a></li><li><a href="../subtopics/S07_Field_Parameters_for_User_Selected_Dimensions_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S07_Field_Parameters_for_User_Selected_Dimensions_and.html">Field Parameters for User-Selected Dimensions and Measures</a></li><li><a href="../subtopics/S08_Visual_Page_and_Report_Filters_and_Top_N_Filters.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S08_Visual_Page_and_Report_Filters_and_Top_N_Filters.html">Visual, Page and Report Filters, and Top N Filters</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Drill_Through_Page_on_Ledger_with_a_Voucher_Detail.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C01_Drill_Through_Page_on_Ledger_with_a_Voucher_Detail.html">Drill-Through Page on Ledger with a Voucher Detail Table</a></li><li><a href="C02_Selected_FY_Measure_for_Dynamic_Titles.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C02_Selected_FY_Measure_for_Dynamic_Titles.html">Selected FY Measure for Dynamic Titles</a></li><li><a href="C03_Field_Parameter_Tables_Built_with_NAMEOF.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C03_Field_Parameter_Tables_Built_with_NAMEOF.html">Field Parameter Tables Built with NAMEOF</a></li><li><a href="C04_ISFILTERED_and_ISCROSSFILTERED_for_Context_Aware.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C04_ISFILTERED_and_ISCROSSFILTERED_for_Context_Aware.html">ISFILTERED and ISCROSSFILTERED for Context-Aware Labels</a></li><li><a href="C05_Slicer_Responsive_Vendor_Ranking_with_RANKX_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C05_Slicer_Responsive_Vendor_Ranking_with_RANKX_and.html">Slicer-Responsive Vendor Ranking with RANKX and ALLSELECTED</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Field Parameter Tables Built with NAMEOF</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Field parameters (Modeling &gt; New parameter &gt; Fields) generate a table of <code>NAMEOF('Date'[FY])</code>-style entries</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p><strong>Modeling &gt; New parameter &gt; Fields</strong> creates a calculated table defined by a table constructor of tuples:</p>
+<pre><code class="language-DAX">Period By = {
+    ( &quot;Fiscal year&quot;,    NAMEOF ( 'Date'[FY] ),            0 ),
+    ( &quot;Fiscal quarter&quot;, NAMEOF ( 'Date'[FiscalQuarter] ), 1 ),
+    ( &quot;Month&quot;,          NAMEOF ( 'Date'[MonthName] ),     2 )
+}
+</code></pre>
+<p>Each tuple is (display name, field reference, order). <code>NAMEOF(&lt;column or measure&gt;)</code> returns the fully qualified
+name of the object as text — e.g. <code>"'Date'[FY]"</code> — and, unlike a typed string, keeps tracking the object if it is
+renamed. The table gets three columns (here <code>Period By</code>, <code>Period By Fields</code>, <code>Period By Order</code>); the Fields
+column carries extended-property metadata (<code>ParameterMetadata</code>) that tells visuals to substitute the referenced
+field.</p>
+<h2 id="explanation">Explanation</h2>
+<p>The visible column (<code>Period By</code>) is used in slicers; the Fields column is what you place in a visual's axis, rows or
+values. When the user selects "Month", the visual behaves as if <code>'Date'[MonthName]</code> were in the well, including its
+sort-by-column setting (FiscalMonthNo) and formatting.</p>
+<p>Points to note:</p>
+<ul>
+<li><strong>Columns or measures, not mixed in one visual well.</strong> A parameter can mix columns and measures technically,
+  but a dimension parameter should list columns and a measure parameter measures.</li>
+<li><strong>Editing.</strong> The DAX is editable: rename display text, add rows (<code>NAMEOF([Revenue PY])</code>), change order values. A
+  typed text string instead of NAMEOF (e.g. <code>"'Date'[FY]"</code>) works until something is renamed — always use
+  NAMEOF.</li>
+<li><strong>Grouping.</strong> Add a fourth column (e.g. "Group") to build a hierarchy slicer of options.</li>
+<li><strong>Metadata.</strong> If you create a similar table manually without using the dialog, the parameter metadata is missing
+  and visuals will not swap fields; create via the dialog, then edit the expression.</li>
+<li><strong>Selections.</strong> <code>SELECTEDVALUE('Period By'[Period By])</code> returns the chosen display name for titles; with
+  multiple selections in a matrix, rows nest in Order sequence.</li>
+<li><strong>Limitations.</strong> Field parameters are not supported for every feature (e.g. some AI visuals, Analyze in Excel
+  usage) and implicit measures behave differently; test the target visuals.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>Page 1 trend chart with <code>Period By</code> on the x-axis and <code>[Revenue ₹ Cr]</code> on values:</p>
+<table>
+<thead>
+<tr>
+<th>Slicer choice</th>
+<th>Axis becomes</th>
+<th>Points shown (FY2025-26 selected)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fiscal year</td>
+<td><code>'Date'[FY]</code></td>
+<td>1 (₹1,240.6 Cr)</td>
+</tr>
+<tr>
+<td>Fiscal quarter</td>
+<td><code>'Date'[FiscalQuarter]</code></td>
+<td>4 (Q1 ₹294.7, Q2 ₹301.2, …)</td>
+</tr>
+<tr>
+<td>Month</td>
+<td><code>'Date'[MonthName]</code></td>
+<td>12, sorted April → March</td>
+</tr>
+</tbody>
+</table>
+<p>Adding <code>( "Week", NAMEOF('Date'[FiscalWeek]), 3 )</code> later extends the choice without touching the visual.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Subtopic s07 (dimension and measure parameters, combined use and dynamic titles).</li>
+<li>Concept c02: titles read <code>SELECTEDVALUE</code> of the display column.</li>
+<li>Topic 1 s03: the period parameter feeds the trend row; Week 11 Date table supplies the fiscal columns.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-write-the-measure-parameter-l1">Q1. Write the measure parameter [L1]</h3>
+<p>Write a field parameter table "KPI Choice" listing <code>[Revenue ₹ Cr]</code>, <code>[EBITDA ₹ Cr]</code>, <code>[EBITDA %]</code> and
+<code>[PAT ₹ Cr]</code> with sensible display names and order.</p>
+<h3 id="q2-rename-robustness-l2">Q2. Rename robustness [L2]</h3>
+<p>A colleague hand-edited a parameter to use the string <code>"'Date'[Fiscal Year]"</code> instead of NAMEOF. After the column
+is renamed to <code>FY</code>, the visual errors. Explain why NAMEOF would have avoided this and what the error tells you.</p>
+<h3 id="q3-manually-built-table-l2">Q3. Manually built table [L2]</h3>
+<p>Another analyst built <code>Period By</code> with <code>DATATABLE</code> containing the same three rows and columns, but the chart axis
+does not change when the slicer selection changes. Explain the cause and the fix.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> The dialog adds something the table expression alone does not.</p>
+</blockquote></section>
+<nav class="pager"><a class="prev" href="C02_Selected_FY_Measure_for_Dynamic_Titles.html">← Selected FY Measure for Dynamic Titles</a><a class="next" href="C04_ISFILTERED_and_ISCROSSFILTERED_for_Context_Aware.html">ISFILTERED and ISCROSSFILTERED for Context-Aware Labels →</a></nav>
+</main></div></body></html>

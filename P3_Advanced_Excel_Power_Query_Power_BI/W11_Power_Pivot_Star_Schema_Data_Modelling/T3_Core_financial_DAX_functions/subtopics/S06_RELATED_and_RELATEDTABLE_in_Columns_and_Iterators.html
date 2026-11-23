@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RELATED and RELATEDTABLE in Columns and Iterators · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T3 · Core financial DAX functions</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Core financial DAX functions</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Row_Context_Filter_Context_and_Context_Transition.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S01_Row_Context_Filter_Context_and_Context_Transition.html">Row Context, Filter Context and Context Transition</a></li><li><a href="S02_CALCULATE_Filter_Arguments_and_Modifiers.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S02_CALCULATE_Filter_Arguments_and_Modifiers.html">CALCULATE Filter Arguments and Modifiers</a></li><li><a href="S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html">Iterators SUMX and AVERAGEX for Row-Level Maths</a></li><li><a href="S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html">FILTER vs Boolean Column Filters: Meaning and Performance</a></li><li><a href="S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html">ALL, ALLEXCEPT and ALLSELECTED for Share and Contribution Analysis</a></li><li><a href="S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html">RELATED and RELATEDTABLE in Columns and Iterators</a></li><li><a href="S07_DIVIDE_Measures_vs_Calculated_Columns_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S07_DIVIDE_Measures_vs_Calculated_Columns_and.html">DIVIDE, Measures vs Calculated Columns, and VAR/RETURN</a></li><li><a href="S08_Explicit_Measures_Display_Folders_and_LakhCrore.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S08_Explicit_Measures_Display_Folders_and_LakhCrore.html">Explicit Measures, Display Folders and ₹ Lakh/Crore Formats</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html">Base Actual Measure and a Filtered Revenue Measure</a></li><li><a href="../concepts/C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html">Percentage of Total Opex with ALL on Cost Centre</a></li><li><a href="../concepts/C03_Percentage_within_Statement_with_ALLEXCEPT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C03_Percentage_within_Statement_with_ALLEXCEPT.html">Percentage within Statement with ALLEXCEPT</a></li><li><a href="../concepts/C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html">FX-Converted Revenue with SUMX and RELATED</a></li><li><a href="../concepts/C05_Sign_Aware_Variance_with_VAR_and_ABS.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C05_Sign_Aware_Variance_with_VAR_and_ABS.html">Sign-Aware Variance % with VAR and ABS</a></li><li><a href="../concepts/C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html">KEEPFILTERS to Intersect Rather Than Overwrite</a></li><li><a href="../concepts/C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html">DIVIDE and Its BLANK Default for Zero Denominators</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>RELATED and RELATEDTABLE in Columns and Iterators</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> RELATED (many → one) and RELATEDTABLE (one → many) in calculated columns and iterators</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Row context does not follow relationships (s01). When a GL row needs its account's sign factor, its cost centre's
+function or the exchange rate for its currency-month, or when a CoA row needs the count of its postings, you must
+explicitly <strong>navigate</strong> the relationship. RELATED walks from the many side to the one side and returns a single
+value; RELATEDTABLE walks from the one side to the many side and returns a table. These two functions power sign-aware
+P&amp;L measures, FX conversion, mapping-completeness checks and dimension-level flags — and they are frequently misused
+in ways that bloat the model or fail silently.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="related-many-one">RELATED — many → one</h3>
+<pre><code class="language-DAX">RELATED ( &lt;column on the one side&gt; )
+</code></pre>
+<p>Requires a <strong>row context</strong> on the many-side table (a calculated column on GL, or an iterator over GL) and an active
+relationship path (one or more many-to-one hops) to the target table. Returns the value of the column for the
+related row.</p>
+<p>In an iterator (preferred for aggregations):</p>
+<pre><code class="language-DAX">Actual Signed = SUMX ( GL, GL[Amount] * RELATED ( CoA[SignFactor] ) )
+Revenue INR   = SUMX ( Sales, Sales[AmountFC] * RELATED ( FX[Rate] ) )
+</code></pre>
+<p>In a calculated column (only when the attribute is needed for slicing on the fact or for a further row-level
+calculation that must be stored):</p>
+<pre><code class="language-DAX">-- Calculated column on GL (generally avoid; shown for illustration)
+GL[FSLine] = RELATED ( CoA[FSLine] )
+</code></pre>
+<p>Storing dimension attributes on the fact duplicates them across crores of rows — exactly the "descriptions in the
+fact" anti-pattern (topic 1). Use the dimension column directly in visuals instead.</p>
+<p>Rules:</p>
+<ul>
+<li><strong>Chain of relationships:</strong> RELATED can traverse multiple many-to-one hops (GL → CostCentre → Department if
+  snowflaked).</li>
+<li><strong>Active relationship by default.</strong> RELATED follows the active relationship. Rather than relying on
+  USERELATIONSHIP wrappers to steer it through an inactive one, use LOOKUPVALUE (or a role-playing dimension copy)
+  for alternate keys such as due date — it is explicit and easy to review.</li>
+<li><strong>Limited relationships</strong> (many-to-many, cross-source-group) do not support RELATED.</li>
+<li><strong>Orphans:</strong> for fact rows with no matching dimension row, RELATED returns BLANK — e.g. blank SignFactor →
+  <code>GL[Amount] * BLANK()</code> = blank → amount drops out of Actual Signed. Protect with the Unmapped member (topic 1 s06)
+  or <code>COALESCE(RELATED(CoA[SignFactor]), 1)</code> plus a data-quality alert.</li>
+</ul>
+<h3 id="relatedtable-one-many">RELATEDTABLE — one → many</h3>
+<pre><code class="language-DAX">RELATEDTABLE ( &lt;table on the many side&gt; )
+</code></pre>
+<p>Requires a row context on the one-side table; returns the rows of the many-side table related to the current row. It
+is equivalent to <code>CALCULATETABLE(&lt;table&gt;)</code> — i.e. it performs <strong>context transition</strong> — so it respects the current
+filter context too when used inside measures.</p>
+<p>Calculated columns on dimensions (small tables — acceptable):</p>
+<pre><code class="language-DAX">CoA[PostingCount]   = COUNTROWS ( RELATEDTABLE ( GL ) )
+CoA[HasPostings]    = NOT ISEMPTY ( RELATEDTABLE ( GL ) )
+CoA[LifetimeActual] = SUMX ( RELATEDTABLE ( GL ), GL[Amount] )
+</code></pre>
+<p>These are static (computed at refresh) and ignore report filters — useful for data hygiene (accounts never posted
+to, dormant cost centres) but not for period-specific reporting.</p>
+<p>In iterators (measures):</p>
+<pre><code class="language-DAX">Accounts Over 1 Cr =
+COUNTROWS (
+    FILTER ( CoA, SUMX ( RELATEDTABLE ( GL ), GL[Amount] ) &gt; 10000000 )
+)
+</code></pre>
+<p>Each CoA row's RELATEDTABLE(GL) is filtered by the current filter context (period, cost centre) plus the current
+account, so the count reflects the selected period. <code>[Actual] &gt; 10000000</code> gives the same result more readably.</p>
+<h3 id="related-vs-lookupvalue-vs-measures">RELATED vs LOOKUPVALUE vs measures</h3>
+<table>
+<thead>
+<tr>
+<th>Need</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Attribute of the related one-side row inside a fact iterator</td>
+<td>RELATED</td>
+</tr>
+<tr>
+<td>Value from a table with no (or an inactive) relationship</td>
+<td>LOOKUPVALUE(result, searchCol, value, …)</td>
+</tr>
+<tr>
+<td>Aggregate of many-side rows per dimension row, responsive to filters</td>
+<td>A measure (context transition)</td>
+</tr>
+<tr>
+<td>Static per-dimension-row aggregate for hygiene</td>
+<td>RELATEDTABLE in a calculated column</td>
+</tr>
+</tbody>
+</table>
+<h3 id="illustration">Illustration</h3>
+<p>GL extract (April 2025) with CoA sign factors:</p>
+<table>
+<thead>
+<tr>
+<th>Voucher</th>
+<th>Account</th>
+<th>FSLine</th>
+<th>Amount (₹)</th>
+<th>SignFactor</th>
+<th>Amount × SignFactor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SV-01</td>
+<td>400100</td>
+<td>Revenue from operations</td>
+<td>−18,00,000</td>
+<td>−1</td>
+<td>18,00,000</td>
+</tr>
+<tr>
+<td>SV-02</td>
+<td>400900</td>
+<td>Revenue from operations</td>
+<td>−50,000</td>
+<td>−1</td>
+<td>50,000</td>
+</tr>
+<tr>
+<td>PV-11</td>
+<td>510100</td>
+<td>Employee benefits expense</td>
+<td>4,20,000</td>
+<td>+1</td>
+<td>4,20,000</td>
+</tr>
+<tr>
+<td>JV-07</td>
+<td>999999</td>
+<td>(no CoA row)</td>
+<td>75,000</td>
+<td>blank</td>
+<td>blank</td>
+</tr>
+</tbody>
+</table>
+<p><code>[Actual Signed]</code> for April = ₹22,70,000 and silently omits JV-07's ₹75,000. <code>CoA[PostingCount]</code> for 400100 shows the
+lifetime count of postings, unchanged by any slicer.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>RELATED in a measure without an iterator</strong> errors: "RELATED requires a row context". Wrap in SUMX/FILTER.</li>
+<li><strong>Performance.</strong> RELATED inside SUMX over a large fact is generally fast (the storage engine resolves the join), but
+  complex expressions per row fall back to the formula engine. Consider applying the sign factor in Power Query if
+  it never changes (but then never again in DAX — topic 6 pitfall).</li>
+<li><strong>Bidirectional alternatives.</strong> Do not set relationships to Both just to make RELATED "work backwards"; use
+  RELATEDTABLE or a measure.</li>
+<li><strong>Calculated column on a fact with RELATED</strong> prevents some incremental-refresh optimisations and adds memory —
+  measure-time RELATED is preferred.</li>
+<li><strong>Multiple paths.</strong> If two active paths exist (should not in a star), RELATED's path is ambiguous and errors.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>RELATED: from a many-side row to its one-side attribute; needs row context and an active relationship.</li>
+<li>RELATEDTABLE: from a one-side row to its many-side rows; performs context transition.</li>
+<li>Use RELATED inside iterators (SUMX) for row-level maths such as sign factors and FX rates.</li>
+<li>RELATEDTABLE in dimension calculated columns gives static hygiene metrics; use measures for period-specific counts.</li>
+<li>Orphan keys make RELATED return blank and silently drop amounts — guard with an Unmapped member.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-choose-the-function-l1">Q1. Choose the function [L1]</h3>
+<p>For each requirement, choose RELATED, RELATEDTABLE, LOOKUPVALUE or a measure: (a) sign factor in an Actual Signed
+measure; (b) flag on CostCentre for "no postings in five years"; (c) FX rate from a table keyed on Currency and
+MonthEnd with no relationship; (d) number of vouchers per account in the selected month.</p>
+<h3 id="q2-silent-drop-l2">Q2. Silent drop [L2]</h3>
+<p><code>[Actual Signed]</code> for FY2025-26 is ₹3.2 crore lower than <code>[Actual]</code> adjusted manually for signs. Explain how orphan
+keys cause this through RELATED, and write a measure that quantifies the dropped amount.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Iterate GL rows where the related sign factor is blank.</p>
+</blockquote>
+<h3 id="q3-dormant-accounts-l2">Q3. Dormant accounts [L2]</h3>
+<p>Write calculated columns on CoA for (a) last posting date and (b) a flag "Dormant" if no posting in the last 24 months
+from the last actuals date, and explain why these are computed as columns rather than measures.</p>
+<h3 id="q4-snowflake-traversal-l3">Q4. Snowflake traversal [L3]</h3>
+<p>In a snowflaked model GL → CostCentre → Department → Function, RELATED(Function[FunctionName]) works in a GL iterator.
+Explain why it works, its cost, and how you would flatten the model while keeping existing measures valid.</p></section>
+<nav class="pager"><a class="prev" href="S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html">← ALL, ALLEXCEPT and ALLSELECTED for Share and Contribution…</a><a class="next" href="S07_DIVIDE_Measures_vs_Calculated_Columns_and.html">DIVIDE, Measures vs Calculated Columns, and VAR/RETURN →</a></nav>
+</main></div></body></html>

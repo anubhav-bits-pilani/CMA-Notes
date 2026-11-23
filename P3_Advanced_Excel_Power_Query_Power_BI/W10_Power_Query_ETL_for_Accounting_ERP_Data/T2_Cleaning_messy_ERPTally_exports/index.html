@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cleaning messy ERP/Tally exports · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/index.html" data-kind="topic">
+<header class="top"><a class="brand" href="../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../index.html">Home</a> <span>›</span> <a href="../../index.html">Phase 3</a> <span>›</span> <a href="../index.html">Week 10</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">Week 10</a></div><ul class="side-links"><li><a href="../T1_Power_Query_architecture_and_M_basics/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/index.html">T1 · Power Query architecture and M basics</a></li><li><a href="index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/index.html">T2 · Cleaning messy ERP/Tally exports</a></li><li><a href="../T3_Unpivoting_wide_budgets_and_TBs/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/index.html">T3 · Unpivoting wide budgets and TBs</a></li><li><a href="../T4_Folder_consolidation_pipeline/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/index.html">T4 · Folder consolidation pipeline</a></li><li><a href="../T5_Merging_appending_and_reconciliation/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/index.html">T5 · Merging, appending and reconciliation joins</a></li><li><a href="../T6_Custom_columns_and_fiscal_logic_in_M/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/index.html">T6 · Custom columns and fiscal logic in M</a></li></ul></aside>
+<main class="content">
+<div class="kind">Topic</div>
+<h1>Cleaning messy ERP/Tally exports</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<section class="index"><h2>Notes in this topic</h2><div class="cols"><div><h3>Subtopics</h3><ul class="links num"><li><a href="subtopics/S01_Skipping_Report_Headers_Conditionally_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S01_Skipping_Report_Headers_Conditionally_and.html">S01 · Skipping Report Headers Conditionally and Promoting Headers</a></li><li><a href="subtopics/S02_Removing_Blank_Subtotal_and_Grand_Total_Rows_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S02_Removing_Blank_Subtotal_and_Grand_Total_Rows_by.html">S02 · Removing Blank, Subtotal and Grand Total Rows by Condition</a></li><li><a href="subtopics/S03_Filling_Down_Cost_Centre_and_Group_Headers_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S03_Filling_Down_Cost_Centre_and_Group_Headers_in.html">S03 · Filling Down Cost-Centre and Group Headers in Report Layouts</a></li><li><a href="subtopics/S04_Splitting_Ledger_Code_and_Name_Parsing_Tally_DrCr.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S04_Splitting_Ledger_Code_and_Name_Parsing_Tally_DrCr.html">S04 · Splitting Ledger Code and Name; Parsing Tally Dr/Cr Amounts</a></li><li><a href="subtopics/S05_Trimming_Non_Breaking_Spaces_and_Non_Printable.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S05_Trimming_Non_Breaking_Spaces_and_Non_Printable.html">S05 · Trimming Non-Breaking Spaces and Non-Printable Characters</a></li><li><a href="subtopics/S06_Fixing_Date_Locales_and_Indian_Digit_Grouping_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S06_Fixing_Date_Locales_and_Indian_Digit_Grouping_in.html">S06 · Fixing Date Locales and Indian Digit Grouping in Text Amounts</a></li><li><a href="subtopics/S07_Error_Handling_Remove_Errors_Keep_Errors_and_try.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S07_Error_Handling_Remove_Errors_Keep_Errors_and_try.html">S07 · Error Handling: Remove Errors, Keep Errors and try ... otherwise</a></li><li><a href="subtopics/S08_Export_Layouts_Tally_Day_BookLedgerTB_SAP_FBL3N.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S08_Export_Layouts_Tally_Day_BookLedgerTB_SAP_FBL3N.html">S08 · Export Layouts: Tally Day Book/Ledger/TB, SAP FBL3N, S_ALR, Oracle TB</a></li></ul></div><div><h3>Key concepts & formulas</h3><ul class="links num"><li><a href="concepts/C01_Conditional_TableSkip_Followed_by_PromoteHeaders.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C01_Conditional_TableSkip_Followed_by_PromoteHeaders.html">C01 · Conditional Table.Skip Followed by PromoteHeaders</a></li><li><a href="concepts/C02_Filtering_Out_Null_and_Total_Rows_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C02_Filtering_Out_Null_and_Total_Rows_with.html">C02 · Filtering Out Null and Total Rows with Table.SelectRows</a></li><li><a href="concepts/C03_TableFillDown_Fills_Only_Nulls_Replace_Blanks.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C03_TableFillDown_Fills_Only_Nulls_Replace_Blanks.html">C03 · Table.FillDown Fills Only Nulls: Replace Blanks First</a></li><li><a href="concepts/C04_TableSplitColumn_at_Each_Delimiter_into_Code_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C04_TableSplitColumn_at_Each_Delimiter_into_Code_and.html">C04 · Table.SplitColumn at Each Delimiter into Code and Name</a></li><li><a href="concepts/C05_Cleaning_Text_Replace_Char_160_TextClean_TextTrim.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C05_Cleaning_Text_Replace_Char_160_TextClean_TextTrim.html">C05 · Cleaning Text: Replace Char 160, Text.Clean, Text.Trim</a></li><li><a href="concepts/C06_TransformColumnTypes_with_an_Explicit_en_IN.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C06_TransformColumnTypes_with_an_Explicit_en_IN.html">C06 · TransformColumnTypes with an Explicit en-IN Culture</a></li><li><a href="concepts/C07_Converting_Tally_DrCr_Suffix_Balances_into_Signed.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C07_Converting_Tally_DrCr_Suffix_Balances_into_Signed.html">C07 · Converting Tally Dr/Cr Suffix Balances into Signed Numbers</a></li></ul></div></div></section><article class="note"><blockquote>
+<p><strong>Roadmap topic:</strong> Cleaning Messy ERP/Tally Exports: Removing blank/subtotal rows, filling down cost center headers, splitting ledger codes, trimming whitespace, and fixing date locales</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>ERP and accounting systems export <strong>reports</strong>, not tables. A Tally Trial Balance in Excel is laid out for printing: company name and period at the top, a two-line caption, group headers, indented ledgers, subtotals, a Grand Total and sometimes page breaks. SAP list outputs repeat page headers and mark totals with asterisks; Oracle BI Publisher outputs add parameter blocks; bank CSVs carry 15–20 lines of account metadata. Before any consolidation, reconciliation or modelling can happen, these reports must become <strong>tidy tables</strong> — one header row, one row per ledger or transaction, one column per attribute, correct types, Dr-positive signed amounts.</p>
+<p>The guiding principle is <strong>condition over position</strong>. Every manual Excel habit — "delete the first 6 rows", "delete the last 3", "fill the blanks with the cell above after sorting" — breaks when next month's file has one more line. Power Query lets you express the rule ("skip until the row whose first cell is Particulars", "keep rows that have a voucher number", "fill the cost centre down before any sort") so the same query works for every month and every branch. The second principle is <strong>nothing disappears silently</strong>: totals removed from the data are kept as control totals, rows that fail conversion go to an exception log, and the cleaned TB must still net to zero.</p>
+<p>Learning sequence: start by recognising source layouts (s08) so you know what you are cleaning; skip report headers by condition and promote headers (s01); remove blank, subtotal, total and page-break rows (s02); fill down cost-centre and group headers (s03); split ledger code/name and parse Tally Dr/Cr amounts (s04); clean invisible characters (s05); convert dates and amounts with the right locale (s06); and handle errors with exception logs instead of deleting them (s07). The concept notes give the canonical M for each step (c01–c07). Together they form the cleaning function you will apply to every file in the Topic 4 folder pipeline and the bank files in the week's exercise.</p>
+<p>For roles in reporting, audit analytics and FP&amp;A, this is where most real-world time goes. Interviewers routinely hand over a messy Tally export and ask candidates to clean it live; the habits here — named steps, conditional logic, control totals, exception logs — are what distinguish a robust pipeline from a one-off clean-up.</p>
+<h2 id="concept-map">Concept map</h2>
+<table>
+<thead>
+<tr>
+<th>Subtopic / concept</th>
+<th>Role in the topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s01 Skipping report headers</td>
+<td>Find the caption row by content; promote headers</td>
+</tr>
+<tr>
+<td>s02 Removing blank/total/page rows</td>
+<td>Keep only data rows by condition; capture totals as controls</td>
+</tr>
+<tr>
+<td>s03 Filling down headers</td>
+<td>Carry cost-centre/group context onto every row; drop header-only rows</td>
+</tr>
+<tr>
+<td>s04 Splitting codes; Dr/Cr parsing</td>
+<td>Separate code from name; convert Tally balances into signed numbers</td>
+</tr>
+<tr>
+<td>s05 Trimming and cleaning characters</td>
+<td>Remove char 160, control and zero-width characters before matching</td>
+</tr>
+<tr>
+<td>s06 Date locales and Indian digit grouping</td>
+<td>Parse dd-mm-yyyy and 1,23,456.00 correctly regardless of machine</td>
+</tr>
+<tr>
+<td>s07 Error handling</td>
+<td>Exception logs, Keep/Remove Errors, <code>try ... otherwise</code></td>
+</tr>
+<tr>
+<td>s08 Source layouts</td>
+<td>Tally Day Book/Ledger/TB, SAP FBL3N and S_ALR_87012277, Oracle TB</td>
+</tr>
+<tr>
+<td>c01 Conditional <code>Table.Skip</code> + promote</td>
+<td>The refresh-safe header-skipping pattern</td>
+</tr>
+<tr>
+<td>c02 <code>Table.SelectRows</code> for null/total rows</td>
+<td>Null test first; short-circuit <code>and</code></td>
+</tr>
+<tr>
+<td>c03 <code>Table.FillDown</code> after blank-to-null</td>
+<td>Fill Down only fills nulls</td>
+</tr>
+<tr>
+<td>c04 <code>Table.SplitColumn</code> at each delimiter</td>
+<td>Split at the first delimiter only</td>
+</tr>
+<tr>
+<td>c05 Replace 160, Clean, Trim</td>
+<td>The standard text-cleaning composition</td>
+</tr>
+<tr>
+<td>c06 <code>TransformColumnTypes</code> with "en-IN"</td>
+<td>Explicit culture for dates and numbers</td>
+</tr>
+<tr>
+<td>c07 Dr/Cr suffix to signed amount</td>
+<td>Text.Select digits; sign from suffix</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-concepts-to-study">Related concepts to study</h2>
+<h3 id="data-profiling-on-the-entire-data-set">Data profiling on the entire data set</h3>
+<p><em>Data profiling: column quality, distribution and profile; switch to "profiling based on entire data set"</em></p>
+<p>View → <strong>Column quality</strong> shows Valid/Error/Empty percentages; <strong>Column distribution</strong> shows distinct and unique counts; <strong>Column profile</strong> shows statistics and a value distribution for the selected column. By default these are computed on the <strong>top 1,000 rows</strong>; the status bar toggle "Column profiling based on top 1000 rows" can be switched to <strong>entire data set</strong>. For a 40,000-line Day Book, errors on row 32,000 or a date swap in the second half of the year are invisible on the default. Use full profiling during build and review (it is slower), and confirm: zero errors in amount and date columns, expected distinct counts for ledger and cost centre, and no unexpected empties in key columns.</p>
+<h3 id="text-parsing-functions">Text parsing functions</h3>
+<p><em>Text parsing with <code>Text.BetweenDelimiters</code>, <code>Text.AfterDelimiter</code>, <code>Text.PositionOf</code></em></p>
+<p>Beyond splitting columns, M offers non-destructive extraction. <code>Text.BeforeDelimiter(x, " - ")</code> and <code>Text.AfterDelimiter(x, " - ")</code> return the text before/after a delimiter (with an optional occurrence index and direction). <code>Text.BetweenDelimiters(x, "/", "/")</code> extracts a UTR from an SBI narration such as "NEFT/SBIN526012345678/ABC TRADERS". <code>Text.PositionOf(x, "UTR", Occurrence.First)</code> returns the zero-based position (or −1 if absent), combined with <code>Text.Middle(x, pos, len)</code> for fixed-length tokens like 22-character RTGS UTRs. These functions build match keys for Topic 5 and parse branch/period from file names in Topic 4.</p>
+<h3 id="tb-integrity-after-cleaning-weeks-14">TB integrity after cleaning (Weeks 1–4)</h3>
+<p><em>→ Week 1–4: TB integrity checks (Dr = Cr) after cleaning</em></p>
+<p>Cleaning is only complete when the result proves itself. From Weeks 1–4, a TB must satisfy: total debits equal total credits (or signed amounts net to zero); the cleaned total equals the report's Grand Total; the closing balance of each ledger equals opening plus movements; and the P&amp;L balance equals the profit transferred to reserves. In Power Query, compute these in a check query per file — row counts, Dr sum, Cr sum, net, difference to the Grand Total captured before removal — and load it visibly. A non-zero net after cleaning usually points to a subtotal kept, a ledger removed, a Dr/Cr sign misparse, or a failed conversion silently removed.</p>
+<h3 id="excel-equivalents-week-9">Excel equivalents (Week 9)</h3>
+<p><em>→ Week 9: Excel equivalents TRIM, CLEAN, TEXTSPLIT</em></p>
+<p>Week 9's formula toolkit has direct counterparts. <code>TRIM</code> collapses internal spaces and trims ends (code 32 only); <code>CLEAN</code> removes codes 0–31; <code>SUBSTITUTE(A2, CHAR(160), " ")</code> handles non-breaking spaces; <code>TEXTSPLIT(A2, " - ")</code> splits into columns (all occurrences); <code>TEXTBEFORE</code>/<code>TEXTAFTER</code> mirror <code>Text.BeforeDelimiter</code>/<code>Text.AfterDelimiter</code>; <code>DATEVALUE</code> depends on system locale just like untyped Power Query conversions. Formulas are recalculated live and visible cell-by-cell, which helps ad-hoc checks, but they must be copied down and adjusted for each new file; Power Query applies the logic once per refresh to any number of rows and files.</p>
+<h3 id="tally-odbc-server">Tally ODBC server</h3>
+<p><em>Tally ODBC server (default port 9000) as a direct connection instead of exported files</em></p>
+<p>Instead of exporting reports, Tally Prime can act as an ODBC (and XML/HTTP) server, by default on port 9000, while the company is open. With a DSN configured, Power Query reads ledgers, groups and vouchers through <code>Odbc.DataSource</code> or <code>Odbc.Query</code> — no report headers, no subtotals, no Dr/Cr suffix text in many fields, so most of this topic's cleaning disappears. Trade-offs: Tally must be running with the right company loaded at refresh time; a gateway is needed for Service refresh; sign conventions of closing balances must be verified; and SQL support is limited, so filtering happens mostly locally. For branch environments where Tally runs on a local PC, exported files to a shared folder are often more reliable.</p>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<h3 id="remove-bottom-rows-on-a-variable-footer">Remove Bottom Rows on a variable footer</h3>
+<p><em>Removing total rows with Remove Bottom Rows when the row count changes each month</em></p>
+<p>"Remove Bottom Rows: 2" (<code>Table.RemoveLastN(t, 2)</code>) assumes the footer always has two lines. Tally adds "Difference in opening balances" when openings do not tally; bank CSVs add summary lines for cheque returns; SAP page footers depend on row counts. One extra line keeps a total in the data (double counting); one fewer deletes a real ledger. People use it because the UI offers it and it works on the sample. Correct treatment: remove footer rows by condition (<code>Table.SelectRows</code> with exact text or structural tests), and reconcile cleaned totals to the captured Grand Total. Review detection: search M for <code>RemoveLastN</code>/<code>RemoveFirstN</code> with numeric arguments; any positional removal on a report export needs justification.</p>
+<h3 id="fill-down-after-a-sort-or-filter">Fill Down after a sort or filter</h3>
+<p><em>Running Fill Down after a sort or filter, which pulls the wrong header into rows</em></p>
+<p>Fill Down uses physical row order at that step. If rows were sorted (e.g. by ledger name to tidy up) or filtered (header-only rows removed) before the fill, each detail row inherits the wrong cost centre or none at all. People reorder steps casually because most transformations are order-independent. Correct treatment: create the header column, convert blanks to null, Fill Down immediately after promotion and header-flagging, and only then filter and sort. Review detection: in Applied Steps, check that no Sorted Rows, Merged Queries or header-removal filter precedes Filled Down; test by reconciling cost-centre totals to the report's block totals.</p>
+<h3 id="wrong-locale-date-conversion">Wrong-locale date conversion</h3>
+<p><em>Converting dates in the wrong locale, which silently swaps day and month for days 1–12</em></p>
+<p>Converting "03-04-2026" on an en-US machine yields 4 March 2026 without error; only days 13–31 fail. The query appears to work in April testing (when many errors might be noticed) or gives plausible but wrong dates, shifting cut-off, ageing and FY/quarter attributes. It happens because the default culture is invisible and differs between laptops and the Power BI Service. Correct treatment: pass <code>"en-IN"</code> (or an explicit format) to every conversion from text, or set the file's locale, and type in source-specific staging queries. Review detection: per-file min/max dates against the statement period, errors concentrated on days above 12, and a distribution of day numbers.</p>
+<h3 id="profiling-only-the-top-1000-rows">Profiling only the top 1,000 rows</h3>
+<p><em>Profiling only the top 1000 rows by default, which hides errors deeper in the file</em></p>
+<p>Column quality and distribution default to the first 1,000 rows. A Day Book of 40,000 lines can show "100% valid" while rows 18,000–40,000 contain conversion errors, a second date format or a stray page header. People trust the green bar because they do not notice the status-bar note. Correct treatment: switch to "Column profiling based on entire data set" when building and reviewing, and in production rely on explicit checks — error counts, null counts and control totals per file — rather than the preview. Review detection: check the status bar setting; compare full-refresh error counts reported after load with what the preview showed.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-clean-a-tally-tb-end-to-end-l3">Q1. Clean a Tally TB end to end [L3]</h3>
+<p>You receive <code>TB_Hyderabad_Mar26.xlsx</code> from Tally Prime, Detailed mode, with: 6 report-header lines (company, address 2 lines, GSTIN, "Trial Balance", "1-Apr-25 to 31-Mar-26"); a two-line caption "Particulars | Closing Balance" over " | Debit | Credit"; groups (e.g. "Current Assets") followed by indented ledgers like "130105 - Sundry Debtors - Rao &amp; Sons"; group lines that carry group totals; zero-balance ledgers with both amounts blank; a "Grand Total" row; amounts as text with Indian grouping, some cells containing char 160.
+(a) Write the full M query (named steps) producing Group, Code, Name, Debit, Credit, Amount (Dr positive). (b) Add a control-totals query comparing cleaned Dr/Cr with the Grand Total. (c) Add an exception log for unparseable amounts and ledgers without codes. (d) List three ways the query could still fail next month and how you would detect each.</p>
+<h3 id="q2-bank-statement-csv-cleaning-l2">Q2. Bank statement CSV cleaning [L2]</h3>
+<p>An HDFC statement CSV contains 19 header lines (account number on line 4 as "Account No :50100123456789"), then columns Date, Narration, Chq./Ref.No., Value Dt, Withdrawal Amt., Deposit Amt., Closing Balance; dates "dd/MM/yy"; narrations with quoted commas and line breaks; and a footer block "STATEMENT SUMMARY" of variable length.
+(a) Write the source and cleaning steps up to a typed table with an Account column. (b) Explain how your query behaves if the footer grows by four lines or the header by two. (c) Design checks that would detect a locale problem and lost rows.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Capture metadata before skipping, and stop the data at the footer marker by condition.</p>
+</blockquote>
+<h3 id="q3-day-book-to-voucher-lines-l2">Q3. Day Book to voucher lines [L2]</h3>
+<p>A Tally Day Book export (detailed) shows the Date, Vch Type and Vch No. only on the first line of each voucher, ledger lines below with Particulars and Debit/Credit, narration lines in italics as separate rows with no amounts, and blank lines between vouchers. Describe and write the M to produce one row per ledger line with Date, VchType, VchNo, Ledger, Amount and Narration. State the sequence constraints between Fill Down and filters.</p>
+<h3 id="q4-review-a-cleaning-query-l2">Q4. Review a cleaning query [L2]</h3>
+<p>A colleague's SAP FBL3N cleaning query: Source → Promoted Headers → Changed Type (auto, en-US machine) → Removed Top Rows (3) → Removed Bottom Rows (2) → Split "G/L Account Text" by "-" at each occurrence → Replaced Errors with 0 → Trimmed Text. Write a review memo identifying every problem, its likely consequence on a consolidated TB, and the corrected step list.</p>
+<h3 id="q5-interview-case-why-condition-based-cleaning-l1">Q5. Interview case: why condition-based cleaning [L1]</h3>
+<p>Prepare a 3-minute explanation for an FP&amp;A hiring manager of why condition-based steps, control totals and exception logs matter when cleaning ERP exports, using one example each from Tally, SAP and a bank statement.</p></section>
+<nav class="pager"><a class="prev" href="../T1_Power_Query_architecture_and_M_basics/concepts/C07_MySQLDatabase_Connector_and_OdbcDataSource_for.html">← MySQL.Database Connector and Odbc.DataSource for Tally</a><a class="next" href="subtopics/S01_Skipping_Report_Headers_Conditionally_and.html">Skipping Report Headers Conditionally and Promoting Headers →</a></nav>
+</main></div></body></html>

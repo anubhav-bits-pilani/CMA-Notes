@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IsClosedPeriod and IsYTD Flags for Like-for-Like Comparisons · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S08_IsClosedPeriod_and_IsYTD_Flags_for_Like_for_Like.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T2 · Indian fiscal calendar table</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Indian fiscal calendar table</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Building_the_Date_Dimension_DAX_CALENDAR_vs_Power.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S01_Building_the_Date_Dimension_DAX_CALENDAR_vs_Power.html">Building the Date Dimension: DAX CALENDAR vs Power Query List.Dates</a></li><li><a href="S02_Contiguous_Whole_Fiscal_Year_Date_Range_Covering.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S02_Contiguous_Whole_Fiscal_Year_Date_Range_Covering.html">Contiguous Whole-Fiscal-Year Date Range Covering All Facts</a></li><li><a href="S03_Fiscal_Calendar_Columns_FY_Quarter_Month_Week_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S03_Fiscal_Calendar_Columns_FY_Quarter_Month_Week_and.html">Fiscal Calendar Columns: FY, Quarter, Month, Week and Period Key</a></li><li><a href="S04_Sort_by_Column_Fiscal_Month_Order_Starting_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S04_Sort_by_Column_Fiscal_Month_Order_Starting_in.html">Sort by Column: Fiscal Month Order Starting in April</a></li><li><a href="S05_Month_and_FY_Offset_Columns_for_Dynamic_Period.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S05_Month_and_FY_Offset_Columns_for_Dynamic_Period.html">Month and FY Offset Columns for Dynamic Period Filters</a></li><li><a href="S06_Mark_as_Date_Table_and_Turn_Off_Auto_DateTime.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S06_Mark_as_Date_Table_and_Turn_Off_Auto_DateTime.html">Mark as Date Table and Turn Off Auto Date/Time</a></li><li><a href="S07_Working_Day_Flags_and_Indian_Holidays_for_Close.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S07_Working_Day_Flags_and_Indian_Holidays_for_Close.html">Working-Day Flags and Indian Holidays for Close Metrics</a></li><li><a href="S08_IsClosedPeriod_and_IsYTD_Flags_for_Like_for_Like.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S08_IsClosedPeriod_and_IsYTD_Flags_for_Like_for_Like.html">IsClosedPeriod and IsYTD Flags for Like-for-Like Comparisons</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_DAX_Fiscal_Date_Table_with_an_FYEnd_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C01_DAX_Fiscal_Date_Table_with_an_FYEnd_Column.html">DAX Fiscal Date Table with an FYEnd Column</a></li><li><a href="../concepts/C02_CALENDARAUTO3_for_Whole_March_Ending_Fiscal_Years.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C02_CALENDARAUTO3_for_Whole_March_Ending_Fiscal_Years.html">CALENDARAUTO(3) for Whole March-Ending Fiscal Years</a></li><li><a href="../concepts/C03_Fiscal_Month_and_Fiscal_Quarter_Formulas.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C03_Fiscal_Month_and_Fiscal_Quarter_Formulas.html">Fiscal Month and Fiscal Quarter Formulas</a></li><li><a href="../concepts/C04_Fiscal_Week_Number_Anchored_on_1_April.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C04_Fiscal_Week_Number_Anchored_on_1_April.html">Fiscal Week Number Anchored on 1 April</a></li><li><a href="../concepts/C05_Month_Offset_from_Today.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C05_Month_Offset_from_Today.html">Month Offset from Today</a></li><li><a href="../concepts/C06_Power_Query_Date_List_with_ListDates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C06_Power_Query_Date_List_with_ListDates.html">Power Query Date List with List.Dates</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>IsClosedPeriod and IsYTD Flags for Like-for-Like Comparisons</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Flags such as IsClosedPeriod and IsYTD (date on or before the last actuals date) for clean comparisons</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Mid-year, the Date table runs to 31 March but actuals stop at the last posted date. Without guard rails, a "FY2025-26
+vs FY2024-25" chart compares eight months of this year with twelve months of last year; a YTD growth % looks like
+a 35% decline; budget for unclosed months inflates variance; and the November column shows half-posted figures as
+if final. Two Date-table flags fix this cleanly: <strong>IsClosedPeriod</strong> (the month's books are closed and signed off) and
+<strong>IsYTD</strong> (the date falls on or before the last actuals date — or, for prior years, on or before the same point in
+the fiscal year). They turn like-for-like comparison into a slicer or a single filter inside measures.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="defining-the-reference-date">Defining the reference date</h3>
+<p>Choose one source of truth for "how far actuals go":</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MAX(GL[PostingDate])</code></td>
+<td>Automatic</td>
+<td>Future-dated or provisional entries move it; partial months included</td>
+</tr>
+<tr>
+<td>Last closed month-end from a Close parameter table</td>
+<td>Controlled by the controller; aligns with sign-off</td>
+<td>Manual step each month</td>
+</tr>
+<tr>
+<td>Latest <code>TB[MonthEnd]</code> snapshot</td>
+<td>Ties to audited/approved TB</td>
+<td>Lags if TB is loaded later</td>
+</tr>
+</tbody>
+</table>
+<p>For management reporting the <strong>last closed month-end</strong> is usually best for IsClosedPeriod, while <code>MAX</code> posting date
+can drive IsYTD for flash (intra-month) reports.</p>
+<h3 id="isclosedperiod">IsClosedPeriod</h3>
+<pre><code class="language-DAX">IsClosedPeriod =
+VAR LastClosed = MAX ( Close[LastClosedMonthEnd] )
+RETURN
+    'Date'[MonthEnd] &lt;= LastClosed
+</code></pre>
+<p>All days of a closed month are TRUE; all days of open months FALSE. Uses:</p>
+<ul>
+<li>Variance reports filtered to IsClosedPeriod = TRUE so budget for open months is excluded.</li>
+<li>Restatement control: journals posted into closed periods flagged as exceptions.</li>
+<li>Forecast logic in Weeks 17–20: closed months use actuals, open months use forecast
+  (<code>IF(IsClosedPeriod, [Actual], [Forecast])</code> evaluated per month and summed with SUMX over months).</li>
+</ul>
+<h3 id="isytd-current-year-and-the-like-for-like-version">IsYTD (current year) and the like-for-like version</h3>
+<p>The literal flag in the scope: date on or before the last actuals date.</p>
+<pre><code class="language-DAX">IsYTD =
+VAR LastActual = CALCULATE ( MAX ( GL[PostingDate] ), REMOVEFILTERS () )
+RETURN
+    'Date'[Date] &lt;= LastActual
+</code></pre>
+<p>For <strong>comparisons across years</strong>, you need the same position within each fiscal year. Use the day of the fiscal
+year (or fiscal month number for month-level cut-offs):</p>
+<pre><code class="language-DAX">IsYTDComparable =
+VAR LastActual   = MAX ( Close[LastClosedMonthEnd] )
+VAR LastFYEnd    = IF ( MONTH ( LastActual ) &gt;= 4, YEAR ( LastActual ) + 1, YEAR ( LastActual ) )
+VAR LastFMNo     = MOD ( MONTH ( LastActual ) + 8, 12 ) + 1
+RETURN
+    'Date'[FiscalMonthNo] &lt;= LastFMNo
+        &amp;&amp; 'Date'[FYEnd] &lt;= LastFYEnd
+</code></pre>
+<p>With last closed month-end 30-Nov-2025 (fiscal month 8), every date in April–November of every FY is TRUE.
+FY2025-26 YTD vs FY2024-25 YTD then compares April–November with April–November, simply by filtering
+<code>IsYTDComparable = TRUE</code>. For daily flash reports use DayOfFiscalYear instead of FiscalMonthNo, taking care with
+29 February (a leap FY has one extra day; compare by calendar day-month or accept the one-day shift).</p>
+<h3 id="using-flags-in-measures-vs-slicers">Using flags in measures vs slicers</h3>
+<ul>
+<li><strong>Slicer / page filter:</strong> simplest; users toggle "Closed periods only".</li>
+<li><strong>Inside measures:</strong> robust for KPI cards that must always be like-for-like:</li>
+</ul>
+<pre><code class="language-DAX">YTD Actual (closed) =
+CALCULATE ( TOTALYTD ( [Actual], 'Date'[Date], &quot;3/31&quot; ), 'Date'[IsClosedPeriod] = TRUE () )
+
+PY YTD (comparable) =
+CALCULATE (
+    [Actual],
+    REMOVEFILTERS ( 'Date' ),
+    'Date'[FYEnd] = MAX ( 'Date'[FYEnd] ) - 1,
+    'Date'[IsYTDComparable] = TRUE ()
+)
+</code></pre>
+<p>Note the interaction with marked-Date-table behaviour: filtering a Date column other than <code>'Date'[Date]</code> (like
+IsClosedPeriod) does not trigger the automatic <code>REMOVEFILTERS('Date')</code>, so the flag intersects with existing month
+filters — usually what you want.</p>
+<h3 id="calculated-column-vs-measure-flags">Calculated column vs measure flags</h3>
+<p>Calculated-column flags are evaluated at refresh, so they are static between refreshes — ideal for slicers and
+fast filters. If the as-of date must change interactively (a "what-if as-of" slicer), compute the condition in a
+measure instead (topic 4 c05: <code>MIN('Date'[Date]) &lt;= [Last Actual Date]</code>).</p>
+<h3 id="illustration">Illustration</h3>
+<p>Last closed month-end 30-Nov-2025. Revenue (₹ crore):</p>
+<table>
+<thead>
+<tr>
+<th>FY</th>
+<th>Apr–Nov</th>
+<th>Dec–Mar</th>
+<th>Full year</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY2024-25</td>
+<td>640</td>
+<td>360</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>FY2025-26</td>
+<td>704</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>Without flags: FY2025-26 "YTD" 704 vs FY2024-25 full year 1,000 → apparent decline of 29.6%. With IsYTDComparable:
+704 vs 640 → growth of \(\frac{704 - 640}{640} = 10.0\%\). Budget variance filtered by IsClosedPeriod excludes the
+December–March budget of FY2025-26.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Circular dependency.</strong> A calculated column on Date that reads GL is fine when Date is a Power Query or fixed
+  CALENDAR table; if Date is a DAX table derived from GL (CALENDARAUTO or MIN/MAX of GL) you may hit circular
+  dependency errors — use a Close parameter table instead.</li>
+<li><strong>Post-close adjustments.</strong> Audit adjustments booked into March after the April close: IsClosedPeriod stays TRUE,
+  but numbers change; track "reopened" periods separately.</li>
+<li><strong>Partial months.</strong> IsYTD using posting date includes the current partial month; for monthly MIS prefer
+  closed-period cut-offs, and label flash reports explicitly.</li>
+<li><strong>Budget flags.</strong> Budget dated MonthStart: IsYTD for 1 December is TRUE if last actual date is 15 December, pulling
+  in the full December budget — use MonthEnd-based flags for budget comparisons.</li>
+<li><strong>Multiple entities closing on different days</strong> need entity-level closed flags in a separate table, not the Date
+  table.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>IsClosedPeriod marks months whose books are signed off; IsYTD marks dates on or before the last actuals date.</li>
+<li>For year-on-year, use a comparable flag based on fiscal month (or day of FY) applied to every year.</li>
+<li>Drive flags from a controlled as-of date (Close parameter table) rather than raw MAX posting date for MIS.</li>
+<li>Column flags are static between refreshes; use measure-based caps when the as-of date must be interactive.</li>
+<li>Flags prevent comparing partial current periods with full prior periods and open-month budget variance.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-evaluate-the-flags-l1">Q1. Evaluate the flags [L1]</h3>
+<p>With last closed month-end 31-Aug-2025 and last GL posting date 17-Sep-2025, state IsClosedPeriod, IsYTD and
+IsYTDComparable for 10-Aug-2024, 17-Sep-2025, 20-Sep-2025, 31-Mar-2025 and 15-May-2023.</p>
+<h3 id="q2-fix-a-misleading-kpi-l2">Q2. Fix a misleading KPI [L2]</h3>
+<p>A CEO dashboard card shows "Revenue YoY: −31%" in December 2025, computed as FY2025-26 total versus FY2024-25 total.
+Rewrite the measures using comparable flags, and specify which flag(s) the card's filter should use.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Both years must be cut at the same fiscal month.</p>
+</blockquote>
+<h3 id="q3-forecast-blend-l3">Q3. Forecast blend [L3]</h3>
+<p>Write a measure for full-year outlook that uses actuals for closed months and budget for open months, evaluated month
+by month so it works at quarter and FY totals. Explain why a simple <code>IF</code> on the flag at FY level fails.</p>
+<h3 id="q4-leap-year-flash-report-l2">Q4. Leap-year flash report [L2]</h3>
+<p>A daily flash compares FY2023-24 (366 days) with FY2022-23 using DayOfFiscalYear. Explain what goes wrong for dates
+after 28 February and propose a comparison key that avoids it.</p></section>
+<nav class="pager"><a class="prev" href="S07_Working_Day_Flags_and_Indian_Holidays_for_Close.html">← Working-Day Flags and Indian Holidays for Close Metrics</a><a class="next" href="../concepts/C01_DAX_Fiscal_Date_Table_with_an_FYEnd_Column.html">DAX Fiscal Date Table with an FYEnd Column →</a></nav>
+</main></div></body></html>

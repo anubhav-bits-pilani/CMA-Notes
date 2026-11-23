@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Masking Invalid Grid Cells Where g ≥ WACC · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C04_Masking_Invalid_Grid_Cells_Where_g_WACC.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 16</a> <span>›</span> <a href="../index.html">T5 · Multi-Dimensional Sensitivity Tables</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Multi-Dimensional Sensitivity Tables</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Excel_Data_Tables_Row_and_Column_Input_Cells.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S01_Excel_Data_Tables_Row_and_Column_Input_Cells.html">Excel Data Tables: Row and Column Input Cells</a></li><li><a href="../subtopics/S02_Grid_1_WACC_vs_Terminal_Growth_on_Implied_Share.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S02_Grid_1_WACC_vs_Terminal_Growth_on_Implied_Share.html">Grid 1: WACC vs Terminal Growth on Implied Share Price</a></li><li><a href="../subtopics/S03_Grid_2_WACC_vs_Exit_Multiple_on_Implied_Share.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S03_Grid_2_WACC_vs_Exit_Multiple_on_Implied_Share.html">Grid 2: WACC vs Exit Multiple on Implied Share Price</a></li><li><a href="../subtopics/S04_Extra_Grids_Operating_Drivers_on_EV_and_Upside_vs.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S04_Extra_Grids_Operating_Drivers_on_EV_and_Upside_vs.html">Extra Grids: Operating Drivers on EV and Upside vs CMP</a></li><li><a href="../subtopics/S05_Heat_Map_Formatting_with_the_Base_Case_at_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S05_Heat_Map_Formatting_with_the_Base_Case_at_the.html">Heat-Map Formatting with the Base Case at the Centre</a></li><li><a href="../subtopics/S06_Calculation_Mode_and_F9_Refresh_Discipline_for.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S06_Calculation_Mode_and_F9_Refresh_Discipline_for.html">Calculation Mode and F9 Refresh Discipline for Data Tables</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_TABLE_Row_and_Column_Input_Mapping.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C01_TABLE_Row_and_Column_Input_Mapping.html">TABLE() Row and Column Input Mapping</a></li><li><a href="C02_Centre_Cell_Must_Equal_Model_Output.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C02_Centre_Cell_Must_Equal_Model_Output.html">Centre Cell Must Equal Model Output</a></li><li><a href="C03_Data_Table_Input_Cells_Must_Be_on_the_Same_Sheet.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C03_Data_Table_Input_Cells_Must_Be_on_the_Same_Sheet.html">Data Table Input Cells Must Be on the Same Sheet</a></li><li><a href="C04_Masking_Invalid_Grid_Cells_Where_g_WACC.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C04_Masking_Invalid_Grid_Cells_Where_g_WACC.html">Masking Invalid Grid Cells Where g ≥ WACC</a></li><li><a href="C05_Running_Grids_with_the_Circularity_Breaker_On.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C05_Running_Grids_with_the_Circularity_Breaker_On.html">Running Grids with the Circularity Breaker On</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Masking Invalid Grid Cells Where g ≥ WACC</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Mask invalid cells where g ≥ WACC with an adjacent <code>=IF(g&gt;=WACC,"n.m.",…)</code> presentation grid</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>The Gordon terminal value is</p>
+<p>\[
+TV = \frac{FCFF_n (1+g)}{WACC - g}
+\]</p>
+<p>It is defined and economically meaningful only when \(WACC - g &gt; 0\), and in practice only when the spread is comfortably positive. For any grid cell with \(g_i \ge WACC_j\), the value is undefined (division by zero) or negative.</p>
+<p>The raw <code>TABLE()</code> body cannot be edited, so build an adjacent <strong>presentation grid</strong> that mirrors it:</p>
+<pre><code>=IF($H21&gt;=I$20, &quot;n.m.&quot;, I21)
+</code></pre>
+<p>Here <code>$H21</code> is the g header, <code>I$20</code> is the WACC header, and <code>I21</code> is the raw table cell. With offset axes, compare the absolute values instead, for example <code>=IF(gBase+$H21&gt;=WACCBase+I$20,"n.m.",I21)</code>.</p>
+<h2 id="explanation">Explanation</h2>
+<p><strong>Why not fix it inside the model?</strong> You can wrap the TV in <code>=IF(WACC&lt;=g, NA(), …)</code> so the raw table returns <code>#N/A</code>. That still leaves error values, or a misleading zero if you use <code>IFERROR(…,0)</code>, in a client-facing grid. The robust design is:</p>
+<ol>
+<li><strong>Raw table</strong>, hidden or placed off-print. It contains the <code>TABLE()</code> array and may show errors.</li>
+<li><strong>Presentation grid</strong>, placed visibly. It contains the <code>IF</code> masking and number formats, and is the only grid that is printed.</li>
+</ol>
+<p><strong>Extend the mask beyond the strict boundary.</strong> A spread of only 50–100 bp produces absurd TVs (implied multiples above 50×) even when the value is technically valid. A practical rule masks or flags cells where \(WACC - g &lt; \text{min spread}\), for example 2.0%, or where the implied g exceeds Rf (topic t3, s02):</p>
+<pre><code>=IF((WACC_j - g_i) &lt; Min_Spread, &quot;n.m.&quot;, IF(ISERROR(I21), &quot;err&quot;, I21))
+</code></pre>
+<p><strong>Exit-multiple grids</strong> rarely need masking, but negative terminal EBITDA or negative equity value in the bridge should show "n.m." rather than a negative price. Use <code>=IF(I21&lt;=0,"n.m.",I21)</code>.</p>
+<p><strong>Colour scales ignore text cells.</strong> Masked cells drop out of the heat map automatically. Grey them with a text-based rule (topic t5, s05).</p>
+<p><strong>Statistics on grids.</strong> When summarising a range for the football field (min and max of the grid), use <code>=MIN(...)</code> and <code>=MAX(...)</code> on the presentation grid, which ignore text. Alternatively use <code>AGGREGATE(15,6,range,1)</code> on the raw grid to ignore errors.</p>
+<h2 id="illustration">Illustration</h2>
+<p>A regulated utility has base WACC 9.0% and base g 6.0%. The grid has WACC from 8.0% to 10.0% across and g from 5.0% to 7.0% down, with a minimum spread of 2.5% (chosen for this low-WACC utility).</p>
+<table>
+<thead>
+<tr>
+<th>g ↓ / WACC →</th>
+<th>8.0%</th>
+<th>8.5%</th>
+<th>9.0%</th>
+<th>9.5%</th>
+<th>10.0%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5.0%</td>
+<td>412</td>
+<td>357</td>
+<td>316</td>
+<td>284</td>
+<td>258</td>
+</tr>
+<tr>
+<td>5.5%</td>
+<td>488</td>
+<td>405</td>
+<td>350</td>
+<td>310</td>
+<td>279</td>
+</tr>
+<tr>
+<td>6.0%</td>
+<td>n.m.</td>
+<td>474</td>
+<td><strong>396</strong></td>
+<td>343</td>
+<td>305</td>
+</tr>
+<tr>
+<td>6.5%</td>
+<td>n.m.</td>
+<td>n.m.</td>
+<td>465</td>
+<td>389</td>
+<td>337</td>
+</tr>
+<tr>
+<td>7.0%</td>
+<td>n.m.</td>
+<td>n.m.</td>
+<td>n.m.</td>
+<td>459</td>
+<td>381</td>
+</tr>
+</tbody>
+</table>
+<p>Values are ₹ per share and illustrative. Cells with a spread below 2.5% are masked.</p>
+<p>Without masking, the 7.0%/8.0% cell (spread 1.0%) would show a TV around 107× terminal FCFF. A reader might quote it as a "bull case". Masking prevents a meaningless number being presented as a valuation.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>This concept builds on topic t3, s02 (g caps) and c01 (the Gordon formula).</li>
+<li>It feeds the football-field DCF bar (topic t6, s08), where min and max should come from the masked grid.</li>
+<li>It relates to s05 (formatting <code>n.m.</code> cells) and c02. The centre cell is never masked, and if it were, the base case itself would be invalid.</li>
+<li>In practice, consumer and utility DCFs with low WACCs and high g are the usual candidates for masking.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-write-the-masking-formulas-l1">Q1. Write the masking formulas [L1]</h3>
+<p>A raw grid has its body in <code>I21:M25</code>, absolute WACC headers in <code>I20:M20</code>, and g headers in <code>H21:H25</code>. Write the presentation-grid formula for cell <code>I31</code> (mirroring <code>I21</code>). It should show "n.m." if \(WACC - g &lt; 2\%\), "err" if the raw cell is an error, and the value otherwise.</p>
+<h3 id="q2-spread-threshold-judgement-l2">Q2. Spread threshold judgement [L2]</h3>
+<p>For a consumer-staples DCF with a base WACC of 10.5% and g of 6.0%, argue for a minimum spread threshold (1.5%, 2.0% or 3.0%). Explain how the choice affects the football-field DCF range. Explain how you would document it.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Translate each spread into an implied terminal EV/EBITDA using a plausible FCFF/EBITDA conversion.</p>
+</blockquote>
+<h3 id="q3-football-field-range-from-a-masked-grid-l2">Q3. Football-field range from a masked grid [L2]</h3>
+<p>Explain why using <code>MIN</code> and <code>MAX</code> on the raw table (with errors or negative values) for the football-field DCF bar is wrong. Write the correct formulas using either the presentation grid or <code>AGGREGATE</code>.</p></section>
+<nav class="pager"><a class="prev" href="C03_Data_Table_Input_Cells_Must_Be_on_the_Same_Sheet.html">← Data Table Input Cells Must Be on the Same Sheet</a><a class="next" href="C05_Running_Grids_with_the_Circularity_Breaker_On.html">Running Grids with the Circularity Breaker On →</a></nav>
+</main></div></body></html>

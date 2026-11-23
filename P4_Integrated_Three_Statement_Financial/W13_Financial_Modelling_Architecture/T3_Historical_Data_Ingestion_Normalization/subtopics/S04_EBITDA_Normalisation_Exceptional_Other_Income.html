@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EBITDA Normalisation: Exceptional, Other Income, Leases, ESOPs, Forex · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S04_EBITDA_Normalisation_Exceptional_Other_Income.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T3 · Historical Data Ingestion &amp;…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Historical Data Ingestion &amp; Normalization</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Sources_of_Historical_Data_for_Indian_Listed.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S01_Sources_of_Historical_Data_for_Indian_Listed.html">Sources of Historical Data for Indian Listed Companies</a></li><li><a href="S02_Mapping_Schedule_III_Line_Items_to_a_Model_Chart.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S02_Mapping_Schedule_III_Line_Items_to_a_Model_Chart.html">Mapping Schedule III Line Items to a Model Chart of Accounts</a></li><li><a href="S03_Consolidated_vs_Standalone_Basis_NCI_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S03_Consolidated_vs_Standalone_Basis_NCI_and.html">Consolidated vs Standalone Basis, NCI and Associates</a></li><li><a href="S04_EBITDA_Normalisation_Exceptional_Other_Income.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S04_EBITDA_Normalisation_Exceptional_Other_Income.html">EBITDA Normalisation: Exceptional, Other Income, Leases, ESOPs, Forex</a></li><li><a href="S05_Restatements_Discontinued_Operations_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S05_Restatements_Discontinued_Operations_and.html">Restatements, Discontinued Operations and Acquisitions</a></li><li><a href="S06_Annual_Balance_Checks_and_CFS_to_BS_Cash.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S06_Annual_Balance_Checks_and_CFS_to_BS_Cash.html">Annual Balance Checks and CFS-to-BS Cash Reconciliation</a></li><li><a href="S07_Deriving_Historical_Ratios_as_Forecast_Anchors.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S07_Deriving_Historical_Ratios_as_Forecast_Anchors.html">Deriving Historical Ratios as Forecast Anchors</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Historical_Balance_Check_Assets_Equal_Equity_Plus.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C01_Historical_Balance_Check_Assets_Equal_Equity_Plus.html">Historical Balance Check: Assets Equal Equity Plus Liabilities</a></li><li><a href="../concepts/C02_CFS_Closing_Cash_to_Balance_Sheet_Cash.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C02_CFS_Closing_Cash_to_Balance_Sheet_Cash.html">CFS Closing Cash to Balance Sheet Cash Reconciliation</a></li><li><a href="../concepts/C03_Adjusted_EBITDA_Bridge_from_PBT.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C03_Adjusted_EBITDA_Bridge_from_PBT.html">Adjusted EBITDA Bridge from PBT</a></li><li><a href="../concepts/C04_Effective_Tax_Rate_with_Current_and_Deferred_Split.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C04_Effective_Tax_Rate_with_Current_and_Deferred_Split.html">Effective Tax Rate with Current and Deferred Split</a></li><li><a href="../concepts/C05_Operating_Net_Working_Capital_What_to_Exclude.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C05_Operating_Net_Working_Capital_What_to_Exclude.html">Operating Net Working Capital: What to Exclude</a></li><li><a href="../concepts/C06_Explicit_Rounding_Line_Instead_of_a_Balancing_Plug.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C06_Explicit_Rounding_Line_Instead_of_a_Balancing_Plug.html">Explicit Rounding Line Instead of a Balancing Plug</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>EBITDA Normalisation: Exceptional, Other Income, Leases, ESOPs, Forex</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> EBITDA normalisation: exceptional items, other income, Ind AS 116 lease effects, ESOP charges, forex gains/losses</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Reported EBITDA is not a defined Ind AS measure. Companies, brokers and data vendors compute it differently — with or without other income, before or after exceptional items, post- or pre-Ind AS 116, with or without ESOP charges and forex. A forecast built on an unnormalised base extrapolates one-offs; a valuation multiple applied to an inconsistently defined EBITDA misprices the company; and a peer comparison mixing lease bases is meaningless (Ind AS 116 can move a retailer's EBITDA margin by 600–1,000 bps). Normalisation produces a clean, repeatable operating EBITDA for each historical year, with a reconciliation to reported figures.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-normalisation-bridge">The normalisation bridge</h3>
+<p>Start from reported numbers and adjust explicitly (c03):</p>
+<p>\[
+\text{Adj. EBITDA} = \text{PBT} + \text{Finance costs} + \text{D\&amp;A} - \text{Other income} \pm \text{Exceptional items} \pm \text{other agreed adjustments}
+\]</p>
+<p>Then present a reconciliation table each year:</p>
+<table>
+<thead>
+<tr>
+<th>₹ crore (illustrative retailer, FY25)</th>
+<th>Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PBT (reported)</td>
+<td>1,820</td>
+</tr>
+<tr>
+<td>+ Finance costs (of which lease interest 310)</td>
+<td>395</td>
+</tr>
+<tr>
+<td>+ D&amp;A (of which ROU depreciation 520)</td>
+<td>870</td>
+</tr>
+<tr>
+<td>− Other income</td>
+<td>(240)</td>
+</tr>
+<tr>
+<td>+ Exceptional loss (impairment)</td>
+<td>60</td>
+</tr>
+<tr>
+<td>= Adjusted EBITDA, post-Ind AS 116</td>
+<td>2,905</td>
+</tr>
+<tr>
+<td>− Lease payments (principal + interest, per CFS/lease note)</td>
+<td>(830)</td>
+</tr>
+<tr>
+<td>= Adjusted EBITDA, pre-Ind AS 116 ("rent-adjusted")</td>
+<td>2,075</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-exceptional-items">1. Exceptional items</h3>
+<p>Schedule III Division II shows "Exceptional items" as a separate P&amp;L line before tax. <em>Ind AS 1.97–98</em> requires separate disclosure of material items (write-downs, restructuring, disposals, litigation settlements). Normalisation:</p>
+<ul>
+<li>Exclude from EBITDA if non-recurring and non-operating.</li>
+<li>Scrutinise items that recur ("exceptional" every year), and items that are operating in nature but labelled exceptional (inventory write-downs, VRS for store closures).</li>
+<li>Also look for <strong>unlabelled</strong> one-offs inside other expenses (e.g., a large provision for doubtful debts, a litigation charge) — concall transcripts and notes help.</li>
+</ul>
+<h3 id="2-other-income">2. Other income</h3>
+<p>Other income includes interest on deposits, dividends, fair-value gains on mutual funds (FVTPL), profit on sale of PPE, rental income and sometimes government grants or insurance claims. It is <strong>not</strong> operating EBITDA (topic pitfall): it depends on treasury size, and the treasury assets are added separately in the EV bridge (as cash/investments). Exclude all treasury income; consider keeping genuinely operating items (e.g., scrap sales mislabelled, recurring export incentives) only if they are operating and recurring — usually those belong in "other operating revenue".</p>
+<h3 id="3-ind-as-116-lease-effects">3. Ind AS 116 lease effects</h3>
+<p>Under <em>Ind AS 116</em>, lessees recognise ROU assets and lease liabilities for most leases; P&amp;L shows ROU depreciation and lease interest instead of rent. Exceptions remaining in opex: short-term leases (≤ 12 months), low-value assets, and <strong>variable lease payments not based on an index or rate</strong> (e.g., revenue-share rent) (<em>Ind AS 116.5–8, 116.38</em>).</p>
+<p>Normalisation choices:</p>
+<table>
+<thead>
+<tr>
+<th>Basis</th>
+<th>Definition</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Post-Ind AS 116 EBITDA</td>
+<td>As reported (rent excluded)</td>
+<td>Valuation with lease liabilities treated as debt; FCFF excludes lease payments from operating costs; WACC/multiples consistent</td>
+</tr>
+<tr>
+<td>Pre-Ind AS 116 (rent-adjusted) EBITDA</td>
+<td>Post-116 EBITDA − lease payments (or − ROU depreciation − lease interest as an approximation)</td>
+<td>Peer comparison with franchise-heavy peers; credit analysis; management KPIs</td>
+</tr>
+</tbody>
+</table>
+<p>State the basis explicitly (c03). For retailers like Trent, rent-adjusted EBITDA is what most analysts compare; for capital-light peers lease effects are small.</p>
+<p>Lease payments: CFS financing shows "Payment of lease liabilities — principal" and "— interest" (<em>Ind AS 116.50</em> applies Ind AS 7's rules for interest paid; under <em>Ind AS 7.33</em> a non-financial entity classifies interest paid as financing, so both components normally sit in financing; short-term, low-value and variable lease payments remain operating). Use the total cash outflow for leases disclosed in the lease note (<em>Ind AS 116.53(g)</em>).</p>
+<h3 id="4-esop-charges">4. ESOP charges</h3>
+<p>Share-based payment expense (<em>Ind AS 102</em>) sits within employee benefits expense. It is non-cash but <strong>economically real</strong> (dilution). Practice:</p>
+<ul>
+<li>Many Indian companies present "EBITDA before ESOP" in investor presentations (especially new-age companies).</li>
+<li>For valuation: if EBITDA excludes ESOP costs, you must account for dilution (use fully diluted shares incl. future grants) — otherwise you overvalue. Conservative practice keeps ESOP cost within EBITDA.</li>
+<li>Always show it as a separate line so either definition can be computed.</li>
+</ul>
+<h3 id="5-forex-gains-and-losses">5. Forex gains and losses</h3>
+<p><em>Ind AS 21</em> exchange differences arise on monetary items (receivables, payables, foreign-currency borrowings). Schedule III requires exchange differences "regarded as an adjustment to borrowing costs" to be shown within finance costs; others are in other income or other expenses (net). Normalisation:</p>
+<table>
+<thead>
+<tr>
+<th>Source of forex difference</th>
+<th>Treatment in adjusted EBITDA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trade receivables/payables (export/import operations)</td>
+<td>Operating — keep in EBITDA (it is part of realisation/cost), or normalise if volatile and hedged elsewhere</td>
+</tr>
+<tr>
+<td>Foreign-currency borrowings (ECB)</td>
+<td>Financing — exclude from EBITDA</td>
+</tr>
+<tr>
+<td>MTM on derivatives hedging borrowings</td>
+<td>Financing — exclude</td>
+</tr>
+<tr>
+<td>Translation of foreign operations (FCTR in OCI)</td>
+<td>Not in P&amp;L — no adjustment</td>
+</tr>
+</tbody>
+</table>
+<p>Disclose the policy; volatile forex in one year (e.g., a sharp INR depreciation) can swing margins by tens of bps.</p>
+<h3 id="excel-implementation">Excel implementation</h3>
+<p>Historicals tab rows: reported EBITDA (computed), each adjustment as a separate signed row (blue inputs with source note references), adjusted EBITDA, and both lease bases. Forecast EBITDA is built from drivers on the same definition as adjusted historical EBITDA.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Capitalised costs</strong>: employee costs or borrowing costs capitalised to CWIP (<em>Ind AS 16, 23</em>) lift EBITDA; a forensic flag (Phase 2).</li>
+<li><strong>Government grants and PLI incentives</strong>: if recognised in other operating revenue and linked to production, arguably operating; if in other income, judge.</li>
+<li><strong>Gain on sale of PPE</strong> inside other income: exclude; loss on sale inside other expenses: exclude too for symmetry.</li>
+<li><strong>CSR expense</strong>: a statutory, recurring cost (<em>Sec 135</em>) — keep in EBITDA.</li>
+<li><strong>Discontinued operations</strong>: already excluded by <em>Ind AS 105</em> presentation (s05).</li>
+<li><strong>Management-adjusted EBITDA</strong>: reconcile; don't adopt it without scrutiny.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Build adjusted EBITDA via an explicit bridge from PBT and show both post- and pre-Ind AS 116 versions.</li>
+<li>Exclude other income (treasury) and genuine exceptional items; hunt for unlabelled one-offs.</li>
+<li>Under Ind AS 116 only short-term, low-value and variable non-index rent remains in opex.</li>
+<li>Keep ESOP cost as a separate line; if excluded from EBITDA, reflect dilution.</li>
+<li>Classify forex by source: operating forex stays, financing forex goes.</li>
+<li>Forecast on the same definition as the normalised history.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-build-the-bridge-l1">Q1. Build the bridge [L1]</h3>
+<p>From the following FY25 data (₹ crore) compute reported and adjusted EBITDA (post- and pre-Ind AS 116): PBT 2,450; finance costs 180 (of which lease interest 95, forex loss on ECB 12); D&amp;A 640 (ROU depreciation 210); other income 310 (interest 190, MF gains 85, profit on sale of land 35); exceptional items: VRS cost 75; total lease cash outflow 290; ESOP expense in employee cost 40.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Decide where the ₹12 crore forex loss sits before adding back finance costs.</p>
+</blockquote>
+<h3 id="q2-exceptional-or-operating-l2">Q2. Exceptional or operating? [L2]</h3>
+<p>Classify and justify: (a) inventory write-down of ₹48 crore on discontinued SKUs shown as exceptional; (b) impairment of a subsidiary's goodwill; (c) store-closure costs recurring in each of the last four years; (d) insurance claim received for a fire at a warehouse, in other income; (e) one-time GST refund of earlier years in other operating revenue.</p>
+<h3 id="q3-peer-comparability-under-ind-as-116-l2">Q3. Peer comparability under Ind AS 116 [L2]</h3>
+<p>Retailer A owns 20% of stores and leases 80% on fixed rent; Retailer B leases all stores on revenue-share rent (8% of store sales). Both report EBITDA margin of 15%. Explain why their margins are not comparable and set out the adjustment you would make to each to compare them on a rent-adjusted basis.</p>
+<h3 id="q4-esop-policy-memo-l3">Q4. ESOP policy memo [L3]</h3>
+<p>A new-age consumer company reports "Adjusted EBITDA (pre-ESOP)" of ₹420 crore versus reported EBITDA of ₹310 crore. Write a short memo for your IC on whether to value it on pre- or post-ESOP EBITDA, how each choice must be paired with the share count, and what disclosures from the Ind AS 102 note you would use.</p></section>
+<nav class="pager"><a class="prev" href="S03_Consolidated_vs_Standalone_Basis_NCI_and.html">← Consolidated vs Standalone Basis, NCI and Associates</a><a class="next" href="S05_Restatements_Discontinued_Operations_and.html">Restatements, Discontinued Operations and Acquisitions →</a></nav>
+</main></div></body></html>

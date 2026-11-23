@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Types and Controlling Automatic Type Detection · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S04_Data_Types_and_Controlling_Automatic_Type.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T1 · Power Query architecture and M basics</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Power Query architecture and M basics</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Power_Query_Connectors_for_Accounting_and_ERP_Data.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S01_Power_Query_Connectors_for_Accounting_and_ERP_Data.html">Power Query Connectors for Accounting and ERP Data Sources</a></li><li><a href="S02_Power_Query_Editor_Anatomy_Steps_Formula_Bar_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S02_Power_Query_Editor_Anatomy_Steps_Formula_Bar_and.html">Power Query Editor Anatomy: Steps, Formula Bar and Dependencies</a></li><li><a href="S03_M_Language_Structure_letin_Values_Records_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S03_M_Language_Structure_letin_Values_Records_Lists.html">M Language Structure: let/in, Values, Records, Lists and each</a></li><li><a href="S04_Data_Types_and_Controlling_Automatic_Type.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S04_Data_Types_and_Controlling_Automatic_Type.html">Data Types and Controlling Automatic Type Detection</a></li><li><a href="S05_Query_Folding_Which_Steps_Fold_Native_Query_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S05_Query_Folding_Which_Steps_Fold_Native_Query_and.html">Query Folding: Which Steps Fold, Native Query and Diagnostics</a></li><li><a href="S06_Parameters_Staging_Queries_and_Reference_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S06_Parameters_Staging_Queries_and_Reference_vs.html">Parameters, Staging Queries and Reference vs Duplicate</a></li><li><a href="S07_Load_Options_and_Refresh_Behaviour_in_Excel_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S07_Load_Options_and_Refresh_Behaviour_in_Excel_vs.html">Load Options and Refresh Behaviour in Excel vs Power BI</a></li><li><a href="S08_Privacy_Levels_and_FormulaFirewall_Errors.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S08_Privacy_Levels_and_FormulaFirewall_Errors.html">Privacy Levels and Formula.Firewall Errors</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_CsvDocument_with_FileContents_Delimiter_Encoding.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C01_CsvDocument_with_FileContents_Delimiter_Encoding.html">Csv.Document with File.Contents: Delimiter, Encoding, QuoteStyle</a></li><li><a href="../concepts/C02_ExcelWorkbook_Navigation_to_a_Named_Sheet_or_Table.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C02_ExcelWorkbook_Navigation_to_a_Named_Sheet_or_Table.html">Excel.Workbook Navigation to a Named Sheet or Table</a></li><li><a href="../concepts/C03_SqlDatabase_with_a_Native_Query_Blocks_Later.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C03_SqlDatabase_with_a_Native_Query_Blocks_Later.html">Sql.Database with a Native Query Blocks Later Folding</a></li><li><a href="../concepts/C04_ValueNativeQuery_with_Parameters_and_EnableFolding.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C04_ValueNativeQuery_with_Parameters_and_EnableFolding.html">Value.NativeQuery with Parameters and EnableFolding</a></li><li><a href="../concepts/C05_The_each_Keyword_and_the_Underscore_Parameter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C05_The_each_Keyword_and_the_Underscore_Parameter.html">The each Keyword and the Underscore Parameter</a></li><li><a href="../concepts/C06_Folding_Breakers_TableBuffer_Index_Columns_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C06_Folding_Breakers_TableBuffer_Index_Columns_and.html">Folding Breakers: Table.Buffer, Index Columns and Custom Functions</a></li><li><a href="../concepts/C07_MySQLDatabase_Connector_and_OdbcDataSource_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C07_MySQLDatabase_Connector_and_OdbcDataSource_for.html">MySQL.Database Connector and Odbc.DataSource for Tally</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Data Types and Controlling Automatic Type Detection</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Data types and type detection, including turning off automatic type detection on import</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Types decide whether a ₹1,23,456.00 balance is summable, whether 03-04-2026 is 3 April or 4 March, whether account code 00400100 keeps its leading zeros, and whether a merge between the bank file and the ledger finds any matches at all. Power Query's automatic type detection is convenient on a one-off import, but in a recurring pipeline it is a liability: it inserts a <code>Changed Type</code> step that hard-codes every column name from the sample file and guesses types from the first 200 rows. The professional pattern is to <strong>turn auto-detection off, then type deliberately, once, at a known point</strong>, with an explicit locale.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-type-system">The type system</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>M name</th>
+<th>Icon</th>
+<th>Finance use / note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Any</td>
+<td><code>type any</code></td>
+<td>ABC/123</td>
+<td>Untyped; loads to Excel/model as text — avoid in outputs</td>
+</tr>
+<tr>
+<td>Text</td>
+<td><code>type text</code></td>
+<td>ABC</td>
+<td>Account codes, GSTIN, UTR, cheque numbers</td>
+</tr>
+<tr>
+<td>Decimal number</td>
+<td><code>type number</code></td>
+<td>1.2</td>
+<td>Amounts (double precision)</td>
+</tr>
+<tr>
+<td>Fixed decimal / Currency</td>
+<td><code>Currency.Type</code></td>
+<td>currency sign</td>
+<td>4 decimal places, avoids floating-point drift in large sums</td>
+</tr>
+<tr>
+<td>Whole number</td>
+<td><code>Int64.Type</code></td>
+<td>123</td>
+<td>Counts, fiscal month number, sequence numbers</td>
+</tr>
+<tr>
+<td>Percentage</td>
+<td><code>Percentage.Type</code></td>
+<td>%</td>
+<td>Rates, tax percentages</td>
+</tr>
+<tr>
+<td>Date</td>
+<td><code>type date</code></td>
+<td>calendar</td>
+<td>Voucher date, value date</td>
+</tr>
+<tr>
+<td>Date/Time</td>
+<td><code>type datetime</code></td>
+<td>—</td>
+<td>Bank transaction timestamps</td>
+</tr>
+<tr>
+<td>Date/Time/Timezone</td>
+<td><code>type datetimezone</code></td>
+<td>—</td>
+<td>API sources</td>
+</tr>
+<tr>
+<td>Duration</td>
+<td><code>type duration</code></td>
+<td>—</td>
+<td>Result of date subtraction</td>
+</tr>
+<tr>
+<td>True/False</td>
+<td><code>type logical</code></td>
+<td>—</td>
+<td>Flags (IsReconciled)</td>
+</tr>
+<tr>
+<td>Binary</td>
+<td><code>type binary</code></td>
+<td>—</td>
+<td>File content from Folder.Files</td>
+</tr>
+</tbody>
+</table>
+<p>Two kinds of typing exist in M. <strong>Conversion</strong> (<code>Table.TransformColumnTypes</code>) changes values — "125000" becomes 125000 — and produces cell errors where conversion fails. <strong>Ascription</strong> (the type argument of <code>Table.AddColumn</code>, or <code>Value.ReplaceType</code>) only labels a column without converting; if the values do not conform, errors surface later in the model. Use conversion on imported columns and ascription on columns you compute.</p>
+<h3 id="why-codes-must-be-text">Why codes must be text</h3>
+<p>Account codes, cost-centre codes, PAN, GSTIN, IFSC, UTR and cheque numbers are <strong>identifiers, not quantities</strong>. Typed as numbers they lose leading zeros (<code>000123</code> → 123), long UTRs can lose precision beyond 15 significant digits, and a merge with a text-typed key on the other side returns zero matches without any error. Rule: anything you would never add up is text.</p>
+<h3 id="automatic-type-detection">Automatic type detection</h3>
+<p>On import of CSV/Excel, Power Query adds <code>Promoted Headers</code> and <code>Changed Type</code> steps:</p>
+<pre><code>#&quot;Changed Type&quot; = Table.TransformColumnTypes(#&quot;Promoted Headers&quot;,
+    {{&quot;Date&quot;, type date}, {&quot;Narration&quot;, type text}, {&quot;Chq./Ref.No.&quot;, Int64.Type},
+     {&quot;Withdrawal Amt.&quot;, type number}, {&quot;Deposit Amt.&quot;, type number}})
+</code></pre>
+<p>Problems in a recurring pipeline:</p>
+<ol>
+<li><strong>Hard-coded column names</strong>: if next month's file names the column <code>Withdrawal Amount</code>, refresh fails with <code>Expression.Error: The column 'Withdrawal Amt.' of the table wasn't found</code>.</li>
+<li><strong>Sample-based guesses</strong>: types are inferred from the top 200 rows; a cheque number column that is numeric for 200 rows becomes <code>Int64.Type</code> and errors on "NEFT-HDFCR520..." later.</li>
+<li><strong>Locale of the machine</strong>: the conversion uses the current machine/file locale. On a laptop set to en-US, "03/04/2026" becomes 4 March; on en-IN, 3 April.</li>
+<li><strong>Typing before cleaning</strong>: report headers and subtotal rows still present make columns <code>any</code> or produce errors.</li>
+</ol>
+<h3 id="turning-it-off">Turning it off</h3>
+<ul>
+<li><strong>Excel</strong>: Data → Get Data → Query Options → <em>Current Workbook</em> → Data Load → Type Detection: "Never detect column types and headers for unstructured sources". There is also a Global setting for new workbooks.</li>
+<li><strong>Power BI Desktop</strong>: File → Options and settings → Options → <em>Current File</em> → Data Load → Type detection → uncheck "Detect column types and headers for unstructured sources" (Global offers three choices: always, per-file setting, never).</li>
+</ul>
+<p>After turning it off, imports land with <code>Column1, Column2 …</code> as <code>any</code>; you skip report headers, promote headers and type explicitly. Alternatively, simply delete the auto <code>Changed Type</code> step and add your own at the end of cleaning.</p>
+<h3 id="typing-deliberately-with-locale">Typing deliberately with locale</h3>
+<p>Type once, after cleaning and before output, with the locale stated:</p>
+<pre><code>Typed = Table.TransformColumnTypes(Cleaned,
+    {{&quot;Voucher Date&quot;, type date}, {&quot;Debit&quot;, Currency.Type}, {&quot;Credit&quot;, Currency.Type},
+     {&quot;Ledger Code&quot;, type text}}, &quot;en-IN&quot;)
+</code></pre>
+<p>The third argument (culture) controls parsing of dates and number formats. <code>"en-IN"</code> reads dd-mm-yyyy dates and Indian digit grouping. For a mix of sources, type each source with its own culture in its own staging query. To avoid hard-coding the column list for typing, build it dynamically:</p>
+<pre><code>AmountCols = List.Select(Table.ColumnNames(t), each Text.EndsWith(_, &quot;Amt&quot;)),
+Typed = Table.TransformColumnTypes(t, List.Transform(AmountCols, each {_, Currency.Type}), &quot;en-IN&quot;)
+</code></pre>
+<h3 id="decimal-vs-fixed-decimal">Decimal vs fixed decimal</h3>
+<p><code>type number</code> is a 64-bit float: summing a million amounts with paise can leave residues like 0.0000000003, so a Dr = Cr check written as <code>=</code> fails. Either use <code>Currency.Type</code> (fixed to four decimals) for amounts, or test with a tolerance: <code>Number.Abs(Dr - Cr) &lt; 0.01</code>.</p>
+<h3 id="illustration">Illustration</h3>
+<p>A Tally Day Book export: Date "01-04-2025", Voucher No "00045", Amount "1,23,456.00 Dr". With auto-detection on an en-US machine: Date becomes 4 January 2025 (wrong), Voucher No becomes 45 (leading zeros lost), Amount stays text. Correct sequence: keep as text → split Dr/Cr suffix → clean digits → <code>TransformColumnTypes</code> with <code>"en-IN"</code> → Date 1 April 2025, Voucher "00045" (text), Amount 123456.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Error vs null</strong>: a failed conversion produces an <em>error</em> cell, not null. Count errors in a check query before removing them; silent <code>Remove Errors</code> hides data loss.</li>
+<li><strong>Excel serial dates</strong> in a column with mixed text dates: numbers like 45748 need <code>Date.From(Number)</code> while text needs locale parsing — handle with <code>try</code>.</li>
+<li><strong>Type of a merged/expanded column</strong> often reverts to <code>any</code>; re-type after expanding.</li>
+<li><strong>Data Model vs Excel table</strong>: Excel worksheet loads ignore some type nuances (a Currency column formats as number), but the Data Model and Power BI rely on types for aggregation and relationships.</li>
+<li><strong>Locale setting in options</strong> (File → Options → Regional Settings) affects all untyped conversions; explicit culture arguments make the query machine-independent.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Turn off automatic type detection for recurring pipelines and type explicitly, once, after cleaning.</li>
+<li>Identifiers (account codes, GSTIN, UTR, cheque no.) are text; amounts are Currency or number.</li>
+<li>Always pass a culture (<code>"en-IN"</code>) to type conversions of dates and formatted numbers.</li>
+<li>Conversion changes values and can create errors; ascription only labels — use each where appropriate.</li>
+<li>Floating-point residues make exact Dr = Cr tests fail; use fixed decimal or a tolerance.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-choose-the-type-l1">Q1. Choose the type [L1]</h3>
+<p>State the correct M type for each column of an ICICI bank CSV: Transaction Date, Value Date, Cheque Number, UTR/Reference, Description, Withdrawal (₹), Deposit (₹), Balance (₹), Branch Code ("0045"), and a computed IsMatched flag.</p>
+<h3 id="q2-diagnose-a-refresh-failure-l2">Q2. Diagnose a refresh failure [L2]</h3>
+<p>April's query worked. In May refresh fails with <code>Expression.Error: The column 'Withdrawal Amt.' of the table wasn't found.</code> and, separately, the Cheque No column shows 37 errors. Explain the root cause of each and the permanent fix, including the settings you would change.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Look at what the auto-generated step captured from the April sample.</p>
+</blockquote>
+<h3 id="q3-locale-test-l2">Q3. Locale test [L2]</h3>
+<p>A CSV contains the dates 05-04-2025, 13-04-2025 and 31-03-2026 as text. Describe what <code>Table.TransformColumnTypes</code> without a culture produces on (a) an en-US machine and (b) an en-IN machine, and write the step that gives the correct result regardless of machine.</p>
+<h3 id="q4-control-total-tolerance-l2">Q4. Control total tolerance [L2]</h3>
+<p>Your TB has 18,450 lines with Debit and Credit typed as <code>type number</code>. <code>List.Sum([Debit]) = List.Sum([Credit])</code> returns false although the Tally TB is balanced at ₹482,36,19,045.60. Explain why and write two alternative ways to make the check reliable.</p>
+<h3 id="q5-design-a-typing-policy-l3">Q5. Design a typing policy [L3]</h3>
+<p>Draft a one-page typing policy for a finance team's Power Query files covering: auto-detection settings, where in the pipeline typing happens, culture, identifier columns, amount precision, computed column ascription and how type errors are logged.</p></section>
+<nav class="pager"><a class="prev" href="S03_M_Language_Structure_letin_Values_Records_Lists.html">← M Language Structure: let/in, Values, Records, Lists and…</a><a class="next" href="S05_Query_Folding_Which_Steps_Fold_Native_Query_and.html">Query Folding: Which Steps Fold, Native Query and… →</a></nav>
+</main></div></body></html>

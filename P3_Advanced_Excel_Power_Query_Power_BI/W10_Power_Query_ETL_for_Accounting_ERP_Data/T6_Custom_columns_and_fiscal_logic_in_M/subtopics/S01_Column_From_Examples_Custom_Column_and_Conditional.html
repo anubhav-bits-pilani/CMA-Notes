@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Column From Examples, Custom Column and Conditional Column · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S01_Column_From_Examples_Custom_Column_and_Conditional.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T6 · Custom columns and fiscal logic in M</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · Custom columns and fiscal logic in M</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Column_From_Examples_Custom_Column_and_Conditional.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S01_Column_From_Examples_Custom_Column_and_Conditional.html">Column From Examples, Custom Column and Conditional Column</a></li><li><a href="S02_Indian_FY_Attributes_Label_Fiscal_Month_Quarter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S02_Indian_FY_Attributes_Label_Fiscal_Month_Quarter.html">Indian FY Attributes: Label, Fiscal Month, Quarter and Sort Key</a></li><li><a href="S03_Receivable_and_Payable_Ageing_Against_an_As_Of.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S03_Receivable_and_Payable_Ageing_Against_an_As_Of.html">Receivable and Payable Ageing Against an As-Of-Date Parameter</a></li><li><a href="S04_Conditional_Logic_in_M_ifthenelse_andor_and_Null.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S04_Conditional_Logic_in_M_ifthenelse_andor_and_Null.html">Conditional Logic in M: if/then/else, and/or, and Null Coalescing</a></li><li><a href="S05_Type_Ascription_on_New_Columns.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S05_Type_Ascription_on_New_Columns.html">Type Ascription on New Columns</a></li><li><a href="S06_Group_By_Aggregations_for_Summary_Outputs_During.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S06_Group_By_Aggregations_for_Summary_Outputs_During.html">Group By Aggregations for Summary Outputs During Ingestion</a></li><li><a href="S07_Date_Functions_for_Fiscal_and_Ageing_Logic.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S07_Date_Functions_for_Fiscal_and_Ageing_Logic.html">Date Functions for Fiscal and Ageing Logic</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_FY_End_Year_and_FY_Label_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C01_FY_End_Year_and_FY_Label_Formula.html">FY End Year and FY Label Formula</a></li><li><a href="../concepts/C02_Fiscal_Month_Number_with_NumberMod.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C02_Fiscal_Month_Number_with_NumberMod.html">Fiscal Month Number with Number.Mod</a></li><li><a href="../concepts/C03_Fiscal_Quarter_with_NumberIntegerDivide.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C03_Fiscal_Quarter_with_NumberIntegerDivide.html">Fiscal Quarter with Number.IntegerDivide</a></li><li><a href="../concepts/C04_Ageing_Bucket_Expression_with_DurationDays.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C04_Ageing_Bucket_Expression_with_DurationDays.html">Ageing Bucket Expression with Duration.Days</a></li><li><a href="../concepts/C05_Null_Safe_Net_Amount_and_Operator_Precedence.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C05_Null_Safe_Net_Amount_and_Operator_Precedence.html">Null-Safe Net Amount and Operator Precedence</a></li><li><a href="../concepts/C06_TableGroup_by_FY_and_Ledger_with_a_Typed_Sum.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C06_TableGroup_by_FY_and_Ledger_with_a_Typed_Sum.html">Table.Group by FY and Ledger with a Typed Sum</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Column From Examples, Custom Column and Conditional Column</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Column From Examples vs Custom Column vs Conditional Column, and reading the M each one generates</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Power Query offers three dialogs under <strong>Add Column</strong> for creating a new column, and each writes a <code>Table.AddColumn</code> step with different M inside. Finance users often use whichever dialog they found first, accept the result because the preview looks right, and move on. The risk is not the dialog but the unread M: Column From Examples may infer a rule that fits your five examples but not row 3,000; a Conditional Column may compare text with numbers; a Custom Column usually leaves the type as <code>any</code>. Reading the generated formula bar is how you catch these before they reach the model, and it is also how you learn M quickly — the dialogs are a code generator.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="column-from-examples">Column From Examples</h3>
+<p>You type the desired output for a few rows; Power Query searches for a transformation that reproduces them and shows the formula it found at the top of the dialog. Options: <strong>From All Columns</strong> or <strong>From Selection</strong>.</p>
+<p>Typical uses: extracting a code ("400100" from "400100 - Sales Domestic"), combining text ("MUM-2025-04"), reformatting dates ("Apr-25" from a date), and <strong>range bucketing</strong> of numbers (type "0-30" next to 12 and "31-60" next to 45, and it proposes bins).</p>
+<p>Generated M examples:</p>
+<pre><code class="language-m">Table.AddColumn(Source, &quot;Code&quot;, each Text.BeforeDelimiter([Ledger], &quot; - &quot;), type text)
+Table.AddColumn(Source, &quot;Period&quot;, each Date.ToText([Date], &quot;MMM-yy&quot;), type text)
+Table.AddColumn(Source, &quot;Range&quot;, each
+    if [Days] &gt;= 0 and [Days] &lt;= 30 then &quot;0-30&quot;
+    else if [Days] &gt;= 31 and [Days] &lt;= 60 then &quot;31-60&quot;
+    else null, type text)
+</code></pre>
+<p>Strengths: quick, and it usually adds a type. Weaknesses: the inferred rule is only as good as your examples; it may choose <code>Text.Middle([Ledger], 0, 6)</code> (positional, fails for 5-digit codes) instead of <code>Text.BeforeDelimiter</code>; range bins may leave gaps or return null outside the example range; and date-format outputs are culture-dependent. Always provide examples that cover edge cases (short codes, missing delimiters), then read and, if needed, edit the formula.</p>
+<h3 id="custom-column">Custom Column</h3>
+<p>You write an M expression in a dialog that shows available columns. The step generated is:</p>
+<pre><code class="language-m">Table.AddColumn(#&quot;Previous Step&quot;, &quot;FYEnd&quot;, each Date.Year([Date]) + (if Date.Month([Date]) &gt;= 4 then 1 else 0))
+</code></pre>
+<p>The expression is wrapped in <code>each</code>, so <code>[Date]</code> refers to the current row. Strengths: full M power — <code>let ... in</code> blocks, function calls, references to parameters (<code>AsOfDate</code>) and other queries. Weaknesses: the dialog in many versions has no type selector, so the column is <strong><code>any</code></strong> (ABC/123 icon). Newer builds include a data-type drop-down; if yours does not, add the type argument by editing the formula bar:</p>
+<pre><code class="language-m">Table.AddColumn(#&quot;Previous Step&quot;, &quot;FYEnd&quot;, each Date.Year([Date]) + (if Date.Month([Date]) &gt;= 4 then 1 else 0), Int64.Type)
+</code></pre>
+<h3 id="conditional-column">Conditional Column</h3>
+<p>A rule builder: column, operator, value, output, with <strong>Else If</strong> clauses and an <strong>Else</strong> value. Values and outputs can be literals, columns or parameters (choose via the ABC/123 drop-down). Generated M:</p>
+<pre><code class="language-m">Table.AddColumn(#&quot;Added Days&quot;, &quot;Bucket&quot;, each
+    if [Days] &lt;= 30 then &quot;0-30&quot;
+    else if [Days] &lt;= 60 then &quot;31-60&quot;
+    else if [Days] &lt;= 90 then &quot;61-90&quot;
+    else &quot;&gt;90&quot;)
+</code></pre>
+<p>Strengths: readable rules for non-coders, easy to edit through the gear icon. Weaknesses: one column per condition (no <code>and</code> across columns in older versions; you need a Custom Column for compound tests), no null handling unless you add a rule for it, and type may be left as <code>any</code> depending on version. Nulls behave differently by operator: <code>null = 30</code> is simply <code>false</code>, so an equality rule lets a null row fall through to the Else output (a silent misclassification), whereas <code>null &lt;= 30</code> returns null, and <code>if null then ...</code> raises an error, so a range rule turns the row into an Error cell that surfaces only at load.</p>
+<h3 id="reading-and-editing-the-generated-m">Reading and editing the generated M</h3>
+<p>Each dialog produces one <code>Table.AddColumn(table, newColumnName, columnGenerator, optional columnType)</code> step. After using a dialog:</p>
+<ol>
+<li>Click the step and read the formula bar.</li>
+<li>Check the generator logic for positional operations, uncovered ranges and null behaviour.</li>
+<li>Check the fourth argument (type); add it if missing.</li>
+<li>Rename the step meaningfully ("Added FY label" rather than "Added Custom2").</li>
+</ol>
+<p>Once comfortable, you can write the step directly in the formula bar or Advanced Editor, which is faster and less error-prone than reopening dialogs.</p>
+<h3 id="choosing-between-them">Choosing between them</h3>
+<table>
+<thead>
+<tr>
+<th>Need</th>
+<th>Best route</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Text pattern you can show but not easily describe</td>
+<td>Column From Examples, then verify the formula</td>
+</tr>
+<tr>
+<td>Rule chain on one column with literal outputs</td>
+<td>Conditional Column</td>
+</tr>
+<tr>
+<td>Compound logic, parameters, functions, <code>let</code> blocks</td>
+<td>Custom Column (or formula bar)</td>
+</tr>
+<tr>
+<td>Anything going into a data model</td>
+<td>Any of them, but confirm the type argument</td>
+</tr>
+</tbody>
+</table>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>Ledger values: "400100 - Sales Domestic", "40020 - Sales Export", "Misc Income". Column From Examples given the first row's "400100" may infer <code>Text.Start([Ledger], 6)</code> and return "40020 " (with a trailing space and hyphen issues) for the second row and "Misc I" for the third. Supplying "40020" as a second example pushes it towards <code>Text.BeforeDelimiter([Ledger], " - ")</code>, which returns "Misc Income" (whole text) for the third — still wrong for a ledger without a code. A Custom Column with <code>if Text.Contains([Ledger], " - ") then Text.BeforeDelimiter([Ledger], " - ") else null</code>, typed <code>type text</code>, is the robust version.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Culture in examples.</strong> Typing "01/04/2025" as an example output is read in the current locale; prefer unambiguous outputs.</li>
+<li><strong>Editing via the gear icon.</strong> Re-opening a Conditional Column dialog after hand-editing its M may fail or discard edits; once edited by hand, keep editing by hand.</li>
+<li><strong>Column references with spaces.</strong> Custom Column writes <code>[Invoice Date]</code>; names with special characters use <code>[#"Inv. Date"]</code>.</li>
+<li><strong>Parameters in Conditional Column.</strong> Comparing with a parameter (e.g. MSME threshold days) is supported and keeps rules configurable.</li>
+<li><strong>Performance.</strong> All three produce row-by-row expressions that do not fold on file sources; on SQL sources simple expressions may fold, Column From Examples outputs often do not.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>All three dialogs generate a <code>Table.AddColumn</code> step; the difference is how the generator expression is produced.</li>
+<li>Column From Examples infers a rule from your examples — verify it for positional logic and uncovered ranges.</li>
+<li>Custom Column gives full M but often leaves the column as <code>any</code>; add the type argument.</li>
+<li>Conditional Column suits single-column rule chains; handle nulls explicitly, or they fall through to Else (equality rules) or error (range rules).</li>
+<li>Read every generated formula, fix the type and rename the step before loading.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-identify-the-generator-l1">Q1. Identify the generator [L1]</h3>
+<p>For each formula, say which dialog most likely produced it and what is missing for a data-model load: (a) <code>Table.AddColumn(t, "Custom", each [Debit] - [Credit])</code>; (b) <code>Table.AddColumn(t, "Bucket", each if [Days] &lt;= 30 then "0-30" else "&gt;30")</code>; (c) <code>Table.AddColumn(t, "Code", each Text.Start([Ledger], 6), type text)</code>.</p>
+<h3 id="q2-null-fall-through-l2">Q2. Null fall-through [L2]</h3>
+<p>An ageing Conditional Column is <code>if [Days] &lt;= 30 then "0-30" else if [Days] &lt;= 60 then "31-60" else if [Days] &lt;= 90 then "61-90" else "&gt;90"</code>. Fourteen invoices have a null InvoiceDate, so Days is null. State what the column shows for those rows and why, what happens when the query loads, and rewrite the formula to put them in a "No date" bucket with a proper type.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Work out what <code>null &lt;= 30</code> evaluates to in M, and what <code>if</code> does with a condition that is not a logical value; then test <code>[Days] = null</code> first.</p>
+</blockquote>
+<h3 id="q3-repair-an-inferred-rule-l2">Q3. Repair an inferred rule [L2]</h3>
+<p>Column From Examples produced <code>Text.Middle([Narration], 9, 16)</code> to extract a UTR from narrations like "NEFT CR-HDFCN52025040112345-ACME". Explain why this is fragile and write a delimiter-based replacement that returns null when the pattern is absent.</p>
+<h3 id="q4-choose-the-route-l1">Q4. Choose the route [L1]</h3>
+<p>Which dialog would you use for: (a) a column showing "Domestic" or "Export" from the ledger code range; (b) a period label "Apr-25" from a date; (c) ageing bucket using the <code>AsOfDate</code> parameter and InvoiceDate; (d) an MSME flag that depends on both MSMEStatus and DaysOverdue?</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← Custom columns and fiscal logic in M</a><a class="next" href="S02_Indian_FY_Attributes_Label_Fiscal_Month_Quarter.html">Indian FY Attributes: Label, Fiscal Month, Quarter and Sort… →</a></nav>
+</main></div></body></html>

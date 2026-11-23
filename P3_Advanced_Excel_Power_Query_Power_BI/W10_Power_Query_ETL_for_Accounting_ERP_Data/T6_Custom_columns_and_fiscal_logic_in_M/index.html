@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custom columns and fiscal logic in M · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/index.html" data-kind="topic">
+<header class="top"><a class="brand" href="../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../index.html">Home</a> <span>›</span> <a href="../../index.html">Phase 3</a> <span>›</span> <a href="../index.html">Week 10</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">Week 10</a></div><ul class="side-links"><li><a href="../T1_Power_Query_architecture_and_M_basics/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/index.html">T1 · Power Query architecture and M basics</a></li><li><a href="../T2_Cleaning_messy_ERPTally_exports/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/index.html">T2 · Cleaning messy ERP/Tally exports</a></li><li><a href="../T3_Unpivoting_wide_budgets_and_TBs/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/index.html">T3 · Unpivoting wide budgets and TBs</a></li><li><a href="../T4_Folder_consolidation_pipeline/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/index.html">T4 · Folder consolidation pipeline</a></li><li><a href="../T5_Merging_appending_and_reconciliation/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/index.html">T5 · Merging, appending and reconciliation joins</a></li><li><a href="index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/index.html">T6 · Custom columns and fiscal logic in M</a></li></ul></aside>
+<main class="content">
+<div class="kind">Topic</div>
+<h1>Custom columns and fiscal logic in M</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<section class="index"><h2>Notes in this topic</h2><div class="cols"><div><h3>Subtopics</h3><ul class="links num"><li><a href="subtopics/S01_Column_From_Examples_Custom_Column_and_Conditional.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S01_Column_From_Examples_Custom_Column_and_Conditional.html">S01 · Column From Examples, Custom Column and Conditional Column</a></li><li><a href="subtopics/S02_Indian_FY_Attributes_Label_Fiscal_Month_Quarter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S02_Indian_FY_Attributes_Label_Fiscal_Month_Quarter.html">S02 · Indian FY Attributes: Label, Fiscal Month, Quarter and Sort Key</a></li><li><a href="subtopics/S03_Receivable_and_Payable_Ageing_Against_an_As_Of.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S03_Receivable_and_Payable_Ageing_Against_an_As_Of.html">S03 · Receivable and Payable Ageing Against an As-Of-Date Parameter</a></li><li><a href="subtopics/S04_Conditional_Logic_in_M_ifthenelse_andor_and_Null.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S04_Conditional_Logic_in_M_ifthenelse_andor_and_Null.html">S04 · Conditional Logic in M: if/then/else, and/or, and Null Coalescing</a></li><li><a href="subtopics/S05_Type_Ascription_on_New_Columns.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S05_Type_Ascription_on_New_Columns.html">S05 · Type Ascription on New Columns</a></li><li><a href="subtopics/S06_Group_By_Aggregations_for_Summary_Outputs_During.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S06_Group_By_Aggregations_for_Summary_Outputs_During.html">S06 · Group By Aggregations for Summary Outputs During Ingestion</a></li><li><a href="subtopics/S07_Date_Functions_for_Fiscal_and_Ageing_Logic.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S07_Date_Functions_for_Fiscal_and_Ageing_Logic.html">S07 · Date Functions for Fiscal and Ageing Logic</a></li></ul></div><div><h3>Key concepts & formulas</h3><ul class="links num"><li><a href="concepts/C01_FY_End_Year_and_FY_Label_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C01_FY_End_Year_and_FY_Label_Formula.html">C01 · FY End Year and FY Label Formula</a></li><li><a href="concepts/C02_Fiscal_Month_Number_with_NumberMod.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C02_Fiscal_Month_Number_with_NumberMod.html">C02 · Fiscal Month Number with Number.Mod</a></li><li><a href="concepts/C03_Fiscal_Quarter_with_NumberIntegerDivide.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C03_Fiscal_Quarter_with_NumberIntegerDivide.html">C03 · Fiscal Quarter with Number.IntegerDivide</a></li><li><a href="concepts/C04_Ageing_Bucket_Expression_with_DurationDays.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C04_Ageing_Bucket_Expression_with_DurationDays.html">C04 · Ageing Bucket Expression with Duration.Days</a></li><li><a href="concepts/C05_Null_Safe_Net_Amount_and_Operator_Precedence.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C05_Null_Safe_Net_Amount_and_Operator_Precedence.html">C05 · Null-Safe Net Amount and Operator Precedence</a></li><li><a href="concepts/C06_TableGroup_by_FY_and_Ledger_with_a_Typed_Sum.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C06_TableGroup_by_FY_and_Ledger_with_a_Typed_Sum.html">C06 · Table.Group by FY and Ledger with a Typed Sum</a></li></ul></div></div></section><article class="note"><blockquote>
+<p><strong>Roadmap topic:</strong> Custom Columns &amp; Conditional Logic in M: Creating fiscal year (Apr–Mar India FY), quarter, and ageing buckets dynamically during ingestion</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>Raw ledgers, invoices and bank lines arrive with a calendar date and an amount. Management reporting in India needs more: the financial year (FY2025-26), the fiscal month (April = 1), the fiscal quarter (Q1 = April–June), a period sort key, receivable and payable ageing buckets as at the reporting date, net amounts from separate Debit and Credit columns, and summary tables by FY and ledger. Adding these attributes during ingestion, in Power Query, means every downstream consumer — the Excel pivot, the Power BI model, the board pack — uses one consistent definition instead of re-deriving "what quarter is February?" in a dozen formulas.</p>
+<p>This topic is about writing that logic in M correctly and reproducibly. It starts with the three ways the editor creates columns — <strong>Column From Examples</strong>, <strong>Custom Column</strong> and <strong>Conditional Column</strong> — and the habit of reading the M each generates (s01). It then builds the <strong>Indian FY attributes</strong> (s02) and <strong>ageing buckets against an as-of-date parameter</strong> (s03), which rest on M's conditional syntax: <code>if ... then ... else</code>, nested conditions, <code>and</code>/<code>or</code>, and null coalescing with <code>??</code> (s04). Because new columns default to type <code>any</code>, <strong>type ascription</strong> (s05) is essential before loading. <strong>Group By</strong> (s06) produces summary outputs such as FY-ledger totals or ageing summaries during ingestion. Finally, the <strong>date functions</strong> that power all of it — <code>Date.Month</code>, <code>Date.Year</code>, <code>Date.EndOfMonth</code>, <code>Date.AddMonths</code>, <code>Duration.Days</code> — are covered with their edge cases (s07).</p>
+<p>For FP&amp;A roles, this is the step that makes data "report-ready": a long fact table with a real date, FY, fiscal quarter and sort key loads into a model that slices correctly by Indian fiscal periods. For controllership and audit, ageing buckets computed against a fixed as-of date make the receivables ageing, MSME 45-day analysis and ECL provision matrix reproducible: refresh tomorrow and the March ageing does not change. The key concepts give the exact formulas — FY end year and label, fiscal month via <code>Number.Mod</code>, fiscal quarter via <code>Number.IntegerDivide</code>, the ageing <code>let ... in if</code> chain, the parenthesised <code>??</code> net amount and the <code>Table.Group</code> aggregation — each of which you should be able to type from memory.</p>
+<h2 id="concept-map">Concept map</h2>
+<table>
+<thead>
+<tr>
+<th>Subtopic / concept</th>
+<th>Role in the topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s01 Column From Examples vs Custom vs Conditional</td>
+<td>Three UI routes to new columns, and reading their M</td>
+</tr>
+<tr>
+<td>s02 Indian FY attributes</td>
+<td>FY label, fiscal month, fiscal quarter, period sort key</td>
+</tr>
+<tr>
+<td>s03 Ageing buckets with an as-of parameter</td>
+<td>Reproducible receivable/payable ageing</td>
+</tr>
+<tr>
+<td>s04 Conditional syntax and <code>??</code></td>
+<td>The language features behind buckets and net amounts</td>
+</tr>
+<tr>
+<td>s05 Type ascription on new columns</td>
+<td>Prevents <code>any</code>/text columns in the model</td>
+</tr>
+<tr>
+<td>s06 Group By aggregations</td>
+<td>Sum, Count Rows, All Rows summaries during ingestion</td>
+</tr>
+<tr>
+<td>s07 Date functions</td>
+<td>The building blocks for FY, ageing and period logic</td>
+</tr>
+<tr>
+<td>c01 FY end year and label</td>
+<td><code>Date.Year + (if month &gt;= 4 ...)</code> and the FY2025-26 label</td>
+</tr>
+<tr>
+<td>c02 Fiscal month</td>
+<td><code>Number.Mod(month + 8, 12) + 1</code></td>
+</tr>
+<tr>
+<td>c03 Fiscal quarter</td>
+<td><code>Number.IntegerDivide(..., 3) + 1</code></td>
+</tr>
+<tr>
+<td>c04 Ageing expression</td>
+<td><code>Duration.Days(AsOfDate - [InvoiceDate])</code> with bucket chain</td>
+</tr>
+<tr>
+<td>c05 Net amount with <code>??</code></td>
+<td>Null-safe Dr − Cr with correct precedence</td>
+</tr>
+<tr>
+<td>c06 <code>Table.Group</code> by FY and Ledger</td>
+<td>Typed summary aggregation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-concepts-to-study">Related concepts to study</h2>
+<h3 id="fiscal-calendar-as-a-date-dimension-week-11">Fiscal calendar as a Date dimension (Week 11)</h3>
+<p><em>→ Week 11: build the fiscal calendar once as a Date dimension instead of repeating columns in each fact</em></p>
+<p>Adding FY, fiscal month and quarter to every fact table works in a flat Excel output, but in a data model it is duplication: the Actuals, Budget and AR facts each carry the same derived columns, and a change in convention (FY label format) must be made three times. The star-schema answer is one Calendar (Date) dimension, generated in Power Query with <code>List.Dates</code> from the earliest to the latest date needed, carrying every fiscal attribute once, and related to each fact on a date key. Facts then hold only the date. Week 11 builds this table and marks it as a date table for time intelligence; the formulas from this topic move into that one query.</p>
+<h3 id="msme-ageing-and-ecl-provision-matrix-weeks-14">MSME ageing and ECL provision matrix (Weeks 1–4)</h3>
+<p><em>→ Week 1–4: MSME 45-day payment ageing and Ind AS 109 ECL provision-matrix buckets</em></p>
+<p>Ageing buckets are not only analytical. Under Sec 15 of the MSMED Act, 2006, payment to a micro or small enterprise supplier must be made within the agreed period, capped at 45 days from acceptance; Sec 43B(h) of the Income-tax Act (from FY2023-24) disallows the deduction for such dues until paid. Schedule III requires MSME dues disclosure and ageing of trade payables and receivables (less than 6 months, 6 months–1 year, 1–2 years, 2–3 years, more than 3 years, from the due date). For receivables, the Ind AS 109 simplified approach (lifetime ECL, Ind AS 109.5.5.15) commonly uses a provision matrix (B5.5.35) with loss rates per days-past-due bucket. The bucket boundaries in M must match those definitions — days from due date, not invoice date, where the rule says so.</p>
+<h3 id="excel-equivalents-with-let-and-lambda-week-9">Excel equivalents with LET and LAMBDA (Week 9)</h3>
+<p><em>→ Week 9: Excel equivalents with LET/LAMBDA</em></p>
+<p>The same logic in Excel 365: <code>=LET(m, MONTH(A2), y, YEAR(A2) + (m &gt;= 4), "FY" &amp; (y - 1) &amp; "-" &amp; RIGHT(y, 2))</code> for the FY label, <code>=MOD(MONTH(A2) + 8, 12) + 1</code> for the fiscal month, and a named <code>LAMBDA</code> such as <code>FYLABEL</code> stored in Name Manager for reuse. Formulas are visible and recalculate live, which suits small models and one-off analysis. Power Query is preferable when the attribute should be computed once at load for large tables, when several reports share the logic, or when the output feeds a data model. Comparing the two outputs on a sample of dates is a good test of either implementation.</p>
+<h3 id="roches-maxim">Roche's Maxim</h3>
+<p><em>Roche's Maxim: transform as far upstream as possible (Power Query over DAX calculated columns)</em></p>
+<p>Matthew Roche's maxim states: "Data should be transformed as far upstream as possible, and as far downstream as necessary." For Power BI, a column such as FY or AgeingBucket computed in Power Query (or, better still, in the source database view) is compressed efficiently by the VertiPaq engine and is available to every report, whereas a DAX calculated column is computed after load, is stored less efficiently and is tied to one model. The "as far downstream as necessary" half matters too: anything that depends on user selections (e.g. ageing as at a date chosen in a slicer) cannot be computed upstream and belongs in a DAX measure.</p>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<h3 id="datetimelocalnow-for-ageing">DateTime.LocalNow() for ageing</h3>
+<p><em>Using <code>DateTime.LocalNow()</code> for ageing, so buckets change on every refresh; use an as-of parameter instead.</em></p>
+<p>It is tempting to compute days outstanding as "today minus invoice date". But "today" changes: the March ageing refreshed on 10 April shows different buckets from the one signed off on 5 April, and the audit file cannot be reproduced. In the Power BI Service, refreshes run on cloud servers in UTC, so <code>DateTime.LocalNow()</code> returns UTC time, and between midnight and 05:30 IST the "date" is still yesterday. Correct treatment: an <code>AsOfDate</code> parameter (type date), set to the reporting date, used in all ageing logic. Detect in review by searching the Advanced Editor for <code>LocalNow</code>, <code>FixedLocalNow</code> or <code>DateTime.Date(DateTime.LocalNow())</code>.</p>
+<h3 id="inconsistent-fy-labels">Inconsistent FY labels</h3>
+<p><em>Off-by-one or inconsistent FY labels (FY2025 vs FY2025-26) that differ from the management reporting convention.</em></p>
+<p>"FY2025" is ambiguous: some companies mean the year ending March 2025, others the year starting April 2025, and US-style systems mean something else again. Off-by-one errors arise when the formula uses the calendar year of the date for all months (April 2025 labelled FY2024-25). Correct treatment: agree the convention with management reporting (the Annual Report uses "FY 2025-26" or "year ended 31 March 2026"), compute FY from the end year, and test boundary dates: 31-Mar-2026 and 1-Apr-2026 must fall in different FYs. Detect by a check table of boundary dates and by comparing the label with the budget file's labels before appending.</p>
+<h3 id="untyped-custom-columns">Untyped custom columns</h3>
+<p><em>Untyped custom columns (ABC/123 icon) loading into the model as text.</em></p>
+<p><code>Table.AddColumn</code> without its fourth argument produces a column of type <code>any</code>, shown with the ABC/123 icon. In Excel, values look fine; in the Data Model or Power BI, an <code>any</code> column is typically loaded as text, so amounts cannot be summed, fiscal month sorts as "1, 10, 11, 12, 2…" and date columns lose date hierarchies. People miss it because the preview shows numbers. Correct treatment: always pass the type (<code>type number</code>, <code>Int64.Type</code>, <code>type date</code>, <code>type text</code>) to <code>Table.AddColumn</code>, or add a <code>Table.TransformColumnTypes</code> step. Detect by scanning column header icons before loading, or with <code>Table.Schema(t)</code> filtered to <code>Kind = "any"</code>.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-fiscal-attributes-for-a-gl-extract-l2">Q1. Fiscal attributes for a GL extract [L2]</h3>
+<p>A GL extract has 2,40,000 rows with PostingDate (datetime) from 1-Apr-2024 to 31-Mar-2026, Debit and Credit (either may be null). Write the M steps that add, with correct types: FY end year, FY label (FY2025-26 style), fiscal month number, fiscal quarter ("Q1"…"Q4"), period sort key (FY end year × 100 + fiscal month), and Net amount. List five boundary dates you would test and the expected label for each.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Convert the datetime to a date first; then every formula uses <code>Date.Month</code> and <code>Date.Year</code> of that date.</p>
+</blockquote>
+<h3 id="q2-reproducible-receivables-ageing-l3">Q2. Reproducible receivables ageing [L3]</h3>
+<p>The AR open-items file at 31-Mar-2026 contains InvoiceNo, Customer, InvoiceDate, DueDate (credit period 30–90 days by customer) and OpenAmount. Design the query that produces (a) invoice-date ageing buckets 0-30, 31-60, 61-90, &gt;90; (b) Schedule III due-date buckets (not due, less than 6 months, 6 months–1 year, 1–2 years, 2–3 years, more than 3 years); (c) a summary by Customer and bucket; (d) an ECL provision using loss rates 0.5%, 1.5%, 4%, 10%, 25%, 50% and 100% assigned to buckets of your choice. Explain where the as-of date comes from and why.</p>
+<h3 id="q3-diagnose-a-broken-model-l2">Q3. Diagnose a broken model [L2]</h3>
+<p>After loading a Power Query output to Power BI, a user reports: the FiscalMonth slicer sorts 1, 10, 11, 12, 2, 3…; the Net measure returns blank for 412 rows; and the ageing changes every morning. Identify the probable M-level cause of each symptom and the fix.</p>
+<h3 id="q4-msme-payables-ageing-l3">Q4. MSME payables ageing [L3]</h3>
+<p>The AP open-items list at 31-Mar-2026 has Vendor, MSMEStatus (Micro/Small/Medium/Not MSME), BillDate, AcceptanceDate, AgreedCreditDays and OpenAmount. Build the logic to compute the statutory due date (agreed days capped at 45 from acceptance for micro and small), days overdue at the as-of date, and a flag for amounts whose deduction is at risk under Sec 43B(h) because they remain unpaid beyond the MSMED Act time limit (note that the general Sec 43B proviso allowing payment up to the return due date does not apply to clause (h)). State the assumptions you make.</p>
+<h3 id="q5-interview-power-query-or-dax-l2">Q5. Interview: Power Query or DAX? [L2]</h3>
+<p>An interviewer asks where you would compute (a) FY label, (b) ageing bucket as at the reporting date, (c) ageing as at a date chosen by the user in a slicer, and (d) customer-level overdue total. Answer with reasons, referring to Roche's Maxim and refresh behaviour.</p></section>
+<nav class="pager"><a class="prev" href="../T5_Merging_appending_and_reconciliation/concepts/C06_Sign_Alignment_Between_Bank_and_Book.html">← Sign Alignment Between Bank and Book</a><a class="next" href="subtopics/S01_Column_From_Examples_Custom_Column_and_Conditional.html">Column From Examples, Custom Column and Conditional Column →</a></nav>
+</main></div></body></html>

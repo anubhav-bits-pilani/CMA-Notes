@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cash Roll-Forward with Minimum Balance and Revolver Logic · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W17_Enterprise_Budgeting_Architecture/T4_Capex_tranches_and_liquidity_cash_budget/concepts/C01_Cash_Roll_Forward_with_Minimum_Balance_and.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 5</a> <span>›</span> <a href="../../index.html">Week 17</a> <span>›</span> <a href="../index.html">T4 · Capex tranches and liquidity cash budget</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Capex tranches and liquidity cash budget</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Capex_Classification_Maintenance_Growth.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W17_Enterprise_Budgeting_Architecture/T4_Capex_tranches_and_liquidity_cash_budget/subtopics/S01_Capex_Classification_Maintenance_Growth.html">Capex Classification: Maintenance, Growth, Regulatory/ESG, Project vs Blanket</a></li><li><a href="../subtopics/S02_Capex_Approval_Committee_Appropriation_Request_DoA.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W17_Enterprise_Budgeting_Architecture/T4_Capex_tranches_and_liquidity_cash_budget/subtopics/S02_Capex_Approval_Committee_Appropriation_Request_DoA.html">Capex Approval: Committee, Appropriation Request, DoA and Gates</a></li><li><a href="../subtopics/S03_Milestone_Based_Capex_Tranches_and_Post_Investment.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W17_Enterprise_Budgeting_Architecture/T4_Capex_tranches_and_liquidity_cash_budget/subtopics/S03_Milestone_Based_Capex_Tranches_and_Post_Investment.html">Milestone-Based Capex Tranches and Post-Investment Review</a></li><li><a href="../subtopics/S04_Phasing_Capex_Cash_Advances_Milestones_Retention.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W17_Enterprise_Budgeting_Architecture/T4_Capex_tranches_and_liquidity_cash_budget/subtopics/S04_Phasing_Capex_Cash_Advances_Milestones_Retention.html">Phasing Capex Cash: Advances, Milestones, Retention, LC and Duty</a></li><li><a href="../subtopics/S05_Capitalisation_Date_Schedule_II_Depreciation_and.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W17_Enterprise_Budgeting_Architecture/T4_Capex_tranches_and_liquidity_cash_budget/subtopics/S05_Capitalisation_Date_Schedule_II_Depreciation_and.html">Capitalisation Date, Schedule II Depreciation and Ind AS 23 in the Budget</a></li><li><a href="../subtopics/S06_Monthly_Cash_Budget_and_the_13_Week_Direct_Cash.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W17_Enterprise_Budgeting_Architecture/T4_Capex_tranches_and_liquidity_cash_budget/subtopics/S06_Monthly_Cash_Budget_and_the_13_Week_Direct_Cash.html">Monthly Cash Budget and the 13-Week Direct Cash Flow Forecast</a></li><li><a href="../subtopics/S07_Indian_Statutory_Cash_Calendar_GST_TDS_PFESI_and.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W17_Enterprise_Budgeting_Architecture/T4_Capex_tranches_and_liquidity_cash_budget/subtopics/S07_Indian_Statutory_Cash_Calendar_GST_TDS_PFESI_and.html">Indian Statutory Cash Calendar: GST, TDS, PF/ESI and Advance Tax</a></li><li><a href="../subtopics/S08_Funding_the_Budget_CCOD_Limits_Drawing_Power_Cash.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W17_Enterprise_Budgeting_Architecture/T4_Capex_tranches_and_liquidity_cash_budget/subtopics/S08_Funding_the_Budget_CCOD_Limits_Drawing_Power_Cash.html">Funding the Budget: CC/OD Limits, Drawing Power, Cash Buffer, Covenants</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Cash_Roll_Forward_with_Minimum_Balance_and.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W17_Enterprise_Budgeting_Architecture/T4_Capex_tranches_and_liquidity_cash_budget/concepts/C01_Cash_Roll_Forward_with_Minimum_Balance_and.html">Cash Roll-Forward with Minimum Balance and Revolver Logic</a></li><li><a href="C02_Budgeting_Customer_Collections_Roll_Forward_and.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W17_Enterprise_Budgeting_Architecture/T4_Capex_tranches_and_liquidity_cash_budget/concepts/C02_Budgeting_Customer_Collections_Roll_Forward_and.html">Budgeting Customer Collections: Roll-Forward and Ageing Profiles</a></li><li><a href="C03_Budgeting_Supplier_Payments_and_the_MSME_45_Day.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W17_Enterprise_Budgeting_Architecture/T4_Capex_tranches_and_liquidity_cash_budget/concepts/C03_Budgeting_Supplier_Payments_and_the_MSME_45_Day.html">Budgeting Supplier Payments and the MSME 45-Day Rule (Sec 43B(h))</a></li><li><a href="C04_Advance_Tax_Instalments_15_45_75_100.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W17_Enterprise_Budgeting_Architecture/T4_Capex_tranches_and_liquidity_cash_budget/concepts/C04_Advance_Tax_Instalments_15_45_75_100.html">Advance Tax Instalments: 15%, 45%, 75%, 100%</a></li><li><a href="C05_Drawing_Power_on_Stock_and_Book_Debts.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W17_Enterprise_Budgeting_Architecture/T4_Capex_tranches_and_liquidity_cash_budget/concepts/C05_Drawing_Power_on_Stock_and_Book_Debts.html">Drawing Power on Stock and Book Debts</a></li><li><a href="C06_Cash_Capex_from_Additions_Capex_Creditors_and.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W17_Enterprise_Budgeting_Architecture/T4_Capex_tranches_and_liquidity_cash_budget/concepts/C06_Cash_Capex_from_Additions_Capex_Creditors_and.html">Cash Capex from Additions, Capex Creditors and Capital Advances</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Cash Roll-Forward with Minimum Balance and Revolver Logic</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Closing cash = Opening cash + Receipts − Payments; Shortfall vs minimum balance → revolver draw; surplus → repay/invest</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>\[
+\text{PreFin}_t = \text{Cash}_{t-1} + R_t - P_t
+\]</p>
+<p>\[
+D_t = \min\left(\max\left(0,\; M - \text{PreFin}_t\right),\; A_t\right), \qquad
+Y_t = \min\left(\max\left(0,\; \text{PreFin}_t - M\right),\; B_{t-1}\right)
+\]</p>
+<p>\[
+\text{Cash}_t = \text{PreFin}_t + D_t - Y_t, \qquad B_t = B_{t-1} + D_t - Y_t
+\]</p>
+<p>where \(\text{Cash}_{t-1}\) is opening cash, \(R_t\) receipts, \(P_t\) payments (operating, capex, tax, interest, scheduled debt service, dividends), \(\text{PreFin}_t\) cash before revolver activity, \(M\) the minimum cash balance, \(A_t\) available revolver capacity (\(\min(\text{limit}, \text{drawing power}) - B_{t-1}\)), \(D_t\) the draw, \(Y_t\) the repayment, and \(B_t\) the revolver balance. Any surplus remaining after full repayment (\(\text{Cash}_t &gt; M\) with \(B_t = 0\)) is available to invest.</p>
+<h2 id="explanation">Explanation</h2>
+<p>The identity is the corkscrew of the cash budget. The policy layer on top says: never let cash fall below \(M\); fund shortfalls first from the revolver (CC/OD/WCDL), and use surpluses first to repay the revolver (the most expensive, most flexible debt), then invest (liquid funds, sweep FDs) or prepay term debt per the treasury policy.</p>
+<p>Key conditions:</p>
+<ul>
+<li><strong>Ordering.</strong> Scheduled term-loan repayments and interest are included in \(P_t\) before the revolver calculation; the revolver is the balancing facility.</li>
+<li><strong>Availability cap.</strong> If \(M - \text{PreFin}_t &gt; A_t\), the model must show a <strong>funding gap</strong> (an explicit check line), not quietly breach the limit or let cash go negative.</li>
+<li><strong>Surplus deployment.</strong> A policy may keep a target cash \(M^* &gt; M\) before investing; investments then become another corkscrew (opening + purchase − redemption).</li>
+<li><strong>Interest.</strong> Revolver interest on the average balance creates circularity (Topic 5); interest on the opening balance avoids it.</li>
+<li><strong>Sign discipline.</strong> Present payments as negative numbers or as positives subtracted — never mix within one schedule.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>Minimum cash ₹5 crore; opening cash ₹6 crore; opening CC ₹10 crore; CC limit ₹30 crore (DP not binding).</p>
+<table>
+<thead>
+<tr>
+<th>₹ crore</th>
+<th>Apr</th>
+<th>May</th>
+<th>Jun</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Opening cash</td>
+<td>6.0</td>
+<td>5.0</td>
+<td>5.0</td>
+</tr>
+<tr>
+<td>Receipts</td>
+<td>40.0</td>
+<td>38.0</td>
+<td>52.0</td>
+</tr>
+<tr>
+<td>Payments</td>
+<td>(45.0)</td>
+<td>(41.0)</td>
+<td>(39.0)</td>
+</tr>
+<tr>
+<td>Pre-financing cash</td>
+<td>1.0</td>
+<td>2.0</td>
+<td>18.0</td>
+</tr>
+<tr>
+<td>CC draw / (repay)</td>
+<td>4.0</td>
+<td>3.0</td>
+<td>(13.0)</td>
+</tr>
+<tr>
+<td>Closing cash</td>
+<td>5.0</td>
+<td>5.0</td>
+<td>5.0</td>
+</tr>
+<tr>
+<td>Closing CC</td>
+<td>14.0</td>
+<td>17.0</td>
+<td>4.0</td>
+</tr>
+</tbody>
+</table>
+<p>In June the surplus of ₹13 crore over minimum is less than the CC balance of ₹17 crore, so all ₹13 crore repays CC and closing cash stays at ₹5 crore; nothing is invested.</p>
+<p>Excel (row 8 = pre-financing cash, row 10 = opening CC, <code>MinCash</code> and <code>Limit</code> named inputs):</p>
+<pre><code>Draw  =MIN(MAX(0, MinCash - F8), Limit - F10)
+Repay =MIN(MAX(0, F8 - MinCash), F10)
+Gap   =MAX(0, MinCash - F8 - (Limit - F10))
+</code></pre>
+<h2 id="connections">Connections</h2>
+<p>Links to s06 (monthly cash budget and 13-week forecast structure), s08 (drawing power as the availability cap), c05 (drawing power formula), and Topic 5 s06 (interest circularity on average balances). In Phase 4 the same logic becomes the revolver and cash sweep in the 3-statement model's debt schedule. In FP&amp;A practice the funding-gap check line is what the CFO looks at first.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-six-month-revolver-schedule-l2">Q1. Six-month revolver schedule [L2]</h3>
+<p>Opening cash ₹4 crore, minimum cash ₹4 crore, opening revolver ₹0, limit ₹20 crore. Receipts (₹ crore): 30, 28, 26, 35, 42, 45. Payments: 33, 34, 31, 30, 33, 36. Build the cash and revolver corkscrew, and state the closing investible surplus in month 6.</p>
+<h3 id="q2-funding-gap-check-l2">Q2. Funding gap check [L2]</h3>
+<p>Extend Q1 with a capex payment of ₹14 crore in month 3 and a revolver limit of ₹15 crore. Identify the month and size of any funding gap and propose three ways the budget could close it.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> The gap is the shortfall after the draw is capped at available capacity.</p>
+</blockquote>
+<h3 id="q3-policy-design-l3">Q3. Policy design [L3]</h3>
+<p>A treasury policy says: keep ₹10 crore minimum, repay CC before investing, prepay term loan only if surplus exceeds ₹25 crore for three consecutive months. Describe how you would implement this policy in a monthly Excel cash budget, including the checks and named inputs.</p></section>
+<nav class="pager"><a class="prev" href="../subtopics/S08_Funding_the_Budget_CCOD_Limits_Drawing_Power_Cash.html">← Funding the Budget: CC/OD Limits, Drawing Power, Cash…</a><a class="next" href="C02_Budgeting_Customer_Collections_Roll_Forward_and.html">Budgeting Customer Collections: Roll-Forward and Ageing… →</a></nav>
+</main></div></body></html>

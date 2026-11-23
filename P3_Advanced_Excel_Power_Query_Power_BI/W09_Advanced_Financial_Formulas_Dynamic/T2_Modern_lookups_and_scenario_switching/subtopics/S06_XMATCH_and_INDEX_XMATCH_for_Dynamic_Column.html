@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XMATCH and INDEX-XMATCH for Dynamic Column Selection · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S06_XMATCH_and_INDEX_XMATCH_for_Dynamic_Column.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T2 · Modern lookups and scenario switching</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Modern lookups and scenario switching</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_XLOOKUP_Arguments_Not_Found_Value_Match_Mode_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S01_XLOOKUP_Arguments_Not_Found_Value_Match_Mode_and.html">XLOOKUP Arguments: Not-Found Value, Match Mode and Search Mode</a></li><li><a href="S02_Approximate_Match_Lookups_for_Slabs_TDS_Rates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S02_Approximate_Match_Lookups_for_Slabs_TDS_Rates.html">Approximate-Match Lookups for Slabs, TDS Rates, Tiers and Bands</a></li><li><a href="S03_Reverse_Search_for_Latest_Price_FX_Rate_and_Last.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S03_Reverse_Search_for_Latest_Price_FX_Rate_and_Last.html">Reverse Search for Latest Price, FX Rate and Last Payment Date</a></li><li><a href="S04_Two_Way_Lookups_on_Account_Month_Grids.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S04_Two_Way_Lookups_on_Account_Month_Grids.html">Two-Way Lookups on Account × Month Grids</a></li><li><a href="S05_XLOOKUP_Returning_Rows_Columns_and_Range.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S05_XLOOKUP_Returning_Rows_Columns_and_Range.html">XLOOKUP Returning Rows, Columns and Range References</a></li><li><a href="S06_XMATCH_and_INDEX_XMATCH_for_Dynamic_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S06_XMATCH_and_INDEX_XMATCH_for_Dynamic_Column.html">XMATCH and INDEX-XMATCH for Dynamic Column Selection</a></li><li><a href="S07_Live_Scenario_Switches_with_CHOOSE_INDEX_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S07_Live_Scenario_Switches_with_CHOOSE_INDEX_and.html">Live Scenario Switches with CHOOSE, INDEX and SWITCH</a></li><li><a href="S08_Multi_Key_Lookups_Helper_Keys_vs_Boolean_Arrays.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S08_Multi_Key_Lookups_Helper_Keys_vs_Boolean_Arrays.html">Multi-Key Lookups: Helper Keys vs Boolean Arrays</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_The_Fully_Specified_XLOOKUP_for_Ledger_Mapping.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C01_The_Fully_Specified_XLOOKUP_for_Ledger_Mapping.html">The Fully Specified XLOOKUP for Ledger Mapping</a></li><li><a href="../concepts/C02_Next_Smaller_XLOOKUP_for_Slab_Rates_Without.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C02_Next_Smaller_XLOOKUP_for_Slab_Rates_Without.html">Next-Smaller XLOOKUP for Slab Rates Without Sorting</a></li><li><a href="../concepts/C03_Nested_XLOOKUP_as_a_Two_Way_Lookup.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C03_Nested_XLOOKUP_as_a_Two_Way_Lookup.html">Nested XLOOKUP as a Two-Way Lookup</a></li><li><a href="../concepts/C04_INDEX_MATCH_MATCH_The_Version_Proof_Two_Way_Lookup.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C04_INDEX_MATCH_MATCH_The_Version_Proof_Two_Way_Lookup.html">INDEX-MATCH-MATCH: The Version-Proof Two-Way Lookup</a></li><li><a href="../concepts/C05_Boolean_Array_XLOOKUP_for_Multi_Criteria_Lookups.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C05_Boolean_Array_XLOOKUP_for_Multi_Criteria_Lookups.html">Boolean-Array XLOOKUP for Multi-Criteria Lookups</a></li><li><a href="../concepts/C06_CHOOSE_Driven_by_a_MATCH_Index_for_Scenario.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C06_CHOOSE_Driven_by_a_MATCH_Index_for_Scenario.html">CHOOSE Driven by a MATCH Index for Scenario Selection</a></li><li><a href="../concepts/C07_Dynamic_Period_Window_with_XLOOKUPXLOOKUP.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C07_Dynamic_Period_Window_with_XLOOKUPXLOOKUP.html">Dynamic Period Window with XLOOKUP:XLOOKUP</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>XMATCH and INDEX-XMATCH for Dynamic Column Selection</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> XMATCH as the modern MATCH; INDEX with XMATCH for dynamic column selection</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Many finance outputs need to choose <em>which column</em> to read at run time: Actual vs Budget vs Forecast, the month selected on a dashboard, FY25 vs FY26 comparatives, or the scenario column of an assumptions block. The position-finder MATCH has served this purpose for decades, but its default (approximate match) has caused countless silent errors. XMATCH is its modern replacement — exact by default, with reverse and wildcard search — and combined with INDEX it gives a fast, non-volatile, version-tolerant way to pick a column, row or block dynamically.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="xmatch-signature">XMATCH signature</h3>
+<pre><code class="language-excel">=XMATCH(lookup_value, lookup_array, [match_mode], [search_mode])
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Values</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>match_mode</code></td>
+<td>0 exact; -1 exact or next smaller; 1 exact or next larger; 2 wildcard</td>
+<td><strong>0</strong></td>
+</tr>
+<tr>
+<td><code>search_mode</code></td>
+<td>1 first-to-last; -1 last-to-first; 2 binary ascending; -2 binary descending</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>XMATCH returns the <strong>relative position</strong> (1-based) of the match within <code>lookup_array</code>, or <code>#N/A</code> if none.</p>
+<h3 id="xmatch-vs-match">XMATCH vs MATCH</h3>
+<table>
+<thead>
+<tr>
+<th>Point</th>
+<th>MATCH</th>
+<th>XMATCH</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Default match</td>
+<td>1 (approximate, needs ascending sort)</td>
+<td>0 (exact)</td>
+</tr>
+<tr>
+<td>Approximate without sorting</td>
+<td>no</td>
+<td>yes (linear search with -1/1)</td>
+</tr>
+<tr>
+<td>Next larger</td>
+<td><code>-1</code> needs <strong>descending</strong> data</td>
+<td><code>1</code> works on any order</td>
+</tr>
+<tr>
+<td>Last occurrence</td>
+<td>not directly</td>
+<td><code>search_mode</code> -1</td>
+</tr>
+<tr>
+<td>Wildcards</td>
+<td>with match type 0</td>
+<td><code>match_mode</code> 2</td>
+</tr>
+<tr>
+<td>Array of lookup values</td>
+<td>returns array in Microsoft 365</td>
+<td>returns array (spills)</td>
+</tr>
+<tr>
+<td>Availability</td>
+<td>all versions</td>
+<td>Excel 2021/2024, Microsoft 365</td>
+</tr>
+</tbody>
+</table>
+<p>Note the confusing legacy codes: MATCH type -1 means "smallest value ≥ lookup, data sorted descending", whereas XMATCH <code>match_mode</code> -1 means "next smaller". Do not translate the codes blindly when modernising a model.</p>
+<h3 id="index-with-xmatch-selecting-a-column">INDEX with XMATCH — selecting a column</h3>
+<p>Assumptions block <code>Assm</code> with drivers down (A6:A30, named <code>Drivers</code>) and columns Base / Upside / Downside / Mgmt (C5:F5, named <code>ScenHdr</code>), values in C6:F30 (named <code>AssmData</code>). A dropdown in <code>Scen</code> selects the column:</p>
+<pre><code class="language-excel">=INDEX(AssmData, XMATCH($A8, Drivers), XMATCH(Scen, ScenHdr))
+</code></pre>
+<p>Changing <code>Scen</code> from "Base" to "Downside" re-points every driver to the fourth column. Because both positions are computed, inserting a new scenario column inside the block does not break anything (unlike a hard-coded column index of 4).</p>
+<h3 id="returning-an-entire-column">Returning an entire column</h3>
+<p><code>INDEX(array, 0, col)</code> returns the whole column; in Microsoft 365 it spills, and inside an aggregator it sums:</p>
+<pre><code class="language-excel">=SUM(INDEX(PL_Data, 0, XMATCH(SelMonth, PL_Months)))
+</code></pre>
+<p>The modern alternative is <code>CHOOSECOLS(PL_Data, XMATCH(SelMonth, PL_Months))</code>, which also accepts several positions: <code>CHOOSECOLS(PL_Data, XMATCH({"Actual","Budget"}, Hdr))</code> returns two columns side by side — handy for building a BvA view from a wide export.</p>
+<h3 id="dynamic-comparatives">Dynamic comparatives</h3>
+<p>A report needing "selected month" and "same month last year" from a 24-month grid:</p>
+<pre><code class="language-excel">=INDEX(Data, XMATCH($A6, Lines), XMATCH(EDATE(Sel,-12), Months))
+</code></pre>
+<p>The column position is computed from a date expression, so the comparative follows the selection automatically.</p>
+<h3 id="reverse-and-approximate-positions">Reverse and approximate positions</h3>
+<ul>
+<li>Last occurrence position: <code>=XMATCH(F2, Log[SKU], 0, -1)</code> — the row of the latest record in a chronological log; feed it to INDEX to retrieve any column.</li>
+<li>Band position: <code>=XMATCH(Income, Slab[From], -1)</code> — the slab number, useful when several tables share the same band structure (<code>INDEX(RateTable, band, regimeCol)</code>).</li>
+<li>Position of first value above a threshold in a cumulative row (e.g. payback month): <code>=XMATCH(TRUE, CumCF&gt;=0)</code> — returns the first month in which cumulative cash flow turns non-negative.</li>
+</ul>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>Assumptions block:</p>
+<table>
+<thead>
+<tr>
+<th>Driver</th>
+<th>Base</th>
+<th>Upside</th>
+<th>Downside</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Volume growth</td>
+<td>8%</td>
+<td>12%</td>
+<td>3%</td>
+</tr>
+<tr>
+<td>Price increase</td>
+<td>4%</td>
+<td>5%</td>
+<td>2%</td>
+</tr>
+<tr>
+<td>Gross margin</td>
+<td>38%</td>
+<td>40%</td>
+<td>34%</td>
+</tr>
+</tbody>
+</table>
+<p>With <code>Scen</code> = "Downside" and A8 = "Gross margin": <code>XMATCH("Gross margin", Drivers)</code> = 3, <code>XMATCH("Downside", ScenHdr)</code> = 3 → 34%. If a "Stress" column is inserted between Upside and Downside, <code>XMATCH("Downside", ScenHdr)</code> becomes 4 and the formula still returns 34%. A hard-coded <code>INDEX(AssmData, 3, 3)</code> would now return the Stress value.</p>
+<h3 id="xmatch-as-a-validation-tool">XMATCH as a validation tool</h3>
+<ul>
+<li><code>=ISNUMBER(XMATCH(Scen, ScenHdr))</code> — TRUE if the dropdown value exists in the header.</li>
+<li><code>=COUNT(XMATCH(TB[Ledger], Map[Ledger]))</code> — number of TB ledgers found in the mapping (positions are numbers; not-found are <code>#N/A</code>, which COUNT ignores).</li>
+<li><code>=XMATCH(Months, Months)=SEQUENCE(1, COLUMNS(Months))</code> — TRUE for every header that is unique (a duplicate returns the first position).</li>
+</ul>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Header type mismatches</strong> (text "Base " with trailing space, dates vs text) are the usual <code>#N/A</code> cause; validate the dropdown against the header list.</li>
+<li><strong>Duplicate headers</strong> return the first position — two "Budget" columns (original and revised) will both resolve to the original. Make headers unique.</li>
+<li><strong>Compatibility</strong>: XMATCH shows <code>#NAME?</code> in Excel 2019 and earlier. For shared files, <code>MATCH(x, array, 0)</code> is the safe equivalent — always with the 0.</li>
+<li><strong>Binary search modes</strong> need sorted data and fail silently otherwise.</li>
+<li><strong>INDEX row/column 0</strong> returns the whole column/row; a computed position of 0 (e.g. from arithmetic) therefore produces a spill or a sum of the full column instead of an error.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>XMATCH returns a position, exact by default, with next-smaller, next-larger, wildcard and reverse search.</li>
+<li>INDEX + XMATCH (rows and columns) selects data by header names, surviving column insertions.</li>
+<li><code>INDEX(array, 0, col)</code> and <code>CHOOSECOLS</code> return whole columns for aggregation or display.</li>
+<li>Legacy MATCH codes (-1 = next larger on descending data) do not map one-to-one to XMATCH codes.</li>
+<li>XMATCH doubles as a validation function: ISNUMBER/COUNT over XMATCH results expose missing keys.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-scenario-column-selector-l1">Q1. Scenario column selector [L1]</h3>
+<p>An assumptions block has 18 drivers in A6:A23, scenario headers Base/Upside/Downside/Board in C5:F5 and values in C6:F23. Using named ranges and a dropdown cell <code>Scen</code>, write an INDEX-XMATCH formula that returns the selected scenario value for the driver label in column A of the model sheet.</p>
+<h3 id="q2-actual-vs-comparative-columns-l2">Q2. Actual vs comparative columns [L2]</h3>
+<p>A 24-month P&amp;L export (Apr-24 to Mar-26) has month-start headers in <code>Months</code> and lines in <code>Lines</code>. For selected month <code>Sel</code>, write formulas for the selected-month value, the same month last year, and the YTD of the selected FY using INDEX and XMATCH only (no XLOOKUP). State any assumptions about the FY start.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> YTD can be built as an INDEX:INDEX range between the FY start position and the selected position.</p>
+</blockquote>
+<h3 id="q3-modernising-match-codes-l2">Q3. Modernising MATCH codes [L2]</h3>
+<p>An old model contains <code>MATCH(Tenure, TenureRow, -1)</code> on a tenure row sorted 60, 48, 36, 24, 12, and <code>MATCH(Income, SlabFrom)</code> on an ascending slab table. Rewrite both with XMATCH so the results are identical, and explain why simply keeping the code -1 in XMATCH would give wrong results.</p>
+<h3 id="q4-payback-month-l2">Q4. Payback month [L2]</h3>
+<p>A project's cumulative cash flow row (months 0 to 60) is named <code>CumCF</code>, with month numbers in <code>MonthNo</code>. Write a formula returning the first month in which cumulative cash flow becomes non-negative, returning "Not within horizon" if it never does.</p>
+<h3 id="q5-mapping-coverage-test-l1">Q5. Mapping coverage test [L1]</h3>
+<p>Write a single-cell formula using XMATCH that returns the number of ledgers in <code>TB[Ledger]</code> that are missing from <code>Map[Ledger]</code>, and explain why it is a useful companion to an <code>if_not_found</code> flag.</p></section>
+<nav class="pager"><a class="prev" href="S05_XLOOKUP_Returning_Rows_Columns_and_Range.html">← XLOOKUP Returning Rows, Columns and Range References</a><a class="next" href="S07_Live_Scenario_Switches_with_CHOOSE_INDEX_and.html">Live Scenario Switches with CHOOSE, INDEX and SWITCH →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aggregation Level and Error Netting in Forecast Accuracy · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S03_Aggregation_Level_and_Error_Netting_in_Forecast.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 5</a> <span>›</span> <a href="../../index.html">Week 18</a> <span>›</span> <a href="../index.html">T5 · Forecast accuracy: MAPE, WAPE, bias</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Forecast accuracy: MAPE, WAPE, bias</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Forecast_Error_Metrics_MAD_MAPE_WAPE_RMSE_Bias.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S01_Forecast_Error_Metrics_MAD_MAPE_WAPE_RMSE_Bias.html">Forecast Error Metrics: MAD, MAPE, WAPE, RMSE, Bias, Tracking Signal</a></li><li><a href="S02_Measurement_Lag_Lag_1_Lag_3_and_Lag_6_Forecast.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S02_Measurement_Lag_Lag_1_Lag_3_and_Lag_6_Forecast.html">Measurement Lag: Lag-1, Lag-3 and Lag-6 Forecast Accuracy</a></li><li><a href="S03_Aggregation_Level_and_Error_Netting_in_Forecast.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S03_Aggregation_Level_and_Error_Netting_in_Forecast.html">Aggregation Level and Error Netting in Forecast Accuracy</a></li><li><a href="S04_Detecting_Sandbagging_and_Over_Optimism_by.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S04_Detecting_Sandbagging_and_Over_Optimism_by.html">Detecting Sandbagging and Over-Optimism by Business Unit</a></li><li><a href="S05_Forecast_Value_Added_Does_Each_Step_Beat_the_Naive.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S05_Forecast_Value_Added_Does_Each_Step_Beat_the_Naive.html">Forecast Value Added: Does Each Step Beat the Naive Baseline?</a></li><li><a href="S06_Accuracy_Dashboards_Accountability_and_Tolerance.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S06_Accuracy_Dashboards_Accountability_and_Tolerance.html">Accuracy Dashboards, Accountability and Tolerance Bands per BU</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_MAPE_Mean_Absolute_Percentage_Error_and_Its.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C01_MAPE_Mean_Absolute_Percentage_Error_and_Its.html">MAPE: Mean Absolute Percentage Error and Its Weaknesses</a></li><li><a href="../concepts/C02_WAPE_and_Forecast_Accuracy_Percentage.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C02_WAPE_and_Forecast_Accuracy_Percentage.html">WAPE and Forecast Accuracy Percentage</a></li><li><a href="../concepts/C03_Bias_Percentage_Direction_of_Forecast_Error.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C03_Bias_Percentage_Direction_of_Forecast_Error.html">Bias Percentage: Direction of Forecast Error</a></li><li><a href="../concepts/C04_MAD_and_the_Tracking_Signal_for_Systematic_Bias.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C04_MAD_and_the_Tracking_Signal_for_Systematic_Bias.html">MAD and the Tracking Signal for Systematic Bias</a></li><li><a href="../concepts/C05_RMSE_Root_Mean_Square_Error_and_Large_Miss_Penalty.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C05_RMSE_Root_Mean_Square_Error_and_Large_Miss_Penalty.html">RMSE: Root Mean Square Error and Large-Miss Penalty</a></li><li><a href="../concepts/C06_Forecast_Value_Added_Formula_and_Interpretation.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C06_Forecast_Value_Added_Formula_and_Interpretation.html">Forecast Value Added Formula and Interpretation</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Aggregation Level and Error Netting in Forecast Accuracy</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Aggregation level: BU, product, account; error netting at higher levels</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Forecast accuracy improves mechanically as you aggregate. A company-level revenue forecast can be within 1% even when every BU is badly wrong, because over-forecasts in one BU cancel under-forecasts in another. That is fine if the only decision is the consolidated EPS guidance — but production is planned by plant, inventory by SKU, sales headcount by region and incentives by BU, and all of those decisions inherit the BU-level error, not the company-level one. FP&amp;A must therefore decide, for each use, at which level accuracy is measured and how lower-level errors are aggregated upward. Getting this wrong is one of the four classic pitfalls of this topic.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="hierarchies-of-measurement">Hierarchies of measurement</h3>
+<p>Forecasts sit on several hierarchies simultaneously:</p>
+<ul>
+<li><strong>Organisational</strong>: Company → Segment (Ind AS 108 operating segments) → BU → Region → Branch/key account.</li>
+<li><strong>Product</strong>: Category → Brand → SKU (unit forecasts) or product group (revenue).</li>
+<li><strong>Account</strong>: EBITDA → Revenue, Gross margin, Opex → individual GL accounts or cost pools.</li>
+<li><strong>Time</strong>: Year → Quarter → Month.</li>
+</ul>
+<p>Accuracy can be measured at any node, and the answer changes with the node.</p>
+<h3 id="the-netting-mechanism">The netting mechanism</h3>
+<p>Netting arises when signed errors are summed before taking the absolute value. For items \(i = 1, \dots, k\) in a period:</p>
+<p>\[
+\Bigl\lvert \sum_i (A_i - F_i) \Bigr\rvert \le \sum_i \lvert A_i - F_i \rvert
+\]</p>
+<p>(the triangle inequality). The left side is the error of the <strong>aggregate forecast</strong> (top-level accuracy); the right side is the <strong>sum of item-level absolute errors</strong>. They are equal only if all items err in the same direction. The difference is the amount of error that "disappears" by netting.</p>
+<p>The same applies over time: a quarterly total can be accurate even if each month was wrong (timing errors net within the quarter), and a full-year LE can be accurate while each quarter is mis-phased.</p>
+<h3 id="two-ways-to-compute-a-company-wape">Two ways to compute a "company WAPE"</h3>
+<ol>
+<li><strong>Top-down (aggregate first)</strong>: sum actuals and forecasts across BUs for each period, then compute \(\sum_t \lvert A_t - F_t \rvert \div \sum_t A_t\). This measures the accuracy of the consolidated number.</li>
+<li><strong>Bottom-up (absolute first)</strong>: compute \(\lvert A_{i,t} - F_{i,t} \rvert\) for each BU \(i\) and period \(t\), sum all of them, divide by total actuals: \(\sum_{i,t} \lvert A_{i,t} - F_{i,t} \rvert \div \sum_{i,t} A_{i,t}\). This is a size-weighted average of BU accuracy and reflects the quality of the decisions made at BU level.</li>
+</ol>
+<p>Report both: the gap between them is a diagnostic of offsetting errors.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>July 2025 revenue (₹ crore), lag-3:</p>
+<table>
+<thead>
+<tr>
+<th>BU</th>
+<th>Forecast</th>
+<th>Actual</th>
+<th>A − F</th>
+<th>|A − F|</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Domestic</td>
+<td>180</td>
+<td>198</td>
+<td>+18</td>
+<td>18</td>
+</tr>
+<tr>
+<td>Exports</td>
+<td>95</td>
+<td>80</td>
+<td>−15</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Institutional</td>
+<td>45</td>
+<td>44</td>
+<td>−1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>320</td>
+<td>322</td>
+<td>+2</td>
+<td>34</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Top-down company WAPE = 2 ÷ 322 = 0.6% → "99.4% accurate".</li>
+<li>Bottom-up company WAPE = 34 ÷ 322 = 10.6% → 89.4% accurate.</li>
+<li>BU WAPE: Domestic 18 ÷ 198 = 9.1%; Exports 15 ÷ 80 = 18.8%; Institutional 2.3%.</li>
+</ul>
+<p>The consolidated EPS forecast was excellent; the plan that allocated production between domestic and export lines was poor (exports over-produced, domestic stocked out). Both facts are true and both need reporting to the right audience.</p>
+<h3 id="choosing-the-level">Choosing the level</h3>
+<table>
+<thead>
+<tr>
+<th>Use of forecast</th>
+<th>Appropriate accuracy level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Market guidance, Board LE, covenant forecasting</td>
+<td>Company / segment (top-down)</td>
+</tr>
+<tr>
+<td>BU performance management and incentives</td>
+<td>BU (bottom-up within BU)</td>
+</tr>
+<tr>
+<td>Production and procurement</td>
+<td>Product group / SKU × plant, at supply lead-time lag</td>
+</tr>
+<tr>
+<td>Cost control</td>
+<td>Account / cost-pool level within BU</td>
+</tr>
+<tr>
+<td>Cash forecasting</td>
+<td>Entity / bank account, weekly</td>
+</tr>
+</tbody>
+</table>
+<p>A practical rule: <strong>measure accuracy at the level at which the decision is made and at which accountability sits</strong>, then aggregate absolute errors upward with WAPE weighting.</p>
+<h3 id="account-level-aggregation">Account-level aggregation</h3>
+<p>Within the P&amp;L, errors in revenue and in variable costs often offset in gross margin and EBITDA (if volume is over-forecast, both revenue and COGS are over-forecast). So EBITDA accuracy can look better than revenue accuracy. Conversely, fixed-cost errors do not offset and may dominate EBITDA error. Measure accuracy separately for revenue, gross margin and key cost lines, not only at EBITDA. For EBITDA (a small difference between large numbers), percentage errors can be large; report MAD in ₹ alongside.</p>
+<h3 id="implementation">Implementation</h3>
+<p>In Excel, compute absolute errors in a helper column at the finest stored grain and aggregate with <code>SUMIFS</code>:</p>
+<pre><code>=SUMIFS(Acc[AbsErr], Acc[BU], $B5, Acc[Lag], SelLag) / SUMIFS(Acc[Actual], Acc[BU], $B5, Acc[Lag], SelLag)
+</code></pre>
+<p>where <code>AbsErr</code> is precomputed as <code>=ABS([@Actual]-[@Forecast])</code>. For a top-down figure, first aggregate actuals and forecasts by period (PivotTable or <code>SUMIFS</code> by month) and then take absolute differences. In DAX, <code>SUMX</code> over a table grouped at the desired grain (e.g., <code>SUMX(SUMMARIZE(Fact, Fact[BU], Fact[Month]), ABS([Act] - [Fcst]))</code>) controls exactly where the absolute value is taken (Week 11).</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Mix effects.</strong> At product level a BU may have accurate totals but wrong mix (premium vs economy), affecting gross margin. Track a mix-accuracy KPI or gross-margin WAPE in addition to revenue WAPE.</li>
+<li><strong>Inter-company eliminations.</strong> Consolidated forecasts net inter-company sales; measuring at entity level before elimination can overstate errors that cancel on consolidation. Measure segment accuracy on external revenue.</li>
+<li><strong>Very fine levels.</strong> At SKU level, errors are naturally large and many lines are tiny; use WAPE and materiality thresholds, and avoid MAPE (c01 and topic pitfall).</li>
+<li><strong>Reorganisations.</strong> If BU boundaries change mid-year, restate historical forecasts and actuals to the new hierarchy, or accuracy trends become meaningless.</li>
+<li><strong>Netting across time vs across items.</strong> State both the item level and the time bucket (e.g., "BU-month") whenever accuracy is reported.</li>
+<li><strong>Signed vs absolute aggregation for bias.</strong> Bias should be aggregated with signs (netting is the point — it shows the overall direction), but report BU-level bias too, since offsetting biases (one BU sandbagging, another over-optimistic) also net away.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Errors net when summed before taking absolutes: aggregate accuracy is always at least as good as the average of component accuracy.</li>
+<li>Report both top-down (consolidated number) and bottom-up (sum of BU absolute errors) WAPE; the gap reveals offsetting errors.</li>
+<li>Measure accuracy at the level where decisions and accountability sit, then aggregate absolute errors upward.</li>
+<li>Time netting is analogous: quarterly accuracy hides monthly phasing errors.</li>
+<li>Measure revenue, margin and key cost lines separately; EBITDA accuracy can mask offsetting line errors.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-top-down-vs-bottom-up-l2">Q1. Top-down vs bottom-up [L2]</h3>
+<p>August 2025 lag-3 revenue (₹ crore): North F 150 A 138; South F 120 A 131; West F 90 A 95; East F 60 A 52. (a) Compute BU WAPE, top-down company WAPE and bottom-up company WAPE. (b) Compute company and BU bias %. (c) Draft two sentences for the CFO and two for the supply-chain head describing forecast quality.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Bottom-up sums the four BU absolute errors; top-down uses only the difference between company totals.</p>
+</blockquote>
+<h3 id="q2-time-netting-l2">Q2. Time netting [L2]</h3>
+<p>A BU's Q2 FY26 revenue forecast and actuals were: Jul F 40 A 32; Aug F 42 A 41; Sep F 44 A 52 (₹ crore). Compute monthly WAPE and quarterly-total WAPE. Explain which decisions would have been affected by the monthly error even though the quarterly number was accurate.</p>
+<h3 id="q3-account-level-masking-l2">Q3. Account-level masking [L2]</h3>
+<p>For October 2025, forecast revenue ₹500 crore, COGS ₹320 crore, fixed costs ₹110 crore; actual revenue ₹460 crore, COGS ₹295 crore, fixed costs ₹118 crore. Compute the percentage error for revenue, gross margin and EBITDA. Explain why gross-margin error is smaller than revenue error and why EBITDA error is larger in percentage terms.</p>
+<h3 id="q4-hierarchy-design-case-l3">Q4. Hierarchy design case [L3]</h3>
+<p>A consumer-durables company forecasts at SKU (1,200 SKUs) for supply chain and at BU (5 BUs) for finance. Design an accuracy-reporting hierarchy that serves the CFO, BU heads and the supply-chain head, specifying for each audience the level, metric, lag and treatment of small SKUs, and explain how you would reconcile SKU unit accuracy with BU revenue accuracy.</p></section>
+<nav class="pager"><a class="prev" href="S02_Measurement_Lag_Lag_1_Lag_3_and_Lag_6_Forecast.html">← Measurement Lag: Lag-1, Lag-3 and Lag-6 Forecast Accuracy</a><a class="next" href="S04_Detecting_Sandbagging_and_Over_Optimism_by.html">Detecting Sandbagging and Over-Optimism by Business Unit →</a></nav>
+</main></div></body></html>

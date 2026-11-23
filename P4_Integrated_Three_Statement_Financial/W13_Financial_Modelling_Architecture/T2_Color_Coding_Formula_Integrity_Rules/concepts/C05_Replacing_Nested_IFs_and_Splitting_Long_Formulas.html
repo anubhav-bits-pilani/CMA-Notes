@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Replacing Nested IFs and Splitting Long Formulas · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C05_Replacing_Nested_IFs_and_Splitting_Long_Formulas.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T2 · Color Coding &amp; Formula Integrity Rules</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Color Coding &amp; Formula Integrity Rules</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Font_Colour_Convention_Inputs_Formulas_and_Links.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S01_Font_Colour_Convention_Inputs_Formulas_and_Links.html">Font Colour Convention: Inputs, Formulas and Links</a></li><li><a href="../subtopics/S02_Input_Fill_Styles_and_Excel_Cell_Styles.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S02_Input_Fill_Styles_and_Excel_Cell_Styles.html">Input Fill Styles and Excel Cell Styles</a></li><li><a href="../subtopics/S03_One_Consistent_Formula_per_Forecast_Row.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S03_One_Consistent_Formula_per_Forecast_Row.html">One Consistent Formula per Forecast Row</a></li><li><a href="../subtopics/S04_Absolute_and_Mixed_References_for_Constants_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S04_Absolute_and_Mixed_References_for_Constants_and.html">Absolute and Mixed References for Constants and Flags</a></li><li><a href="../subtopics/S05_Eliminating_Constants_Inside_Formulas.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S05_Eliminating_Constants_Inside_Formulas.html">Eliminating Constants Inside Formulas</a></li><li><a href="../subtopics/S06_Excel_Formula_Auditing_Tools_and_Shortcuts.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S06_Excel_Formula_Auditing_Tools_and_Shortcuts.html">Excel Formula Auditing Tools and Shortcuts</a></li><li><a href="../subtopics/S07_Go_To_Special_and_Inquire_for_Inconsistency_Scans.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S07_Go_To_Special_and_Inquire_for_Inconsistency_Scans.html">Go To Special and Inquire for Inconsistency Scans</a></li><li><a href="../subtopics/S08_Avoiding_Volatile_Functions_and_Whole_Column.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S08_Avoiding_Volatile_Functions_and_Whole_Column.html">Avoiding Volatile Functions and Whole-Column References</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_One_Row_One_Formula_The_R1C1_Consistency_Test.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C01_One_Row_One_Formula_The_R1C1_Consistency_Test.html">One Row, One Formula: The R1C1 Consistency Test</a></li><li><a href="C02_Go_To_Special_Constants_Test_on_Calculation_Sheets.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C02_Go_To_Special_Constants_Test_on_Calculation_Sheets.html">Go To Special Constants Test on Calculation Sheets</a></li><li><a href="C03_Targeted_Error_Guards_Instead_of_Blanket_IFERROR.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C03_Targeted_Error_Guards_Instead_of_Blanket_IFERROR.html">Targeted Error Guards Instead of Blanket IFERROR</a></li><li><a href="C04_Link_Once_Then_Reference_Locally.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C04_Link_Once_Then_Reference_Locally.html">Link Once, Then Reference Locally</a></li><li><a href="C05_Replacing_Nested_IFs_and_Splitting_Long_Formulas.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C05_Replacing_Nested_IFs_and_Splitting_Long_Formulas.html">Replacing Nested IFs and Splitting Long Formulas</a></li><li><a href="C06_Timeline_Flags_for_Switching_Logic_Without.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C06_Timeline_Flags_for_Switching_Logic_Without.html">Timeline Flags for Switching Logic Without Breaking Rows</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Replacing Nested IFs and Splitting Long Formulas</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Replace nested IFs with MIN/MAX, CHOOSE, INDEX/MATCH or XLOOKUP; split long formulas into helper rows</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>Nested IF statements should be replaced by the function that expresses the logic directly:</p>
+<table>
+<thead>
+<tr>
+<th>Logic</th>
+<th>Nested IF</th>
+<th>Replacement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cap / floor</td>
+<td><code>=IF(x&gt;Cap,Cap,IF(x&lt;Floor,Floor,x))</code></td>
+<td><code>=MAX(Floor,MIN(Cap,x))</code></td>
+</tr>
+<tr>
+<td>Select one of n options by index</td>
+<td><code>=IF(S=1,a,IF(S=2,b,c))</code></td>
+<td><code>=CHOOSE(S,a,b,c)</code> or <code>=INDEX(a:c,S)</code></td>
+</tr>
+<tr>
+<td>Tiered rate lookup</td>
+<td><code>=IF(x&lt;100,5%,IF(x&lt;500,7%,IF(x&lt;1000,9%,11%)))</code></td>
+<td><code>=XLOOKUP(x,Tier_Lower,Tier_Rate,,-1)</code> or <code>=INDEX(Tier_Rate,MATCH(x,Tier_Lower,1))</code></td>
+</tr>
+<tr>
+<td>Positive part</td>
+<td><code>=IF(x&gt;0,x,0)</code></td>
+<td><code>=MAX(0,x)</code></td>
+</tr>
+<tr>
+<td>Binary switch on a flag</td>
+<td><code>=IF(Flag=1,a,b)</code></td>
+<td><code>=Flag*a+(1-Flag)*b</code></td>
+</tr>
+<tr>
+<td>Text-to-value mapping</td>
+<td><code>=IF(T="Base",1,IF(T="Bull",2,3))</code></td>
+<td><code>=MATCH(T,Scenario_Names,0)</code> or <code>SWITCH(T,…)</code></td>
+</tr>
+</tbody>
+</table>
+<p>Long formulas should be decomposed into <strong>helper rows</strong>, each with a label and units, so every intermediate value is visible and testable.</p>
+<h2 id="explanation">Explanation</h2>
+<p><strong>Why nested IFs are risky.</strong> Each IF adds a branch that must be tested; three nested IFs give four paths, and reviewers rarely test them all. Order matters (an early condition can mask a later one), and editing a tier means editing the formula in every cell. Lookup tables and MIN/MAX express the same logic with the parameters on Inputs, where they belong.</p>
+<p><strong>MIN/MAX for caps and floors.</strong> Revolver draws, utilisation caps and cash sweeps are the classic cases:</p>
+<pre><code>Revolver draw = MAX(0, MIN(Available_Limit, Cash_Shortfall))
+Utilisation   = MIN(Max_Util, Demand / Capacity)
+</code></pre>
+<p><strong>CHOOSE / INDEX for selection.</strong> The scenario switch (topic t6) is the canonical use: <code>=CHOOSE(Scenario,M20,M21,M22)</code>. INDEX is preferable when options are contiguous rows.</p>
+<p><strong>XLOOKUP / INDEX-MATCH for tiers.</strong> Approximate-match lookups with sorted lower bounds handle slabs: depreciation rate by asset class, tax slabs, commission tiers, store rent by city tier. XLOOKUP's <code>match_mode</code> -1 returns the next smaller item.</p>
+<p><strong>Helper rows.</strong> A formula longer than the formula bar ("longer than your thumb", topic t1 c01) should be split. Each helper row computes one idea: average balance, rate, gross interest, cap, net. Benefits: each step can be checked; Evaluate Formula becomes unnecessary; scenario and sensitivity analysis can target intermediates.</p>
+<p><strong>LET</strong> (Excel 365) can improve a moderately long single formula by naming intermediates, but it hides those intermediates from the grid; prefer helper rows in core schedules.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Original FY27E royalty formula for a licensed brand:</p>
+<pre><code>=IF(N40&lt;500,N40*3%,IF(N40&lt;1500,15+(N40-500)*4%,IF(N40&lt;3000,55+(N40-1500)*5%,130+(N40-3000)*6%)))
+</code></pre>
+<p>Refactor with a tier table on Inputs (lower bound, base royalty, marginal rate): (0, 0, 3%), (500, 15, 4%), (1,500, 55, 5%), (3,000, 130, 6%). Helper rows:</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th>Label</th>
+<th>Formula</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>41</td>
+<td>Tier lower bound</td>
+<td><code>=XLOOKUP(N40,Tier_Lower,Tier_Lower,,-1)</code></td>
+</tr>
+<tr>
+<td>42</td>
+<td>Base royalty</td>
+<td><code>=XLOOKUP(N40,Tier_Lower,Tier_Base,,-1)</code></td>
+</tr>
+<tr>
+<td>43</td>
+<td>Marginal rate</td>
+<td><code>=XLOOKUP(N40,Tier_Lower,Tier_Rate,,-1)</code></td>
+</tr>
+<tr>
+<td>44</td>
+<td>Royalty</td>
+<td><code>=N42+(N40-N41)*N43</code></td>
+</tr>
+</tbody>
+</table>
+<p>For brand revenue of ₹2,200 crore: lower bound 1,500, base 55, rate 5% → 55 + 700 × 5% = ₹90 crore. Same result as the nested IF, but every tier parameter sits on Inputs and each step is visible.</p>
+<h2 id="connections">Connections</h2>
+<p>Supports topic t1 c01 (FAST short formulas) and s03 (row consistency — helper rows remain consistent). CHOOSE/INDEX underpin topic t6's scenario Live row. MIN/MAX caps appear in Week 15's revolver and Week 14's capacity schedules. Phase 3 covered XLOOKUP and LET mechanics.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-replace-the-ifs-l1">Q1. Replace the IFs [L1]</h3>
+<p>Rewrite without nested IFs: (a) <code>=IF(M50&gt;M51,M51,M50)</code>; (b) <code>=IF(Scenario=1,M20,IF(Scenario=2,M21,M22))</code>; (c) <code>=IF(M60&lt;0,0,IF(M60&gt;Limit,Limit,M60))</code>.</p>
+<h3 id="q2-slab-based-rent-l2">Q2. Slab-based rent [L2]</h3>
+<p>A retailer pays revenue-share rent of 8% on store revenue up to ₹20 crore, 10% on the next ₹30 crore, and 12% above ₹50 crore. Design the Inputs tier table and helper rows to compute rent for a store with revenue ₹63 crore, and write each formula.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Store the cumulative rent at each tier's lower bound so the final step is base plus marginal.</p>
+</blockquote>
+<h3 id="q3-split-a-long-formula-l3">Q3. Split a long formula [L3]</h3>
+<p>Split the following into labelled helper rows and explain what each row lets a reviewer check: <code>=IF(N$5=1,MAX(0,MIN(Revolver_Limit,Min_Cash-(M110+N100+N101+N102-N103))),0)*IF(Circ=1,(M120+N120)/2,M120)*N125</code>.</p></section>
+<nav class="pager"><a class="prev" href="C04_Link_Once_Then_Reference_Locally.html">← Link Once, Then Reference Locally</a><a class="next" href="C06_Timeline_Flags_for_Switching_Logic_Without.html">Timeline Flags for Switching Logic Without Breaking Rows →</a></nav>
+</main></div></body></html>

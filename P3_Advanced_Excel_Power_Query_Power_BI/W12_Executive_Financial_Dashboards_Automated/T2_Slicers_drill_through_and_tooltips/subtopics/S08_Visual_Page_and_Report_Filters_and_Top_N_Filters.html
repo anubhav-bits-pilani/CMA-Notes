@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visual, Page and Report Filters, and Top N Filters · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S08_Visual_Page_and_Report_Filters_and_Top_N_Filters.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T2 · Slicers, drill-through and tooltips</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Slicers, drill-through and tooltips</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_FY_BU_and_Region_Slicers_Hierarchy_Relative_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S01_FY_BU_and_Region_Slicers_Hierarchy_Relative_Date.html">FY, BU and Region Slicers: Hierarchy, Relative Date and Sync</a></li><li><a href="S02_Edit_Interactions_Filter_vs_Highlight_vs_None.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S02_Edit_Interactions_Filter_vs_Highlight_vs_None.html">Edit Interactions: Filter vs Highlight vs None</a></li><li><a href="S03_Drill_Down_vs_Drill_Through_PL_Hierarchy_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S03_Drill_Down_vs_Drill_Through_PL_Hierarchy_and.html">Drill-Down vs Drill-Through: P&amp;L Hierarchy and Voucher Detail</a></li><li><a href="S04_Drill_Through_Setup_Fields_Keep_All_Filters_Cross.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S04_Drill_Through_Setup_Fields_Keep_All_Filters_Cross.html">Drill-Through Setup: Fields, Keep All Filters, Cross-Report, Back Button</a></li><li><a href="S05_Report_Page_Tooltips_Canvas_Size_Allow_Use_as.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S05_Report_Page_Tooltips_Canvas_Size_Allow_Use_as.html">Report Page Tooltips: Canvas Size, &quot;Allow Use as Tooltip&quot;, Field Tooltips</a></li><li><a href="S06_Bookmarks_Buttons_and_the_Selection_Pane_for_View.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S06_Bookmarks_Buttons_and_the_Selection_Pane_for_View.html">Bookmarks, Buttons and the Selection Pane for View Toggles</a></li><li><a href="S07_Field_Parameters_for_User_Selected_Dimensions_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S07_Field_Parameters_for_User_Selected_Dimensions_and.html">Field Parameters for User-Selected Dimensions and Measures</a></li><li><a href="S08_Visual_Page_and_Report_Filters_and_Top_N_Filters.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S08_Visual_Page_and_Report_Filters_and_Top_N_Filters.html">Visual, Page and Report Filters, and Top N Filters</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Drill_Through_Page_on_Ledger_with_a_Voucher_Detail.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C01_Drill_Through_Page_on_Ledger_with_a_Voucher_Detail.html">Drill-Through Page on Ledger with a Voucher Detail Table</a></li><li><a href="../concepts/C02_Selected_FY_Measure_for_Dynamic_Titles.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C02_Selected_FY_Measure_for_Dynamic_Titles.html">Selected FY Measure for Dynamic Titles</a></li><li><a href="../concepts/C03_Field_Parameter_Tables_Built_with_NAMEOF.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C03_Field_Parameter_Tables_Built_with_NAMEOF.html">Field Parameter Tables Built with NAMEOF</a></li><li><a href="../concepts/C04_ISFILTERED_and_ISCROSSFILTERED_for_Context_Aware.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C04_ISFILTERED_and_ISCROSSFILTERED_for_Context_Aware.html">ISFILTERED and ISCROSSFILTERED for Context-Aware Labels</a></li><li><a href="../concepts/C05_Slicer_Responsive_Vendor_Ranking_with_RANKX_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C05_Slicer_Responsive_Vendor_Ranking_with_RANKX_and.html">Slicer-Responsive Vendor Ranking with RANKX and ALLSELECTED</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Visual, Page and Report Filters, and Top N Filters</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Visual, page and report-level filters, and Top N filters</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Slicers are the visible filters; the Filters pane holds the structural ones — "only P&amp;L accounts on this page",
+"exclude inter-company eliminations from the whole report", "top 10 vendors only". Misplaced filters are a quiet
+source of wrong numbers: a visual-level filter hiding a ledger that the card includes, or a report filter that
+excludes a BU nobody remembers. Top N filters are the standard way to show "top vendors" or "top cost centres",
+and they interact with slicers in ways that matter for a CFO pack.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-three-filter-levels">The three filter levels</h3>
+<p>The <strong>Filters</strong> pane has three sections, applied in combination (logical AND) with slicers and cross-filters:</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Scope</th>
+<th>Finance examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visual</td>
+<td>One visual</td>
+<td>Exclude "Inter-company" from the vendor bar; show only FSLines in EBITDA on the waterfall-adjacent table</td>
+</tr>
+<tr>
+<td>Page</td>
+<td>All visuals on one page</td>
+<td>Page 2 filtered to <code>CoA[Statement] = "Balance Sheet"</code>; Page 3 to expense lines</td>
+</tr>
+<tr>
+<td>Report</td>
+<td>All pages</td>
+<td><code>Entity = "Sahyadri Chemicals Ltd (standalone)"</code>; exclude <code>VoucherType = "Year-end closing"</code></td>
+</tr>
+</tbody>
+</table>
+<p>Drill-through fields appear as a fourth section on drill-through pages.</p>
+<p>Filter types available per field: <strong>Basic</strong> (tick list), <strong>Advanced</strong> (contains, starts with, is blank, greater
+than, with AND/OR), <strong>Top N</strong>, and <strong>Relative date</strong> for date fields. Measures can be used in visual-level filters
+only (e.g. <code>[Expense]</code> is greater than 0), because a measure needs the visual's grain.</p>
+<h3 id="filter-pane-governance">Filter pane governance</h3>
+<ul>
+<li><strong>Lock</strong> a filter (padlock icon) so report consumers cannot change it; <strong>hide</strong> it (eye icon) so they cannot see
+  it. Structural filters (entity, statement type) are usually locked and visible, or hidden with documentation.</li>
+<li><strong>Rename</strong> filter cards ("Showing: P&amp;L lines only") for clarity.</li>
+<li><strong>Format the Filters pane</strong> (Format page &gt; Filter pane) or hide it entirely from consumers (eye icon on the pane
+  header in Desktop; Service users then see only slicers).</li>
+<li><strong>Require single selection</strong> on a filter card forces exactly one value, useful for FY on a page that assumes one
+  year.</li>
+<li>Document every hidden filter in the measure/control documentation — hidden report filters are a review risk.</li>
+</ul>
+<h3 id="top-n-filters">Top N filters</h3>
+<p>A Top N filter on a field: <em>Show items Top/Bottom N by value</em> where the value is a measure. Example: on the vendor
+bar chart, <code>Vendor[Name]</code>, Top 10 by <code>[Expense]</code>.</p>
+<p>How it evaluates: the ranking is computed in the context of slicers and page/report filters and (in current
+behaviour) before the visual's other filters are applied, using the "by value" measure. Consequences:</p>
+<ul>
+<li>Changing the BU slicer re-ranks vendors within the BU — correct.</li>
+<li>A visual-level filter on another field may or may not be applied before ranking; test it.</li>
+<li>N is static in the filter card. For a user-selectable N, use a What-if parameter (Modeling &gt; New parameter &gt;
+  Numeric range) and a rank measure (Concept c05):</li>
+</ul>
+<pre><code class="language-DAX">Vendor Rank = RANKX ( ALLSELECTED ( Vendor[Name] ), [Expense], , DESC )
+
+Show Vendor =
+IF ( [Vendor Rank] &lt;= SELECTEDVALUE ( 'Top N'[Top N Value], 10 ), 1, 0 )
+</code></pre>
+<p>Apply <code>[Show Vendor]</code> is 1 as a visual-level filter. An "Others" bucket requires a separate disconnected
+category table or a calculated "Others" row pattern, because Top N filters simply drop the rest — totals in a
+table visual then show only the top N sum, not the grand total.</p>
+<h3 id="totals-under-top-n">Totals under Top N</h3>
+<p>A table with Top 10 vendors and a total row shows the total of the ten vendors. If users compare it with the
+expense card (all vendors), they see a mismatch. Fix by labelling ("Top 10 total") or by adding an "All other
+vendors" line, and show "Top 10 = 62% of spend" in the title.</p>
+<h3 id="order-of-evaluation-summarised">Order of evaluation, summarised</h3>
+<ol>
+<li>Report filters, page filters, slicers (with sync), drill-through filters and cross-filters define the context.</li>
+<li>Visual-level filters (including Top N) restrict the visual's rows.</li>
+<li>Measures evaluate per cell within that context; ALLSELECTED sees the context after slicers and outer filters.</li>
+</ol>
+<h3 id="illustration">Illustration</h3>
+<p>Page 3, FY2025-26, Polymers: vendor bar with Top 10 by <code>[Expense]</code> shows ₹62.4 Cr of total vendor expense
+₹101.3 Cr (61.6%). Report filter excludes <code>VoucherType = "Year-end closing"</code> (locked, visible as "Excludes
+closing entries"); page filter <code>CoA[Statement] = "Profit and Loss"</code> and <code>CoA[FSLineGroup] = "Expenses"</code>
+(locked, hidden, documented). A visual-level filter on the vendor bar excludes <code>Vendor[IsIntercompany] = TRUE</code>.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Ties in Top N.</strong> If the tenth and eleventh vendors have equal spend, Top 10 may show 11 items; rank measures
+  with a tie-breaker (e.g. add vendor code) give deterministic results.</li>
+<li><strong>Filters on fact columns.</strong> A page filter on <code>GL[BU]</code> filters Actual but not Budget — same pitfall as slicers.</li>
+<li><strong>Hidden report filters and RLS confusion.</strong> A hidden report filter excluding one BU looks like an RLS issue
+  to users; audit hidden filters before go-live.</li>
+<li><strong>Measure filters with blanks.</strong> "is not blank" on a measure removes zero-activity rows; useful for voucher
+  tables, but it can hide accounts that should show zero.</li>
+<li><strong>Persistent filters.</strong> In the Service, users' filter changes persist by default ("Persistent filters"); a user
+  may see a stale filter next month. Provide a "Reset to default" button, or disable persistent filters in report
+  settings.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Visual, page and report filters apply with AND logic on top of slicers and cross-filters.</li>
+<li>Lock, hide, rename and document structural filters; avoid surprise hidden filters.</li>
+<li>Top N filters rank by a measure within the current context; N is static unless a parameter and rank measure are used.</li>
+<li>Top N tables total only the shown items; label or add an "Others" line.</li>
+<li>Filter on dimension columns, and decide on persistent filters for Service users.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-place-the-filters-l1">Q1. Place the filters [L1]</h3>
+<p>For the Project 3 pack, decide the level (visual, page or report), lock/hide status and wording for: standalone
+entity only; exclude year-end closing vouchers; Page 2 balance sheet lines only; vendor chart excludes
+inter-company vendors.</p>
+<h3 id="q2-dynamic-top-n-with-others-l2">Q2. Dynamic Top N with Others [L2]</h3>
+<p>Write measures and describe model objects so that the vendor bar shows the top N vendors (N from a What-if slider,
+5–25) plus a final bar "All other vendors" whose value makes the chart total equal total vendor expense.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> The "Others" label must exist as a row in some table the axis can use.</p>
+</blockquote>
+<h3 id="q3-mismatched-totals-l2">Q3. Mismatched totals [L2]</h3>
+<p>A table shows Top 15 cost centres with a total of ₹188.2 Cr while the opex card shows ₹261.6 Cr for the same
+slicers. Explain both numbers and how you would present them to avoid a CFO query.</p>
+<h3 id="q4-persistent-filters-incident-l3">Q4. Persistent filters incident [L3]</h3>
+<p>In May 2026, a BU head says the pack "shows no budget for April". Investigation shows a filter he set in March on
+<code>'Date'[Month]</code> persisted. Write an incident note covering root cause, immediate fix, report settings changes and
+user guidance.</p></section>
+<nav class="pager"><a class="prev" href="S07_Field_Parameters_for_User_Selected_Dimensions_and.html">← Field Parameters for User-Selected Dimensions and Measures</a><a class="next" href="../concepts/C01_Drill_Through_Page_on_Ledger_with_a_Voucher_Detail.html">Drill-Through Page on Ledger with a Voucher Detail Table →</a></nav>
+</main></div></body></html>

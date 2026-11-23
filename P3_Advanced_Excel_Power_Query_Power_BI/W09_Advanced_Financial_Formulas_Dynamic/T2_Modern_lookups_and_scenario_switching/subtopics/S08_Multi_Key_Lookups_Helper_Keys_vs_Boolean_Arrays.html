@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multi-Key Lookups: Helper Keys vs Boolean Arrays · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S08_Multi_Key_Lookups_Helper_Keys_vs_Boolean_Arrays.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T2 · Modern lookups and scenario switching</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Modern lookups and scenario switching</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_XLOOKUP_Arguments_Not_Found_Value_Match_Mode_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S01_XLOOKUP_Arguments_Not_Found_Value_Match_Mode_and.html">XLOOKUP Arguments: Not-Found Value, Match Mode and Search Mode</a></li><li><a href="S02_Approximate_Match_Lookups_for_Slabs_TDS_Rates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S02_Approximate_Match_Lookups_for_Slabs_TDS_Rates.html">Approximate-Match Lookups for Slabs, TDS Rates, Tiers and Bands</a></li><li><a href="S03_Reverse_Search_for_Latest_Price_FX_Rate_and_Last.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S03_Reverse_Search_for_Latest_Price_FX_Rate_and_Last.html">Reverse Search for Latest Price, FX Rate and Last Payment Date</a></li><li><a href="S04_Two_Way_Lookups_on_Account_Month_Grids.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S04_Two_Way_Lookups_on_Account_Month_Grids.html">Two-Way Lookups on Account × Month Grids</a></li><li><a href="S05_XLOOKUP_Returning_Rows_Columns_and_Range.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S05_XLOOKUP_Returning_Rows_Columns_and_Range.html">XLOOKUP Returning Rows, Columns and Range References</a></li><li><a href="S06_XMATCH_and_INDEX_XMATCH_for_Dynamic_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S06_XMATCH_and_INDEX_XMATCH_for_Dynamic_Column.html">XMATCH and INDEX-XMATCH for Dynamic Column Selection</a></li><li><a href="S07_Live_Scenario_Switches_with_CHOOSE_INDEX_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S07_Live_Scenario_Switches_with_CHOOSE_INDEX_and.html">Live Scenario Switches with CHOOSE, INDEX and SWITCH</a></li><li><a href="S08_Multi_Key_Lookups_Helper_Keys_vs_Boolean_Arrays.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S08_Multi_Key_Lookups_Helper_Keys_vs_Boolean_Arrays.html">Multi-Key Lookups: Helper Keys vs Boolean Arrays</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_The_Fully_Specified_XLOOKUP_for_Ledger_Mapping.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C01_The_Fully_Specified_XLOOKUP_for_Ledger_Mapping.html">The Fully Specified XLOOKUP for Ledger Mapping</a></li><li><a href="../concepts/C02_Next_Smaller_XLOOKUP_for_Slab_Rates_Without.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C02_Next_Smaller_XLOOKUP_for_Slab_Rates_Without.html">Next-Smaller XLOOKUP for Slab Rates Without Sorting</a></li><li><a href="../concepts/C03_Nested_XLOOKUP_as_a_Two_Way_Lookup.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C03_Nested_XLOOKUP_as_a_Two_Way_Lookup.html">Nested XLOOKUP as a Two-Way Lookup</a></li><li><a href="../concepts/C04_INDEX_MATCH_MATCH_The_Version_Proof_Two_Way_Lookup.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C04_INDEX_MATCH_MATCH_The_Version_Proof_Two_Way_Lookup.html">INDEX-MATCH-MATCH: The Version-Proof Two-Way Lookup</a></li><li><a href="../concepts/C05_Boolean_Array_XLOOKUP_for_Multi_Criteria_Lookups.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C05_Boolean_Array_XLOOKUP_for_Multi_Criteria_Lookups.html">Boolean-Array XLOOKUP for Multi-Criteria Lookups</a></li><li><a href="../concepts/C06_CHOOSE_Driven_by_a_MATCH_Index_for_Scenario.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C06_CHOOSE_Driven_by_a_MATCH_Index_for_Scenario.html">CHOOSE Driven by a MATCH Index for Scenario Selection</a></li><li><a href="../concepts/C07_Dynamic_Period_Window_with_XLOOKUPXLOOKUP.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C07_Dynamic_Period_Window_with_XLOOKUPXLOOKUP.html">Dynamic Period Window with XLOOKUP:XLOOKUP</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Multi-Key Lookups: Helper Keys vs Boolean Arrays</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Multi-key lookups: concatenated helper keys vs boolean arrays inside XLOOKUP</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Real finance keys are compound. A budget is unique only by Branch + Ledger + Month; a TDS rate by Section + Payee type; a standard cost by Plant + SKU; an intercompany balance by Entity + Counterparty + Account. A single-column lookup returns the first row for "Rent" — perhaps the Mumbai branch when you wanted Pune. Two techniques solve this: build a <strong>concatenated helper key</strong> column, or pass a <strong>boolean array</strong> of conditions directly to XLOOKUP. Knowing both, and when each fails, is essential for consolidation work, budget-vs-actual reports and reconciliation files.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="technique-1-concatenated-helper-key">Technique 1 — concatenated helper key</h3>
+<p>Add a calculated column in the source Table:</p>
+<pre><code class="language-excel">=[@Branch]&amp;&quot;|&quot;&amp;[@Ledger]
+</code></pre>
+<p>Then look up the same concatenation:</p>
+<pre><code class="language-excel">=XLOOKUP(B2&amp;&quot;|&quot;&amp;C2, T[Key], T[Amount], &quot;No match&quot;)
+</code></pre>
+<p>Design rules:</p>
+<ul>
+<li><strong>Use a delimiter</strong> (<code>|</code>) that cannot occur in the data. Without it, "AB"&amp;"C" and "A"&amp;"BC" both give "ABC" — a false match. With numeric parts, "1"&amp;"23" and "12"&amp;"3" collide.</li>
+<li><strong>Normalise types</strong>: concatenation converts numbers and dates to text; a date becomes its serial ("45748"), so build the lookup side the same way. Use <code>TEXT(date,"yyyy-mm")</code> on both sides if you want readable keys.</li>
+<li><strong>Trim and clean</strong> both sides (<code>TRIM</code>, consistent case is not needed — XLOOKUP is case-insensitive).</li>
+<li><strong>Test uniqueness</strong>: <code>=COUNTIF(T[Key],[@Key])&gt;1</code> flags duplicate compound keys.</li>
+</ul>
+<p>Strengths: fast (a single exact-match lookup), works in every Excel version with VLOOKUP/INDEX-MATCH too, visible and auditable, and the same key can feed COUNTIFS, SUMIFS and Power Query merges. Weakness: needs a column in the source, which you may not control.</p>
+<h3 id="technique-2-boolean-array-inside-xlookup">Technique 2 — boolean array inside XLOOKUP</h3>
+<pre><code class="language-excel">=XLOOKUP(1, (T[Branch]=B2)*(T[Ledger]=C2), T[Amount], 0)
+</code></pre>
+<p>Mechanics:</p>
+<ol>
+<li><code>(T[Branch]=B2)</code> produces an array of TRUE/FALSE, one per row.</li>
+<li><code>(T[Ledger]=C2)</code> produces another.</li>
+<li>Multiplying them coerces TRUE/FALSE to 1/0 and gives 1 only where <strong>both</strong> are TRUE (AND logic).</li>
+<li>XLOOKUP searches this 1/0 array for the value 1 and returns the corresponding Amount.</li>
+</ol>
+<p>Variants:</p>
+<ul>
+<li><strong>OR logic</strong>: add instead of multiply and test for a positive value: <code>XLOOKUP(1, --(((T[Branch]="MUM")+(T[Branch]="PUN"))&gt;0), …)</code>.</li>
+<li><strong>Range conditions</strong>: <code>(T[Date]&lt;=RptDate)</code> inside the product, combined with <code>search_mode</code> -1 for "latest on or before".</li>
+<li><strong>Last match</strong>: <code>XLOOKUP(1, (…)*(…), T[Amount], 0, 0, -1)</code>.</li>
+<li><strong>Legacy equivalent</strong>: <code>INDEX(T[Amount], MATCH(1, (T[Branch]=B2)*(T[Ledger]=C2), 0))</code>, which needs Ctrl+Shift+Enter in Excel 2019 and earlier.</li>
+</ul>
+<p>Strengths: no helper column, conditions can include operators and functions, easy to extend. Weaknesses: each formula evaluates the full arrays (slower over many cells and large Tables), and it is less transparent to non-specialist reviewers.</p>
+<h3 id="choosing-between-them">Choosing between them</h3>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>Helper key</th>
+<th>Boolean array</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Speed with 1,000+ lookup cells on 1 lakh rows</td>
+<td>fast</td>
+<td>slow</td>
+</tr>
+<tr>
+<td>Source Table editable?</td>
+<td>required</td>
+<td>not required</td>
+</tr>
+<tr>
+<td>Range or inequality conditions</td>
+<td>no</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Excel 2016/2019 compatibility</td>
+<td>yes</td>
+<td>only via INDEX-MATCH array formula</td>
+</tr>
+<tr>
+<td>Auditability</td>
+<td>high (key visible)</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>Reuse in SUMIFS/Power Query</td>
+<td>yes</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<p>Practitioner default: helper keys for high-volume recurring mappings (budget pulls, consolidations); boolean arrays for ad-hoc, few-cell lookups and conditions involving dates or thresholds.</p>
+<h3 id="lookup-or-sumifs">Lookup or SUMIFS?</h3>
+<p>If the compound key may legitimately appear more than once (several postings for Branch + Ledger in a month) a lookup returns only the first; SUMIFS aggregates all. Use a lookup to <strong>retrieve an attribute</strong> (a rate, a mapping, a name) and SUMIFS to <strong>aggregate amounts</strong>. A lookup on amounts is only correct when the key is guaranteed unique — test it.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>Budget Table <code>Bud</code> (₹):</p>
+<table>
+<thead>
+<tr>
+<th>Branch</th>
+<th>Ledger</th>
+<th>Month</th>
+<th>Amount</th>
+<th>Key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MUM</td>
+<td>Rent</td>
+<td>01-Apr-2025</td>
+<td>4,50,000</td>
+<td>MUM|Rent|45748</td>
+</tr>
+<tr>
+<td>PUN</td>
+<td>Rent</td>
+<td>01-Apr-2025</td>
+<td>2,10,000</td>
+<td>PUN|Rent|45748</td>
+</tr>
+<tr>
+<td>PUN</td>
+<td>Power</td>
+<td>01-Apr-2025</td>
+<td>1,35,000</td>
+<td>PUN|Power|45748</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Single-key <code>XLOOKUP("Rent", Bud[Ledger], Bud[Amount])</code> → ₹4,50,000 (Mumbai) — wrong for Pune.</li>
+<li>Helper key <code>XLOOKUP("PUN|Rent|"&amp;C3, Bud[Key], Bud[Amount], 0)</code> with C3 = 01-Apr-2025 → ₹2,10,000.</li>
+<li>Boolean <code>XLOOKUP(1, (Bud[Branch]="PUN")*(Bud[Ledger]="Rent")*(Bud[Month]=C3), Bud[Amount], 0)</code> → ₹2,10,000.</li>
+</ul>
+<h3 id="implementation-details-that-matter">Implementation details that matter</h3>
+<ul>
+<li>A <strong>blank</strong> condition value (C2 empty) matches rows with blank ledgers — guard with <code>IF(C2="", "", …)</code>.</li>
+<li>In the boolean form, comparing to a numeric cell where the column contains numbers stored as text gives FALSE everywhere; clean types first.</li>
+<li>Return <code>0</code> as <code>if_not_found</code> only for amounts where "no budget" genuinely means zero; for rates or mappings return a visible flag.</li>
+<li>For three or more keys, the helper-key approach scales better: one key column, one lookup.</li>
+</ul>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Delimiter collisions</strong> — choose a character absent from all key parts; check with <code>COUNTIF(T[Branch],"*|*")</code>.</li>
+<li><strong>Duplicate compound keys</strong> (two budget lines for PUN | Rent) silently return the first; COUNTIFS on all key parts should equal 1.</li>
+<li><strong>Date keys</strong> typed as text in one source and real dates in another never match; normalise in Power Query.</li>
+<li><strong>Performance</strong> — 5,000 boolean-array lookups over a 2 lakh-row Table can take tens of seconds per recalc; switch to helper keys or a Power Query merge.</li>
+<li><strong>Case sensitivity</strong> — both techniques are case-insensitive; codes that differ only by case ("Ab1" vs "AB1") need <code>EXACT</code> inside the boolean array.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Compound keys need either a delimiter-joined helper key or a boolean product inside XLOOKUP.</li>
+<li>Always use a delimiter in helper keys, normalise types and test uniqueness.</li>
+<li><code>XLOOKUP(1, (cond1)*(cond2), return)</code> gives AND logic; addition with <code>&gt;0</code> gives OR logic.</li>
+<li>Helper keys are faster and reusable; boolean arrays handle inequalities and need no source changes.</li>
+<li>Use lookups for attributes and unique keys; use SUMIFS when the key can repeat.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-standard-cost-by-plant-and-sku-l1">Q1. Standard cost by plant and SKU [L1]</h3>
+<p>Table <code>Std</code> has Plant, SKU, EffectiveFrom, StdCost. Write (a) a helper-key column and lookup for the standard cost of the plant in B2 and SKU in C2, ignoring dates, and (b) a boolean-array XLOOKUP that returns the latest standard cost effective on or before the date in D2.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> For (b), combine three conditions and search last-to-first on a Table sorted by EffectiveFrom.</p>
+</blockquote>
+<h3 id="q2-delimiter-collision-l2">Q2. Delimiter collision [L2]</h3>
+<p>A helper key <code>=[@Entity]&amp;[@Account]</code> is used in a consolidation file where entity codes are "1", "12", "120" and account codes are 4–6 digits. Construct an example of two different entity–account pairs that produce the same key, explain the consequence for intercompany elimination, and fix the key.</p>
+<h3 id="q3-intercompany-matching-l2">Q3. Intercompany matching [L2]</h3>
+<p>Entity A's ledger shows receivables from B, C and D by account; each counterparty's ledger shows payables to A. Design lookups that pull the counterparty's matching balance for each row (keys: Entity, Counterparty, Account mapping) and flag differences above ₹10,000. Explain which technique you would use for 3,000 rows and why.</p>
+<h3 id="q4-lookup-vs-sumifs-l1">Q4. Lookup vs SUMIFS [L1]</h3>
+<p>Explain why <code>XLOOKUP(1, (GL[Branch]=B2)*(GL[Ledger]=C2), GL[Amount])</code> understates November rent for a branch with three rent postings in November, and write the correct formula.</p>
+<h3 id="q5-performance-redesign-l3">Q5. Performance redesign [L3]</h3>
+<p>A BvA workbook has 6,800 boolean-array XLOOKUPs against a 1.6 lakh-row budget Table and takes 45 seconds to recalculate. Propose a redesign (helper keys, Power Query merge, or SUMIFS), estimate the effect on calculation load qualitatively, and list the checks you would add to prove the redesigned numbers equal the old ones.</p></section>
+<nav class="pager"><a class="prev" href="S07_Live_Scenario_Switches_with_CHOOSE_INDEX_and.html">← Live Scenario Switches with CHOOSE, INDEX and SWITCH</a><a class="next" href="../concepts/C01_The_Fully_Specified_XLOOKUP_for_Ledger_Mapping.html">The Fully Specified XLOOKUP for Ledger Mapping →</a></nav>
+</main></div></body></html>

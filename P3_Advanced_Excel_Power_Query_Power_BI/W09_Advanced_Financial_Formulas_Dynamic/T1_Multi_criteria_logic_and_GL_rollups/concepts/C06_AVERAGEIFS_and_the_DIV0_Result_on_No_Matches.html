@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AVERAGEIFS and the #DIV/0! Result on No Matches · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C06_AVERAGEIFS_and_the_DIV0_Result_on_No_Matches.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T1 · Multi-criteria logic and GL rollups</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Multi-criteria logic and GL rollups</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Nested_IF_vs_IFS_vs_SWITCH_for_Account_Code.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S01_Nested_IF_vs_IFS_vs_SWITCH_for_Account_Code.html">Nested IF vs IFS vs SWITCH for Account-Code Classification</a></li><li><a href="../subtopics/S02_SUMIFS_for_Multi_Department_GL_Rollups_by_Group.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S02_SUMIFS_for_Multi_Department_GL_Rollups_by_Group.html">SUMIFS for Multi-Department GL Rollups by Group, Cost Centre and Month</a></li><li><a href="../subtopics/S03_COUNTIFS_Data_Quality_Tests_on_GL_and_TB_Dumps.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S03_COUNTIFS_Data_Quality_Tests_on_GL_and_TB_Dumps.html">COUNTIFS Data-Quality Tests on GL and TB Dumps</a></li><li><a href="../subtopics/S04_AVERAGEIFS_MAXIFS_and_MINIFS_for_ARAP_and_Sales.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S04_AVERAGEIFS_MAXIFS_and_MINIFS_for_ARAP_and_Sales.html">AVERAGEIFS, MAXIFS and MINIFS for AR/AP and Sales Analytics</a></li><li><a href="../subtopics/S05_Criteria_Syntax_Operators_Concatenation_Wildcards.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S05_Criteria_Syntax_Operators_Concatenation_Wildcards.html">Criteria Syntax: Operators, Concatenation, Wildcards and Date Ranges</a></li><li><a href="../subtopics/S06_OR_Logic_in_SUMIFS_with_Array_Constants_Wrapped_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S06_OR_Logic_in_SUMIFS_with_Array_Constants_Wrapped_in.html">OR Logic in SUMIFS with Array Constants Wrapped in SUM</a></li><li><a href="../subtopics/S07_Excel_Tables_and_Structured_References_for_Self.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S07_Excel_Tables_and_Structured_References_for_Self.html">Excel Tables and Structured References for Self-Expanding Rollups</a></li><li><a href="../subtopics/S08_Mixed_References_and_F4_Cycling_for_Copy_Across_PL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S08_Mixed_References_and_F4_Cycling_for_Copy_Across_PL.html">Mixed References and F4 Cycling for Copy-Across P&amp;L Grids</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_The_Department_Account_Month_SUMIFS_Grid_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C01_The_Department_Account_Month_SUMIFS_Grid_Formula.html">The Department × Account × Month SUMIFS Grid Formula</a></li><li><a href="C02_IFS_with_a_TRUE_Catch_All_for_Account.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C02_IFS_with_a_TRUE_Catch_All_for_Account.html">IFS with a TRUE Catch-All for Account Classification</a></li><li><a href="C03_SUM_of_SUMIFS_with_an_Array_Constant_for_OR_Logic.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C03_SUM_of_SUMIFS_with_an_Array_Constant_for_OR_Logic.html">SUM of SUMIFS with an Array Constant for OR Logic</a></li><li><a href="C04_MAXIFS_and_MINIFS_Signature_and_the_Zero_When.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C04_MAXIFS_and_MINIFS_Signature_and_the_Zero_When.html">MAXIFS and MINIFS: Signature and the Zero-When-Empty Trap</a></li><li><a href="C05_COUNTIFS_Duplicate_Posting_Flag_in_a_Calculated.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C05_COUNTIFS_Duplicate_Posting_Flag_in_a_Calculated.html">COUNTIFS Duplicate-Posting Flag in a Calculated Column</a></li><li><a href="C06_AVERAGEIFS_and_the_DIV0_Result_on_No_Matches.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C06_AVERAGEIFS_and_the_DIV0_Result_on_No_Matches.html">AVERAGEIFS and the #DIV/0! Result on No Matches</a></li><li><a href="C07_Range_Criteria_for_Numeric_Account_Codes_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C07_Range_Criteria_for_Numeric_Account_Codes_vs.html">Range Criteria for Numeric Account Codes vs Wildcards on Text</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>AVERAGEIFS and the #DIV/0! Result on No Matches</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>=AVERAGEIFS(...)</code> returns #DIV/0! with no matches; test with COUNTIFS first or wrap in <code>IFERROR</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>AVERAGEIFS computes</p>
+<p>\[
+\bar{x}_S = \frac{\sum_{i \in S} x_i}{n_S}
+\]</p>
+<p>where \(S\) is the set of rows meeting all criteria, \(x_i\) the numeric value in <code>average_range</code> for row \(i\), and \(n_S\) the count of numeric values in \(S\). When \(n_S = 0\) the denominator is zero and the function returns <code>#DIV/0!</code>.</p>
+<p>Guard 1 — test the count first:</p>
+<pre><code class="language-excel">=IF(COUNTIFS(SR[Month],C$3,SR[Channel],$A5)=0,
+    &quot;&quot;,
+    AVERAGEIFS(SR[Taxable],SR[Month],C$3,SR[Channel],$A5))
+</code></pre>
+<p>Guard 2 — blanket error trap:</p>
+<pre><code class="language-excel">=IFERROR(AVERAGEIFS(SR[Taxable],SR[Month],C$3,SR[Channel],$A5), &quot;&quot;)
+</code></pre>
+<h2 id="explanation">Explanation</h2>
+<p><strong>Why COUNTIFS first is the better guard.</strong> The COUNTIFS test catches exactly one condition — "no matching rows" — and lets every other error through. IFERROR suppresses <em>all</em> errors: a <code>#VALUE!</code> from unequal-sized ranges, a <code>#REF!</code> from a deleted column, or a <code>#NAME?</code> from a misspelt Table would all display as a reassuring blank. In a reporting model, a hidden structural error is worse than a visible one. Use IFERROR only where the only plausible error is the empty set and the formula is already proven.</p>
+<p><strong>What to return.</strong> A blank or "–" is usually right for averages ("no transactions"), because 0 would claim the average ticket was ₹0 and would drag down any further average of averages. If downstream arithmetic needs a number, return <code>NA()</code> deliberately so charts skip the point, or 0 with a clear label.</p>
+<p><strong>Contrast with siblings.</strong> SUMIFS and COUNTIFS return 0 on no match (correct: the sum of nothing is zero). MAXIFS/MINIFS also return 0 (misleading). AVERAGEIFS is the only one that errors — which is mathematically honest.</p>
+<p><strong>Note on the COUNTIFS guard.</strong> The guard counts rows meeting the criteria; if the average range has blanks or text in those rows, \(n_S\) may still be zero while COUNTIFS is positive. Guard on the value column too (add a criterion <code>SR[Taxable], "&lt;&gt;"</code>) when blanks are possible.</p>
+<p><strong>Performance.</strong> The COUNTIFS guard doubles the scans per cell. On very large grids, compute SUMIFS and COUNTIFS once in helper blocks and divide: <code>=IF(Cnt=0,"",Sum/Cnt)</code> — cheaper and transparent.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Average invoice value by channel and month (₹), from a sales register:</p>
+<table>
+<thead>
+<tr>
+<th>Channel</th>
+<th>Apr-25</th>
+<th>May-25</th>
+<th>Jun-25</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Website</td>
+<td>2,140</td>
+<td>2,315</td>
+<td>2,290</td>
+</tr>
+<tr>
+<td>Marketplace</td>
+<td>1,480</td>
+<td>1,510</td>
+<td>1,495</td>
+</tr>
+<tr>
+<td>Corporate gifting</td>
+<td>38,600</td>
+<td><code>#DIV/0!</code></td>
+<td>41,200</td>
+</tr>
+</tbody>
+</table>
+<p>No corporate-gifting invoices were raised in May, so the unguarded AVERAGEIFS errors. Any total row using <code>AVERAGE(C5:C7)</code> or a chart then breaks. With the COUNTIFS guard the cell is blank and <code>AVERAGE</code> ignores it; with IFERROR the result looks the same today — but if someone later renames the <code>SR</code> Table, IFERROR would turn the entire grid blank instead of showing <code>#REF!</code>.</p>
+<h2 id="connections">Connections</h2>
+<p>Part of the AVERAGEIFS/MAXIFS/MINIFS subtopic. It is a specific case of the week's error-discipline cross-cutting rule (prefer targeted tests and <code>IFNA</code> over blanket <code>IFERROR</code>). The sum-and-count helper approach also avoids the "average of averages" error covered under OR logic, and matches how DAX <code>DIVIDE()</code> handles a zero denominator in Week 11.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-guard-the-kpi-l1">Q1. Guard the KPI [L1]</h3>
+<p>Write the average ticket size formula for the branch in A6 and the month starting in D3 from Table <code>SR</code> (Branch, InvDate, Taxable, VchType), excluding credit notes and returning "–" where there are no invoices, without using IFERROR.</p>
+<h3 id="q2-iferror-masking-a-real-error-l2">Q2. IFERROR masking a real error [L2]</h3>
+<p>A grid of AVERAGEIFS wrapped in IFERROR shows all blanks after a colleague added a column to the source data and renamed the "Taxable Value" header to "Taxable". Explain why the grid is blank, why this is dangerous in a month-end pack, and how you would have detected it with a better guard.</p>
+<h3 id="q3-helper-block-design-l2">Q3. Helper-block design [L2]</h3>
+<p>For a 120-customer × 12-month average DSO-style grid on a 3 lakh-row receivables history, propose a layout using separate SUMIFS and COUNTIFS blocks that is faster than guarded AVERAGEIFS. Show the formula for one cell of each block and the final ratio.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Two grids of the same shape, then one division grid that tests the count.</p>
+</blockquote></section>
+<nav class="pager"><a class="prev" href="C05_COUNTIFS_Duplicate_Posting_Flag_in_a_Calculated.html">← COUNTIFS Duplicate-Posting Flag in a Calculated Column</a><a class="next" href="C07_Range_Criteria_for_Numeric_Account_Codes_vs.html">Range Criteria for Numeric Account Codes vs Wildcards on… →</a></nav>
+</main></div></body></html>

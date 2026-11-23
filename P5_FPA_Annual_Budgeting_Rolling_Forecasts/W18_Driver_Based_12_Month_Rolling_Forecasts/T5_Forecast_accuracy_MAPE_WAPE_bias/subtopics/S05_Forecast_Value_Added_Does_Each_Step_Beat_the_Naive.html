@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forecast Value Added: Does Each Step Beat the Naive Baseline? · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S05_Forecast_Value_Added_Does_Each_Step_Beat_the_Naive.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 5</a> <span>›</span> <a href="../../index.html">Week 18</a> <span>›</span> <a href="../index.html">T5 · Forecast accuracy: MAPE, WAPE, bias</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Forecast accuracy: MAPE, WAPE, bias</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Forecast_Error_Metrics_MAD_MAPE_WAPE_RMSE_Bias.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S01_Forecast_Error_Metrics_MAD_MAPE_WAPE_RMSE_Bias.html">Forecast Error Metrics: MAD, MAPE, WAPE, RMSE, Bias, Tracking Signal</a></li><li><a href="S02_Measurement_Lag_Lag_1_Lag_3_and_Lag_6_Forecast.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S02_Measurement_Lag_Lag_1_Lag_3_and_Lag_6_Forecast.html">Measurement Lag: Lag-1, Lag-3 and Lag-6 Forecast Accuracy</a></li><li><a href="S03_Aggregation_Level_and_Error_Netting_in_Forecast.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S03_Aggregation_Level_and_Error_Netting_in_Forecast.html">Aggregation Level and Error Netting in Forecast Accuracy</a></li><li><a href="S04_Detecting_Sandbagging_and_Over_Optimism_by.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S04_Detecting_Sandbagging_and_Over_Optimism_by.html">Detecting Sandbagging and Over-Optimism by Business Unit</a></li><li><a href="S05_Forecast_Value_Added_Does_Each_Step_Beat_the_Naive.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S05_Forecast_Value_Added_Does_Each_Step_Beat_the_Naive.html">Forecast Value Added: Does Each Step Beat the Naive Baseline?</a></li><li><a href="S06_Accuracy_Dashboards_Accountability_and_Tolerance.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S06_Accuracy_Dashboards_Accountability_and_Tolerance.html">Accuracy Dashboards, Accountability and Tolerance Bands per BU</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_MAPE_Mean_Absolute_Percentage_Error_and_Its.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C01_MAPE_Mean_Absolute_Percentage_Error_and_Its.html">MAPE: Mean Absolute Percentage Error and Its Weaknesses</a></li><li><a href="../concepts/C02_WAPE_and_Forecast_Accuracy_Percentage.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C02_WAPE_and_Forecast_Accuracy_Percentage.html">WAPE and Forecast Accuracy Percentage</a></li><li><a href="../concepts/C03_Bias_Percentage_Direction_of_Forecast_Error.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C03_Bias_Percentage_Direction_of_Forecast_Error.html">Bias Percentage: Direction of Forecast Error</a></li><li><a href="../concepts/C04_MAD_and_the_Tracking_Signal_for_Systematic_Bias.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C04_MAD_and_the_Tracking_Signal_for_Systematic_Bias.html">MAD and the Tracking Signal for Systematic Bias</a></li><li><a href="../concepts/C05_RMSE_Root_Mean_Square_Error_and_Large_Miss_Penalty.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C05_RMSE_Root_Mean_Square_Error_and_Large_Miss_Penalty.html">RMSE: Root Mean Square Error and Large-Miss Penalty</a></li><li><a href="../concepts/C06_Forecast_Value_Added_Formula_and_Interpretation.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C06_Forecast_Value_Added_Formula_and_Interpretation.html">Forecast Value Added Formula and Interpretation</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Forecast Value Added: Does Each Step Beat the Naive Baseline?</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Forecast Value Added (FVA): does each adjustment step improve on a naive/statistical baseline</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Most forecasting processes have several layers of human touch: a statistical or system baseline, a sales or BU adjustment, a FP&amp;A review, a management override before the Board. Each layer costs time — often days of the monthly cycle — and each is assumed to improve the number. Forecast Value Added (FVA), a method popularised in demand planning by Michael Gilliland (SAS), tests that assumption empirically. It frequently finds that some steps make the forecast <em>worse</em> — typically because of bias (sandbagging, optimism) or anchoring. For FP&amp;A, FVA is the evidence base for streamlining the cycle (Topic 1's effort-vs-accuracy trade-off), for focusing human effort on lines where judgement genuinely helps, and for depersonalising conversations with BU heads about adjustments.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="definition">Definition</h3>
+<p>For a forecasting process with steps \(0, 1, \dots, K\) (step 0 = naive baseline), FVA of step \(k\) relative to step \(j\) is:</p>
+<p>\[
+\text{FVA}_{k \text{ vs } j} = \text{Error}_j - \text{Error}_k
+\]</p>
+<p>where Error is a chosen metric (WAPE, MAPE or MAD — c06 uses "error of naive minus error of submitted forecast"). <strong>Positive FVA means step \(k\) reduced error — it added value; negative FVA means it destroyed value.</strong> FVA is usually reported in percentage points of WAPE.</p>
+<p>Both step-to-step FVA (did the BU adjustment improve on the statistical forecast?) and cumulative FVA (did the final submitted forecast beat naive?) are reported.</p>
+<h3 id="the-process-steps">The process steps</h3>
+<p>A typical FP&amp;A revenue forecasting chain:</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Description</th>
+<th>Who</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0. Naive</td>
+<td>Last-period or seasonal naive (same month last year × YTD growth)</td>
+<td>Automatic</td>
+</tr>
+<tr>
+<td>1. Statistical</td>
+<td>Exponential smoothing / <code>FORECAST.ETS</code>, regression on drivers (Topic 3)</td>
+<td>FP&amp;A analyst / system</td>
+</tr>
+<tr>
+<td>2. Driver-based / BU</td>
+<td>BU adjusts for pipeline, pricing, launches</td>
+<td>BU head, sales</td>
+</tr>
+<tr>
+<td>3. FP&amp;A review</td>
+<td>Challenge, consistency, bias correction</td>
+<td>FP&amp;A</td>
+</tr>
+<tr>
+<td>4. Management override</td>
+<td>CFO/CEO adjustments before Board</td>
+<td>Leadership</td>
+</tr>
+</tbody>
+</table>
+<p>Each step's forecast must be <strong>stored separately</strong> (as a sub-version or "Stage" column in the long-format table — Topic 4, s02) so that its error can be measured against actuals at the same lag.</p>
+<h3 id="naive-benchmarks">Naive benchmarks</h3>
+<ul>
+<li><strong>Naive (random walk)</strong>: \(F_{t+h} = A_t\). Hard to beat for stable series with no seasonality.</li>
+<li><strong>Seasonal naive</strong>: \(F_{t+h} = A_{t+h-12}\), optionally scaled: \(F_{t+h} = A_{t+h-12} \times (1 + g_{\text{YTD}})\), where \(g_{\text{YTD}}\) is YTD growth versus prior-year YTD. Essential for Indian businesses with festive peaks (Oct–Nov), monsoon effects (Jun–Sep) and March year-end loading.</li>
+<li><strong>Moving average</strong>: \(F = \frac{1}{k} \sum_{i=0}^{k-1} A_{t-i}\).</li>
+</ul>
+<p>The naive forecast is the bar every step must clear. Statistical methods should be selected only if they beat seasonal naive on hold-out data.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>Lag-3 revenue forecasts for a BU, Q3 FY26 (₹ crore):</p>
+<table>
+<thead>
+<tr>
+<th>Month</th>
+<th>Actual</th>
+<th>Seasonal naive</th>
+<th>Statistical (ETS)</th>
+<th>BU submission</th>
+<th>Final (after mgmt)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Oct</td>
+<td>260</td>
+<td>240</td>
+<td>252</td>
+<td>238</td>
+<td>250</td>
+</tr>
+<tr>
+<td>Nov</td>
+<td>300</td>
+<td>285</td>
+<td>294</td>
+<td>270</td>
+<td>285</td>
+</tr>
+<tr>
+<td>Dec</td>
+<td>220</td>
+<td>230</td>
+<td>224</td>
+<td>205</td>
+<td>215</td>
+</tr>
+<tr>
+<td>Σ|A − F|</td>
+<td></td>
+<td>45</td>
+<td>18</td>
+<td>67</td>
+<td>30</td>
+</tr>
+<tr>
+<td>WAPE (÷ 780)</td>
+<td></td>
+<td>5.8%</td>
+<td>2.3%</td>
+<td>8.6%</td>
+<td>3.8%</td>
+</tr>
+<tr>
+<td>Bias %</td>
+<td></td>
+<td>−3.2%</td>
+<td>−1.3%</td>
+<td>−8.6%</td>
+<td>−3.8%</td>
+</tr>
+</tbody>
+</table>
+<p>FVA (percentage points of WAPE, computed on unrounded WAPE):</p>
+<ul>
+<li>Statistical vs naive: 5.77 − 2.31 = <strong>+3.5 pp</strong> — the model adds value.</li>
+<li>BU vs statistical: 2.31 − 8.59 = <strong>−6.3 pp</strong> — the BU adjustment destroys value; its bias of −8.6% (all three months under) suggests sandbagging.</li>
+<li>Management vs BU: 8.59 − 3.85 = <strong>+4.7 pp</strong> — leadership partially corrects the BU cushion.</li>
+<li>Final vs naive (cumulative): 5.77 − 3.85 = <strong>+1.9 pp</strong> — overall positive, but the final forecast is still worse than the statistical forecast alone (3.8% vs 2.3%).</li>
+</ul>
+<p>Conclusion: the process could have published the statistical forecast with less effort and better accuracy; the BU step needs redesign (explain deviations from statistical, accuracy-linked incentives), not more review layers.</p>
+<h3 id="implementation">Implementation</h3>
+<p>Long-format accuracy table: BU, Account, Target month, Lag, <strong>Stage</strong> (Naive, Stat, BU, FPA, Final), Forecast, Actual. Compute WAPE by Stage with <code>SUMIFS</code> on a precomputed absolute-error column, then FVA as the difference between adjacent stages:</p>
+<pre><code>WAPE_stage = SUMIFS(Acc[AbsErr],Acc[Stage],H$4,Acc[BU],$B6,Acc[Lag],SelLag)
+            / SUMIFS(Acc[Actual],Acc[Stage],H$4,Acc[BU],$B6,Acc[Lag],SelLag)
+FVA        = G6 - H6        // previous stage WAPE minus this stage WAPE
+</code></pre>
+<p>Present an FVA "stairstep" chart: one bar per stage showing WAPE, with step-to-step FVA labelled. In Power BI, Stage is a dimension and FVA a measure using <code>CALCULATE</code> with the prior stage.</p>
+<h3 id="using-fva-results">Using FVA results</h3>
+<ul>
+<li><strong>Remove or simplify</strong> steps with consistently negative FVA (often the case for low-value review layers).</li>
+<li><strong>Target judgement</strong> to lines where FVA is positive — typically new launches, large contracts, price changes — and let statistical forecasts run elsewhere ("forecast by exception").</li>
+<li><strong>Feed back</strong> results to BUs quarterly; pair with bias analysis (s04).</li>
+<li><strong>Shorten the cycle</strong>: if two of five steps add nothing, the monthly reforecast can close days earlier.</li>
+</ul>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Sample size.</strong> FVA on one quarter is noisy; evaluate over at least 6–12 months and across many lines before removing a step.</li>
+<li><strong>Same lag for all stages.</strong> All stages must be measured at the same lag and against the same actuals; otherwise later stages look better simply because they were made later.</li>
+<li><strong>Information vs skill.</strong> A BU adjustment may add value because it incorporates information the statistical model lacks (a lost customer); FVA rewards that correctly. It penalises adjustments driven by bias.</li>
+<li><strong>Choice of error metric.</strong> WAPE-based FVA weights large lines; MAPE-based FVA can be dominated by small lines. Use WAPE for finance.</li>
+<li><strong>Gaming the baseline.</strong> If the naive or statistical forecast is poorly specified (wrong seasonality), FVA of human steps is overstated. Validate the baseline (e.g., <code>FORECAST.ETS</code> with seasonality = 12 for monthly data).</li>
+<li><strong>Bias vs accuracy.</strong> A step can reduce WAPE while increasing bias (or vice versa); report both.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>FVA = error of the earlier (or naive) step minus error of the later step; positive = value added.</li>
+<li>Store every process stage's forecast separately and measure all at the same lag.</li>
+<li>Seasonal naive is the minimum benchmark for seasonal Indian businesses; statistical forecasts must beat it.</li>
+<li>Negative FVA at a judgement step usually signals bias (sandbagging, optimism) or anchoring.</li>
+<li>Use FVA to remove low-value steps, focus judgement by exception and shorten the forecast cycle.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-compute-stage-fva-l2">Q1. Compute stage FVA [L2]</h3>
+<p>For a BU's Q1 FY26 revenue at lag-2 (₹ crore): Actual Apr 80, May 85, Jun 90. Naive (last period) 78, 80, 85. Statistical 82, 84, 88. BU 76, 79, 83. FP&amp;A-adjusted 80, 84, 88. Compute WAPE and bias % for each stage and FVA step by step and cumulatively versus naive. Recommend which stages to keep.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Use total actuals of 255 as the WAPE denominator for every stage.</p>
+</blockquote>
+<h3 id="q2-seasonal-naive-construction-l2">Q2. Seasonal naive construction [L2]</h3>
+<p>October 2024 revenue was ₹180 crore. April–September FY26 YTD revenue is ₹960 crore versus ₹900 crore in April–September FY25. (a) Construct the scaled seasonal-naive forecast for October 2025. (b) Write the Excel formula using <code>XLOOKUP</code> on a long table <code>Act</code> (Month, Amt) and <code>EDATE</code>. (c) Explain why plain last-period naive would be a poor benchmark for October in a festive-driven business.</p>
+<h3 id="q3-fva-programme-design-l3">Q3. FVA programme design [L3]</h3>
+<p>The CFO of an NSE-listed FMCG company wants to cut the monthly reforecast from 9 to 5 working days. The current process has five stages for 12 BUs and 8 accounts. Design an FVA study: data to capture, lag, metric, duration, decision rules for removing or keeping stages, and how results will be communicated to BU heads.</p>
+<h3 id="q4-interpreting-mixed-results-l2">Q4. Interpreting mixed results [L2]</h3>
+<p>A BU's adjustment step improves WAPE by 1.5 pp but moves bias from −0.5% to +4.2%. Explain how this can happen, whether the step adds value, and what further analysis you would perform.</p></section>
+<nav class="pager"><a class="prev" href="S04_Detecting_Sandbagging_and_Over_Optimism_by.html">← Detecting Sandbagging and Over-Optimism by Business Unit</a><a class="next" href="S06_Accuracy_Dashboards_Accountability_and_Tolerance.html">Accuracy Dashboards, Accountability and Tolerance Bands per… →</a></nav>
+</main></div></body></html>

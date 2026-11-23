@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing a Custom File-Cleaning Function by Hand · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S03_Writing_a_Custom_File_Cleaning_Function_by_Hand.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T4 · Folder consolidation pipeline</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Folder consolidation pipeline</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_FolderFiles_and_SharePointFiles_Sources_and_File.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S01_FolderFiles_and_SharePointFiles_Sources_and_File.html">Folder.Files and SharePoint.Files: Sources and File-Scope Filters</a></li><li><a href="S02_Combine_Files_Artefacts_Sample_Parameter_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S02_Combine_Files_Artefacts_Sample_Parameter_and.html">Combine Files Artefacts: Sample, Parameter and Transform Function</a></li><li><a href="S03_Writing_a_Custom_File_Cleaning_Function_by_Hand.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S03_Writing_a_Custom_File_Cleaning_Function_by_Hand.html">Writing a Custom File-Cleaning Function by Hand</a></li><li><a href="S04_Reading_Branch_and_Month_from_the_File_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S04_Reading_Branch_and_Month_from_the_File_Name.html">Reading Branch and Month from the File Name</a></li><li><a href="S05_Schema_Drift_Tolerant_Column_Selection_Across.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S05_Schema_Drift_Tolerant_Column_Selection_Across.html">Schema Drift: Tolerant Column Selection Across Branch Files</a></li><li><a href="S06_Multi_Bank_Statements_One_Function_per_Bank_Then.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S06_Multi_Bank_Statements_One_Function_per_Bank_Then.html">Multi-Bank Statements: One Function per Bank, Then Table.Combine</a></li><li><a href="S07_Monthly_Drop_In_Workflow_Archiving_and_Duplicate.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S07_Monthly_Drop_In_Workflow_Archiving_and_Duplicate.html">Monthly Drop-In Workflow, Archiving and Duplicate-File Detection</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_FolderFiles_Output_Columns_and_Which_to_Trust.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C01_FolderFiles_Output_Columns_and_Which_to_Trust.html">Folder.Files Output Columns and Which to Trust</a></li><li><a href="../concepts/C02_Filtering_by_Extension_and_Excluding_Temp_Files.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C02_Filtering_by_Extension_and_Excluding_Temp_Files.html">Filtering by Extension and Excluding Temp Files</a></li><li><a href="../concepts/C03_The_fxCleanTB_Function_Signature.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C03_The_fxCleanTB_Function_Signature.html">The fxCleanTB Function Signature</a></li><li><a href="../concepts/C04_Invoking_per_File_and_Appending_with_TableCombine.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C04_Invoking_per_File_and_Appending_with_TableCombine.html">Invoking per File and Appending with Table.Combine</a></li><li><a href="../concepts/C05_Tolerant_Column_Selection_with_MissingFieldUseNull.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C05_Tolerant_Column_Selection_with_MissingFieldUseNull.html">Tolerant Column Selection with MissingField.UseNull</a></li><li><a href="../concepts/C06_Parsing_Branch_and_Period_with_Text_Delimiter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C06_Parsing_Branch_and_Period_with_Text_Delimiter.html">Parsing Branch and Period with Text Delimiter Functions</a></li><li><a href="../concepts/C07_Guarding_the_Refresh_Against_One_Bad_File.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C07_Guarding_the_Refresh_Against_One_Bad_File.html">Guarding the Refresh Against One Bad File</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Writing a Custom File-Cleaning Function by Hand</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Writing a custom function by hand, <code>(file as binary) as table =&gt; ...</code>, and calling it with <code>Table.AddColumn</code></p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A hand-written function is the single most valuable M skill for consolidation work. It replaces four generated helper queries with one readable query, enforces an output schema you define, can be reused by several pipelines, and can be tested in isolation on any file. Interviewers for FP&amp;A automation roles frequently ask candidates to "write a function that cleans one file and apply it to a folder" in the Advanced Editor without the UI. It is also how you build the week's exercise: one function per bank, invoked over <code>Folder.Files</code>.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="function-syntax">Function syntax</h3>
+<p>An M function is a value written as a parameter list, an optional return type, <code>=&gt;</code>, and a body expression:</p>
+<pre><code class="language-m">(file as binary) as table =&gt;
+let
+    Source   = Csv.Document(file, [Delimiter = &quot;,&quot;, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+    Skipped  = Table.Skip(Source, each [Column1] &lt;&gt; &quot;Particulars&quot;),
+    Promoted = Table.PromoteHeaders(Skipped, [PromoteAllScalars = true]),
+    Rows     = Table.SelectRows(Promoted, each [Particulars] &lt;&gt; null and [Particulars] &lt;&gt; &quot;&quot;
+                   and not Text.StartsWith([Particulars], &quot;Grand Total&quot;)),
+    Typed    = Table.TransformColumnTypes(Rows,
+                   {{&quot;Debit&quot;, type number}, {&quot;Credit&quot;, type number}}, &quot;en-IN&quot;),
+    Result   = Table.SelectColumns(Typed, {&quot;Particulars&quot;, &quot;Debit&quot;, &quot;Credit&quot;}, MissingField.UseNull)
+in
+    Result
+</code></pre>
+<p>Saved as a query named <code>fxCleanTB</code>, this appears with an <em>fx</em> icon. Elements:</p>
+<ul>
+<li><strong>Parameter list</strong> <code>(file as binary)</code>: the name is local to the body; <code>as binary</code> declares the type and causes an immediate, clear error if someone passes text.</li>
+<li><strong>Optional parameters</strong> use <code>optional</code>, e.g. <code>(file as binary, optional skipCaption as nullable text)</code>; inside, default them with <code>skipCaption ?? "Particulars"</code>.</li>
+<li><strong>Return type</strong> <code>as table</code> documents and checks the output.</li>
+<li><strong>Body</strong> is any expression, usually a <code>let ... in</code> block.</li>
+</ul>
+<p>Type checks in M are on primitive kinds only (<code>table</code>, <code>binary</code>, <code>text</code>); <code>as table</code> does not verify column names. Schema must be enforced inside the body (the final <code>Table.SelectColumns</code> above).</p>
+<h3 id="creating-it-in-the-editor">Creating it in the editor</h3>
+<p>Home &gt; New Source &gt; Blank Query &gt; Advanced Editor, paste the code, rename the query <code>fxCleanTB</code>. Alternatively, build a normal query against one file, then edit the first line: change <code>Source = Csv.Document(File.Contents(FilePath), ...)</code> into the function header and replace the file reference with the parameter. Power Query offers an <strong>Invoke</strong> pane for any function: choose a file binary and test.</p>
+<h3 id="calling-it-with-tableaddcolumn">Calling it with Table.AddColumn</h3>
+<pre><code class="language-m">let
+    Files   = Folder.Files(FolderPath),
+    InScope = Table.SelectRows(Files, each Text.Lower([Extension]) = &quot;.csv&quot;
+                  and not Text.StartsWith([Name], &quot;~$&quot;)),
+    Keep    = Table.SelectColumns(InScope, {&quot;Name&quot;, &quot;Content&quot;}),
+    WithData = Table.AddColumn(Keep, &quot;Data&quot;, each fxCleanTB([Content]), type table),
+    Combined = Table.Combine(WithData[Data])
+in
+    Combined
+</code></pre>
+<p><code>each fxCleanTB([Content])</code> is <code>(_) =&gt; fxCleanTB(_[Content])</code>: for every file row, pass that row's binary. The result column holds a nested table per file. <code>WithData[Data]</code> extracts the column as a list of tables and <code>Table.Combine</code> appends them, aligning columns by name.</p>
+<p>To keep provenance, add the file name inside each nested table before combining, or expand rather than combine:</p>
+<pre><code class="language-m">WithData = Table.AddColumn(Keep, &quot;Data&quot;, each
+    Table.AddColumn(fxCleanTB([Content]), &quot;SourceFile&quot;, (r) =&gt; [Name], type text)),
+</code></pre>
+<p>Note the explicit <code>(r) =&gt;</code> lambda: inside a nested <code>each</code>, <code>_</code> would refer to the inner row, so <code>[Name]</code> written as <code>each [Name]</code> would look for a <code>Name</code> column in the TB, not the file row. Naming the inner parameter avoids that shadowing bug. Alternatively, <code>Table.ExpandTableColumn(WithData, "Data", {"Particulars", "Debit", "Credit"})</code> keeps the <code>Name</code> column automatically, at the cost of a fixed column list.</p>
+<h3 id="passing-more-than-the-binary">Passing more than the binary</h3>
+<p>Functions can take the whole row or several values:</p>
+<pre><code class="language-m">fxCleanTB2 = (file as binary, fileName as text) as table =&gt;
+    let t = fxCleanTB(file)
+    in  Table.AddColumn(t, &quot;Branch&quot;, each Text.BeforeDelimiter(fileName, &quot;_&quot;), type text)
+
+WithData = Table.AddColumn(Keep, &quot;Data&quot;, each fxCleanTB2([Content], [Name]))
+</code></pre>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>Twelve monthly CSVs for the Kolkata branch, each 2,400 rows with 6 caption rows and 3 subtotal rows. <code>fxCleanTB</code> returns 2,391 data rows per file with three columns. <code>Table.AddColumn</code> produces 12 rows with nested tables; <code>Table.Combine</code> produces \(12 \times 2{,}391 = 28{,}692\) rows. A per-file log built from the nested column — <code>Table.AddColumn(WithData, "Rows", each Table.RowCount([Data]))</code> — shows 2,391 for each file; any file showing 0 or a different Dr total is investigated before the output is used.</p>
+<h3 id="documenting-the-function">Documenting the function</h3>
+<p>Metadata can be attached so the Invoke dialog shows a description:</p>
+<pre><code class="language-m">let
+    fn = (file as binary) as table =&gt; ... ,
+    fnType = type function (file as binary) as table
+        meta [Documentation.Name = &quot;fxCleanTB&quot;,
+              Documentation.LongDescription = &quot;Cleans one Tally TB CSV into Particulars, Debit, Credit&quot;]
+in
+    Value.ReplaceType(fn, fnType)
+</code></pre>
+<p>This is optional but helps when the workbook is handed over.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Functions do not fold.</strong> Calling a custom function per row prevents folding; this is irrelevant for files (which never fold) but matters if you apply a function to a SQL source.</li>
+<li><strong>Formula.Firewall.</strong> If the function references another query that accesses a different source (e.g. a mapping table from SharePoint), refresh can fail with a firewall error; keep functions self-contained or align privacy levels.</li>
+<li><strong>Shadowed <code>_</code>.</strong> Nested <code>each</code> inside <code>each</code> is the most common hand-written bug; name inner parameters.</li>
+<li><strong>Errors inside nested tables are lazy.</strong> A broken file may show "Table" in the column but error only when combined; wrap calls in <code>try</code> and log.</li>
+<li><strong>Column type after AddColumn.</strong> Declare <code>type table</code> (or a full table type) on the invoked column so downstream steps know the shape.</li>
+<li><strong>Parameters vs functions.</strong> A parameter is a single value; a function is reusable logic. Do not create a parameter per file.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>A function is <code>(params) as type =&gt; body</code>; save it as its own query, named with an <code>fx</code> prefix.</li>
+<li>Test the function on one file via Invoke before applying it to the folder.</li>
+<li><code>Table.AddColumn(Files, "Data", each fx([Content]))</code> invokes per file; <code>Table.Combine(Files[Data])</code> appends by name.</li>
+<li>Enforce output schema inside the function, because <code>as table</code> checks only the kind.</li>
+<li>Use named lambdas in nested contexts to avoid <code>_</code> shadowing.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-write-the-function-l2">Q1. Write the function [L2]</h3>
+<p>Write <code>fxCleanBank = (file as binary) as table =&gt; ...</code> for an HDFC CSV with columns Date, Narration, Chq./Ref.No., Value Dt, Withdrawal Amt., Deposit Amt., Closing Balance, 20 caption rows above the header and a footer starting with "STATEMENT SUMMARY". Output columns: TxnDate (date, dd/MM/yy), Narration, Ref, Withdrawal, Deposit — all typed.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Skip until the first column equals "Date", then filter out rows from the footer marker onwards.</p>
+</blockquote>
+<h3 id="q2-shadowing-bug-l2">Q2. Shadowing bug [L2]</h3>
+<p>A colleague wrote <code>Table.AddColumn(Files, "Data", each Table.AddColumn(fxCleanTB([Content]), "File", each [Name]))</code>. The refresh errors with "The field 'Name' of the record wasn't found". Explain why and rewrite it correctly in two different ways.</p>
+<h3 id="q3-optional-parameter-l2">Q3. Optional parameter [L2]</h3>
+<p>Extend <code>fxCleanTB</code> with an optional parameter <code>headerText</code> that defaults to "Particulars", so Oracle exports with the header "Account" can use the same function. Show the function header, the defaulting line and two example calls.</p>
+<h3 id="q4-function-vs-generated-helpers-l3">Q4. Function vs generated helpers [L3]</h3>
+<p>Your manager prefers the Combine Files UI because "the team can click through it". Prepare a short argument for a hand-written function, covering schema enforcement, testing, reuse across pipelines and error logging, and propose how non-technical colleagues can still maintain it.</p></section>
+<nav class="pager"><a class="prev" href="S02_Combine_Files_Artefacts_Sample_Parameter_and.html">← Combine Files Artefacts: Sample, Parameter and Transform…</a><a class="next" href="S04_Reading_Branch_and_Month_from_the_File_Name.html">Reading Branch and Month from the File Name →</a></nav>
+</main></div></body></html>

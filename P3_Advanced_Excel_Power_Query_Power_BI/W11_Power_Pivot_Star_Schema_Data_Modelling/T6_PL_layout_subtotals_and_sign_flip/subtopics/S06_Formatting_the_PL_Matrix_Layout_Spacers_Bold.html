@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formatting the P&amp;L Matrix: Layout, Spacers, Bold Subtotals, Empty Rows · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S06_Formatting_the_PL_Matrix_Layout_Spacers_Bold.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T6 · P&amp;L layout, subtotals and sign-flip</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · P&amp;L layout, subtotals and sign-flip</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_The_PL_Layout_Dimension_Lines_Sort_Order_Type_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S01_The_PL_Layout_Dimension_Lines_Sort_Order_Type_and.html">The P&amp;L Layout Dimension: Lines, Sort Order, Type and Sign</a></li><li><a href="S02_Mapping_CoA_to_Layout_Lines_and_Computing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S02_Mapping_CoA_to_Layout_Lines_and_Computing.html">Mapping CoA to Layout Lines and Computing Subtotals by Sort Order</a></li><li><a href="S03_Row_Level_Measure_Dispatch_with_SWITCHTRUE_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S03_Row_Level_Measure_Dispatch_with_SWITCHTRUE_and.html">Row-Level Measure Dispatch with SWITCH(TRUE()) and SELECTEDVALUE</a></li><li><a href="S04_Sign_Convention_Credits_Negative_in_the_GL_Flipped.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S04_Sign_Convention_Credits_Negative_in_the_GL_Flipped.html">Sign Convention: Credits Negative in the GL, Flipped for Presentation</a></li><li><a href="S05_Margin_Rows_GM_EBITDA_EBIT_with_Dynamic_Format.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S05_Margin_Rows_GM_EBITDA_EBIT_with_Dynamic_Format.html">Margin Rows (GM %, EBITDA %, EBIT %) with Dynamic Format Strings</a></li><li><a href="S06_Formatting_the_PL_Matrix_Layout_Spacers_Bold.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S06_Formatting_the_PL_Matrix_Layout_Spacers_Bold.html">Formatting the P&amp;L Matrix: Layout, Spacers, Bold Subtotals, Empty Rows</a></li><li><a href="S07_Alternatives_Calculation_Groups_Field_Parameters.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S07_Alternatives_Calculation_Groups_Field_Parameters.html">Alternatives: Calculation Groups, Field Parameters, Visual Calcs, Excel</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_The_PnL_Dispatcher_Measure_with_SWITCHTRUE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C01_The_PnL_Dispatcher_Measure_with_SWITCHTRUE.html">The PnL Dispatcher Measure with SWITCH(TRUE())</a></li><li><a href="../concepts/C02_Actual_Signed_Applying_the_CoA_Sign_Factor_Row_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C02_Actual_Signed_Applying_the_CoA_Sign_Factor_Row_by.html">Actual Signed: Applying the CoA Sign Factor Row by Row</a></li><li><a href="../concepts/C03_The_Subtotal_Measure_Removing_the_Layout_Filter_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C03_The_Subtotal_Measure_Removing_the_Layout_Filter_by.html">The Subtotal Measure: Removing the Layout Filter by Sort Order</a></li><li><a href="../concepts/C04_EBITDA_with_a_Dynamic_Format_String_in_the_PL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C04_EBITDA_with_a_Dynamic_Format_String_in_the_PL.html">EBITDA % with a Dynamic Format String in the P&amp;L Matrix</a></li><li><a href="../concepts/C05_Blanking_PL_Grand_Totals_with_ISINSCOPE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C05_Blanking_PL_Grand_Totals_with_ISINSCOPE.html">Blanking P&amp;L Grand Totals with ISINSCOPE</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Formatting the P&amp;L Matrix: Layout, Spacers, Bold Subtotals, Empty Rows</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Matrix formatting: stepped layout off, blank spacer rows, bold subtotals via conditional formatting, hiding empty rows</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>The DAX can be perfect and the report still look wrong: indented hierarchy levels where a flat statement is expected,
+subtotal rows indistinguishable from account rows, header rows that vanish, accounts with no activity cluttering the
+page, or a "Total" row at the bottom summing EBITDA, GM % and PAT together. CFOs judge a P&amp;L report by whether it looks
+like the board pack they already know. The formatting settings in this note are the difference between a model that is
+used and one that is exported to Excel and re-typed every month.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="stepped-layout-off-and-row-subtotals-off">Stepped layout off and row subtotals off</h3>
+<ul>
+<li><strong>Stepped layout</strong> (Format visual → Row headers → Options → <em>Stepped layout</em>) shows hierarchy levels in one indented
+  column. For a flat statement driven by <code>Layout[Line]</code>, turn it off; if you drill to accounts (Layout line → account),
+  off gives two separate columns (Line, Account), which reads like a schedule.</li>
+<li><strong>Row subtotals</strong> (Format → <em>Row subtotals</em>): the layout already contains its own subtotal rows; the matrix's automatic
+  subtotal and grand total would add GP + EBITDA + … together. Turn row subtotals off, or blank them in DAX with
+  <code>ISINSCOPE</code> (c05). Column subtotals (e.g., FY total across months) are fine — they are just another filter context, and
+  every measure recomputes there.</li>
+</ul>
+<h3 id="blank-spacer-rows">Blank spacer rows</h3>
+<p>Spacer rows (<code>Type = "Spacer"</code>, label a single space or a non-breaking space) separate blocks. Their measure value is
+BLANK, so by default the matrix hides them along with headers. Options:</p>
+<ol>
+<li><strong>Show items with no data</strong>: right-click <code>Layout[Line]</code> in the Rows well → <em>Show items with no data</em>. All layout rows
+   appear, including spacers and headers. Side-effect: Account lines with no postings in the period also appear (often
+   desirable in a fixed-format statement).</li>
+<li><strong>Return a hidden value</strong>: the dispatcher returns 0 for Header/Spacer rows and the dynamic format string for those
+   types is <code>";;;"</code> (or <code>" "</code>), which renders nothing. Rows stay visible without "Show items with no data". Test that
+   exports do not show the zeros as values.</li>
+<li><strong>Visual-level filter on a "Show Row" measure</strong>: <code>Show Row = IF((SELECTEDVALUE(Layout[Type]) IN {"Header","Spacer"}) ||
+   NOT ISBLANK([PnL]), 1)</code> combined with <em>Show items with no data</em> gives fine control (hide empty accounts, keep
+   structural rows).</li>
+</ol>
+<p>Because spacer labels must be unique for Sort by Column, use one, two, three spaces or invisible characters per spacer row.</p>
+<h3 id="bold-or-highlighted-subtotals">Bold or highlighted subtotals</h3>
+<p>Power BI's conditional formatting for matrix values supports <strong>background colour, font colour, data bars, icons and web
+URL</strong>, driven by rules or by a field value (a measure returning a colour hex code). Font <em>weight</em> is not a conditional
+formatting option in most versions, so "bold subtotals" is implemented as:</p>
+<ul>
+<li>A <strong>style measure</strong> returning colours by row type:</li>
+</ul>
+<pre><code class="language-DAX">Row Background =
+SWITCH (
+    SELECTEDVALUE ( Layout[Type] ),
+    &quot;Subtotal&quot;, &quot;#E8EEF7&quot;,
+    &quot;Ratio&quot;,    &quot;#FFFFFF&quot;,
+    BLANK ()
+)
+
+Row Font Colour =
+SWITCH (
+    SELECTEDVALUE ( Layout[Type] ),
+    &quot;Subtotal&quot;, &quot;#0B2545&quot;,
+    &quot;Ratio&quot;,    &quot;#5C677D&quot;,
+    &quot;#000000&quot;
+)
+</code></pre>
+<p>Apply via <em>Cell elements</em> → Background colour / Font colour → <em>Field value</em> → the style measure, for each value
+  column (and for row headers where the version allows).
+- <strong>Label-based emphasis</strong>: uppercase labels for subtotals ("GROSS PROFIT"), or a Unicode bold label column (risky for
+  screen readers and exports).
+- <strong>Excel PivotTables</strong> on Power Pivot allow true bold on selected rows (manual or via PivotTable styles), which is one
+  reason finance teams still render board packs in Excel (s07).</p>
+<p>Check the current Power BI release notes — matrix formatting gains options regularly (per-row styling via visual
+calculations or new cell element settings may make true bold possible).</p>
+<h3 id="hiding-empty-rows">Hiding empty rows</h3>
+<p>By default the matrix hides rows where every value measure is blank. Consequences and controls:</p>
+<ul>
+<li>An account line with zero activity disappears (good for drill-down, bad for a fixed statement); force it with <em>Show
+  items with no data</em> or a hidden zero.</li>
+<li>A measure returning 0 instead of BLANK (e.g., <code>[Actual] + 0</code>, or <code>COALESCE([Actual], 0)</code>) shows every account in the
+  CoA, even those not used for years. Return BLANK for "no data" and 0 only when a real zero is meaningful.</li>
+<li>With multiple value columns (Actual, Budget, PY), a row shows if any column is non-blank — a budget-only line appears
+  with blank actuals, which is correct for variance analysis.</li>
+</ul>
+<h3 id="other-finishing-touches">Other finishing touches</h3>
+<ul>
+<li><strong>Column headers</strong>: rename measures in the visual ("Actual", "Budget", "Var ₹", "Var %") without renaming the model
+  measures.</li>
+<li><strong>Word wrap off</strong> on row headers for a compact statement; fix column widths.</li>
+<li><strong>Ratio rows in italics or lighter font</strong> via the font-colour style measure; percentage format via dynamic format string
+  (s05).</li>
+<li><strong>Freeze headers</strong>: matrix headers stay visible when scrolling by default.</li>
+<li><strong>Tooltips</strong>: add the as-of date and data source to the matrix tooltip page for audit trail.</li>
+<li><strong>Accessibility</strong>: rely on more than colour for emphasis (label text, position), and keep contrast high.</li>
+</ul>
+<h3 id="worked-illustration-settings-checklist-for-a-monthly-mis-pl">Worked illustration — settings checklist for a monthly MIS P&amp;L</h3>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rows</td>
+<td><code>Layout[Line]</code> (sorted by <code>Layout[SortOrder]</code>)</td>
+</tr>
+<tr>
+<td>Columns</td>
+<td><code>'Date'[MonthYear]</code> for trend, or measures Actual / Budget / Var ₹ / Var %</td>
+</tr>
+<tr>
+<td>Values</td>
+<td><code>[PnL]</code> (dispatcher) with dynamic format string</td>
+</tr>
+<tr>
+<td>Stepped layout</td>
+<td>Off</td>
+</tr>
+<tr>
+<td>Row subtotals</td>
+<td>Off</td>
+</tr>
+<tr>
+<td>Column subtotals</td>
+<td>On for month trend (FY total), off for Actual/Budget layout</td>
+</tr>
+<tr>
+<td>Show items with no data</td>
+<td>On for <code>Layout[Line]</code></td>
+</tr>
+<tr>
+<td>Background colour</td>
+<td>Field value → <code>[Row Background]</code></td>
+</tr>
+<tr>
+<td>Font colour</td>
+<td>Field value → <code>[Row Font Colour]</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Show items with no data plus a cross-filtering slicer</strong> can resurrect lines from other layouts or statements; filter
+  the visual to the current layout name.</li>
+<li><strong>Drill-down to accounts</strong> with "Show items with no data" on the account level shows every account under every line —
+  enable it only on the Line level.</li>
+<li><strong>Hidden-zero trick</strong> can mislead: a header row with a hidden 0 sorts and exports as 0; document it.</li>
+<li><strong>Mobile layout</strong>: wide matrices with monthly columns are unreadable on phones; design a separate mobile view with
+  key lines only.</li>
+<li><strong>Printing/PDF export</strong>: matrix pagination may split the statement; check the PDF export or use paginated reports
+  (Power BI Report Builder) for statutory-style output.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Turn stepped layout and row subtotals off for a flat, layout-driven statement.</li>
+<li>Keep spacer and header rows visible with "Show items with no data", a hidden-zero format or a Show Row measure.</li>
+<li>Emphasise subtotals with field-value conditional formatting (background/font colour) driven by a style measure.</li>
+<li>Return BLANK for "no data" and avoid <code>+ 0</code> patterns that list every account.</li>
+<li>Treat formatting as part of the specification: document the settings so the report can be rebuilt.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-configure-the-matrix-l1">Q1. Configure the matrix [L1]</h3>
+<p>List the exact Power BI settings (field wells, format pane options, conditional formatting) needed to render a monthly
+trend P&amp;L for FY26 with April–March columns, an FY total column, spacer rows between blocks, shaded subtotal rows and
+no grand total row.</p>
+<h3 id="q2-vanishing-headers-l2">Q2. Vanishing headers [L2]</h3>
+<p>The header row "Expenses" and two spacer rows do not appear in the matrix, while "Other income" (no postings in
+November) also disappears. Explain why each row is hidden and design a solution that shows headers and spacers but still
+hides account lines with no postings.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Combine "Show items with no data" with a visual-level filter measure that knows the row type.</p>
+</blockquote>
+<h3 id="q3-style-measures-l2">Q3. Style measures [L2]</h3>
+<p>Write style measures that return (a) a light blue background for Subtotal rows, (b) a grey italic-looking lighter font for
+Ratio rows, and (c) red font for any Var ₹ cell that is adverse, given a <code>[Var ₹]</code> measure in the profit-signed
+convention. Explain where each is applied in the format pane.</p>
+<h3 id="q4-board-pack-fidelity-l3">Q4. Board-pack fidelity [L3]</h3>
+<p>The CFO insists the Power BI P&amp;L must look identical to the existing Excel board pack: bold subtotals, brackets for
+negatives, ₹ lakh with one decimal, margin rows in italics, and a fixed set of lines even when zero. Assess which
+requirements Power BI's matrix meets natively, which need workarounds, and which might justify an Excel PivotTable or
+cube-formula output instead, and recommend an approach.</p></section>
+<nav class="pager"><a class="prev" href="S05_Margin_Rows_GM_EBITDA_EBIT_with_Dynamic_Format.html">← Margin Rows (GM %, EBITDA %, EBIT %) with Dynamic Format…</a><a class="next" href="S07_Alternatives_Calculation_Groups_Field_Parameters.html">Alternatives: Calculation Groups, Field Parameters, Visual… →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic Top N Lists with a Sorted CUBESET and CUBERANKEDMEMBER · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S07_Dynamic_Top_N_Lists_with_a_Sorted_CUBESET_and.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T3 · Excel cube formulas and CUBEVALUE</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Excel cube formulas and CUBEVALUE</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Connecting_Excel_to_the_Data_Model_or_a_Power_BI.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S01_Connecting_Excel_to_the_Data_Model_or_a_Power_BI.html">Connecting Excel to the Data Model or a Power BI Semantic Model</a></li><li><a href="S02_Converting_PivotTables_to_Cube_Formulas_with_OLAP.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S02_Converting_PivotTables_to_Cube_Formulas_with_OLAP.html">Converting PivotTables to Cube Formulas with OLAP Tools</a></li><li><a href="S03_The_Cube_Function_Family_CUBEMEMBER_to.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S03_The_Cube_Function_Family_CUBEMEMBER_to.html">The Cube Function Family: CUBEMEMBER to CUBEMEMBERPROPERTY</a></li><li><a href="S04_MDX_Unique_Names_for_Members_and_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S04_MDX_Unique_Names_for_Members_and_Measures.html">MDX Unique Names for Members and Measures</a></li><li><a href="S05_Connecting_Slicers_to_Cube_Formulas_by_Slicer_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S05_Connecting_Slicers_to_Cube_Formulas_by_Slicer_Name.html">Connecting Slicers to Cube Formulas by Slicer Name</a></li><li><a href="S06_Free_Form_Board_Pack_Layouts_with_Live_Cube.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S06_Free_Form_Board_Pack_Layouts_with_Live_Cube.html">Free-Form Board-Pack Layouts with Live Cube Numbers</a></li><li><a href="S07_Dynamic_Top_N_Lists_with_a_Sorted_CUBESET_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S07_Dynamic_Top_N_Lists_with_a_Sorted_CUBESET_and.html">Dynamic Top N Lists with a Sorted CUBESET and CUBERANKEDMEMBER</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_CUBEVALUE_with_Literal_Measure_and_Member_Strings.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C01_CUBEVALUE_with_Literal_Measure_and_Member_Strings.html">CUBEVALUE with Literal Measure and Member Strings</a></li><li><a href="../concepts/C02_Building_Cube_Members_from_Cell_Labels_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C02_Building_Cube_Members_from_Cell_Labels_with.html">Building Cube Members from Cell Labels with CUBEMEMBER</a></li><li><a href="../concepts/C03_Passing_a_Slicer_Name_as_a_CUBEVALUE_Member.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C03_Passing_a_Slicer_Name_as_a_CUBEVALUE_Member.html">Passing a Slicer Name as a CUBEVALUE Member Argument</a></li><li><a href="../concepts/C04_Sorted_CUBESET_of_Vendors_sortorder_2_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C04_Sorted_CUBESET_of_Vendors_sortorder_2_for.html">Sorted CUBESET of Vendors: sort_order 2 for Descending</a></li><li><a href="../concepts/C05_CUBERANKEDMEMBER_with_ROWS_and_CUBESETCOUNT_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C05_CUBERANKEDMEMBER_with_ROWS_and_CUBESETCOUNT_for.html">CUBERANKEDMEMBER with ROWS() and CUBESETCOUNT for Ranked Lists</a></li><li><a href="../concepts/C06_Connection_Names_for_Power_BI_Semantic_Models_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C06_Connection_Names_for_Power_BI_Semantic_Models_in.html">Connection Names for Power BI Semantic Models in Cube Formulas</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Dynamic Top N Lists with a Sorted CUBESET and CUBERANKEDMEMBER</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Dynamic Top N lists with a sorted CUBESET and CUBERANKEDMEMBER</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Board members ask "who are our top 10 vendors this year?" and "which cost centres overspent most?". A static list
+typed into the pack is wrong next month. A CUBESET sorted by a measure, read row by row with CUBERANKEDMEMBER,
+produces a list that re-ranks itself after each refresh — the Excel equivalent of the Power BI <code>RANKX(ALLSELECTED())</code>
+Top N in Topic 2. It is also the way to make cube-formula packs <em>expand</em>: unlike converted PivotTables, a CUBESET
+list grows when new vendors or cost centres appear.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-three-formula-pattern">The three-formula pattern</h3>
+<ol>
+<li><strong>Set cell</strong> (e.g. B2): a sorted set.</li>
+</ol>
+<pre><code>=CUBESET(Conn, &quot;[Vendor].[Name].Children&quot;, &quot;Top vendors&quot;, 2, &quot;[Measures].[Expense]&quot;)
+</code></pre>
+<ol start="2">
+<li>
+<p><strong>Count cell</strong> (e.g. C2): <code>=CUBESETCOUNT(B2)</code> — number of vendors in the set.</p>
+</li>
+<li>
+<p><strong>List rows</strong> (A5 downward): the n-th ranked member, with n from the row position, blank past the end or past N.</p>
+</li>
+</ol>
+<pre><code>A5:  =IF(ROWS(A$5:A5) &gt; MIN(TopN, C$2), &quot;&quot;, CUBERANKEDMEMBER(Conn, B$2, ROWS(A$5:A5)))
+B5:  =IF(A5=&quot;&quot;, &quot;&quot;, CUBEVALUE(Conn, MsrExpense, Slicer_BU, A5))
+</code></pre>
+<p><code>TopN</code> is a named input cell (e.g. 10). <code>ROWS(A$5:A5)</code> returns 1 in row 5, 2 in row 6, and so on as the formula is
+filled down. Pre-fill 25 rows; only the first N show.</p>
+<h3 id="making-the-ranking-respond-to-slicers">Making the ranking respond to slicers</h3>
+<p>CUBESET has no slicer arguments: its <code>sort_by</code> is evaluated in the default context (all FYs, all BUs) unless the
+context is written into the expressions. So a list sorted with <code>"[Measures].[Expense]"</code> ranks vendors by all-years
+spend, even though the CUBEVALUE beside it shows the selected FY — the order looks wrong. Fixes:</p>
+<ul>
+<li><strong>Put the context in sort_by as a tuple:</strong> build the tuple text from the selected FY's unique name, e.g.
+  <code>"([Measures].[Expense], [Date].[FY].&amp;[" &amp; SelFY &amp; "])"</code>, where <code>SelFY</code> is a cell holding the FY key (from a
+  data-validation dropdown, or derived from the slicer caption).</li>
+<li><strong>Put the context in the set expression:</strong> an MDX filter such as
+  <code>"NonEmpty([Vendor].[Name].Children, ([Measures].[Expense], [Date].[FY].&amp;[" &amp; SelFY &amp; "]))"</code> removes vendors
+  with no spend in the selected year, keeping the list short.</li>
+<li><strong>Use MDX TopCount:</strong> <code>"TopCount([Vendor].[Name].Children, 10, ([Measures].[Expense], [Date].[FY].&amp;[" &amp; SelFY &amp;
+  "]))"</code> returns exactly the top 10 already ordered; use sort_order 0.</li>
+</ul>
+<p>A selected-FY cell from a slicer: <code>=CUBERANKEDMEMBER(Conn, Slicer_FY, 1)</code> displays the caption; if captions equal
+keys (FY2025-26), <code>SelFY</code> can reference that cell's displayed text. Where BU also matters, add it to the tuple.</p>
+<h3 id="others-line-and-coverage">"Others" line and coverage</h3>
+<p>Board lists usually show coverage:</p>
+<ul>
+<li>Top N total: <code>=SUM(B5:B14)</code>.</li>
+<li>All vendors total: <code>=CUBEVALUE(Conn, MsrExpense, Slicer_FY, Slicer_BU)</code>.</li>
+<li>Others = All − Top N; coverage % = Top N / All ("Top 10 vendors = 61.6% of spend").</li>
+</ul>
+<h3 id="ranked-lists-of-other-things">Ranked lists of other things</h3>
+<ul>
+<li>Cost centres by adverse variance: sort by <code>[Variance Fav/Adv]</code> ascending (sort_order 1) to get the worst first.</li>
+<li>Customers by overdue receivables (Weeks 17–20 working-capital pack).</li>
+<li>Ledgers by YoY growth (use a growth measure as sort_by).</li>
+</ul>
+<h3 id="performance">Performance</h3>
+<p>One CUBESET plus N CUBERANKEDMEMBER and N CUBEVALUE cells is far cheaper than a CUBEVALUE for every vendor on a
+hidden sheet sorted with LARGE/INDEX. Sorting happens once in the engine; each list row is a light lookup. Keep
+sets as small as possible with NonEmpty or TopCount.</p>
+<h3 id="illustration">Illustration</h3>
+<p>FY2025-26, Polymers BU, <code>TopN</code> = 5, set sorted with the FY tuple:</p>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Vendor (CUBERANKEDMEMBER)</th>
+<th>Expense ₹ Cr (CUBEVALUE)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Gujarat Industries Power</td>
+<td>8.94</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Reliance Polymers</td>
+<td>7.20</td>
+</tr>
+<tr>
+<td>3</td>
+<td>IOCL</td>
+<td>6.85</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Gujarat Gas</td>
+<td>6.85</td>
+</tr>
+<tr>
+<td>5</td>
+<td>BASF India</td>
+<td>4.10</td>
+</tr>
+<tr>
+<td></td>
+<td>Others (209 vendors)</td>
+<td>67.36</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Total</strong></td>
+<td><strong>101.30</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Coverage = 33.94 / 101.30 = 33.5%. Changing the BU slicer to Agro re-ranks vendors only if the BU is also in the
+sort tuple; this is the test to run.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Ties.</strong> Two vendors with equal spend appear in model order; add a tie-break measure (spend + tiny code-based
+  offset) if order matters.</li>
+<li><strong>Rank beyond count</strong> returns #N/A — the IF wrapper with CUBESETCOUNT/MIN prevents it.</li>
+<li><strong>Captions vs keys.</strong> If vendor captions differ from keys (codes as keys), the list shows captions; CUBEVALUE uses
+  the member, so values remain correct.</li>
+<li><strong>Empty selections.</strong> If the selected BU has fewer vendors than N, the list shortens — intended.</li>
+<li><strong>Multi-select slicers</strong> cannot be expressed as a single FY key in the tuple; use a set
+  <code>{[Date].[FY].&amp;[...], ...}</code> or restrict to single selection.</li>
+<li><strong>Manual calculation mode</strong> leaves stale ranks; Refresh All followed by calculation is needed.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Pattern: sorted CUBESET → CUBESETCOUNT → CUBERANKEDMEMBER by ROWS() → CUBEVALUE beside each member.</li>
+<li>CUBESET ignores slicers unless the context is in the sort_by tuple or set expression.</li>
+<li>Use NonEmpty or TopCount in MDX to keep sets short and correctly ordered.</li>
+<li>Show Others and coverage so the list reconciles to the total.</li>
+<li>Guard rows beyond the set size or N to avoid #N/A.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-build-the-top-10-l1">Q1. Build the Top 10 [L1]</h3>
+<p>Write the set, count, member and value formulas for a Top 10 cost centres list by <code>[Actual]</code> for the FY in cell
+<code>SelFY</code>, including the IF guard.</p>
+<h3 id="q2-order-looks-wrong-l2">Q2. Order looks wrong [L2]</h3>
+<p>A Top 5 vendor list shows values 3.1, 8.9, 2.4, 7.2, 6.9 (₹ Cr) for FY2025-26. Explain why and fix the CUBESET
+formula.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Ask in which context the sort measure is evaluated.</p>
+</blockquote>
+<h3 id="q3-worst-variances-first-l2">Q3. Worst variances first [L2]</h3>
+<p>Write a CUBESET and list formulas that show the 8 cost centres with the most adverse <code>[Variance Fav/Adv]</code> for the
+selected FY and BU, with an "All other cost centres" line and a check that the list plus others equals the total
+variance.</p>
+<h3 id="q4-topcount-vs-sorted-set-l3">Q4. TopCount vs sorted set [L3]</h3>
+<p>Compare a TopCount MDX set with a fully sorted CUBESET read by CUBERANKEDMEMBER for a list of the top 20 customers
+out of 1.8 lakh, considering performance, Others calculation, ties and maintainability. Recommend one.</p></section>
+<nav class="pager"><a class="prev" href="S06_Free_Form_Board_Pack_Layouts_with_Live_Cube.html">← Free-Form Board-Pack Layouts with Live Cube Numbers</a><a class="next" href="../concepts/C01_CUBEVALUE_with_Literal_Measure_and_Member_Strings.html">CUBEVALUE with Literal Measure and Member Strings →</a></nav>
+</main></div></body></html>

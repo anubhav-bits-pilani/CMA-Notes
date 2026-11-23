@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SUMPRODUCT vs SUMIFS Performance on Large Ranges · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S07_SUMPRODUCT_vs_SUMIFS_Performance_on_Large_Ranges.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T3 · SUMPRODUCT weighted averages and matrix…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · SUMPRODUCT weighted averages and matrix math</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Weighted_Average_Cost_of_Debt_Across_Borrowing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S01_Weighted_Average_Cost_of_Debt_Across_Borrowing.html">Weighted Average Cost of Debt Across Borrowing Tranches</a></li><li><a href="S02_Weighted_Average_Inventory_Cost_and_Weighted.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S02_Weighted_Average_Inventory_Cost_and_Weighted.html">Weighted Average Inventory Cost and Weighted Credit Period / DSO</a></li><li><a href="S03_Boolean_Array_Multi_Condition_Sums_Without_Helper.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S03_Boolean_Array_Multi_Condition_Sums_Without_Helper.html">Boolean-Array Multi-Condition Sums Without Helper Columns</a></li><li><a href="S04_Coercing_TRUEFALSE_to_10_Double_Unary_1_and_N.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S04_Coercing_TRUEFALSE_to_10_Double_Unary_1_and_N.html">Coercing TRUE/FALSE to 1/0: Double Unary, ×1 and N()</a></li><li><a href="S05_Cohort_Retention_Matrices_Acquisition_Month_Active.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S05_Cohort_Retention_Matrices_Acquisition_Month_Active.html">Cohort Retention Matrices: Acquisition Month × Active Month</a></li><li><a href="S06_MMULT_and_TRANSPOSE_for_Cost_Pool_Driver.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S06_MMULT_and_TRANSPOSE_for_Cost_Pool_Driver.html">MMULT and TRANSPOSE for Cost-Pool × Driver Allocations</a></li><li><a href="S07_SUMPRODUCT_vs_SUMIFS_Performance_on_Large_Ranges.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S07_SUMPRODUCT_vs_SUMIFS_Performance_on_Large_Ranges.html">SUMPRODUCT vs SUMIFS Performance on Large Ranges</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Pre_Tax_and_Post_Tax_Kd_with_SUMPRODUCT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C01_Pre_Tax_and_Post_Tax_Kd_with_SUMPRODUCT.html">Pre-Tax and Post-Tax Kd with SUMPRODUCT</a></li><li><a href="../concepts/C02_SUMPRODUCT_with_MONTH_and_LEFT_on_Whole_Columns.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C02_SUMPRODUCT_with_MONTH_and_LEFT_on_Whole_Columns.html">SUMPRODUCT with MONTH and LEFT on Whole Columns</a></li><li><a href="../concepts/C03_Comma_Form_SUMPRODUCT_and_Why_Arrays_Must_Be.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C03_Comma_Form_SUMPRODUCT_and_Why_Arrays_Must_Be.html">Comma-Form SUMPRODUCT and Why Arrays Must Be Numeric</a></li><li><a href="../concepts/C04_The_Cohort_Retention_Cell_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C04_The_Cohort_Retention_Cell_Formula.html">The Cohort Retention Cell Formula</a></li><li><a href="../concepts/C05_MMULT_Dimensions_1nnm_Gives_a_1m_Allocation.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C05_MMULT_Dimensions_1nnm_Gives_a_1m_Allocation.html">MMULT Dimensions: (1×n)·(n×m) Gives a 1×m Allocation</a></li><li><a href="../concepts/C06_The_General_Guarded_Weighted_Average_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C06_The_General_Guarded_Weighted_Average_Formula.html">The General Guarded Weighted-Average Formula</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>SUMPRODUCT vs SUMIFS Performance on Large Ranges</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> SUMPRODUCT vs SUMIFS performance on large ranges</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A month-end MIS workbook that takes 40 seconds to recalculate is not just annoying — people switch to manual calculation, forget to press F9, and circulate stale numbers. The most common cause in finance workbooks is a grid of hundreds or thousands of array-style formulas (SUMPRODUCT, boolean XLOOKUP, FILTER-inside-SUM) each scanning a large GL Table. Knowing how SUMIFS and SUMPRODUCT differ in calculation cost lets you choose the right one per situation, restructure slow models, and explain the choice in a model review or interview.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="why-sumifs-is-faster">Why SUMIFS is faster</h3>
+<ul>
+<li><strong>Native, optimised engine.</strong> SUMIFS is implemented as a single compiled function with criteria evaluation built in; it does not build intermediate arrays in memory.</li>
+<li><strong>Used-range awareness.</strong> With whole-column references (<code>A:A</code>), SUMIFS limits itself to the sheet's used range, so <code>SUMIFS(G:G, B:B, "Sales")</code> is not a million-row operation.</li>
+<li><strong>No coercion overhead.</strong> Criteria comparisons are done internally; there is no TRUE/FALSE array to coerce and multiply.</li>
+<li><strong>Engine optimisations.</strong> Microsoft 365 builds include further optimisations for repeated *IFS and lookup formulas that point at the same ranges, which helps large grids; array expressions inside SUMPRODUCT benefit far less.</li>
+</ul>
+<h3 id="why-sumproduct-is-slower">Why SUMPRODUCT is slower</h3>
+<ul>
+<li><strong>Every condition builds a full array.</strong> <code>(MONTH(GL[Date])=4)</code> evaluates MONTH on every row, creates a TRUE/FALSE array, then the multiplication creates another array of numbers. Three conditions over 2 lakh rows create several 2 lakh-element arrays per cell.</li>
+<li><strong>Whole-column references are catastrophic.</strong> <code>SUMPRODUCT((A:A="West")*C:C)</code> really processes 1,048,576 rows in each array — per cell, per recalc.</li>
+<li><strong>Functions inside conditions</strong> (MONTH, LEFT, SEARCH) multiply the cost further.</li>
+<li>Not volatile — it recalculates only when precedents change — but because its precedents are whole GL columns, any paste into the GL recalculates every SUMPRODUCT.</li>
+</ul>
+<h3 id="order-of-magnitude-reasoning">Order-of-magnitude reasoning</h3>
+<p>Cost of a grid ≈ (number of formula cells) × (rows scanned per cell) × (work per row).</p>
+<table>
+<thead>
+<tr>
+<th>Grid</th>
+<th>Rows in GL</th>
+<th>Formula</th>
+<th>Rows processed per recalc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>40 lines × 12 months</td>
+<td>2,00,000</td>
+<td>SUMIFS</td>
+<td>optimised; typically sub-second</td>
+</tr>
+<tr>
+<td>40 × 12</td>
+<td>2,00,000</td>
+<td>SUMPRODUCT, 3 conditions</td>
+<td>480 × 2,00,000 × ~3 arrays ≈ 29 crore element operations</td>
+</tr>
+<tr>
+<td>40 × 12</td>
+<td>whole columns</td>
+<td>SUMPRODUCT</td>
+<td>480 × 10,48,576 × ~3 ≈ 151 crore element operations</td>
+</tr>
+</tbody>
+</table>
+<p>The exact timing depends on hardware and Excel build, but the pattern is consistent: SUMPRODUCT on large ranges is one to two orders of magnitude slower than SUMIFS for the same logic. Test on your own file with a timed recalc (Ctrl+Alt+F9 forces a full recalculation).</p>
+<h3 id="practical-strategy">Practical strategy</h3>
+<ol>
+<li><strong>Default to SUMIFS/COUNTIFS</strong> for equality, range and wildcard criteria on raw columns.</li>
+<li><strong>Move derived conditions into helper columns</strong> (fiscal month, first digit of code, flag columns) — computed once per row in the Table or in Power Query — and SUMIFS on them. One <code>MONTH()</code> per row is far cheaper than one per row per grid cell.</li>
+<li><strong>Reserve SUMPRODUCT for few-cell calculations</strong>: weighted averages (Kd, inventory rate), single check cells, conditions SUMIFS cannot express that appear once or twice.</li>
+<li><strong>Never use whole-column references in SUMPRODUCT</strong>; use Table columns or exact ranges.</li>
+<li><strong>Aggregate upstream</strong> when data is large: Power Query Group By or the Data Model (Power Pivot, DAX measures) for lakhs of rows; keep the worksheet for presentation.</li>
+<li><strong>Manual calculation</strong> is a last resort; if used, make the status visible (a "CALC PENDING" check cell or prominent note), because stale outputs are a reporting risk.</li>
+</ol>
+<h3 id="measuring">Measuring</h3>
+<ul>
+<li><strong>Ctrl+Alt+F9</strong> — full recalculation of all formulas; time it with a stopwatch, or with a simple VBA timer if allowed.</li>
+<li><strong>Inquire / Workbook Statistics</strong> — count formulas by type to find heavy blocks.</li>
+<li><strong>Formula → Calculation Options → Manual</strong>, then recalculate individual sheets with <strong>Shift+F9</strong> to isolate the slow sheet.</li>
+<li>Check Task Manager for multi-threaded calculation (File → Options → Advanced → Formulas → enable multi-threaded calculation).</li>
+</ul>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>A divisional MIS workbook: GL Table of 2.4 lakh rows; P&amp;L grid 55 lines × 12 months × 3 divisions = 1,980 cells, each <code>=SUMPRODUCT((MONTH(GL[Date])=m)*(LEFT(GL[Account],2)=x)*(GL[Div]=d)*GL[Amount])</code>. Full recalc: about 35 seconds on a typical laptop (illustrative).</p>
+<p>Redesign:</p>
+<ul>
+<li>Add Table columns <code>FMonth = MONTH([@Date])</code> and <code>AccPrefix = LEFT([@Account],2)</code> (or create them in Power Query).</li>
+<li>Replace each grid cell with <code>=SUMIFS(GL[Amount], GL[FMonth], m, GL[AccPrefix], x, GL[Div], d)</code> — better still, key on date ranges rather than month numbers so different years are not merged.</li>
+<li>Result: recalculation drops to well under a second, and the logic is easier to audit because the derived columns are visible.</li>
+</ul>
+<h3 id="sumproduct-is-still-the-right-tool-when">SUMPRODUCT is still the right tool when…</h3>
+<ul>
+<li>the calculation is a genuine sum of products (weighted averages, price × quantity);</li>
+<li>the condition compares two columns row by row (balance &gt; limit) and appears in a handful of cells;</li>
+<li>you need case-sensitive matching (<code>EXACT</code>) or OR across overlapping patterns;</li>
+<li>compatibility with Excel 2019 or earlier is required for an array-style calculation without Ctrl+Shift+Enter.</li>
+</ul>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>SUMIFS on closed external workbooks</strong> returns <code>#VALUE!</code>; SUMPRODUCT works on closed workbooks — a niche reason SUMPRODUCT survives in some legacy models. The better fix is to bring the data in via Power Query.</li>
+<li><strong>Dynamic arrays in Microsoft 365</strong> — <code>SUM((cond)*values)</code> has the same cost profile as SUMPRODUCT; it is not faster.</li>
+<li><strong>Helper columns in Tables</strong> increase file size slightly but almost always reduce calculation time.</li>
+<li><strong>Volatile functions</strong> (TODAY, OFFSET, INDIRECT) inside SUMPRODUCT conditions force recalculation on every change — avoid them.</li>
+<li><strong>Performance vs readability</strong> — a 1-second model with three helper columns beats a 30-second "elegant" one in a month-end close.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>SUMIFS is natively optimised and bounded to the used range; SUMPRODUCT builds full arrays for every condition.</li>
+<li>Never point SUMPRODUCT at whole columns; use Table columns or exact ranges.</li>
+<li>Push derived conditions (month, prefix, flags) into helper columns or Power Query and use SUMIFS on them.</li>
+<li>Use SUMPRODUCT for few-cell weighted averages and conditions SUMIFS cannot express.</li>
+<li>Measure with Ctrl+Alt+F9 and isolate slow sheets before redesigning; avoid permanent manual calculation.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-diagnose-a-slow-file-l2">Q1. Diagnose a slow file [L2]</h3>
+<p>A 30-sheet budget workbook takes 50 seconds per recalculation. Describe a step-by-step method to find which sheets and formulas are responsible, using only built-in Excel features, and list the three formula patterns you would look for first.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Switch to manual calculation and recalculate sheet by sheet.</p>
+</blockquote>
+<h3 id="q2-redesign-a-grid-l2">Q2. Redesign a grid [L2]</h3>
+<p>A cost-centre report has 70 cost centres × 12 months, each cell <code>=SUMPRODUCT((MONTH(GL!A:A)=C$3)*(GL!B:B=$A5)*GL!F:F)</code>, on a GL of 1.3 lakh rows. Rewrite the design using a Table, helper columns and SUMIFS, and explain three distinct reasons the new version is faster.</p>
+<h3 id="q3-when-sumproduct-is-justified-l1">Q3. When SUMPRODUCT is justified [L1]</h3>
+<p>For each, state whether you would use SUMIFS or SUMPRODUCT and why: (a) weighted average interest rate across 6 loans; (b) a 50 × 24 revenue grid by product and month from a 4 lakh-row sales Table; (c) a single check cell counting invoices whose amount exceeds the customer's credit limit; (d) postings whose narration contains "GST" (case-sensitive, uppercase only).</p>
+<h3 id="q4-manual-calculation-policy-l3">Q4. Manual calculation policy [L3]</h3>
+<p>The FP&amp;A team proposes keeping a large rolling-forecast workbook permanently in manual calculation mode. Draft the controls you would require (visible calculation status, check cells, sign-off steps) and the conditions under which you would reject the proposal in favour of a redesign.</p></section>
+<nav class="pager"><a class="prev" href="S06_MMULT_and_TRANSPOSE_for_Cost_Pool_Driver.html">← MMULT and TRANSPOSE for Cost-Pool × Driver Allocations</a><a class="next" href="../concepts/C01_Pre_Tax_and_Post_Tax_Kd_with_SUMPRODUCT.html">Pre-Tax and Post-Tax Kd with SUMPRODUCT →</a></nav>
+</main></div></body></html>

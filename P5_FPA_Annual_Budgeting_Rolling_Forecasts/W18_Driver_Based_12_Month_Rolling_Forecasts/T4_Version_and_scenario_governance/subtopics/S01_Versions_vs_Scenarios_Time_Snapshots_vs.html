@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Versions vs Scenarios: Time Snapshots vs Alternative Assumptions · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S01_Versions_vs_Scenarios_Time_Snapshots_vs.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 5</a> <span>›</span> <a href="../../index.html">Week 18</a> <span>›</span> <a href="../index.html">T4 · Version and scenario governance</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Version and scenario governance</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Versions_vs_Scenarios_Time_Snapshots_vs.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S01_Versions_vs_Scenarios_Time_Snapshots_vs.html">Versions vs Scenarios: Time Snapshots vs Alternative Assumptions</a></li><li><a href="S02_Long_Format_Version_Storage_Instead_of_Sheet_per.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S02_Long_Format_Version_Storage_Instead_of_Sheet_per.html">Long-Format Version Storage Instead of Sheet-per-Version</a></li><li><a href="S03_Scenario_Switching_with_Selectors_and_Data.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S03_Scenario_Switching_with_Selectors_and_Data.html">Scenario Switching with Selectors and Data Validation</a></li><li><a href="S04_Version_Locking_Snapshots_Protection_Change_Logs.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S04_Version_Locking_Snapshots_Protection_Change_Logs.html">Version Locking: Snapshots, Protection, Change Logs and Naming</a></li><li><a href="S05_Version_Comparisons_and_Forecast_to_Forecast.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S05_Version_Comparisons_and_Forecast_to_Forecast.html">Version Comparisons and Forecast-to-Forecast Movement Bridges</a></li><li><a href="S06_Stress_Scenarios_and_Contingency_Triggers_Beyond.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S06_Stress_Scenarios_and_Contingency_Triggers_Beyond.html">Stress Scenarios and Contingency Triggers Beyond Sensitivities</a></li><li><a href="S07_EPM_Equivalents_EPBCS_Anaplan_and_Adaptive_Version.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S07_EPM_Equivalents_EPBCS_Anaplan_and_Adaptive_Version.html">EPM Equivalents: EPBCS, Anaplan and Adaptive Version Handling</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Multi_Criteria_Version_Lookup_with_XLOOKUP_or.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/concepts/C01_Multi_Criteria_Version_Lookup_with_XLOOKUP_or.html">Multi-Criteria Version Lookup with XLOOKUP or SUMIFS</a></li><li><a href="../concepts/C02_Scenario_Selector_with_CHOOSE_or_INDEX.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/concepts/C02_Scenario_Selector_with_CHOOSE_or_INDEX.html">Scenario Selector with CHOOSE or INDEX</a></li><li><a href="../concepts/C03_Decomposing_Forecast_to_Forecast_Movements.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/concepts/C03_Decomposing_Forecast_to_Forecast_Movements.html">Decomposing Forecast-to-Forecast Movements</a></li><li><a href="../concepts/C04_One_Working_Version_Rule_and_Frozen_Prior_Versions.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/concepts/C04_One_Working_Version_Rule_and_Frozen_Prior_Versions.html">One Working Version Rule and Frozen Prior Versions</a></li><li><a href="../concepts/C05_Scenario_vs_Sensitivity_Coherent_Assumption_Sets.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/concepts/C05_Scenario_vs_Sensitivity_Coherent_Assumption_Sets.html">Scenario vs Sensitivity: Coherent Assumption Sets vs One-Variable Flex</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Versions vs Scenarios: Time Snapshots vs Alternative Assumptions</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Version vs scenario: versions are time snapshots (Budget, Q1 Fcst 3+9, Q2 Fcst 6+6, Q3 Fcst 9+3); scenarios are alternative assumptions (base/upside/downside)</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Every planning number in a company answers two questions: <em>when</em> was this view formed, and <em>under which assumptions</em>? A version answers the first; a scenario answers the second. If the model does not separate them, the FP&amp;A team cannot answer basic Audit Committee questions such as "what did we believe in July about H2 margin?" or "how bad is the downside today compared with the downside we showed in the Budget?". In Indian listed companies this matters beyond internal management: Ind AS 36 value-in-use calculations must be based on the most recent budgets/forecasts approved by management, Ind AS 116 and Ind AS 109 expected-credit-loss models use forward-looking scenarios, and SEBI LODR Regulation 30 disclosure decisions (for example, whether a material change in outlook must be disclosed) depend on which version of the forecast was in force when.</p>
+<p>In EPM systems (s07) Version and Scenario are literally two separate dimensions. Learning to think in those two axes in Excel makes the later migration trivial.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="versions-time-snapshots">Versions: time snapshots</h3>
+<p>A <strong>version</strong> is the organisation's official view of the full year (or rolling horizon) as at a particular cut-off date. For an Indian FY (April–March) the standard family is:</p>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Prepared</th>
+<th>Actual months</th>
+<th>Forecast months</th>
+<th>Typical use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Budget / AOP</td>
+<td>Jan–Mar of prior FY</td>
+<td>0</td>
+<td>12 (Apr–Mar)</td>
+<td>Board-approved target, incentive baseline</td>
+</tr>
+<tr>
+<td>Q1 Fcst (3+9)</td>
+<td>After June close (July)</td>
+<td>Apr–Jun</td>
+<td>Jul–Mar</td>
+<td>First reforecast; Q1 results context</td>
+</tr>
+<tr>
+<td>Q2 Fcst (6+6)</td>
+<td>After September close (October)</td>
+<td>Apr–Sep</td>
+<td>Oct–Mar</td>
+<td>H1 review; festive season locked in</td>
+</tr>
+<tr>
+<td>Q3 Fcst (9+3)</td>
+<td>After December close (January)</td>
+<td>Apr–Dec</td>
+<td>Jan–Mar</td>
+<td>Year-end landing, tax and bonus provisioning; often feeds next year's Budget</td>
+</tr>
+</tbody>
+</table>
+<p>Some companies add monthly LEs (1+11, 2+10, …) or a "Flash" version for the current month. Key properties of a version:</p>
+<ul>
+<li>It has a <strong>cut-off date</strong> — the last closed actual month — and therefore a fixed split of actual and forecast months.</li>
+<li>It has an <strong>owner and a submission date</strong>; once submitted it is <strong>frozen</strong> (see c04 and s04).</li>
+<li>It is <strong>one official number per account per month</strong> — the version itself is not "an alternative"; it is the then-current best estimate.</li>
+<li>Versions are compared with each other to show how the view evolved (s05, c03).</li>
+</ul>
+<h3 id="scenarios-alternative-assumption-sets">Scenarios: alternative assumption sets</h3>
+<p>A <strong>scenario</strong> is an internally consistent set of assumptions that produces an alternative outcome at the same cut-off date. The usual trio:</p>
+<ul>
+<li><strong>Base</strong> — the most likely outcome; this is what becomes "the forecast" for that version.</li>
+<li><strong>Upside</strong> — favourable but plausible: faster ramp-up of new stores, better monsoon-driven rural demand, softer input prices.</li>
+<li><strong>Downside</strong> — adverse but plausible: delayed product launch, commodity spike, INR depreciation for an importer.</li>
+</ul>
+<p>Many companies add a <strong>Stress / Severe</strong> case (s06) and sometimes management-defined cases (e.g., "Plant 3 delayed"). Scenarios are not probability-weighted in the base view; probability weighting is the job of the risks-and-opportunities overlay in the LE (Topic 2), though some companies attach indicative probabilities to Upside/Downside for the Board.</p>
+<h3 id="the-two-axis-grid">The two-axis grid</h3>
+<p>Combining the axes gives a matrix of datasets:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Base</th>
+<th>Upside</th>
+<th>Downside</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Budget</td>
+<td>✓ (approved)</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Q1 Fcst 3+9</td>
+<td>✓ (official)</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Q2 Fcst 6+6</td>
+<td>✓ (official)</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Q3 Fcst 9+3</td>
+<td>✓ (official)</td>
+<td>optional</td>
+<td>optional</td>
+</tr>
+</tbody>
+</table>
+<p>Important mechanics:</p>
+<ol>
+<li><strong>Actuals are scenario-independent.</strong> In the Q2 Fcst, April–September actuals are identical in Base, Upside and Downside; only October–March differ. If the actual months differ between scenarios, the model is broken.</li>
+<li><strong>Each version usually has exactly one "official" scenario</strong> (Base) that is reported as the forecast. Upside and Downside are context.</li>
+<li><strong>Scenario names should mean the same thing across versions.</strong> "Downside" in Budget and "Downside" in Q2 Fcst may contain different assumptions (the world changed), but both should represent the same severity level (e.g., roughly 1-in-5 adverse).</li>
+<li><strong>Actual</strong> itself is often stored as a version (Version = "Actual", Scenario = "NA" or "Base") so that one long-format table holds everything (s02).</li>
+</ol>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>Konkan Retail Ltd, FY26 revenue (₹ crore):</p>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Scenario</th>
+<th>Apr–Sep</th>
+<th>Oct–Mar</th>
+<th>Full year</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Budget</td>
+<td>Base</td>
+<td>1,150</td>
+<td>1,450</td>
+<td>2,600</td>
+</tr>
+<tr>
+<td>Q2 Fcst 6+6</td>
+<td>Base</td>
+<td>1,092 (actual)</td>
+<td>1,418</td>
+<td>2,510</td>
+</tr>
+<tr>
+<td>Q2 Fcst 6+6</td>
+<td>Upside</td>
+<td>1,092 (actual)</td>
+<td>1,520</td>
+<td>2,612</td>
+</tr>
+<tr>
+<td>Q2 Fcst 6+6</td>
+<td>Downside</td>
+<td>1,092 (actual)</td>
+<td>1,300</td>
+<td>2,392</td>
+</tr>
+</tbody>
+</table>
+<p>Reading across versions (Budget Base → Q2 Base) gives the forecast evolution: −₹90 crore, of which −₹58 crore is H1 actualisation and −₹32 crore is the revised H2 view. Reading across scenarios within Q2 gives the current range of outcomes: ₹2,392–2,612 crore. These are two different questions and must never be mixed — for example, comparing Q2 Downside with Budget Base and calling the −₹208 crore "forecast deterioration" overstates the change in the official view.</p>
+<h3 id="naming-taxonomy">Naming taxonomy</h3>
+<p>Use a controlled naming convention so the version is self-describing:</p>
+<p><code>FY26_Q2F_6+6_Base</code>, <code>FY26_BUD_0+12_Downside</code>, <code>FY26_Q3F_9+3_Base</code></p>
+<p>Store the components as separate columns (FY, Version code, Actual months, Scenario) rather than relying on a parsed string; the string is just a display label.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Re-budgeting mid-year.</strong> After a major shock (e.g., a COVID-type disruption or an acquisition), the Board may approve a "Revised Budget". Treat it as a new version with its own approval record; never overwrite the original Budget, which remains the incentive and Board-target baseline unless the compensation committee explicitly re-bases.</li>
+<li><strong>Rolling 12-month horizons.</strong> In a true rolling forecast, the Q2 version may extend to September of next FY. The version still has one cut-off; its horizon simply crosses the FY boundary. Store the month-end date, not "Month 1…12".</li>
+<li><strong>Scenario becoming base.</strong> If the Downside materialises, next cycle's Base may look like last cycle's Downside. That is a change of view captured as a version movement, not a relabelling of the old scenario.</li>
+<li><strong>Monthly LE vs quarterly forecast.</strong> If the company produces monthly LEs but only quarterly Board forecasts, decide which versions are "official" (locked and stored permanently) and which are "working" (overwritten). Keep at least the quarter-end versions permanently.</li>
+<li><strong>Acquisitions and demergers.</strong> A version prepared before an acquisition excludes the target; later versions include it. Comparisons need a like-for-like flag (see the normalisation pitfall in topic.md).</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Version = <em>when</em> the view was formed (cut-off date, frozen once submitted); scenario = <em>which assumptions</em> were used at that date.</li>
+<li>Indian FY version family: Budget (0+12), Q1 Fcst 3+9, Q2 Fcst 6+6, Q3 Fcst 9+3, optionally monthly LEs.</li>
+<li>Actual months are identical across scenarios within a version; only forecast months differ.</li>
+<li>Each version has one official scenario (usually Base) that is reported as "the forecast".</li>
+<li>Compare versions to explain evolution; compare scenarios to show range — never mix them in one bar.</li>
+<li>Store Version, Scenario, cut-off and timestamp as separate fields, not as sheet names.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-classifying-datasets-l1">Q1. Classifying datasets [L1]</h3>
+<p>Classify each of the following as a version, a scenario, or a version–scenario combination, and state its cut-off month: (a) FY26 AOP approved by the Board on 20 March 2025; (b) "Monsoon failure case" prepared with the July reforecast; (c) the January 2026 forecast used for advance-tax estimation; (d) "Revised Budget" approved after an acquisition closes on 1 August 2025; (e) "Upside" prepared with the Budget.</p>
+<h3 id="q2-identifying-a-broken-scenario-structure-l2">Q2. Identifying a broken scenario structure [L2]</h3>
+<p>In a Q2 Fcst (6+6) workbook for FY26, Base shows April–September revenue of ₹842 crore, while Downside shows ₹826 crore for the same months, and Upside shows ₹842 crore. Full-year revenue is ₹1,760 crore (Base), ₹1,690 crore (Downside) and ₹1,830 crore (Upside). (a) What is wrong with the structure? (b) Compute the correct H2 range across scenarios assuming H2 figures are unchanged. (c) Describe a model check that would catch this automatically.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Actual months must be scenario-independent; build a check that differences actual-flagged months across scenarios.</p>
+</blockquote>
+<h3 id="q3-designing-a-version-calendar-l2">Q3. Designing a version calendar [L2]</h3>
+<p>A Chennai-based B2B SaaS company with an April–March FY wants quarterly reforecasts and a rolling 18-month view. Draft the version calendar for FY26: version names, cut-off dates, submission deadlines, actual/forecast month split, horizon end date and which versions carry Upside/Downside scenarios. Justify any version you choose not to keep permanently.</p>
+<h3 id="q4-interview-explaining-the-difference-l1">Q4. Interview: explaining the difference [L1]</h3>
+<p>An interviewer asks: "Our Board pack shows Budget, Q2 Forecast and a Downside. The Downside is ₹120 crore below Budget. Is that our forecast deterioration?" Prepare a two-minute answer explaining versions vs scenarios using the numbers given, and state what additional figure you would need to answer the question precisely.</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← Version and scenario governance</a><a class="next" href="S02_Long_Format_Version_Storage_Instead_of_Sheet_per.html">Long-Format Version Storage Instead of Sheet-per-Version →</a></nav>
+</main></div></body></html>

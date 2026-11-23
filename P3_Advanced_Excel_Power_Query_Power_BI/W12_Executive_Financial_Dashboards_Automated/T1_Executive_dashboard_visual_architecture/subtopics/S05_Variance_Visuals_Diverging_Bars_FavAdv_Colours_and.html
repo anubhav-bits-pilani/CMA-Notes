@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Variance Visuals: Diverging Bars, Fav/Adv Colours and IBCS Notation · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S05_Variance_Visuals_Diverging_Bars_FavAdv_Colours_and.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T1 · Executive dashboard visual architecture</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Executive dashboard visual architecture</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Executive_Page_Layout_KPI_Row_Trend_Row_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S01_Executive_Page_Layout_KPI_Row_Trend_Row_and.html">Executive Page Layout: KPI Row, Trend Row and Variance Row</a></li><li><a href="S02_Card_Visuals_New_Card_KPI_Visual_and_Reference.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S02_Card_Visuals_New_Card_KPI_Visual_and_Reference.html">Card Visuals: New Card, KPI Visual and Reference Labels</a></li><li><a href="S03_Trend_Visuals_Actual_vs_Budget_vs_PY_Combos_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S03_Trend_Visuals_Actual_vs_Budget_vs_PY_Combos_and.html">Trend Visuals: Actual vs Budget vs PY Combos and Rolling 12 Months</a></li><li><a href="S04_Waterfall_Bridges_EBITDA_Revenue_and_Cash_Flow.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S04_Waterfall_Bridges_EBITDA_Revenue_and_Cash_Flow.html">Waterfall Bridges: EBITDA, Revenue and Cash Flow</a></li><li><a href="S05_Variance_Visuals_Diverging_Bars_FavAdv_Colours_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S05_Variance_Visuals_Diverging_Bars_FavAdv_Colours_and.html">Variance Visuals: Diverging Bars, Fav/Adv Colours and IBCS Notation</a></li><li><a href="S06_Indian_Number_Formatting_Crore_and_Lakh_Units.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S06_Indian_Number_Formatting_Crore_and_Lakh_Units.html">Indian Number Formatting: ₹ Crore and Lakh Units, Consistent Decimals</a></li><li><a href="S07_Theme_JSON_Canvas_Size_Accessibility_and_Mobile.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S07_Theme_JSON_Canvas_Size_Accessibility_and_Mobile.html">Theme JSON, Canvas Size, Accessibility and Mobile Layout</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Waterfall_Visual_CategoryBreakdown_or_a_Bridge.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C01_Waterfall_Visual_CategoryBreakdown_or_a_Bridge.html">Waterfall Visual: Category/Breakdown or a Bridge-Step Table</a></li><li><a href="../concepts/C02_Variance_Colour_Measure_via_fx_Conditional.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C02_Variance_Colour_Measure_via_fx_Conditional.html">Variance Colour Measure via fx Conditional Formatting</a></li><li><a href="../concepts/C03_Crore_Measures_and_Dynamic_Format_Strings_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C03_Crore_Measures_and_Dynamic_Format_Strings_for.html">Crore Measures and Dynamic Format Strings for Indian Units</a></li><li><a href="../concepts/C04_Net_Debt_Measure_Closing_Borrowings_Less_Cash_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C04_Net_Debt_Measure_Closing_Borrowings_Less_Cash_and.html">Net Debt Measure: Closing Borrowings Less Cash and Equivalents</a></li><li><a href="../concepts/C05_Margin_Variance_in_Percentage_Points_EBITDA_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C05_Margin_Variance_in_Percentage_Points_EBITDA_vs.html">Margin Variance in Percentage Points: EBITDA % vs Budget</a></li><li><a href="../concepts/C06_Excel_Native_Waterfall_Chart_with_Set_as_Total.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C06_Excel_Native_Waterfall_Chart_with_Set_as_Total.html">Excel Native Waterfall Chart with &quot;Set as Total&quot;</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Variance Visuals: Diverging Bars, Fav/Adv Colours and IBCS Notation</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Variance visuals: diverging bars, favourable/adverse colours, IBCS-style notation</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Management accountants already think in variances — the CMA syllabus drills material, labour and overhead
+variances with F/A labels. Dashboards often lose that discipline: green means "positive number", not
+"favourable", and a cost overrun shows as a cheerful green bar. A variance visual must encode <em>direction of impact</em>
+consistently, use a notation the board recognises, and let the eye find the two or three lines that matter. IBCS
+(International Business Communication Standards) codifies exactly this and is increasingly used in Indian
+group MIS packs (particularly MNC subsidiaries reporting to European parents).</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="favourable-vs-adverse-define-it-once">Favourable vs adverse: define it once</h3>
+<p>Raw variance is \(\text{Actual} - \text{Budget}\). Whether that is good depends on the line type:</p>
+<p>\[
+\text{Var Fav/Adv} = (\text{Actual} - \text{Budget}) \times s, \quad s = \begin{cases} +1 &amp; \text{income, profit, cash lines} \\ -1 &amp; \text{expense, debt, NWC lines} \end{cases}
+\]</p>
+<p>Store \(s\) on the CoA (or Layout) table as <code>FavSign</code>, or derive it from the Week 11 <code>SignFactor</code>. With signed
+measures (income positive, expense negative), <code>[Actual Signed] - [Budget Signed]</code> is already favourable-positive
+for every P&amp;L line — the cleanest approach.</p>
+<pre><code class="language-DAX">Variance Fav/Adv =
+SUMX (
+    VALUES ( CoA[FSLine] ),
+    ( [Actual] - [Budget] ) * CALCULATE ( MAX ( CoA[FavSign] ) )
+)
+
+Variance Fav/Adv % =
+DIVIDE ( [Variance Fav/Adv], ABS ( [Budget] ) )
+</code></pre>
+<p>The SUMX over FS lines ensures a subtotal (e.g. total opex) sums line-level fav/adv variances correctly even when
+lines have different signs.</p>
+<h3 id="diverging-bar-chart">Diverging bar chart</h3>
+<p>A diverging bar (horizontal bars to the left and right of a zero axis) shows variance by line or by BU:</p>
+<ul>
+<li><strong>Y-axis:</strong> FS line, BU or cost centre (sorted by variance or by P&amp;L order).</li>
+<li><strong>X-axis:</strong> <code>[Variance Fav/Adv]</code> — favourable bars extend right, adverse bars left.</li>
+<li><strong>Colour:</strong> bar fill via fx &gt; Field value = <code>[Var Colour]</code> (Concept c02): green for ≥ 0, red for &lt; 0.</li>
+<li><strong>Zero line:</strong> a constant x-axis line at 0 (Analytics pane), dark grey.</li>
+<li><strong>Labels:</strong> data labels outside end, ₹ crore with sign: <code>+2.9;-4.2;0.0</code>.</li>
+</ul>
+<p>Use a clustered bar chart with the single variance measure. A popular enhancement is a combined "Actual vs Budget"
+table on the left and the diverging variance bars on the right, aligned row by row — the IBCS standard layout.</p>
+<h3 id="variance-bars-pin-charts">Variance % bars ("pin" charts)</h3>
+<p>For percentage variances, IBCS uses thin "pins" (lollipop) rather than thick bars, to distinguish relative from
+absolute variances. In Power BI, an error-bar on a scatter or a narrow-width bar plus marker approximates it;
+alternatively use conditional-format data bars in a matrix column for Var %.</p>
+<h3 id="ibcs-style-notation">IBCS-style notation</h3>
+<p>IBCS's SUCCESS rules (Say, Unify, Condense, Check, Express, Simplify, Structure) include a <em>unified notation</em> for
+scenarios:</p>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Notation</th>
+<th>Power BI implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Actual (AC)</td>
+<td>Solid dark grey/black fill</td>
+<td>Column fill dark grey</td>
+</tr>
+<tr>
+<td>Previous Year (PY)</td>
+<td>Solid light grey</td>
+<td>Lighter grey column/line</td>
+</tr>
+<tr>
+<td>Plan / Budget (PL / BU)</td>
+<td>Outlined (no fill, dark border)</td>
+<td>Column with transparent fill and border, or dashed line</td>
+</tr>
+<tr>
+<td>Forecast (FC)</td>
+<td>Hatched</td>
+<td>Pattern not native; use a lighter tint with dashed border</td>
+</tr>
+<tr>
+<td>Variances (ΔPL, ΔPY)</td>
+<td>Green = favourable, red = adverse</td>
+<td>fx field-value colour</td>
+</tr>
+</tbody>
+</table>
+<p>Other IBCS conventions: titles state the message ("EBITDA ₹9.4 Cr below budget, driven by power and revenue"),
+consistent scaling across charts on a page (same ₹ crore per pixel), time on the horizontal axis and structure
+(lines, BUs) on the vertical axis, and no decoration (3D, shadows, gradients). Certified IBCS visuals (Zebra BI,
+Inforiver) exist in AppSource; they require licences and admin approval in most corporate tenants, so learn to
+approximate with native visuals.</p>
+<h3 id="variance-in-the-matrix">Variance in the matrix</h3>
+<p>In the P&amp;L matrix, add columns Var (₹) and Var % with:</p>
+<ul>
+<li>Font colour fx by <code>[Var Colour]</code>.</li>
+<li>Icons (▲/▼) by rules on <code>[Variance Fav/Adv]</code>.</li>
+<li>Data bars on Var (₹) with positive green and negative red, axis in the middle.</li>
+</ul>
+<h3 id="illustration">Illustration</h3>
+<p>October 2025 YTD, ₹ Cr:</p>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Actual</th>
+<th>Budget</th>
+<th>Raw var</th>
+<th>FavSign</th>
+<th>Fav/Adv</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue</td>
+<td>712.4</td>
+<td>735.2</td>
+<td>−22.8</td>
+<td>+1</td>
+<td>−22.8 (A)</td>
+</tr>
+<tr>
+<td>Material cost</td>
+<td>389.6</td>
+<td>405.7</td>
+<td>−16.1</td>
+<td>−1</td>
+<td>+16.1 (F)</td>
+</tr>
+<tr>
+<td>Power and fuel</td>
+<td>47.1</td>
+<td>42.9</td>
+<td>+4.2</td>
+<td>−1</td>
+<td>−4.2 (A)</td>
+</tr>
+<tr>
+<td>Employee benefits</td>
+<td>64.3</td>
+<td>62.9</td>
+<td>+1.4</td>
+<td>−1</td>
+<td>−1.4 (A)</td>
+</tr>
+<tr>
+<td>Other expenses</td>
+<td>98.2</td>
+<td>101.1</td>
+<td>−2.9</td>
+<td>−1</td>
+<td>+2.9 (F)</td>
+</tr>
+</tbody>
+</table>
+<p>The diverging bar shows Revenue far left (red), Material right (green), Power left (red). Without the FavSign
+step, material cost would show as a red negative bar — the classic dashboard error.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Lines that change sign.</strong> "Other income/expense (net)" or FX gain/loss can flip; treat as income (FavSign +1)
+  on the signed value.</li>
+<li><strong>Variance % on small bases.</strong> A ₹0.1 Cr budget with ₹0.6 Cr actual is +500%; cap or suppress % when the base is
+  below a materiality threshold, and show ₹ variance instead.</li>
+<li><strong>Balance sheet variances.</strong> Higher receivables is adverse for cash; higher cash is favourable; define FavSign
+  for Page 2 lines too.</li>
+<li><strong>Colour-blind users.</strong> About 8% of men have red-green colour vision deficiency; add ▲/▼, F/A text or use a
+  blue/orange palette (s07).</li>
+<li><strong>Sorting by absolute variance.</strong> Sorting by signed variance puts all adverse at one end; sometimes sorting by
+  absolute size highlights the biggest movers regardless of direction — choose deliberately.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Favourable/adverse depends on line type; encode it once (FavSign or signed measures).</li>
+<li>Diverging bars around zero, coloured by a fav/adv colour measure, are the standard variance visual.</li>
+<li>IBCS notation: Actual solid, PY grey, Budget outlined, Forecast hatched, variance green/red.</li>
+<li>Titles should state the message; scales must be consistent across charts on a page.</li>
+<li>Suppress meaningless percentages and never rely on colour alone.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-favadv-classification-l1">Q1. Fav/Adv classification [L1]</h3>
+<p>For these November 2025 YTD lines (₹ Cr), compute raw and favourable/adverse variances: Revenue 815.0 vs 840.0;
+Other income 6.2 vs 4.0; Finance costs 23.1 vs 21.5; Depreciation 41.0 vs 42.5; Trade receivables (closing)
+214.0 vs 195.0.</p>
+<h3 id="q2-variance-measure-across-subtotals-l2">Q2. Variance measure across subtotals [L2]</h3>
+<p>Explain why <code>[Variance Fav/Adv] = ([Actual] - [Budget]) * MAX(CoA[FavSign])</code> gives a wrong answer on a "Total
+EBITDA" subtotal row and write a corrected measure.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider what MAX returns when several FS lines with different signs are in context.</p>
+</blockquote>
+<h3 id="q3-ibcs-makeover-l2">Q3. IBCS makeover [L2]</h3>
+<p>A BU-wise variance chart uses a 3D clustered column chart with Actual in blue, Budget in orange, and variance labels
+in black. Describe step by step how to convert it to an IBCS-style chart using native Power BI visuals.</p>
+<h3 id="q4-designing-for-a-group-parent-l3">Q4. Designing for a group parent [L3]</h3>
+<p>The European parent of an Indian subsidiary requires IBCS-compliant monthly reports. The Indian CFO wants the same
+Power BI pack for local management. Propose a design that satisfies both, including scenario notation, number
+units, sign conventions and whether a certified custom visual is justified.</p></section>
+<nav class="pager"><a class="prev" href="S04_Waterfall_Bridges_EBITDA_Revenue_and_Cash_Flow.html">← Waterfall Bridges: EBITDA, Revenue and Cash Flow</a><a class="next" href="S06_Indian_Number_Formatting_Crore_and_Lakh_Units.html">Indian Number Formatting: ₹ Crore and Lakh Units,… →</a></nav>
+</main></div></body></html>

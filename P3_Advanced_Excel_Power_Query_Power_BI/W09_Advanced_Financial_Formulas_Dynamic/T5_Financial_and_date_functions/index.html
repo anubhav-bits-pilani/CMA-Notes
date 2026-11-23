@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Financial and date functions · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/index.html" data-kind="topic">
+<header class="top"><a class="brand" href="../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../index.html">Home</a> <span>›</span> <a href="../../index.html">Phase 3</a> <span>›</span> <a href="../index.html">Week 9</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">Week 9</a></div><ul class="side-links"><li><a href="../T1_Multi_criteria_logic_and_GL_rollups/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/index.html">T1 · Multi-criteria logic and GL rollups</a></li><li><a href="../T2_Modern_lookups_and_scenario_switching/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/index.html">T2 · Modern lookups and scenario switching</a></li><li><a href="../T3_SUMPRODUCT_weighted_averages_and_matrix/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/index.html">T3 · SUMPRODUCT weighted averages and matrix math</a></li><li><a href="../T4_Dynamic_arrays_and_LETLAMBDA/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/index.html">T4 · Dynamic arrays and LET/LAMBDA</a></li><li><a href="index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/index.html">T5 · Financial and date functions</a></li><li><a href="../T6_What_if_analysis_and_input_controls/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/index.html">T6 · What-if analysis and input controls</a></li></ul></aside>
+<main class="content">
+<div class="kind">Topic</div>
+<h1>Financial and date functions</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<section class="index"><h2>Notes in this topic</h2><div class="cols"><div><h3>Subtopics</h3><ul class="links num"><li><a href="subtopics/S01_Period_End_Logic_with_EOMONTH_and_EDATE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S01_Period_End_Logic_with_EOMONTH_and_EDATE.html">S01 · Period-End Logic with EOMONTH and EDATE</a></li><li><a href="subtopics/S02_Day_Count_Conventions_with_YEARFRAC_Bases_04.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S02_Day_Count_Conventions_with_YEARFRAC_Bases_04.html">S02 · Day-Count Conventions with YEARFRAC Bases 0–4</a></li><li><a href="subtopics/S03_NPV_vs_XNPV_Periodic_and_Dated_Cash_Flows.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S03_NPV_vs_XNPV_Periodic_and_Dated_Cash_Flows.html">S03 · NPV vs XNPV: Periodic and Dated Cash Flows</a></li><li><a href="subtopics/S04_IRR_vs_XIRR_vs_MIRR_for_Irregular_Project_Cash.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S04_IRR_vs_XIRR_vs_MIRR_for_Irregular_Project_Cash.html">S04 · IRR vs XIRR vs MIRR for Irregular Project Cash Flows</a></li><li><a href="subtopics/S05_Loan_Amortisation_with_PMT_IPMT_PPMT_CUMIPMT_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S05_Loan_Amortisation_with_PMT_IPMT_PPMT_CUMIPMT_and.html">S05 · Loan Amortisation with PMT, IPMT, PPMT, CUMIPMT and CUMPRINC</a></li><li><a href="subtopics/S06_EMI_Schedules_and_Ind_AS_116_Lease_Liability.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S06_EMI_Schedules_and_Ind_AS_116_Lease_Liability.html">S06 · EMI Schedules and Ind AS 116 Lease Liability Schedules</a></li><li><a href="subtopics/S07_Close_Calendars_with_WORKDAYINTL_NETWORKDAYSINTL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S07_Close_Calendars_with_WORKDAYINTL_NETWORKDAYSINTL.html">S07 · Close Calendars with WORKDAY.INTL, NETWORKDAYS.INTL and Holidays</a></li><li><a href="subtopics/S08_Fiscal_Year_Helpers_FY_Start_FY_End_and_Fiscal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S08_Fiscal_Year_Helpers_FY_Start_FY_End_and_Fiscal.html">S08 · Fiscal-Year Helpers: FY Start, FY End and Fiscal Month</a></li></ul></div><div><h3>Key concepts & formulas</h3><ul class="links num"><li><a href="concepts/C01_Month_End_Month_Start_and_Same_Day_Offsets_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C01_Month_End_Month_Start_and_Same_Day_Offsets_with.html">C01 · Month-End, Month-Start and Same-Day Offsets with EOMONTH and EDATE</a></li><li><a href="concepts/C02_YEARFRAC_Basis_1_vs_Basis_3_for_Accruals.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C02_YEARFRAC_Basis_1_vs_Basis_3_for_Accruals.html">C02 · YEARFRAC Basis 1 vs Basis 3 for Accruals</a></li><li><a href="concepts/C03_NPV_Plus_CF0_Why_NPV_Discounts_Its_First_Value.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C03_NPV_Plus_CF0_Why_NPV_Discounts_Its_First_Value.html">C03 · NPV Plus CF0: Why NPV Discounts Its First Value</a></li><li><a href="concepts/C04_XNPV_and_XIRR_The_365_Day_Basis_from_the_First.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C04_XNPV_and_XIRR_The_365_Day_Basis_from_the_First.html">C04 · XNPV and XIRR: The 365-Day Basis from the First Date</a></li><li><a href="concepts/C05_PMT_IPMT_and_PPMT_EMI_and_Its_InterestPrincipal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C05_PMT_IPMT_and_PPMT_EMI_and_Its_InterestPrincipal.html">C05 · PMT, IPMT and PPMT: EMI and Its Interest/Principal Split</a></li><li><a href="concepts/C06_MIRR_Fixing_IRRs_Reinvestment_and_Multiple_Root.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C06_MIRR_Fixing_IRRs_Reinvestment_and_Multiple_Root.html">C06 · MIRR: Fixing IRR&#x27;s Reinvestment and Multiple-Root Problems</a></li><li><a href="concepts/C07_FY_End_Date_and_Fiscal_Month_Formulas_for_an.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C07_FY_End_Date_and_Fiscal_Month_Formulas_for_an.html">C07 · FY End Date and Fiscal Month Formulas for an April–March Year</a></li></ul></div></div></section><article class="note"><blockquote>
+<p><strong>Roadmap topic:</strong> Financial &amp; Date Functions: EOMONTH, EDATE, YEARFRAC, NPV, XNPV, IRR, XIRR, PMT, IPMT, PPMT for irregular cash flow dates</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>Finance is time-dependent arithmetic: amounts belong to periods, interest accrues over days, cash flows are worth less the later they arrive, and loans and leases unwind period by period. Excel's date functions (EOMONTH, EDATE, YEARFRAC, WORKDAY.INTL, NETWORKDAYS.INTL) answer "which period, how long, and when", and its financial functions (NPV, XNPV, IRR, XIRR, MIRR, PMT, IPMT, PPMT, CUMIPMT, CUMPRINC) answer "how much is it worth and how is it split". Used correctly they make close schedules, debt and lease schedules, DCFs and capital budgeting models short, exact and auditable. Used carelessly they produce plausible but wrong numbers: NPV including the t = 0 flow, IRR on irregular dates, an annual rate with monthly periods, or accruals on the wrong day-count basis.</p>
+<p>For the target roles, these functions show up everywhere. A <strong>financial reporting</strong> analyst builds Ind AS 116 lease liability schedules, Ind AS 109 EIR amortisation tables and interest accruals that must agree with bank certificates. An <strong>FP&amp;A</strong> analyst builds month-end headers, YTD/PYTD windows, budget phasing by fiscal month and close calendars on working days. A <strong>modeller</strong> builds debt schedules, XNPV-based DCFs with stub periods, and return metrics for investment committees. Interviewers routinely test NPV vs XNPV, IRR vs XIRR vs MIRR and loan arithmetic.</p>
+<p>The learning sequence runs from dates to discounting to amortisation. Start with <strong>period-end logic</strong> (s01: EOMONTH and EDATE) and <strong>day counts</strong> (s02: YEARFRAC bases), which every later calculation uses. Then <strong>discounting</strong> (s03: NPV vs XNPV and t = 0 treatment) and <strong>returns</strong> (s04: IRR vs XIRR vs MIRR). Next, <strong>amortisation</strong> (s05: PMT family and rate conversion) and its two big applications (s06: EMI and Ind AS 116 lease schedules). Finish with the operational date tools: <strong>close calendars</strong> on working days with Indian holidays (s07) and <strong>fiscal-year helpers</strong> for an April–March year (s08). The Saturday speed test's XNPV/XIRR challenge with irregular dates draws on s03, s04 and the concepts c03, c04 and c06.</p>
+<h2 id="concept-map">Concept map</h2>
+<table>
+<thead>
+<tr>
+<th>Subtopic / concept</th>
+<th>Role in the topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s01 EOMONTH/EDATE period-end logic</td>
+<td>Derives month-ends, quarter-ends, maturities and due dates</td>
+</tr>
+<tr>
+<td>s02 YEARFRAC bases 0–4</td>
+<td>Day-count fractions for accruals and pro-rata charges</td>
+</tr>
+<tr>
+<td>s03 NPV vs XNPV</td>
+<td>Periodic vs dated discounting; t = 0 treatment</td>
+</tr>
+<tr>
+<td>s04 IRR vs XIRR vs MIRR</td>
+<td>Return metrics for regular, irregular and non-conventional flows</td>
+</tr>
+<tr>
+<td>s05 PMT, IPMT, PPMT, CUMIPMT, CUMPRINC</td>
+<td>Loan amortisation and rate-period conversion</td>
+</tr>
+<tr>
+<td>s06 EMI and Ind AS 116 schedules</td>
+<td>Roll-forward schedules with interest unwinding</td>
+</tr>
+<tr>
+<td>s07 NETWORKDAYS.INTL / WORKDAY.INTL</td>
+<td>Working-day close calendars with Indian holiday lists</td>
+</tr>
+<tr>
+<td>s08 Fiscal-year helpers</td>
+<td>FY start/end, fiscal month and quarter for April–March years</td>
+</tr>
+<tr>
+<td>c01 EOMONTH/EDATE offsets</td>
+<td>Month-end, month-start and same-day offsets</td>
+</tr>
+<tr>
+<td>c02 YEARFRAC basis 1 vs 3</td>
+<td>Actual/actual vs actual/365 for Indian bank accruals</td>
+</tr>
+<tr>
+<td>c03 NPV + CF0</td>
+<td>Why NPV discounts its first value one period</td>
+</tr>
+<tr>
+<td>c04 XNPV/XIRR 365-day basis</td>
+<td>Dated discounting anchored on the first date</td>
+</tr>
+<tr>
+<td>c05 PMT/IPMT/PPMT</td>
+<td>EMI and its interest/principal split</td>
+</tr>
+<tr>
+<td>c06 MIRR</td>
+<td>Fixing IRR's reinvestment and multiple-root problems</td>
+</tr>
+<tr>
+<td>c07 FY end and fiscal month</td>
+<td>Date-derived fiscal attributes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-concepts-to-study">Related concepts to study</h2>
+<h3 id="ind-as-116-and-ind-as-109-schedules">Ind AS 116 and Ind AS 109 schedules</h3>
+<p><em>→ Week 1–4: Ind AS 116 leases and Ind AS 109 EIR amortised-cost schedules</em></p>
+<p>Weeks 1–4 covered the accounting; this topic supplies the Excel machinery. An Ind AS 116 lease liability is a PV of payments not yet made (NPV/PV/XNPV), unwound with a constant periodic rate (the roll-forward in s06). An Ind AS 109 amortised-cost schedule for a borrowing with upfront fees or a discounted debenture is built by first solving the EIR — <code>IRR</code> or <code>XIRR</code> on net proceeds and contractual flows — then applying it to the opening amortised cost each period. Differences between coupon interest and EIR interest are the fee amortisation. Revisit those weeks' examples and rebuild them with these functions so that every schedule has a check (closing balance zero, total interest equals total cash cost).</p>
+<h3 id="xnpv-based-dcf-with-stubs-and-mid-year-convention">XNPV-based DCF with stubs and mid-year convention</h3>
+<p><em>→ Week 15–16: XNPV-based DCF with stub periods and the mid-year convention</em></p>
+<p>A DCF valuation date rarely falls on an FY-end. If the valuation is 30-Sep-2025, FY26 has a six-month stub, and later flows are discounted from that date. XNPV handles this if the first row is a zero flow on the valuation date. The mid-year convention assumes flows arrive evenly through each year, so each flow is discounted at its period mid-point (e.g. 0.25 for the stub, 1.0, 2.0 …). Modellers often prefer explicit discount factors — <code>YEARFRAC(ValDate, MidDate, 3)</code> and <code>1/(1+WACC)^t</code> — over XNPV for transparency, and use XNPV as a cross-check. The 365-day convention of XNPV should match the YEARFRAC basis used in the factors.</p>
+<h3 id="capital-budgeting">Capital budgeting</h3>
+<p><em>→ Week 21–22: capital budgeting with NPV, IRR and payback</em></p>
+<p>Weeks 21–22 apply these tools to investment decisions: NPV as the primary criterion, IRR and MIRR as rate-of-return measures, and payback (simple and discounted) as a liquidity screen. The Excel skills here — correct t = 0 treatment, XIRR for dated flows, sign-change checks before trusting IRR, MIRR with documented finance and reinvestment rates — prevent the classic errors. Payback is not a built-in function; it is computed from a cumulative cash-flow row (SCAN, w9_t4) and interpolation within the year in which cumulative flow turns positive. Capital rationing with Solver (w9_t6) builds on the NPVs computed here.</p>
+<h3 id="rate-nper-pv-and-fv">RATE, NPER, PV and FV</h3>
+<p><em>RATE, NPER, PV and FV for back-solving loan terms</em></p>
+<p>The annuity functions form one equation linking rate, nper, pmt, pv and fv; given any four, Excel solves the fifth. <strong>PV</strong> gives the loan amount affordable for a given EMI, or a lease liability for level payments. <strong>FV</strong> gives a maturity value (e.g. a recurring deposit) or the balance outstanding after k payments (<code>=FV(i, k, -EMI, P)</code> with signs). <strong>NPER</strong> gives the remaining tenor when a floating rate rises but the EMI is kept constant — how Indian banks typically handle repo-linked resets. <strong>RATE</strong> back-solves the implied rate in a dealer's "0% EMI" or "flat rate" offer, often revealing an effective cost far above the advertised rate. All require consistent signs and periods.</p>
+<h3 id="effect-and-nominal">EFFECT and NOMINAL</h3>
+<p><em>EFFECT and NOMINAL for converting quoted annual rates to effective rates</em></p>
+<p><code>=EFFECT(nominal_rate, npery)</code> converts a nominal annual rate compounded npery times a year to the effective annual rate, \((1 + j/m)^m - 1\); <code>=NOMINAL(effect_rate, npery)</code> reverses it. A cumulative FD at 7% compounded quarterly has an effective yield of <code>=EFFECT(7%, 4)</code> = 7.19%. These matter whenever two rates are compared or a rate is plugged into a function that expects a specific convention: XNPV and XIRR use annual effective rates, monthly PMT uses a periodic rate, and loan offers may quote nominal rates. Mixing conventions creates errors of 10–50 basis points — material in debt comparisons and WACC inputs.</p>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<h3 id="irr-on-irregular-dated-flows">IRR on irregular dated flows</h3>
+<p><em>Using IRR on irregular dated flows (it assumes equal periods) instead of XIRR</em></p>
+<p><strong>Mistake:</strong> applying IRR to flows that occur at uneven intervals — milestone receipts, SIPs with a terminal value, PE capital calls. <strong>Why it happens:</strong> IRR is familiar, and the flow column looks like a regular list. <strong>Correct treatment:</strong> use XIRR with a dates column (and XNPV for values); if flows are regular but monthly, annualise the IRR as \((1+r_m)^{12}-1\). <strong>Detection:</strong> check whether a dates column exists and whether intervals are equal (<code>=MAX(diff)-MIN(diff)</code> on date differences); compare IRR with XIRR — a gap of more than a few basis points signals irregular timing.</p>
+<h3 id="sign-conventions-and-missing-sign-changes">Sign conventions and missing sign changes</h3>
+<p><em>Sign conventions: PMT/PV return negatives, and IRR/XIRR give #NUM! without at least one sign change</em></p>
+<p><strong>Mistake:</strong> EMIs showing as negative and then being subtracted (doubling the effect), or IRR/XIRR failing with #NUM!. <strong>Why it happens:</strong> Excel's cash-flow convention (received +, paid −) is not intuitive; ERP exports may show all flows as positive. <strong>Correct treatment:</strong> enter principal as negative (<code>-P</code>) to get positive payments, or negate the output at the display layer — consistently across PMT, IPMT, PPMT. Ensure return calculations include at least one negative and one positive flow, signed from the investor's perspective. <strong>Detection:</strong> a check that <code>IPMT + PPMT = PMT</code> with the same sign; <code>=COUNTIF(values,"&lt;0")*COUNTIF(values,"&gt;0")&gt;0</code> before XIRR.</p>
+<h3 id="rate-and-period-mismatch">Rate and period mismatch</h3>
+<p><em>Annual rate combined with monthly nper, or the reverse</em></p>
+<p><strong>Mistake:</strong> <code>PMT(9%, 60, -P)</code> for a monthly loan, or <code>PMT(9%/12, 5, -P)</code> with years. <strong>Why it happens:</strong> rates are quoted annually but payments are monthly; formulas are copied between models with different frequencies. <strong>Correct treatment:</strong> derive both rate and nper from a single frequency input (<code>=Rate/Freq</code>, <code>=Years*Freq</code>); for effective annual quotes use <code>(1+r)^(1/Freq)-1</code>. <strong>Detection:</strong> sanity-check EMI against a rule of thumb (a 20-year 8.5% loan EMI is about ₹870 per lakh); total payments minus principal should look reasonable; the schedule's final balance must reach zero.</p>
+<h3 id="text-dates-in-xirr">Text dates in XIRR</h3>
+<p><em>XIRR on dates stored as text from ERP exports gives #VALUE!</em></p>
+<p><strong>Mistake:</strong> XIRR or XNPV applied to a dates column imported from SAP, Tally or a bank statement where dates are text ("31.03.2026", "2026-03-31 00:00:00"). <strong>Why it happens:</strong> CSV exports and locale differences (DD/MM vs MM/DD) leave dates as text, which look identical on screen. <strong>Correct treatment:</strong> convert with Power Query (set type Date with the correct locale), DATEVALUE, or Text to Columns (DMY); then verify. <strong>Detection:</strong> <code>=SUMPRODUCT(--ISTEXT(dates))</code> should be 0; left-aligned dates and green triangles are clues; <code>=ISNUMBER(cell)</code> on a sample; dates that "flip" day and month (e.g. 3-Dec instead of 12-Mar) indicate a locale problem rather than a text problem.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-treasury-and-debt-pack-l3">Q1. Treasury and debt pack [L3]</h3>
+<p>A company has: (a) a ₹60 crore term loan drawn 1-Apr-2025 at 9.3% nominal, 84 monthly EMIs from 30-Apr-2025; (b) FDs of ₹25 crore placed 18-Nov-2025 for 6 months at 7.15% (actual/365); (c) a 5-year office lease from 1-Apr-2025 at ₹1.8 crore per year payable in advance, IBR 10%. For the FY26 financial statements, set out the formulas for: FY26 interest expense and principal repaid on the loan; current maturity of the loan at 31-Mar-2026; FD maturity date and interest accrued at 31-Mar-2026; lease liability at commencement, FY26 interest, closing liability and its current portion. State the Schedule III line items affected.</p>
+<h3 id="q2-investment-committee-paper-l3">Q2. Investment committee paper [L3]</h3>
+<p>A ₹120 crore warehouse project has flows (₹ crore): −70 on 1-Jul-2025, −50 on 15-Jan-2026, +18 on 31-Mar-2027, +24 on 31-Mar-2028, +28 on 31-Mar-2029, +30 on 31-Mar-2030, +95 terminal value on 31-Mar-2030, and a −12 dismantling cost on 31-Mar-2031. WACC is 11.5% and the company's cost of debt is 9%. Specify the XNPV, XIRR, IRR (as if annual) and MIRR formulas, explain which you would recommend as the headline metrics and why, and identify any risk of multiple IRRs.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Count the sign changes before reporting any IRR.</p>
+</blockquote>
+<h3 id="q3-close-calendar-and-fy-helpers-l2">Q3. Close calendar and FY helpers [L2]</h3>
+<p>Build the design for a close calendar sheet for the quarter ending 31-Dec-2025: fiscal quarter label, quarter-start and quarter-end dates derived from an input date, WD+2/WD+4/WD+7 task dates on a Sat–Sun weekend with a holiday Table, the LODR results deadline, and the number of working days between quarter-end and the board meeting date you assume. Write each formula.</p>
+<h3 id="q4-debug-the-model-l2">Q4. Debug the model [L2]</h3>
+<p>A reviewer finds in a DCF: <code>=NPV(WACC, C10:H10)</code> where C10 is the FY26 stub flow at a 30-Sep-2025 valuation date; <code>=IRR(C10:H10)</code> reported as the project IRR although flows are half-yearly; <code>=PMT(9.5%, 7, -Debt)</code> for a loan repaid quarterly; and a dates column for an XIRR that returns #VALUE!. Explain each error, its direction of impact, and the corrected formula.</p>
+<h3 id="q5-rate-conversions-and-back-solving-l2">Q5. Rate conversions and back-solving [L2]</h3>
+<p>A dealer offers a ₹9 lakh car with "flat 6% interest" over 5 years (interest of 6% × 9 lakh × 5 added upfront and repaid in 60 equal EMIs). Write the formulas to compute the EMI, the implied monthly rate with RATE, the effective annual rate with EFFECT, and compare it with a bank loan at 9.25% nominal. Explain the result to a non-finance buyer.</p></section>
+<nav class="pager"><a class="prev" href="../T4_Dynamic_arrays_and_LETLAMBDA/concepts/C07_SCAN_for_Running_Closing_Balances.html">← SCAN for Running Closing Balances</a><a class="next" href="subtopics/S01_Period_End_Logic_with_EOMONTH_and_EDATE.html">Period-End Logic with EOMONTH and EDATE →</a></nav>
+</main></div></body></html>

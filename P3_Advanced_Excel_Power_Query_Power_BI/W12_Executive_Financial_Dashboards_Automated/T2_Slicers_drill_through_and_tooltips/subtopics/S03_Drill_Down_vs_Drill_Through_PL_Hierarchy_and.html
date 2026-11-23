@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drill-Down vs Drill-Through: P&amp;L Hierarchy and Voucher Detail · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S03_Drill_Down_vs_Drill_Through_PL_Hierarchy_and.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T2 · Slicers, drill-through and tooltips</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Slicers, drill-through and tooltips</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_FY_BU_and_Region_Slicers_Hierarchy_Relative_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S01_FY_BU_and_Region_Slicers_Hierarchy_Relative_Date.html">FY, BU and Region Slicers: Hierarchy, Relative Date and Sync</a></li><li><a href="S02_Edit_Interactions_Filter_vs_Highlight_vs_None.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S02_Edit_Interactions_Filter_vs_Highlight_vs_None.html">Edit Interactions: Filter vs Highlight vs None</a></li><li><a href="S03_Drill_Down_vs_Drill_Through_PL_Hierarchy_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S03_Drill_Down_vs_Drill_Through_PL_Hierarchy_and.html">Drill-Down vs Drill-Through: P&amp;L Hierarchy and Voucher Detail</a></li><li><a href="S04_Drill_Through_Setup_Fields_Keep_All_Filters_Cross.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S04_Drill_Through_Setup_Fields_Keep_All_Filters_Cross.html">Drill-Through Setup: Fields, Keep All Filters, Cross-Report, Back Button</a></li><li><a href="S05_Report_Page_Tooltips_Canvas_Size_Allow_Use_as.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S05_Report_Page_Tooltips_Canvas_Size_Allow_Use_as.html">Report Page Tooltips: Canvas Size, &quot;Allow Use as Tooltip&quot;, Field Tooltips</a></li><li><a href="S06_Bookmarks_Buttons_and_the_Selection_Pane_for_View.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S06_Bookmarks_Buttons_and_the_Selection_Pane_for_View.html">Bookmarks, Buttons and the Selection Pane for View Toggles</a></li><li><a href="S07_Field_Parameters_for_User_Selected_Dimensions_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S07_Field_Parameters_for_User_Selected_Dimensions_and.html">Field Parameters for User-Selected Dimensions and Measures</a></li><li><a href="S08_Visual_Page_and_Report_Filters_and_Top_N_Filters.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S08_Visual_Page_and_Report_Filters_and_Top_N_Filters.html">Visual, Page and Report Filters, and Top N Filters</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Drill_Through_Page_on_Ledger_with_a_Voucher_Detail.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C01_Drill_Through_Page_on_Ledger_with_a_Voucher_Detail.html">Drill-Through Page on Ledger with a Voucher Detail Table</a></li><li><a href="../concepts/C02_Selected_FY_Measure_for_Dynamic_Titles.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C02_Selected_FY_Measure_for_Dynamic_Titles.html">Selected FY Measure for Dynamic Titles</a></li><li><a href="../concepts/C03_Field_Parameter_Tables_Built_with_NAMEOF.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C03_Field_Parameter_Tables_Built_with_NAMEOF.html">Field Parameter Tables Built with NAMEOF</a></li><li><a href="../concepts/C04_ISFILTERED_and_ISCROSSFILTERED_for_Context_Aware.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C04_ISFILTERED_and_ISCROSSFILTERED_for_Context_Aware.html">ISFILTERED and ISCROSSFILTERED for Context-Aware Labels</a></li><li><a href="../concepts/C05_Slicer_Responsive_Vendor_Ranking_with_RANKX_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C05_Slicer_Responsive_Vendor_Ranking_with_RANKX_and.html">Slicer-Responsive Vendor Ranking with RANKX and ALLSELECTED</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Drill-Down vs Drill-Through: P&amp;L Hierarchy and Voucher Detail</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Drill-down vs drill-through: a matrix hierarchy (Statement → FS Line → Ledger) vs a voucher-detail page</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>The CFO sees "Other expenses ₹4.2 Cr over budget" and asks "what is in it?". There are two ways to answer in Power
+BI. <em>Drill-down</em> expands the same visual to a lower level of a hierarchy — FS line to ledger — keeping the user on
+the page. <em>Drill-through</em> jumps to a different page filtered to the clicked item — typically a voucher-detail page
+listing the GL lines. A finance pack needs both: drill-down for analysis by line and ledger, drill-through for
+evidence at voucher level. Auditors, internal audit and forensic reviewers (Weeks 5–8) rely on that last step.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="drill-down-in-a-matrix">Drill-down in a matrix</h3>
+<p>Place a hierarchy on the matrix <em>Rows</em> well: <code>CoA[Statement]</code> → <code>CoA[FSLine]</code> → <code>CoA[Ledger]</code> (and optionally
+<code>CoA[AccountCode]</code>). The matrix then supports:</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+/− row icons (Format &gt; Row headers &gt; +/- icons)</td>
+<td>Expand/collapse individual members inline (stepped layout)</td>
+</tr>
+<tr>
+<td>Drill mode (down arrow icon)</td>
+<td>Clicking a member drills into that member only</td>
+</tr>
+<tr>
+<td>Go to next level (double down-arrow)</td>
+<td>Shows all members at the next level, without parent grouping</td>
+</tr>
+<tr>
+<td>Expand all down one level (forked arrow)</td>
+<td>Shows next level nested under all parents</td>
+</tr>
+<tr>
+<td>Drill up (up arrow)</td>
+<td>Returns one level</td>
+</tr>
+</tbody>
+</table>
+<p>For a P&amp;L, <em>Expand all down one level</em> with stepped layout is the natural view: Statement subtotals, FS lines, then
+ledgers under each FS line, with subtotals controlled per level (Format &gt; Row subtotals &gt; per row level). The
+Week 11 P&amp;L layout measure uses <code>ISINSCOPE</code> to return the right logic at each level, e.g.:</p>
+<pre><code class="language-DAX">PnL Drill =
+IF (
+    ISINSCOPE ( CoA[Statement] ),   -- TRUE at Statement, FS Line and Ledger levels
+    [Actual Signed]                 -- signed so subtotals net income and expense
+)                                   -- BLANK at grand total: P&amp;L and BS must not be added
+</code></pre>
+<p>Drill-down keeps context, totals and variance columns; it is the analysis path. It stops at the lowest hierarchy
+level in the dimension — it cannot show individual vouchers unless you add voucher number to the hierarchy, which
+explodes the matrix.</p>
+<h3 id="drill-through-to-a-voucher-detail-page">Drill-through to a voucher-detail page</h3>
+<p>A drill-through page is a separate, usually hidden, page whose <em>Drill through</em> well contains one or more fields
+(e.g. <code>CoA[Ledger]</code>). Any visual in the report that uses that field gets a right-click <strong>Drill through &gt; GL
+Detail</strong> option. The target page opens filtered to the clicked ledger plus (with Keep all filters, s04) the
+source's slicers and cross-filters: FY, month, BU, region. The page shows a table of <code>GL[VoucherNo]</code>,
+<code>GL[Date]</code>, <code>GL[VoucherType]</code>, <code>GL[Narration]</code>, <code>Vendor[Name]</code>, <code>CostCentre[Name]</code> and <code>GL[Amount]</code> (Concept c01),
+plus a header card showing the ledger, the period and the total, which must equal the number clicked.</p>
+<h3 id="choosing-between-them">Choosing between them</h3>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Drill-down</th>
+<th>Drill-through</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Where</td>
+<td>Same visual</td>
+<td>Different page</td>
+</tr>
+<tr>
+<td>Levels</td>
+<td>Hierarchy levels of a dimension</td>
+<td>Any detail, including fact rows</td>
+</tr>
+<tr>
+<td>Context carried</td>
+<td>Visual's own context</td>
+<td>Drill-through fields plus (optionally) all filters</td>
+</tr>
+<tr>
+<td>Typical depth</td>
+<td>Statement → FS line → Ledger</td>
+<td>Ledger → vouchers</td>
+</tr>
+<tr>
+<td>User action</td>
+<td>Click arrows / +/−</td>
+<td>Right-click &gt; Drill through, or a button</td>
+</tr>
+<tr>
+<td>Performance</td>
+<td>Aggregated queries</td>
+<td>Row-level detail; must be filtered</td>
+</tr>
+</tbody>
+</table>
+<p>The two combine: drill down in the P&amp;L matrix to the ledger "Power &amp; fuel – Plant 2 electricity", then right-click
+it and drill through to the GL Detail page.</p>
+<h3 id="building-the-path-from-a-variance-line">Building the path from a variance line</h3>
+<p>To drill from an EBITDA variance to vouchers, the source visual must contain the drill-through field. A matrix row
+"Power and fuel" (FSLine level) can drill through if <code>CoA[FSLine]</code> is also a drill-through field on the target, or
+if the target accepts <code>CoA[Ledger]</code> and the user first drills down to ledger. Adding both FSLine and Ledger as
+drill-through fields lets the target accept either; a field missing from the source simply is not filtered.</p>
+<h3 id="illustration">Illustration</h3>
+<p>October 2025 YTD, Performance Polymers, P&amp;L matrix: Other expenses ₹31.4 Cr vs budget ₹28.7 Cr. Expanding shows
+ledgers: Power and fuel ₹14.9 Cr (budget ₹12.6 Cr), Stores and spares ₹6.2 Cr, Repairs ₹5.8 Cr, others ₹4.5 Cr.
+Right-click "Power and fuel" → GL Detail: 46 vouchers, including a ₹1.18 Cr MSEDCL bill for September posted on
+3 October and a ₹0.62 Cr diesel purchase for a DG set during a grid outage. The header card total ₹14.9 Cr ties to
+the matrix cell.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Ragged hierarchies.</strong> Some FS lines have a single ledger with the same name; the drill level repeats the
+  label. Hide duplicate levels with <code>ISINSCOPE</code> logic or flatten in the CoA.</li>
+<li><strong>Sign display.</strong> Drill-down rows use <code>[Actual Signed]</code>; the voucher page shows raw Dr/Cr amounts. Show both a
+  signed amount and Dr/Cr columns, or explain the sign convention in the page header.</li>
+<li><strong>Drill-down on Date.</strong> Auto date/time hierarchies on dates are calendar-based; disable auto date/time and use
+  the fiscal hierarchy from the Date table.</li>
+<li><strong>Users who do not discover right-click.</strong> Add a "View vouchers" button that is enabled when a single ledger is
+  selected (a drill-through button with a destination page).</li>
+<li><strong>Matrix exports.</strong> Exporting a drilled matrix exports the current level; for audit evidence, export from the
+  voucher page.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Drill-down navigates hierarchy levels inside the same matrix; drill-through jumps to a filtered detail page.</li>
+<li>Use Statement → FS Line → Ledger as the matrix hierarchy, with ISINSCOPE-aware measures.</li>
+<li>Use a hidden GL Detail page for voucher-level evidence, with ledger (and FS line) as drill-through fields.</li>
+<li>The detail page total must tie to the clicked number.</li>
+<li>Combine both: drill down to ledger, then drill through to vouchers.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-matrix-controls-l1">Q1. Matrix controls [L1]</h3>
+<p>Explain the difference between "Go to next level" and "Expand all down one level" on a matrix with rows
+Statement → FS Line → Ledger, and state which you would use for a board P&amp;L and why.</p>
+<h3 id="q2-drill-path-design-l2">Q2. Drill path design [L2]</h3>
+<p>A user wants to right-click the "Employee benefits" FS line on Page 1 and land on vouchers. The GL Detail page has
+only <code>CoA[Ledger]</code> in the Drill through well. Explain what happens today and two ways to make the path work.</p>
+<h3 id="q3-tie-out-on-the-detail-page-l2">Q3. Tie-out on the detail page [L2]</h3>
+<p>The GL Detail page shows a voucher total of ₹15.3 Cr for Power and fuel while the matrix cell showed ₹14.9 Cr.
+List four possible causes involving filters, signs or dates, and how you would confirm each.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Compare what context the source visual had with what the target received.</p>
+</blockquote>
+<h3 id="q4-forensic-drill-l3">Q4. Forensic drill [L3]</h3>
+<p>Internal audit wants to review all vouchers above ₹10 lakh posted on Sundays or after 10 pm in the last quarter,
+starting from any expense ledger in the P&amp;L. Design the drill-down/drill-through path, the detail page filters and
+any measures or calculated columns needed.</p></section>
+<nav class="pager"><a class="prev" href="S02_Edit_Interactions_Filter_vs_Highlight_vs_None.html">← Edit Interactions: Filter vs Highlight vs None</a><a class="next" href="S04_Drill_Through_Setup_Fields_Keep_All_Filters_Cross.html">Drill-Through Setup: Fields, Keep All Filters,… →</a></nav>
+</main></div></body></html>

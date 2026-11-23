@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Month Label to Month-End Date with Date.FromText and Format · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C02_Month_Label_to_Month_End_Date_with_DateFromText.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T3 · Unpivoting wide budgets and TBs</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Unpivoting wide budgets and TBs</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Wide_Crosstab_vs_Long_Normalised_Data_and_Fact.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S01_Wide_Crosstab_vs_Long_Normalised_Data_and_Fact.html">Wide (Crosstab) vs Long (Normalised) Data and Fact Tables</a></li><li><a href="../subtopics/S02_Unpivot_Other_Columns_vs_Unpivot_Columns_vs_Only.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S02_Unpivot_Other_Columns_vs_Unpivot_Columns_vs_Only.html">Unpivot Other Columns vs Unpivot Columns vs Only Selected</a></li><li><a href="../subtopics/S03_Converting_Month_Header_Text_into_Real_Month_End.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S03_Converting_Month_Header_Text_into_Real_Month_End.html">Converting Month Header Text into Real Month-End Dates</a></li><li><a href="../subtopics/S04_Multi_Row_Headers_Transpose_Fill_Merge_Transpose.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S04_Multi_Row_Headers_Transpose_Fill_Merge_Transpose.html">Multi-Row Headers: Transpose, Fill, Merge, Transpose Back, Unpivot</a></li><li><a href="../subtopics/S05_Unpivoting_TB_Columns_Opening_Debit_Credit_Closing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S05_Unpivoting_TB_Columns_Opening_Debit_Credit_Closing.html">Unpivoting TB Columns (Opening, Debit, Credit, Closing)</a></li><li><a href="../subtopics/S06_Pivot_Column_as_the_Reverse_of_Unpivot_Including.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S06_Pivot_Column_as_the_Reverse_of_Unpivot_Including.html">Pivot Column as the Reverse of Unpivot, Including Don&#x27;t Aggregate</a></li><li><a href="../subtopics/S07_Target_Fact_Schema_Date_Account_Department.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S07_Target_Fact_Schema_Date_Account_Department.html">Target Fact Schema: Date, Account, Department, Scenario, Amount</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_TableUnpivotOtherColumns_with_Fixed_Identifier.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C01_TableUnpivotOtherColumns_with_Fixed_Identifier.html">Table.UnpivotOtherColumns with Fixed Identifier Columns</a></li><li><a href="C02_Month_Label_to_Month_End_Date_with_DateFromText.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C02_Month_Label_to_Month_End_Date_with_DateFromText.html">Month Label to Month-End Date with Date.FromText and Format</a></li><li><a href="C03_Multi_Row_Header_Recipe_Transpose_Fill_Combine.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C03_Multi_Row_Header_Recipe_Transpose_Fill_Combine.html">Multi-Row Header Recipe: Transpose, Fill, Combine, Unpivot, Split</a></li><li><a href="C04_TablePivot_with_a_Dynamic_Value_List_and_ListSum.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C04_TablePivot_with_a_Dynamic_Value_List_and_ListSum.html">Table.Pivot with a Dynamic Value List and List.Sum</a></li><li><a href="C05_Adding_a_Typed_Scenario_Column_Before_Appending_to.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C05_Adding_a_Typed_Scenario_Column_Before_Appending_to.html">Adding a Typed Scenario Column Before Appending to Actuals</a></li><li><a href="C06_Unpivot_Drops_Null_Cells_Replace_Nulls_with_Zero.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C06_Unpivot_Drops_Null_Cells_Replace_Nulls_with_Zero.html">Unpivot Drops Null Cells: Replace Nulls with Zero When Needed</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Month Label to Month-End Date with Date.FromText and Format</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>Table.TransformColumns(t, {{"Month", each Date.EndOfMonth(Date.FromText("01-" &amp; _, [Format="dd-MMM-yy", Culture="en-IN"])), type date}})</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>For each text value <code>_</code> in the Month column (e.g. "Apr-25"):</p>
+<ol>
+<li><code>"01-" &amp; _</code> builds a full date string "01-Apr-25".</li>
+<li><code>Date.FromText(text, [Format="dd-MMM-yy", Culture="en-IN"])</code> parses it exactly according to the format: <code>dd</code> two-digit day, <code>MMM</code> abbreviated month name in the given culture, <code>yy</code> two-digit year — giving 1 April 2025.</li>
+<li><code>Date.EndOfMonth(date)</code> returns the last day of that month — 30 April 2025.</li>
+<li><code>type date</code> ascribes the column type so the result loads as a date, not <code>any</code>.</li>
+</ol>
+<p><code>Table.TransformColumns</code> replaces the Month column in place.</p>
+<h2 id="explanation">Explanation</h2>
+<p><strong>Why a format, not a plain type change?</strong> <code>Table.TransformColumnTypes</code> on "Apr-25" with a culture may parse it, but interpretation of partial dates (month-year without day) is culture- and version-dependent — "Apr-25" could be read as 25 April of the current year. A <code>Format</code> string removes ambiguity: the parser accepts only the stated pattern and errors on anything else, which is what you want for validation.</p>
+<p><strong>Culture role</strong>: with a Format, the culture still determines the <strong>month names</strong> recognised for <code>MMM</code>. "en-IN" and "en-GB" accept "Apr", "Sep"; note "Sept" (four letters) is not an abbreviation in these cultures — normalise first.</p>
+<p><strong>Two-digit years</strong>: <code>yy</code> maps "25" to 2025 under the default two-digit-year cutoff (years 00–49 → 2000s in .NET's default calendar settings; exact cutoff behaviour may differ by environment), fine for budgets. Prefer four-digit headers (<code>MMM-yyyy</code>) in templates you control.</p>
+<p><strong>Errors</strong>: any value that does not match ("FY Total", "Remarks", "Apr 25") raises a cell error. Either remove such columns before the unpivot (c01) or wrap in <code>try ... otherwise null</code> and log nulls. A loud error is often better than a silent null in a budget load.</p>
+<p><strong>Month-end vs month-start</strong>: drop <code>Date.EndOfMonth</code> if your convention is month-start. The Calendar dimension must contain whichever dates you use; and GL actuals must be brought to the same convention (<code>Date.EndOfMonth([PostingDate])</code>).</p>
+<p><strong>Variants of the pattern</strong>:</p>
+<pre><code>// &quot;Apr 2025&quot;
+each Date.EndOfMonth(Date.FromText(&quot;01 &quot; &amp; _, [Format=&quot;dd MMM yyyy&quot;, Culture=&quot;en-IN&quot;]))
+// &quot;2025-04&quot;
+each Date.EndOfMonth(Date.FromText(_ &amp; &quot;-01&quot;, [Format=&quot;yyyy-MM-dd&quot;]))
+// tolerant
+each try Date.EndOfMonth(Date.FromText(&quot;01-&quot; &amp; Text.Trim(_), [Format=&quot;dd-MMM-yy&quot;, Culture=&quot;en-IN&quot;])) otherwise null
+</code></pre>
+<h2 id="illustration">Illustration</h2>
+<table>
+<thead>
+<tr>
+<th>Month (text)</th>
+<th>After "01-" &amp; _</th>
+<th>Date.FromText</th>
+<th>Date.EndOfMonth</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apr-25</td>
+<td>01-Apr-25</td>
+<td>01-04-2025</td>
+<td>30-04-2025</td>
+</tr>
+<tr>
+<td>Feb-26</td>
+<td>01-Feb-26</td>
+<td>01-02-2026</td>
+<td>28-02-2026</td>
+</tr>
+<tr>
+<td>Mar-26</td>
+<td>01-Mar-26</td>
+<td>01-03-2026</td>
+<td>31-03-2026</td>
+</tr>
+<tr>
+<td>Sept-25</td>
+<td>01-Sept-25</td>
+<td>Error</td>
+<td>—</td>
+</tr>
+<tr>
+<td>FY Total</td>
+<td>01-FY Total</td>
+<td>Error</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>The two errors are informative: "Sept" needs normalisation; "FY Total" should not have been unpivoted.</p>
+<h2 id="connections">Connections</h2>
+<p>Implements s03. Follows c01 (unpivot). Uses Topic 2 s06 (date locales) and Topic 1 s04 (type ascription). The resulting dates relate to the Week 11 Calendar dimension, and Topic 6 derives FY, fiscal month and quarter from them. The pitfall on keeping month labels as text is resolved by this step.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-adapt-the-pattern-l1">Q1. Adapt the pattern [L1]</h3>
+<p>Rewrite the expression for month headers in each format: (a) "April-2025"; (b) "04/2025"; (c) "Apr'25". State any pre-processing needed.</p>
+<h3 id="q2-error-strategy-l2">Q2. Error strategy [L2]</h3>
+<p>Your unpivoted Month column contains 12 valid labels plus "FY Total" and "Var %". Compare (a) letting the conversion error, (b) using <code>try ... otherwise null</code> and filtering nulls, and (c) removing the columns before unpivoting. Recommend one for a monthly production load and justify.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider what happens when the template unexpectedly adds a new non-month column.</p>
+</blockquote>
+<h3 id="q3-month-start-convention-l2">Q3. Month-start convention [L2]</h3>
+<p>Your company's Calendar dimension and actuals use the first day of the month. Rewrite the step, and write the corresponding step to bring GL posting dates to the same convention.</p></section>
+<nav class="pager"><a class="prev" href="C01_TableUnpivotOtherColumns_with_Fixed_Identifier.html">← Table.UnpivotOtherColumns with Fixed Identifier Columns</a><a class="next" href="C03_Multi_Row_Header_Recipe_Transpose_Fill_Combine.html">Multi-Row Header Recipe: Transpose, Fill, Combine, Unpivot,… →</a></nav>
+</main></div></body></html>

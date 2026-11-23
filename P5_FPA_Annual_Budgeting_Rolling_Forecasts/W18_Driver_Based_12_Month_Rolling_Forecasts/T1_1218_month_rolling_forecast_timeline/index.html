@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>12/18-month rolling forecast timeline mechanics · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/index.html" data-kind="topic">
+<header class="top"><a class="brand" href="../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../index.html">Home</a> <span>›</span> <a href="../../index.html">Phase 5</a> <span>›</span> <a href="../index.html">Week 18</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">Week 18</a></div><ul class="side-links"><li><a href="index.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/index.html">T1 · 12/18-month rolling forecast timeline mechanics</a></li><li><a href="../T2_YTD_actual_YTG_forecast_Latest_Estimate/index.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T2_YTD_actual_YTG_forecast_Latest_Estimate/index.html">T2 · YTD actual + YTG forecast Latest Estimate</a></li><li><a href="../T3_Driver_based_operational_forecasting/index.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/index.html">T3 · Driver-based operational forecasting</a></li><li><a href="../T4_Version_and_scenario_governance/index.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/index.html">T4 · Version and scenario governance</a></li><li><a href="../T5_Forecast_accuracy_MAPE_WAPE_bias/index.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/index.html">T5 · Forecast accuracy: MAPE, WAPE, bias</a></li></ul></aside>
+<main class="content">
+<div class="kind">Topic</div>
+<h1>12/18-month rolling forecast timeline mechanics</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<section class="index"><h2>Notes in this topic</h2><div class="cols"><div><h3>Subtopics</h3><ul class="links num"><li><a href="subtopics/S01_Rolling_Horizon_Design_12_Month_18_Month_and_5.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S01_Rolling_Horizon_Design_12_Month_18_Month_and_5.html">S01 · Rolling Horizon Design: 12-Month, 18-Month and 5-Quarter Windows</a></li><li><a href="subtopics/S02_Reforecast_Cadence_and_Decoupling_from_the_AOP.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S02_Reforecast_Cadence_and_Decoupling_from_the_AOP.html">S02 · Reforecast Cadence and Decoupling from the AOP</a></li><li><a href="subtopics/S03_Dynamic_Timeline_Headers_Driven_by_a_Single_Cutoff.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S03_Dynamic_Timeline_Headers_Driven_by_a_Single_Cutoff.html">S03 · Dynamic Timeline Headers Driven by a Single Cutoff Date</a></li><li><a href="subtopics/S04_ActualForecast_Flags_and_Per_Column_Data_Source.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S04_ActualForecast_Flags_and_Per_Column_Data_Source.html">S04 · Actual/Forecast Flags and Per-Column Data Source Switching</a></li><li><a href="subtopics/S05_Pulling_Actuals_from_a_Long_Format_Database_with.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S05_Pulling_Actuals_from_a_Long_Format_Database_with.html">S05 · Pulling Actuals from a Long-Format Database with SUMIFS</a></li><li><a href="subtopics/S06_Forecast_Granularity_Fewer_Lines_than_the_Budget.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S06_Forecast_Granularity_Fewer_Lines_than_the_Budget.html">S06 · Forecast Granularity: Fewer Lines than the Budget</a></li><li><a href="subtopics/S07_EPM_Support_for_Rolling_Forecasts_Anaplan_Adaptive.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S07_EPM_Support_for_Rolling_Forecasts_Anaplan_Adaptive.html">S07 · EPM Support for Rolling Forecasts: Anaplan, Adaptive and EPBCS</a></li></ul></div><div><h3>Key concepts & formulas</h3><ul class="links num"><li><a href="concepts/C01_First_Forecast_Month_and_SEQUENCE_Driven_Month_End.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C01_First_Forecast_Month_and_SEQUENCE_Driven_Month_End.html">C01 · First Forecast Month and SEQUENCE-Driven Month-End Headers</a></li><li><a href="concepts/C02_Non_Dynamic_Array_Header_Formula_Using_a_COLUMN.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C02_Non_Dynamic_Array_Header_Formula_Using_a_COLUMN.html">C02 · Non-Dynamic-Array Header Formula Using a COLUMN Offset</a></li><li><a href="concepts/C03_Actual_Flag_and_the_IF_SUMIFS_Value_Switch.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C03_Actual_Flag_and_the_IF_SUMIFS_Value_Switch.html">C03 · Actual Flag and the IF-SUMIFS Value Switch</a></li><li><a href="concepts/C04_Constant_Length_Rolling_Horizon.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C04_Constant_Length_Rolling_Horizon.html">C04 · Constant-Length Rolling Horizon</a></li><li><a href="concepts/C05_Prefer_INDEXXLOOKUP_over_Volatile_OFFSETINDIRECT.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C05_Prefer_INDEXXLOOKUP_over_Volatile_OFFSETINDIRECT.html">C05 · Prefer INDEX/XLOOKUP over Volatile OFFSET/INDIRECT</a></li></ul></div></div></section><article class="note"><blockquote>
+<p><strong>Roadmap topic:</strong> 12-Month &amp; 18-Month Rolling Forecast Mechanics: Dropping closed actual months and adding future forecast months automatically using EOMONTH timeline logic</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>A rolling forecast keeps a constant forward horizon — typically 12 or 18 months, or five quarters — regardless of where the fiscal year boundary falls. While August 2025 is the last closed month, the 12-month window runs September 2025–August 2026; once September closes, it runs October 2025–September 2026. The static AOP, by contrast, shrinks in visibility every month: by January, an Indian-FY company with only an AOP sees just three months ahead. Rolling forecasts fix that "horizon cliff" and, from roughly Q3 of the Indian FY onwards, always show part of the next fiscal year — exactly when the next AOP is being prepared and when lenders, rating agencies and the Board ask for a forward view.</p>
+<p>For an FP&amp;A analyst this topic is mostly about <em>mechanics</em>: building a workbook (or configuring an EPM tool) so that a single cutoff date moves the whole timeline, flags each column as actual or forecast, pulls actuals from a database and computes forecasts elsewhere, without anyone retyping headers or overwriting history. Done badly, a rolling forecast becomes a monthly manual rebuild that takes eight days and breaks references; done well, the analyst changes one cell after close and spends their time on the business narrative.</p>
+<p>The learning sequence is: first decide the horizon design (s01) and cadence (s02) — these are process choices that drive model design. Then build the timeline engine: dynamic headers from the cutoff (s03, c01, c02), actual/forecast flags that switch data sources per column (s04, c03), and actuals pulled from a long-format database with <code>SUMIFS</code> keyed on month-end dates (s05). Understand why the horizon stays constant length (c04) and why non-volatile lookups beat <code>OFFSET</code>/<code>INDIRECT</code> (c05). Then decide what to forecast at all — fewer lines than the budget (s06). Finally see how EPM platforms (Anaplan, Adaptive, Oracle EPBCS) implement the same ideas natively (s07), because most large Indian companies run the rolling forecast in such a tool with Excel as a satellite.</p>
+<p>The topic connects forward to Topic 2 (the LE is the fiscal-year slice of the same engine), Topic 3 (driver logic fills the forecast columns), Topic 4 (versions snapshot the forecast each cycle) and Topic 5 (accuracy is measured by comparing actuals with snapshots taken n months earlier).</p>
+<h2 id="concept-map">Concept map</h2>
+<table>
+<thead>
+<tr>
+<th>Subtopic / concept</th>
+<th>Role in the topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s01 Rolling horizon design</td>
+<td>Choose 12-month, 18-month or 5-quarter windows and understand next-FY visibility</td>
+</tr>
+<tr>
+<td>s02 Cadence</td>
+<td>Decide monthly vs quarterly reforecast and decouple from the AOP calendar</td>
+</tr>
+<tr>
+<td>s03 Dynamic timeline headers</td>
+<td>Generate month-end headers from one cutoff cell</td>
+</tr>
+<tr>
+<td>s04 Actual/forecast flags</td>
+<td>Flag each column and switch data source automatically</td>
+</tr>
+<tr>
+<td>s05 Pulling actuals with <code>SUMIFS</code></td>
+<td>Retrieve closed-month actuals from a long-format fact table</td>
+</tr>
+<tr>
+<td>s06 Granularity</td>
+<td>Forecast fewer, material lines to keep the cycle fast</td>
+</tr>
+<tr>
+<td>s07 EPM support</td>
+<td>Native rolling features in Anaplan, Adaptive Planning and Oracle EPBCS</td>
+</tr>
+<tr>
+<td>c01 First forecast month and <code>SEQUENCE</code> headers</td>
+<td>Core formulas for the forecast window start and 12 spilled headers</td>
+</tr>
+<tr>
+<td>c02 Non-dynamic-array header</td>
+<td>Backward-compatible header formula using <code>COLUMN()</code> offset</td>
+</tr>
+<tr>
+<td>c03 Actual flag and value switch</td>
+<td>The <code>--(Hdr&lt;=Cutoff)</code> flag and <code>IF(Flag,SUMIFS(…),Fcst)</code> pattern</td>
+</tr>
+<tr>
+<td>c04 Constant-length horizon</td>
+<td>Each close drops one actual month and adds one forecast month</td>
+</tr>
+<tr>
+<td>c05 Prefer <code>INDEX</code>/<code>XLOOKUP</code> over <code>OFFSET</code>/<code>INDIRECT</code></td>
+<td>Non-volatile, auditable dynamic windows</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-concepts-to-study">Related concepts to study</h2>
+<h3 id="week-9-dynamic-arrays-and-date-functions">Week 9 dynamic arrays and date functions</h3>
+<p><em>→ Week 9: dynamic arrays, <code>LET</code>, <code>LAMBDA</code>, date functions</em></p>
+<p>The rolling engine is a direct application of Week 9. <code>SEQUENCE</code> spills month offsets; <code>EOMONTH</code> converts them to month-end keys; <code>LET</code> names intermediate values (cutoff, first forecast month, fiscal month number) so long formulas become readable; and <code>LAMBDA</code> lets you define reusable functions such as <code>FYMONTH(d)</code> returning 1 for April or <code>ISACTUAL(hdr)</code> returning the flag, stored in Name Manager and used across sheets. Spill references (<code>C4#</code>) let downstream formulas, conditional formats and charts follow the header array automatically. Revisit <code>#SPILL!</code> handling, implicit intersection (<code>@</code>) in legacy workbooks and the behaviour of dynamic arrays when shared with Excel 2016 users, which will show them as legacy array formulas or errors.</p>
+<h3 id="week-10-power-query-refresh-of-actuals">Week 10 Power Query refresh of actuals</h3>
+<p><em>→ Week 10: Power Query to refresh actuals from ERP extracts into the forecast database</em></p>
+<p>Actuals should arrive in the forecast database by refresh, not by copy-paste. In Power Query, connect to the monthly trial-balance extract (SAP FAGLFLEXT/ACDOCA export, Oracle GL balances, Tally XML/Excel export), unpivot month columns into rows, map GL codes to forecast accounts via a merge with the mapping table, convert period labels to month-end dates (<code>Date.EndOfMonth</code>), filter to closed periods only (≤ cutoff passed as a parameter), and load into the <code>Act</code> table. Appending each month's file from a folder makes the process repeatable. The forecast formulas then see the new month automatically once the cutoff moves. Week 10's lessons on data types, query folding and error rows apply directly.</p>
+<h3 id="beyond-budgeting-and-rolling-forecasts">Beyond Budgeting and rolling forecasts</h3>
+<p><em>Beyond Budgeting and rolling forecasts as resource-allocation tool (Hope &amp; Fraser; Bogsnes "Implementing Beyond Budgeting")</em></p>
+<p>Jeremy Hope and Robin Fraser's <em>Beyond Budgeting</em> (2003) argued that the annual budget conflates three purposes — targets, forecasts and resource allocation — and that combining them corrupts all three: targets get negotiated down, forecasts get biased toward targets, and resources are locked in a year ahead. Bjarte Bogsnes' <em>Implementing Beyond Budgeting</em> describes Statoil (now Equinor) abolishing the traditional budget and separating these: ambitious relative targets, unbiased rolling forecasts, and dynamic resource allocation through event-driven approvals. The practical lesson for an Indian FP&amp;A team is not necessarily to abolish the AOP — Boards and lenders expect one — but to keep the rolling forecast honest by not tying it to incentives, and to use it to reallocate capex and opex quarterly rather than defending annual allocations.</p>
+<h3 id="ttmltm-vs-ntm-metrics">TTM/LTM vs NTM metrics</h3>
+<p><em>Trailing twelve months (TTM/LTM) vs next twelve months (NTM) metrics</em></p>
+<p>TTM (trailing twelve months, also LTM) sums the last 12 closed months — e.g. October 2024–September 2025 — and is the backward analogue of a 12-month rolling forecast. It removes seasonality from comparisons and underpins covenant tests (Net debt ÷ LTM EBITDA) and trading multiples (EV ÷ LTM EBITDA). NTM is the next 12 months, i.e. the rolling forecast window itself, and drives forward multiples (EV ÷ NTM EBITDA) in equity research. In a model the same engine produces both: TTM uses headers <code>EOMONTH(Cutoff, SEQUENCE(1,12,-11))</code> over the actuals table, NTM uses <code>EOMONTH(Cutoff, SEQUENCE(1,12))</code> over forecast. TTM for a quarter-end can also be computed as FY + current YTD − prior-year YTD from published results.</p>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<h3 id="hard-coded-month-headers">Hard-coded month headers</h3>
+<p><em>Hard-coding month headers so the timeline breaks when the cutoff moves</em></p>
+<p>The mistake: typing "Oct-25", "Nov-25" … into the header row, or typing dates as constants, and then manually re-entering them each month. It happens because the first version of a forecast is usually built under time pressure from a budget template where headers are naturally fixed. The consequence is that, after the cutoff moves, headers no longer match the data underneath, <code>SUMIFS</code> keyed on the header pulls the wrong month, or text headers never match date keys at all and return zero. Correct treatment: one named cutoff cell; headers as formulas (<code>EOMONTH(Cutoff,SEQUENCE(1,12))</code> or the <code>COLUMN()</code> variant); custom number format <code>mmm-yy</code> for display. Detect in review with <code>ISFORMULA</code> conditional formatting on header rows and by moving the cutoff one month to confirm everything shifts.</p>
+<h3 id="budget-level-granularity">Budget-level granularity</h3>
+<p><em>Forecasting at budget-level granularity, making the monthly cycle too slow</em></p>
+<p>The mistake: reforecasting every one of the 600 GL lines and 40 cost centres the AOP used. People do it because it feels rigorous and allows line-by-line variance against budget. The result is a cycle that takes two weeks, forecasters who simply copy the budget for most lines, and a forecast that is stale on arrival. Correct treatment: forecast at driver or reporting-line level for material items (Pareto: the 15–25 lines that make up ~80% of revenue and cost variance), use run-rate or budget-ratio rules for the tail, and allocate down only if needed for reporting. Detect it by timing the cycle and checking what share of lines differ from budget — if 70% of lines equal budget, granularity is too fine.</p>
+<h3 id="heavy-use-of-offset">Heavy use of <code>OFFSET</code></h3>
+<p><em>Using <code>OFFSET</code> heavily, causing slow, volatile, hard-to-audit models</em></p>
+<p>The mistake: building dynamic windows such as "sum the last 12 columns" with <code>OFFSET</code> or constructing references with <code>INDIRECT</code>. Modellers like them because they are flexible and well known from older training material. Both are volatile: they recalculate on every change anywhere in the workbook, so a large model slows to a crawl; they hide precedents from Trace Precedents and Inquire; and <code>INDIRECT</code> built on sheet names breaks silently when a sheet is renamed. Correct treatment: <code>SUMIFS</code> on date criteria, <code>INDEX(range,,n)</code> or <code>INDEX(…):INDEX(…)</code> range construction, <code>XLOOKUP</code>, <code>FILTER</code> and <code>TAKE</code>/<code>DROP</code> on dynamic arrays. Detect via Formulas → Find <code>OFFSET(</code>/<code>INDIRECT(</code>, calculation timing, and Inquire's workbook analysis.</p>
+<h3 id="overwriting-actuals-and-losing-snapshots">Overwriting actuals and losing snapshots</h3>
+<p><em>Overwriting actuals with forecast formulas, losing historical forecast snapshots</em></p>
+<p>The mistake: a single forecast sheet whose columns flip from forecast to actual as months close, with no record of what was forecast before. Or the opposite — forecasters pasting forecast values over actual columns. It happens because the sheet "looks right" each month and saving versions feels like overhead. The consequence: no way to measure forecast accuracy, no forecast-to-forecast bridge, and possibly a misstatement if overwritten actuals feed reporting. Correct treatment: actuals live only in the actuals table; forecasts are snapshotted as values into the version table with a timestamp at each cycle sign-off; the live sheet only reads. Detect by checking that each closed month in the grid ties to the actuals table and that a version table exists with one snapshot per cycle.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-converting-a-static-aop-template-into-a-rolling-engine-l3">Q1. Converting a static AOP template into a rolling engine [L3]</h3>
+<p>Deccan Foods Ltd (FY April–March) has an FY26 AOP workbook with hard-coded headers Apr-25 to Mar-26 for 220 GL lines across 6 plants. The CFO wants a 12-month rolling forecast from October 2025, refreshed monthly within 4 working days of close, with an 18-month view during Q3–Q4. Actuals arrive as a monthly SAP trial-balance extract. (a) Design the horizon(s) and cadence, stating what the window covers at cutoffs 30-Sep-2025 and 31-Jan-2026. (b) Specify the Control sheet, header formulas, flag row and value formula. (c) Propose the reduced line structure, with a rule for the tail lines. (d) Describe how snapshots will be stored so accuracy can be measured in FY27.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Work out the 18-month window end dates first; they determine how far into FY27 and FY28 the model must reach.</p>
+</blockquote>
+<h3 id="q2-debugging-a-broken-rolling-forecast-l2">Q2. Debugging a broken rolling forecast [L2]</h3>
+<p>A rolling forecast uses headers typed as text ("Nov-25"), an actuals table with a Month column holding first-of-month dates, <code>=SUMIFS(Act[Amt],Act[Month],C$4,Act[Acct],$A5)</code> in actual columns, and <code>=SUM(OFFSET(C5,0,0,1,12))</code> for the 12-month total. After moving the cutoff, actual columns show zero and the workbook takes 40 seconds to recalculate. List every defect, explain the cause of each symptom, and rewrite the header, actual and total formulas.</p>
+<h3 id="q3-ttm-vs-ntm-for-a-covenant-and-a-valuation-l2">Q3. TTM vs NTM for a covenant and a valuation [L2]</h3>
+<p>A lender covenant requires Net debt ÷ LTM EBITDA ≤ 3.0x tested quarterly. Monthly EBITDA (₹ crore) for October 2024–September 2025 is: 14, 16, 12, 11, 10, 13, 12, 13, 14, 15, 15, 17. The rolling forecast for October 2025–September 2026 is: 16, 18, 13, 12, 11, 14, 13, 14, 15, 16, 16, 18. Net debt at 30-Sep-2025 is ₹470 crore and is forecast at ₹430 crore at 30-Sep-2026. (a) Compute LTM EBITDA and the covenant ratio at 30-Sep-2025 and the projected ratio at 30-Sep-2026. (b) Write the <code>SUMIFS</code> formulas that compute TTM and NTM from a single cutoff cell. (c) Explain why an analyst valuing the company would use NTM.</p>
+<h3 id="q4-rolling-forecast-process-redesign-interview-case-l3">Q4. Rolling forecast process redesign interview case [L3]</h3>
+<p>You join a listed Indian consumer-durables company whose "rolling forecast" is a quarterly re-run of the full AOP model with 1,100 lines, taking 12 working days and showing only the current FY. The CEO says the forecast "always just says budget". Using the Beyond Budgeting principles, explain what you would change in horizon, cadence, granularity, incentives and tooling (including whether to move to Anaplan or Oracle EPBCS), and how you would demonstrate improvement within two cycles.</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← Week 18: Driver-Based &amp; 12-Month Rolling Forecasts</a><a class="next" href="subtopics/S01_Rolling_Horizon_Design_12_Month_18_Month_and_5.html">Rolling Horizon Design: 12-Month, 18-Month and 5-Quarter… →</a></nav>
+</main></div></body></html>

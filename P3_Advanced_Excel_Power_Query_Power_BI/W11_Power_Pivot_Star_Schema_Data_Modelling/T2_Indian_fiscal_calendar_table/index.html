@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indian fiscal calendar table · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/index.html" data-kind="topic">
+<header class="top"><a class="brand" href="../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../index.html">Home</a> <span>›</span> <a href="../../index.html">Phase 3</a> <span>›</span> <a href="../index.html">Week 11</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">Week 11</a></div><ul class="side-links"><li><a href="../T1_Star_schema_for_financial_data/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/index.html">T1 · Star schema for financial data</a></li><li><a href="index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/index.html">T2 · Indian fiscal calendar table</a></li><li><a href="../T3_Core_financial_DAX_functions/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/index.html">T3 · Core financial DAX functions</a></li><li><a href="../T4_Time_intelligence_for_AprilMarch_FY/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/index.html">T4 · Time intelligence for April–March FY</a></li><li><a href="../T5_Semi_additive_balance_sheet_measures/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/index.html">T5 · Semi-additive balance sheet measures</a></li><li><a href="../T6_PL_layout_subtotals_and_sign_flip/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/index.html">T6 · P&amp;L layout, subtotals and sign-flip</a></li></ul></aside>
+<main class="content">
+<div class="kind">Topic</div>
+<h1>Indian fiscal calendar table</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<section class="index"><h2>Notes in this topic</h2><div class="cols"><div><h3>Subtopics</h3><ul class="links num"><li><a href="subtopics/S01_Building_the_Date_Dimension_DAX_CALENDAR_vs_Power.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S01_Building_the_Date_Dimension_DAX_CALENDAR_vs_Power.html">S01 · Building the Date Dimension: DAX CALENDAR vs Power Query List.Dates</a></li><li><a href="subtopics/S02_Contiguous_Whole_Fiscal_Year_Date_Range_Covering.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S02_Contiguous_Whole_Fiscal_Year_Date_Range_Covering.html">S02 · Contiguous Whole-Fiscal-Year Date Range Covering All Facts</a></li><li><a href="subtopics/S03_Fiscal_Calendar_Columns_FY_Quarter_Month_Week_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S03_Fiscal_Calendar_Columns_FY_Quarter_Month_Week_and.html">S03 · Fiscal Calendar Columns: FY, Quarter, Month, Week and Period Key</a></li><li><a href="subtopics/S04_Sort_by_Column_Fiscal_Month_Order_Starting_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S04_Sort_by_Column_Fiscal_Month_Order_Starting_in.html">S04 · Sort by Column: Fiscal Month Order Starting in April</a></li><li><a href="subtopics/S05_Month_and_FY_Offset_Columns_for_Dynamic_Period.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S05_Month_and_FY_Offset_Columns_for_Dynamic_Period.html">S05 · Month and FY Offset Columns for Dynamic Period Filters</a></li><li><a href="subtopics/S06_Mark_as_Date_Table_and_Turn_Off_Auto_DateTime.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S06_Mark_as_Date_Table_and_Turn_Off_Auto_DateTime.html">S06 · Mark as Date Table and Turn Off Auto Date/Time</a></li><li><a href="subtopics/S07_Working_Day_Flags_and_Indian_Holidays_for_Close.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S07_Working_Day_Flags_and_Indian_Holidays_for_Close.html">S07 · Working-Day Flags and Indian Holidays for Close Metrics</a></li><li><a href="subtopics/S08_IsClosedPeriod_and_IsYTD_Flags_for_Like_for_Like.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S08_IsClosedPeriod_and_IsYTD_Flags_for_Like_for_Like.html">S08 · IsClosedPeriod and IsYTD Flags for Like-for-Like Comparisons</a></li></ul></div><div><h3>Key concepts & formulas</h3><ul class="links num"><li><a href="concepts/C01_DAX_Fiscal_Date_Table_with_an_FYEnd_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C01_DAX_Fiscal_Date_Table_with_an_FYEnd_Column.html">C01 · DAX Fiscal Date Table with an FYEnd Column</a></li><li><a href="concepts/C02_CALENDARAUTO3_for_Whole_March_Ending_Fiscal_Years.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C02_CALENDARAUTO3_for_Whole_March_Ending_Fiscal_Years.html">C02 · CALENDARAUTO(3) for Whole March-Ending Fiscal Years</a></li><li><a href="concepts/C03_Fiscal_Month_and_Fiscal_Quarter_Formulas.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C03_Fiscal_Month_and_Fiscal_Quarter_Formulas.html">C03 · Fiscal Month and Fiscal Quarter Formulas</a></li><li><a href="concepts/C04_Fiscal_Week_Number_Anchored_on_1_April.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C04_Fiscal_Week_Number_Anchored_on_1_April.html">C04 · Fiscal Week Number Anchored on 1 April</a></li><li><a href="concepts/C05_Month_Offset_from_Today.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C05_Month_Offset_from_Today.html">C05 · Month Offset from Today</a></li><li><a href="concepts/C06_Power_Query_Date_List_with_ListDates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C06_Power_Query_Date_List_with_ListDates.html">C06 · Power Query Date List with List.Dates</a></li></ul></div></div></section><article class="note"><blockquote>
+<p><strong>Roadmap topic:</strong> Custom Indian Fiscal Calendar Table: Building a Date dimension supporting April–March fiscal years, quarters, and week offsets for time intelligence</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>The Date dimension is the most reused table in any finance model. Every YTD, prior-year, rolling-12-month, closing
+balance and close-calendar measure depends on it, and every matrix header — FY, quarter, month, week — comes from
+it. Indian companies report on an April–March year under Sec 2(41) of the Companies Act 2013, quarterly results
+under SEBI LODR Reg 33 end on 30 June, 30 September, 31 December and 31 March, and the Income-tax Act uses
+"previous year" and "assessment year" labels. Power BI's built-in Auto date/time assumes January–December. So the
+first deliverable of every Indian FP&amp;A model is a <strong>custom fiscal calendar</strong> built, validated and governed once.</p>
+<p>For FP&amp;A roles, this topic is less about formulas — each column is a one-liner — and more about <strong>getting the
+invariants right</strong>: contiguous dates covering whole fiscal years and every fact date; fiscal month, quarter and
+week numbering anchored on 1 April; sort columns so April comes first; the table marked as the date table with Auto
+date/time off; and flags and offsets so dashboards roll forward with the close calendar instead of being edited
+by hand every month. A controller who has reconciled TBs will recognise the logic: the calendar is the period
+master, and IsClosedPeriod is the period-lock.</p>
+<p>The learning sequence: decide <strong>where to build</strong> the table (DAX <code>CALENDAR</code> + <code>ADDCOLUMNS</code> vs Power Query
+<code>List.Dates</code>, s01) and <strong>what range</strong> it must cover (s02); add the <strong>columns</strong> — FY label, fiscal quarter and month,
+month name and month-end, fiscal week, period key (s03); fix <strong>sorting</strong> (s04); add <strong>offset columns</strong> for dynamic
+filters (s05); <strong>mark</strong> the table and switch off Auto date/time (s06); then add finance-specific attributes —
+<strong>working days and Indian holidays</strong> for close metrics (s07) and <strong>IsClosedPeriod / IsYTD flags</strong> for like-for-like
+comparisons (s08). The concepts are the exact formulas: the DAX table with FYEnd (c01), CALENDARAUTO(3) (c02),
+fiscal month and quarter (c03), fiscal week (c04), month offset (c05) and the Power Query List.Dates generator (c06).</p>
+<h2 id="concept-map">Concept map</h2>
+<table>
+<thead>
+<tr>
+<th>Subtopic / concept</th>
+<th>Role in the topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s01 DAX vs Power Query build</td>
+<td>Chooses where the calendar is generated and governed</td>
+</tr>
+<tr>
+<td>s02 Contiguous whole-FY range</td>
+<td>Ensures 1 April to 31 March coverage of every fact date</td>
+</tr>
+<tr>
+<td>s03 Columns</td>
+<td>FY label, fiscal quarter, fiscal month, month name, month-end, fiscal week, period key</td>
+</tr>
+<tr>
+<td>s04 Sort by Column</td>
+<td>April-first ordering of month names and other labels</td>
+</tr>
+<tr>
+<td>s05 Offset columns</td>
+<td>Dynamic "last N months" and current-vs-prior FY filters</td>
+</tr>
+<tr>
+<td>s06 Mark as Date Table, Auto date/time off</td>
+<td>Validates the calendar and removes hidden calendar-year tables</td>
+</tr>
+<tr>
+<td>s07 Working days and holidays</td>
+<td>Close-calendar and per-working-day metrics with Indian holiday rules</td>
+</tr>
+<tr>
+<td>s08 IsClosedPeriod and IsYTD</td>
+<td>Like-for-like and closed-period comparisons</td>
+</tr>
+<tr>
+<td>c01 DAX table with FYEnd</td>
+<td>Core FY year-end column driving all fiscal attributes</td>
+</tr>
+<tr>
+<td>c02 CALENDARAUTO(3)</td>
+<td>Automatic whole-FY range from model dates, with cautions</td>
+</tr>
+<tr>
+<td>c03 Fiscal month and quarter</td>
+<td>MOD and ROUNDUP formulas for April-start numbering</td>
+</tr>
+<tr>
+<td>c04 Fiscal week</td>
+<td>FY-anchored week numbering and its week-53 stub</td>
+</tr>
+<tr>
+<td>c05 Month offset</td>
+<td>Integer distance from the reference month</td>
+</tr>
+<tr>
+<td>c06 List.Dates</td>
+<td>Power Query generator for the contiguous date list</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-concepts-to-study">Related concepts to study</h2>
+<h3 id="week-10-fy-logic-as-m-custom-columns">Week 10: FY logic as M custom columns</h3>
+<p><em>→ Week 10: the same FY logic written as M custom columns</em></p>
+<p>Every DAX column in this topic has an M equivalent you wrote last week: <code>if Date.Month([Date]) &gt;= 4 then
+Date.Year([Date]) + 1 else Date.Year([Date])</code> for FYEnd, <code>Number.Mod(Date.Month([Date]) + 8, 12) + 1</code> for fiscal
+month, <code>Date.EndOfMonth</code> for month-end. Building the calendar in Power Query keeps all ETL in one place and allows a
+dataflow-based corporate calendar. The same logic was also used to stamp FY and period onto the GL and budget
+during cleansing; make sure both use identical rules, or the GL's FY column and the Date table's FY will disagree at
+the 31 March / 1 April boundary. Prefer relating facts to the Date table and dropping redundant FY columns from facts.</p>
+<h3 id="4-4-5-and-retail-calendars">4-4-5 and retail calendars</h3>
+<p><em>4-4-5 and retail calendars, where built-in time intelligence fails and custom offset logic is needed</em></p>
+<p>Retailers and some FMCG/consumer companies report in 4-4-5 (or 4-5-4, 5-4-4) periods: each quarter has two
+four-week months and one five-week month, so periods always end on the same weekday and contain whole weeks. A
+53rd week is added every five or six years. DAX built-in functions (DATESYTD, SAMEPERIODLASTYEAR, DATEADD) assume
+calendar months and break here. The solution is a Date table with explicit columns — FiscalYear, FiscalPeriodNo,
+FiscalWeekNo, and <strong>sequential offsets</strong> (PeriodSeq, WeekSeq) — and custom measures that filter on those integers,
+e.g. prior-year period = same FiscalPeriodNo with FiscalYear − 1. Indian statutory reporting remains April–March, so
+4-4-5 is a management-reporting overlay, requiring reconciliation of period cut-offs to month-ends.</p>
+<h3 id="rolling-forecast-windows-and-closed-period-flags-weeks-1720">Rolling forecast windows and closed-period flags (Weeks 17–20)</h3>
+<p><em>→ Week 17–20: rolling forecast windows and closed-period flags</em></p>
+<p>Rolling forecasts look a fixed number of months ahead (e.g. 12 or 18) from the latest closed month, regardless of
+fiscal year. The MonthOffsetClosed column built here defines that window: offsets +1 to +12 are the forecast
+horizon, 0 and below are actuals. IsClosedPeriod decides, month by month, whether a blended "outlook" measure uses
+actuals or forecast, and stops budget for open months from distorting YTD variance. Full-year outlook = YTD
+actual (closed months) + forecast for remaining months — evaluated per month with SUMX over MonthEnd so it totals
+correctly. These columns are therefore the hinge between this week's model and the FP&amp;A planning weeks.</p>
+<h3 id="calculation-groups-for-time-intelligence">Calculation groups for time intelligence</h3>
+<p><em>Calculation groups that apply time intelligence without duplicating measures</em></p>
+<p>Without calculation groups, every base measure (Revenue, Gross Profit, EBITDA, Opex) needs YTD, PY, PY YTD, YoY %
+and R12M variants — dozens of near-identical measures. A calculation group defines each time transformation once as
+a <strong>calculation item</strong> (e.g. YTD = <code>CALCULATE(SELECTEDMEASURE(), DATESYTD('Date'[Date], "3/31"))</code>) and applies it to
+whichever measure is in the visual. Calculation groups require a marked Date table with whole fiscal years and, in
+Power BI, force "discourage implicit measures". They can be created in Power BI Desktop's model explorer or Tabular
+Editor. Format strings can be dynamic per item (percentage for YoY %). Topic 4 and topic 6 use them.</p>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<h3 id="calendar-not-covering-whole-fiscal-years">Calendar not covering whole fiscal years</h3>
+<p><em>A calendar that does not cover whole fiscal years, so March YTD or prior-year measures return blanks</em></p>
+<p>The mistake: building the Date table from MIN and MAX of GL dates, or from calendar-year bounds (1 January to
+31 December), so the first or last fiscal year is truncated. It happens because "use the data range" sounds
+logical. Consequences: SAMEPERIODLASTYEAR and DATEADD return blank where shifted dates are missing; CLOSINGBALANCEYEAR
+with "3/31" is blank for a year that ends after the calendar does; budget and due dates fall into "(Blank)". Correct:
+round to 1 April and 31 March and include all fact date columns (s02). Detect: query MIN/MAX of <code>'Date'[Date]</code> and
+check they are 1 April and 31 March; compare row count to the expected number of days.</p>
+<h3 id="passing-a-fact-date-column-to-time-intelligence">Passing a fact date column to time intelligence</h3>
+<p><em>Passing <code>GL[Date]</code> instead of the Date table column to time-intelligence functions</em></p>
+<p>The mistake: writing <code>TOTALYTD([Actual], GL[PostingDate], "3/31")</code> or <code>SAMEPERIODLASTYEAR(GL[PostingDate])</code>.
+It happens because the fact date column is visible and seems equivalent. Time-intelligence functions then operate on
+the fact's own dates, which have gaps (holidays, Sundays) and do not filter Budget or TB; results are wrong or
+partial, and Budget YTD does not align. Correct: always pass <code>'Date'[Date]</code> from the marked Date table, and hide
+fact date columns. Detect: search measure text (DAX query view or Tabular Editor) for time-intelligence functions
+whose first argument is a fact table column.</p>
+<h3 id="month-names-sorted-alphabetically-or-starting-in-january">Month names sorted alphabetically or starting in January</h3>
+<p><em>Month names sorted alphabetically or starting in January in visuals</em></p>
+<p>The mistake: leaving MonthName sorted by itself (Apr, Aug, Dec …) or sorted by calendar month number (Jan first).
+It happens because the default sort is alphabetical and calendar month number is the obvious helper. Correct: sort
+MonthName by FiscalMonthNo and MonthYear by PeriodKey (s04); set visual sort to the month axis ascending.
+Detect: open any matrix or slicer with months — April must be first; also confirm that measures removing month
+filters also remove the sort column.</p>
+<h3 id="date-keys-with-a-time-part">Date keys with a time part</h3>
+<p><em>Date keys stored as datetime with a time part, so relationships fail to match</em></p>
+<p>The mistake: GL posting dates loaded as datetime with times (e.g. 15-05-2025 14:32:10 from an ERP timestamp), while
+<code>'Date'[Date]</code> is at midnight. The relationship matches only rows at exactly 00:00:00, so most GL rows fall into
+"(Blank)" and date-filtered measures drop them. It happens when source columns are timestamps or when Power Query
+types are left as datetime. Correct: convert to date in Power Query (<code>DateTime.Date</code> or change type to Date) on both
+sides; keep a separate time column only if needed. Detect: the RI test (topic 1 c05) on dates, a "(Blank)" member in a
+Date-based visual, or the Date column showing times in Data view.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-build-and-validate-the-corporate-calendar-l3">Q1. Build and validate the corporate calendar [L3]</h3>
+<p>An NSE-listed Mumbai FMCG company has GL from 1-Apr-2021, budget for FY2025-26 and FY2026-27 (MonthStart), and AP due
+dates up to 30-Sep-2027. It needs: FY label ("FY2025-26"), FYShort ("FY26"), fiscal quarter, fiscal month, month name,
+MonthYear, month-end, FY-anchored fiscal week, PeriodKey, MonthOffsetClosed, FYOffset, IsWorkingDay (Sundays and
+2nd/4th Saturdays off plus a holiday list), IsClosedPeriod and IsYTDComparable (driven by a Close parameter table).
+Required: (i) state the date range and row count; (ii) choose DAX or Power Query and justify; (iii) write the
+formula for each column; (iv) list all Sort by Column settings; (v) list five validation queries you would run before
+publishing.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Remember that the range must reach the end of the fiscal year containing the latest due date.</p>
+</blockquote>
+<h3 id="q2-debug-a-ytd-report-l2">Q2. Debug a YTD report [L2]</h3>
+<p>A matrix shows FY2025-26 with months on rows and <code>[YTD Actual] = TOTALYTD([Actual], GL[PostingDate], "3/31")</code>,
+<code>[PY YTD] = CALCULATE([YTD Actual], SAMEPERIODLASTYEAR('Date'[Date]))</code>. Findings: months appear Apr, Aug, Dec …; PY
+YTD is blank for April–June; Auto date/time is on; Date table runs 1-Jul-2024 to 31-Dec-2025; GL[PostingDate] is
+datetime. Required: explain each symptom's cause, and list the fixes in the order you would apply them.</p>
+<h3 id="q3-close-calendar-and-flags-l3">Q3. Close calendar and flags [L3]</h3>
+<p>The March 2026 close for a Chennai-headquartered company runs: TB on WD2, MIS on WD4, board pack on WD7. 1-Apr-2026
+is a Wednesday; holidays: 3-Apr (Good Friday), 14-Apr (Tamil New Year / Ambedkar Jayanti). Weekend rule: Sundays and
+2nd/4th Saturdays. Required: (i) list WD1–WD7 dates for the March close; (ii) describe the Close parameter table and
+how IsClosedPeriod changes on MIS sign-off; (iii) explain what a "YoY revenue growth" card shows on 6-Apr-2026 with and
+without IsYTDComparable if the card compares FY totals.</p>
+<h3 id="q4-offsets-for-a-rolling-dashboard-l2">Q4. Offsets for a rolling dashboard [L2]</h3>
+<p>The last closed month-end is 31-Dec-2025. Design report filters (using offset columns only) for: last three closed
+months; same three months of FY2024-25; current fiscal YTD (closed months); and the next six months of forecast.
+For each, state the offset column and value range, and explain what changes after the January close.</p>
+<h3 id="q5-4-4-5-overlay-l3">Q5. 4-4-5 overlay [L3]</h3>
+<p>A retail subsidiary reports management results on a 4-4-5 calendar starting on the Monday nearest 1 April, while
+statutory accounts remain April–March. Required: design the extra Date-table columns, explain why DATESYTD and
+SAMEPERIODLASTYEAR cannot be used for the 4-4-5 view, write the prior-year-period measure using sequence or offset
+columns, and describe how you would reconcile the 4-4-5 year to the statutory FY revenue.</p></section>
+<nav class="pager"><a class="prev" href="../T1_Star_schema_for_financial_data/concepts/C06_Hide_Fact_Foreign_Keys_Expose_Attributes_and.html">← Hide Fact Foreign Keys; Expose Attributes and Measures</a><a class="next" href="subtopics/S01_Building_the_Date_Dimension_DAX_CALENDAR_vs_Power.html">Building the Date Dimension: DAX CALENDAR vs Power Query… →</a></nav>
+</main></div></body></html>

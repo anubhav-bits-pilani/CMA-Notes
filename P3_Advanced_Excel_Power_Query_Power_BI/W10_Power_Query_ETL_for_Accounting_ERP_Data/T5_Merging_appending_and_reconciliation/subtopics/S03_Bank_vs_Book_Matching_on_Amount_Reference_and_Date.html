@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bank vs Book Matching on Amount, Reference and Date Window · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S03_Bank_vs_Book_Matching_on_Amount_Reference_and_Date.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T5 · Merging, appending and reconciliation…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Merging, appending and reconciliation joins</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Append_vs_Merge_Union_vs_Join_with_SQL_Analogies.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S01_Append_vs_Merge_Union_vs_Join_with_SQL_Analogies.html">Append vs Merge: Union vs Join with SQL Analogies</a></li><li><a href="S02_The_Six_Join_Kinds_and_Their_Role_in_a.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S02_The_Six_Join_Kinds_and_Their_Role_in_a.html">The Six Join Kinds and Their Role in a Reconciliation</a></li><li><a href="S03_Bank_vs_Book_Matching_on_Amount_Reference_and_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S03_Bank_vs_Book_Matching_on_Amount_Reference_and_Date.html">Bank vs Book Matching on Amount, Reference and Date Window</a></li><li><a href="S04_Normalising_Composite_Keys_Before_Merging.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S04_Normalising_Composite_Keys_Before_Merging.html">Normalising Composite Keys Before Merging</a></li><li><a href="S05_Fuzzy_Merge_for_Vendor_and_Customer_Names.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S05_Fuzzy_Merge_for_Vendor_and_Customer_Names.html">Fuzzy Merge for Vendor and Customer Names</a></li><li><a href="S06_Repeated_Identical_Amounts_Sequence_Keys_for_One.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S06_Repeated_Identical_Amounts_Sequence_Keys_for_One.html">Repeated Identical Amounts: Sequence Keys for One-to-One Matching</a></li><li><a href="S07_Other_Reconciliations_GSTR_2B_AR_Control_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S07_Other_Reconciliations_GSTR_2B_AR_Control_and.html">Other Reconciliations: GSTR-2B, AR Control and Intercompany</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_LeftAnti_Join_Items_in_the_Bank_but_Not_in_the.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C01_LeftAnti_Join_Items_in_the_Bank_but_Not_in_the.html">LeftAnti Join: Items in the Bank but Not in the Books</a></li><li><a href="../concepts/C02_RightAnti_Join_Items_in_the_Books_but_Not_in_the.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C02_RightAnti_Join_Items_in_the_Books_but_Not_in_the.html">RightAnti Join: Items in the Books but Not in the Bank</a></li><li><a href="../concepts/C03_Expanding_Merged_Columns_with_Prefixed_Names.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C03_Expanding_Merged_Columns_with_Prefixed_Names.html">Expanding Merged Columns with Prefixed Names</a></li><li><a href="../concepts/C04_TableFuzzyNestedJoin_Syntax_and_Options.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C04_TableFuzzyNestedJoin_Syntax_and_Options.html">Table.FuzzyNestedJoin Syntax and Options</a></li><li><a href="../concepts/C05_Duplicate_Safe_Keys_with_Group_By_and_Index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C05_Duplicate_Safe_Keys_with_Group_By_and_Index.html">Duplicate-Safe Keys with Group By and Index</a></li><li><a href="../concepts/C06_Sign_Alignment_Between_Bank_and_Book.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C06_Sign_Alignment_Between_Bank_and_Book.html">Sign Alignment Between Bank and Book</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Bank vs Book Matching on Amount, Reference and Date Window</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Bank vs book matching on amount + reference (UTR/cheque no.) + date window</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>The join kind is easy; the matching key is where reconciliations succeed or fail. Bank statements and book ledgers describe the same transactions with different information: the bank knows the value date, UTR and its own narration; the books know the voucher date, party, invoice and the cheque number written. A key that is too strict (exact amount + exact date + reference) leaves genuine matches as exceptions; a key that is too loose (amount only) pairs unrelated ₹10,000 transactions. Practitioners therefore use <strong>tiered matching</strong>: strongest evidence first, progressively weaker rules for what remains, each tier removing its matches before the next.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="evidence-available-on-each-side">Evidence available on each side</h3>
+<table>
+<thead>
+<tr>
+<th>Evidence</th>
+<th>Bank statement</th>
+<th>Books (Tally / SAP)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Amount</td>
+<td>Withdrawal or Deposit</td>
+<td>Debit or Credit to the bank ledger</td>
+</tr>
+<tr>
+<td>Cheque number</td>
+<td>"Chq./Ref.No." column for cheques</td>
+<td>Cheque/instrument number on the payment voucher</td>
+</tr>
+<tr>
+<td>UTR</td>
+<td>Embedded in narration for NEFT/RTGS/IMPS (e.g. "NEFT CR-HDFC0000123-ACME LTD-HDFCN52025040112345678")</td>
+<td>Often in voucher narration or a bank allocation field, if the accountant recorded it</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>Transaction date and value date</td>
+<td>Voucher date (may be the cheque date, before clearing)</td>
+</tr>
+<tr>
+<td>Party</td>
+<td>Remitter/beneficiary name in narration</td>
+<td>Ledger/party name</td>
+</tr>
+</tbody>
+</table>
+<p>UTR formats: NEFT UTRs are typically 16 characters beginning with the 4-letter bank code plus a letter (e.g. "HDFCN5..."); RTGS UTRs are typically 22 characters. Use these patterns when extracting from narration, but validate rather than assume, since formats vary by bank.</p>
+<h3 id="tier-1-reference-amount">Tier 1: reference + amount</h3>
+<pre><code class="language-m">BankK = Table.AddColumn(Bank, &quot;Key1&quot;, each [RefNorm] &amp; &quot;|&quot; &amp; Text.From([AmtAligned]), type text),
+BookK = Table.AddColumn(Book, &quot;Key1&quot;, each [RefNorm] &amp; &quot;|&quot; &amp; Text.From([AmtAligned]), type text),
+T1    = Table.NestedJoin(BankK, {&quot;Key1&quot;}, BookK, {&quot;Key1&quot;}, &quot;Bk&quot;, JoinKind.Inner)
+</code></pre>
+<p>(Merging on two key columns <code>{"RefNorm","AmtAligned"}</code> is equivalent; a concatenated key is convenient for later anti-joins and logging.) Exclude rows with null or blank references from Tier 1 so that null-equals-null does not create false matches.</p>
+<h3 id="tier-2-amount-date-window">Tier 2: amount + date window</h3>
+<p>For rows without a usable reference (cash deposits, some card settlements, direct debits), match on aligned amount, then accept pairs where the bank date falls within a window after the book date:</p>
+<pre><code class="language-m">Rem1Bank = Table.NestedJoin(BankK, {&quot;Key1&quot;}, BookK, {&quot;Key1&quot;}, &quot;x&quot;, JoinKind.LeftAnti),
+Rem1Book = Table.NestedJoin(BookK, {&quot;Key1&quot;}, BankK, {&quot;Key1&quot;}, &quot;x&quot;, JoinKind.LeftAnti),
+Cand  = Table.NestedJoin(Table.RemoveColumns(Rem1Bank, {&quot;x&quot;}), {&quot;AmtAligned&quot;},
+            Table.RemoveColumns(Rem1Book, {&quot;x&quot;}), {&quot;AmtAligned&quot;}, &quot;Bk&quot;, JoinKind.Inner),
+Exp   = Table.ExpandTableColumn(Cand, &quot;Bk&quot;, {&quot;VchNo&quot;, &quot;VchDate&quot;}, {&quot;Bk.VchNo&quot;, &quot;Bk.VchDate&quot;}),
+Lag   = Table.AddColumn(Exp, &quot;LagDays&quot;, each Duration.Days([TxnDate] - [Bk.VchDate]), Int64.Type),
+T2    = Table.SelectRows(Lag, each [LagDays] &gt;= -1 and [LagDays] &lt;= 5)
+</code></pre>
+<p>The window is a policy choice: cheques deposited typically clear in 1–3 working days under CTS; issued cheques can remain unpresented for weeks (validity is three months from the cheque date); a negative lag of a day may be allowed for book-date errors. Document the window and keep it as a parameter (<code>WindowDays</code>).</p>
+<p>Tier 2 can produce many-to-many candidates (two ₹50,000 bank deposits, two ₹50,000 book receipts in the same week). Resolve by choosing the closest date per bank row and per book row, or by sequence numbering within the amount group (see s06), and flag ambiguous pairs for manual review rather than auto-matching.</p>
+<h3 id="tier-3-reference-only-amount-difference">Tier 3: reference only, amount difference</h3>
+<p>Rows sharing a reference but differing in amount (TDS deducted, bank charges netted, partial payment) are found by merging on RefNorm alone among the remaining items. Classify the difference: equal to a TDS rate on the invoice (e.g. 2% under Sec 194C, 10% under Sec 194J), within a small charges tolerance (e.g. under ₹1,000 with "CHG" or "COMM" in narration), or unexplained. These are "matched with difference" and need an entry (TDS receivable, bank charges) or follow-up.</p>
+<h3 id="tier-4-residual-exceptions">Tier 4: residual exceptions</h3>
+<p>What remains after all tiers forms the bank-only and book-only lists. Each row gets a status column (Unmatched), and a suggested category by narration keywords: "CHG" → bank charges, "INT" → interest, "NACH"/"ECS" → mandate debit, "RTN"/"RETURN" → dishonour.</p>
+<h3 id="matched-register-and-audit-trail">Matched register and audit trail</h3>
+<p>Append the tier outputs with a <code>MatchTier</code> column (1, 2, 3) so a reviewer can sample Tier 2 and Tier 3 matches, which carry more risk than Tier 1. Keep both sides' identifiers (bank row ID, book voucher number) on each matched row.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>April bank: 2,000 rows; books: 1,950 rows.</p>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Rule</th>
+<th>Bank rows matched</th>
+<th>Book rows matched</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Ref + amount</td>
+<td>1,640</td>
+<td>1,640</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Amount, lag −1 to +5 days</td>
+<td>210</td>
+<td>210</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Ref only, amount difference ≤ policy</td>
+<td>18</td>
+<td>18</td>
+</tr>
+<tr>
+<td>Residual</td>
+<td>—</td>
+<td>132 bank-only</td>
+<td>82 book-only</td>
+</tr>
+</tbody>
+</table>
+<p>Check: \(1{,}640 + 210 + 18 + 132 = 2{,}000\) and \(1{,}640 + 210 + 18 + 82 = 1{,}950\). The Tier 3 differences total ₹1,84,200, of which ₹1,71,000 equals 10% TDS on three professional-fee receipts and ₹13,200 is unexplained.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Value date vs transaction date.</strong> Use transaction (posting) date for matching windows; value date matters for interest and cash-pooling but can be earlier or later.</li>
+<li><strong>Bulk entries.</strong> A single bank credit for a card settlement or a payment gateway may cover 300 book receipts; match on aggregated amounts by settlement date (group book entries first), not line by line.</li>
+<li><strong>Salary and vendor bulk uploads.</strong> One bank debit, many book credits; same aggregation approach, keyed on the batch reference.</li>
+<li><strong>Reversals.</strong> A dishonoured cheque appears as a deposit and a reversal in the bank; both may sit in bank-only unless the books recorded the dishonour.</li>
+<li><strong>Cut-off.</strong> Items around 31 March need the next month's statement to clear; include early-April bank lines in the matching window, but report the March balance.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Match in tiers: reference + amount, then amount + date window, then reference with amount difference, then residual exceptions.</li>
+<li>Remove each tier's matches before the next, and record <code>MatchTier</code> for review.</li>
+<li>Keep the date window as a documented parameter reflecting clearing practice.</li>
+<li>Classify amount differences against TDS rates and charge tolerances rather than leaving them as exceptions.</li>
+<li>Aggregate bulk and settlement entries before matching rather than forcing line-level pairing.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-choose-the-tier-l1">Q1. Choose the tier [L1]</h3>
+<p>Assign each transaction to the tier most likely to match it: (a) RTGS receipt with UTR recorded in the voucher narration; (b) cash deposit of ₹2,40,000 at the branch; (c) customer NEFT of ₹4,41,000 against an invoice of ₹4,50,000 (2% TDS deducted); (d) cheque issued on 26 March, presented on 3 April.</p>
+<h3 id="q2-write-the-date-window-step-l2">Q2. Write the date-window step [L2]</h3>
+<p>Given a candidate table with columns BankRowID, TxnDate, AmtAligned, Bk.VchNo and Bk.VchDate, write M that keeps only pairs with lag between −1 and <code>WindowDays</code>, and then keeps only the closest book voucher for each BankRowID.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Group by BankRowID and use <code>Table.Min(_, "AbsLag")</code> to keep one row per group.</p>
+</blockquote>
+<h3 id="q3-tds-differences-l2">Q3. TDS differences [L2]</h3>
+<p>Tier 3 finds these pairs with the same invoice reference: bank ₹98,000 vs book ₹1,00,000; bank ₹4,50,000 vs book ₹5,00,000; bank ₹1,99,410 vs book ₹2,00,000. Classify each difference (likely TDS section/rate, bank charges or unexplained) and state the entry required in the books.</p>
+<h3 id="q4-policy-design-l3">Q4. Policy design [L3]</h3>
+<p>Draft a one-page matching policy for a company's six bank accounts: tiers, keys, date windows by instrument (cheque, NEFT/RTGS, cash, card settlement), tolerances, who reviews Tier 2/3 matches and how unresolved items older than 90 days are escalated.</p></section>
+<nav class="pager"><a class="prev" href="S02_The_Six_Join_Kinds_and_Their_Role_in_a.html">← The Six Join Kinds and Their Role in a Reconciliation</a><a class="next" href="S04_Normalising_Composite_Keys_Before_Merging.html">Normalising Composite Keys Before Merging →</a></nav>
+</main></div></body></html>

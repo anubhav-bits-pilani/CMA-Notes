@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiscal Month Number with Number.Mod · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C02_Fiscal_Month_Number_with_NumberMod.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T6 · Custom columns and fiscal logic in M</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · Custom columns and fiscal logic in M</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Column_From_Examples_Custom_Column_and_Conditional.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S01_Column_From_Examples_Custom_Column_and_Conditional.html">Column From Examples, Custom Column and Conditional Column</a></li><li><a href="../subtopics/S02_Indian_FY_Attributes_Label_Fiscal_Month_Quarter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S02_Indian_FY_Attributes_Label_Fiscal_Month_Quarter.html">Indian FY Attributes: Label, Fiscal Month, Quarter and Sort Key</a></li><li><a href="../subtopics/S03_Receivable_and_Payable_Ageing_Against_an_As_Of.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S03_Receivable_and_Payable_Ageing_Against_an_As_Of.html">Receivable and Payable Ageing Against an As-Of-Date Parameter</a></li><li><a href="../subtopics/S04_Conditional_Logic_in_M_ifthenelse_andor_and_Null.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S04_Conditional_Logic_in_M_ifthenelse_andor_and_Null.html">Conditional Logic in M: if/then/else, and/or, and Null Coalescing</a></li><li><a href="../subtopics/S05_Type_Ascription_on_New_Columns.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S05_Type_Ascription_on_New_Columns.html">Type Ascription on New Columns</a></li><li><a href="../subtopics/S06_Group_By_Aggregations_for_Summary_Outputs_During.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S06_Group_By_Aggregations_for_Summary_Outputs_During.html">Group By Aggregations for Summary Outputs During Ingestion</a></li><li><a href="../subtopics/S07_Date_Functions_for_Fiscal_and_Ageing_Logic.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S07_Date_Functions_for_Fiscal_and_Ageing_Logic.html">Date Functions for Fiscal and Ageing Logic</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_FY_End_Year_and_FY_Label_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C01_FY_End_Year_and_FY_Label_Formula.html">FY End Year and FY Label Formula</a></li><li><a href="C02_Fiscal_Month_Number_with_NumberMod.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C02_Fiscal_Month_Number_with_NumberMod.html">Fiscal Month Number with Number.Mod</a></li><li><a href="C03_Fiscal_Quarter_with_NumberIntegerDivide.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C03_Fiscal_Quarter_with_NumberIntegerDivide.html">Fiscal Quarter with Number.IntegerDivide</a></li><li><a href="C04_Ageing_Bucket_Expression_with_DurationDays.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C04_Ageing_Bucket_Expression_with_DurationDays.html">Ageing Bucket Expression with Duration.Days</a></li><li><a href="C05_Null_Safe_Net_Amount_and_Operator_Precedence.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C05_Null_Safe_Net_Amount_and_Operator_Precedence.html">Null-Safe Net Amount and Operator Precedence</a></li><li><a href="C06_TableGroup_by_FY_and_Ledger_with_a_Typed_Sum.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C06_TableGroup_by_FY_and_Ledger_with_a_Typed_Sum.html">Table.Group by FY and Ledger with a Typed Sum</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Fiscal Month Number with Number.Mod</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Fiscal month: <code>Number.Mod(Date.Month([Date]) + 8, 12) + 1</code> (Apr = 1 ... Mar = 12)</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>For calendar month \(m \in \{1, \dots, 12\}\), the fiscal month for an April–March year is</p>
+<p>\[
+\text{FM} = \big((m + 8) \bmod 12\big) + 1
+\]</p>
+<pre><code class="language-m">Table.AddColumn(t, &quot;FiscalMonth&quot;, each Number.Mod(Date.Month([Date]) + 8, 12) + 1, Int64.Type)
+</code></pre>
+<ul>
+<li><code>Date.Month([Date])</code> — calendar month (January = 1).</li>
+<li><code>Number.Mod(x, 12)</code> — remainder after dividing by 12, in the range 0–11 for positive \(x\).</li>
+<li>Adding 8 and then 1 shifts April (4) to 1 and March (3) to 12.</li>
+</ul>
+<h2 id="explanation">Explanation</h2>
+<p>The fiscal month is the position of the month within the FY. It is needed for sorting months in fiscal order, for YTD logic ("fiscal month ≤ 6" means April–September), for joining to monthly budgets keyed by period number, and for building the PeriodKey (FY end year × 100 + fiscal month).</p>
+<p>Why the constants: the FY starts in month 4, so the shift is \(m - 4\) modulo 12, plus 1 to start at 1 rather than 0. Since \(-4 \equiv 8 \pmod{12}\), adding 8 avoids negative numbers: \(((m - 4) \bmod 12) + 1 = ((m + 8) \bmod 12) + 1\). For a fiscal year starting in month \(s\), the general form is <code>Number.Mod(m + 12 - s, 12) + 1</code> — e.g. a January start (\(s = 1\)) gives the calendar month back, and a July start (\(s = 7\), used by some foreign parents) gives <code>Number.Mod(m + 5, 12) + 1</code>.</p>
+<p>An equivalent, more readable version is <code>if m &gt;= 4 then m - 3 else m + 9</code>. Both are correct; the <code>Number.Mod</code> form generalises to a parameterised start month (<code>FYStartMonth</code>).</p>
+<p>Type the result as <code>Int64.Type</code>. As text or <code>any</code>, it sorts 1, 10, 11, 12, 2, … in the model.</p>
+<h2 id="illustration">Illustration</h2>
+<table>
+<thead>
+<tr>
+<th>Calendar month</th>
+<th>m + 8</th>
+<th>mod 12</th>
+<th>FM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>April (4)</td>
+<td>12</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>July (7)</td>
+<td>15</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>December (12)</td>
+<td>20</td>
+<td>8</td>
+<td>9</td>
+</tr>
+<tr>
+<td>January (1)</td>
+<td>9</td>
+<td>9</td>
+<td>10</td>
+</tr>
+<tr>
+<td>March (3)</td>
+<td>11</td>
+<td>11</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+<p>YTD to September for FY2025-26 = rows where FYEndYear = 2026 and FM ≤ 6.</p>
+<h2 id="connections">Connections</h2>
+<p>Subtopic s02 (FY attributes and PeriodKey), s07 (<code>Date.Month</code>), concept c03 (fiscal quarter derived from the same expression). Topic t3's month-header conversion produces the dates from which this is computed; Week 11's Calendar dimension carries it as a sort-by column for month names.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-compute-fiscal-months-l1">Q1. Compute fiscal months [L1]</h3>
+<p>Using the formula, compute the fiscal month for February, May, September and November, showing the intermediate \(m + 8\) and mod values.</p>
+<h3 id="q2-parameterised-start-month-l2">Q2. Parameterised start month [L2]</h3>
+<p>Write M that computes the fiscal month from a parameter <code>FYStartMonth</code> (4 for Indian entities, 1 for a calendar-year parent, 7 for a July-year subsidiary), and verify it for March under each setting.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Use <code>Number.Mod(m + 12 - FYStartMonth, 12) + 1</code>.</p>
+</blockquote>
+<h3 id="q3-ytd-filter-l2">Q3. YTD filter [L2]</h3>
+<p>Using FYEndYear and FiscalMonth, write a filter step that returns YTD rows for the period ending <code>AsOfDate</code>, and a second step returning the same YTD period of the prior FY for comparison.</p></section>
+<nav class="pager"><a class="prev" href="C01_FY_End_Year_and_FY_Label_Formula.html">← FY End Year and FY Label Formula</a><a class="next" href="C03_Fiscal_Quarter_with_NumberIntegerDivide.html">Fiscal Quarter with Number.IntegerDivide →</a></nav>
+</main></div></body></html>

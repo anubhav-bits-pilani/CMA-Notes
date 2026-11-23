@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checks Sheet and the Master Integrity Flag · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S06_Checks_Sheet_and_the_Master_Integrity_Flag.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T1 · Modelling Architecture &amp; Best Practices</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Modelling Architecture &amp; Best Practices</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Tab_Flow_of_an_Institutional_Three_Statement_Model.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S01_Tab_Flow_of_an_Institutional_Three_Statement_Model.html">Tab Flow of an Institutional Three-Statement Model</a></li><li><a href="S02_Separating_Inputs_Calculations_and_Outputs.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S02_Separating_Inputs_Calculations_and_Outputs.html">Separating Inputs, Calculations and Outputs</a></li><li><a href="S03_Single_Master_Timeline_Row_and_Period_Flags.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S03_Single_Master_Timeline_Row_and_Period_Flags.html">Single Master Timeline Row and Period Flags</a></li><li><a href="S04_Identical_Column_Structure_on_Every_Calculation.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S04_Identical_Column_Structure_on_Every_Calculation.html">Identical Column Structure on Every Calculation Sheet</a></li><li><a href="S05_Cover_Sheet_Identity_Basis_Units_and_Change_Log.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S05_Cover_Sheet_Identity_Basis_Units_and_Change_Log.html">Cover Sheet: Identity, Basis, Units and Change Log</a></li><li><a href="S06_Checks_Sheet_and_the_Master_Integrity_Flag.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S06_Checks_Sheet_and_the_Master_Integrity_Flag.html">Checks Sheet and the Master Integrity Flag</a></li><li><a href="S07_Named_Ranges_for_Scalars_Direct_References_for.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S07_Named_Ranges_for_Scalars_Direct_References_for.html">Named Ranges for Scalars, Direct References for Rows</a></li><li><a href="S08_Version_Control_File_Naming_and_Transparent.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S08_Version_Control_File_Naming_and_Transparent.html">Version Control, File Naming and Transparent Protection</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_FAST_Standard_Flexible_Appropriate_Structured.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C01_FAST_Standard_Flexible_Appropriate_Structured.html">FAST Standard: Flexible, Appropriate, Structured, Transparent</a></li><li><a href="../concepts/C02_ICAEW_Financial_Modelling_Code_Principles_for.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C02_ICAEW_Financial_Modelling_Code_Principles_for.html">ICAEW Financial Modelling Code: Principles for Reliable Models</a></li><li><a href="../concepts/C03_Column_Consistency_Same_Column_Same_Period_Every.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C03_Column_Consistency_Same_Column_Same_Period_Every.html">Column Consistency: Same Column, Same Period, Every Sheet</a></li><li><a href="../concepts/C04_Master_Check_Formula_on_the_Cover.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C04_Master_Check_Formula_on_the_Cover.html">Master Check Formula on the Cover</a></li><li><a href="../concepts/C05_Sign_Convention_Declared_Once_and_Applied.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C05_Sign_Convention_Declared_Once_and_Applied.html">Sign Convention Declared Once and Applied Everywhere</a></li><li><a href="../concepts/C06_Units_Model_in_Crore_and_Convert_Before_Ingestion.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C06_Units_Model_in_Crore_and_Convert_Before_Ingestion.html">Units: Model in ₹ Crore and Convert Before Ingestion</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Checks Sheet and the Master Integrity Flag</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Checks sheet: balance check, cash check, revolver limit, circularity status, rolled up into one master flag on the Cover</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A model with no checks is only as reliable as the last time someone looked at every cell. Checks turn integrity into a single, visible number: if the master flag on the Cover is green, the balance sheet balances, the cash flow reconciles, financing limits are respected and the circular calculation has converged — in every period and every scenario. Reviewers, lenders' technical advisers and interviewers look for the checks sheet first. In FP&amp;A, where budgets are re-run monthly by different people, the master flag is what lets a finance controller trust a revised forecast without re-auditing it.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="design-principles">Design principles</h3>
+<ol>
+<li><strong>Each check is computed where the data lives</strong> (e.g., the balance check row sits on the BS block of the 3-Statement tab) and <strong>linked</strong> to the Checks sheet. This lets the builder see errors locally while the Checks sheet aggregates.</li>
+<li><strong>Each check returns a difference, not TRUE/FALSE</strong>, so magnitude is visible; a separate flag converts it using a tolerance (e.g., 0.001 ₹ crore).</li>
+<li><strong>Every check row spans the full timeline</strong>, so an error in FY29E alone still shows.</li>
+<li><strong>One master flag</strong> sums all absolute differences or flags and is displayed on the Cover (c04).</li>
+</ol>
+<h3 id="core-checks">Core checks</h3>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Formula logic (per period)</th>
+<th>Tolerance</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Balance check</td>
+<td>Total assets − (Total equity + Total liabilities)</td>
+<td>0.001</td>
+<td>Must be zero in actual and forecast years</td>
+</tr>
+<tr>
+<td>Cash check</td>
+<td>CFS closing cash − BS cash &amp; cash equivalents (net of overdrafts if so defined)</td>
+<td>0.001</td>
+<td>Ensures CFS fully captures BS movements</td>
+</tr>
+<tr>
+<td>Opening = prior closing</td>
+<td>CFS opening cash − prior CFS closing cash</td>
+<td>0.001</td>
+<td>Catches broken corkscrews</td>
+</tr>
+<tr>
+<td>Revolver limit</td>
+<td>MAX(0, Revolver balance − Revolver limit)</td>
+<td>0</td>
+<td>Flags funding shortfall</td>
+</tr>
+<tr>
+<td>Minimum cash</td>
+<td>MAX(0, Minimum cash − Cash balance)</td>
+<td>0</td>
+<td>Optional; flags a sweep error</td>
+</tr>
+<tr>
+<td>Circularity status</td>
+<td>Circ switch = 1 and iteration converged (difference between two passes)</td>
+<td>0.001</td>
+<td>Or simply reports switch state</td>
+</tr>
+<tr>
+<td>Timeline alignment</td>
+<td>Sheet period end − master period end</td>
+<td>0</td>
+<td>Catches misaligned tabs (s04)</td>
+</tr>
+<tr>
+<td>Historical tie-out</td>
+<td>Model historical PAT − reported PAT</td>
+<td>0.01</td>
+<td>Ensures mapping preserved totals</td>
+</tr>
+<tr>
+<td>Scenario sanity</td>
+<td>Selector within 1–3</td>
+<td>0</td>
+<td>Protects against typed values outside the list</td>
+</tr>
+<tr>
+<td>Sources = uses (if transaction)</td>
+<td>Sources − uses</td>
+<td>0.001</td>
+<td>For LBO/M&amp;A models</td>
+</tr>
+</tbody>
+</table>
+<p>Example formulas on the Checks sheet (columns H:Q aligned with the master timeline):</p>
+<pre><code>Balance diff (row 10):   ='3-Statement'!H120-'3-Statement'!H160
+Cash diff (row 11):      ='3-Statement'!H210-'3-Statement'!H85
+Revolver breach (row 12):=MAX(0,Debt!H40-Inputs!$E$55)
+Row flag (column F):     =--(SUMPRODUCT(ABS(H10:Q10))&gt;Tolerance)
+Master flag:             =--(SUM(F10:F25)&gt;0)
+</code></pre>
+<h3 id="circularity-status">Circularity status</h3>
+<p>Interest on average debt or average cash creates a loop: interest → PAT → cash → revolver → interest. Best practice:</p>
+<ul>
+<li>A named switch <code>Circ</code> (1 = on, 0 = off) on Inputs. Interest formulas use <code>=IF(Circ=1, Average_Balance, Opening_Balance) × Rate</code> — this is the one place an IF on a switch is accepted.</li>
+<li>A circuit breaker: setting <code>Circ</code> to 0 breaks the loop if the model blows up into #VALUE! or #NUM! errors that propagate around the loop.</li>
+<li>A convergence check: a copy of interest calculated with opening balances is compared to the live figure; or the Checks sheet displays "Circularity ON — iterative calculation enabled (File → Options → Formulas)".</li>
+<li>The Cover displays the status so a reviewer knows why Excel shows iteration.</li>
+</ul>
+<h3 id="revolver-limit">Revolver limit</h3>
+<p>The revolver (cash credit / working capital demand loan in Indian banking) is drawn to keep cash at a minimum. The draw formula typically caps the revolver at the sanctioned limit. If the cap binds, cash may fall below minimum — the model must then flag it rather than silently borrow beyond the limit. The check is <code>MAX(0, Required_draw − Available_limit)</code>.</p>
+<h3 id="illustration">Illustration</h3>
+<table>
+<thead>
+<tr>
+<th>Check (₹ crore)</th>
+<th>FY26E</th>
+<th>FY27E</th>
+<th>FY28E</th>
+<th>Flag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Balance diff</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>12.400</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Cash diff</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>12.400</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Revolver breach</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Master</td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>1 (red)</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Both balance and cash checks fail by ₹12.4 crore in FY28E only — a strong hint that a FY28E-only item (e.g., a one-year capex override) was added to the BS but not to the CFS. The pattern of failures is diagnostic: a constant difference from the first forecast year suggests an opening balance mismatch; a growing difference suggests a missing flow item in the CFS.</p>
+<h3 id="conditional-formatting-and-visibility">Conditional formatting and visibility</h3>
+<ul>
+<li>Each check row: red fill where the absolute value exceeds tolerance.</li>
+<li>Master flag on the Cover: big cell, green "OK" / red "ERROR", formula <code>=IF(Master_Check=0,"ALL CHECKS OK","CHECK ERRORS: "&amp;SUM(Checks!F10:F25))</code>.</li>
+<li>A link from each sheet's title bar to the master flag (some builders show the master flag in cell A1 of every sheet).</li>
+</ul>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Tolerance.</strong> Use a small absolute tolerance (₹0.001 crore = ₹10,000). Rounding to display precision should never be used as the test; percentage tolerances can hide large errors in big models.</li>
+<li><strong>Historical balance failures.</strong> Reported statements sometimes do not foot due to rounding in ₹ crore; show an explicit rounding line in Historicals (topic t3, c06), not a tolerance increase.</li>
+<li><strong>Scenario-specific failures.</strong> A check may pass in Base but fail in Bear (e.g., revolver breach). Run all scenarios through a data table on the master flag before sign-off.</li>
+<li><strong>Checks that can never fail.</strong> A check like "Assets − Assets" proves nothing; each check must compare two independently derived numbers.</li>
+<li><strong>Disabling checks.</strong> Never zero out a check to "get green". If a check is not applicable (e.g., no revolver), show N/A and exclude it explicitly with a documented reason.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Compute each check where the data lives, link it to a Checks sheet, and roll everything into one master flag on the Cover.</li>
+<li>Checks should return differences across the full timeline, converted to flags with a small absolute tolerance.</li>
+<li>Core checks: balance, cash, revolver limit, circularity status; add timeline alignment and historical tie-outs.</li>
+<li>Circularity needs a switch, a circuit breaker and a visible status.</li>
+<li>Read the pattern of failures — first-year constant vs growing vs single-year — to locate errors quickly.</li>
+<li>Run the master flag across all scenarios before circulating.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-build-the-checks-sheet-l1">Q1. Build the Checks sheet [L1]</h3>
+<p>List the rows you would place on the Checks sheet of a Trent Ltd 3-statement model with a revolver and Ind AS 116 lease liabilities, writing the formula logic and tolerance for each and the master flag formula.</p>
+<h3 id="q2-diagnose-from-the-pattern-l2">Q2. Diagnose from the pattern [L2]</h3>
+<p>A model's balance check shows: FY26E 35.0, FY27E 35.0, FY28E 35.0, FY29E 35.0, FY30E 35.0 (₹ crore), while the cash check is zero throughout. Explain what kind of error this pattern indicates, which three places you would look first, and why the cash check did not catch it.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> A constant difference that starts in the first forecast year usually originates at the actual/forecast boundary.</p>
+</blockquote>
+<h3 id="q3-revolver-logic-l2">Q3. Revolver logic [L2]</h3>
+<p>Minimum cash is ₹200 crore, revolver limit ₹500 crore. In FY27E the pre-revolver cash balance is –₹480 crore and opening revolver is ₹100 crore. Write the revolver draw formula with the limit, state the resulting revolver balance and cash, and specify the check that should fire.</p>
+<h3 id="q4-circularity-governance-l3">Q4. Circularity governance [L3]</h3>
+<p>Your model uses average-balance interest with iterative calculation enabled. During a review, the model shows #NUM! across the P&amp;L after an analyst typed a negative interest rate. Describe the circuit-breaker design, the recovery steps, and how the Cover and Checks sheet should communicate circularity status to the next user.</p></section>
+<nav class="pager"><a class="prev" href="S05_Cover_Sheet_Identity_Basis_Units_and_Change_Log.html">← Cover Sheet: Identity, Basis, Units and Change Log</a><a class="next" href="S07_Named_Ranges_for_Scalars_Direct_References_for.html">Named Ranges for Scalars, Direct References for Rows →</a></nav>
+</main></div></body></html>

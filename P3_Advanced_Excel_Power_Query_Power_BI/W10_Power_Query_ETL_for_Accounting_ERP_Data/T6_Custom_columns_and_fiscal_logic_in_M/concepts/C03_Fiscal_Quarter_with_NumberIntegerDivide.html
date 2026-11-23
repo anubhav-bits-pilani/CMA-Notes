@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiscal Quarter with Number.IntegerDivide · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C03_Fiscal_Quarter_with_NumberIntegerDivide.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T6 · Custom columns and fiscal logic in M</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · Custom columns and fiscal logic in M</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Column_From_Examples_Custom_Column_and_Conditional.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S01_Column_From_Examples_Custom_Column_and_Conditional.html">Column From Examples, Custom Column and Conditional Column</a></li><li><a href="../subtopics/S02_Indian_FY_Attributes_Label_Fiscal_Month_Quarter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S02_Indian_FY_Attributes_Label_Fiscal_Month_Quarter.html">Indian FY Attributes: Label, Fiscal Month, Quarter and Sort Key</a></li><li><a href="../subtopics/S03_Receivable_and_Payable_Ageing_Against_an_As_Of.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S03_Receivable_and_Payable_Ageing_Against_an_As_Of.html">Receivable and Payable Ageing Against an As-Of-Date Parameter</a></li><li><a href="../subtopics/S04_Conditional_Logic_in_M_ifthenelse_andor_and_Null.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S04_Conditional_Logic_in_M_ifthenelse_andor_and_Null.html">Conditional Logic in M: if/then/else, and/or, and Null Coalescing</a></li><li><a href="../subtopics/S05_Type_Ascription_on_New_Columns.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S05_Type_Ascription_on_New_Columns.html">Type Ascription on New Columns</a></li><li><a href="../subtopics/S06_Group_By_Aggregations_for_Summary_Outputs_During.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S06_Group_By_Aggregations_for_Summary_Outputs_During.html">Group By Aggregations for Summary Outputs During Ingestion</a></li><li><a href="../subtopics/S07_Date_Functions_for_Fiscal_and_Ageing_Logic.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S07_Date_Functions_for_Fiscal_and_Ageing_Logic.html">Date Functions for Fiscal and Ageing Logic</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_FY_End_Year_and_FY_Label_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C01_FY_End_Year_and_FY_Label_Formula.html">FY End Year and FY Label Formula</a></li><li><a href="C02_Fiscal_Month_Number_with_NumberMod.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C02_Fiscal_Month_Number_with_NumberMod.html">Fiscal Month Number with Number.Mod</a></li><li><a href="C03_Fiscal_Quarter_with_NumberIntegerDivide.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C03_Fiscal_Quarter_with_NumberIntegerDivide.html">Fiscal Quarter with Number.IntegerDivide</a></li><li><a href="C04_Ageing_Bucket_Expression_with_DurationDays.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C04_Ageing_Bucket_Expression_with_DurationDays.html">Ageing Bucket Expression with Duration.Days</a></li><li><a href="C05_Null_Safe_Net_Amount_and_Operator_Precedence.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C05_Null_Safe_Net_Amount_and_Operator_Precedence.html">Null-Safe Net Amount and Operator Precedence</a></li><li><a href="C06_TableGroup_by_FY_and_Ledger_with_a_Typed_Sum.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C06_TableGroup_by_FY_and_Ledger_with_a_Typed_Sum.html">Table.Group by FY and Ledger with a Typed Sum</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Fiscal Quarter with Number.IntegerDivide</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Fiscal quarter: <code>"Q" &amp; Text.From(Number.IntegerDivide(Number.Mod(Date.Month([Date]) + 8, 12), 3) + 1)</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>With \(k = (m + 8) \bmod 12\) (the zero-based fiscal month, April = 0 … March = 11), the fiscal quarter is</p>
+<p>\[
+\text{FQ} = \left\lfloor \frac{k}{3} \right\rfloor + 1
+\]</p>
+<pre><code class="language-m">Table.AddColumn(t, &quot;FiscalQuarter&quot;, each
+    &quot;Q&quot; &amp; Text.From(Number.IntegerDivide(Number.Mod(Date.Month([Date]) + 8, 12), 3) + 1), type text)
+</code></pre>
+<ul>
+<li><code>Number.Mod(Date.Month([Date]) + 8, 12)</code> — zero-based fiscal month 0–11.</li>
+<li><code>Number.IntegerDivide(k, 3)</code> — integer quotient, 0–3.</li>
+<li><code>+ 1</code> gives 1–4; <code>"Q" &amp; Text.From(...)</code> gives the label "Q1"…"Q4".</li>
+</ul>
+<h2 id="explanation">Explanation</h2>
+<p>Indian fiscal quarters are Q1 April–June, Q2 July–September, Q3 October–December, Q4 January–March, matching the quarterly results periods under SEBI LODR Reg 33 and the advance-tax and TDS-return rhythm. The formula groups the zero-based fiscal months in threes.</p>
+<p>Practical notes:</p>
+<ul>
+<li>If a FiscalMonth (1–12) column already exists, the simpler form is <code>Number.IntegerDivide([FiscalMonth] - 1, 3) + 1</code>.</li>
+<li>Keep a numeric quarter (<code>Int64.Type</code>) alongside the text label for sorting and arithmetic; combine with FY for a unique label ("Q3 FY2025-26") because "Q3" alone repeats each year.</li>
+<li>Do not use <code>Date.QuarterOfYear</code>, which returns calendar quarters (April = 2, January = 1).</li>
+<li><code>Date.EndOfQuarter</code> and <code>Date.StartOfQuarter</code> are safe for dates, because calendar quarter boundaries coincide with Indian fiscal quarter boundaries.</li>
+<li><code>Number.IntegerDivide</code> truncates toward zero; with the non-negative \(k\) here, that equals floor division.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<table>
+<thead>
+<tr>
+<th>Month</th>
+<th>k = (m + 8) mod 12</th>
+<th>IntegerDivide(k, 3)</th>
+<th>Quarter</th>
+<th>Date.QuarterOfYear (wrong)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>April</td>
+<td>0</td>
+<td>0</td>
+<td>Q1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>June</td>
+<td>2</td>
+<td>0</td>
+<td>Q1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>July</td>
+<td>3</td>
+<td>1</td>
+<td>Q2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>October</td>
+<td>6</td>
+<td>2</td>
+<td>Q3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>December</td>
+<td>8</td>
+<td>2</td>
+<td>Q3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>January</td>
+<td>9</td>
+<td>3</td>
+<td>Q4</td>
+<td>1</td>
+</tr>
+<tr>
+<td>March</td>
+<td>11</td>
+<td>3</td>
+<td>Q4</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>For 14-Nov-2025, the result is "Q3"; the full label is "Q3 FY2025-26", and the quarter-end date <code>Date.EndOfQuarter(#date(2025, 11, 14))</code> is 31-12-2025.</p>
+<h2 id="connections">Connections</h2>
+<p>Builds on concept c02 (fiscal month) and subtopic s02 (FY attributes). Used in quarterly variance reporting (Weeks 17–20), quarterly results under SEBI LODR, and the Calendar dimension in Week 11, where FY + quarter forms the quarter level of the fiscal hierarchy.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-evaluate-the-quarter-l1">Q1. Evaluate the quarter [L1]</h3>
+<p>Compute the fiscal quarter for 1-Jul-2025, 30-Sep-2025, 1-Jan-2026 and 31-Mar-2026 using the formula, showing \(k\) and the integer quotient.</p>
+<h3 id="q2-quarter-label-and-sort-key-l2">Q2. Quarter label and sort key [L2]</h3>
+<p>Write typed M columns for QuarterNum (1–4), QuarterLabel ("Q3 FY2025-26") and QuarterKey (FY end year × 10 + quarter number), starting from a Date column.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Compute the FY end year first (concept c01) and reuse it in both label and key.</p>
+</blockquote>
+<h3 id="q3-calendar-quarter-bug-l2">Q3. Calendar-quarter bug [L2]</h3>
+<p>A board-pack query used <code>Date.QuarterOfYear</code> for quarters. Explain which months were mislabelled, how the Q1 revenue figure in the pack would have been affected for a company with April–June revenue of ₹84 crore and January–March revenue of ₹102 crore, and how you would detect the error in review.</p></section>
+<nav class="pager"><a class="prev" href="C02_Fiscal_Month_Number_with_NumberMod.html">← Fiscal Month Number with Number.Mod</a><a class="next" href="C04_Ageing_Bucket_Expression_with_DurationDays.html">Ageing Bucket Expression with Duration.Days →</a></nav>
+</main></div></body></html>

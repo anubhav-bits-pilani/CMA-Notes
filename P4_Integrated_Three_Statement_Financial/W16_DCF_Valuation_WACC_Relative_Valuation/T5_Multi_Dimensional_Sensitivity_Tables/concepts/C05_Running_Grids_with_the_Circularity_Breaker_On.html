@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Running Grids with the Circularity Breaker On · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C05_Running_Grids_with_the_Circularity_Breaker_On.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 16</a> <span>›</span> <a href="../index.html">T5 · Multi-Dimensional Sensitivity Tables</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Multi-Dimensional Sensitivity Tables</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Excel_Data_Tables_Row_and_Column_Input_Cells.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S01_Excel_Data_Tables_Row_and_Column_Input_Cells.html">Excel Data Tables: Row and Column Input Cells</a></li><li><a href="../subtopics/S02_Grid_1_WACC_vs_Terminal_Growth_on_Implied_Share.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S02_Grid_1_WACC_vs_Terminal_Growth_on_Implied_Share.html">Grid 1: WACC vs Terminal Growth on Implied Share Price</a></li><li><a href="../subtopics/S03_Grid_2_WACC_vs_Exit_Multiple_on_Implied_Share.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S03_Grid_2_WACC_vs_Exit_Multiple_on_Implied_Share.html">Grid 2: WACC vs Exit Multiple on Implied Share Price</a></li><li><a href="../subtopics/S04_Extra_Grids_Operating_Drivers_on_EV_and_Upside_vs.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S04_Extra_Grids_Operating_Drivers_on_EV_and_Upside_vs.html">Extra Grids: Operating Drivers on EV and Upside vs CMP</a></li><li><a href="../subtopics/S05_Heat_Map_Formatting_with_the_Base_Case_at_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S05_Heat_Map_Formatting_with_the_Base_Case_at_the.html">Heat-Map Formatting with the Base Case at the Centre</a></li><li><a href="../subtopics/S06_Calculation_Mode_and_F9_Refresh_Discipline_for.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S06_Calculation_Mode_and_F9_Refresh_Discipline_for.html">Calculation Mode and F9 Refresh Discipline for Data Tables</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_TABLE_Row_and_Column_Input_Mapping.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C01_TABLE_Row_and_Column_Input_Mapping.html">TABLE() Row and Column Input Mapping</a></li><li><a href="C02_Centre_Cell_Must_Equal_Model_Output.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C02_Centre_Cell_Must_Equal_Model_Output.html">Centre Cell Must Equal Model Output</a></li><li><a href="C03_Data_Table_Input_Cells_Must_Be_on_the_Same_Sheet.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C03_Data_Table_Input_Cells_Must_Be_on_the_Same_Sheet.html">Data Table Input Cells Must Be on the Same Sheet</a></li><li><a href="C04_Masking_Invalid_Grid_Cells_Where_g_WACC.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C04_Masking_Invalid_Grid_Cells_Where_g_WACC.html">Masking Invalid Grid Cells Where g ≥ WACC</a></li><li><a href="C05_Running_Grids_with_the_Circularity_Breaker_On.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C05_Running_Grids_with_the_Circularity_Breaker_On.html">Running Grids with the Circularity Breaker On</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Running Grids with the Circularity Breaker On</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Run grids with breaker in non-circular mode for speed and stability</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>If the model contains a circular reference, for example interest computed on average debt where debt depends on cash after interest, or TSM dilution based on the implied price, then set the <strong>circularity breaker</strong> to its non-circular mode before running data tables:</p>
+<p>\[
+\text{Interest}_t =
+\begin{cases}
+r \times \frac{D_{t-1} + D_t}{2} &amp; \text{breaker} = 1 \ \text{(circular, iterative)} \\
+r \times D_{t-1} &amp; \text{breaker} = 0 \ \text{(non-circular, opening balance)}
+\end{cases}
+\]</p>
+<p>Here \(r\) is the interest rate and \(D_{t-1}\), \(D_t\) are opening and closing debt. Use the same pattern for dilution: replace the iterative TSM with the closed form (topic t4, c03).</p>
+<h2 id="explanation">Explanation</h2>
+<p><strong>Why circularity and data tables don't mix.</strong> Each table cell requires a full recalculation. Under iterative calculation, each recalculation runs up to <em>Maximum Iterations</em> passes, typically 100. A 5×5 table can therefore trigger thousands of passes. Two problems follow.</p>
+<ul>
+<li><strong>Speed.</strong> Grids become unusably slow.</li>
+<li><strong>Stability.</strong> Iterations may stop at <em>Maximum Change</em> before full convergence. Results then differ slightly between table cells and the main model, so the centre-cell check fails by small amounts. A <code>#NUM!</code> or <code>#DIV/0!</code> error anywhere in the loop can also propagate and persist. Excel's iterative engine does not self-heal after an error enters the loop, so a reset requires the breaker.</li>
+</ul>
+<p><strong>Does the breaker distort valuation?</strong> For a DCF based on FCFF, interest does not enter FCFF at all. It affects only net debt via cash, and only through the forecast balance sheet, not through EV. The valuation-date net debt in the bridge is a historical balance. Setting the breaker to opening-balance interest therefore usually has <strong>no effect on EV</strong>, and only a second-order effect on forecast cash and debt. Verify this. With the breaker on and off, the base implied price should be identical, or differ only immaterially.</p>
+<p>Where WACC weights are derived from the model's own equity value (circular WACC), use target weights for grids (topic t2, s06).</p>
+<p><strong>Implementation:</strong></p>
+<ol>
+<li>Place a <code>Circ_Breaker</code> cell on the cover or control sheet (1 = circular, 0 = off).</li>
+<li>In the debt schedule, write the interest formula as <code>=IF(Circ_Breaker=1, r*AVERAGE(Open,Close), r*Open)</code>.</li>
+<li>In the TSM: when <code>Circ_Breaker=0</code>, use the closed-form price. When it is 1, use iteration with the implied price.</li>
+<li>Add a check that compares the price with the breaker on and off, using a stored value, and flags differences above, say, ₹ 0.5.</li>
+<li>Protocol for running the tables: set the breaker to 0, press F9, confirm the grid checks, export, then restore the breaker if desired.</li>
+</ol>
+<h2 id="illustration">Illustration</h2>
+<p>The Shakti Auto Components Project 5 model runs four 5×5 tables.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>F9 time</th>
+<th>Centre-cell check</th>
+<th>Base price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Breaker = 1 (average-debt interest, iterative TSM), iterative calc on</td>
+<td>~32 s</td>
+<td>Differences of ₹ 0.02–0.30 across runs</td>
+<td>₹ 550.42</td>
+</tr>
+<tr>
+<td>Breaker = 0 (opening-debt interest, closed-form TSM), iterative calc off</td>
+<td>~5 s</td>
+<td>Exact</td>
+<td>₹ 550.38</td>
+</tr>
+</tbody>
+</table>
+<p>The ₹ 0.04 base-price difference arises because forecast cash affects only the presentation of net debt in future years, and the closed form gives the exact TSM fixed point. It is immaterial, so the grids are run with the breaker at 0. Timings are illustrative.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>This concept links to topic t5, s06 (calculation mode and speed) and topic t4, s06 and c03 (TSM circularity).</li>
+<li>It links to the Week 14–15 debt schedules, where the average-balance interest circularity originates.</li>
+<li>In Phase 3 modelling standards, circularity should be avoidable, documented and switchable. A breaker toggle is the standard control.</li>
+<li>In FP&amp;A models, the same breaker approach keeps budget flex tables stable when interest income on cash balances is modelled.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-breaker-formula-and-check-l1">Q1. Breaker formula and check [L1]</h3>
+<p>Write the interest formula for a debt schedule with opening debt in <code>F40</code>, closing debt in <code>G40</code>, rate in <code>$D$12</code> and breaker in <code>Control!$C$3</code>. Write a check cell that stores the breaker-on price (pasted as a value) and compares it with the live breaker-off price, with a ₹ 0.50 tolerance.</p>
+<h3 id="q2-error-persistence-l2">Q2. Error persistence [L2]</h3>
+<p>During a data-table run with iterative calculation on, one grid cell produced <code>#NUM!</code> because a negative cash balance fed a <code>LN()</code> in an interest-income formula. Afterwards, the whole model shows <code>#NUM!</code> even with the base inputs restored. Explain why this happens, and describe the steps to recover using the breaker.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Think about what an iterative loop does with an error value from the previous pass.</p>
+</blockquote>
+<h3 id="q3-when-the-breaker-is-not-neutral-l3">Q3. When the breaker is not neutral [L3]</h3>
+<p>Describe a valuation model where switching interest from average to opening balance would materially change the implied share price. Consider an FCFE valuation of a highly levered infrastructure company, and a model where WACC weights are endogenous. Explain how you would run sensitivities in that case.</p></section>
+<nav class="pager"><a class="prev" href="C04_Masking_Invalid_Grid_Cells_Where_g_WACC.html">← Masking Invalid Grid Cells Where g ≥ WACC</a><a class="next" href="../../T6_Comparable_Company_Analysis_Trading/index.html">Comparable Company Analysis (Trading Comps) →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EMI Schedules and Ind AS 116 Lease Liability Schedules · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S06_EMI_Schedules_and_Ind_AS_116_Lease_Liability.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T5 · Financial and date functions</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Financial and date functions</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Period_End_Logic_with_EOMONTH_and_EDATE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S01_Period_End_Logic_with_EOMONTH_and_EDATE.html">Period-End Logic with EOMONTH and EDATE</a></li><li><a href="S02_Day_Count_Conventions_with_YEARFRAC_Bases_04.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S02_Day_Count_Conventions_with_YEARFRAC_Bases_04.html">Day-Count Conventions with YEARFRAC Bases 0–4</a></li><li><a href="S03_NPV_vs_XNPV_Periodic_and_Dated_Cash_Flows.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S03_NPV_vs_XNPV_Periodic_and_Dated_Cash_Flows.html">NPV vs XNPV: Periodic and Dated Cash Flows</a></li><li><a href="S04_IRR_vs_XIRR_vs_MIRR_for_Irregular_Project_Cash.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S04_IRR_vs_XIRR_vs_MIRR_for_Irregular_Project_Cash.html">IRR vs XIRR vs MIRR for Irregular Project Cash Flows</a></li><li><a href="S05_Loan_Amortisation_with_PMT_IPMT_PPMT_CUMIPMT_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S05_Loan_Amortisation_with_PMT_IPMT_PPMT_CUMIPMT_and.html">Loan Amortisation with PMT, IPMT, PPMT, CUMIPMT and CUMPRINC</a></li><li><a href="S06_EMI_Schedules_and_Ind_AS_116_Lease_Liability.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S06_EMI_Schedules_and_Ind_AS_116_Lease_Liability.html">EMI Schedules and Ind AS 116 Lease Liability Schedules</a></li><li><a href="S07_Close_Calendars_with_WORKDAYINTL_NETWORKDAYSINTL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S07_Close_Calendars_with_WORKDAYINTL_NETWORKDAYSINTL.html">Close Calendars with WORKDAY.INTL, NETWORKDAYS.INTL and Holidays</a></li><li><a href="S08_Fiscal_Year_Helpers_FY_Start_FY_End_and_Fiscal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S08_Fiscal_Year_Helpers_FY_Start_FY_End_and_Fiscal.html">Fiscal-Year Helpers: FY Start, FY End and Fiscal Month</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Month_End_Month_Start_and_Same_Day_Offsets_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C01_Month_End_Month_Start_and_Same_Day_Offsets_with.html">Month-End, Month-Start and Same-Day Offsets with EOMONTH and EDATE</a></li><li><a href="../concepts/C02_YEARFRAC_Basis_1_vs_Basis_3_for_Accruals.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C02_YEARFRAC_Basis_1_vs_Basis_3_for_Accruals.html">YEARFRAC Basis 1 vs Basis 3 for Accruals</a></li><li><a href="../concepts/C03_NPV_Plus_CF0_Why_NPV_Discounts_Its_First_Value.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C03_NPV_Plus_CF0_Why_NPV_Discounts_Its_First_Value.html">NPV Plus CF0: Why NPV Discounts Its First Value</a></li><li><a href="../concepts/C04_XNPV_and_XIRR_The_365_Day_Basis_from_the_First.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C04_XNPV_and_XIRR_The_365_Day_Basis_from_the_First.html">XNPV and XIRR: The 365-Day Basis from the First Date</a></li><li><a href="../concepts/C05_PMT_IPMT_and_PPMT_EMI_and_Its_InterestPrincipal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C05_PMT_IPMT_and_PPMT_EMI_and_Its_InterestPrincipal.html">PMT, IPMT and PPMT: EMI and Its Interest/Principal Split</a></li><li><a href="../concepts/C06_MIRR_Fixing_IRRs_Reinvestment_and_Multiple_Root.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C06_MIRR_Fixing_IRRs_Reinvestment_and_Multiple_Root.html">MIRR: Fixing IRR&#x27;s Reinvestment and Multiple-Root Problems</a></li><li><a href="../concepts/C07_FY_End_Date_and_Fiscal_Month_Formulas_for_an.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C07_FY_End_Date_and_Fiscal_Month_Formulas_for_an.html">FY End Date and Fiscal Month Formulas for an April–March Year</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>EMI Schedules and Ind AS 116 Lease Liability Schedules</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> EMI schedules and Ind AS 116 lease liability schedules (PV of lease payments, interest unwinding)</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Since Ind AS 116 replaced Ind AS 17 from FY 2019-20, lessees bring almost every lease on balance sheet: a right-of-use (ROU) asset and a lease liability measured at the present value of lease payments. For a retailer with 400 stores, a telecom company with tower leases, or an IT services firm with office campuses, the lease schedule drives depreciation, finance cost, EBITDA (which rises because rent is replaced by depreciation and interest), net debt and the Schedule III presentation of lease liabilities. The mechanics are the same as an EMI schedule — opening balance, interest at a periodic rate, payment, closing balance — but with Ind AS-specific choices: the discount rate, payments in advance vs arrears, escalations, and remeasurement. Building both schedules from the same template is a core reporting and modelling skill.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-common-roll-forward">The common roll-forward</h3>
+<p>For both an EMI loan and a lease liability, each period:</p>
+<p>\[
+B_t = B_{t-1} + B_{t-1} \cdot i - P_t
+\]</p>
+<p>where \(B_t\) is the closing balance, \(i\) the periodic rate and \(P_t\) the payment in period \(t\). Interest \(B_{t-1} \cdot i\) is the <strong>unwinding</strong> of the discount; the payment reduces the balance. For an EMI loan, \(P_t\) is the constant PMT and \(B_n = 0\). For a lease, \(P_t\) follows the contract (fixed, escalating, in advance or arrears) and \(B_n = 0\) once the last payment is made.</p>
+<h3 id="emi-schedule-template">EMI schedule template</h3>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Formula</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Period</td>
+<td><code>=SEQUENCE(n)</code></td>
+</tr>
+<tr>
+<td>Date</td>
+<td><code>=EDATE(FirstEMI, k-1)</code> (or EOMONTH for month-end EMIs)</td>
+</tr>
+<tr>
+<td>Opening</td>
+<td>Principal, then previous closing</td>
+</tr>
+<tr>
+<td>Interest</td>
+<td><code>=Opening * i</code></td>
+</tr>
+<tr>
+<td>EMI</td>
+<td><code>=PMT(i, n, -Principal)</code></td>
+</tr>
+<tr>
+<td>Principal</td>
+<td><code>=EMI - Interest</code></td>
+</tr>
+<tr>
+<td>Closing</td>
+<td><code>=Opening - Principal</code></td>
+</tr>
+</tbody>
+</table>
+<p>Checks: final closing = 0 (to rounding); <code>SUM(Principal)</code> = original principal; interest column ties to <code>-CUMIPMT(...)</code>.</p>
+<h3 id="ind-as-116-lease-liability-initial-measurement">Ind AS 116 lease liability — initial measurement</h3>
+<p>Ind AS 116.26: at commencement, the lease liability is the present value of the lease payments <strong>not paid at that date</strong>, discounted using the interest rate implicit in the lease or, if that cannot be readily determined, the lessee's <strong>incremental borrowing rate</strong> (IBR). Lease payments (Ind AS 116.27) include fixed payments less incentives receivable, variable payments that depend on an index or rate (measured at the commencement index/rate), amounts expected under residual value guarantees, purchase options reasonably certain to be exercised, and termination penalties if the lease term reflects termination. Variable payments linked to sales or usage are excluded and expensed.</p>
+<p>Excel implementation:</p>
+<pre><code class="language-excel">Arrears, level payments:    =PV(i, n, -Payment)                 or =NPV(i, PaymentRange)
+Advance, level payments:    =PV(i, n, -Payment, 0, 1)           or =NPV(i, Payments_2_to_n) (first paid at t=0 is excluded)
+Irregular or escalating:    =NPV(i, PaymentRange)  (arrears)  /  =XNPV(IBR, Flows, Dates)
+</code></pre>
+<p>"Not paid at that date" is the key: a payment made on the commencement date is not part of the liability (it goes straight into the ROU asset cost). So for an advance-payment lease, the liability is the PV of the remaining payments only.</p>
+<p>ROU asset cost (Ind AS 116.24) = lease liability + payments made at or before commencement − lease incentives received + initial direct costs + estimated restoration costs (Ind AS 37 provision).</p>
+<h3 id="subsequent-measurement-interest-unwinding">Subsequent measurement — interest unwinding</h3>
+<p>Ind AS 116.36: the liability is increased by interest and reduced by payments. Interest is the constant periodic rate on the opening balance — the effective interest method. The ROU asset is depreciated (usually straight-line over the shorter of the lease term and useful life).</p>
+<h3 id="illustration-a-annual-lease-in-arrears">Illustration A: annual lease in arrears</h3>
+<p>Office lease, 5 years, ₹24 lakh payable at each year-end, IBR 10%.</p>
+<p>Lease liability at commencement <code>=PV(10%, 5, -24)</code> = ₹90.98 lakh.</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Opening</th>
+<th>Interest @10%</th>
+<th>Payment</th>
+<th>Closing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>90.98</td>
+<td>9.10</td>
+<td>24.00</td>
+<td>76.08</td>
+</tr>
+<tr>
+<td>2</td>
+<td>76.08</td>
+<td>7.61</td>
+<td>24.00</td>
+<td>59.68</td>
+</tr>
+<tr>
+<td>3</td>
+<td>59.68</td>
+<td>5.97</td>
+<td>24.00</td>
+<td>41.65</td>
+</tr>
+<tr>
+<td>4</td>
+<td>41.65</td>
+<td>4.17</td>
+<td>24.00</td>
+<td>21.82</td>
+</tr>
+<tr>
+<td>5</td>
+<td>21.82</td>
+<td>2.18</td>
+<td>24.00</td>
+<td>0.00</td>
+</tr>
+</tbody>
+</table>
+<p>ROU asset ₹90.98 lakh, depreciation ₹18.20 lakh a year. Year 1 P&amp;L: depreciation 18.20 + interest 9.10 = ₹27.30 lakh versus rent of ₹24 lakh under the old operating-lease model — the front-loading of lease expense under Ind AS 116. EBITDA improves by ₹24 lakh.</p>
+<p>If the same lease were payable <strong>in advance</strong>, the first ₹24 lakh is paid at commencement: liability = <code>=PV(10%, 4, -24)</code> = ₹76.08 lakh, and ROU asset = 76.08 + 24.00 = ₹100.08 lakh.</p>
+<h3 id="illustration-b-monthly-lease-with-escalation">Illustration B: monthly lease with escalation</h3>
+<p>Retail store: ₹3,00,000 per month payable in advance for 9 years, 15% escalation every 3 years (₹3,45,000 from month 37, ₹3,96,750 from month 73). IBR 9.6% nominal, so i = 0.8% per month.</p>
+<pre><code class="language-excel">Payments (108 rows): =3 * 1.15^INT((SEQUENCE(108)-1)/36)      in ₹ lakh
+Liability:           =NPV(0.8%, DROP(Payments, 1))           month-1 payment made at commencement excluded
+</code></pre>
+<p>PV of all payments (advance) ≈ ₹245.88 lakh; liability ≈ ₹242.88 lakh (excluding the ₹3 lakh paid on day 1); ROU asset before other adjustments ≈ ₹245.88 lakh. The schedule then unwinds monthly with SCAN (w9_t4) or a row-by-row roll-forward; for an advance-payment lease, interest each month is on the balance <em>after</em> that month's payment.</p>
+<h3 id="presentation-and-disclosure-touchpoints">Presentation and disclosure touchpoints</h3>
+<ul>
+<li>Schedule III (as amended in 2021) requires lease liabilities as separate line items under non-current and current financial liabilities. Current portion = principal reduction within 12 months — the sum of the next 12 months' payments minus the interest in those months, or equivalently the opening liability minus the liability 12 months later.</li>
+<li>Cash flow statement (Ind AS 7): principal portion in financing activities; interest per the entity's policy for interest paid; short-term and low-value lease payments in operating activities.</li>
+<li>Disclosures include a maturity analysis of lease liabilities on an undiscounted basis (Ind AS 107) and ROU assets by class.</li>
+<li>Tax: under the Income-tax Act, lease rent remains deductible as paid, while books show depreciation and interest — a deferred tax temporary difference on both the ROU asset and lease liability.</li>
+</ul>
+<h3 id="remeasurement">Remeasurement</h3>
+<p>Changes in lease term, purchase-option assessment, or index-linked payments require remeasuring the liability (with a revised discount rate in some cases) and adjusting the ROU asset. In Excel, this means a new schedule from the remeasurement date: opening = remeasured PV of remaining payments, with the difference posted against the ROU asset.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Discount rate judgement.</strong> The IBR is entity-specific, term-specific and security-specific (rate to borrow over a similar term, with similar security, to obtain an asset of similar value). A single group IBR across 3- and 15-year leases is a common review finding.</li>
+<li><strong>Practical expedients and exemptions.</strong> Short-term leases (≤ 12 months) and low-value assets may be expensed; document the policy.</li>
+<li><strong>Rent-free periods</strong> are zero payments in the schedule (incentives), not a reason to shorten the lease term.</li>
+<li><strong>GST</strong> on rent is not a lease payment if recoverable as input tax credit; irrecoverable GST is debated — follow entity policy.</li>
+<li><strong>Monthly vs annual compounding.</strong> Use the periodic rate consistent with the payment frequency; converting an annual IBR to monthly by ÷12 or by the effective-rate formula should follow how the IBR was derived.</li>
+<li><strong>Advance-payment timing.</strong> The most common schedule error is unwinding interest on the pre-payment balance; for leases paid in advance, deduct the payment first, then accrue interest.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>EMI and lease schedules share the roll-forward: opening + interest − payment = closing.</li>
+<li>Ind AS 116.26 measures the lease liability at the PV of payments not yet paid, at the implicit rate or the IBR.</li>
+<li>Payments in advance are excluded from the liability (they enter the ROU asset directly); use PV with type 1 or NPV on the remaining payments.</li>
+<li>Escalating or irregular payments need NPV over a payment column or XNPV with dates.</li>
+<li>Ind AS 116 front-loads total lease expense and lifts EBITDA; the current portion of the liability must be split for Schedule III.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-lease-journal-entries-l2">Q1. Lease journal entries [L2]</h3>
+<p>A company leases a warehouse for 4 years from 1-Apr-2025, paying ₹15 lakh at each 31 March, IBR 9%. Initial direct costs are ₹1.2 lakh. Prepare the lease liability schedule, compute the ROU asset, and draft the journal entries for commencement and for FY26 (interest, payment and depreciation) in a Dr/Cr table.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Initial direct costs go into the ROU asset only, not the liability.</p>
+</blockquote>
+<h3 id="q2-advance-vs-arrears-l2">Q2. Advance vs arrears [L2]</h3>
+<p>For a 6-year lease of ₹10 lakh per year at 11%, compute (with formulas) the lease liability and ROU asset if payments are (a) in arrears, (b) in advance. Explain why total P&amp;L expense over the lease term is the same but the year-1 expense differs.</p>
+<h3 id="q3-escalation-schedule-in-excel-l3">Q3. Escalation schedule in Excel [L3]</h3>
+<p>A 10-year showroom lease costs ₹4.5 lakh per month in advance with 5% annual escalation; IBR 10.8% nominal. Design the payment column with SEQUENCE, the liability at commencement, a monthly unwinding schedule, and formulas for the current and non-current split at 31-Mar-2026 if commencement is 1-Oct-2025.</p>
+<h3 id="q4-emi-vs-lease-template-l1">Q4. EMI vs lease template [L1]</h3>
+<p>List the differences between a bank EMI amortisation schedule and an Ind AS 116 lease liability schedule in terms of: payment pattern, discount rate source, treatment of the first payment, and what happens at modification.</p>
+<h3 id="q5-review-finding-l3">Q5. Review finding [L3]</h3>
+<p>A listed retailer applies a single 9% IBR to all 220 store leases with terms between 3 and 15 years, and computes liabilities using <code>=NPV(9%/12, AllPayments)</code> where payments are made monthly in advance. Identify the two methodological problems, estimate the direction of the error for each, and describe how you would recompute the portfolio liability efficiently.</p></section>
+<nav class="pager"><a class="prev" href="S05_Loan_Amortisation_with_PMT_IPMT_PPMT_CUMIPMT_and.html">← Loan Amortisation with PMT, IPMT, PPMT, CUMIPMT and CUMPRINC</a><a class="next" href="S07_Close_Calendars_with_WORKDAYINTL_NETWORKDAYSINTL.html">Close Calendars with WORKDAY.INTL, NETWORKDAYS.INTL and… →</a></nav>
+</main></div></body></html>

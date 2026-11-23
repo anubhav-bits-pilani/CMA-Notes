@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Table.Group by FY and Ledger with a Typed Sum · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C06_TableGroup_by_FY_and_Ledger_with_a_Typed_Sum.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T6 · Custom columns and fiscal logic in M</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · Custom columns and fiscal logic in M</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Column_From_Examples_Custom_Column_and_Conditional.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S01_Column_From_Examples_Custom_Column_and_Conditional.html">Column From Examples, Custom Column and Conditional Column</a></li><li><a href="../subtopics/S02_Indian_FY_Attributes_Label_Fiscal_Month_Quarter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S02_Indian_FY_Attributes_Label_Fiscal_Month_Quarter.html">Indian FY Attributes: Label, Fiscal Month, Quarter and Sort Key</a></li><li><a href="../subtopics/S03_Receivable_and_Payable_Ageing_Against_an_As_Of.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S03_Receivable_and_Payable_Ageing_Against_an_As_Of.html">Receivable and Payable Ageing Against an As-Of-Date Parameter</a></li><li><a href="../subtopics/S04_Conditional_Logic_in_M_ifthenelse_andor_and_Null.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S04_Conditional_Logic_in_M_ifthenelse_andor_and_Null.html">Conditional Logic in M: if/then/else, and/or, and Null Coalescing</a></li><li><a href="../subtopics/S05_Type_Ascription_on_New_Columns.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S05_Type_Ascription_on_New_Columns.html">Type Ascription on New Columns</a></li><li><a href="../subtopics/S06_Group_By_Aggregations_for_Summary_Outputs_During.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S06_Group_By_Aggregations_for_Summary_Outputs_During.html">Group By Aggregations for Summary Outputs During Ingestion</a></li><li><a href="../subtopics/S07_Date_Functions_for_Fiscal_and_Ageing_Logic.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S07_Date_Functions_for_Fiscal_and_Ageing_Logic.html">Date Functions for Fiscal and Ageing Logic</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_FY_End_Year_and_FY_Label_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C01_FY_End_Year_and_FY_Label_Formula.html">FY End Year and FY Label Formula</a></li><li><a href="C02_Fiscal_Month_Number_with_NumberMod.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C02_Fiscal_Month_Number_with_NumberMod.html">Fiscal Month Number with Number.Mod</a></li><li><a href="C03_Fiscal_Quarter_with_NumberIntegerDivide.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C03_Fiscal_Quarter_with_NumberIntegerDivide.html">Fiscal Quarter with Number.IntegerDivide</a></li><li><a href="C04_Ageing_Bucket_Expression_with_DurationDays.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C04_Ageing_Bucket_Expression_with_DurationDays.html">Ageing Bucket Expression with Duration.Days</a></li><li><a href="C05_Null_Safe_Net_Amount_and_Operator_Precedence.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C05_Null_Safe_Net_Amount_and_Operator_Precedence.html">Null-Safe Net Amount and Operator Precedence</a></li><li><a href="C06_TableGroup_by_FY_and_Ledger_with_a_Typed_Sum.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C06_TableGroup_by_FY_and_Ledger_with_a_Typed_Sum.html">Table.Group by FY and Ledger with a Typed Sum</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Table.Group by FY and Ledger with a Typed Sum</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>Table.Group(t, {"FY","Ledger"}, {{"Amount", each List.Sum([Amount]), type number}})</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-m">Summary = Table.Group(t, {&quot;FY&quot;, &quot;Ledger&quot;}, {{&quot;Amount&quot;, each List.Sum([Amount]), type number}})
+</code></pre>
+<ul>
+<li><code>t</code> — the input table, e.g. GL lines with FY, Ledger and a signed Amount.</li>
+<li><code>{"FY", "Ledger"}</code> — the grouping keys; the output has one row per distinct (FY, Ledger) pair.</li>
+<li><code>{{"Amount", each List.Sum([Amount]), type number}}</code> — a list of aggregations, each <code>{name, function, type}</code>.</li>
+<li>Inside <code>each</code>, <code>_</code> is the group's <strong>sub-table</strong>, so <code>[Amount]</code> is the list of Amount values in that group and <code>List.Sum</code> totals it.</li>
+<li><code>type number</code> declares the output column type.</li>
+</ul>
+<h2 id="explanation">Explanation</h2>
+<p>This is SQL's <code>SELECT FY, Ledger, SUM(Amount) AS Amount FROM t GROUP BY FY, Ledger</code>. It turns line-level GL data into a ledger-by-FY trial balance during ingestion, useful when the consumer needs only totals (a TB for a schedule, a comparison with the prior year, a mapping check to Schedule III lines).</p>
+<p>Points of detail:</p>
+<ul>
+<li><strong>The sub-table.</strong> Because <code>_</code> is a table, other aggregates are written against it: <code>Table.RowCount(_)</code> for line counts, <code>List.Max([Date])</code> for the last posting date, <code>List.Count(List.Distinct([VchNo]))</code> for distinct vouchers.</li>
+<li><strong>Null behaviour.</strong> <code>List.Sum</code> ignores nulls; an all-null group returns null, not 0. Use <code>List.Sum([Amount]) ?? 0</code> if a zero is needed.</li>
+<li><strong>Signed amounts.</strong> Summing a signed Amount (Dr positive, Cr negative) gives the net balance; sum Debit and Credit separately if both sides must be shown.</li>
+<li><strong>Type.</strong> Without the type element, the column is <code>any</code>; the UI writes <code>type nullable number</code>.</li>
+<li><strong>Key normalisation.</strong> "Rent" and "Rent " are separate groups; trim and normalise keys first, or group by a ledger code rather than a name.</li>
+<li><strong>Folding.</strong> On a SQL source this folds to <code>GROUP BY</code>; on files it is computed in memory.</li>
+<li><strong>Check.</strong> For a complete TB, the sum of Amount across all ledgers in each FY must be zero; build that as a second group by FY only.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>GL lines (₹):</p>
+<table>
+<thead>
+<tr>
+<th>FY</th>
+<th>Ledger</th>
+<th>Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY2025-26</td>
+<td>Sales</td>
+<td>−4,20,000</td>
+</tr>
+<tr>
+<td>FY2025-26</td>
+<td>Sales</td>
+<td>−3,80,000</td>
+</tr>
+<tr>
+<td>FY2025-26</td>
+<td>Debtors</td>
+<td>8,00,000</td>
+</tr>
+<tr>
+<td>FY2025-26</td>
+<td>Bank</td>
+<td>6,50,000</td>
+</tr>
+<tr>
+<td>FY2025-26</td>
+<td>Debtors</td>
+<td>−6,50,000</td>
+</tr>
+</tbody>
+</table>
+<p>Result:</p>
+<table>
+<thead>
+<tr>
+<th>FY</th>
+<th>Ledger</th>
+<th>Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY2025-26</td>
+<td>Sales</td>
+<td>−8,00,000</td>
+</tr>
+<tr>
+<td>FY2025-26</td>
+<td>Debtors</td>
+<td>1,50,000</td>
+</tr>
+<tr>
+<td>FY2025-26</td>
+<td>Bank</td>
+<td>6,50,000</td>
+</tr>
+</tbody>
+</table>
+<p>Check: \(-8{,}00{,}000 + 1{,}50{,}000 + 6{,}50{,}000 = 0\), so the summary balances.</p>
+<h2 id="connections">Connections</h2>
+<p>Subtopic s06 (Group By operations including All Rows), s05 (typing aggregates), s02 (FY column used as a key). Topic t4's file control log uses the same function grouped by SourceFile; topic t5's sequence keys use Group By with All Rows. Week 1–4 TB integrity checks (Dr = Cr) are implemented as a second-level group.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-extend-the-aggregation-l1">Q1. Extend the aggregation [L1]</h3>
+<p>Rewrite the concept's step to also return TotalDebit, TotalCredit (from separate Debit and Credit columns), LineCount and LastPostingDate, each with an appropriate type.</p>
+<h3 id="q2-balance-check-by-fy-l2">Q2. Balance check by FY [L2]</h3>
+<p>Write a query that groups the summary output by FY only, returns the net total per FY and a Status column ("Balanced" if the absolute total is under ₹1, otherwise "Out of balance"), and explain why a tolerance of ₹1 rather than exactly 0 is used.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Floating-point sums of decimals can leave tiny residues; <code>Number.Abs</code> and a threshold handle them.</p>
+</blockquote>
+<h3 id="q3-prior-year-comparison-l2">Q3. Prior-year comparison [L2]</h3>
+<p>Using the FY-Ledger summary for FY2024-25 and FY2025-26, describe the steps (group, pivot or merge) to produce a table with Ledger, FY2024-25 amount, FY2025-26 amount, variance and variance %, handling ledgers present in only one year.</p></section>
+<nav class="pager"><a class="prev" href="C05_Null_Safe_Net_Amount_and_Operator_Precedence.html">← Null-Safe Net Amount and Operator Precedence</a><a class="next" href="../../../W11_Power_Pivot_Star_Schema_Data_Modelling/index.html">Week 11: Power Pivot, Star-Schema Data Modelling &amp;… →</a></nav>
+</main></div></body></html>

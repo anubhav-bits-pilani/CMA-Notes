@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Validation: Dropdowns, Dependent Lists, Limits and Messages · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S04_Data_Validation_Dropdowns_Dependent_Lists_Limits.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T6 · What-if analysis and input controls</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · What-if analysis and input controls</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_One_and_Two_Variable_Data_Tables_for_Sensitivity.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S01_One_and_Two_Variable_Data_Tables_for_Sensitivity.html">One- and Two-Variable Data Tables for Sensitivity Analysis</a></li><li><a href="S02_Goal_Seek_for_Break_Even_Target_Margin_Price_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S02_Goal_Seek_for_Break_Even_Target_Margin_Price_and.html">Goal Seek for Break-Even, Target-Margin Price and Required Growth</a></li><li><a href="S03_Scenario_Manager_Scenarios_Changing_Cells_and_the.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S03_Scenario_Manager_Scenarios_Changing_Cells_and_the.html">Scenario Manager: Scenarios, Changing Cells and the Summary Report</a></li><li><a href="S04_Data_Validation_Dropdowns_Dependent_Lists_Limits.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S04_Data_Validation_Dropdowns_Dependent_Lists_Limits.html">Data Validation: Dropdowns, Dependent Lists, Limits and Messages</a></li><li><a href="S05_Formula_Based_Conditional_Formatting_for_Variances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S05_Formula_Based_Conditional_Formatting_for_Variances.html">Formula-Based Conditional Formatting for Variances and Scenarios</a></li><li><a href="S06_Form_Controls_Linked_to_Cells_for_Model_Dashboards.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S06_Form_Controls_Linked_to_Cells_for_Model_Dashboards.html">Form Controls Linked to Cells for Model Dashboards</a></li><li><a href="S07_Solver_for_Product_Mix_and_Capital_Rationing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S07_Solver_for_Product_Mix_and_Capital_Rationing.html">Solver for Product Mix and Capital Rationing</a></li><li><a href="S08_Calculation_Mode_Automatic_Except_Data_Tables_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S08_Calculation_Mode_Automatic_Except_Data_Tables_and.html">Calculation Mode: Automatic Except Data Tables and F9 Recalculation</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_The_TABLE_Array_Formula_and_the_Same_Sheet_Input.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C01_The_TABLE_Array_Formula_and_the_Same_Sheet_Input.html">The TABLE Array Formula and the Same-Sheet Input Rule</a></li><li><a href="../concepts/C02_Goal_Seek_Rules_Formula_Set_Cell_Hard_Coded.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C02_Goal_Seek_Rules_Formula_Set_Cell_Hard_Coded.html">Goal Seek Rules: Formula Set Cell, Hard-Coded Changing Cell</a></li><li><a href="../concepts/C03_Dependent_Dropdown_Sources_INDIRECT_vs_a_Spill.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C03_Dependent_Dropdown_Sources_INDIRECT_vs_a_Spill.html">Dependent Dropdown Sources: INDIRECT vs a Spill Reference</a></li><li><a href="../concepts/C04_Conditional_Format_Rule_for_Negative_Rows_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C04_Conditional_Format_Rule_for_Negative_Rows_Column.html">Conditional Format Rule for Negative Rows: Column Locked, Row Relative</a></li><li><a href="../concepts/C05_Variance_Flag_Rule_with_a_Named_Threshold_Input.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C05_Variance_Flag_Rule_with_a_Named_Threshold_Input.html">Variance Flag Rule with a Named Threshold Input</a></li><li><a href="../concepts/C06_Scenario_Manager_Limits_32_Changing_Cells_and_a.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C06_Scenario_Manager_Limits_32_Changing_Cells_and_a.html">Scenario Manager Limits: 32 Changing Cells and a Static Summary</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Data Validation: Dropdowns, Dependent Lists, Limits and Messages</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Data Validation: list dropdowns, dependent dropdowns, whole-number/date limits, input and error messages</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Most model errors start at the input layer: a scenario name typed as "Base " with a trailing space, a growth rate keyed as 8 instead of 8%, a cost centre that does not exist, an invoice date in the wrong FY, a PAN with nine characters. Data Validation is the first line of defence — it restricts what can be entered, guides the user with input messages and blocks or warns on invalid values. It also creates the dropdowns that drive scenario switches (w9_t2), department selectors for FILTER reports (w9_t4) and entity selectors for close calendars (w9_t5). In budgeting templates sent to 30 department heads, validation is what makes the consolidated file loadable without a week of clean-up.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="where-and-how">Where and how</h3>
+<p>Data → Data Validation (Alt, A, V, V). Three tabs: <strong>Settings</strong> (criteria), <strong>Input Message</strong> (shown when the cell is selected), <strong>Error Alert</strong> (shown on invalid entry). Validation applies to the selected cells; copy it with Paste Special → Validation.</p>
+<h3 id="criteria-types">Criteria types</h3>
+<table>
+<thead>
+<tr>
+<th>Allow</th>
+<th>Typical finance use</th>
+<th>Example setting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Whole number</td>
+<td>Months of tenor, headcount, credit days</td>
+<td>between 1 and 120</td>
+</tr>
+<tr>
+<td>Decimal</td>
+<td>Growth %, tax rate, discount rate</td>
+<td>between −0.2 and 0.5</td>
+</tr>
+<tr>
+<td>List</td>
+<td>Scenario, department, entity, Yes/No</td>
+<td>source <code>Base,Upside,Downside</code> or a range/name</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>Invoice dates within the FY</td>
+<td>between <code>=FYStart</code> and <code>=FYEnd</code></td>
+</tr>
+<tr>
+<td>Time</td>
+<td>Shift timings</td>
+<td>rarely used in finance</td>
+</tr>
+<tr>
+<td>Text length</td>
+<td>PAN (10), GSTIN (15), IFSC (11)</td>
+<td>equal to 10</td>
+</tr>
+<tr>
+<td>Custom</td>
+<td>Any formula returning TRUE/FALSE</td>
+<td><code>=AND(ISNUMBER(C5), C5&gt;=0)</code></td>
+</tr>
+</tbody>
+</table>
+<p>Criteria bounds can reference cells or names (<code>=FYStart</code>), so limits move with the model.</p>
+<h3 id="list-dropdowns">List dropdowns</h3>
+<p>Three source options, in increasing robustness:</p>
+<ol>
+<li><strong>Typed list</strong>: <code>Base,Upside,Downside</code> — fine for fixed short lists; comma separator depends on regional settings.</li>
+<li><strong>Range or Table column via a name</strong>: define <code>ScenarioList</code> as <code>=Lists!B2:B4</code>, or better, refer to a Table column through a name (<code>=tblScen[Scenario]</code>) — Data Validation does not accept structured references directly, but a defined name that refers to one does, and it grows with the Table.</li>
+<li><strong>Spill reference via a name</strong>: define <code>DeptList</code> as <code>=Lists!H2#</code> where H2 holds <code>=SORT(UNIQUE(GL[Dept]))</code>. The dropdown always shows the current departments in the data. (The Name Manager stores the reference in absolute form automatically.)</li>
+</ol>
+<p>Source ranges can sit on another sheet (allowed since Excel 2010). Keep all list sources on a hidden or protected "Lists" sheet.</p>
+<h3 id="dependent-dropdowns">Dependent dropdowns</h3>
+<p>Requirement: choose a Department in B2, then a Cost Centre in C2 that belongs to that department.</p>
+<p><strong>Classic method — INDIRECT with named ranges</strong></p>
+<ol>
+<li>Create one named range per department, named exactly as the department appears in the first list (<code>Sales</code>, <code>Marketing</code>, <code>Plant_Pune</code>), each listing its cost centres.</li>
+<li>Validation on C2: List, source <code>=INDIRECT(B2)</code> (with the column of B2 locked if copying across rows).</li>
+</ol>
+<p>Department names with spaces or symbols cannot be names; use <code>=INDIRECT(SUBSTITUTE(B2, " ", "_"))</code>. INDIRECT is volatile and breaks if a name is renamed — fine for small lists, fragile at scale.</p>
+<p><strong>Modern method — FILTER spill</strong></p>
+<ol>
+<li>On the Lists sheet, J2: <code>=SORT(FILTER(Map[CostCentre], Map[Dept]=Inputs!B2, "—"))</code>.</li>
+<li>Name <code>CCList</code> = <code>=Lists!J2#</code>; validation on C2: List, source <code>=CCList</code>.</li>
+</ol>
+<p>This works for a single selector cell. For a row-by-row dependent list (each row of a 200-row budget template needs its own filtered list), INDIRECT or an OFFSET/MATCH-based source over a department-sorted mapping table is still needed, or the template is better built in Power Apps or a planning tool.</p>
+<p><strong>Clearing the child when the parent changes</strong> is not automatic: a C2 value left over from a previous department remains. Add a check cell <code>=COUNTIFS(Map[Dept], B2, Map[CostCentre], C2)=1</code> and conditional formatting to flag mismatches.</p>
+<h3 id="input-messages">Input messages</h3>
+<p>The Input Message tab shows a yellow tooltip when the cell is selected: title "WACC (post-tax)", message "Enter as a %, e.g. 11.8%. Source: WACC tab, approved by CFO on 10-Jan-2026." This documents the assumption at the point of entry and reduces the 8 vs 8% problem.</p>
+<h3 id="error-alerts">Error alerts</h3>
+<table>
+<thead>
+<tr>
+<th>Style</th>
+<th>Behaviour</th>
+<th>Use for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stop</td>
+<td>Rejects the entry (Retry/Cancel)</td>
+<td>Hard constraints: scenario names, dates outside FY, negative headcount</td>
+</tr>
+<tr>
+<td>Warning</td>
+<td>Allows after "Continue?" (Yes/No/Cancel)</td>
+<td>Soft limits: growth above 25%, discount rate outside 8–16%</td>
+</tr>
+<tr>
+<td>Information</td>
+<td>Allows with an OK notice</td>
+<td>Reminders</td>
+</tr>
+</tbody>
+</table>
+<p>Write the message in business terms: "Invoice date must fall in FY26 (01-Apr-2025 to 31-Mar-2026)."</p>
+<h3 id="custom-formula-examples">Custom formula examples</h3>
+<pre><code class="language-excel">=AND(LEN(C5)=10, ISNUMBER(--MID(C5,6,4)), NOT(ISNUMBER(--LEFT(C5,5))))   PAN shape check (5 letters, 4 digits, 1 letter, approximately)
+=COUNTIF(C:C, C5)=1                                                        unique voucher or vendor code
+=ROUND(C5, 2)=C5                                                           at most 2 decimal places
+=C5&lt;=D5                                                                    start date not after end date
+=SUM(E5:E16)=1                                                             phasing weights sum to 100% (apply to the last cell)
+</code></pre>
+<p>Custom formulas are written relative to the active (top-left) cell of the selection.</p>
+<h3 id="auditing-validation">Auditing validation</h3>
+<ul>
+<li>Data → Data Validation → <strong>Circle Invalid Data</strong> draws red circles around cells that already violate rules (e.g. values pasted in before the rule existed).</li>
+<li>Go To Special → Data Validation → All/Same selects every validated cell, useful to confirm coverage of the input sheet.</li>
+</ul>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Paste bypasses validation.</strong> Ctrl+V of a value over a validated cell replaces the rule and the value without warning (pasting a whole cell copies the source's validation, or none). Protect input sheets, ask users to Paste Special → Values (which still bypasses checking but keeps the rule), and run Circle Invalid Data before consolidation.</li>
+<li><strong>Fixed-range sources do not grow.</strong> <code>=Lists!B2:B20</code> misses the 20th-plus item; use Table-backed names or spill references.</li>
+<li><strong>Volatile INDIRECT</strong> recalculates constantly and breaks on renamed names.</li>
+<li><strong>Blank cells.</strong> "Ignore blank" lets users leave inputs empty; required inputs need a completeness check elsewhere.</li>
+<li><strong>Regional separators.</strong> Typed list sources use the list separator from Windows regional settings (comma or semicolon) — a template built in India may break on a European colleague's PC.</li>
+<li><strong>Validation is not security.</strong> It guides honest users; it does not prevent determined edits. Combine with sheet protection and reconciliations.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Data Validation restricts entries (whole number, decimal, list, date, text length, custom) and documents them with input messages.</li>
+<li>Use Table-backed names or spill references (<code>=Lists!H2#</code> via a name) so dropdown sources grow automatically.</li>
+<li>Dependent dropdowns: INDIRECT with named ranges (classic, fragile) or FILTER spill lists (modern, single selector).</li>
+<li>Choose Stop for hard rules, Warning for soft limits; write messages in business language.</li>
+<li>Pasting bypasses validation — protect inputs and run Circle Invalid Data before relying on the file.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-input-sheet-design-l1">Q1. Input sheet design [L1]</h3>
+<p>For a capex request template, specify the validation type, criteria and error style for: asset category (from a list of 8), cost (₹, positive, up to ₹50 crore), useful life (3–40 years, whole), capitalisation date (within FY27), vendor GSTIN (15 characters), and "Funded by debt?" (Yes/No).</p>
+<h3 id="q2-dependent-dropdown-both-ways-l2">Q2. Dependent dropdown both ways [L2]</h3>
+<p>The mapping Table <code>Map</code> has 12 departments and 140 cost centres. Build (a) an INDIRECT-based dependent dropdown and (b) a FILTER-spill-based dependent dropdown for a single selector pair (department in B2, cost centre in C2). Compare maintenance effort when a new department "Digital Commerce" is added.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider what has to be created by hand in each method when a department is added.</p>
+</blockquote>
+<h3 id="q3-consolidating-30-budget-files-l2">Q3. Consolidating 30 budget files [L2]</h3>
+<p>Thirty department heads return a budget template with validation on all inputs. On consolidation you find invalid cost centres and growth rates of 800%. Explain how invalid data got past validation, how you would detect it in each file quickly, and two design changes for next year.</p>
+<h3 id="q4-custom-rules-l2">Q4. Custom rules [L2]</h3>
+<p>Write custom validation formulas for: (a) a phasing row of 12 months that must sum to 100%; (b) a voucher number column that must be unique; (c) an end date that must be at least one month after the start date; (d) a discount rate that must be at least the risk-free rate in a named cell <code>Rf</code>.</p>
+<h3 id="q5-scenario-selector-l1">Q5. Scenario selector [L1]</h3>
+<p>Build a scenario dropdown in an Inputs sheet whose list comes from a Table on the Lists sheet, with an input message explaining the cases, and the formula that converts the selected name into the scenario index used by CHOOSE.</p></section>
+<nav class="pager"><a class="prev" href="S03_Scenario_Manager_Scenarios_Changing_Cells_and_the.html">← Scenario Manager: Scenarios, Changing Cells and the Summary…</a><a class="next" href="S05_Formula_Based_Conditional_Formatting_for_Variances.html">Formula-Based Conditional Formatting for Variances and… →</a></nav>
+</main></div></body></html>

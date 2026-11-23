@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hide Fact Foreign Keys; Expose Attributes and Measures · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C06_Hide_Fact_Foreign_Keys_Expose_Attributes_and.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T1 · Star schema for financial data</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Star schema for financial data</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Facts_vs_Dimensions_in_a_Financial_Star_Schema.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S01_Facts_vs_Dimensions_in_a_Financial_Star_Schema.html">Facts vs Dimensions in a Financial Star Schema</a></li><li><a href="../subtopics/S02_Defining_Fact_Grain_and_Handling_Mixed_Grain.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S02_Defining_Fact_Grain_and_Handling_Mixed_Grain.html">Defining Fact Grain and Handling Mixed Grain (Budget vs Actual)</a></li><li><a href="../subtopics/S03_Relationship_Properties_Cardinality_Direction.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S03_Relationship_Properties_Cardinality_Direction.html">Relationship Properties: Cardinality, Direction, Active Status</a></li><li><a href="../subtopics/S04_Role_Playing_Dates_via_Inactive_Relationships.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S04_Role_Playing_Dates_via_Inactive_Relationships.html">Role-Playing Dates via Inactive Relationships</a></li><li><a href="../subtopics/S05_CoA_Hierarchy_with_Sort_Order_and_Sign_Factor.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S05_CoA_Hierarchy_with_Sort_Order_and_Sign_Factor.html">CoA Hierarchy with Sort-Order and Sign-Factor Columns</a></li><li><a href="../subtopics/S06_Surrogate_Keys_and_an_Unmapped_Member_for_Missing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S06_Surrogate_Keys_and_an_Unmapped_Member_for_Missing.html">Surrogate Keys and an Unmapped Member for Missing Accounts</a></li><li><a href="../subtopics/S07_Avoiding_Snowflakes_and_Flat_Tables_Diagram_View.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S07_Avoiding_Snowflakes_and_Flat_Tables_Diagram_View.html">Avoiding Snowflakes and Flat Tables; Diagram View vs Model View</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_USERELATIONSHIP_to_Activate_an_Inactive_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C01_USERELATIONSHIP_to_Activate_an_Inactive_Date.html">USERELATIONSHIP to Activate an Inactive Date Relationship</a></li><li><a href="C02_Store_Budget_on_the_First_Day_of_the_Month.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C02_Store_Budget_on_the_First_Day_of_the_Month.html">Store Budget on the First Day of the Month</a></li><li><a href="C03_Virtual_Relationship_with_TREATAS_for_Month_Grain.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C03_Virtual_Relationship_with_TREATAS_for_Month_Grain.html">Virtual Relationship with TREATAS for Month-Grain Budget</a></li><li><a href="C04_CROSSFILTER_for_Per_Measure_Bidirectional.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C04_CROSSFILTER_for_Per_Measure_Bidirectional.html">CROSSFILTER for Per-Measure Bidirectional Filtering</a></li><li><a href="C05_Referential_Integrity_Test_with_EXCEPT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C05_Referential_Integrity_Test_with_EXCEPT.html">Referential Integrity Test with EXCEPT</a></li><li><a href="C06_Hide_Fact_Foreign_Keys_Expose_Attributes_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C06_Hide_Fact_Foreign_Keys_Expose_Attributes_and.html">Hide Fact Foreign Keys; Expose Attributes and Measures</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Hide Fact Foreign Keys; Expose Attributes and Measures</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Hide fact foreign keys; expose only dimension attributes and measures to report users</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>In a finance star schema, set <strong>Is hidden = Yes</strong> (Power BI) or <em>Hide from Client Tools</em> (Power Pivot) for:</p>
+<ul>
+<li>every foreign-key column in fact tables (<code>GL[AccountKey]</code>, <code>GL[CostCentreKey]</code>, <code>GL[BranchKey]</code>,
+  <code>GL[PostingDate]</code>, <code>GL[DueDate]</code>, <code>Budget[MonthStart]</code>, <code>TB[MonthEnd]</code>);</li>
+<li>raw numeric columns that should only be aggregated through measures (<code>GL[Amount]</code>, <code>Budget[Amount]</code>,
+  <code>TB[Balance]</code>);</li>
+<li>technical columns in dimensions (surrogate keys, sort-order columns, SignFactor).</li>
+</ul>
+<p>Expose to users only <strong>dimension attributes</strong> (FY, FiscalQuarter, FSLine, CostCentre name, Branch, State) and
+<strong>explicit measures</strong> (<code>[Actual]</code>, <code>[Budget]</code>, <code>[Variance ₹]</code>, <code>[Variance %]</code>, <code>[YTD Actual]</code>, <code>[PY YTD]</code>).
+Optionally hide fact tables entirely so they appear only as measure homes, or move measures to a dedicated
+measures table.</p>
+<h2 id="explanation">Explanation</h2>
+<p>Why it matters:</p>
+<ol>
+<li><strong>Correct filtering.</strong> If a user drags <code>GL[AccountKey]</code> or <code>GL[PostingDate]</code> onto a slicer, the filter is placed
+   on the fact column. It filters GL but not Budget or TB, so Budget shows totals that ignore the slicer — a
+   classic "Budget doesn't respond to my filter" complaint. Slicing by <code>CoA[AccountName]</code> or <code>'Date'[Date]</code> filters
+   all facts through conformed dimensions.</li>
+<li><strong>Time intelligence.</strong> Time functions must receive <code>'Date'[Date]</code>; a visible <code>GL[PostingDate]</code> invites users and
+   developers to use it (topic 2 pitfall).</li>
+<li><strong>Implicit measures.</strong> A visible numeric <code>GL[Amount]</code> lets users drag it and get an implicit SUM with no format,
+   no sign logic and no Budget equivalent. Hiding it forces use of explicit, governed measures. Power BI also offers
+   a model setting <em>Discourage implicit measures</em> (required automatically when calculation groups exist).</li>
+<li><strong>Usability.</strong> The field list shows a clean, business-oriented set: Date, Accounts, Cost Centres, Branches, and
+   a folder of measures.</li>
+<li><strong>Sort columns.</strong> Hiding LineSort and FiscalMonthNo prevents users from putting numbers on rows by accident; the
+   Sort by Column setting still works on the visible label.</li>
+</ol>
+<p>Hiding is not security: hidden columns are still queryable (DAX query view, Analyze in Excel with field lists
+toggled, XMLA). Use row-level and object-level security for confidentiality, such as hiding salary accounts.</p>
+<p>Columns can still be used in measures and relationships after hiding. In Excel Power Pivot, hidden columns are
+greyed in Diagram View and disappear from the PivotTable field list.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Before cleanup, the field list for a Mumbai-based NBFC's MIS model shows GL with 14 fields (AccountKey,
+CostCentreKey, BranchKey, PostingDate, DocDate, DueDate, VoucherNo, Amount, …). A regional manager builds a
+table with <code>GL[PostingDate]</code> as a slicer set to March 2026, plus <code>[Actual]</code> and <code>[Budget]</code>. Actual shows the March
+figure (₹6.8 crore) while Budget shows the full FY2025-26 figure (₹78 crore), because the slicer never reaches
+Budget. After hiding all GL columns and exposing only <code>'Date'</code> attributes and measures, the same report built with
+<code>'Date'[MonthName]</code> shows March budget ₹6.5 crore beside actuals.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Subtopic s01 (facts vs dimensions) and s07 (model hygiene in Model view / Diagram View).</li>
+<li>Topic 3: explicit measures, display folders and format strings.</li>
+<li>Topic 1 pitfall: account names kept in the fact table.</li>
+<li>Governance in Weeks 17–20: certified datasets used by many report authors.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-hide-list-l1">Q1. Hide list [L1]</h3>
+<p>For a model with GL, Budget, TB, CoA, Date, CostCentre and Branch, list every column you would hide and every field
+you would leave visible, grouped by table.</p>
+<h3 id="q2-diagnose-the-complaint-l2">Q2. Diagnose the complaint [L2]</h3>
+<p>A user reports that Budget ignores the Branch slicer, while Actual responds correctly. The model has Branch → GL
+and no Branch → Budget relationship, and the slicer uses <code>GL[BranchKey]</code>. Explain the two separate problems and
+the fixes.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> One problem is about which column the slicer uses; the other is about Budget's grain.</p>
+</blockquote>
+<h3 id="q3-hidden-is-not-secure-l2">Q3. Hidden is not secure [L2]</h3>
+<p>The HR head asks you to hide the "Directors' remuneration" accounts from branch users. Explain why hiding columns
+is insufficient and outline the RLS or OLS approach you would use instead.</p></section>
+<nav class="pager"><a class="prev" href="C05_Referential_Integrity_Test_with_EXCEPT.html">← Referential Integrity Test with EXCEPT</a><a class="next" href="../../T2_Indian_fiscal_calendar_table/index.html">Indian fiscal calendar table →</a></nav>
+</main></div></body></html>

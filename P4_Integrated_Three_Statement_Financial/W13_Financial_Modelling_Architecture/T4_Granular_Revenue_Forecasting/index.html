@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Granular Revenue Forecasting · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/index.html" data-kind="topic">
+<header class="top"><a class="brand" href="../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../index.html">Home</a> <span>›</span> <a href="../../index.html">Phase 4</a> <span>›</span> <a href="../index.html">Week 13</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">Week 13</a></div><ul class="side-links"><li><a href="../T1_Modelling_Architecture_Best_Practices/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/index.html">T1 · Modelling Architecture &amp; Best Practices</a></li><li><a href="../T2_Color_Coding_Formula_Integrity_Rules/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/index.html">T2 · Color Coding &amp; Formula Integrity Rules</a></li><li><a href="../T3_Historical_Data_Ingestion_Normalization/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/index.html">T3 · Historical Data Ingestion &amp; Normalization</a></li><li><a href="index.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/index.html">T4 · Granular Revenue Forecasting</a></li><li><a href="../T5_Cost_Structure_Forecasting/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T5_Cost_Structure_Forecasting/index.html">T5 · Cost Structure Forecasting</a></li><li><a href="../T6_Scenario_Switcher_Architecture/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/index.html">T6 · Scenario Switcher Architecture</a></li></ul></aside>
+<main class="content">
+<div class="kind">Topic</div>
+<h1>Granular Revenue Forecasting</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<section class="index"><h2>Notes in this topic</h2><div class="cols"><div><h3>Subtopics</h3><ul class="links num"><li><a href="subtopics/S01_Volume_Price_Mix_Revenue_Decomposition_UVG.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S01_Volume_Price_Mix_Revenue_Decomposition_UVG.html">S01 · Volume × Price × Mix Revenue Decomposition (UVG, Realisation, Mix)</a></li><li><a href="subtopics/S02_Store_Rollout_Revenue_Build_Stores_Area_Revenue.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S02_Store_Rollout_Revenue_Build_Stores_Area_Revenue.html">S02 · Store Rollout Revenue Build: Stores, Area, Revenue per Sq Ft, LFL</a></li><li><a href="subtopics/S03_Store_Maturity_Curves_and_Vintage_Cohort_Revenue.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S03_Store_Maturity_Curves_and_Vintage_Cohort_Revenue.html">S03 · Store Maturity Curves and Vintage Cohort Revenue Builds</a></li><li><a href="subtopics/S04_Capacity_Led_Revenue_Build_Capacity_Utilisation.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S04_Capacity_Led_Revenue_Build_Capacity_Utilisation.html">S04 · Capacity-Led Revenue Build: Capacity, Utilisation, Realisation</a></li><li><a href="subtopics/S05_Customer_Cohort_and_ARPU_Revenue_Models_with.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S05_Customer_Cohort_and_ARPU_Revenue_Models_with.html">S05 · Customer Cohort and ARPU Revenue Models with Retention Curves</a></li><li><a href="subtopics/S06_Segment_Revenue_Builds_Trent_and_Pidilite_Case.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S06_Segment_Revenue_Builds_Trent_and_Pidilite_Case.html">S06 · Segment Revenue Builds: Trent and Pidilite Case Structures</a></li><li><a href="subtopics/S07_Top_Down_Revenue_Cross_Check_Market_Size_Share_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S07_Top_Down_Revenue_Cross_Check_Market_Size_Share_and.html">S07 · Top-Down Revenue Cross-Check: Market Size, Share and Nominal GDP</a></li></ul></div><div><h3>Key concepts & formulas</h3><ul class="links num"><li><a href="concepts/C01_Revenue_Identity_Volume_Realisation_and_Compounded.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C01_Revenue_Identity_Volume_Realisation_and_Compounded.html">C01 · Revenue Identity: Volume × Realisation and Compounded Growth</a></li><li><a href="concepts/C02_Revenue_Bearing_Stores_Average_and_Timing_Weighted.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C02_Revenue_Bearing_Stores_Average_and_Timing_Weighted.html">C02 · Revenue-Bearing Stores: Average and Timing-Weighted Counts</a></li><li><a href="concepts/C03_Retail_Revenue_Average_Area_Revenue_per_Sq_Ft_with.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C03_Retail_Revenue_Average_Area_Revenue_per_Sq_Ft_with.html">C03 · Retail Revenue: Average Area × Revenue per Sq Ft with LFL</a></li><li><a href="concepts/C04_Capacity_Revenue_Capacity_Utilisation_Price_with_a.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C04_Capacity_Revenue_Capacity_Utilisation_Price_with_a.html">C04 · Capacity Revenue: Capacity × Utilisation × Price with a Practical Cap</a></li><li><a href="concepts/C05_Cohort_Revenue_Initial_Customers_Retention_by_Age.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C05_Cohort_Revenue_Initial_Customers_Retention_by_Age.html">C05 · Cohort Revenue: Initial Customers × Retention by Age × ARPU by Age</a></li><li><a href="concepts/C06_Ind_AS_115_Revenue_Basis_Net_of_GST_Discounts_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C06_Ind_AS_115_Revenue_Basis_Net_of_GST_Discounts_and.html">C06 · Ind AS 115 Revenue Basis: Net of GST, Discounts and Variable Consideration</a></li></ul></div></div></section><article class="note"><blockquote>
+<p><strong>Roadmap topic:</strong> Granular Revenue Forecasting: Volume × Price models, Store/Capacity rollout models, or Customer Cohort/ARPU drivers rather than flat % growth assumptions</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>Revenue is the first line of every forecast and the line from which almost everything else is derived — variable
+costs, working capital, capex, tax and ultimately free cash flow and valuation. A model whose revenue is
+"prior year × (1 + 12%)" can be arithmetically perfect and still useless: it cannot tell you what has to be true
+for 12% to happen, it cannot be stress-tested against a slowdown in a specific driver, and it gives costs, capex
+and working capital nothing physical to scale with. Granular revenue forecasting replaces the growth rate with
+the operating drivers that management actually runs the business on — volumes and prices, stores and space,
+plants and utilisation, customers and spend per customer.</p>
+<p>For the target roles this is the core skill. Equity research and buy-side analysts are judged on whether their
+driver assumptions are better than consensus; transaction-services and valuation teams in Big 4 firms test
+management's business-plan drivers in due diligence; FP&amp;A teams build annual budgets and rolling forecasts from
+exactly these drivers and explain variances in price, volume and mix. The Indian context adds specifics: revenue
+is net of GST and dealer schemes under Ind AS 115; UVG is the language of consumer company concalls; store and area
+disclosures are the backbone of retail models; and capacity in MTPA or KTPA governs cement, chemicals and metals.</p>
+<p>The learning sequence runs from general to specific. Start with the volume × price × mix identity (s01, c01) —
+every other model is a variant of it. Then learn three archetypes: the store rollout (s02, c02, c03) and its
+vintage refinement (s03); the capacity-led build (s04, c04); and the customer cohort/ARPU model (s05, c05).
+Apply them to the Week 13 exercise companies through the segment builds for Trent and Pidilite (s06). Finally,
+test the bottom-up answer against the outside-in view of market size and share (s07), and make sure every
+realisation driver is on the Ind AS 115 basis (c06).</p>
+<h2 id="concept-map">Concept map</h2>
+<table>
+<thead>
+<tr>
+<th>Subtopic / concept</th>
+<th>Role in the topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s01 Volume × Price × Mix decomposition</td>
+<td>Foundational identity; separates UVG, price realisation and mix shift</td>
+</tr>
+<tr>
+<td>s02 Store rollout</td>
+<td>Retail archetype: store and area roll-forward × revenue per sq ft with LFL</td>
+</tr>
+<tr>
+<td>s03 Store maturity curve with vintage cohorts</td>
+<td>Refines s02 for ramp-up of new stores over 2–3 years</td>
+</tr>
+<tr>
+<td>s04 Capacity-led build</td>
+<td>Manufacturing archetype: capacity × utilisation × realisation, linked to capex</td>
+</tr>
+<tr>
+<td>s05 Customer cohort/ARPU</td>
+<td>Subscription/platform archetype: active customers × ARPU with retention curves</td>
+</tr>
+<tr>
+<td>s06 Segment builds (Trent, Pidilite)</td>
+<td>Applies the archetypes to the exercise companies and reconciles to Ind AS 108</td>
+</tr>
+<tr>
+<td>s07 Top-down cross-check</td>
+<td>Tests the bottom-up forecast against market size, share and nominal GDP</td>
+</tr>
+<tr>
+<td>c01 Revenue = Volume × Realisation</td>
+<td>Growth components compound multiplicatively</td>
+</tr>
+<tr>
+<td>c02 Revenue-bearing stores</td>
+<td>Average or timing-weighted counts, never year-end</td>
+</tr>
+<tr>
+<td>c03 Average area × revenue per sq ft</td>
+<td>Core retail formula; density rolls forward at LFL</td>
+</tr>
+<tr>
+<td>c04 Capacity × Utilisation × Price</td>
+<td>Practical utilisation cap (~85–90%) and shortfall diagnostic</td>
+</tr>
+<tr>
+<td>c05 Cohort revenue</td>
+<td>Σ cohorts × retention by age × ARPU by age</td>
+</tr>
+<tr>
+<td>c06 Ind AS 115 net revenue</td>
+<td>Realisation drivers net of GST, discounts, returns and variable consideration</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-concepts-to-study">Related concepts to study</h2>
+<h3 id="phase-1-ind-as-115-variable-consideration-and-principal-vs-agent">Phase 1: Ind AS 115 variable consideration and principal vs agent</h3>
+<p><em>→ Phase 1 (W1–4): Ind AS 115 variable consideration, principal vs agent (gross vs net revenue)</em></p>
+<p>Every realisation driver in a revenue build is only as good as its revenue definition. From Phase 1, revisit how
+dealer schemes, volume rebates, price protection and rights of return are estimated as variable consideration
+and constrained so that a significant reversal is not highly probable, and how consideration payable to
+customers reduces revenue. Principal-vs-agent analysis decides whether a marketplace, concessionaire or
+consignment arrangement reports gross sales or commission — which changes ARPU, revenue per sq ft and gross margin
+by multiples, not percentages. Before calibrating historical realisations, check the revenue note for changes
+in these judgements; a switch from gross to net presentation looks like a revenue collapse in a growth-rate model.</p>
+<h3 id="phase-2-peer-benchmarking-of-revenue-drivers">Phase 2: Peer benchmarking of revenue drivers</h3>
+<p><em>→ Phase 2 (W5–8): peer benchmarking of revenue/sq ft, volume growth, market share</em></p>
+<p>Phase 2's ratio and benchmarking work supplies the reasonableness tests for driver assumptions. Revenue per sq ft
+for Trent's formats can be compared with V-Mart, ABFRL's Pantaloons and DMart (allowing for category mix); Pidilite's
+UVG can be compared with paints and construction-chemicals peers; cement volume growth with the industry's.
+Market-share trends from industry reports and peer revenue give the top-down check in s07. Use common-size and
+growth-decomposition tables built in Phase 2 to place your forecast drivers inside the historical peer
+distribution: a forecast that puts the company in the top decile on every driver simultaneously needs a stated
+competitive reason.</p>
+<h3 id="week-14-store-additions-and-capacity-drive-capex-and-nwc">Week 14: Store additions and capacity drive capex and NWC</h3>
+<p><em>→ Week 14: store additions/capacity drive capex and NWC schedules</em></p>
+<p>The physical drivers chosen here become the inputs to next week's schedules. Store additions × fit-out capex per
+sq ft drive capex; store counts drive lease additions and ROU assets under Ind AS 116; capacity projects in the
+s04 project table drive CWIP, capitalisation and depreciation. Inventory is often forecast per store or as days of
+COGS, receivables as days of revenue. If this week's revenue is a growth rate, Week 14 is forced to forecast capex
+as % of sales — losing the link between growth and investment that drives free cash flow and returns on capital.
+Build the revenue rows with that downstream use in mind: keep store adds, area and capacity additions on
+explicit rows.</p>
+<h3 id="phase-5-driver-based-budgets-and-rolling-forecasts">Phase 5: Driver-based budgets and rolling forecasts</h3>
+<p><em>→ Phase 5 (W17–20): driver-based budgets and rolling forecasts reuse these drivers</em></p>
+<p>FP&amp;A planning in Phase 5 reuses the same driver trees at monthly or quarterly granularity. A driver-based budget
+sets targets for stores, LFL, UVG and price, not just revenue; a rolling forecast updates the drivers each
+quarter as actuals land. Variance analysis decomposes budget vs actual into price, volume and mix — exactly the
+decomposition of s01 — and into new-store vs LFL contributions for retail. Designing the revenue build so its
+drivers match management's KPIs means the same logic serves both the valuation model and the business's planning
+cycle.</p>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<h3 id="flat-growth-disguised-as-a-driver">Flat % growth disguised as a driver</h3>
+<p><em>Flat % growth disguised as a driver (single row: prior year × (1 + g))</em></p>
+<p>The mistake: a "driver" sheet with rows labelled "Zudio revenue growth 30%" or "C&amp;B growth 12%", each simply
+multiplying the prior year — the forecast is still a growth rate, only with more rows. It happens because analysts
+anchor on consensus growth and back into it, or because the driver data seem hard to find. The correct treatment is
+to decompose growth into the physical and price drivers (stores, area, density; volume and realisation;
+capacity and utilisation; customers and ARPU), each with a source in the assumption log. Detect it in review by
+asking for each revenue row: what physical quantity is this, and where does it come from? If every revenue row
+contains a growth rate and nothing feeds capex or cost schedules, the model has this pitfall.</p>
+<h3 id="full-year-revenue-from-stores-opened-at-year-end">Full-year revenue from stores opened at year-end</h3>
+<p><em>Full-year revenue from stores opened at year-end</em></p>
+<p>The mistake: multiplying closing store count (or closing area, closing capacity, closing customers) by an annual
+productivity figure. It is common because closing counts are what annual reports headline. Stores opened in
+March generate almost no revenue in that year, so a fast-growing chain's revenue is overstated by about half the
+year's additions. The correct treatment is the average count, or a timing-weighted count when openings are
+back-ended (c02). Detect it by recomputing revenue per average store and per closing store for history: if the
+model's forecast revenue per store jumps compared with history, check which count is used, and look for
+references to closing rows in revenue formulas.</p>
+<h3 id="double-counting-price-inside-volume-growth">Double-counting price inside volume growth</h3>
+<p><em>Double-counting price inflation inside volume growth (value vs volume confusion)</em></p>
+<p>The mistake: treating management's value growth or market value growth as volume growth, then adding a separate
+price increase on top — or using an industry growth figure in rupees as a volume driver. It arises because Indian
+disclosures mix "growth" in volume and value terms, and industry reports quote market growth in nominal rupees.
+The correct treatment: identify whether each source figure is volume or value, convert value figures to volume by
+removing price (c01), and apply price only once. Detect it by computing the implied revenue decomposition in the
+model and comparing price/mix with CPI and input-cost trends; revenue growth well above nominal GDP plus share gain
+with no stated reason is a symptom.</p>
+<h3 id="revenue-growth-beyond-capacity-without-matching-capex">Revenue growth beyond capacity without matching capex</h3>
+<p><em>Revenue growth beyond capacity without matching capex</em></p>
+<p>The mistake: volume growing for five years while installed capacity, store count or headcount capacity is flat,
+so implied utilisation exceeds 100% (or revenue per store doubles). It happens when revenue and capex are built
+by different people or capex is forecast as % of sales. The correct treatment: cap volume at practical capacity
+(c04), schedule capacity projects with capex and commissioning dates when demand exceeds it, and reference the same
+project table from revenue and the PPE schedule. Detect it with a utilisation output row and a warning check on the
+Checks sheet; also compare capex/incremental revenue with history.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-trent-five-year-format-build-l3">Q1. Trent five-year format build [L3]</h3>
+<p>Using the following illustrative data (not actuals), build FY26E–FY30E revenue for a two-format apparel retailer
+and evaluate the result top-down.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Format A (premium)</th>
+<th>Format B (value)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stores at 31 March 2025</td>
+<td>240</td>
+<td>760</td>
+</tr>
+<tr>
+<td>Area at 31 March 2025 (mn sq ft)</td>
+<td>5.4</td>
+<td>6.1</td>
+</tr>
+<tr>
+<td>Gross additions per year</td>
+<td>30</td>
+<td>200 (FY26), declining by 20 a year thereafter</td>
+</tr>
+<tr>
+<td>Closures per year</td>
+<td>6</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Average new/closed store area (sq ft)</td>
+<td>22,000 / 18,000</td>
+<td>8,500 / 7,000</td>
+</tr>
+<tr>
+<td>FY25 mature revenue per sq ft (₹)</td>
+<td>12,500</td>
+<td>10,000</td>
+</tr>
+<tr>
+<td>LFL per year</td>
+<td>7%</td>
+<td>6%</td>
+</tr>
+<tr>
+<td>Maturity curve (age 0/1/2+)</td>
+<td>60% / 85% / 100%</td>
+<td>70% / 90% / 100%</td>
+</tr>
+</tbody>
+</table>
+<p>Openings are evenly spread (age-0 time weight 0.5). The organised apparel market is ₹2,00,000 crore at net retail
+prices in FY25 growing at 14% a year. (a) Build store and area roll-forwards; (b) build revenue by vintage for each
+format; (c) compute blended revenue per sq ft and the revenue mix; (d) compute implied market share and annual share
+gain in bps, and comment on plausibility.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Build the roll-forward first, then a vintage triangle per format driven by an age lookup.</p>
+</blockquote>
+<h3 id="q2-pidilite-style-segment-build-with-input-cost-deflation-l2">Q2. Pidilite-style segment build with input-cost deflation [L2]</h3>
+<p>An adhesives company has FY25 revenue of ₹10,500 crore: Consumer &amp; Bazaar ₹8,600 crore, B2B ₹2,100 crore,
+inter-segment eliminations ₹200 crore. International subsidiaries (included in C&amp;B) contribute ₹900 crore,
+earned in currencies whose average rate is expected to depreciate 6% against the rupee in FY26. For FY26:
+domestic C&amp;B UVG 9% with price/mix −2% (price cuts after a fall in VAM); B2B volume 7% and price/mix +1%;
+international local-currency growth 14%; eliminations stay at 1.9% of total segment revenue. (a) Build FY26
+revenue by segment; (b) show reported value growth vs UVG for domestic C&B; (c) explain how you would present
+the FX effect; (d) state which items you would record in the assumption log with sources.</p>
+<h3 id="q3-cement-capacity-and-capex-linkage-l3">Q3. Cement capacity and capex linkage [L3]</h3>
+<p>A cement company has 40 MTPA of grinding capacity at 31 March 2025, with a 6 MTPA brownfield line due on
+1 January 2027 (capex ₹4,200 crore, 30% in FY26 and 70% in FY27) and a 2 MTPA debottlenecking project due
+1 October 2025 (capex ₹700 crore, all in FY26). Regional demand allows volume growth of 9% a year from FY25 volume
+of 31 mn tonnes. Practical maximum utilisation is 88%; new capacity runs at 60% in its first twelve months of
+operation. Realisation is ₹5,300 per tonne in FY25 rising 2% a year. (a) Build effective capacity, constrained
+volume, utilisation, shortfall and revenue for FY26–FY29; (b) quantify revenue lost if the brownfield line slips
+nine months; (c) describe how the capex rows and revenue rows should share one project table.</p>
+<h3 id="q4-cohort-model-review-l2">Q4. Cohort model review [L2]</h3>
+<p>A broking platform model shows active clients rising from 80 lakh to 2.4 crore over five years with revenue
+growing at a 28% CAGR. The model uses closing active clients × a flat ARPU of ₹3,200 and a single 20% churn rate on
+the opening base; gross adds are an input rising 15% a year with no link to marketing spend. List every structural
+weakness, then specify a corrected design (cohort triangle, retention and ARPU-by-age curves, averaging, CAC link,
+Ind AS 115 basis for incentives and cashbacks), and identify which regulatory change would be your first Bear-case
+driver.</p>
+<h3 id="q5-interview-case-defend-your-revenue-line-l3">Q5. Interview case — "Defend your revenue line" [L3]</h3>
+<p>You present a five-year forecast for a listed consumer company with 16% revenue CAGR. The interviewer asks you to
+defend it in three minutes. Prepare a structured answer covering: the driver decomposition (volume, price, mix,
+new stores or capacity), how each driver is sourced, the top-down share and nominal GDP check, the capacity or
+capex consistency check, and the two drivers whose downside you would show in a Bear case.</p></section>
+<nav class="pager"><a class="prev" href="../T3_Historical_Data_Ingestion_Normalization/concepts/C06_Explicit_Rounding_Line_Instead_of_a_Balancing_Plug.html">← Explicit Rounding Line Instead of a Balancing Plug</a><a class="next" href="subtopics/S01_Volume_Price_Mix_Revenue_Decomposition_UVG.html">Volume × Price × Mix Revenue Decomposition (UVG,… →</a></nav>
+</main></div></body></html>

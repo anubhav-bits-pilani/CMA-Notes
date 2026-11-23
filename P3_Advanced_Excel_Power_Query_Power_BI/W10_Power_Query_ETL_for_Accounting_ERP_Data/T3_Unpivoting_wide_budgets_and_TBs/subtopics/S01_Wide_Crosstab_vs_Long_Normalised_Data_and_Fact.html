@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wide (Crosstab) vs Long (Normalised) Data and Fact Tables · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S01_Wide_Crosstab_vs_Long_Normalised_Data_and_Fact.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T3 · Unpivoting wide budgets and TBs</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Unpivoting wide budgets and TBs</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Wide_Crosstab_vs_Long_Normalised_Data_and_Fact.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S01_Wide_Crosstab_vs_Long_Normalised_Data_and_Fact.html">Wide (Crosstab) vs Long (Normalised) Data and Fact Tables</a></li><li><a href="S02_Unpivot_Other_Columns_vs_Unpivot_Columns_vs_Only.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S02_Unpivot_Other_Columns_vs_Unpivot_Columns_vs_Only.html">Unpivot Other Columns vs Unpivot Columns vs Only Selected</a></li><li><a href="S03_Converting_Month_Header_Text_into_Real_Month_End.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S03_Converting_Month_Header_Text_into_Real_Month_End.html">Converting Month Header Text into Real Month-End Dates</a></li><li><a href="S04_Multi_Row_Headers_Transpose_Fill_Merge_Transpose.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S04_Multi_Row_Headers_Transpose_Fill_Merge_Transpose.html">Multi-Row Headers: Transpose, Fill, Merge, Transpose Back, Unpivot</a></li><li><a href="S05_Unpivoting_TB_Columns_Opening_Debit_Credit_Closing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S05_Unpivoting_TB_Columns_Opening_Debit_Credit_Closing.html">Unpivoting TB Columns (Opening, Debit, Credit, Closing)</a></li><li><a href="S06_Pivot_Column_as_the_Reverse_of_Unpivot_Including.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S06_Pivot_Column_as_the_Reverse_of_Unpivot_Including.html">Pivot Column as the Reverse of Unpivot, Including Don&#x27;t Aggregate</a></li><li><a href="S07_Target_Fact_Schema_Date_Account_Department.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S07_Target_Fact_Schema_Date_Account_Department.html">Target Fact Schema: Date, Account, Department, Scenario, Amount</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_TableUnpivotOtherColumns_with_Fixed_Identifier.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C01_TableUnpivotOtherColumns_with_Fixed_Identifier.html">Table.UnpivotOtherColumns with Fixed Identifier Columns</a></li><li><a href="../concepts/C02_Month_Label_to_Month_End_Date_with_DateFromText.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C02_Month_Label_to_Month_End_Date_with_DateFromText.html">Month Label to Month-End Date with Date.FromText and Format</a></li><li><a href="../concepts/C03_Multi_Row_Header_Recipe_Transpose_Fill_Combine.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C03_Multi_Row_Header_Recipe_Transpose_Fill_Combine.html">Multi-Row Header Recipe: Transpose, Fill, Combine, Unpivot, Split</a></li><li><a href="../concepts/C04_TablePivot_with_a_Dynamic_Value_List_and_ListSum.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C04_TablePivot_with_a_Dynamic_Value_List_and_ListSum.html">Table.Pivot with a Dynamic Value List and List.Sum</a></li><li><a href="../concepts/C05_Adding_a_Typed_Scenario_Column_Before_Appending_to.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C05_Adding_a_Typed_Scenario_Column_Before_Appending_to.html">Adding a Typed Scenario Column Before Appending to Actuals</a></li><li><a href="../concepts/C06_Unpivot_Drops_Null_Cells_Replace_Nulls_with_Zero.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C06_Unpivot_Drops_Null_Cells_Replace_Nulls_with_Zero.html">Unpivot Drops Null Cells: Replace Nulls with Zero When Needed</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Wide (Crosstab) vs Long (Normalised) Data and Fact Tables</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Wide (crosstab) vs long (normalised) shape, and why fact tables must be long</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Budgets, forecasts and MIS packs in Indian companies are almost always built <strong>wide</strong>: accounts or departments down the rows, April to March across the columns, an FY Total at the end. That shape is excellent for people — easy to read, type into and print. It is poor for machines. A Power BI model, a pivot on the Data Model, a SQL table or a budget-vs-actual measure needs the data <strong>long</strong>: one row per account per department per month with a single Amount column. Converting wide to long (unpivoting) is therefore the first step of every budget load, rolling forecast and multi-period TB analysis — and the Saturday assessment for this week.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="definitions">Definitions</h3>
+<p><strong>Wide (crosstab, pivoted)</strong> — one or more <strong>identifier</strong> columns plus <strong>one column per value of an attribute</strong> (each month, each scenario, each department). The attribute's values live in the <strong>column headers</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Account</th>
+<th>Department</th>
+<th>Apr-25</th>
+<th>May-25</th>
+<th>…</th>
+<th>Mar-26</th>
+<th>FY Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>610100 Salaries</td>
+<td>Sales</td>
+<td>12,00,000</td>
+<td>12,00,000</td>
+<td>…</td>
+<td>13,20,000</td>
+<td>1,48,80,000</td>
+</tr>
+<tr>
+<td>620300 Travel</td>
+<td>Sales</td>
+<td>1,50,000</td>
+<td>1,20,000</td>
+<td>…</td>
+<td>2,00,000</td>
+<td>18,40,000</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Long (normalised, tidy)</strong> — every <strong>variable is a column</strong>, every <strong>observation is a row</strong>. The month becomes a column whose values are dates.</p>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Account</th>
+<th>Department</th>
+<th>Scenario</th>
+<th>Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30-Apr-2025</td>
+<td>610100</td>
+<td>Sales</td>
+<td>Budget</td>
+<td>12,00,000</td>
+</tr>
+<tr>
+<td>31-May-2025</td>
+<td>610100</td>
+<td>Sales</td>
+<td>Budget</td>
+<td>12,00,000</td>
+</tr>
+<tr>
+<td>30-Apr-2025</td>
+<td>620300</td>
+<td>Sales</td>
+<td>Budget</td>
+<td>1,50,000</td>
+</tr>
+</tbody>
+</table>
+<p>The "tidy data" rules (Hadley Wickham's formulation, also the logic of relational normalisation): each variable forms a column, each observation forms a row, each type of observational unit forms a table. A wide budget breaks the first rule — "Month" is a variable spread across 12 headers.</p>
+<h3 id="why-fact-tables-must-be-long">Why fact tables must be long</h3>
+<ol>
+<li><strong>One measure column</strong>: DAX measures such as <code>SUM(Budget[Amount])</code> work on one column. In a wide table you would need 12 measures (or a 12-term sum) and a new one each year.</li>
+<li><strong>Relationships to dimensions</strong>: a Date column can relate to the Calendar dimension (Week 11), giving fiscal months, quarters, YTD and prior-year comparisons. Header text "Apr-25" cannot relate to anything.</li>
+<li><strong>Slicing and filtering</strong>: "Q1 only", "H2 vs H1", "last 3 months" become filters on Date instead of choosing columns.</li>
+<li><strong>Appending scenarios</strong>: actuals (from the GL, inherently long — one row per posting) and budget can be appended into one fact or modelled as two facts sharing dimensions, only if both are long with the same columns.</li>
+<li><strong>Stable schema</strong>: new months add <strong>rows</strong>, not <strong>columns</strong>. Queries, measures and visuals do not change when FY2026-27 arrives.</li>
+<li><strong>Compression and performance</strong>: VertiPaq compresses long, low-cardinality columns very efficiently; many sparse wide columns compress worse and complicate the model.</li>
+<li><strong>Grain clarity</strong>: each row states its grain (month × account × department × scenario), which makes double-counting visible.</li>
+</ol>
+<h3 id="what-should-stay-wide">What should stay wide</h3>
+<p>Wide is the right shape for <strong>presentation and input</strong>: the budget template department heads fill in, the board pack P&amp;L with months across, an Excel report. The principle is <em>store long, present wide</em> — Power Query unpivots the input; a pivot table, matrix visual or <code>Table.Pivot</code> re-creates the wide view for output (s06).</p>
+<h3 id="counting-rows-and-checking">Counting rows and checking</h3>
+<p>If the wide table has \(r\) data rows and \(m\) month columns, the unpivoted table has at most</p>
+<p>\[
+N_{\text{long}} = r \times m
+\]</p>
+<p>rows (fewer if blanks/nulls are dropped — see c06). A budget with 420 account-department rows and 12 months gives up to 5,040 long rows. The sum of Amount in the long table must equal the sum of the 12 month columns in the wide table — and must <strong>not</strong> include the FY Total column, otherwise the total doubles.</p>
+<h3 id="illustration">Illustration</h3>
+<p>A department budget: 3 departments × 140 accounts = 420 rows, 12 month columns plus FY Total. Wide total of the month columns: ₹46.8 crore; FY Total column also ₹46.8 crore. Unpivoting <strong>all</strong> non-identifier columns (including FY Total) gives 420 × 13 = 5,460 rows summing to ₹93.6 crore — double. Unpivoting with FY Total excluded gives 5,040 rows summing to ₹46.8 crore. A one-line control check catches this.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Mixed wide dimensions</strong>: some budgets are wide on both department and month (two header rows) — needs the multi-row header technique (s04).</li>
+<li><strong>Multiple measures wide</strong>: TB columns Opening, Debit, Credit, Closing are wide on "measure type" (s05). Decide whether to unpivot them into Attribute/Value or keep a few measure columns: keeping Debit and Credit as two columns can be acceptable if they are always used together.</li>
+<li><strong>Text identifiers in numeric columns</strong> (notes like "TBD" in a month cell) make the Amount column non-numeric after unpivot — clean or log first.</li>
+<li><strong>Sparse data</strong>: long tables omit rows for nulls by default; zeros stay. Decide whether "no budget" and "zero budget" must be distinguished.</li>
+<li><strong>Very wide inputs</strong> (daily columns for a cash forecast — 365 columns) are where unpivot pays off most.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Wide is for people (input and presentation); long is for models (storage and analysis).</li>
+<li>In a long fact table each row is one observation at a stated grain, with one Amount column.</li>
+<li>Long tables relate to a Calendar dimension, survive new periods without schema changes, and support appending actuals and budgets.</li>
+<li>Expected row count after unpivot is rows × value columns (less dropped nulls); the long sum must equal the sum of month columns only.</li>
+<li>Exclude totals and other derived columns from the unpivot.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-identify-the-shape-l1">Q1. Identify the shape [L1]</h3>
+<p>For each dataset say whether it is wide or long and, if wide, which variable is spread across columns: (a) a Tally Day Book export; (b) a 12-month cash-flow forecast with months across; (c) a TB with Opening, Debit, Credit, Closing columns; (d) a GSTR-3B summary with months as columns; (e) an SAP FBL3N line-item list.</p>
+<h3 id="q2-row-and-total-arithmetic-l2">Q2. Row and total arithmetic [L2]</h3>
+<p>A sales budget has 85 SKUs × 6 regions as rows, 12 month columns, an H1 Total, an H2 Total and an FY Total column. 37 month cells are blank. State the number of rows you expect after unpivoting only the month columns, the number if all non-identifier columns are unpivoted, and the impact on the sum.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider how blank cells behave in an unpivot.</p>
+</blockquote>
+<h3 id="q3-explain-to-a-stakeholder-l2">Q3. Explain to a stakeholder [L2]</h3>
+<p>The FP&amp;A head says "Why change my budget sheet? It has worked for 10 years." Write a short note explaining why the model needs a long table while the template can stay wide, with two concrete benefits for budget-vs-actual reporting.</p>
+<h3 id="q4-grain-statement-l1">Q4. Grain statement [L1]</h3>
+<p>Write the grain statement for (a) a long monthly department budget; (b) a GL actuals fact from SAP line items; and explain why the two cannot simply be appended without further work.</p>
+<h3 id="q5-design-the-long-schema-l3">Q5. Design the long schema [L3]</h3>
+<p>A capex budget workbook has rows Project, Asset Class, Location and columns for each quarter of FY2025-26 and FY2026-27 plus a "Life (years)" column. Design the long fact table(s) — columns, types and grain — and explain where the Life attribute should live.</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← Unpivoting wide budgets and TBs</a><a class="next" href="S02_Unpivot_Other_Columns_vs_Unpivot_Columns_vs_Only.html">Unpivot Other Columns vs Unpivot Columns vs Only Selected →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic Stress Testing · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/index.html" data-kind="topic">
+<header class="top"><a class="brand" href="../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../index.html">Home</a> <span>›</span> <a href="../../index.html">Phase 4</a> <span>›</span> <a href="../index.html">Week 15</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">Week 15</a></div><ul class="side-links"><li><a href="../T1_Linking_the_Income_Statement/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T1_Linking_the_Income_Statement/index.html">T1 · Linking the Income Statement</a></li><li><a href="../T2_Building_the_Indirect_Cash_Flow/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T2_Building_the_Indirect_Cash_Flow/index.html">T2 · Building the Indirect Cash Flow Statement</a></li><li><a href="../T3_Linking_the_Balance_Sheet/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T3_Linking_the_Balance_Sheet/index.html">T3 · Linking the Balance Sheet</a></li><li><a href="../T4_Balance_Sheet_Debugging_Diagnostics/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/index.html">T4 · Balance Sheet Debugging Diagnostics</a></li><li><a href="index.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/index.html">T5 · Dynamic Stress Testing</a></li><li><a href="../T6_Finalizing_Project_4_Model/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T6_Finalizing_Project_4_Model/index.html">T6 · Finalizing Project 4 Model</a></li></ul></aside>
+<main class="content">
+<div class="kind">Topic</div>
+<h1>Dynamic Stress Testing</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<section class="index"><h2>Notes in this topic</h2><div class="cols"><div><h3>Subtopics</h3><ul class="links num"><li><a href="subtopics/S01_Toggling_Base_Bull_and_Bear_with_a_Zero_Check_in.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S01_Toggling_Base_Bull_and_Bear_with_a_Zero_Check_in.html">S01 · Toggling Base, Bull and Bear with a Zero Check in Every Year</a></li><li><a href="subtopics/S02_Extreme_Input_Stress_Tests_Growth_Margins_Capex.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S02_Extreme_Input_Stress_Tests_Growth_Margins_Capex.html">S02 · Extreme Input Stress Tests: Growth, Margins, Capex and WC Days</a></li><li><a href="subtopics/S03_Revolver_Behaviour_in_a_Recession_Draw_Within.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S03_Revolver_Behaviour_in_a_Recession_Draw_Within.html">S03 · Revolver Behaviour in a Recession: Draw Within Limit, Flag Shortfall</a></li><li><a href="subtopics/S04_Negative_PBT_Loss_Carry_Forward_No_Negative_Tax.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S04_Negative_PBT_Loss_Carry_Forward_No_Negative_Tax.html">S04 · Negative PBT: Loss Carry-Forward, No Negative Tax, DTA Recognition</a></li><li><a href="subtopics/S05_Dividends_Under_Losses_Floored_at_Zero_Capped_by.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S05_Dividends_Under_Losses_Floored_at_Zero_Capped_by.html">S05 · Dividends Under Losses: Floored at Zero, Capped by Profits and Cash</a></li><li><a href="subtopics/S06_Covenant_Flags_Net_DebtEBITDA_DSCR_and_ICR_Breach.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S06_Covenant_Flags_Net_DebtEBITDA_DSCR_and_ICR_Breach.html">S06 · Covenant Flags: Net Debt/EBITDA, DSCR and ICR Breach Years</a></li><li><a href="subtopics/S07_The_Checks_Dashboard_Balance_Cash_Liquidity_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S07_The_Checks_Dashboard_Balance_Cash_Liquidity_and.html">S07 · The Checks Dashboard: Balance, Cash, Liquidity and Convergence</a></li></ul></div><div><h3>Key concepts & formulas</h3><ul class="links num"><li><a href="concepts/C01_Current_Tax_with_Loss_Set_Off_and_the_Sec_72_Loss.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C01_Current_Tax_with_Loss_Set_Off_and_the_Sec_72_Loss.html">C01 · Current Tax with Loss Set-Off and the Sec 72 Loss Corkscrew</a></li><li><a href="concepts/C02_Dividend_Floor_and_Cash_Cap_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C02_Dividend_Floor_and_Cash_Cap_Formula.html">C02 · Dividend Floor and Cash Cap Formula</a></li><li><a href="concepts/C03_The_Binary_Error_Flag_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C03_The_Binary_Error_Flag_Formula.html">C03 · The Binary Error Flag Formula</a></li><li><a href="concepts/C04_Goal_Seek_and_Data_Tables_to_Find_Breaking_Points.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C04_Goal_Seek_and_Data_Tables_to_Find_Breaking_Points.html">C04 · Goal Seek and Data Tables to Find Breaking Points</a></li><li><a href="concepts/C05_Scenario_Invariance_A_Linked_Model_Balances_for.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C05_Scenario_Invariance_A_Linked_Model_Balances_for.html">C05 · Scenario Invariance: A Linked Model Balances for Any Input</a></li></ul></div></div></section><article class="note"><blockquote>
+<p><strong>Roadmap topic:</strong> Dynamic Stress Testing: Toggling Base / Bull / Bear scenarios and extreme growth/recession inputs to prove the Balance Sheet remains balanced under all conditions</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>A model that balances in Base proves only that one set of inputs happens to produce consistent numbers. It does not prove the model is correctly linked. Many links are dormant in Base. The revolver never draws, tax losses never arise, dividends are never floored, covenants are never tested and working capital never releases. Those links break only when the inputs push the model into territory the builder did not test. Stress testing deliberately pushes the model there. You switch scenarios, apply extreme inputs and confirm that the check row stays at 0.00, cash never goes negative without a flag, tax behaves lawfully, dividends respect profits and cash, and covenant breaches are reported. The principle is <strong>scenario invariance</strong> (c05): a correctly linked model balances for any input.</p>
+<p>For FP&amp;A and transaction roles, stress testing is also where the model earns its keep. Lenders want to know the revenue decline at which DSCR falls below 1.20x. Boards want to know whether the dividend policy survives a recession. Rating agencies and credit committees focus on the downside case. A model that breaks (negative tax refunds, an unlimited revolver funding losses, dividends paid out of losses) gives wrong answers to exactly the questions that matter most. Indian specifics matter here too. Loss carry-forward under Sec 72 (8 years), unabsorbed depreciation under Sec 32(2) (indefinite), DTA recognition under Ind AS 12, the dividend rules of Sec 123 of the Companies Act 2013, and covenant definitions in Indian term loan agreements and SEBI LODR Reg 52 disclosures for listed debt all drive the modelling logic.</p>
+<p>The subtopics follow a natural sequence. First toggle Base/Bull/Bear and capture the checks for every year (s01). Then apply extreme single-variable shocks such as zero and negative growth, margin collapse, 3× capex and DSO/DIO shocks (s02). These stresses activate the revolver (s03), tax losses (s04) and dividend floors (s05). Each needs correct logic for the model to stay both balanced and realistic. Covenant flags (s06) turn the stressed outputs into decisions. A checks dashboard (s07) summarises everything in one place so that any user can see at a glance whether the model is valid in the current scenario. The concepts give the exact formulas: the loss corkscrew and current tax floor (c01), the dividend floor and cap (c02), the master error flag (c03), Goal Seek and data tables for breaking points (c04), and the invariance principle (c05).</p>
+<h2 id="concept-map">Concept map</h2>
+<table>
+<thead>
+<tr>
+<th>Subtopic / concept</th>
+<th>Role in the topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s01 Toggling Base/Bull/Bear and confirming check row</td>
+<td>Proves balance across the defined scenarios for every year</td>
+</tr>
+<tr>
+<td>s02 Extreme inputs: growth, margin, capex, DSO/DIO shocks</td>
+<td>Pushes the model beyond plausible ranges to expose dormant links</td>
+</tr>
+<tr>
+<td>s03 Revolver behaviour in recession</td>
+<td>Ensures funding gaps are met within the limit and any shortfall is flagged</td>
+</tr>
+<tr>
+<td>s04 Negative PBT: losses c/f, no negative current tax, DTA</td>
+<td>Keeps tax lawful and the tax schedule balanced under losses</td>
+</tr>
+<tr>
+<td>s05 Dividends under losses</td>
+<td>Floors and caps distributions to profits and cash</td>
+</tr>
+<tr>
+<td>s06 Covenant flags: net debt/EBITDA, DSCR, ICR</td>
+<td>Converts stressed outputs into breach years and headroom</td>
+</tr>
+<tr>
+<td>s07 Checks dashboard</td>
+<td>One-page summary of all integrity and liquidity checks</td>
+</tr>
+<tr>
+<td>c01 Current tax with loss b/f; Sec 72 corkscrew</td>
+<td>Exact tax logic for loss years</td>
+</tr>
+<tr>
+<td>c02 Dividends = MAX(0, PAT × payout), MIN with cash</td>
+<td>Exact distribution logic</td>
+</tr>
+<tr>
+<td>c03 Error flag formula</td>
+<td>Single binary flag for any integrity breach</td>
+</tr>
+<tr>
+<td>c04 Goal Seek / data tables for breaking points</td>
+<td>Finds the input level at which a covenant or cash limit breaks</td>
+</tr>
+<tr>
+<td>c05 Scenario invariance</td>
+<td>The principle being tested</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-concepts-to-study">Related concepts to study</h2>
+<h3 id="scenario-switch-and-sensitivity-grids">Scenario switch and sensitivity grids</h3>
+<p><em>→ Week 13 (w13_t6): scenario switch; → Week 16 (w16_t5): sensitivity grids</em></p>
+<p>The Week 13 scenario switch (a single input cell, typically <code>Scen_Switch</code> = 1/2/3, driving <code>CHOOSE</code> or <code>INDEX</code> selectors for every scenario-dependent input) is what you toggle in s01. If the switch was built correctly, with every scenario input routed through one live column, toggling is a one-cell change and stress testing is fast. If some inputs bypass the selector, Bear may silently keep Base values. Week 16's sensitivity grids (one- and two-variable data tables of valuation outputs against WACC, terminal growth or margins) reuse the same machinery you use here for checks. A data table that varies growth and returns the maximum absolute BS check across all years is a stress test grid. Building it now means Week 16's valuation grids will rest on a model already proven to balance across the input range.</p>
+<h3 id="downside-planning-and-rolling-forecasts">Downside planning and rolling forecasts</h3>
+<p><em>→ Phase 5 (W17–20): downside planning and rolling forecasts</em></p>
+<p>In FP&amp;A, stress testing becomes downside planning. Management asks how much revenue can fall before covenants trip, what cost levers and capex deferrals are available, and how long the liquidity runway is. Rolling forecasts (re-forecasting the next 12–18 months every month or quarter) expose the model to many more input combinations than an annual budget does, so integrity has to hold for any input, not just the board-approved case. The tools built here (revolver with limit flags, loss-aware tax, floored dividends, covenant flags and a checks dashboard) are exactly what a Phase 5 downside pack needs. The difference is that FP&amp;A cases are usually monthly or quarterly, so covenant tests use trailing twelve months and liquidity checks run on monthly minimum cash.</p>
+<h3 id="unabsorbed-depreciation-vs-business-loss-rules">Unabsorbed depreciation vs business loss rules</h3>
+<p><em>Unabsorbed depreciation (indefinite carry-forward) vs business loss rules</em></p>
+<p>Under the Income-tax Act, 1961, a business loss (other than speculation) can be carried forward for 8 assessment years and set off only against business income (Sec 72). A return must be filed within the due date under Sec 139(1) for the loss to be carried forward (Sec 80). Unabsorbed depreciation (Sec 32(2)) is carried forward indefinitely, can be set off against any head except salary, and does not require the return to be filed on time. In the set-off order, brought-forward business loss is used before unabsorbed depreciation. A model that pools both into one 8-year bucket understates usable losses for capital-intensive companies. Two cautions: companies opting for Sec 115BAA cannot set off losses or depreciation attributable to the disallowed incentives, and the Income-tax Act, 2025 (effective 1 April 2026) renumbers these provisions. Confirm the current section references.</p>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<h3 id="testing-only-the-base-case">Testing only the Base case</h3>
+<p><em>Testing only the Base case</em></p>
+<p><strong>The mistake:</strong> confirming the check row is 0.00 in Base and delivering the model. <strong>Why it happens:</strong> Base is the case management focuses on, and toggling three scenarios across five years by hand feels tedious. <strong>Correct treatment:</strong> test every scenario and every year, plus a set of extreme inputs. Capture the results in a scenario check table (scenario × year) that updates automatically, for example a data table on the scenario switch returning the maximum absolute check. Dormant logic (revolver, tax losses, dividend floors) must be exercised at least once. <strong>Detection in review:</strong> ask for the scenario check table. If the builder cannot show checks for Bull, Bear and an extreme case, assume they fail. Toggle to Bear yourself and look at the dashboard.</p>
+<h3 id="negative-tax-when-pbt-is-negative">Negative tax when PBT is negative</h3>
+<p><em>Negative tax when PBT &lt; 0 (implicit refund)</em></p>
+<p><strong>The mistake:</strong> current tax = PBT × t, so a loss of ₹100 crore produces current tax of −₹25.17 crore, a cash inflow, as if the government refunded tax on losses. <strong>Why it happens:</strong> the tax formula was written for profitable years and never tested on losses. <strong>Correct treatment:</strong> current tax = MAX(0, taxable income − loss b/f utilised) × t, with losses carried forward in a corkscrew (c01). Any tax benefit of the loss is recognised as a DTA only to the extent future taxable profit is probable (Ind AS 12.34–36), and it is non-cash. <strong>Detection in review:</strong> look for negative current tax or negative taxes paid in any year of any scenario. Add a dashboard check <code>MIN(Current_Tax_Row) &gt;= 0</code>.</p>
+<h3 id="unbounded-revolver-silently-funding-deficits">Unbounded revolver silently funding deficits</h3>
+<p><em>Unbounded revolver silently funding deficits</em></p>
+<p><strong>The mistake:</strong> the revolver draws whatever is needed to keep cash at the minimum balance, with no limit. In a recession it draws ₹2,000 crore against a ₹500 crore sanctioned limit, and the model shows healthy cash and a balanced BS. <strong>Why it happens:</strong> the limit was never input, or the <code>MIN</code> with available headroom was omitted. <strong>Correct treatment:</strong> draw = MIN(funding need, limit − opening balance). Any remaining shortfall stays as negative cash or appears on a "funding shortfall" line and is flagged on the dashboard (s03, c03). <strong>Detection in review:</strong> compare the closing revolver to the sanctioned limit in every year and scenario, and check that the error flag includes <code>Rev_Close &gt; Rev_Limit</code>.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-recession-stress-on-an-auto-ancillary-l3">Q1. Recession stress on an auto-ancillary [L3]</h3>
+<p>Narmada Forgings Ltd (₹ crore, FY25A): revenue 2,400, EBITDA margin 16%, D&amp;A 110, net debt 520 (term loan 600, cash 80), revolver limit 250 (undrawn), minimum cash 50, tax rate 25.17%, dividend payout 30% of PAT. Term loan interest 9.5% with ₹100 crore annual repayment, revolver interest 10%. Bear case: revenue −15% in FY26E and −10% in FY27E, then +5% per year. EBITDA margin falls to 8% in FY26E and 6% in FY27E, then recovers to 12%. Capex 120 per year. Working capital at 20% of revenue. (a) Specify the checks you would run in each year and the expected behaviour of the revolver, tax and dividends. (b) Identify the years in which you expect a tax loss and explain how the loss corkscrew and DTA should behave. (c) Define the covenant flags for net debt/EBITDA ≤ 3.0x, DSCR ≥ 1.20x and ICR ≥ 2.5x, and describe how you would find the first breach year. (d) Describe the scenario check table you would deliver.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Working capital releases cash when revenue falls, so do not assume the revolver draws in the first recession year.</p>
+</blockquote>
+<h3 id="q2-building-a-breaking-point-analysis-l3">Q2. Building a breaking-point analysis [L3]</h3>
+<p>For a model with Base revenue growth of 12%, you must report the growth rate at which FY28E net debt/EBITDA first exceeds 3.25x, and the growth rate at which the revolver limit is first breached. (a) Explain how you would set up Goal Seek for the first question and why it might fail in a circular model. (b) Design a one-variable data table (growth from −30% to +30% in 5% steps) returning both metrics and the maximum absolute BS check. (c) Explain how you would interpret a row in which the BS check is non-zero.</p>
+<h3 id="q3-tax-and-dividends-in-a-loss-year-l2">Q3. Tax and dividends in a loss year [L2]</h3>
+<p>Kalinga Steel Ltd forecasts PBT of −₹180 crore in FY27E, +₹60 crore in FY28E and +₹220 crore in FY29E. Tax rate 25.17%, no brought-forward losses at the start of FY27E, unabsorbed depreciation nil. Dividend policy: 25% of PAT, with a minimum cash of ₹100 crore. FY28E cash before dividends is ₹120 crore. (a) Lay out the loss corkscrew and current tax for FY27E–FY29E. (b) Discuss whether a DTA should be recognised in FY27E under Ind AS 12 and the effect on PAT in FY27E–FY29E with and without recognition. (c) Compute the dividend logic inputs needed for FY28E and FY29E, and explain the constraints of Sec 123 of the Companies Act 2013 on paying dividends after a loss year.</p>
+<h3 id="q4-checks-dashboard-review-l2">Q4. Checks dashboard review [L2]</h3>
+<p>You inherit a model whose dashboard shows only "BS check: OK". List the additional checks you would add (with formulas in named-range form), specify the tolerance for each, and explain which pitfall each one guards against. Include a single master flag that counts errors across all years and scenarios.</p></section>
+<nav class="pager"><a class="prev" href="../T4_Balance_Sheet_Debugging_Diagnostics/concepts/C05_Typical_Culprits_Behind_a_Balance_Sheet_Imbalance.html">← Typical Culprits Behind a Balance Sheet Imbalance</a><a class="next" href="subtopics/S01_Toggling_Base_Bull_and_Bear_with_a_Zero_Check_in.html">Toggling Base, Bull and Bear with a Zero Check in Every Year →</a></nav>
+</main></div></body></html>

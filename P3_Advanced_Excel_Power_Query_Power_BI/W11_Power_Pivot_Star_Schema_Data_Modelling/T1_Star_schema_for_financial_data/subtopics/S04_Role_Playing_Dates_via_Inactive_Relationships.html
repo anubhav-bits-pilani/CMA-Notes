@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Role-Playing Dates via Inactive Relationships · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S04_Role_Playing_Dates_via_Inactive_Relationships.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T1 · Star schema for financial data</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Star schema for financial data</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Facts_vs_Dimensions_in_a_Financial_Star_Schema.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S01_Facts_vs_Dimensions_in_a_Financial_Star_Schema.html">Facts vs Dimensions in a Financial Star Schema</a></li><li><a href="S02_Defining_Fact_Grain_and_Handling_Mixed_Grain.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S02_Defining_Fact_Grain_and_Handling_Mixed_Grain.html">Defining Fact Grain and Handling Mixed Grain (Budget vs Actual)</a></li><li><a href="S03_Relationship_Properties_Cardinality_Direction.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S03_Relationship_Properties_Cardinality_Direction.html">Relationship Properties: Cardinality, Direction, Active Status</a></li><li><a href="S04_Role_Playing_Dates_via_Inactive_Relationships.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S04_Role_Playing_Dates_via_Inactive_Relationships.html">Role-Playing Dates via Inactive Relationships</a></li><li><a href="S05_CoA_Hierarchy_with_Sort_Order_and_Sign_Factor.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S05_CoA_Hierarchy_with_Sort_Order_and_Sign_Factor.html">CoA Hierarchy with Sort-Order and Sign-Factor Columns</a></li><li><a href="S06_Surrogate_Keys_and_an_Unmapped_Member_for_Missing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S06_Surrogate_Keys_and_an_Unmapped_Member_for_Missing.html">Surrogate Keys and an Unmapped Member for Missing Accounts</a></li><li><a href="S07_Avoiding_Snowflakes_and_Flat_Tables_Diagram_View.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S07_Avoiding_Snowflakes_and_Flat_Tables_Diagram_View.html">Avoiding Snowflakes and Flat Tables; Diagram View vs Model View</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_USERELATIONSHIP_to_Activate_an_Inactive_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C01_USERELATIONSHIP_to_Activate_an_Inactive_Date.html">USERELATIONSHIP to Activate an Inactive Date Relationship</a></li><li><a href="../concepts/C02_Store_Budget_on_the_First_Day_of_the_Month.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C02_Store_Budget_on_the_First_Day_of_the_Month.html">Store Budget on the First Day of the Month</a></li><li><a href="../concepts/C03_Virtual_Relationship_with_TREATAS_for_Month_Grain.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C03_Virtual_Relationship_with_TREATAS_for_Month_Grain.html">Virtual Relationship with TREATAS for Month-Grain Budget</a></li><li><a href="../concepts/C04_CROSSFILTER_for_Per_Measure_Bidirectional.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C04_CROSSFILTER_for_Per_Measure_Bidirectional.html">CROSSFILTER for Per-Measure Bidirectional Filtering</a></li><li><a href="../concepts/C05_Referential_Integrity_Test_with_EXCEPT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C05_Referential_Integrity_Test_with_EXCEPT.html">Referential Integrity Test with EXCEPT</a></li><li><a href="../concepts/C06_Hide_Fact_Foreign_Keys_Expose_Attributes_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C06_Hide_Fact_Foreign_Keys_Expose_Attributes_and.html">Hide Fact Foreign Keys; Expose Attributes and Measures</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Role-Playing Dates via Inactive Relationships</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Role-playing dates (posting vs document vs due date) through inactive relationships</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A single finance transaction carries several dates, each answering a different business question. Posting date
+drives the P&amp;L period and the TB; document (invoice) date drives GST return periods and contractual terms; due
+date drives receivable and payable ageing, cash-flow forecasting and MSME 45-day compliance under Sec 43B(h) of the
+Income-tax Act. One Date dimension "plays" each of these roles. Modelling them correctly lets a single report show
+"revenue booked in Q1" next to "receipts due in Q1" without duplicating tables or measures unnecessarily.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-role-playing-problem">The role-playing problem</h3>
+<p>GL has <code>PostingDate</code>, <code>DocDate</code> and <code>DueDate</code>. You want each to be filterable by the same fiscal calendar. Power BI
+allows only one active relationship between GL and <code>'Date'</code>, because two active paths between the same tables would
+be ambiguous. The design options:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>How</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A. One Date table, one active + inactive relationships</td>
+<td>Relate all three date columns to <code>'Date'[Date]</code>; PostingDate active, others inactive; use <code>USERELATIONSHIP</code> in measures</td>
+<td>One calendar, one set of slicers, small model</td>
+<td>Each alternate-date measure must be written explicitly</td>
+</tr>
+<tr>
+<td>B. Multiple Date tables (role-playing copies)</td>
+<td>Create <code>'Due Date'</code> and <code>'Doc Date'</code> as calculated or Power Query copies, each with an active relationship</td>
+<td>Users can slice by both dates simultaneously ("posted in April, due in June")</td>
+<td>More tables, duplicated slicers, user confusion over which date slicer to use</td>
+</tr>
+<tr>
+<td>C. Unpivot dates</td>
+<td>Store one row per transaction per date role</td>
+<td>Rarely appropriate for finance</td>
+<td>Multiplies fact rows; breaks additivity</td>
+</tr>
+</tbody>
+</table>
+<p>For most FP&amp;A models, <strong>Option A</strong> is correct: posting date is the primary role (it ties to the TB and the
+statutory books), and due date or doc date analyses are delivered through specific measures.</p>
+<h3 id="writing-role-specific-measures">Writing role-specific measures</h3>
+<pre><code class="language-DAX">Actual = SUM ( GL[Amount] )
+
+Actual by Due Date =
+CALCULATE (
+    [Actual],
+    USERELATIONSHIP ( GL[DueDate], 'Date'[Date] )
+)
+
+Actual by Doc Date =
+CALCULATE (
+    [Actual],
+    USERELATIONSHIP ( GL[DocDate], 'Date'[Date] )
+)
+</code></pre>
+<p><code>USERELATIONSHIP</code> activates the named inactive relationship for the duration of that CALCULATE and, because only
+one path may be active, implicitly deactivates the PostingDate relationship for that evaluation. Filters from
+<code>'Date'</code> (FY slicer, month on columns) now land on <code>GL[DueDate]</code>. The relationship must already exist in the model
+(dashed line); USERELATIONSHIP cannot create one.</p>
+<h3 id="typical-finance-uses">Typical finance uses</h3>
+<ul>
+<li><strong>Receivables due profile:</strong> customer-invoice debit amounts on trade-receivable accounts, by due month, to build a
+  collections forecast.</li>
+<li><strong>MSME payables compliance:</strong> payables to MSME vendors where due date (or 45 days from acceptance) falls before
+  31 March and payment has not been made — relevant for the Sec 43B(h) disallowance and Schedule III MSME disclosure.</li>
+<li><strong>GST period vs books period:</strong> document-date revenue by month compared with posting-date revenue to explain
+  timing differences in GSTR-1 vs books reconciliation.</li>
+<li><strong>Cut-off testing (audit):</strong> vouchers whose document date is in March but posting date is in April —
+  computable by comparing the two roles.</li>
+</ul>
+<h3 id="combining-roles-in-one-visual">Combining roles in one visual</h3>
+<p>Option A cannot show "posting month on rows, due month on columns" because both axes would come from the same
+<code>'Date'</code> table. If that cross-tab is needed (e.g. a receivables vintage matrix), add a small second calendar for
+the alternate role:</p>
+<pre><code class="language-DAX">'Due Date' =
+SELECTCOLUMNS (
+    'Date',
+    &quot;Due Date&quot;, 'Date'[Date],
+    &quot;Due FY&quot;, 'Date'[FY],
+    &quot;Due Month&quot;, 'Date'[MonthName],
+    &quot;Due FiscalMonthNo&quot;, 'Date'[FiscalMonthNo]
+)
+</code></pre>
+<p>Relate <code>'Due Date'[Due Date]</code> to <code>GL[DueDate]</code> as an active relationship. Better still, generate the copy in Power
+Query by referencing the Date query so it inherits the same logic. Remember to set Sort by Column on the copy too.</p>
+<h3 id="time-intelligence-with-alternate-roles">Time intelligence with alternate roles</h3>
+<p>Time-intelligence functions work through whichever relationship is active in that evaluation:</p>
+<pre><code class="language-DAX">YTD by Due Date =
+CALCULATE (
+    TOTALYTD ( [Actual], 'Date'[Date], &quot;3/31&quot; ),
+    USERELATIONSHIP ( GL[DueDate], 'Date'[Date] )
+)
+</code></pre>
+<p>The outer CALCULATE switches the relationship; TOTALYTD then builds a fiscal-YTD date set on <code>'Date'[Date]</code>, and that
+set filters <code>GL[DueDate]</code>.</p>
+<h3 id="illustration">Illustration</h3>
+<p>Invoice INV-0457 to a Pune dealer: document date 25 March 2025, posted 2 April 2025 (late entry), credit terms 60
+days so due date 24 May 2025, amount ₹11,80,000 including GST. With PostingDate active, <code>[Actual]</code> on the debtors
+account shows the debit in April 2025 (FY2025-26). <code>[Actual by Doc Date]</code> shows it in March 2025 (FY2024-25) — a
+cut-off exception for the FY2024-25 audit. <code>[Actual by Due Date]</code> places it in May 2025 in the collections forecast.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Blank due dates.</strong> Journals and payroll lines have no due date. With USERELATIONSHIP active, those rows match the
+  Date table's blank member and drop out of any date-filtered result; that is usually desired, but confirm totals.</li>
+<li><strong>Due dates beyond the calendar.</strong> Long-dated retention money or deferred consideration may fall years ahead; the
+  Date table must extend to cover them or those rows fall into "(Blank)".</li>
+<li><strong>Row-level security.</strong> Microsoft documents that USERELATIONSHIP cannot be used when RLS is defined on a table
+  involved in the relationship it activates (it raises an error). If you secure the Date or GL tables, test
+  alternate-date measures under each role, or switch to a dedicated role-playing Date table.</li>
+<li><strong>RELATED follows the active relationship.</strong> A calculated column such as <code>RELATED('Date'[FY])</code> on GL returns the
+  posting-date FY. For an alternate-date attribute (due-date FY), use <code>LOOKUPVALUE('Date'[FY], 'Date'[Date],
+  GL[DueDate])</code> or a role-playing copy — explicit and easy to review.</li>
+<li><strong>Too many copies.</strong> Do not create a Date copy for every role "just in case"; each adds slicers and confusion.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>One Date dimension plays several roles; only one GL–Date relationship can be active at a time.</li>
+<li>Make PostingDate active (it ties to books and TB) and keep DocDate and DueDate inactive.</li>
+<li>Activate an alternate role per measure with <code>CALCULATE([Actual], USERELATIONSHIP(GL[DueDate], 'Date'[Date]))</code>.</li>
+<li>Use a role-playing Date copy only when two date roles must appear on different axes of the same visual.</li>
+<li>Extend the calendar to cover all due dates; handle blanks deliberately.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-write-the-measures-l1">Q1. Write the measures [L1]</h3>
+<p>Write DAX measures for (a) receivables by due month, (b) FY-to-date sales by invoice (document) date with an April–
+March year, using the GL table with inactive DocDate and DueDate relationships to <code>'Date'</code>.</p>
+<h3 id="q2-cut-off-exceptions-l2">Q2. Cut-off exceptions [L2]</h3>
+<p>Design a measure that returns the total value of vouchers with a document date in FY2024-25 but a posting date in
+FY2025-26. State which relationships are used, and explain why a simple USERELATIONSHIP measure alone is not
+enough.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> You need one date role to filter via the relationship and the other compared as a column condition.</p>
+</blockquote>
+<h3 id="q3-vintage-matrix-l3">Q3. Vintage matrix [L3]</h3>
+<p>Credit control wants a matrix with invoice posting month on rows and due month on columns, showing outstanding
+receivable amounts for FY2025-26. Specify the model changes (tables, relationships, sort columns) and the measure,
+and list two checks that totals reconcile to the receivables ledger.</p>
+<h3 id="q4-msme-45-day-report-l3">Q4. MSME 45-day report [L3]</h3>
+<p>For the 31 March 2026 tax computation, the tax team needs the list of MSME vendor bills (vendor flag in a Vendor
+dimension) where the due date per Sec 43B(h) has passed and the amount remains unpaid at year-end. Describe the
+data you need in GL or AP facts, the date roles involved and the measures, noting any assumptions about how due
+date is computed when there is no written agreement.</p>
+<h3 id="q5-debug-l2">Q5. Debug [L2]</h3>
+<p>A measure <code>CALCULATE([Actual], USERELATIONSHIP('Date'[Date], GL[DueDate]))</code> returns the same numbers as <code>[Actual]</code>.
+List the possible causes and how you would check each in the Model view or DAX query view.</p></section>
+<nav class="pager"><a class="prev" href="S03_Relationship_Properties_Cardinality_Direction.html">← Relationship Properties: Cardinality, Direction, Active…</a><a class="next" href="S05_CoA_Hierarchy_with_Sort_Order_and_Sign_Factor.html">CoA Hierarchy with Sort-Order and Sign-Factor Columns →</a></nav>
+</main></div></body></html>

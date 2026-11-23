@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unmapped Count with EXCEPT over GL and CoA Account Codes · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C03_Unmapped_Count_with_EXCEPT_over_GL_and_CoA_Account.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T4 · Data governance and audit-trail controls</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Data governance and audit-trail controls</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Control_Measures_Dr_Cr_TB_Nets_to_Zero_A_L_E.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S01_Control_Measures_Dr_Cr_TB_Nets_to_Zero_A_L_E.html">Control Measures: Dr = Cr, TB Nets to Zero, A = L + E</a></li><li><a href="../subtopics/S02_GL_to_Dashboard_Tie_Out_Against_Source_TB_Control.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S02_GL_to_Dashboard_Tie_Out_Against_Source_TB_Control.html">GL-to-Dashboard Tie-Out Against Source TB Control Totals</a></li><li><a href="../subtopics/S03_Completeness_Checks_Unmapped_Ledgers_Row_Counts.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S03_Completeness_Checks_Unmapped_Ledgers_Row_Counts.html">Completeness Checks: Unmapped Ledgers, Row Counts, Missing Months</a></li><li><a href="../subtopics/S04_Refresh_Metadata_Last_Refresh_Latest_Posting_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S04_Refresh_Metadata_Last_Refresh_Latest_Posting_Date.html">Refresh Metadata: Last Refresh, Latest Posting Date, Source Files</a></li><li><a href="../subtopics/S05_Control_Panel_Page_with_PassFail_Indicators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S05_Control_Panel_Page_with_PassFail_Indicators.html">Control Panel Page with Pass/Fail Indicators</a></li><li><a href="../subtopics/S06_Access_Governance_RLS_Roles_Labels_Endorsement.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S06_Access_Governance_RLS_Roles_Labels_Endorsement.html">Access Governance: RLS, Roles, Labels, Endorsement, Lineage</a></li><li><a href="../subtopics/S07_Change_Control_PBIP_in_Git_Measure_Docs_Deployment.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S07_Change_Control_PBIP_in_Git_Measure_Docs_Deployment.html">Change Control: PBIP in Git, Measure Docs, Deployment Pipelines</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Dr_Cr_Diff_and_Dr_Cr_Status_Control_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C01_Dr_Cr_Diff_and_Dr_Cr_Status_Control_Measures.html">Dr Cr Diff and Dr Cr Status Control Measures</a></li><li><a href="C02_BS_Check_Assets_Minus_Liabilities_Minus_Equity.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C02_BS_Check_Assets_Minus_Liabilities_Minus_Equity.html">BS Check: Assets Minus Liabilities Minus Equity Equals Zero</a></li><li><a href="C03_Unmapped_Count_with_EXCEPT_over_GL_and_CoA_Account.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C03_Unmapped_Count_with_EXCEPT_over_GL_and_CoA_Account.html">Unmapped Count with EXCEPT over GL and CoA Account Codes</a></li><li><a href="C04_Tie_out_Diff_Dashboard_Revenue_vs_TB_Control.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C04_Tie_out_Diff_Dashboard_Revenue_vs_TB_Control.html">Tie-out Diff: Dashboard Revenue vs TB Control Totals</a></li><li><a href="C05_IST_Last_Refresh_Table_in_Power_Query.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C05_IST_Last_Refresh_Table_in_Power_Query.html">IST Last-Refresh Table in Power Query</a></li><li><a href="C06_Per_File_Control_Totals_with_TableGroup_on.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C06_Per_File_Control_Totals_with_TableGroup_on.html">Per-File Control Totals with Table.Group on Source.Name</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Unmapped Count with EXCEPT over GL and CoA Account Codes</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>Unmapped Count = COUNTROWS(EXCEPT(VALUES(GL[AccountCode]), VALUES(CoA[AccountCode])))</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-DAX">Unmapped Count =
+COUNTROWS ( EXCEPT ( VALUES ( GL[AccountCode] ), VALUES ( CoA[AccountCode] ) ) )
+</code></pre>
+<ul>
+<li><code>VALUES(GL[AccountCode])</code> — the distinct account codes present in the GL rows visible in the current filter context.</li>
+<li><code>VALUES(CoA[AccountCode])</code> — the distinct codes in the mapping (CoA) dimension visible in the current context.</li>
+<li><code>EXCEPT(T1, T2)</code> — rows of <code>T1</code> that do not appear in <code>T2</code> (set difference, matched on all columns; column names
+  need not match, types must be compatible).</li>
+<li><code>COUNTROWS</code> — the number of unmapped codes. Target value: 0.</li>
+</ul>
+<p>In set notation:</p>
+<p>\[
+\text{Unmapped Count} = \left\lvert \, G \setminus C \, \right\rvert
+\]</p>
+<p>where \(G\) is the set of GL account codes and \(C\) the set of CoA account codes in context.</p>
+<h2 id="explanation">Explanation</h2>
+<p>A GL code with no CoA row cannot carry an FS line, statement or sign, so its amount drops out of every P&amp;L and BS
+measure that filters on CoA attributes. The TB still balances, so this is a completeness failure that s01 controls miss.</p>
+<p>Behaviour worth knowing:</p>
+<ul>
+<li><strong>Blank row.</strong> When GL contains codes with no match, Power BI adds a blank member to CoA. <code>VALUES(CoA[AccountCode])</code>
+  then includes BLANK, but the unmapped codes themselves are not in CoA, so <code>EXCEPT</code> still returns them. (A GL row
+  with a genuinely blank code is a separate data-quality issue — count it with <code>COUNTROWS(FILTER(GL, ISBLANK(GL[AccountCode])))</code>.)</li>
+<li><strong>Filter context.</strong> Under an FS-line slicer, CoA is filtered, the blank member disappears, and GL rows of unmapped
+  codes are filtered out too — the measure returns 0 even when ledgers are unmapped. Evaluate it with
+  <code>CALCULATE([Unmapped Count], REMOVEFILTERS(CoA))</code>. Keep Date and Company filters if you want "unmapped codes with
+  postings this month".</li>
+<li><strong>Key hygiene.</strong> Matching is exact; trailing spaces, leading zeros and text-vs-number types create false
+  unmapped codes. Clean keys in Power Query before loading. Note DAX comparisons of text are case-insensitive, so
+  <code>"gst01"</code> and <code>"GST01"</code> match in EXCEPT, but the relationship engine also treats them as the same key — which can
+  cause duplicate-key errors on the CoA side.</li>
+<li><strong>Materiality companion.</strong> Count tells you how many; pair it with an absolute-amount measure (s03) to tell you
+  how much.</li>
+<li><strong>Listing the codes.</strong> For the reviewer, a table visual of <code>GL[AccountCode]</code> with a visual-level filter
+  "CoA[FSLine] is blank" lists them; or build an anti-join query in Power Query.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>CoA mapping holds 812 codes. The FY2025-26 GL has 806 distinct codes, of which three are new: 41057 (Sales –
+Quick commerce, Cr ₹2.40 crore), 62310 (Platform fees, Dr ₹56 lakh) and 62311 (Platform fees – GST RCM, Dr ₹10 lakh).</p>
+<ul>
+<li><code>Unmapped Count</code> = 3.</li>
+<li>Signed unmapped amount = −2.40 + 0.56 + 0.10 = −₹1.74 crore; absolute = ₹3.06 crore.</li>
+<li>Revenue on the P&amp;L page is understated by ₹2.40 crore and Other expenses by ₹66 lakh.</li>
+<li>If the YTD profit plug in equity is computed from mapped P&amp;L ledgers only, equity is understated by the net
+  ₹1.74 crore credit and the BS Check shows +₹1.74 crore. If instead the plug is "every code not mapped to the BS",
+  the BS Check passes and only <code>Unmapped Count</code> reveals the problem — a reason to keep both controls.</li>
+</ul>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>s03 (completeness checks) places this among file and month completeness tests; s05 shows it as control C06.</li>
+<li>c02 — a non-zero BS Check is often explained by the same unmapped codes.</li>
+<li>Week 10 pipeline exception outputs (left anti-join of GL to CoA) produce the same list at load time.</li>
+<li>Week 11's star schema: the GL → CoA one-to-many relationship is what creates the blank member.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-why-the-measure-shows-zero-l1">Q1. Why the measure shows zero [L1]</h3>
+<p>A user adds <code>[Unmapped Count]</code> to the P&amp;L page, which has an FS Line slicer set to "Revenue from operations", and sees
+0, while the control page shows 4. Explain the result and correct the measure.</p>
+<h3 id="q2-false-unmapped-codes-l2">Q2. False unmapped codes [L2]</h3>
+<p>After a new Tally export, <code>Unmapped Count</code> jumps from 0 to 312 while total GL amounts are unchanged. Give the two most
+likely data-type or formatting causes and the Power Query steps that would fix them.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Compare a few GL and CoA codes character by character, including their data types.</p>
+</blockquote>
+<h3 id="q3-unmapped-listing-l2">Q3. Unmapped listing [L2]</h3>
+<p>Write a DAX table expression (for DAX query view) that returns each unmapped account code with its absolute
+FY2025-26 balance, sorted by that balance in descending order.</p></section>
+<nav class="pager"><a class="prev" href="C02_BS_Check_Assets_Minus_Liabilities_Minus_Equity.html">← BS Check: Assets Minus Liabilities Minus Equity Equals Zero</a><a class="next" href="C04_Tie_out_Diff_Dashboard_Revenue_vs_TB_Control.html">Tie-out Diff: Dashboard Revenue vs TB Control Totals →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHOOSE Driven by a MATCH Index for Scenario Selection · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C06_CHOOSE_Driven_by_a_MATCH_Index_for_Scenario.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T2 · Modern lookups and scenario switching</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Modern lookups and scenario switching</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_XLOOKUP_Arguments_Not_Found_Value_Match_Mode_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S01_XLOOKUP_Arguments_Not_Found_Value_Match_Mode_and.html">XLOOKUP Arguments: Not-Found Value, Match Mode and Search Mode</a></li><li><a href="../subtopics/S02_Approximate_Match_Lookups_for_Slabs_TDS_Rates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S02_Approximate_Match_Lookups_for_Slabs_TDS_Rates.html">Approximate-Match Lookups for Slabs, TDS Rates, Tiers and Bands</a></li><li><a href="../subtopics/S03_Reverse_Search_for_Latest_Price_FX_Rate_and_Last.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S03_Reverse_Search_for_Latest_Price_FX_Rate_and_Last.html">Reverse Search for Latest Price, FX Rate and Last Payment Date</a></li><li><a href="../subtopics/S04_Two_Way_Lookups_on_Account_Month_Grids.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S04_Two_Way_Lookups_on_Account_Month_Grids.html">Two-Way Lookups on Account × Month Grids</a></li><li><a href="../subtopics/S05_XLOOKUP_Returning_Rows_Columns_and_Range.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S05_XLOOKUP_Returning_Rows_Columns_and_Range.html">XLOOKUP Returning Rows, Columns and Range References</a></li><li><a href="../subtopics/S06_XMATCH_and_INDEX_XMATCH_for_Dynamic_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S06_XMATCH_and_INDEX_XMATCH_for_Dynamic_Column.html">XMATCH and INDEX-XMATCH for Dynamic Column Selection</a></li><li><a href="../subtopics/S07_Live_Scenario_Switches_with_CHOOSE_INDEX_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S07_Live_Scenario_Switches_with_CHOOSE_INDEX_and.html">Live Scenario Switches with CHOOSE, INDEX and SWITCH</a></li><li><a href="../subtopics/S08_Multi_Key_Lookups_Helper_Keys_vs_Boolean_Arrays.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S08_Multi_Key_Lookups_Helper_Keys_vs_Boolean_Arrays.html">Multi-Key Lookups: Helper Keys vs Boolean Arrays</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_The_Fully_Specified_XLOOKUP_for_Ledger_Mapping.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C01_The_Fully_Specified_XLOOKUP_for_Ledger_Mapping.html">The Fully Specified XLOOKUP for Ledger Mapping</a></li><li><a href="C02_Next_Smaller_XLOOKUP_for_Slab_Rates_Without.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C02_Next_Smaller_XLOOKUP_for_Slab_Rates_Without.html">Next-Smaller XLOOKUP for Slab Rates Without Sorting</a></li><li><a href="C03_Nested_XLOOKUP_as_a_Two_Way_Lookup.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C03_Nested_XLOOKUP_as_a_Two_Way_Lookup.html">Nested XLOOKUP as a Two-Way Lookup</a></li><li><a href="C04_INDEX_MATCH_MATCH_The_Version_Proof_Two_Way_Lookup.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C04_INDEX_MATCH_MATCH_The_Version_Proof_Two_Way_Lookup.html">INDEX-MATCH-MATCH: The Version-Proof Two-Way Lookup</a></li><li><a href="C05_Boolean_Array_XLOOKUP_for_Multi_Criteria_Lookups.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C05_Boolean_Array_XLOOKUP_for_Multi_Criteria_Lookups.html">Boolean-Array XLOOKUP for Multi-Criteria Lookups</a></li><li><a href="C06_CHOOSE_Driven_by_a_MATCH_Index_for_Scenario.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C06_CHOOSE_Driven_by_a_MATCH_Index_for_Scenario.html">CHOOSE Driven by a MATCH Index for Scenario Selection</a></li><li><a href="C07_Dynamic_Period_Window_with_XLOOKUPXLOOKUP.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C07_Dynamic_Period_Window_with_XLOOKUPXLOOKUP.html">Dynamic Period Window with XLOOKUP:XLOOKUP</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>CHOOSE Driven by a MATCH Index for Scenario Selection</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>=CHOOSE(&#36;C&#36;2, Base_Growth, Upside_Growth, Downside_Growth)</code> with <code>&#36;C&#36;2 = MATCH(Scenario, ScenarioList, 0)</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>Let \(S\) be the scenario name selected in the dropdown <code>Scenario</code>, and <code>ScenarioList</code> the ordered list \((s_1, s_2, s_3) = (\text{Base}, \text{Upside}, \text{Downside})\). The index cell C2 (fully absolute, so every model formula points at the same cell) holds</p>
+<p>\[
+k = \text{MATCH}(S, \text{ScenarioList}, 0) \in \{1, 2, 3\}
+\]</p>
+<p>and the live growth driver is</p>
+<p>\[
+g_{\text{live}} = \text{CHOOSE}(k, g_{\text{Base}}, g_{\text{Upside}}, g_{\text{Downside}}) = g_{s_k}
+\]</p>
+<p>where \(g_{\text{Base}}\), \(g_{\text{Upside}}\), \(g_{\text{Downside}}\) are the named input cells <code>Base_Growth</code>, <code>Upside_Growth</code> and <code>Downside_Growth</code>. CHOOSE returns its \(k\)-th value argument after <code>index_num</code>.</p>
+<h2 id="explanation">Explanation</h2>
+<p><strong>Two-step design.</strong> The dropdown holds a readable name; MATCH converts it into a number once; every live driver uses CHOOSE on that number. Separating the index into one cell means the name-to-number logic is written once, can be checked (<code>ISNUMBER</code>), and can be overridden by a Data Table that feeds 1, 2, 3 to produce an all-scenarios summary.</p>
+<p><strong>Why the reference is absolute.</strong> Live-driver formulas are copied down an assumptions sheet (growth, margin, debtor days…); the index must not move. Better still, name it (<code>ScenIdx</code>) — a name never needs anchoring and reads as intent.</p>
+<p><strong>Order must match.</strong> CHOOSE's value arguments must be in the same order as <code>ScenarioList</code>. If someone sorts the list alphabetically (Base, Downside, Upside), "Upside" now returns position 3, which CHOOSE maps to <code>Downside_Growth</code> — a silent, serious error. Lock the list order (a Table with a protected sheet) or switch to an approach that matches by name (INDEX/XLOOKUP on headers, SWITCH).</p>
+<p><strong>Bounds and type.</strong> CHOOSE accepts 1 to 254 values; an index of 0, 4 (with three values) or text returns <code>#VALUE!</code>; a fractional index is truncated. The 0 in MATCH forces exact matching — without it, an unsorted list can return the wrong position.</p>
+<p><strong>CHOOSE with ranges.</strong> The value arguments can be ranges of the same size: <code>SUM(CHOOSE(ScenIdx, Base_Rev, Up_Rev, Down_Rev))</code> or a whole-row switch that spills in Microsoft 365. This is handy for switching full time series (e.g. monthly volume curves) rather than single rates.</p>
+<p><strong>Scaling.</strong> Adding a fourth case means adding an item to the list <em>and</em> editing every CHOOSE. With many drivers, an INDEX over a case block (<code>INDEX(D6:G6, ScenIdx)</code>) avoids the edits.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Inputs: <code>Base_Growth</code> = 9%, <code>Upside_Growth</code> = 14%, <code>Downside_Growth</code> = 2%; FY26 revenue ₹320 crore; <code>ScenarioList</code> = Base, Upside, Downside.</p>
+<table>
+<thead>
+<tr>
+<th>Dropdown</th>
+<th>MATCH index</th>
+<th>Live growth</th>
+<th>FY27 revenue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base</td>
+<td>1</td>
+<td>9%</td>
+<td>₹348.8 crore</td>
+</tr>
+<tr>
+<td>Upside</td>
+<td>2</td>
+<td>14%</td>
+<td>₹364.8 crore</td>
+</tr>
+<tr>
+<td>Downside</td>
+<td>3</td>
+<td>2%</td>
+<td>₹326.4 crore</td>
+</tr>
+</tbody>
+</table>
+<p>If the list were re-sorted to Base, Downside, Upside without changing the CHOOSE order, selecting "Downside" would return index 2 → 14% → ₹364.8 crore: the downside case would show the upside revenue.</p>
+<h2 id="connections">Connections</h2>
+<p>The CHOOSE option of the scenario-switch subtopic; the dropdown that feeds <code>Scenario</code> is a Data Validation list (what-if and controls topic). The index cell is the natural input cell for a one-variable Data Table summarising all cases, and the same switch drives the three-statement model and DCF cases in Weeks 13–16. Compare with Scenario Manager, which stores static values rather than a live switch.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-build-and-protect-l1">Q1. Build and protect [L1]</h3>
+<p>Set up the scenario list, dropdown, index cell and three live drivers (growth, EBITDA margin, capex % of revenue) using CHOOSE. Add a check cell that flags an invalid index and explain how you would stop users from re-ordering the scenario list.</p>
+<h3 id="q2-alphabetical-sort-incident-l2">Q2. Alphabetical sort incident [L2]</h3>
+<p>After a colleague sorted <code>ScenarioList</code> alphabetically, the board pack's "Downside" EBITDA rose by ₹18 crore. Explain the mechanism and redesign the switch so that the order of the list no longer matters.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Match the scenario name against the case-block headers instead of relying on argument order.</p>
+</blockquote>
+<h3 id="q3-all-cases-summary-l2">Q3. All-cases summary [L2]</h3>
+<p>With FY26 revenue of ₹320 crore and the growth inputs above, describe how to produce a table showing FY27 revenue, EBITDA (margin Base 18%, Upside 20%, Downside 15%) and the selected-scenario flag for all three scenarios at once without changing the dropdown, using a Data Table on the index cell.</p></section>
+<nav class="pager"><a class="prev" href="C05_Boolean_Array_XLOOKUP_for_Multi_Criteria_Lookups.html">← Boolean-Array XLOOKUP for Multi-Criteria Lookups</a><a class="next" href="C07_Dynamic_Period_Window_with_XLOOKUPXLOOKUP.html">Dynamic Period Window with XLOOKUP:XLOOKUP →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semi-additive balance sheet measures · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/index.html" data-kind="topic">
+<header class="top"><a class="brand" href="../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../index.html">Home</a> <span>›</span> <a href="../../index.html">Phase 3</a> <span>›</span> <a href="../index.html">Week 11</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">Week 11</a></div><ul class="side-links"><li><a href="../T1_Star_schema_for_financial_data/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/index.html">T1 · Star schema for financial data</a></li><li><a href="../T2_Indian_fiscal_calendar_table/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/index.html">T2 · Indian fiscal calendar table</a></li><li><a href="../T3_Core_financial_DAX_functions/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/index.html">T3 · Core financial DAX functions</a></li><li><a href="../T4_Time_intelligence_for_AprilMarch_FY/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/index.html">T4 · Time intelligence for April–March FY</a></li><li><a href="index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/index.html">T5 · Semi-additive balance sheet measures</a></li><li><a href="../T6_PL_layout_subtotals_and_sign_flip/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/index.html">T6 · P&amp;L layout, subtotals and sign-flip</a></li></ul></aside>
+<main class="content">
+<div class="kind">Topic</div>
+<h1>Semi-additive balance sheet measures</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<section class="index"><h2>Notes in this topic</h2><div class="cols"><div><h3>Subtopics</h3><ul class="links num"><li><a href="subtopics/S01_Additive_Semi_Additive_and_Non_Additive_Financial.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S01_Additive_Semi_Additive_and_Non_Additive_Financial.html">S01 · Additive, Semi-Additive and Non-Additive Financial Measures</a></li><li><a href="subtopics/S02_Snapshot_Facts_vs_Transaction_Facts_for_Balances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S02_Snapshot_Facts_vs_Transaction_Facts_for_Balances.html">S02 · Snapshot Facts vs Transaction Facts for Balances</a></li><li><a href="subtopics/S03_Closing_Balance_LASTDATE_vs_LASTNONBLANK_vs_a_MAX.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S03_Closing_Balance_LASTDATE_vs_LASTNONBLANK_vs_a_MAX.html">S03 · Closing Balance: LASTDATE vs LASTNONBLANK vs a MAX-Date Filter</a></li><li><a href="subtopics/S04_Cumulative_Balances_from_GL_Movements_Including.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S04_Cumulative_Balances_from_GL_Movements_Including.html">S04 · Cumulative Balances from GL Movements, Including Opening Entries</a></li><li><a href="subtopics/S05_Opening_Balances_with_OPENINGBALANCEMONTH_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S05_Opening_Balances_with_OPENINGBALANCEMONTH_and.html">S05 · Opening Balances with OPENINGBALANCEMONTH and OPENINGBALANCEYEAR</a></li><li><a href="subtopics/S06_Average_Balances_for_DSO_Interest_Cost_and_Return.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S06_Average_Balances_for_DSO_Interest_Cost_and_Return.html">S06 · Average Balances for DSO, Interest Cost and Return Ratios</a></li><li><a href="subtopics/S07_Cash_Net_Working_Capital_and_Net_Debt_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S07_Cash_Net_Working_Capital_and_Net_Debt_Measures.html">S07 · Cash, Net Working Capital and Net Debt Measures over Time</a></li></ul></div><div><h3>Key concepts & formulas</h3><ul class="links num"><li><a href="concepts/C01_Closing_Balance_with_LASTDATE_on_a_Snapshot_Fact.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C01_Closing_Balance_with_LASTDATE_on_a_Snapshot_Fact.html">C01 · Closing Balance with LASTDATE on a Snapshot Fact</a></li><li><a href="concepts/C02_LASTNONBLANK_Closing_Balance_at_the_Last_Date_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C02_LASTNONBLANK_Closing_Balance_at_the_Last_Date_with.html">C02 · LASTNONBLANK: Closing Balance at the Last Date with Data</a></li><li><a href="concepts/C03_Cumulative_Balance_with_FILTER_over_ALL_Dates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C03_Cumulative_Balance_with_FILTER_over_ALL_Dates.html">C03 · Cumulative Balance with FILTER over ALL Dates</a></li><li><a href="concepts/C04_CLOSINGBALANCEYEAR_and_OPENINGBALANCEYEAR_with_a.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C04_CLOSINGBALANCEYEAR_and_OPENINGBALANCEYEAR_with_a.html">C04 · CLOSINGBALANCEYEAR and OPENINGBALANCEYEAR with a March Year-End</a></li><li><a href="concepts/C05_Average_Receivables_with_AVERAGEX_over_Month_Ends.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C05_Average_Receivables_with_AVERAGEX_over_Month_Ends.html">C05 · Average Receivables with AVERAGEX over Month-Ends</a></li><li><a href="concepts/C06_DSO_Measure_from_Average_Receivables_and_Days_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C06_DSO_Measure_from_Average_Receivables_and_Days_in.html">C06 · DSO Measure from Average Receivables and Days in Period</a></li></ul></div></div></section><article class="note"><blockquote>
+<p><strong>Roadmap topic:</strong> Semi-Additive Balance Sheet Measures: Computing closing cash, receivables, and debt balances across time using LASTDATE / MAX date filters</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>A balance is a stock, not a flow. Receivables of ₹ 15 crore at 31 October and ₹ 14 crore at 30 November do not add up to
+₹ 29 crore of receivables for the two months. Yet every Power BI matrix and Power Pivot PivotTable aggregates a measure
+at every level of the axis — month, quarter, FY, grand total — so any balance sheet number written as a plain <code>SUM</code>
+will show nonsense at subtotals. Semi-additive measures solve this: they sum across accounts, branches and entities
+but take a point-in-time value (closing, opening) or an average across dates.</p>
+<p>For FP&amp;A and reporting roles this is the bridge from a P&amp;L-only dashboard to full financial statements. A balance sheet
+page that ties to the TB, a cash and net debt trend, NWC and its change for the cash-flow bridge, working-capital days
+for the monthly review and leverage covenants for the treasury head all depend on correct closing, opening and average
+balance measures. They also expose data-quality issues — missing opening entries, P&amp;L not rolled into reserves,
+snapshots dated on the wrong day — that an auditor would find anyway.</p>
+<p>The learning sequence: classify <strong>additivity</strong> first (s01); choose the <strong>fact design</strong> — month-end TB snapshots or
+GL movements plus openings (s02); write the <strong>closing balance</strong> with LASTDATE, LASTNONBLANK or a MAX-date filter (s03,
+c01, c02) for snapshots, or a <strong>cumulative running total</strong> for movements (s04, c03); add <strong>opening balances</strong> and
+roll-forwards with the OPENINGBALANCE/CLOSINGBALANCE family and the fiscal year-end argument (s05, c04); compute <strong>average
+balances</strong> for ratios (s06, c05, c06); and finally build the composite <strong>cash, NWC and net debt</strong> measures (s07).</p>
+<h2 id="concept-map">Concept map</h2>
+<table>
+<thead>
+<tr>
+<th>Subtopic / concept</th>
+<th>Role in the topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s01 Additive vs semi-additive vs non-additive</td>
+<td>Classifies every measure and decides its pattern</td>
+</tr>
+<tr>
+<td>s02 Snapshot vs transaction facts</td>
+<td>Determines whether closing balances are read or accumulated</td>
+</tr>
+<tr>
+<td>s03 LASTDATE vs LASTNONBLANK vs MAX-date filter</td>
+<td>Three ways to choose the as-of date on snapshots</td>
+</tr>
+<tr>
+<td>s04 Cumulative balance from movements</td>
+<td>Running total from inception including opening entries and P&amp;L roll</td>
+</tr>
+<tr>
+<td>s05 Opening balances with OPENINGBALANCEMONTH/YEAR</td>
+<td>Roll-forwards; fiscal year-end argument and calendar coverage</td>
+</tr>
+<tr>
+<td>s06 Average balances for ratios</td>
+<td>Two-point, month-end, 13-point and daily averages</td>
+</tr>
+<tr>
+<td>s07 Cash, NWC and Net Debt over time</td>
+<td>Composite semi-additive measures for treasury and covenants</td>
+</tr>
+<tr>
+<td>c01 Closing Bal with LASTDATE</td>
+<td>Base snapshot closing measure</td>
+</tr>
+<tr>
+<td>c02 LASTNONBLANK</td>
+<td>Last date with data; context transition inside</td>
+</tr>
+<tr>
+<td>c03 Cum Bal with FILTER(ALL(...))</td>
+<td>Running-total base measure for movement facts</td>
+</tr>
+<tr>
+<td>c04 CLOSINGBALANCEYEAR / OPENINGBALANCEYEAR</td>
+<td>Year-boundary balances with "3/31"</td>
+</tr>
+<tr>
+<td>c05 Avg AR with AVERAGEX</td>
+<td>Month-end average balance pattern</td>
+</tr>
+<tr>
+<td>c06 DSO</td>
+<td>Ratio combining semi-additive, additive and day count</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-concepts-to-study">Related concepts to study</h2>
+<h3 id="weeks-14-roll-forwards-and-year-end-carry-forward">Weeks 1–4: roll-forwards and year-end carry-forward</h3>
+<p><em>→ Week 1–4: balance sheet roll-forwards and carrying opening balances forward at year-end close</em></p>
+<p>Weeks 1–4 covered the accounting: the closing balance of every BS account at 31 March becomes the opening of 1 April;
+P&amp;L accounts are closed to retained earnings (surplus in the statement of profit and loss under Schedule III); and every
+schedule — PPE, provisions, borrowings, equity — is presented as a roll-forward. The DAX measures here automate exactly
+those identities: <code>OPENINGBALANCEYEAR</code> returns the carried-forward balance, the cumulative measure plus the P&amp;L roll
+reproduces the closing entries, and the roll-forward check (opening + movements = closing) is the same reconciliation a
+statutory auditor performs on the notes to accounts.</p>
+<h3 id="weeks-58-working-capital-ratios">Weeks 5–8: working-capital ratios</h3>
+<p><em>→ Week 5–8: working capital ratios (DSO, DIO, DPO, cash conversion cycle)</em></p>
+<p>Ratio analysis in Weeks 5–8 used published statements and usually two-point averages. The model can do better: month-end
+or 13-point averages from internal data, branch- and customer-level DSO, and trends over 24 months. The interpretation
+rules carry over — DSO against credit terms, DIO against production cycle, DPO against MSME payment limits (Section 43B(h)
+of the Income-tax Act requires payment to micro and small enterprises within the MSMED Act timelines for the expense to
+be deductible), and the cash conversion cycle as the working-capital funding need. Make the averaging convention match
+the analysis you are reconciling to.</p>
+<h3 id="week-14-balance-sheet-schedules-in-the-3-statement-model">Week 14: balance sheet schedules in the 3-statement model</h3>
+<p><em>→ Week 14: balance sheet schedules in the 3-statement model</em></p>
+<p>In the Week 14 Excel model, every balance sheet line is a schedule: opening (= prior closing), drivers (DSO, DIO, DPO,
+capex, depreciation, drawdowns, repayments) and closing. The Power BI semi-additive measures provide the historical
+actuals that seed those schedules and the actual-vs-forecast comparison afterwards. Two conventions must agree between
+the BI model and the Excel model: whether working-capital days use average or closing balances, and how net debt is
+defined (leases, liquid investments). Mismatches show up as unexplained jumps in the first forecast year.</p>
+<h3 id="rolling-pl-into-retained-earnings-in-a-cumulative-gl-model">Rolling P&amp;L into retained earnings in a cumulative GL model</h3>
+<p><em>Rolling P&amp;L into retained earnings inside a cumulative GL model</em></p>
+<p>In a movement-based model, P&amp;L accounts never close: their cumulative balance grows since the first posting. For the
+balance sheet to balance, the presentation must add cumulative P&amp;L (all prior FYs plus current YTD) to the retained
+earnings account balance, or split it into "retained earnings brought forward" and "profit for the period". If the ERP
+posts year-end closing entries (P&amp;L to retained earnings on 31 March), include only current-FY P&amp;L. Tally-sourced data
+typically has no closing entries — the prior years' profit sits in the "Profit &amp; Loss A/c" ledger and must be mapped to
+retained earnings. The TB check (all accounts cumulative = 0) proves completeness.</p>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<h3 id="summing-balances-across-months">Summing balances across months</h3>
+<p><em>Summing balances across months in totals or YTD (adding 12 month-end balances together)</em></p>
+<p><strong>Mistake:</strong> <code>SUM(TB[Balance])</code> on a snapshot fact, or applying a YTD calculation item to balance measures. <strong>Why
+people make it:</strong> the measure is correct at month level, which is where it was tested. <strong>Correct treatment:</strong> use a
+semi-additive base (LASTDATE / LASTNONBLANK / MAX-date for snapshots, cumulative for movements), and exclude balances
+from additive time-intelligence items. <strong>Detect it:</strong> quarter and FY rows of balances are roughly 3× and 12× the
+month-end values; FY total does not equal the 31 March TB.</p>
+<h3 id="lastdate-on-future-or-unposted-dates">LASTDATE on future or unposted dates</h3>
+<p><em>LASTDATE pointing at a future or unposted date returns blank; use LASTNONBLANK or cap at the last actuals date</em></p>
+<p><strong>Mistake:</strong> relying on <code>LASTDATE</code> at quarter or FY rows of an incomplete year, or for the current month before close.
+<strong>Why:</strong> it works perfectly for closed periods, and the Date table always runs to 31 March. <strong>Correct treatment:</strong> use
+<code>LASTNONBLANK</code> with an inner <code>CALCULATE</code>, or compute an explicit as-of date <code>MIN(MAX('Date'[Date]), [Last Closed Date])</code>
+and filter to it, showing the date in a tooltip. <strong>Detect it:</strong> FY26 balance sheet page is blank in November; the current
+quarter shows blanks while months show values.</p>
+<h3 id="missing-opening-entries-or-pl-to-reserves-close">Missing opening entries or P&amp;L-to-reserves close</h3>
+<p><em>Cumulative measures that miss opening entries or the P&amp;L-to-reserves close, so the balance sheet does not balance</em></p>
+<p><strong>Mistake:</strong> loading opening entries only for some accounts (debtors and creditors), dating them outside the Date table,
+or presenting BS accounts without rolling P&amp;L into retained earnings. <strong>Why:</strong> migrations focus on control accounts; P&amp;L
+accumulation is invisible in P&amp;L views. <strong>Correct treatment:</strong> load a complete, balanced opening TB dated inside the
+calendar; add the P&amp;L roll (or rely on posted closing entries, not both). <strong>Detect it:</strong> a TB check measure (all accounts
+cumulative) is non-zero; total assets ≠ equity + liabilities by exactly the cumulative profit or by the missing openings.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-balance-sheet-page-from-a-movement-gl-l3">Q1. Balance sheet page from a movement GL [L3]</h3>
+<p>An unlisted manufacturing company's GL (Tally export) starts on 1 April 2024. Audited balances at 31 March 2024 (₹ lakh):
+PPE 4,800 Dr; Inventories 1,950 Dr; Trade receivables 2,300 Dr; Cash 420 Dr; Share capital 1,500 Cr; Retained earnings
+(Profit &amp; Loss A/c ledger) 3,170 Cr; Term loan 3,100 Cr; Trade payables 1,700 Cr. FY25 summarised movements: revenue
+18,400 (credit); cost of materials 11,200; employee cost 2,300; other expenses 1,900; depreciation 520; interest 290; tax
+560; capex 900; term-loan repayment 600; receivables rose by 380, inventories by 150, payables by 210 (assume all other
+items settled in cash). (a) Specify the opening entries and their date given a Date table starting 1 April 2023. (b) Write
+the Cum Bal, Retained Earnings (incl. P&amp;L roll) and TB Check measures. (c) Compute the 31 March 2025 balance sheet and
+show that it balances. (d) Explain what the balance sheet would show if the P&amp;L roll were omitted.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Derive cash as the balancing movement after posting every other item, then check the TB sums to zero.</p>
+</blockquote>
+<h3 id="q2-snapshot-model-debugging-l2">Q2. Snapshot model debugging [L2]</h3>
+<p>A model built on monthly TB snapshots shows, for FY26 (data to 30 November 2025): Cash ₹ 11,840 lakh at the FY row while
+the 30 November TB shows ₹ 1,310 lakh; the Q3 FY26 row is blank; and Net Debt at FY row is −₹ 9,600 lakh. The measures
+are <code>Cash = SUM(TB[Balance])</code> filtered to cash accounts and <code>Net Debt = [Borrowings] - [Cash]</code>. Explain each symptom and
+rewrite the measures (closing balance with an explicit capped as-of date, net debt sign-consistent) so every row is
+correct.</p>
+<h3 id="q3-working-capital-review-pack-l3">Q3. Working-capital review pack [L3]</h3>
+<p>For a quarterly working-capital review, design measures for Avg AR, Avg Inventory, Avg Payables (month-end averages),
+DSO, DIO, DPO and cash conversion cycle, and NWC change versus the FY opening. Data for Q2 FY26 (91 days, ₹ crore): revenue
+96, COGS 64; month-end AR 38, 41, 44 (opening 36); inventory 30, 33, 31 (opening 29); payables 22, 24, 27 (opening 21).
+Compute each metric under your chosen convention, state the convention, and describe the visual layout including how
+totals across branches are computed.</p>
+<h3 id="q4-covenant-basis-net-debt-over-time-l2">Q4. Covenant-basis net debt over time [L2]</h3>
+<p>A term loan covenant tests Net Debt / LTM EBITDA ≤ 3.0× at each quarter-end, defining net debt as borrowings plus interest
+accrued less unencumbered cash. Specify the CoA attributes and measures needed, explain how the measure behaves on
+month, quarter and FY rows (including the current incomplete FY), and list three reconciliation checks against the
+compliance certificate submitted to the bank.</p></section>
+<nav class="pager"><a class="prev" href="../T4_Time_intelligence_for_AprilMarch_FY/concepts/C06_Locale_Parsing_of_the_Year_End_String_in_DATESYTD.html">← Locale Parsing of the Year-End String in DATESYTD</a><a class="next" href="subtopics/S01_Additive_Semi_Additive_and_Non_Additive_Financial.html">Additive, Semi-Additive and Non-Additive Financial Measures →</a></nav>
+</main></div></body></html>

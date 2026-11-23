@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Reconciliation Table Behind an EBITDA Bridge · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S06_The_Reconciliation_Table_Behind_an_EBITDA_Bridge.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 5</a> <span>›</span> <a href="../../index.html">Week 19</a> <span>›</span> <a href="../index.html">T4 · EBITDA bridge waterfall construction</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · EBITDA bridge waterfall construction</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Standard_Step_Sequence_for_a_Budget_to_Actual.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S01_Standard_Step_Sequence_for_a_Budget_to_Actual.html">Standard Step Sequence for a Budget-to-Actual EBITDA Bridge</a></li><li><a href="S02_Bridges_for_AvB_AvPY_LE_vs_AOP_and_Forecast_to.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S02_Bridges_for_AvB_AvPY_LE_vs_AOP_and_Forecast_to.html">Bridges for AvB, AvPY, LE vs AOP and Forecast-to-Forecast</a></li><li><a href="S03_Excel_Waterfall_Charts_Native_Chart_and_Stacked.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S03_Excel_Waterfall_Charts_Native_Chart_and_Stacked.html">Excel Waterfall Charts: Native Chart and Stacked-Column Fallback</a></li><li><a href="S04_Power_BI_Waterfall_Visual_Breakdown_Ordering_and.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S04_Power_BI_Waterfall_Visual_Breakdown_Ordering_and.html">Power BI Waterfall Visual: Breakdown, Ordering and Bridge Measures</a></li><li><a href="S05_Grouping_Small_Items_into_Other_and_Labelling_in.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S05_Grouping_Small_Items_into_Other_and_Labelling_in.html">Grouping Small Items into &quot;Other&quot; and Labelling in ₹ Crore and bps</a></li><li><a href="S06_The_Reconciliation_Table_Behind_an_EBITDA_Bridge.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/subtopics/S06_The_Reconciliation_Table_Behind_an_EBITDA_Bridge.html">The Reconciliation Table Behind an EBITDA Bridge</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Bridge_Integrity_Zero_Residual_Between_End_Points.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/concepts/C01_Bridge_Integrity_Zero_Residual_Between_End_Points.html">Bridge Integrity: Zero Residual Between End Points</a></li><li><a href="../concepts/C02_Valuation_Basis_of_Each_Bridge_Step.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/concepts/C02_Valuation_Basis_of_Each_Bridge_Step.html">Valuation Basis of Each Bridge Step</a></li><li><a href="../concepts/C03_Stacked_Column_Waterfall_Arithmetic_Invisible_Base.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/concepts/C03_Stacked_Column_Waterfall_Arithmetic_Invisible_Base.html">Stacked-Column Waterfall Arithmetic: Invisible Base and Visible Bar</a></li><li><a href="../concepts/C04_EBITDA_Margin_Bridge_in_Basis_Points.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/concepts/C04_EBITDA_Margin_Bridge_in_Basis_Points.html">EBITDA Margin Bridge in Basis Points</a></li><li><a href="../concepts/C05_Order_Dependence_of_Bridge_Steps.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T4_EBITDA_bridge_waterfall_construction/concepts/C05_Order_Dependence_of_Bridge_Steps.html">Order Dependence of Bridge Steps</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>The Reconciliation Table Behind an EBITDA Bridge</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Reconciliation table supporting the chart</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>The chart persuades; the reconciliation table proves. In a board pack, the waterfall is on the slide and the table is in the appendix or under the chart. Internal auditors, the CFO's office and statutory auditors reviewing MIS used for impairment or covenant purposes ask for the table, not the chart. It is also how <em>you</em> catch errors before the review: if the table does not tie to the reported P&amp;L at every level (revenue, gross margin, EBITDA) with zero residual, the chart is wrong no matter how good it looks.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="what-the-table-must-contain">What the table must contain</h3>
+<p>A good reconciliation table has three layers.</p>
+<p><strong>Layer 1 — the bridge itself</strong>, one row per bar, with:</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Step</td>
+<td>Bar name, in the same order as the chart</td>
+</tr>
+<tr>
+<td>₹ crore</td>
+<td>Signed EBITDA effect (positive = favourable)</td>
+</tr>
+<tr>
+<td>bps of revenue</td>
+<td>Step ÷ actual revenue × 10,000</td>
+</tr>
+<tr>
+<td>Margin bps</td>
+<td>The step's contribution to the EBITDA margin change (from the margin bridge, c04)</td>
+</tr>
+<tr>
+<td>% of base EBITDA</td>
+<td>Step ÷ budget (base) EBITDA</td>
+</tr>
+<tr>
+<td>Driver / commentary</td>
+<td>One line: cause, owner, timing vs permanent</td>
+</tr>
+<tr>
+<td>Source</td>
+<td>Schedule or engine tab the number comes from</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Layer 2 — the supporting P&amp;L reconciliation</strong>, which proves the bridge totals tie to reported numbers:</p>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Budget</th>
+<th>Actual</th>
+<th>Variance</th>
+<th>Explained by bridge steps</th>
+<th>Check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue</td>
+<td>3,000.0</td>
+<td>3,210.0</td>
+<td>+210.0</td>
+<td>Price + revenue volume + revenue mix + FX on revenue</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>COGS</td>
+<td>1,920.0</td>
+<td>2,084.0</td>
+<td>−164.0</td>
+<td>Volume/mix cost effect + COGS inflation + efficiency + FX on imports</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>Gross margin</td>
+<td>1,080.0</td>
+<td>1,126.0</td>
+<td>+46.0</td>
+<td>Price + Volume and Mix at unit GM + COGS steps + FX</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>Opex</td>
+<td>660.0</td>
+<td>693.0</td>
+<td>−33.0</td>
+<td>Volume-driven opex + Opex spending step</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>Other operating income / others</td>
+<td>0.0</td>
+<td>−5.0</td>
+<td>−5.0</td>
+<td>Others</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>EBITDA</td>
+<td>420.0</td>
+<td>428.0</td>
+<td>+8.0</td>
+<td>Σ all steps</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
+<p>(Illustrative numbers: the same company as s01. Its Volume step is valued at budget unit <em>contribution</em>, i.e. after variable selling costs. At gross-margin level, volume and mix effects are ₹55 cr larger than the bridge bars; the matching ₹55 cr of volume-driven variable opex (freight, trade commission) is netted inside the Volume bar, so the Opex bar of +22 is the pure spending effect: −55 + 22 = −33 opex variance. Gross margin ties as 45 + (60 + 55) − 28 − 95 + 18 − 9 = +46.)</p>
+<p><strong>Layer 3 — detail for grouped bars</strong>, listing every component of "Others", "Other opex" and any commodity group, so that grouped bars are traceable (s05).</p>
+<h3 id="mandatory-check-cells">Mandatory check cells</h3>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Formula idea</th>
+<th>Expected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bridge integrity</td>
+<td>Base EBITDA + Σ steps − Comparator EBITDA</td>
+<td>0</td>
+</tr>
+<tr>
+<td>End points tie to source</td>
+<td>Bridge base − AOP file; bridge end − MIS/GL EBITDA</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Revenue sub-bridge</td>
+<td>Budget revenue + price + volume + mix + FX − actual revenue</td>
+<td>0</td>
+</tr>
+<tr>
+<td>GM sub-bridge</td>
+<td>Budget GM + price + volume + mix + cost + FX − actual GM</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Mix shares</td>
+<td>Σ actual mix % − 1 and Σ budget mix % − 1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Grouping</td>
+<td>Σ components of each grouped bar − grouped bar</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Chart link</td>
+<td>Chart source range total − table total</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>In Excel, a single "master check" cell <code>=SUMPRODUCT(ABS(CheckRange))&lt;0.05</code> returning TRUE/FALSE, conditionally formatted red when FALSE, is placed at the top of the bridge tab and also on the cover sheet of the pack. The tolerance (₹0.05 cr here) covers rounding only.</p>
+<h3 id="commentary-column-discipline">Commentary column discipline</h3>
+<p>Each step's commentary answers four questions in one line: what happened (fact), why (driver), whether it recurs (timing, permanent, one-off) and what is being done (action). For example: "Palm oil landed at ₹1,32,000/tonne vs ₹1,10,000 budget; permanent for H1, partially passed through via 3% price increase from 1 October; hedging cover extended to 60% for Q4." Link to topic 3's classification so opex steps carry "timing" or "permanent" tags that tie to the LE.</p>
+<h3 id="presentation">Presentation</h3>
+<ul>
+<li>Place the table directly under the chart or on the facing appendix slide, with identical step names and order.</li>
+<li>Use the pack's sign convention (positive = favourable, brackets for adverse) and units (₹ crore, one decimal).</li>
+<li>Show the check result discreetly (e.g., "Reconciled to MIS EBITDA ✓") — the reader wants to know it ties, not see the mechanics.</li>
+<li>Footnote the methodology: valuation basis of each step, revenue base for bps, FX rates used, definition of EBITDA (company definition, consistent with Schedule III presentation if EBITDA is shown on the face).</li>
+</ul>
+<h3 id="building-it-so-it-cannot-drift">Building it so it cannot drift</h3>
+<p>Drive the chart from the table, never the reverse. The chart's source range should be the Layer 1 ₹ column itself (or a helper range calculated from it). In Power BI, the table is a matrix visual on the same page using the same <code>Bridge Value</code> measure and step dimension, so the visual and the table cannot disagree.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>MIS vs GL differences.</strong> MIS EBITDA may exclude items that the GL-based P&amp;L includes (e.g., management fees, Ind AS 116 adjustments). The reconciliation table should start from the MIS EBITDA used in the bridge and, in a footnote or separate block, reconcile it to statutory EBITDA.</li>
+<li><strong>Late adjustments.</strong> A post-close journal (e.g., a provision booked after the pack was cut) changes actual EBITDA. Rerun the engine rather than adding the adjustment to "Others".</li>
+<li><strong>Rounding tolerance.</strong> Do not widen the tolerance to hide a methodology gap. A residual of ₹0.3 cr on a ₹420 cr base looks small but usually signals a missing SKU or a sign error.</li>
+<li><strong>Version control.</strong> Stamp the table with the data cut-off date and the scenario versions (AOP v3, LE Oct) so a reviewer knows which numbers are being reconciled.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>The reconciliation table has three layers: bridge steps, P&amp;L tie-out (revenue, GM, opex, EBITDA), and detail of grouped bars.</li>
+<li>Every layer has check cells, rolled into a master check that must be TRUE before the pack is released.</li>
+<li>Commentary per step states fact, driver, recurrence and action.</li>
+<li>Drive the chart from the table so they cannot drift; same names, order and signs.</li>
+<li>Footnote methodology and data versions; reconcile MIS EBITDA to statutory EBITDA separately.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-design-the-check-block-l1">Q1. Design the check block [L1]</h3>
+<p>List at least six check cells you would place in the reconciliation table behind a monthly AvB EBITDA bridge, with the formula logic and expected result of each.</p>
+<h3 id="q2-find-the-break-l2">Q2. Find the break [L2]</h3>
+<p>Budget revenue ₹820 crore, actual ₹874 crore. Revenue bridge: Price +₹19 crore, Volume +₹41 crore, Mix −₹4 crore, FX +₹2 crore. Budget EBITDA ₹123 crore, actual ₹129 crore. EBITDA bridge: Price +19, Volume +13, Mix −2, COGS −21, Opex +3, FX +1, Others −7 (₹ crore). (a) Which checks fail? (b) What are the most likely causes of each failure? (c) What would you ask the analyst to provide?</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Run each sub-bridge's integrity check separately before looking at the EBITDA level.</p>
+</blockquote>
+<h3 id="q3-commentary-rewrite-l2">Q3. Commentary rewrite [L2]</h3>
+<p>Rewrite these weak commentary lines to the fact/driver/recurrence/action standard, inventing plausible specifics: (a) "Opex favourable due to savings"; (b) "Mix adverse"; (c) "COGS adverse due to inflation".</p>
+<h3 id="q4-audit-request-l3">Q4. Audit request [L3]</h3>
+<p>The statutory auditor is using management's divisional EBITDA forecasts in an Ind AS 36 impairment test and asks how the current-year actual vs budget EBITDA bridge was prepared and reconciled. Draft the list of documents and reconciliations you would provide, and explain how you would reconcile divisional MIS EBITDA to the segment results reported under Ind AS 108.</p></section>
+<nav class="pager"><a class="prev" href="S05_Grouping_Small_Items_into_Other_and_Labelling_in.html">← Grouping Small Items into &quot;Other&quot; and Labelling in ₹ Crore…</a><a class="next" href="../concepts/C01_Bridge_Integrity_Zero_Residual_Between_End_Points.html">Bridge Integrity: Zero Residual Between End Points →</a></nav>
+</main></div></body></html>

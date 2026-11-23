@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The each Keyword and the Underscore Parameter · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C05_The_each_Keyword_and_the_Underscore_Parameter.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T1 · Power Query architecture and M basics</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Power Query architecture and M basics</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Power_Query_Connectors_for_Accounting_and_ERP_Data.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S01_Power_Query_Connectors_for_Accounting_and_ERP_Data.html">Power Query Connectors for Accounting and ERP Data Sources</a></li><li><a href="../subtopics/S02_Power_Query_Editor_Anatomy_Steps_Formula_Bar_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S02_Power_Query_Editor_Anatomy_Steps_Formula_Bar_and.html">Power Query Editor Anatomy: Steps, Formula Bar and Dependencies</a></li><li><a href="../subtopics/S03_M_Language_Structure_letin_Values_Records_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S03_M_Language_Structure_letin_Values_Records_Lists.html">M Language Structure: let/in, Values, Records, Lists and each</a></li><li><a href="../subtopics/S04_Data_Types_and_Controlling_Automatic_Type.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S04_Data_Types_and_Controlling_Automatic_Type.html">Data Types and Controlling Automatic Type Detection</a></li><li><a href="../subtopics/S05_Query_Folding_Which_Steps_Fold_Native_Query_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S05_Query_Folding_Which_Steps_Fold_Native_Query_and.html">Query Folding: Which Steps Fold, Native Query and Diagnostics</a></li><li><a href="../subtopics/S06_Parameters_Staging_Queries_and_Reference_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S06_Parameters_Staging_Queries_and_Reference_vs.html">Parameters, Staging Queries and Reference vs Duplicate</a></li><li><a href="../subtopics/S07_Load_Options_and_Refresh_Behaviour_in_Excel_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S07_Load_Options_and_Refresh_Behaviour_in_Excel_vs.html">Load Options and Refresh Behaviour in Excel vs Power BI</a></li><li><a href="../subtopics/S08_Privacy_Levels_and_FormulaFirewall_Errors.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S08_Privacy_Levels_and_FormulaFirewall_Errors.html">Privacy Levels and Formula.Firewall Errors</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_CsvDocument_with_FileContents_Delimiter_Encoding.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C01_CsvDocument_with_FileContents_Delimiter_Encoding.html">Csv.Document with File.Contents: Delimiter, Encoding, QuoteStyle</a></li><li><a href="C02_ExcelWorkbook_Navigation_to_a_Named_Sheet_or_Table.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C02_ExcelWorkbook_Navigation_to_a_Named_Sheet_or_Table.html">Excel.Workbook Navigation to a Named Sheet or Table</a></li><li><a href="C03_SqlDatabase_with_a_Native_Query_Blocks_Later.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C03_SqlDatabase_with_a_Native_Query_Blocks_Later.html">Sql.Database with a Native Query Blocks Later Folding</a></li><li><a href="C04_ValueNativeQuery_with_Parameters_and_EnableFolding.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C04_ValueNativeQuery_with_Parameters_and_EnableFolding.html">Value.NativeQuery with Parameters and EnableFolding</a></li><li><a href="C05_The_each_Keyword_and_the_Underscore_Parameter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C05_The_each_Keyword_and_the_Underscore_Parameter.html">The each Keyword and the Underscore Parameter</a></li><li><a href="C06_Folding_Breakers_TableBuffer_Index_Columns_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C06_Folding_Breakers_TableBuffer_Index_Columns_and.html">Folding Breakers: Table.Buffer, Index Columns and Custom Functions</a></li><li><a href="C07_MySQLDatabase_Connector_and_OdbcDataSource_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C07_MySQLDatabase_Connector_and_OdbcDataSource_for.html">MySQL.Database Connector and Odbc.DataSource for Tally</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>The each Keyword and the Underscore Parameter</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>each [Amount] &gt; 0</code> is shorthand for <code>(_) =&gt; _[Amount] &gt; 0</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>In M, <code>each expression</code> defines an anonymous function of one parameter named <code>_</code>:</p>
+<p>\[
+\texttt{each}\; E \;\equiv\; (\_) \Rightarrow E
+\]</p>
+<p>Within \(E\), a field access written without a target, <code>[Field]</code>, is resolved against <code>_</code>, so <code>[Amount]</code> means <code>_[Amount]</code>. Hence <code>each [Amount] &gt; 0</code> is exactly <code>(_) =&gt; _[Amount] &gt; 0</code>: a function that takes a record (a row) and returns <code>true</code> when its Amount field exceeds zero.</p>
+<h2 id="explanation">Explanation</h2>
+<p>Library functions that need a per-row or per-item rule accept a <strong>function value</strong>. <code>Table.SelectRows(table, condition)</code> calls <code>condition</code> once per row, passing the row as a record; <code>each</code> is just the shortest way to write that function. Knowing the long form unlocks several things:</p>
+<ol>
+<li><strong>Readable nesting.</strong> In <code>Table.SelectRows(Bank, each List.Contains(BookRefs, [Ref]))</code> the <code>_</code> is the bank row. If you need an inner <code>each</code> (e.g. inside <code>List.Select</code>), the inner <code>_</code> shadows the outer one. Write the outer explicitly: <code>(bankRow) =&gt; List.AnyTrue(List.Transform(BookAmts, each Number.Abs(_ - bankRow[Amount]) &lt;= 1))</code>.</li>
+<li><strong>Typed lambdas.</strong> <code>(row as record) as logical =&gt; row[Amount] &gt; 0</code> documents and enforces types.</li>
+<li><strong>Non-record contexts.</strong> When the function receives a scalar (a cell in <code>Table.TransformColumns</code>, a list item in <code>List.Transform</code>), <code>[Field]</code> makes no sense; use <code>_</code> itself: <code>each Text.Upper(_)</code>, <code>each _ * -1</code>.</li>
+<li><strong>Group By.</strong> In <code>Table.Group</code>, <code>_</code> is the <strong>sub-table</strong> for the group, so <code>each List.Sum([Amount])</code> works because <code>[Amount]</code> on a table returns a list column; <code>each Table.RowCount(_)</code> counts rows.</li>
+<li><strong>Reusable named functions.</strong> <code>IsPositive = (r) =&gt; r[Amount] &gt; 0</code> can be passed as <code>Table.SelectRows(t, IsPositive)</code> — useful when the same rule is used in several queries.</li>
+</ol>
+<p>Precedence note: <code>each</code> captures the whole expression to its right, so <code>each [Debit] ?? 0 - [Credit] ?? 0</code> is parsed with arithmetic precedence inside the body — parentheses are still required for correct net amounts (Topic 6).</p>
+<h2 id="illustration">Illustration</h2>
+<p>Bank rows: (Ref "UTR001", Amount 25,000), (Ref "CHQ0456", Amount −12,500), (Ref "UTR002", Amount 0).</p>
+<table>
+<thead>
+<tr>
+<th>Expression</th>
+<th>Evaluates for row 2 to</th>
+<th>Rows kept</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Table.SelectRows(t, each [Amount] &gt; 0)</code></td>
+<td><code>_[Amount] &gt; 0</code> → −12,500 &gt; 0 → false</td>
+<td>UTR001</td>
+</tr>
+<tr>
+<td><code>Table.SelectRows(t, (r) =&gt; r[Amount] &lt;&gt; 0)</code></td>
+<td>true</td>
+<td>UTR001, CHQ0456</td>
+</tr>
+<tr>
+<td><code>Table.TransformColumns(t, {{"Amount", each _ * -1, type number}})</code></td>
+<td><code>_</code> = −12,500 → 12,500</td>
+<td>all, signs flipped</td>
+</tr>
+<tr>
+<td><code>Table.AddColumn(t, "IsCheque", each Text.StartsWith([Ref], "CHQ"), type logical)</code></td>
+<td>true</td>
+<td>all, new column</td>
+</tr>
+</tbody>
+</table>
+<h2 id="connections">Connections</h2>
+<p>Core to s03 (M structure). Used throughout Topic 2 (filters and transforms), Topic 4 (<code>each fxCleanTB([Content])</code>), Topic 5 (sign flip <code>Amount * -1</code>) and Topic 6 (custom columns). The related item on Java streams maps <code>each</code> to Java lambdas: <code>rows.filter(r -&gt; r.amount &gt; 0)</code>.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-expand-the-shorthand-l1">Q1. Expand the shorthand [L1]</h3>
+<p>Rewrite each using explicit lambda syntax: (a) <code>each [Debit] &gt; 100000</code>; (b) <code>each Text.Trim(_)</code>; (c) <code>each List.Sum([Amount])</code> inside <code>Table.Group</code>; (d) <code>each fxCleanBank([Content])</code>.</p>
+<h3 id="q2-nested-each-l2">Q2. Nested each [L2]</h3>
+<p>You want to keep bank rows whose Amount is within ₹1 of <strong>any</strong> amount in the list <code>BookAmounts</code>. A colleague writes <code>Table.SelectRows(Bank, each List.AnyTrue(List.Transform(BookAmounts, each Number.Abs(_ - [Amount]) &lt;= 1)))</code> and it errors. Explain why and fix it.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Identify what <code>_</code> refers to in the innermost function.</p>
+</blockquote>
+<h3 id="q3-reusable-rule-l2">Q3. Reusable rule [L2]</h3>
+<p>Define a named function that flags a ledger row as a "subtotal" when Ledger is null, starts with "Total" or equals "Grand Total", and show how to use it both to remove such rows and to keep them in an exceptions query.</p></section>
+<nav class="pager"><a class="prev" href="C04_ValueNativeQuery_with_Parameters_and_EnableFolding.html">← Value.NativeQuery with Parameters and EnableFolding</a><a class="next" href="C06_Folding_Breakers_TableBuffer_Index_Columns_and.html">Folding Breakers: Table.Buffer, Index Columns and Custom… →</a></nav>
+</main></div></body></html>

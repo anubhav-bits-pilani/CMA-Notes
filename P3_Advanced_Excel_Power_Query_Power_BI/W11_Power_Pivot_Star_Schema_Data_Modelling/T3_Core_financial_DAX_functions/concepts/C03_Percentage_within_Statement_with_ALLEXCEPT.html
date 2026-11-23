@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Percentage within Statement with ALLEXCEPT · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C03_Percentage_within_Statement_with_ALLEXCEPT.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T3 · Core financial DAX functions</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Core financial DAX functions</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Row_Context_Filter_Context_and_Context_Transition.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S01_Row_Context_Filter_Context_and_Context_Transition.html">Row Context, Filter Context and Context Transition</a></li><li><a href="../subtopics/S02_CALCULATE_Filter_Arguments_and_Modifiers.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S02_CALCULATE_Filter_Arguments_and_Modifiers.html">CALCULATE Filter Arguments and Modifiers</a></li><li><a href="../subtopics/S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html">Iterators SUMX and AVERAGEX for Row-Level Maths</a></li><li><a href="../subtopics/S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html">FILTER vs Boolean Column Filters: Meaning and Performance</a></li><li><a href="../subtopics/S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html">ALL, ALLEXCEPT and ALLSELECTED for Share and Contribution Analysis</a></li><li><a href="../subtopics/S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html">RELATED and RELATEDTABLE in Columns and Iterators</a></li><li><a href="../subtopics/S07_DIVIDE_Measures_vs_Calculated_Columns_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S07_DIVIDE_Measures_vs_Calculated_Columns_and.html">DIVIDE, Measures vs Calculated Columns, and VAR/RETURN</a></li><li><a href="../subtopics/S08_Explicit_Measures_Display_Folders_and_LakhCrore.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S08_Explicit_Measures_Display_Folders_and_LakhCrore.html">Explicit Measures, Display Folders and ₹ Lakh/Crore Formats</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html">Base Actual Measure and a Filtered Revenue Measure</a></li><li><a href="C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html">Percentage of Total Opex with ALL on Cost Centre</a></li><li><a href="C03_Percentage_within_Statement_with_ALLEXCEPT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C03_Percentage_within_Statement_with_ALLEXCEPT.html">Percentage within Statement with ALLEXCEPT</a></li><li><a href="C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html">FX-Converted Revenue with SUMX and RELATED</a></li><li><a href="C05_Sign_Aware_Variance_with_VAR_and_ABS.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C05_Sign_Aware_Variance_with_VAR_and_ABS.html">Sign-Aware Variance % with VAR and ABS</a></li><li><a href="C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html">KEEPFILTERS to Intersect Rather Than Overwrite</a></li><li><a href="C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html">DIVIDE and Its BLANK Default for Zero Denominators</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Percentage within Statement with ALLEXCEPT</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>% within Statement = DIVIDE([Actual], CALCULATE([Actual], ALLEXCEPT(CoA, CoA[Statement])))</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-DAX">% within Statement =
+DIVIDE (
+    [Actual],
+    CALCULATE ( [Actual], ALLEXCEPT ( CoA, CoA[Statement] ) )
+)
+</code></pre>
+<p><code>ALLEXCEPT(CoA, CoA[Statement])</code> removes every filter on the CoA table <strong>except</strong> filters on <code>CoA[Statement]</code>. The
+denominator is therefore the total of the statement to which the current row belongs (Profit and Loss or Balance
+Sheet), within the other active filters (Date, Branch, CostCentre).</p>
+<p>\[
+\text{Share}_{row} = \frac{A(row)}{A(\text{Statement of the row})}
+\]</p>
+<h2 id="explanation">Explanation</h2>
+<p>In a matrix with Statement → FSLine → Account, the measure answers "what fraction of its statement is this line?".
+For a vertical (common-size) analysis you typically want lines as a % of a specific anchor — revenue for the P&amp;L,
+total assets for the balance sheet — rather than the statement's net total, which brings a double-entry caveat:</p>
+<ul>
+<li><strong>Net totals can be tiny or zero.</strong> The P&amp;L statement's net total is profit (income and expense netted). Each
+  line as % of profit is rarely meaningful. The BS net total (assets + liabilities + equity with signs) is zero in a
+  balanced TB — the measure returns blank. ALLEXCEPT by Statement is therefore most useful with <strong>sign-adjusted,
+  one-sided</strong> groupings, e.g. Statement split into "Assets" and "Equity and liabilities", or with a measure that sums
+  absolute values.</li>
+<li><strong>Common-size P&amp;L</strong> uses revenue as the denominator instead: <code>DIVIDE([Actual Signed], [Revenue])</code> (c01).</li>
+</ul>
+<p>ALLEXCEPT behaviour to remember:</p>
+<ul>
+<li>It removes filters from <strong>all other CoA columns</strong>, including slicer filters (e.g. AccountType = "Expense" on a
+  slicer is removed from the denominator).</li>
+<li>If <code>CoA[Statement]</code> is not filtered (grand total row), ALLEXCEPT keeps nothing — the denominator is the total of
+  all accounts.</li>
+<li>Use <code>CALCULATE([Actual], REMOVEFILTERS(CoA), VALUES(CoA[Statement]))</code> to keep exactly the visible statements —
+  similar, but also respects a slicer on Statement through VALUES.</li>
+<li>ALLEXCEPT with a column from another table (e.g. <code>ALLEXCEPT(CoA, 'Date'[FY])</code>) is legal only when that table is
+  related as part of CoA's expanded table — usually not; keep the listed columns within the same table.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>Balance sheet at 31-Mar-2026 presented with a Statement column split into two "sides" and sign-adjusted amounts
+(₹ crore):</p>
+<table>
+<thead>
+<tr>
+<th>Statement (side)</th>
+<th>FSLine</th>
+<th>Amount</th>
+<th>% within Statement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assets</td>
+<td>Property, plant and equipment</td>
+<td>420</td>
+<td>52.5%</td>
+</tr>
+<tr>
+<td>Assets</td>
+<td>Trade receivables</td>
+<td>180</td>
+<td>22.5%</td>
+</tr>
+<tr>
+<td>Assets</td>
+<td>Cash and cash equivalents</td>
+<td>200</td>
+<td>25.0%</td>
+</tr>
+<tr>
+<td>Assets total</td>
+<td></td>
+<td>800</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Equity and liabilities</td>
+<td>Equity share capital and other equity</td>
+<td>500</td>
+<td>62.5%</td>
+</tr>
+<tr>
+<td>Equity and liabilities</td>
+<td>Borrowings</td>
+<td>220</td>
+<td>27.5%</td>
+</tr>
+<tr>
+<td>Equity and liabilities</td>
+<td>Trade payables</td>
+<td>80</td>
+<td>10.0%</td>
+</tr>
+<tr>
+<td>E&amp;L total</td>
+<td></td>
+<td>800</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table>
+<p>With a single "Balance Sheet" statement and raw signs, the denominator would be \(800 - 800 = 0\) and every share
+blank.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Subtopic s05 (ALL, ALLEXCEPT, ALLSELECTED; % of parent with ISINSCOPE).</li>
+<li>Topic 1 s05 (CoA hierarchy and sign factor) — the denominator design depends on the hierarchy columns.</li>
+<li>Topic 6 (P&amp;L layout and margin rows).</li>
+<li>Weeks 5–8: common-size statements and vertical analysis.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-predict-blanks-l1">Q1. Predict blanks [L1]</h3>
+<p>In a model where <code>CoA[Statement]</code> has only "Profit and Loss" and "Balance Sheet" and amounts use raw signs, describe
+what <code>% within Statement</code> shows for the Balance Sheet rows and for the P&amp;L rows, and why.</p>
+<h3 id="q2-common-size-pl-l2">Q2. Common-size P&amp;L [L2]</h3>
+<p>Write a measure that shows each P&amp;L FS line as a percentage of Revenue from operations (sign-adjusted), works at
+account level as well, and blanks on Balance Sheet rows.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Remove the CoA row filter from the denominator but anchor it to the revenue line.</p>
+</blockquote>
+<h3 id="q3-slicer-interaction-l2">Q3. Slicer interaction [L2]</h3>
+<p>A user slices <code>CoA[AccountType] = "Expense"</code>. Explain what happens to the numerator and the ALLEXCEPT denominator, and
+rewrite the measure so the denominator respects the slicer.</p></section>
+<nav class="pager"><a class="prev" href="C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html">← Percentage of Total Opex with ALL on Cost Centre</a><a class="next" href="C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html">FX-Converted Revenue with SUMX and RELATED →</a></nav>
+</main></div></body></html>

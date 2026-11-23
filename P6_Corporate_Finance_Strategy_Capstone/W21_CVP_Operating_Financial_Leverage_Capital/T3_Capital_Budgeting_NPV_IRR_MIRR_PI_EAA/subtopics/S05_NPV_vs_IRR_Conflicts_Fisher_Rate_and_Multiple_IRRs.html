@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NPV vs IRR Conflicts, Fisher Rate and Multiple IRRs · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/subtopics/S05_NPV_vs_IRR_Conflicts_Fisher_Rate_and_Multiple_IRRs.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 6</a> <span>›</span> <a href="../../index.html">Week 21</a> <span>›</span> <a href="../index.html">T3 · Capital Budgeting: NPV, IRR, MIRR, PI,…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Capital Budgeting: NPV, IRR, MIRR, PI, EAA</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Incremental_Project_Cash_Flows_Capex_to_Terminal.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/subtopics/S01_Incremental_Project_Cash_Flows_Capex_to_Terminal.html">Incremental Project Cash Flows: Capex to Terminal Value</a></li><li><a href="S02_Relevance_Rules_for_Project_Cash_Flows.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/subtopics/S02_Relevance_Rules_for_Project_Cash_Flows.html">Relevance Rules for Project Cash Flows</a></li><li><a href="S03_Indian_Tax_Depreciation_Shield_WDV_Blocks_Half.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/subtopics/S03_Indian_Tax_Depreciation_Shield_WDV_Blocks_Half.html">Indian Tax Depreciation Shield: WDV Blocks, Half-Rate, Additional</a></li><li><a href="S04_Tax_Regime_Choice_Sec_115BAA_vs_Old_Regime_in.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/subtopics/S04_Tax_Regime_Choice_Sec_115BAA_vs_Old_Regime_in.html">Tax Regime Choice: Sec 115BAA vs Old Regime in Project Models</a></li><li><a href="S05_NPV_vs_IRR_Conflicts_Fisher_Rate_and_Multiple_IRRs.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/subtopics/S05_NPV_vs_IRR_Conflicts_Fisher_Rate_and_Multiple_IRRs.html">NPV vs IRR Conflicts, Fisher Rate and Multiple IRRs</a></li><li><a href="S06_Capital_Rationing_PI_Ranking_and_NPV_Maximising.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/subtopics/S06_Capital_Rationing_PI_Ranking_and_NPV_Maximising.html">Capital Rationing: PI Ranking and NPV-Maximising Combinations</a></li><li><a href="S07_Unequal_Life_Mutually_Exclusive_Projects_Chains_vs.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/subtopics/S07_Unequal_Life_Mutually_Exclusive_Projects_Chains_vs.html">Unequal-Life Mutually Exclusive Projects: Chains vs EAA</a></li><li><a href="S08_Inflation_Consistency_and_Project_Risk_Analysis.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/subtopics/S08_Inflation_Consistency_and_Project_Risk_Analysis.html">Inflation Consistency and Project Risk Analysis Techniques</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Net_Present_Value_and_Its_Excel_Implementation.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/concepts/C01_Net_Present_Value_and_Its_Excel_Implementation.html">Net Present Value and Its Excel Implementation</a></li><li><a href="../concepts/C02_IRR_XIRR_and_Modified_IRR.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/concepts/C02_IRR_XIRR_and_Modified_IRR.html">IRR, XIRR and Modified IRR</a></li><li><a href="../concepts/C03_Profitability_Index_PV_of_Inflows_per_Rupee.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/concepts/C03_Profitability_Index_PV_of_Inflows_per_Rupee.html">Profitability Index: PV of Inflows per Rupee Invested</a></li><li><a href="../concepts/C04_Equivalent_Annual_Annuity_for_Unequal_Lives.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/concepts/C04_Equivalent_Annual_Annuity_for_Unequal_Lives.html">Equivalent Annual Annuity for Unequal Lives</a></li><li><a href="../concepts/C05_After_Tax_Salvage_Under_the_Block_of_Assets_Method.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/concepts/C05_After_Tax_Salvage_Under_the_Block_of_Assets_Method.html">After-Tax Salvage Under the Block-of-Assets Method</a></li><li><a href="../concepts/C06_Operating_Cash_Flow_With_Tax_Shield_and_the_Fisher.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/concepts/C06_Operating_Cash_Flow_With_Tax_Shield_and_the_Fisher.html">Operating Cash Flow With Tax Shield and the Fisher Relation</a></li><li><a href="../concepts/C07_Discounted_Payback_Period.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/concepts/C07_Discounted_Payback_Period.html">Discounted Payback Period</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>NPV vs IRR Conflicts, Fisher Rate and Multiple IRRs</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> NPV vs IRR conflicts: scale, timing and the crossover (Fisher) rate; multiple IRRs for non-conventional flows</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Boards and promoters in India like IRR: it is a single percentage that can be compared with a hurdle rate or a loan
+rate. For independent, conventional projects, IRR and NPV give the same accept/reject decision. For mutually
+exclusive projects, they can rank differently, and for projects with sign changes in later years (mine closure,
+major overhauls, staged capex) IRR can have several values or none. Knowing why and when the conflict arises, and
+resolving it in favour of NPV, is a core competency for capex review and a frequent interview question. Ranking
+mutually exclusive projects by IRR is one of this topic's listed pitfalls.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="why-npv-and-irr-agree-for-independent-conventional-projects">Why NPV and IRR agree for independent conventional projects</h3>
+<p>A conventional project has one sign change (outflows followed by inflows). Its NPV profile, NPV as a function of the
+discount rate \(r\), slopes down and crosses zero once, at the IRR. So NPV \(&gt; 0\) if and only if \(r &lt;\) IRR. The
+accept/reject signals are identical.</p>
+<h3 id="why-they-conflict-for-mutually-exclusive-projects">Why they conflict for mutually exclusive projects</h3>
+<p>With two projects A and B, each NPV profile slopes down, but at different rates. If the profiles cross at a positive
+rate (the <strong>crossover</strong> or <strong>Fisher rate</strong>), then below that rate one project has the higher NPV and above it the
+other does. IRR ranks the projects by where each profile meets the axis, which is independent of the actual cost
+of capital. NPV ranks them at the actual cost of capital.</p>
+<p>Two sources of conflict:</p>
+<ol>
+<li><strong>Scale differences</strong>: a large project with a lower IRR can add more value than a small project with a higher
+   IRR. IRR is a rate; NPV is an amount of wealth.</li>
+<li><strong>Timing differences</strong>: a project with cash flows concentrated early has a flatter NPV profile (less sensitive to
+   \(r\)) than one with cash flows late. At low discount rates, the back-loaded project wins on NPV; at high rates,
+   the front-loaded project wins.</li>
+</ol>
+<p>Underlying both is the <strong>reinvestment assumption</strong>. IRR implicitly assumes interim cash flows are reinvested at the
+IRR itself, while NPV assumes reinvestment at the cost of capital. The cost of capital is the more defensible
+assumption. MIRR (c02) fixes this by making the reinvestment rate explicit.</p>
+<h3 id="finding-the-fisher-rate">Finding the Fisher rate</h3>
+<p>The crossover rate is the IRR of the <strong>incremental</strong> cash flows (B − A):</p>
+<p>\[
+\sum_{t=0}^{n} \frac{\text{CF}_{B,t} - \text{CF}_{A,t}}{(1 + r_F)^t} = 0
+\]</p>
+<p>If the cost of capital is below \(r_F\), choose the project with the higher NPV at that rate (the one whose
+profile is steeper, usually the larger or later one). Equivalently, accept the incremental project if its IRR
+exceeds the cost of capital.</p>
+<h3 id="illustration-timing-conflict">Illustration: timing conflict</h3>
+<p>Two mutually exclusive projects for a Tamil Nadu textile mill (₹ crore), with a WACC of 12%:</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A: process upgrade (front-loaded)</td>
+<td>−100</td>
+<td>100</td>
+<td>20</td>
+<td>10</td>
+<td>5</td>
+</tr>
+<tr>
+<td>B: new product line (back-loaded)</td>
+<td>−100</td>
+<td>0</td>
+<td>20</td>
+<td>60</td>
+<td>100</td>
+</tr>
+<tr>
+<td>B − A</td>
+<td>0</td>
+<td>−100</td>
+<td>0</td>
+<td>50</td>
+<td>95</td>
+</tr>
+</tbody>
+</table>
+<p>Discount factors at 12% are 0.8929, 0.7972, 0.7118 and 0.6355.</p>
+<ul>
+<li>NPV(A) \(= 100 \times 0.8929 + 20 \times 0.7972 + 10 \times 0.7118 + 5 \times 0.6355 - 100 = \text{₹}15.5\) crore;
+  IRR(A) \(\approx 25.0\%\).</li>
+<li>NPV(B) \(= 20 \times 0.7972 + 60 \times 0.7118 + 100 \times 0.6355 - 100 = \text{₹}22.2\) crore; IRR(B) \(\approx
+  18.9\%\).</li>
+<li>Fisher rate \(=\) IRR of (B − A) \(\approx 15.1\%\).</li>
+</ul>
+<p>IRR ranks A first. NPV at 12% ranks B first. Because the WACC (12%) is below the Fisher rate (15.1%), B adds more
+value. At a WACC of 22%, the ranking would flip: NPV(A) \(\approx \text{₹}3.2\) crore and NPV(B) \(\approx -\text{₹}8.4\)
+crore. B's profile is steeper because its cash flows arrive later, so it is more sensitive to the discount rate.</p>
+<p>In Excel, compute <code>=IRR(B2:F2)</code> for each project row and <code>=IRR(B4:F4)</code> for the incremental row, and confirm with an
+NPV data table over discount rates.</p>
+<h3 id="illustration-scale-conflict">Illustration: scale conflict</h3>
+<table>
+<thead>
+<tr>
+<th>Project</th>
+<th>Investment</th>
+<th>Annual inflow (5 years)</th>
+<th>IRR</th>
+<th>NPV at 12%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Small (S)</td>
+<td>10</td>
+<td>3.5</td>
+<td>22.1%</td>
+<td>2.62</td>
+</tr>
+<tr>
+<td>Large (L)</td>
+<td>50</td>
+<td>15.0</td>
+<td>15.2%</td>
+<td>4.07</td>
+</tr>
+</tbody>
+</table>
+<p>S has the higher IRR, but L adds more value (₹4.07 crore against ₹2.62 crore). If the two are mutually exclusive
+and capital is not rationed, choose L. The incremental project (L − S: invest ₹40 crore for ₹11.5 crore a year) has an
+IRR of about 13.5%, above 12%, which confirms the choice.</p>
+<h3 id="multiple-irrs-and-no-irr">Multiple IRRs and no IRR</h3>
+<p>With non-conventional flows (more than one sign change), the NPV polynomial can have several roots:</p>
+<ul>
+<li><strong>Example</strong>: a mining project with flows \(-100, +230, -132\) (₹ crore), where the final outflow is mine-closure
+  cost. NPV \(= 0\) at \(r = 10\%\) and \(r = 20\%\). NPV is positive between them and negative outside.</li>
+<li>Descartes' rule: the number of positive IRRs is at most the number of sign changes.</li>
+<li>Some flows have <strong>no real IRR</strong> (for example \(+100, -300, +250\), where NPV is positive at every rate).</li>
+<li>Excel <code>IRR</code> returns only the root nearest the guess. Change the guess to find others, and always plot the NPV
+  profile.</li>
+</ul>
+<p>Resolution: use NPV at the cost of capital, or MIRR (single-valued for any flows), and present the NPV profile.</p>
+<h3 id="excel-implementation">Excel implementation</h3>
+<pre><code>=NPV(WACC, CF1:CFn) + CF0               ' NPV at WACC
+=IRR(CF0:CFn, 0.1)                      ' IRR with guess
+=IRR(Incremental_CF0:CFn)               ' Fisher (crossover) rate
+=MIRR(CF0:CFn, Finance_Rate, Reinvest_Rate)
+</code></pre>
+<p>Build a one-way data table of NPV for each project over \(r\) from 0% to 30%, and chart the profiles to show the
+crossover.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Independent projects without rationing</strong>: NPV and IRR agree on accept/reject; ranking is irrelevant.</li>
+<li><strong>Capital rationing</strong>: ranking by PI is the relevant tool, not IRR (s06).</li>
+<li><strong>Borrowing-type flows</strong> (inflow first, then outflows, such as customer advances): IRR is the cost of borrowing,
+  and the decision rule reverses (accept if IRR &lt; cost of capital).</li>
+<li><strong>Unequal lives</strong>: NPV comparisons need replacement chains or EAA (s07).</li>
+<li><strong>Promoter preference for IRR</strong>: present IRR alongside NPV, but state that the ranking follows NPV, and show the
+  Fisher-rate analysis.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>For independent conventional projects, NPV and IRR give the same accept/reject decision.</li>
+<li>For mutually exclusive projects, scale and timing differences can make IRR and NPV rank differently.</li>
+<li>The Fisher (crossover) rate is the IRR of the incremental cash flows; below it, the steeper-profile project wins.</li>
+<li>Non-conventional flows can have multiple IRRs or none; use NPV or MIRR and plot the NPV profile.</li>
+<li>NPV at the appropriate cost of capital is the decision rule; IRR is supplementary.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-scale-conflict-l1">Q1. Scale conflict [L1]</h3>
+<p>Project X costs ₹20 crore and returns ₹6 crore a year for 6 years. Project Y costs ₹60 crore and returns ₹15.5 crore a
+year for 6 years. They are mutually exclusive, and WACC is 11%. Compute NPV for each, estimate the IRRs (Excel
+allowed), and state your choice with reasons.</p>
+<h3 id="q2-fisher-rate-l2">Q2. Fisher rate [L2]</h3>
+<p>Projects P and Q have flows (₹ crore): P: −80, 50, 30, 20; Q: −80, 10, 30, 75. Compute NPV for each at 8% and 18%,
+find the Fisher rate, and explain which project you would choose at a WACC of 12%.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> The crossover rate is the IRR of Q − P.</p>
+</blockquote>
+<h3 id="q3-multiple-irrs-l2">Q3. Multiple IRRs [L2]</h3>
+<p>A coal mine has flows (₹ crore) of −200 in Year 0, +500 in Year 1 and −309 in Year 2 (closure and rehabilitation).
+Find both IRRs, plot the NPV profile conceptually, and state whether the project should be accepted at a 12% cost of
+capital. Then compute MIRR with a 12% finance and reinvestment rate.</p>
+<h3 id="q4-board-presentation-l3">Q4. Board presentation [L3]</h3>
+<p>A promoter insists on choosing a hotel project with an IRR of 24% over a mixed-use development with an IRR of 18%.
+The hotel needs ₹150 crore; the development needs ₹600 crore. At the group's 13% WACC, NPVs are ₹48 crore and ₹130
+crore respectively. Prepare a one-page argument for the board, including the incremental analysis and the
+reinvestment-rate point.</p>
+<h3 id="q5-interview-question-l1">Q5. Interview question [L1]</h3>
+<p>"Why does IRR assume reinvestment at the IRR, and why does it matter?" Answer in four sentences.</p></section>
+<nav class="pager"><a class="prev" href="S04_Tax_Regime_Choice_Sec_115BAA_vs_Old_Regime_in.html">← Tax Regime Choice: Sec 115BAA vs Old Regime in Project…</a><a class="next" href="S06_Capital_Rationing_PI_Ranking_and_NPV_Maximising.html">Capital Rationing: PI Ranking and NPV-Maximising… →</a></nav>
+</main></div></body></html>

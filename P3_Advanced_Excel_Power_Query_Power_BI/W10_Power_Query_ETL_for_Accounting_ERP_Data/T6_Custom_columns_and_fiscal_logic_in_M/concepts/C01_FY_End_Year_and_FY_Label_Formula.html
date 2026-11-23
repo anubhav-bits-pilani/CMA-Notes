@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FY End Year and FY Label Formula · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C01_FY_End_Year_and_FY_Label_Formula.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T6 · Custom columns and fiscal logic in M</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · Custom columns and fiscal logic in M</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Column_From_Examples_Custom_Column_and_Conditional.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S01_Column_From_Examples_Custom_Column_and_Conditional.html">Column From Examples, Custom Column and Conditional Column</a></li><li><a href="../subtopics/S02_Indian_FY_Attributes_Label_Fiscal_Month_Quarter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S02_Indian_FY_Attributes_Label_Fiscal_Month_Quarter.html">Indian FY Attributes: Label, Fiscal Month, Quarter and Sort Key</a></li><li><a href="../subtopics/S03_Receivable_and_Payable_Ageing_Against_an_As_Of.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S03_Receivable_and_Payable_Ageing_Against_an_As_Of.html">Receivable and Payable Ageing Against an As-Of-Date Parameter</a></li><li><a href="../subtopics/S04_Conditional_Logic_in_M_ifthenelse_andor_and_Null.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S04_Conditional_Logic_in_M_ifthenelse_andor_and_Null.html">Conditional Logic in M: if/then/else, and/or, and Null Coalescing</a></li><li><a href="../subtopics/S05_Type_Ascription_on_New_Columns.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S05_Type_Ascription_on_New_Columns.html">Type Ascription on New Columns</a></li><li><a href="../subtopics/S06_Group_By_Aggregations_for_Summary_Outputs_During.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S06_Group_By_Aggregations_for_Summary_Outputs_During.html">Group By Aggregations for Summary Outputs During Ingestion</a></li><li><a href="../subtopics/S07_Date_Functions_for_Fiscal_and_Ageing_Logic.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S07_Date_Functions_for_Fiscal_and_Ageing_Logic.html">Date Functions for Fiscal and Ageing Logic</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_FY_End_Year_and_FY_Label_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C01_FY_End_Year_and_FY_Label_Formula.html">FY End Year and FY Label Formula</a></li><li><a href="C02_Fiscal_Month_Number_with_NumberMod.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C02_Fiscal_Month_Number_with_NumberMod.html">Fiscal Month Number with Number.Mod</a></li><li><a href="C03_Fiscal_Quarter_with_NumberIntegerDivide.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C03_Fiscal_Quarter_with_NumberIntegerDivide.html">Fiscal Quarter with Number.IntegerDivide</a></li><li><a href="C04_Ageing_Bucket_Expression_with_DurationDays.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C04_Ageing_Bucket_Expression_with_DurationDays.html">Ageing Bucket Expression with Duration.Days</a></li><li><a href="C05_Null_Safe_Net_Amount_and_Operator_Precedence.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C05_Null_Safe_Net_Amount_and_Operator_Precedence.html">Null-Safe Net Amount and Operator Precedence</a></li><li><a href="C06_TableGroup_by_FY_and_Ledger_with_a_Typed_Sum.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C06_TableGroup_by_FY_and_Ledger_with_a_Typed_Sum.html">Table.Group by FY and Ledger with a Typed Sum</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>FY End Year and FY Label Formula</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> FY end year: <code>Date.Year([Date]) + (if Date.Month([Date]) &gt;= 4 then 1 else 0)</code>; label <code>"FY" &amp; Text.From(y-1) &amp; "-" &amp; Text.End(Text.From(y), 2)</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>For a date \(d\) with calendar year \(Y\) and calendar month \(m\), the Indian FY end year is</p>
+<p>\[
+y = Y + \begin{cases} 1 &amp; \text{if } m \geq 4 \\ 0 &amp; \text{if } m \leq 3 \end{cases}
+\]</p>
+<p>and the FY label is "FY" followed by \(y - 1\), a hyphen and the last two digits of \(y\):</p>
+<pre><code class="language-m">FYEnd = Table.AddColumn(t, &quot;FYEndYear&quot;, each Date.Year([Date]) + (if Date.Month([Date]) &gt;= 4 then 1 else 0), Int64.Type),
+FY    = Table.AddColumn(FYEnd, &quot;FY&quot;, each
+            let y = [FYEndYear] in &quot;FY&quot; &amp; Text.From(y - 1) &amp; &quot;-&quot; &amp; Text.End(Text.From(y), 2), type text)
+</code></pre>
+<ul>
+<li><code>Date.Year</code>, <code>Date.Month</code> — calendar year and month of the date.</li>
+<li>The <code>if</code> expression returns 1 or 0 and must be in parentheses because it is inside an addition.</li>
+<li><code>Text.From</code> converts the number to text; <code>Text.End(text, 2)</code> takes the last two characters.</li>
+</ul>
+<h2 id="explanation">Explanation</h2>
+<p>The FY runs April to March, so April–December belong to the FY that ends in the <strong>next</strong> calendar year and January–March to the FY ending in the <strong>same</strong> year. Computing the end year first, as an integer, is the cleanest design: it is a sortable, joinable number, arithmetic is trivial (prior year = \(y - 1\)), and any label format can be derived from it.</p>
+<p>The label format is a house convention. "FY2025-26" is common in Indian MIS and mirrors the Income-tax "previous year 2025-26" convention; annual reports often say "year ended 31 March 2026". Other variants: "FY26" (= <code>"FY" &amp; Text.End(Text.From(y), 2)</code>), "FY 25-26", "2025-26". The label must match the budget and prior-year files exactly if it is used as a key or slicer value; otherwise appended Budget and Actual rows will not line up.</p>
+<p>Conditions and checks:</p>
+<ul>
+<li><code>[Date]</code> must be a date or datetime (not text). Parse text dates with an explicit culture first.</li>
+<li>Test boundary dates: 31-Mar and 1-Apr of the same calendar year must give different FYs.</li>
+<li>Text concatenation with null returns null: if <code>[Date]</code> can be null, guard with <code>if [Date] = null then null else ...</code>.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Date.Year</th>
+<th>Month ≥ 4?</th>
+<th>FY end year</th>
+<th>Label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01-04-2025</td>
+<td>2025</td>
+<td>Yes</td>
+<td>2026</td>
+<td>FY2025-26</td>
+</tr>
+<tr>
+<td>31-12-2025</td>
+<td>2025</td>
+<td>Yes</td>
+<td>2026</td>
+<td>FY2025-26</td>
+</tr>
+<tr>
+<td>01-01-2026</td>
+<td>2026</td>
+<td>No</td>
+<td>2026</td>
+<td>FY2025-26</td>
+</tr>
+<tr>
+<td>31-03-2026</td>
+<td>2026</td>
+<td>No</td>
+<td>2026</td>
+<td>FY2025-26</td>
+</tr>
+<tr>
+<td>01-04-2026</td>
+<td>2026</td>
+<td>Yes</td>
+<td>2027</td>
+<td>FY2026-27</td>
+</tr>
+</tbody>
+</table>
+<p>A common wrong version, <code>"FY" &amp; Text.From(Date.Year([Date])) &amp; "-" &amp; Text.End(Text.From(Date.Year([Date]) + 1), 2)</code>, labels January–March 2026 as "FY2026-27" — off by one for a quarter of every year.</p>
+<h2 id="connections">Connections</h2>
+<p>Subtopic s02 (all Indian FY attributes), s05 (typing the integer and text columns), s07 (<code>Date.Year</code>, <code>Date.Month</code>). Topic pitfall on inconsistent FY labels. Week 11 moves this formula into the Calendar dimension; Week 9 shows the Excel LET equivalent.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-apply-the-formula-l1">Q1. Apply the formula [L1]</h3>
+<p>Compute the FY end year and FY2025-26-style label for 15-Mar-2025, 15-Apr-2025, 29-Feb-2028 and 1-Jan-2030.</p>
+<h3 id="q2-alternative-labels-l2">Q2. Alternative labels [L2]</h3>
+<p>Starting from the FYEndYear column, write typed M columns for "FY26", "FY 25-26" and "2025-26", and a FYStartDate (1 April) and FYEndDate (31 March) column using <code>#date</code>.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Build every variant from the integer end year rather than from the original date.</p>
+</blockquote>
+<h3 id="q3-review-the-formula-l2">Q3. Review the formula [L2]</h3>
+<p>A colleague's label column is <code>"FY" &amp; Text.From(Date.Year([Date]) - (if Date.Month([Date]) &lt; 4 then 1 else 0)) &amp; "-" &amp; Text.From(Date.Year([Date]) + (if Date.Month([Date]) &gt;= 4 then 1 else 0))</code>. Evaluate it for 10-Jun-2025 and 10-Feb-2026, state whether it is correct in substance and in format, and recommend a cleaner implementation.</p></section>
+<nav class="pager"><a class="prev" href="../subtopics/S07_Date_Functions_for_Fiscal_and_Ageing_Logic.html">← Date Functions for Fiscal and Ageing Logic</a><a class="next" href="C02_Fiscal_Month_Number_with_NumberMod.html">Fiscal Month Number with Number.Mod →</a></nav>
+</main></div></body></html>

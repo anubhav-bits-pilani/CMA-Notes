@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connection Names for Power BI Semantic Models in Cube Formulas · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C06_Connection_Names_for_Power_BI_Semantic_Models_in.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T3 · Excel cube formulas and CUBEVALUE</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Excel cube formulas and CUBEVALUE</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Connecting_Excel_to_the_Data_Model_or_a_Power_BI.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S01_Connecting_Excel_to_the_Data_Model_or_a_Power_BI.html">Connecting Excel to the Data Model or a Power BI Semantic Model</a></li><li><a href="../subtopics/S02_Converting_PivotTables_to_Cube_Formulas_with_OLAP.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S02_Converting_PivotTables_to_Cube_Formulas_with_OLAP.html">Converting PivotTables to Cube Formulas with OLAP Tools</a></li><li><a href="../subtopics/S03_The_Cube_Function_Family_CUBEMEMBER_to.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S03_The_Cube_Function_Family_CUBEMEMBER_to.html">The Cube Function Family: CUBEMEMBER to CUBEMEMBERPROPERTY</a></li><li><a href="../subtopics/S04_MDX_Unique_Names_for_Members_and_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S04_MDX_Unique_Names_for_Members_and_Measures.html">MDX Unique Names for Members and Measures</a></li><li><a href="../subtopics/S05_Connecting_Slicers_to_Cube_Formulas_by_Slicer_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S05_Connecting_Slicers_to_Cube_Formulas_by_Slicer_Name.html">Connecting Slicers to Cube Formulas by Slicer Name</a></li><li><a href="../subtopics/S06_Free_Form_Board_Pack_Layouts_with_Live_Cube.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S06_Free_Form_Board_Pack_Layouts_with_Live_Cube.html">Free-Form Board-Pack Layouts with Live Cube Numbers</a></li><li><a href="../subtopics/S07_Dynamic_Top_N_Lists_with_a_Sorted_CUBESET_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S07_Dynamic_Top_N_Lists_with_a_Sorted_CUBESET_and.html">Dynamic Top N Lists with a Sorted CUBESET and CUBERANKEDMEMBER</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_CUBEVALUE_with_Literal_Measure_and_Member_Strings.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C01_CUBEVALUE_with_Literal_Measure_and_Member_Strings.html">CUBEVALUE with Literal Measure and Member Strings</a></li><li><a href="C02_Building_Cube_Members_from_Cell_Labels_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C02_Building_Cube_Members_from_Cell_Labels_with.html">Building Cube Members from Cell Labels with CUBEMEMBER</a></li><li><a href="C03_Passing_a_Slicer_Name_as_a_CUBEVALUE_Member.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C03_Passing_a_Slicer_Name_as_a_CUBEVALUE_Member.html">Passing a Slicer Name as a CUBEVALUE Member Argument</a></li><li><a href="C04_Sorted_CUBESET_of_Vendors_sortorder_2_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C04_Sorted_CUBESET_of_Vendors_sortorder_2_for.html">Sorted CUBESET of Vendors: sort_order 2 for Descending</a></li><li><a href="C05_CUBERANKEDMEMBER_with_ROWS_and_CUBESETCOUNT_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C05_CUBERANKEDMEMBER_with_ROWS_and_CUBESETCOUNT_for.html">CUBERANKEDMEMBER with ROWS() and CUBESETCOUNT for Ranked Lists</a></li><li><a href="C06_Connection_Names_for_Power_BI_Semantic_Models_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C06_Connection_Names_for_Power_BI_Semantic_Models_in.html">Connection Names for Power BI Semantic Models in Cube Formulas</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Connection Names for Power BI Semantic Models in Cube Formulas</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> For Power BI semantic models, replace "ThisWorkbookDataModel" with the workbook connection name</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>Every cube function's first argument is a <strong>connection name</strong> — the name of a workbook connection listed in
+<strong>Data &gt; Queries &amp; Connections &gt; Connections</strong> (or Data &gt; Connections &gt; Workbook Connections):</p>
+<ul>
+<li>For the workbook's own Data Model, the name is always <code>"ThisWorkbookDataModel"</code>.</li>
+<li>For a Power BI semantic model connected through Analyze in Excel or <em>Get Data &gt; From Power BI</em>, Excel creates an
+  OLEDB/MSOLAP connection with its own name (often long and containing workspace, model or ID text). That exact
+  name replaces <code>"ThisWorkbookDataModel"</code>:</li>
+</ul>
+<pre><code>=CUBEVALUE(&quot;PBI_FinancePack&quot;, &quot;[Measures].[Actual]&quot;, &quot;[Date].[FY].&amp;[FY2025-26]&quot;)
+</code></pre>
+<p>Best practice is to put the name in a named cell <code>Conn</code> and reference it everywhere:</p>
+<pre><code>=CUBEVALUE(Conn, &quot;[Measures].[Actual]&quot;, Slicer_FY)
+</code></pre>
+<h2 id="explanation">Explanation</h2>
+<p>The connection name is just text matched against the workbook's connection list. Consequences:</p>
+<ul>
+<li><strong>Rename first.</strong> Open the connection's <em>Properties</em> and rename it to a short, stable name (<code>PBI_FinancePack</code>)
+  before writing formulas. Renaming later breaks every formula that uses the literal old name (Excel does not
+  rewrite cube formulas when a connection is renamed) — another reason to reference a <code>Conn</code> cell.</li>
+<li><strong>Switching models.</strong> Moving a pack from the workbook Data Model to the Power BI semantic model (or from a Dev to
+  a Prod workspace model) becomes a single-cell change in <code>Conn</code>, provided both models share table, column and
+  measure names. This is how the Excel pack follows the Dev/Test/Prod discipline of Topic 5.</li>
+<li><strong>Slicers.</strong> Slicers belong to a connection. After switching <code>Conn</code>, existing slicers still point at the old
+  connection and must be recreated on the new one (or the pack kept on one connection per environment).</li>
+<li><strong>Unique names.</strong> In a Power BI model, MDX unique names follow the same <code>[Table].[Column].&amp;[Key]</code> grammar, with
+  the model's table names; implicit measures are not available, so only explicit measures can be referenced.</li>
+<li><strong>Authentication and permissions.</strong> The connection uses the user's Microsoft Entra ID sign-in; the user needs
+  Build permission on the semantic model; RLS applies. If the user cannot authenticate, every cube cell returns #N/A.</li>
+<li><strong>Sensitivity labels.</strong> The connection inherits the model's sensitivity label into the workbook where the tenant
+  enables inheritance.</li>
+<li><strong>Refresh.</strong> Refresh All on a Power BI connection re-queries the Service; it does not refresh the semantic model
+  itself (that is scheduled refresh in the Service).</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>Sahyadri's board pack:</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Action</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Analyze in Excel on "Finance Pack – Prod"</td>
+<td>Connection created with a long system name</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Rename connection to <code>PBI_FinancePack_Prod</code></td>
+<td>Short stable name</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Name cell B1 <code>Conn</code> = "PBI_FinancePack_Prod"</td>
+<td>All formulas use <code>Conn</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Insert slicers on the connection: <code>Slicer_FY</code>, <code>Slicer_BusinessUnit</code></td>
+<td>Slicers drive formulas</td>
+</tr>
+<tr>
+<td>5</td>
+<td>For UAT, add a second connection to the Test model, change <code>Conn</code> to "PBI_FinancePack_Test" and recreate slicers on a test copy</td>
+<td>Same pack tested against Test</td>
+</tr>
+</tbody>
+</table>
+<p>A check cell <code>=CUBEVALUE(Conn, "[Measures].[Revenue ₹ Cr]", Slicer_FY)</code> returns 1,240.6 for FY2025-26, equal to the
+Power BI card.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Subtopic s01 (Analyze in Excel and the workbook Data Model) and s05 (slicers per connection).</li>
+<li>Concept c01 (the same formula with ThisWorkbookDataModel).</li>
+<li>Topic 5 Dev/Prod parameters and deployment pipelines; Topic 4 sensitivity labels and access governance.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-find-and-rename-l1">Q1. Find and rename [L1]</h3>
+<p>List the steps to find the connection name created by Analyze in Excel, rename it, and update a pack whose formulas
+use the literal name.</p>
+<h3 id="q2-dev-to-prod-switch-l2">Q2. Dev to Prod switch [L2]</h3>
+<p>A pack built against the Dev semantic model must move to Prod. Describe the changes to <code>Conn</code>, slicers and checks,
+and what must be true of the two models for formulas to keep working.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Unique names depend on table, column and measure names, not on the connection.</p>
+</blockquote>
+<h3 id="q3-na-for-one-user-l2">Q3. #N/A for one user [L2]</h3>
+<p>After moving to the Power BI connection, the CFO's pack works but a BU controller sees #N/A in every cube cell and
+an empty slicer. Give three possible causes related to the connection and how to test each.</p></section>
+<nav class="pager"><a class="prev" href="C05_CUBERANKEDMEMBER_with_ROWS_and_CUBESETCOUNT_for.html">← CUBERANKEDMEMBER with ROWS() and CUBESETCOUNT for Ranked…</a><a class="next" href="../../T4_Data_governance_and_audit_trail_controls/index.html">Data governance and audit-trail controls →</a></nav>
+</main></div></body></html>

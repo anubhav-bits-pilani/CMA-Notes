@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clustered Column Trends and Combo Charts with a Margin Axis · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S02_Clustered_Column_Trends_and_Combo_Charts_with_a.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 2</a> <span>›</span> <a href="../../index.html">Week 8</a> <span>›</span> <a href="../index.html">T4 · Charting for Financial Reports</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Charting for Financial Reports</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_EBITDA_Bridge_Waterfalls_Price_Volume_Mix_and_Cost.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S01_EBITDA_Bridge_Waterfalls_Price_Volume_Mix_and_Cost.html">EBITDA Bridge Waterfalls: Price, Volume, Mix and Cost Drivers</a></li><li><a href="S02_Clustered_Column_Trends_and_Combo_Charts_with_a.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S02_Clustered_Column_Trends_and_Combo_Charts_with_a.html">Clustered Column Trends and Combo Charts with a Margin Axis</a></li><li><a href="S03_ROIC_vs_Revenue_Growth_Bubble_Charts_with_Median.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S03_ROIC_vs_Revenue_Growth_Bubble_Charts_with_Median.html">ROIC vs Revenue Growth Bubble Charts with Median Quadrants</a></li><li><a href="S04_Native_Excel_Waterfall_vs_Stacked_Column.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S04_Native_Excel_Waterfall_vs_Stacked_Column.html">Native Excel Waterfall vs Stacked-Column Workaround</a></li><li><a href="S05_Chart_Hygiene_for_Peer_Financial_Reports.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S05_Chart_Hygiene_for_Peer_Financial_Reports.html">Chart Hygiene for Peer Financial Reports</a></li><li><a href="S06_Linking_Chart_Titles_and_Labels_to_Cells_for.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S06_Linking_Chart_Titles_and_Labels_to_Cells_for.html">Linking Chart Titles and Labels to Cells for Dynamic Updates</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Bridge_Integrity_The_Zero_Check_Cell.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/concepts/C01_Bridge_Integrity_The_Zero_Check_Cell.html">Bridge Integrity: The Zero-Check Cell</a></li><li><a href="../concepts/C02_Price_and_Volume_Effects_in_a_Revenue_or_EBITDA.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/concepts/C02_Price_and_Volume_Effects_in_a_Revenue_or_EBITDA.html">Price and Volume Effects in a Revenue or EBITDA Bridge</a></li><li><a href="../concepts/C03_Gross_Margin_Effect_Isolating_Raw_Material.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/concepts/C03_Gross_Margin_Effect_Isolating_Raw_Material.html">Gross Margin Effect: Isolating Raw Material Inflation</a></li><li><a href="../concepts/C04_IBCS_SUCCESS_Notation_and_Tuftes_Data_Ink_Ratio.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/concepts/C04_IBCS_SUCCESS_Notation_and_Tuftes_Data_Ink_Ratio.html">IBCS SUCCESS Notation and Tufte&#x27;s Data-Ink Ratio</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Clustered Column Trends and Combo Charts with a Margin Axis</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Clustered column trend charts; combo charts with margin % on secondary axis</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Most of Project 2's quantitative story is a comparison across <em>peers</em> and across <em>years</em>: revenue, EBITDA,
+CFO, ROIC. The clustered column chart is the workhorse for showing absolute values side by side, and the
+combo chart (columns for ₹ crore, a line for margin %) is the standard equity-research exhibit for
+"revenue grew, but did profitability keep up?". Both are easy to build and very easy to build badly —
+especially the secondary axis, which can make a 50 bps margin wobble look like a collapse. Reviewers in
+research houses and FP&amp;A teams check axis scaling before they read anything else.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="clustered-column-what-to-cluster">Clustered column: what to cluster</h3>
+<p>A clustered column chart places several series next to each other within each category. The key design
+decision is <strong>which dimension sits on the category axis and which becomes the series</strong>, because the eye
+compares adjacent bars most easily.</p>
+<table>
+<thead>
+<tr>
+<th>Layout</th>
+<th>Category axis</th>
+<th>Series</th>
+<th>Comparison the eye makes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Peer-first</td>
+<td>Company</td>
+<td>FY23, FY24, FY25</td>
+<td>Each company's own trend</td>
+</tr>
+<tr>
+<td>Year-first</td>
+<td>FY23, FY24, FY25</td>
+<td>Company</td>
+<td>Ranking of peers in each year</td>
+</tr>
+</tbody>
+</table>
+<p>For a "who grew fastest" message, use peer-first with years in a sequential shade of each company's colour
+(light to dark). For "who is largest each year", use year-first with fixed company colours. Excel's <strong>Switch
+Row/Column</strong> (Chart Design tab) flips between them without rebuilding.</p>
+<p>Rules for columns:</p>
+<ul>
+<li><strong>Columns encode value by length, so the value axis must start at zero.</strong> A truncated column axis is a
+  misrepresentation, not a style choice.</li>
+<li>Gap width around 50–80% and series overlap 0% to −10% keep clusters readable.</li>
+<li>Three peers × three years = nine bars is the practical maximum; more than that, use small multiples (one
+  mini-chart per company with identical axes) or switch to a line chart.</li>
+<li>Label the top of each bar (data labels, number format <code>#,##0</code>) and delete the value axis and gridlines
+  once labelled — the labels carry the data.</li>
+<li>Time runs left to right, oldest first (IBCS convention); fiscal years labelled <code>FY23</code>, <code>FY24</code>, <code>FY25</code>
+  with a footnote that FY ends 31 March, or calendarized years labelled <code>CY</code> with the method stated.</li>
+</ul>
+<h3 id="combo-chart-columns-plus-margin-line">Combo chart: columns plus margin line</h3>
+<p>A combo chart combines two chart types; the common form is a clustered column for revenue or EBITDA (₹ crore)
+with a line with markers for EBITDA margin % plotted on a <strong>secondary axis</strong>.</p>
+<p>Building it (Excel 2013 and later):</p>
+<ol>
+<li>Select the data block (years in the first row, revenue and EBITDA margin rows below).</li>
+<li>Insert → Recommended Charts → All Charts → <strong>Combo</strong>, or Insert → Combo → <em>Clustered Column – Line on
+   Secondary Axis</em>.</li>
+<li>In the combo dialog, set revenue/EBITDA to <em>Clustered Column</em> (primary) and margin to <em>Line with Markers</em>
+   with <strong>Secondary Axis</strong> ticked.</li>
+<li>Format both axes with <strong>fixed</strong> bounds (Format Axis → Axis Options → Bounds: Minimum, Maximum, and Major
+   unit). Auto bounds silently change when data refresh, which breaks comparability across peer charts.</li>
+</ol>
+<h3 id="scaling-the-secondary-axis-honestly">Scaling the secondary axis honestly</h3>
+<p>The secondary axis is where most distortion happens. Principles:</p>
+<ul>
+<li><strong>Start the margin axis at 0%</strong> unless there is a strong reason not to, and then say so. A margin moving
+  from 20.0% to 21.5% plotted on an axis of 19.5%–22.0% looks like a 60% increase.</li>
+<li><strong>Align gridlines</strong>: choose bounds so both axes have the same number of major units. E.g., primary
+  ₹0–₹8,000 crore with major unit ₹2,000 (4 intervals) and secondary 0%–40% with major unit 10% (4
+  intervals). Misaligned gridlines invite the reader to read margin values off the revenue grid.</li>
+<li><strong>Use the same bounds across all peer combo charts</strong> in the report so the reader can compare charts
+  across pages. Set bounds from the peer maximum, not each company's own maximum.</li>
+<li><strong>Label the axes with units</strong>: "₹ crore" on the left, "EBITDA margin (%)" on the right, and colour each
+  axis label to match its series.</li>
+<li>Consider <strong>not</strong> using a secondary axis at all: put margin % as data labels above columns, or stack two
+  panels (columns above, margin line below) sharing the time axis. Many style guides (including IBCS)
+  discourage dual axes because they imply a relationship whose visual strength depends on arbitrary scaling.</li>
+</ul>
+<h3 id="illustration">Illustration</h3>
+<p>Illustrative figures (₹ crore) for one jewellery peer:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>FY23</th>
+<th>FY24</th>
+<th>FY25</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue</td>
+<td>14,000</td>
+<td>18,500</td>
+<td>22,600</td>
+</tr>
+<tr>
+<td>EBITDA</td>
+<td>1,050</td>
+<td>1,300</td>
+<td>1,480</td>
+</tr>
+<tr>
+<td>EBITDA margin</td>
+<td>7.5%</td>
+<td>7.0%</td>
+<td>6.5%</td>
+</tr>
+</tbody>
+</table>
+<p>A combo chart with revenue columns on ₹0–₹25,000 crore and margin on 0%–10% shows the essential message:
+scale is growing 27% a year while margin is drifting down 50 bps a year (consistent with a shift toward
+franchise-owned stores, where the franchisee earns part of the margin, or toward plain gold). If the
+secondary axis were auto-scaled to 6.4%–7.6%, the same 100 bps decline would appear as a plunge from the
+top to the bottom of the chart.</p>
+<h3 id="combo-charts-for-three-peers">Combo charts for three peers</h3>
+<p>With three companies, a combo chart becomes six series. Options, in order of preference:</p>
+<ol>
+<li><strong>Small multiples</strong>: one combo chart per company, identical axes, arranged in a row.</li>
+<li><strong>Two separate charts</strong>: clustered revenue columns for all peers; a separate line chart of margins for all
+   peers on a 0-based axis.</li>
+<li>A single chart with columns per company (company colours) and margin lines in darker tints of the same
+   colours — only if the message is simple.</li>
+</ol>
+<h3 id="excel-implementation-notes">Excel implementation notes</h3>
+<ul>
+<li>Keep chart source data in a dedicated chart-feed block on the charts sheet, linked to the ratio engine with
+  green cross-sheet links; never type values into a chart's series.</li>
+<li>Use Excel Tables for the feed block so new years extend the chart automatically.</li>
+<li>Number formats for labels: <code>#,##0</code> for ₹ crore, <code>0.0%</code> for margins.</li>
+<li>Save one finished combo chart as a template (right-click → Save as Template, <code>.crtx</code>) so every peer chart
+  has identical fonts, colours and axis formatting.</li>
+<li>To fix axis bounds dynamically, Excel has no native cell link for axis bounds; either set them manually
+  from a documented peer maximum or use a small VBA routine. Document whichever you choose.</li>
+</ul>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Negative values</strong> (losses, negative CFO): columns below zero are fine on a zero-based axis; a margin
+  axis must then extend below 0% too, and gridline alignment becomes harder — prefer separate panels.</li>
+<li><strong>Very different scales</strong> (TCS revenue several times that of a mid-cap peer) can make the small peer's bars
+  invisible. Show growth indices (FY23 = 100) or use small multiples with independent but clearly labelled
+  axes — and say they are independent.</li>
+<li><strong>Calendarized vs fiscal years</strong> must not mix in one chart.</li>
+<li><strong>Restated comparatives</strong>: if a peer restated FY24 (e.g., discontinued operations), the chart must use the
+  restated figure and footnote it.</li>
+<li>A margin line on a secondary axis invites readers to infer correlation between bar height and line level;
+  if the point is only the margin trend, a simple line chart is cleaner.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Choose the category axis based on the comparison you want the eye to make; Switch Row/Column flips it.</li>
+<li>Column axes must start at zero; truncating them misrepresents magnitude.</li>
+<li>Combo charts need fixed, aligned, labelled axis bounds, identical across all peer charts.</li>
+<li>Start margin axes at 0% or disclose otherwise; auto-scaling exaggerates small changes.</li>
+<li>For more than three series, use small multiples rather than one crowded combo chart.</li>
+<li>Feed every chart from a linked block, formatted with consistent number formats and a saved template.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-fixing-a-misleading-combo-chart-l1">Q1. Fixing a misleading combo chart [L1]</h3>
+<p>A draft chart shows revenue columns on an auto-scaled axis from ₹9,800 to ₹12,400 crore and EBITDA margin on
+a secondary axis from 18.2% to 19.4%. List every change you would make before the chart goes into the
+report and explain why each matters.</p>
+<h3 id="q2-aligned-gridlines-l2">Q2. Aligned gridlines [L2]</h3>
+<p>Peer revenues range up to ₹2,41,000 crore and EBITDA margins range from 16.8% to 27.5%. Choose primary and
+secondary axis bounds and major units that start at zero, align gridlines and apply to all three peer combo
+charts. Justify your choice.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Pick a number of intervals first, then round each axis maximum up to a multiple of that interval count.</p>
+</blockquote>
+<h3 id="q3-build-specification-for-small-multiples-l3">Q3. Build specification for small multiples [L3]</h3>
+<p>Write a build specification (data layout, named ranges or Table names, chart type, axis settings, labels,
+colour rules) for a row of three combo charts showing FY23–FY25 revenue and EBITDA margin for Infosys, TCS
+and Wipro, such that adding FY26 later requires no manual chart edits.</p>
+<h3 id="q4-choosing-the-layout-l2">Q4. Choosing the layout [L2]</h3>
+<p>For each message below, state whether you would use a peer-first clustered column, a year-first clustered
+column, a combo chart, or a different chart, and why: (a) "Kalyan grew revenue fastest every year";
+(b) "Titan remains the largest by a wide margin"; (c) "Senco's growth came with falling margins".</p></section>
+<nav class="pager"><a class="prev" href="S01_EBITDA_Bridge_Waterfalls_Price_Volume_Mix_and_Cost.html">← EBITDA Bridge Waterfalls: Price, Volume, Mix and Cost…</a><a class="next" href="S03_ROIC_vs_Revenue_Growth_Bubble_Charts_with_Median.html">ROIC vs Revenue Growth Bubble Charts with Median Quadrants →</a></nav>
+</main></div></body></html>

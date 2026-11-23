@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B2B/D2C Funnel Forecasting with Conversion Rates and Lags · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/subtopics/S03_B2BD2C_Funnel_Forecasting_with_Conversion_Rates.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 5</a> <span>›</span> <a href="../../index.html">Week 18</a> <span>›</span> <a href="../index.html">T3 · Driver-based operational forecasting</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Driver-based operational forecasting</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Driver_Tree_Construction_From_Financial_Outcome_to.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/subtopics/S01_Driver_Tree_Construction_From_Financial_Outcome_to.html">Driver Tree Construction: From Financial Outcome to Leading Indicators</a></li><li><a href="S02_Retail_Drivers_and_Like_for_Like_vs_New_Store.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/subtopics/S02_Retail_Drivers_and_Like_for_Like_vs_New_Store.html">Retail Drivers and Like-for-Like vs New-Store Growth</a></li><li><a href="S03_B2BD2C_Funnel_Forecasting_with_Conversion_Rates.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/subtopics/S03_B2BD2C_Funnel_Forecasting_with_Conversion_Rates.html">B2B/D2C Funnel Forecasting with Conversion Rates and Lags</a></li><li><a href="S04_Manufacturing_Capacity_Drivers_and_the_SaaS_ARR.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/subtopics/S04_Manufacturing_Capacity_Drivers_and_the_SaaS_ARR.html">Manufacturing Capacity Drivers and the SaaS ARR Waterfall</a></li><li><a href="S05_Cost_Drivers_Freight_Commission_Payment_Gateway.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/subtopics/S05_Cost_Drivers_Freight_Commission_Payment_Gateway.html">Cost Drivers: Freight, Commission, Payment Gateway and Cost per Hire</a></li><li><a href="S06_Selecting_Drivers_Materiality_Controllability.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/subtopics/S06_Selecting_Drivers_Materiality_Controllability.html">Selecting Drivers: Materiality, Controllability, Predictability, Data</a></li><li><a href="S07_Statistical_Support_Regression_Moving_Averages.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/subtopics/S07_Statistical_Support_Regression_Moving_Averages.html">Statistical Support: Regression, Moving Averages, Smoothing, FORECAST.ETS</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Retail_Revenue_Identity_Stores_Footfall_Conversion.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/concepts/C01_Retail_Revenue_Identity_Stores_Footfall_Conversion.html">Retail Revenue Identity: Stores × Footfall × Conversion × ATV × Days</a></li><li><a href="../concepts/C02_Lagged_Funnel_Orders_from_Earlier_Leads_Revenue.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/concepts/C02_Lagged_Funnel_Orders_from_Earlier_Leads_Revenue.html">Lagged Funnel: Orders from Earlier Leads, Revenue from AOV</a></li><li><a href="../concepts/C03_ARR_Roll_Forward_and_Net_Revenue_Retention.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/concepts/C03_ARR_Roll_Forward_and_Net_Revenue_Retention.html">ARR Roll-Forward and Net Revenue Retention</a></li><li><a href="../concepts/C04_Capacity_Output_Identity_Capacity_Utilisation.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/concepts/C04_Capacity_Output_Identity_Capacity_Utilisation.html">Capacity Output Identity: Capacity × Utilisation × Yield</a></li><li><a href="../concepts/C05_Driver_Sensitivity_and_Tornado_Ranking.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/concepts/C05_Driver_Sensitivity_and_Tornado_Ranking.html">Driver Sensitivity and Tornado Ranking</a></li><li><a href="../concepts/C06_Leading_vs_Lagging_Indicators.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/concepts/C06_Leading_vs_Lagging_Indicators.html">Leading vs Lagging Indicators</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>B2B/D2C Funnel Forecasting with Conversion Rates and Lags</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> B2B/D2C funnel: leads → MQL → SQL → orders with conversion rates and sales cycle lags</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>For B2B sellers (industrial equipment, enterprise software, IT services, specialty chemicals, logistics contracts) and D2C brands, revenue is the end of a funnel that starts months earlier with marketing-generated leads. The funnel is the richest source of leading indicators a finance team has: if lead volumes fall in August, revenue will fall in October–November. A funnel-based forecast turns marketing and sales CRM data (Salesforce, HubSpot, Zoho CRM, LeadSquared) into a revenue forecast with the right timing, exposes conversion problems early, and links marketing spend to revenue for ROI decisions. Without lags, it misplaces revenue in time and makes the LE phasing wrong.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="funnel-stages">Funnel stages</h3>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Definition (typical)</th>
+<th>Conversion to next</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lead</td>
+<td>Any enquiry/contact captured (form, call, event, marketplace)</td>
+<td>Lead → MQL %</td>
+</tr>
+<tr>
+<td>MQL (marketing-qualified lead)</td>
+<td>Meets marketing criteria (fit, engagement score)</td>
+<td>MQL → SQL %</td>
+</tr>
+<tr>
+<td>SQL (sales-qualified lead)</td>
+<td>Accepted by sales as a genuine opportunity</td>
+<td>SQL → Order (win rate) %</td>
+</tr>
+<tr>
+<td>Order / won deal</td>
+<td>Signed PO / contract</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>Overall lead-to-order conversion is the product of stage conversions:</p>
+<p>\[
+c_{L \to O} = c_{L \to M} \times c_{M \to S} \times c_{S \to O}
+\]</p>
+<p>For D2C e-commerce, the funnel is shorter: sessions → product views → add-to-cart → checkout → orders, with lags of minutes to days, so monthly models usually ignore lags but must handle returns and cancellations (RTO — return to origin — is significant for cash-on-delivery orders in India).</p>
+<h3 id="lags-and-sales-cycle">Lags and sales cycle</h3>
+<p>Each stage takes time. The sales cycle (lead creation to order) may be 30–180 days in B2B. Model lags explicitly:</p>
+<ul>
+<li><strong>Single lag:</strong> \( \text{Orders}_t = \text{Leads}_{t-k} \times c_{L \to O} \), with \( k \) the typical cycle in months.</li>
+<li><strong>Distributed lag:</strong> orders from a lead cohort spread over several months: \( \text{Orders}_t = \sum_{k} \text{Leads}_{t-k} \times c_{L \to O} \times s_k \), where \( s_k \) is the share of a cohort's orders arriving after \( k \) months (\( \sum s_k = 1 \)).</li>
+<li><strong>Stage-by-stage lags:</strong> lead → MQL in the same month, MQL → SQL one month, SQL → order two months. More granular but needs better data.</li>
+</ul>
+<p>Estimate lags from history: cohort analysis in the CRM (for leads created in month X, when did they convert?) or lagged correlation/regression of orders on leads at lags 0–6, choosing the lag with the strongest relationship.</p>
+<h3 id="order-to-revenue">Order to revenue</h3>
+<p>\[
+\text{Revenue}_t = \text{Orders}_t \times \text{AOV}
+\]</p>
+<p>with refinements: delivery/installation lag from order to revenue recognition under Ind AS 115 (control transfer at delivery or acceptance, or over time for services), cancellations, and for subscription deals, recognition over the contract term rather than at order.</p>
+<h3 id="excel-implementation">Excel implementation</h3>
+<p>Leads in row 10 (monthly, history plus forecast), lag in <code>Lag</code> (months), conversion in row 12:</p>
+<pre><code>Orders_t   =IFERROR(INDEX($C$10:$Z$10,COLUMN()-COLUMN($C$10)+1-Lag),0)*C12
+</code></pre>
+<p>Distributed lag with shares in <code>S0:S3</code> (lags 0–3):</p>
+<pre><code>=SUMPRODUCT(INDEX(Leads,pos-3):INDEX(Leads,pos),ReverseShares)*Conv
+</code></pre>
+<p>where <code>pos</code> is the column position of the current month (via <code>XMATCH</code>) and <code>ReverseShares</code> holds \( s_3, s_2, s_1, s_0 \) in that order to align with the lead range. A cleaner alternative is a cohort grid: rows = lead months, columns = order months, cell = leads × conversion × \( s_k \), then sum each column.</p>
+<h3 id="illustration">Illustration</h3>
+<p>Industrial-pumps seller. Leads: Jul 900, Aug 1,000, Sep 1,100, Oct 950. Lead→MQL 45%, MQL→SQL 40%, SQL→order 25% → overall 4.5%. Orders arrive 70% after 2 months and 30% after 3 months. AOV ₹4.8 lakh.</p>
+<ul>
+<li>November orders = Sep leads × 4.5% × 70% + Aug leads × 4.5% × 30% = 34.65 + 13.5 = 48.15 ≈ 48 orders → revenue ₹2.31 crore.</li>
+<li>December orders = Oct × 4.5% × 70% + Sep × 4.5% × 30% = 29.9 + 14.85 = 44.8 ≈ 45 orders → ₹2.15 crore.</li>
+</ul>
+<p>If October leads fall to 760 (−20%), December orders fall to about 38.8, revenue ₹1.86 crore — known in October, two months before it hits the P&amp;L.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Lead quality vs quantity:</strong> a campaign that doubles leads but halves MQL conversion has no revenue effect; forecast at MQL or SQL level when lead quality varies.</li>
+<li><strong>Large-deal lumpiness:</strong> in enterprise B2B, a few big deals dominate; model the top deals individually from the pipeline (stage-weighted probability) and the run-rate business through the funnel.</li>
+<li><strong>Pipeline vs funnel:</strong> a stage-weighted pipeline (deal value × stage probability, with expected close date) is an alternative for long-cycle sales; reconcile the two.</li>
+<li><strong>CRM hygiene:</strong> stale opportunities and inconsistent stage definitions inflate pipeline; apply ageing rules.</li>
+<li><strong>Seasonality in conversion:</strong> B2B conversion often rises in March (customers' budget utilisation) and falls in April–May.</li>
+<li><strong>Channel partners:</strong> orders via distributors may lag end-customer demand by inventory cycles; avoid double counting secondary and primary sales.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Funnel: leads → MQL → SQL → orders; overall conversion is the product of stage rates.</li>
+<li>Model sales-cycle lags explicitly — single, distributed or stage-by-stage — estimated from CRM cohorts.</li>
+<li>Revenue = orders × AOV, adjusted for delivery lag, cancellations and Ind AS 115 recognition timing.</li>
+<li>Leading indicators (leads, MQL, SQL) give early warning months before revenue moves.</li>
+<li>Model large deals individually and the run-rate business through the funnel.</li>
+<li>Watch lead quality, CRM hygiene and channel inventory effects.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-overall-conversion-and-orders-l1">Q1. Overall conversion and orders [L1]</h3>
+<p>Lead→MQL 35%, MQL→SQL 50%, SQL→order 20%, single lag of 2 months, AOV ₹3.5 lakh. Leads: Jun 2,000, Jul 2,400, Aug 2,200. Compute orders and revenue for August, September and October.</p>
+<h3 id="q2-distributed-lag-formula-build-l2">Q2. Distributed-lag formula build [L2]</h3>
+<p>Leads are in row 8 (C8:Z8, Apr-24 onwards) and lag shares are 20% (1 month), 50% (2 months), 30% (3 months), overall conversion 3.8%. Write a non-volatile Excel formula for orders in any month column that handles the first three columns without errors, and explain how you would test it.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> <code>IFERROR</code> around an <code>INDEX</code> that may return an invalid position, or pad the lead row with zeros for earlier months.</p>
+</blockquote>
+<h3 id="q3-estimating-the-lag-from-history-l2">Q3. Estimating the lag from history [L2]</h3>
+<p>Describe how you would estimate the sales-cycle lag using 24 months of leads and orders data in Excel, including the use of <code>CORREL</code> at lags 0–5 and a cohort table from the CRM, and how you would choose between a single and a distributed lag.</p>
+<h3 id="q4-marketing-cut-decision-l3">Q4. Marketing cut decision [L3]</h3>
+<p>The CMO proposes cutting digital marketing spend by ₹1.2 crore per month from November, reducing leads by 25% (base leads 4,000 per month). Overall conversion 4%, distributed lag 40% after 1 month and 60% after 2 months, AOV ₹2.2 lakh, contribution margin 30%. Compute the FY26 (to March) contribution impact versus the saving, and comment on the FY27 impact.</p></section>
+<nav class="pager"><a class="prev" href="S02_Retail_Drivers_and_Like_for_Like_vs_New_Store.html">← Retail Drivers and Like-for-Like vs New-Store Growth</a><a class="next" href="S04_Manufacturing_Capacity_Drivers_and_the_SaaS_ARR.html">Manufacturing Capacity Drivers and the SaaS ARR Waterfall →</a></nav>
+</main></div></body></html>

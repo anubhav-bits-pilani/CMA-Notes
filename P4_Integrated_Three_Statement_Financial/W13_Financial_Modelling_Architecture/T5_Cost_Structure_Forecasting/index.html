@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cost Structure Forecasting · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T5_Cost_Structure_Forecasting/index.html" data-kind="topic">
+<header class="top"><a class="brand" href="../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../index.html">Home</a> <span>›</span> <a href="../../index.html">Phase 4</a> <span>›</span> <a href="../index.html">Week 13</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">Week 13</a></div><ul class="side-links"><li><a href="../T1_Modelling_Architecture_Best_Practices/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/index.html">T1 · Modelling Architecture &amp; Best Practices</a></li><li><a href="../T2_Color_Coding_Formula_Integrity_Rules/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/index.html">T2 · Color Coding &amp; Formula Integrity Rules</a></li><li><a href="../T3_Historical_Data_Ingestion_Normalization/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/index.html">T3 · Historical Data Ingestion &amp; Normalization</a></li><li><a href="../T4_Granular_Revenue_Forecasting/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/index.html">T4 · Granular Revenue Forecasting</a></li><li><a href="index.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T5_Cost_Structure_Forecasting/index.html">T5 · Cost Structure Forecasting</a></li><li><a href="../T6_Scenario_Switcher_Architecture/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/index.html">T6 · Scenario Switcher Architecture</a></li></ul></aside>
+<main class="content">
+<div class="kind">Topic</div>
+<h1>Cost Structure Forecasting</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<section class="index"><h2>Notes in this topic</h2><div class="cols"><div><h3>Subtopics</h3><ul class="links num"><li><a href="subtopics/S01_COGS_Forecasting_of_Revenue_vs_Volume_Unit_Cost.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T5_Cost_Structure_Forecasting/subtopics/S01_COGS_Forecasting_of_Revenue_vs_Volume_Unit_Cost.html">S01 · COGS Forecasting: % of Revenue vs Volume × Unit Cost and Commodities</a></li><li><a href="subtopics/S02_Gross_Margin_Build_Price_Cost_Spread_Mix_and_Pass.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T5_Cost_Structure_Forecasting/subtopics/S02_Gross_Margin_Build_Price_Cost_Spread_Mix_and_Pass.html">S02 · Gross Margin Build: Price-Cost Spread, Mix and Pass-Through Lags</a></li><li><a href="subtopics/S03_Employee_Cost_Build_Headcount_CTC_Increment_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T5_Cost_Structure_Forecasting/subtopics/S03_Employee_Cost_Build_Headcount_CTC_Increment_and.html">S03 · Employee Cost Build: Headcount × CTC × Increment and Ind AS 19</a></li><li><a href="subtopics/S04_Semi_Variable_and_Fixed_SGA_AP_Freight_Power_Store.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T5_Cost_Structure_Forecasting/subtopics/S04_Semi_Variable_and_Fixed_SGA_AP_Freight_Power_Store.html">S04 · Semi-Variable and Fixed SG&amp;A: A&amp;P, Freight, Power, Store Opex, Overheads</a></li><li><a href="subtopics/S05_Rent_Forecasting_Under_Ind_AS_116_What_Stays_in.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T5_Cost_Structure_Forecasting/subtopics/S05_Rent_Forecasting_Under_Ind_AS_116_What_Stays_in.html">S05 · Rent Forecasting Under Ind AS 116: What Stays in Opex</a></li><li><a href="subtopics/S06_Step_Fixed_Costs_Triggered_by_Store_and_Capacity.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T5_Cost_Structure_Forecasting/subtopics/S06_Step_Fixed_Costs_Triggered_by_Store_and_Capacity.html">S06 · Step-Fixed Costs Triggered by Store and Capacity Thresholds</a></li><li><a href="subtopics/S07_EBITDA_Margin_Bridge_and_Operating_Leverage.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T5_Cost_Structure_Forecasting/subtopics/S07_EBITDA_Margin_Bridge_and_Operating_Leverage.html">S07 · EBITDA Margin Bridge and Operating Leverage Analysis</a></li></ul></div><div><h3>Key concepts & formulas</h3><ul class="links num"><li><a href="concepts/C01_Variable_vs_Fixed_Cost_Forecasting_Formulas_with.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T5_Cost_Structure_Forecasting/concepts/C01_Variable_vs_Fixed_Cost_Forecasting_Formulas_with.html">C01 · Variable vs Fixed Cost Forecasting Formulas with Step-Ups</a></li><li><a href="concepts/C02_Employee_Cost_Formula_Average_Headcount_CTC_with.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T5_Cost_Structure_Forecasting/concepts/C02_Employee_Cost_Formula_Average_Headcount_CTC_with.html">C02 · Employee Cost Formula: Average Headcount × CTC with Increments</a></li><li><a href="concepts/C03_Degree_of_Operating_Leverage_Δ_EBIT_Δ_Revenue.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T5_Cost_Structure_Forecasting/concepts/C03_Degree_of_Operating_Leverage_Δ_EBIT_Δ_Revenue.html">C03 · Degree of Operating Leverage: % Δ EBIT ÷ % Δ Revenue</a></li><li><a href="concepts/C04_Step_Fixed_Cost_Formula_with_ROUNDUP.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T5_Cost_Structure_Forecasting/concepts/C04_Step_Fixed_Cost_Formula_with_ROUNDUP.html">C04 · Step-Fixed Cost Formula with ROUNDUP</a></li><li><a href="concepts/C05_Ind_AS_116_Effect_on_Opex_and_EBITDA_Rent_to.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T5_Cost_Structure_Forecasting/concepts/C05_Ind_AS_116_Effect_on_Opex_and_EBITDA_Rent_to.html">C05 · Ind AS 116 Effect on Opex and EBITDA: Rent to Depreciation + Interest</a></li><li><a href="concepts/C06_EBITDA_Margin_Bridge_Gross_Margin_Employee_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T5_Cost_Structure_Forecasting/concepts/C06_EBITDA_Margin_Bridge_Gross_Margin_Employee_and.html">C06 · EBITDA Margin Bridge: Gross Margin, Employee and Other Opex Steps</a></li></ul></div></div></section><article class="note"><blockquote>
+<p><strong>Roadmap topic:</strong> Cost Structure Forecasting: Separating Variable COGS (% of revenue / unit cost) from Semi-Variable and Fixed SG&amp;A (headcount × salary + inflation)</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>If revenue tells you how big the business will be, cost structure tells you how profitable and how risky it will be.
+Two companies with identical revenue forecasts can have very different EBITDA paths: one whose costs are mostly
+variable will see stable margins whatever happens to volume; one with a large fixed base will see margins expand
+sharply in growth years and collapse in a slowdown. A model that forecasts every cost as a percentage of revenue
+erases that difference — it produces static margins, no operating leverage and Bear cases in which profit falls
+exactly in proportion to revenue, which almost never happens in reality.</p>
+<p>For a CMA, the underlying framework is familiar: variable, fixed, semi-variable and step costs; contribution;
+marginal costing; relevant range. The modelling task is to translate that framework into forecast rows driven by the
+right operating variables — volume and unit cost for materials and freight, headcount and CTC for people, area and
+stores for store opex, inflation and step-ups for overheads — while respecting Indian reporting specifics: the
+three-line Schedule III COGS structure, Ind AS 19 for gratuity and leave, and Ind AS 116 for leases, which has moved
+most rent out of opex altogether. The result is a cost build that responds sensibly when the scenario switch (Topic 6)
+moves volume, price, wage inflation or input costs.</p>
+<p>The learning sequence follows the P&amp;L. Start with COGS — choosing between % of revenue and volume × unit cost, and
+linking unit cost to commodities such as VAM for Pidilite or cotton for apparel (s01, c01). Build gross margin from the
+price-cost spread, mix and pass-through lags (s02). Then build employee cost from headcount × CTC × increments with Ind
+AS 19 components (s03, c02), classify the rest of SG&amp;A by behaviour (s04), isolate the rent that genuinely remains in opex
+under Ind AS 116 (s05, c05), and add step-fixed costs triggered by thresholds (s06, c04). Finally, assemble the EBITDA
+margin bridge and analyse operating leverage, keeping D&amp;A and finance costs out of opex (s07, c03, c06).</p>
+<h2 id="concept-map">Concept map</h2>
+<table>
+<thead>
+<tr>
+<th>Subtopic / concept</th>
+<th>Role in the topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s01 COGS: % of revenue vs volume × unit cost</td>
+<td>Choose the COGS method; link unit cost to VAM, cotton and other commodities</td>
+</tr>
+<tr>
+<td>s02 Gross margin build</td>
+<td>Price-cost spread, mix and pass-through lags explain GM moves</td>
+</tr>
+<tr>
+<td>s03 Employee cost</td>
+<td>Headcount by function/store × CTC × increments; Ind AS 19 gratuity and leave</td>
+</tr>
+<tr>
+<td>s04 Semi-variable and fixed SG&amp;A</td>
+<td>Classify A&amp;P, freight, power, store opex, overheads by behaviour and driver</td>
+</tr>
+<tr>
+<td>s05 Rent under Ind AS 116</td>
+<td>Only short-term, low-value and variable rent stays in opex</td>
+</tr>
+<tr>
+<td>s06 Step-fixed costs</td>
+<td>Threshold-triggered costs (regional offices, DCs)</td>
+</tr>
+<tr>
+<td>s07 EBITDA margin bridge and operating leverage</td>
+<td>Explain margin change; measure profit sensitivity; keep D&amp;A/finance costs out</td>
+</tr>
+<tr>
+<td>c01 Variable and fixed cost formulas</td>
+<td>Volume × unit cost; fixed × (1 + inflation) + step-ups</td>
+</tr>
+<tr>
+<td>c02 Employee cost formula</td>
+<td>Average headcount × CTC, increments ~8–10%</td>
+</tr>
+<tr>
+<td>c03 Degree of operating leverage</td>
+<td>% Δ EBIT ÷ % Δ revenue = contribution ÷ EBIT</td>
+</tr>
+<tr>
+<td>c04 Step-fixed ROUNDUP formula</td>
+<td>Excel implementation of threshold costs</td>
+</tr>
+<tr>
+<td>c05 Post-Ind AS 116 EBITDA</td>
+<td>Fixed rent → ROU depreciation + lease interest; EBITDA rises</td>
+</tr>
+<tr>
+<td>c06 Margin bridge</td>
+<td>Prior margin ± GM Δ ± employee Δ ± other opex Δ = current margin</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-concepts-to-study">Related concepts to study</h2>
+<h3 id="phase-6-cvp-contribution-margin-and-break-even">Phase 6: CVP, contribution margin and break-even</h3>
+<p><em>→ Phase 6 (W21–24): CVP, contribution margin, break-even analysis</em></p>
+<p>The cost classification built here is the input to Phase 6's cost-volume-profit work. Contribution margin
+(revenue less variable costs) per unit and in total, break-even revenue (fixed costs ÷ contribution margin ratio) and
+margin of safety all require a credible split between variable and fixed costs — which a % of revenue model cannot
+supply. The degree of operating leverage (c03) is the reciprocal of the margin of safety ratio. Store-level and
+plant-level break-even analysis in Phase 6 uses the same per-store opex, staff and rent drivers defined in this topic,
+so building them cleanly now avoids rebuilding later.</p>
+<h3 id="phase-1-ind-as-19-and-ind-as-116-accounting">Phase 1: Ind AS 19 and Ind AS 116 accounting</h3>
+<p><em>→ Phase 1 (W1–4): Ind AS 19 employee benefits, Ind AS 116 exemptions and variable lease payments</em></p>
+<p>Two Phase 1 standards determine what appears in this topic's cost lines. Ind AS 19 separates defined contribution
+(PF: expense = contribution) from defined benefit plans (gratuity: service cost and net interest in P&amp;L, remeasurements
+in OCI) and treats leave encashment as an other long-term benefit with remeasurements in P&amp;L. Ind AS 116 capitalises
+fixed and index-linked lease payments, leaving only short-term (≤ 12 months), low-value and non-index variable
+payments in opex, and requires judgement on lease term and renewal options. Revisit the disclosures for expenses
+relating to short-term, low-value and variable leases — they are the calibration source for the residual rent line.</p>
+<h3 id="phase-5-cost-centre-budgets-and-pvm-variance-analysis">Phase 5: Cost-centre budgets and PVM variance analysis</h3>
+<p><em>→ Phase 5 (W17–20): cost-centre budgets, price/volume/mix variance analysis</em></p>
+<p>FP&amp;A budgets costs by cost centre — store, plant, region, corporate function — using the same drivers as this
+topic: headcount and CTC, area and opex per sq ft, volume and unit cost. Variance analysis in Phase 5 then splits
+actual vs budget cost into rate (price) and efficiency (volume/usage) variances, and revenue into price, volume and
+mix. A model whose cost lines are driver-based can be rolled into a budget template directly; one built on % of
+revenue cannot generate meaningful variances because every cost "variance" would simply mirror revenue.</p>
+<h3 id="cma-cost-accounting-foundations-and-cra-1-records">CMA cost accounting foundations and CRA-1 records</h3>
+<p><em>CMA cost accounting: cost behaviour, marginal costing, Cost Audit records (CRA-1)</em></p>
+<p>The CMA foundations — fixed, variable, semi-variable and step costs; high-low and regression methods for splitting
+semi-variable costs; marginal costing — are the conceptual core of this topic. For companies covered by the Companies
+(Cost Records and Audit) Rules, 2014, cost records maintained in the CRA-1 format provide product-level material,
+utilities, employee and overhead costs per unit. Where an analyst or FP&amp;A team has access (internal roles, due
+diligence data rooms), these records are an excellent source for unit-cost calibration and for testing the
+variable/fixed split. Cost audit reports (CRA-3) also contain capacity and production data useful for t4 s04.</p>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<h3 id="every-cost-as-of-revenue">Every cost as % of revenue</h3>
+<p><em>Every cost as % of revenue, eliminating operating leverage and making margins static</em></p>
+<p>The mistake: forecasting COGS, employee cost, A&amp;P, freight, rent and overheads as historical-average ratios to
+revenue. It is popular because it is quick and always "looks reasonable". The consequence: EBITDA margin is constant,
+DOL is 1, Bear cases show margins unchanged, and growth years show no leverage — none of which matches how Indian
+retailers or manufacturers actually behave. The correct treatment is to classify each line by behaviour and drive it
+from volume, headcount, area, inflation and step thresholds (c01, s04), using % of revenue only for genuinely
+revenue-linked items such as A&amp;P, royalty and commissions. Detect it in review by flexing revenue −10% and checking
+whether EBITDA margin moves; if it does not, the cost build is ratio-based.</p>
+<h3 id="rent-double-counted-under-ind-as-116">Rent double-counted under Ind AS 116</h3>
+<p><em>Rent kept in opex while leases are also capitalised (double counting under Ind AS 116)</em></p>
+<p>The mistake: forecasting historical "rent" as % of revenue in other expenses (often using pre-2019 ratios) while
+also building a lease schedule that generates ROU depreciation and lease interest for the same stores. It happens
+when the opex build and the lease schedule are built separately, or historical rent is taken from the cash flow
+statement. The correct treatment: opex rent contains only short-term, low-value and variable (e.g., revenue-share
+excess) rent, calibrated from the Ind AS 116 expense disclosures; all fixed rent lives in the lease schedule (s05,
+c05). Detect it by comparing total lease-related charges (opex rent + ROU depreciation + lease interest) with total
+lease cash outflows; a ratio well above 1 indicates double counting.</p>
+<h3 id="constant-gross-margin-despite-input-cost-inflation">Constant gross margin despite input-cost inflation</h3>
+<p><em>Constant gross margin despite modelled input-cost inflation or pass-through lag</em></p>
+<p>The mistake: the Assumptions sheet shows VAM or cotton prices rising 15%, but gross margin is hardcoded at the
+historical average, so the commodity assumption has no effect on profit — or price growth is set equal to cost growth
+with no lag. It happens because gross margin is treated as a single input rather than an output of price and cost.
+The correct treatment is a price-cost build: unit cost from a commodity-linked BOM, realisation with explicit pass-through
+ratios and lags, and gross margin as the result (s01, s02). Detect it by flexing the commodity input in a sensitivity: if
+EBITDA does not move, the link is missing; also compare modelled GM with the historical relationship between GM and
+lagged input prices.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-pidilite-style-cost-build-with-vam-spike-l3">Q1. Pidilite-style cost build with VAM spike [L3]</h3>
+<p>An adhesives company's FY25 data (₹ crore unless stated): revenue 12,000 (volume 520 KT); material cost 5,880 of which
+VAM-linked materials 35%; employee cost 1,250 (headcount 7,600 at 31 March 2025; 8,000 at 31 March 2026); A&amp;P 480;
+freight 420; power 210 (fixed 70); corporate overheads 600. For FY26: UVG 10%, price increase 3% from 1 July 2025 plus a
+further 4% from 1 January 2026; VAM landed cost +22%; other materials +3%; increment 9%; freight rate +5%; power tariff
++3% and fixed power +5%; CPI 5%; A&amp;P at 4.0% of revenue; a new R&amp;D centre adds ₹25 crore of fixed overhead. (a) Build
+FY26 revenue, COGS, gross margin, employee cost, other opex and EBITDA; (b) present the EBITDA margin bridge in bps;
+(c) compute DOL using your cost classification; (d) identify which line would be wrong if all costs were held at FY25
+ratios to revenue, and by how much.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Time-weight both price increases before computing realisation, and scale variable materials by volume.</p>
+</blockquote>
+<h3 id="q2-trent-style-store-economics-and-ind-as-116-l2">Q2. Trent-style store economics and Ind AS 116 [L2]</h3>
+<p>A value-fashion format has 705 stores at 31 March 2026 and 870 at 31 March 2027, average store area 8,000 sq ft and
+FY27 revenue per sq ft of ₹15,750 (average-area basis). Per store: 22 staff at CTC ₹2.8 lakh (FY26) with 8% increment;
+store opex ₹520 per sq ft a year (FY26) inflating 6%; fixed rent ₹1,050 per sq ft a year; 15% of stores are in malls
+with revenue-share rent where the excess over minimum guarantee averages ₹60 per sq ft. Area managers: one per 15
+stores at ₹30 lakh (FY26) inflating 9%. (a) Compute FY27 store-level staff cost, store opex, area manager cost and the
+rent that stays in opex; (b) explain where fixed rent goes and estimate its effect on FY27 EBITDA vs a pre-Ind AS 116
+view; (c) list the checks you would add to the model to prevent rent double counting.</p>
+<h3 id="q3-bear-case-cost-behaviour-review-l3">Q3. Bear-case cost behaviour review [L3]</h3>
+<p>A model's Bear case shows revenue −12% versus Base but EBITDA margin unchanged at 18.5%. The cost sheet has COGS at 52%
+of revenue, employee cost at 9% of revenue, other expenses at 20.5% of revenue, and a lease schedule for 1,200 stores.
+(a) Diagnose every structural problem; (b) redesign the cost build with drivers for each line; (c) estimate, with
+stated assumptions, the more realistic Bear-case EBITDA margin; (d) describe how the Topic 6 scenario switch should
+flex input costs, pass-through and wage inflation coherently.</p>
+<h3 id="q4-interview-case-margin-outlook-for-a-commodity-exposed-consumer-company-l2">Q4. Interview case — margin outlook for a commodity-exposed consumer company [L2]</h3>
+<p>An interviewer says: "Crude derivatives are up 25% in the last six months. Walk me through how you would update your
+FY27 EBITDA margin forecast for a paints or adhesives company." Structure your answer around raw material share of
+COGS, inventory lag, pass-through history, competitive intensity, A&amp;P flexibility and the margin bridge you would show.</p></section>
+<nav class="pager"><a class="prev" href="../T4_Granular_Revenue_Forecasting/concepts/C06_Ind_AS_115_Revenue_Basis_Net_of_GST_Discounts_and.html">← Ind AS 115 Revenue Basis: Net of GST, Discounts and…</a><a class="next" href="subtopics/S01_COGS_Forecasting_of_Revenue_vs_Volume_Unit_Cost.html">COGS Forecasting: % of Revenue vs Volume × Unit Cost and… →</a></nav>
+</main></div></body></html>

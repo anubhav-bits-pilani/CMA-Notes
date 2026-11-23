@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coercing TRUE/FALSE to 1/0: Double Unary, ×1 and N() · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S04_Coercing_TRUEFALSE_to_10_Double_Unary_1_and_N.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T3 · SUMPRODUCT weighted averages and matrix…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · SUMPRODUCT weighted averages and matrix math</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Weighted_Average_Cost_of_Debt_Across_Borrowing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S01_Weighted_Average_Cost_of_Debt_Across_Borrowing.html">Weighted Average Cost of Debt Across Borrowing Tranches</a></li><li><a href="S02_Weighted_Average_Inventory_Cost_and_Weighted.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S02_Weighted_Average_Inventory_Cost_and_Weighted.html">Weighted Average Inventory Cost and Weighted Credit Period / DSO</a></li><li><a href="S03_Boolean_Array_Multi_Condition_Sums_Without_Helper.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S03_Boolean_Array_Multi_Condition_Sums_Without_Helper.html">Boolean-Array Multi-Condition Sums Without Helper Columns</a></li><li><a href="S04_Coercing_TRUEFALSE_to_10_Double_Unary_1_and_N.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S04_Coercing_TRUEFALSE_to_10_Double_Unary_1_and_N.html">Coercing TRUE/FALSE to 1/0: Double Unary, ×1 and N()</a></li><li><a href="S05_Cohort_Retention_Matrices_Acquisition_Month_Active.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S05_Cohort_Retention_Matrices_Acquisition_Month_Active.html">Cohort Retention Matrices: Acquisition Month × Active Month</a></li><li><a href="S06_MMULT_and_TRANSPOSE_for_Cost_Pool_Driver.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S06_MMULT_and_TRANSPOSE_for_Cost_Pool_Driver.html">MMULT and TRANSPOSE for Cost-Pool × Driver Allocations</a></li><li><a href="S07_SUMPRODUCT_vs_SUMIFS_Performance_on_Large_Ranges.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S07_SUMPRODUCT_vs_SUMIFS_Performance_on_Large_Ranges.html">SUMPRODUCT vs SUMIFS Performance on Large Ranges</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Pre_Tax_and_Post_Tax_Kd_with_SUMPRODUCT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C01_Pre_Tax_and_Post_Tax_Kd_with_SUMPRODUCT.html">Pre-Tax and Post-Tax Kd with SUMPRODUCT</a></li><li><a href="../concepts/C02_SUMPRODUCT_with_MONTH_and_LEFT_on_Whole_Columns.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C02_SUMPRODUCT_with_MONTH_and_LEFT_on_Whole_Columns.html">SUMPRODUCT with MONTH and LEFT on Whole Columns</a></li><li><a href="../concepts/C03_Comma_Form_SUMPRODUCT_and_Why_Arrays_Must_Be.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C03_Comma_Form_SUMPRODUCT_and_Why_Arrays_Must_Be.html">Comma-Form SUMPRODUCT and Why Arrays Must Be Numeric</a></li><li><a href="../concepts/C04_The_Cohort_Retention_Cell_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C04_The_Cohort_Retention_Cell_Formula.html">The Cohort Retention Cell Formula</a></li><li><a href="../concepts/C05_MMULT_Dimensions_1nnm_Gives_a_1m_Allocation.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C05_MMULT_Dimensions_1nnm_Gives_a_1m_Allocation.html">MMULT Dimensions: (1×n)·(n×m) Gives a 1×m Allocation</a></li><li><a href="../concepts/C06_The_General_Guarded_Weighted_Average_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C06_The_General_Guarded_Weighted_Average_Formula.html">The General Guarded Weighted-Average Formula</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Coercing TRUE/FALSE to 1/0: Double Unary, ×1 and N()</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Coercion: double unary <code>--</code>, multiplying by 1, <code>N()</code>; how TRUE/FALSE become 1/0</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Every boolean-array formula — SUMPRODUCT conditions, XLOOKUP on <code>(cond1)*(cond2)</code>, FILTER logic, counting flags — depends on converting logical values into numbers. Excel does this automatically in some contexts and refuses in others, and that difference explains a large share of "why is my SUMPRODUCT returning 0?" questions. Knowing exactly when and how coercion happens lets you write formulas that are correct, readable and robust to dirty data — and answer a classic interview question about what <code>--</code> does.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="logical-values-in-excel">Logical values in Excel</h3>
+<p>TRUE and FALSE are a distinct data type. Comparisons (<code>=</code>, <code>&lt;&gt;</code>, <code>&gt;</code>, …) and IS-functions return them. Excel treats them as 1 and 0 <strong>in arithmetic</strong>, but many aggregation functions <strong>ignore</strong> them when they appear inside ranges or arrays:</p>
+<table>
+<thead>
+<tr>
+<th>Expression</th>
+<th>Result</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>=TRUE+TRUE</code></td>
+<td>2</td>
+<td>arithmetic coerces</td>
+</tr>
+<tr>
+<td><code>=SUM(TRUE,TRUE)</code></td>
+<td>2</td>
+<td>logicals typed directly as arguments are counted</td>
+</tr>
+<tr>
+<td><code>=SUM(A1:A2)</code> with TRUE, TRUE in cells</td>
+<td>0</td>
+<td>SUM ignores logicals in ranges</td>
+</tr>
+<tr>
+<td><code>=SUMPRODUCT(A2:A6="West")</code></td>
+<td>0</td>
+<td>logical array not coerced; SUMPRODUCT treats non-numerics as 0</td>
+</tr>
+<tr>
+<td><code>=SUMPRODUCT(--(A2:A6="West"))</code></td>
+<td>count of "West"</td>
+<td>coerced to 1/0</td>
+</tr>
+</tbody>
+</table>
+<p>That fourth row is the trap: a SUMPRODUCT with a single bare condition returns 0, not the count.</p>
+<h3 id="coercion-methods">Coercion methods</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Example</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Double unary</td>
+<td><code>--(Region="West")</code></td>
+<td>First minus turns TRUE into -1, second into +1. Explicit, fast, the most common idiom</td>
+</tr>
+<tr>
+<td>Multiply by 1</td>
+<td><code>(Region="West")*1</code></td>
+<td>Same result; readable to non-specialists</td>
+</tr>
+<tr>
+<td>Add zero</td>
+<td><code>(Region="West")+0</code></td>
+<td>Same result</td>
+</tr>
+<tr>
+<td>Multiply conditions together</td>
+<td><code>(Region="West")*(FY="FY26")</code></td>
+<td>Coerces both and applies AND in one step</td>
+</tr>
+<tr>
+<td><code>N()</code></td>
+<td><code>N(TRUE)</code> → 1</td>
+<td>Works on a single value; on arrays its behaviour is inconsistent across versions — do not rely on it for array coercion</td>
+</tr>
+<tr>
+<td><code>--</code> on text numbers</td>
+<td><code>--"125"</code> → 125</td>
+<td>Also converts numeric text to numbers (like VALUE)</td>
+</tr>
+</tbody>
+</table>
+<p><code>N()</code> converts TRUE to 1, FALSE to 0, numbers to themselves, dates to serials and text to 0. Its main legitimate modern use is single-cell: embedding a comment in a formula (<code>=SUM(A1:A5)+N("Excludes inter-co")</code>), or coercing a single logical cell.</p>
+<h3 id="comma-form-vs-multiplication-form-in-sumproduct">Comma form vs multiplication form in SUMPRODUCT</h3>
+<pre><code class="language-excel">=SUMPRODUCT(--(Region=&quot;West&quot;), --(FY=&quot;FY26&quot;), Revenue)
+=SUMPRODUCT((Region=&quot;West&quot;) * (FY=&quot;FY26&quot;) * Revenue)
+</code></pre>
+<p>Both give the same answer on clean data, but they differ on dirty data:</p>
+<ul>
+<li><strong>Comma form</strong>: each argument is a separate array; SUMPRODUCT multiplies them internally and <strong>treats non-numeric entries as zero</strong>. Text in <code>Revenue</code> (e.g. "n/a", or "1,25,000" stored as text) is silently treated as 0. The conditions must be coerced (<code>--</code>) because SUMPRODUCT would treat raw TRUE/FALSE as zeros too.</li>
+<li><strong>Multiplication form</strong>: the <code>*</code> operator does the arithmetic first, so text in <code>Revenue</code> produces <code>#VALUE!</code> for that element and the whole result is <code>#VALUE!</code> — unless the text is numeric-looking, in which case <code>*</code> coerces it to a number.</li>
+</ul>
+<p>Choose deliberately: the multiplication form fails loudly on bad data (good for controls); the comma form is tolerant (useful when text placeholders are expected, risky when numbers-as-text are possible because they are dropped silently).</p>
+<h3 id="where-coercion-happens-automatically">Where coercion happens automatically</h3>
+<ul>
+<li>Inside arithmetic: <code>(cond)*Amount</code>, <code>(cond)+(cond)</code>, <code>(cond)/1</code>.</li>
+<li>In comparisons combined by arithmetic in FILTER: <code>FILTER(data, (c1)*(c2))</code> — FILTER accepts the 1/0 array as include flags.</li>
+<li>In XLOOKUP lookup arrays: <code>XLOOKUP(1, (c1)*(c2), …)</code> — the multiplication creates numbers, so look up 1, not TRUE.</li>
+<li>In Microsoft 365 <code>SUM((cond)*(values))</code> — arithmetic inside the array, then SUM of numbers.</li>
+</ul>
+<p>Where it does not happen: as raw logical arrays passed directly to SUM, SUMPRODUCT, AVERAGE, or as the lookup array when looking up 1.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>FY</th>
+<th>Revenue (₹ lakh)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>West</td>
+<td>FY26</td>
+<td>420</td>
+</tr>
+<tr>
+<td>North</td>
+<td>FY26</td>
+<td>315</td>
+</tr>
+<tr>
+<td>West</td>
+<td>FY25</td>
+<td>380</td>
+</tr>
+<tr>
+<td>West</td>
+<td>FY26</td>
+<td>"n/a"</td>
+</tr>
+<tr>
+<td>West</td>
+<td>FY26</td>
+<td>145</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>=SUMPRODUCT(Region="West")</code> → 0 (no coercion).</li>
+<li><code>=SUMPRODUCT(--(Region="West"))</code> → 4.</li>
+<li><code>=SUMPRODUCT(--(Region="West"), --(FY="FY26"), Revenue)</code> → 565 (the "n/a" row counts as 0).</li>
+<li><code>=SUMPRODUCT((Region="West")*(FY="FY26")*Revenue)</code> → <code>#VALUE!</code> (text in a multiplied element).</li>
+<li>If the fourth row held "250" as text, the comma form would still give 565 (text ignored) but the multiplication form would give 815 (text coerced) — two "correct-looking" answers differing by ₹250 lakh.</li>
+</ul>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Numbers stored as text</strong> — the single most important reason to know which form you are using. Test with <code>SUMPRODUCT(--ISTEXT(Revenue))</code> before trusting either form.</li>
+<li><strong>Blank cells</strong> — treated as 0 in arithmetic and ignored by the comma form; neither errors.</li>
+<li><strong>Error values</strong> in any array propagate in both forms (<code>#N/A</code> in Revenue → <code>#N/A</code> result). Use <code>IFERROR</code> inside only if you understand why the errors exist.</li>
+<li><strong>Booleans stored in cells</strong> (TRUE/FALSE typed or from formulas) need coercion too: <code>SUMPRODUCT(--Flag, Amount)</code>.</li>
+<li><strong>Readability</strong> — reviewers outside finance modelling often do not recognise <code>--</code>; a short note or <code>*1</code> can help.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>TRUE/FALSE are logicals; arithmetic converts them to 1/0, but SUM/SUMPRODUCT ignore raw logical arrays.</li>
+<li><code>--(cond)</code> is the standard explicit coercion; <code>*1</code>, <code>+0</code> and multiplying conditions together also work.</li>
+<li><code>N()</code> coerces single values; do not depend on it for arrays.</li>
+<li>Comma-form SUMPRODUCT treats text as zero silently; the <code>*</code> form errors on non-numeric text and coerces numeric text.</li>
+<li>Test for text in value columns before choosing a form, and prefer the form that fails loudly in control checks.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-predict-the-results-l1">Q1. Predict the results [L1]</h3>
+<p>For a 6-row Table with Flag column values TRUE, FALSE, TRUE, TRUE, FALSE, TRUE and Amount values 10, 20, 30, "x", 50, "60" (text), state what each returns and why: <code>SUM(T[Flag])</code>, <code>SUMPRODUCT(--T[Flag])</code>, <code>SUMPRODUCT(--T[Flag], T[Amount])</code>, <code>SUMPRODUCT(T[Flag]*T[Amount])</code>.</p>
+<h3 id="q2-choosing-the-form-for-a-control-check-l2">Q2. Choosing the form for a control check [L2]</h3>
+<p>You are building a check that the sum of FY26 West-region revenue in the sales register equals the figure in the MIS. The register is exported from an e-commerce platform and occasionally contains "NA" in the revenue column. Which SUMPRODUCT form would you use, and what additional check cell would you add? Justify.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider which failure you want to see rather than suppress.</p>
+</blockquote>
+<h3 id="q3-interview-what-does-do-l1">Q3. Interview: what does <code>--</code> do? [L1]</h3>
+<p>Explain to an interviewer, in under a minute, what the double unary operator does, why one minus is not enough, and give one formula where it is required and one where it is unnecessary.</p>
+<h3 id="q4-coercion-in-lookups-l2">Q4. Coercion in lookups [L2]</h3>
+<p>A colleague writes <code>=XLOOKUP(TRUE, (T[Branch]=B2)*(T[Ledger]=C2), T[Amount])</code> and gets <code>#N/A</code> for every row. Explain the cause and give two corrected versions.</p></section>
+<nav class="pager"><a class="prev" href="S03_Boolean_Array_Multi_Condition_Sums_Without_Helper.html">← Boolean-Array Multi-Condition Sums Without Helper Columns</a><a class="next" href="S05_Cohort_Retention_Matrices_Acquisition_Month_Active.html">Cohort Retention Matrices: Acquisition Month × Active Month →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Tasks Under Time Pressure: Lookups, SUMIFS, Pivots, Power Query · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P6_Corporate_Finance_Strategy_Capstone/W24_Technical_Interview_Sprints_Modelling/T2_Live_Excel_Modelling_Test_Drills/subtopics/S04_Data_Tasks_Under_Time_Pressure_Lookups_SUMIFS.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 6</a> <span>›</span> <a href="../../index.html">Week 24</a> <span>›</span> <a href="../index.html">T2 · Live Excel Modelling Test Drills</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Live Excel Modelling Test Drills</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Modelling_Test_Formats_Take_Home_Live_Build_and.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W24_Technical_Interview_Sprints_Modelling/T2_Live_Excel_Modelling_Test_Drills/subtopics/S01_Modelling_Test_Formats_Take_Home_Live_Build_and.html">Modelling Test Formats: Take-Home, Live Build and Platform Tests</a></li><li><a href="S02_Typical_Modelling_Test_Prompts_and_How_to_Approach.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W24_Technical_Interview_Sprints_Modelling/T2_Live_Excel_Modelling_Test_Drills/subtopics/S02_Typical_Modelling_Test_Prompts_and_How_to_Approach.html">Typical Modelling Test Prompts and How to Approach Each</a></li><li><a href="S03_Financial_Reporting_Tests_Eliminations_Leases_ECL.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W24_Technical_Interview_Sprints_Modelling/T2_Live_Excel_Modelling_Test_Drills/subtopics/S03_Financial_Reporting_Tests_Eliminations_Leases_ECL.html">Financial Reporting Tests: Eliminations, Leases, ECL and Deferred Tax</a></li><li><a href="S04_Data_Tasks_Under_Time_Pressure_Lookups_SUMIFS.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W24_Technical_Interview_Sprints_Modelling/T2_Live_Excel_Modelling_Test_Drills/subtopics/S04_Data_Tasks_Under_Time_Pressure_Lookups_SUMIFS.html">Data Tasks Under Time Pressure: Lookups, SUMIFS, Pivots, Power Query</a></li><li><a href="S05_Keyboard_Speed_Drills_for_Modelling_Tests.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W24_Technical_Interview_Sprints_Modelling/T2_Live_Excel_Modelling_Test_Drills/subtopics/S05_Keyboard_Speed_Drills_for_Modelling_Tests.html">Keyboard Speed Drills for Modelling Tests</a></li><li><a href="S06_Prioritisation_in_Modelling_Tests_Balance_Checks.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W24_Technical_Interview_Sprints_Modelling/T2_Live_Excel_Modelling_Test_Drills/subtopics/S06_Prioritisation_in_Modelling_Tests_Balance_Checks.html">Prioritisation in Modelling Tests: Balance, Checks, Then Polish</a></li><li><a href="S07_Mock_Drill_Regime_Three_Timed_Builds_a_Week_with.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W24_Technical_Interview_Sprints_Modelling/T2_Live_Excel_Modelling_Test_Drills/subtopics/S07_Mock_Drill_Regime_Three_Timed_Builds_a_Week_with.html">Mock Drill Regime: Three Timed Builds a Week with Rubric Scoring</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Minimum_Viable_Model_Order_for_a_3_Statement_Build.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W24_Technical_Interview_Sprints_Modelling/T2_Live_Excel_Modelling_Test_Drills/concepts/C01_Minimum_Viable_Model_Order_for_a_3_Statement_Build.html">Minimum Viable Model Order for a 3-Statement Build</a></li><li><a href="../concepts/C02_The_Balance_Sheet_Plug_Rule_Cash_or_Revolver_Only.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W24_Technical_Interview_Sprints_Modelling/T2_Live_Excel_Modelling_Test_Drills/concepts/C02_The_Balance_Sheet_Plug_Rule_Cash_or_Revolver_Only.html">The Balance-Sheet Plug Rule: Cash or Revolver Only</a></li><li><a href="../concepts/C03_The_10551510_Time_Split_for_a_90_Minute_Test.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W24_Technical_Interview_Sprints_Modelling/T2_Live_Excel_Modelling_Test_Drills/concepts/C03_The_10551510_Time_Split_for_a_90_Minute_Test.html">The 10/55/15/10 Time Split for a 90-Minute Test</a></li><li><a href="../concepts/C04_Five_Dimension_Scoring_Rubric_for_Modelling_Tests.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W24_Technical_Interview_Sprints_Modelling/T2_Live_Excel_Modelling_Test_Drills/concepts/C04_Five_Dimension_Scoring_Rubric_for_Modelling_Tests.html">Five-Dimension Scoring Rubric for Modelling Tests</a></li><li><a href="../concepts/C05_Debugging_a_3_Statement_Imbalance_by_Sign_Size_and.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W24_Technical_Interview_Sprints_Modelling/T2_Live_Excel_Modelling_Test_Drills/concepts/C05_Debugging_a_3_Statement_Imbalance_by_Sign_Size_and.html">Debugging a 3-Statement Imbalance by Sign, Size and Pattern</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Data Tasks Under Time Pressure: Lookups, SUMIFS, Pivots, Power Query</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Data tasks: <code>XLOOKUP</code>/<code>INDEX-MATCH</code>, <code>SUMIFS</code>, pivot tables, Power Query cleanup under time pressure</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>FP&amp;A, R2R and GCC analytics tests are often data tests disguised as finance tests: you receive a messy extract (ERP dump, sales register, GL detail) and must clean, map, aggregate and analyse it within the time limit. Platform tests (s01) ask directly about lookup and aggregation functions. The ability to choose the right tool quickly (formula vs pivot vs Power Query) and to execute it without errors determines whether you reach the analysis and commentary that carry most of the marks.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="lookups-xlookup-and-index-match">Lookups: <code>XLOOKUP</code> and <code>INDEX-MATCH</code></h3>
+<p><strong><code>XLOOKUP</code></strong> (Microsoft 365/Excel 2021+):</p>
+<pre><code>=XLOOKUP(lookup_value, lookup_array, return_array, [if_not_found], [match_mode], [search_mode])
+</code></pre>
+<p>Advantages: defaults to exact match; returns columns to the left; built-in not-found handling; can return multiple columns as a spill; supports approximate match for slabs (<code>match_mode</code> −1 for next smaller, 1 for next larger) and search from last to first (<code>search_mode</code> −1).</p>
+<p>Example: map GL codes to Schedule III lines with a fallback flag:</p>
+<pre><code>=XLOOKUP([@GLCode],Map[GLCode],Map[SchIIILine],&quot;UNMAPPED&quot;)
+</code></pre>
+<p><strong><code>INDEX-MATCH</code></strong> (all versions, and the fallback where <code>XLOOKUP</code> is unavailable, e.g. some platform tests or older client environments):</p>
+<pre><code>=INDEX(Map!$C$2:$C$500,MATCH(A2,Map!$A$2:$A$500,0))
+</code></pre>
+<p>Two-way lookup (row and column):</p>
+<pre><code>=INDEX($B$2:$M$50,MATCH($P2,$A$2:$A$50,0),MATCH(Q$1,$B$1:$M$1,0))
+</code></pre>
+<p>Multi-criteria lookup without helper columns:</p>
+<pre><code>=INDEX(D:D,MATCH(1,(A:A=H2)*(B:B=I2),0))
+</code></pre>
+<p>(entered normally in Microsoft 365; as an array formula in older versions). In tests, prefer a helper key column (<code>=A2&amp;"|"&amp;B2</code>) for speed and transparency.</p>
+<p><strong>Traps.</strong> Trailing spaces and text-vs-number mismatches (e.g. "1001" vs 1001) cause false not-founds; fix with <code>TRIM</code>, <code>VALUE</code> or Power Query type changes. <code>VLOOKUP</code> with approximate match by default (omitted fourth argument) returns wrong values silently. Always count not-founds: <code>=COUNTIF(F:F,"UNMAPPED")</code>.</p>
+<h3 id="sumifs-and-related-aggregations"><code>SUMIFS</code> and related aggregations</h3>
+<pre><code>=SUMIFS(sum_range, criteria_range1, criteria1, [criteria_range2, criteria2], ...)
+</code></pre>
+<p>Use cases in tests: budget vs actual by cost centre and month; TB to Schedule III line aggregation; revenue by region and product for PVM.</p>
+<pre><code>=SUMIFS(Data[Revenue],Data[Region],$B5,Data[Month],C$4)
+</code></pre>
+<p>Criteria with operators and dates: <code>"&gt;="&amp;$C$1</code>, <code>"&lt;="&amp;EOMONTH($C$1,0)</code>. Wildcards: <code>"*Freight*"</code>. Related functions: <code>COUNTIFS</code>, <code>AVERAGEIFS</code>, <code>MAXIFS</code>, <code>MINIFS</code>. For weighted calculations, <code>SUMPRODUCT</code> (e.g. ECL matrix, weighted-average price).</p>
+<p>Mixed references matter: anchor the column of row labels and the row of column headers (<code>$B5</code>, <code>C$4</code>) so one formula fills the whole grid with Ctrl+Enter or fill right/down.</p>
+<p><strong>Check.</strong> Total of the <code>SUMIFS</code> grid must equal the total of the source column; build <code>=SUM(grid)-SUM(Data[Revenue])</code> and expect zero. A non-zero result means unmapped categories or date mismatches.</p>
+<h3 id="pivot-tables">Pivot tables</h3>
+<p>Pivots are the fastest way to explore and summarise when the output layout is flexible. Under time pressure:</p>
+<ul>
+<li>Convert data to a Table first (Ctrl+T) so the pivot source expands.</li>
+<li>Insert pivot: Alt+N+V (Windows ribbon key sequence; varies by version).</li>
+<li>Use Values settings for sum/count/average and "Show Values As" (% of grand total, % difference from) for quick mix and growth analysis.</li>
+<li>Group dates by month/quarter; group numbers into ageing buckets.</li>
+<li>Use <code>GETPIVOTDATA</code> only if the output must feed formulas; otherwise copy as values for the final table, or use <code>SUMIFS</code> on the source for a stable layout.</li>
+</ul>
+<p><strong>When not to use a pivot:</strong> when outputs must link into a model that will be changed live (pivots need refreshing and change shape) or when the reviewer expects formula traceability.</p>
+<h3 id="power-query-cleanup">Power Query cleanup</h3>
+<p>Power Query is the right tool when the data needs structural cleaning (unpivoting, appending multiple files, splitting columns, fixing types) and when the task might be repeated. Typical sequence for a messy sales extract:</p>
+<ol>
+<li>Data → From Table/Range or From Text/CSV.</li>
+<li>Promote headers; remove top junk rows (Remove Rows → Remove Top Rows).</li>
+<li>Trim and clean text columns (Transform → Format → Trim, Clean); fix case (Capitalize Each Word / UPPERCASE).</li>
+<li>Change types explicitly (dates with locale if "Apr-24" style text: Using Locale → English (India)).</li>
+<li>Unpivot month columns into rows (select ID columns → Unpivot Other Columns).</li>
+<li>Merge with a mapping table (Merge Queries, left outer) and expand the mapped column; filter nulls to find unmapped items.</li>
+<li>Group By for aggregation if required; Close &amp; Load to a Table.</li>
+</ol>
+<p>Representative M for steps 3–5:</p>
+<pre><code>let
+    Source = Excel.CurrentWorkbook(){[Name=&quot;RawSales&quot;]}[Content],
+    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+    Trimmed = Table.TransformColumns(Promoted, {{&quot;SKU&quot;, Text.Trim, type text}, {&quot;Region&quot;, Text.Proper, type text}}),
+    Unpivoted = Table.UnpivotOtherColumns(Trimmed, {&quot;SKU&quot;, &quot;Region&quot;}, &quot;Month&quot;, &quot;Units&quot;),
+    Typed = Table.TransformColumnTypes(Unpivoted, {{&quot;Units&quot;, type number}, {&quot;Month&quot;, type date}}, &quot;en-IN&quot;)
+in
+    Typed
+</code></pre>
+<p><strong>Under time pressure:</strong> do only what the task needs; name queries clearly; check row counts after each major step (the status bar shows rows in the preview; a merge that duplicates rows means non-unique keys in the mapping table).</p>
+<h3 id="choosing-the-tool-in-30-seconds">Choosing the tool in 30 seconds</h3>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Best tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>One-off lookup of a few columns, clean data</td>
+<td><code>XLOOKUP</code></td>
+</tr>
+<tr>
+<td>Messy text, multiple files, wide-to-long reshape</td>
+<td>Power Query</td>
+</tr>
+<tr>
+<td>Exploratory summary, flexible layout</td>
+<td>Pivot table</td>
+</tr>
+<tr>
+<td>Fixed-layout grid feeding a model or variance table</td>
+<td><code>SUMIFS</code></td>
+</tr>
+<tr>
+<td>Weighted totals (ECL, weighted price)</td>
+<td><code>SUMPRODUCT</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Duplicate keys in mapping tables:</strong> <code>XLOOKUP</code> returns the first match silently; Power Query merges duplicate rows. Check uniqueness with <code>=COUNTIF(Map[Key],[@Key])&gt;1</code>.</li>
+<li><strong>Dates stored as text:</strong> <code>SUMIFS</code> on dates fails silently; convert with <code>DATEVALUE</code> or Power Query.</li>
+<li><strong>Volatile functions:</strong> <code>OFFSET</code> and <code>INDIRECT</code> slow large workbooks and obscure audit trails; avoid in tests.</li>
+<li><strong>Calculation mode:</strong> if the workbook is set to manual calculation, results look wrong; check Formulas → Calculation Options.</li>
+<li><strong>Platform tests without Power Query:</strong> be ready to do the same cleanup with <code>TRIM</code>, <code>PROPER</code>, <code>TEXTSPLIT</code> or Text to Columns.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li><code>XLOOKUP</code> for modern lookups with not-found handling; <code>INDEX-MATCH</code> as the universal fallback.</li>
+<li><code>SUMIFS</code> with mixed references fills a grid in one formula; always reconcile grid total to source.</li>
+<li>Pivots for exploration; formulas for model-linked outputs.</li>
+<li>Power Query for structural cleanup; check row counts after merges and unpivots.</li>
+<li>Trailing spaces, text numbers and duplicate keys cause most data-test errors; test for them explicitly.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-lookup-design-l1">Q1. Lookup design [L1]</h3>
+<p>A GL extract has 3,200 rows with columns GLCode (some stored as text with leading apostrophes), Description, Debit, Credit. A mapping table maps 410 GL codes to Schedule III line items, but 6 codes appear twice with different mappings. Write the formulas to map each row, flag unmapped and duplicate-mapped codes, and reconcile total debits and credits after mapping.</p>
+<h3 id="q2-sumifs-variance-grid-l2">Q2. SUMIFS variance grid [L2]</h3>
+<p>Design a budget vs actual grid with cost centres (25) in rows and months (Apr–Mar) in columns, sourced from a 15,000-row actuals table (CostCentre, Month as a true date, Amount) and a budget table of the same structure. Write the single <code>SUMIFS</code> formula for the actual grid's first cell that can be filled across the whole grid, the variance formula, and the reconciliation check.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Month criteria on true dates are easiest with a start-of-month header and <code>EOMONTH</code> for the end bound.</p>
+</blockquote>
+<h3 id="q3-power-query-cleanup-plan-l2">Q3. Power Query cleanup plan [L2]</h3>
+<p>You receive 12 monthly CSV files of sales (each with 3 junk header rows, SKU codes with trailing spaces, region names in mixed case, amounts with commas stored as text, and a "Total" row at the bottom). Describe the Power Query steps to combine and clean them into one table, the checks you would perform, and how you would handle a 13th file arriving later.</p>
+<h3 id="q4-tool-choice-under-time-pressure-l3">Q4. Tool choice under time pressure [L3]</h3>
+<p>In a 60-minute FP&amp;A test, you must produce (a) revenue by region and month, (b) top 10 SKUs by growth, (c) PVM by region, and (d) a commentary. The data is 50,000 rows, clean except for inconsistent region names. Plan the time and tool for each part, and explain the trade-offs between pivots, <code>SUMIFS</code> and Power Query in this case.</p></section>
+<nav class="pager"><a class="prev" href="S03_Financial_Reporting_Tests_Eliminations_Leases_ECL.html">← Financial Reporting Tests: Eliminations, Leases, ECL and…</a><a class="next" href="S05_Keyboard_Speed_Drills_for_Modelling_Tests.html">Keyboard Speed Drills for Modelling Tests →</a></nav>
+</main></div></body></html>

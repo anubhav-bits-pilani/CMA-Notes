@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IST Last-Refresh Table in Power Query · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C05_IST_Last_Refresh_Table_in_Power_Query.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T4 · Data governance and audit-trail controls</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Data governance and audit-trail controls</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Control_Measures_Dr_Cr_TB_Nets_to_Zero_A_L_E.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S01_Control_Measures_Dr_Cr_TB_Nets_to_Zero_A_L_E.html">Control Measures: Dr = Cr, TB Nets to Zero, A = L + E</a></li><li><a href="../subtopics/S02_GL_to_Dashboard_Tie_Out_Against_Source_TB_Control.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S02_GL_to_Dashboard_Tie_Out_Against_Source_TB_Control.html">GL-to-Dashboard Tie-Out Against Source TB Control Totals</a></li><li><a href="../subtopics/S03_Completeness_Checks_Unmapped_Ledgers_Row_Counts.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S03_Completeness_Checks_Unmapped_Ledgers_Row_Counts.html">Completeness Checks: Unmapped Ledgers, Row Counts, Missing Months</a></li><li><a href="../subtopics/S04_Refresh_Metadata_Last_Refresh_Latest_Posting_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S04_Refresh_Metadata_Last_Refresh_Latest_Posting_Date.html">Refresh Metadata: Last Refresh, Latest Posting Date, Source Files</a></li><li><a href="../subtopics/S05_Control_Panel_Page_with_PassFail_Indicators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S05_Control_Panel_Page_with_PassFail_Indicators.html">Control Panel Page with Pass/Fail Indicators</a></li><li><a href="../subtopics/S06_Access_Governance_RLS_Roles_Labels_Endorsement.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S06_Access_Governance_RLS_Roles_Labels_Endorsement.html">Access Governance: RLS, Roles, Labels, Endorsement, Lineage</a></li><li><a href="../subtopics/S07_Change_Control_PBIP_in_Git_Measure_Docs_Deployment.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S07_Change_Control_PBIP_in_Git_Measure_Docs_Deployment.html">Change Control: PBIP in Git, Measure Docs, Deployment Pipelines</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Dr_Cr_Diff_and_Dr_Cr_Status_Control_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C01_Dr_Cr_Diff_and_Dr_Cr_Status_Control_Measures.html">Dr Cr Diff and Dr Cr Status Control Measures</a></li><li><a href="C02_BS_Check_Assets_Minus_Liabilities_Minus_Equity.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C02_BS_Check_Assets_Minus_Liabilities_Minus_Equity.html">BS Check: Assets Minus Liabilities Minus Equity Equals Zero</a></li><li><a href="C03_Unmapped_Count_with_EXCEPT_over_GL_and_CoA_Account.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C03_Unmapped_Count_with_EXCEPT_over_GL_and_CoA_Account.html">Unmapped Count with EXCEPT over GL and CoA Account Codes</a></li><li><a href="C04_Tie_out_Diff_Dashboard_Revenue_vs_TB_Control.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C04_Tie_out_Diff_Dashboard_Revenue_vs_TB_Control.html">Tie-out Diff: Dashboard Revenue vs TB Control Totals</a></li><li><a href="C05_IST_Last_Refresh_Table_in_Power_Query.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C05_IST_Last_Refresh_Table_in_Power_Query.html">IST Last-Refresh Table in Power Query</a></li><li><a href="C06_Per_File_Control_Totals_with_TableGroup_on.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C06_Per_File_Control_Totals_with_TableGroup_on.html">Per-File Control Totals with Table.Group on Source.Name</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>IST Last-Refresh Table in Power Query</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Last refresh table in M: <code>#table(type table [LastRefresh = datetimezone], {{DateTimeZone.SwitchZone(DateTimeZone.UtcNow(), 5, 30)}})</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-M">let
+    LastRefresh =
+        #table(
+            type table [LastRefresh = datetimezone],
+            {{ DateTimeZone.SwitchZone(DateTimeZone.UtcNow(), 5, 30) }}
+        )
+in
+    LastRefresh
+</code></pre>
+<ul>
+<li><code>#table(type, rows)</code> — constructs a table literal; the type <code>table [LastRefresh = datetimezone]</code> defines one column
+  of type datetimezone; <code>{{ … }}</code> is a list containing one row, which is a list containing one value.</li>
+<li><code>DateTimeZone.UtcNow()</code> — current date-time in UTC, with offset +00:00, evaluated when the query runs.</li>
+<li><code>DateTimeZone.SwitchZone(dtz, 5, 30)</code> — re-expresses the same instant in the zone UTC+05:30 (IST): the clock time
+  changes, the instant does not.</li>
+</ul>
+<h2 id="explanation">Explanation</h2>
+<p>Power BI has no DAX function for "model last refreshed", so the usual solution is a one-row table evaluated during
+every refresh. The choice of function matters:</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>In Desktop (IST laptop)</th>
+<th>In Power BI Service</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DateTime.LocalNow()</code></td>
+<td>IST</td>
+<td>UTC (servers run on UTC) — 5h30m early</td>
+</tr>
+<tr>
+<td><code>DateTimeZone.LocalNow()</code></td>
+<td>IST, offset +05:30</td>
+<td>UTC, offset +00:00</td>
+</tr>
+<tr>
+<td><code>DateTimeZone.UtcNow()</code> + SwitchZone(5, 30)</td>
+<td>IST</td>
+<td>IST</td>
+</tr>
+</tbody>
+</table>
+<p>Only the last is correct in both environments. India has no daylight saving, so a fixed offset is reliable; for
+zones with DST, keep UTC and label it, or convert in a dataflow with a zone table.</p>
+<p>Model and display:</p>
+<ul>
+<li>Load the query to the model (table <code>Refresh Info</code>). The model has no true datetimezone type, so the column is
+  stored as date/time on load. To remove any ambiguity about how the offset is handled, add a final step
+  <code>Table.TransformColumns(LastRefresh, {{"LastRefresh", DateTimeZone.RemoveZone, type datetime}})</code>, so the model
+  receives a plain datetime holding the IST clock time.</li>
+<li>Display with a measure: <code>"Refreshed " &amp; FORMAT(MAX('Refresh Info'[LastRefresh]), "dd-mmm-yyyy hh:mm") &amp; " IST"</code>.</li>
+<li>Keep "Include in report refresh" ticked; a disabled query keeps the old stamp.</li>
+<li>With an on-premises gateway, the M runs on the gateway machine; <code>UtcNow</code> is still correct, whereas <code>LocalNow</code>
+  would depend on that server's clock setting.</li>
+<li>The stamp records when <em>this query</em> ran. In a model that refreshes some tables separately (enhanced refresh,
+  incremental partitions), it is a model-level stamp, not proof each table refreshed.</li>
+<li>In Excel, the same query loaded to a cell gives the workbook's refresh time for the board pack cover.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>Scheduled refresh in the Service is set for 06:30 IST, which is 01:00 UTC. The refresh completes at 01:04 UTC.</p>
+<ul>
+<li><code>DateTime.LocalNow()</code> stamp: 07-Apr-2026 01:04 — reads as though the pack refreshed after midnight, before the
+  branch files dropped at 05:00 IST.</li>
+<li><code>DateTimeZone.SwitchZone(DateTimeZone.UtcNow(), 5, 30)</code> stamp: 07-Apr-2026 06:34 +05:30 — correct.</li>
+</ul>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>s04 (refresh metadata) combines this stamp with the latest GL posting date and the file list.</li>
+<li>Topic pitfall: <code>DateTime.LocalNow()</code> returns UTC in the Service.</li>
+<li>Topic 5 (one-click refresh): the stamp is the first thing to check in the Saturday validation after Refresh All.</li>
+<li>Week 10 pipelines: the same table pattern can stamp each consolidation run.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-fixing-a-stamp-l1">Q1. Fixing a stamp [L1]</h3>
+<p>A pack's footer reads "Refreshed 12-Jan-2026 02:15" for a refresh scheduled at 07:45 IST. Identify the function
+probably used and rewrite the query correctly.</p>
+<h3 id="q2-multi-country-group-l2">Q2. Multi-country group [L2]</h3>
+<p>A group reports from India (IST) and Dubai (UTC+04:00). Design the refresh-metadata table and display measure so
+that viewers in both countries interpret the stamp correctly.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Store one canonical instant and decide whether to convert at load or at display.</p>
+</blockquote>
+<h3 id="q3-stamp-did-not-change-l2">Q3. Stamp did not change [L2]</h3>
+<p>The Service shows a successful refresh at 06:30 IST today, but the footer still shows yesterday's time. List three
+possible reasons.</p></section>
+<nav class="pager"><a class="prev" href="C04_Tie_out_Diff_Dashboard_Revenue_vs_TB_Control.html">← Tie-out Diff: Dashboard Revenue vs TB Control Totals</a><a class="next" href="C06_Per_File_Control_Totals_with_TableGroup_on.html">Per-File Control Totals with Table.Group on Source.Name →</a></nav>
+</main></div></body></html>

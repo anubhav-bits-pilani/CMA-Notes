@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Separating Inputs, Calculations and Outputs · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S02_Separating_Inputs_Calculations_and_Outputs.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T1 · Modelling Architecture &amp; Best Practices</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Modelling Architecture &amp; Best Practices</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Tab_Flow_of_an_Institutional_Three_Statement_Model.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S01_Tab_Flow_of_an_Institutional_Three_Statement_Model.html">Tab Flow of an Institutional Three-Statement Model</a></li><li><a href="S02_Separating_Inputs_Calculations_and_Outputs.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S02_Separating_Inputs_Calculations_and_Outputs.html">Separating Inputs, Calculations and Outputs</a></li><li><a href="S03_Single_Master_Timeline_Row_and_Period_Flags.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S03_Single_Master_Timeline_Row_and_Period_Flags.html">Single Master Timeline Row and Period Flags</a></li><li><a href="S04_Identical_Column_Structure_on_Every_Calculation.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S04_Identical_Column_Structure_on_Every_Calculation.html">Identical Column Structure on Every Calculation Sheet</a></li><li><a href="S05_Cover_Sheet_Identity_Basis_Units_and_Change_Log.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S05_Cover_Sheet_Identity_Basis_Units_and_Change_Log.html">Cover Sheet: Identity, Basis, Units and Change Log</a></li><li><a href="S06_Checks_Sheet_and_the_Master_Integrity_Flag.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S06_Checks_Sheet_and_the_Master_Integrity_Flag.html">Checks Sheet and the Master Integrity Flag</a></li><li><a href="S07_Named_Ranges_for_Scalars_Direct_References_for.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S07_Named_Ranges_for_Scalars_Direct_References_for.html">Named Ranges for Scalars, Direct References for Rows</a></li><li><a href="S08_Version_Control_File_Naming_and_Transparent.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S08_Version_Control_File_Naming_and_Transparent.html">Version Control, File Naming and Transparent Protection</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_FAST_Standard_Flexible_Appropriate_Structured.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C01_FAST_Standard_Flexible_Appropriate_Structured.html">FAST Standard: Flexible, Appropriate, Structured, Transparent</a></li><li><a href="../concepts/C02_ICAEW_Financial_Modelling_Code_Principles_for.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C02_ICAEW_Financial_Modelling_Code_Principles_for.html">ICAEW Financial Modelling Code: Principles for Reliable Models</a></li><li><a href="../concepts/C03_Column_Consistency_Same_Column_Same_Period_Every.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C03_Column_Consistency_Same_Column_Same_Period_Every.html">Column Consistency: Same Column, Same Period, Every Sheet</a></li><li><a href="../concepts/C04_Master_Check_Formula_on_the_Cover.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C04_Master_Check_Formula_on_the_Cover.html">Master Check Formula on the Cover</a></li><li><a href="../concepts/C05_Sign_Convention_Declared_Once_and_Applied.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C05_Sign_Convention_Declared_Once_and_Applied.html">Sign Convention Declared Once and Applied Everywhere</a></li><li><a href="../concepts/C06_Units_Model_in_Crore_and_Convert_Before_Ingestion.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C06_Units_Model_in_Crore_and_Convert_Before_Ingestion.html">Units: Model in ₹ Crore and Convert Before Ingestion</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Separating Inputs, Calculations and Outputs</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Strict separation of inputs, calculations and outputs; calculations flow left-to-right and top-to-bottom</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Almost every model error found in Big 4 model reviews falls into one of three families: a hardcoded number sitting where a formula should be, a formula referring to the wrong cell, or an output that was typed over. Separation of inputs, calculations and outputs attacks all three. If every hardcode lives in an input zone, a reviewer can audit every assumption in one place; if calculations never contain typed numbers, a formula error is a logic error and not a hidden override; if outputs only display, nobody "fixes" a number on the dashboard. For FP&amp;A roles, the same discipline is what lets a budget model be re-run each month by someone other than the original builder.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="definitions">Definitions</h3>
+<table>
+<thead>
+<tr>
+<th>Zone</th>
+<th>What it contains</th>
+<th>What it must never contain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Inputs</strong></td>
+<td>Hardcoded numbers, text choices, dates, switches; each with label, units, source</td>
+<td>Formulas (except simple input-side aids such as a sum check of an input table)</td>
+</tr>
+<tr>
+<td><strong>Calculations</strong></td>
+<td>Formulas only, referencing inputs, historicals and other calculations</td>
+<td>Typed numbers (other than structural constants like 0, 1, 12 months, 100%)</td>
+</tr>
+<tr>
+<td><strong>Outputs</strong></td>
+<td>Links and presentation formulas (ratios, charts, summary tables)</td>
+<td>New logic that other calculations depend on; typed numbers</td>
+</tr>
+</tbody>
+</table>
+<p>The separation can be at tab level (an Inputs tab, calc tabs, an Outputs tab) or at block level within a tab (an input block at the top of the Revenue tab, calcs below). The FAST Standard prefers inputs on dedicated input sheets; the ICAEW Code accepts either provided it is consistent and visibly flagged (blue font, input fill — topic t2).</p>
+<h3 id="why-hardcodes-in-calculations-are-dangerous">Why hardcodes in calculations are dangerous</h3>
+<p><code>=C12*1.12</code> embeds a 12% growth rate that does not appear on the Inputs tab, cannot be flexed by the scenario switch, and is invisible to Go To Special → Constants (which selects only cells that <em>are</em> constants, not formulas <em>containing</em> constants). The correct structure is:</p>
+<pre><code>Inputs!F20   = 12.0%          (blue, labelled &quot;Zudio revenue/sq ft growth, %&quot;, source: FY25 concall)
+Revenue!F12  = E12*(1+Inputs!F20)
+</code></pre>
+<p>Better still, pull the input into the Revenue tab once (green link) and reference it locally (topic t2, c04).</p>
+<h3 id="flow-direction-left-to-right-and-top-to-bottom">Flow direction: left-to-right and top-to-bottom</h3>
+<p>Within a sheet, a formula should refer to cells <strong>above it or to its left</strong>. Time runs left to right (FY21A in column H, FY30E in column Q). Logic runs top to bottom: drivers at the top, intermediate calculations in the middle, the result that leaves the sheet at the bottom.</p>
+<p>Exceptions arise naturally:</p>
+<ul>
+<li><strong>Prior-period references</strong> (<code>=G15+H10-H11</code>) look left — compliant.</li>
+<li><strong>Totals placed above detail</strong> (a common presentation habit) look downward — avoid in calc sheets; put totals below detail.</li>
+<li><strong>Corkscrews</strong> (opening + additions − deductions = closing; next opening = prior closing) are the canonical compliant pattern.</li>
+</ul>
+<p>A flow-compliant sheet can be audited by reading it like a book. When a formula refers downward or rightward, the reader must hold the unresolved reference in their head, and that is where errors hide.</p>
+<h3 id="illustration-pidilite-consumer-bazaar-revenue-block">Illustration: Pidilite Consumer &amp; Bazaar revenue block</h3>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th>Label</th>
+<th>Units</th>
+<th>Const</th>
+<th>FY25A</th>
+<th>FY26E</th>
+<th>FY27E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>UVG (input link)</td>
+<td>%</td>
+<td></td>
+<td></td>
+<td>9.0%</td>
+<td>10.0%</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Price/mix (input link)</td>
+<td>%</td>
+<td></td>
+<td></td>
+<td>2.0%</td>
+<td>3.0%</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Revenue</td>
+<td>₹ crore</td>
+<td></td>
+<td>10,500</td>
+<td><code>=G7*(1+H5)*(1+H6)</code></td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+<p>FY26E revenue = ₹10,500 × 1.09 × 1.02 = ₹11,673.9 crore. Rows 5–6 are green links from Inputs; row 7 is black calculation, FY25A is a green link from Historicals. Every reference in H7 points up or left.</p>
+<h3 id="outputs-display-never-compute">Outputs: display, never compute</h3>
+<p>An Outputs tab may contain ratios (<code>=EBITDA/Revenue</code>) and formatting formulas, but nothing upstream should depend on it. If the DCF uses an EBITDA margin computed on the Outputs tab, the dependency now runs from calc → output → calc, breaking the zone logic. Compute anything the model uses inside the calc zone; outputs merely re-display.</p>
+<h3 id="implementation-steps">Implementation steps</h3>
+<ol>
+<li>Create the Inputs tab with sections mirroring the calc tabs (Timeline, Revenue, Costs, WC, Capex, Financing, Tax, Valuation).</li>
+<li>Every input row: label, units, constant column (for scalars) or timeline values (for time series), source, comment.</li>
+<li>On each calc tab, link the needed inputs into a small block at the top (green), then calculate below.</li>
+<li>Run Go To Special → Constants on each calc tab; the only selected cells should be historical actuals (if hosted there) and nothing else.</li>
+<li>Lock output tabs with sheet protection (no password, or a documented one) to prevent overtyping.</li>
+</ol>
+<h3 id="excel-and-power-bi-parallels">Excel and Power BI parallels</h3>
+<p>In Power BI the same philosophy appears as Power Query (inputs/ingestion), the data model and DAX measures (calculations), and report pages (outputs). A DAX measure that hardcodes <code>* 1.12</code> has exactly the same defect as an Excel formula.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Historical actuals.</strong> They are hardcoded but are not assumptions. Keep them on the Historicals tab (input zone, blue) and link into calc tabs; do not type them into calc rows.</li>
+<li><strong>Structural constants.</strong> Dividing by 12 months, 365 days or 100 is acceptable inside formulas if the meaning is obvious; days-in-year conventions (365 vs 360) are better as a named input.</li>
+<li><strong>Overrides.</strong> Management sometimes insists on a specific FY26E number. Build an explicit override row on Inputs with a flag (<code>=IF(Override_Flag=1,Override,Calculated)</code>), never type over a formula (topic t2 pitfalls).</li>
+<li><strong>Small models.</strong> For a one-page sensitivity, inputs at the top of the same sheet are fine — the separation is logical, not necessarily physical.</li>
+<li><strong>Iterative calcs.</strong> A circular interest calculation may refer to a closing balance below it; contain it inside the Debt tab with a circuit breaker.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Every hardcode lives in an input zone, labelled with units and source.</li>
+<li>Calculation cells contain formulas only; Go To Special → Constants on a calc sheet should select nothing unintended.</li>
+<li>Formulas refer up and to the left; totals sit below detail; corkscrews are the default pattern.</li>
+<li>Outputs display but are never used as a source for calculations.</li>
+<li>Overrides are explicit, flagged inputs, never typed over formulas.</li>
+<li>The same separation applies in Power BI: ingestion, measures, visuals.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-classify-the-cells-l1">Q1. Classify the cells [L1]</h3>
+<p>Classify each as input, calculation or output and state whether it is correctly placed: (a) FY25A revenue of ₹14,603 crore typed into the 3-Statement tab; (b) <code>=E12*1.12</code> on the Revenue tab; (c) a chart of EBITDA margin on the Dashboard; (d) tax rate 25.168% typed on Inputs with source "Sec 115BAA"; (e) <code>=Dashboard!F10*Inputs!F5</code> on the DCF tab.</p>
+<h3 id="q2-refactor-a-block-l2">Q2. Refactor a block [L2]</h3>
+<p>A Revenue tab shows: row 10 stores (typed 300, 360, 430, 510, 600 for FY26E–FY30E); row 11 area per store typed as 0.011 mn sq ft in every year; row 12 revenue <code>=H10*H11*21000/100</code>. Redesign the block and the matching Inputs section so that no hardcode remains in the calc tab and units are explicit.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> The 21000 and /100 hide both a driver and a unit conversion — separate them.</p>
+</blockquote>
+<h3 id="q3-flow-audit-l2">Q3. Flow audit [L2]</h3>
+<p>On a WC tab, row 30 (closing receivables) is <code>=H45*Inputs!$F$40/365</code> where row 45 is revenue linked from the P&amp;L, and row 25 (change in receivables) is <code>=H30-G30</code>. Identify the flow violations, explain why they matter, and propose a reordered layout.</p>
+<h3 id="q4-management-override-policy-l3">Q4. Management override policy [L3]</h3>
+<p>The CFO of an NSE-listed FMCG company wants FY26E advertising spend fixed at ₹620 crore (board-approved budget) while the model computes A&amp;P as 11% of revenue. Design the override mechanism, the documentation on Inputs, and the check that alerts a reviewer that an override is active.</p></section>
+<nav class="pager"><a class="prev" href="S01_Tab_Flow_of_an_Institutional_Three_Statement_Model.html">← Tab Flow of an Institutional Three-Statement Model</a><a class="next" href="S03_Single_Master_Timeline_Row_and_Period_Flags.html">Single Master Timeline Row and Period Flags →</a></nav>
+</main></div></body></html>

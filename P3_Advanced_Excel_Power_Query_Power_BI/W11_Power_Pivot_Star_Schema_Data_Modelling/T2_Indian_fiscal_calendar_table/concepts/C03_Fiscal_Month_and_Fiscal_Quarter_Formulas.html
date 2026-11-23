@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiscal Month and Fiscal Quarter Formulas · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C03_Fiscal_Month_and_Fiscal_Quarter_Formulas.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T2 · Indian fiscal calendar table</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Indian fiscal calendar table</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Building_the_Date_Dimension_DAX_CALENDAR_vs_Power.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S01_Building_the_Date_Dimension_DAX_CALENDAR_vs_Power.html">Building the Date Dimension: DAX CALENDAR vs Power Query List.Dates</a></li><li><a href="../subtopics/S02_Contiguous_Whole_Fiscal_Year_Date_Range_Covering.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S02_Contiguous_Whole_Fiscal_Year_Date_Range_Covering.html">Contiguous Whole-Fiscal-Year Date Range Covering All Facts</a></li><li><a href="../subtopics/S03_Fiscal_Calendar_Columns_FY_Quarter_Month_Week_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S03_Fiscal_Calendar_Columns_FY_Quarter_Month_Week_and.html">Fiscal Calendar Columns: FY, Quarter, Month, Week and Period Key</a></li><li><a href="../subtopics/S04_Sort_by_Column_Fiscal_Month_Order_Starting_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S04_Sort_by_Column_Fiscal_Month_Order_Starting_in.html">Sort by Column: Fiscal Month Order Starting in April</a></li><li><a href="../subtopics/S05_Month_and_FY_Offset_Columns_for_Dynamic_Period.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S05_Month_and_FY_Offset_Columns_for_Dynamic_Period.html">Month and FY Offset Columns for Dynamic Period Filters</a></li><li><a href="../subtopics/S06_Mark_as_Date_Table_and_Turn_Off_Auto_DateTime.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S06_Mark_as_Date_Table_and_Turn_Off_Auto_DateTime.html">Mark as Date Table and Turn Off Auto Date/Time</a></li><li><a href="../subtopics/S07_Working_Day_Flags_and_Indian_Holidays_for_Close.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S07_Working_Day_Flags_and_Indian_Holidays_for_Close.html">Working-Day Flags and Indian Holidays for Close Metrics</a></li><li><a href="../subtopics/S08_IsClosedPeriod_and_IsYTD_Flags_for_Like_for_Like.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S08_IsClosedPeriod_and_IsYTD_Flags_for_Like_for_Like.html">IsClosedPeriod and IsYTD Flags for Like-for-Like Comparisons</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_DAX_Fiscal_Date_Table_with_an_FYEnd_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C01_DAX_Fiscal_Date_Table_with_an_FYEnd_Column.html">DAX Fiscal Date Table with an FYEnd Column</a></li><li><a href="C02_CALENDARAUTO3_for_Whole_March_Ending_Fiscal_Years.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C02_CALENDARAUTO3_for_Whole_March_Ending_Fiscal_Years.html">CALENDARAUTO(3) for Whole March-Ending Fiscal Years</a></li><li><a href="C03_Fiscal_Month_and_Fiscal_Quarter_Formulas.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C03_Fiscal_Month_and_Fiscal_Quarter_Formulas.html">Fiscal Month and Fiscal Quarter Formulas</a></li><li><a href="C04_Fiscal_Week_Number_Anchored_on_1_April.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C04_Fiscal_Week_Number_Anchored_on_1_April.html">Fiscal Week Number Anchored on 1 April</a></li><li><a href="C05_Month_Offset_from_Today.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C05_Month_Offset_from_Today.html">Month Offset from Today</a></li><li><a href="C06_Power_Query_Date_List_with_ListDates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C06_Power_Query_Date_List_with_ListDates.html">Power Query Date List with List.Dates</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Fiscal Month and Fiscal Quarter Formulas</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Fiscal month: <code>MOD(MONTH([Date]) + 8, 12) + 1</code>; fiscal quarter: <code>"Q" &amp; ROUNDUP([FiscalMonthNo] / 3, 0)</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-DAX">FiscalMonthNo = MOD ( MONTH ( 'Date'[Date] ) + 8, 12 ) + 1
+FiscalQuarter = &quot;Q&quot; &amp; ROUNDUP ( 'Date'[FiscalMonthNo] / 3, 0 )
+</code></pre>
+<p>In general, for a fiscal year starting in calendar month \(s\) (April: \(s = 4\)) and calendar month \(m\):</p>
+<p>\[
+\text{FiscalMonthNo} = ((m - s + 12) \bmod 12) + 1 = ((m + 8) \bmod 12) + 1 \text{ for } s = 4
+\]</p>
+<p>\[
+\text{FiscalQuarterNo} = \left\lceil \frac{\text{FiscalMonthNo}}{3} \right\rceil
+\]</p>
+<h2 id="explanation">Explanation</h2>
+<p>Adding 8 and taking the remainder mod 12 shifts the month numbering so April maps to 0 and March to 11; adding 1
+makes the result run 1–12. The general form \((m - s + 12) \bmod 12 + 1\) works for any start month: July-start
+(Australia) uses \(s = 7\), i.e. <code>MOD(MONTH + 5, 12) + 1</code>; January-start gives the calendar month.</p>
+<p>The quarter divides fiscal month by 3 and rounds up: months 1–3 → Q1 (Apr–Jun), 4–6 → Q2 (Jul–Sep), 7–9 → Q3
+(Oct–Dec), 10–12 → Q4 (Jan–Mar), consistent with quarterly results under SEBI LODR Reg 33 and Ind AS 34 interim
+periods for a March year-end.</p>
+<p>Implementation notes:</p>
+<ul>
+<li>Store <strong>FiscalQuarterNo</strong> as an integer column too; the text "Q1" is for display and sorts correctly only by
+  coincidence of alphabet. Sort FiscalQuarter by FiscalQuarterNo.</li>
+<li>"Q4" is not unique across years; for multi-year axes add <code>"FY" &amp; RIGHT([FYEnd], 2) &amp; " " &amp; [FiscalQuarter]</code>
+  ("FY26 Q4") sorted by <code>[FYEnd] * 10 + [FiscalQuarterNo]</code>.</li>
+<li>Power Query equivalents: <code>Number.Mod(Date.Month([Date]) + 8, 12) + 1</code> and
+  <code>"Q" &amp; Text.From(Number.RoundUp([FiscalMonthNo] / 3))</code>.</li>
+<li>Excel equivalent (for checking): <code>=MOD(MONTH(A2)+8,12)+1</code> and <code>="Q"&amp;ROUNDUP(B2/3,0)</code>.</li>
+<li>An alternative fiscal-month formula, <code>IF(MONTH(d) &gt;= 4, MONTH(d) - 3, MONTH(d) + 9)</code>, gives identical results and is
+  easier to read; the MOD version generalises better.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<table>
+<thead>
+<tr>
+<th>Calendar month \(m\)</th>
+<th>\(m + 8\)</th>
+<th>\((m + 8) \bmod 12\)</th>
+<th>FiscalMonthNo</th>
+<th>FiscalQuarter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4 (Apr)</td>
+<td>12</td>
+<td>0</td>
+<td>1</td>
+<td>Q1</td>
+</tr>
+<tr>
+<td>6 (Jun)</td>
+<td>14</td>
+<td>2</td>
+<td>3</td>
+<td>Q1</td>
+</tr>
+<tr>
+<td>7 (Jul)</td>
+<td>15</td>
+<td>3</td>
+<td>4</td>
+<td>Q2</td>
+</tr>
+<tr>
+<td>12 (Dec)</td>
+<td>20</td>
+<td>8</td>
+<td>9</td>
+<td>Q3</td>
+</tr>
+<tr>
+<td>1 (Jan)</td>
+<td>9</td>
+<td>9</td>
+<td>10</td>
+<td>Q4</td>
+</tr>
+<tr>
+<td>3 (Mar)</td>
+<td>11</td>
+<td>11</td>
+<td>12</td>
+<td>Q4</td>
+</tr>
+</tbody>
+</table>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Subtopic s03 (column specification) and s04 (MonthName sorted by FiscalMonthNo).</li>
+<li>Subtopic s08 (IsYTDComparable uses FiscalMonthNo of the as-of date).</li>
+<li>Topic 4 custom time intelligence: "same fiscal month last year" = FiscalMonthNo equal, FYEnd − 1.</li>
+<li>Week 10: the same formula as an M custom column; Weeks 17–20: quarterly forecasts by fiscal quarter.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-generalise-l1">Q1. Generalise [L1]</h3>
+<p>Write the fiscal month formula for an entity whose fiscal year starts in October, and give the fiscal month and
+quarter for February and September.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Substitute the start month into the general formula.</p>
+</blockquote>
+<h3 id="q2-find-the-bug-l2">Q2. Find the bug [L2]</h3>
+<p>A Date table uses <code>FiscalQuarter = "Q" &amp; ROUNDUP(MONTH([Date]) / 3, 0)</code>. Describe exactly which months land in the
+wrong quarter, the effect on a "Q3 FY26 results" report and on a TOTALQTD measure, and how you would test it.</p>
+<h3 id="q3-unique-quarter-axis-l2">Q3. Unique quarter axis [L2]</h3>
+<p>Write DAX calculated columns for a unique fiscal-quarter label like "FY26 Q3" and its integer sort key, and explain
+why sorting the label alone is insufficient for an eight-quarter trend chart covering FY25–FY26.</p></section>
+<nav class="pager"><a class="prev" href="C02_CALENDARAUTO3_for_Whole_March_Ending_Fiscal_Years.html">← CALENDARAUTO(3) for Whole March-Ending Fiscal Years</a><a class="next" href="C04_Fiscal_Week_Number_Anchored_on_1_April.html">Fiscal Week Number Anchored on 1 April →</a></nav>
+</main></div></body></html>

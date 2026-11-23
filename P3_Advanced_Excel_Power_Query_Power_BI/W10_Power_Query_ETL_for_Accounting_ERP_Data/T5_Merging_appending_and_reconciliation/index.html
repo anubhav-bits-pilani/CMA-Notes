@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merging, appending and reconciliation joins · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/index.html" data-kind="topic">
+<header class="top"><a class="brand" href="../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../index.html">Home</a> <span>›</span> <a href="../../index.html">Phase 3</a> <span>›</span> <a href="../index.html">Week 10</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">Week 10</a></div><ul class="side-links"><li><a href="../T1_Power_Query_architecture_and_M_basics/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/index.html">T1 · Power Query architecture and M basics</a></li><li><a href="../T2_Cleaning_messy_ERPTally_exports/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/index.html">T2 · Cleaning messy ERP/Tally exports</a></li><li><a href="../T3_Unpivoting_wide_budgets_and_TBs/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/index.html">T3 · Unpivoting wide budgets and TBs</a></li><li><a href="../T4_Folder_consolidation_pipeline/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/index.html">T4 · Folder consolidation pipeline</a></li><li><a href="index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/index.html">T5 · Merging, appending and reconciliation joins</a></li><li><a href="../T6_Custom_columns_and_fiscal_logic_in_M/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/index.html">T6 · Custom columns and fiscal logic in M</a></li></ul></aside>
+<main class="content">
+<div class="kind">Topic</div>
+<h1>Merging, appending and reconciliation joins</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<section class="index"><h2>Notes in this topic</h2><div class="cols"><div><h3>Subtopics</h3><ul class="links num"><li><a href="subtopics/S01_Append_vs_Merge_Union_vs_Join_with_SQL_Analogies.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S01_Append_vs_Merge_Union_vs_Join_with_SQL_Analogies.html">S01 · Append vs Merge: Union vs Join with SQL Analogies</a></li><li><a href="subtopics/S02_The_Six_Join_Kinds_and_Their_Role_in_a.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S02_The_Six_Join_Kinds_and_Their_Role_in_a.html">S02 · The Six Join Kinds and Their Role in a Reconciliation</a></li><li><a href="subtopics/S03_Bank_vs_Book_Matching_on_Amount_Reference_and_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S03_Bank_vs_Book_Matching_on_Amount_Reference_and_Date.html">S03 · Bank vs Book Matching on Amount, Reference and Date Window</a></li><li><a href="subtopics/S04_Normalising_Composite_Keys_Before_Merging.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S04_Normalising_Composite_Keys_Before_Merging.html">S04 · Normalising Composite Keys Before Merging</a></li><li><a href="subtopics/S05_Fuzzy_Merge_for_Vendor_and_Customer_Names.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S05_Fuzzy_Merge_for_Vendor_and_Customer_Names.html">S05 · Fuzzy Merge for Vendor and Customer Names</a></li><li><a href="subtopics/S06_Repeated_Identical_Amounts_Sequence_Keys_for_One.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S06_Repeated_Identical_Amounts_Sequence_Keys_for_One.html">S06 · Repeated Identical Amounts: Sequence Keys for One-to-One Matching</a></li><li><a href="subtopics/S07_Other_Reconciliations_GSTR_2B_AR_Control_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S07_Other_Reconciliations_GSTR_2B_AR_Control_and.html">S07 · Other Reconciliations: GSTR-2B, AR Control and Intercompany</a></li></ul></div><div><h3>Key concepts & formulas</h3><ul class="links num"><li><a href="concepts/C01_LeftAnti_Join_Items_in_the_Bank_but_Not_in_the.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C01_LeftAnti_Join_Items_in_the_Bank_but_Not_in_the.html">C01 · LeftAnti Join: Items in the Bank but Not in the Books</a></li><li><a href="concepts/C02_RightAnti_Join_Items_in_the_Books_but_Not_in_the.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C02_RightAnti_Join_Items_in_the_Books_but_Not_in_the.html">C02 · RightAnti Join: Items in the Books but Not in the Bank</a></li><li><a href="concepts/C03_Expanding_Merged_Columns_with_Prefixed_Names.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C03_Expanding_Merged_Columns_with_Prefixed_Names.html">C03 · Expanding Merged Columns with Prefixed Names</a></li><li><a href="concepts/C04_TableFuzzyNestedJoin_Syntax_and_Options.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C04_TableFuzzyNestedJoin_Syntax_and_Options.html">C04 · Table.FuzzyNestedJoin Syntax and Options</a></li><li><a href="concepts/C05_Duplicate_Safe_Keys_with_Group_By_and_Index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C05_Duplicate_Safe_Keys_with_Group_By_and_Index.html">C05 · Duplicate-Safe Keys with Group By and Index</a></li><li><a href="concepts/C06_Sign_Alignment_Between_Bank_and_Book.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C06_Sign_Alignment_Between_Bank_and_Book.html">C06 · Sign Alignment Between Bank and Book</a></li></ul></div></div></section><article class="note"><blockquote>
+<p><strong>Roadmap topic:</strong> Merging &amp; Appending Queries: Left Outer, Inner, and Anti-Joins (e.g., matching Bank Statement vs Book Ledger in Power Query to isolate unreconciled items)</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>Most finance reconciliations are join problems. A bank reconciliation statement asks which bank transactions have a matching book entry and which do not; a GSTR-2B reconciliation asks which supplier invoices appear in both the portal and the purchase register; an intercompany reconciliation asks whether entity A's receivable from B equals B's payable to A. In Excel these are typically done with VLOOKUP/XLOOKUP and COUNTIFS columns, filtered for <code>#N/A</code>. Power Query expresses the same logic as <strong>merges</strong> (joins) and <strong>appends</strong> (unions), with two advantages: the logic is repeatable on next month's data with one refresh, and anti-joins return the unreconciled items directly as tables.</p>
+<p>The topic builds in this order. First, the distinction between <strong>Append</strong> (<code>Table.Combine</code>, stacking rows like SQL <code>UNION ALL</code>) and <strong>Merge</strong> (<code>Table.NestedJoin</code>, matching rows like SQL <code>JOIN</code>) (s01). Then the six <strong>join kinds</strong> and what each returns in a reconciliation — LeftOuter for an annotated bank list, Inner for matched pairs, FullOuter for a complete recon view, and LeftAnti/RightAnti for the exceptions (s02). Next comes the hard part, which is not M syntax but <strong>matching design</strong>: choosing the key (amount, UTR or cheque number, date window) (s03), <strong>normalising keys</strong> so that "000123" matches 123 and "acme ltd " matches "ACME LTD" (s04), using <strong>fuzzy merge</strong> where names rather than codes are the key (s05), and handling <strong>repeated identical amounts</strong> with sequence numbers so one-to-many matches do not multiply rows (s06). Finally, the same toolkit applied to <strong>other reconciliations</strong>: GSTR-2B vs purchase register, AR sub-ledger vs GL control, and intercompany balances (s07).</p>
+<p>For FP&amp;A and controllership roles, this is where Power Query directly shortens the close: the BRS, the ITC reconciliation and the intercompany confirmation can each be reduced to "drop the files, refresh, review exceptions". The key concepts give the exact M: anti-joins for bank-only and book-only items, the expand step with prefixed names, the fuzzy-join options, the duplicate-safe sequence key and sign alignment between bank and book.</p>
+<h2 id="concept-map">Concept map</h2>
+<table>
+<thead>
+<tr>
+<th>Subtopic / concept</th>
+<th>Role in the topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s01 Append vs Merge</td>
+<td>Distinguishes stacking rows from matching rows, with SQL analogies</td>
+</tr>
+<tr>
+<td>s02 Six join kinds</td>
+<td>Maps each join kind to a reconciliation output</td>
+</tr>
+<tr>
+<td>s03 Bank vs book matching</td>
+<td>Designs keys: amount, UTR/cheque, date window, tiered matching</td>
+</tr>
+<tr>
+<td>s04 Normalising composite keys</td>
+<td>Makes keys comparable: trim, case, leading zeros, types</td>
+</tr>
+<tr>
+<td>s05 Fuzzy merge</td>
+<td>Matches names with similarity thresholds and transformation tables</td>
+</tr>
+<tr>
+<td>s06 Repeated identical amounts</td>
+<td>Sequence numbers to make one-to-many matches one-to-one</td>
+</tr>
+<tr>
+<td>s07 Other reconciliations</td>
+<td>GSTR-2B, AR sub-ledger vs GL, intercompany</td>
+</tr>
+<tr>
+<td>c01 LeftAnti: in bank, not in books</td>
+<td>Bank-side exceptions</td>
+</tr>
+<tr>
+<td>c02 RightAnti: in books, not in bank</td>
+<td>Book-side exceptions (unpresented cheques, deposits in transit)</td>
+</tr>
+<tr>
+<td>c03 <code>Table.ExpandTableColumn</code> with prefixes</td>
+<td>Bringing matched columns across without name clashes</td>
+</tr>
+<tr>
+<td>c04 <code>Table.FuzzyNestedJoin</code></td>
+<td>Fuzzy matching syntax and options</td>
+</tr>
+<tr>
+<td>c05 Duplicate-safe keys with Group + Index</td>
+<td>Amount + Seq keys</td>
+</tr>
+<tr>
+<td>c06 Sign alignment</td>
+<td>Bank credits equal book debits; flip one side</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-concepts-to-study">Related concepts to study</h2>
+<h3 id="sql-anti-join-pattern">SQL anti-join pattern</h3>
+<p><em>SQL <code>LEFT JOIN ... WHERE b.key IS NULL</code> as the anti-join pattern in MySQL</em></p>
+<p>In MySQL, there is no <code>ANTI JOIN</code> keyword; the idiom is <code>SELECT k.* FROM bank k LEFT JOIN book b ON k.ref = b.ref AND k.amount = b.amount WHERE b.ref IS NULL</code>. The left join keeps every bank row and puts NULLs in the book columns where nothing matched; the WHERE clause keeps only those. <code>NOT EXISTS (SELECT 1 FROM book b WHERE ...)</code> is the equivalent correlated form and is often faster. Power Query's <code>JoinKind.LeftAnti</code> does both steps in one, and when the source is a SQL database the merge can fold into exactly this SQL. One semantic difference: SQL's <code>NULL = NULL</code> is unknown, so null keys never match, whereas M treats null equal to null, so blank references on both sides can match each other unless you filter them out first.</p>
+<h3 id="brs-and-control-account-reconciliations-weeks-14">BRS and control-account reconciliations (Weeks 1–4)</h3>
+<p><em>→ Week 1–4: BRS preparation and control-account reconciliations in month-end close</em></p>
+<p>The accounting logic does not change when the tool does. A BRS starts from the balance per bank or per books and adjusts for timing items (cheques issued but not presented, deposits in transit) and for errors or omissions (bank charges, interest, direct credits, dishonoured cheques not yet booked). The anti-join outputs map directly: bank-only items are mostly entries the books must pass (charges, interest, NACH debits, unidentified receipts); book-only items are mostly timing differences awaiting the bank. Control-account reconciliations (debtors, creditors, GST input) follow the same pattern at a summarised level: sub-ledger totals by party vs the GL control balance, with differences explained by direct GL postings, cut-off and unallocated items.</p>
+<h3 id="forensic-tests-with-merge-and-group-weeks-58">Forensic tests with merge and group (Weeks 5–8)</h3>
+<p><em>→ Week 5–8: forensic tests (duplicate payments, split invoices) with merge/group</em></p>
+<p>Forensic analytics on payables uses the same building blocks. <strong>Duplicate payments</strong>: self-merge the payment register on Vendor + Amount (and optionally invoice number normalised), keep pairs where the voucher numbers differ and dates are within, say, 30 days. <strong>Split invoices</strong>: group by Vendor + Date, count invoices just below the approval limit (e.g. ₹4.9–4.99 lakh where the limit is ₹5 lakh), flag groups with more than one. <strong>Vendor master overlaps</strong>: fuzzy-merge vendor names or match bank account and PAN across vendor codes. Power Query makes these tests repeatable each quarter, which internal audit values over one-off spreadsheet analysis.</p>
+<h3 id="formula-based-reconciliation-week-9">Formula-based reconciliation (Week 9)</h3>
+<p><em>→ Week 9: XLOOKUP/COUNTIFS reconciliations as the formula alternative</em></p>
+<p>In Excel, a typical recon adds <code>=COUNTIFS(Book[Ref],[@Ref],Book[Amount],[@Amount])</code> to the bank table and filters for zero, or <code>=XLOOKUP([@Ref]&amp;"|"&amp;[@Amount], Book[Ref]&amp;"|"&amp;Book[Amount], Book[Date], "Not found")</code>. Formulas are visible and quick for a few thousand rows, and reviewers understand them. They become fragile with repeated amounts (COUNTIFS shows 2 but does not pair rows), heavy for 100,000-row statements, and must be re-extended every month. Power Query anti-joins scale, pair rows explicitly with sequence keys and refresh in one click; formulas remain useful for spot checks of the query's output.</p>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<h3 id="text-keys-vs-number-keys">Text keys vs number keys</h3>
+<p><em>Merging text keys with number keys returns zero matches and no error.</em></p>
+<p>If the bank's cheque number column is text ("000456") and the book's is a whole number (456), or if the Amount is decimal on one side and text on the other, <code>Table.NestedJoin</code> compares values of different types as unequal: every row goes to the anti-join, and nothing errors. People miss it because the columns look identical in the preview. Correct treatment: normalise both sides to the same type and format before merging (text with leading zeros stripped, or numbers rounded to two decimals). Detect it by checking the matched count: an Inner join returning zero or a suspiciously low number of rows is the alarm; also inspect column type icons on both key columns.</p>
+<h3 id="no-tolerance-for-charges-and-tds">No tolerance for charges and TDS</h3>
+<p><em>Exact-amount matching when bank charges or TDS create partial differences, with no tolerance rule.</em></p>
+<p>A customer pays ₹1,00,000 less 10% TDS under Sec 194J, so the bank receipt is ₹90,000 against a ₹1,00,000 invoice; an inward remittance arrives net of ₹590 bank charges. Exact amount matching sends both sides to exceptions. People rely on exact matching because it is the default merge. Correct treatment: match first on reference (UTR, invoice number) without amount, then compute the difference and classify it against tolerance rules (e.g. difference equals 1%, 2% or 10% of the base, or is under ₹1,000 and narration contains "CHG"). Detect it in review when the exceptions list contains many pairs of near-equal amounts with the same reference.</p>
+<h3 id="many-to-many-row-multiplication">Many-to-many row multiplication</h3>
+<p><em>Many-to-many matches that multiply rows after expanding.</em></p>
+<p>If three bank rows of ₹25,000 and two book rows of ₹25,000 share the same key, the merge gives each bank row a nested table with two book rows; expanding produces six rows. Totals inflate and the same book entry appears "matched" three times. People miss it because the merge dialog's "matches X of Y rows" statistic looks good. Correct treatment: ensure keys are unique on at least one side, or add sequence numbers within each duplicate group (Group By + Index) so that pairing is one-to-one. Detect by comparing row counts before and after expanding, and by checking key uniqueness with a Group By count.</p>
+<h3 id="repeated-merges-without-buffering">Repeated merges without buffering</h3>
+<p><em>Repeated merges on non-folding sources without <code>Table.Buffer</code>, which makes refresh slow.</em></p>
+<p>A recon query that merges the bank table against the book table four times (tier 1 exact, tier 2 date window, tier 3 fuzzy, final check) may re-read and re-clean the source CSVs for each merge, because Power Query's evaluation does not cache intermediate results reliably across steps and queries. With 2 lakh rows the refresh can take many minutes. Correct treatment: after cleaning and before the merges, <code>Table.Buffer</code> the smaller lookup table (or both) so it is held in memory, and disable load on staging queries. Detect with Query Diagnostics or simply by timing refresh before and after; do not buffer foldable SQL sources early, as buffering stops folding.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-end-to-end-brs-in-power-query-l3">Q1. End-to-end BRS in Power Query [L3]</h3>
+<p>The books' bank ledger for HDFC current account (April 2025) has 1,940 entries with columns VchDate, VchNo, Narration, ChequeNo (text, e.g. "000417"), Debit, Credit. The bank CSV has 2,015 rows with Date, Narration, Chq./Ref.No. (number), Withdrawal Amt., Deposit Amt. Balance per bank on 30-Apr-2025 is ₹84,26,310.00; balance per books is ₹71,58,940.00. (a) Design the full query chain from source to exceptions, including normalisation, sign alignment and sequence keys. (b) State which join kinds produce each list in the BRS. (c) List the BRS line items you expect each list to contain and how you would prove the BRS arithmetic closes.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Separate tier-1 (reference + amount) and tier-2 (amount + date window) matching, removing tier-1 matches before tier 2.</p>
+</blockquote>
+<h3 id="q2-gstr-2b-reconciliation-design-l3">Q2. GSTR-2B reconciliation design [L3]</h3>
+<p>For September 2025, GSTR-2B (downloaded as Excel) has 3,482 invoice lines; the purchase register has 3,610 lines. Invoice numbers differ in format ("INV/25-26/0042" vs "42", "inv-0042"). Design the normalised key, the merge sequence and the output categories (matched, value mismatch, in 2B only, in books only). Explain the Sec 16(2)(aa) CGST Act consequence of each book-only item and how the output would feed the ITC claim in GSTR-3B.</p>
+<h3 id="q3-intercompany-matching-with-signs-and-currency-l2">Q3. Intercompany matching with signs and currency [L2]</h3>
+<p>Entity A (India, INR) shows a receivable from Entity B (Singapore) of ₹4,15,00,000; B shows a payable to A of SGD 6,48,000 at 31-Mar-2026. Closing rate is ₹64.20 per SGD. Design the Power Query steps (key, sign alignment, currency conversion, tolerance) that produce a matched/unmatched intercompany report, and identify what the residual difference may represent.</p>
+<h3 id="q4-interview-why-did-the-recon-find-nothing-l2">Q4. Interview: why did the recon find nothing? [L2]</h3>
+<p>A junior's recon query reports 100% of bank rows as "not in books". Give five possible technical causes in Power Query, how you would test each in under two minutes, and the fix for each.</p>
+<h3 id="q5-duplicate-payment-test-l3">Q5. Duplicate payment test [L3]</h3>
+<p>The AP payment register for FY2025-26 has 48,600 rows (Vendor Code, Vendor Name, Invoice No, Invoice Date, Amount, Payment Date, Voucher No). Design a Power Query forensic test that flags potential duplicate payments, handling repeated amounts, normalised invoice numbers and fuzzy vendor names. Specify outputs and how you would control false positives.</p></section>
+<nav class="pager"><a class="prev" href="../T4_Folder_consolidation_pipeline/concepts/C07_Guarding_the_Refresh_Against_One_Bad_File.html">← Guarding the Refresh Against One Bad File</a><a class="next" href="subtopics/S01_Append_vs_Merge_Union_vs_Join_with_SQL_Analogies.html">Append vs Merge: Union vs Join with SQL Analogies →</a></nav>
+</main></div></body></html>

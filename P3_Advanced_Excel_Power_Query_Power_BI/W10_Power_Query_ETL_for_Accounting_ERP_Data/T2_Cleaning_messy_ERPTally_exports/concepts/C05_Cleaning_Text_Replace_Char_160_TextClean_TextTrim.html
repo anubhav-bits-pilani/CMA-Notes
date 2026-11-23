@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cleaning Text: Replace Char 160, Text.Clean, Text.Trim · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C05_Cleaning_Text_Replace_Char_160_TextClean_TextTrim.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T2 · Cleaning messy ERP/Tally exports</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Cleaning messy ERP/Tally exports</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Skipping_Report_Headers_Conditionally_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S01_Skipping_Report_Headers_Conditionally_and.html">Skipping Report Headers Conditionally and Promoting Headers</a></li><li><a href="../subtopics/S02_Removing_Blank_Subtotal_and_Grand_Total_Rows_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S02_Removing_Blank_Subtotal_and_Grand_Total_Rows_by.html">Removing Blank, Subtotal and Grand Total Rows by Condition</a></li><li><a href="../subtopics/S03_Filling_Down_Cost_Centre_and_Group_Headers_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S03_Filling_Down_Cost_Centre_and_Group_Headers_in.html">Filling Down Cost-Centre and Group Headers in Report Layouts</a></li><li><a href="../subtopics/S04_Splitting_Ledger_Code_and_Name_Parsing_Tally_DrCr.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S04_Splitting_Ledger_Code_and_Name_Parsing_Tally_DrCr.html">Splitting Ledger Code and Name; Parsing Tally Dr/Cr Amounts</a></li><li><a href="../subtopics/S05_Trimming_Non_Breaking_Spaces_and_Non_Printable.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S05_Trimming_Non_Breaking_Spaces_and_Non_Printable.html">Trimming Non-Breaking Spaces and Non-Printable Characters</a></li><li><a href="../subtopics/S06_Fixing_Date_Locales_and_Indian_Digit_Grouping_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S06_Fixing_Date_Locales_and_Indian_Digit_Grouping_in.html">Fixing Date Locales and Indian Digit Grouping in Text Amounts</a></li><li><a href="../subtopics/S07_Error_Handling_Remove_Errors_Keep_Errors_and_try.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S07_Error_Handling_Remove_Errors_Keep_Errors_and_try.html">Error Handling: Remove Errors, Keep Errors and try ... otherwise</a></li><li><a href="../subtopics/S08_Export_Layouts_Tally_Day_BookLedgerTB_SAP_FBL3N.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S08_Export_Layouts_Tally_Day_BookLedgerTB_SAP_FBL3N.html">Export Layouts: Tally Day Book/Ledger/TB, SAP FBL3N, S_ALR, Oracle TB</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Conditional_TableSkip_Followed_by_PromoteHeaders.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C01_Conditional_TableSkip_Followed_by_PromoteHeaders.html">Conditional Table.Skip Followed by PromoteHeaders</a></li><li><a href="C02_Filtering_Out_Null_and_Total_Rows_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C02_Filtering_Out_Null_and_Total_Rows_with.html">Filtering Out Null and Total Rows with Table.SelectRows</a></li><li><a href="C03_TableFillDown_Fills_Only_Nulls_Replace_Blanks.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C03_TableFillDown_Fills_Only_Nulls_Replace_Blanks.html">Table.FillDown Fills Only Nulls: Replace Blanks First</a></li><li><a href="C04_TableSplitColumn_at_Each_Delimiter_into_Code_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C04_TableSplitColumn_at_Each_Delimiter_into_Code_and.html">Table.SplitColumn at Each Delimiter into Code and Name</a></li><li><a href="C05_Cleaning_Text_Replace_Char_160_TextClean_TextTrim.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C05_Cleaning_Text_Replace_Char_160_TextClean_TextTrim.html">Cleaning Text: Replace Char 160, Text.Clean, Text.Trim</a></li><li><a href="C06_TransformColumnTypes_with_an_Explicit_en_IN.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C06_TransformColumnTypes_with_an_Explicit_en_IN.html">TransformColumnTypes with an Explicit en-IN Culture</a></li><li><a href="C07_Converting_Tally_DrCr_Suffix_Balances_into_Signed.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C07_Converting_Tally_DrCr_Suffix_Balances_into_Signed.html">Converting Tally Dr/Cr Suffix Balances into Signed Numbers</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Cleaning Text: Replace Char 160, Text.Clean, Text.Trim</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>Table.TransformColumns(t, {{"Name", each Text.Trim(Text.Clean(Text.Replace(_, Character.FromNumber(160), " "))), type text}})</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p><code>Table.TransformColumns(table, transformOperations)</code> applies a function to every value of the named column(s); each operation is <code>{columnName, function, optional newType}</code>. Here the function, applied to each cell value <code>_</code>, is a composition evaluated inside-out:</p>
+<p>\[
+f(x) = \text{Trim}\big(\text{Clean}\big(\text{Replace}(x,\ \text{char}_{160},\ \text{" "})\big)\big)
+\]</p>
+<ol>
+<li><code>Text.Replace(_, Character.FromNumber(160), " ")</code> — converts every non-breaking space (U+00A0) to an ordinary space (U+0020).</li>
+<li><code>Text.Clean(...)</code> — removes control (non-printable) characters such as line feed, carriage return and tab.</li>
+<li><code>Text.Trim(...)</code> — removes leading and trailing whitespace.</li>
+<li><code>type text</code> — ascribes the column type so it does not become <code>any</code>.</li>
+</ol>
+<h2 id="explanation">Explanation</h2>
+<p>Why this exact order: non-breaking spaces are <strong>printable</strong>, so <code>Text.Clean</code> leaves them alone; converting them first ensures they are treated as ordinary spaces by the trim and by any later space-collapsing. Cleaning before trimming means that a trailing line feed, once removed, exposes trailing spaces that the trim then removes.</p>
+<p>What it does <strong>not</strong> do:</p>
+<ul>
+<li>Collapse internal double spaces ("ABC  Traders" stays as is) — add a split/select/combine step if needed.</li>
+<li>Remove zero-width spaces (code 8203) or the byte-order mark (65279) — add <code>Text.Remove</code>.</li>
+<li>Handle nulls in a strict sense: <code>Text.Replace(null, ...)</code> returns null in current versions, and <code>Text.Clean</code>/<code>Text.Trim</code> propagate null, but numeric values in an untyped column (e.g. a code read as a number) make <code>Text.Replace</code> error. Wrap with <code>Text.From(_)</code> when the column may hold non-text values.</li>
+<li>Fix case — combine with <code>Text.Upper</code> for keys.</li>
+</ul>
+<p>Line breaks inside narrations: <code>Text.Clean</code> deletes them, gluing words together ("NEFTRECEIVED"). For narration columns, replace <code>"#(cr)"</code>, <code>"#(lf)"</code> and <code>"#(tab)"</code> with spaces before cleaning.</p>
+<p>Applying to several columns with one rule:</p>
+<pre><code>fx      = (x) =&gt; if x = null then null else Text.Trim(Text.Clean(Text.Replace(Text.From(x), Character.FromNumber(160), &quot; &quot;))),
+Cleaned = Table.TransformColumns(t, {{&quot;Name&quot;, fx, type text}, {&quot;Narration&quot;, fx, type text}, {&quot;PartyGSTIN&quot;, fx, type text}})
+</code></pre>
+<p><code>Table.TransformColumns</code> also has an optional <code>defaultTransformation</code> argument applied to all columns not listed — handy but risky on numeric columns.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Vendor master from a GST portal download vs Tally purchase register:</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Raw value (visible)</th>
+<th>Length</th>
+<th>After the expression</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GSTR-2B</td>
+<td>"Shree Ganesh Steels" + char 160 at end</td>
+<td>20</td>
+<td>"Shree Ganesh Steels" (19)</td>
+</tr>
+<tr>
+<td>Tally</td>
+<td>"Shree Ganesh Steels" + line feed</td>
+<td>20</td>
+<td>"Shree Ganesh Steels" (19)</td>
+</tr>
+<tr>
+<td>Tally</td>
+<td>" Shree Ganesh Steels" (leading space)</td>
+<td>20</td>
+<td>"Shree Ganesh Steels" (19)</td>
+</tr>
+</tbody>
+</table>
+<p>Before cleaning, a merge on name produced zero matches for this vendor; after cleaning, all three agree. Lengths reveal the hidden characters even when the text looks identical.</p>
+<h2 id="connections">Connections</h2>
+<p>Implements s05. Prerequisite for key normalisation before merges (Topic 5 s04) and for number conversion (s06 — char 160 inside "1,23,456.00" breaks typing). Compare Excel <code>TRIM</code>/<code>CLEAN</code>/<code>SUBSTITUTE(x, CHAR(160), " ")</code> from Week 9.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-order-of-operations-l1">Q1. Order of operations [L1]</h3>
+<p>Explain what result you would get for the value "ABC" + char 160 + line feed if the expression were written <code>Text.Replace(Text.Trim(Text.Clean(_)), Character.FromNumber(160), " ")</code>, and why the concept's order is better.</p>
+<h3 id="q2-extend-for-keys-l2">Q2. Extend for keys [L2]</h3>
+<p>Extend the expression into a function <code>fxPartyKey</code> that also removes zero-width spaces and BOM, collapses internal spaces, upper-cases, and is safe for null and numeric inputs. Apply it to columns Party and GSTIN in one step.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Use <code>Text.From</code> at the start and a split/select/combine for internal spaces.</p>
+</blockquote>
+<h3 id="q3-narration-damage-l2">Q3. Narration damage [L2]</h3>
+<p>After cleaning, UTR extraction from SBI narrations fails because "NEFT/SBIN526012345678/ABC" became "NEFTSBIN526012345678ABC" on some rows. Explain which step caused it and how you would restructure the cleaning.</p></section>
+<nav class="pager"><a class="prev" href="C04_TableSplitColumn_at_Each_Delimiter_into_Code_and.html">← Table.SplitColumn at Each Delimiter into Code and Name</a><a class="next" href="C06_TransformColumnTypes_with_an_Explicit_en_IN.html">TransformColumnTypes with an Explicit en-IN Culture →</a></nav>
+</main></div></body></html>

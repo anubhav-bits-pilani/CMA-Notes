@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MMULT and TRANSPOSE for Cost-Pool × Driver Allocations · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S06_MMULT_and_TRANSPOSE_for_Cost_Pool_Driver.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T3 · SUMPRODUCT weighted averages and matrix…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · SUMPRODUCT weighted averages and matrix math</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Weighted_Average_Cost_of_Debt_Across_Borrowing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S01_Weighted_Average_Cost_of_Debt_Across_Borrowing.html">Weighted Average Cost of Debt Across Borrowing Tranches</a></li><li><a href="S02_Weighted_Average_Inventory_Cost_and_Weighted.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S02_Weighted_Average_Inventory_Cost_and_Weighted.html">Weighted Average Inventory Cost and Weighted Credit Period / DSO</a></li><li><a href="S03_Boolean_Array_Multi_Condition_Sums_Without_Helper.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S03_Boolean_Array_Multi_Condition_Sums_Without_Helper.html">Boolean-Array Multi-Condition Sums Without Helper Columns</a></li><li><a href="S04_Coercing_TRUEFALSE_to_10_Double_Unary_1_and_N.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S04_Coercing_TRUEFALSE_to_10_Double_Unary_1_and_N.html">Coercing TRUE/FALSE to 1/0: Double Unary, ×1 and N()</a></li><li><a href="S05_Cohort_Retention_Matrices_Acquisition_Month_Active.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S05_Cohort_Retention_Matrices_Acquisition_Month_Active.html">Cohort Retention Matrices: Acquisition Month × Active Month</a></li><li><a href="S06_MMULT_and_TRANSPOSE_for_Cost_Pool_Driver.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S06_MMULT_and_TRANSPOSE_for_Cost_Pool_Driver.html">MMULT and TRANSPOSE for Cost-Pool × Driver Allocations</a></li><li><a href="S07_SUMPRODUCT_vs_SUMIFS_Performance_on_Large_Ranges.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S07_SUMPRODUCT_vs_SUMIFS_Performance_on_Large_Ranges.html">SUMPRODUCT vs SUMIFS Performance on Large Ranges</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Pre_Tax_and_Post_Tax_Kd_with_SUMPRODUCT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C01_Pre_Tax_and_Post_Tax_Kd_with_SUMPRODUCT.html">Pre-Tax and Post-Tax Kd with SUMPRODUCT</a></li><li><a href="../concepts/C02_SUMPRODUCT_with_MONTH_and_LEFT_on_Whole_Columns.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C02_SUMPRODUCT_with_MONTH_and_LEFT_on_Whole_Columns.html">SUMPRODUCT with MONTH and LEFT on Whole Columns</a></li><li><a href="../concepts/C03_Comma_Form_SUMPRODUCT_and_Why_Arrays_Must_Be.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C03_Comma_Form_SUMPRODUCT_and_Why_Arrays_Must_Be.html">Comma-Form SUMPRODUCT and Why Arrays Must Be Numeric</a></li><li><a href="../concepts/C04_The_Cohort_Retention_Cell_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C04_The_Cohort_Retention_Cell_Formula.html">The Cohort Retention Cell Formula</a></li><li><a href="../concepts/C05_MMULT_Dimensions_1nnm_Gives_a_1m_Allocation.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C05_MMULT_Dimensions_1nnm_Gives_a_1m_Allocation.html">MMULT Dimensions: (1×n)·(n×m) Gives a 1×m Allocation</a></li><li><a href="../concepts/C06_The_General_Guarded_Weighted_Average_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C06_The_General_Guarded_Weighted_Average_Formula.html">The General Guarded Weighted-Average Formula</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>MMULT and TRANSPOSE for Cost-Pool × Driver Allocations</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Matrix operations with MMULT and TRANSPOSE for cost-pool × driver allocations</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Overhead allocation — service departments to production departments, shared-service costs to business units, corporate costs to products or customers — is matrix multiplication. Each cost pool is spread across receivers in proportion to a driver (machine hours, headcount, floor area, transactions), and the receiver's allocated cost is the sum over pools of pool cost × share. CMA students solve this by hand as secondary distribution; FP&amp;A teams rebuild it every month in Excel. MMULT does the whole allocation in one formula, keeps it consistent when drivers change, and — with MINVERSE — even handles reciprocal service flows exactly.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-algebra">The algebra</h3>
+<p>Let \(\mathbf{p}\) be a \(1 \times n\) row of cost-pool amounts and \(\mathbf{S}\) an \(n \times m\) matrix of driver shares, where \(S_{ij}\) is the share of pool \(i\) going to receiver \(j\) and each row of \(\mathbf{S}\) sums to 1. The allocation is</p>
+<p>\[
+\mathbf{a} = \mathbf{p} \, \mathbf{S}, \qquad a_j = \sum_{i=1}^{n} p_i \, S_{ij}
+\]</p>
+<p>where \(\mathbf{a}\) is the \(1 \times m\) row of allocated costs. Because every row of \(\mathbf{S}\) sums to 1, \(\sum_j a_j = \sum_i p_i\) — the allocation is complete.</p>
+<h3 id="mmult-mechanics">MMULT mechanics</h3>
+<pre><code class="language-excel">=MMULT(CostPool_row, Driver_matrix)
+</code></pre>
+<ul>
+<li><code>array1</code> columns must equal <code>array2</code> rows (n), otherwise <code>#VALUE!</code>.</li>
+<li>The result has the rows of <code>array1</code> and the columns of <code>array2</code> (1 × m).</li>
+<li>In Microsoft 365 the result <strong>spills</strong>; in legacy Excel select the 1 × m output range first and confirm with Ctrl+Shift+Enter.</li>
+<li>Every cell in both arrays must be numeric — a blank or text cell returns <code>#VALUE!</code> for the whole result (unlike SUMPRODUCT's comma form). Fill unused driver cells with 0.</li>
+</ul>
+<h3 id="building-the-share-matrix-from-raw-drivers">Building the share matrix from raw drivers</h3>
+<p>Raw drivers (machine hours, headcount, sq ft) in an n × m block <code>Raw</code>. Shares are each row divided by its row total:</p>
+<pre><code class="language-excel">=Raw / BYROW(Raw, LAMBDA(r, SUM(r)))
+</code></pre>
+<p>or, without LAMBDA, using MMULT with a column of ones to compute row totals:</p>
+<pre><code class="language-excel">=Raw / MMULT(Raw, SEQUENCE(COLUMNS(Raw), 1, 1, 0))
+</code></pre>
+<p><code>SEQUENCE(m,1,1,0)</code> is an m × 1 column of ones; <code>Raw</code> (n × m) × ones (m × 1) = n × 1 row totals, which broadcast across the division. A check that each row of shares sums to 1 is essential.</p>
+<h3 id="transpose-for-orientation">TRANSPOSE for orientation</h3>
+<p>Data rarely arrives in the orientation MMULT needs. If cost pools are a <strong>column</strong> (n × 1) on the input sheet:</p>
+<ul>
+<li><code>=MMULT(TRANSPOSE(Pools_col), Shares)</code> → 1 × m row of allocations, or</li>
+<li><code>=MMULT(TRANSPOSE(Shares), Pools_col)</code> → m × 1 column of allocations (since \((\mathbf{pS})^{T} = \mathbf{S}^{T}\mathbf{p}^{T}\)).</li>
+</ul>
+<p>TRANSPOSE flips rows and columns of a range or array; in Microsoft 365 it spills, in legacy Excel it needs CSE over a range of the transposed shape.</p>
+<h3 id="worked-illustration-primary-to-secondary-distribution">Worked illustration — primary to secondary distribution</h3>
+<p>Service cost pools (₹ lakh): Maintenance 24.0, Stores 12.0, Canteen 9.0. Receivers: Machining, Assembly, Painting, Packing.</p>
+<table>
+<thead>
+<tr>
+<th>Pool \ Receiver</th>
+<th>Machining</th>
+<th>Assembly</th>
+<th>Painting</th>
+<th>Packing</th>
+<th>Row total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Maintenance (machine hours)</td>
+<td>40%</td>
+<td>30%</td>
+<td>20%</td>
+<td>10%</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Stores (requisitions)</td>
+<td>25%</td>
+<td>25%</td>
+<td>35%</td>
+<td>15%</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Canteen (headcount)</td>
+<td>30%</td>
+<td>35%</td>
+<td>20%</td>
+<td>15%</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table>
+<p><code>=MMULT({24, 12, 9}, Shares)</code> returns:</p>
+<ul>
+<li>Machining = 24×0.40 + 12×0.25 + 9×0.30 = ₹15.30 lakh</li>
+<li>Assembly = 7.20 + 3.00 + 3.15 = ₹13.35 lakh</li>
+<li>Painting = 4.80 + 4.20 + 1.80 = ₹10.80 lakh</li>
+<li>Packing = 2.40 + 1.80 + 1.35 = ₹5.55 lakh</li>
+</ul>
+<p>Total ₹45.00 lakh = total pools — the completeness check.</p>
+<h3 id="reciprocal-services-with-minverse">Reciprocal services with MINVERSE</h3>
+<p>When service departments serve each other (maintenance works for stores; stores issues to maintenance), the CMA <strong>repeated distribution</strong> or <strong>simultaneous equation</strong> method applies. In matrix form, total service-department costs \(\mathbf{x}\) satisfy</p>
+<p>\[
+\mathbf{x} = \mathbf{p} + \mathbf{A}^{T}\mathbf{x} \quad \Rightarrow \quad \mathbf{x} = \left(\mathbf{I} - \mathbf{A}^{T}\right)^{-1}\mathbf{p}
+\]</p>
+<p>where \(\mathbf{p}\) is the column of primary costs, \(\mathbf{A}\) the inter-service share matrix (\(A_{ij}\) = share of department \(i\)'s cost going to service department \(j\)) and \(\mathbf{I}\) the identity matrix. In Excel: <code>=MMULT(MINVERSE(MUNIT(n) - TRANSPOSE(A)), p)</code>.</p>
+<p>Two-department example: S1 primary ₹24 lakh, S2 ₹12 lakh; S1 gives 10% of its service to S2, S2 gives 20% to S1. Equations: \(x_1 = 24 + 0.2x_2\), \(x_2 = 12 + 0.1x_1\), giving \(x_1 \approx 26.94\) and \(x_2 \approx 14.69\) — the same answer as endless repeated distribution, in one formula. The totals \(x_1, x_2\) are then allocated to production departments with their remaining shares.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Rows not summing to 1</strong> leak or create cost; always check <code>BYROW(Shares, LAMBDA(r, SUM(r)))</code> = 1 and total allocated = total pool.</li>
+<li><strong>Blank driver cells</strong> break MMULT with <code>#VALUE!</code>; fill with 0.</li>
+<li><strong>Self-service</strong> (a department using its own service) is normally excluded or the diagonal set to zero, with shares re-normalised.</li>
+<li><strong>Singular matrices</strong> — if service departments serve only each other with 100% shares, \(\mathbf{I} - \mathbf{A}^{T}\) cannot be inverted (<code>#NUM!</code>); the cost structure is ill-defined.</li>
+<li><strong>Driver choice</strong> is a costing judgement (cause-and-effect, CAS-aligned); the matrix only executes it. Document the driver for each pool.</li>
+<li><strong>Legacy Excel</strong> needs CSE and pre-sized output ranges; resizing later requires re-entry.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Allocation = cost-pool row × share matrix; <code>MMULT</code> computes it in one spilled formula.</li>
+<li>Inner dimensions must match; output takes the outer dimensions; every input cell must be numeric.</li>
+<li>Build shares by dividing raw drivers by row totals, and check that rows sum to 1.</li>
+<li><code>TRANSPOSE</code> fixes orientation; \((\mathbf{pS})^{T} = \mathbf{S}^{T}\mathbf{p}^{T}\) lets you allocate a column of pools.</li>
+<li><code>MINVERSE</code> with <code>MUNIT</code> solves reciprocal service allocations exactly.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-shared-service-allocation-l1">Q1. Shared-service allocation [L1]</h3>
+<p>Corporate costs (₹ crore): IT 6.0, HR 2.4, Finance 3.6. Business units: Retail, Wholesale, Exports. Drivers: IT by users (420, 260, 120), HR by headcount (900, 450, 150), Finance by invoices (52,000, 18,000, 6,000). Build the share matrix from raw drivers with a single formula and the MMULT allocation, and state two checks.</p>
+<h3 id="q2-orientation-problem-l2">Q2. Orientation problem [L2]</h3>
+<p>Cost pools are in a vertical range D5:D9 (five pools) and the share matrix is in F5:J9 (five pools × five receivers). A colleague's <code>=MMULT(D5:D9, F5:J9)</code> returns <code>#VALUE!</code>. Explain why, give two correct formulas (one returning a row, one a column) and the shape of each result.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Compare the column count of the first array with the row count of the second.</p>
+</blockquote>
+<h3 id="q3-reciprocal-service-costs-l2">Q3. Reciprocal service costs [L2]</h3>
+<p>Three service departments: Maintenance ₹30 lakh, Power ₹45 lakh, Stores ₹15 lakh primary cost. Maintenance serves Power 15% and Stores 5%; Power serves Maintenance 20% and Stores 10%; Stores serves Maintenance 10% and Power 5%; the rest of each service goes to production. Set up the Excel formulas to compute the total cost of each service department using MINVERSE and MUNIT, and describe how you would verify the answer with a repeated-distribution table.</p>
+<h3 id="q4-monthly-allocation-model-l3">Q4. Monthly allocation model [L3]</h3>
+<p>An FP&amp;A team allocates 14 corporate cost pools to 9 business units monthly using drivers refreshed from HRMS, ERP and facilities data. Design the workbook: inputs (pools by month, raw drivers by month), share-matrix calculation, allocation via MMULT for each month, checks and outputs (BU P&amp;L after allocations). Explain how you would handle a month in which a driver row is all zeros.</p></section>
+<nav class="pager"><a class="prev" href="S05_Cohort_Retention_Matrices_Acquisition_Month_Active.html">← Cohort Retention Matrices: Acquisition Month × Active Month</a><a class="next" href="S07_SUMPRODUCT_vs_SUMIFS_Performance_on_Large_Ranges.html">SUMPRODUCT vs SUMIFS Performance on Large Ranges →</a></nav>
+</main></div></body></html>

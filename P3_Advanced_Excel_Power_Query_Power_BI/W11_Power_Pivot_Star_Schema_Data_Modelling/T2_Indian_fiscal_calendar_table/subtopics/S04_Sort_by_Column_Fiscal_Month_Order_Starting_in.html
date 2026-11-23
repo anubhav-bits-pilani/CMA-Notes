@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sort by Column: Fiscal Month Order Starting in April · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S04_Sort_by_Column_Fiscal_Month_Order_Starting_in.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T2 · Indian fiscal calendar table</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Indian fiscal calendar table</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Building_the_Date_Dimension_DAX_CALENDAR_vs_Power.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S01_Building_the_Date_Dimension_DAX_CALENDAR_vs_Power.html">Building the Date Dimension: DAX CALENDAR vs Power Query List.Dates</a></li><li><a href="S02_Contiguous_Whole_Fiscal_Year_Date_Range_Covering.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S02_Contiguous_Whole_Fiscal_Year_Date_Range_Covering.html">Contiguous Whole-Fiscal-Year Date Range Covering All Facts</a></li><li><a href="S03_Fiscal_Calendar_Columns_FY_Quarter_Month_Week_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S03_Fiscal_Calendar_Columns_FY_Quarter_Month_Week_and.html">Fiscal Calendar Columns: FY, Quarter, Month, Week and Period Key</a></li><li><a href="S04_Sort_by_Column_Fiscal_Month_Order_Starting_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S04_Sort_by_Column_Fiscal_Month_Order_Starting_in.html">Sort by Column: Fiscal Month Order Starting in April</a></li><li><a href="S05_Month_and_FY_Offset_Columns_for_Dynamic_Period.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S05_Month_and_FY_Offset_Columns_for_Dynamic_Period.html">Month and FY Offset Columns for Dynamic Period Filters</a></li><li><a href="S06_Mark_as_Date_Table_and_Turn_Off_Auto_DateTime.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S06_Mark_as_Date_Table_and_Turn_Off_Auto_DateTime.html">Mark as Date Table and Turn Off Auto Date/Time</a></li><li><a href="S07_Working_Day_Flags_and_Indian_Holidays_for_Close.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S07_Working_Day_Flags_and_Indian_Holidays_for_Close.html">Working-Day Flags and Indian Holidays for Close Metrics</a></li><li><a href="S08_IsClosedPeriod_and_IsYTD_Flags_for_Like_for_Like.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S08_IsClosedPeriod_and_IsYTD_Flags_for_Like_for_Like.html">IsClosedPeriod and IsYTD Flags for Like-for-Like Comparisons</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_DAX_Fiscal_Date_Table_with_an_FYEnd_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C01_DAX_Fiscal_Date_Table_with_an_FYEnd_Column.html">DAX Fiscal Date Table with an FYEnd Column</a></li><li><a href="../concepts/C02_CALENDARAUTO3_for_Whole_March_Ending_Fiscal_Years.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C02_CALENDARAUTO3_for_Whole_March_Ending_Fiscal_Years.html">CALENDARAUTO(3) for Whole March-Ending Fiscal Years</a></li><li><a href="../concepts/C03_Fiscal_Month_and_Fiscal_Quarter_Formulas.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C03_Fiscal_Month_and_Fiscal_Quarter_Formulas.html">Fiscal Month and Fiscal Quarter Formulas</a></li><li><a href="../concepts/C04_Fiscal_Week_Number_Anchored_on_1_April.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C04_Fiscal_Week_Number_Anchored_on_1_April.html">Fiscal Week Number Anchored on 1 April</a></li><li><a href="../concepts/C05_Month_Offset_from_Today.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C05_Month_Offset_from_Today.html">Month Offset from Today</a></li><li><a href="../concepts/C06_Power_Query_Date_List_with_ListDates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C06_Power_Query_Date_List_with_ListDates.html">Power Query Date List with List.Dates</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Sort by Column: Fiscal Month Order Starting in April</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Sort by Column: month name by fiscal month number so April appears first</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Text columns sort alphabetically: Apr, Aug, Dec, Feb, Jan, Jul, Jun, Mar, May, Nov, Oct, Sep. A finance matrix
+with months in that order is unusable, and one that starts in January splits the Indian fiscal year across two
+halves of the chart — Q4 (Jan–Mar) appears before Q1. Sort by Column is the model-level setting that fixes this
+once for every visual, slicer and Analyze-in-Excel PivotTable, rather than each report author fixing sort order
+visual by visual.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="how-sort-by-column-works">How Sort by Column works</h3>
+<p>Every column in a VertiPaq model can be assigned a <strong>sort-by column</strong>: another column in the same table whose values
+determine the display order. When <code>'Date'[MonthName]</code> is sorted by <code>'Date'[FiscalMonthNo]</code>, the engine orders
+members Apr (1), May (2) … Mar (12) wherever MonthName is displayed.</p>
+<p>Steps in Power BI Desktop:</p>
+<ol>
+<li>Data view or Model view → select <code>'Date'[MonthName]</code>.</li>
+<li>Column tools → <strong>Sort by column</strong> → choose <code>FiscalMonthNo</code>.</li>
+<li>Repeat for other label columns (table below).</li>
+</ol>
+<p>In Excel Power Pivot: <em>Power Pivot → Manage → Home → Sort by Column</em>, choose the label column and the sort column.</p>
+<h3 id="columns-that-need-a-sort-column">Columns that need a sort column</h3>
+<table>
+<thead>
+<tr>
+<th>Label column</th>
+<th>Sort by</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MonthName ("Apr")</td>
+<td>FiscalMonthNo</td>
+<td>April first</td>
+</tr>
+<tr>
+<td>MonthNameLong ("April")</td>
+<td>FiscalMonthNo</td>
+<td>Same</td>
+</tr>
+<tr>
+<td>MonthYear ("Apr-25")</td>
+<td>PeriodKey (202504)</td>
+<td>Chronological across years</td>
+</tr>
+<tr>
+<td>FY ("FY2025-26")</td>
+<td>FYEnd</td>
+<td>Safe even if labels change format</td>
+</tr>
+<tr>
+<td>FiscalQuarter ("Q1")</td>
+<td>FiscalQuarterNo</td>
+<td>Usually alphabetic works, but be explicit</td>
+</tr>
+<tr>
+<td>FYQuarter ("FY26 Q1")</td>
+<td>FYEnd × 10 + FiscalQuarterNo</td>
+<td>Chronological across years</td>
+</tr>
+<tr>
+<td>DayName ("Mon")</td>
+<td>WeekdayNo (Mon = 1)</td>
+<td>Mon–Sun rather than alphabetic</td>
+</tr>
+<tr>
+<td>CoA FSLine (from topic 1)</td>
+<td>LineSort</td>
+<td>Statement order</td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-one-to-one-rule">The one-to-one rule</h3>
+<p>Each value of the label column must map to <strong>exactly one</strong> value of the sort column. Otherwise Power BI raises:
+"We can't sort the 'X' column by 'Y'. There can't be more than one value in 'Y' for the same value in 'X'."</p>
+<p>Consequences:</p>
+<ul>
+<li><code>MonthName</code> can be sorted by <code>FiscalMonthNo</code> (Apr is always 1) but <strong>not</strong> by <code>PeriodKey</code> (Apr has 202204,
+  202304 …).</li>
+<li><code>MonthYear</code> ("Apr-25") maps to one PeriodKey and to one FiscalMonthNo, so both sorts are technically allowed —
+  but sorting by FiscalMonthNo interleaves years (Apr-24, Apr-25, May-24 …), which is wrong for a trend. Use
+  PeriodKey.</li>
+<li>A sort column that depends on the label column in DAX (e.g. a calculated column computing the sort number from
+  MonthName) can cause a circular dependency; derive both from <code>[Date]</code>.</li>
+</ul>
+<h3 id="interaction-with-visuals">Interaction with visuals</h3>
+<ul>
+<li>Sort by Column defines the <strong>default order of the axis or rows</strong>. A user can still sort a visual by a measure
+  (e.g. revenue descending); for a P&amp;L or month axis, set the visual's sort to the month field ascending.</li>
+<li>In a matrix with FY on columns and MonthName on rows, rows run Apr → Mar within each FY.</li>
+<li>Slicers listing months follow the same order.</li>
+<li>When a visual uses MonthName and another field from Date, DAX queries include the sort column automatically (the
+  sort-by column joins the group-by). This matters in DAX measures that use <code>ALL('Date'[MonthName])</code> or
+  <code>REMOVEFILTERS('Date'[MonthName])</code>: the sort-by column FiscalMonthNo is also in the filter context, so you must
+  remove it too — <code>REMOVEFILTERS('Date'[MonthName], 'Date'[FiscalMonthNo])</code> — or the filter is not fully cleared.
+  This is a frequent cause of "% of total" measures returning 100% on every month row.</li>
+</ul>
+<h3 id="hiding-sort-columns">Hiding sort columns</h3>
+<p>Hide FiscalMonthNo, PeriodKey, FYEnd and WeekdayNo from report view (they are technical), unless users need them.
+Hidden sort columns still work.</p>
+<h3 id="illustration">Illustration</h3>
+<p>A Hyderabad-based pharma company's monthly revenue chart (FY2025-26) initially shows months alphabetically:
+Apr ₹82 crore, Aug ₹91 crore, Dec ₹96 crore, Feb ₹88 crore… making the trend line zig-zag meaninglessly. After
+sorting MonthName by FiscalMonthNo the axis reads Apr, May, Jun … Mar, and the expected seasonal build to a March
+peak (₹104 crore, year-end stocking) becomes visible.</p>
+<p>A measure written as</p>
+<pre><code class="language-DAX">% of FY = DIVIDE ( [Actual], CALCULATE ( [Actual], REMOVEFILTERS ( 'Date'[MonthName] ) ) )
+</code></pre>
+<p>shows 100% on every month row in a matrix that has MonthName on rows, because FiscalMonthNo (the sort column) is also
+filtering. The corrected denominator is
+<code>CALCULATE([Actual], REMOVEFILTERS('Date'[MonthName], 'Date'[FiscalMonthNo]))</code> or, more robustly,
+<code>CALCULATE([Actual], ALLEXCEPT('Date', 'Date'[FY]))</code>.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Excel PivotTables</strong> connected to Power Pivot respect Sort by Column, but an Excel custom list (Jan–Dec) or
+  manual drag can override it. Set PivotTable options so custom lists are not used for sorting.</li>
+<li><strong>Calendar-year reports.</strong> If a US parent wants Jan–Dec, add a separate MonthName column sorted by calendar month
+  number rather than changing the fiscal one.</li>
+<li><strong>Field parameters and calculation groups</strong> have their own ordinal/precedence columns; Sort by Column on the
+  Date table does not order them.</li>
+<li><strong>DirectQuery</strong> sources honour Sort by Column, but the sort column must exist in the source query.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Text month names sort alphabetically unless sorted by FiscalMonthNo.</li>
+<li>Each label value must map to exactly one sort value (MonthName → FiscalMonthNo; MonthYear → PeriodKey).</li>
+<li>Set sort columns for every text label in Date and CoA; hide the numeric helpers.</li>
+<li>Measures removing filters from a sorted label must also remove the sort column.</li>
+<li>Excel PivotTables can override model sorting with custom lists — check the option.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-set-up-the-sorts-l1">Q1. Set up the sorts [L1]</h3>
+<p>List every column in a fiscal Date table that needs a Sort by Column setting, the sort column for each, and the
+error you would see if you sorted MonthName by PeriodKey.</p>
+<h3 id="q2-100-on-every-row-l2">Q2. 100% on every row [L2]</h3>
+<p>A matrix with FY on columns and MonthName on rows uses <code>% of FY = DIVIDE([Actual], CALCULATE([Actual],
+ALL('Date'[MonthName])))</code>. Every cell shows 100%. Explain why, and write two corrected versions.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Look at which columns the generated DAX query groups by.</p>
+</blockquote>
+<h3 id="q3-mixed-audiences-l2">Q3. Mixed audiences [L2]</h3>
+<p>The Indian entity reports April–March but the Singapore parent wants January–December charts from the same model.
+Design the Date table columns and sort settings to serve both without duplicating the table.</p>
+<h3 id="q4-excel-board-pack-l3">Q4. Excel board pack [L3]</h3>
+<p>An Excel board pack uses PivotTables on a Power Pivot model; after a colleague's edit, months appear Jan–Dec even
+though the model sorts by FiscalMonthNo. List the possible causes and the steps to restore and protect fiscal order.</p></section>
+<nav class="pager"><a class="prev" href="S03_Fiscal_Calendar_Columns_FY_Quarter_Month_Week_and.html">← Fiscal Calendar Columns: FY, Quarter, Month, Week and…</a><a class="next" href="S05_Month_and_FY_Offset_Columns_for_Dynamic_Period.html">Month and FY Offset Columns for Dynamic Period Filters →</a></nav>
+</main></div></body></html>

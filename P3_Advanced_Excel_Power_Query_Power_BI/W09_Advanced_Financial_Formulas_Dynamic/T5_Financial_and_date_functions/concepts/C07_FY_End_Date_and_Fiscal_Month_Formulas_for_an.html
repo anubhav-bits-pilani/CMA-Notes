@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FY End Date and Fiscal Month Formulas for an April–March Year · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C07_FY_End_Date_and_Fiscal_Month_Formulas_for_an.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T5 · Financial and date functions</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Financial and date functions</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Period_End_Logic_with_EOMONTH_and_EDATE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S01_Period_End_Logic_with_EOMONTH_and_EDATE.html">Period-End Logic with EOMONTH and EDATE</a></li><li><a href="../subtopics/S02_Day_Count_Conventions_with_YEARFRAC_Bases_04.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S02_Day_Count_Conventions_with_YEARFRAC_Bases_04.html">Day-Count Conventions with YEARFRAC Bases 0–4</a></li><li><a href="../subtopics/S03_NPV_vs_XNPV_Periodic_and_Dated_Cash_Flows.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S03_NPV_vs_XNPV_Periodic_and_Dated_Cash_Flows.html">NPV vs XNPV: Periodic and Dated Cash Flows</a></li><li><a href="../subtopics/S04_IRR_vs_XIRR_vs_MIRR_for_Irregular_Project_Cash.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S04_IRR_vs_XIRR_vs_MIRR_for_Irregular_Project_Cash.html">IRR vs XIRR vs MIRR for Irregular Project Cash Flows</a></li><li><a href="../subtopics/S05_Loan_Amortisation_with_PMT_IPMT_PPMT_CUMIPMT_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S05_Loan_Amortisation_with_PMT_IPMT_PPMT_CUMIPMT_and.html">Loan Amortisation with PMT, IPMT, PPMT, CUMIPMT and CUMPRINC</a></li><li><a href="../subtopics/S06_EMI_Schedules_and_Ind_AS_116_Lease_Liability.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S06_EMI_Schedules_and_Ind_AS_116_Lease_Liability.html">EMI Schedules and Ind AS 116 Lease Liability Schedules</a></li><li><a href="../subtopics/S07_Close_Calendars_with_WORKDAYINTL_NETWORKDAYSINTL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S07_Close_Calendars_with_WORKDAYINTL_NETWORKDAYSINTL.html">Close Calendars with WORKDAY.INTL, NETWORKDAYS.INTL and Holidays</a></li><li><a href="../subtopics/S08_Fiscal_Year_Helpers_FY_Start_FY_End_and_Fiscal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S08_Fiscal_Year_Helpers_FY_Start_FY_End_and_Fiscal.html">Fiscal-Year Helpers: FY Start, FY End and Fiscal Month</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Month_End_Month_Start_and_Same_Day_Offsets_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C01_Month_End_Month_Start_and_Same_Day_Offsets_with.html">Month-End, Month-Start and Same-Day Offsets with EOMONTH and EDATE</a></li><li><a href="C02_YEARFRAC_Basis_1_vs_Basis_3_for_Accruals.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C02_YEARFRAC_Basis_1_vs_Basis_3_for_Accruals.html">YEARFRAC Basis 1 vs Basis 3 for Accruals</a></li><li><a href="C03_NPV_Plus_CF0_Why_NPV_Discounts_Its_First_Value.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C03_NPV_Plus_CF0_Why_NPV_Discounts_Its_First_Value.html">NPV Plus CF0: Why NPV Discounts Its First Value</a></li><li><a href="C04_XNPV_and_XIRR_The_365_Day_Basis_from_the_First.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C04_XNPV_and_XIRR_The_365_Day_Basis_from_the_First.html">XNPV and XIRR: The 365-Day Basis from the First Date</a></li><li><a href="C05_PMT_IPMT_and_PPMT_EMI_and_Its_InterestPrincipal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C05_PMT_IPMT_and_PPMT_EMI_and_Its_InterestPrincipal.html">PMT, IPMT and PPMT: EMI and Its Interest/Principal Split</a></li><li><a href="C06_MIRR_Fixing_IRRs_Reinvestment_and_Multiple_Root.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C06_MIRR_Fixing_IRRs_Reinvestment_and_Multiple_Root.html">MIRR: Fixing IRR&#x27;s Reinvestment and Multiple-Root Problems</a></li><li><a href="C07_FY_End_Date_and_Fiscal_Month_Formulas_for_an.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C07_FY_End_Date_and_Fiscal_Month_Formulas_for_an.html">FY End Date and Fiscal Month Formulas for an April–March Year</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>FY End Date and Fiscal Month Formulas for an April–March Year</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> FY end: <code>=DATE(YEAR(A2) + (MONTH(A2) &gt;= 4), 3, 31)</code>; fiscal month: <code>=MOD(MONTH(A2) + 8, 12) + 1</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-excel">=DATE(YEAR(A2) + (MONTH(A2) &gt;= 4), 3, 31)     FY end date
+=MOD(MONTH(A2) + 8, 12) + 1                   fiscal month (April = 1 … March = 12)
+</code></pre>
+<p>For a date with calendar month \(M\) and year \(Y\):</p>
+<p>\[
+\text{FYEnd} = 31\ \text{March of}\ \big(Y + [M \geq 4]\big), \qquad
+\text{FM} = \text{MOD}(M + 8,\ 12) + 1
+\]</p>
+<p>where \([M \geq 4]\) is 1 if the month is April or later and 0 otherwise.</p>
+<h2 id="explanation">Explanation</h2>
+<p><strong>FY end date.</strong> For April–December dates, the FY ends on 31 March of the next calendar year; for January–March dates, on 31 March of the same year. The Boolean <code>(MONTH(A2) &gt;= 4)</code> adds 1 or 0 to the year. Returning a real date (not "FY26") is useful because it can be used directly as a criteria boundary — <code>GL[Date], "&lt;=" &amp; FYEnd</code> — and as the anchor for XNPV, YEARFRAC accruals (<code>YEARFRAC(Start, FYEnd, 3)</code>) and maturity classification (an instrument maturing within 12 months of FYEnd is current under Ind AS 1 and Schedule III).</p>
+<p><strong>Fiscal month.</strong> Adding 8 and taking MOD 12 rotates the calendar so April maps to 0 before the +1:</p>
+<table>
+<thead>
+<tr>
+<th>Calendar month</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+<th>12</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fiscal month</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+<p>Uses: budget phasing (<code>INDEX(Phasing, FM)</code>), "months elapsed" for annualising YTD figures (<code>YTD × 12 / FM</code>), fiscal quarter <code>=INT((FM - 1)/3) + 1</code>, and sorting months in FY order in reports and Power BI ("Sort by column" on FM).</p>
+<p>Companion: FY start date <code>=DATE(YEAR(A2) - (MONTH(A2) &lt; 4), 4, 1)</code>.</p>
+<p>Pitfalls:</p>
+<ul>
+<li><code>&gt;= 4</code> vs <code>&gt; 4</code>: with <code>&gt; 4</code>, April dates are assigned to the previous FY — a cut-off error for the first month of every year.</li>
+<li>Text dates give #VALUE!.</li>
+<li>For entities with a different year-end, parameterise the start month (s08); the "+8" applies only to an April start (general form: <code>MOD(M - s + 12, 12) + 1</code>).</li>
+<li>An FY end of 31 March never needs leap-year handling, unlike a February year-end.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<table>
+<thead>
+<tr>
+<th>A2</th>
+<th>FY end</th>
+<th>Fiscal month</th>
+<th>Fiscal quarter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01-Apr-2025</td>
+<td>31-Mar-2026</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>17-Aug-2025</td>
+<td>31-Mar-2026</td>
+<td>5</td>
+<td>2</td>
+</tr>
+<tr>
+<td>31-Dec-2025</td>
+<td>31-Mar-2026</td>
+<td>9</td>
+<td>3</td>
+</tr>
+<tr>
+<td>12-Feb-2026</td>
+<td>31-Mar-2026</td>
+<td>11</td>
+<td>4</td>
+</tr>
+<tr>
+<td>31-Mar-2026</td>
+<td>31-Mar-2026</td>
+<td>12</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p>Annualising: YTD EBITDA to 31-Dec-2025 of ₹54 crore → FM = 9 → run-rate = 54 × 12 / 9 = ₹72 crore (ignoring seasonality).</p>
+<h2 id="connections">Connections</h2>
+<p>Implements s08 (fiscal-year helpers) and is the date-returning sibling of the <code>FYEND</code> LAMBDA in w9_t4 c06. FY end dates anchor accruals (s02), lease current/non-current splits (s06) and XNPV valuation dates (c04). Fiscal month drives budget phasing and rolling forecasts (Weeks 17–20) and the fiscal calendar columns of the Power BI date table (Week 11).</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-evaluate-and-extend-l1">Q1. Evaluate and extend [L1]</h3>
+<p>For 1-Jan-2026, 30-Jun-2026 and 1-Apr-2026 evaluate both formulas, and write formulas for FY start date, fiscal quarter and an "FY26"-style label.</p>
+<h3 id="q2-current-vs-non-current-maturities-l2">Q2. Current vs non-current maturities [L2]</h3>
+<p>A loan register lists maturity dates for 40 deposits. Using the FY end of the reporting date in <code>RD</code> (any date in FY26), write a formula that classifies each deposit as "Current" if it matures within 12 months after the FY end, otherwise "Non-current", and explain why you anchor on FY end rather than on TODAY().</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Twelve months after FY end is EDATE(FYEnd, 12).</p>
+</blockquote>
+<h3 id="q3-annualisation-with-seasonality-l2">Q3. Annualisation with seasonality [L2]</h3>
+<p>YTD revenue to 30-Nov-2025 is ₹186 crore. Compute the simple run-rate using the fiscal month formula, then explain how you would adjust it using a phasing vector where April–November historically represent 61% of annual revenue, and which estimate you would present to the CFO.</p></section>
+<nav class="pager"><a class="prev" href="C06_MIRR_Fixing_IRRs_Reinvestment_and_Multiple_Root.html">← MIRR: Fixing IRR&#x27;s Reinvestment and Multiple-Root Problems</a><a class="next" href="../../T6_What_if_analysis_and_input_controls/index.html">What-if analysis and input controls →</a></nav>
+</main></div></body></html>

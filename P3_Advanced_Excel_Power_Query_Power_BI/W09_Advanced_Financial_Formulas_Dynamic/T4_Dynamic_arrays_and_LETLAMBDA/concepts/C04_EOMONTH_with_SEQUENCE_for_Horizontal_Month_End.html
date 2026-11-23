@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EOMONTH with SEQUENCE for Horizontal Month-End Headers · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C04_EOMONTH_with_SEQUENCE_for_Horizontal_Month_End.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T4 · Dynamic arrays and LET/LAMBDA</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Dynamic arrays and LET/LAMBDA</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Spill_Behaviour_SPILL_the_Operator_and_Implicit.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S01_Spill_Behaviour_SPILL_the_Operator_and_Implicit.html">Spill Behaviour, #SPILL!, the # Operator and Implicit Intersection</a></li><li><a href="../subtopics/S02_FILTER_with_ANDOR_Logic_for_Exception_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S02_FILTER_with_ANDOR_Logic_for_Exception_Lists.html">FILTER with AND/OR Logic for Exception Lists</a></li><li><a href="../subtopics/S03_UNIQUE_for_Dynamic_CoA_and_Department_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S03_UNIQUE_for_Dynamic_CoA_and_Department_Lists.html">UNIQUE for Dynamic CoA and Department Lists</a></li><li><a href="../subtopics/S04_SORT_and_SORTBY_for_Top_N_Expense_and_Ranked.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S04_SORT_and_SORTBY_for_Top_N_Expense_and_Ranked.html">SORT and SORTBY for Top-N Expense and Ranked Ageing Reports</a></li><li><a href="../subtopics/S05_SEQUENCE_for_Monthly_Timelines_Loan_Schedules_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S05_SEQUENCE_for_Monthly_Timelines_Loan_Schedules_and.html">SEQUENCE for Monthly Timelines, Loan Schedules and Period Counters</a></li><li><a href="../subtopics/S06_LET_for_Named_Steps_and_LAMBDA_Functions_in_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S06_LET_for_Named_Steps_and_LAMBDA_Functions_in_Name.html">LET for Named Steps and LAMBDA Functions in Name Manager</a></li><li><a href="../subtopics/S07_LAMBDA_Helpers_and_Array_Reshaping_Functions.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S07_LAMBDA_Helpers_and_Array_Reshaping_Functions.html">LAMBDA Helpers and Array Reshaping Functions</a></li><li><a href="../subtopics/S08_GROUPBY_and_PIVOTBY_as_Formula_Based_Pivots.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S08_GROUPBY_and_PIVOTBY_as_Formula_Based_Pivots.html">GROUPBY and PIVOTBY as Formula-Based Pivots</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_FILTER_with_Two_AND_Conditions_and_an_ifempty.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C01_FILTER_with_Two_AND_Conditions_and_an_ifempty.html">FILTER with Two AND Conditions and an if_empty Message</a></li><li><a href="C02_Sorted_Unique_Account_List_for_a_Selected_FY.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C02_Sorted_Unique_Account_List_for_a_Selected_FY.html">Sorted Unique Account List for a Selected FY</a></li><li><a href="C03_Top_10_Vendors_by_Spend_with_TAKE_and_SORTBY.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C03_Top_10_Vendors_by_Spend_with_TAKE_and_SORTBY.html">Top 10 Vendors by Spend with TAKE and SORTBY</a></li><li><a href="C04_EOMONTH_with_SEQUENCE_for_Horizontal_Month_End.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C04_EOMONTH_with_SEQUENCE_for_Horizontal_Month_End.html">EOMONTH with SEQUENCE for Horizontal Month-End Headers</a></li><li><a href="C05_LET_for_a_Safe_Gross_Margin_Calculation.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C05_LET_for_a_Safe_Gross_Margin_Calculation.html">LET for a Safe Gross Margin Calculation</a></li><li><a href="C06_FYEND_A_Named_LAMBDA_for_the_Indian_Financial_Year.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C06_FYEND_A_Named_LAMBDA_for_the_Indian_Financial_Year.html">FYEND: A Named LAMBDA for the Indian Financial Year</a></li><li><a href="C07_SCAN_for_Running_Closing_Balances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C07_SCAN_for_Running_Closing_Balances.html">SCAN for Running Closing Balances</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>EOMONTH with SEQUENCE for Horizontal Month-End Headers</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>=EOMONTH(StartDate, SEQUENCE(1, 12, 0))</code> gives horizontal month-end headers</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-excel">=EOMONTH(StartDate, SEQUENCE(1, 12, 0))
+</code></pre>
+<ul>
+<li><code>SEQUENCE(1, 12, 0)</code> — one row, twelve columns, starting at 0, step 1: {0, 1, 2, …, 11}.</li>
+<li><code>EOMONTH(StartDate, k)</code> — the last day of the month <em>k</em> months after StartDate's month.</li>
+<li>Because the months argument is an array, EOMONTH returns an array: twelve month-end dates spilling across one row.</li>
+</ul>
+<p>For column <em>j</em> (1-based):</p>
+<p>\[
+H_j = \text{EOMONTH}(S,\ j-1), \quad j = 1, \dots, 12
+\]</p>
+<p>where \(S\) is StartDate and \(H_j\) the header date in column \(j\).</p>
+<h2 id="explanation">Explanation</h2>
+<p>Month headers are the time axis of every MIS grid and forecast. Building them as <strong>real dates</strong> (serial numbers formatted <code>mmm-yy</code>) rather than text labels matters because:</p>
+<ul>
+<li>SUMIFS can use date-range criteria — <code>"&gt;"&amp;EOMONTH(C$4,-1)</code> and <code>"&lt;="&amp;C$4</code> — so each column picks up exactly that month's postings regardless of the posting day.</li>
+<li>The whole row is driven by one input. Changing <code>StartDate</code> from 1-Apr-2025 to 1-Apr-2026 rolls the year; replacing 12 with a named input <code>Months</code> makes the horizon flexible (18-month rolling forecast).</li>
+<li>Month-end dates line up with accounting periods and with Ind AS 34 interim period ends, and are what XNPV-style dated schedules need.</li>
+</ul>
+<p>Points of detail:</p>
+<ul>
+<li><strong>Any day of the start month works.</strong> EOMONTH ignores the day, so StartDate can be 1-Apr-2025 or 17-Apr-2025; the first header is 30-Apr-2025.</li>
+<li><strong>Start at 0.</strong> Starting SEQUENCE at 1 would skip the start month — a common off-by-one error.</li>
+<li><strong>Vertical version</strong>: <code>SEQUENCE(12, 1, 0)</code> or simply <code>SEQUENCE(12, , 0)</code> spills down a column for a schedule with periods as rows.</li>
+<li><strong>Quarter-ends</strong>: <code>SEQUENCE(1, 4, 2, 3)</code> with an April start gives offsets 2, 5, 8, 11 → 30-Jun, 30-Sep, 31-Dec, 31-Mar.</li>
+<li><strong>References</strong>: downstream formulas must use <code>C4#</code> (spill operator) so they widen with the header. Row-locked references such as <code>C$4</code> are appropriate only in a traditional copy-across grid where each column has its own formula.</li>
+<li><strong>Formatting</strong>: apply <code>mmm-yy</code> to the full reserved header row so extended columns are formatted too.</li>
+<li><strong>Inside Tables</strong>: Table headers are static text and cannot be dynamic arrays; build the axis on a normal range.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p><code>StartDate</code> = 1-Apr-2025 (named input).</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Offset</th>
+<th>Header</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C</td>
+<td>0</td>
+<td>30-Apr-25</td>
+</tr>
+<tr>
+<td>D</td>
+<td>1</td>
+<td>31-May-25</td>
+</tr>
+<tr>
+<td>E</td>
+<td>2</td>
+<td>30-Jun-25</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>M</td>
+<td>10</td>
+<td>28-Feb-26</td>
+</tr>
+<tr>
+<td>N</td>
+<td>11</td>
+<td>31-Mar-26</td>
+</tr>
+</tbody>
+</table>
+<p>A revenue row under it:</p>
+<pre><code class="language-excel">=SUMIFS(GLm[Amount], GLm[FSLine], B6,
+        GLm[Date], &quot;&gt;&quot;&amp;EOMONTH(C4#, -1), GLm[Date], &quot;&lt;=&quot;&amp;C4#)
+</code></pre>
+<p>Because <code>C4#</code> is an array, this single formula spills twelve monthly totals. February FY26 correctly ends on 28-Feb-2026 (not a leap year); FY28's header would show 29-Feb-2028 automatically.</p>
+<h2 id="connections">Connections</h2>
+<p>Applies s05 (SEQUENCE) and the w9_t5 date functions (EOMONTH/EDATE). It is the header half of the week's exercise pattern (UNIQUE FS lines × EOMONTH headers × SUMIFS) and the cross-cutting rule "SUMIFS keyed on date ranges, never on month text". It drives rolling 12-month forecast headers in Weeks 17–20 and dated cash-flow columns for XNPV in Weeks 15–16.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-variations-l1">Q1. Variations [L1]</h3>
+<p>Write formulas for (a) 24 vertical month-end dates starting from the month of <code>StartDate</code>; (b) four fiscal quarter-end headers for FY27; (c) a row of month-start dates (1st of each month) for FY26.</p>
+<h3 id="q2-off-by-one-diagnosis-l1">Q2. Off-by-one diagnosis [L1]</h3>
+<p>A model uses <code>=EOMONTH(StartDate, SEQUENCE(1, 12))</code> with StartDate = 1-Apr-2025. The March column shows zero revenue and April revenue is missing from the year total. Explain why and correct it.</p>
+<h3 id="q3-rolling-forecast-header-l2">Q3. Rolling forecast header [L2]</h3>
+<p>Actuals are loaded up to the date in named cell <code>LastClose</code> (e.g. 31-Oct-2025). Write a header formula that shows the 6 actual months up to LastClose followed by 12 forecast months, plus a second row that labels each column "A" or "F". Explain how the grid updates after the November close.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Start the sequence at a negative offset relative to LastClose.</p>
+</blockquote></section>
+<nav class="pager"><a class="prev" href="C03_Top_10_Vendors_by_Spend_with_TAKE_and_SORTBY.html">← Top 10 Vendors by Spend with TAKE and SORTBY</a><a class="next" href="C05_LET_for_a_Safe_Gross_Margin_Calculation.html">LET for a Safe Gross Margin Calculation →</a></nav>
+</main></div></body></html>

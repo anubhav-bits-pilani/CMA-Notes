@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RightAnti Join: Items in the Books but Not in the Bank · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C02_RightAnti_Join_Items_in_the_Books_but_Not_in_the.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T5 · Merging, appending and reconciliation…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Merging, appending and reconciliation joins</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Append_vs_Merge_Union_vs_Join_with_SQL_Analogies.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S01_Append_vs_Merge_Union_vs_Join_with_SQL_Analogies.html">Append vs Merge: Union vs Join with SQL Analogies</a></li><li><a href="../subtopics/S02_The_Six_Join_Kinds_and_Their_Role_in_a.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S02_The_Six_Join_Kinds_and_Their_Role_in_a.html">The Six Join Kinds and Their Role in a Reconciliation</a></li><li><a href="../subtopics/S03_Bank_vs_Book_Matching_on_Amount_Reference_and_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S03_Bank_vs_Book_Matching_on_Amount_Reference_and_Date.html">Bank vs Book Matching on Amount, Reference and Date Window</a></li><li><a href="../subtopics/S04_Normalising_Composite_Keys_Before_Merging.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S04_Normalising_Composite_Keys_Before_Merging.html">Normalising Composite Keys Before Merging</a></li><li><a href="../subtopics/S05_Fuzzy_Merge_for_Vendor_and_Customer_Names.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S05_Fuzzy_Merge_for_Vendor_and_Customer_Names.html">Fuzzy Merge for Vendor and Customer Names</a></li><li><a href="../subtopics/S06_Repeated_Identical_Amounts_Sequence_Keys_for_One.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S06_Repeated_Identical_Amounts_Sequence_Keys_for_One.html">Repeated Identical Amounts: Sequence Keys for One-to-One Matching</a></li><li><a href="../subtopics/S07_Other_Reconciliations_GSTR_2B_AR_Control_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S07_Other_Reconciliations_GSTR_2B_AR_Control_and.html">Other Reconciliations: GSTR-2B, AR Control and Intercompany</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_LeftAnti_Join_Items_in_the_Bank_but_Not_in_the.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C01_LeftAnti_Join_Items_in_the_Bank_but_Not_in_the.html">LeftAnti Join: Items in the Bank but Not in the Books</a></li><li><a href="C02_RightAnti_Join_Items_in_the_Books_but_Not_in_the.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C02_RightAnti_Join_Items_in_the_Books_but_Not_in_the.html">RightAnti Join: Items in the Books but Not in the Bank</a></li><li><a href="C03_Expanding_Merged_Columns_with_Prefixed_Names.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C03_Expanding_Merged_Columns_with_Prefixed_Names.html">Expanding Merged Columns with Prefixed Names</a></li><li><a href="C04_TableFuzzyNestedJoin_Syntax_and_Options.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C04_TableFuzzyNestedJoin_Syntax_and_Options.html">Table.FuzzyNestedJoin Syntax and Options</a></li><li><a href="C05_Duplicate_Safe_Keys_with_Group_By_and_Index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C05_Duplicate_Safe_Keys_with_Group_By_and_Index.html">Duplicate-Safe Keys with Group By and Index</a></li><li><a href="C06_Sign_Alignment_Between_Bank_and_Book.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C06_Sign_Alignment_Between_Bank_and_Book.html">Sign Alignment Between Bank and Book</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>RightAnti Join: Items in the Books but Not in the Bank</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>JoinKind.RightAnti</code> returns items in the books but not in the bank (unpresented cheques, deposits in transit)</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-m">BookOnlyNested = Table.NestedJoin(Bank, {&quot;Key&quot;}, Book, {&quot;Key&quot;}, &quot;Book&quot;, JoinKind.RightAnti),
+BookOnly = Table.ExpandTableColumn(Table.SelectColumns(BookOnlyNested, {&quot;Book&quot;}), &quot;Book&quot;,
+    {&quot;VchDate&quot;, &quot;VchNo&quot;, &quot;ChequeNo&quot;, &quot;Narration&quot;, &quot;AmtAligned&quot;})
+</code></pre>
+<p><code>JoinKind.RightAnti</code> returns the rows of the <strong>right</strong> table (<code>Book</code>) that have no matching key in the left table (<code>Bank</code>). In <code>Table.NestedJoin</code>, the output still has the left table's columns — all null for these rows — and the unmatched book row sits inside the nested <code>Book</code> column, which must be expanded.</p>
+<p>Equivalent and often clearer:</p>
+<pre><code class="language-m">BookOnly = Table.NestedJoin(Book, {&quot;Key&quot;}, Bank, {&quot;Key&quot;}, &quot;Bank&quot;, JoinKind.LeftAnti)
+</code></pre>
+<h2 id="explanation">Explanation</h2>
+<p>Book-only items are the entries recorded in the company's ledger that the bank has not yet processed, or that the books recorded wrongly. In a BRS they are mainly <strong>timing differences</strong>:</p>
+<ul>
+<li><strong>Cheques issued but not presented</strong>: the payment voucher is posted on issue; the bank debits only when the payee presents the cheque. Under CTS, cheques are valid for three months from the date; stale cheques beyond that should be reversed in the books (Dr Bank, Cr Party or a liability for stale cheques), not carried forever.</li>
+<li><strong>Deposits in transit (cheques deposited but not credited)</strong>: receipts booked on deposit; the bank credits after clearing, often the next working day, so items around month-end are common.</li>
+<li><strong>Book errors</strong>: a payment posted to the wrong bank ledger, an amount keyed as ₹45,000 instead of ₹54,000, a duplicate voucher. These do not clear with time and need a correcting entry.</li>
+</ul>
+<p>Ageing the book-only list is essential: items cleared in the first days of the next month confirm timing; items older than 30–90 days need investigation. Carry unmatched items forward each month and include them in the next month's matching so they clear when the bank finally processes them.</p>
+<p>The null-left-columns behaviour of RightAnti is a frequent source of confusion ("the merge returned a table of nulls"). If you use RightAnti, select only the nested column and expand it, as in the statement. If you prefer each exception list to look like its source table, swap the inputs and use LeftAnti.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Book (bank ledger) for June has 6 entries not found in the June bank statement:</p>
+<table>
+<thead>
+<tr>
+<th>VchDate</th>
+<th>Type</th>
+<th>Amount (₹)</th>
+<th>Cleared in July statement?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>26-Jun</td>
+<td>Cheque 000512 issued</td>
+<td>2,40,000</td>
+<td>3-Jul</td>
+</tr>
+<tr>
+<td>28-Jun</td>
+<td>Cheque 000515 issued</td>
+<td>85,000</td>
+<td>Not cleared</td>
+</tr>
+<tr>
+<td>29-Jun</td>
+<td>Cheque deposited</td>
+<td>1,60,000</td>
+<td>1-Jul</td>
+</tr>
+<tr>
+<td>30-Jun</td>
+<td>Cash deposited</td>
+<td>75,000</td>
+<td>1-Jul</td>
+</tr>
+<tr>
+<td>14-Mar</td>
+<td>Cheque 000398 issued</td>
+<td>32,000</td>
+<td>Not cleared (stale after 14-Jun)</td>
+</tr>
+<tr>
+<td>18-Jun</td>
+<td>NEFT to vendor</td>
+<td>4,50,000</td>
+<td>Never — posted to HDFC ledger but paid from ICICI</td>
+</tr>
+</tbody>
+</table>
+<p>BRS at 30 June uses the first five as timing items: unpresented cheques ₹3,57,000 (including the stale ₹32,000, which should be reversed), deposits in transit ₹2,35,000. The NEFT of ₹4,50,000 is a book error: reverse it from the HDFC ledger and post it to the ICICI ledger.</p>
+<h2 id="connections">Connections</h2>
+<p>Subtopic s02 (join kinds and the BRS identity), s03 (date windows for clearing), s06 (sequence keys for repeated cheque amounts). Concept c01 is the bank-side mirror. Weeks 1–4 cover the BRS format and the treatment of stale cheques. The week's exercise loads book-only and bank-only lists together into one exceptions table.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-fix-the-null-table-l1">Q1. Fix the null table [L1]</h3>
+<p>A RightAnti merge of Bank (left) and Book (right) shows 47 rows with null in every column except a column "Book" showing "Table". Write the steps to turn this into a clean book-only list with VchDate, VchNo, ChequeNo and Amount.</p>
+<h3 id="q2-age-the-book-only-list-l2">Q2. Age the book-only list [L2]</h3>
+<p>Write M that adds DaysOutstanding (as at the parameter <code>AsOfDate</code>) and a Status column ("Timing — recent" up to 7 days, "Investigate" 8–90 days, "Stale cheque" over 90 days for cheque payments) to the book-only list.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> <code>Duration.Days(AsOfDate - [VchDate])</code>, and test the voucher type before applying the stale rule.</p>
+</blockquote>
+<h3 id="q3-stale-cheque-entry-l2">Q3. Stale cheque entry [L2]</h3>
+<p>A cheque of ₹68,000 issued to a vendor on 10-Dec-2025 remains unpresented at 31-Mar-2026. State whether it is stale under the three-month validity rule, pass the entry in the books, and explain how the RightAnti/LeftAnti list for April will change after the entry.</p></section>
+<nav class="pager"><a class="prev" href="C01_LeftAnti_Join_Items_in_the_Bank_but_Not_in_the.html">← LeftAnti Join: Items in the Bank but Not in the Books</a><a class="next" href="C03_Expanding_Merged_Columns_with_Prefixed_Names.html">Expanding Merged Columns with Prefixed Names →</a></nav>
+</main></div></body></html>

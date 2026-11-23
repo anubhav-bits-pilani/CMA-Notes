@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MDX Unique Names for Members and Measures · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S04_MDX_Unique_Names_for_Members_and_Measures.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T3 · Excel cube formulas and CUBEVALUE</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Excel cube formulas and CUBEVALUE</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Connecting_Excel_to_the_Data_Model_or_a_Power_BI.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S01_Connecting_Excel_to_the_Data_Model_or_a_Power_BI.html">Connecting Excel to the Data Model or a Power BI Semantic Model</a></li><li><a href="S02_Converting_PivotTables_to_Cube_Formulas_with_OLAP.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S02_Converting_PivotTables_to_Cube_Formulas_with_OLAP.html">Converting PivotTables to Cube Formulas with OLAP Tools</a></li><li><a href="S03_The_Cube_Function_Family_CUBEMEMBER_to.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S03_The_Cube_Function_Family_CUBEMEMBER_to.html">The Cube Function Family: CUBEMEMBER to CUBEMEMBERPROPERTY</a></li><li><a href="S04_MDX_Unique_Names_for_Members_and_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S04_MDX_Unique_Names_for_Members_and_Measures.html">MDX Unique Names for Members and Measures</a></li><li><a href="S05_Connecting_Slicers_to_Cube_Formulas_by_Slicer_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S05_Connecting_Slicers_to_Cube_Formulas_by_Slicer_Name.html">Connecting Slicers to Cube Formulas by Slicer Name</a></li><li><a href="S06_Free_Form_Board_Pack_Layouts_with_Live_Cube.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S06_Free_Form_Board_Pack_Layouts_with_Live_Cube.html">Free-Form Board-Pack Layouts with Live Cube Numbers</a></li><li><a href="S07_Dynamic_Top_N_Lists_with_a_Sorted_CUBESET_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S07_Dynamic_Top_N_Lists_with_a_Sorted_CUBESET_and.html">Dynamic Top N Lists with a Sorted CUBESET and CUBERANKEDMEMBER</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_CUBEVALUE_with_Literal_Measure_and_Member_Strings.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C01_CUBEVALUE_with_Literal_Measure_and_Member_Strings.html">CUBEVALUE with Literal Measure and Member Strings</a></li><li><a href="../concepts/C02_Building_Cube_Members_from_Cell_Labels_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C02_Building_Cube_Members_from_Cell_Labels_with.html">Building Cube Members from Cell Labels with CUBEMEMBER</a></li><li><a href="../concepts/C03_Passing_a_Slicer_Name_as_a_CUBEVALUE_Member.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C03_Passing_a_Slicer_Name_as_a_CUBEVALUE_Member.html">Passing a Slicer Name as a CUBEVALUE Member Argument</a></li><li><a href="../concepts/C04_Sorted_CUBESET_of_Vendors_sortorder_2_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C04_Sorted_CUBESET_of_Vendors_sortorder_2_for.html">Sorted CUBESET of Vendors: sort_order 2 for Descending</a></li><li><a href="../concepts/C05_CUBERANKEDMEMBER_with_ROWS_and_CUBESETCOUNT_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C05_CUBERANKEDMEMBER_with_ROWS_and_CUBESETCOUNT_for.html">CUBERANKEDMEMBER with ROWS() and CUBESETCOUNT for Ranked Lists</a></li><li><a href="../concepts/C06_Connection_Names_for_Power_BI_Semantic_Models_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C06_Connection_Names_for_Power_BI_Semantic_Models_in.html">Connection Names for Power BI Semantic Models in Cube Formulas</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>MDX Unique Names for Members and Measures</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> MDX unique-name syntax: <code>[Table].[Column].&amp;[Key]</code> for members and <code>[Measures].[Name]</code> for measures</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Every cube formula identifies what it wants by an MDX unique name. Get one character wrong — a space in a column
+name, a label instead of a key, a date in the wrong format — and the cell returns #N/A, often silently inside a
+large pack. Understanding the naming grammar lets you write formulas directly, build members from cell text, and
+debug the board pack quickly. MDX (Multidimensional Expressions) is the query language Excel uses to talk to
+tabular models through cube formulas and PivotTables.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="how-a-tabular-model-looks-to-mdx">How a tabular model looks to MDX</h3>
+<p>A Power Pivot or Power BI model exposes each table as a <strong>dimension</strong>, each column as an <strong>attribute hierarchy</strong>,
+and each user hierarchy (e.g. Statement → FSLine → Ledger) as a multi-level hierarchy. Measures live in a special
+dimension called <code>[Measures]</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Model object</th>
+<th>MDX unique name pattern</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Measure</td>
+<td><code>[Measures].[Measure Name]</code></td>
+<td><code>[Measures].[Actual]</code></td>
+</tr>
+<tr>
+<td>Column member (by key)</td>
+<td><code>[Table].[Column].&amp;[Key]</code></td>
+<td><code>[CoA].[FSLine].&amp;[Revenue from operations]</code></td>
+</tr>
+<tr>
+<td>Column member (by name)</td>
+<td><code>[Table].[Column].[Name]</code></td>
+<td><code>[BU].[BusinessUnit].[Agro]</code></td>
+</tr>
+<tr>
+<td>All member</td>
+<td><code>[Table].[Column].[All]</code></td>
+<td><code>[BU].[BusinessUnit].[All]</code></td>
+</tr>
+<tr>
+<td>Children of All</td>
+<td><code>[Table].[Column].Children</code></td>
+<td><code>[Vendor].[Name].Children</code></td>
+</tr>
+<tr>
+<td>Level members</td>
+<td><code>[Table].[Column].[Column].Members</code></td>
+<td><code>[Vendor].[Name].[Name].Members</code></td>
+</tr>
+<tr>
+<td>Hierarchy member</td>
+<td><code>[Table].[Hierarchy].[Level].&amp;[Key]</code></td>
+<td><code>[CoA].[FS Hierarchy].[Ledger].&amp;[Power and fuel]</code></td>
+</tr>
+<tr>
+<td>Tuple</td>
+<td><code>(member1, member2)</code></td>
+<td><code>([Date].[FY].&amp;[FY2025-26], [Measures].[Budget])</code></td>
+</tr>
+<tr>
+<td>Set</td>
+<td><code>{member1, member2}</code></td>
+<td><code>{[Region].[Region].&amp;[North], [Region].[Region].&amp;[West]}</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="brackets-and-the-ampersand">Brackets and the ampersand</h3>
+<ul>
+<li>Square brackets delimit identifiers: <code>[Date Table]</code> allows spaces; brackets are needed even without spaces in
+  practice.</li>
+<li><code>&amp;[...]</code> means "member with this <strong>key</strong>". Without <code>&amp;</code>, <code>[Agro]</code> means "member with this <strong>name</strong>". In tabular
+  models key and name are usually the same for text columns, but differ for columns with <em>Sort by column</em> (the
+  key can still be the column value) and especially for dates and numbers.</li>
+<li>A closing bracket inside a name must be doubled: a ledger "Repairs [Plant]" is
+  <code>&amp;[Repairs [Plant]]]</code>.</li>
+<li>Table and column names are the model names, not display captions. Renaming a column in the model changes the
+  unique name and breaks formulas.</li>
+</ul>
+<h3 id="measures">Measures</h3>
+<p><code>[Measures].[Actual]</code> refers to the explicit DAX measure "Actual". Measure names with special characters are
+written as-is inside brackets: <code>[Measures].[EBITDA %]</code>, <code>[Measures].[Revenue ₹ Cr]</code>. Display folders do not appear
+in the unique name. Implicit measures created by dragging a numeric column into a PivotTable appear as
+<code>[Measures].[Sum of Amount]</code> in the workbook Data Model, but are not available through live Power BI connections;
+use explicit measures.</p>
+<h3 id="keys-for-different-data-types">Keys for different data types</h3>
+<table>
+<thead>
+<tr>
+<th>Column type</th>
+<th>Key format in <code>&amp;[...]</code></th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Text</td>
+<td>The text, exact case-insensitive match, including internal spaces</td>
+<td><code>&amp;[FY2025-26]</code></td>
+</tr>
+<tr>
+<td>Whole number</td>
+<td>The number</td>
+<td><code>[Date].[FYEnd].&amp;[2026]</code></td>
+</tr>
+<tr>
+<td>Date / datetime</td>
+<td>ISO-like datetime</td>
+<td><code>[Date].[Date].&amp;[2025-10-31T00:00:00]</code></td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td><code>&amp;[True]</code> / <code>&amp;[False]</code></td>
+<td><code>[Vendor].[IsMSME].&amp;[True]</code></td>
+</tr>
+</tbody>
+</table>
+<p>The date key is the topic pitfall: the displayed "31-10-2025" or "Oct-25" is a caption, not the key. Build date
+members with <code>TEXT(d, "yyyy-mm-dd") &amp; "T00:00:00"</code> or avoid date-column members entirely by using text month keys
+(e.g. a <code>MonthKey</code> column "2025-10").</p>
+<h3 id="finding-the-right-unique-name">Finding the right unique name</h3>
+<ul>
+<li><strong>Convert a PivotTable to formulas</strong> (s02) and read the generated strings.</li>
+<li><strong>Excel's IntelliSense</strong>: typing <code>=CUBEMEMBER("ThisWorkbookDataModel", "[</code> shows a dropdown of tables, columns
+  and members — Excel lists available names as you type.</li>
+<li><strong>DAX Studio</strong> connected to the model: the metadata pane shows tables, columns and measures; an MDX query
+  <code>SELECT {} ON 0, [CoA].[FSLine].Members ON 1 FROM [Model]</code> lists members.</li>
+<li>The cube name for a tabular model is <code>[Model]</code> (relevant only in DAX Studio MDX queries; cube formulas use the
+  connection name).</li>
+</ul>
+<h3 id="illustration">Illustration</h3>
+<p>Sahyadri's CoA has FS line "Power &amp; fuel" and a ledger "Freight [inward]". Correct unique names:</p>
+<pre><code>&quot;[CoA].[FSLine].&amp;[Power &amp; fuel]&quot;
+&quot;[CoA].[Ledger].&amp;[Freight [inward]]]&quot;
+&quot;[Date].[MonthEnd].&amp;[2025-10-31T00:00:00]&quot;
+&quot;[Measures].[Actual]&quot;
+&quot;([Date].[FY].&amp;[FY2025-26], [BU].[BusinessUnit].&amp;[Pharma Intermediates])&quot;
+</code></pre>
+<p>Incorrect: <code>"[CoA].[FS Line].&amp;[Power &amp; fuel]"</code> (column name has no space), <code>"[Date].[MonthEnd].&amp;[31-10-2025]"</code>
+(caption, not key), <code>"[CoA].[FSLine].&amp;[Power &amp; Fuel ]"</code> (trailing space).</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Duplicate names across a hierarchy.</strong> "Others" under several FS lines: use the hierarchy path or a unique key
+  column (e.g. AccountCode) as the member, and show the name as caption.</li>
+<li><strong>Leading/trailing spaces and non-breaking spaces</strong> from Tally exports make keys differ from labels; clean in
+  Power Query (Text.Trim, Text.Clean, replace character 160).</li>
+<li><strong>Case.</strong> MDX member matching in tabular models is case-insensitive, but keep exact case for readability.</li>
+<li><strong>Blank members.</strong> Unmatched fact rows create a blank member in tabular models (shown as "(blank)" in
+  PivotTables; convert a pivot to formulas to see its exact unique name). CUBEVALUE on it returns orphan amounts —
+  useful as a control (unmapped ledgers).</li>
+<li><strong>Numbers stored as text</strong> (cost centre "0105") must be quoted as text keys <code>&amp;[0105]</code>; numeric typing would drop
+  the leading zero.</li>
+<li><strong>Localisation.</strong> Decimal separators in numeric keys follow invariant culture; avoid decimal keys.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Members: <code>[Table].[Column].&amp;[Key]</code>; measures: <code>[Measures].[Name]</code>; sets in braces, tuples in parentheses.</li>
+<li><code>&amp;[...]</code> is by key, <code>[...]</code> by name; prefer keys and clean, stable key columns.</li>
+<li>Dates use datetime keys, not captions; text month keys avoid the issue.</li>
+<li>Double a closing bracket inside names; watch spaces and renamed columns.</li>
+<li>Use Convert to Formulas, IntelliSense and DAX Studio to discover exact names.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-write-the-unique-names-l1">Q1. Write the unique names [L1]</h3>
+<p>Write MDX unique names for: the measure "Budget EBITDA %"; FY "FY2024-25"; month-end date 31 March 2026 in
+<code>'Date'[MonthEnd]</code>; cost centre code "0105" in <code>CostCentre[Code]</code>; and the set of BUs Agro and Polymers.</p>
+<h3 id="q2-five-broken-strings-l2">Q2. Five broken strings [L2]</h3>
+<p>Diagnose each: (a) <code>"[Date].[FY].[FY2025-26]"</code> returns a value but <code>"[Date].[FY].&amp;[FY 2025-26]"</code> returns #N/A;
+(b) <code>"[CoA].[Ledger].&amp;[Repairs [Plant]]"</code> errors; (c) <code>"[Measures].[Sum of Amount]"</code> works in the workbook model but
+not after switching to Power BI; (d) <code>"[Date].[Date].&amp;[31/10/2025]"</code> returns #N/A; (e) <code>"[Vendor].[Name].&amp;[ABC
+Traders]"</code> returns #N/A although the vendor exists.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> For (e), think about how the vendor master was imported.</p>
+</blockquote>
+<h3 id="q3-build-date-keys-from-a-cell-l2">Q3. Build date keys from a cell [L2]</h3>
+<p>Cell B1 holds the date 31-Oct-2025 (a real Excel date). Write a CUBEMEMBER formula that builds the month-end member
+of <code>'Date'[MonthEnd]</code> from B1, and propose a model change that would make such formulas unnecessary.</p>
+<h3 id="q4-unmapped-control-via-the-blank-member-l3">Q4. Unmapped control via the blank member [L3]</h3>
+<p>Explain how the blank member in a tabular model arises when GL account codes are missing from CoA, and design a
+cube-formula control cell that shows the amount posted to unmapped accounts for the selected FY.</p></section>
+<nav class="pager"><a class="prev" href="S03_The_Cube_Function_Family_CUBEMEMBER_to.html">← The Cube Function Family: CUBEMEMBER to CUBEMEMBERPROPERTY</a><a class="next" href="S05_Connecting_Slicers_to_Cube_Formulas_by_Slicer_Name.html">Connecting Slicers to Cube Formulas by Slicer Name →</a></nav>
+</main></div></body></html>

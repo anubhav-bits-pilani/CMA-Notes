@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Levels and Formula.Firewall Errors · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S08_Privacy_Levels_and_FormulaFirewall_Errors.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T1 · Power Query architecture and M basics</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Power Query architecture and M basics</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Power_Query_Connectors_for_Accounting_and_ERP_Data.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S01_Power_Query_Connectors_for_Accounting_and_ERP_Data.html">Power Query Connectors for Accounting and ERP Data Sources</a></li><li><a href="S02_Power_Query_Editor_Anatomy_Steps_Formula_Bar_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S02_Power_Query_Editor_Anatomy_Steps_Formula_Bar_and.html">Power Query Editor Anatomy: Steps, Formula Bar and Dependencies</a></li><li><a href="S03_M_Language_Structure_letin_Values_Records_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S03_M_Language_Structure_letin_Values_Records_Lists.html">M Language Structure: let/in, Values, Records, Lists and each</a></li><li><a href="S04_Data_Types_and_Controlling_Automatic_Type.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S04_Data_Types_and_Controlling_Automatic_Type.html">Data Types and Controlling Automatic Type Detection</a></li><li><a href="S05_Query_Folding_Which_Steps_Fold_Native_Query_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S05_Query_Folding_Which_Steps_Fold_Native_Query_and.html">Query Folding: Which Steps Fold, Native Query and Diagnostics</a></li><li><a href="S06_Parameters_Staging_Queries_and_Reference_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S06_Parameters_Staging_Queries_and_Reference_vs.html">Parameters, Staging Queries and Reference vs Duplicate</a></li><li><a href="S07_Load_Options_and_Refresh_Behaviour_in_Excel_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S07_Load_Options_and_Refresh_Behaviour_in_Excel_vs.html">Load Options and Refresh Behaviour in Excel vs Power BI</a></li><li><a href="S08_Privacy_Levels_and_FormulaFirewall_Errors.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S08_Privacy_Levels_and_FormulaFirewall_Errors.html">Privacy Levels and Formula.Firewall Errors</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_CsvDocument_with_FileContents_Delimiter_Encoding.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C01_CsvDocument_with_FileContents_Delimiter_Encoding.html">Csv.Document with File.Contents: Delimiter, Encoding, QuoteStyle</a></li><li><a href="../concepts/C02_ExcelWorkbook_Navigation_to_a_Named_Sheet_or_Table.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C02_ExcelWorkbook_Navigation_to_a_Named_Sheet_or_Table.html">Excel.Workbook Navigation to a Named Sheet or Table</a></li><li><a href="../concepts/C03_SqlDatabase_with_a_Native_Query_Blocks_Later.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C03_SqlDatabase_with_a_Native_Query_Blocks_Later.html">Sql.Database with a Native Query Blocks Later Folding</a></li><li><a href="../concepts/C04_ValueNativeQuery_with_Parameters_and_EnableFolding.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C04_ValueNativeQuery_with_Parameters_and_EnableFolding.html">Value.NativeQuery with Parameters and EnableFolding</a></li><li><a href="../concepts/C05_The_each_Keyword_and_the_Underscore_Parameter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C05_The_each_Keyword_and_the_Underscore_Parameter.html">The each Keyword and the Underscore Parameter</a></li><li><a href="../concepts/C06_Folding_Breakers_TableBuffer_Index_Columns_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C06_Folding_Breakers_TableBuffer_Index_Columns_and.html">Folding Breakers: Table.Buffer, Index Columns and Custom Functions</a></li><li><a href="../concepts/C07_MySQLDatabase_Connector_and_OdbcDataSource_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C07_MySQLDatabase_Connector_and_OdbcDataSource_for.html">MySQL.Database Connector and Odbc.DataSource for Tally</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Privacy Levels and Formula.Firewall Errors</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Privacy levels and Formula.Firewall errors when combining sources</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Reconciliation work is by definition about <strong>combining sources</strong>: a bank CSV with a Tally ledger, a SQL GL with an Excel mapping, a parameter cell with a folder. Power Query has a security layer — the <strong>Data Privacy Firewall</strong> — that stops data from one source leaking into a query sent to another (for example, a customer list in Excel being embedded into a <code>WHERE</code> clause sent to a web API). When it cannot prove a combination is safe, it raises <code>Formula.Firewall</code> errors that confuse almost every new user. Knowing the rules lets you fix them correctly instead of reflexively switching privacy off on a file containing payroll or customer PAN data.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="privacy-levels">Privacy levels</h3>
+<p>Each data source (identified by path/URL/server) carries a privacy level, set in <strong>Data source settings → Edit Permissions → Privacy Level</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Meaning</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Private</strong></td>
+<td>Sensitive; must not be sent to any other source</td>
+<td>Payroll file, customer master with PAN/Aadhaar, bank statements</td>
+</tr>
+<tr>
+<td><strong>Organizational</strong></td>
+<td>Can be combined with other Organizational sources; not with Public</td>
+<td>Company SharePoint, internal SQL Server, shared drive</td>
+</tr>
+<tr>
+<td><strong>Public</strong></td>
+<td>Anyone can see it</td>
+<td>RBI reference rates web page, public holiday list</td>
+</tr>
+<tr>
+<td><strong>None</strong> (not set)</td>
+<td>Treated per the global setting; prompts in Desktop</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>The firewall prevents data from a more restrictive source being sent to a less restrictive or different source. Private data can only be combined with data from the <strong>same</strong> source; Organizational can flow to Organizational; Public can flow anywhere.</p>
+<h3 id="privacy-settings-options">Privacy settings (Options)</h3>
+<ul>
+<li>Excel: Query Options → Global/Current Workbook → Privacy. Power BI: Options → Global/Current File → Privacy.</li>
+<li>Choices: <strong>Always combine data according to your Privacy Level settings for each source</strong> (default), <strong>Combine according to each file's settings</strong>, and <strong>Always ignore Privacy Level settings</strong> (the "fast-combine" option).</li>
+<li>Ignoring privacy levels can speed up refresh and suppress errors, but in Power BI Service the setting may not apply in the same way, and it removes a genuine protection. Use it only where all sources are internal and you understand the risk.</li>
+</ul>
+<h3 id="two-kinds-of-formulafirewall-error">Two kinds of Formula.Firewall error</h3>
+<p><strong>1. Privacy-level conflict</strong></p>
+<p><code>Formula.Firewall: Query 'X' (step 'Y') is accessing data sources that have privacy levels which cannot be used together. Please rebuild this data combination.</code></p>
+<p>Cause: e.g. merging a Private bank CSV with a Public web table. Fix: set correct levels (both Organizational if both are internal), or restructure so the data does not need to cross.</p>
+<p><strong>2. Partition (rebuild data combination) error</strong></p>
+<p><code>Formula.Firewall: Query 'X' (step 'Y') references other queries or steps, so it may not directly access a data source. Please rebuild this data combination.</code></p>
+<p>This occurs even when privacy levels are compatible. The firewall splits evaluation into <strong>partitions</strong>; a partition that both <strong>accesses a data source</strong> and <strong>references another query/partition that accesses a data source</strong> cannot be evaluated safely. Classic finance triggers:</p>
+<ul>
+<li>A query reads a folder path from a named cell (<code>Excel.CurrentWorkbook()</code>), then in the same query calls <code>Folder.Files(path)</code>.</li>
+<li>A query takes a list of account codes from one query and passes them into <code>Sql.Database(..., [Query="... IN (" &amp; codes &amp; ")"])</code>.</li>
+<li>A function is invoked per row where the function accesses a file and the outer query references another source.</li>
+</ul>
+<h3 id="fixes-for-the-partition-error">Fixes for the partition error</h3>
+<ol>
+<li><strong>Separate source access from combination</strong>: create one query per source access (staging, connection only), then a third query that only references them and combines. Each partition then either accesses a source or combines, not both.</li>
+<li><strong>Inline the parameter</strong>: if the path parameter is a simple text parameter (Manage Parameters) rather than a query reading a sheet, the firewall treats it as a constant.</li>
+<li><strong>Put the source access inside the same query</strong> as the combination, so there is one partition (works for simple cases).</li>
+<li><strong>Set privacy levels consistently</strong> — with all sources Organizational and privacy set to combine by levels, many combination errors disappear because the firewall can prove safety.</li>
+<li>As a last resort, <strong>ignore privacy levels</strong> for the file.</li>
+</ol>
+<p>Example restructure for the named-cell path:</p>
+<pre><code>// Query: pFolderPath  (connection only)
+= Excel.CurrentWorkbook(){[Name=&quot;rngFolderPath&quot;]}[Content]{0}[Column1]
+
+// Query: stg_Files    (connection only)
+= Folder.Files(pFolderPath)
+</code></pre>
+<p>If <code>stg_Files</code> still errors, set both the current workbook and the folder to Organizational, or replace <code>pFolderPath</code> with a Manage Parameters text parameter.</p>
+<h3 id="power-bi-service">Power BI Service</h3>
+<p>In the Service, privacy levels are set per data source in dataset settings or gateway data source settings. A combination that works in Desktop with "ignore privacy levels" may fail in the Service. Gateway data sources and cloud sources must have compatible levels; mismatches surface as refresh failures with the same firewall text.</p>
+<h3 id="performance-angle">Performance angle</h3>
+<p>Privacy partitions also affect performance: with privacy enforced, the engine may have to fully evaluate one source locally before combining, preventing folding of the combination into a database query. Query Diagnostics shows "Partitions" for this.</p>
+<h3 id="illustration">Illustration</h3>
+<p>Recon file: Bank CSV (Private, contains account numbers), Tally ledger via ODBC (Organizational), tolerance from a named cell (current workbook). The merge query references both cleaned queries and errors with a privacy-level conflict. Assessment: all three are internal company data handled by the finance team; setting the bank folder to Organizational is defensible, documented in the file's "Read me" tab. The tolerance cell is moved into a typed parameter to avoid the partition error.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Do not downgrade sensitive data to Public</strong> to silence an error; a Public source can be sent anywhere, including web calls.</li>
+<li><strong>Web lookups with internal data</strong> (e.g. calling a GSTIN validation API with your vendor list) are exactly what the firewall protects against; consider whether the combination is acceptable under company data policy and the DPDP Act 2023 before overriding.</li>
+<li><strong>Fast combine in shared files</strong>: the setting is per file/user; a colleague's global setting may differ, so the file errors on their machine only.</li>
+<li><strong>Functions and firewall</strong>: invoking a function that reads <code>File.Contents(path)</code> with a path derived from another query is a frequent trigger; pass the binary (<code>[Content]</code>) instead of the path.</li>
+<li><strong>Errors appear at refresh, not at authoring</strong> in some cases, because the preview cache already holds the data.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Privacy levels (Private, Organizational, Public) govern which sources may be combined; the firewall enforces them.</li>
+<li>"Privacy levels which cannot be used together" is a level conflict; "references other queries … may not directly access a data source" is a partition problem.</li>
+<li>Fix partition errors by separating source access into staging queries and combining in a reference-only query.</li>
+<li>Set internal sources consistently to Organizational; reserve Private for genuinely restricted data.</li>
+<li>Ignoring privacy levels is a last resort and may not carry over to the Service.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-classify-the-level-l1">Q1. Classify the level [L1]</h3>
+<p>Assign a privacy level and justify: (a) HR payroll register on a restricted share; (b) Finance SharePoint site with monthly TBs; (c) RBI reference rate web page; (d) bank statement CSVs downloaded from net-banking; (e) on-prem SQL Server GL database.</p>
+<h3 id="q2-diagnose-the-error-l2">Q2. Diagnose the error [L2]</h3>
+<p>Query <code>Recon</code> has the steps: <code>Path = Excel.CurrentWorkbook(){[Name="rngPath"]}[Content]{0}[Column1]</code>, <code>Files = Folder.Files(Path)</code>, <code>Bank = ...</code>, <code>Merged = Table.NestedJoin(Bank, {"Ref"}, BookLedger, {"Ref"}, "B", JoinKind.LeftAnti)</code>. Refresh fails with "references other queries or steps, so it may not directly access a data source". Explain the cause and restructure the queries.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Count how many partitions both access a source and depend on other queries.</p>
+</blockquote>
+<h3 id="q3-policy-judgement-l3">Q3. Policy judgement [L3]</h3>
+<p>A junior analyst set "Always ignore Privacy Level settings" globally because merges were failing. The file combines payroll data with a public PIN-code web API to geocode employees. Write a short review note: the risk, the correct design and the settings you would require.</p>
+<h3 id="q4-desktop-works-service-fails-l2">Q4. Desktop works, Service fails [L2]</h3>
+<p>A dataset combining a SharePoint folder and an on-prem SQL Server refreshes fine in Desktop but fails in the Service with a Formula.Firewall error. List the likely causes and where in the Service and gateway you would fix them.</p></section>
+<nav class="pager"><a class="prev" href="S07_Load_Options_and_Refresh_Behaviour_in_Excel_vs.html">← Load Options and Refresh Behaviour in Excel vs Power BI</a><a class="next" href="../concepts/C01_CsvDocument_with_FileContents_Delimiter_Encoding.html">Csv.Document with File.Contents: Delimiter, Encoding,… →</a></nav>
+</main></div></body></html>

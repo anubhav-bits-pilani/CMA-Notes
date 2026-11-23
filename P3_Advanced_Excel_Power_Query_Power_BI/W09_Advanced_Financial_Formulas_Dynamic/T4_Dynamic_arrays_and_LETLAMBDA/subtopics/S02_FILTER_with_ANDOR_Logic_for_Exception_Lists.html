@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FILTER with AND/OR Logic for Exception Lists · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S02_FILTER_with_ANDOR_Logic_for_Exception_Lists.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T4 · Dynamic arrays and LET/LAMBDA</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Dynamic arrays and LET/LAMBDA</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Spill_Behaviour_SPILL_the_Operator_and_Implicit.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S01_Spill_Behaviour_SPILL_the_Operator_and_Implicit.html">Spill Behaviour, #SPILL!, the # Operator and Implicit Intersection</a></li><li><a href="S02_FILTER_with_ANDOR_Logic_for_Exception_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S02_FILTER_with_ANDOR_Logic_for_Exception_Lists.html">FILTER with AND/OR Logic for Exception Lists</a></li><li><a href="S03_UNIQUE_for_Dynamic_CoA_and_Department_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S03_UNIQUE_for_Dynamic_CoA_and_Department_Lists.html">UNIQUE for Dynamic CoA and Department Lists</a></li><li><a href="S04_SORT_and_SORTBY_for_Top_N_Expense_and_Ranked.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S04_SORT_and_SORTBY_for_Top_N_Expense_and_Ranked.html">SORT and SORTBY for Top-N Expense and Ranked Ageing Reports</a></li><li><a href="S05_SEQUENCE_for_Monthly_Timelines_Loan_Schedules_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S05_SEQUENCE_for_Monthly_Timelines_Loan_Schedules_and.html">SEQUENCE for Monthly Timelines, Loan Schedules and Period Counters</a></li><li><a href="S06_LET_for_Named_Steps_and_LAMBDA_Functions_in_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S06_LET_for_Named_Steps_and_LAMBDA_Functions_in_Name.html">LET for Named Steps and LAMBDA Functions in Name Manager</a></li><li><a href="S07_LAMBDA_Helpers_and_Array_Reshaping_Functions.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S07_LAMBDA_Helpers_and_Array_Reshaping_Functions.html">LAMBDA Helpers and Array Reshaping Functions</a></li><li><a href="S08_GROUPBY_and_PIVOTBY_as_Formula_Based_Pivots.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S08_GROUPBY_and_PIVOTBY_as_Formula_Based_Pivots.html">GROUPBY and PIVOTBY as Formula-Based Pivots</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_FILTER_with_Two_AND_Conditions_and_an_ifempty.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C01_FILTER_with_Two_AND_Conditions_and_an_ifempty.html">FILTER with Two AND Conditions and an if_empty Message</a></li><li><a href="../concepts/C02_Sorted_Unique_Account_List_for_a_Selected_FY.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C02_Sorted_Unique_Account_List_for_a_Selected_FY.html">Sorted Unique Account List for a Selected FY</a></li><li><a href="../concepts/C03_Top_10_Vendors_by_Spend_with_TAKE_and_SORTBY.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C03_Top_10_Vendors_by_Spend_with_TAKE_and_SORTBY.html">Top 10 Vendors by Spend with TAKE and SORTBY</a></li><li><a href="../concepts/C04_EOMONTH_with_SEQUENCE_for_Horizontal_Month_End.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C04_EOMONTH_with_SEQUENCE_for_Horizontal_Month_End.html">EOMONTH with SEQUENCE for Horizontal Month-End Headers</a></li><li><a href="../concepts/C05_LET_for_a_Safe_Gross_Margin_Calculation.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C05_LET_for_a_Safe_Gross_Margin_Calculation.html">LET for a Safe Gross Margin Calculation</a></li><li><a href="../concepts/C06_FYEND_A_Named_LAMBDA_for_the_Indian_Financial_Year.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C06_FYEND_A_Named_LAMBDA_for_the_Indian_Financial_Year.html">FYEND: A Named LAMBDA for the Indian Financial Year</a></li><li><a href="../concepts/C07_SCAN_for_Running_Closing_Balances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C07_SCAN_for_Running_Closing_Balances.html">SCAN for Running Closing Balances</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>FILTER with AND/OR Logic for Exception Lists</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> FILTER with AND (<code>*</code>) and OR (<code>+</code>) conditions for exception lists (unmapped accounts, overdue debtors)</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Month-end close and audit work are exception-driven: you do not review 18,000 GL lines, you review the 40 that break a rule. Before dynamic arrays, exception lists meant AutoFilter, copy-paste to a new tab and re-doing it every month — undocumented and error-prone. FILTER turns each exception rule into a live, auditable formula: unmapped ledgers after a TB paste, debtors overdue beyond 90 days above ₹5 lakh, journal entries posted on Sundays by non-finance users, vendor payments without a PO. The formula <em>is</em> the control documentation, and it re-runs the instant new data is pasted.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="syntax">Syntax</h3>
+<pre><code class="language-excel">=FILTER(array, include, [if_empty])
+</code></pre>
+<ul>
+<li><strong>array</strong> — the rows (or columns) to return; can be a whole Table (<code>GL</code>), selected columns (<code>CHOOSECOLS(GL,1,3,5)</code>) or a single column.</li>
+<li><strong>include</strong> — a Boolean array the same height as <code>array</code> (for row filtering) or the same width (for column filtering). TRUE/non-zero rows are kept.</li>
+<li><strong>if_empty</strong> — value returned when no rows qualify. Omit it and an empty result returns #CALC!.</li>
+</ul>
+<h3 id="and-logic-with">AND logic with <code>*</code></h3>
+<p>Multiplying Boolean arrays coerces TRUE/FALSE to 1/0; the product is 1 only when every condition is 1.</p>
+<pre><code class="language-excel">=FILTER(AR, (AR[DaysOverdue]&gt;90) * (AR[Balance]&gt;500000), &quot;No exceptions&quot;)
+</code></pre>
+<p>Rows with both conditions true are returned. Each bracketed comparison must be fully parenthesised — <code>AR[DaysOverdue]&gt;90*AR[Balance]&gt;500000</code> is parsed as <code>AR[DaysOverdue] &gt; (90*AR[Balance]) &gt; 500000</code> and produces nonsense.</p>
+<h3 id="or-logic-with">OR logic with <code>+</code></h3>
+<p>Adding Boolean arrays gives 0 when all are false, and 1 or 2 when at least one is true. FILTER treats any non-zero as TRUE.</p>
+<pre><code class="language-excel">=FILTER(GL, (GL[Weekday]=&quot;Sun&quot;) + (GL[Amount]&gt;=10000000), &quot;None&quot;)
+</code></pre>
+<p>Returns entries posted on a Sunday <em>or</em> of ₹1 crore and above. Because the sum can be 2, do not test <code>=1</code>; if you need a clean Boolean, wrap as <code>((a)+(b))&gt;0</code>.</p>
+<h3 id="combining-and-and-or">Combining AND and OR</h3>
+<p>Use brackets exactly as in algebra: AND binds tighter in your intent, so group the OR first.</p>
+<pre><code class="language-excel">=FILTER(AR,
+   ((AR[Region]=&quot;North&quot;) + (AR[Region]=&quot;East&quot;))
+   * (AR[DaysOverdue]&gt;180),
+   &quot;None&quot;)
+</code></pre>
+<p>North or East debtors overdue beyond 180 days. For many OR values, test membership against a list instead of chaining <code>+</code>:</p>
+<pre><code class="language-excel">=FILTER(GL, ISNUMBER(XMATCH(GL[Account], Watchlist[Account])), &quot;None&quot;)
+</code></pre>
+<h3 id="exception-list-1-unmapped-ledgers">Exception list 1 — unmapped ledgers</h3>
+<p>The Week 9 exercise requires every TB ledger to map to a Schedule III line. With the TB pasted into Table <code>TB</code> and mapping Table <code>Map</code>:</p>
+<pre><code class="language-excel">=FILTER(TB[[Ledger]:[Closing]],
+   ISNA(XMATCH(TB[Ledger], Map[Ledger])),
+   &quot;All ledgers mapped&quot;)
+</code></pre>
+<p>Pair it with a count check that drives a red/green status cell:</p>
+<pre><code class="language-excel">=IF(SUM(--ISNA(XMATCH(TB[Ledger], Map[Ledger])))=0, &quot;OK&quot;, &quot;UNMAPPED&quot;)
+</code></pre>
+<p>The P&amp;L output should display this status at the top, so no one reads a P&amp;L that silently omits a ledger. Also filter for ledgers that are mapped but have a blank FS line (<code>Map[FSLine]=""</code>) — mapping rows created in a hurry often have the key but no target.</p>
+<h3 id="exception-list-2-overdue-debtors">Exception list 2 — overdue debtors</h3>
+<p>Given an <code>AR</code> Table with Customer, InvoiceNo, InvoiceDate, DueDate, Balance, and a report date in cell <code>RptDate</code> (a named input):</p>
+<pre><code class="language-excel">=LET(
+   od, RptDate - AR[DueDate],
+   keep, (od&gt;90) * (AR[Balance]&gt;0),
+   SORTBY(FILTER(HSTACK(AR[Customer], AR[InvoiceNo], AR[Balance], od), keep, &quot;None&quot;),
+          FILTER(AR[Balance], keep), -1))
+</code></pre>
+<p>This returns customer, invoice, balance and days overdue for every open invoice beyond 90 days, largest first. The days-overdue column is calculated inside the formula rather than as a helper column, so the report date drives everything. In Ind AS 109 expected credit loss work, the same pattern feeds the provision-matrix ageing buckets.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<table>
+<thead>
+<tr>
+<th>Customer</th>
+<th>Invoice</th>
+<th>Due date</th>
+<th>Balance (₹)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Arya Retail</td>
+<td>INV-101</td>
+<td>15-Dec-2025</td>
+<td>6,40,000</td>
+</tr>
+<tr>
+<td>Bharat Foods</td>
+<td>INV-118</td>
+<td>10-Feb-2026</td>
+<td>2,10,000</td>
+</tr>
+<tr>
+<td>Arya Retail</td>
+<td>INV-133</td>
+<td>28-Feb-2026</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Chola Traders</td>
+<td>INV-140</td>
+<td>05-Nov-2025</td>
+<td>9,75,000</td>
+</tr>
+</tbody>
+</table>
+<p>With <code>RptDate</code> = 31-Mar-2026, days overdue are 106, 49, 31 and 146. Rule: overdue &gt; 90 days AND balance &gt; ₹5 lakh → rows 1 and 4 (Chola first after sorting by balance). Changing <code>RptDate</code> to 30-Apr-2026 adds Bharat Foods only if its balance threshold were met — it is not, so the list stays at two rows.</p>
+<h3 id="returning-selected-columns">Returning selected columns</h3>
+<p>Return only what the reviewer needs. Options:</p>
+<ul>
+<li>Table column range: <code>TB[[Ledger]:[Closing]]</code> (contiguous columns).</li>
+<li><code>CHOOSECOLS(FILTER(GL, cond), 2, 5, 7)</code> (non-contiguous; filter once).</li>
+<li>Filter the column array: <code>FILTER(CHOOSECOLS(GL,2,5,7), cond)</code> — equivalent; choose the more readable.</li>
+</ul>
+<h3 id="horizontal-filter">Horizontal FILTER</h3>
+<p>If <code>include</code> is a row of Booleans the same width as <code>array</code>, FILTER keeps columns. Use this to show only months with activity: <code>=FILTER(PL_Grid, PL_MonthTotals&lt;&gt;0)</code>.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Size mismatch.</strong> <code>include</code> must have exactly as many rows as <code>array</code>. Mixing <code>GL[Amount]</code> with <code>A2:A20000</code> gives #VALUE!.</li>
+<li><strong>Text-number mismatches</strong> in the key column (ledger code "40010" as text vs 40010 as number) make XMATCH fail, so a mapped ledger appears unmapped. Normalise types first.</li>
+<li><strong>if_empty text in a numeric block.</strong> "None" appears in the first column only; downstream SUM of that spill still works because text is ignored by SUM, but arithmetic like <code>+0</code> will error.</li>
+<li><strong>Blank criteria cells.</strong> <code>(GL[Dept]=H1)</code> with H1 empty matches blank-department rows, not all rows. If you want "blank means all", use <code>((H1="")+(GL[Dept]=H1))</code>.</li>
+<li><strong>Performance.</strong> FILTER over 200k rows with several conditions recalculates on every change; beyond roughly 100k rows prefer Power Query (Week 10).</li>
+<li><strong>Materiality.</strong> Exception rules need thresholds agreed with the controller; too-low thresholds create review fatigue.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li><code>*</code> between bracketed conditions is AND; <code>+</code> is OR; non-zero means include.</li>
+<li>Always supply <code>if_empty</code> in production reports to avoid #CALC!.</li>
+<li>Membership tests (<code>ISNUMBER(XMATCH(...))</code> or <code>ISNA(...)</code>) scale better than long OR chains.</li>
+<li>Exception lists should sit beside a count/status cell so the report shows "OK" or a failure flag.</li>
+<li>Calculate derived columns (days overdue) inside LET/FILTER so a single date input drives the report.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-write-the-andor-filters-l1">Q1. Write the AND/OR filters [L1]</h3>
+<p>Table <code>JE</code> has columns EntryNo, PostDate, User, Account, Amount, Weekday. Write FILTER formulas to return: (a) entries by users "temp01" or "temp02"; (b) entries above ₹25 lakh posted on Saturday or Sunday; (c) entries to accounts 410000–419999 (numeric codes) by any user other than "finctrl". Each must return "None" if empty.</p>
+<h3 id="q2-unmapped-ledger-control-l2">Q2. Unmapped ledger control [L2]</h3>
+<p>A Tally TB of 512 ledgers is pasted into Table <code>TB</code> (Ledger, Group, Closing). The mapping Table <code>Map</code> has 498 rows (Ledger, FSLine, ScheduleIIILine); 3 mapping rows have a blank FSLine and 2 Map ledgers no longer exist in the TB. Design three exception lists and one status cell that together catch every mapping defect, and state which defect each list catches.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Think in both directions — TB-to-Map and Map-to-TB — plus completeness of the target field.</p>
+</blockquote>
+<h3 id="q3-overdue-debtor-report-driven-by-a-date-l2">Q3. Overdue debtor report driven by a date [L2]</h3>
+<p>Using an <code>AR</code> Table (Customer, InvoiceDate, CreditDays, Balance) and a report date input, build a single LET formula returning customer, balance and days overdue for invoices more than 60 days past due <em>and</em> balance over ₹1 lakh, sorted by days overdue descending. Due date = InvoiceDate + CreditDays. Explain why you did not add a helper column to the Table.</p>
+<h3 id="q4-debug-the-filter-l2">Q4. Debug the filter [L2]</h3>
+<p><code>=FILTER(GL, GL[Dept]="Sales"+GL[Dept]="Marketing"*GL[Amount]&gt;50000)</code> returns #VALUE!. Explain the operator-precedence problem step by step and write the corrected formula.</p>
+<h3 id="q5-audit-analytics-design-l3">Q5. Audit analytics design [L3]</h3>
+<p>As an internal auditor at an NSE-listed FMCG company, you must design five journal-entry exception tests for the FY26 GL (about 2.4 lakh lines) using FILTER. List the tests, the Boolean logic for each, the threshold you would propose and why, and explain at what data size you would move these tests into Power Query instead.</p></section>
+<nav class="pager"><a class="prev" href="S01_Spill_Behaviour_SPILL_the_Operator_and_Implicit.html">← Spill Behaviour, #SPILL!, the # Operator and Implicit…</a><a class="next" href="S03_UNIQUE_for_Dynamic_CoA_and_Department_Lists.html">UNIQUE for Dynamic CoA and Department Lists →</a></nav>
+</main></div></body></html>

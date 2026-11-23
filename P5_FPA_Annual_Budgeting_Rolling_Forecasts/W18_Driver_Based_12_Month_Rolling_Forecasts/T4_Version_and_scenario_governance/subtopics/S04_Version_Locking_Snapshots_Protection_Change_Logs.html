@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Version Locking: Snapshots, Protection, Change Logs and Naming · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S04_Version_Locking_Snapshots_Protection_Change_Logs.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 5</a> <span>›</span> <a href="../../index.html">Week 18</a> <span>›</span> <a href="../index.html">T4 · Version and scenario governance</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Version and scenario governance</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Versions_vs_Scenarios_Time_Snapshots_vs.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S01_Versions_vs_Scenarios_Time_Snapshots_vs.html">Versions vs Scenarios: Time Snapshots vs Alternative Assumptions</a></li><li><a href="S02_Long_Format_Version_Storage_Instead_of_Sheet_per.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S02_Long_Format_Version_Storage_Instead_of_Sheet_per.html">Long-Format Version Storage Instead of Sheet-per-Version</a></li><li><a href="S03_Scenario_Switching_with_Selectors_and_Data.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S03_Scenario_Switching_with_Selectors_and_Data.html">Scenario Switching with Selectors and Data Validation</a></li><li><a href="S04_Version_Locking_Snapshots_Protection_Change_Logs.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S04_Version_Locking_Snapshots_Protection_Change_Logs.html">Version Locking: Snapshots, Protection, Change Logs and Naming</a></li><li><a href="S05_Version_Comparisons_and_Forecast_to_Forecast.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S05_Version_Comparisons_and_Forecast_to_Forecast.html">Version Comparisons and Forecast-to-Forecast Movement Bridges</a></li><li><a href="S06_Stress_Scenarios_and_Contingency_Triggers_Beyond.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S06_Stress_Scenarios_and_Contingency_Triggers_Beyond.html">Stress Scenarios and Contingency Triggers Beyond Sensitivities</a></li><li><a href="S07_EPM_Equivalents_EPBCS_Anaplan_and_Adaptive_Version.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S07_EPM_Equivalents_EPBCS_Anaplan_and_Adaptive_Version.html">EPM Equivalents: EPBCS, Anaplan and Adaptive Version Handling</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Multi_Criteria_Version_Lookup_with_XLOOKUP_or.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/concepts/C01_Multi_Criteria_Version_Lookup_with_XLOOKUP_or.html">Multi-Criteria Version Lookup with XLOOKUP or SUMIFS</a></li><li><a href="../concepts/C02_Scenario_Selector_with_CHOOSE_or_INDEX.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/concepts/C02_Scenario_Selector_with_CHOOSE_or_INDEX.html">Scenario Selector with CHOOSE or INDEX</a></li><li><a href="../concepts/C03_Decomposing_Forecast_to_Forecast_Movements.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/concepts/C03_Decomposing_Forecast_to_Forecast_Movements.html">Decomposing Forecast-to-Forecast Movements</a></li><li><a href="../concepts/C04_One_Working_Version_Rule_and_Frozen_Prior_Versions.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/concepts/C04_One_Working_Version_Rule_and_Frozen_Prior_Versions.html">One Working Version Rule and Frozen Prior Versions</a></li><li><a href="../concepts/C05_Scenario_vs_Sensitivity_Coherent_Assumption_Sets.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/concepts/C05_Scenario_vs_Sensitivity_Coherent_Assumption_Sets.html">Scenario vs Sensitivity: Coherent Assumption Sets vs One-Variable Flex</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Version Locking: Snapshots, Protection, Change Logs and Naming</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Version locking: copy-as-values snapshot, protected ranges, change logs and naming conventions</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A forecast that can still change after it has been presented is not a forecast — it is a moving target. Once the Q2 Fcst has gone to the Board (and, for listed companies, informed the Audit Committee's view of guidance, going-concern and impairment), the numbers must be reproducible exactly, months or years later. Statutory auditors testing Ind AS 36 value-in-use or Ind AS 12 deferred-tax recoverability will ask for "the forecast approved by management at the reporting date"; internal auditors reviewing the planning process under the Companies Act 2013 internal financial controls (IFC) reporting framework (Sec 143(3)(i) for the auditor's report, Sec 134(5)(e) for the directors' responsibility statement) will want evidence that submitted plans cannot be silently altered. Locking is also what makes forecast-accuracy tracking (Topic 5) possible: lag-n accuracy needs the <em>original</em> forecast for each month, not a later edited one.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="1-copy-as-values-snapshot">1. Copy-as-values snapshot</h3>
+<p>The fundamental act of locking is to convert a live, formula-driven version into static values and store it separately from the working model.</p>
+<p>Steps at submission:</p>
+<ol>
+<li>Run all checks (balance, version total reconciles to template, scenario actuals identical, no errors).</li>
+<li>Set selectors to the version and scenario being submitted.</li>
+<li>Export the long-format output (Version, Scenario, Entity, Account, Month, Amount) <strong>as values</strong> — via a macro, Power Query output table, or <em>Paste Special → Values</em> into an archive table.</li>
+<li>Stamp metadata: version code, scenario, submission timestamp, submitted by, approved by, FX rate set, mapping version, model file name/version.</li>
+<li>Save the snapshot as a read-only file in a controlled folder (SharePoint with versioning enabled), e.g. <code>FY26_Q2F_Base_20251015_v1.xlsx</code>, and/or append to the master fact table with Status = Locked.</li>
+<li>Record a control total (sum of Amount, sum of absolute Amount, row count) in the version master so later tampering can be detected.</li>
+</ol>
+<p>The working model can then move on to the next cycle; the snapshot never changes.</p>
+<h3 id="2-protected-ranges">2. Protected ranges</h3>
+<p>Within the live workbook, protection prevents accidental edits:</p>
+<ul>
+<li><strong>Sheet protection</strong> (Review → Protect Sheet) with only input cells unlocked (Format Cells → Protection → uncheck Locked). Formulas and archived blocks stay locked.</li>
+<li><strong>Allow Edit Ranges</strong> (Review → Allow Users to Edit Ranges) to let specific BU owners edit only their input block, optionally password-protected per range.</li>
+<li><strong>Workbook structure protection</strong> to stop sheets being added, deleted or renamed (which would break references).</li>
+<li><strong>SharePoint/OneDrive permissions</strong>: archive folder read-only for all but the FP&amp;A lead; version history on.</li>
+</ul>
+<p>Excel passwords are weak security — they deter accidents, not determined users. The real control is the values-only snapshot plus the control total plus file-system permissions.</p>
+<h3 id="3-change-logs">3. Change logs</h3>
+<p>A change log records every change to a version after it opens and, exceptionally, any change after lock.</p>
+<table>
+<thead>
+<tr>
+<th>Log ID</th>
+<th>Date</th>
+<th>Version</th>
+<th>Scenario</th>
+<th>Entity</th>
+<th>Account</th>
+<th>Month(s)</th>
+<th>Old value</th>
+<th>New value</th>
+<th>Reason</th>
+<th>Requested by</th>
+<th>Approved by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CL-041</td>
+<td>08-Oct-25</td>
+<td>Q2F</td>
+<td>Base</td>
+<td>Exports</td>
+<td>4000 Revenue</td>
+<td>Nov–Dec 25</td>
+<td>62.0</td>
+<td>55.5</td>
+<td>Order deferred by customer</td>
+<td>BU Head Exports</td>
+<td>FP&amp;A Lead</td>
+</tr>
+<tr>
+<td>CL-042</td>
+<td>21-Oct-25</td>
+<td>Q2F</td>
+<td>Base</td>
+<td>Foods</td>
+<td>5200 Packaging</td>
+<td>Jan–Mar 26</td>
+<td>18.4</td>
+<td>19.1</td>
+<td>Post-lock: vendor price notice</td>
+<td>Plant Head</td>
+<td>CFO</td>
+</tr>
+</tbody>
+</table>
+<p>Rules:</p>
+<ul>
+<li>Pre-lock changes within the working window can be logged at summary level (or rely on file versioning).</li>
+<li>Post-lock changes require CFO approval and normally create a <strong>new version</strong> (<code>Q2F v2</code>) rather than editing <code>Q2F</code>; the original stays in the archive.</li>
+<li>The change log itself is append-only.</li>
+</ul>
+<p>In EPM systems the audit trail is automatic (cell-level history); in Excel it must be designed.</p>
+<h3 id="4-naming-conventions">4. Naming conventions</h3>
+<p>Consistent names make versions self-identifying and sortable:</p>
+<p><code>&lt;FY&gt;_&lt;VersionCode&gt;_&lt;Structure&gt;_&lt;Scenario&gt;_&lt;YYYYMMDD&gt;_v&lt;n&gt;</code></p>
+<p>Examples: <code>FY26_BUD_0+12_Base_20250320_v1</code>, <code>FY26_Q2F_6+6_Downside_20251015_v1</code>, <code>FY26_Q2F_6+6_Base_20251024_v2</code>.</p>
+<p>Guidelines:</p>
+<ul>
+<li>Use ISO dates (YYYYMMDD) so files sort chronologically.</li>
+<li>Fix a short list of version codes (ACT, BUD, RBUD, Q1F, Q2F, Q3F, LE01…LE12) in the version master; do not allow free text.</li>
+<li>Never use "final", "final2", "latest" in a name — "latest" becomes wrong the moment a new file arrives.</li>
+<li>Store the components as fields in the version master; the file name is a human-readable mirror.</li>
+</ul>
+<h3 id="version-lifecycle">Version lifecycle</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Who can edit</th>
+<th>Typical duration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Draft / Working</td>
+<td>BU owners and FP&amp;A</td>
+<td>Submission window (5–10 working days after close)</td>
+</tr>
+<tr>
+<td>Submitted</td>
+<td>FP&amp;A only (review adjustments, logged)</td>
+<td>Review period (3–5 days)</td>
+</tr>
+<tr>
+<td>Approved / Locked</td>
+<td>Nobody; values-only snapshot</td>
+<td>Permanent</td>
+</tr>
+<tr>
+<td>Superseded</td>
+<td>Nobody</td>
+<td>Permanent (retained for accuracy tracking)</td>
+</tr>
+</tbody>
+</table>
+<p>Only one version is Working at a time (c04).</p>
+<h3 id="worked-illustration-of-tamper-detection">Worked illustration of tamper detection</h3>
+<p>Q1F Base was locked on 18-Jul-2025 with control totals: row count 1,440; Σ Amount = ₹4,812.37 crore; Σ |Amount| = ₹9,906.20 crore. In November the internal auditor recomputes from the archive: row count 1,440; Σ Amount = ₹4,818.87 crore. The ₹6.50 crore difference proves the snapshot was edited after lock; the change log shows no entry, so the edit is unauthorised. Without control totals, the edit would be invisible.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Errors found after lock.</strong> If a genuine formula error is discovered (e.g., double-counted depreciation), do not fix the locked version. Create <code>Q1F v2</code> with a change-log entry, inform recipients, and use v2 for future comparisons while keeping v1 for accuracy measurement — the error was part of what management believed.</li>
+<li><strong>Restatement for mapping changes.</strong> If the chart of accounts is remapped, a <em>restated</em> copy of old versions may be created for comparability, flagged as Restated, alongside the original.</li>
+<li><strong>Live links from snapshots.</strong> A snapshot file that still contains formulas linked to the working model is not a snapshot; it will change when the model changes. Check with <em>Data → Edit Links</em> and <em>Formulas → Show Formulas</em>.</li>
+<li><strong>Retention.</strong> Keep locked versions for at least the statutory record-retention period relevant to the company (books of account are required to be preserved for eight years under Sec 128(5) of the Companies Act 2013); forecasts supporting impairment or tax positions may need retention aligned with the assessment cycle.</li>
+<li><strong>Macro-based locking.</strong> VBA can automate snapshotting, but macros must themselves be version-controlled and tested; a broken macro that pastes the wrong selector state is worse than a manual step with a checklist.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Locking = values-only snapshot + metadata + control totals, stored in a controlled read-only location.</li>
+<li>Sheet and range protection prevent accidents; file permissions and control totals provide real assurance.</li>
+<li>Post-lock changes create a new version number with a logged, approved change — never an overwrite.</li>
+<li>Naming: <code>FY_Version_Structure_Scenario_YYYYMMDD_vn</code>, from a fixed code list; never "final" or "latest".</li>
+<li>Locked originals are essential for lag-n forecast accuracy and for audit evidence under Ind AS 36 and IFC.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-write-the-locking-procedure-l2">Q1. Write the locking procedure [L2]</h3>
+<p>Draft a one-page locking SOP for the Q2 Fcst of an NSE-listed FMCG company with five BUs, covering: pre-lock checks, snapshot steps, metadata fields, control totals, storage location and permissions, naming, communication, and the procedure for a post-lock correction. Include who performs and who reviews each step.</p>
+<h3 id="q2-detecting-an-altered-version-l2">Q2. Detecting an altered version [L2]</h3>
+<p>The Q1F Base archive for FY26 was locked with row count 2,160, Σ Amount ₹6,240.15 crore and Σ |Amount| ₹12,904.60 crore. A recomputation in December shows row count 2,160, Σ Amount ₹6,240.15 crore and Σ |Amount| ₹12,910.80 crore. (a) What does this pattern suggest about the nature of the edit? (b) Why did Σ Amount not detect it? (c) Propose an additional control total that would localise the change to an entity or account.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Think about offsetting edits that keep the net sum unchanged but alter gross magnitude.</p>
+</blockquote>
+<h3 id="q3-post-lock-request-from-a-bu-head-l3">Q3. Post-lock request from a BU head [L3]</h3>
+<p>Two days after the Q2 Fcst was presented to the Audit Committee, the Exports BU head asks you to "just update" December revenue from ₹62 crore to ₹48 crore because a customer has cancelled an order. He argues it is better for the Board to see the correct number. Explain how you would handle the request, what versions would exist afterwards, how the change appears in the next forecast bridge, and whether any disclosure considerations under SEBI LODR might arise.</p>
+<h3 id="q4-naming-convention-clean-up-l1">Q4. Naming convention clean-up [L1]</h3>
+<p>Rename the following files using the convention in the notes and identify which ones cannot be named without more information: "Budget final.xlsx", "Q2 forecast latest v3 (2).xlsx", "Downside – Oct.xlsx", "FY26 RF Jan revised CFO comments.xlsx".</p></section>
+<nav class="pager"><a class="prev" href="S03_Scenario_Switching_with_Selectors_and_Data.html">← Scenario Switching with Selectors and Data Validation</a><a class="next" href="S05_Version_Comparisons_and_Forecast_to_Forecast.html">Version Comparisons and Forecast-to-Forecast Movement… →</a></nav>
+</main></div></body></html>

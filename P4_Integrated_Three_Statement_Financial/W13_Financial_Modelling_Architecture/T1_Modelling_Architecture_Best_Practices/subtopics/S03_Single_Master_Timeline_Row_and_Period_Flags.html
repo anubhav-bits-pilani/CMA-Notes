@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Single Master Timeline Row and Period Flags · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S03_Single_Master_Timeline_Row_and_Period_Flags.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T1 · Modelling Architecture &amp; Best Practices</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Modelling Architecture &amp; Best Practices</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Tab_Flow_of_an_Institutional_Three_Statement_Model.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S01_Tab_Flow_of_an_Institutional_Three_Statement_Model.html">Tab Flow of an Institutional Three-Statement Model</a></li><li><a href="S02_Separating_Inputs_Calculations_and_Outputs.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S02_Separating_Inputs_Calculations_and_Outputs.html">Separating Inputs, Calculations and Outputs</a></li><li><a href="S03_Single_Master_Timeline_Row_and_Period_Flags.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S03_Single_Master_Timeline_Row_and_Period_Flags.html">Single Master Timeline Row and Period Flags</a></li><li><a href="S04_Identical_Column_Structure_on_Every_Calculation.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S04_Identical_Column_Structure_on_Every_Calculation.html">Identical Column Structure on Every Calculation Sheet</a></li><li><a href="S05_Cover_Sheet_Identity_Basis_Units_and_Change_Log.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S05_Cover_Sheet_Identity_Basis_Units_and_Change_Log.html">Cover Sheet: Identity, Basis, Units and Change Log</a></li><li><a href="S06_Checks_Sheet_and_the_Master_Integrity_Flag.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S06_Checks_Sheet_and_the_Master_Integrity_Flag.html">Checks Sheet and the Master Integrity Flag</a></li><li><a href="S07_Named_Ranges_for_Scalars_Direct_References_for.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S07_Named_Ranges_for_Scalars_Direct_References_for.html">Named Ranges for Scalars, Direct References for Rows</a></li><li><a href="S08_Version_Control_File_Naming_and_Transparent.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S08_Version_Control_File_Naming_and_Transparent.html">Version Control, File Naming and Transparent Protection</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_FAST_Standard_Flexible_Appropriate_Structured.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C01_FAST_Standard_Flexible_Appropriate_Structured.html">FAST Standard: Flexible, Appropriate, Structured, Transparent</a></li><li><a href="../concepts/C02_ICAEW_Financial_Modelling_Code_Principles_for.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C02_ICAEW_Financial_Modelling_Code_Principles_for.html">ICAEW Financial Modelling Code: Principles for Reliable Models</a></li><li><a href="../concepts/C03_Column_Consistency_Same_Column_Same_Period_Every.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C03_Column_Consistency_Same_Column_Same_Period_Every.html">Column Consistency: Same Column, Same Period, Every Sheet</a></li><li><a href="../concepts/C04_Master_Check_Formula_on_the_Cover.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C04_Master_Check_Formula_on_the_Cover.html">Master Check Formula on the Cover</a></li><li><a href="../concepts/C05_Sign_Convention_Declared_Once_and_Applied.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C05_Sign_Convention_Declared_Once_and_Applied.html">Sign Convention Declared Once and Applied Everywhere</a></li><li><a href="../concepts/C06_Units_Model_in_Crore_and_Convert_Before_Ingestion.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C06_Units_Model_in_Crore_and_Convert_Before_Ingestion.html">Units: Model in ₹ Crore and Convert Before Ingestion</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Single Master Timeline Row and Period Flags</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Single master timeline row: FY labels (FY25A, FY26E…), 31-March period ends, period counter, actual/forecast flags</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>The timeline is the spine of the model. Every time-series formula, every flag, every cross-sheet link and every DCF discount factor depends on it. If timelines are typed independently on each tab, sooner or later one tab starts a year later or skips FY24, and links silently connect FY27E revenue to FY26E receivables. A single master timeline — defined once, linked everywhere — removes that class of error and lets you roll the model forward a year by changing one input. In Indian practice it must also encode the April–March financial year correctly, because FY labels, Income-tax "previous year" and SEBI quarter conventions all depend on it.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="inputs-that-drive-the-timeline">Inputs that drive the timeline</h3>
+<p>Only three inputs are needed on the Inputs tab:</p>
+<table>
+<thead>
+<tr>
+<th>Named range</th>
+<th>Example</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>First_Period_End</code></td>
+<td>31-Mar-2021</td>
+<td>Period end of the first column</td>
+</tr>
+<tr>
+<td><code>Last_Actual_End</code></td>
+<td>31-Mar-2025</td>
+<td>Last reported (audited) year</td>
+</tr>
+<tr>
+<td><code>Periodicity</code></td>
+<td>12</td>
+<td>Months per period</td>
+</tr>
+</tbody>
+</table>
+<p>Everything else is a formula on a master Timeline block (at the top of Inputs or a dedicated Timeline tab), then linked to row 1–6 of every calc sheet.</p>
+<h3 id="the-master-rows">The master rows</h3>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th>Label</th>
+<th>First column formula</th>
+<th>Subsequent columns</th>
+<th>Example (col H, I)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Period start</td>
+<td><code>=EDATE(H2,-Periodicity)+1</code></td>
+<td>same</td>
+<td>01-Apr-2020, 01-Apr-2021</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Period end</td>
+<td><code>=First_Period_End</code></td>
+<td><code>=EOMONTH(H2,Periodicity)</code></td>
+<td>31-Mar-2021, 31-Mar-2022</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Fiscal year</td>
+<td><code>=YEAR(H2)</code></td>
+<td>same</td>
+<td>2021, 2022</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Actual flag</td>
+<td><code>=--(H2&lt;=Last_Actual_End)</code></td>
+<td>same</td>
+<td>1, 1</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Forecast flag</td>
+<td><code>=1-H4</code></td>
+<td>same</td>
+<td>0, 0</td>
+</tr>
+<tr>
+<td>6</td>
+<td>FY label</td>
+<td><code>="FY"&amp;RIGHT(H3,2)&amp;IF(H4=1,"A","E")</code></td>
+<td>same</td>
+<td>FY21A, FY22A</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Period counter</td>
+<td><code>=H5*(SUM($G5:G5)+1)</code> or <code>=N(G7)+H5</code></td>
+<td>same</td>
+<td>0, 0 → 1, 2… in forecast</td>
+</tr>
+<tr>
+<td>8</td>
+<td>First forecast flag</td>
+<td><code>=H5*(1-G5)</code></td>
+<td>same</td>
+<td>1 only in FY26E</td>
+</tr>
+</tbody>
+</table>
+<p>Because 31 March falls in the calendar year after 1 April, <code>YEAR(Period end)</code> gives the Indian FY number: the year ending 31-Mar-2026 is FY2025-26, labelled FY26. Always label by the year of the period end, and state the convention on the Cover ("FY26 = year ending 31 March 2026").</p>
+<p><code>EOMONTH</code> is preferred to adding 365 days because it handles leap years (FY24 ended 31-Mar-2024 after a 29-Feb) and keeps the period end on the month end.</p>
+<h3 id="period-counter-uses">Period counter uses</h3>
+<p>The forecast period counter (1 for FY26E, 2 for FY27E…) is used for:</p>
+<ul>
+<li>DCF discount factors: \( DF_t = \frac{1}{(1+WACC)^{t}} \), or with mid-year convention \( DF_t = \frac{1}{(1+WACC)^{t-0.5}} \), where \( t \) is the counter.</li>
+<li>Compounding inflation from a base year: \( \text{Cost}_t = \text{Base} \times (1+\pi)^{t} \).</li>
+<li>Driver curves indexed by forecast year (e.g., store maturity year).</li>
+</ul>
+<p>A stub-period valuation (valuation date 30-Sep-2025) replaces the integer counter with a year fraction: <code>=YEARFRAC(Valuation_Date,H2,1)</code>.</p>
+<h3 id="flags-switching-logic-without-breaking-row-consistency">Flags: switching logic without breaking row consistency</h3>
+<p>The actual/forecast flags let one formula handle both regions:</p>
+<pre><code>=H4*Historicals!H20 + H5*(G22*(1+H15))
+</code></pre>
+<p>In actual years the formula picks the historical link; in forecast years it applies the growth driver. This preserves the "one row, one formula" rule (topic t2) across the actual/forecast boundary. An alternative used by many banks keeps historical columns as pure links and forecast columns as a different formula, with a visual boundary — acceptable, but the flag approach makes roll-forward automatic.</p>
+<h3 id="rolling-the-model-forward">Rolling the model forward</h3>
+<p>When FY26 results are published, change <code>Last_Actual_End</code> to 31-Mar-2026, load the FY26 actuals on Historicals, and every flag, label and counter updates: FY26E becomes FY26A, the counter restarts at FY27E, and DCF discounting shifts. If labels were typed, every tab would need manual edits.</p>
+<h3 id="linking-to-calc-sheets">Linking to calc sheets</h3>
+<p>Each calc sheet's rows 1–8 are direct links (<code>=Timeline!H2</code>) — green font because they are cross-sheet — in the same columns as the master. Never re-derive the timeline locally with its own <code>EOMONTH</code>; one source means one truth.</p>
+<h3 id="quarterly-and-half-yearly-variants">Quarterly and half-yearly variants</h3>
+<p>SEBI LODR Reg 33 quarterly results end on 30 June, 30 September, 31 December and 31 March. A quarterly timeline uses <code>Periodicity = 3</code>, labels like <code>="Q"&amp;(INT(MOD(MONTH(H2)-4,12)/3)+1)&amp;"FY"&amp;RIGHT(YEAR(H2)+(MONTH(H2)&gt;3),2)</code> (30-Jun-2025 gives Q1FY26, 31-Mar-2026 gives Q4FY26) and an annual flag <code>=--(MONTH(H2)=3)</code> for roll-ups via SUMIFS on the FY number.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Non-March year ends.</strong> A few Indian subsidiaries of foreign groups had December year ends before Sec 2(41) of the Companies Act 2013 required a uniform April–March financial year (with Tribunal exemptions for entities consolidated abroad). For comps calendarisation, convert peers to March year ends.</li>
+<li><strong>Partial first actual year.</strong> A company that changed its year end has a 15- or 9-month period; flag it and annualise ratios only with explicit adjustments.</li>
+<li><strong>Unaudited latest year.</strong> If only Reg 33 audited annual results (without the full annual report) are out, label FY25A but note "per Reg 33 results; notes pending".</li>
+<li><strong>Stub forecast periods.</strong> When valuing mid-year, add a stub flag and fraction rather than shifting the whole timeline.</li>
+<li><strong>Label-driven lookups.</strong> Avoid MATCH on text labels like "FY26E" — they change on roll-forward. Look up on the period-end date or FY number.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Build the timeline once from two or three inputs; link it to every sheet.</li>
+<li>Label FY by the year of the 31-March period end and state the convention on the Cover.</li>
+<li>Use EOMONTH for period ends; YEAR(period end) gives the Indian FY number.</li>
+<li>Actual/forecast flags and a forecast counter let one formula span the whole row.</li>
+<li>Rolling forward should require changing one input plus loading the new actuals.</li>
+<li>Look up by date or FY number, never by the A/E text label.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-build-the-timeline-l1">Q1. Build the timeline [L1]</h3>
+<p>Write the formulas for rows 1–8 of a master timeline starting with the year ending 31-Mar-2021, last actual 31-Mar-2025 and forecasts to 31-Mar-2030, in columns H to Q. State the values each row shows in column M.</p>
+<h3 id="q2-discount-factor-with-a-stub-l2">Q2. Discount factor with a stub [L2]</h3>
+<p>The valuation date is 30-Sep-2025 and WACC is 11.5%. Using the master timeline (FY26E ends 31-Mar-2026), design the rows needed to compute mid-period discount factors for FY26E (half-year stub) through FY30E, and specify the formula for each row.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Separate the stub fraction from the period counter before combining them in the exponent.</p>
+</blockquote>
+<h3 id="q3-roll-forward-test-l2">Q3. Roll-forward test [L2]</h3>
+<p>Describe step by step what a reviewer should do to test that a model rolls forward correctly from <code>Last_Actual_End</code> = 31-Mar-2025 to 31-Mar-2026, and list four specific things that typically break if labels or counters were hardcoded.</p>
+<h3 id="q4-quarterly-to-annual-roll-up-l3">Q4. Quarterly to annual roll-up [L3]</h3>
+<p>An FP&amp;A team maintains a quarterly forecast (Q1FY26 to Q4FY27) on one tab and an annual 3-statement model on another. Design the timeline rows on the quarterly tab and the SUMIFS formula that populates FY26E and FY27E revenue in the annual model, ensuring the annual tab does not need editing when the quarterly tab is extended.</p></section>
+<nav class="pager"><a class="prev" href="S02_Separating_Inputs_Calculations_and_Outputs.html">← Separating Inputs, Calculations and Outputs</a><a class="next" href="S04_Identical_Column_Structure_on_Every_Calculation.html">Identical Column Structure on Every Calculation Sheet →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Cash Check: Separating CFS Errors from BS Link Errors · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C03_The_Cash_Check_Separating_CFS_Errors_from_BS_Link.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 15</a> <span>›</span> <a href="../index.html">T4 · Balance Sheet Debugging Diagnostics</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Balance Sheet Debugging Diagnostics</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Clean_Historicals_First_Then_Find_the_First.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S01_Clean_Historicals_First_Then_Find_the_First.html">Clean Historicals First, Then Find the First Imbalanced Year</a></li><li><a href="../subtopics/S02_Reading_the_Pattern_of_the_Balance_Check_Across.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S02_Reading_the_Pattern_of_the_Balance_Check_Across.html">Reading the Pattern of the Balance Check Across Years</a></li><li><a href="../subtopics/S03_Halving_Test_for_Sign_Errors_and_Exact_Match.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S03_Halving_Test_for_Sign_Errors_and_Exact_Match.html">Halving Test for Sign Errors and Exact-Match Search for Omissions</a></li><li><a href="../subtopics/S04_Line_by_Line_ΔBS_vs_CFS_Reconciliation_Block.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S04_Line_by_Line_ΔBS_vs_CFS_Reconciliation_Block.html">Line-by-Line ΔBS vs CFS Reconciliation Block</a></li><li><a href="../subtopics/S05_Breaker_Off_Opening_Links_and_Sign_Conventions_in.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S05_Breaker_Off_Opening_Links_and_Sign_Conventions_in.html">Breaker Off, Opening Links and Sign Conventions in Corkscrews</a></li><li><a href="../subtopics/S06_Hunting_Hardcodes_with_Go_To_Special_Trace.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S06_Hunting_Hardcodes_with_Go_To_Special_Trace.html">Hunting Hardcodes with Go To Special, Trace Precedents and Inquire</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Difference_of_X_Means_Omission_2X_Means_Wrong_Sign.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C01_Difference_of_X_Means_Omission_2X_Means_Wrong_Sign.html">Difference of X Means Omission; 2X Means Wrong Sign</a></li><li><a href="C02_Constant_vs_Growing_Difference_Opening_Error_or.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C02_Constant_vs_Growing_Difference_Opening_Error_or.html">Constant vs Growing Difference: Opening Error or Flow Error</a></li><li><a href="C03_The_Cash_Check_Separating_CFS_Errors_from_BS_Link.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C03_The_Cash_Check_Separating_CFS_Errors_from_BS_Link.html">The Cash Check: Separating CFS Errors from BS Link Errors</a></li><li><a href="C04_The_Transaction_Triad_PL_CFS_and_BS_Impact.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C04_The_Transaction_Triad_PL_CFS_and_BS_Impact.html">The Transaction Triad: P&amp;L, CFS and BS Impact</a></li><li><a href="C05_Typical_Culprits_Behind_a_Balance_Sheet_Imbalance.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C05_Typical_Culprits_Behind_a_Balance_Sheet_Imbalance.html">Typical Culprits Behind a Balance Sheet Imbalance</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>The Cash Check: Separating CFS Errors from BS Link Errors</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Cash check: CFS closing cash − BS cash = 0 separates CFS errors from BS link errors</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>For each forecast year \( t \):</p>
+<p>\[
+\text{Cash check}_t = \text{Closing cash}^{\text{CFS}}_t - \text{Cash}^{\text{BS}}_t
+\]</p>
+<p>where \( \text{Closing cash}^{\text{CFS}}_t = \text{Opening cash}_t + \text{CFO}_t + \text{CFI}_t + \text{CFF}_t \) and \( \text{Cash}^{\text{BS}}_t \) is the cash line shown on the balance sheet. In a correctly linked model the cash check is 0 in every year. Combined with the balance check, it gives a two-way test:</p>
+<table>
+<thead>
+<tr>
+<th>Cash check</th>
+<th>Balance check</th>
+<th>Where the error is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>No linking error</td>
+</tr>
+<tr>
+<td>0</td>
+<td>≠ 0</td>
+<td>CFS logic (a movement omitted or mis-signed in the CFS) <em>or</em> a non-cash BS line not linked to its schedule</td>
+</tr>
+<tr>
+<td>≠ 0</td>
+<td>≠ 0 (same size)</td>
+<td>BS cash not linked to CFS closing cash (wrong cell, wrong year, hardcode, or a plug)</td>
+</tr>
+<tr>
+<td>≠ 0</td>
+<td>0</td>
+<td>BS cash plugged or computed as a balancing figure while the CFS is wrong</td>
+</tr>
+</tbody>
+</table>
+<h2 id="explanation">Explanation</h2>
+<p>In an integrated model the BS cash line should be a direct link to CFS closing cash, and nothing else. When that link is intact, the cash check is mechanically zero and every imbalance must come from the CFS content or from another BS line. So the cash check decides <em>which half of the model</em> to search.</p>
+<ul>
+<li><strong>Cash check = 0, BS check ≠ 0.</strong> The link is fine. Either the CFS is wrong (an omitted ESOP add-back, a ΔNWC sign) or a non-cash BS line does not reflect its schedule (DTL hardcoded, CWIP not included in PPE). Use the reconciliation block (s04) and the X/2X rule (c01).</li>
+<li><strong>Cash check ≠ 0, same size as the BS check.</strong> The BS cash line is not taking the CFS closing. Typical causes: linked to the prior year's closing cash, linked to "net change in cash" instead of closing, linked to a cash schedule that excludes the revolver, or overtyped.</li>
+<li><strong>Cash check ≠ 0 but BS check = 0.</strong> This is the most dangerous case. The model "balances" only because cash on the BS is computed as total liabilities and equity minus other assets (a plug). The CFS disagrees, which proves the model is wrong. This is why c02 in t3 insists cash must never be the balancing figure.</li>
+</ul>
+<p>The cash check also needs an opening counterpart: CFS opening cash in year \( t \) must equal BS cash at the end of \( t-1 \). Include it in the checks dashboard as a separate test.</p>
+<p><strong>Definition consistency.</strong> If the BS separates cash and cash equivalents from other bank balances (Schedule III requires both lines), the CFS closing cash must compare with the cash and cash equivalents line only, unless the model's definition explicitly includes deposits. Ind AS 7.8 allows bank overdrafts repayable on demand that form an integral part of cash management to be included as a component of cash and cash equivalents. If the model nets overdraft into cash in the CFS but shows it within borrowings on the BS, the cash check must reflect that reconciliation.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Periyar Rubber Ltd, FY27E (₹ crore):</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Model 1</th>
+<th>Model 2</th>
+<th>Model 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CFS closing cash</td>
+<td>240</td>
+<td>240</td>
+<td>240</td>
+</tr>
+<tr>
+<td>BS cash</td>
+<td>240</td>
+<td>212</td>
+<td>268</td>
+</tr>
+<tr>
+<td>Cash check</td>
+<td>0</td>
+<td>28</td>
+<td>−28</td>
+</tr>
+<tr>
+<td>BS check (A − L − E)</td>
+<td>+28</td>
+<td>−28</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Model 1: the link is intact. CFS cash is 28 too high, so look for an omitted outflow or mis-signed item (an omitted lease principal of 28, or Δ receivables of 14 with the wrong sign).</li>
+<li>Model 2: BS cash is not linked to the CFS. It shows 212, which is FY26E closing cash, so the BS cash formula points to the prior column. Fix the link first, then re-test.</li>
+<li>Model 3: BS cash is a plug (268 = total L&amp;E − other assets). The model looks balanced but the CFS disagrees by 28. Remove the plug and link BS cash to CFS closing. The true BS check of −28 reappears (the CFS explains 28 less cash than the other BS movements require), ready for proper debugging.</li>
+</ul>
+<h2 id="connections">Connections</h2>
+<p>The cash check is the first diagnostic on the checks dashboard (Topic 5, s07) and complements the balance check in s01 when locating the first broken year. It directs the search to the CFS (reconciliation block, s04) or to the BS link, and it is the proof against the t3 pitfall of plugging cash. In the Week 15 interview flow test (depreciation +₹10), the cash check confirms that the +2.52 change in CFO reached BS cash. It also connects to the Ind AS 7.45 reconciliation of cash in the CFS with BS items.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-read-the-two-checks-l1">Q1. Read the two checks [L1]</h3>
+<p>For each case (₹ crore), state where the error lies and your first debugging action. (a) Cash check 0, BS check −15.6. (b) Cash check 42.0, BS check 42.0 in FY27E only, both 0 in other years. (c) Cash check −9.3, BS check 0. (d) Cash check 0, BS check 0, but CFS opening cash FY27E differs from BS cash FY26E by 5.0.</p>
+<h3 id="q2-overdraft-in-the-cash-definition-l2">Q2. Overdraft in the cash definition [L2]</h3>
+<p>Tista Foods Ltd uses a cash credit facility repayable on demand that swings between debit and credit balances during the year. The FY25A BS shows cash and cash equivalents of ₹46 crore and cash credit (within current borrowings) of ₹31 crore. The Ind AS 7 statement presents net cash and cash equivalents of ₹15 crore. (a) Explain under what condition Ind AS 7 permits this net presentation. (b) Design the cash check so it works in the forecast if the model forecasts cash credit in the revolver schedule. (c) State what error would appear if the model's CFS opens at ₹46 crore while the revolver opens at ₹31 crore.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Decide on one definition of cash and make the CFS opening, CFS closing and BS lines all follow it.</p>
+</blockquote>
+<h3 id="q3-plug-detection-l2">Q3. Plug detection [L2]</h3>
+<p>A model you are reviewing shows BS check = 0.000 in all years and all scenarios. There is no cash check on the dashboard. Describe how you would establish whether BS cash is genuinely linked to the CFS or computed as a balancing figure, using no more than three Excel actions, and explain what each action would reveal.</p></section>
+<nav class="pager"><a class="prev" href="C02_Constant_vs_Growing_Difference_Opening_Error_or.html">← Constant vs Growing Difference: Opening Error or Flow Error</a><a class="next" href="C04_The_Transaction_Triad_PL_CFS_and_BS_Impact.html">The Transaction Triad: P&amp;L, CFS and BS Impact →</a></nav>
+</main></div></body></html>

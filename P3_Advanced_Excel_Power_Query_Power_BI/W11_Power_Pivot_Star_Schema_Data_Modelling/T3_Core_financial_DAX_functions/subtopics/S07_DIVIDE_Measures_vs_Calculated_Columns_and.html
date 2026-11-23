@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DIVIDE, Measures vs Calculated Columns, and VAR/RETURN · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S07_DIVIDE_Measures_vs_Calculated_Columns_and.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T3 · Core financial DAX functions</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Core financial DAX functions</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Row_Context_Filter_Context_and_Context_Transition.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S01_Row_Context_Filter_Context_and_Context_Transition.html">Row Context, Filter Context and Context Transition</a></li><li><a href="S02_CALCULATE_Filter_Arguments_and_Modifiers.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S02_CALCULATE_Filter_Arguments_and_Modifiers.html">CALCULATE Filter Arguments and Modifiers</a></li><li><a href="S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html">Iterators SUMX and AVERAGEX for Row-Level Maths</a></li><li><a href="S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html">FILTER vs Boolean Column Filters: Meaning and Performance</a></li><li><a href="S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html">ALL, ALLEXCEPT and ALLSELECTED for Share and Contribution Analysis</a></li><li><a href="S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html">RELATED and RELATEDTABLE in Columns and Iterators</a></li><li><a href="S07_DIVIDE_Measures_vs_Calculated_Columns_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S07_DIVIDE_Measures_vs_Calculated_Columns_and.html">DIVIDE, Measures vs Calculated Columns, and VAR/RETURN</a></li><li><a href="S08_Explicit_Measures_Display_Folders_and_LakhCrore.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S08_Explicit_Measures_Display_Folders_and_LakhCrore.html">Explicit Measures, Display Folders and ₹ Lakh/Crore Formats</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html">Base Actual Measure and a Filtered Revenue Measure</a></li><li><a href="../concepts/C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html">Percentage of Total Opex with ALL on Cost Centre</a></li><li><a href="../concepts/C03_Percentage_within_Statement_with_ALLEXCEPT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C03_Percentage_within_Statement_with_ALLEXCEPT.html">Percentage within Statement with ALLEXCEPT</a></li><li><a href="../concepts/C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html">FX-Converted Revenue with SUMX and RELATED</a></li><li><a href="../concepts/C05_Sign_Aware_Variance_with_VAR_and_ABS.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C05_Sign_Aware_Variance_with_VAR_and_ABS.html">Sign-Aware Variance % with VAR and ABS</a></li><li><a href="../concepts/C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html">KEEPFILTERS to Intersect Rather Than Overwrite</a></li><li><a href="../concepts/C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html">DIVIDE and Its BLANK Default for Zero Denominators</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>DIVIDE, Measures vs Calculated Columns, and VAR/RETURN</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> DIVIDE for safe ratios; measures vs calculated columns; VAR/RETURN for readability</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Ratios are the language of financial analysis — gross margin, EBITDA margin, ROCE, DSO, cost-to-income, variance %.
+Every one has a denominator that can be zero or blank in some cell: a new branch with no revenue yet, a month with
+no budget, a cost centre closed mid-year. DIVIDE handles those cases cleanly. Equally fundamental is deciding whether
+a computation is a <strong>measure</strong> (evaluated at query time in filter context) or a <strong>calculated column</strong> (stored per row
+at refresh). And as measures grow — sign-aware variance %, margin with fallbacks — <strong>VAR/RETURN</strong> keeps them readable,
+debuggable and efficient. Together these three habits separate maintainable finance models from fragile ones.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="divide">DIVIDE</h3>
+<pre><code class="language-DAX">DIVIDE ( &lt;numerator&gt;, &lt;denominator&gt; [, &lt;alternate_result&gt;] )
+</code></pre>
+<ul>
+<li>Returns numerator / denominator.</li>
+<li>If the denominator is <strong>0 or BLANK</strong>, returns <code>alternate_result</code> if supplied, otherwise <strong>BLANK</strong> (concept c07).</li>
+<li>Equivalent to <code>IF(denominator = 0, alternate, numerator / denominator)</code> — note <code>BLANK() = 0</code> is TRUE in DAX, so
+  blank denominators are caught too — but DIVIDE is optimised by the engine.</li>
+<li>The <code>/</code> operator returns <strong>Infinity</strong> (or NaN for 0/0) on division by zero, which visuals show as "Infinity" or
+  "NaN" — not an error like Excel's <code>#DIV/0!</code>, but equally ugly, and it pollutes totals and conditional formatting.</li>
+</ul>
+<pre><code class="language-DAX">Gross Margin % = DIVIDE ( [Gross Profit], [Revenue] )
+EBITDA Margin % = DIVIDE ( [EBITDA], [Revenue] )
+DSO Days = DIVIDE ( [Avg Trade Receivables], [Revenue] ) * [Days in Period]
+</code></pre>
+<p>Returning BLANK matters for matrices: rows where every measure is blank are hidden automatically, so branches with no
+revenue disappear rather than showing 0%. Use an alternate result of 0 only when a zero is meaningful and you want the
+row shown.</p>
+<p>When to still use <code>/</code>: when the denominator is a constant or can never be zero (e.g. <code>[Amount] / 100000</code> for lakhs),
+<code>/</code> is marginally faster and perfectly safe.</p>
+<h3 id="measures-vs-calculated-columns">Measures vs calculated columns</h3>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Measure</th>
+<th>Calculated column</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Evaluated</td>
+<td>At query time, per visual cell</td>
+<td>At refresh, per row</td>
+</tr>
+<tr>
+<td>Context</td>
+<td>Filter context (responds to slicers)</td>
+<td>Row context (static)</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td>None (formula only)</td>
+<td>Stored and compressed; adds memory</td>
+</tr>
+<tr>
+<td>Use for</td>
+<td>Aggregations, ratios, time intelligence, variances</td>
+<td>Row attributes for slicing/grouping, keys, sort columns, bands</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><code>Actual = SUM(GL[Amount])</code>, <code>Var %</code></td>
+<td><code>CoA[IsPL] = CoA[Statement] = "Profit and Loss"</code>, <code>'Date'[FiscalMonthNo]</code></td>
+</tr>
+</tbody>
+</table>
+<p>Decision rule: <strong>if you would put it on rows, columns or a slicer, it may be a column; if you would put it in the values
+area, it must be a measure.</strong> Ratios as columns are a classic error: a calculated column <code>GL[Margin] = GL[GP] /
+GL[Revenue]</code> computes per row, and summing ratios across rows is meaningless. Prefer Power Query custom columns over
+DAX calculated columns for row attributes (better compression, computed upstream).</p>
+<h3 id="var-return">VAR / RETURN</h3>
+<pre><code class="language-DAX">Variance % =
+VAR ActualAmt = [Actual]
+VAR BudgetAmt = [Budget]
+VAR Diff      = ActualAmt - BudgetAmt
+RETURN
+    DIVIDE ( Diff, ABS ( BudgetAmt ) )
+</code></pre>
+<p>Benefits:</p>
+<ol>
+<li><strong>Readability.</strong> Named intermediate results, like a Java local variable (<code>double diff = actual - budget;</code>).</li>
+<li><strong>Evaluate once.</strong> Each VAR is evaluated once, in the filter context where it is defined; repeated references reuse
+   the value — faster than repeating <code>[Actual]</code> three times.</li>
+<li><strong>Debugging.</strong> Temporarily <code>RETURN Diff</code> to inspect an intermediate value.</li>
+<li><strong>Capturing outer context.</strong> A VAR defined outside CALCULATE or an iterator holds the outer value, replacing
+   EARLIER:</li>
+</ol>
+<pre><code class="language-DAX">Share of Max Branch =
+VAR CurrentSales = [Revenue]
+VAR MaxBranch = MAXX ( ALL ( Branch ), [Revenue] )
+RETURN DIVIDE ( CurrentSales, MaxBranch )
+</code></pre>
+<p>Key subtlety: <strong>variables are constants once evaluated.</strong> <code>CALCULATE(ActualAmt, 'Date'[FY] = "FY2024-25")</code> does <em>not</em>
+recompute ActualAmt for FY2024-25 — it returns the already computed value. To shift context, reference the measure
+inside CALCULATE, not the variable.</p>
+<h3 id="illustration">Illustration</h3>
+<p>Branch P&amp;L, FY2025-26 (₹ lakh):</p>
+<table>
+<thead>
+<tr>
+<th>Branch</th>
+<th>Revenue</th>
+<th>EBITDA</th>
+<th>Budget EBITDA</th>
+<th><code>[EBITDA] / [Revenue]</code></th>
+<th><code>DIVIDE([EBITDA], [Revenue])</code></th>
+<th>Var % (ABS)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pune</td>
+<td>1,200</td>
+<td>180</td>
+<td>160</td>
+<td>15.0%</td>
+<td>15.0%</td>
+<td>12.5%</td>
+</tr>
+<tr>
+<td>Nagpur (new)</td>
+<td>0</td>
+<td>−22</td>
+<td>−30</td>
+<td>−Infinity</td>
+<td>blank</td>
+<td>26.7%</td>
+</tr>
+<tr>
+<td>Nashik</td>
+<td>640</td>
+<td>51</td>
+<td>0</td>
+<td>8.0%</td>
+<td>8.0%</td>
+<td>blank</td>
+</tr>
+</tbody>
+</table>
+<p>Nagpur's start-up loss is better than budget by ₹8 lakh: \(\frac{-22 - (-30)}{\lvert -30 \rvert} = 26.7\%\) favourable.
+Nashik had no EBITDA budget, so variance % is blank, not infinite.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Blank vs zero numerator.</strong> <code>DIVIDE(BLANK(), 100)</code> = BLANK; <code>DIVIDE(0, 100)</code> = 0. A zero revenue numerator shows
+  0%, which may be correct.</li>
+<li><strong>Tiny denominators.</strong> DIVIDE avoids division by zero but not by ₹1 — a budget of ₹1 yields a variance % of millions.
+  Add a materiality guard: <code>IF(ABS(b) &lt; 100000, BLANK(), DIVIDE(a - b, ABS(b)))</code>.</li>
+<li><strong>Negative denominators</strong> (expense budgets in credit-negative conventions, losses) flip signs; use ABS or sign-aware
+  logic (concept c05).</li>
+<li><strong>Calculated columns referencing measures</strong> trigger context transition per row and slow refresh; acceptable on small
+  dimensions only.</li>
+<li><strong>VAR scope.</strong> Variables are local to the measure; they cannot be shared across measures (use a base measure).</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>DIVIDE returns BLANK (or the alternate result) for zero or blank denominators; <code>/</code> returns Infinity or NaN.</li>
+<li>Blank results let matrices hide empty rows; use an alternate result only when a zero is meaningful.</li>
+<li>Measures aggregate in filter context; calculated columns store row attributes — ratios are always measures.</li>
+<li>VAR/RETURN improves readability, evaluates once and captures outer context.</li>
+<li>Variables are constants: re-evaluate in a new context by referencing the measure, not the variable.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-rewrite-safely-l1">Q1. Rewrite safely [L1]</h3>
+<p>Rewrite <code>ROCE = [EBIT] / ([Equity] + [Net Debt])</code> with DIVIDE and VAR, and state what the measure should show when
+capital employed is zero or blank.</p>
+<h3 id="q2-column-or-measure-l1">Q2. Column or measure [L1]</h3>
+<p>Classify each as calculated column (or Power Query column) or measure: FY label; gross margin %; account age band
+(0–30, 31–60 days) for invoices; YTD revenue; MSME vendor flag; average DSO.</p>
+<h3 id="q3-the-constant-variable-trap-l2">Q3. The constant-variable trap [L2]</h3>
+<p>A measure reads <code>VAR a = [Actual] RETURN a - CALCULATE(a, SAMEPERIODLASTYEAR('Date'[Date]))</code> and always returns 0.
+Explain why and correct it.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Where is the variable's value computed?</p>
+</blockquote>
+<h3 id="q4-materiality-guard-l2">Q4. Materiality guard [L2]</h3>
+<p>Write a Variance % measure that returns blank when the absolute budget is below ₹1 lakh, uses ABS for the denominator,
+and returns "n.m." semantics (blank) when both actual and budget are blank. Explain how it behaves at the FY total.</p>
+<h3 id="q5-interview-divide-vs-iferror-l1">Q5. Interview: DIVIDE vs IFERROR [L1]</h3>
+<p>An interviewer asks why DAX has DIVIDE when Excel users simply wrap formulas in IFERROR. Answer in under 100 words,
+covering blank handling, performance and visual behaviour.</p></section>
+<nav class="pager"><a class="prev" href="S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html">← RELATED and RELATEDTABLE in Columns and Iterators</a><a class="next" href="S08_Explicit_Measures_Display_Folders_and_LakhCrore.html">Explicit Measures, Display Folders and ₹ Lakh/Crore Formats →</a></nav>
+</main></div></body></html>

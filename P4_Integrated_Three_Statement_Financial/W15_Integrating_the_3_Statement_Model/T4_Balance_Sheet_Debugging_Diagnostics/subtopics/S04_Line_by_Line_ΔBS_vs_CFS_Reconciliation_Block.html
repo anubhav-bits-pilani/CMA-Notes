@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Line-by-Line ΔBS vs CFS Reconciliation Block · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S04_Line_by_Line_ΔBS_vs_CFS_Reconciliation_Block.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 15</a> <span>›</span> <a href="../index.html">T4 · Balance Sheet Debugging Diagnostics</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Balance Sheet Debugging Diagnostics</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Clean_Historicals_First_Then_Find_the_First.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S01_Clean_Historicals_First_Then_Find_the_First.html">Clean Historicals First, Then Find the First Imbalanced Year</a></li><li><a href="S02_Reading_the_Pattern_of_the_Balance_Check_Across.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S02_Reading_the_Pattern_of_the_Balance_Check_Across.html">Reading the Pattern of the Balance Check Across Years</a></li><li><a href="S03_Halving_Test_for_Sign_Errors_and_Exact_Match.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S03_Halving_Test_for_Sign_Errors_and_Exact_Match.html">Halving Test for Sign Errors and Exact-Match Search for Omissions</a></li><li><a href="S04_Line_by_Line_ΔBS_vs_CFS_Reconciliation_Block.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S04_Line_by_Line_ΔBS_vs_CFS_Reconciliation_Block.html">Line-by-Line ΔBS vs CFS Reconciliation Block</a></li><li><a href="S05_Breaker_Off_Opening_Links_and_Sign_Conventions_in.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S05_Breaker_Off_Opening_Links_and_Sign_Conventions_in.html">Breaker Off, Opening Links and Sign Conventions in Corkscrews</a></li><li><a href="S06_Hunting_Hardcodes_with_Go_To_Special_Trace.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S06_Hunting_Hardcodes_with_Go_To_Special_Trace.html">Hunting Hardcodes with Go To Special, Trace Precedents and Inquire</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Difference_of_X_Means_Omission_2X_Means_Wrong_Sign.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C01_Difference_of_X_Means_Omission_2X_Means_Wrong_Sign.html">Difference of X Means Omission; 2X Means Wrong Sign</a></li><li><a href="../concepts/C02_Constant_vs_Growing_Difference_Opening_Error_or.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C02_Constant_vs_Growing_Difference_Opening_Error_or.html">Constant vs Growing Difference: Opening Error or Flow Error</a></li><li><a href="../concepts/C03_The_Cash_Check_Separating_CFS_Errors_from_BS_Link.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C03_The_Cash_Check_Separating_CFS_Errors_from_BS_Link.html">The Cash Check: Separating CFS Errors from BS Link Errors</a></li><li><a href="../concepts/C04_The_Transaction_Triad_PL_CFS_and_BS_Impact.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C04_The_Transaction_Triad_PL_CFS_and_BS_Impact.html">The Transaction Triad: P&amp;L, CFS and BS Impact</a></li><li><a href="../concepts/C05_Typical_Culprits_Behind_a_Balance_Sheet_Imbalance.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C05_Typical_Culprits_Behind_a_Balance_Sheet_Imbalance.html">Typical Culprits Behind a Balance Sheet Imbalance</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Line-by-Line ΔBS vs CFS Reconciliation Block</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Line-by-line ΔBS vs CFS reconciliation block</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Pattern reading and the halving test are fast, but they rely on the error being a single clean item. When a model has two or three errors, or when a schedule was rebuilt and nobody knows what changed, you need a method that cannot miss. The ΔBS vs CFS reconciliation block is that method. For every BS line, it computes the movement implied by the BS, converts it to its cash-flow sign, and compares it with the CFS line(s) and non-cash P&amp;L items that should explain it. Any line with a non-zero difference is an error, and the sum of the differences equals the balance check. It is the model equivalent of an audit lead-schedule tie-out: every balance is vouched to its movement and every movement to its source.</p>
+<p>Well-built models in banks, Big 4 valuation teams and corporate FP&amp;A keep this block permanently on the checks sheet. It costs about 30 rows and turns debugging from search into lookup.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-identity-behind-the-block">The identity behind the block</h3>
+<p>For any year, the change in cash equals the sum of all other BS movements converted to cash effects:</p>
+<p>\[
+\Delta \text{Cash} = -\sum \Delta \text{Non-cash assets} + \sum \Delta \text{Liabilities} + \sum \Delta \text{Equity}
+\]</p>
+<p>The CFS is a reorganised version of this identity. Equity movements are split into PAT (with non-cash items unwound), dividends, issues and buybacks. Asset movements are split into capex, D&amp;A, disposals and so on. The reconciliation block reverses that reorganisation line by line.</p>
+<h3 id="layout">Layout</h3>
+<p>One row per BS line (excluding cash), with columns for the target year:</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>BS line (for example, Trade receivables)</td>
+</tr>
+<tr>
+<td>B</td>
+<td>Closing − Opening (raw ΔBS)</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Cash sign: −1 for assets, +1 for liabilities and equity</td>
+</tr>
+<tr>
+<td>D</td>
+<td>Expected cash effect = B × C</td>
+</tr>
+<tr>
+<td>E</td>
+<td>CFS and non-cash explanation (sum of the mapped CFS lines and P&amp;L items)</td>
+</tr>
+<tr>
+<td>F</td>
+<td>Difference = D − E</td>
+</tr>
+</tbody>
+</table>
+<p>The mapped explanation (column E) for each line:</p>
+<table>
+<thead>
+<tr>
+<th>BS line</th>
+<th>Explained by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trade receivables, inventory, other current assets</td>
+<td>Matching ΔNWC lines in CFO</td>
+</tr>
+<tr>
+<td>Trade payables, other current liabilities, provisions</td>
+<td>Matching ΔNWC/provision lines in CFO</td>
+</tr>
+<tr>
+<td>Net PPE (incl. CWIP)</td>
+<td>−Capex + D&amp;A (add-back) + disposals at NBV + impairment</td>
+</tr>
+<tr>
+<td>Intangibles</td>
+<td>−Intangible additions + amortisation</td>
+</tr>
+<tr>
+<td>ROU assets</td>
+<td>Depreciation on ROU − ROU additions (non-cash, nets against lease liability)</td>
+</tr>
+<tr>
+<td>Lease liabilities</td>
+<td>ROU additions (non-cash) + interest accrued − lease payments</td>
+</tr>
+<tr>
+<td>Borrowings (current + non-current)</td>
+<td>Drawdowns − repayments (current maturities reclass nets to zero)</td>
+</tr>
+<tr>
+<td>DTL (net of DTA)</td>
+<td>ΔDTL add-back in CFO</td>
+</tr>
+<tr>
+<td>Current tax liability</td>
+<td>Current tax expense − taxes paid</td>
+</tr>
+<tr>
+<td>Share capital + securities premium</td>
+<td>Equity issued − buyback (face value + premium)</td>
+</tr>
+<tr>
+<td>Other equity (retained earnings, reserves)</td>
+<td>PAT to owners − dividends + ESOP reserve + OCI (if modelled)</td>
+</tr>
+<tr>
+<td>NCI</td>
+<td>NCI share of profit − NCI dividends + NCI capital contributions</td>
+</tr>
+<tr>
+<td>Dividends payable</td>
+<td>Dividends declared − dividends paid</td>
+</tr>
+</tbody>
+</table>
+<p>Because PAT appears in the CFS but its counterpart is in equity, the block needs one convention. The simplest is to treat PAT and every non-cash P&amp;L add-back as explanations for the BS line they actually move: PAT for other equity, D&amp;A for PPE, ESOP charge for other equity (via the reserve), ΔDTL for DTL.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>Tungabhadra Chemicals Ltd, FY27E, ₹ crore. BS check (A − L − E) = −7.0.</p>
+<table>
+<thead>
+<tr>
+<th>BS line</th>
+<th>ΔBS</th>
+<th>Cash sign</th>
+<th>Expected cash effect</th>
+<th>CFS/non-cash explanation</th>
+<th>Difference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trade receivables</td>
+<td>+30.0</td>
+<td>−1</td>
+<td>−30.0</td>
+<td>ΔReceivables in CFO −30.0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>Inventory</td>
+<td>+12.0</td>
+<td>−1</td>
+<td>−12.0</td>
+<td>ΔInventory in CFO −12.0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>Trade payables</td>
+<td>+16.0</td>
+<td>+1</td>
+<td>+16.0</td>
+<td>ΔPayables in CFO +16.0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>Net PPE</td>
+<td>+55.0</td>
+<td>−1</td>
+<td>−55.0</td>
+<td>Capex −140.0 + D&amp;A 85.0 = −55.0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>ROU assets</td>
+<td>+4.0</td>
+<td>−1</td>
+<td>−4.0</td>
+<td>ROU depreciation 6.0 − additions 10.0 = −4.0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>Lease liabilities</td>
+<td>+3.0</td>
+<td>+1</td>
+<td>+3.0</td>
+<td>Additions 10.0 + interest 1.0 − payments 8.0 = +3.0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>Borrowings</td>
+<td>−20.0</td>
+<td>+1</td>
+<td>−20.0</td>
+<td>Repayment −20.0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>DTL</td>
+<td>+3.0</td>
+<td>+1</td>
+<td>+3.0</td>
+<td>ΔDTL in CFO <strong>0.0</strong></td>
+<td><strong>+3.0</strong></td>
+</tr>
+<tr>
+<td>Other equity</td>
+<td>+79.0</td>
+<td>+1</td>
+<td>+79.0</td>
+<td>PAT 110.0 − dividends 35.0 + ESOP <strong>0.0</strong></td>
+<td><strong>+4.0</strong></td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td></td>
+<td><strong>−20.0</strong></td>
+<td></td>
+<td><strong>+7.0</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The block identifies two errors. The ΔDTL add-back of 3.0 is missing from CFO. The ESOP add-back of 4.0 is also missing: the reserve moved on the BS, but the charge was not added back in CFO. The BS movements imply that cash should fall by 20.0, but the CFS shows a fall of 27.0. BS cash, which is linked from the CFS, is therefore 7.0 too low. Assets are understated by 7.0 and the check (A − L − E) reads −7.0. The block total of +7.0 is the same error seen from the other side.</p>
+<p>Note on signs: the block's difference is defined as expected minus explained. A positive difference means the CFS explains <strong>less</strong> cash than the BS movements imply, so model cash is too low and the check (A − L − E) is negative by the same amount. State your convention at the top of the block so a reviewer can tie the block total to the check row with the right sign.</p>
+<h3 id="building-it-efficiently">Building it efficiently</h3>
+<ul>
+<li>Put the block on the checks sheet with a year selector (<code>=INDEX(Row, Sel_Year_Col)</code>) or copy it across all forecast years. Copying across is better because a reviewer sees every year at once.</li>
+<li>Link column E to the <strong>CFS sheet</strong>, not to the schedules. The block tests whether the CFS is correct, so it must use what the CFS actually shows.</li>
+<li>Add a total-difference row and a check that it equals the BS check (with your sign convention). If they do not tie, the block itself is missing a BS line, which is usually a line added to the BS after the block was built.</li>
+<li>Conditional-format column F to highlight any absolute value above 0.001.</li>
+</ul>
+<h3 id="when-the-block-itself-is-the-diagnostic">When the block itself is the diagnostic</h3>
+<p>If every line difference is zero but the BS check is not, a BS line is <strong>missing from the block</strong> or the BS total formula excludes a line (for example, a new "Contract assets" row inserted below the <code>SUM</code> range). Compare the count of BS rows with the count of block rows, and check the BS totals with Trace Precedents.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Reclassifications within the BS</strong> (current maturities of long-term debt, current portion of lease liabilities) should be combined before comparing. Reconcile total borrowings, not current and non-current separately, or the block will show offsetting differences of the reclass amount.</li>
+<li><strong>Disposals:</strong> the PPE line is explained by capex, D&amp;A, NBV of disposals and impairment. The gain on disposal sits in PAT and is deducted in CFO, while proceeds appear in CFI. Map carefully or the block shows a spurious difference equal to the gain.</li>
+<li><strong>OCI items</strong> (remeasurement of defined benefit plans, FVOCI equity investments, cash-flow hedge reserve) move other equity without passing through PAT. If you forecast them, they need a matching BS movement (pension liability, investment, derivative) and no cash.</li>
+<li><strong>Acquisitions and deconsolidations</strong> move many lines at once against "Acquisition of subsidiary, net of cash acquired" in CFI (Ind AS 7.39–42). If the model includes an acquisition, give it a dedicated row in the block.</li>
+<li><strong>Interest accrued but not due</strong> may sit within other financial liabilities. If interest expense differs from interest paid, the difference must appear somewhere on the BS.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>The block converts every BS movement into its cash effect and ties it to the CFS line(s) that should explain it. The total of differences equals the balance check.</li>
+<li>Link the explanation column to the CFS sheet, not the schedules. The block tests what the CFS actually shows.</li>
+<li>Reconcile combined balances (total borrowings, total lease liabilities) so presentation reclassifications do not create noise.</li>
+<li>If all line differences are zero but the BS check is not, a BS line is missing from the block or from a BS total.</li>
+<li>State the sign convention explicitly so the block total ties to the check row with the correct sign.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-complete-the-block-l2">Q1. Complete the block [L2]</h3>
+<p>Hirakud Steel Ltd, FY28E, ₹ crore. BS movements: receivables +45, inventory +60, payables +38, net PPE +90 (capex 250, depreciation 160), borrowings +40, DTL +6, current tax liability −4 (current tax expense 92, tax paid 96), other equity +150 (PAT 210, dividends 60), cash +?. CFS lines: PAT 210, depreciation 160, ΔDTL +6, Δreceivables −45, Δinventory +60, Δpayables +38, Δcurrent tax liability −4, capex −250, borrowings +40, dividends −60. (a) Build the reconciliation block. (b) Identify the error and its size. (c) State the BS check value under the convention A − L − E.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Compute the expected cash effect of each line before comparing it with the CFS.</p>
+</blockquote>
+<h3 id="q2-block-ties-but-check-does-not-l2">Q2. Block ties but check does not [L2]</h3>
+<p>In your model every line in the reconciliation block shows zero difference, yet the BS check is +12.50 in FY27E onwards. The BS has 28 rows and the block has 27. (a) List three structural reasons this can happen. (b) Describe how you would find the missing line using Excel auditing tools. (c) Explain why this situation is a strong argument for generating the block from the BS row list rather than typing it separately.</p>
+<h3 id="q3-disposal-mapping-l2">Q3. Disposal mapping [L2]</h3>
+<p>In FY27E Kosi Logistics Ltd sells trucks with a gross block of ₹30 crore and accumulated depreciation of ₹22 crore for ₹11 crore cash. Depreciation for the year is ₹40 crore and capex is ₹65 crore. (a) Compute the movement in net PPE. (b) Show which CFO and CFI lines explain the movement, including the gain on disposal. (c) Explain the difference the block would show if the modeller included proceeds in CFI but forgot to deduct the gain in CFO.</p>
+<h3 id="q4-designing-a-permanent-block-l3">Q4. Designing a permanent block [L3]</h3>
+<p>You are asked to make the reconciliation block a permanent part of a 5-year integrated model used by an FP&amp;A team that adds new BS lines every quarter. Specify (a) the block's layout across years, (b) how new BS lines are automatically included, (c) the summary check that feeds the checks dashboard, and (d) one control that alerts the user when a BS line is not mapped to any CFS explanation.</p></section>
+<nav class="pager"><a class="prev" href="S03_Halving_Test_for_Sign_Errors_and_Exact_Match.html">← Halving Test for Sign Errors and Exact-Match Search for…</a><a class="next" href="S05_Breaker_Off_Opening_Links_and_Sign_Conventions_in.html">Breaker Off, Opening Links and Sign Conventions in… →</a></nav>
+</main></div></body></html>

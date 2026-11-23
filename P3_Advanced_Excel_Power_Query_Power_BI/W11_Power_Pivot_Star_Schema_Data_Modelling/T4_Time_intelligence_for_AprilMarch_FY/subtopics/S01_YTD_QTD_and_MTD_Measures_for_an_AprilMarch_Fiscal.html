@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YTD, QTD and MTD Measures for an April–March Fiscal Year · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S01_YTD_QTD_and_MTD_Measures_for_an_AprilMarch_Fiscal.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T4 · Time intelligence for April–March FY</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Time intelligence for April–March FY</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_YTD_QTD_and_MTD_Measures_for_an_AprilMarch_Fiscal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S01_YTD_QTD_and_MTD_Measures_for_an_AprilMarch_Fiscal.html">YTD, QTD and MTD Measures for an April–March Fiscal Year</a></li><li><a href="S02_SAMEPERIODLASTYEAR_vs_DATEADD_vs_PARALLELPERIOD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S02_SAMEPERIODLASTYEAR_vs_DATEADD_vs_PARALLELPERIOD.html">SAMEPERIODLASTYEAR vs DATEADD vs PARALLELPERIOD</a></li><li><a href="S03_PY_YTD_YTD_Growth_MoM_and_YoY_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S03_PY_YTD_YTD_Growth_MoM_and_YoY_Measures.html">PY YTD, YTD Growth, MoM % and YoY % Measures</a></li><li><a href="S04_Rolling_12_Month_and_Trailing_3_Month_Windows_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S04_Rolling_12_Month_and_Trailing_3_Month_Windows_with.html">Rolling 12-Month and Trailing 3-Month Windows with DATESINPERIOD</a></li><li><a href="S05_Capping_Time_Intelligence_at_the_Last_Actuals_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S05_Capping_Time_Intelligence_at_the_Last_Actuals_Date.html">Capping Time Intelligence at the Last Actuals Date</a></li><li><a href="S06_Time_Intelligence_Prerequisites_Marked_Contiguous.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S06_Time_Intelligence_Prerequisites_Marked_Contiguous.html">Time-Intelligence Prerequisites: Marked, Contiguous Date Table</a></li><li><a href="S07_Calculation_Groups_and_Field_Parameters_for_Time.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S07_Calculation_Groups_and_Field_Parameters_for_Time.html">Calculation Groups and Field Parameters for Time-Intelligence Views</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_TOTALYTD_with_331_Equals_CALCULATE_with_DATESYTD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C01_TOTALYTD_with_331_Equals_CALCULATE_with_DATESYTD.html">TOTALYTD with &quot;3/31&quot; Equals CALCULATE with DATESYTD</a></li><li><a href="../concepts/C02_PY_YTD_via_SAMEPERIODLASTYEAR_and_the_YoY_Measure.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C02_PY_YTD_via_SAMEPERIODLASTYEAR_and_the_YoY_Measure.html">PY YTD via SAMEPERIODLASTYEAR and the YoY % Measure</a></li><li><a href="../concepts/C03_Prior_Month_Actual_with_DATEADD_and_the_MoM.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C03_Prior_Month_Actual_with_DATEADD_and_the_MoM.html">Prior-Month Actual with DATEADD and the MoM % Measure</a></li><li><a href="../concepts/C04_Rolling_12_Month_Measure_with_DATESINPERIOD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C04_Rolling_12_Month_Measure_with_DATESINPERIOD.html">Rolling 12-Month Measure with DATESINPERIOD</a></li><li><a href="../concepts/C05_Last_Actual_Date_and_Capping_YTD_at_Posted_Data.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C05_Last_Actual_Date_and_Capping_YTD_at_Posted_Data.html">Last Actual Date and Capping YTD at Posted Data</a></li><li><a href="../concepts/C06_Locale_Parsing_of_the_Year_End_String_in_DATESYTD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C06_Locale_Parsing_of_the_Year_End_String_in_DATESYTD.html">Locale Parsing of the Year-End String in DATESYTD</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>YTD, QTD and MTD Measures for an April–March Fiscal Year</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> YTD, QTD and MTD with the fiscal year-end parameter</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Every Indian MIS pack, board note and SEBI LODR Regulation 33 quarterly result is presented on an April–March
+fiscal year: "Q3 FY26" means October–December 2025 and "YTD December" means 1 April to 31 December. A Power BI
+or Power Pivot model that cannot produce these cumulative windows correctly is useless to a CFO office. The
+to-date family of functions (<code>TOTALYTD</code>, <code>TOTALQTD</code>, <code>TOTALMTD</code> and their <code>DATESYTD</code>, <code>DATESQTD</code>, <code>DATESMTD</code>
+table equivalents) is the first time-intelligence block you build, and the year-end parameter is the single
+argument that decides whether your YTD resets in April or wrongly in January.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="what-a-to-date-function-actually-does">What a "to-date" function actually does</h3>
+<p>A to-date function does not aggregate anything by itself. It reads the <strong>last date visible in the current filter
+context</strong> on the Date table, then returns a <em>table of dates</em> from the start of the period (year, quarter or month)
+up to that last date. <code>CALCULATE</code> then replaces the existing date filter with that table and re-evaluates the base
+measure.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Returns</th>
+<th>Period start logic</th>
+<th>Year-end argument?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DATESYTD(dates, [year_end])</code></td>
+<td>Table of dates</td>
+<td>Day after the previous year-end</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>DATESQTD(dates)</code></td>
+<td>Table of dates</td>
+<td>First day of the calendar quarter</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>DATESMTD(dates)</code></td>
+<td>Table of dates</td>
+<td>First day of the month</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>TOTALYTD(expr, dates, [filter], [year_end])</code></td>
+<td>Scalar</td>
+<td>Wraps <code>CALCULATE(expr, DATESYTD(...))</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>TOTALQTD(expr, dates, [filter])</code></td>
+<td>Scalar</td>
+<td>Wraps <code>CALCULATE(expr, DATESQTD(...))</code></td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>TOTALMTD(expr, dates, [filter])</code></td>
+<td>Scalar</td>
+<td>Wraps <code>CALCULATE(expr, DATESMTD(...))</code></td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-year-end-parameter">The year-end parameter</h3>
+<p><code>DATESYTD</code> and <code>TOTALYTD</code> accept a year-end string such as <code>"3/31"</code>. The year part, if supplied, is ignored; only
+day and month matter. Without it the function assumes 31 December, so on Indian books a "YTD November" value would
+cover only January–November of the calendar year, straddling two fiscal years.</p>
+<pre><code class="language-DAX">YTD Actual = TOTALYTD ( [Actual], 'Date'[Date], &quot;3/31&quot; )
+
+YTD Actual (table form) =
+CALCULATE ( [Actual], DATESYTD ( 'Date'[Date], &quot;3/31&quot; ) )
+</code></pre>
+<p>The string is interpreted in the locale of the model, so in some en-IN or en-GB models <code>"31/3"</code> is required
+(covered in c06). The test is always behavioural: put fiscal month on rows and confirm that the April row equals
+the April monthly value.</p>
+<h3 id="why-qtd-and-mtd-need-no-parameter">Why QTD and MTD need no parameter</h3>
+<p>The April–March year is aligned to calendar quarters: fiscal Q1 = April–June = calendar Q2, fiscal Q2 = July–
+September = calendar Q3, and so on. <code>DATESQTD</code> simply finds the start of the calendar quarter containing the last
+visible date, which is also the start of the fiscal quarter. Quarter <em>labels</em> differ (calendar "Q2" vs fiscal "Q1"),
+but those come from your Date table columns, not from the function. Months are identical in both calendars, so MTD
+needs nothing either.</p>
+<pre><code class="language-DAX">QTD Actual = TOTALQTD ( [Actual], 'Date'[Date] )
+MTD Actual = TOTALMTD ( [Actual], 'Date'[Date] )
+</code></pre>
+<p>A company with a non-March year-end (for example a subsidiary of a foreign parent reporting January–December, or
+a 30 September year-end for group reporting) would need its own year-end string, and if its quarters do not align
+to calendar quarters, QTD would need custom logic using fiscal quarter columns.</p>
+<h3 id="the-optional-filter-argument">The optional filter argument</h3>
+<p><code>TOTALYTD(expr, dates, filter, year_end)</code> takes an optional filter as the third argument. This trips people up: if
+you write <code>TOTALYTD([Actual], 'Date'[Date], "3/31")</code> the third position is read as the year end because it is a
+string literal; if you want a filter <em>and</em> a year end you must supply both in order:</p>
+<pre><code class="language-DAX">YTD Revenue = TOTALYTD ( [Actual], 'Date'[Date], CoA[FSLine] = &quot;Revenue&quot;, &quot;3/31&quot; )
+</code></pre>
+<p>Many teams standardise on the <code>CALCULATE</code> + <code>DATESYTD</code> form because positional ambiguity disappears and additional
+filters can be added freely.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>GL revenue (credits shown as positive after sign-flip), FY26 in ₹ lakh:</p>
+<table>
+<thead>
+<tr>
+<th>Month</th>
+<th>Monthly</th>
+<th>YTD (with "3/31")</th>
+<th>YTD (no year-end)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nov 2025</td>
+<td>410</td>
+<td>3,020</td>
+<td>3,400 (Jan–Nov 2025)</td>
+</tr>
+<tr>
+<td>Dec 2025</td>
+<td>450</td>
+<td>3,470</td>
+<td>3,850</td>
+</tr>
+<tr>
+<td>Jan 2026</td>
+<td>380</td>
+<td>3,850</td>
+<td>380 (reset!)</td>
+</tr>
+<tr>
+<td>Feb 2026</td>
+<td>400</td>
+<td>4,250</td>
+<td>780</td>
+</tr>
+<tr>
+<td>Mar 2026</td>
+<td>520</td>
+<td>4,770</td>
+<td>1,300</td>
+</tr>
+</tbody>
+</table>
+<p>The column without the year-end looks plausible until January, when it resets. The Q4 QTD for March would be
+380 + 400 + 520 = 1,300, which is correct under either setting because Q4 FY26 = calendar Q1 2026.</p>
+<h3 id="at-different-visual-granularities">At different visual granularities</h3>
+<ul>
+<li><strong>Month row:</strong> last date = month-end; YTD = 1 April to that month-end.</li>
+<li><strong>Quarter row:</strong> last date = quarter-end; YTD = 1 April to quarter-end.</li>
+<li><strong>FY row or total:</strong> last date = 31 March; YTD = full year (so YTD at FY level equals the full-year sum).</li>
+<li><strong>Day level:</strong> YTD to that day, useful for daily cash or sales flash reports.</li>
+</ul>
+<p>If the Date table extends into future months with no actuals, the FY-level YTD equals the YTD to the last
+posted date, which is correct as a number but labelled "FY26" — see s05 on capping.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Balance sheet accounts:</strong> YTD of a balance is meaningless (it sums movements, not balances); use the closing
+  balance patterns of topic t5. YTD of BS <em>movements</em> is legitimate (e.g., YTD capex additions).</li>
+<li><strong>Filters on non-date columns of the Date table:</strong> if the user slices on <code>'Date'[FY Label]</code>, <code>DATESYTD</code> still
+  works because a marked Date table automatically removes other Date-table filters when the date column is
+  replaced. On an unmarked table related through an integer key, that removal does not occur and YTD collapses to
+  the month — mark the table.</li>
+<li><strong>Fiscal-month slicer for "YTD as of":</strong> a single-select month slicer gives the as-of month; selecting multiple
+  months makes the last selected month the as-of point, which surprises users. Use a single-select slicer.</li>
+<li><strong>Multi-entity groups with different year ends:</strong> one measure cannot serve two year ends; either standardise
+  reporting to March or create per-entity YTD logic using fiscal columns.</li>
+<li><strong>Opening entries dated 1 April:</strong> they fall inside YTD of every month for P&amp;L if they hit P&amp;L accounts by
+  mistake; check that opening-balance vouchers hit only BS accounts.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>To-date functions return a table of dates ending at the last visible date; <code>CALCULATE</code> applies it.</li>
+<li><code>"3/31"</code> (or the locale-equivalent <code>"31/3"</code>) is mandatory for YTD on Indian books; QTD and MTD need no year-end.</li>
+<li><code>TOTALYTD</code> is syntactic sugar for <code>CALCULATE(..., DATESYTD(...))</code>; the table form avoids positional confusion.</li>
+<li>Always validate that the April YTD equals the April month and that March YTD equals the FY total.</li>
+<li>YTD applies to flows; balances need semi-additive patterns.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-diagnose-a-january-reset-l1">Q1. Diagnose a January reset [L1]</h3>
+<p>A user reports that the YTD Revenue in your report drops from ₹ 38.5 crore in December 2025 to ₹ 3.8 crore in
+January 2026. The measure is <code>YTD Revenue = TOTALYTD([Revenue], 'Date'[Date])</code>. Explain the cause and rewrite the
+measure in both the <code>TOTALYTD</code> and the <code>CALCULATE</code> + <code>DATESYTD</code> forms.</p>
+<h3 id="q2-build-a-qtdytd-matrix-for-sebi-results-l2">Q2. Build a QTD/YTD matrix for SEBI results [L2]</h3>
+<p>Monthly revenue for FY25 (₹ crore): Apr 12, May 14, Jun 13, Jul 15, Aug 16, Sep 15, Oct 18, Nov 17, Dec 19,
+Jan 16, Feb 15, Mar 21. Lay out the values your QTD and YTD measures must show for each month, label each
+quarter in fiscal terms (Q1 FY25 … Q4 FY25), and state which test rows you would use to prove the model is correct.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Fiscal quarters coincide with calendar quarters shifted by one label; check the first month of each quarter.</p>
+</blockquote>
+<h3 id="q3-filter-argument-versus-year-end-argument-l2">Q3. Filter argument versus year-end argument [L2]</h3>
+<p>A colleague writes <code>YTD Opex = TOTALYTD([Actual], 'Date'[Date], "3/31", CoA[Statement] = "PL")</code>. Explain what
+DAX will do with each argument, whether it will error, and write a correct version that returns YTD opex for
+cost centres in the "Corporate" division only.</p>
+<h3 id="q4-non-aligned-group-year-end-l3">Q4. Non-aligned group year-end [L3]</h3>
+<p>Your Indian subsidiary (March year-end) consolidates into a parent with a 30 September year-end, and the parent
+wants a "Parent-YTD" view alongside the Indian "FY-YTD" view in the same report. Design the measures and any Date
+table columns needed, explain why QTD may or may not need custom logic for the parent view, and describe the
+reconciliation test you would run between the two views for the six months October–March.</p>
+<h3 id="q5-ytd-on-balance-sheet-lines-l1">Q5. YTD on balance sheet lines [L1]</h3>
+<p>A junior analyst applies <code>YTD Actual</code> to the Trade Receivables line and shows ₹ 9,800 lakh at December when the
+trial balance shows ₹ 1,150 lakh. Explain what the YTD number represents and which kind of measure should be used
+instead.</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← Time intelligence for April–March FY</a><a class="next" href="S02_SAMEPERIODLASTYEAR_vs_DATEADD_vs_PARALLELPERIOD.html">SAMEPERIODLASTYEAR vs DATEADD vs PARALLELPERIOD →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SORT and SORTBY for Top-N Expense and Ranked Ageing Reports · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S04_SORT_and_SORTBY_for_Top_N_Expense_and_Ranked.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T4 · Dynamic arrays and LET/LAMBDA</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Dynamic arrays and LET/LAMBDA</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Spill_Behaviour_SPILL_the_Operator_and_Implicit.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S01_Spill_Behaviour_SPILL_the_Operator_and_Implicit.html">Spill Behaviour, #SPILL!, the # Operator and Implicit Intersection</a></li><li><a href="S02_FILTER_with_ANDOR_Logic_for_Exception_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S02_FILTER_with_ANDOR_Logic_for_Exception_Lists.html">FILTER with AND/OR Logic for Exception Lists</a></li><li><a href="S03_UNIQUE_for_Dynamic_CoA_and_Department_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S03_UNIQUE_for_Dynamic_CoA_and_Department_Lists.html">UNIQUE for Dynamic CoA and Department Lists</a></li><li><a href="S04_SORT_and_SORTBY_for_Top_N_Expense_and_Ranked.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S04_SORT_and_SORTBY_for_Top_N_Expense_and_Ranked.html">SORT and SORTBY for Top-N Expense and Ranked Ageing Reports</a></li><li><a href="S05_SEQUENCE_for_Monthly_Timelines_Loan_Schedules_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S05_SEQUENCE_for_Monthly_Timelines_Loan_Schedules_and.html">SEQUENCE for Monthly Timelines, Loan Schedules and Period Counters</a></li><li><a href="S06_LET_for_Named_Steps_and_LAMBDA_Functions_in_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S06_LET_for_Named_Steps_and_LAMBDA_Functions_in_Name.html">LET for Named Steps and LAMBDA Functions in Name Manager</a></li><li><a href="S07_LAMBDA_Helpers_and_Array_Reshaping_Functions.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S07_LAMBDA_Helpers_and_Array_Reshaping_Functions.html">LAMBDA Helpers and Array Reshaping Functions</a></li><li><a href="S08_GROUPBY_and_PIVOTBY_as_Formula_Based_Pivots.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S08_GROUPBY_and_PIVOTBY_as_Formula_Based_Pivots.html">GROUPBY and PIVOTBY as Formula-Based Pivots</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_FILTER_with_Two_AND_Conditions_and_an_ifempty.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C01_FILTER_with_Two_AND_Conditions_and_an_ifempty.html">FILTER with Two AND Conditions and an if_empty Message</a></li><li><a href="../concepts/C02_Sorted_Unique_Account_List_for_a_Selected_FY.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C02_Sorted_Unique_Account_List_for_a_Selected_FY.html">Sorted Unique Account List for a Selected FY</a></li><li><a href="../concepts/C03_Top_10_Vendors_by_Spend_with_TAKE_and_SORTBY.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C03_Top_10_Vendors_by_Spend_with_TAKE_and_SORTBY.html">Top 10 Vendors by Spend with TAKE and SORTBY</a></li><li><a href="../concepts/C04_EOMONTH_with_SEQUENCE_for_Horizontal_Month_End.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C04_EOMONTH_with_SEQUENCE_for_Horizontal_Month_End.html">EOMONTH with SEQUENCE for Horizontal Month-End Headers</a></li><li><a href="../concepts/C05_LET_for_a_Safe_Gross_Margin_Calculation.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C05_LET_for_a_Safe_Gross_Margin_Calculation.html">LET for a Safe Gross Margin Calculation</a></li><li><a href="../concepts/C06_FYEND_A_Named_LAMBDA_for_the_Indian_Financial_Year.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C06_FYEND_A_Named_LAMBDA_for_the_Indian_Financial_Year.html">FYEND: A Named LAMBDA for the Indian Financial Year</a></li><li><a href="../concepts/C07_SCAN_for_Running_Closing_Balances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C07_SCAN_for_Running_Closing_Balances.html">SCAN for Running Closing Balances</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>SORT and SORTBY for Top-N Expense and Ranked Ageing Reports</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> SORT/SORTBY for top-N expense reports and ageing ranked by amount</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Management rarely wants the full list; it wants the top 10 vendors by spend, the 20 largest overdue debtors, the five cost lines that drove the variance. CFO packs and board MIS for listed companies routinely include "top-N" tables, and auditors use ranked lists to select high-value samples. The traditional approach — PivotTable sorted descending, then copy the top rows — is manual and breaks every month. SORT and SORTBY produce the ranked list live from the data, and combined with TAKE they give a self-updating top-N table. This is one of the three named challenges in the Week 9 speed test (dynamic top-N expense filter).</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="sort">SORT</h3>
+<pre><code class="language-excel">=SORT(array, [sort_index], [sort_order], [by_col])
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Default</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>array</td>
+<td>—</td>
+<td>Range or array to sort</td>
+</tr>
+<tr>
+<td>sort_index</td>
+<td>1</td>
+<td>Column number <em>within array</em> to sort by (or row number if by_col)</td>
+</tr>
+<tr>
+<td>sort_order</td>
+<td>1</td>
+<td>1 ascending, -1 descending</td>
+</tr>
+<tr>
+<td>by_col</td>
+<td>FALSE</td>
+<td>TRUE sorts columns left-to-right</td>
+</tr>
+</tbody>
+</table>
+<p>Multi-level sort: pass array constants — <code>SORT(data, {2,3}, {1,-1})</code> sorts by column 2 ascending, then column 3 descending.</p>
+<h3 id="sortby">SORTBY</h3>
+<pre><code class="language-excel">=SORTBY(array, by_array1, [sort_order1], [by_array2, sort_order2], ...)
+</code></pre>
+<p>SORTBY sorts by arrays that need <strong>not</strong> be part of the output, and that can be computed. That makes it the better tool for finance reports:</p>
+<ul>
+<li>Sort a vendor list by a SUMIFS total that is not displayed.</li>
+<li>Sort by a computed days-overdue array.</li>
+<li>Sort by a custom order (e.g. Schedule III sort key looked up from the mapping table).</li>
+</ul>
+<p>Each <code>by_array</code> must be the same height (or width) as <code>array</code>.</p>
+<h3 id="top-n-pattern">Top-N pattern</h3>
+<p>Raw transactions must be aggregated before ranking — sorting invoice lines and taking the top 10 returns the 10 largest <em>invoices</em>, not the top 10 <em>vendors</em>.</p>
+<pre><code class="language-excel">=LET(
+   v, UNIQUE(Exp[Vendor]),
+   amt, SUMIFS(Exp[Amount], Exp[Vendor], v),
+   tbl, HSTACK(v, amt),
+   TAKE(SORTBY(tbl, amt, -1), N))
+</code></pre>
+<ul>
+<li><code>N</code> is a named input (e.g. 10) so the user can switch to top 5 or top 20.</li>
+<li>TAKE with a positive count returns the first N rows; if fewer rows exist, it returns all of them without error.</li>
+<li>Add a share-of-total column: <code>HSTACK(v, amt, amt/SUM(amt))</code> before sorting.</li>
+<li>Add a rank column: <code>SEQUENCE(MIN(N, ROWS(v)))</code> prepended with HSTACK.</li>
+</ul>
+<p>In Microsoft 365 with GROUPBY available (s08), the aggregation step can be <code>GROUPBY(Exp[Vendor], Exp[Amount], SUM)</code> sorted by the value column.</p>
+<h3 id="top-n-with-an-all-others-line">Top-N with an "All others" line</h3>
+<p>Board packs often show top 10 plus "Others" so the table still ties to total spend. Compute "Others" as total minus the top-N total (rather than summing the remainder with DROP, which errors when fewer than N vendors exist):</p>
+<pre><code class="language-excel">=LET(
+   v, UNIQUE(Exp[Vendor]),
+   amt, SUMIFS(Exp[Amount], Exp[Vendor], v),
+   s, SORTBY(HSTACK(v, amt), amt, -1),
+   top, TAKE(s, N),
+   VSTACK(top,
+          HSTACK(&quot;All others&quot;, SUM(amt) - SUM(TAKE(CHOOSECOLS(s,2), N))),
+          HSTACK(&quot;Total&quot;, SUM(amt))))
+</code></pre>
+<p>The total row equals the TB expense balance for the period — put a check cell beside it.</p>
+<h3 id="ageing-ranked-by-amount">Ageing ranked by amount</h3>
+<p>For debtors, rank customers by total overdue balance and show bucket split:</p>
+<pre><code class="language-excel">=LET(
+   c, UNIQUE(AR[Customer]),
+   od, RptDate - AR[DueDate],
+   b1, SUMIFS(AR[Balance], AR[Customer], c, AR[DueDate], &quot;&gt;=&quot;&amp;(RptDate-30)),
+   b2, SUMIFS(AR[Balance], AR[Customer], c, AR[DueDate], &quot;&lt;&quot;&amp;(RptDate-30), AR[DueDate], &quot;&gt;=&quot;&amp;(RptDate-90)),
+   b3, SUMIFS(AR[Balance], AR[Customer], c, AR[DueDate], &quot;&lt;&quot;&amp;(RptDate-90)),
+   tot, b1 + b2 + b3,
+   SORTBY(HSTACK(c, b1, b2, b3, tot), b3, -1, tot, -1))
+</code></pre>
+<p>This sorts primarily by the &gt;90-day bucket (the ECL-relevant risk) and then by total. SUMIFS criteria on dates are built from the report-date cell, never typed dates — the same discipline as in w9_t1. (The <code>od</code> variable is shown for clarity; it can be used instead to build bucket flags with SUMPRODUCT-style arithmetic.)</p>
+<h3 id="illustration">Illustration</h3>
+<p>FY26 Q4 expense lines summarised:</p>
+<table>
+<thead>
+<tr>
+<th>Vendor</th>
+<th>Q4 spend (₹ lakh)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kaveri Packaging</td>
+<td>84.2</td>
+</tr>
+<tr>
+<td>Shree Logistics</td>
+<td>61.5</td>
+</tr>
+<tr>
+<td>Nimbus IT</td>
+<td>12.8</td>
+</tr>
+<tr>
+<td>Om Consultants</td>
+<td>47.0</td>
+</tr>
+<tr>
+<td>Delta Power</td>
+<td>39.9</td>
+</tr>
+<tr>
+<td>41 other vendors</td>
+<td>118.6</td>
+</tr>
+</tbody>
+</table>
+<p>With N = 3, the output is Kaveri 84.2, Shree 61.5, Om 47.0, All others 218.3, Total 363.9. Changing N to 5 re-cuts the table instantly; the total stays at 363.9, which ties to the Q4 expense ledgers.</p>
+<h3 id="ties">Ties</h3>
+<p>SORTBY is a stable sort — equal values keep their original relative order — but TAKE then cuts arbitrarily at the boundary. If vendor 10 and 11 have equal spend, only one shows. Add a secondary sort key (vendor code) for deterministic output, or disclose ties.</p>
+<h3 id="sort-order-for-statements">Sort order for statements</h3>
+<p>Do not alphabetically sort an income statement. Sort by the mapping-table sort key using SORTBY with an XLOOKUP-derived array:</p>
+<pre><code class="language-excel">=SORTBY(Lines, XLOOKUP(Lines, Map[FSLine], Map[SortKey]), 1)
+</code></pre>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Sign conventions.</strong> If expenses are negative in the GL (credit-positive convention), sort ascending or negate the amount; otherwise the "top 10" will be the smallest spend.</li>
+<li><strong>Credit notes and reversals.</strong> A vendor with a large invoice and a full reversal nets to zero; aggregate before ranking, or the reversed invoice will show as a top item.</li>
+<li><strong>Related parties.</strong> Top-N vendor tables in board packs may need related-party flags (Ind AS 24); add a lookup column.</li>
+<li><strong>TAKE vs INDEX/SEQUENCE.</strong> In older Microsoft 365 builds without TAKE, use <code>INDEX(sorted, SEQUENCE(N), {1,2})</code>.</li>
+<li><strong>Volatile N.</strong> Validate N as a whole number 1–50 with Data Validation (w9_t6) so a user typing 0 does not produce an empty table.</li>
+<li><strong>Performance.</strong> UNIQUE + SUMIFS + SORTBY over 100k+ lines is fine; over 1 million rows, aggregate in Power Query or the Data Model.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>SORT sorts by a column inside the array; SORTBY sorts by any same-size array, including computed ones.</li>
+<li>Aggregate (UNIQUE + SUMIFS or GROUPBY) before ranking, then TAKE the top N.</li>
+<li>Drive N from an input cell and add "All others" and "Total" rows so the table ties to the TB.</li>
+<li>Use multi-key sorts for deterministic ordering and for ageing (oldest bucket first, then total).</li>
+<li>Statements are sorted by mapping sort keys, never alphabetically.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-sort-arguments-l1">Q1. SORT arguments [L1]</h3>
+<p>Range A2:D500 holds Vendor, State, Invoices, Amount. Write formulas to (a) sort by Amount descending; (b) sort by State ascending then Amount descending; (c) return only Vendor and Amount sorted by Amount descending, using CHOOSECOLS.</p>
+<h3 id="q2-top-n-with-others-and-tie-out-l2">Q2. Top-N with Others and tie-out [L2]</h3>
+<p>Table <code>Exp</code> has Date, Vendor, VendorCode, Ledger, Amount for FY26 (positive = expense). Build a single formula that returns the top N vendors by spend for a date range defined by inputs <code>FromDt</code> and <code>ToDt</code>, followed by "All others" and "Total" rows. Explain where you would place a check cell and what it compares to.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Filter by date before UNIQUE, and keep the filtered vendor and amount arrays in LET variables.</p>
+</blockquote>
+<h3 id="q3-ranked-ageing-for-ecl-review-l2">Q3. Ranked ageing for ECL review [L2]</h3>
+<p>AR Table has Customer, InvoiceNo, DueDate, Balance. Report date is 31-Mar-2026. Write a formula producing customer-wise balances in buckets 0–30, 31–90, 91–180 and &gt;180 days past due, sorted by the &gt;180 bucket descending and then total descending. State how the output would feed an Ind AS 109 provision matrix.</p>
+<h3 id="q4-why-is-the-top-10-wrong-l2">Q4. Why is the top 10 wrong? [L2]</h3>
+<p>A junior's "top 10 vendors" formula is <code>=TAKE(SORT(Exp, 5, -1), 10)</code>. The CFO notices one vendor appears three times and a vendor with ₹2 crore annual spend is missing. Explain both problems and rewrite the formula.</p>
+<h3 id="q5-interview-sort-vs-sortby-l1">Q5. Interview: SORT vs SORTBY [L1]</h3>
+<p>In an interview you are asked, "When would you use SORTBY instead of SORT?" Give two finance-specific examples where SORT cannot do the job.</p></section>
+<nav class="pager"><a class="prev" href="S03_UNIQUE_for_Dynamic_CoA_and_Department_Lists.html">← UNIQUE for Dynamic CoA and Department Lists</a><a class="next" href="S05_SEQUENCE_for_Monthly_Timelines_Loan_Schedules_and.html">SEQUENCE for Monthly Timelines, Loan Schedules and Period… →</a></nav>
+</main></div></body></html>

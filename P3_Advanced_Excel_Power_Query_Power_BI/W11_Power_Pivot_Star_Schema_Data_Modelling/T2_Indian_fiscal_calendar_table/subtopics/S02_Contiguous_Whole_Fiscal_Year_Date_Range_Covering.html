@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contiguous Whole-Fiscal-Year Date Range Covering All Facts · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S02_Contiguous_Whole_Fiscal_Year_Date_Range_Covering.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T2 · Indian fiscal calendar table</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Indian fiscal calendar table</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Building_the_Date_Dimension_DAX_CALENDAR_vs_Power.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S01_Building_the_Date_Dimension_DAX_CALENDAR_vs_Power.html">Building the Date Dimension: DAX CALENDAR vs Power Query List.Dates</a></li><li><a href="S02_Contiguous_Whole_Fiscal_Year_Date_Range_Covering.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S02_Contiguous_Whole_Fiscal_Year_Date_Range_Covering.html">Contiguous Whole-Fiscal-Year Date Range Covering All Facts</a></li><li><a href="S03_Fiscal_Calendar_Columns_FY_Quarter_Month_Week_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S03_Fiscal_Calendar_Columns_FY_Quarter_Month_Week_and.html">Fiscal Calendar Columns: FY, Quarter, Month, Week and Period Key</a></li><li><a href="S04_Sort_by_Column_Fiscal_Month_Order_Starting_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S04_Sort_by_Column_Fiscal_Month_Order_Starting_in.html">Sort by Column: Fiscal Month Order Starting in April</a></li><li><a href="S05_Month_and_FY_Offset_Columns_for_Dynamic_Period.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S05_Month_and_FY_Offset_Columns_for_Dynamic_Period.html">Month and FY Offset Columns for Dynamic Period Filters</a></li><li><a href="S06_Mark_as_Date_Table_and_Turn_Off_Auto_DateTime.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S06_Mark_as_Date_Table_and_Turn_Off_Auto_DateTime.html">Mark as Date Table and Turn Off Auto Date/Time</a></li><li><a href="S07_Working_Day_Flags_and_Indian_Holidays_for_Close.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S07_Working_Day_Flags_and_Indian_Holidays_for_Close.html">Working-Day Flags and Indian Holidays for Close Metrics</a></li><li><a href="S08_IsClosedPeriod_and_IsYTD_Flags_for_Like_for_Like.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S08_IsClosedPeriod_and_IsYTD_Flags_for_Like_for_Like.html">IsClosedPeriod and IsYTD Flags for Like-for-Like Comparisons</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_DAX_Fiscal_Date_Table_with_an_FYEnd_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C01_DAX_Fiscal_Date_Table_with_an_FYEnd_Column.html">DAX Fiscal Date Table with an FYEnd Column</a></li><li><a href="../concepts/C02_CALENDARAUTO3_for_Whole_March_Ending_Fiscal_Years.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C02_CALENDARAUTO3_for_Whole_March_Ending_Fiscal_Years.html">CALENDARAUTO(3) for Whole March-Ending Fiscal Years</a></li><li><a href="../concepts/C03_Fiscal_Month_and_Fiscal_Quarter_Formulas.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C03_Fiscal_Month_and_Fiscal_Quarter_Formulas.html">Fiscal Month and Fiscal Quarter Formulas</a></li><li><a href="../concepts/C04_Fiscal_Week_Number_Anchored_on_1_April.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C04_Fiscal_Week_Number_Anchored_on_1_April.html">Fiscal Week Number Anchored on 1 April</a></li><li><a href="../concepts/C05_Month_Offset_from_Today.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C05_Month_Offset_from_Today.html">Month Offset from Today</a></li><li><a href="../concepts/C06_Power_Query_Date_List_with_ListDates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C06_Power_Query_Date_List_with_ListDates.html">Power Query Date List with List.Dates</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Contiguous Whole-Fiscal-Year Date Range Covering All Facts</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> A contiguous range covering whole fiscal years, 1 April to 31 March, across all fact dates</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Time-intelligence functions assume the Date table is <strong>contiguous</strong> (no missing days) and <strong>covers complete
+years</strong> as defined by your year-end. If the calendar starts on the first posting date (say 3 April 2022) or ends on
+the last posting date (say 18 November 2025), measures such as <code>TOTALYTD</code> with "3/31", <code>SAMEPERIODLASTYEAR</code>,
+<code>DATEADD(..., -1, YEAR)</code> and <code>CLOSINGBALANCEYEAR</code> return blanks or partial results at the edges. The same failures
+appear for budget (which runs to 31 March 2026) and due dates (which can run months ahead). Getting the range right
+is a five-minute task that prevents hours of "why is March PY blank?" debugging.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-three-requirements">The three requirements</h3>
+<ol>
+<li><strong>Contiguous:</strong> every calendar day between the first and last date appears exactly once. No gaps for Sundays,
+   holidays or days without postings — the Date table is a calendar, not a list of posting dates.</li>
+<li><strong>Whole fiscal years:</strong> the first date is <strong>1 April</strong> and the last date is <strong>31 March</strong> of the respective years.</li>
+<li><strong>Covers every date in every fact:</strong> GL posting, document and due dates; Budget MonthStart/MonthEnd; TB
+   MonthEnd; forecast months; any date used in an inactive relationship.</li>
+</ol>
+<h3 id="determining-the-range">Determining the range</h3>
+<p>Compute the earliest and latest relevant dates, then round outward to fiscal-year boundaries:</p>
+<p>\[
+\text{Start} = \text{DATE}(\text{FYStartYear}(d_{\min}), 4, 1), \qquad \text{End} = \text{DATE}(\text{FYEndYear}(d_{\max}), 3, 31)
+\]</p>
+<p>where \(d_{\min}\) and \(d_{\max}\) are the earliest and latest dates across all fact date columns,
+\(\text{FYStartYear}(d) = \text{YEAR}(d)\) if \(\text{MONTH}(d) \ge 4\), otherwise \(\text{YEAR}(d) - 1\), and
+\(\text{FYEndYear}(d) = \text{FYStartYear}(d) + 1\).</p>
+<p>DAX implementation with model-driven bounds:</p>
+<pre><code class="language-DAX">Date =
+VAR MinFact =
+    MINX ( { MIN ( GL[PostingDate] ), MIN ( Budget[MonthStart] ), MIN ( TB[MonthEnd] ) }, [Value] )
+VAR MaxFact =
+    MAXX ( { MAX ( GL[PostingDate] ), MAX ( GL[DueDate] ), MAX ( Budget[MonthStart] ), MAX ( TB[MonthEnd] ) }, [Value] )
+VAR StartYr = IF ( MONTH ( MinFact ) &gt;= 4, YEAR ( MinFact ), YEAR ( MinFact ) - 1 )
+VAR EndYr   = IF ( MONTH ( MaxFact ) &gt;= 4, YEAR ( MaxFact ) + 1, YEAR ( MaxFact ) )
+RETURN
+    CALENDAR ( DATE ( StartYr, 4, 1 ), DATE ( EndYr, 3, 31 ) )
+</code></pre>
+<p><code>CALENDARAUTO(3)</code> does the same rounding automatically across all date columns in the model (concept c02) but
+includes every date column, which can be dangerous (see edge cases).</p>
+<p>In Power Query, use the same logic with <code>List.Min</code> / <code>List.Max</code> over the fact queries, or (preferred for governance)
+fixed parameters reviewed once a year — e.g. Start = 1-Apr-2019 (oldest year in scope for five-year trend plus
+comparatives), End = 31-Mar of the year after the current budget/forecast horizon.</p>
+<h3 id="why-whole-years-matter-mechanics">Why whole years matter — mechanics</h3>
+<ul>
+<li><strong>TOTALYTD / DATESYTD</strong> build the set of dates from the start of the fiscal year to the last date in context,
+  limited to dates that exist in the Date table. A calendar starting on the first posting date (3 April) usually
+  gives correct YTD actuals, but any fact row dated before the calendar start — an opening-balance journal on
+  31 March, a budget row on 1 April — has no matching date, falls into the "(Blank)" member and is excluded from
+  every date-filtered measure. The more visible failures come from the functions below.</li>
+<li><strong>SAMEPERIODLASTYEAR / DATEADD</strong> shift the dates in context by a year and return only dates that exist in the
+  Date table. If the current selection is March 2026 and the calendar starts 1 April 2025, the shifted dates (March
+  2025) are not in the table, so PY returns blank. That is correct only if you have no PY data.</li>
+<li><strong>PARALLELPERIOD / PREVIOUSYEAR / NEXTYEAR</strong> return whole periods; missing days at the edges produce partial
+  totals.</li>
+<li><strong>CLOSINGBALANCEYEAR(…, "3/31")</strong> evaluates at 31 March; if the calendar ends 18 November, the FY2025-26 closing
+  balance is blank.</li>
+<li><strong>Mark as Date Table</strong> requires contiguous unique dates; it does not strictly require whole years, but Microsoft's
+  guidance and DAX time-intelligence semantics assume them.</li>
+<li><strong>Fiscal week and offsets:</strong> week 1 must start on 1 April; offset columns assume every month is present.</li>
+</ul>
+<h3 id="covering-future-dates">Covering future dates</h3>
+<p>Budgets and forecasts usually run to the end of the current FY (or beyond, for a three-year plan). Due dates on
+long-credit or retention invoices can extend a year or more. Extend the calendar to the end of the latest fiscal year
+containing such dates. Future dates do no harm if measures cap at the last actuals date (s08 and topic 4).</p>
+<h3 id="illustration">Illustration</h3>
+<p>GL posting dates: 2-Apr-2022 to 18-Nov-2025. Due dates up to 14-Jun-2026. Budget FY2025-26 (MonthStart up to
+1-Mar-2026). TB month-ends from 30-Apr-2022. Range:</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Earliest date</td>
+<td>2-Apr-2022 → FY2022-23 → start 1-Apr-2022</td>
+</tr>
+<tr>
+<td>Latest date</td>
+<td>14-Jun-2026 → FY2026-27 → end 31-Mar-2027</td>
+</tr>
+<tr>
+<td>Rows</td>
+<td>1,826 (five fiscal years including leap day 29-Feb-2024)</td>
+</tr>
+</tbody>
+</table>
+<p>Had the calendar run 2-Apr-2022 to 18-Nov-2025, the November 2025 YTD would be correct, but PY YTD comparisons for
+April 2022 months and closing balances for FY2025-26 would fail, and receivables due in 2026 would fall into
+"(Blank)" for due-date measures.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Junk dates.</strong> Placeholder dates like 01-01-1900 (Tally/ERP default for blank) or 31-12-9999 in a contract end
+  column will stretch a model-driven range to centuries. Clean these to null in Power Query, or use fixed bounds.</li>
+<li><strong>Birth dates and joining dates</strong> in an HR dimension are model date columns; <code>CALENDARAUTO</code> will include them.</li>
+<li><strong>Multiple year-ends.</strong> If one subsidiary has a December year-end (foreign parent), keep the Date table
+  contiguous and covering both; add separate calendar-year and fiscal-year attributes rather than two tables.</li>
+<li><strong>Very long history.</strong> Twenty years of daily dates is only ~7,300 rows; size is never the reason to truncate.</li>
+<li><strong>Opening balance entries</strong> dated 31-Mar of the year before the first full year (e.g. 31-Mar-2022 for a GL
+  starting FY2022-23) require the calendar to include FY2021-22, or the entry to be redated to 1-Apr-2022.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>The Date table must be contiguous, start on 1 April and end on 31 March, and cover every fact date.</li>
+<li>Round the earliest and latest fact dates outward to fiscal-year boundaries.</li>
+<li>PY, DATEADD and closing-balance functions return blanks or partials when the range is cut short.</li>
+<li>Include future budget, forecast and due dates; cap measures at the last actuals date instead of truncating.</li>
+<li>Clean placeholder dates before using a model-driven range; prefer reviewed fixed bounds for governance.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-compute-the-range-l1">Q1. Compute the range [L1]</h3>
+<p>Fact dates: GL 15-Jun-2021 to 28-Feb-2026; Budget MonthStart 1-Apr-2025 to 1-Mar-2027 (two-year plan); TB month-ends
+30-Jun-2021 onwards; AP due dates up to 30-Sep-2026. State the start and end dates of the fiscal calendar and the
+number of fiscal years.</p>
+<h3 id="q2-diagnose-blank-py-l2">Q2. Diagnose blank PY [L2]</h3>
+<p>A matrix shows FY2025-26 months with <code>[PY Actual] = CALCULATE([Actual], SAMEPERIODLASTYEAR('Date'[Date]))</code>. April
+to June 2025 show PY values, but July 2025 to March 2026 show blank. The Date table was built with
+<code>CALENDAR(MIN(GL[PostingDate]), MAX(GL[PostingDate]))</code> and GL starts 1-Jul-2024. Explain the result fully and fix it.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider both what is in the Date table and what is in GL for the shifted dates.</p>
+</blockquote>
+<h3 id="q3-write-the-bounded-dax-l2">Q3. Write the bounded DAX [L2]</h3>
+<p>Write a DAX calculated table whose range is derived from GL posting dates and Budget MonthStart, rounded to whole
+fiscal years, ignoring any GL date before 1-Apr-2000 as a placeholder.</p>
+<h3 id="q4-opening-entry-date-l3">Q4. Opening entry date [L3]</h3>
+<p>A company migrated from Tally to SAP on 1-Apr-2024 and loaded opening balances as a journal dated 31-Mar-2024 in
+the new GL. The Date table starts 1-Apr-2024. Describe what happens to the cumulative balance sheet measures and the
+TB tie-out, and evaluate two alternative fixes.</p></section>
+<nav class="pager"><a class="prev" href="S01_Building_the_Date_Dimension_DAX_CALENDAR_vs_Power.html">← Building the Date Dimension: DAX CALENDAR vs Power Query…</a><a class="next" href="S03_Fiscal_Calendar_Columns_FY_Quarter_Month_Week_and.html">Fiscal Calendar Columns: FY, Quarter, Month, Week and… →</a></nav>
+</main></div></body></html>

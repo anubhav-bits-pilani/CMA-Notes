@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CALENDARAUTO(3) for Whole March-Ending Fiscal Years · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C02_CALENDARAUTO3_for_Whole_March_Ending_Fiscal_Years.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T2 · Indian fiscal calendar table</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Indian fiscal calendar table</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Building_the_Date_Dimension_DAX_CALENDAR_vs_Power.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S01_Building_the_Date_Dimension_DAX_CALENDAR_vs_Power.html">Building the Date Dimension: DAX CALENDAR vs Power Query List.Dates</a></li><li><a href="../subtopics/S02_Contiguous_Whole_Fiscal_Year_Date_Range_Covering.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S02_Contiguous_Whole_Fiscal_Year_Date_Range_Covering.html">Contiguous Whole-Fiscal-Year Date Range Covering All Facts</a></li><li><a href="../subtopics/S03_Fiscal_Calendar_Columns_FY_Quarter_Month_Week_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S03_Fiscal_Calendar_Columns_FY_Quarter_Month_Week_and.html">Fiscal Calendar Columns: FY, Quarter, Month, Week and Period Key</a></li><li><a href="../subtopics/S04_Sort_by_Column_Fiscal_Month_Order_Starting_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S04_Sort_by_Column_Fiscal_Month_Order_Starting_in.html">Sort by Column: Fiscal Month Order Starting in April</a></li><li><a href="../subtopics/S05_Month_and_FY_Offset_Columns_for_Dynamic_Period.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S05_Month_and_FY_Offset_Columns_for_Dynamic_Period.html">Month and FY Offset Columns for Dynamic Period Filters</a></li><li><a href="../subtopics/S06_Mark_as_Date_Table_and_Turn_Off_Auto_DateTime.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S06_Mark_as_Date_Table_and_Turn_Off_Auto_DateTime.html">Mark as Date Table and Turn Off Auto Date/Time</a></li><li><a href="../subtopics/S07_Working_Day_Flags_and_Indian_Holidays_for_Close.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S07_Working_Day_Flags_and_Indian_Holidays_for_Close.html">Working-Day Flags and Indian Holidays for Close Metrics</a></li><li><a href="../subtopics/S08_IsClosedPeriod_and_IsYTD_Flags_for_Like_for_Like.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S08_IsClosedPeriod_and_IsYTD_Flags_for_Like_for_Like.html">IsClosedPeriod and IsYTD Flags for Like-for-Like Comparisons</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_DAX_Fiscal_Date_Table_with_an_FYEnd_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C01_DAX_Fiscal_Date_Table_with_an_FYEnd_Column.html">DAX Fiscal Date Table with an FYEnd Column</a></li><li><a href="C02_CALENDARAUTO3_for_Whole_March_Ending_Fiscal_Years.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C02_CALENDARAUTO3_for_Whole_March_Ending_Fiscal_Years.html">CALENDARAUTO(3) for Whole March-Ending Fiscal Years</a></li><li><a href="C03_Fiscal_Month_and_Fiscal_Quarter_Formulas.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C03_Fiscal_Month_and_Fiscal_Quarter_Formulas.html">Fiscal Month and Fiscal Quarter Formulas</a></li><li><a href="C04_Fiscal_Week_Number_Anchored_on_1_April.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C04_Fiscal_Week_Number_Anchored_on_1_April.html">Fiscal Week Number Anchored on 1 April</a></li><li><a href="C05_Month_Offset_from_Today.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C05_Month_Offset_from_Today.html">Month Offset from Today</a></li><li><a href="C06_Power_Query_Date_List_with_ListDates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C06_Power_Query_Date_List_with_ListDates.html">Power Query Date List with List.Dates</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>CALENDARAUTO(3) for Whole March-Ending Fiscal Years</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>CALENDARAUTO(3)</code> builds whole fiscal years ending in March from every date column in the model</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-DAX">Date = CALENDARAUTO ( 3 )
+</code></pre>
+<p><code>CALENDARAUTO([fiscal_year_end_month])</code> returns a single-column table <code>[Date]</code> with a contiguous range of dates:</p>
+<ul>
+<li>It scans the model for the earliest and latest dates in date columns (per Microsoft documentation, values in
+  calculated columns and calculated tables are ignored).</li>
+<li>It extends the range to whole fiscal years whose last month is <code>fiscal_year_end_month</code> (an integer 1–12;
+  default 12 = calendar year).</li>
+</ul>
+<p>With argument 3:</p>
+<p>\[
+\text{Start} = \text{1 April of the FY containing } d_{\min}, \qquad \text{End} = \text{31 March of the FY containing } d_{\max}
+\]</p>
+<h2 id="explanation">Explanation</h2>
+<p>CALENDARAUTO saves writing MIN/MAX logic and rounds to whole fiscal years automatically, satisfying the contiguity
+and whole-year requirements for time intelligence. Add columns with ADDCOLUMNS exactly as in c01:</p>
+<pre><code class="language-DAX">Date =
+ADDCOLUMNS (
+    CALENDARAUTO ( 3 ),
+    &quot;FYEnd&quot;, IF ( MONTH ( [Date] ) &gt;= 4, YEAR ( [Date] ) + 1, YEAR ( [Date] ) )
+)
+</code></pre>
+<p>Cautions:</p>
+<ul>
+<li><strong>Every date column counts.</strong> Employee date of birth, a fixed-asset "useful life end date" in 2045, or placeholder
+  dates (01-01-1900, 31-12-9999) silently stretch the calendar to decades or centuries. Clean such columns in Power
+  Query or switch to explicit bounds.</li>
+<li><strong>The range changes with data.</strong> New far-future due dates extend the table at the next refresh — usually
+  harmless, but offset columns and slicer lists change.</li>
+<li><strong>Not available in Excel Power Pivot</strong> (no calculated tables).</li>
+<li><strong>Circular dependencies.</strong> Since the table depends on all date columns, adding calculated columns elsewhere that
+  depend on the Date table can trigger circular-dependency errors in some designs.</li>
+<li><strong>DirectQuery</strong> sources may restrict or slow CALENDARAUTO scans.</li>
+</ul>
+<p>Use it for prototypes and well-controlled models; for corporate standard calendars, prefer explicit
+CALENDAR bounds or a Power Query table.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Model dates: GL PostingDate 3-Jun-2021 to 22-Nov-2025; Budget MonthStart up to 1-Mar-2026; Employee[DOB] from
+14-Aug-1968.</p>
+<table>
+<thead>
+<tr>
+<th>Case</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Employee table not in model</td>
+<td>1-Apr-2021 to 31-Mar-2026 (5 FYs, 1,826 rows)</td>
+</tr>
+<tr>
+<td>Employee[DOB] in model</td>
+<td>1-Apr-1968 to 31-Mar-2026 (58 FYs, about 21,000 rows), slicers list FY1968-69 onwards</td>
+</tr>
+<tr>
+<td>Using <code>CALENDARAUTO()</code> (default 12)</td>
+<td>1-Jan-2021 to 31-Dec-2026 — calendar years, wrong for Indian YTD edges</td>
+</tr>
+</tbody>
+</table>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Subtopic s02 (contiguous whole-FY range) and s01 (DAX vs Power Query trade-offs).</li>
+<li>Concept c01 (explicit CALENDAR with FYEnd).</li>
+<li>Topic pitfall: calendars not covering whole fiscal years.</li>
+<li>Topic 4 (time intelligence prerequisites) and topic 5 (CLOSINGBALANCEYEAR needs 31 March present).</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-predict-the-range-l1">Q1. Predict the range [L1]</h3>
+<p>A model contains GL dates 10-May-2022 to 15-Jan-2026, Budget dates to 1-Mar-2027 and a Contracts[EndDate] column with
+some values of 31-Dec-9999. State the range CALENDARAUTO(3) produces and how you would correct it.</p>
+<h3 id="q2-default-argument-trap-l2">Q2. Default argument trap [L2]</h3>
+<p>A model uses <code>CALENDARAUTO()</code> and TOTALYTD with "3/31". Explain the effect on FY2025-26 YTD in March 2026 if the
+latest fact date is 31-Mar-2026, and on PY YTD for April 2021 if the earliest fact date is 15-Apr-2021.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Compare where the calendar begins and ends with the fiscal-year boundaries.</p>
+</blockquote>
+<h3 id="q3-defend-or-replace-l3">Q3. Defend or replace [L3]</h3>
+<p>Your manager prefers CALENDARAUTO(3) "because it is automatic". Write a short recommendation for a group model with
+HR, Fixed Assets and GL tables, weighing automation against control, and propose a compromise.</p></section>
+<nav class="pager"><a class="prev" href="C01_DAX_Fiscal_Date_Table_with_an_FYEnd_Column.html">← DAX Fiscal Date Table with an FYEnd Column</a><a class="next" href="C03_Fiscal_Month_and_Fiscal_Quarter_Formulas.html">Fiscal Month and Fiscal Quarter Formulas →</a></nav>
+</main></div></body></html>

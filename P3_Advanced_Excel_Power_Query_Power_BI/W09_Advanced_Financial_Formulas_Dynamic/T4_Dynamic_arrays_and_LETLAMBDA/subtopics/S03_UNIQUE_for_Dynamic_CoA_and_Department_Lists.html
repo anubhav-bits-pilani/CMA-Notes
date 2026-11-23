@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UNIQUE for Dynamic CoA and Department Lists · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S03_UNIQUE_for_Dynamic_CoA_and_Department_Lists.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T4 · Dynamic arrays and LET/LAMBDA</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Dynamic arrays and LET/LAMBDA</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Spill_Behaviour_SPILL_the_Operator_and_Implicit.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S01_Spill_Behaviour_SPILL_the_Operator_and_Implicit.html">Spill Behaviour, #SPILL!, the # Operator and Implicit Intersection</a></li><li><a href="S02_FILTER_with_ANDOR_Logic_for_Exception_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S02_FILTER_with_ANDOR_Logic_for_Exception_Lists.html">FILTER with AND/OR Logic for Exception Lists</a></li><li><a href="S03_UNIQUE_for_Dynamic_CoA_and_Department_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S03_UNIQUE_for_Dynamic_CoA_and_Department_Lists.html">UNIQUE for Dynamic CoA and Department Lists</a></li><li><a href="S04_SORT_and_SORTBY_for_Top_N_Expense_and_Ranked.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S04_SORT_and_SORTBY_for_Top_N_Expense_and_Ranked.html">SORT and SORTBY for Top-N Expense and Ranked Ageing Reports</a></li><li><a href="S05_SEQUENCE_for_Monthly_Timelines_Loan_Schedules_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S05_SEQUENCE_for_Monthly_Timelines_Loan_Schedules_and.html">SEQUENCE for Monthly Timelines, Loan Schedules and Period Counters</a></li><li><a href="S06_LET_for_Named_Steps_and_LAMBDA_Functions_in_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S06_LET_for_Named_Steps_and_LAMBDA_Functions_in_Name.html">LET for Named Steps and LAMBDA Functions in Name Manager</a></li><li><a href="S07_LAMBDA_Helpers_and_Array_Reshaping_Functions.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S07_LAMBDA_Helpers_and_Array_Reshaping_Functions.html">LAMBDA Helpers and Array Reshaping Functions</a></li><li><a href="S08_GROUPBY_and_PIVOTBY_as_Formula_Based_Pivots.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S08_GROUPBY_and_PIVOTBY_as_Formula_Based_Pivots.html">GROUPBY and PIVOTBY as Formula-Based Pivots</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_FILTER_with_Two_AND_Conditions_and_an_ifempty.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C01_FILTER_with_Two_AND_Conditions_and_an_ifempty.html">FILTER with Two AND Conditions and an if_empty Message</a></li><li><a href="../concepts/C02_Sorted_Unique_Account_List_for_a_Selected_FY.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C02_Sorted_Unique_Account_List_for_a_Selected_FY.html">Sorted Unique Account List for a Selected FY</a></li><li><a href="../concepts/C03_Top_10_Vendors_by_Spend_with_TAKE_and_SORTBY.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C03_Top_10_Vendors_by_Spend_with_TAKE_and_SORTBY.html">Top 10 Vendors by Spend with TAKE and SORTBY</a></li><li><a href="../concepts/C04_EOMONTH_with_SEQUENCE_for_Horizontal_Month_End.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C04_EOMONTH_with_SEQUENCE_for_Horizontal_Month_End.html">EOMONTH with SEQUENCE for Horizontal Month-End Headers</a></li><li><a href="../concepts/C05_LET_for_a_Safe_Gross_Margin_Calculation.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C05_LET_for_a_Safe_Gross_Margin_Calculation.html">LET for a Safe Gross Margin Calculation</a></li><li><a href="../concepts/C06_FYEND_A_Named_LAMBDA_for_the_Indian_Financial_Year.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C06_FYEND_A_Named_LAMBDA_for_the_Indian_Financial_Year.html">FYEND: A Named LAMBDA for the Indian Financial Year</a></li><li><a href="../concepts/C07_SCAN_for_Running_Closing_Balances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C07_SCAN_for_Running_Closing_Balances.html">SCAN for Running Closing Balances</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>UNIQUE for Dynamic CoA and Department Lists</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> UNIQUE for dynamic CoA or department lists; the <code>exactly_once</code> argument for one-off vendors</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Every MIS grid has a list down the side: FS lines, ledgers, departments, cost centres, branches, vendors. If that list is typed by hand, it goes stale the day a new ledger is opened in Tally or a new cost centre appears in SAP — and the new item's amounts silently drop out of the report. UNIQUE derives the list from the data itself, so the row axis of the P&amp;L generator is always complete. Its <code>exactly_once</code> option answers a different, audit-flavoured question: which vendors, customers or ledgers appear only once? One-off vendors are a classic fraud and duplicate-payment risk indicator, and one-time ledgers often signal mis-postings.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="syntax">Syntax</h3>
+<pre><code class="language-excel">=UNIQUE(array, [by_col], [exactly_once])
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>array</td>
+<td>—</td>
+<td>The range, Table column or array to de-duplicate</td>
+</tr>
+<tr>
+<td>by_col</td>
+<td>FALSE</td>
+<td>FALSE compares rows; TRUE compares columns (for horizontal data)</td>
+</tr>
+<tr>
+<td>exactly_once</td>
+<td>FALSE</td>
+<td>FALSE returns every distinct value once; TRUE returns only values that occur exactly one time</td>
+</tr>
+</tbody>
+</table>
+<p>Key behaviours:</p>
+<ul>
+<li>Comparison is <strong>case-insensitive</strong>: "Sales" and "SALES" are treated as the same value; the first occurrence's spelling is returned.</li>
+<li><strong>Trailing spaces are significant</strong>: "Sales " and "Sales" are different. Clean with TRIM upstream (or in Power Query).</li>
+<li><strong>Order is order of first appearance</strong>, not sorted. Wrap with SORT for presentation.</li>
+<li><strong>Blanks</strong> in the source return as 0 in the output — a frequent source of a mysterious "0" line in a dynamic list.</li>
+<li>Multi-column arrays return unique <em>combinations</em>.</li>
+</ul>
+<h3 id="dynamic-coa-fs-line-list-for-the-pl-generator">Dynamic CoA / FS line list for the P&amp;L generator</h3>
+<p>The P&amp;L row axis is the list of FS lines that actually carry balances, in the order defined by the mapping table, not alphabetical. Two common designs:</p>
+<p><strong>Design A — alphabetical dynamic list</strong></p>
+<pre><code class="language-excel">=SORT(UNIQUE(FILTER(GLm[FSLine], GLm[FSLine]&lt;&gt;&quot;&quot;)))
+</code></pre>
+<p><strong>Design B — mapping-table order (preferred for statements)</strong></p>
+<p>Give each FS line a sort key in the mapping table (e.g. 10 Revenue from operations, 20 Other income, 30 Cost of materials consumed, …, following Schedule III Part II order). Then:</p>
+<pre><code class="language-excel">=LET(
+   lines, UNIQUE(FILTER(HSTACK(GLm[SortKey], GLm[FSLine]), GLm[FSLine]&lt;&gt;&quot;&quot;)),
+   CHOOSECOLS(SORT(lines, 1), 2))
+</code></pre>
+<p><code>GLm</code> is the GL after XLOOKUP mapping (a Table with FSLine and SortKey columns added by formula). This produces Schedule III order and automatically adds a line when a ledger mapped to a new FS line first gets a posting.</p>
+<h3 id="unique-combinations">Unique combinations</h3>
+<pre><code class="language-excel">=SORT(UNIQUE(GL[[Dept]:[CostCentre]]))
+</code></pre>
+<p>Returns every Dept–Cost Centre pair actually used — useful for a two-level cost report, or to find cost centres posted under the wrong department (a cost centre appearing against two departments is a master-data issue).</p>
+<h3 id="counting-distinct-values">Counting distinct values</h3>
+<pre><code class="language-excel">=ROWS(UNIQUE(GL[Vendor]))            distinct vendors
+=COUNTA(UNIQUE(FILTER(GL[Vendor], GL[Month]=H1)))   distinct vendors paid in a month
+</code></pre>
+<p><code>ROWS(UNIQUE(...))</code> replaces the old <code>SUMPRODUCT(1/COUNTIF(...))</code> trick, which was slow and failed on blanks.</p>
+<h3 id="exactly_once-for-one-off-vendors">exactly_once for one-off vendors</h3>
+<pre><code class="language-excel">=UNIQUE(AP[Vendor], , TRUE)
+</code></pre>
+<p>Returns vendors with exactly one invoice. For a richer report — vendor, invoice amount, approver — combine with FILTER and COUNTIFS:</p>
+<pre><code class="language-excel">=LET(
+   once, COUNTIFS(AP[Vendor], AP[Vendor])=1,
+   big, AP[Amount]&gt;=200000,
+   FILTER(CHOOSECOLS(AP, 1, 2, 4, 6), once * big, &quot;None&quot;))
+</code></pre>
+<p>One-off vendors paid ₹2 lakh or more are a standard internal-audit sample population: verify vendor KYC (PAN, GSTIN on the GST portal), bank account ownership and whether TDS under Sec 194C/194J was deducted.</p>
+<p>Note the subtle difference: <code>UNIQUE(x,,TRUE)</code> tests occurrences in the <em>array supplied</em>. If you pass a two-column array (Vendor, Invoice), it finds combinations occurring once, which is almost every row. Pass only the column whose frequency you care about.</p>
+<h3 id="illustration">Illustration</h3>
+<p>AP register (FY26 Q4):</p>
+<table>
+<thead>
+<tr>
+<th>Vendor</th>
+<th>Invoice</th>
+<th>Amount (₹)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Shree Logistics</td>
+<td>L-77</td>
+<td>1,20,000</td>
+</tr>
+<tr>
+<td>Kaveri Packaging</td>
+<td>KP-12</td>
+<td>3,40,000</td>
+</tr>
+<tr>
+<td>Shree Logistics</td>
+<td>L-81</td>
+<td>95,000</td>
+</tr>
+<tr>
+<td>Om Consultants</td>
+<td>OC-1</td>
+<td>4,75,000</td>
+</tr>
+<tr>
+<td>shree logistics</td>
+<td>L-90</td>
+<td>60,000</td>
+</tr>
+<tr>
+<td>Nimbus IT</td>
+<td>NI-55</td>
+<td>1,10,000</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>UNIQUE(AP[Vendor])</code> → Shree Logistics, Kaveri Packaging, Om Consultants, Nimbus IT (4 rows; the lower-case entry is merged).</li>
+<li><code>UNIQUE(AP[Vendor],,TRUE)</code> → Kaveri Packaging, Om Consultants, Nimbus IT.</li>
+<li>One-off ≥ ₹2 lakh → Kaveri Packaging (₹3.4 lakh), Om Consultants (₹4.75 lakh).</li>
+</ul>
+<p>The case-insensitivity is helpful here, but a vendor master that differs by a full stop ("Shree Logistics." ) would be counted separately — a reason to test on vendor code, not name.</p>
+<h3 id="unique-on-horizontal-data">UNIQUE on horizontal data</h3>
+<p>For a header row of months pasted from an ERP with repeats, <code>=UNIQUE(B1:Z1, TRUE)</code> de-duplicates across columns.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Code vs name.</strong> Always build lists on the stable key (ledger code, vendor code), then look up names. Names change; codes do not.</li>
+<li><strong>Blank → 0.</strong> Exclude blanks with <code>FILTER(x, x&lt;&gt;"")</code> before UNIQUE.</li>
+<li><strong>Mixed types.</strong> Ledger 40010 (number) and "40010" (text) appear as two items. Fix the source type.</li>
+<li><strong>Order stability.</strong> Because UNIQUE returns first-appearance order, re-sorting the GL changes the report's row order. Always impose an explicit SORT or sort-key order on outputs.</li>
+<li><strong>Lines with zero balance.</strong> UNIQUE on the TB shows ledgers whose closing balance is zero. Decide whether the P&amp;L should show them (comparatives may need them); filter on <code>Amount&lt;&gt;0</code> only if the comparative columns are built from the same list.</li>
+<li><strong>Inside Tables.</strong> UNIQUE cannot spill inside an Excel Table; put lists on a dedicated sheet.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>UNIQUE derives list axes from data so new ledgers, departments and cost centres appear automatically.</li>
+<li>It is case-insensitive, space-sensitive, keeps first-appearance order and returns blanks as 0.</li>
+<li>Use SORT, or a mapping-table sort key, to control presentation order — Schedule III order is not alphabetical.</li>
+<li><code>exactly_once = TRUE</code> isolates single-occurrence items such as one-off vendors; pass only the key column.</li>
+<li><code>ROWS(UNIQUE(...))</code> is the clean distinct count.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-distinct-counts-for-a-dashboard-l1">Q1. Distinct counts for a dashboard [L1]</h3>
+<p>Table <code>Sales</code> has InvoiceDate, Customer, Branch, Amount for FY26. Write formulas for (a) the number of distinct customers, (b) the number of distinct customers billed in March 2026 using date-range logic, (c) a sorted list of distinct branches, excluding blanks.</p>
+<h3 id="q2-schedule-iii-ordered-row-axis-l2">Q2. Schedule III ordered row axis [L2]</h3>
+<p>The mapping Table has Ledger, FSLine, SortKey (10, 20, 30 …). The mapped GL Table <code>GLm</code> has Ledger, Date, Amount, FSLine, SortKey. Write a formula that returns the FS lines with any posting in the selected FY (input cell <code>SelFY</code>, FY column available), in SortKey order, with no blanks. Then explain what happens to the P&amp;L grid when a ledger mapped to "Exceptional items" receives its first posting.</p>
+<h3 id="q3-one-off-vendor-audit-sample-l2">Q3. One-off vendor audit sample [L2]</h3>
+<p>The FY26 AP register has 6,200 invoices across 840 vendors. Write a formula returning vendor code, vendor name, invoice number, amount and approver for vendors with exactly one invoice of ₹1 lakh or more. Then list four verification steps you would perform on the sample, referencing Indian tax/GST checks.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Decide whether to use UNIQUE with exactly_once or COUNTIFS; one gives a list of names, the other a row-level flag.</p>
+</blockquote>
+<h3 id="q4-why-is-there-a-0-and-a-duplicate-l1">Q4. Why is there a 0 and a duplicate? [L1]</h3>
+<p><code>=SORT(UNIQUE(GL[Dept]))</code> returns: 0, Admin, Finance, Sales, Sales. Explain both anomalies and fix the formula and/or data.</p>
+<h3 id="q5-master-data-integrity-check-l3">Q5. Master-data integrity check [L3]</h3>
+<p>Using UNIQUE on Dept–CostCentre combinations, design a check that flags any cost centre posted under more than one department in the FY26 GL. Write the formula(s), describe how the output is presented to the controller, and explain why this matters for departmental budget vs actual reporting.</p></section>
+<nav class="pager"><a class="prev" href="S02_FILTER_with_ANDOR_Logic_for_Exception_Lists.html">← FILTER with AND/OR Logic for Exception Lists</a><a class="next" href="S04_SORT_and_SORTBY_for_Top_N_Expense_and_Ranked.html">SORT and SORTBY for Top-N Expense and Ranked Ageing Reports →</a></nav>
+</main></div></body></html>

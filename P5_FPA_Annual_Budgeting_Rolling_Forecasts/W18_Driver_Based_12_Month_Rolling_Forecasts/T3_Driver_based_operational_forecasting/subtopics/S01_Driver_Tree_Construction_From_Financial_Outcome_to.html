@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Driver Tree Construction: From Financial Outcome to Leading Indicators · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/subtopics/S01_Driver_Tree_Construction_From_Financial_Outcome_to.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 5</a> <span>›</span> <a href="../../index.html">Week 18</a> <span>›</span> <a href="../index.html">T3 · Driver-based operational forecasting</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Driver-based operational forecasting</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Driver_Tree_Construction_From_Financial_Outcome_to.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/subtopics/S01_Driver_Tree_Construction_From_Financial_Outcome_to.html">Driver Tree Construction: From Financial Outcome to Leading Indicators</a></li><li><a href="S02_Retail_Drivers_and_Like_for_Like_vs_New_Store.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/subtopics/S02_Retail_Drivers_and_Like_for_Like_vs_New_Store.html">Retail Drivers and Like-for-Like vs New-Store Growth</a></li><li><a href="S03_B2BD2C_Funnel_Forecasting_with_Conversion_Rates.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/subtopics/S03_B2BD2C_Funnel_Forecasting_with_Conversion_Rates.html">B2B/D2C Funnel Forecasting with Conversion Rates and Lags</a></li><li><a href="S04_Manufacturing_Capacity_Drivers_and_the_SaaS_ARR.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/subtopics/S04_Manufacturing_Capacity_Drivers_and_the_SaaS_ARR.html">Manufacturing Capacity Drivers and the SaaS ARR Waterfall</a></li><li><a href="S05_Cost_Drivers_Freight_Commission_Payment_Gateway.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/subtopics/S05_Cost_Drivers_Freight_Commission_Payment_Gateway.html">Cost Drivers: Freight, Commission, Payment Gateway and Cost per Hire</a></li><li><a href="S06_Selecting_Drivers_Materiality_Controllability.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/subtopics/S06_Selecting_Drivers_Materiality_Controllability.html">Selecting Drivers: Materiality, Controllability, Predictability, Data</a></li><li><a href="S07_Statistical_Support_Regression_Moving_Averages.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/subtopics/S07_Statistical_Support_Regression_Moving_Averages.html">Statistical Support: Regression, Moving Averages, Smoothing, FORECAST.ETS</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Retail_Revenue_Identity_Stores_Footfall_Conversion.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/concepts/C01_Retail_Revenue_Identity_Stores_Footfall_Conversion.html">Retail Revenue Identity: Stores × Footfall × Conversion × ATV × Days</a></li><li><a href="../concepts/C02_Lagged_Funnel_Orders_from_Earlier_Leads_Revenue.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/concepts/C02_Lagged_Funnel_Orders_from_Earlier_Leads_Revenue.html">Lagged Funnel: Orders from Earlier Leads, Revenue from AOV</a></li><li><a href="../concepts/C03_ARR_Roll_Forward_and_Net_Revenue_Retention.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/concepts/C03_ARR_Roll_Forward_and_Net_Revenue_Retention.html">ARR Roll-Forward and Net Revenue Retention</a></li><li><a href="../concepts/C04_Capacity_Output_Identity_Capacity_Utilisation.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/concepts/C04_Capacity_Output_Identity_Capacity_Utilisation.html">Capacity Output Identity: Capacity × Utilisation × Yield</a></li><li><a href="../concepts/C05_Driver_Sensitivity_and_Tornado_Ranking.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/concepts/C05_Driver_Sensitivity_and_Tornado_Ranking.html">Driver Sensitivity and Tornado Ranking</a></li><li><a href="../concepts/C06_Leading_vs_Lagging_Indicators.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/concepts/C06_Leading_vs_Lagging_Indicators.html">Leading vs Lagging Indicators</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Driver Tree Construction: From Financial Outcome to Leading Indicators</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Driver tree construction from financial outcome to operational leading indicators</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A driver tree is the blueprint of a driver-based forecast. It answers, visibly and in one page, "what has to be true operationally for us to deliver this EBITDA?". It aligns finance and operations on a common language, identifies who owns each assumption, shows where leading indicators sit (so the forecast can move before the ledger does), and determines the structure of the model itself — each node becomes a row or calculation. In interviews and case studies, candidates are frequently asked to sketch a driver tree for a business on a whiteboard in minutes.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="structure">Structure</h3>
+<p>A driver tree decomposes a financial outcome (root) into components (branches) through arithmetic relationships — multiplication, addition, subtraction, division — until reaching leaves that are directly observable, forecastable operational drivers.</p>
+<p>Rules:</p>
+<ol>
+<li><strong>Mathematically exact:</strong> each parent equals a formula of its children. If the children do not reproduce the parent, the tree is a mind-map, not a model.</li>
+<li><strong>Mutually exclusive, collectively exhaustive (MECE):</strong> branches do not overlap and together cover the parent. A residual "other" branch is acceptable if immaterial.</li>
+<li><strong>Leaves are measurable and owned:</strong> each leaf has a data source, frequency and an accountable manager.</li>
+<li><strong>Leading indicators at the bottom:</strong> the deepest levels should include indicators that move before the financial result (pipeline, footfall, website sessions, order intake), so the forecast reacts early.</li>
+<li><strong>Depth matches materiality:</strong> go deeper only on branches that are material and volatile.</li>
+</ol>
+<h3 id="generic-tree-for-ebitda">Generic tree for EBITDA</h3>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Nodes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>EBITDA</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Revenue − Variable costs − Fixed costs</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Revenue = Volume × Realisation; Variable cost = Volume × Unit variable cost; Fixed = People + Premises + Other</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Volume = Customers × Purchase frequency × Units per purchase (or industry template); Realisation = List price × (1 − Discount %) × Mix factor; People = Headcount × Cost per head</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Leading indicators: leads, footfall, sessions, order book, capacity, hiring pipeline</td>
+</tr>
+</tbody>
+</table>
+<p>Industry templates then specialise level 3–4 (s02–s05).</p>
+<h3 id="construction-steps">Construction steps</h3>
+<ol>
+<li><strong>Start from the reporting line</strong> — EBITDA, or contribution by BU — and the P&amp;L structure used in actuals (so the tree reconciles with the ledger).</li>
+<li><strong>Split into revenue and cost families,</strong> then revenue into volume × price.</li>
+<li><strong>Ask "how does the business manage this?"</strong> — a retailer manages stores and footfall; a SaaS business manages pipeline and churn; a cement plant manages capacity and despatch. Use their KPIs.</li>
+<li><strong>Check data lineage</strong> for each candidate leaf: system (POS, CRM, MES, HRMS, TMS), granularity, monthly availability, history length.</li>
+<li><strong>Assign owners</strong> and agree units and definitions (e.g. conversion = bills ÷ footfall, not orders ÷ visitors).</li>
+<li><strong>Quantify sensitivities</strong> (c05) to decide depth and focus.</li>
+<li><strong>Translate into the model:</strong> each node a row; leaves as inputs (with history and forecast columns); parents as formulas; reconcile the root to the AOP and actuals.</li>
+</ol>
+<h3 id="retail-example-3-levels">Retail example (3 levels)</h3>
+<p>Revenue = Stores × Days × Footfall per store-day × Conversion % × ATV; ATV = Items per bill × Average selling price per item; ASP = MRP × (1 − Markdown %). EBITDA then deducts COGS (1 − GM%), store variable costs (% of sales), store fixed costs (per store), and corporate overheads.</p>
+<h3 id="illustration">Illustration</h3>
+<p>A D2C electronics accessories brand, monthly EBITDA tree:</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th>Formula</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sessions</td>
+<td>Leaf (Google Analytics)</td>
+<td>25,00,000</td>
+</tr>
+<tr>
+<td>Conversion</td>
+<td>Leaf</td>
+<td>2.0%</td>
+</tr>
+<tr>
+<td>Orders</td>
+<td>Sessions × Conversion</td>
+<td>50,000</td>
+</tr>
+<tr>
+<td>AOV</td>
+<td>Leaf</td>
+<td>₹1,400</td>
+</tr>
+<tr>
+<td>Gross revenue</td>
+<td>Orders × AOV</td>
+<td>₹7.00 crore</td>
+</tr>
+<tr>
+<td>Returns %</td>
+<td>Leaf</td>
+<td>8%</td>
+</tr>
+<tr>
+<td>Net revenue</td>
+<td>Gross × (1 − Returns %)</td>
+<td>₹6.44 crore</td>
+</tr>
+<tr>
+<td>Gross margin %</td>
+<td>Leaf</td>
+<td>52%</td>
+</tr>
+<tr>
+<td>Gross profit</td>
+<td>Net revenue × GM%</td>
+<td>₹3.35 crore</td>
+</tr>
+<tr>
+<td>Fulfilment cost</td>
+<td>Orders × ₹85</td>
+<td>₹0.43 crore</td>
+</tr>
+<tr>
+<td>Payment gateway</td>
+<td>Net revenue × 1.9%</td>
+<td>₹0.12 crore</td>
+</tr>
+<tr>
+<td>Marketing</td>
+<td>Leaf (plan)</td>
+<td>₹1.80 crore</td>
+</tr>
+<tr>
+<td>Fixed costs</td>
+<td>Leaf</td>
+<td>₹0.75 crore</td>
+</tr>
+<tr>
+<td>EBITDA</td>
+<td>GP − variable − marketing − fixed</td>
+<td>₹0.25 crore</td>
+</tr>
+</tbody>
+</table>
+<p>A 0.2-point fall in conversion (2.0% → 1.8%) removes 5,000 orders, ₹0.64 crore net revenue and roughly ₹0.28 crore of contribution — wiping out EBITDA. The tree makes that leverage obvious.</p>
+<h3 id="visualising">Visualising</h3>
+<p>Draw the tree left-to-right (root on the left) in PowerPoint or Visio; in Excel, an indented row structure with outline grouping mirrors the tree; Power BI's decomposition tree visual lets users drill actuals by dimension (a different, dimensional decomposition — useful for analysis but not a driver formula).</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Multiplicative trees amplify error:</strong> five drivers each 3% off in the same direction produce about 16% error at the root. Fewer, well-measured drivers can beat more, poorly measured ones.</li>
+<li><strong>Non-linear relationships:</strong> marketing spend to sessions has diminishing returns; capacity caps volume. Represent caps with <code>MIN</code> and response curves rather than linear multipliers.</li>
+<li><strong>Interdependent drivers:</strong> price increases reduce conversion; discounting raises volume but lowers ATV. A tree that treats them as independent overstates upside scenarios.</li>
+<li><strong>Definitions drift:</strong> "conversion" may mean different things in marketing and finance; document definitions.</li>
+<li><strong>Reconciliation:</strong> if the tree's root differs from actual P&amp;L for history, the tree is missing a branch (e.g. other operating income, cash discounts).</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>A driver tree decomposes an outcome into exact arithmetic relationships ending in measurable, owned leaves.</li>
+<li>Make it MECE, reconcilable to the ledger and deep only where material and volatile.</li>
+<li>Place leading indicators at the leaves so the forecast moves before the financial result.</li>
+<li>Check data lineage and assign an owner for every leaf before adopting it.</li>
+<li>Translate each node into a model row: leaves as inputs, parents as formulas.</li>
+<li>Beware compounding errors, non-linearities and interdependent drivers.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-tree-for-a-quick-service-restaurant-chain-l2">Q1. Tree for a quick-service restaurant chain [L2]</h3>
+<p>Draw a 4-level driver tree from EBITDA for a 300-outlet QSR chain with dine-in and delivery-aggregator channels, specifying the formula at each node, the data source for each leaf and its owner.</p>
+<h3 id="q2-reconciling-a-tree-to-actuals-l2">Q2. Reconciling a tree to actuals [L2]</h3>
+<p>A retailer's tree for September gives: stores 95, days 30, footfall per store-day 520, conversion 18%, ATV ₹1,600. Reported September revenue (net of GST) is ₹38.6 crore. Compute the tree revenue, identify the gap, and list four possible causes (definitional or missing branches).</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Check whether ATV is GST-inclusive and whether online or institutional sales are in the reported number.</p>
+</blockquote>
+<h3 id="q3-depth-decision-l3">Q3. Depth decision [L3]</h3>
+<p>For a specialty-chemicals company with 70% of revenue from 15 customers and raw material (crude-linked) at 55% of revenue, design the driver tree and justify where you would go deep and where you would stop at a ratio, using materiality and volatility arguments.</p>
+<h3 id="q4-interdependent-drivers-l2">Q4. Interdependent drivers [L2]</h3>
+<p>A planned 6% price increase is expected to reduce conversion from 15% to 14.3% with footfall unchanged. Using footfall 2,00,000 per month and ATV ₹2,000 before the increase (ATV rises in proportion to price), compute revenue before and after, and explain how you would represent the price-conversion link in the tree.</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← Driver-based operational forecasting</a><a class="next" href="S02_Retail_Drivers_and_Like_for_Like_vs_New_Store.html">Retail Drivers and Like-for-Like vs New-Store Growth →</a></nav>
+</main></div></body></html>

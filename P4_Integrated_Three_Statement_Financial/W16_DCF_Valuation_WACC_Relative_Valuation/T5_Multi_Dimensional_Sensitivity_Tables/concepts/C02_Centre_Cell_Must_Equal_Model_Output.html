@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centre Cell Must Equal Model Output · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C02_Centre_Cell_Must_Equal_Model_Output.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 16</a> <span>›</span> <a href="../index.html">T5 · Multi-Dimensional Sensitivity Tables</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Multi-Dimensional Sensitivity Tables</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Excel_Data_Tables_Row_and_Column_Input_Cells.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S01_Excel_Data_Tables_Row_and_Column_Input_Cells.html">Excel Data Tables: Row and Column Input Cells</a></li><li><a href="../subtopics/S02_Grid_1_WACC_vs_Terminal_Growth_on_Implied_Share.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S02_Grid_1_WACC_vs_Terminal_Growth_on_Implied_Share.html">Grid 1: WACC vs Terminal Growth on Implied Share Price</a></li><li><a href="../subtopics/S03_Grid_2_WACC_vs_Exit_Multiple_on_Implied_Share.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S03_Grid_2_WACC_vs_Exit_Multiple_on_Implied_Share.html">Grid 2: WACC vs Exit Multiple on Implied Share Price</a></li><li><a href="../subtopics/S04_Extra_Grids_Operating_Drivers_on_EV_and_Upside_vs.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S04_Extra_Grids_Operating_Drivers_on_EV_and_Upside_vs.html">Extra Grids: Operating Drivers on EV and Upside vs CMP</a></li><li><a href="../subtopics/S05_Heat_Map_Formatting_with_the_Base_Case_at_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S05_Heat_Map_Formatting_with_the_Base_Case_at_the.html">Heat-Map Formatting with the Base Case at the Centre</a></li><li><a href="../subtopics/S06_Calculation_Mode_and_F9_Refresh_Discipline_for.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S06_Calculation_Mode_and_F9_Refresh_Discipline_for.html">Calculation Mode and F9 Refresh Discipline for Data Tables</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_TABLE_Row_and_Column_Input_Mapping.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C01_TABLE_Row_and_Column_Input_Mapping.html">TABLE() Row and Column Input Mapping</a></li><li><a href="C02_Centre_Cell_Must_Equal_Model_Output.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C02_Centre_Cell_Must_Equal_Model_Output.html">Centre Cell Must Equal Model Output</a></li><li><a href="C03_Data_Table_Input_Cells_Must_Be_on_the_Same_Sheet.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C03_Data_Table_Input_Cells_Must_Be_on_the_Same_Sheet.html">Data Table Input Cells Must Be on the Same Sheet</a></li><li><a href="C04_Masking_Invalid_Grid_Cells_Where_g_WACC.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C04_Masking_Invalid_Grid_Cells_Where_g_WACC.html">Masking Invalid Grid Cells Where g ≥ WACC</a></li><li><a href="C05_Running_Grids_with_the_Circularity_Breaker_On.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C05_Running_Grids_with_the_Circularity_Breaker_On.html">Running Grids with the Circularity Breaker On</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Centre Cell Must Equal Model Output</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Centre cell must equal model output exactly, proving table wiring</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>For a sensitivity grid whose axes are centred on the base-case inputs \((x_0, y_0)\):</p>
+<p>\[
+T(x_0, y_0) = f(x_0, y_0) = \text{Model output}
+\]</p>
+<p>where \(T(x_0, y_0)\) is the table value at the centre cell and \(f\) is the model's live output, such as implied price. Implement the check as:</p>
+<pre><code>=IF(ABS(Centre_Cell - Model_Output) &lt; 0.005, &quot;OK&quot;, &quot;CHECK GRID&quot;)
+</code></pre>
+<h2 id="explanation">Explanation</h2>
+<p>The centre-cell test is the cheapest and most powerful control on a data table. It fails in each of these cases:</p>
+<ul>
+<li><strong>Axes not centred on the base.</strong> Headers are hardcoded and the base has moved, for example WACC updated from 12.0% to 12.3%.</li>
+<li><strong>Stale table.</strong> The workbook is in "Automatic except for data tables" mode, inputs have changed, and F9 has not been pressed (s06).</li>
+<li><strong>Model does not flow through the input cell.</strong> If WACC is hardcoded, or referenced from another cell, the table shows a constant. The centre might accidentally pass if the constant equals the output, but the whole grid would then be flat, which the directional checks catch.</li>
+<li><strong>Corner formula references the wrong output</strong>, for example price before dilution, or EV instead of price.</li>
+<li><strong>Circularity non-convergence.</strong> If iterative calculation is on, table cells may stop at different iteration states from the main model.</li>
+</ul>
+<p>It does <strong>not</strong> catch symmetric swapped axes (concept c01), or errors elsewhere in the model, which would be reflected identically in both the table and the output.</p>
+<p><strong>"Exactly" means within rounding tolerance.</strong> The table and the model compute the same formula chain, so any difference beyond floating-point noise indicates a wiring or staleness problem. Use a tolerance of ₹ 0.005, or compare with <code>ROUND</code>. A difference of a few paise usually signals iteration effects. Investigate it.</p>
+<p>The centre cell is also the anchor for presentation (s05). The heat-map midpoint and the base-case highlight both key off it. A broken centre means the formatting is misleading too.</p>
+<h2 id="illustration">Illustration</h2>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Centre cell</th>
+<th>DCF output</th>
+<th>Check</th>
+<th>Diagnosis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Correct and fresh</td>
+<td>₹ 550.4</td>
+<td>₹ 550.4</td>
+<td>OK</td>
+<td>Wired and current</td>
+</tr>
+<tr>
+<td>WACC tab updated to 12.3%, absolute axis headers still 11–13%</td>
+<td>₹ 550.4</td>
+<td>₹ 524.9</td>
+<td>CHECK</td>
+<td>Axis not centred: the centre column still shows WACC 12.0%</td>
+</tr>
+<tr>
+<td>Scenario switched to Bear, F9 not pressed</td>
+<td>₹ 550.4</td>
+<td>₹ 468.0</td>
+<td>CHECK</td>
+<td>Stale table</td>
+</tr>
+<tr>
+<td>Discount factors use <code>1/(1.12)^t</code></td>
+<td>₹ 550.4</td>
+<td>₹ 550.4</td>
+<td>OK</td>
+<td>Passes, but every row is constant, so a directional check is needed</td>
+</tr>
+<tr>
+<td>Corner cell <code>=Equity_Value</code> by mistake</td>
+<td>₹ 12,308</td>
+<td>₹ 550.4</td>
+<td>CHECK</td>
+<td>Wrong output linked</td>
+</tr>
+</tbody>
+</table>
+<p>The fourth row shows why the centre test should be paired with a <strong>flex check</strong>:</p>
+<pre><code>=IF(MAX(I21:M25)-MIN(I21:M25)&gt;0,&quot;Flexes&quot;,&quot;FLAT GRID&quot;)
+</code></pre>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>This check underpins the subtopic s06 freshness check and the s05 highlight rule.</li>
+<li>It addresses the topic pitfalls on hardcoded WACC (flat grids) and stale grids.</li>
+<li>It pairs with concept c01 (directional tests for swapped axes).</li>
+<li>In model audit practice (FAST and ICAEW model-review standards), every sensitivity output should reconcile to the base model. The centre cell is that reconciliation.</li>
+<li>In FP&amp;A, the same principle applies to budget flex tables: the base column must equal the approved budget.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-build-the-control-block-l1">Q1. Build the control block [L1]</h3>
+<p>For a grid with body <code>I21:M25</code>, centre <code>K23</code> and model output <code>DCF!$E$40</code>, write three check formulas: the centre match, the flex check, and a directional check that price decreases from <code>I23</code> to <code>M23</code>. Combine them into a single grid status cell.</p>
+<h3 id="q2-diagnose-from-symptoms-l2">Q2. Diagnose from symptoms [L2]</h3>
+<p>A grid's centre shows ₹ 702 and the model shows ₹ 702. Within each column every cell is identical. Values vary only from column to column, and column K is ₹ 702 throughout. The WACC axis is across the top and g is down the side. What is the likely wiring error, and how would you confirm it?</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Constant down a column means the column-input variable is not affecting the output.</p>
+</blockquote>
+<h3 id="q3-interview-one-check-you-always-run-l1">Q3. Interview: one check you always run [L1]</h3>
+<p>An interviewer asks what single check you would run on a colleague's DCF sensitivity table before it goes to a client. Name it, explain what it catches and what it misses, and say what you would add.</p></section>
+<nav class="pager"><a class="prev" href="C01_TABLE_Row_and_Column_Input_Mapping.html">← TABLE() Row and Column Input Mapping</a><a class="next" href="C03_Data_Table_Input_Cells_Must_Be_on_the_Same_Sheet.html">Data Table Input Cells Must Be on the Same Sheet →</a></nav>
+</main></div></body></html>

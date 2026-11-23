@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alternatives: Calculation Groups, Field Parameters, Visual Calcs, Excel · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S07_Alternatives_Calculation_Groups_Field_Parameters.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T6 · P&amp;L layout, subtotals and sign-flip</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · P&amp;L layout, subtotals and sign-flip</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_The_PL_Layout_Dimension_Lines_Sort_Order_Type_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S01_The_PL_Layout_Dimension_Lines_Sort_Order_Type_and.html">The P&amp;L Layout Dimension: Lines, Sort Order, Type and Sign</a></li><li><a href="S02_Mapping_CoA_to_Layout_Lines_and_Computing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S02_Mapping_CoA_to_Layout_Lines_and_Computing.html">Mapping CoA to Layout Lines and Computing Subtotals by Sort Order</a></li><li><a href="S03_Row_Level_Measure_Dispatch_with_SWITCHTRUE_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S03_Row_Level_Measure_Dispatch_with_SWITCHTRUE_and.html">Row-Level Measure Dispatch with SWITCH(TRUE()) and SELECTEDVALUE</a></li><li><a href="S04_Sign_Convention_Credits_Negative_in_the_GL_Flipped.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S04_Sign_Convention_Credits_Negative_in_the_GL_Flipped.html">Sign Convention: Credits Negative in the GL, Flipped for Presentation</a></li><li><a href="S05_Margin_Rows_GM_EBITDA_EBIT_with_Dynamic_Format.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S05_Margin_Rows_GM_EBITDA_EBIT_with_Dynamic_Format.html">Margin Rows (GM %, EBITDA %, EBIT %) with Dynamic Format Strings</a></li><li><a href="S06_Formatting_the_PL_Matrix_Layout_Spacers_Bold.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S06_Formatting_the_PL_Matrix_Layout_Spacers_Bold.html">Formatting the P&amp;L Matrix: Layout, Spacers, Bold Subtotals, Empty Rows</a></li><li><a href="S07_Alternatives_Calculation_Groups_Field_Parameters.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S07_Alternatives_Calculation_Groups_Field_Parameters.html">Alternatives: Calculation Groups, Field Parameters, Visual Calcs, Excel</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_The_PnL_Dispatcher_Measure_with_SWITCHTRUE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C01_The_PnL_Dispatcher_Measure_with_SWITCHTRUE.html">The PnL Dispatcher Measure with SWITCH(TRUE())</a></li><li><a href="../concepts/C02_Actual_Signed_Applying_the_CoA_Sign_Factor_Row_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C02_Actual_Signed_Applying_the_CoA_Sign_Factor_Row_by.html">Actual Signed: Applying the CoA Sign Factor Row by Row</a></li><li><a href="../concepts/C03_The_Subtotal_Measure_Removing_the_Layout_Filter_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C03_The_Subtotal_Measure_Removing_the_Layout_Filter_by.html">The Subtotal Measure: Removing the Layout Filter by Sort Order</a></li><li><a href="../concepts/C04_EBITDA_with_a_Dynamic_Format_String_in_the_PL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C04_EBITDA_with_a_Dynamic_Format_String_in_the_PL.html">EBITDA % with a Dynamic Format String in the P&amp;L Matrix</a></li><li><a href="../concepts/C05_Blanking_PL_Grand_Totals_with_ISINSCOPE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C05_Blanking_PL_Grand_Totals_with_ISINSCOPE.html">Blanking P&amp;L Grand Totals with ISINSCOPE</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Alternatives: Calculation Groups, Field Parameters, Visual Calcs, Excel</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Alternatives: calculation groups, field parameters, visual calculations, Excel PivotTables on Power Pivot measures</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>The layout-table-plus-dispatcher pattern is the workhorse for P&amp;L rendering, but it is not the only tool, and it does not
+solve every requirement on its own: Actual / Budget / PY / Variance columns, user-selectable views, quick ad-hoc margin
+calculations and pixel-perfect board packs each have better-suited techniques. Knowing the alternatives — and their
+limits — lets you choose the simplest design that meets the reporting requirement and explain the trade-off in a design
+review or interview.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="calculation-groups">Calculation groups</h3>
+<p>A calculation group applies a transformation to whatever measure is in the visual, via <code>SELECTEDMEASURE()</code>. In P&amp;L
+reporting it is most useful for <strong>columns</strong>:</p>
+<pre><code class="language-DAX">-- Calculation group: Scenario View, column: View
+
+Actual   = CALCULATE ( SELECTEDMEASURE (), Scenario[Scenario] = &quot;Actual&quot; )
+Budget   = CALCULATE ( SELECTEDMEASURE (), Scenario[Scenario] = &quot;Budget&quot; )
+PY       = CALCULATE ( SELECTEDMEASURE (), Scenario[Scenario] = &quot;Actual&quot;,
+                       SAMEPERIODLASTYEAR ( 'Date'[Date] ) )
+Var ₹    =
+    CALCULATE ( SELECTEDMEASURE (), Scenario[Scenario] = &quot;Actual&quot; )
+  - CALCULATE ( SELECTEDMEASURE (), Scenario[Scenario] = &quot;Budget&quot; )
+Var %    =
+VAR a = CALCULATE ( SELECTEDMEASURE (), Scenario[Scenario] = &quot;Actual&quot; )
+VAR b = CALCULATE ( SELECTEDMEASURE (), Scenario[Scenario] = &quot;Budget&quot; )
+RETURN IF ( SELECTEDVALUE ( Layout[Type] ) &lt;&gt; &quot;Ratio&quot;, DIVIDE ( a - b, ABS ( b ) ) )
+</code></pre>
+<p>With <code>View</code> on matrix columns and <code>[PnL]</code> as the only value, one dispatcher renders a full Actual / Budget / Var / PY
+statement. Format string expressions per item handle Var % ("0.0%") while keeping row-level dynamic formats for the
+other items (<code>SELECTEDMEASUREFORMATSTRING()</code>).</p>
+<p>Could a calculation group render the <em>rows</em> (GP, EBITDA as items)? Technically yes — items like "Gross Profit" that
+compute subtotals — but rows driven by calculation items cannot be mapped to accounts, cannot drill to GL, and must be
+edited in the model for every layout change. The layout table remains the better row driver.</p>
+<h3 id="field-parameters">Field parameters</h3>
+<p>A field parameter lists measures or columns for a user to pick. For P&amp;L work:</p>
+<ul>
+<li><strong>Metric picker</strong> on a KPI page: Revenue, Gross Profit, EBITDA, PAT.</li>
+<li><strong>"View by" picker</strong> for a breakdown matrix: Branch, Region, Product Category, Cost Centre on rows next to the P&amp;L
+  lines.</li>
+<li><strong>Column chooser</strong> for a variance table: show Actual + Budget, or Actual + PY.</li>
+</ul>
+<pre><code class="language-DAX">PnL Columns = {
+    ( &quot;Actual&quot;,  NAMEOF ( [PnL Actual] ),  0 ),
+    ( &quot;Budget&quot;,  NAMEOF ( [PnL Budget] ),  1 ),
+    ( &quot;Var ₹&quot;,   NAMEOF ( [PnL Var ₹] ),   2 ),
+    ( &quot;Var %&quot;,   NAMEOF ( [PnL Var %] ),   3 )
+}
+</code></pre>
+<p>Field parameters require the measures to exist (no reduction in measure count) and are a report-layer feature; they do
+not carry into Analyze in Excel.</p>
+<h3 id="visual-calculations">Visual calculations</h3>
+<p>Visual calculations are DAX expressions defined on a visual, computed over the visual's own rows and columns. Functions
+such as <code>RUNNINGSUM</code>, <code>PREVIOUS</code>, <code>MOVINGAVERAGE</code>, <code>COLLAPSE</code> and <code>EXPAND</code> operate along the visual's axes.</p>
+<ul>
+<li><strong>Running total down the statement</strong>: on a profit-signed matrix sorted by layout order, a <code>RUNNINGSUM</code> along rows
+  produces cumulative values that equal GP, EBITDA, EBIT … at subtotal positions — an elegant demo, but it depends on
+  the visual's sort and on every row being present.</li>
+<li><strong>Margin columns</strong>: <code>DIVIDE([Actual], &lt;revenue row value&gt;)</code> style calculations need a way to address the revenue row;
+  in practice visual calcs are better for column-wise calculations (variance between two columns, % of column total
+  with <code>COLLAPSE</code>).</li>
+<li><strong>Limits</strong>: they live only in that visual, are not reusable in other visuals or Excel, cannot be referenced by model
+  measures, and change behaviour if a user re-sorts or filters rows. Use for ad-hoc analysis, not for governed KPIs.</li>
+</ul>
+<h3 id="excel-pivottables-on-power-pivot-measures">Excel PivotTables on Power Pivot measures</h3>
+<p>Power Pivot (the Excel data model) runs the same VertiPaq engine and DAX. The same layout table, dispatcher and
+measures work in an Excel PivotTable:</p>
+<ul>
+<li>Rows: <code>Layout[Line]</code> (sort by column set in the data model); values: <code>[PnL]</code>, <code>[PnL Budget]</code>, <code>[PnL Var ₹]</code>.</li>
+<li>PivotTable options: <em>Show items with no data on rows</em> (keeps headers and spacers), <em>Classic layout</em> / tabular form,
+  grand totals off.</li>
+<li>Formatting: Excel styles, true bold rows (manually or via conditional formatting with formula rules referencing the
+  label), brackets for negatives, and ₹ lakh values from measures scaled by 1,00,000 (Excel's trailing-comma format scaling
+  works in thousands, so it cannot produce lakhs directly).</li>
+<li><strong>Calculation groups are not authorable in Power Pivot</strong>; connecting Excel to a published Power BI semantic model
+  (<em>Analyze in Excel</em>) gives access to them.</li>
+<li>For fixed board-pack layouts that must never move, Excel <strong>cube formulas</strong> (<code>CUBEVALUE</code>, <code>CUBEMEMBER</code>) read individual
+  cells from the model into a formatted template — covered in Week 12 (w12_t3).</li>
+</ul>
+<h3 id="choosing">Choosing</h3>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Best fit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Statement rows with subtotals and drill to accounts</td>
+<td>Layout table + dispatcher</td>
+</tr>
+<tr>
+<td>Actual / Budget / PY / Variance columns without measure explosion</td>
+<td>Calculation group on columns</td>
+</tr>
+<tr>
+<td>User picks the KPI or the breakdown dimension</td>
+<td>Field parameter</td>
+</tr>
+<tr>
+<td>Quick variance or running total for one visual</td>
+<td>Visual calculation</td>
+</tr>
+<tr>
+<td>Pixel-perfect board pack, true bold, fixed cells</td>
+<td>Excel PivotTable or cube formulas on the model</td>
+</tr>
+</tbody>
+</table>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Interaction of calculation groups and dynamic format strings:</strong> if both define formats, the calculation item's
+  format string expression wins for that item; use <code>SELECTEDMEASUREFORMATSTRING()</code> to defer to the measure.</li>
+<li><strong>Favourable/adverse in a calculation group:</strong> in profit-signed form, Var ₹ &gt; 0 is always favourable; if display signs
+  are flipped for expenses, the item must apply the layout sign (topic pitfall).</li>
+<li><strong>Implicit measures stop working</strong> once a calculation group is in the model — legacy PivotTables built by dragging
+  numeric columns break.</li>
+<li><strong>Field parameters and bookmarks:</strong> selections stored in bookmarks can confuse users; reset defaults on publish.</li>
+<li><strong>Version compatibility:</strong> visual calculations and some calculation-group authoring features arrived in 2024–25
+  releases; confirm the organisation's Power BI Desktop and Report Server versions support them.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Layout tables drive rows; calculation groups are ideal for Actual / Budget / PY / Variance columns.</li>
+<li>Field parameters let users switch KPIs or dimensions but need the measures to exist.</li>
+<li>Visual calculations are quick and local — not for governed KPIs.</li>
+<li>Power Pivot runs the same DAX; Excel gives true formatting control and cube formulas for fixed layouts.</li>
+<li>Choose per requirement, and document the reason in the model design notes.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-scenario-calculation-group-l2">Q1. Scenario calculation group [L2]</h3>
+<p>Write a <em>Scenario View</em> calculation group with items Actual, Budget, PY, Var ₹ vs Budget, Var % vs Budget and Var ₹ vs
+PY for a unified fact with a Scenario column, including format string expressions, and explain how it combines with the
+<code>[PnL]</code> dispatcher on a matrix.</p>
+<h3 id="q2-field-parameter-for-breakdowns-l1">Q2. Field parameter for breakdowns [L1]</h3>
+<p>Create a field parameter that lets a user switch the rows of a contribution table between Branch, Product Category and
+Sales Channel, with the P&amp;L lines Revenue, Gross Profit and EBITDA as values. Write the DAX and describe the slicer.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> A field parameter can list columns as well as measures.</p>
+</blockquote>
+<h3 id="q3-visual-calculation-trap-l2">Q3. Visual calculation trap [L2]</h3>
+<p>An analyst builds GP, EBITDA and EBIT rows using <code>RUNNINGSUM</code> on a matrix of profit-signed account lines. Explain what
+happens to the subtotal values when (a) a user sorts the matrix by value descending, (b) a slicer filters out a cost
+centre that has no D&amp;A, and (c) the same visual is copied to a page with a different row order.</p>
+<h3 id="q4-choose-the-rendering-technology-l3">Q4. Choose the rendering technology [L3]</h3>
+<p>For each output, recommend the technique and justify it: (a) monthly MIS P&amp;L for business heads with drill to accounts;
+(b) quarterly board pack in a fixed 2-page format with commentary boxes; (c) a CFO dashboard where the user picks the
+KPI and the comparison base; (d) an analyst's one-off check of month-on-month change in opex lines. Mention one risk for
+each recommendation.</p></section>
+<nav class="pager"><a class="prev" href="S06_Formatting_the_PL_Matrix_Layout_Spacers_Bold.html">← Formatting the P&amp;L Matrix: Layout, Spacers, Bold Subtotals,…</a><a class="next" href="../concepts/C01_The_PnL_Dispatcher_Measure_with_SWITCHTRUE.html">The PnL Dispatcher Measure with SWITCH(TRUE()) →</a></nav>
+</main></div></body></html>

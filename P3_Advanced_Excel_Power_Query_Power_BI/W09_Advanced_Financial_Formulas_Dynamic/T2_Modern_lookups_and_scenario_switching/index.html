@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern lookups and scenario switching · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/index.html" data-kind="topic">
+<header class="top"><a class="brand" href="../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../index.html">Home</a> <span>›</span> <a href="../../index.html">Phase 3</a> <span>›</span> <a href="../index.html">Week 9</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">Week 9</a></div><ul class="side-links"><li><a href="../T1_Multi_criteria_logic_and_GL_rollups/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/index.html">T1 · Multi-criteria logic and GL rollups</a></li><li><a href="index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/index.html">T2 · Modern lookups and scenario switching</a></li><li><a href="../T3_SUMPRODUCT_weighted_averages_and_matrix/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/index.html">T3 · SUMPRODUCT weighted averages and matrix math</a></li><li><a href="../T4_Dynamic_arrays_and_LETLAMBDA/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/index.html">T4 · Dynamic arrays and LET/LAMBDA</a></li><li><a href="../T5_Financial_and_date_functions/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/index.html">T5 · Financial and date functions</a></li><li><a href="../T6_What_if_analysis_and_input_controls/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/index.html">T6 · What-if analysis and input controls</a></li></ul></aside>
+<main class="content">
+<div class="kind">Topic</div>
+<h1>Modern lookups and scenario switching</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<section class="index"><h2>Notes in this topic</h2><div class="cols"><div><h3>Subtopics</h3><ul class="links num"><li><a href="subtopics/S01_XLOOKUP_Arguments_Not_Found_Value_Match_Mode_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S01_XLOOKUP_Arguments_Not_Found_Value_Match_Mode_and.html">S01 · XLOOKUP Arguments: Not-Found Value, Match Mode and Search Mode</a></li><li><a href="subtopics/S02_Approximate_Match_Lookups_for_Slabs_TDS_Rates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S02_Approximate_Match_Lookups_for_Slabs_TDS_Rates.html">S02 · Approximate-Match Lookups for Slabs, TDS Rates, Tiers and Bands</a></li><li><a href="subtopics/S03_Reverse_Search_for_Latest_Price_FX_Rate_and_Last.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S03_Reverse_Search_for_Latest_Price_FX_Rate_and_Last.html">S03 · Reverse Search for Latest Price, FX Rate and Last Payment Date</a></li><li><a href="subtopics/S04_Two_Way_Lookups_on_Account_Month_Grids.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S04_Two_Way_Lookups_on_Account_Month_Grids.html">S04 · Two-Way Lookups on Account × Month Grids</a></li><li><a href="subtopics/S05_XLOOKUP_Returning_Rows_Columns_and_Range.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S05_XLOOKUP_Returning_Rows_Columns_and_Range.html">S05 · XLOOKUP Returning Rows, Columns and Range References</a></li><li><a href="subtopics/S06_XMATCH_and_INDEX_XMATCH_for_Dynamic_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S06_XMATCH_and_INDEX_XMATCH_for_Dynamic_Column.html">S06 · XMATCH and INDEX-XMATCH for Dynamic Column Selection</a></li><li><a href="subtopics/S07_Live_Scenario_Switches_with_CHOOSE_INDEX_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S07_Live_Scenario_Switches_with_CHOOSE_INDEX_and.html">S07 · Live Scenario Switches with CHOOSE, INDEX and SWITCH</a></li><li><a href="subtopics/S08_Multi_Key_Lookups_Helper_Keys_vs_Boolean_Arrays.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S08_Multi_Key_Lookups_Helper_Keys_vs_Boolean_Arrays.html">S08 · Multi-Key Lookups: Helper Keys vs Boolean Arrays</a></li></ul></div><div><h3>Key concepts & formulas</h3><ul class="links num"><li><a href="concepts/C01_The_Fully_Specified_XLOOKUP_for_Ledger_Mapping.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C01_The_Fully_Specified_XLOOKUP_for_Ledger_Mapping.html">C01 · The Fully Specified XLOOKUP for Ledger Mapping</a></li><li><a href="concepts/C02_Next_Smaller_XLOOKUP_for_Slab_Rates_Without.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C02_Next_Smaller_XLOOKUP_for_Slab_Rates_Without.html">C02 · Next-Smaller XLOOKUP for Slab Rates Without Sorting</a></li><li><a href="concepts/C03_Nested_XLOOKUP_as_a_Two_Way_Lookup.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C03_Nested_XLOOKUP_as_a_Two_Way_Lookup.html">C03 · Nested XLOOKUP as a Two-Way Lookup</a></li><li><a href="concepts/C04_INDEX_MATCH_MATCH_The_Version_Proof_Two_Way_Lookup.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C04_INDEX_MATCH_MATCH_The_Version_Proof_Two_Way_Lookup.html">C04 · INDEX-MATCH-MATCH: The Version-Proof Two-Way Lookup</a></li><li><a href="concepts/C05_Boolean_Array_XLOOKUP_for_Multi_Criteria_Lookups.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C05_Boolean_Array_XLOOKUP_for_Multi_Criteria_Lookups.html">C05 · Boolean-Array XLOOKUP for Multi-Criteria Lookups</a></li><li><a href="concepts/C06_CHOOSE_Driven_by_a_MATCH_Index_for_Scenario.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C06_CHOOSE_Driven_by_a_MATCH_Index_for_Scenario.html">C06 · CHOOSE Driven by a MATCH Index for Scenario Selection</a></li><li><a href="concepts/C07_Dynamic_Period_Window_with_XLOOKUPXLOOKUP.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C07_Dynamic_Period_Window_with_XLOOKUPXLOOKUP.html">C07 · Dynamic Period Window with XLOOKUP:XLOOKUP</a></li></ul></div></div></section><article class="note"><blockquote>
+<p><strong>Roadmap topic:</strong> Modern Lookup Architecture: XLOOKUP (exact/approximate, reverse search, two-way nested XLOOKUP), INDEX-MATCH-MATCH, and CHOOSE for scenario switching</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>Lookups are the joins of a spreadsheet model. They attach FS lines to ledgers, rates to slabs, budgets to actuals, the latest price to an SKU, and scenario values to live drivers. A finance model with a few hundred lookups is normal; a model with one wrong lookup is also normal, which is why this topic is as much about <em>lookup architecture</em> — explicit match modes, visible not-found flags, unique keys, aligned ranges — as about syntax.</p>
+<p>XLOOKUP is the modern default: exact by default, separate lookup and return arrays (so left lookups and column insertions are safe), built-in not-found handling, approximate match without sorting, reverse search, wildcard search, multi-column returns that spill, and the ability to return a reference that can define a dynamic range. INDEX-MATCH-MATCH remains essential because it works in every Excel version, is fast, and is what most reviewers and interviewers expect you to know cold. CHOOSE, INDEX and SWITCH complete the picture by turning a dropdown into a live scenario switch that drives an entire model.</p>
+<p>Learn the topic in this sequence: first the <strong>XLOOKUP arguments</strong> (s01), because every later pattern is a combination of them; then the three behaviours that replace older tricks — <strong>approximate match for bands</strong> (s02), <strong>reverse search for latest records</strong> (s03) and <strong>two-way lookups</strong> (s04); then XLOOKUP's array and reference abilities (<strong>spilled rows and dynamic ranges</strong>, s05) and <strong>XMATCH with INDEX</strong> for choosing columns dynamically (s06). Finish with model-level patterns: <strong>scenario switches</strong> (s07) and <strong>multi-key lookups</strong> (s08). The seven key concepts are the exact formulas you should be able to type from memory under time pressure.</p>
+<p>For the target roles, this is the topic that most often appears in Excel tests for FP&amp;A and reporting interviews (VLOOKUP vs XLOOKUP vs INDEX-MATCH, "why is this returning the wrong row?"), and it underpins the week's exercise: XLOOKUP maps every TB ledger to an FS line and Schedule III line, with every miss flagged automatically.</p>
+<h2 id="concept-map">Concept map</h2>
+<table>
+<thead>
+<tr>
+<th>Subtopic / concept</th>
+<th>Role in the topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s01 XLOOKUP arguments</td>
+<td><code>if_not_found</code>, <code>match_mode</code> and <code>search_mode</code>: the vocabulary of every lookup</td>
+</tr>
+<tr>
+<td>s02 Approximate match for bands</td>
+<td>Tax slabs, TDS thresholds, commission tiers, depreciation bands from rate tables</td>
+</tr>
+<tr>
+<td>s03 Reverse search</td>
+<td>Latest price, FX rate or payment — and "latest on or before a cut-off"</td>
+</tr>
+<tr>
+<td>s04 Two-way lookups</td>
+<td>Account × month intersections with nested XLOOKUP or INDEX-MATCH-MATCH</td>
+</tr>
+<tr>
+<td>s05 Rows, columns and range references</td>
+<td>Spilled records and non-volatile dynamic windows via XLOOKUP:XLOOKUP</td>
+</tr>
+<tr>
+<td>s06 XMATCH and INDEX-XMATCH</td>
+<td>Exact-by-default positions; selecting columns by header at run time</td>
+</tr>
+<tr>
+<td>s07 Scenario switches</td>
+<td>Dropdown → index → live driver column with CHOOSE, INDEX or SWITCH</td>
+</tr>
+<tr>
+<td>s08 Multi-key lookups</td>
+<td>Helper keys vs boolean arrays for compound keys</td>
+</tr>
+<tr>
+<td>c01 Fully specified XLOOKUP</td>
+<td>Exact, first match, "Not mapped" flag for ledger mapping</td>
+</tr>
+<tr>
+<td>c02 Next-smaller XLOOKUP</td>
+<td>Slab rates with match mode -1; sorting needed only for binary search</td>
+</tr>
+<tr>
+<td>c03 Nested XLOOKUP</td>
+<td>Inner lookup returns a column; outer picks the row</td>
+</tr>
+<tr>
+<td>c04 INDEX-MATCH-MATCH</td>
+<td>Version-proof two-way lookup; match type 0 mandatory</td>
+</tr>
+<tr>
+<td>c05 Boolean-array XLOOKUP</td>
+<td>Multi-criteria lookup without helper columns</td>
+</tr>
+<tr>
+<td>c06 CHOOSE with a MATCH index</td>
+<td>Scenario selection by position; list order must match</td>
+</tr>
+<tr>
+<td>c07 XLOOKUP:XLOOKUP window</td>
+<td>Dynamic YTD/QTD/rolling sums without OFFSET</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-concepts-to-study">Related concepts to study</h2>
+<h3 id="vlookuphlookup-limits">VLOOKUP/HLOOKUP limits</h3>
+<p><em>VLOOKUP/HLOOKUP limits (column index, no left lookup, breaks when a column is inserted): a common interview comparison</em></p>
+<p>VLOOKUP searches only the <strong>first column</strong> of its table and returns by a hard-coded <strong>column index number</strong>. Consequences: it cannot look left (the key must be in the leftmost column), inserting or deleting a column inside the table shifts the returned column silently (<code>VLOOKUP(A2, B:F, 4, 0)</code> now returns a different field), and the default <code>range_lookup</code> is TRUE (approximate), so leaving out FALSE returns wrong rows on unsorted data. It also reads the whole table array, which is slower for wide tables. HLOOKUP has the same issues horizontally. The interview answer: VLOOKUP works in every version and is fine for simple, stable lookups with FALSE; INDEX-MATCH or XLOOKUP is preferred because the return column is referenced, not counted, and because XLOOKUP adds not-found handling, reverse and approximate search without sorting.</p>
+<h3 id="offset-and-indirect-as-volatile-alternatives">OFFSET and INDIRECT as volatile alternatives</h3>
+<p><em>OFFSET and INDIRECT are volatile alternatives to avoid in large models</em></p>
+<p>OFFSET (a range shifted and resized from a base cell) and INDIRECT (a range built from text, e.g. <code>INDIRECT("'"&amp;Sheet&amp;"'!B5")</code>) are <strong>volatile</strong>: Excel recalculates them, and everything depending on them, after every change anywhere in the workbook. In a large model this makes every keystroke slow and forces full recalculations. They are also hard to audit — Trace Precedents cannot follow a reference built from text, and INDIRECT breaks silently when a sheet is renamed (the text no longer matches). Non-volatile replacements exist for almost every use: INDEX:INDEX or XLOOKUP:XLOOKUP for dynamic windows, CHOOSE or INDEX for switching between blocks, Tables for growing ranges. INDIRECT still has one accepted niche — dependent dropdown lists — and even that can be replaced with spill references to FILTER/UNIQUE outputs.</p>
+<h3 id="data-validation-dropdowns-feeding-the-scenario-index">Data Validation dropdowns feeding the scenario index</h3>
+<p><em>Data Validation dropdowns that feed the scenario index → w9_t6</em></p>
+<p>A scenario switch is only as reliable as its selector cell. Data Validation (Data → Data Validation → List) restricts the cell to the entries of <code>ScenList</code>, so users cannot type "Downside " with a trailing space or "Worst" that does not exist; the input message can explain what each case means, and the error alert blocks invalid entries. Source the list from a Table column or a spill reference (<code>=ScenHdr</code> or <code>=H2#</code>) so new scenarios appear automatically. Remember the limits covered in topic 6: pasting over a validated cell removes the validation, so protect the control sheet and keep a check cell (<code>ISNUMBER(XMATCH(Scenario, ScenList))</code>) that confirms the selection is valid.</p>
+<h3 id="scenario-switch-driving-the-3-statement-model-and-dcf">Scenario switch driving the 3-statement model and DCF</h3>
+<p><em>→ Week 13–16: scenario switch driving the 3-statement model and DCF cases</em></p>
+<p>In Weeks 13–16 the same switch sits on the cover sheet of an integrated model. Every operating driver — volume, price, margins, working-capital days, capex, funding — has a live column fed by the switch, so a single change of the dropdown flows through the P&amp;L, balance sheet and cash flow, then into free cash flow, WACC-based DCF value, debt schedules and covenant tests. Good practice: show the active case on every output page, run an all-cases summary via a Data Table on the scenario index, and keep case values only on the assumptions sheet. Lenders and investment committees expect Base / Upside / Downside (and sometimes a sponsor or bank case) to be reproducible by any reviewer by flipping one cell.</p>
+<h3 id="merge-queries-replacing-lookups-at-the-etl-stage">Merge Queries replacing lookups at the ETL stage</h3>
+<p><em>→ Week 10: Merge Queries replace lookups on large GL dumps at the ETL stage</em></p>
+<p>When the GL dump reaches lakhs of rows, thousands of XLOOKUPs (especially boolean-array ones) slow the workbook and spread mapping logic across cells. Power Query's <strong>Merge Queries</strong> performs the join once during refresh: a left-outer merge of the GL with the mapping table on Ledger (or on several columns for compound keys), then expand the FSLine column. Unmatched rows show <code>null</code>, which you can count or filter into an exception query — the equivalent of "Not mapped". Merges also handle cleaning (Trim, Clean, type setting) before joining, which removes most lookup failures. The worksheet then contains only the clean, mapped Table and light SUMIFS reporting — a faster and more auditable architecture.</p>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<h3 id="trailing-spaces-and-numbers-stored-as-text">Trailing spaces and numbers stored as text</h3>
+<p><em>Trailing spaces or numbers stored as text cause not-found results; fix with TRIM/VALUE or in Power Query</em></p>
+<p><strong>The mistake.</strong> Keys that look identical are not: "Rent " vs "Rent", the number 410100 vs the text "410100", or a non-breaking space (CHAR(160)) from PDF/web exports. Exact lookups return not-found — or, worse, an IFERROR default.</p>
+<p><strong>Why it happens.</strong> ERP and Tally exports, copy-paste from PDFs and manual edits introduce invisible differences; formats hide the data type.</p>
+<p><strong>Correct treatment and review.</strong> Clean keys at the source: <code>TRIM(SUBSTITUTE(A2, CHAR(160), " "))</code> for spaces, <code>VALUE</code> or <code>TEXT</code> to align types, or — best for recurring imports — Power Query Trim/Clean and an explicit column type. In review, test with <code>LEN(A2)&lt;&gt;LEN(TRIM(A2))</code>, <code>ISTEXT</code>/<code>ISNUMBER</code>, and count not-found flags after every refresh.</p>
+<h3 id="match-defaults-to-approximate-match">MATCH defaults to approximate match</h3>
+<p><em>MATCH defaults to match_type 1 (approximate), so leaving out 0 silently returns wrong rows</em></p>
+<p><strong>The mistake.</strong> <code>MATCH(A5, Codes)</code> or <code>INDEX(…, MATCH(A5, Codes), …)</code> without the third argument. MATCH then assumes ascending order and returns the position of the largest value ≤ the lookup value — on unsorted codes, an arbitrary-looking row, with no error.</p>
+<p><strong>Why it happens.</strong> The argument is optional and the formula "works" in testing on sorted samples; VLOOKUP's similar TRUE default compounds the habit.</p>
+<p><strong>Correct treatment and review.</strong> Always write <code>MATCH(x, array, 0)</code>, or use XMATCH (exact by default). In review, search formulas for <code>MATCH(</code> and inspect every one for an explicit 0; spot-test a few lookups against a filter of the source.</p>
+<h3 id="xlookup-in-files-shared-with-older-excel-versions">XLOOKUP in files shared with older Excel versions</h3>
+<p><em>XLOOKUP in files shared with Excel 2016/2019 users shows #NAME?</em></p>
+<p><strong>The mistake.</strong> Building a model with XLOOKUP, XMATCH, IFS, SWITCH, FILTER or LET and sending it to a subsidiary, auditor or client on Excel 2016/2019. Their Excel cannot evaluate the function; on recalculation the cells show <code>#NAME?</code> (cached values may display until a recalc, which is even more confusing).</p>
+<p><strong>Why it happens.</strong> Microsoft 365 users rarely see version boundaries; corporate India still has many perpetual-licence installations at plants and branches.</p>
+<p><strong>Correct treatment and review.</strong> Agree the minimum version with recipients before building. For mixed audiences use INDEX-MATCH (with 0), SUMIFS and named ranges, or send a values-only copy for review. File → Info → Check for Issues → Check Compatibility lists functions not supported in earlier versions.</p>
+<h3 id="duplicate-keys-in-the-coa-mapping">Duplicate keys in the CoA mapping</h3>
+<p><em>Duplicate keys in the CoA mapping return only the first match and go unnoticed</em></p>
+<p><strong>The mistake.</strong> The mapping table lists a ledger twice — once to "Other expenses" and once (added later) to "Finance costs". Every lookup returns the first row; the correction is ignored, and nothing errors.</p>
+<p><strong>Why it happens.</strong> Mapping tables grow by appending rows; nobody re-checks uniqueness; ledger renames create near-duplicates.</p>
+<p><strong>Correct treatment and review.</strong> Add a calculated column <code>=COUNTIF(Map[Ledger], [@Ledger])&gt;1</code> and a check cell that must be zero; or test the whole table with <code>=ROWS(Map[Ledger])=ROWS(UNIQUE(Map[Ledger]))</code>. Use Data Validation (custom rule with COUNTIF) to stop duplicates being entered, and when duplicates are deliberate (e.g. a mapping change from a date), add the effective date to the key.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-tb-to-schedule-iii-mapping-engine-l3">Q1. TB-to-Schedule III mapping engine [L3]</h3>
+<p>Vikram Auto Components Ltd's FY26 Tally TB has 512 ledgers (Ledger, Group, Closing). The mapping table has Ledger, FSLine, ScheduleIIILine, Nature. Required: (a) write the mapping formulas with explicit match and search modes and a visible not-found flag; (b) design the check block: unmapped count and amount, duplicate mapping keys, mapping rows no longer present in the TB, and TB nets to zero; (c) explain how you would diagnose 18 "Not mapped" ledgers into cleaning issues vs genuinely new ledgers; (d) state what changes if the file must also open correctly in Excel 2016 at the Pune plant.</p>
+<h3 id="q2-payroll-tax-and-tds-calculator-l2">Q2. Payroll tax and TDS calculator [L2]</h3>
+<p>Build the logic for a monthly TDS on salary estimate for 40 employees under the FY 2025-26 new regime: a slab table (From, Rate, BaseTax), an employee table (EmpID, Branch, AnnualTaxable), and formulas for annual tax before rebate, the Section 87A rebate effect for taxable income up to ₹12,00,000 (ignore marginal relief), 4% cess and monthly TDS. Explain why your slab lookup is safe if HR re-orders the slab table, and list the boundary test cases you would run.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Base-plus-marginal with three next-smaller lookups, or one LET formula, keeps the slab logic in the table.</p>
+</blockquote>
+<h3 id="q3-latest-rates-and-month-end-restatement-l2">Q3. Latest rates and month-end restatement [L2]</h3>
+<p>A Table <code>FX</code> holds daily USD, EUR and AED rates (Date, Ccy, Rate) with gaps for holidays; a Table <code>Open</code> lists foreign-currency payables (Vendor, Ccy, FCAmount). For the reporting date 31-Mar-2026, write formulas that return the applicable closing rate for each row (last available on or before the date), compute INR balances and the exchange difference against the booked INR amount, and explain why a plain reverse search without a date condition would be wrong.</p>
+<h3 id="q4-bva-pull-with-scenario-switched-forecast-l3">Q4. BvA pull with scenario-switched forecast [L3]</h3>
+<p>The FY27 budget arrives as a 120-line × 12-month grid with text month headers ("Apr-26"); the forecast model has Base/Upside/Downside cases selected by a dropdown. Design: (a) a two-way lookup that pulls budget values into your report grid keyed on real month-start dates; (b) a scenario switch for the forecast drivers with an index cell and live column; (c) YTD budget, YTD forecast and YTD variance for a selected month using XLOOKUP:XLOOKUP windows; (d) the checks proving the budget pull is complete (grand total vs source total) and that the selected scenario is valid.</p>
+<h3 id="q5-interview-whiteboard-lookup-choice-l2">Q5. Interview whiteboard: lookup choice [L2]</h3>
+<p>For each case, choose VLOOKUP, INDEX-MATCH, XLOOKUP (state the match/search modes) or SUMIFS and justify in two lines: (a) vendor name from vendor code, where the code is the third column; (b) commission rate from a tier table; (c) last receipt amount per customer from a chronological receipts log; (d) total November rent for a branch from the GL; (e) budget for an account–month intersection in a grid sent by a subsidiary on Excel 2016; (f) standard cost for Plant + SKU from a 2 lakh-row table used in 8,000 cells.</p></section>
+<nav class="pager"><a class="prev" href="../T1_Multi_criteria_logic_and_GL_rollups/concepts/C07_Range_Criteria_for_Numeric_Account_Codes_vs.html">← Range Criteria for Numeric Account Codes vs Wildcards on…</a><a class="next" href="subtopics/S01_XLOOKUP_Arguments_Not_Found_Value_Match_Mode_and.html">XLOOKUP Arguments: Not-Found Value, Match Mode and Search… →</a></nav>
+</main></div></body></html>

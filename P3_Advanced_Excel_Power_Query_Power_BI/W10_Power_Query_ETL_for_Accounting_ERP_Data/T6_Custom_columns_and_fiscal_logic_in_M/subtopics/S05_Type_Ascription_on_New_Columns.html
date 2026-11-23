@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Type Ascription on New Columns · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S05_Type_Ascription_on_New_Columns.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T6 · Custom columns and fiscal logic in M</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · Custom columns and fiscal logic in M</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Column_From_Examples_Custom_Column_and_Conditional.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S01_Column_From_Examples_Custom_Column_and_Conditional.html">Column From Examples, Custom Column and Conditional Column</a></li><li><a href="S02_Indian_FY_Attributes_Label_Fiscal_Month_Quarter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S02_Indian_FY_Attributes_Label_Fiscal_Month_Quarter.html">Indian FY Attributes: Label, Fiscal Month, Quarter and Sort Key</a></li><li><a href="S03_Receivable_and_Payable_Ageing_Against_an_As_Of.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S03_Receivable_and_Payable_Ageing_Against_an_As_Of.html">Receivable and Payable Ageing Against an As-Of-Date Parameter</a></li><li><a href="S04_Conditional_Logic_in_M_ifthenelse_andor_and_Null.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S04_Conditional_Logic_in_M_ifthenelse_andor_and_Null.html">Conditional Logic in M: if/then/else, and/or, and Null Coalescing</a></li><li><a href="S05_Type_Ascription_on_New_Columns.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S05_Type_Ascription_on_New_Columns.html">Type Ascription on New Columns</a></li><li><a href="S06_Group_By_Aggregations_for_Summary_Outputs_During.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S06_Group_By_Aggregations_for_Summary_Outputs_During.html">Group By Aggregations for Summary Outputs During Ingestion</a></li><li><a href="S07_Date_Functions_for_Fiscal_and_Ageing_Logic.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S07_Date_Functions_for_Fiscal_and_Ageing_Logic.html">Date Functions for Fiscal and Ageing Logic</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_FY_End_Year_and_FY_Label_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C01_FY_End_Year_and_FY_Label_Formula.html">FY End Year and FY Label Formula</a></li><li><a href="../concepts/C02_Fiscal_Month_Number_with_NumberMod.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C02_Fiscal_Month_Number_with_NumberMod.html">Fiscal Month Number with Number.Mod</a></li><li><a href="../concepts/C03_Fiscal_Quarter_with_NumberIntegerDivide.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C03_Fiscal_Quarter_with_NumberIntegerDivide.html">Fiscal Quarter with Number.IntegerDivide</a></li><li><a href="../concepts/C04_Ageing_Bucket_Expression_with_DurationDays.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C04_Ageing_Bucket_Expression_with_DurationDays.html">Ageing Bucket Expression with Duration.Days</a></li><li><a href="../concepts/C05_Null_Safe_Net_Amount_and_Operator_Precedence.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C05_Null_Safe_Net_Amount_and_Operator_Precedence.html">Null-Safe Net Amount and Operator Precedence</a></li><li><a href="../concepts/C06_TableGroup_by_FY_and_Ledger_with_a_Typed_Sum.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C06_TableGroup_by_FY_and_Ledger_with_a_Typed_Sum.html">Table.Group by FY and Ledger with a Typed Sum</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Type Ascription on New Columns</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Type ascription on new columns (<code>type number</code>, <code>Int64.Type</code>, <code>type date</code>) so they are not left as <code>any</code></p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Every column in Power Query has a declared type, shown as an icon in the header. A column added by <code>Table.AddColumn</code> without a type argument is declared <code>any</code> (the ABC/123 icon). In the editor preview the values look right, so the problem is invisible — until load. Excel tables may show numbers stored oddly, and the Data Model or Power BI typically loads an <code>any</code> column as <strong>text</strong>: amounts cannot be summed, fiscal months sort 1, 10, 11, 12, 2…, date columns get no hierarchy and relationships on date keys fail. Declaring types on new columns is a one-argument habit that prevents a whole category of model defects.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-fourth-argument-of-tableaddcolumn">The fourth argument of Table.AddColumn</h3>
+<pre><code class="language-m">Table.AddColumn(table, newColumnName, columnGenerator, optional columnType)
+</code></pre>
+<pre><code class="language-m">Net    = Table.AddColumn(t, &quot;Net&quot;, each ([Debit] ?? 0) - ([Credit] ?? 0), type number),
+FM     = Table.AddColumn(Net, &quot;FiscalMonth&quot;, each Number.Mod(Date.Month([Date]) + 8, 12) + 1, Int64.Type),
+FYLbl  = Table.AddColumn(FM, &quot;FY&quot;, each &quot;FY&quot; &amp; Text.From([FYEnd] - 1) &amp; &quot;-&quot; &amp; Text.End(Text.From([FYEnd]), 2), type text),
+MonthE = Table.AddColumn(FYLbl, &quot;MonthEnd&quot;, each Date.EndOfMonth([Date]), type date),
+Flag   = Table.AddColumn(MonthE, &quot;IsMSME&quot;, each List.Contains({&quot;Micro&quot;, &quot;Small&quot;}, [MSMEStatus]), type logical)
+</code></pre>
+<h3 id="common-types">Common types</h3>
+<table>
+<thead>
+<tr>
+<th>Type expression</th>
+<th>UI name</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type number</code></td>
+<td>Decimal Number</td>
+<td>Amounts (floating point), rates</td>
+</tr>
+<tr>
+<td><code>Currency.Type</code></td>
+<td>Fixed Decimal Number</td>
+<td>Amounts where 4-decimal fixed precision avoids floating residues</td>
+</tr>
+<tr>
+<td><code>Int64.Type</code></td>
+<td>Whole Number</td>
+<td>Counts, fiscal month, year, sort keys, day counts</td>
+</tr>
+<tr>
+<td><code>Percentage.Type</code></td>
+<td>Percentage</td>
+<td>Loss rates, margins</td>
+</tr>
+<tr>
+<td><code>type text</code></td>
+<td>Text</td>
+<td>Labels, codes, references</td>
+</tr>
+<tr>
+<td><code>type date</code></td>
+<td>Date</td>
+<td>Dates without time</td>
+</tr>
+<tr>
+<td><code>type datetime</code></td>
+<td>Date/Time</td>
+<td>Timestamps</td>
+</tr>
+<tr>
+<td><code>type logical</code></td>
+<td>True/False</td>
+<td>Flags</td>
+</tr>
+<tr>
+<td><code>type table</code>, <code>type record</code></td>
+<td>—</td>
+<td>Nested columns (e.g. from merges or All Rows)</td>
+</tr>
+</tbody>
+</table>
+<p><code>type number</code> and <code>Int64.Type</code> differ: <code>Int64.Type</code> is a <strong>facet</strong> of number (<code>type number</code> with an integer annotation). The Data Model loads it as Whole Number, which compresses better and sorts correctly.</p>
+<h3 id="ascription-vs-conversion">Ascription vs conversion</h3>
+<p>Ascription declares the type; it does <strong>not</strong> convert values. If the generator returns text "202601" and you ascribe <code>Int64.Type</code>, the column claims to be a whole number but holds text values. The editor shows no error; the load fails or produces errors for those rows. Therefore:</p>
+<ul>
+<li><strong>Ascribe</strong> when the generator already returns the correct kind (arithmetic returns numbers, <code>Date.EndOfMonth</code> returns dates, <code>&amp;</code> returns text).</li>
+<li><strong>Convert</strong> when the value is of a different kind: <code>Number.From</code>, <code>Date.From</code>, <code>Text.From</code> inside the generator, or <code>Table.TransformColumnTypes</code> afterwards, which converts and validates (producing Error cells for unconvertible values that you can catch).</li>
+</ul>
+<pre><code class="language-m">Key = Table.AddColumn(t, &quot;PeriodKey&quot;, each Number.From(Text.From([FYEnd]) &amp; Text.PadStart(Text.From([FM]), 2, &quot;0&quot;)), Int64.Type)
+</code></pre>
+<h3 id="other-functions-that-take-a-type">Other functions that take a type</h3>
+<ul>
+<li><code>Table.TransformColumns(t, {{"Name", each Text.Trim(_), type text}})</code> — the third element of each transformation is the type.</li>
+<li><code>Table.Group(t, keys, {{"Amount", each List.Sum([Amount]), type number}})</code> — each aggregate takes a type.</li>
+<li><code>Table.AddIndexColumn(t, "Seq", 1, 1, Int64.Type)</code> — fifth argument.</li>
+<li><code>Table.ExpandTableColumn</code> inherits types only if the nested column was typed with a full table type.</li>
+<li><code>Table.Combine(tables, tableType)</code> and <code>#table(type table [A = text, B = number], rows)</code> declare full schemas.</li>
+</ul>
+<h3 id="detecting-untyped-columns">Detecting untyped columns</h3>
+<p>Visually: the ABC/123 icon. Programmatically:</p>
+<pre><code class="language-m">Untyped = Table.SelectRows(Table.Schema(Final), each [Kind] = &quot;any&quot;)
+</code></pre>
+<p><code>Table.Schema</code> returns one row per column with <code>Name</code>, <code>Kind</code>, <code>TypeName</code> and other metadata. A small validation query that must return zero rows is a useful control before publishing.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>An ageing query adds Days (<code>Duration.Days(...)</code>, no type), Bucket (no type) and ECL (<code>[OpenAmount] * [LossRate]</code>, no type), then loads to Power BI. Symptoms: Days is text, so "Average days" cannot be computed; ECL is text, so the provision total shows "Count of ECL" instead of a sum. After adding <code>Int64.Type</code>, <code>type text</code> and <code>Currency.Type</code> respectively, the ECL total for a ₹5.35 crore receivables book with weighted loss rate 2.1% shows ₹11,23,500 as a summable fixed-decimal value.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong><code>type nullable number</code>.</strong> Columns may contain nulls regardless; <code>type number</code> already allows null in table column types, so <code>nullable</code> is usually unnecessary on columns.</li>
+<li><strong>Locale in conversion.</strong> <code>Table.TransformColumnTypes(t, {{"Amount", type number}}, "en-IN")</code> interprets "1,23,456.00" correctly; ascription never parses text.</li>
+<li><strong>Changed Type after AddColumn.</strong> A separate type step works but adds a step that may hard-code names; prefer the inline type argument.</li>
+<li><strong>Fixed decimal precision.</strong> <code>Currency.Type</code> holds 4 decimal places; rates with more precision (e.g. FX rates to 6 decimals) should stay <code>type number</code>.</li>
+<li><strong>Dates vs datetimes.</strong> A Date/Time column used as a relationship key to a Date dimension does not match; ascribe and convert to <code>type date</code>.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>A new column without a type argument is <code>any</code> and usually loads as text.</li>
+<li>Pass <code>type number</code>, <code>Currency.Type</code>, <code>Int64.Type</code>, <code>type date</code>, <code>type text</code> or <code>type logical</code> as the fourth argument of <code>Table.AddColumn</code>.</li>
+<li>Ascription declares; it does not convert — convert with <code>Number.From</code>/<code>Date.From</code> or <code>Table.TransformColumnTypes</code>.</li>
+<li>Use <code>Int64.Type</code> for months, years, keys and day counts; <code>Currency.Type</code> for amounts where fixed precision helps.</li>
+<li>Check <code>Table.Schema</code> for <code>Kind = "any"</code> before loading.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-pick-the-type-l1">Q1. Pick the type [L1]</h3>
+<p>State the most appropriate type for: (a) DaysPastDue; (b) ECL provision amount; (c) FY label "FY2025-26"; (d) PeriodKey 202611; (e) MSME breach flag; (f) LossRate 0.015; (g) MonthEnd date.</p>
+<h3 id="q2-ascription-trap-l2">Q2. Ascription trap [L2]</h3>
+<p><code>Table.AddColumn(t, "PeriodKey", each Text.From([FYEnd]) &amp; Text.PadStart(Text.From([FM]), 2, "0"), Int64.Type)</code> shows no errors in the editor, but loading to the Data Model fails for every row. Explain why and give two correct alternatives.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Ask what kind of value the <code>&amp;</code> operator returns.</p>
+</blockquote>
+<h3 id="q3-untyped-column-audit-l2">Q3. Untyped column audit [L2]</h3>
+<p>Write a query that lists every column of the final fact query whose type is <code>any</code> and every column of kind text whose name ends in "Amount", and explain how you would use it as a pre-publish control.</p>
+<h3 id="q4-fix-the-query-l1">Q4. Fix the query [L1]</h3>
+<p>Rewrite these steps with proper types: <code>Table.AddColumn(t, "Net", each [Debit] - [Credit])</code>, <code>Table.AddColumn(t, "MonthEnd", each Date.EndOfMonth([Date]))</code>, <code>Table.AddColumn(t, "Bucket", each if [Days] &lt;= 30 then "0-30" else "&gt;30")</code>, also correcting any null-handling defect.</p></section>
+<nav class="pager"><a class="prev" href="S04_Conditional_Logic_in_M_ifthenelse_andor_and_Null.html">← Conditional Logic in M: if/then/else, and/or, and Null…</a><a class="next" href="S06_Group_By_Aggregations_for_Summary_Outputs_During.html">Group By Aggregations for Summary Outputs During Ingestion →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Excel Native Waterfall Chart with &quot;Set as Total&quot; · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C06_Excel_Native_Waterfall_Chart_with_Set_as_Total.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T1 · Executive dashboard visual architecture</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Executive dashboard visual architecture</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Executive_Page_Layout_KPI_Row_Trend_Row_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S01_Executive_Page_Layout_KPI_Row_Trend_Row_and.html">Executive Page Layout: KPI Row, Trend Row and Variance Row</a></li><li><a href="../subtopics/S02_Card_Visuals_New_Card_KPI_Visual_and_Reference.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S02_Card_Visuals_New_Card_KPI_Visual_and_Reference.html">Card Visuals: New Card, KPI Visual and Reference Labels</a></li><li><a href="../subtopics/S03_Trend_Visuals_Actual_vs_Budget_vs_PY_Combos_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S03_Trend_Visuals_Actual_vs_Budget_vs_PY_Combos_and.html">Trend Visuals: Actual vs Budget vs PY Combos and Rolling 12 Months</a></li><li><a href="../subtopics/S04_Waterfall_Bridges_EBITDA_Revenue_and_Cash_Flow.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S04_Waterfall_Bridges_EBITDA_Revenue_and_Cash_Flow.html">Waterfall Bridges: EBITDA, Revenue and Cash Flow</a></li><li><a href="../subtopics/S05_Variance_Visuals_Diverging_Bars_FavAdv_Colours_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S05_Variance_Visuals_Diverging_Bars_FavAdv_Colours_and.html">Variance Visuals: Diverging Bars, Fav/Adv Colours and IBCS Notation</a></li><li><a href="../subtopics/S06_Indian_Number_Formatting_Crore_and_Lakh_Units.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S06_Indian_Number_Formatting_Crore_and_Lakh_Units.html">Indian Number Formatting: ₹ Crore and Lakh Units, Consistent Decimals</a></li><li><a href="../subtopics/S07_Theme_JSON_Canvas_Size_Accessibility_and_Mobile.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S07_Theme_JSON_Canvas_Size_Accessibility_and_Mobile.html">Theme JSON, Canvas Size, Accessibility and Mobile Layout</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Waterfall_Visual_CategoryBreakdown_or_a_Bridge.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C01_Waterfall_Visual_CategoryBreakdown_or_a_Bridge.html">Waterfall Visual: Category/Breakdown or a Bridge-Step Table</a></li><li><a href="C02_Variance_Colour_Measure_via_fx_Conditional.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C02_Variance_Colour_Measure_via_fx_Conditional.html">Variance Colour Measure via fx Conditional Formatting</a></li><li><a href="C03_Crore_Measures_and_Dynamic_Format_Strings_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C03_Crore_Measures_and_Dynamic_Format_Strings_for.html">Crore Measures and Dynamic Format Strings for Indian Units</a></li><li><a href="C04_Net_Debt_Measure_Closing_Borrowings_Less_Cash_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C04_Net_Debt_Measure_Closing_Borrowings_Less_Cash_and.html">Net Debt Measure: Closing Borrowings Less Cash and Equivalents</a></li><li><a href="C05_Margin_Variance_in_Percentage_Points_EBITDA_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C05_Margin_Variance_in_Percentage_Points_EBITDA_vs.html">Margin Variance in Percentage Points: EBITDA % vs Budget</a></li><li><a href="C06_Excel_Native_Waterfall_Chart_with_Set_as_Total.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C06_Excel_Native_Waterfall_Chart_with_Set_as_Total.html">Excel Native Waterfall Chart with &quot;Set as Total&quot;</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Excel Native Waterfall Chart with &quot;Set as Total&quot;</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Excel: native Waterfall chart (Insert &gt; Waterfall) with "Set as total" on subtotal points</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>Excel 2016 and later (Microsoft 365 included) provide a native Waterfall chart: select a two-column range (step
+label, value) and choose <strong>Insert &gt; Charts &gt; Insert Waterfall, Funnel, Stock, Surface or Radar Chart &gt;
+Waterfall</strong>. Each value is plotted as a floating bar that starts where the previous cumulative total ended.
+Points that represent a total (start, subtotal, end) must be marked with <strong>right-click the point &gt; Set as total</strong>
+(also under <em>Format Data Point &gt; Series Options</em>). A total point is drawn from zero to its value, so its cell must
+hold the <strong>cumulative</strong> amount, not an increment.</p>
+<p>For a bridge with start \(S\), drivers \(\Delta_1 \dots \Delta_n\) and a subtotal after driver \(k\):</p>
+<p>\[
+\text{Subtotal}_k = S + \sum_{i=1}^{k} \Delta_i, \qquad \text{End} = S + \sum_{i=1}^{n} \Delta_i
+\]</p>
+<h2 id="explanation">Explanation</h2>
+<p>Before 2016, Excel waterfalls were built with stacked columns and invisible "base" series — fragile with negative
+values crossing zero. The native chart handles positive and negative steps, colours Increase, Decrease and Total
+categories (format them by clicking the legend entry, then Fill), and supports data labels and connector lines
+(<em>Show connector lines</em> in Series Options).</p>
+<p>Mechanics and limits that matter for a board pack:</p>
+<ul>
+<li><strong>Set as total is per point position.</strong> It is stored against the point index. If the source range later
+  inserts a new step above a total, the "total" flag stays on the old position and the chart becomes wrong. Fix
+  the step list (a fixed Schedule of steps) or re-check total flags after layout changes.</li>
+<li><strong>Cumulative cells for totals.</strong> A subtotal cell must be a formula such as <code>=B5+SUM(B6:B8)</code>; if it holds an
+  increment, the bar is drawn from zero at the wrong height.</li>
+<li><strong>Not available as a PivotChart.</strong> The newer chart types (waterfall, treemap, sunburst, histogram, box and
+  whisker, funnel) cannot be based on a PivotTable. Feed them from normal cells — ideal for a cube-formula
+  board pack (Topic 3), where CUBEVALUE cells supply the steps.</li>
+<li><strong>Responds to slicers</strong> indirectly: if the step values are CUBEVALUE formulas referencing a slicer, the chart
+  updates when the FY slicer changes.</li>
+<li><strong>Sign convention.</strong> Cost overruns must be negative numbers in the source range; compute steps as
+  sign-adjusted variances, as in the Power BI bridge.</li>
+<li><strong>Compatibility.</strong> Older Excel versions show the chart as an unsupported object; save the pack for Microsoft 365
+  users or export to PDF.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>Board-pack sheet, ₹ Cr, October 2025 YTD:</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th>A (step)</th>
+<th>B (value)</th>
+<th>Set as total?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>Budget EBITDA</td>
+<td>122.6</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Revenue</td>
+<td>−22.8</td>
+<td>No</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Material</td>
+<td>16.1</td>
+<td>No</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Contribution vs budget (subtotal)</td>
+<td><code>=B5+SUM(B6:B7)</code> → 115.9</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Employee</td>
+<td>−1.4</td>
+<td>No</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Power &amp; fuel</td>
+<td>−4.2</td>
+<td>No</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Other opex</td>
+<td>2.9</td>
+<td>No</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Actual EBITDA</td>
+<td><code>=B8+SUM(B9:B11)</code> → 113.2</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>A check cell <code>=ROUND(B12 - EBITDA_Actual, 1) = 0</code> (where <code>EBITDA_Actual</code> is a named CUBEVALUE cell for Actual
+EBITDA) confirms the chart closes to the reported number.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Concept c01 and subtopic s04 are the Power BI counterparts; the step order and signs must match exactly so the
+  Excel and Power BI bridges agree.</li>
+<li>Topic 3 (cube formulas) supplies live step values; Topic 4 rolls the check cell into an "All checks OK" flag.</li>
+<li>Weeks 17–20 monthly MIS packs use the same chart for price/volume/mix bridges.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-build-the-chart-l1">Q1. Build the chart [L1]</h3>
+<p>List the exact steps to create the bridge in the illustration, including which points to set as total, how to
+colour Decrease bars red, and how to turn on connector lines.</p>
+<h3 id="q2-the-chart-broke-after-an-insert-l2">Q2. The chart broke after an insert [L2]</h3>
+<p>After inserting a new row "Freight" between rows 9 and 10, the Actual EBITDA bar floats instead of starting at
+zero, and the Contribution subtotal looks right. Explain why and how to correct it permanently.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Think about how Excel remembers which points are totals.</p>
+</blockquote>
+<h3 id="q3-pivottable-source-l2">Q3. PivotTable source [L2]</h3>
+<p>A colleague wants to build the waterfall directly from a PivotTable on the Data Model and finds the chart type
+greyed out. Explain why and propose two ways to keep the chart linked to the model.</p></section>
+<nav class="pager"><a class="prev" href="C05_Margin_Variance_in_Percentage_Points_EBITDA_vs.html">← Margin Variance in Percentage Points: EBITDA % vs Budget</a><a class="next" href="../../T2_Slicers_drill_through_and_tooltips/index.html">Slicers, drill-through and tooltips →</a></nav>
+</main></div></body></html>

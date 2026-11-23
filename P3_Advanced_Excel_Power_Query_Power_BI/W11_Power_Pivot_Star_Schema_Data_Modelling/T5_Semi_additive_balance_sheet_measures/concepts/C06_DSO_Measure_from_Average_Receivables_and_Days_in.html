@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSO Measure from Average Receivables and Days in Period · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C06_DSO_Measure_from_Average_Receivables_and_Days_in.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T5 · Semi-additive balance sheet measures</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Semi-additive balance sheet measures</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Additive_Semi_Additive_and_Non_Additive_Financial.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S01_Additive_Semi_Additive_and_Non_Additive_Financial.html">Additive, Semi-Additive and Non-Additive Financial Measures</a></li><li><a href="../subtopics/S02_Snapshot_Facts_vs_Transaction_Facts_for_Balances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S02_Snapshot_Facts_vs_Transaction_Facts_for_Balances.html">Snapshot Facts vs Transaction Facts for Balances</a></li><li><a href="../subtopics/S03_Closing_Balance_LASTDATE_vs_LASTNONBLANK_vs_a_MAX.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S03_Closing_Balance_LASTDATE_vs_LASTNONBLANK_vs_a_MAX.html">Closing Balance: LASTDATE vs LASTNONBLANK vs a MAX-Date Filter</a></li><li><a href="../subtopics/S04_Cumulative_Balances_from_GL_Movements_Including.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S04_Cumulative_Balances_from_GL_Movements_Including.html">Cumulative Balances from GL Movements, Including Opening Entries</a></li><li><a href="../subtopics/S05_Opening_Balances_with_OPENINGBALANCEMONTH_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S05_Opening_Balances_with_OPENINGBALANCEMONTH_and.html">Opening Balances with OPENINGBALANCEMONTH and OPENINGBALANCEYEAR</a></li><li><a href="../subtopics/S06_Average_Balances_for_DSO_Interest_Cost_and_Return.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S06_Average_Balances_for_DSO_Interest_Cost_and_Return.html">Average Balances for DSO, Interest Cost and Return Ratios</a></li><li><a href="../subtopics/S07_Cash_Net_Working_Capital_and_Net_Debt_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S07_Cash_Net_Working_Capital_and_Net_Debt_Measures.html">Cash, Net Working Capital and Net Debt Measures over Time</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Closing_Balance_with_LASTDATE_on_a_Snapshot_Fact.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C01_Closing_Balance_with_LASTDATE_on_a_Snapshot_Fact.html">Closing Balance with LASTDATE on a Snapshot Fact</a></li><li><a href="C02_LASTNONBLANK_Closing_Balance_at_the_Last_Date_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C02_LASTNONBLANK_Closing_Balance_at_the_Last_Date_with.html">LASTNONBLANK: Closing Balance at the Last Date with Data</a></li><li><a href="C03_Cumulative_Balance_with_FILTER_over_ALL_Dates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C03_Cumulative_Balance_with_FILTER_over_ALL_Dates.html">Cumulative Balance with FILTER over ALL Dates</a></li><li><a href="C04_CLOSINGBALANCEYEAR_and_OPENINGBALANCEYEAR_with_a.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C04_CLOSINGBALANCEYEAR_and_OPENINGBALANCEYEAR_with_a.html">CLOSINGBALANCEYEAR and OPENINGBALANCEYEAR with a March Year-End</a></li><li><a href="C05_Average_Receivables_with_AVERAGEX_over_Month_Ends.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C05_Average_Receivables_with_AVERAGEX_over_Month_Ends.html">Average Receivables with AVERAGEX over Month-Ends</a></li><li><a href="C06_DSO_Measure_from_Average_Receivables_and_Days_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C06_DSO_Measure_from_Average_Receivables_and_Days_in.html">DSO Measure from Average Receivables and Days in Period</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>DSO Measure from Average Receivables and Days in Period</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>DSO = DIVIDE([Avg AR], [Revenue]) * [Days in Period]</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-DAX">DSO = DIVIDE ( [Avg AR], [Revenue] ) * [Days in Period]
+</code></pre>
+<p>\[
+\text{DSO} = \frac{\overline{AR}}{R} \times D
+\]</p>
+<p>where \(\overline{AR}\) is the average trade receivables over the period (semi-additive, c05), \(R\) is revenue for the
+same period (additive, presentation-signed positive), and \(D\) is the number of days in the period. A supporting measure:</p>
+<pre><code class="language-DAX">Days in Period =
+VAR lastDate = [Last Actual Date]
+RETURN
+    COUNTROWS ( FILTER ( VALUES ( 'Date'[Date] ), 'Date'[Date] &lt;= lastDate ) )
+</code></pre>
+<h2 id="explanation">Explanation</h2>
+<p>DSO (days sales outstanding) expresses receivables as the number of days of revenue they represent. The measure
+combines the three additivity classes: a semi-additive average balance, an additive flow and a count of days, producing a
+non-additive ratio that must be recomputed at every level — never summed or averaged across months or branches.</p>
+<p>Design points:</p>
+<ul>
+<li><strong>Matching periods.</strong> Revenue and days must cover the same period. For a quarter row, revenue is the quarter's revenue
+  and \(D\) = 92 (or 90/91). No annualisation is needed because both numerator scale and days are for the period. For an
+  incomplete FY, <code>Days in Period</code> must be capped at the last actuals date, or the FY26 DSO in November uses 365 days of
+  "time" against 7.5 months of revenue and is overstated.</li>
+<li><strong>Credit sales.</strong> DSO strictly relates to credit sales; for businesses with material cash or advance-paid sales
+  (retail, D2C), use credit revenue or exclude cash channels.</li>
+<li><strong>GST.</strong> Receivables include GST (typically 18%) while revenue from operations excludes it (Ind AS 115 presents revenue
+  net of GST). Gross up revenue by the effective GST rate, or accept and disclose that DSO is overstated by roughly that
+  rate.</li>
+<li><strong>Gross vs net.</strong> Decide whether \(\overline{AR}\) is before or after the expected credit loss allowance (<em>Ind AS
+  109</em>); bankers often prefer gross.</li>
+<li><strong>Sign convention.</strong> With credits negative in the GL, <code>[Revenue]</code> must be the flipped (positive) measure; otherwise DSO
+  is negative.</li>
+<li><strong>Countback method alternative.</strong> For volatile revenue, FP&amp;A teams use countback DSO: exhaust closing receivables
+  against the most recent months' revenue backwards until absorbed. More accurate for month-end reporting, but needs an
+  iterative measure.</li>
+</ul>
+<p>Companion ratios use the same template: DIO = average inventory ÷ COGS × days; DPO = average payables ÷ purchases (or
+COGS) × days; cash conversion cycle = DSO + DIO − DPO.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Q3 FY26 (1 October – 31 December 2025, 92 days): revenue ₹ 3,600 lakh; month-end receivables 1,480, 1,390, 1,520 (average
+1,463.3; closing 1,520). GST at 18% on all sales.</p>
+<table>
+<thead>
+<tr>
+<th>Variant</th>
+<th>Calculation</th>
+<th>DSO (days)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Average AR, revenue excl. GST</td>
+<td>1,463.3 / 3,600 × 92</td>
+<td>37.4</td>
+</tr>
+<tr>
+<td>Closing AR, revenue excl. GST</td>
+<td>1,520 / 3,600 × 92</td>
+<td>38.8</td>
+</tr>
+<tr>
+<td>Average AR, revenue grossed up for GST</td>
+<td>1,463.3 / (3,600 × 1.18) × 92</td>
+<td>31.7</td>
+</tr>
+</tbody>
+</table>
+<p>A credit policy of 30 days looks breached by 7 days under the first variant and nearly met under the third — the
+definition must be agreed with whoever reads the dashboard.</p>
+<h2 id="connections">Connections</h2>
+<p>Built from c05 (Avg AR) and the additivity rules of s01; part of the working-capital set in s07 (with DIO, DPO and NWC).
+Weeks 5–8 cover the ratio interpretation and cash conversion cycle; Week 14's 3-statement model inverts the formula to
+forecast receivables from a DSO assumption. Topic 3's DIVIDE semantics give a blank rather than an error when revenue is
+zero.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-compute-dso-variants-l1">Q1. Compute DSO variants [L1]</h3>
+<p>H1 FY26 (183 days): revenue ₹ 52.0 crore; receivables at 31 March 2025 ₹ 13.5 crore and at month-ends April–September of
+14.2, 15.0, 15.6, 14.8, 16.1, 15.3 crore. Compute DSO using closing AR, two-point average and month-end average, all
+without GST gross-up.</p>
+<h3 id="q2-dso-for-an-incomplete-fy-l2">Q2. DSO for an incomplete FY [L2]</h3>
+<p>In November 2025 (actuals to 31 October), the FY26 DSO tile shows 92 days while monthly DSOs have been between 52 and 58
+days. Explain the likely cause in the <code>Days in Period</code> or <code>Avg AR</code> measures, and rewrite them so the FY tile is
+consistent with the monthly figures.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Check which of numerator, revenue and days include the months after October.</p>
+</blockquote>
+<h3 id="q3-branch-league-table-l2">Q3. Branch league table [L2]</h3>
+<p>A sales director wants a branch league table showing DSO and a company total. Explain why the total row must not be the
+average of branch DSOs, and compute the company DSO for two branches: Pune (Avg AR ₹ 600 lakh, quarterly revenue ₹ 1,800
+lakh) and Jaipur (Avg AR ₹ 300 lakh, revenue ₹ 450 lakh), using 91 days.</p></section>
+<nav class="pager"><a class="prev" href="C05_Average_Receivables_with_AVERAGEX_over_Month_Ends.html">← Average Receivables with AVERAGEX over Month-Ends</a><a class="next" href="../../T6_PL_layout_subtotals_and_sign_flip/index.html">P&amp;L layout, subtotals and sign-flip →</a></nav>
+</main></div></body></html>

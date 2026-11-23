@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drill-Through Setup: Fields, Keep All Filters, Cross-Report, Back Button · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S04_Drill_Through_Setup_Fields_Keep_All_Filters_Cross.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T2 · Slicers, drill-through and tooltips</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Slicers, drill-through and tooltips</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_FY_BU_and_Region_Slicers_Hierarchy_Relative_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S01_FY_BU_and_Region_Slicers_Hierarchy_Relative_Date.html">FY, BU and Region Slicers: Hierarchy, Relative Date and Sync</a></li><li><a href="S02_Edit_Interactions_Filter_vs_Highlight_vs_None.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S02_Edit_Interactions_Filter_vs_Highlight_vs_None.html">Edit Interactions: Filter vs Highlight vs None</a></li><li><a href="S03_Drill_Down_vs_Drill_Through_PL_Hierarchy_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S03_Drill_Down_vs_Drill_Through_PL_Hierarchy_and.html">Drill-Down vs Drill-Through: P&amp;L Hierarchy and Voucher Detail</a></li><li><a href="S04_Drill_Through_Setup_Fields_Keep_All_Filters_Cross.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S04_Drill_Through_Setup_Fields_Keep_All_Filters_Cross.html">Drill-Through Setup: Fields, Keep All Filters, Cross-Report, Back Button</a></li><li><a href="S05_Report_Page_Tooltips_Canvas_Size_Allow_Use_as.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S05_Report_Page_Tooltips_Canvas_Size_Allow_Use_as.html">Report Page Tooltips: Canvas Size, &quot;Allow Use as Tooltip&quot;, Field Tooltips</a></li><li><a href="S06_Bookmarks_Buttons_and_the_Selection_Pane_for_View.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S06_Bookmarks_Buttons_and_the_Selection_Pane_for_View.html">Bookmarks, Buttons and the Selection Pane for View Toggles</a></li><li><a href="S07_Field_Parameters_for_User_Selected_Dimensions_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S07_Field_Parameters_for_User_Selected_Dimensions_and.html">Field Parameters for User-Selected Dimensions and Measures</a></li><li><a href="S08_Visual_Page_and_Report_Filters_and_Top_N_Filters.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S08_Visual_Page_and_Report_Filters_and_Top_N_Filters.html">Visual, Page and Report Filters, and Top N Filters</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Drill_Through_Page_on_Ledger_with_a_Voucher_Detail.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C01_Drill_Through_Page_on_Ledger_with_a_Voucher_Detail.html">Drill-Through Page on Ledger with a Voucher Detail Table</a></li><li><a href="../concepts/C02_Selected_FY_Measure_for_Dynamic_Titles.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C02_Selected_FY_Measure_for_Dynamic_Titles.html">Selected FY Measure for Dynamic Titles</a></li><li><a href="../concepts/C03_Field_Parameter_Tables_Built_with_NAMEOF.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C03_Field_Parameter_Tables_Built_with_NAMEOF.html">Field Parameter Tables Built with NAMEOF</a></li><li><a href="../concepts/C04_ISFILTERED_and_ISCROSSFILTERED_for_Context_Aware.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C04_ISFILTERED_and_ISCROSSFILTERED_for_Context_Aware.html">ISFILTERED and ISCROSSFILTERED for Context-Aware Labels</a></li><li><a href="../concepts/C05_Slicer_Responsive_Vendor_Ranking_with_RANKX_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C05_Slicer_Responsive_Vendor_Ranking_with_RANKX_and.html">Slicer-Responsive Vendor Ranking with RANKX and ALLSELECTED</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Drill-Through Setup: Fields, Keep All Filters, Cross-Report, Back Button</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Drill-through setup: drill-through fields, Keep all filters, cross-report drill-through, back button</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>The checklist target for this week is "drill from an EBITDA variance line to voucher-level GL entries in under a
+minute". That only works if the drill-through page receives exactly the context of the number clicked — the same
+ledger, FY, month, BU and region — and if the user can get back. Most drill-through failures in finance packs are
+configuration errors: the wrong field in the drill-through well, Keep all filters switched off, or a field from a
+fact table that the source visual does not use. This note is the configuration checklist.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="creating-the-target-page">Creating the target page</h3>
+<ol>
+<li>Add a new page, name it "GL Detail" and hide it (right-click the tab &gt; Hide page) — users reach it only by
+   drilling.</li>
+<li>With no visual selected, in the Visualizations pane find the <strong>Drill through</strong> section (page-level settings).</li>
+<li>Drag the <strong>drill-through fields</strong> into <em>Add drill-through fields here</em> — typically <code>CoA[Ledger]</code>, optionally
+   <code>CoA[FSLine]</code>, <code>CostCentre[Name]</code> and <code>Vendor[Name]</code>. Use <strong>dimension</strong> columns, the same columns the source
+   visuals use.</li>
+<li>Power BI automatically adds a <strong>back button</strong> (an arrow image with action <em>Back</em>). Keep it top-left and style
+   it consistently.</li>
+<li>Build the detail visuals: header cards (ledger, period, total) and a voucher table (Concept c01).</li>
+</ol>
+<h3 id="drill-through-fields-matching-rules">Drill-through fields: matching rules</h3>
+<ul>
+<li>A source visual offers <em>Drill through &gt; GL Detail</em> on right-click only if it contains <strong>at least one</strong> of the
+  target's drill-through fields (as a category, such as rows of a matrix or axis of a bar).</li>
+<li>The match is by <strong>table and column</strong>, not by name shown. If the source uses <code>GL[LedgerName]</code> and the target
+  expects <code>CoA[Ledger]</code>, there is no option.</li>
+<li>With several drill-through fields, the target receives the values of whichever fields the source has; others
+  are not filtered by the drill (but may be filtered by Keep all filters).</li>
+<li><strong>Drill through when: Used as category / Summarized.</strong> For a field in the well, the option controls whether
+  drilling is offered when the field is a category (normal) or when it appears summarised (e.g. a count) in the
+  source. Measures cannot be drill-through fields.</li>
+</ul>
+<h3 id="keep-all-filters">Keep all filters</h3>
+<p>The <strong>Keep all filters</strong> toggle (on by default in current versions, but verify) decides what else travels:</p>
+<table>
+<thead>
+<tr>
+<th>Keep all filters</th>
+<th>What the target receives</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>On</td>
+<td>Drill-through field values plus every filter affecting the source visual: slicers, page and visual filters, cross-filters from other visuals, and the source visual's other row/column members</td>
+</tr>
+<tr>
+<td>Off</td>
+<td>Only the drill-through field values (report-level filters still apply because they apply to all pages)</td>
+</tr>
+</tbody>
+</table>
+<p>For voucher detail, <strong>On</strong> is essential: right-clicking "Power and fuel" in the October column of a matrix
+filtered to Polymers must show October Polymers vouchers, not all-time vouchers for all BUs. With it Off, the
+detail total will not tie to the clicked cell — the classic symptom of lost context. Synced slicers (s01) are a
+partial mitigation but do not carry cross-filters or the matrix column (month) context.</p>
+<h3 id="cross-report-drill-through">Cross-report drill-through</h3>
+<p>Large finance estates split content: an executive pack report and a separate "GL Explorer" report sharing the same
+semantic model. Cross-report drill-through lets the executive pack jump to a page in another report:</p>
+<ul>
+<li>In the <strong>target</strong> report's drill-through page, switch <strong>Cross-report</strong> on.</li>
+<li>In the <strong>source</strong> report, enable <strong>File &gt; Options and settings &gt; Options &gt; Current file &gt; Report settings &gt;
+  Allow visuals in this report to use drill-through targets from other reports</strong>.</li>
+<li>Publish both to the <strong>same workspace</strong> (or include both in the same App); cross-report targets are resolved in
+  the Service, not in Desktop.</li>
+<li>Fields are matched by table and column name, so both reports should use the same semantic model (or models
+  with identical names).</li>
+</ul>
+<p>Use it to keep the executive pack light while still offering voucher-level evidence from a heavier detail report.</p>
+<h3 id="back-button-and-drill-through-buttons">Back button and drill-through buttons</h3>
+<ul>
+<li>The auto back button uses action type <strong>Back</strong>, returning to the page the user came from. In Desktop, button
+  actions need <strong>Ctrl+click</strong>; in the Service a single click.</li>
+<li>A <strong>drill-through button</strong> (Insert &gt; Buttons &gt; Blank, Action type = <em>Drill through</em>, Destination = GL Detail)
+  becomes enabled when the user selects a data point that contains the drill-through field. Set disabled-state
+  tooltip text such as "Select a ledger to view vouchers", and a dynamic button label via fx, e.g.
+  <code>"View vouchers for " &amp; SELECTEDVALUE(CoA[Ledger], "selected ledger")</code>.</li>
+<li>The destination can itself be dynamic (fx with a measure returning a page name) to route to different detail
+  pages.</li>
+</ul>
+<h3 id="illustration">Illustration</h3>
+<p>Source: Page 3 matrix, rows <code>CoA[FSLine]</code> → <code>CoA[Ledger]</code>, columns <code>'Date'[MonthName]</code>, filtered by slicers
+FY2025-26, BU = Performance Polymers, Region = West. Target: GL Detail with drill-through fields <code>CoA[FSLine]</code>,
+<code>CoA[Ledger]</code>, Keep all filters On. User right-clicks the October cell for "Power and fuel" (₹2.31 Cr) → GL Detail
+shows 7 vouchers totalling ₹2.31 Cr with header "Power and fuel · Oct FY2025-26 · Polymers · West". Back button
+returns to Page 3 with drill state preserved.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Drill-through from a measure-only card</strong> is not possible; the card contains no category field.</li>
+<li><strong>Disconnected-table visuals</strong> (bridge steps, field parameters) do not carry dimension fields; drill-through
+  from a waterfall needs the step mapped to a CoA field, or a separate visual.</li>
+<li><strong>Field parameters on the source</strong> can carry the underlying field if selected; test drill-through with each
+  parameter choice.</li>
+<li><strong>Hidden drill-through fields filters</strong> appear in the target's filter pane; users can clear them and see all
+  vouchers — lock or hide the filter card if that is undesirable.</li>
+<li><strong>RLS</strong> applies on the target page too; a BU head drilling sees only their vouchers, which is correct.</li>
+<li><strong>Mobile</strong> supports drill-through, but tables with many columns are hard to read; keep the detail page narrow.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Drill-through fields must be the same dimension columns that source visuals use.</li>
+<li>Keep all filters On is required for detail totals to tie to the clicked number.</li>
+<li>Cross-report drill-through needs the target toggle, the source report setting and same-workspace publishing.</li>
+<li>An automatic back button is added; drill-through buttons improve discoverability.</li>
+<li>Always validate that the target page header total equals the source value.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-configuration-checklist-l1">Q1. Configuration checklist [L1]</h3>
+<p>List, in order, every setting required to create a hidden GL Detail drill-through page reachable from any ledger
+row in the pack, including the back button and Keep all filters.</p>
+<h3 id="q2-detail-does-not-tie-l2">Q2. Detail does not tie [L2]</h3>
+<p>The source cell shows ₹2.31 Cr (October, Polymers, West), but the GL Detail page shows ₹31.5 Cr for Power and fuel.
+Keep all filters is Off and slicers are synced on all pages. Explain which context was lost and why synced slicers
+did not fully help.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Which part of the source context came from the matrix column rather than a slicer?</p>
+</blockquote>
+<h3 id="q3-cross-report-set-up-l2">Q3. Cross-report set-up [L2]</h3>
+<p>The executive pack and a GL Explorer report are in different workspaces and the drill-through option does not
+appear in the Service. List all the conditions that must hold and the changes needed.</p>
+<h3 id="q4-drill-through-button-ux-l3">Q4. Drill-through button UX [L3]</h3>
+<p>Design a "View vouchers" button for the Page 3 expense matrix: action, destination, enabled/disabled behaviour,
+dynamic label and tooltip, and how you would explain its use in the CFO user guide in three sentences.</p></section>
+<nav class="pager"><a class="prev" href="S03_Drill_Down_vs_Drill_Through_PL_Hierarchy_and.html">← Drill-Down vs Drill-Through: P&amp;L Hierarchy and Voucher…</a><a class="next" href="S05_Report_Page_Tooltips_Canvas_Size_Allow_Use_as.html">Report Page Tooltips: Canvas Size, &quot;Allow Use as Tooltip&quot;,… →</a></nav>
+</main></div></body></html>

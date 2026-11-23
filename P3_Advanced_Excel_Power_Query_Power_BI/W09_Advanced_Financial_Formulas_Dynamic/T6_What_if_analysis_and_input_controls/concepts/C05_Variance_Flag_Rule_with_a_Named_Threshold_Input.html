@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Variance Flag Rule with a Named Threshold Input · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C05_Variance_Flag_Rule_with_a_Named_Threshold_Input.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T6 · What-if analysis and input controls</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · What-if analysis and input controls</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_One_and_Two_Variable_Data_Tables_for_Sensitivity.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S01_One_and_Two_Variable_Data_Tables_for_Sensitivity.html">One- and Two-Variable Data Tables for Sensitivity Analysis</a></li><li><a href="../subtopics/S02_Goal_Seek_for_Break_Even_Target_Margin_Price_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S02_Goal_Seek_for_Break_Even_Target_Margin_Price_and.html">Goal Seek for Break-Even, Target-Margin Price and Required Growth</a></li><li><a href="../subtopics/S03_Scenario_Manager_Scenarios_Changing_Cells_and_the.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S03_Scenario_Manager_Scenarios_Changing_Cells_and_the.html">Scenario Manager: Scenarios, Changing Cells and the Summary Report</a></li><li><a href="../subtopics/S04_Data_Validation_Dropdowns_Dependent_Lists_Limits.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S04_Data_Validation_Dropdowns_Dependent_Lists_Limits.html">Data Validation: Dropdowns, Dependent Lists, Limits and Messages</a></li><li><a href="../subtopics/S05_Formula_Based_Conditional_Formatting_for_Variances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S05_Formula_Based_Conditional_Formatting_for_Variances.html">Formula-Based Conditional Formatting for Variances and Scenarios</a></li><li><a href="../subtopics/S06_Form_Controls_Linked_to_Cells_for_Model_Dashboards.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S06_Form_Controls_Linked_to_Cells_for_Model_Dashboards.html">Form Controls Linked to Cells for Model Dashboards</a></li><li><a href="../subtopics/S07_Solver_for_Product_Mix_and_Capital_Rationing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S07_Solver_for_Product_Mix_and_Capital_Rationing.html">Solver for Product Mix and Capital Rationing</a></li><li><a href="../subtopics/S08_Calculation_Mode_Automatic_Except_Data_Tables_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S08_Calculation_Mode_Automatic_Except_Data_Tables_and.html">Calculation Mode: Automatic Except Data Tables and F9 Recalculation</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_The_TABLE_Array_Formula_and_the_Same_Sheet_Input.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C01_The_TABLE_Array_Formula_and_the_Same_Sheet_Input.html">The TABLE Array Formula and the Same-Sheet Input Rule</a></li><li><a href="C02_Goal_Seek_Rules_Formula_Set_Cell_Hard_Coded.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C02_Goal_Seek_Rules_Formula_Set_Cell_Hard_Coded.html">Goal Seek Rules: Formula Set Cell, Hard-Coded Changing Cell</a></li><li><a href="C03_Dependent_Dropdown_Sources_INDIRECT_vs_a_Spill.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C03_Dependent_Dropdown_Sources_INDIRECT_vs_a_Spill.html">Dependent Dropdown Sources: INDIRECT vs a Spill Reference</a></li><li><a href="C04_Conditional_Format_Rule_for_Negative_Rows_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C04_Conditional_Format_Rule_for_Negative_Rows_Column.html">Conditional Format Rule for Negative Rows: Column Locked, Row Relative</a></li><li><a href="C05_Variance_Flag_Rule_with_a_Named_Threshold_Input.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C05_Variance_Flag_Rule_with_a_Named_Threshold_Input.html">Variance Flag Rule with a Named Threshold Input</a></li><li><a href="C06_Scenario_Manager_Limits_32_Changing_Cells_and_a.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C06_Scenario_Manager_Limits_32_Changing_Cells_and_a.html">Scenario Manager Limits: 32 Changing Cells and a Static Summary</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Variance Flag Rule with a Named Threshold Input</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Variance flag rule <code>=ABS($F5)&gt;Threshold</code>, with Threshold as a named input cell</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<ul>
+<li><strong>Rule formula:</strong> <code>=ABS($F5)&gt;Threshold</code>, written for the top-left cell of the Applies-to range (row 5).</li>
+<li><strong>Column F</strong> holds the variance (₹ or %); <code>$F</code> locks the column, row 5 is relative.</li>
+<li><strong>Threshold</strong> is a defined name for a single input cell (e.g. <code>Inputs!C12</code> = 10,00,000).</li>
+</ul>
+<p>For each row \(r\):</p>
+<p>\[
+\text{Flag}_r = \big[\, \lvert F_r \rvert &gt; \tau \,\big]
+\]</p>
+<p>where \(F_r\) is the variance in row \(r\) and \(\tau\) the threshold. ABS makes the rule two-sided: large favourable and large adverse variances are both flagged.</p>
+<h2 id="explanation">Explanation</h2>
+<p><strong>Why ABS.</strong> Management commentary is required for material variances in either direction. A large favourable cost variance can signal a missed accrual, a timing difference or a budgeting error — exactly what a reviewer wants to see. Use a separate colour for direction if needed (a second rule <code>=$F5&lt;0</code> for adverse).</p>
+<p><strong>Why a named input.</strong> Materiality changes: the controller may use ₹10 lakh for monthly MIS, ₹25 lakh for the board pack, or a percentage for small departments. With the threshold in a named cell:</p>
+<ul>
+<li>The controller changes one input, not the rule.</li>
+<li>The threshold is visible and documented (input message: "Monthly variance commentary threshold; approved by CFO").</li>
+<li>The same name can drive a COUNTIF of flagged lines (<code>=COUNTIF(F5:F64, "&gt;"&amp;Threshold) + COUNTIF(F5:F64, "&lt;"&amp;-Threshold)</code>) and a FILTER exception list (w9_t4) — formatting, counts and lists all use one definition.</li>
+</ul>
+<p><strong>Absolute and percentage thresholds together.</strong> Percentage variances explode on small budgets (₹10,000 budget, ₹25,000 actual = 150%). A common design flags only when both tests are met:</p>
+<pre><code class="language-excel">=AND(ABS($F5)&gt;Threshold, ABS(G5)&gt;PctThreshold)
+</code></pre>
+<p>applied to a single column (so only one locked reference is needed), or built with a helper flag column that the rule simply tests.</p>
+<p><strong>Mechanics.</strong> The named cell is absolute by nature, so every cell in the block compares against the same value. Names in CF rules also survive sheet renames and are easier to read in Manage Rules than cross-sheet addresses.</p>
+<p><strong>Data types.</strong> If F contains text (e.g. "n/a" for new lines), ABS returns #VALUE! and the rule silently evaluates to no format. Use <code>=ABS(N($F5))&gt;Threshold</code> or ensure numeric variances.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Threshold = ₹10,00,000 (named input). Applies-to B5:H9.</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th>Line</th>
+<th>Variance F (₹)</th>
+<th>Flagged?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>Revenue</td>
+<td>−18,40,000</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Raw materials</td>
+<td>+12,10,000</td>
+<td>Yes (favourable, still material)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Power and fuel</td>
+<td>−6,50,000</td>
+<td>No</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Freight</td>
+<td>−10,00,000</td>
+<td>No (not strictly greater)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Advertising</td>
+<td>+2,30,000</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>Changing Threshold to ₹5,00,000 flags rows 5–8 instantly. Use <code>&gt;=</code> if the policy is "₹10 lakh and above".</p>
+<h2 id="connections">Connections</h2>
+<p>Extends c04 (column-locked row rules) and s05 (threshold bands with priority). Named inputs reflect the model-hygiene principle of separating inputs from logic (topic related item). The same threshold drives variance commentary workflows in department-wise budget vs actual MIS (Weeks 17–20), and in Power BI becomes a what-if parameter or a measure-based conditional format (Week 11).</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-bands-from-one-name-l1">Q1. Bands from one name [L1]</h3>
+<p>Using named inputs <code>Thr_Amber</code> (₹10 lakh) and <code>Thr_Red</code> (₹25 lakh), write two rules, their priority order and the Stop If True setting for a variance block B5:H64 with ₹ variances in column F.</p>
+<h3 id="q2-small-budget-noise-l2">Q2. Small-budget noise [L2]</h3>
+<p>A department pack flags 38 of 60 lines because the rule uses variance % only. Redesign the rule using both an absolute and a percentage threshold, write the formula(s), and explain how you would count flagged lines in a summary cell using the same names.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Keep the definition in one place so formatting and counts cannot disagree.</p>
+</blockquote>
+<h3 id="q3-boundary-and-direction-l2">Q3. Boundary and direction [L2]</h3>
+<p>The policy says "explain all adverse variances of ₹10 lakh and above, and favourable variances above ₹20 lakh". Write the rule(s) needed, state which inequality operators you use, and explain why a single ABS rule is insufficient here.</p></section>
+<nav class="pager"><a class="prev" href="C04_Conditional_Format_Rule_for_Negative_Rows_Column.html">← Conditional Format Rule for Negative Rows: Column Locked,…</a><a class="next" href="C06_Scenario_Manager_Limits_32_Changing_Cells_and_a.html">Scenario Manager Limits: 32 Changing Cells and a Static… →</a></nav>
+</main></div></body></html>

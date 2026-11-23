@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nested IF vs IFS vs SWITCH for Account-Code Classification · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S01_Nested_IF_vs_IFS_vs_SWITCH_for_Account_Code.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T1 · Multi-criteria logic and GL rollups</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Multi-criteria logic and GL rollups</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Nested_IF_vs_IFS_vs_SWITCH_for_Account_Code.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S01_Nested_IF_vs_IFS_vs_SWITCH_for_Account_Code.html">Nested IF vs IFS vs SWITCH for Account-Code Classification</a></li><li><a href="S02_SUMIFS_for_Multi_Department_GL_Rollups_by_Group.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S02_SUMIFS_for_Multi_Department_GL_Rollups_by_Group.html">SUMIFS for Multi-Department GL Rollups by Group, Cost Centre and Month</a></li><li><a href="S03_COUNTIFS_Data_Quality_Tests_on_GL_and_TB_Dumps.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S03_COUNTIFS_Data_Quality_Tests_on_GL_and_TB_Dumps.html">COUNTIFS Data-Quality Tests on GL and TB Dumps</a></li><li><a href="S04_AVERAGEIFS_MAXIFS_and_MINIFS_for_ARAP_and_Sales.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S04_AVERAGEIFS_MAXIFS_and_MINIFS_for_ARAP_and_Sales.html">AVERAGEIFS, MAXIFS and MINIFS for AR/AP and Sales Analytics</a></li><li><a href="S05_Criteria_Syntax_Operators_Concatenation_Wildcards.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S05_Criteria_Syntax_Operators_Concatenation_Wildcards.html">Criteria Syntax: Operators, Concatenation, Wildcards and Date Ranges</a></li><li><a href="S06_OR_Logic_in_SUMIFS_with_Array_Constants_Wrapped_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S06_OR_Logic_in_SUMIFS_with_Array_Constants_Wrapped_in.html">OR Logic in SUMIFS with Array Constants Wrapped in SUM</a></li><li><a href="S07_Excel_Tables_and_Structured_References_for_Self.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S07_Excel_Tables_and_Structured_References_for_Self.html">Excel Tables and Structured References for Self-Expanding Rollups</a></li><li><a href="S08_Mixed_References_and_F4_Cycling_for_Copy_Across_PL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S08_Mixed_References_and_F4_Cycling_for_Copy_Across_PL.html">Mixed References and F4 Cycling for Copy-Across P&amp;L Grids</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_The_Department_Account_Month_SUMIFS_Grid_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C01_The_Department_Account_Month_SUMIFS_Grid_Formula.html">The Department × Account × Month SUMIFS Grid Formula</a></li><li><a href="../concepts/C02_IFS_with_a_TRUE_Catch_All_for_Account.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C02_IFS_with_a_TRUE_Catch_All_for_Account.html">IFS with a TRUE Catch-All for Account Classification</a></li><li><a href="../concepts/C03_SUM_of_SUMIFS_with_an_Array_Constant_for_OR_Logic.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C03_SUM_of_SUMIFS_with_an_Array_Constant_for_OR_Logic.html">SUM of SUMIFS with an Array Constant for OR Logic</a></li><li><a href="../concepts/C04_MAXIFS_and_MINIFS_Signature_and_the_Zero_When.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C04_MAXIFS_and_MINIFS_Signature_and_the_Zero_When.html">MAXIFS and MINIFS: Signature and the Zero-When-Empty Trap</a></li><li><a href="../concepts/C05_COUNTIFS_Duplicate_Posting_Flag_in_a_Calculated.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C05_COUNTIFS_Duplicate_Posting_Flag_in_a_Calculated.html">COUNTIFS Duplicate-Posting Flag in a Calculated Column</a></li><li><a href="../concepts/C06_AVERAGEIFS_and_the_DIV0_Result_on_No_Matches.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C06_AVERAGEIFS_and_the_DIV0_Result_on_No_Matches.html">AVERAGEIFS and the #DIV/0! Result on No Matches</a></li><li><a href="../concepts/C07_Range_Criteria_for_Numeric_Account_Codes_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C07_Range_Criteria_for_Numeric_Account_Codes_vs.html">Range Criteria for Numeric Account Codes vs Wildcards on Text</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Nested IF vs IFS vs SWITCH for Account-Code Classification</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Nested IF vs IFS vs SWITCH for classifying account-code ranges into Asset / Liability / Income / Expense</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Every TB-to-financial-statement build starts by tagging each ledger with its nature: Asset, Liability, Equity, Income or Expense. When the chart of accounts (CoA) is numbered by range — the common SAP/Oracle pattern, and increasingly the pattern Indian mid-market companies impose on Tally ledgers via an alias or code field — that tag can be derived by formula rather than typed. A formula-driven classification column is what lets a rollup survive new ledgers being opened mid-year: the new ledger gets a nature automatically, and anything outside the defined ranges is pushed into a visible "Check" bucket instead of being silently dropped.</p>
+<p>In audit and close work the same logic flags misclassified postings (an expense code sitting in a balance-sheet group in Tally), and in FP&amp;A models it drives sign conventions — income and liabilities are credit-natured, so the nature tag decides whether to flip the sign for presentation.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-classification-problem">The classification problem</h3>
+<p>Assume a six-digit numeric CoA:</p>
+<table>
+<thead>
+<tr>
+<th>Range</th>
+<th>Nature</th>
+<th>Typical Schedule III mapping</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100000–199999</td>
+<td>Asset</td>
+<td>PPE, inventories, trade receivables, cash</td>
+</tr>
+<tr>
+<td>200000–299999</td>
+<td>Liability</td>
+<td>Borrowings, trade payables, provisions</td>
+</tr>
+<tr>
+<td>300000–399999</td>
+<td>Equity</td>
+<td>Equity share capital, other equity</td>
+</tr>
+<tr>
+<td>400000–499999</td>
+<td>Income</td>
+<td>Revenue from operations, other income</td>
+</tr>
+<tr>
+<td>500000–699999</td>
+<td>Expense</td>
+<td>Cost of materials, employee benefits, finance costs, D&amp;A, other expenses</td>
+</tr>
+<tr>
+<td>anything else</td>
+<td>Check</td>
+<td>Suspense, typos, codes stored as text</td>
+</tr>
+</tbody>
+</table>
+<p>Three formula families can do this: nested <code>IF</code>, <code>IFS</code> and <code>SWITCH</code>.</p>
+<h3 id="nested-if">Nested IF</h3>
+<pre><code class="language-excel">=IF(A2&lt;200000,&quot;Asset&quot;,
+  IF(A2&lt;300000,&quot;Liability&quot;,
+   IF(A2&lt;400000,&quot;Equity&quot;,
+    IF(A2&lt;500000,&quot;Income&quot;,
+     IF(A2&lt;700000,&quot;Expense&quot;,&quot;Check&quot;)))))
+</code></pre>
+<p>Mechanics: each <code>IF</code> tests one condition and passes control to the next <code>IF</code> in its <code>value_if_false</code>. Because the tests run top to bottom and stop at the first TRUE, you only need the <strong>upper bound</strong> of each band, provided the bands are tested in ascending order. Excel allows 64 nesting levels, but readability collapses after four or five.</p>
+<p>Weaknesses: closing-bracket counting, the default being buried at the innermost level, and the temptation to write both bounds (<code>AND(A2&gt;=200000,A2&lt;300000)</code>) which doubles the edit points when a range changes. A code below 100000 (say a stray <code>9999</code>) falls into "Asset" in the formula above — a lower-bound guard is needed if such codes are possible.</p>
+<h3 id="ifs">IFS</h3>
+<pre><code class="language-excel">=IFS(A2&lt;100000,&quot;Check&quot;,
+     A2&lt;200000,&quot;Asset&quot;,
+     A2&lt;300000,&quot;Liability&quot;,
+     A2&lt;400000,&quot;Equity&quot;,
+     A2&lt;500000,&quot;Income&quot;,
+     A2&lt;700000,&quot;Expense&quot;,
+     TRUE,&quot;Check&quot;)
+</code></pre>
+<p><code>IFS(test1, value1, test2, value2, …)</code> evaluates pairs left to right and returns the value for the first TRUE test (up to 127 pairs). There is <strong>no default argument</strong>: if no test is TRUE, <code>IFS</code> returns <code>#N/A</code>. The idiom is to finish with <code>TRUE, "Check"</code> as the catch-all pair. <code>IFS</code> is flat, so adding a band is one extra pair, not one extra nesting level.</p>
+<h3 id="switch">SWITCH</h3>
+<p><code>SWITCH(expression, value1, result1, …, [default])</code> compares one expression for <strong>exact equality</strong> against a list of values. It cannot test <code>&lt;</code> or <code>&gt;</code> directly. Two practitioner patterns make it work for ranges:</p>
+<ol>
+<li>Switch on a derived key — the first digit of the code:</li>
+</ol>
+<pre><code class="language-excel">=SWITCH(LEFT(A2,1),
+  &quot;1&quot;,&quot;Asset&quot;, &quot;2&quot;,&quot;Liability&quot;, &quot;3&quot;,&quot;Equity&quot;,
+  &quot;4&quot;,&quot;Income&quot;, &quot;5&quot;,&quot;Expense&quot;, &quot;6&quot;,&quot;Expense&quot;,
+  &quot;Check&quot;)
+</code></pre>
+<p><code>LEFT</code> returns text, so the values must be quoted text. Alternatively <code>=SWITCH(INT(A2/100000), 1,"Asset", 2,"Liability", …, "Check")</code> keeps everything numeric.</p>
+<ol start="2">
+<li><code>SWITCH(TRUE, …)</code> — the expression is TRUE and each "value" is a logical test; the first test that equals TRUE wins. This mimics <code>IFS</code> but has a built-in default as the final odd argument.</li>
+</ol>
+<p>Without a default, an unmatched <code>SWITCH</code> returns <code>#N/A</code>, just like <code>IFS</code>.</p>
+<h3 id="comparison">Comparison</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Nested IF</th>
+<th>IFS</th>
+<th>SWITCH</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Range tests (<code>&lt;</code>, <code>&gt;=</code>)</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Only via <code>SWITCH(TRUE,…)</code> or a derived key</td>
+</tr>
+<tr>
+<td>Default/else</td>
+<td>Innermost <code>value_if_false</code></td>
+<td>None — add <code>TRUE,"Check"</code></td>
+<td>Optional last argument</td>
+</tr>
+<tr>
+<td>Unmatched result</td>
+<td>Whatever the last <code>IF</code> returns (FALSE if omitted)</td>
+<td><code>#N/A</code></td>
+<td><code>#N/A</code> without default</td>
+</tr>
+<tr>
+<td>Max conditions</td>
+<td>64 levels</td>
+<td>127 pairs</td>
+<td>126 value/result pairs</td>
+</tr>
+<tr>
+<td>Availability</td>
+<td>All versions</td>
+<td>Excel 2019 / Microsoft 365</td>
+<td>Excel 2019 / Microsoft 365</td>
+</tr>
+<tr>
+<td>Readability</td>
+<td>Poor beyond 4 levels</td>
+<td>Good</td>
+<td>Best for exact codes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-better-practice-alternative-a-band-table">The better-practice alternative: a band table</h3>
+<p>For more than five bands, or bands that management may change, the robust design is a small lookup table (<code>From</code> code, <code>Nature</code>) sorted ascending and an approximate lookup: <code>=XLOOKUP(A2, Band[From], Band[Nature], "Check", -1)</code>. The thresholds then live in cells, are visible to reviewers, and can be changed without editing formulas. Formula logic (IF/IFS/SWITCH) is fine for stable, structural rules like CoA first digits; table logic is better for anything a business user owns.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Nested IF</th>
+<th>IFS</th>
+<th>SWITCH on first digit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>145010 (Trade receivables)</td>
+<td>Asset</td>
+<td>Asset</td>
+<td>Asset</td>
+</tr>
+<tr>
+<td>230200 (TDS payable)</td>
+<td>Liability</td>
+<td>Liability</td>
+<td>Liability</td>
+</tr>
+<tr>
+<td>410100 (Sales – domestic)</td>
+<td>Income</td>
+<td>Income</td>
+<td>Income</td>
+</tr>
+<tr>
+<td>640500 (Rent)</td>
+<td>Expense</td>
+<td>Expense</td>
+<td>Expense</td>
+</tr>
+<tr>
+<td>910000 (Suspense)</td>
+<td>Check</td>
+<td>Check</td>
+<td>Check</td>
+</tr>
+<tr>
+<td>"410100" stored as text</td>
+<td>Check (text &gt; any number)</td>
+<td>Check (TRUE catch-all)</td>
+<td>Income (LEFT works on text)</td>
+</tr>
+</tbody>
+</table>
+<p>The last row is the important one: in Excel's comparison order, any text is greater than any number, so <code>"410100"&lt;200000</code> is FALSE throughout, and the nested IF and IFS fall through to "Check". <code>SWITCH(LEFT(…))</code> classifies it "correctly" — and so hides the fact that the code is text, which will later break a numeric SUMIFS range criterion. Choose the behaviour you want, and add an explicit <code>ISNUMBER</code> test if codes come from an ERP export.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Contra and dual-nature ledgers.</strong> A bank OD appears in the asset range in many Tally setups but is a liability when overdrawn. Range logic classifies by code, not balance; balance-sign reclassification (Schedule III requires presenting OD under borrowings) is a separate step.</li>
+<li><strong>Equity vs liability.</strong> Many CoAs lump capital and reserves in the 2-series. Decide whether "Equity" is a separate nature — it matters for the TB check that Assets = Liabilities + Equity.</li>
+<li><strong>Codes with prefixes</strong> (<code>"GL-410100"</code>) need <code>VALUE(MID(…))</code> before numeric tests, or a text-based SWITCH.</li>
+<li><strong>Boundary errors.</strong> Writing <code>&lt;=200000</code> instead of <code>&lt;200000</code> pushes 200000 itself into the asset band. Test the exact boundary codes.</li>
+<li><strong>Version compatibility.</strong> IFS and SWITCH show <code>#NAME?</code> in Excel 2016 and earlier; for files circulated to plant or branch accountants on old versions, nested IF or a band table is safer.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Nested IF and IFS both rely on ascending order and the first-TRUE rule, so only the upper bound of each band is needed.</li>
+<li>IFS has no else: always end with <code>TRUE,"Check"</code> or it returns <code>#N/A</code> for unmatched codes.</li>
+<li>SWITCH tests exact equality; use it on a derived key (first digit, <code>INT(code/100000)</code>) or as <code>SWITCH(TRUE,…)</code>.</li>
+<li>Text-stored codes compare greater than every number — they fall through range tests but pass through <code>LEFT</code>-based tests.</li>
+<li>For business-owned thresholds, a band table with approximate XLOOKUP beats any hard-coded formula.</li>
+<li>Always route unmatched codes to a visible "Check" category and count it.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-rewrite-a-nested-if-as-ifs-l1">Q1. Rewrite a nested IF as IFS [L1]</h3>
+<p>A Tally export uses five-digit codes: 10000–19999 Assets, 20000–29999 Liabilities, 30000–39999 Income, 40000–49999 Expenses. A colleague wrote <code>=IF(A2&lt;20000,"Assets",IF(A2&lt;30000,"Liabilities",IF(A2&lt;40000,"Income","Expenses")))</code>. Rewrite it as an IFS formula and as a SWITCH formula, both of which return "Check" for codes below 10000 or at/above 50000.</p>
+<h3 id="q2-diagnosing-a-classification-failure-l2">Q2. Diagnosing a classification failure [L2]</h3>
+<p>In a 1,200-ledger TB, 37 ledgers show "Check" under an IFS-based classification, yet their codes visually look like 410100–499999. The same ledgers show "Income" under a SWITCH on <code>LEFT(code,1)</code>. Explain the likely cause, write a formula that counts how many codes in <code>TB[Code]</code> are stored as text, and state which classification result you would trust for the SUMIFS rollup and why.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Think about how Excel orders text versus numbers in a comparison.</p>
+</blockquote>
+<h3 id="q3-boundary-testing-l1">Q3. Boundary testing [L1]</h3>
+<p>List the exact test codes you would key into a check block to prove that a six-band classification formula (bands starting at 100000, 200000, 300000, 400000, 500000 and 700000 as "Check") handles every boundary correctly. Explain what result each test code should produce.</p>
+<h3 id="q4-formula-vs-table-design-choice-l3">Q4. Formula vs table design choice [L3]</h3>
+<p>The FP&amp;A head wants expense codes split further into "Direct", "Employee", "Finance" and "Other" based on ranges (500000–549999, 550000–579999, 580000–589999, 590000–699999), and expects the ranges to change when the CoA is restructured next year. Argue whether you would extend the IFS formula or build a band table, describe the table's columns and sort order, and write the lookup formula.</p>
+<h3 id="q5-dual-nature-ledger-l2">Q5. Dual-nature ledger [L2]</h3>
+<p>Ledger 120500 "HDFC Bank CC A/c" has a closing balance of ₹38.4 lakh credit at 31 March 2026. Your range-based classification tags it "Asset". Explain why this is wrong for Schedule III presentation and design an additional formula column that reclassifies bank ledgers with credit balances to "Liability – Short-term borrowings".</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← Multi-criteria logic and GL rollups</a><a class="next" href="S02_SUMIFS_for_Multi_Department_GL_Rollups_by_Group.html">SUMIFS for Multi-Department GL Rollups by Group, Cost… →</a></nav>
+</main></div></body></html>

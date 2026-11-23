@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GL-to-Dashboard Tie-Out Against Source TB Control Totals · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S02_GL_to_Dashboard_Tie_Out_Against_Source_TB_Control.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T4 · Data governance and audit-trail controls</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Data governance and audit-trail controls</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Control_Measures_Dr_Cr_TB_Nets_to_Zero_A_L_E.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S01_Control_Measures_Dr_Cr_TB_Nets_to_Zero_A_L_E.html">Control Measures: Dr = Cr, TB Nets to Zero, A = L + E</a></li><li><a href="S02_GL_to_Dashboard_Tie_Out_Against_Source_TB_Control.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S02_GL_to_Dashboard_Tie_Out_Against_Source_TB_Control.html">GL-to-Dashboard Tie-Out Against Source TB Control Totals</a></li><li><a href="S03_Completeness_Checks_Unmapped_Ledgers_Row_Counts.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S03_Completeness_Checks_Unmapped_Ledgers_Row_Counts.html">Completeness Checks: Unmapped Ledgers, Row Counts, Missing Months</a></li><li><a href="S04_Refresh_Metadata_Last_Refresh_Latest_Posting_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S04_Refresh_Metadata_Last_Refresh_Latest_Posting_Date.html">Refresh Metadata: Last Refresh, Latest Posting Date, Source Files</a></li><li><a href="S05_Control_Panel_Page_with_PassFail_Indicators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S05_Control_Panel_Page_with_PassFail_Indicators.html">Control Panel Page with Pass/Fail Indicators</a></li><li><a href="S06_Access_Governance_RLS_Roles_Labels_Endorsement.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S06_Access_Governance_RLS_Roles_Labels_Endorsement.html">Access Governance: RLS, Roles, Labels, Endorsement, Lineage</a></li><li><a href="S07_Change_Control_PBIP_in_Git_Measure_Docs_Deployment.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S07_Change_Control_PBIP_in_Git_Measure_Docs_Deployment.html">Change Control: PBIP in Git, Measure Docs, Deployment Pipelines</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Dr_Cr_Diff_and_Dr_Cr_Status_Control_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C01_Dr_Cr_Diff_and_Dr_Cr_Status_Control_Measures.html">Dr Cr Diff and Dr Cr Status Control Measures</a></li><li><a href="../concepts/C02_BS_Check_Assets_Minus_Liabilities_Minus_Equity.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C02_BS_Check_Assets_Minus_Liabilities_Minus_Equity.html">BS Check: Assets Minus Liabilities Minus Equity Equals Zero</a></li><li><a href="../concepts/C03_Unmapped_Count_with_EXCEPT_over_GL_and_CoA_Account.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C03_Unmapped_Count_with_EXCEPT_over_GL_and_CoA_Account.html">Unmapped Count with EXCEPT over GL and CoA Account Codes</a></li><li><a href="../concepts/C04_Tie_out_Diff_Dashboard_Revenue_vs_TB_Control.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C04_Tie_out_Diff_Dashboard_Revenue_vs_TB_Control.html">Tie-out Diff: Dashboard Revenue vs TB Control Totals</a></li><li><a href="../concepts/C05_IST_Last_Refresh_Table_in_Power_Query.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C05_IST_Last_Refresh_Table_in_Power_Query.html">IST Last-Refresh Table in Power Query</a></li><li><a href="../concepts/C06_Per_File_Control_Totals_with_TableGroup_on.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C06_Per_File_Control_Totals_with_TableGroup_on.html">Per-File Control Totals with Table.Group on Source.Name</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>GL-to-Dashboard Tie-Out Against Source TB Control Totals</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> GL-to-dashboard tie-out: dashboard P&amp;L totals vs source TB control totals for each period</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>The internal checks in s01 prove that the loaded data is self-consistent. They do not prove that it matches the books
+of account. A GL extract can be perfectly balanced yet incomplete (a voucher type filtered out in the Tally export),
+duplicated (the same month file dropped twice and both balanced), or stale (last month's file overwritten). The only
+way to prove agreement with the books is an <strong>independent control total</strong> — a trial balance or P&amp;L summary produced
+directly by the accounting system and compared, period by period, to what the dashboard shows.</p>
+<p>This is the same logic as an auditor's "agree the financial statements to the TB and the TB to the ledger". For an
+FP&amp;A team it is the difference between a CFO who trusts the pack and one who asks finance to re-cut every number in
+Excel. Statutory auditors increasingly ask for this reconciliation when management information feeds the quarterly
+results under SEBI LODR Reg 33.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="what-the-control-total-source-should-be">What the control-total source should be</h3>
+<p>The control file must be produced <strong>independently of the GL extract</strong> — ideally a different report from the ERP:</p>
+<table>
+<thead>
+<tr>
+<th>ERP</th>
+<th>GL extract (model data)</th>
+<th>Control total (independent)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tally Prime</td>
+<td>Day Book / Ledger vouchers export (XML/ODBC/CSV)</td>
+<td>Trial Balance or P&amp;L report exported for each month (Gateway of Tally &gt; Display &gt; Trial Balance with period set)</td>
+</tr>
+<tr>
+<td>SAP S/4HANA</td>
+<td>ACDOCA / FBL3N line items</td>
+<td>Balance-sheet / P&amp;L report (F.01 or financial statement version) or FAGLB03 period balances</td>
+</tr>
+<tr>
+<td>Oracle / Dynamics</td>
+<td>GL journal lines</td>
+<td>Period trial balance</td>
+</tr>
+</tbody>
+</table>
+<p>A practical structure is a small table, <code>TB_Control</code>, at grain <strong>Company × Month × Control line</strong>, with columns such
+as <code>CompanyCode</code>, <code>MonthKey</code> (e.g. 202603), <code>ControlLine</code> (Revenue from operations, Other income, Total expenses,
+PBT, Total assets) and <code>Amount</code>. It is loaded from a separate folder (<code>/Controls/</code>) that the accountant populates at
+close. If the ERP TB has ledger-level rows, aggregate it through the <em>same</em> CoA mapping, or better, keep both: a
+ledger-level TB tie-out catches mapping-independent differences, and a line-level tie-out checks the presentation.</p>
+<h3 id="modelling-the-control-table">Modelling the control table</h3>
+<p><code>TB_Control</code> is a fact table. Relate it to the shared <code>Date</code> dimension through a month-level key (one row per
+<code>'Date'[MonthKey]</code> is not unique in the Date table, so either create a relationship from <code>TB_Control[MonthEndDate]</code>
+to <code>'Date'[Date]</code>, or use a separate Month dimension). Relate it to <code>Company</code> too. Do <strong>not</strong> relate it to CoA unless
+it is at ledger grain.</p>
+<pre><code class="language-DAX">Dashboard Revenue =
+CALCULATE ( - SUM ( GL[Amount] ), CoA[FSLine] = &quot;Revenue from operations&quot; )
+
+Control Revenue =
+CALCULATE ( SUM ( TB_Control[Amount] ), TB_Control[ControlLine] = &quot;Revenue from operations&quot; )
+
+Tie-out Diff Revenue = [Dashboard Revenue] - [Control Revenue]
+
+Tie-out Status Revenue =
+SWITCH (
+    TRUE (),
+    ISBLANK ( [Control Revenue] ), &quot;NO CONTROL&quot;,
+    ABS ( [Tie-out Diff Revenue] ) &lt; 1, &quot;PASS&quot;,
+    &quot;FAIL&quot;
+)
+</code></pre>
+<p>The "NO CONTROL" state matters: a missing control file is itself a control failure and must not silently show PASS
+(a blank difference would otherwise evaluate as zero in <code>ABS</code>).</p>
+<h3 id="generalising-with-a-disconnected-control-line-table">Generalising with a disconnected control-line table</h3>
+<p>Rather than one measure per line, build a small table <code>ControlLines</code> (Revenue, Other income, Employee benefits,
+Finance costs, Depreciation, Other expenses, PBT, Total assets, Total equity) and a single SWITCH measure that returns
+the dashboard value for the current line:</p>
+<pre><code class="language-DAX">Dashboard Value =
+SWITCH (
+    SELECTEDVALUE ( ControlLines[Line] ),
+    &quot;Revenue from operations&quot;, [Revenue],
+    &quot;Other income&quot;,            [Other Income],
+    &quot;Profit before tax&quot;,       [PBT],
+    &quot;Total assets&quot;,            [Total Assets],
+    BLANK ()
+)
+</code></pre>
+<p>A matrix of <code>ControlLines[Line]</code> on rows and <code>'Date'[Month]</code> on columns with <code>[Tie-out Diff]</code> in values gives the
+full period-by-line reconciliation grid in one visual. Crucially, the dashboard measures inside the SWITCH must be the
+<strong>same measures</strong> used on executive pages; if the P&amp;L page uses <code>[Revenue]</code>, the tie-out must use <code>[Revenue]</code>, not a
+separately written formula, otherwise you are testing a copy.</p>
+<h3 id="each-period-not-only-the-year">Each period, not only the year</h3>
+<p>Tie out every month of the FY (and, for balance-sheet lines, every month-end). The reasons:</p>
+<ul>
+<li>monthly errors offset — a February invoice back-dated into January shows zero at YTD level;</li>
+<li>the CFO consumes monthly variance, so a misallocated month is a reporting error even if YTD agrees;</li>
+<li>after a mid-year CoA remap, prior months may change; per-period tie-out shows exactly which months moved.</li>
+</ul>
+<h3 id="illustration">Illustration</h3>
+<p>Hyderabad-based pharma company, Q4 FY2025-26, Revenue from operations (₹):</p>
+<table>
+<thead>
+<tr>
+<th>Month</th>
+<th>Dashboard</th>
+<th>Tally P&amp;L control</th>
+<th>Diff</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jan-26</td>
+<td>142,35,60,400</td>
+<td>142,35,60,400</td>
+<td>0</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>Feb-26</td>
+<td>128,90,14,250</td>
+<td>129,02,64,250</td>
+<td>−12,50,000</td>
+<td>FAIL</td>
+</tr>
+<tr>
+<td>Mar-26</td>
+<td>165,48,20,000</td>
+<td>165,35,70,000</td>
+<td>+12,50,000</td>
+<td>FAIL</td>
+</tr>
+<tr>
+<td>Q4</td>
+<td>436,73,94,650</td>
+<td>436,73,94,650</td>
+<td>0</td>
+<td>PASS</td>
+</tr>
+</tbody>
+</table>
+<p>Q4 ties, but Feb and Mar fail by equal and opposite amounts. Investigation shows a ₹12.5 lakh sales invoice was dated
+28-Feb in Tally but the GL extract used the <em>entry date</em> (2-Mar) instead of the <em>voucher date</em>. The fix is in Power
+Query (use the voucher date column), not in the dashboard.</p>
+<h3 id="reconciling-items-and-documentation">Reconciling items and documentation</h3>
+<p>Some differences are legitimate and permanent — for example, the dashboard presents revenue net of a
+management-only reclassification, or excludes a dormant company. Do not hide these by adjusting tolerance. Instead,
+hold them in a <code>Recon_Items</code> table (Company, Month, Line, Amount, Reason, Approved by) and compute
+<code>Unexplained Diff = [Tie-out Diff] - [Reconciling Items]</code>. The status keys off the unexplained difference. This
+mirrors a bank reconciliation: every difference is either explained and approved, or a failure.</p>
+<h3 id="excel-version">Excel version</h3>
+<p>In an Excel cube pack (Topic 3), the same check sits beside the board-pack layout:
+<code>=CUBEVALUE(conn,"[Measures].[Tie-out Diff]",Slicer_FY,"[ControlLines].[Line].&amp;[Profit before tax]")</code>, with a
+conditional format that turns the cell red when its absolute value is at least 1.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Sign conventions.</strong> ERP TB exports often show credits as positive in a "Credit" column; the dashboard shows
+  revenue as positive. Normalise signs in Power Query, and document the convention in the measure description.</li>
+<li><strong>Timing of the control file.</strong> If the TB is exported before late adjustments (provisions posted on day 5 of close),
+  the tie-out will fail legitimately. Store an export timestamp in <code>TB_Control</code> and require re-export after final close.</li>
+<li><strong>Rounding at line level.</strong> ERP reports sometimes round each line to the rupee; summing rounded lines differs from
+  rounding the total. Use a tolerance of ₹1 per line, or tie out at ledger level unrounded.</li>
+<li><strong>Closed versus open periods.</strong> Current-month figures move daily. Show the tie-out status for closed periods only, or
+  label open periods "PROVISIONAL".</li>
+<li><strong>Restated prior periods.</strong> If prior-year comparatives are restated under Ind AS 8 for a prior-period error, the
+  control file for those months must also be restated, otherwise PY tie-outs fail.</li>
+<li><strong>Circularity.</strong> Never derive <code>TB_Control</code> from the same GL extract; that tests nothing.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>A tie-out compares the dashboard to an independent ERP report, not to the model's own data.</li>
+<li>Model the control totals as a small fact table at Company × Month × Line grain, sharing the Date and Company dimensions.</li>
+<li>Use the same production measures inside the tie-out; testing a copy proves nothing.</li>
+<li>Reconcile every period; YTD agreement can hide offsetting monthly errors.</li>
+<li>Treat a missing control file as a failure ("NO CONTROL"), not as a pass.</li>
+<li>Explain legitimate differences in an approved reconciling-items table rather than loosening tolerance.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-designing-the-control-table-l1">Q1. Designing the control table [L1]</h3>
+<p>Specify the columns, grain and relationships of a <code>TB_Control</code> table for a group of two companies (Tally and SAP),
+covering Revenue from operations, Total expenses, PBT, Total assets and Total equity for every month of FY2025-26.
+State which dimension tables it should and should not be related to, and why.</p>
+<h3 id="q2-blank-control-values-l2">Q2. Blank control values [L2]</h3>
+<p>Your tie-out measure is <code>IF(ABS([Dashboard PBT] - [Control PBT]) &lt; 1, "PASS", "FAIL")</code>. For May 2025 the accountant
+has not yet uploaded the control file, and the dashboard PBT is ₹0.40 (a rounding residue). What does the measure
+return and why is this dangerous? Rewrite the measure to distinguish PASS, FAIL and NO CONTROL.</p>
+<h3 id="q3-investigating-an-offsetting-difference-l2">Q3. Investigating an offsetting difference [L2]</h3>
+<p>The dashboard shows Employee benefits expense for Q1 FY2025-26 of ₹48.62 crore, which agrees to the SAP control total.
+Monthly differences are April −₹1,85,000, May +₹1,85,000, June 0. List the investigation steps you would perform and
+the likely root causes, distinguishing data-extraction issues from mapping issues.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Compare the date fields available in the extract and check whether the same accounts appear in both months.</p>
+</blockquote>
+<h3 id="q4-reconciling-items-workflow-l3">Q4. Reconciling items workflow [L3]</h3>
+<p>Management reports revenue excluding ₹2.1 crore per month of scrap sales, which the statutory P&amp;L includes in Revenue
+from operations (Schedule III "Other operating revenue"). Design the reconciling-items table, the DAX measures and the
+approval process so that the tie-out still shows PASS while the reclassification remains visible and auditable.</p>
+<h3 id="q5-interview-why-not-tie-out-only-the-grand-total-l1">Q5. Interview: why not tie out only the grand total? [L1]</h3>
+<p>Explain to a non-technical CFO, in four or five sentences, why the pack ties out every month and every major P&amp;L line
+rather than only annual PAT.</p></section>
+<nav class="pager"><a class="prev" href="S01_Control_Measures_Dr_Cr_TB_Nets_to_Zero_A_L_E.html">← Control Measures: Dr = Cr, TB Nets to Zero, A = L + E</a><a class="next" href="S03_Completeness_Checks_Unmapped_Ledgers_Row_Counts.html">Completeness Checks: Unmapped Ledgers, Row Counts, Missing… →</a></nav>
+</main></div></body></html>

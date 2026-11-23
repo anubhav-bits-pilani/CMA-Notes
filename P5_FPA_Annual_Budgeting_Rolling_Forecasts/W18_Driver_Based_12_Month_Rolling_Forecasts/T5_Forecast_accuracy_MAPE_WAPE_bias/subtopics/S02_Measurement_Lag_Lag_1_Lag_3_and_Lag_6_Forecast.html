@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Measurement Lag: Lag-1, Lag-3 and Lag-6 Forecast Accuracy · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S02_Measurement_Lag_Lag_1_Lag_3_and_Lag_6_Forecast.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 5</a> <span>›</span> <a href="../../index.html">Week 18</a> <span>›</span> <a href="../index.html">T5 · Forecast accuracy: MAPE, WAPE, bias</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Forecast accuracy: MAPE, WAPE, bias</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Forecast_Error_Metrics_MAD_MAPE_WAPE_RMSE_Bias.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S01_Forecast_Error_Metrics_MAD_MAPE_WAPE_RMSE_Bias.html">Forecast Error Metrics: MAD, MAPE, WAPE, RMSE, Bias, Tracking Signal</a></li><li><a href="S02_Measurement_Lag_Lag_1_Lag_3_and_Lag_6_Forecast.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S02_Measurement_Lag_Lag_1_Lag_3_and_Lag_6_Forecast.html">Measurement Lag: Lag-1, Lag-3 and Lag-6 Forecast Accuracy</a></li><li><a href="S03_Aggregation_Level_and_Error_Netting_in_Forecast.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S03_Aggregation_Level_and_Error_Netting_in_Forecast.html">Aggregation Level and Error Netting in Forecast Accuracy</a></li><li><a href="S04_Detecting_Sandbagging_and_Over_Optimism_by.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S04_Detecting_Sandbagging_and_Over_Optimism_by.html">Detecting Sandbagging and Over-Optimism by Business Unit</a></li><li><a href="S05_Forecast_Value_Added_Does_Each_Step_Beat_the_Naive.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S05_Forecast_Value_Added_Does_Each_Step_Beat_the_Naive.html">Forecast Value Added: Does Each Step Beat the Naive Baseline?</a></li><li><a href="S06_Accuracy_Dashboards_Accountability_and_Tolerance.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S06_Accuracy_Dashboards_Accountability_and_Tolerance.html">Accuracy Dashboards, Accountability and Tolerance Bands per BU</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_MAPE_Mean_Absolute_Percentage_Error_and_Its.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C01_MAPE_Mean_Absolute_Percentage_Error_and_Its.html">MAPE: Mean Absolute Percentage Error and Its Weaknesses</a></li><li><a href="../concepts/C02_WAPE_and_Forecast_Accuracy_Percentage.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C02_WAPE_and_Forecast_Accuracy_Percentage.html">WAPE and Forecast Accuracy Percentage</a></li><li><a href="../concepts/C03_Bias_Percentage_Direction_of_Forecast_Error.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C03_Bias_Percentage_Direction_of_Forecast_Error.html">Bias Percentage: Direction of Forecast Error</a></li><li><a href="../concepts/C04_MAD_and_the_Tracking_Signal_for_Systematic_Bias.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C04_MAD_and_the_Tracking_Signal_for_Systematic_Bias.html">MAD and the Tracking Signal for Systematic Bias</a></li><li><a href="../concepts/C05_RMSE_Root_Mean_Square_Error_and_Large_Miss_Penalty.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C05_RMSE_Root_Mean_Square_Error_and_Large_Miss_Penalty.html">RMSE: Root Mean Square Error and Large-Miss Penalty</a></li><li><a href="../concepts/C06_Forecast_Value_Added_Formula_and_Interpretation.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C06_Forecast_Value_Added_Formula_and_Interpretation.html">Forecast Value Added Formula and Interpretation</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Measurement Lag: Lag-1, Lag-3 and Lag-6 Forecast Accuracy</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Measurement lag: compare actuals to forecast made 1, 3 or 6 months earlier (lag-n accuracy)</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>In a rolling forecast process, every target month is forecast many times: in the Budget a year ahead, in each quarterly forecast and in each monthly LE until the month closes. The closer the forecast is to the month, the more accurate it will be — by the last week of the month most of the revenue is already invoiced. So "how accurate is our September forecast?" has no single answer; it depends on <em>which</em> September forecast. The decisions that matter — committing raw-material purchases, scheduling a plant, hiring sales staff, guiding the market on H2 — are made months in advance. Measuring accuracy at the lag that matches those decisions tells management whether the forecast is fit for purpose; measuring at lag-0 merely tells them that the accountants can add up the month.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="definition-of-lag">Definition of lag</h3>
+<p>For a target month \(m\) and a forecast version with cutoff (last closed actual month) \(c\), the lag is the number of months between the cutoff and the target:</p>
+<p>\[
+\text{Lag} = (\text{year}_m - \text{year}_c) \times 12 + (\text{month}_m - \text{month}_c)
+\]</p>
+<p>so a forecast made after the June close for September has lag 3. Some organisations instead define lag as the number of months between <em>submission</em> and the target; the convention must be fixed and documented. Under the cutoff convention:</p>
+<table>
+<thead>
+<tr>
+<th>Version (cutoff)</th>
+<th>Target month</th>
+<th>Lag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LE after Aug close (31-Aug)</td>
+<td>Sep</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Q1F 3+9 (30-Jun)</td>
+<td>Sep</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Budget (prepared Feb, effectively cutoff 31-Mar of prior FY)</td>
+<td>Sep</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Q2F 6+6 (30-Sep)</td>
+<td>Dec</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Q2F 6+6 (30-Sep)</td>
+<td>Mar</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<p>In Excel, with cutoff and target month both stored as month-end dates:</p>
+<pre><code>=DATEDIF(Cutoff, Target, &quot;m&quot;)
+=(YEAR(Target)-YEAR(Cutoff))*12 + MONTH(Target)-MONTH(Cutoff)
+</code></pre>
+<p>The second form is more transparent; <code>DATEDIF</code> with two month-ends can misbehave when the earlier date is the 31st and the later month is shorter (e.g., 31-Aug to 30-Sep returns 0 full months), so prefer the arithmetic version.</p>
+<h3 id="choosing-the-lag">Choosing the lag</h3>
+<p>Pick lags that match decision lead times:</p>
+<ul>
+<li><strong>Lag-1</strong> — short-term cash and working-capital management, monthly guidance to the CFO, accrual estimates. Should be highly accurate; failures signal poor information flow from operations.</li>
+<li><strong>Lag-3</strong> — quarterly decisions: production plans, procurement of imported inputs with 8–12 week lead times, quarterly results expectation management, A&amp;P phasing. Often the primary KPI.</li>
+<li><strong>Lag-6</strong> — half-year decisions: capacity, hiring, capex release, H2 guidance, Board and lender communication.</li>
+<li><strong>Budget accuracy (lag up to 12)</strong> — annual, informs how much to trust the AOP for incentive setting.</li>
+</ul>
+<p>S&amp;OP practice is to measure at the lag equal to the supply lead time; finance should align so that unit and revenue accuracy can be reconciled.</p>
+<h3 id="data-requirements">Data requirements</h3>
+<p>Lag-n accuracy is impossible unless every forecast version is <strong>locked and stored</strong> (Topic 4, s04 and c04). The long-format table needs, per row: Version, Cutoff date, Target month, BU, Account, Forecast amount. Actuals are joined by Target month, BU and Account. In a monthly rolling process this creates up to 12 (or 18) forecasts per target month — the "forecast waterfall" or "forecast triangle".</p>
+<h3 id="the-forecast-triangle">The forecast triangle</h3>
+<p>Laying out forecasts by version (rows) and target month (columns) shows convergence:</p>
+<table>
+<thead>
+<tr>
+<th>Version \ Target (₹ crore)</th>
+<th>Jul</th>
+<th>Aug</th>
+<th>Sep</th>
+<th>Oct</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Budget (lag 4–7)</td>
+<td>128</td>
+<td>132</td>
+<td>140</td>
+<td>150</td>
+</tr>
+<tr>
+<td>Q1F, cutoff Jun (lag 1–4)</td>
+<td>118</td>
+<td>122</td>
+<td>131</td>
+<td>146</td>
+</tr>
+<tr>
+<td>LE Jul, cutoff Jul (lag 1–3)</td>
+<td>Actual</td>
+<td>120</td>
+<td>128</td>
+<td>143</td>
+</tr>
+<tr>
+<td>LE Aug, cutoff Aug (lag 1–2)</td>
+<td>Actual</td>
+<td>Actual</td>
+<td>126</td>
+<td>141</td>
+</tr>
+<tr>
+<td>Actual</td>
+<td>116</td>
+<td>119</td>
+<td>125</td>
+<td>139</td>
+</tr>
+</tbody>
+</table>
+<p>Reading down a column shows how the view of one month evolved; the diagonal at a fixed distance from "Actual" is the lag-n series. For September: lag-6 (Budget) error = 140 − 125 = 15 (over-forecast 12.0%); lag-3 (Q1F) = 6 (4.8%); lag-2 (LE Jul) = 3 (2.4%); lag-1 (LE Aug) = 1 (0.8%).</p>
+<h3 id="worked-illustration-lag-3-vs-lag-1-wape">Worked illustration: lag-3 vs lag-1 WAPE</h3>
+<p>For Jul–Sep (₹ crore):</p>
+<table>
+<thead>
+<tr>
+<th>Month</th>
+<th>Actual</th>
+<th>Lag-3 forecast</th>
+<th>Lag-1 forecast</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jul</td>
+<td>116</td>
+<td>122 (LE with Apr cutoff)</td>
+<td>118</td>
+</tr>
+<tr>
+<td>Aug</td>
+<td>119</td>
+<td>124</td>
+<td>120</td>
+</tr>
+<tr>
+<td>Sep</td>
+<td>125</td>
+<td>131</td>
+<td>126</td>
+</tr>
+</tbody>
+</table>
+<p>\[
+\text{WAPE}_{\text{lag-3}} = \frac{6 + 5 + 6}{360} = 4.7\%, \qquad \text{WAPE}_{\text{lag-1}} = \frac{2 + 1 + 1}{360} = 1.1\%
+\]</p>
+<p>Reporting the lag-1 figure ("98.9% accurate") would hide that the forecast used for procurement was systematically 4–5% high — a bias that inflated imported raw-material inventory.</p>
+<h3 id="reporting">Reporting</h3>
+<ul>
+<li>Show accuracy by lag as a line chart (lag on the x-axis): a well-functioning process shows a smooth decline in error as lag shortens. A flat line means later forecasts add no information; a sudden drop at lag-1 means operations only reveal information at the last moment.</li>
+<li>Fix the primary lag for KPI purposes (e.g., lag-3 for revenue, lag-1 for cash) and report others as diagnostics.</li>
+<li>In Power BI, store Lag as a column and use it as a slicer (Week 11).</li>
+</ul>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Quarterly-only forecasting.</strong> If forecasts are produced quarterly, available lags for a given month vary (Q1F gives lag-1 for July but lag-3 for September). Either measure each month at its "natural" lag and weight, or define lag buckets (1–3, 4–6).</li>
+<li><strong>Budget as a lag.</strong> The Budget is not a forecast in the same sense (it is a target with stretch), so its error mixes forecasting skill with target-setting policy. Report budget accuracy separately.</li>
+<li><strong>Restated actuals.</strong> If actuals are restated after a month closes (e.g., late credit notes posted in the next month), decide whether accuracy uses first-reported or final actuals and apply consistently.</li>
+<li><strong>Rolling 18-month horizons.</strong> Lags beyond 12 are available for some months; they are useful for capacity planning but noisy.</li>
+<li><strong>Calendar mismatch.</strong> Monthly LEs prepared mid-month (before close) have an ambiguous cutoff; define their cutoff as the last fully closed month.</li>
+<li><strong>Partial-month forecasts.</strong> A "lag-0" flash forecast for the current month should be excluded from accuracy KPIs or reported only as a close-process metric.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Lag = months between the forecast's cutoff and the target month; define and document the convention.</li>
+<li>Measure at lags matching decision lead times: lag-1 (cash), lag-3 (procurement, quarterly results), lag-6 (capacity, guidance).</li>
+<li>Lag-0 or lag-1-only reporting inflates accuracy and hides the bias that hurt real decisions.</li>
+<li>Lag-n accuracy needs every forecast version locked and stored with its cutoff date.</li>
+<li>The forecast triangle shows how views of each month converged; error should fall smoothly as lag shortens.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-compute-lags-l1">Q1. Compute lags [L1]</h3>
+<p>For each pair, compute the lag under the cutoff convention: (a) Q1F (cutoff 30-Jun-2025), target 31-Dec-2025; (b) LE with cutoff 31-Oct-2025, target 31-Jan-2026; (c) Budget treated as cutoff 31-Mar-2025, target 30-Sep-2025; (d) Q3F (cutoff 31-Dec-2025), target 30-Jun-2026 in an 18-month rolling forecast. Write an Excel formula that computes the lag from two month-end dates without <code>DATEDIF</code>.</p>
+<h3 id="q2-forecast-triangle-analysis-l2">Q2. Forecast triangle analysis [L2]</h3>
+<p>Forecasts for December 2025 revenue (₹ crore) were: Budget 210; Q1F (cutoff Jun) 198; LE Sep (cutoff Sep) 205; LE Oct 207; LE Nov 202. Actual was 196. (a) Tabulate lag and percentage error, (Forecast − Actual) ÷ Actual, for each. (b) Comment on whether later forecasts added information. (c) Suggest a behavioural explanation for the movement between June and September.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Look at whether the forecast moved towards or away from the eventual actual as the lag shortened.</p>
+</blockquote>
+<h3 id="q3-choosing-the-kpi-lag-l2">Q3. Choosing the KPI lag [L2]</h3>
+<p>A pharmaceutical formulations company imports APIs with a 10-week lead time, sets quarterly A&amp;P budgets and gives half-yearly guidance to analysts. Recommend the primary and secondary lags for revenue, gross margin and cash-flow accuracy KPIs, and justify each.</p>
+<h3 id="q4-data-model-for-lag-n-accuracy-l3">Q4. Data model for lag-n accuracy [L3]</h3>
+<p>Design the table structure (columns and keys) to support lag-1, lag-3 and lag-6 WAPE and bias by BU and account in Power BI, for a company producing monthly LEs from April 2025. Explain how actuals are joined, how the Lag column is derived, how versions with quarterly-only granularity are handled, and how you would prevent a later edit to a locked version from affecting the metrics.</p></section>
+<nav class="pager"><a class="prev" href="S01_Forecast_Error_Metrics_MAD_MAPE_WAPE_RMSE_Bias.html">← Forecast Error Metrics: MAD, MAPE, WAPE, RMSE, Bias,…</a><a class="next" href="S03_Aggregation_Level_and_Error_Netting_in_Forecast.html">Aggregation Level and Error Netting in Forecast Accuracy →</a></nav>
+</main></div></body></html>

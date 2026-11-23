@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Cohort and ARPU Revenue Models with Retention Curves · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S05_Customer_Cohort_and_ARPU_Revenue_Models_with.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T4 · Granular Revenue Forecasting</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Granular Revenue Forecasting</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Volume_Price_Mix_Revenue_Decomposition_UVG.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S01_Volume_Price_Mix_Revenue_Decomposition_UVG.html">Volume × Price × Mix Revenue Decomposition (UVG, Realisation, Mix)</a></li><li><a href="S02_Store_Rollout_Revenue_Build_Stores_Area_Revenue.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S02_Store_Rollout_Revenue_Build_Stores_Area_Revenue.html">Store Rollout Revenue Build: Stores, Area, Revenue per Sq Ft, LFL</a></li><li><a href="S03_Store_Maturity_Curves_and_Vintage_Cohort_Revenue.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S03_Store_Maturity_Curves_and_Vintage_Cohort_Revenue.html">Store Maturity Curves and Vintage Cohort Revenue Builds</a></li><li><a href="S04_Capacity_Led_Revenue_Build_Capacity_Utilisation.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S04_Capacity_Led_Revenue_Build_Capacity_Utilisation.html">Capacity-Led Revenue Build: Capacity, Utilisation, Realisation</a></li><li><a href="S05_Customer_Cohort_and_ARPU_Revenue_Models_with.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S05_Customer_Cohort_and_ARPU_Revenue_Models_with.html">Customer Cohort and ARPU Revenue Models with Retention Curves</a></li><li><a href="S06_Segment_Revenue_Builds_Trent_and_Pidilite_Case.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S06_Segment_Revenue_Builds_Trent_and_Pidilite_Case.html">Segment Revenue Builds: Trent and Pidilite Case Structures</a></li><li><a href="S07_Top_Down_Revenue_Cross_Check_Market_Size_Share_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S07_Top_Down_Revenue_Cross_Check_Market_Size_Share_and.html">Top-Down Revenue Cross-Check: Market Size, Share and Nominal GDP</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Revenue_Identity_Volume_Realisation_and_Compounded.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C01_Revenue_Identity_Volume_Realisation_and_Compounded.html">Revenue Identity: Volume × Realisation and Compounded Growth</a></li><li><a href="../concepts/C02_Revenue_Bearing_Stores_Average_and_Timing_Weighted.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C02_Revenue_Bearing_Stores_Average_and_Timing_Weighted.html">Revenue-Bearing Stores: Average and Timing-Weighted Counts</a></li><li><a href="../concepts/C03_Retail_Revenue_Average_Area_Revenue_per_Sq_Ft_with.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C03_Retail_Revenue_Average_Area_Revenue_per_Sq_Ft_with.html">Retail Revenue: Average Area × Revenue per Sq Ft with LFL</a></li><li><a href="../concepts/C04_Capacity_Revenue_Capacity_Utilisation_Price_with_a.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C04_Capacity_Revenue_Capacity_Utilisation_Price_with_a.html">Capacity Revenue: Capacity × Utilisation × Price with a Practical Cap</a></li><li><a href="../concepts/C05_Cohort_Revenue_Initial_Customers_Retention_by_Age.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C05_Cohort_Revenue_Initial_Customers_Retention_by_Age.html">Cohort Revenue: Initial Customers × Retention by Age × ARPU by Age</a></li><li><a href="../concepts/C06_Ind_AS_115_Revenue_Basis_Net_of_GST_Discounts_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C06_Ind_AS_115_Revenue_Basis_Net_of_GST_Discounts_and.html">Ind AS 115 Revenue Basis: Net of GST, Discounts and Variable Consideration</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Customer Cohort and ARPU Revenue Models with Retention Curves</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Customer cohort/ARPU: active customers × ARPU with retention/churn curves and new cohort additions</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>For subscription and platform businesses — telecom (Bharti Airtel, Jio's ARPU disclosures), broking (Zerodha,
+Angel One's active clients), insurance (persistency), SaaS (Freshworks, Zoho-style models), D2C brands with repeat
+purchase, fintech lending and wealth platforms — revenue is a function of how many customers are active and how
+much each spends. Neither stores nor capacity explains revenue; customer acquisition and retention do. A cohort
+build separates the two growth engines: new customers acquired this year and the decay (or expansion) of earlier
+cohorts. It exposes the economics investors care about — CAC payback, lifetime value (LTV), churn — and prevents
+the most common forecasting error in such businesses: assuming customers acquired today remain forever at today's
+spend.</p>
+<p>Even for traditional companies the approach is useful: a B2B chemicals business can model dealer or key-account
+cohorts; Pidilite's Bazaar business tracks dealer counts and influencer (carpenter, contractor) programmes.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="simple-active-customer-model">Simple active-customer model</h3>
+<p>The top-level identity:</p>
+<p>\[
+\text{Revenue}_t = \overline{\text{Active customers}}_t \times \text{ARPU}_t
+\]</p>
+<p>where \(\overline{\text{Active customers}}_t\) is the average of opening and closing active base (the same averaging
+logic as store counts) and ARPU is average revenue per user per year (or per month × 12). The active-base
+roll-forward:</p>
+<p>\[
+\text{Closing active}_t = \text{Opening active}_t \times (1 - \text{Churn}_t) + \text{Gross adds}_t
+\]</p>
+<p>Churn rate is customers lost ÷ opening customers. Monthly churn compounds: annual retention =
+\((1 - \text{monthly churn})^{12}\); 2% monthly churn is about 21.5% annual churn, not 24%.</p>
+<h3 id="cohort-vintage-model">Cohort (vintage) model</h3>
+<p>A single churn rate hides the fact that churn is highest early in a customer's life and falls for survivors. A
+cohort build tracks each acquisition year separately:</p>
+<p>\[
+\text{Revenue}_t = \sum_{c \le t} N_c \times r_{t-c} \times \text{ARPU}_{t-c,t}
+\]</p>
+<ul>
+<li>\(N_c\) — customers acquired in cohort year \(c\) (gross adds).</li>
+<li>\(r_{a}\) — cumulative retention at age \(a\) (share of the cohort still active).</li>
+<li>\(\text{ARPU}_{a,t}\) — ARPU of a customer aged \(a\) in year \(t\); often rises with age (upsell, price
+  increases, more products) and with general price levels.</li>
+</ul>
+<p>A typical retention curve (cumulative): 100% at acquisition, 60% after year 1, 48% after year 2, 42% after year 3,
+then flattening (survivors are loyal). Note the decaying incremental churn — 40%, 20%, 12.5% of the remaining base.</p>
+<h3 id="worked-illustration-broking-platform">Worked illustration — broking platform</h3>
+<p>Cohorts (lakh customers), cumulative retention 100%/60%/48%/42% at age 0/1/2/3, ARPU ₹2,000 at age 0 (half-year
+of activity effectively captured by a 0.5 weight), ₹2,400 at age 1, ₹2,600 at age 2+:</p>
+<table>
+<thead>
+<tr>
+<th>Cohort</th>
+<th>Gross adds (lakh)</th>
+<th>FY26E active (lakh)</th>
+<th>FY26E ARPU (₹)</th>
+<th>FY26E revenue (₹ crore)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY24</td>
+<td>30</td>
+<td>30 × 48% = 14.4</td>
+<td>2,600</td>
+<td>374.4</td>
+</tr>
+<tr>
+<td>FY25</td>
+<td>40</td>
+<td>40 × 60% = 24.0</td>
+<td>2,400</td>
+<td>576.0</td>
+</tr>
+<tr>
+<td>FY26</td>
+<td>50</td>
+<td>50 × 100% × 0.5 = 25.0</td>
+<td>2,000</td>
+<td>500.0</td>
+</tr>
+<tr>
+<td>Total</td>
+<td></td>
+<td>63.4</td>
+<td></td>
+<td>1,450.4</td>
+</tr>
+</tbody>
+</table>
+<p>Revenue (₹ crore) = lakh customers × ₹ ARPU ÷ 100 (because 1 crore = 100 lakh). The FY26 cohort contributes a
+third of revenue; if gross adds fall in a market downturn (as broking saw after F&amp;O regulation tightened in
+FY25), the fall feeds through immediately while older cohorts decay.</p>
+<h3 id="excel-layout">Excel layout</h3>
+<p>As with store vintages, use a triangle with cohorts down and years across. Retention and ARPU-by-age are
+input rows; one formula fills the grid:</p>
+<pre><code>=IF(Year&lt;Cohort, 0,
+    Gross_Adds_Cohort * INDEX(Retention_Curve, MIN(Year-Cohort+1, Max_Age+1))
+    * IF(Year=Cohort, New_Cohort_Weight, 1))
+</code></pre>
+<p>A second triangle multiplies active customers by ARPU-by-age (with an inflation index for price changes). Add
+checks: retention curve non-increasing; active customers ≤ cumulative gross adds; total revenue = Σ cohort
+revenue.</p>
+<h3 id="unit-economics-outputs">Unit economics outputs</h3>
+<p>Cohort models naturally produce:</p>
+<ul>
+<li><strong>LTV</strong> = Σ (retention × ARPU × contribution margin) over customer life, discounted.</li>
+<li><strong>CAC</strong> = acquisition spend (marketing, referral, onboarding) ÷ gross adds.</li>
+<li><strong>LTV ÷ CAC</strong> (healthy &gt; 3x) and <strong>CAC payback</strong> (months of contribution to recover CAC).</li>
+</ul>
+<p>These connect revenue to the A&amp;P/marketing cost line in Topic 5: gross adds should be a function of marketing
+spend and CAC, not a free input, otherwise the Bull case adds customers without paying for them.</p>
+<h3 id="ind-as-115-points">Ind AS 115 points</h3>
+<p>ARPU must be on the Ind AS 115 revenue basis: net of GST, discounts, cashbacks and incentives paid to customers
+(consideration payable to a customer reduces revenue unless for a distinct good/service). Subscription revenue is
+recognised over time; upfront activation fees that are not a distinct performance obligation are deferred over
+the expected customer life. Platform businesses must also apply principal-vs-agent analysis: a marketplace
+recognising commission (net) will show very different ARPU from one recognising GMV (gross).</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Definition of "active".</strong> Brokers define active as traded in the last 12 months (NSE active client);
+  telecoms use 30-day activity. Inconsistent definitions across peers distort ARPU comparisons.</li>
+<li><strong>Reactivation.</strong> Dormant customers returning inflate later-year retention; either model reactivation as a
+  separate flow or accept retention curves that tick up.</li>
+<li><strong>Negative churn.</strong> In B2B SaaS, expansion revenue from surviving customers can exceed revenue lost to churn
+  (net revenue retention &gt; 100%) — model ARPU-by-age rising, not just retention.</li>
+<li><strong>Regulatory shocks.</strong> SEBI rules on F&amp;O, TRAI tariff rulings and RBI digital-lending norms change ARPU and
+  acquisition economics abruptly; treat them as scenario drivers.</li>
+<li><strong>Price increases.</strong> Telecom tariff hikes lift ARPU across all cohorts at once — apply them through a
+  year-based index, not the age curve.</li>
+<li><strong>Data limits.</strong> Listed companies rarely disclose cohort retention; use management's churn commentary and the
+  roll-forward of reported active customers to calibrate.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Revenue = average active customers × ARPU; roll the active base with churn and gross adds.</li>
+<li>Cohort builds capture front-loaded churn and ARPU expansion by customer age.</li>
+<li>One age-indexed formula fills the cohort triangle; inputs are retention and ARPU curves.</li>
+<li>Convert monthly churn to annual retention by compounding.</li>
+<li>Link gross adds to marketing spend via CAC so growth is paid for.</li>
+<li>ARPU must follow Ind AS 115 — net of incentives, deferral of non-distinct fees, gross vs net.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-active-base-roll-forward-l1">Q1. Active-base roll-forward [L1]</h3>
+<p>A D2C brand has 18 lakh active customers at 1 April 2025, annual churn of 35% and gross adds of 9 lakh in FY26.
+ARPU is ₹1,450. Compute closing active customers, average active customers and FY26 revenue in ₹ crore.</p>
+<h3 id="q2-monthly-to-annual-churn-l1">Q2. Monthly to annual churn [L1]</h3>
+<p>A SaaS company reports 1.8% monthly logo churn. Compute annual retention and annual churn, and explain why
+multiplying by 12 is wrong.</p>
+<h3 id="q3-three-cohort-build-l2">Q3. Three-cohort build [L2]</h3>
+<p>A fintech app acquires 20, 28 and 35 lakh customers in FY25, FY26 and FY27. Cumulative retention is 100% (age 0,
+weight 0.5), 55% (age 1) and 45% (age 2). ARPU is ₹600 at age 0, ₹900 at age 1 and ₹1,050 at age 2, with a 5%
+annual price uplift applied to all ages from FY27. Build FY25–FY27 revenue in ₹ crore by cohort.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Apply the price uplift through a year index multiplied on top of the age-based ARPU.</p>
+</blockquote>
+<h3 id="q4-cac-linked-gross-adds-l3">Q4. CAC-linked gross adds [L3]</h3>
+<p>Design an assumption and calculation block in which gross adds are driven by marketing spend and CAC, CAC rises
+as the addressable market saturates, and LTV ÷ CAC is reported each year. Explain how the block would behave in a
+Bull case that raises marketing spend by 30%.</p>
+<h3 id="q5-gross-vs-net-arpu-l2">Q5. Gross vs net ARPU [L2]</h3>
+<p>A travel platform sells ₹8,000 crore of bookings (GMV) and earns ₹960 crore of commissions. Explain how
+principal-vs-agent analysis under Ind AS 115 determines reported revenue and ARPU, and what it means for peer
+comparison.</p></section>
+<nav class="pager"><a class="prev" href="S04_Capacity_Led_Revenue_Build_Capacity_Utilisation.html">← Capacity-Led Revenue Build: Capacity, Utilisation,…</a><a class="next" href="S06_Segment_Revenue_Builds_Trent_and_Pidilite_Case.html">Segment Revenue Builds: Trent and Pidilite Case Structures →</a></nav>
+</main></div></body></html>

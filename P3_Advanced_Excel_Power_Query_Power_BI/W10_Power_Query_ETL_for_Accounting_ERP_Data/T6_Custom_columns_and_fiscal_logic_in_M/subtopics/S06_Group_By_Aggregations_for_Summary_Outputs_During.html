@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Group By Aggregations for Summary Outputs During Ingestion · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S06_Group_By_Aggregations_for_Summary_Outputs_During.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T6 · Custom columns and fiscal logic in M</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · Custom columns and fiscal logic in M</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Column_From_Examples_Custom_Column_and_Conditional.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S01_Column_From_Examples_Custom_Column_and_Conditional.html">Column From Examples, Custom Column and Conditional Column</a></li><li><a href="S02_Indian_FY_Attributes_Label_Fiscal_Month_Quarter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S02_Indian_FY_Attributes_Label_Fiscal_Month_Quarter.html">Indian FY Attributes: Label, Fiscal Month, Quarter and Sort Key</a></li><li><a href="S03_Receivable_and_Payable_Ageing_Against_an_As_Of.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S03_Receivable_and_Payable_Ageing_Against_an_As_Of.html">Receivable and Payable Ageing Against an As-Of-Date Parameter</a></li><li><a href="S04_Conditional_Logic_in_M_ifthenelse_andor_and_Null.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S04_Conditional_Logic_in_M_ifthenelse_andor_and_Null.html">Conditional Logic in M: if/then/else, and/or, and Null Coalescing</a></li><li><a href="S05_Type_Ascription_on_New_Columns.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S05_Type_Ascription_on_New_Columns.html">Type Ascription on New Columns</a></li><li><a href="S06_Group_By_Aggregations_for_Summary_Outputs_During.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S06_Group_By_Aggregations_for_Summary_Outputs_During.html">Group By Aggregations for Summary Outputs During Ingestion</a></li><li><a href="S07_Date_Functions_for_Fiscal_and_Ageing_Logic.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S07_Date_Functions_for_Fiscal_and_Ageing_Logic.html">Date Functions for Fiscal and Ageing Logic</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_FY_End_Year_and_FY_Label_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C01_FY_End_Year_and_FY_Label_Formula.html">FY End Year and FY Label Formula</a></li><li><a href="../concepts/C02_Fiscal_Month_Number_with_NumberMod.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C02_Fiscal_Month_Number_with_NumberMod.html">Fiscal Month Number with Number.Mod</a></li><li><a href="../concepts/C03_Fiscal_Quarter_with_NumberIntegerDivide.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C03_Fiscal_Quarter_with_NumberIntegerDivide.html">Fiscal Quarter with Number.IntegerDivide</a></li><li><a href="../concepts/C04_Ageing_Bucket_Expression_with_DurationDays.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C04_Ageing_Bucket_Expression_with_DurationDays.html">Ageing Bucket Expression with Duration.Days</a></li><li><a href="../concepts/C05_Null_Safe_Net_Amount_and_Operator_Precedence.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C05_Null_Safe_Net_Amount_and_Operator_Precedence.html">Null-Safe Net Amount and Operator Precedence</a></li><li><a href="../concepts/C06_TableGroup_by_FY_and_Ledger_with_a_Typed_Sum.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C06_TableGroup_by_FY_and_Ledger_with_a_Typed_Sum.html">Table.Group by FY and Ledger with a Typed Sum</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Group By Aggregations for Summary Outputs During Ingestion</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Group By aggregations (Sum, Count Rows, All Rows) for summary outputs during ingestion</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Not every output should be a line-level fact table. Finance teams need summaries at ingestion time: a trial balance by FY and ledger from a GL line-item extract, an ageing summary by customer and bucket, control totals (rows, debits, credits) per source file, the latest record per vendor, or a monthly cash-flow summary from bank lines. Group By in Power Query is the SQL <code>GROUP BY</code> equivalent, plus a powerful extra — <strong>All Rows</strong>, which keeps each group's detail as a nested table for per-group logic such as ranking, sequence numbering or picking the latest version. Summarising upstream also reduces model size when the detail is not needed.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-dialog-and-the-generated-m">The dialog and the generated M</h3>
+<p>Transform (or Home) &gt; <strong>Group By</strong>. <strong>Basic</strong> groups by one column with one aggregation; <strong>Advanced</strong> allows several grouping columns and several aggregations. Operations include Sum, Average, Median, Min, Max, Count Rows, Count Distinct Rows and All Rows.</p>
+<pre><code class="language-m">Table.Group(Source, {&quot;FY&quot;, &quot;Ledger&quot;}, {
+    {&quot;Amount&quot;, each List.Sum([Amount]), type nullable number},
+    {&quot;Lines&quot;, each Table.RowCount(_), Int64.Type},
+    {&quot;Detail&quot;, each _, type table [Date = date, VchNo = text, Amount = number]}
+})
+</code></pre>
+<p><code>Table.Group(table, keyColumns, aggregatedColumns, optional groupKind, optional comparer)</code>:</p>
+<ul>
+<li><code>keyColumns</code> — list of grouping columns.</li>
+<li><code>aggregatedColumns</code> — list of <code>{newName, aggregationFunction, type}</code>. Inside each function, <code>_</code> is the <strong>sub-table</strong> of rows in the group, so <code>[Amount]</code> is that sub-table's Amount column as a list, and <code>List.Sum([Amount])</code> sums it.</li>
+<li><code>type</code> — as with <code>Table.AddColumn</code>, declare it so the result is not <code>any</code>.</li>
+</ul>
+<h3 id="the-three-core-operations">The three core operations</h3>
+<p><strong>Sum</strong> (<code>each List.Sum([Amount])</code>): totals per group. <code>List.Sum</code> ignores nulls; it returns null for an all-null group, so coalesce if a zero is required (<code>List.Sum([Amount]) ?? 0</code>).</p>
+<p><strong>Count Rows</strong> (<code>each Table.RowCount(_)</code>): number of rows per group. Count Distinct Rows generates <code>Table.RowCount(Table.Distinct(_))</code>; for distinct values of one column use <code>List.Count(List.Distinct([VchNo]))</code>.</p>
+<p><strong>All Rows</strong> (<code>each _</code>): the group's rows as a nested table. Use it when the per-group logic is more than a single aggregate:</p>
+<pre><code class="language-m">Latest = Table.Group(Files, {&quot;Branch&quot;, &quot;Period&quot;}, {{&quot;Latest&quot;, each Table.Max(_, &quot;Date modified&quot;), type record}}),
+Ranked = Table.Group(Sales, {&quot;FY&quot;}, {{&quot;Top10&quot;, each Table.FirstN(Table.Sort(_, {{&quot;Revenue&quot;, Order.Descending}}), 10), type table}}),
+Seq    = Table.Group(Bank, {&quot;AmtPaise&quot;}, {{&quot;Rows&quot;, each Table.AddIndexColumn(_, &quot;Seq&quot;, 1, 1, Int64.Type), type table}})
+</code></pre>
+<p>Expand the nested result afterwards with <code>Table.ExpandTableColumn</code> or <code>Table.ExpandRecordColumn</code>.</p>
+<h3 id="typical-summary-outputs-during-ingestion">Typical summary outputs during ingestion</h3>
+<table>
+<thead>
+<tr>
+<th>Output</th>
+<th>Group keys</th>
+<th>Aggregations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TB from GL lines</td>
+<td>FY, PeriodKey, LedgerCode</td>
+<td>Sum Debit, Sum Credit, Net</td>
+</tr>
+<tr>
+<td>Ageing summary</td>
+<td>Customer, Bucket</td>
+<td>Sum OpenAmount, Count invoices</td>
+</tr>
+<tr>
+<td>File control totals</td>
+<td>SourceFile</td>
+<td>Count Rows, Sum Debit, Sum Credit</td>
+</tr>
+<tr>
+<td>Duplicate check</td>
+<td>Vendor, InvoiceNo, Amount</td>
+<td>Count Rows (filter &gt; 1)</td>
+</tr>
+<tr>
+<td>Latest version per key</td>
+<td>Branch, Period</td>
+<td>All Rows → <code>Table.Max</code> on date</td>
+</tr>
+<tr>
+<td>Monthly cash flow</td>
+<td>PeriodKey, Category</td>
+<td>Sum Inflow, Sum Outflow</td>
+</tr>
+</tbody>
+</table>
+<p>An ageing summary is often pivoted for presentation: group by Customer + Bucket, then <code>Table.Pivot(t, BucketOrderList, "Bucket", "Amount", List.Sum)</code> to get one column per bucket. Keep the long (unpivoted) version for the model.</p>
+<h3 id="groupkindlocal">GroupKind.Local</h3>
+<p>The optional fourth argument <code>GroupKind.Local</code> groups only <strong>consecutive</strong> rows with the same key, instead of all rows with the key (<code>GroupKind.Global</code>, default). It is faster and useful for report-style data where blocks are contiguous (e.g. grouping lines under each voucher header in a Day Book), but on unsorted data it creates multiple groups for the same key — a subtle bug if added by copying code.</p>
+<h3 id="folding">Folding</h3>
+<p>On SQL sources, Group By with standard aggregations folds to <code>GROUP BY</code>; All Rows and custom per-group functions do not. On files, everything runs in memory; group after filtering to reduce work.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>GL lines, FY2025-26, ledger "Rent" (code 520100): 12 lines of ₹1,50,000 Dr each, plus one reversal of ₹1,50,000 Cr in June and its re-posting of ₹1,50,000 Dr.</p>
+<pre><code class="language-m">Table.Group(GL, {&quot;FY&quot;, &quot;LedgerCode&quot;}, {
+    {&quot;Debit&quot;, each List.Sum([Debit]), type number},
+    {&quot;Credit&quot;, each List.Sum([Credit]), type number},
+    {&quot;Lines&quot;, each Table.RowCount(_), Int64.Type}})
+</code></pre>
+<p>Result: Debit ₹19,50,000 (13 lines × ₹1,50,000), Credit ₹1,50,000, Lines 14, so net ₹18,00,000 — the expected annual rent of 12 × ₹1,50,000. A Count Rows of 14 with only 12 months of rent is the kind of signal that prompts a quick look at the reversal.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Null keys.</strong> Rows with null in a key column form their own group; decide whether that is a "Unmapped" bucket or an error.</li>
+<li><strong>Case and whitespace in keys.</strong> "Rent " and "Rent" are different groups; normalise before grouping (or pass a comparer such as <code>Comparer.OrdinalIgnoreCase</code>).</li>
+<li><strong>Types of aggregates.</strong> The UI writes <code>type nullable number</code> for sums; keep it, or coalesce and use <code>type number</code>.</li>
+<li><strong>Losing detail.</strong> Summarising in Power Query discards line-level drill-down; in a data model, keep the detail and aggregate with measures unless size demands otherwise.</li>
+<li><strong>All Rows memory.</strong> Nested tables for millions of rows are memory-heavy; aggregate early where possible.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li><code>Table.Group</code> is SQL <code>GROUP BY</code>; inside each aggregation, <code>_</code> is the group's sub-table.</li>
+<li>Sum uses <code>List.Sum([Col])</code>, Count Rows uses <code>Table.RowCount(_)</code>, All Rows returns <code>_</code> as a nested table.</li>
+<li>All Rows enables per-group logic: latest record, top N, sequence numbering.</li>
+<li>Declare types on every aggregate and normalise keys before grouping.</li>
+<li><code>GroupKind.Local</code> groups only consecutive rows — use deliberately.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-write-the-tb-summary-l1">Q1. Write the TB summary [L1]</h3>
+<p>From a GL extract with PostingDate, LedgerCode, LedgerName, Debit and Credit, write M that groups by FY label and LedgerCode, returning TotalDebit, TotalCredit, Net (TotalDebit − TotalCredit) and LineCount, all typed.</p>
+<h3 id="q2-ageing-pivot-l2">Q2. Ageing pivot [L2]</h3>
+<p>From an aged open-items table (Customer, Bucket, OpenAmount), produce a summary with one row per customer and columns "0-30", "31-60", "61-90", "&gt;90" and Total, in that column order, with zeros instead of nulls.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Group to Customer + Bucket first, then pivot with an explicit bucket list rather than <code>List.Distinct</code>.</p>
+</blockquote>
+<h3 id="q3-latest-version-per-vendor-l2">Q3. Latest version per vendor [L2]</h3>
+<p>A vendor master history table has VendorCode, BankAccount, ChangedOn and ChangedBy. Use Group By with All Rows to return the latest record per vendor, and a second output listing vendors whose bank account changed more than twice in FY2025-26 — a classic fraud red flag.</p>
+<h3 id="q4-groupkindlocal-bug-l2">Q4. GroupKind.Local bug [L2]</h3>
+<p>A query groups bank lines by TxnDate with <code>GroupKind.Local</code> and reports 41 groups for April, although April has 22 banking days. Explain the cause and two possible fixes.</p></section>
+<nav class="pager"><a class="prev" href="S05_Type_Ascription_on_New_Columns.html">← Type Ascription on New Columns</a><a class="next" href="S07_Date_Functions_for_Fiscal_and_Ageing_Logic.html">Date Functions for Fiscal and Ageing Logic →</a></nav>
+</main></div></body></html>

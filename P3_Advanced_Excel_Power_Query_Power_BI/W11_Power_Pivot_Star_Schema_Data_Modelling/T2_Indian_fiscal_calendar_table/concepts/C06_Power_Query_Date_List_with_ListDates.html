@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Power Query Date List with List.Dates · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C06_Power_Query_Date_List_with_ListDates.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T2 · Indian fiscal calendar table</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Indian fiscal calendar table</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Building_the_Date_Dimension_DAX_CALENDAR_vs_Power.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S01_Building_the_Date_Dimension_DAX_CALENDAR_vs_Power.html">Building the Date Dimension: DAX CALENDAR vs Power Query List.Dates</a></li><li><a href="../subtopics/S02_Contiguous_Whole_Fiscal_Year_Date_Range_Covering.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S02_Contiguous_Whole_Fiscal_Year_Date_Range_Covering.html">Contiguous Whole-Fiscal-Year Date Range Covering All Facts</a></li><li><a href="../subtopics/S03_Fiscal_Calendar_Columns_FY_Quarter_Month_Week_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S03_Fiscal_Calendar_Columns_FY_Quarter_Month_Week_and.html">Fiscal Calendar Columns: FY, Quarter, Month, Week and Period Key</a></li><li><a href="../subtopics/S04_Sort_by_Column_Fiscal_Month_Order_Starting_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S04_Sort_by_Column_Fiscal_Month_Order_Starting_in.html">Sort by Column: Fiscal Month Order Starting in April</a></li><li><a href="../subtopics/S05_Month_and_FY_Offset_Columns_for_Dynamic_Period.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S05_Month_and_FY_Offset_Columns_for_Dynamic_Period.html">Month and FY Offset Columns for Dynamic Period Filters</a></li><li><a href="../subtopics/S06_Mark_as_Date_Table_and_Turn_Off_Auto_DateTime.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S06_Mark_as_Date_Table_and_Turn_Off_Auto_DateTime.html">Mark as Date Table and Turn Off Auto Date/Time</a></li><li><a href="../subtopics/S07_Working_Day_Flags_and_Indian_Holidays_for_Close.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S07_Working_Day_Flags_and_Indian_Holidays_for_Close.html">Working-Day Flags and Indian Holidays for Close Metrics</a></li><li><a href="../subtopics/S08_IsClosedPeriod_and_IsYTD_Flags_for_Like_for_Like.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S08_IsClosedPeriod_and_IsYTD_Flags_for_Like_for_Like.html">IsClosedPeriod and IsYTD Flags for Like-for-Like Comparisons</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_DAX_Fiscal_Date_Table_with_an_FYEnd_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C01_DAX_Fiscal_Date_Table_with_an_FYEnd_Column.html">DAX Fiscal Date Table with an FYEnd Column</a></li><li><a href="C02_CALENDARAUTO3_for_Whole_March_Ending_Fiscal_Years.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C02_CALENDARAUTO3_for_Whole_March_Ending_Fiscal_Years.html">CALENDARAUTO(3) for Whole March-Ending Fiscal Years</a></li><li><a href="C03_Fiscal_Month_and_Fiscal_Quarter_Formulas.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C03_Fiscal_Month_and_Fiscal_Quarter_Formulas.html">Fiscal Month and Fiscal Quarter Formulas</a></li><li><a href="C04_Fiscal_Week_Number_Anchored_on_1_April.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C04_Fiscal_Week_Number_Anchored_on_1_April.html">Fiscal Week Number Anchored on 1 April</a></li><li><a href="C05_Month_Offset_from_Today.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C05_Month_Offset_from_Today.html">Month Offset from Today</a></li><li><a href="C06_Power_Query_Date_List_with_ListDates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C06_Power_Query_Date_List_with_ListDates.html">Power Query Date List with List.Dates</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Power Query Date List with List.Dates</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Power Query version: <code>List.Dates(#date(2022,4,1), Duration.Days(#date(2027,3,31) - #date(2022,4,1)) + 1, #duration(1,0,0,0))</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-M">List.Dates(
+    #date(2022, 4, 1),                                         // start
+    Duration.Days(#date(2027, 3, 31) - #date(2022, 4, 1)) + 1,  // count of dates
+    #duration(1, 0, 0, 0)                                      // step: 1 day
+)
+</code></pre>
+<p><code>List.Dates(start as date, count as number, step as duration)</code> returns a list of <code>count</code> dates beginning at <code>start</code>,
+each <code>step</code> apart.</p>
+<ul>
+<li><code>#date(y, m, d)</code> constructs a date literal.</li>
+<li>Subtracting two dates yields a <strong>duration</strong>; <code>Duration.Days</code> extracts the whole days (1,825 here).</li>
+<li><code>+ 1</code> makes the range <strong>inclusive</strong> of the end date, giving 1,826 dates.</li>
+<li><code>#duration(days, hours, minutes, seconds)</code> — here one day.</li>
+</ul>
+<p>\[
+\text{count} = (\text{End} - \text{Start})_{\text{days}} + 1 = 1{,}825 + 1 = 1{,}826
+\]</p>
+<h2 id="explanation">Explanation</h2>
+<p>The list must be converted into a typed table and enriched with fiscal columns:</p>
+<pre><code class="language-M">let
+    pStart  = #date(2022, 4, 1),
+    pEnd    = #date(2027, 3, 31),
+    Dates   = List.Dates(pStart, Duration.Days(pEnd - pStart) + 1, #duration(1, 0, 0, 0)),
+    Tbl     = Table.FromList(Dates, Splitter.SplitByNothing(), type table [Date = date]),
+    FYEnd   = Table.AddColumn(Tbl, &quot;FYEnd&quot;,
+                  each if Date.Month([Date]) &gt;= 4 then Date.Year([Date]) + 1 else Date.Year([Date]), Int64.Type),
+    FY      = Table.AddColumn(FYEnd, &quot;FY&quot;,
+                  each &quot;FY&quot; &amp; Text.From([FYEnd] - 1) &amp; &quot;-&quot; &amp; Text.End(Text.From([FYEnd]), 2), type text),
+    FMNo    = Table.AddColumn(FY, &quot;FiscalMonthNo&quot;, each Number.Mod(Date.Month([Date]) + 8, 12) + 1, Int64.Type),
+    MEnd    = Table.AddColumn(FMNo, &quot;MonthEnd&quot;, each Date.EndOfMonth([Date]), type date)
+in
+    MEnd
+</code></pre>
+<p>Points:</p>
+<ul>
+<li><strong>Off-by-one.</strong> Omitting <code>+ 1</code> drops 31 March 2027 — the calendar then fails the whole-fiscal-year requirement and
+  CLOSINGBALANCEYEAR for FY2026-27 returns blank.</li>
+<li><strong>Types.</strong> <code>Table.FromList</code> with a typed table schema (or <code>Table.TransformColumnTypes</code>) ensures the Date column
+  is <code>date</code>, not <code>any</code> or <code>datetime</code>; untyped columns load as text or datetime and break relationships.</li>
+<li><strong>Parameters.</strong> Make pStart and pEnd Power Query parameters (Manage Parameters) so the range is changed in one
+  place each year, or compute them from facts: <code>Date.StartOfYear</code> is calendar-based, so derive FY starts manually
+  (<code>#date(if Date.Month(d) &gt;= 4 then Date.Year(d) else Date.Year(d) - 1, 4, 1)</code>).</li>
+<li><strong>Alternative generator:</strong> <code>List.Generate</code> or <code>{Number.From(pStart)..Number.From(pEnd)}</code> converted back with
+  <code>Date.From</code> are equivalent; List.Dates is clearest.</li>
+<li><strong>Reuse:</strong> publish the query as a Power BI dataflow so every model consumes one corporate fiscal calendar.</li>
+<li>Works in Excel Power Query too, then <em>Close &amp; Load To → Only create connection + Add to Data Model</em>.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start</td>
+<td>1-Apr-2022</td>
+</tr>
+<tr>
+<td>End</td>
+<td>31-Mar-2027</td>
+</tr>
+<tr>
+<td><code>pEnd - pStart</code></td>
+<td>1,825 days (duration 1825.00:00:00)</td>
+</tr>
+<tr>
+<td>Count</td>
+<td>1,826</td>
+</tr>
+<tr>
+<td>First / last list items</td>
+<td>1-Apr-2022 / 31-Mar-2027</td>
+</tr>
+<tr>
+<td>Leap day included</td>
+<td>29-Feb-2024 (FY2023-24)</td>
+</tr>
+</tbody>
+</table>
+<p>Quick check after loading: in DAX query view, <code>EVALUATE ROW("n", COUNTROWS('Date'), "min", MIN('Date'[Date]), "max",
+MAX('Date'[Date]))</code> should return 1,826, 1-Apr-2022, 31-Mar-2027.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Subtopic s01 (DAX vs Power Query trade-offs) and s02 (contiguous whole-FY range).</li>
+<li>Concept c01 (DAX CALENDAR equivalent) and c03 (fiscal month formula in M).</li>
+<li>Week 10: Power Query custom columns and parameters.</li>
+<li>Related item: the same FY logic written as M custom columns in Week 10.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-count-the-dates-l1">Q1. Count the dates [L1]</h3>
+<p>How many dates does `List.Dates(#date(2023,4,1), Duration.Days(#date(2026,3,31) - #date(2023,4,1)) + 1,</p>
+<h1 id="duration1000-return-show-the-calculation-noting-any-leap-days">duration(1,0,0,0))` return? Show the calculation, noting any leap days.</h1>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Count days per fiscal year and check which ones contain 29 February.</p>
+</blockquote>
+<h3 id="q2-parameterise-from-facts-l2">Q2. Parameterise from facts [L2]</h3>
+<p>Write M that sets pStart to 1 April of the FY containing the earliest date in a query <code>GL</code> (column PostingDate) and
+pEnd to 31 March of the FY containing the latest date in a query <code>Budget</code> (column MonthStart), then generates the
+date list. Comment on refresh performance.</p>
+<h3 id="q3-monthly-list-l2">Q3. Monthly list [L2]</h3>
+<p>Explain why <code>List.Dates(#date(2025,4,30), 12, #duration(30,0,0,0))</code> does not produce the twelve month-ends of
+FY2025-26, and write an M expression that does.</p></section>
+<nav class="pager"><a class="prev" href="C05_Month_Offset_from_Today.html">← Month Offset from Today</a><a class="next" href="../../T3_Core_financial_DAX_functions/index.html">Core financial DAX functions →</a></nav>
+</main></div></body></html>

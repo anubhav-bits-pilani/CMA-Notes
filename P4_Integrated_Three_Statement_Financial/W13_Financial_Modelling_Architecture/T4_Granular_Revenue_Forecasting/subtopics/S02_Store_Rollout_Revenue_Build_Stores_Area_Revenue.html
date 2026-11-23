@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Store Rollout Revenue Build: Stores, Area, Revenue per Sq Ft, LFL · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S02_Store_Rollout_Revenue_Build_Stores_Area_Revenue.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T4 · Granular Revenue Forecasting</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Granular Revenue Forecasting</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Volume_Price_Mix_Revenue_Decomposition_UVG.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S01_Volume_Price_Mix_Revenue_Decomposition_UVG.html">Volume × Price × Mix Revenue Decomposition (UVG, Realisation, Mix)</a></li><li><a href="S02_Store_Rollout_Revenue_Build_Stores_Area_Revenue.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S02_Store_Rollout_Revenue_Build_Stores_Area_Revenue.html">Store Rollout Revenue Build: Stores, Area, Revenue per Sq Ft, LFL</a></li><li><a href="S03_Store_Maturity_Curves_and_Vintage_Cohort_Revenue.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S03_Store_Maturity_Curves_and_Vintage_Cohort_Revenue.html">Store Maturity Curves and Vintage Cohort Revenue Builds</a></li><li><a href="S04_Capacity_Led_Revenue_Build_Capacity_Utilisation.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S04_Capacity_Led_Revenue_Build_Capacity_Utilisation.html">Capacity-Led Revenue Build: Capacity, Utilisation, Realisation</a></li><li><a href="S05_Customer_Cohort_and_ARPU_Revenue_Models_with.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S05_Customer_Cohort_and_ARPU_Revenue_Models_with.html">Customer Cohort and ARPU Revenue Models with Retention Curves</a></li><li><a href="S06_Segment_Revenue_Builds_Trent_and_Pidilite_Case.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S06_Segment_Revenue_Builds_Trent_and_Pidilite_Case.html">Segment Revenue Builds: Trent and Pidilite Case Structures</a></li><li><a href="S07_Top_Down_Revenue_Cross_Check_Market_Size_Share_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S07_Top_Down_Revenue_Cross_Check_Market_Size_Share_and.html">Top-Down Revenue Cross-Check: Market Size, Share and Nominal GDP</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Revenue_Identity_Volume_Realisation_and_Compounded.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C01_Revenue_Identity_Volume_Realisation_and_Compounded.html">Revenue Identity: Volume × Realisation and Compounded Growth</a></li><li><a href="../concepts/C02_Revenue_Bearing_Stores_Average_and_Timing_Weighted.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C02_Revenue_Bearing_Stores_Average_and_Timing_Weighted.html">Revenue-Bearing Stores: Average and Timing-Weighted Counts</a></li><li><a href="../concepts/C03_Retail_Revenue_Average_Area_Revenue_per_Sq_Ft_with.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C03_Retail_Revenue_Average_Area_Revenue_per_Sq_Ft_with.html">Retail Revenue: Average Area × Revenue per Sq Ft with LFL</a></li><li><a href="../concepts/C04_Capacity_Revenue_Capacity_Utilisation_Price_with_a.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C04_Capacity_Revenue_Capacity_Utilisation_Price_with_a.html">Capacity Revenue: Capacity × Utilisation × Price with a Practical Cap</a></li><li><a href="../concepts/C05_Cohort_Revenue_Initial_Customers_Retention_by_Age.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C05_Cohort_Revenue_Initial_Customers_Retention_by_Age.html">Cohort Revenue: Initial Customers × Retention by Age × ARPU by Age</a></li><li><a href="../concepts/C06_Ind_AS_115_Revenue_Basis_Net_of_GST_Discounts_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C06_Ind_AS_115_Revenue_Basis_Net_of_GST_Discounts_and.html">Ind AS 115 Revenue Basis: Net of GST, Discounts and Variable Consideration</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Store Rollout Revenue Build: Stores, Area, Revenue per Sq Ft, LFL</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Store rollout: opening stores + additions − closures, average area per store, revenue per sq ft, LFL/SSSG</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>For organised retail — Trent, Avenue Supermarts (DMart), V-Mart, Aditya Birla Fashion, Titan's jewellery and
+eyewear chains, quick-service restaurants such as Jubilant FoodWorks or Devyani — revenue growth is overwhelmingly
+explained by two things: how much retail space the company operates and how productive that space is. Sell-side
+models for these names are built store-by-store or format-by-format, and buy-side analysts test management's
+rollout guidance ("we will add 200 Zudio stores") against funding capacity, real-estate availability and new-store
+productivity. A store rollout build also drives the rest of the model: store adds drive capex and fit-out cost
+(Week 14), store opex and staff cost (Topic 5), lease additions under Ind AS 116 and inventory per store. If the
+revenue build is a flat growth rate, none of those links can be made.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-store-roll-forward">The store roll-forward</h3>
+<p>The store count is a stock that rolls forward each year:</p>
+<p>\[
+\text{Closing stores}_t = \text{Opening stores}_t + \text{Additions}_t - \text{Closures}_t
+\]</p>
+<p>with Opening\(_t\) = Closing\(_{t-1}\). Additions are an input by format and year, sourced from management
+guidance and recent run-rates; closures are often 2–5% of the opening base for apparel and QSR (relocations,
+underperforming malls). Model gross additions and closures separately — net additions hide churn, and closures
+carry their own costs (impairment of ROU assets and fit-outs, lease termination).</p>
+<p>Revenue does not come from the closing count. A store opened in February earns two months of revenue in that
+financial year. Use the average:</p>
+<p>\[
+\text{Revenue-bearing stores}_t = \frac{\text{Opening}_t + \text{Closing}_t}{2}
+\]</p>
+<p>or, if openings are back-ended (common in Indian retail, where openings cluster around the festive season and in
+Q4), a timing-weighted version — opening stores plus additions × fraction of year operated (see c02).</p>
+<h3 id="average-area-per-store">Average area per store</h3>
+<p>Indian retail productivity is usually disclosed per square foot of <em>retail</em> (selling) area, not gross leasable
+area. Trent discloses total store area and store counts by format; DMart discloses total retail business area.
+Model area as:</p>
+<p>\[
+\text{Closing area}_t = \text{Opening area}_t + \text{Additions}_t \times \text{Avg area of new store} - \text{Closures}_t \times \text{Avg area of closed store}
+\]</p>
+<p>New stores may be larger or smaller than the existing average — Westside's newer stores are larger than legacy
+ones; Zudio stores are typically 7,000–10,000 sq ft. Track the average area of new additions as a separate input
+so the fleet average drifts realistically. Revenue uses average area, \((\text{Opening area} + \text{Closing area})
+\div 2\), for the same reason as store counts.</p>
+<h3 id="revenue-per-sq-ft">Revenue per sq ft</h3>
+<p>Revenue per sq ft (sometimes "trading density" or "throughput") is the productivity driver:</p>
+<p>\[
+\text{Revenue}_t = \text{Average retail area}_t \times \text{Revenue per sq ft}_t
+\]</p>
+<p>Compute history from reported numbers: standalone revenue from the format ÷ average area. Use the same revenue
+definition you forecast (net of GST, returns and discounts; excluding franchise/royalty income). Revenue per sq ft
+is reported in ₹ per sq ft per year; with area in million sq ft (mn sq ft), ₹ per sq ft × mn sq ft ÷ 10 gives
+₹ crore (because 1 crore = 10 million).</p>
+<h3 id="lfl-sssg">LFL / SSSG</h3>
+<p>Like-for-like (LFL) growth, also called same-store sales growth (SSSG), is the revenue growth of stores open for
+the whole of both comparison periods — typically stores operating for at least 12 (sometimes 18 or 24) months.
+It strips out new-store revenue and isolates productivity: footfall, conversion, average transaction value and
+price. Revenue per sq ft of the mature base rolls forward with LFL:</p>
+<p>\[
+\text{Rev per sq ft}_t = \text{Rev per sq ft}_{t-1} \times (1 + \text{LFL}_t)
+\]</p>
+<p>LFL itself decomposes into transactions growth × average bill value growth, and average bill value into units per
+bill × average selling price — useful when management discloses footfall data. Indian apparel LFL has ranged from
+negative (FY21) to 15–20% (FY23 rebound); a steady-state assumption of 5–8% (mostly inflation plus modest volume)
+is common.</p>
+<h3 id="worked-illustration-one-format">Worked illustration — one format</h3>
+<p>A value-fashion format (₹, mn sq ft):</p>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>FY25A</th>
+<th>FY26E</th>
+<th>FY27E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Opening stores</td>
+<td>400</td>
+<td>545</td>
+<td>705</td>
+</tr>
+<tr>
+<td>Additions</td>
+<td>160</td>
+<td>180</td>
+<td>190</td>
+</tr>
+<tr>
+<td>Closures</td>
+<td>15</td>
+<td>20</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Closing stores</td>
+<td>545</td>
+<td>705</td>
+<td>870</td>
+</tr>
+<tr>
+<td>Avg area per new store ('000 sq ft)</td>
+<td>—</td>
+<td>8.0</td>
+<td>8.0</td>
+</tr>
+<tr>
+<td>Closing area (mn sq ft)</td>
+<td>4.40</td>
+<td>5.68</td>
+<td>7.00</td>
+</tr>
+<tr>
+<td>Average area (mn sq ft)</td>
+<td>3.70</td>
+<td>5.04</td>
+<td>6.34</td>
+</tr>
+<tr>
+<td>Revenue per sq ft (₹)</td>
+<td>15,000</td>
+<td>15,750</td>
+<td>16,380</td>
+</tr>
+<tr>
+<td>Revenue (₹ crore)</td>
+<td>5,550</td>
+<td>7,938</td>
+<td>10,385</td>
+</tr>
+</tbody>
+</table>
+<p>FY26E closing area = 4.40 + 180 × 0.008 − 20 × 0.008 = 5.68 (assuming closed stores also average 8,000 sq ft).
+Revenue per sq ft grows 5% LFL in FY26 and 4% in FY27. FY26E revenue = 5.04 × 15,750 ÷ 10 = ₹7,938 crore.</p>
+<p>A refinement: blended revenue per sq ft should be lower than mature density because new stores are still ramping
+(s03). Applying the mature density to the average area overstates revenue when the fleet is growing fast.</p>
+<h3 id="model-layout">Model layout</h3>
+<p>On a Revenue sheet, one block per format (Westside, Zudio, Star): store roll-forward rows, area roll-forward rows,
+productivity rows, revenue row. Inputs (additions, closures, new-store size, LFL) are blue on Assumptions and
+linked in green. Add checks: closing stores ≥ 0; closures ≤ opening stores; format revenue sum = total revenue;
+revenue per sq ft growth within a sanity band (flag LFL outside −10% to +20%).</p>
+<pre><code>Avg_Area_t   = (Open_Area_t + Close_Area_t) / 2
+Revenue_t    = Avg_Area_t * Rev_psf_t / 10          ' mn sq ft x Rs/sq ft -&gt; Rs crore
+Rev_psf_t    = Rev_psf_{t-1} * (1 + LFL_t)
+</code></pre>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Franchise vs owned stores.</strong> Franchise stores generate royalty or wholesale revenue, not retail revenue. Keep
+  them in a separate roll-forward with their own revenue per store.</li>
+<li><strong>Shop-in-shops and online.</strong> Trent's online and Tata CLiQ-linked sales and Star's hypermarket formats need
+  separate treatment; e-commerce revenue has no area driver — use GMV × take-rate or orders × AOV.</li>
+<li><strong>Store expansions vs new stores.</strong> A refit that adds 3,000 sq ft to an existing store increases area without a
+  store addition; LFL definitions usually exclude expanded stores for a year.</li>
+<li><strong>LFL definition drift.</strong> Companies change the LFL base (12 vs 24 months, inclusion of relocated stores).
+  Document the definition used in each year and avoid splicing inconsistent series.</li>
+<li><strong>Calendar effects.</strong> Festive timing (Diwali in October vs November) shifts revenue between quarters, not
+  years, but a 53-week effect or a leap year can distort annual LFL marginally.</li>
+<li><strong>Ind AS 116 linkage.</strong> Each new store is a lease addition; the store count must reconcile to the lease
+  schedule to avoid opex/depreciation mismatches in Topic 5.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Closing stores = opening + additions − closures; model gross additions and closures separately.</li>
+<li>Revenue uses average stores and average area, never year-end counts.</li>
+<li>Track new-store size separately so fleet average area drifts with format strategy.</li>
+<li>Revenue = average area × revenue per sq ft; mn sq ft × ₹ per sq ft ÷ 10 = ₹ crore.</li>
+<li>LFL/SSSG isolates productivity of mature stores; mature density rolls forward at LFL.</li>
+<li>Store adds must feed capex, opex, staff cost and lease schedules.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-roll-forward-and-revenue-for-a-jewellery-chain-l1">Q1. Roll-forward and revenue for a jewellery chain [L1]</h3>
+<p>A jewellery chain has 310 stores at 31 March 2025 with average area 3,800 sq ft. It plans 45 additions and 5
+closures in FY26, new stores averaging 4,200 sq ft and closed stores 3,000 sq ft. Revenue per sq ft in FY25 was
+₹1,05,000 and LFL is expected at 9%. Compute FY26 closing stores, closing area, average area and revenue in ₹ crore.</p>
+<h3 id="q2-back-ended-openings-l2">Q2. Back-ended openings [L2]</h3>
+<p>A QSR chain opens 120 stores in FY26, of which 70 open in January–March 2026. Mature revenue per store is ₹2.4
+crore a year. Compare FY26 new-store revenue using (a) the simple average count and (b) a quarterly
+timing-weighted approach assuming openings are evenly spread within each quarter and 50 openings are spread over
+April–December. Explain which you would use and why.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Weight each quarter's openings by the average months operated in the year.</p>
+</blockquote>
+<h3 id="q3-reconciling-disclosed-data-l2">Q3. Reconciling disclosed data [L2]</h3>
+<p>Trent's annual report gives closing store counts and total area by format, but not revenue by format. Describe
+how you would derive historical revenue per sq ft by format, what assumptions you must make, and how you would
+test them against management commentary.</p>
+<h3 id="q4-build-specification-multi-format-revenue-block-l3">Q4. Build specification — multi-format revenue block [L3]</h3>
+<p>Specify the rows, inputs, formulas and checks for a five-year revenue build covering three formats with different
+store sizes, LFL and closure rates. Include how the block will feed the capex and lease schedules in Week 14.</p>
+<h3 id="q5-lfl-vs-total-growth-l1">Q5. LFL vs total growth [L1]</h3>
+<p>A retailer reports total revenue growth of 32% and LFL of 4%. Explain what this tells you about the business,
+and two risks this combination raises for the forecast.</p></section>
+<nav class="pager"><a class="prev" href="S01_Volume_Price_Mix_Revenue_Decomposition_UVG.html">← Volume × Price × Mix Revenue Decomposition (UVG,…</a><a class="next" href="S03_Store_Maturity_Curves_and_Vintage_Cohort_Revenue.html">Store Maturity Curves and Vintage Cohort Revenue Builds →</a></nav>
+</main></div></body></html>

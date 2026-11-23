@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Error Handling: Remove Errors, Keep Errors and try ... otherwise · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S07_Error_Handling_Remove_Errors_Keep_Errors_and_try.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T2 · Cleaning messy ERP/Tally exports</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Cleaning messy ERP/Tally exports</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Skipping_Report_Headers_Conditionally_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S01_Skipping_Report_Headers_Conditionally_and.html">Skipping Report Headers Conditionally and Promoting Headers</a></li><li><a href="S02_Removing_Blank_Subtotal_and_Grand_Total_Rows_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S02_Removing_Blank_Subtotal_and_Grand_Total_Rows_by.html">Removing Blank, Subtotal and Grand Total Rows by Condition</a></li><li><a href="S03_Filling_Down_Cost_Centre_and_Group_Headers_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S03_Filling_Down_Cost_Centre_and_Group_Headers_in.html">Filling Down Cost-Centre and Group Headers in Report Layouts</a></li><li><a href="S04_Splitting_Ledger_Code_and_Name_Parsing_Tally_DrCr.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S04_Splitting_Ledger_Code_and_Name_Parsing_Tally_DrCr.html">Splitting Ledger Code and Name; Parsing Tally Dr/Cr Amounts</a></li><li><a href="S05_Trimming_Non_Breaking_Spaces_and_Non_Printable.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S05_Trimming_Non_Breaking_Spaces_and_Non_Printable.html">Trimming Non-Breaking Spaces and Non-Printable Characters</a></li><li><a href="S06_Fixing_Date_Locales_and_Indian_Digit_Grouping_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S06_Fixing_Date_Locales_and_Indian_Digit_Grouping_in.html">Fixing Date Locales and Indian Digit Grouping in Text Amounts</a></li><li><a href="S07_Error_Handling_Remove_Errors_Keep_Errors_and_try.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S07_Error_Handling_Remove_Errors_Keep_Errors_and_try.html">Error Handling: Remove Errors, Keep Errors and try ... otherwise</a></li><li><a href="S08_Export_Layouts_Tally_Day_BookLedgerTB_SAP_FBL3N.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S08_Export_Layouts_Tally_Day_BookLedgerTB_SAP_FBL3N.html">Export Layouts: Tally Day Book/Ledger/TB, SAP FBL3N, S_ALR, Oracle TB</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Conditional_TableSkip_Followed_by_PromoteHeaders.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C01_Conditional_TableSkip_Followed_by_PromoteHeaders.html">Conditional Table.Skip Followed by PromoteHeaders</a></li><li><a href="../concepts/C02_Filtering_Out_Null_and_Total_Rows_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C02_Filtering_Out_Null_and_Total_Rows_with.html">Filtering Out Null and Total Rows with Table.SelectRows</a></li><li><a href="../concepts/C03_TableFillDown_Fills_Only_Nulls_Replace_Blanks.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C03_TableFillDown_Fills_Only_Nulls_Replace_Blanks.html">Table.FillDown Fills Only Nulls: Replace Blanks First</a></li><li><a href="../concepts/C04_TableSplitColumn_at_Each_Delimiter_into_Code_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C04_TableSplitColumn_at_Each_Delimiter_into_Code_and.html">Table.SplitColumn at Each Delimiter into Code and Name</a></li><li><a href="../concepts/C05_Cleaning_Text_Replace_Char_160_TextClean_TextTrim.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C05_Cleaning_Text_Replace_Char_160_TextClean_TextTrim.html">Cleaning Text: Replace Char 160, Text.Clean, Text.Trim</a></li><li><a href="../concepts/C06_TransformColumnTypes_with_an_Explicit_en_IN.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C06_TransformColumnTypes_with_an_Explicit_en_IN.html">TransformColumnTypes with an Explicit en-IN Culture</a></li><li><a href="../concepts/C07_Converting_Tally_DrCr_Suffix_Balances_into_Signed.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C07_Converting_Tally_DrCr_Suffix_Balances_into_Signed.html">Converting Tally Dr/Cr Suffix Balances into Signed Numbers</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Error Handling: Remove Errors, Keep Errors and try ... otherwise</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Error handling: Remove Errors, Keep Errors for an exception log, <code>try ... otherwise</code></p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>In a finance pipeline, an error cell is a <strong>transaction that could not be read</strong>: an amount with a stray character, a date in the wrong format, a ledger code that failed conversion. The tempting fix — <strong>Remove Errors</strong> — makes the query run and quietly drops those rows, so the consolidated TB no longer balances, or a bank receipt disappears from the reconciliation. Auditors would call this an incompleteness risk. The professional approach is: catch errors deliberately, route them into an <strong>exception log</strong> that someone reviews, and make the main output either complete or visibly flagged.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="two-kinds-of-error">Two kinds of error</h3>
+<table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>Scope</th>
+<th>Example</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Step-level</strong> (query) error</td>
+<td>The whole step fails</td>
+<td>Column not found, file missing, syntax error, Formula.Firewall</td>
+<td>Query fails to refresh; yellow banner in editor</td>
+</tr>
+<tr>
+<td><strong>Cell-level</strong> (row) error</td>
+<td>Individual cells</td>
+<td>DataFormat.Error converting "12,5OO.00" (letter O) to number; Date.FromText on "31/02/2026"</td>
+<td>Refresh succeeds; error cells load as blanks (Excel) or errors are reported per table (Power BI: "x rows contained errors")</td>
+</tr>
+</tbody>
+</table>
+<p>Cell errors are the dangerous ones: the query succeeds, and the loaded value is empty.</p>
+<h3 id="remove-errors">Remove Errors</h3>
+<p>Right-click column → <strong>Remove Errors</strong> generates:</p>
+<pre><code>NoErr = Table.RemoveRowsWithErrors(t, {&quot;Amount&quot;})
+</code></pre>
+<p>It removes the <strong>entire row</strong> if the listed column(s) contain an error. Use only when you have first captured those rows elsewhere and the business rule says such rows are invalid (e.g. a page footer that slipped through and fails conversion).</p>
+<h3 id="keep-errors-for-an-exception-log">Keep Errors for an exception log</h3>
+<p><strong>Home → Keep Rows → Keep Errors</strong> generates <code>Table.SelectRowsWithErrors(t, {"Amount"})</code>. Build the log as a separate referenced query, so the main query and the log share upstream logic:</p>
+<pre><code>// Query: TB_Typed (connection only) — conversion step
+// Query: TB_Clean
+= Table.RemoveRowsWithErrors(TB_Typed, {&quot;Amount&quot;, &quot;Date&quot;})
+// Query: log_TB_Errors (loaded to an Exceptions sheet)
+= Table.SelectRowsWithErrors(TB_Typed, {&quot;Amount&quot;, &quot;Date&quot;})
+</code></pre>
+<p>Errors themselves do not load nicely; in the log, convert them into readable text. Replace errors in the log with a message, and keep the <strong>original raw text</strong> column so the reviewer sees the bad value:</p>
+<pre><code>WithRaw  = Table.AddColumn(Raw, &quot;AmountTyped&quot;, each try Number.FromText([AmountText], &quot;en-IN&quot;) otherwise null, type nullable number),
+Problems = Table.SelectRows(WithRaw, each [AmountText] &lt;&gt; null and [AmountTyped] = null)
+</code></pre>
+<p>That pattern — keep the raw text, try the conversion into a new column, compare — is the cleanest exception log because it contains no error values at all.</p>
+<h3 id="try-otherwise"><code>try ... otherwise</code></h3>
+<p><code>try expression</code> returns a <strong>record</strong>: <code>[HasError = false, Value = ...]</code> on success, or <code>[HasError = true, Error = [Reason, Message, Detail]]</code> on failure. <code>try x otherwise y</code> returns <code>x</code>, or <code>y</code> if <code>x</code> errors.</p>
+<pre><code>SafeAmt  = Table.AddColumn(t, &quot;Amt&quot;, each try Number.From([Debit]) otherwise 0, type number)
+</code></pre>
+<p><strong>Caution</strong>: <code>otherwise 0</code> makes an unreadable amount look like a genuine zero. Prefer <code>otherwise null</code> plus a log, or capture the message:</p>
+<pre><code>Attempt  = Table.AddColumn(t, &quot;Parse&quot;, each try Date.FromText([Txn Date], [Format=&quot;dd/MM/yyyy&quot;, Culture=&quot;en-IN&quot;])),
+Parsed   = Table.AddColumn(Attempt, &quot;Date&quot;, each if [Parse][HasError] then null else [Parse][Value], type nullable date),
+ErrMsg   = Table.AddColumn(Parsed, &quot;DateError&quot;, each if [Parse][HasError] then [Parse][Error][Message] else null, type nullable text),
+Final    = Table.RemoveColumns(ErrMsg, {&quot;Parse&quot;})
+</code></pre>
+<p>In newer Power Query versions, <code>try ... catch (e) =&gt; ...</code> is also available, passing the error record to a function: <code>try Number.From(x) catch (e) =&gt; error Error.Record("Parse", e[Message], x)</code>.</p>
+<h3 id="replacing-errors">Replacing errors</h3>
+<p><strong>Transform → Replace Errors</strong> (<code>Table.ReplaceErrorValues(t, {{"Amount", null}})</code>) swaps error cells for a fixed value. Same caution as <code>otherwise 0</code>: it hides problems unless logged first.</p>
+<h3 id="raising-your-own-errors">Raising your own errors</h3>
+<p>Use <code>error</code> to stop a refresh when a control fails — better a failed refresh than a wrong TB:</p>
+<pre><code>Check  = if Number.Abs(List.Sum(Clean[Amount])) &gt; 1
+         then error Error.Record(&quot;TB.Imbalance&quot;, &quot;TB does not net to zero&quot;, List.Sum(Clean[Amount]))
+         else Clean
+</code></pre>
+<h3 id="counting-errors-as-a-control">Counting errors as a control</h3>
+<p>A validation query can report errors per file and column:</p>
+<pre><code>ErrCount = Table.RowCount(Table.SelectRowsWithErrors(TB_Typed))
+</code></pre>
+<p>Add it to the control-totals table (Week 10 cross-cutting item) with row counts and Dr/Cr sums per file.</p>
+<h3 id="illustration">Illustration</h3>
+<p>A 9,800-row Tally Day Book; conversion of Amount gives 14 errors: 11 are "Closing Balance c/f" lines with text in the amount column (should have been filtered), 2 have "1,23,4S6.00" (typo in a manual export edit), 1 is "—" (em-dash for nil). Remove Errors would have deleted all 14 silently, including two real vouchers worth ₹2,46,912. The exception log shows all 14 with raw values; the fix is to filter the c/f lines by condition, treat "—" as zero by rule, and send the 2 typos back for re-export.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Errors propagate</strong>: a cell error in a column used by a later custom column makes that column's cell an error too; log at the earliest step.</li>
+<li><strong>Remove Errors without column list</strong> (<code>Table.RemoveRowsWithErrors(t)</code>) checks all columns — a single error in an irrelevant column drops a valid amount row.</li>
+<li><strong><code>try</code> around a whole table</strong> (<code>try fxClean([Content]) otherwise null</code>) protects a folder refresh from one bad file (Topic 4), but you must then list the files that returned null.</li>
+<li><strong>Lazy evaluation</strong>: errors in columns you later remove never surface; errors in columns you keep surface only at load time.</li>
+<li><strong>Excel load</strong> shows error cells as blank with an "x errors" link in the Queries pane; Power BI shows "x rows had errors" after load — both are easy to miss in an unattended refresh.</li>
+<li><strong>Materiality judgement</strong>: some errors are acceptable to drop (blank spacer lines failing conversion) — document the rule, do not decide case by case each month.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Cell-level errors let refresh succeed while losing data; treat each as an unread transaction.</li>
+<li>Never Remove Errors or Replace Errors without first logging the affected rows.</li>
+<li>Best pattern: keep raw text, <code>try</code> the conversion into a new column, and log rows where conversion returned null.</li>
+<li><code>try</code> returns a record with HasError/Value/Error; use the message for the log; prefer <code>otherwise null</code> over <code>otherwise 0</code>.</li>
+<li>Raise explicit errors when a control total fails so a wrong result never loads.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-build-an-exception-log-l2">Q1. Build an exception log [L2]</h3>
+<p>A bank CSV has columns TxnDate (text), Narration, Withdrawal (text), Deposit (text). Write the M for a clean query and a separate exception-log query that lists rows where either date or amounts fail conversion, showing the raw values and the error message.</p>
+<h3 id="q2-otherwise-0-review-l1">Q2. <code>otherwise 0</code> review [L1]</h3>
+<p>A colleague wrote <code>each try Number.FromText([Debit], "en-IN") otherwise 0</code> across a 12-branch TB consolidation. Explain the risk with an example, and rewrite the logic so that failures are visible.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider how a reviewer would distinguish a zero-balance ledger from an unreadable one.</p>
+</blockquote>
+<h3 id="q3-fail-the-refresh-l2">Q3. Fail the refresh [L2]</h3>
+<p>Write M that stops the refresh with a meaningful error if the cleaned TB's signed amounts do not net to zero within ₹1, quoting the difference and the number of rows, and explain why this is preferable to loading the data with a warning column.</p>
+<h3 id="q4-classify-errors-l1">Q4. Classify errors [L1]</h3>
+<p>Classify each as step-level or cell-level and state the first thing you would check: (a) "The column 'Vch No.' of the table wasn't found"; (b) DataFormat.Error: "We couldn't convert to Number" on 3 rows; (c) "DataSource.NotFound: Could not find file"; (d) Expression.Error: "We cannot convert the value null to type Text" on 12 rows.</p>
+<h3 id="q5-policy-design-l3">Q5. Policy design [L3]</h3>
+<p>Draft an error-handling policy for a month-end Power Query pipeline covering: where errors are caught, which may be dropped by rule, how logs are reviewed and signed off, which conditions fail the refresh, and how this evidence is kept for internal audit.</p></section>
+<nav class="pager"><a class="prev" href="S06_Fixing_Date_Locales_and_Indian_Digit_Grouping_in.html">← Fixing Date Locales and Indian Digit Grouping in Text…</a><a class="next" href="S08_Export_Layouts_Tally_Day_BookLedgerTB_SAP_FBL3N.html">Export Layouts: Tally Day Book/Ledger/TB, SAP FBL3N, SALR,… →</a></nav>
+</main></div></body></html>

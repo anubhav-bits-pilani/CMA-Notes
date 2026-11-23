@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automated RAG in Excel and Power BI · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W20_Executive_Management_Reporting_Pack_CFO/T2_KPI_scorecard_and_RAG_thresholds/subtopics/S04_Automated_RAG_in_Excel_and_Power_BI.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 5</a> <span>›</span> <a href="../../index.html">Week 20</a> <span>›</span> <a href="../index.html">T2 · KPI scorecard and RAG thresholds</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · KPI scorecard and RAG thresholds</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Selecting_Financial_and_Operational_KPIs.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W20_Executive_Management_Reporting_Pack_CFO/T2_KPI_scorecard_and_RAG_thresholds/subtopics/S01_Selecting_Financial_and_Operational_KPIs.html">Selecting Financial and Operational KPIs</a></li><li><a href="S02_Leading_vs_Lagging_KPIs_and_KPI_Trees.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W20_Executive_Management_Reporting_Pack_CFO/T2_KPI_scorecard_and_RAG_thresholds/subtopics/S02_Leading_vs_Lagging_KPIs_and_KPI_Trees.html">Leading vs Lagging KPIs and KPI Trees</a></li><li><a href="S03_Targets_Tolerance_Bands_and_Direction_Aware.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W20_Executive_Management_Reporting_Pack_CFO/T2_KPI_scorecard_and_RAG_thresholds/subtopics/S03_Targets_Tolerance_Bands_and_Direction_Aware.html">Targets, Tolerance Bands and Direction-Aware Thresholds</a></li><li><a href="S04_Automated_RAG_in_Excel_and_Power_BI.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W20_Executive_Management_Reporting_Pack_CFO/T2_KPI_scorecard_and_RAG_thresholds/subtopics/S04_Automated_RAG_in_Excel_and_Power_BI.html">Automated RAG in Excel and Power BI</a></li><li><a href="S05_KPI_Definition_Sheet_Formula_Source_Owner.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W20_Executive_Management_Reporting_Pack_CFO/T2_KPI_scorecard_and_RAG_thresholds/subtopics/S05_KPI_Definition_Sheet_Formula_Source_Owner.html">KPI Definition Sheet: Formula, Source, Owner, Frequency</a></li><li><a href="S06_Balanced_Scorecard_Perspectives.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W20_Executive_Management_Reporting_Pack_CFO/T2_KPI_scorecard_and_RAG_thresholds/subtopics/S06_Balanced_Scorecard_Perspectives.html">Balanced Scorecard Perspectives</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Direction_Aware_Attainment.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W20_Executive_Management_Reporting_Pack_CFO/T2_KPI_scorecard_and_RAG_thresholds/concepts/C01_Direction_Aware_Attainment.html">Direction-Aware Attainment %</a></li><li><a href="../concepts/C02_Example_RAG_Rule_Green_100_Amber_95100_Red_95.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W20_Executive_Management_Reporting_Pack_CFO/T2_KPI_scorecard_and_RAG_thresholds/concepts/C02_Example_RAG_Rule_Green_100_Amber_95100_Red_95.html">Example RAG Rule: Green ≥ 100%, Amber 95–&lt;100%, Red &lt; 95%</a></li><li><a href="../concepts/C03_ROCE_EBIT_Margin_Capital_Turnover.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W20_Executive_Management_Reporting_Pack_CFO/T2_KPI_scorecard_and_RAG_thresholds/concepts/C03_ROCE_EBIT_Margin_Capital_Turnover.html">ROCE = EBIT Margin × Capital Turnover</a></li><li><a href="../concepts/C04_OTIF_On_Time_In_Full.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W20_Executive_Management_Reporting_Pack_CFO/T2_KPI_scorecard_and_RAG_thresholds/concepts/C04_OTIF_On_Time_In_Full.html">OTIF: On Time In Full</a></li><li><a href="../concepts/C05_SMART_KPIs.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W20_Executive_Management_Reporting_Pack_CFO/T2_KPI_scorecard_and_RAG_thresholds/concepts/C05_SMART_KPIs.html">SMART KPIs</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Automated RAG in Excel and Power BI</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Automated RAG via conditional formatting, icon sets and Power BI rules</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Hand-coloured scorecards are a control weakness: colours get forgotten when numbers change, and they can be "managed" — an Amber quietly becomes Green before the CEO meeting. Automated RAG computes the status from actual, target, direction and band, every time, the same way. It also makes the scorecard reusable month after month with no formatting effort, and transferable to Power BI for self-service. Interviewers for FP&amp;A and finance-analytics roles commonly test this: "build a RAG that works for both DSO and OTIF".</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="design-principle-separate-status-from-formatting">Design principle: separate status from formatting</h3>
+<p>Compute the RAG <strong>status as a value</strong> in a cell or measure (e.g. "G", "A", "R" or 3/2/1), then let formatting read the status. Never let the colour be the only record of the status. Benefits: the status can be counted ("4 Reds"), filtered, exported, audited and used in commentary; formatting rules stay simple.</p>
+<h3 id="excel-the-parameter-table">Excel — the parameter table</h3>
+<p>Keep one parameter table (<code>tblKPI</code>) with columns: KPI, Direction (HIB / LIB / RANGE), GreenThreshold, AmberThreshold, Unit, Owner. Scorecard rows look up their parameters.</p>
+<p>Direction-aware attainment:</p>
+<pre><code>=IF([@Direction]=&quot;HIB&quot;, [@Actual]/[@Target], IF([@Direction]=&quot;LIB&quot;, [@Target]/[@Actual], NA()))
+</code></pre>
+<p>Status with KPI-specific thresholds (attainment basis):</p>
+<pre><code>=IF(ISNA([@Attain]),&quot;n/a&quot;,IF([@Attain]&gt;=[@GreenThr],&quot;G&quot;,IF([@Attain]&gt;=[@AmberThr],&quot;A&quot;,&quot;R&quot;)))
+</code></pre>
+<p>Status with a signed gap in units (better for percentage KPIs):</p>
+<pre><code>=LET(d, IF([@Direction]=&quot;HIB&quot;,1,-1), gap, d*([@Actual]-[@Target]),
+     IF(gap&gt;=0,&quot;G&quot;,IF(gap&gt;=-[@AmberBand],&quot;A&quot;,&quot;R&quot;)))
+</code></pre>
+<p>Range KPI (e.g. capex utilisation, band ±10% Amber limit, ±20% Red):</p>
+<pre><code>=LET(dev, ABS([@Actual]/[@Target]-1), IF(dev&lt;=0.1,&quot;G&quot;,IF(dev&lt;=0.2,&quot;A&quot;,&quot;R&quot;)))
+</code></pre>
+<h3 id="excel-conditional-formatting">Excel — conditional formatting</h3>
+<p>Three rule types, in order of robustness:</p>
+<ol>
+<li><strong>Formula-based fill on the status column</strong> (recommended): select the scorecard range, New Rule → "Use a formula", e.g. <code>=$H5="R"</code> with red fill, <code>=$H5="A"</code> amber, <code>=$H5="G"</code> green. The <code>$H</code> anchors the status column so the whole row can be shaded if desired. Set "Stop if true" ordering.</li>
+<li><strong>Icon sets</strong> on a numeric status (3/2/1) or on attainment: Home → Conditional Formatting → Icon Sets → 3 traffic lights; edit rule → type "Number", ≥ 3 green, ≥ 2 amber, else red; tick "Show Icon Only". Icon sets on attainment directly are fragile because thresholds are global for the range — use them on the computed status number instead.</li>
+<li><strong>Data bars</strong> for attainment magnitude alongside the RAG (optional).</li>
+</ol>
+<p>Use colour-blind-safe palettes (avoid pure red/green alone): add the letter or icon shape so status is readable in grayscale print.</p>
+<h3 id="power-bi-measures">Power BI — measures</h3>
+<p>Store KPI parameters in a dimension table <code>DimKPI</code> (KPI, Direction, GreenThr, AmberThr) related to a fact table <code>FactKPI</code> (KPI, Date, Actual, Target).</p>
+<pre><code>Actual = SUM ( FactKPI[Actual] )
+Target = SUM ( FactKPI[Target] )
+
+Attainment =
+VAR dir = SELECTEDVALUE ( DimKPI[Direction] )
+RETURN
+    SWITCH ( dir,
+        &quot;HIB&quot;, DIVIDE ( [Actual], [Target] ),
+        &quot;LIB&quot;, DIVIDE ( [Target], [Actual] ),
+        BLANK () )
+
+RAG Status =
+VAR att = [Attainment]
+VAR g = SELECTEDVALUE ( DimKPI[GreenThr] )
+VAR a = SELECTEDVALUE ( DimKPI[AmberThr] )
+RETURN
+    IF ( ISBLANK ( att ), BLANK (),
+        IF ( att &gt;= g, 3, IF ( att &gt;= a, 2, 1 ) ) )
+
+RAG Colour =
+SWITCH ( [RAG Status], 3, &quot;#2E7D32&quot;, 2, &quot;#F9A825&quot;, 1, &quot;#C62828&quot;, &quot;#9E9E9E&quot; )
+</code></pre>
+<p>Note that ratio KPIs (DSO, OTIF %) should not be summed across months; use measures that recompute from numerator and denominator (e.g. <code>DIVIDE(SUM(OnTimeInFullLines), SUM(TotalLines))</code>) and pick the correct Actual measure per KPI with <code>SWITCH(SELECTEDVALUE(DimKPI[KPI]), …)</code> or a calculation group.</p>
+<h3 id="power-bi-formatting-rules">Power BI — formatting rules</h3>
+<ul>
+<li><strong>Field value</strong>: in a table/matrix, Format → Cell elements → Background colour → Format style "Field value" → based on <code>[RAG Colour]</code>. Most flexible; thresholds live in data, not in the visual.</li>
+<li><strong>Rules</strong>: Format style "Rules" based on <code>[RAG Status]</code>: if value = 3 then green, = 2 amber, = 1 red. Simple but thresholds are in the visual if applied to attainment directly — avoid that.</li>
+<li><strong>Icons</strong>: Cell elements → Icons → based on <code>[RAG Status]</code> rules, or a measure returning an icon via conditional formatting "Field value" with Unicode/SVG.</li>
+<li><strong>Cards and KPI visual</strong>: the built-in KPI visual shows actual vs target with direction setting ("High is good"/"Low is good") and trend; useful for headline tiles.</li>
+<li><strong>Data alerts</strong>: on dashboards in the Power BI service, data alerts on card tiles can email owners when thresholds are crossed; Power Automate can push Red statuses to Teams.</li>
+</ul>
+<h3 id="controls-and-testing">Controls and testing</h3>
+<ul>
+<li>Test each direction with boundary cases: exactly at target, exactly at Amber threshold, zero actual, blank target.</li>
+<li>Lock and protect the formula columns; only Actual and Target are inputs (ideally linked from the model).</li>
+<li>Add a "Status overridden?" column if management insists on manual overrides, with mandatory reason and approver — visible on the scorecard.</li>
+<li>Reconcile the count of Reds/Ambers/Greens to the summary tile.</li>
+</ul>
+<h3 id="illustration-shakti-october-scorecard-extract">Illustration — Shakti October scorecard extract</h3>
+<table>
+<thead>
+<tr>
+<th>KPI</th>
+<th>Dir.</th>
+<th>Actual</th>
+<th>Target</th>
+<th>Attain.</th>
+<th>Green ≥</th>
+<th>Amber ≥</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue growth YTD</td>
+<td>HIB</td>
+<td>4.9%</td>
+<td>9.7%</td>
+<td>51%</td>
+<td>100%</td>
+<td>95%</td>
+<td>R</td>
+</tr>
+<tr>
+<td>OTIF</td>
+<td>HIB</td>
+<td>88%</td>
+<td>95%</td>
+<td>92.6%</td>
+<td>100%</td>
+<td>97.9%</td>
+<td>R</td>
+</tr>
+<tr>
+<td>Fill rate</td>
+<td>HIB</td>
+<td>93%</td>
+<td>97%</td>
+<td>95.9%</td>
+<td>100%</td>
+<td>95%</td>
+<td>A</td>
+</tr>
+<tr>
+<td>DSO</td>
+<td>LIB</td>
+<td>68</td>
+<td>60</td>
+<td>88.2%</td>
+<td>100%</td>
+<td>95%</td>
+<td>R</td>
+</tr>
+<tr>
+<td>Attrition</td>
+<td>LIB</td>
+<td>24%</td>
+<td>18%</td>
+<td>75.0%</td>
+<td>100%</td>
+<td>90%</td>
+<td>R</td>
+</tr>
+<tr>
+<td>NPS</td>
+<td>HIB</td>
+<td>41</td>
+<td>45</td>
+<td>91.1%</td>
+<td>100%</td>
+<td>87%</td>
+<td>A</td>
+</tr>
+</tbody>
+</table>
+<p>OTIF's Amber threshold of 97.9% corresponds to the 2 pp band (93 ÷ 95); NPS's 87% to a 6-point band (39 ÷ 45) — KPI-specific bands expressed as attainment.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Division by zero / blanks</strong>: use <code>IFERROR</code> sparingly — it hides genuine errors; prefer explicit tests (<code>IF(Target=0, …)</code>).</li>
+<li><strong>Negative values</strong>: margin or EBITDA losses invert ratios; use the gap method for such KPIs.</li>
+<li><strong>Rounding at thresholds</strong>: 94.96% displays as 95.0% but is Red; round attainment to the displayed precision before testing, or display one more decimal.</li>
+<li><strong>Print and PDF</strong>: conditional formatting renders in PDF, but icon sets may shift in size; test the PDF export used for the Board portal.</li>
+<li><strong>Stale data</strong>: if a KPI's data has not refreshed, status should show grey "no data", not the last month's colour.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Compute status as a value from actual, target, direction and KPI-specific thresholds; format from the status.</li>
+<li>Keep thresholds and direction in a parameter table (Excel) or KPI dimension table (Power BI), not inside formatting rules.</li>
+<li>Excel: formula-based conditional formatting on the status column; icon sets on a numeric status with "Show Icon Only".</li>
+<li>Power BI: DAX attainment, status and colour measures; field-value formatting; recompute ratio KPIs from components.</li>
+<li>Test boundaries, handle zero/negative/blank cases, and log any manual overrides.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-write-the-formulas-l1">Q1. Write the formulas [L1]</h3>
+<p>In Excel, columns are: B KPI, C Direction (HIB/LIB), D Actual, E Target, F GreenThr, G AmberThr. Write formulas for H (attainment) and I (status "G"/"A"/"R") for row 5, and the three conditional formatting rules for range B5:I20 that shade the entire row by status.</p>
+<h3 id="q2-debug-a-scorecard-l2">Q2. Debug a scorecard [L2]</h3>
+<p>A scorecard uses a 3-traffic-light icon set applied directly to the "Actual" column for all KPIs, with thresholds ≥ 67th percentile green, ≥ 33rd percentile amber. List every problem with this design and redesign it.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider what the percentile thresholds are calculated over, and what happens to lower-is-better KPIs.</p>
+</blockquote>
+<h3 id="q3-dax-for-ratio-kpis-l2">Q3. DAX for ratio KPIs [L2]</h3>
+<p>FactOrders has columns OrderLineID, Date, RequestedDate, DeliveredDate, QtyOrdered, QtyDelivered. Write DAX measures for OTIF %, an OTIF target of 95% from DimKPI, attainment, and a status measure, ensuring OTIF is correct at month, quarter and YTD levels.</p>
+<h3 id="q4-override-governance-l3">Q4. Override governance [L3]</h3>
+<p>The Sales head asks that DSO be shown Green in October because ₹18 crore of the overdue is a disputed scheme claim "that will be settled". Design the override process in the scorecard (columns, approvals, display) and write the footnote that would appear on the MBR page.</p></section>
+<nav class="pager"><a class="prev" href="S03_Targets_Tolerance_Bands_and_Direction_Aware.html">← Targets, Tolerance Bands and Direction-Aware Thresholds</a><a class="next" href="S05_KPI_Definition_Sheet_Formula_Source_Owner.html">KPI Definition Sheet: Formula, Source, Owner, Frequency →</a></nav>
+</main></div></body></html>

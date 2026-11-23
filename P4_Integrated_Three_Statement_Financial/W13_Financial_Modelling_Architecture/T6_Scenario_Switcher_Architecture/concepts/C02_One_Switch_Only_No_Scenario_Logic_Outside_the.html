@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One Switch Only: No Scenario Logic Outside the Driver Block · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C02_One_Switch_Only_No_Scenario_Logic_Outside_the.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T6 · Scenario Switcher Architecture</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · Scenario Switcher Architecture</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Single_Scenario_Selector_Cell_with_Data_Validation.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S01_Single_Scenario_Selector_Cell_with_Data_Validation.html">Single Scenario Selector Cell with Data-Validation Dropdown</a></li><li><a href="../subtopics/S02_Scenario_Driver_Blocks_Base_Bull_Bear_Rows_and_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S02_Scenario_Driver_Blocks_Base_Bull_Bear_Rows_and_the.html">Scenario Driver Blocks: Base, Bull, Bear Rows and the Live Row</a></li><li><a href="../subtopics/S03_Scenario_Selection_Functions_CHOOSE_INDEX_XLOOKUP.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S03_Scenario_Selection_Functions_CHOOSE_INDEX_XLOOKUP.html">Scenario Selection Functions: CHOOSE, INDEX, XLOOKUP, SWITCH</a></li><li><a href="../subtopics/S04_Which_Drivers_to_Flex_Volume_Price_Stores_Margin.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S04_Which_Drivers_to_Flex_Volume_Price_Stores_Margin.html">Which Drivers to Flex: Volume, Price, Stores, Margin, Wages, Capex, NWC</a></li><li><a href="../subtopics/S05_Coherent_Scenario_Narratives_vs_Single_Variable.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S05_Coherent_Scenario_Narratives_vs_Single_Variable.html">Coherent Scenario Narratives vs Single-Variable Tweaks</a></li><li><a href="../subtopics/S06_Capturing_Scenario_Outputs_Data_Tables_vs_Pasted.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S06_Capturing_Scenario_Outputs_Data_Tables_vs_Pasted.html">Capturing Scenario Outputs: Data Tables vs Pasted Static Values</a></li><li><a href="../subtopics/S07_Scenario_Labelling_on_Outputs_and_Documented_Case.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S07_Scenario_Labelling_on_Outputs_and_Documented_Case.html">Scenario Labelling on Outputs and Documented Case Rationale</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_The_Live_Row_CHOOSE_or_INDEX_on_the_Scenario_Code.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C01_The_Live_Row_CHOOSE_or_INDEX_on_the_Scenario_Code.html">The Live Row: CHOOSE or INDEX on the Scenario Code</a></li><li><a href="C02_One_Switch_Only_No_Scenario_Logic_Outside_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C02_One_Switch_Only_No_Scenario_Logic_Outside_the.html">One Switch Only: No Scenario Logic Outside the Driver Block</a></li><li><a href="C03_Scenario_Summary_via_a_One_Variable_Data_Table_on.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C03_Scenario_Summary_via_a_One_Variable_Data_Table_on.html">Scenario Summary via a One-Variable Data Table on the Switch</a></li><li><a href="C04_Live_Scenario_Header_Label_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C04_Live_Scenario_Header_Label_Formula.html">Live Scenario Header Label Formula</a></li><li><a href="C05_Internal_Consistency_of_Scenarios_Growth_Needs.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C05_Internal_Consistency_of_Scenarios_Growth_Needs.html">Internal Consistency of Scenarios: Growth Needs Capex, Stress Needs Funding</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>One Switch Only: No Scenario Logic Outside the Driver Block</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> One switch only; calculations never contain <code>IF(Scenario=…)</code> logic outside the driver block</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>A model has exactly <strong>one</strong> scenario selector cell (named <code>Scenario</code>), and the <strong>only</strong> formulas that reference it are
+the Live rows (or Live scalars) inside driver blocks on the Assumptions sheet, plus labels and checks. Formally, for
+every calculation cell \(x\):</p>
+<p>\[
+\frac{\partial x}{\partial \text{Scenario}} \neq 0 \;\Rightarrow\; \text{the dependency runs through at least one Live driver}
+\]</p>
+<p>No calculation, schedule or output formula may contain <code>Scenario</code> directly — whether as <code>IF(Scenario=…)</code>, <code>CHOOSE(Scenario,…)</code>
+or any other construct.</p>
+<h2 id="explanation">Explanation</h2>
+<p>Scenario logic scattered across calculation sheets is the most common structural weakness in scenario models (and a
+topic pitfall). It arises when a builder adds a "quick" Bear adjustment inside a formula — <code>=IF(Scenario=3, C40*0.9, C40)</code>
+on the revenue sheet — instead of adding a driver row. Consequences:</p>
+<ul>
+<li><strong>Invisible assumptions.</strong> The Bear haircut of 10% is buried in a formula; it is not on the Assumptions sheet, not in
+  the assumption log, and not visible in the case comparison.</li>
+<li><strong>Incoherence risk.</strong> A Bear adjustment in revenue may not be matched by corresponding cost, capex or NWC changes.</li>
+<li><strong>Inconsistent rows.</strong> Formulas with embedded IFs often differ across columns (applied to one year only), breaking
+  "one row, one formula".</li>
+<li><strong>Audit burden.</strong> A reviewer must search every sheet for <code>Scenario</code> references to know what each case does.</li>
+<li><strong>Multiple switches.</strong> Sometimes a second, local selector appears (e.g., a "Capex case" cell on the PPE sheet). Users
+  then run inconsistent combinations — Bull revenue with Base capex — without knowing it.</li>
+</ul>
+<p>The rule's test is mechanical: Formulas → Name Manager → select <code>Scenario</code> and use Find (Ctrl+F, "Look in: Formulas",
+search "Scenario" across the workbook). Every hit should be on the Assumptions sheet's Live rows, the Cover/label
+cells, the Checks sheet or the scenario summary data table. Inquire's workbook relationship diagram and Trace Dependents
+from the selector cell give the same answer visually.</p>
+<p>Legitimate exceptions, which should be documented: the header label formulas (c04), the scenario summary data table
+(c03) and checks of the selector value. A need to switch <em>logic</em> (not just values) by case — e.g., whether a project is
+built at all — should still be expressed as a Live driver (a 0/1 flag or a commissioning date in a driver block) that
+calculations reference, not as <code>Scenario</code> inside the calculation.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Before (scattered logic on the Revenue and PPE sheets):</p>
+<pre><code>Revenue!H30 : =H28*H29*IF(Scenario=3,0.92,1)
+PPE!H15     : =IF(Scenario=2,Capex_Bull,Capex_Base)
+</code></pre>
+<p>After (all case differences in driver blocks):</p>
+<table>
+<thead>
+<tr>
+<th>Assumptions row</th>
+<th>Base</th>
+<th>Bull</th>
+<th>Bear</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Density growth (LFL)</td>
+<td>6%</td>
+<td>9%</td>
+<td>1% (replaces the 0.92 haircut with an explicit driver)</td>
+</tr>
+<tr>
+<td>Capex per sq ft (₹)</td>
+<td>1,850</td>
+<td>1,900</td>
+<td>1,850</td>
+</tr>
+<tr>
+<td>Live rows</td>
+<td><code>=CHOOSE(Scenario,…)</code></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre><code>Revenue!H30 : =H28*H29                    ' density row now driven by Live LFL
+PPE!H15     : =Assumptions!H75*Revenue!H12 ' Live capex per sq ft x new area
+</code></pre>
+<p>The Bear case is now visible, documented and coherent with the rest of the block.</p>
+<h2 id="connections">Connections</h2>
+<p>The governing rule for s01 (single selector), s02 (driver blocks) and c01 (Live row). It prevents the topic pitfall of
+scenario IFs scattered across calculation sheets and supports w13 t2 integrity rules (no hidden constants, one
+formula per row). It also underpins Week 15 stress testing, which must run through the same switch.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-finding-stray-references-l1">Q1. Finding stray references [L1]</h3>
+<p>Describe two Excel methods to find every formula that references the <code>Scenario</code> cell, and state which locations are
+acceptable.</p>
+<h3 id="q2-refactor-a-scattered-if-l2">Q2. Refactor a scattered IF [L2]</h3>
+<p>A working capital sheet contains <code>=IF(Scenario=3, Revenue*55/365, Revenue*45/365)</code> for receivables. Refactor it into
+driver-block form and describe the rows you would add on the Assumptions sheet.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> The 55 and 45 are the case values of a DSO driver.</p>
+</blockquote>
+<h3 id="q3-logic-switches-by-case-l2">Q3. Logic switches by case [L2]</h3>
+<p>In the Bull case only, a new plant is built in FY28. Explain how to implement this without referencing <code>Scenario</code> in the
+PPE or revenue sheets.</p></section>
+<nav class="pager"><a class="prev" href="C01_The_Live_Row_CHOOSE_or_INDEX_on_the_Scenario_Code.html">← The Live Row: CHOOSE or INDEX on the Scenario Code</a><a class="next" href="C03_Scenario_Summary_via_a_One_Variable_Data_Table_on.html">Scenario Summary via a One-Variable Data Table on the Switch →</a></nav>
+</main></div></body></html>

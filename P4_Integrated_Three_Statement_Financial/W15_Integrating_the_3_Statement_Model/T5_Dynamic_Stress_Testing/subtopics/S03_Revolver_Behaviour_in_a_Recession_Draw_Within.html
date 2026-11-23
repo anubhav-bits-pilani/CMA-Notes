@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revolver Behaviour in a Recession: Draw Within Limit, Flag Shortfall · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S03_Revolver_Behaviour_in_a_Recession_Draw_Within.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 15</a> <span>›</span> <a href="../index.html">T5 · Dynamic Stress Testing</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Dynamic Stress Testing</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Toggling_Base_Bull_and_Bear_with_a_Zero_Check_in.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S01_Toggling_Base_Bull_and_Bear_with_a_Zero_Check_in.html">Toggling Base, Bull and Bear with a Zero Check in Every Year</a></li><li><a href="S02_Extreme_Input_Stress_Tests_Growth_Margins_Capex.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S02_Extreme_Input_Stress_Tests_Growth_Margins_Capex.html">Extreme Input Stress Tests: Growth, Margins, Capex and WC Days</a></li><li><a href="S03_Revolver_Behaviour_in_a_Recession_Draw_Within.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S03_Revolver_Behaviour_in_a_Recession_Draw_Within.html">Revolver Behaviour in a Recession: Draw Within Limit, Flag Shortfall</a></li><li><a href="S04_Negative_PBT_Loss_Carry_Forward_No_Negative_Tax.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S04_Negative_PBT_Loss_Carry_Forward_No_Negative_Tax.html">Negative PBT: Loss Carry-Forward, No Negative Tax, DTA Recognition</a></li><li><a href="S05_Dividends_Under_Losses_Floored_at_Zero_Capped_by.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S05_Dividends_Under_Losses_Floored_at_Zero_Capped_by.html">Dividends Under Losses: Floored at Zero, Capped by Profits and Cash</a></li><li><a href="S06_Covenant_Flags_Net_DebtEBITDA_DSCR_and_ICR_Breach.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S06_Covenant_Flags_Net_DebtEBITDA_DSCR_and_ICR_Breach.html">Covenant Flags: Net Debt/EBITDA, DSCR and ICR Breach Years</a></li><li><a href="S07_The_Checks_Dashboard_Balance_Cash_Liquidity_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S07_The_Checks_Dashboard_Balance_Cash_Liquidity_and.html">The Checks Dashboard: Balance, Cash, Liquidity and Convergence</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Current_Tax_with_Loss_Set_Off_and_the_Sec_72_Loss.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C01_Current_Tax_with_Loss_Set_Off_and_the_Sec_72_Loss.html">Current Tax with Loss Set-Off and the Sec 72 Loss Corkscrew</a></li><li><a href="../concepts/C02_Dividend_Floor_and_Cash_Cap_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C02_Dividend_Floor_and_Cash_Cap_Formula.html">Dividend Floor and Cash Cap Formula</a></li><li><a href="../concepts/C03_The_Binary_Error_Flag_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C03_The_Binary_Error_Flag_Formula.html">The Binary Error Flag Formula</a></li><li><a href="../concepts/C04_Goal_Seek_and_Data_Tables_to_Find_Breaking_Points.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C04_Goal_Seek_and_Data_Tables_to_Find_Breaking_Points.html">Goal Seek and Data Tables to Find Breaking Points</a></li><li><a href="../concepts/C05_Scenario_Invariance_A_Linked_Model_Balances_for.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C05_Scenario_Invariance_A_Linked_Model_Balances_for.html">Scenario Invariance: A Linked Model Balances for Any Input</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Revolver Behaviour in a Recession: Draw Within Limit, Flag Shortfall</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Revolver behaviour in recession: draws within limit; shortfall flagged</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>The revolving credit facility (in India usually a cash credit or working capital demand loan sanctioned by a consortium of banks, sometimes a committed RCF for larger corporates) is the model's liquidity shock absorber. In a recession cash flow turns negative, the revolver draws to keep cash at the minimum balance, and it repays when cash recovers. Built correctly, it keeps the BS balanced without plugs and tells management exactly how much headroom is left. Built incorrectly, it either never draws (cash goes deeply negative and interest income on negative cash appears) or draws without limit, silently funding deficits the banks would never fund. For credit analysts, treasury and FP&amp;A, the revolver output under stress is the central answer: peak utilisation, the year headroom runs out, and the size of any funding gap that needs equity, asset sales or cost action.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="revolver-mechanics">Revolver mechanics</h3>
+<p>Inputs: <code>Rev_Limit</code> (sanctioned limit, ₹ crore), <code>Min_Cash</code> (operating cash buffer), <code>Rev_Rate</code>, and optionally a drawing power constraint (Indian banks typically compute drawing power as stock plus eligible receivables less margins, often 25% on stock and 25–40% on receivables).</p>
+<p>Steps for each year:</p>
+<ol>
+<li><strong>Cash before revolver</strong> = Opening cash + CFO + CFI + CFF excluding revolver flows.</li>
+<li><strong>Funding need</strong> = MAX(0, Min_Cash − Cash before revolver).</li>
+<li><strong>Available headroom</strong> = Rev_Limit − Opening revolver (or MIN with drawing power).</li>
+<li><strong>Draw</strong> = MIN(Funding need, Available headroom).</li>
+<li><strong>Repayment</strong> = MIN(Opening revolver, MAX(0, Cash before revolver − Min_Cash)).</li>
+<li><strong>Closing revolver</strong> = Opening + Draw − Repayment.</li>
+<li><strong>Shortfall</strong> = Funding need − Draw (≥ 0). If positive, cash falls below the minimum and may go negative.</li>
+</ol>
+<pre><code class="language-excel">Rev_Draw      = MIN(MAX(0, Min_Cash - Cash_Pre_Rev), Rev_Limit - Rev_Open)
+Rev_Repay     = MIN(Rev_Open, MAX(0, Cash_Pre_Rev - Min_Cash))
+Rev_Close     = Rev_Open + Rev_Draw - Rev_Repay
+Rev_Shortfall = MAX(0, Min_Cash - Cash_Pre_Rev) - Rev_Draw
+Closing_Cash  = Cash_Pre_Rev + Rev_Draw - Rev_Repay
+</code></pre>
+<p>Draw and repayment are mutually exclusive in a given year: if cash before revolver is below the minimum, repayment is zero, and vice versa. Many modellers combine them into one net line: <code>=MAX(MIN(Min_Cash - Cash_Pre_Rev, Rev_Limit - Rev_Open), -Rev_Open)</code>. That is compact, but separate draw and repayment lines are easier to audit and map to Ind AS 7 (proceeds and repayments of short-term borrowings with a turnover under three months may be shown net under Ind AS 7.22–23).</p>
+<h3 id="interest-and-circularity">Interest and circularity</h3>
+<p>Revolver interest on the average balance makes the model circular: interest → PAT → cash before revolver → draw → average balance → interest. Route it through the circuit breaker (<code>Circ_Switch</code>). With the breaker off, interest is on the opening balance. Also include any commitment fee on the undrawn limit (typically 0.25–0.50% per year on committed RCFs; many Indian CC limits have no commitment fee but carry a minimum utilisation clause).</p>
+<h3 id="shortfall-never-hide-it">Shortfall: never hide it</h3>
+<p>If the funding need exceeds the headroom, the model must show the gap. Three acceptable designs:</p>
+<table>
+<thead>
+<tr>
+<th>Design</th>
+<th>How it works</th>
+<th>When to use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Negative cash, flagged</td>
+<td>Cash closes below the minimum or negative. Dashboard error flag fires</td>
+<td>Default for integrity testing</td>
+</tr>
+<tr>
+<td>Funding shortfall line</td>
+<td>An "Unfunded requirement" liability-like line, bright red, flagged</td>
+<td>Presentations where negative cash would confuse readers</td>
+</tr>
+<tr>
+<td>Equity cure input</td>
+<td>A user-input equity injection or asset sale in the shortfall year</td>
+<td>Solving the downside case after the gap is identified</td>
+</tr>
+</tbody>
+</table>
+<p>The unacceptable design is an unlimited revolver, or one whose limit is set at an arbitrary large number like 99,999. The BS balances, but the answer is fiction.</p>
+<h3 id="recession-walk-through">Recession walk-through</h3>
+<p>Godavari Textiles Ltd (₹ crore): Rev_Limit 300, Min_Cash 75, opening revolver 0, opening cash 150. The Bear case net flows below exclude revolver draws and repayments, and already include interest (breaker off).</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th>FY26E</th>
+<th>FY27E</th>
+<th>FY28E</th>
+<th>FY29E</th>
+<th>FY30E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Opening cash</td>
+<td>150</td>
+<td>75</td>
+<td>75</td>
+<td>−45</td>
+<td>−5</td>
+</tr>
+<tr>
+<td>Net flows excl. revolver</td>
+<td>−110</td>
+<td>−170</td>
+<td>−215</td>
+<td>+40</td>
+<td>+235</td>
+</tr>
+<tr>
+<td>Cash before revolver</td>
+<td>40</td>
+<td>−95</td>
+<td>−140</td>
+<td>−5</td>
+<td>230</td>
+</tr>
+<tr>
+<td>Funding need</td>
+<td>35</td>
+<td>170</td>
+<td>215</td>
+<td>80</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Headroom (limit − opening revolver)</td>
+<td>300</td>
+<td>265</td>
+<td>95</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Draw</td>
+<td>35</td>
+<td>170</td>
+<td>95</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Repayment</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>155</td>
+</tr>
+<tr>
+<td>Closing revolver</td>
+<td>35</td>
+<td>205</td>
+<td>300</td>
+<td>300</td>
+<td>145</td>
+</tr>
+<tr>
+<td><strong>Shortfall</strong></td>
+<td>0</td>
+<td>0</td>
+<td><strong>120</strong></td>
+<td><strong>80</strong></td>
+<td>0</td>
+</tr>
+<tr>
+<td>Closing cash</td>
+<td>75</td>
+<td>75</td>
+<td>−45</td>
+<td>−5</td>
+<td>75</td>
+</tr>
+</tbody>
+</table>
+<p>Reading the output: the revolver is fully drawn in FY28E. The unfunded gap is ₹120 crore in FY28E and ₹80 crore in FY29E, and closing cash is negative in both years, so the error flag fires. In FY30E the surplus of ₹155 crore over the minimum repays part of the revolver. The negative closing cash in FY28E is carried into FY29E's opening, which is why the FY29E shortfall persists despite positive flows. These are the decision outputs: peak utilisation 100%, first shortfall year FY28E, maximum gap ₹120 crore.</p>
+<h3 id="presentation-and-ind-as-context">Presentation and Ind AS context</h3>
+<ul>
+<li>Revolver balances are current borrowings under Schedule III ("Loans repayable on demand from banks" for cash credit). A committed facility with more than 12 months to run may justify non-current classification if the entity has the right to roll over (Ind AS 1.73), but most Indian CC facilities are annually renewed and therefore current.</li>
+<li>Ind AS 7.8: bank overdrafts repayable on demand that form an integral part of cash management may be included in cash and cash equivalents. Most models keep the revolver as debt and keep cash gross. Whichever you choose, the cash check must follow the same definition.</li>
+<li>Revolver utilisation feeds net debt (and therefore net debt/EBITDA) and the interest line in ICR and DSCR (s06).</li>
+</ul>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Drawing power below the limit.</strong> In a recession, inventory and receivables may fall, reducing drawing power just when cash is needed. Model <code>Headroom = MIN(Rev_Limit, Drawing_Power) − Rev_Open</code>, and recognise that a WC release reduces drawing power at the same time it releases cash.</li>
+<li><strong>Minimum cash too high.</strong> A large <code>Min_Cash</code> forces early draws. Use an operating buffer (for example, 15–30 days of cash costs), not the historical cash balance.</li>
+<li><strong>Revolver repaid before term debt.</strong> The revolver formula should repay first from surplus cash. Any cash sweep of term debt sits after the revolver in the waterfall.</li>
+<li><strong>Circular divergence at high utilisation.</strong> When the shortfall is large, interest on average negative cash can make iteration unstable. Confirm convergence. If needed, compute interest on the opening balance for the cash leg.</li>
+<li><strong>Covenant interaction.</strong> Banks may freeze a CC limit on a covenant breach (or classify the account as SMA/NPA under RBI norms after overdue periods). A sophisticated downside sets headroom to zero after a breach year as a sensitivity.</li>
+<li><strong>Do not net revolver against cash in KPIs</strong> unless the definition says so. Net debt includes revolver and deducts cash. That is correct, but do not deduct cash twice.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Draw = MIN(funding need, limit − opening balance). Repayment = MIN(opening balance, surplus over minimum cash).</li>
+<li>Any residual need beyond the limit is a shortfall. Show it as negative cash or an unfunded line, flag it, and never extend the limit silently.</li>
+<li>Revolver interest makes the model circular, so route it through the breaker and check convergence.</li>
+<li>In India, model drawing power as well as the sanctioned limit for cash credit facilities, because both tighten in a downturn.</li>
+<li>The key stress outputs are peak utilisation, first shortfall year and size of the unfunded gap.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-revolver-formulas-l1">Q1. Revolver formulas [L1]</h3>
+<p>Write the Excel formulas for revolver draw, repayment, closing balance and shortfall using the named ranges <code>Cash_Pre_Rev</code>, <code>Min_Cash</code>, <code>Rev_Open</code>, <code>Rev_Limit</code> and <code>Drawing_Power</code>, so that the available headroom is the lower of the limit and drawing power. Explain why draw and repayment cannot both be positive in the same year.</p>
+<h3 id="q2-three-year-recession-walk-l2">Q2. Three-year recession walk [L2]</h3>
+<p>Yamuna Retail Ltd: opening cash ₹120 crore, minimum cash ₹60 crore, revolver limit ₹200 crore (opening balance nil), revolver interest 10% on opening balance (breaker off). Cash flows excluding revolver and revolver interest: FY26E −₹90 crore, FY27E −₹140 crore, FY28E +₹70 crore, FY29E +₹150 crore. Tax effects on interest are ignored. (a) Compute draw, repayment, closing revolver, closing cash and shortfall for each year. (b) State the first year of shortfall and its size. (c) Explain how your answer would change if interest were on average balances with iteration on.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Remember that interest on the opening revolver balance is itself a cash outflow in the following year.</p>
+</blockquote>
+<h3 id="q3-drawing-power-squeeze-l2">Q3. Drawing power squeeze [L2]</h3>
+<p>A cash credit limit of ₹500 crore is subject to drawing power = 75% of inventory + 60% of receivables (under 90 days). Base FY27E inventory is ₹400 crore and receivables ₹350 crore. In the Bear case, inventory falls to ₹280 crore and receivables to ₹250 crore, while the funding need rises to ₹420 crore. (a) Compute drawing power and headroom in both cases, assuming an opening revolver balance of ₹150 crore. (b) Compute the draw and shortfall in Bear. (c) Explain why modelling only the sanctioned limit would overstate liquidity.</p>
+<h3 id="q4-interview-why-not-just-raise-the-limit-l3">Q4. Interview: why not just raise the limit? [L3]</h3>
+<p>An analyst sets the revolver limit to ₹10,000 crore "so the model always balances." As the reviewing manager, explain (a) why the model would balance either way, (b) what decision-useful information is lost, and (c) how you would redesign the revolver block and dashboard to show the true funding gap and possible cures (equity, asset sale, capex deferral).</p></section>
+<nav class="pager"><a class="prev" href="S02_Extreme_Input_Stress_Tests_Growth_Margins_Capex.html">← Extreme Input Stress Tests: Growth, Margins, Capex and WC…</a><a class="next" href="S04_Negative_PBT_Loss_Carry_Forward_No_Negative_Tax.html">Negative PBT: Loss Carry-Forward, No Negative Tax, DTA… →</a></nav>
+</main></div></body></html>

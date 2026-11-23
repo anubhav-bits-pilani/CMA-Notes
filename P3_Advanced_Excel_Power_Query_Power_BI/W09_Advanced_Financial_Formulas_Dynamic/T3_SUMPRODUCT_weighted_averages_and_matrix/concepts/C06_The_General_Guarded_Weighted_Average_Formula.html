@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The General Guarded Weighted-Average Formula · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C06_The_General_Guarded_Weighted_Average_Formula.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T3 · SUMPRODUCT weighted averages and matrix…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · SUMPRODUCT weighted averages and matrix math</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Weighted_Average_Cost_of_Debt_Across_Borrowing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S01_Weighted_Average_Cost_of_Debt_Across_Borrowing.html">Weighted Average Cost of Debt Across Borrowing Tranches</a></li><li><a href="../subtopics/S02_Weighted_Average_Inventory_Cost_and_Weighted.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S02_Weighted_Average_Inventory_Cost_and_Weighted.html">Weighted Average Inventory Cost and Weighted Credit Period / DSO</a></li><li><a href="../subtopics/S03_Boolean_Array_Multi_Condition_Sums_Without_Helper.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S03_Boolean_Array_Multi_Condition_Sums_Without_Helper.html">Boolean-Array Multi-Condition Sums Without Helper Columns</a></li><li><a href="../subtopics/S04_Coercing_TRUEFALSE_to_10_Double_Unary_1_and_N.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S04_Coercing_TRUEFALSE_to_10_Double_Unary_1_and_N.html">Coercing TRUE/FALSE to 1/0: Double Unary, ×1 and N()</a></li><li><a href="../subtopics/S05_Cohort_Retention_Matrices_Acquisition_Month_Active.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S05_Cohort_Retention_Matrices_Acquisition_Month_Active.html">Cohort Retention Matrices: Acquisition Month × Active Month</a></li><li><a href="../subtopics/S06_MMULT_and_TRANSPOSE_for_Cost_Pool_Driver.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S06_MMULT_and_TRANSPOSE_for_Cost_Pool_Driver.html">MMULT and TRANSPOSE for Cost-Pool × Driver Allocations</a></li><li><a href="../subtopics/S07_SUMPRODUCT_vs_SUMIFS_Performance_on_Large_Ranges.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S07_SUMPRODUCT_vs_SUMIFS_Performance_on_Large_Ranges.html">SUMPRODUCT vs SUMIFS Performance on Large Ranges</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Pre_Tax_and_Post_Tax_Kd_with_SUMPRODUCT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C01_Pre_Tax_and_Post_Tax_Kd_with_SUMPRODUCT.html">Pre-Tax and Post-Tax Kd with SUMPRODUCT</a></li><li><a href="C02_SUMPRODUCT_with_MONTH_and_LEFT_on_Whole_Columns.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C02_SUMPRODUCT_with_MONTH_and_LEFT_on_Whole_Columns.html">SUMPRODUCT with MONTH and LEFT on Whole Columns</a></li><li><a href="C03_Comma_Form_SUMPRODUCT_and_Why_Arrays_Must_Be.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C03_Comma_Form_SUMPRODUCT_and_Why_Arrays_Must_Be.html">Comma-Form SUMPRODUCT and Why Arrays Must Be Numeric</a></li><li><a href="C04_The_Cohort_Retention_Cell_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C04_The_Cohort_Retention_Cell_Formula.html">The Cohort Retention Cell Formula</a></li><li><a href="C05_MMULT_Dimensions_1nnm_Gives_a_1m_Allocation.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C05_MMULT_Dimensions_1nnm_Gives_a_1m_Allocation.html">MMULT Dimensions: (1×n)·(n×m) Gives a 1×m Allocation</a></li><li><a href="C06_The_General_Guarded_Weighted_Average_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C06_The_General_Guarded_Weighted_Average_Formula.html">The General Guarded Weighted-Average Formula</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>The General Guarded Weighted-Average Formula</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> General weighted average: <code>=IF(SUM(w)=0, 0, SUMPRODUCT(w, x)/SUM(w))</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>\[
+\bar{x}_w =
+\begin{cases}
+\dfrac{\sum_{i=1}^{n} w_i x_i}{\sum_{i=1}^{n} w_i} &amp; \text{if } \sum_{i} w_i \neq 0 \\
+0 &amp; \text{if } \sum_{i} w_i = 0
+\end{cases}
+\]</p>
+<p>where \(x_i\) is the value being averaged (rate, price, days, margin), \(w_i\) its weight (balance, quantity, amount, revenue) and \(n\) the number of items. <code>w</code> and <code>x</code> are equal-sized ranges or Table columns. The IF guard returns 0 instead of <code>#DIV/0!</code> when all weights are zero.</p>
+<h2 id="explanation">Explanation</h2>
+<p><strong>One template, many uses.</strong> The same structure gives every weighted metric in finance:</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>x</th>
+<th>w</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pre-tax cost of debt</td>
+<td>tranche rate</td>
+<td>tranche (average) balance</td>
+</tr>
+<tr>
+<td>Weighted average inventory rate</td>
+<td>receipt rate</td>
+<td>receipt quantity</td>
+</tr>
+<tr>
+<td>Weighted days outstanding</td>
+<td>days outstanding</td>
+<td>open amount</td>
+</tr>
+<tr>
+<td>Blended gross margin %</td>
+<td>product margin %</td>
+<td>product revenue</td>
+</tr>
+<tr>
+<td>Average realisation per tonne</td>
+<td>realised price</td>
+<td>tonnes sold</td>
+</tr>
+<tr>
+<td>Weighted average remaining lease term</td>
+<td>remaining term</td>
+<td>lease liability</td>
+</tr>
+<tr>
+<td>Portfolio yield</td>
+<td>instrument yield</td>
+<td>carrying amount</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The guard: what should "no weight" return?</strong> 0 is convenient for projection years with no debt or for products with no sales, because downstream arithmetic keeps working. But 0 can be misleading — a 0% "cost of debt" in a debt-free year is harmless only if nothing multiplies it by a future balance. Alternatives: <code>""</code> for display, <code>NA()</code> to make charts skip the point, or the prior period's value for rates carried forward. Choose by consequence and document it.</p>
+<p><strong>Sign issues.</strong> Weights should be non-negative for a meaningful average. With signed data (credits negative), mixed signs can make \(\sum w_i\) near zero and the average explode. Use absolute values or net the data before averaging; never average across mixed-sign weights without understanding them.</p>
+<p><strong>Conditional version.</strong> For a subgroup, include a condition in both numerator and denominator:</p>
+<pre><code class="language-excel">=IF(SUMIFS(w, grp, G2)=0, 0, SUMPRODUCT((grp=G2)*w*x)/SUMIFS(w, grp, G2))
+</code></pre>
+<p>The condition must be identical in both parts, or the average is distorted.</p>
+<p><strong>Choosing the right weight</strong> is the real skill — see the topic pitfall on weighting on the wrong base. Interest cost for a year should weight rates by <em>average</em> balances, not closing balances; inventory rates by <em>quantity</em>, not by number of receipts; margins by <em>revenue</em>, not by number of products.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Blended gross margin for three product lines (FY26):</p>
+<table>
+<thead>
+<tr>
+<th>Product line</th>
+<th>Revenue w (₹ crore)</th>
+<th>Gross margin x</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Premium</td>
+<td>120</td>
+<td>46%</td>
+</tr>
+<tr>
+<td>Core</td>
+<td>380</td>
+<td>31%</td>
+</tr>
+<tr>
+<td>Value</td>
+<td>100</td>
+<td>18%</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Weighted: (120 × 46% + 380 × 31% + 100 × 18%) ÷ 600 = (55.2 + 117.8 + 18.0) ÷ 600 = 191.0 ÷ 600 = <strong>31.8%</strong>.</li>
+<li>Simple average: (46 + 31 + 18) ÷ 3 = 31.7% — close here by coincidence; shift ₹100 crore of revenue from Core to Premium and the weighted margin rises to 34.3% while the simple average does not move at all.</li>
+<li>In a projection year where the Value line is discontinued, its revenue is 0 and it drops out of the weighted average automatically; if all lines had zero revenue (e.g. a pre-launch year), the guard returns 0 instead of <code>#DIV/0!</code>.</li>
+</ul>
+<h2 id="connections">Connections</h2>
+<p>Generalises the cost-of-debt formula (c01) and the inventory and DSO weighted averages of this topic's second subtopic; it is the formula behind the size-weighted cohort retention curve. The guard reflects the week's error-discipline theme (test the condition rather than wrap everything in IFERROR). In DAX (Week 11), the equivalent is <code>DIVIDE(SUMX(T, T[w]*T[x]), SUM(T[w]))</code>, where DIVIDE handles the zero denominator.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-average-realisation-l1">Q1. Average realisation [L1]</h3>
+<p>A steel trader sold 1,200 t at ₹54,500/t, 850 t at ₹56,200/t and 2,400 t at ₹53,100/t in Q3 FY26. Write the guarded weighted-average formula on a Table with columns Tonnes and Price, and compute the average realisation.</p>
+<h3 id="q2-what-should-the-guard-return-l2">Q2. What should the guard return? [L2]</h3>
+<p>For each case, decide whether the zero-weight result should be 0, blank, <code>NA()</code> or the prior-period value, and justify: (a) cost of debt in a projection year with no borrowings, used to compute interest on next year's opening debt; (b) average ticket size on a dashboard for a store that was closed all month; (c) blended margin feeding a chart.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Ask what the downstream formula or reader does with the value.</p>
+</blockquote>
+<h3 id="q3-mixed-sign-weights-l2">Q3. Mixed-sign weights [L2]</h3>
+<p>An analyst computes the weighted average days of a vendor's open items, where open invoices are +₹12 lakh (60 days), +₹8 lakh (35 days) and an unapplied debit note is −₹19 lakh (10 days). Show why the result is meaningless and propose a correct treatment.</p></section>
+<nav class="pager"><a class="prev" href="C05_MMULT_Dimensions_1nnm_Gives_a_1m_Allocation.html">← MMULT Dimensions: (1×n)·(n×m) Gives a 1×m Allocation</a><a class="next" href="../../T4_Dynamic_arrays_and_LETLAMBDA/index.html">Dynamic arrays and LET/LAMBDA →</a></nav>
+</main></div></body></html>

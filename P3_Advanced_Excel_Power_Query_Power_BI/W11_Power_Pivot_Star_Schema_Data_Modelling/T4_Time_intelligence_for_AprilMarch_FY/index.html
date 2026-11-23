@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Time intelligence for April–March FY · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/index.html" data-kind="topic">
+<header class="top"><a class="brand" href="../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../index.html">Home</a> <span>›</span> <a href="../../index.html">Phase 3</a> <span>›</span> <a href="../index.html">Week 11</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">Week 11</a></div><ul class="side-links"><li><a href="../T1_Star_schema_for_financial_data/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/index.html">T1 · Star schema for financial data</a></li><li><a href="../T2_Indian_fiscal_calendar_table/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/index.html">T2 · Indian fiscal calendar table</a></li><li><a href="../T3_Core_financial_DAX_functions/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/index.html">T3 · Core financial DAX functions</a></li><li><a href="index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/index.html">T4 · Time intelligence for April–March FY</a></li><li><a href="../T5_Semi_additive_balance_sheet_measures/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/index.html">T5 · Semi-additive balance sheet measures</a></li><li><a href="../T6_PL_layout_subtotals_and_sign_flip/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/index.html">T6 · P&amp;L layout, subtotals and sign-flip</a></li></ul></aside>
+<main class="content">
+<div class="kind">Topic</div>
+<h1>Time intelligence for April–March FY</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<section class="index"><h2>Notes in this topic</h2><div class="cols"><div><h3>Subtopics</h3><ul class="links num"><li><a href="subtopics/S01_YTD_QTD_and_MTD_Measures_for_an_AprilMarch_Fiscal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S01_YTD_QTD_and_MTD_Measures_for_an_AprilMarch_Fiscal.html">S01 · YTD, QTD and MTD Measures for an April–March Fiscal Year</a></li><li><a href="subtopics/S02_SAMEPERIODLASTYEAR_vs_DATEADD_vs_PARALLELPERIOD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S02_SAMEPERIODLASTYEAR_vs_DATEADD_vs_PARALLELPERIOD.html">S02 · SAMEPERIODLASTYEAR vs DATEADD vs PARALLELPERIOD</a></li><li><a href="subtopics/S03_PY_YTD_YTD_Growth_MoM_and_YoY_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S03_PY_YTD_YTD_Growth_MoM_and_YoY_Measures.html">S03 · PY YTD, YTD Growth, MoM % and YoY % Measures</a></li><li><a href="subtopics/S04_Rolling_12_Month_and_Trailing_3_Month_Windows_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S04_Rolling_12_Month_and_Trailing_3_Month_Windows_with.html">S04 · Rolling 12-Month and Trailing 3-Month Windows with DATESINPERIOD</a></li><li><a href="subtopics/S05_Capping_Time_Intelligence_at_the_Last_Actuals_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S05_Capping_Time_Intelligence_at_the_Last_Actuals_Date.html">S05 · Capping Time Intelligence at the Last Actuals Date</a></li><li><a href="subtopics/S06_Time_Intelligence_Prerequisites_Marked_Contiguous.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S06_Time_Intelligence_Prerequisites_Marked_Contiguous.html">S06 · Time-Intelligence Prerequisites: Marked, Contiguous Date Table</a></li><li><a href="subtopics/S07_Calculation_Groups_and_Field_Parameters_for_Time.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S07_Calculation_Groups_and_Field_Parameters_for_Time.html">S07 · Calculation Groups and Field Parameters for Time-Intelligence Views</a></li></ul></div><div><h3>Key concepts & formulas</h3><ul class="links num"><li><a href="concepts/C01_TOTALYTD_with_331_Equals_CALCULATE_with_DATESYTD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C01_TOTALYTD_with_331_Equals_CALCULATE_with_DATESYTD.html">C01 · TOTALYTD with &quot;3/31&quot; Equals CALCULATE with DATESYTD</a></li><li><a href="concepts/C02_PY_YTD_via_SAMEPERIODLASTYEAR_and_the_YoY_Measure.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C02_PY_YTD_via_SAMEPERIODLASTYEAR_and_the_YoY_Measure.html">C02 · PY YTD via SAMEPERIODLASTYEAR and the YoY % Measure</a></li><li><a href="concepts/C03_Prior_Month_Actual_with_DATEADD_and_the_MoM.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C03_Prior_Month_Actual_with_DATEADD_and_the_MoM.html">C03 · Prior-Month Actual with DATEADD and the MoM % Measure</a></li><li><a href="concepts/C04_Rolling_12_Month_Measure_with_DATESINPERIOD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C04_Rolling_12_Month_Measure_with_DATESINPERIOD.html">C04 · Rolling 12-Month Measure with DATESINPERIOD</a></li><li><a href="concepts/C05_Last_Actual_Date_and_Capping_YTD_at_Posted_Data.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C05_Last_Actual_Date_and_Capping_YTD_at_Posted_Data.html">C05 · Last Actual Date and Capping YTD at Posted Data</a></li><li><a href="concepts/C06_Locale_Parsing_of_the_Year_End_String_in_DATESYTD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C06_Locale_Parsing_of_the_Year_End_String_in_DATESYTD.html">C06 · Locale Parsing of the Year-End String in DATESYTD</a></li></ul></div></div></section><article class="note"><blockquote>
+<p><strong>Roadmap topic:</strong> Time Intelligence in DAX: TOTALYTD (with '3/31' year-end parameter), SAMEPERIODLASTYEAR, DATEADD, and MoM / YoY growth % measures</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>Time intelligence is the family of DAX patterns that move the date filter: to-date windows (YTD, QTD, MTD), shifts
+(prior year, prior month), rolling windows (R12M, T3M) and boundary values (opening and closing balances, covered in
+Topic 5). For an Indian finance team every one of these must respect the April–March fiscal year, line up with SEBI
+quarterly reporting and Ind AS comparatives, and behave sensibly while the current year is only partly posted. The
+functions are short; the judgement is in choosing the right one, feeding it the right date column, and capping it so
+that future months and partial periods do not distort growth numbers.</p>
+<p>For FP&amp;A and reporting roles this topic is where the model starts paying back the effort spent on the star schema and
+the fiscal calendar. YTD budget-vs-actual, YoY growth in the CFO's KPI strip, R12M revenue for valuation and covenant
+monitoring, and month-on-month run-rate reviews are all derived measures branching from a single <code>[Actual]</code> (and
+<code>[Budget]</code>) base. If the base measures and Date table are right, a dozen time measures — or one calculation group —
+deliver the entire comparative layer of an MIS pack.</p>
+<p>The learning sequence is: first the <strong>prerequisites</strong> (s06) — a marked, contiguous, whole-FY Date table and filters
+that flow through it; then <strong>to-date windows with the fiscal year-end parameter</strong> (s01, c01, c06); then <strong>prior-period
+shifts</strong> and the differences between <code>SAMEPERIODLASTYEAR</code>, <code>DATEADD</code> and <code>PARALLELPERIOD</code> (s02); then the <strong>growth
+measures</strong> built from them (s03, c02, c03); then <strong>rolling windows</strong> (s04, c04); then <strong>capping at the last actuals
+date</strong> so partial periods compare like-for-like (s05, c05); and finally <strong>calculation groups and field parameters</strong>
+that apply all of this without a measure explosion (s07).</p>
+<h2 id="concept-map">Concept map</h2>
+<table>
+<thead>
+<tr>
+<th>Subtopic / concept</th>
+<th>Role in the topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s01 YTD, QTD and MTD with the fiscal year-end parameter</td>
+<td>Cumulative windows that reset on 1 April; QTD/MTD need no year-end</td>
+</tr>
+<tr>
+<td>s02 SAMEPERIODLASTYEAR, DATEADD, PARALLELPERIOD</td>
+<td>Choosing the right prior-period shift; whole-period vs shape-preserving</td>
+</tr>
+<tr>
+<td>s03 PY YTD, YTD growth, MoM % and YoY %</td>
+<td>Derived growth measures with sign-awareness and grain guards</td>
+</tr>
+<tr>
+<td>s04 Rolling 12-month and trailing 3-month windows</td>
+<td>Seasonality-free run rates, LTM figures and covenant tests</td>
+</tr>
+<tr>
+<td>s05 Capping at the last actuals date</td>
+<td>Prevents flat future months and partial-vs-full comparisons</td>
+</tr>
+<tr>
+<td>s06 Prerequisites</td>
+<td>Marked, contiguous Date table and filtering through it</td>
+</tr>
+<tr>
+<td>s07 Calculation groups and field parameters</td>
+<td>Apply time views to any measure; let users switch KPIs</td>
+</tr>
+<tr>
+<td>c01 TOTALYTD vs CALCULATE + DATESYTD</td>
+<td>The equivalence and why the CALCULATE form is preferred</td>
+</tr>
+<tr>
+<td>c02 PY YTD and YoY %</td>
+<td>Nested context modification and growth formula</td>
+</tr>
+<tr>
+<td>c03 PM Actual and MoM %</td>
+<td>DATEADD by one month and its month-level guard</td>
+</tr>
+<tr>
+<td>c04 Rolling 12M with DATESINPERIOD</td>
+<td>Anchor in the outer context, window of 12 months</td>
+</tr>
+<tr>
+<td>c05 Last Actual Date cap</td>
+<td>Model-wide constant that blanks future periods</td>
+</tr>
+<tr>
+<td>c06 Locale of the year-end string</td>
+<td>"3/31" vs "31/3" and the April-reset test</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-concepts-to-study">Related concepts to study</h2>
+<h3 id="weeks-1720-ytd-budget-vs-actual-and-full-year-forecast">Weeks 17–20: YTD budget vs actual and full-year forecast</h3>
+<p><em>→ Week 17–20: YTD budget vs actual, and full-year forecast = YTD actual + remaining budget</em></p>
+<p>The budgeting and forecasting weeks reuse every measure here. YTD Budget is <code>CALCULATE([Budget], DATESYTD('Date'[Date],
+"3/31"))</code> cut at the same last actual date as YTD Actual, so the YTD variance is like-for-like. The latest estimate
+(LE) or full-year forecast is YTD actual for closed months plus budget (or the latest forecast version) for the
+remaining months: <code>[YTD Actual (capped)] + CALCULATE([Budget], 'Date'[Date] &gt; lastClosed, 'Date'[FYEnd] = fy)</code>. That
+formula only works if the cap from s05 is defined on closed periods rather than raw posting dates. Variance analysis
+then splits the full-year gap into "delivered YTD" and "still to deliver".</p>
+<h3 id="weeks-58-yoy-growth-and-trend-analysis">Weeks 5–8: YoY growth and trend analysis</h3>
+<p><em>→ Week 5–8: YoY growth and trend analysis</em></p>
+<p>Financial statement analysis in Weeks 5–8 computes YoY growth, CAGR, common-size trends and margin changes from
+published statements. The DAX measures here automate the same calculations on internal data. The interpretation rules
+carry over: margins change in basis points, growth on a negative base is "n.m.", acquisitions require like-for-like
+splits, and seasonal businesses are judged on YoY rather than MoM. When you reconcile your DAX YoY % to a sell-side
+note's figure, differences usually come from period definitions (calendar vs fiscal, 9M vs LTM) or from exceptional
+items included in one and excluded in the other.</p>
+<h3 id="calculation-groups-for-ytd-py-and-yoy-variants">Calculation groups for YTD, PY and YoY variants</h3>
+<p><em>Calculation groups (model explorer or Tabular Editor) for YTD/PY/YoY variants</em></p>
+<p>Calculation groups (s07) hold one DAX expression per time view using <code>SELECTEDMEASURE()</code>. They can be authored in
+Power BI Desktop's model explorer or, with more power and scripting, in Tabular Editor. The finance benefit is
+governance: the YTD cap and the year-end string live in one place, so a change is made once and tested once. The
+costs are that implicit measures stop working, items need format string expressions (YoY % must not inherit ₹
+formatting), balance measures must be excluded from additive items, and precedence must be set when a second group
+(currency, scenario) exists.</p>
+<h3 id="custom-time-intelligence-for-non-standard-calendars">Custom time intelligence for non-standard calendars</h3>
+<p><em>Custom time intelligence using FY number and fiscal month columns for non-standard calendars</em></p>
+<p>Built-in functions assume a Gregorian calendar with a fixed year-end. Retailers on 4-4-5 or 52/53-week years, or
+groups with week-based periods, need custom logic: filter the Date table by fiscal-year and period-number columns
+directly. PY YTD becomes <code>CALCULATE([Actual], REMOVEFILTERS('Date'), 'Date'[FYEnd] = fy - 1, 'Date'[FiscalPeriodNo] &lt;=
+p)</code>, where <code>fy</code> and <code>p</code> are captured in variables. The same approach is locale-proof (c06) and transparent to
+auditors. Microsoft has also been previewing calendar-based time intelligence that lets the model define custom
+calendars for the built-in functions; check its status before depending on it.</p>
+<h3 id="visual-calculations-previous-and-runningsum">Visual calculations PREVIOUS and RUNNINGSUM</h3>
+<p><em>Power BI visual calculations (<code>PREVIOUS</code>, <code>RUNNINGSUM</code>) inside matrices</em></p>
+<p>Visual calculations are DAX expressions defined on a visual, operating on the visual's own rows and columns rather
+than on the model. <code>RUNNINGSUM([Actual])</code> accumulates along the axis (a YTD-like running total if the axis starts in
+April), and <code>PREVIOUS([Actual])</code> returns the prior row for MoM. They are quick for one-off analysis and avoid model
+changes, but they are bound to that visual's layout: if the axis is sorted differently, filtered, or starts in
+January, results change. They cannot be reused across visuals or in Excel. Use them for ad-hoc exploration; keep
+reported KPIs in model measures.</p>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<h3 id="totalytd-without-the-year-end-argument">TOTALYTD without the year-end argument</h3>
+<p><em>TOTALYTD without the year-end argument gives calendar-year (Jan–Dec) YTD on Indian books</em></p>
+<p><strong>Mistake:</strong> <code>TOTALYTD([Actual], 'Date'[Date])</code>. <strong>Why it happens:</strong> tutorials are written for calendar-year
+companies, and the default produces believable numbers from April to December. <strong>Correct treatment:</strong> always pass the
+year end (<code>"3/31"</code> or the locale equivalent) or use custom fiscal logic. <strong>Detect it:</strong> the YTD resets in January
+rather than April; April YTD does not equal April's monthly value; March YTD does not equal the FY total.</p>
+<h3 id="parallelperiod-with-year-expands-to-calendar-years">PARALLELPERIOD with YEAR expands to calendar years</h3>
+<p><em><code>PARALLELPERIOD('Date'[Date], -1, YEAR)</code> expands to whole calendar years, not April–March</em></p>
+<p><strong>Mistake:</strong> using <code>PARALLELPERIOD(..., -1, YEAR)</code> for "last year". <strong>Why:</strong> the name suggests "the parallel period
+last year". <strong>Correct treatment:</strong> use <code>SAMEPERIODLASTYEAR</code>/<code>DATEADD(-1, YEAR)</code> for like-for-like, <code>PREVIOUSYEAR(...,
+"3/31")</code> for the full prior FY, or <code>PARALLELPERIOD(..., -12, MONTH)</code> on full-FY selections. <strong>Detect it:</strong> the PY value
+for any month equals calendar-year revenue; PY for FY26 differs from published FY25 revenue.</p>
+<h3 id="unmarked-or-gapped-date-table">Unmarked or gapped Date table</h3>
+<p><em>Time intelligence on an unmarked Date table or one with gaps returns wrong or blank results</em></p>
+<p><strong>Mistake:</strong> a Date table generated from distinct GL dates, or one not marked as a date table and related on an integer
+key. <strong>Why:</strong> it is quicker to build and looks fine in a simple monthly visual. <strong>Correct treatment:</strong> a generated,
+contiguous, whole-FY calendar, marked, with Auto date/time off (s06). <strong>Detect it:</strong> rows ≠ span of days; YTD equals the
+monthly value when month name is on rows; opening-balance or PY values blank on specific dates.</p>
+<h3 id="partial-current-month-against-a-full-prior-year-month">Partial current month against a full prior-year month</h3>
+<p><em>YoY compares a partial current month against a full prior-year month</em></p>
+<p><strong>Mistake:</strong> month-level YoY (or FY-level YoY) during the month compares 1–18 November with all of November last year.
+<strong>Why:</strong> <code>SAMEPERIODLASTYEAR</code> shifts the Date-table month, which is always complete. <strong>Correct treatment:</strong> cap the
+current period at the last actual date and cut the PY window at the equivalent date (s05), or show month YoY only for
+closed months. <strong>Detect it:</strong> YoY growth for the current month is sharply negative every month until close and
+"recovers" when the month completes.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-build-the-comparative-layer-for-an-mis-pack-l3">Q1. Build the comparative layer for an MIS pack [L3]</h3>
+<p>A listed FMCG company's model has <code>GL</code> (daily postings from 1 April 2023), <code>Budget</code> (monthly, stored on the first of
+each month), <code>CoA</code> and a Date table from 1 April 2022 to 31 March 2027. Actuals are closed to 31 October 2025 and
+posted to 14 November 2025. Revenue (₹ crore): YTD October FY26 = 1,284; YTD October FY25 = 1,175; October 2025 = 205;
+September 2025 = 188; FY25 full year = 2,060; YTD October FY26 budget = 1,310. (a) Write the measures Last Closed
+Date, YTD Actual, PY YTD, YoY %, PM Actual, MoM %, YTD Budget and YTD Variance %, capped at the closed date. (b)
+Compute the values each should show on the October 2025 row. (c) Explain what each would show on the FY26 total row
+and why. (d) Explain why the Date table must start on 1 April 2022 even though GL data starts in 2023.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Treat the closed date, not the last posting date, as the MIS anchor, and remember which measures need the prior year to exist.</p>
+</blockquote>
+<h3 id="q2-debug-a-comparative-page-l2">Q2. Debug a comparative page [L2]</h3>
+<p>A page shows, for December 2025, YTD Revenue ₹ 312 crore, PY YTD ₹ 540 crore and YoY −42%. The FY25 published
+revenue was ₹ 540 crore for the full year and ₹ 395 crore for April–December 2024; actuals are loaded to 31 December</p>
+<ol start="2025">
+<li>The PY measure is <code>CALCULATE([YTD Actual], PARALLELPERIOD('Date'[Date], -1, YEAR))</code> and YTD Actual is</li>
+</ol>
+<p><code>TOTALYTD([Actual], 'Date'[Date])</code>. Identify every error, rewrite both measures, and compute the correct YoY %.</p>
+<h3 id="q3-r12m-ebitda-covenant-with-calculation-groups-l3">Q3. R12M EBITDA covenant with calculation groups [L3]</h3>
+<p>A borrower must maintain Net Debt / LTM EBITDA ≤ 3.0× at each quarter-end. Monthly EBITDA (₹ crore) for October 2024
+to September 2025 is 14, 15, 16, 12, 13, 18, 11, 12, 13, 14, 15, 17; net debt at 30 September 2025 is ₹ 505 crore.
+(a) Compute LTM EBITDA and leverage at September 2025. (b) Write a guarded R12M EBITDA measure. (c) Design a <em>Time
+Calc</em> calculation group with items Current, YTD, R12M and PY R12M, including how balance measures like Net Debt are
+excluded from the additive items. (d) Describe the visual and test evidence the treasury head would review.</p>
+<h3 id="q4-locale-and-template-rollout-l2">Q4. Locale and template rollout [L2]</h3>
+<p>A Power BI template built in an en-US model uses <code>"3/31"</code> throughout. A subsidiary recreates the model from scratch
+on en-IN laptops and copies the measures across. Explain what may break, list every function in this topic and Topic 5
+that takes the year-end string, and design a hidden QA page (visuals and measures) that proves the fiscal logic before
+each monthly publish.</p>
+<h3 id="q5-visual-calculations-versus-model-measures-l2">Q5. Visual calculations versus model measures [L2]</h3>
+<p>An analyst built YTD and MoM in a matrix using <code>RUNNINGSUM([Actual])</code> and <code>PREVIOUS([Actual])</code> visual calculations,
+with months on columns sorted January to December. Explain what the YTD row shows for April 2025 and January 2026, why
+the results change if a user filters out March, and how you would rebuild the same matrix with model measures that are
+reusable in Analyze in Excel.</p></section>
+<nav class="pager"><a class="prev" href="../T3_Core_financial_DAX_functions/concepts/C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html">← DIVIDE and Its BLANK Default for Zero Denominators</a><a class="next" href="subtopics/S01_YTD_QTD_and_MTD_Measures_for_an_AprilMarch_Fiscal.html">YTD, QTD and MTD Measures for an April–March Fiscal Year →</a></nav>
+</main></div></body></html>

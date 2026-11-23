@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YEARFRAC Basis 1 vs Basis 3 for Accruals · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C02_YEARFRAC_Basis_1_vs_Basis_3_for_Accruals.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T5 · Financial and date functions</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Financial and date functions</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Period_End_Logic_with_EOMONTH_and_EDATE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S01_Period_End_Logic_with_EOMONTH_and_EDATE.html">Period-End Logic with EOMONTH and EDATE</a></li><li><a href="../subtopics/S02_Day_Count_Conventions_with_YEARFRAC_Bases_04.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S02_Day_Count_Conventions_with_YEARFRAC_Bases_04.html">Day-Count Conventions with YEARFRAC Bases 0–4</a></li><li><a href="../subtopics/S03_NPV_vs_XNPV_Periodic_and_Dated_Cash_Flows.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S03_NPV_vs_XNPV_Periodic_and_Dated_Cash_Flows.html">NPV vs XNPV: Periodic and Dated Cash Flows</a></li><li><a href="../subtopics/S04_IRR_vs_XIRR_vs_MIRR_for_Irregular_Project_Cash.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S04_IRR_vs_XIRR_vs_MIRR_for_Irregular_Project_Cash.html">IRR vs XIRR vs MIRR for Irregular Project Cash Flows</a></li><li><a href="../subtopics/S05_Loan_Amortisation_with_PMT_IPMT_PPMT_CUMIPMT_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S05_Loan_Amortisation_with_PMT_IPMT_PPMT_CUMIPMT_and.html">Loan Amortisation with PMT, IPMT, PPMT, CUMIPMT and CUMPRINC</a></li><li><a href="../subtopics/S06_EMI_Schedules_and_Ind_AS_116_Lease_Liability.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S06_EMI_Schedules_and_Ind_AS_116_Lease_Liability.html">EMI Schedules and Ind AS 116 Lease Liability Schedules</a></li><li><a href="../subtopics/S07_Close_Calendars_with_WORKDAYINTL_NETWORKDAYSINTL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S07_Close_Calendars_with_WORKDAYINTL_NETWORKDAYSINTL.html">Close Calendars with WORKDAY.INTL, NETWORKDAYS.INTL and Holidays</a></li><li><a href="../subtopics/S08_Fiscal_Year_Helpers_FY_Start_FY_End_and_Fiscal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S08_Fiscal_Year_Helpers_FY_Start_FY_End_and_Fiscal.html">Fiscal-Year Helpers: FY Start, FY End and Fiscal Month</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Month_End_Month_Start_and_Same_Day_Offsets_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C01_Month_End_Month_Start_and_Same_Day_Offsets_with.html">Month-End, Month-Start and Same-Day Offsets with EOMONTH and EDATE</a></li><li><a href="C02_YEARFRAC_Basis_1_vs_Basis_3_for_Accruals.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C02_YEARFRAC_Basis_1_vs_Basis_3_for_Accruals.html">YEARFRAC Basis 1 vs Basis 3 for Accruals</a></li><li><a href="C03_NPV_Plus_CF0_Why_NPV_Discounts_Its_First_Value.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C03_NPV_Plus_CF0_Why_NPV_Discounts_Its_First_Value.html">NPV Plus CF0: Why NPV Discounts Its First Value</a></li><li><a href="C04_XNPV_and_XIRR_The_365_Day_Basis_from_the_First.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C04_XNPV_and_XIRR_The_365_Day_Basis_from_the_First.html">XNPV and XIRR: The 365-Day Basis from the First Date</a></li><li><a href="C05_PMT_IPMT_and_PPMT_EMI_and_Its_InterestPrincipal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C05_PMT_IPMT_and_PPMT_EMI_and_Its_InterestPrincipal.html">PMT, IPMT and PPMT: EMI and Its Interest/Principal Split</a></li><li><a href="C06_MIRR_Fixing_IRRs_Reinvestment_and_Multiple_Root.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C06_MIRR_Fixing_IRRs_Reinvestment_and_Multiple_Root.html">MIRR: Fixing IRR&#x27;s Reinvestment and Multiple-Root Problems</a></li><li><a href="C07_FY_End_Date_and_Fiscal_Month_Formulas_for_an.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C07_FY_End_Date_and_Fiscal_Month_Formulas_for_an.html">FY End Date and Fiscal Month Formulas for an April–March Year</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>YEARFRAC Basis 1 vs Basis 3 for Accruals</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>=YEARFRAC(Start, End, 1)</code> is actual/actual; basis 3 is actual/365, common in Indian bank accruals</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-excel">=YEARFRAC(Start, End, 1)     actual/actual
+=YEARFRAC(Start, End, 3)     actual/365 (fixed)
+</code></pre>
+<p>For a period of \(D\) actual days (End − Start):</p>
+<p>\[
+\text{YF}_{3} = \frac{D}{365} \qquad \text{YF}_{1} = \frac{D}{Y}
+\]</p>
+<p>where \(Y\) is the year length Excel applies: 365 or 366 for periods within one year (366 when the period includes a 29 February), or the average length of the calendar years spanned for longer periods.</p>
+<h2 id="explanation">Explanation</h2>
+<p>Both bases count actual days in the numerator; they differ only in the denominator. Basis 3 always divides by 365, even in a leap year. Basis 1 adjusts for leap years.</p>
+<p><strong>Why basis 3 dominates Indian bank accruals.</strong> Rupee deposits and loans from Indian banks commonly compute interest on an actual/365 basis (banks' published interest-rate policies typically state a 365-day year; confirm for each lender, as conventions can differ for leap years), so a year-end accrual on an FD or a term loan should use basis 3 to agree with the bank's interest certificate. Many corporate treasury policies adopt actual/365 for all rupee instruments for consistency. Instruments that specify otherwise — money-market instruments linked to overseas benchmarks (actual/360), bonds with 30/360 coupons — must follow their term sheets.</p>
+<p><strong>When basis 1 is appropriate.</strong> Precise time apportionment where the "year" is a calendar year, such as pro-rating an annual fee over a leap year, or some bond markets' actual/actual conventions. Be aware that Excel's basis 1 algorithm is not identical to ISDA actual/actual for multi-year periods — when a contract specifies ISDA, split the period by calendar year.</p>
+<p><strong>Materiality.</strong> Outside leap years the two bases coincide for periods within one year. In a period containing 29 February, basis 1 gives a slightly lower fraction (÷366), so accruals are about 0.27% lower than basis 3. On a ₹1,000 crore borrowing book at 9%, a full year's difference is roughly ₹24.6 lakh — small but not trivial for a reconciliation.</p>
+<p>Other details: YEARFRAC ignores the order of dates (returns a positive fraction even if Start &gt; End), excludes the start day, and needs true dates (text gives #VALUE!).</p>
+<h2 id="illustration">Illustration</h2>
+<p>Fixed deposit of ₹10 crore at 7.4%, placed 1-Oct-2027, accrual to FY-end 31-Mar-2028 (182 days, includes 29-Feb-2028):</p>
+<table>
+<thead>
+<tr>
+<th>Basis</th>
+<th>Fraction</th>
+<th>Accrued interest (₹)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3 — actual/365</td>
+<td>182/365 = 0.49863</td>
+<td>36,89,863</td>
+</tr>
+<tr>
+<td>1 — actual/actual</td>
+<td>182/366 = 0.49727</td>
+<td>36,79,781</td>
+</tr>
+</tbody>
+</table>
+<p>Difference ₹10,082. If the bank certifies ₹36,89,863, the basis 1 schedule shows a reconciling difference that is purely methodological.</p>
+<p>For 1-Oct-2025 to 31-Mar-2026 (182 days, no leap day), both bases give 0.49863.</p>
+<h2 id="connections">Connections</h2>
+<p>Applied in s02 (all five bases), s05 and s06 (interest unwinding and accruals), and in Ind AS 109 EIR schedules from Weeks 1–4. Stub-period fractions in DCFs (Weeks 15–16) usually use actual/365 to match XNPV's 365-day convention (c04). In the close, accrual schedules feed the provision for interest accrued, and in audit, recomputation of interest uses the bank's stated basis.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-compute-both-bases-l1">Q1. Compute both bases [L1]</h3>
+<p>A ₹4 crore term loan at 9.6% has interest due on 31-Dec-2025 and the next on 31-Mar-2026. Write formulas for the 31-Mar-2026 interest using basis 3 and basis 1, and state whether they differ and why.</p>
+<h3 id="q2-reconcile-to-the-bank-certificate-l2">Q2. Reconcile to the bank certificate [L2]</h3>
+<p>The company's FY28 accrual schedule uses basis 1 for all 60 FDs (total ₹480 crore, average rate 7.2%), and the bank certificates use actual/365. The period from 1-Apr-2027 to 31-Mar-2028 contains 29-Feb-2028. Estimate the total reconciling difference for full-year deposits and explain which way the adjustment goes.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> For a full year the numerator is 366 days under both bases; only the denominator differs.</p>
+</blockquote>
+<h3 id="q3-choosing-the-basis-l2">Q3. Choosing the basis [L2]</h3>
+<p>List the basis you would use, with a reason, for: (a) a rupee term loan from an Indian bank; (b) an ECB linked to SOFR; (c) pro-rating an annual software subscription billed for calendar year 2028; (d) a stub period in an XNPV-based DCF.</p></section>
+<nav class="pager"><a class="prev" href="C01_Month_End_Month_Start_and_Same_Day_Offsets_with.html">← Month-End, Month-Start and Same-Day Offsets with EOMONTH…</a><a class="next" href="C03_NPV_Plus_CF0_Why_NPV_Discounts_Its_First_Value.html">NPV Plus CF0: Why NPV Discounts Its First Value →</a></nav>
+</main></div></body></html>

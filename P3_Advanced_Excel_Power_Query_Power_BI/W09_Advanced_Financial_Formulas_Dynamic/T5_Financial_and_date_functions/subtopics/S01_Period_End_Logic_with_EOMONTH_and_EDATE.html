@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Period-End Logic with EOMONTH and EDATE · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S01_Period_End_Logic_with_EOMONTH_and_EDATE.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T5 · Financial and date functions</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Financial and date functions</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Period_End_Logic_with_EOMONTH_and_EDATE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S01_Period_End_Logic_with_EOMONTH_and_EDATE.html">Period-End Logic with EOMONTH and EDATE</a></li><li><a href="S02_Day_Count_Conventions_with_YEARFRAC_Bases_04.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S02_Day_Count_Conventions_with_YEARFRAC_Bases_04.html">Day-Count Conventions with YEARFRAC Bases 0–4</a></li><li><a href="S03_NPV_vs_XNPV_Periodic_and_Dated_Cash_Flows.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S03_NPV_vs_XNPV_Periodic_and_Dated_Cash_Flows.html">NPV vs XNPV: Periodic and Dated Cash Flows</a></li><li><a href="S04_IRR_vs_XIRR_vs_MIRR_for_Irregular_Project_Cash.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S04_IRR_vs_XIRR_vs_MIRR_for_Irregular_Project_Cash.html">IRR vs XIRR vs MIRR for Irregular Project Cash Flows</a></li><li><a href="S05_Loan_Amortisation_with_PMT_IPMT_PPMT_CUMIPMT_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S05_Loan_Amortisation_with_PMT_IPMT_PPMT_CUMIPMT_and.html">Loan Amortisation with PMT, IPMT, PPMT, CUMIPMT and CUMPRINC</a></li><li><a href="S06_EMI_Schedules_and_Ind_AS_116_Lease_Liability.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S06_EMI_Schedules_and_Ind_AS_116_Lease_Liability.html">EMI Schedules and Ind AS 116 Lease Liability Schedules</a></li><li><a href="S07_Close_Calendars_with_WORKDAYINTL_NETWORKDAYSINTL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S07_Close_Calendars_with_WORKDAYINTL_NETWORKDAYSINTL.html">Close Calendars with WORKDAY.INTL, NETWORKDAYS.INTL and Holidays</a></li><li><a href="S08_Fiscal_Year_Helpers_FY_Start_FY_End_and_Fiscal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S08_Fiscal_Year_Helpers_FY_Start_FY_End_and_Fiscal.html">Fiscal-Year Helpers: FY Start, FY End and Fiscal Month</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Month_End_Month_Start_and_Same_Day_Offsets_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C01_Month_End_Month_Start_and_Same_Day_Offsets_with.html">Month-End, Month-Start and Same-Day Offsets with EOMONTH and EDATE</a></li><li><a href="../concepts/C02_YEARFRAC_Basis_1_vs_Basis_3_for_Accruals.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C02_YEARFRAC_Basis_1_vs_Basis_3_for_Accruals.html">YEARFRAC Basis 1 vs Basis 3 for Accruals</a></li><li><a href="../concepts/C03_NPV_Plus_CF0_Why_NPV_Discounts_Its_First_Value.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C03_NPV_Plus_CF0_Why_NPV_Discounts_Its_First_Value.html">NPV Plus CF0: Why NPV Discounts Its First Value</a></li><li><a href="../concepts/C04_XNPV_and_XIRR_The_365_Day_Basis_from_the_First.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C04_XNPV_and_XIRR_The_365_Day_Basis_from_the_First.html">XNPV and XIRR: The 365-Day Basis from the First Date</a></li><li><a href="../concepts/C05_PMT_IPMT_and_PPMT_EMI_and_Its_InterestPrincipal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C05_PMT_IPMT_and_PPMT_EMI_and_Its_InterestPrincipal.html">PMT, IPMT and PPMT: EMI and Its Interest/Principal Split</a></li><li><a href="../concepts/C06_MIRR_Fixing_IRRs_Reinvestment_and_Multiple_Root.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C06_MIRR_Fixing_IRRs_Reinvestment_and_Multiple_Root.html">MIRR: Fixing IRR&#x27;s Reinvestment and Multiple-Root Problems</a></li><li><a href="../concepts/C07_FY_End_Date_and_Fiscal_Month_Formulas_for_an.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C07_FY_End_Date_and_Fiscal_Month_Formulas_for_an.html">FY End Date and Fiscal Month Formulas for an April–March Year</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Period-End Logic with EOMONTH and EDATE</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Period-end logic with EOMONTH and EDATE for month-ends, quarter-ends, maturity and due dates</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Almost every finance schedule is keyed on a date that is <em>derived</em> from another date: the month-end a transaction belongs to, the quarter-end for an Ind AS 34 interim report, the maturity of a fixed deposit or NCD, the due date of a vendor invoice under the MSMED Act, the statutory due date for TDS or GST. Getting these derivations wrong shifts amounts between periods — a cut-off error in audit language — and in a model it misaligns cash flows with discounting periods. EOMONTH and EDATE are the two functions that make these derivations exact, including across month lengths and leap years, and they replace fragile arithmetic such as <code>+30</code> or <code>DATE(YEAR(d), MONTH(d)+1, 0)</code> scattered across a workbook.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-two-functions">The two functions</h3>
+<pre><code class="language-excel">=EOMONTH(start_date, months)     last day of the month, months before/after
+=EDATE(start_date, months)       same day-of-month, months before/after
+</code></pre>
+<p>Both take a date serial and an integer number of months (decimals are truncated; negatives go backwards). Both return a serial number — format the cell as a date. Both accept arrays for <code>months</code>, so <code>EOMONTH(d, SEQUENCE(1,12,0))</code> spills a 12-month axis (w9_t4).</p>
+<table>
+<thead>
+<tr>
+<th>Need</th>
+<th>Formula</th>
+<th>Example (d = 17-Aug-2025)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Month-end of d</td>
+<td><code>=EOMONTH(d, 0)</code></td>
+<td>31-Aug-2025</td>
+</tr>
+<tr>
+<td>Previous month-end</td>
+<td><code>=EOMONTH(d, -1)</code></td>
+<td>31-Jul-2025</td>
+</tr>
+<tr>
+<td>Month-start</td>
+<td><code>=EOMONTH(d, -1) + 1</code></td>
+<td>01-Aug-2025</td>
+</tr>
+<tr>
+<td>Next month-start</td>
+<td><code>=EOMONTH(d, 0) + 1</code></td>
+<td>01-Sep-2025</td>
+</tr>
+<tr>
+<td>Same day, 3 months later</td>
+<td><code>=EDATE(d, 3)</code></td>
+<td>17-Nov-2025</td>
+</tr>
+<tr>
+<td>Days in the month</td>
+<td><code>=DAY(EOMONTH(d, 0))</code></td>
+<td>31</td>
+</tr>
+</tbody>
+</table>
+<h3 id="quarter-ends">Quarter-ends</h3>
+<p>Indian FY quarters (Q1 Apr–Jun … Q4 Jan–Mar) end on the same dates as calendar quarters — 30 June, 30 September, 31 December, 31 March — so one formula works:</p>
+<pre><code class="language-excel">=EOMONTH(d, MOD(3 - MONTH(d), 3))       quarter-end containing d
+=EOMONTH(d, MOD(3 - MONTH(d), 3) - 3)   previous quarter-end
+</code></pre>
+<p>For d = 17-Aug-2025: <code>MONTH</code> = 8, <code>MOD(-5, 3)</code> = 1, so the result is 30-Sep-2025. SEBI LODR Reg 33 requires listed entities to publish quarterly results within 45 days of quarter-end (60 days for the last quarter's annual audited results), so a results-calendar formula is <code>=EOMONTH(d, MOD(3-MONTH(d),3)) + 45</code>.</p>
+<h3 id="month-end-bucketing-of-transactions">Month-end bucketing of transactions</h3>
+<p>To aggregate a GL by month, add a column <code>MonthEnd = EOMONTH([@Date], 0)</code> to the GL Table, or — better — keep SUMIFS criteria as date ranges built from month-end headers:</p>
+<pre><code class="language-excel">=SUMIFS(GL[Amount], GL[Date], &quot;&gt;&quot; &amp; EOMONTH(C$4, -1), GL[Date], &quot;&lt;=&quot; &amp; C$4)
+</code></pre>
+<p>Never key on month text ("Aug") — it ignores the year and breaks on cross-year data.</p>
+<h3 id="maturity-dates">Maturity dates</h3>
+<ul>
+<li><strong>Term deposit or loan in months</strong>: <code>=EDATE(Start, Tenor_months)</code>. A 36-month FD booked 15-Jul-2025 matures 15-Jul-2028.</li>
+<li><strong>In days</strong>: plain addition — a 400-day deposit matures <code>=Start + 400</code>.</li>
+<li><strong>Month-end instruments</strong>: an NCD issued 31-Aug-2025 with semi-annual coupons pays on 28-Feb and 31-Aug. <code>EDATE(31-Aug-2025, 6)</code> gives 28-Feb-2026 correctly, but chaining EDATE from <em>that</em> result gives 28-Aug-2026. Always offset from the original date (<code>EDATE(Issue, 6*k)</code>) or, for month-end conventions, use <code>EOMONTH(Issue, 6*k)</code>.</li>
+</ul>
+<h3 id="due-dates">Due dates</h3>
+<table>
+<thead>
+<tr>
+<th>Due date rule</th>
+<th>Formula</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Invoice date + 45 days credit</td>
+<td><code>=InvDate + 45</code></td>
+</tr>
+<tr>
+<td>End of month following invoice (EOM + 30 style)</td>
+<td><code>=EOMONTH(InvDate, 1)</code></td>
+</tr>
+<tr>
+<td>TDS deposit: 7th of next month (30 April for March deductions, Rule 30)</td>
+<td><code>=IF(MONTH(d)=3, DATE(YEAR(d), 4, 30), EOMONTH(d, 0) + 7)</code></td>
+</tr>
+<tr>
+<td>GSTR-3B (monthly filers, 20th of next month)</td>
+<td><code>=EOMONTH(d, 0) + 20</code></td>
+</tr>
+<tr>
+<td>Quarterly results (LODR, 45 days)</td>
+<td><code>=EOMONTH(d, MOD(3-MONTH(d),3)) + 45</code></td>
+</tr>
+</tbody>
+</table>
+<p>For MSME vendors, Sec 15 of the MSMED Act 2006 caps the credit period at 45 days (15 days if no agreement), and Sec 43B(h) of the Income-tax Act (from FY 2023-24) disallows the deduction for amounts unpaid beyond that limit at year-end. A due-date column <code>=InvDate + MIN(AgreedDays, 45)</code> plus a flag <code>=AND(IsMSME, PayDate &gt; Due)</code> is a standard year-end tax-audit schedule. Due dates falling on holidays may need WORKDAY adjustment (s07); statutory deadlines are sometimes extended by CBDT/CBIC circulars, so keep overrides as inputs.</p>
+<h3 id="illustration-maturity-and-accrual-cut-off">Illustration: maturity and accrual cut-off</h3>
+<p>A company places a ₹2 crore deposit on 20-Jan-2026 for 6 months at 7.1%.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Formula</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Maturity</td>
+<td><code>=EDATE(DATE(2026,1,20), 6)</code></td>
+<td>20-Jul-2026</td>
+</tr>
+<tr>
+<td>FY-end</td>
+<td><code>=DATE(2026,3,31)</code></td>
+<td>31-Mar-2026</td>
+</tr>
+<tr>
+<td>Days to FY-end</td>
+<td><code>=FYEnd - Start</code></td>
+<td>70</td>
+</tr>
+<tr>
+<td>Accrued interest at FY-end (actual/365)</td>
+<td><code>=20000000 * 7.1% * 70/365</code></td>
+<td>₹2,72,329</td>
+</tr>
+</tbody>
+</table>
+<p>The accrual uses a day count (s02); the maturity uses EDATE. Mixing them — e.g. maturity as <code>Start + 180</code> — gives 19-Jul-2026, one day early.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Month-end anchors.</strong> EDATE from the 29th–31st clips to shorter month-ends; decide whether the contract uses "same date" or "last business day of month" conventions and build accordingly.</li>
+<li><strong>Leap years.</strong> EOMONTH(d, 0) for any February 2028 date returns 29-Feb-2028 automatically; day-count calculations must use the right basis (s02).</li>
+<li><strong>Text dates.</strong> ERP exports often bring dates as text ("17.08.2025"). EOMONTH on text returns #VALUE!; convert with DATEVALUE (locale-sensitive) or Power Query.</li>
+<li><strong>Time stamps.</strong> A posting date with a time (17-Aug-2025 18:30) still works in EOMONTH, but criteria such as <code>"&lt;="&amp;C$4</code> exclude anything after midnight on the month-end. Strip times with INT, or use <code>"&lt;"&amp;C$4+1</code>.</li>
+<li><strong>Statutory dates change.</strong> Due dates in tax and LODR rules are amended and extended frequently — store them as an input table rather than embedding numbers like 7 or 45 in formulas.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>EOMONTH(d, 0) gives month-end; EOMONTH(d, −1)+1 gives month-start; EDATE(d, n) keeps the day-of-month.</li>
+<li><code>EOMONTH(d, MOD(3-MONTH(d),3))</code> returns the quarter-end, valid for Indian FY quarters.</li>
+<li>Compute maturities by offsetting from the original date, never by chaining EDATE.</li>
+<li>Due-date rules (credit terms, TDS, GST, LODR, MSMED Act) are date derivations; keep their parameters as inputs.</li>
+<li>SUMIFS periods should be date ranges built from month-end headers.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-date-derivations-l1">Q1. Date derivations [L1]</h3>
+<p>For d = 29-Feb-2028, write formulas and state the expected outputs for: (a) month-end; (b) month-start; (c) quarter-end; (d) same date 12 months later; (e) the previous quarter-end.</p>
+<h3 id="q2-msme-43bh-schedule-l2">Q2. MSME 43B(h) schedule [L2]</h3>
+<p>The AP ledger at 31-Mar-2026 shows four MSME invoices: ₹4.2 lakh dated 10-Jan-2026 (agreed credit 60 days), ₹1.8 lakh dated 20-Feb-2026 (no written agreement), ₹6.5 lakh dated 25-Feb-2026 (agreed 30 days), ₹3.0 lakh dated 15-Mar-2026 (agreed 45 days). None is paid by 31-Mar-2026. Build the due-date and flag formulas and identify which invoices are at risk of disallowance if unpaid by the relevant date.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> The allowed period is the lower of the agreed period and 45 days, or 15 days where there is no agreement.</p>
+</blockquote>
+<h3 id="q3-ncd-coupon-calendar-l2">Q3. NCD coupon calendar [L2]</h3>
+<p>An NCD of ₹50 crore is issued on 31-May-2025 with quarterly coupons and a 3-year tenor. Write a single formula that spills all coupon dates using month-end convention, and explain what would go wrong with <code>=EDATE(previous_coupon_cell, 3)</code> copied down.</p>
+<h3 id="q4-tds-and-gst-due-date-generator-l2">Q4. TDS and GST due-date generator [L2]</h3>
+<p>Given a column of deduction dates spanning FY26, write formulas for the TDS deposit due date and the GSTR-3B due date for each row, handle the March exception for TDS, and describe how you would let the user override a due date when a government extension is announced.</p>
+<h3 id="q5-cut-off-review-l3">Q5. Cut-off review [L3]</h3>
+<p>During a year-end audit you find the client's interest accrual schedule computes the FY-end accrual period as <code>=EDATE(Start, 3) - Start</code> for all deposits regardless of the actual FY-end. Explain the misstatement this creates, how you would quantify it across 120 deposits, and the corrected formula design.</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← Financial and date functions</a><a class="next" href="S02_Day_Count_Conventions_with_YEARFRAC_Bases_04.html">Day-Count Conventions with YEARFRAC Bases 0–4 →</a></nav>
+</main></div></body></html>

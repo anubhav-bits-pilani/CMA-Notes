@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Alignment Between Bank and Book · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C06_Sign_Alignment_Between_Bank_and_Book.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T5 · Merging, appending and reconciliation…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Merging, appending and reconciliation joins</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Append_vs_Merge_Union_vs_Join_with_SQL_Analogies.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S01_Append_vs_Merge_Union_vs_Join_with_SQL_Analogies.html">Append vs Merge: Union vs Join with SQL Analogies</a></li><li><a href="../subtopics/S02_The_Six_Join_Kinds_and_Their_Role_in_a.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S02_The_Six_Join_Kinds_and_Their_Role_in_a.html">The Six Join Kinds and Their Role in a Reconciliation</a></li><li><a href="../subtopics/S03_Bank_vs_Book_Matching_on_Amount_Reference_and_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S03_Bank_vs_Book_Matching_on_Amount_Reference_and_Date.html">Bank vs Book Matching on Amount, Reference and Date Window</a></li><li><a href="../subtopics/S04_Normalising_Composite_Keys_Before_Merging.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S04_Normalising_Composite_Keys_Before_Merging.html">Normalising Composite Keys Before Merging</a></li><li><a href="../subtopics/S05_Fuzzy_Merge_for_Vendor_and_Customer_Names.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S05_Fuzzy_Merge_for_Vendor_and_Customer_Names.html">Fuzzy Merge for Vendor and Customer Names</a></li><li><a href="../subtopics/S06_Repeated_Identical_Amounts_Sequence_Keys_for_One.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S06_Repeated_Identical_Amounts_Sequence_Keys_for_One.html">Repeated Identical Amounts: Sequence Keys for One-to-One Matching</a></li><li><a href="../subtopics/S07_Other_Reconciliations_GSTR_2B_AR_Control_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S07_Other_Reconciliations_GSTR_2B_AR_Control_and.html">Other Reconciliations: GSTR-2B, AR Control and Intercompany</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_LeftAnti_Join_Items_in_the_Bank_but_Not_in_the.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C01_LeftAnti_Join_Items_in_the_Bank_but_Not_in_the.html">LeftAnti Join: Items in the Bank but Not in the Books</a></li><li><a href="C02_RightAnti_Join_Items_in_the_Books_but_Not_in_the.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C02_RightAnti_Join_Items_in_the_Books_but_Not_in_the.html">RightAnti Join: Items in the Books but Not in the Bank</a></li><li><a href="C03_Expanding_Merged_Columns_with_Prefixed_Names.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C03_Expanding_Merged_Columns_with_Prefixed_Names.html">Expanding Merged Columns with Prefixed Names</a></li><li><a href="C04_TableFuzzyNestedJoin_Syntax_and_Options.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C04_TableFuzzyNestedJoin_Syntax_and_Options.html">Table.FuzzyNestedJoin Syntax and Options</a></li><li><a href="C05_Duplicate_Safe_Keys_with_Group_By_and_Index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C05_Duplicate_Safe_Keys_with_Group_By_and_Index.html">Duplicate-Safe Keys with Group By and Index</a></li><li><a href="C06_Sign_Alignment_Between_Bank_and_Book.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C06_Sign_Alignment_Between_Bank_and_Book.html">Sign Alignment Between Bank and Book</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Sign Alignment Between Bank and Book</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Sign alignment: bank credits equal book debits, so flip one side with <code>Amount * -1</code> before matching</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>The bank statement is prepared from the <strong>bank's</strong> books, where the customer's account is a liability of the bank. The company's bank ledger is an asset in the <strong>company's</strong> books. Therefore the same transaction has opposite Dr/Cr labels:</p>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Bank statement (bank's view)</th>
+<th>Company bank ledger</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customer receipt</td>
+<td>Credit (deposit)</td>
+<td>Debit</td>
+</tr>
+<tr>
+<td>Vendor payment</td>
+<td>Debit (withdrawal)</td>
+<td>Credit</td>
+</tr>
+</tbody>
+</table>
+<p>If each side's amount is computed as "Debit − Credit" in its own records, then</p>
+<p>\[
+A_{\text{bank}} = -A_{\text{book}}
+\]</p>
+<p>where \(A_{\text{bank}} = \text{Debit}_{\text{bank}} - \text{Credit}_{\text{bank}}\) per the statement and \(A_{\text{book}} = \text{Debit}_{\text{book}} - \text{Credit}_{\text{book}}\) per the bank ledger. Matching requires multiplying one side by \(-1\):</p>
+<pre><code class="language-m">BankAligned = Table.AddColumn(Bank, &quot;AmtAligned&quot;, each -1 * (([Debit] ?? 0) - ([Credit] ?? 0)), type number)
+</code></pre>
+<h2 id="explanation">Explanation</h2>
+<p>Alignment converts both sides to one convention — usually <strong>the company's view</strong>: positive = inflow (book debit, bank credit/deposit), negative = outflow (book credit, bank debit/withdrawal). Equivalent ways:</p>
+<ul>
+<li>Compute bank amount directly as <code>Deposit − Withdrawal</code> (already in the company's view) and book amount as <code>Debit − Credit</code>. No flip is needed because the flip is built into the formula.</li>
+<li>Compute both as Dr − Cr in their own records and multiply the bank side by \(-1\), as in the concept.</li>
+</ul>
+<p>Whichever you choose, state it in a step name (<code>AmtAligned_CompanyView</code>) and apply it before keys, sequence numbers and anti-joins. Misalignment produces zero matches on amount (every receipt of ₹50,000 is +50,000 on one side and −50,000 on the other) — and, worse, a sign-insensitive workaround such as matching on <code>Number.Abs</code> pairs a ₹50,000 receipt with an unrelated ₹50,000 payment.</p>
+<p>The same logic applies to other reconciliations: intercompany (A's receivable is a debit, B's payable is a credit — flip one side); customer statements vs AR ledger (the customer's books show the company as a creditor); vendor confirmations vs AP; and GSTR-2B credit notes (negative ITC) vs purchase register debit notes.</p>
+<p>Use parentheses carefully with <code>??</code>: <code>([Debit] ?? 0) - ([Credit] ?? 0)</code>. Without them, <code>[Debit] ?? 0 - [Credit] ?? 0</code> parses as <code>[Debit] ?? (0 - [Credit]) ?? 0</code> because <code>??</code> has lower precedence than subtraction.</p>
+<h2 id="illustration">Illustration</h2>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Description</th>
+<th>Debit</th>
+<th>Credit</th>
+<th>Dr − Cr</th>
+<th>Aligned (company view)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bank statement</td>
+<td>NEFT from Sharma Traders</td>
+<td></td>
+<td>2,36,000</td>
+<td>−2,36,000</td>
+<td>+2,36,000 (flipped)</td>
+</tr>
+<tr>
+<td>Book ledger</td>
+<td>Receipt from Sharma Traders</td>
+<td>2,36,000</td>
+<td></td>
+<td>+2,36,000</td>
+<td>+2,36,000</td>
+</tr>
+<tr>
+<td>Bank statement</td>
+<td>Cheque 000512 paid</td>
+<td>85,000</td>
+<td></td>
+<td>+85,000</td>
+<td>−85,000 (flipped)</td>
+</tr>
+<tr>
+<td>Book ledger</td>
+<td>Payment to Gupta Steel</td>
+<td></td>
+<td>85,000</td>
+<td>−85,000</td>
+<td>−85,000</td>
+</tr>
+</tbody>
+</table>
+<p>After alignment both pairs have equal amounts and match on Ref + AmtAligned.</p>
+<h2 id="connections">Connections</h2>
+<p>Subtopic s03 (bank vs book matching), s06 and c05 (sequence keys must be computed after alignment), s07 (intercompany and GST sign conventions). Weeks 1–4 cover Dr/Cr conventions and BRS logic. Topic t6's concept on <code>([Debit] ?? 0) - ([Credit] ?? 0)</code> explains the operator-precedence trap used here.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-align-these-amounts-l1">Q1. Align these amounts [L1]</h3>
+<p>Compute the aligned (company view) amount for: (a) bank statement withdrawal ₹4,72,000; (b) bank ledger credit ₹4,72,000; (c) bank statement deposit ₹19,800; (d) bank ledger debit ₹19,800. Identify which pairs should match.</p>
+<h3 id="q2-intercompany-sign-design-l2">Q2. Intercompany sign design [L2]</h3>
+<p>Entity A exports its TB with Dr positive and Cr negative; Entity B exports separate Debit and Credit columns. Write M for both sides that produces an aligned amount where A's receivable from B and B's payable to A appear with the same sign, and explain your convention.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Decide first whose view is "positive", then derive each side's formula.</p>
+</blockquote>
+<h3 id="q3-the-numberabs-shortcut-l2">Q3. The Number.Abs shortcut [L2]</h3>
+<p>A colleague matches bank and book on <code>Number.Abs(Amount)</code> to avoid thinking about signs. Construct a small example (four transactions) where this produces a wrong match and an incorrect BRS, and explain why the error would not be detected by match-rate statistics.</p></section>
+<nav class="pager"><a class="prev" href="C05_Duplicate_Safe_Keys_with_Group_By_and_Index.html">← Duplicate-Safe Keys with Group By and Index</a><a class="next" href="../../T6_Custom_columns_and_fiscal_logic_in_M/index.html">Custom columns and fiscal logic in M →</a></nav>
+</main></div></body></html>

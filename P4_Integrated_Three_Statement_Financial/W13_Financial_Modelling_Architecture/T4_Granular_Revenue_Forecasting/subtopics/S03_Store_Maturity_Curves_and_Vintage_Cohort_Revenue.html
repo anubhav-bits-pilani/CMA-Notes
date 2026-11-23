@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Store Maturity Curves and Vintage Cohort Revenue Builds · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S03_Store_Maturity_Curves_and_Vintage_Cohort_Revenue.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T4 · Granular Revenue Forecasting</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Granular Revenue Forecasting</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Volume_Price_Mix_Revenue_Decomposition_UVG.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S01_Volume_Price_Mix_Revenue_Decomposition_UVG.html">Volume × Price × Mix Revenue Decomposition (UVG, Realisation, Mix)</a></li><li><a href="S02_Store_Rollout_Revenue_Build_Stores_Area_Revenue.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S02_Store_Rollout_Revenue_Build_Stores_Area_Revenue.html">Store Rollout Revenue Build: Stores, Area, Revenue per Sq Ft, LFL</a></li><li><a href="S03_Store_Maturity_Curves_and_Vintage_Cohort_Revenue.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S03_Store_Maturity_Curves_and_Vintage_Cohort_Revenue.html">Store Maturity Curves and Vintage Cohort Revenue Builds</a></li><li><a href="S04_Capacity_Led_Revenue_Build_Capacity_Utilisation.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S04_Capacity_Led_Revenue_Build_Capacity_Utilisation.html">Capacity-Led Revenue Build: Capacity, Utilisation, Realisation</a></li><li><a href="S05_Customer_Cohort_and_ARPU_Revenue_Models_with.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S05_Customer_Cohort_and_ARPU_Revenue_Models_with.html">Customer Cohort and ARPU Revenue Models with Retention Curves</a></li><li><a href="S06_Segment_Revenue_Builds_Trent_and_Pidilite_Case.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S06_Segment_Revenue_Builds_Trent_and_Pidilite_Case.html">Segment Revenue Builds: Trent and Pidilite Case Structures</a></li><li><a href="S07_Top_Down_Revenue_Cross_Check_Market_Size_Share_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S07_Top_Down_Revenue_Cross_Check_Market_Size_Share_and.html">Top-Down Revenue Cross-Check: Market Size, Share and Nominal GDP</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Revenue_Identity_Volume_Realisation_and_Compounded.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C01_Revenue_Identity_Volume_Realisation_and_Compounded.html">Revenue Identity: Volume × Realisation and Compounded Growth</a></li><li><a href="../concepts/C02_Revenue_Bearing_Stores_Average_and_Timing_Weighted.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C02_Revenue_Bearing_Stores_Average_and_Timing_Weighted.html">Revenue-Bearing Stores: Average and Timing-Weighted Counts</a></li><li><a href="../concepts/C03_Retail_Revenue_Average_Area_Revenue_per_Sq_Ft_with.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C03_Retail_Revenue_Average_Area_Revenue_per_Sq_Ft_with.html">Retail Revenue: Average Area × Revenue per Sq Ft with LFL</a></li><li><a href="../concepts/C04_Capacity_Revenue_Capacity_Utilisation_Price_with_a.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C04_Capacity_Revenue_Capacity_Utilisation_Price_with_a.html">Capacity Revenue: Capacity × Utilisation × Price with a Practical Cap</a></li><li><a href="../concepts/C05_Cohort_Revenue_Initial_Customers_Retention_by_Age.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C05_Cohort_Revenue_Initial_Customers_Retention_by_Age.html">Cohort Revenue: Initial Customers × Retention by Age × ARPU by Age</a></li><li><a href="../concepts/C06_Ind_AS_115_Revenue_Basis_Net_of_GST_Discounts_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C06_Ind_AS_115_Revenue_Basis_Net_of_GST_Discounts_and.html">Ind AS 115 Revenue Basis: Net of GST, Discounts and Variable Consideration</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Store Maturity Curves and Vintage Cohort Revenue Builds</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Store maturity curve with vintage cohorts: new stores ramp to mature throughput over 2–3 years</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A new store does not open at mature productivity. Footfall builds as the catchment learns about the store,
+assortment is tuned to local demand, and staff learn the location. In Indian apparel and grocery retail, a new
+store typically delivers 55–75% of mature revenue per sq ft in its first full year, 80–90% in year two and reaches
+maturity in year three. For a rapidly expanding chain — Zudio has added well over 150 stores a year recently — a
+large share of the fleet is always immature. Applying mature density to the whole fleet overstates revenue;
+applying the reported blended density understates future growth as recent vintages mature. A vintage (cohort)
+build resolves both errors and gives a more defensible answer to the question every analyst asks of a high-growth
+retailer: how much growth is "baked in" from stores already opened?</p>
+<p>The same logic underlies capacity ramp-ups (a new plant at 50% utilisation in year one), branch maturity in NBFCs
+and microfinance, and new-customer cohorts in subscription businesses (s05).</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="vintage-cohort-definition">Vintage cohort definition</h3>
+<p>A vintage is the set of stores opened in the same financial year. Each vintage carries:</p>
+<ul>
+<li><strong>Number of stores</strong> and <strong>area</strong> at opening (net of any later closures in that vintage).</li>
+<li><strong>Age</strong> in year \(t\): \(t - \text{vintage year}\), with age 0 being the opening year.</li>
+<li><strong>Maturity factor</strong> \(m_{a}\): revenue per sq ft at age \(a\) as a fraction of mature revenue per sq ft.</li>
+</ul>
+<p>The mature stores (vintages old enough to be at full throughput) form one block whose density rolls forward at
+LFL. Revenue for year \(t\):</p>
+<p>\[
+R_t = \sum_{v} A_{v} \times w_{v,t} \times m_{t-v} \times D_t
+\]</p>
+<p>where \(A_v\) is area of vintage \(v\), \(w_{v,t}\) is the fraction of year \(t\) the vintage operated (about 0.5
+in the opening year if openings are evenly spread; 1 thereafter), \(m_{t-v}\) is the maturity factor at age
+\(t-v\), and \(D_t\) is mature revenue per sq ft in year \(t\) (rolling forward with LFL).</p>
+<h3 id="typical-maturity-curve">Typical maturity curve</h3>
+<table>
+<thead>
+<tr>
+<th>Age (full years since opening)</th>
+<th>Opening year (age 0)</th>
+<th>Age 1</th>
+<th>Age 2</th>
+<th>Age 3+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Maturity factor \(m_a\)</td>
+<td>65%</td>
+<td>85%</td>
+<td>95%</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Time weight in year</td>
+<td>~0.5</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+</tbody>
+</table>
+<p>Calibrate the curve using: (a) management commentary on payback and new-store productivity; (b) the gap between
+blended density and LFL-based mature density in history; (c) peer disclosures. Curves differ by format: value
+fashion in Tier-2/3 towns often ramps faster (impulse, price-led traffic) than premium formats in malls, which
+depend on mall footfall building up.</p>
+<h3 id="the-cohort-triangle-in-excel">The cohort triangle in Excel</h3>
+<p>The standard layout is a triangle: vintages down the rows, forecast years across the columns.</p>
+<table>
+<thead>
+<tr>
+<th>Vintage</th>
+<th>Stores</th>
+<th>Area (mn sq ft)</th>
+<th>FY25A</th>
+<th>FY26E</th>
+<th>FY27E</th>
+<th>FY28E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mature (≤ FY22)</td>
+<td>250</td>
+<td>2.00</td>
+<td>100%</td>
+<td>100%</td>
+<td>100%</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>FY23</td>
+<td>60</td>
+<td>0.48</td>
+<td>95%</td>
+<td>100%</td>
+<td>100%</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>FY24</td>
+<td>90</td>
+<td>0.72</td>
+<td>85%</td>
+<td>95%</td>
+<td>100%</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>FY25</td>
+<td>160</td>
+<td>1.28</td>
+<td>65% × 0.5</td>
+<td>85%</td>
+<td>95%</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>FY26</td>
+<td>180</td>
+<td>1.44</td>
+<td>—</td>
+<td>65% × 0.5</td>
+<td>85%</td>
+<td>95%</td>
+</tr>
+</tbody>
+</table>
+<p>The maturity factor in each cell is looked up from the curve using age, not typed:</p>
+<pre><code>=IF(Year&lt;Vintage, 0,
+    INDEX(Maturity_Curve, MIN(Year-Vintage+1, Max_Age+1)) * IF(Year=Vintage, Open_Year_Weight, 1))
+</code></pre>
+<p><code>Maturity_Curve</code> is a named input row (65%, 85%, 95%, 100%) and <code>Max_Age</code> caps the lookup so every vintage
+aged 3+ uses 100%. One formula fills the whole triangle — the age arithmetic replaces any hand-placed diagonal.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>Using the table above and mature density \(D\) of ₹15,000 per sq ft in FY26 (₹ crore = mn sq ft × ₹ psf ÷ 10):</p>
+<table>
+<thead>
+<tr>
+<th>Vintage</th>
+<th>Effective area FY26 (mn sq ft)</th>
+<th>Revenue FY26 (₹ crore)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mature + FY23</td>
+<td>2.48 × 100%</td>
+<td>3,720</td>
+</tr>
+<tr>
+<td>FY24</td>
+<td>0.72 × 95% = 0.684</td>
+<td>1,026</td>
+</tr>
+<tr>
+<td>FY25</td>
+<td>1.28 × 85% = 1.088</td>
+<td>1,632</td>
+</tr>
+<tr>
+<td>FY26</td>
+<td>1.44 × 65% × 0.5 = 0.468</td>
+<td>702</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>4.72</td>
+<td>7,080</td>
+</tr>
+</tbody>
+</table>
+<p>The fleet's "effective" area is 4.72 mn sq ft against average physical area of 5.20 mn sq ft [(4.48 + 5.92) ÷ 2],
+so blended revenue per sq ft is ₹13,615 — about 9% below mature density. As FY25 and FY26 vintages mature,
+blended density rises even with zero LFL. That embedded growth is what the cohort model makes visible.</p>
+<h3 id="linking-to-lfl">Linking to LFL</h3>
+<p>LFL (s02) applies to mature density \(D_t\). Immature stores grow faster than LFL simply by ramping. Companies
+usually exclude stores under 12 months old from LFL, so a store in its second year is inside the LFL base while
+still maturing — one reason reported LFL can exceed "true" mature productivity growth during rapid expansion.
+Document whether your curve's year-2 step-up is already captured in reported LFL to avoid counting it twice.</p>
+<h3 id="ramp-up-costs-and-new-store-economics">Ramp-up costs and new-store economics</h3>
+<p>The cohort build should mirror cost: pre-opening costs (expensed under Ind AS — not capitalisable as PPE unless
+directly attributable), fit-out capex, rent (ROU asset from lease commencement), and staff from day one. New-store
+EBITDA margins are therefore lower than mature margins — a fast-growing chain's consolidated margin is diluted by
+immature stores. Payback period (fit-out capex + working capital ÷ annual store EBITDA at maturity) is the metric
+management quotes; 18–36 months is typical for value retail.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Cannibalisation.</strong> New stores in an existing catchment take revenue from nearby stores; LFL of mature stores
+  falls. Apply a cannibalisation haircut to mature LFL when density of openings in existing cities rises.</li>
+<li><strong>Vintage closures.</strong> Underperforming stores are closed in years 2–3; closures should be deducted from the
+  relevant vintage, not the mature base, or the maturity mix is distorted.</li>
+<li><strong>New city vs infill.</strong> New-city stores ramp slower (brand awareness) but cannibalise less. Separate curves by
+  store type if the data supports it.</li>
+<li><strong>Curve that overshoots.</strong> Some stores peak above long-run maturity after a launch "honeymoon"; a curve above
+  100% at age 1 needs evidence.</li>
+<li><strong>Data scarcity.</strong> Most listed companies do not disclose store-level data. Calibrate to the blended density gap
+  and state the curve as a key assumption on the assumption log; flex it in Bear/Bull (Topic 6).</li>
+<li><strong>Exogenous shocks.</strong> FY21 lockdowns broke all maturity patterns; exclude or normalise those vintages when
+  calibrating.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>New stores ramp to mature density over 2–3 years; a vintage build captures the ramp explicitly.</li>
+<li>Revenue = Σ vintage area × time weight × maturity factor × mature density.</li>
+<li>One age-based lookup formula fills the cohort triangle; never hand-place diagonal factors.</li>
+<li>Blended density below mature density signals embedded growth as recent vintages mature.</li>
+<li>Avoid double-counting ramp-up already inside reported LFL.</li>
+<li>Mirror the revenue ramp with pre-opening costs and diluted new-store margins.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-cohort-triangle-for-three-years-l2">Q1. Cohort triangle for three years [L2]</h3>
+<p>A retailer has 1.80 mn sq ft of mature area at 31 March 2025 and plans additions of 0.50, 0.60 and 0.70 mn sq ft
+in FY26, FY27 and FY28 (openings evenly spread). The maturity curve is 60%, 80%, 95%, 100% (age 0 to 3), with
+opening-year time weight 0.5. Mature density is ₹12,000 per sq ft in FY26 growing at 5% LFL. Build revenue by
+vintage for FY26–FY28 in ₹ crore and compute blended revenue per sq ft.</p>
+<h3 id="q2-excel-lookup-design-l2">Q2. Excel lookup design [L2]</h3>
+<p>Write a single Excel formula, using named ranges for the vintage year, model year, maturity curve and maximum age,
+that returns the maturity factor for any cell of a vintage triangle, including zero before opening and the
+half-year weight in the opening year.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Combine an age calculation with INDEX and MIN, then multiply by an opening-year flag.</p>
+</blockquote>
+<h3 id="q3-calibrating-a-curve-from-disclosed-data-l3">Q3. Calibrating a curve from disclosed data [L3]</h3>
+<p>A listed value retailer discloses only total area and revenue each year, plus an annual LFL figure. Over FY22–FY25,
+blended revenue per sq ft grew 3% a year while LFL averaged 7%. Explain what this gap implies about the maturity
+curve, and set out a calibration approach and its limitations.</p>
+<h3 id="q4-judgement-cannibalisation-l3">Q4. Judgement — cannibalisation [L3]</h3>
+<p>Management guides 200 new stores in FY26, 60% of them in cities where the company already has 10+ stores. How
+would you reflect cannibalisation in the cohort model, and what evidence from concalls or store-level data would
+you seek?</p></section>
+<nav class="pager"><a class="prev" href="S02_Store_Rollout_Revenue_Build_Stores_Area_Revenue.html">← Store Rollout Revenue Build: Stores, Area, Revenue per Sq…</a><a class="next" href="S04_Capacity_Led_Revenue_Build_Capacity_Utilisation.html">Capacity-Led Revenue Build: Capacity, Utilisation,… →</a></nav>
+</main></div></body></html>

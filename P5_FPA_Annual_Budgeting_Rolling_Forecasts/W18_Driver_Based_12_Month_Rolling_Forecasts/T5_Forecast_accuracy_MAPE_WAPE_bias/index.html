@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forecast accuracy: MAPE, WAPE, bias · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/index.html" data-kind="topic">
+<header class="top"><a class="brand" href="../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../index.html">Home</a> <span>›</span> <a href="../../index.html">Phase 5</a> <span>›</span> <a href="../index.html">Week 18</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">Week 18</a></div><ul class="side-links"><li><a href="../T1_1218_month_rolling_forecast_timeline/index.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/index.html">T1 · 12/18-month rolling forecast timeline mechanics</a></li><li><a href="../T2_YTD_actual_YTG_forecast_Latest_Estimate/index.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T2_YTD_actual_YTG_forecast_Latest_Estimate/index.html">T2 · YTD actual + YTG forecast Latest Estimate</a></li><li><a href="../T3_Driver_based_operational_forecasting/index.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T3_Driver_based_operational_forecasting/index.html">T3 · Driver-based operational forecasting</a></li><li><a href="../T4_Version_and_scenario_governance/index.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/index.html">T4 · Version and scenario governance</a></li><li><a href="index.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/index.html">T5 · Forecast accuracy: MAPE, WAPE, bias</a></li></ul></aside>
+<main class="content">
+<div class="kind">Topic</div>
+<h1>Forecast accuracy: MAPE, WAPE, bias</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<section class="index"><h2>Notes in this topic</h2><div class="cols"><div><h3>Subtopics</h3><ul class="links num"><li><a href="subtopics/S01_Forecast_Error_Metrics_MAD_MAPE_WAPE_RMSE_Bias.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S01_Forecast_Error_Metrics_MAD_MAPE_WAPE_RMSE_Bias.html">S01 · Forecast Error Metrics: MAD, MAPE, WAPE, RMSE, Bias, Tracking Signal</a></li><li><a href="subtopics/S02_Measurement_Lag_Lag_1_Lag_3_and_Lag_6_Forecast.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S02_Measurement_Lag_Lag_1_Lag_3_and_Lag_6_Forecast.html">S02 · Measurement Lag: Lag-1, Lag-3 and Lag-6 Forecast Accuracy</a></li><li><a href="subtopics/S03_Aggregation_Level_and_Error_Netting_in_Forecast.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S03_Aggregation_Level_and_Error_Netting_in_Forecast.html">S03 · Aggregation Level and Error Netting in Forecast Accuracy</a></li><li><a href="subtopics/S04_Detecting_Sandbagging_and_Over_Optimism_by.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S04_Detecting_Sandbagging_and_Over_Optimism_by.html">S04 · Detecting Sandbagging and Over-Optimism by Business Unit</a></li><li><a href="subtopics/S05_Forecast_Value_Added_Does_Each_Step_Beat_the_Naive.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S05_Forecast_Value_Added_Does_Each_Step_Beat_the_Naive.html">S05 · Forecast Value Added: Does Each Step Beat the Naive Baseline?</a></li><li><a href="subtopics/S06_Accuracy_Dashboards_Accountability_and_Tolerance.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/subtopics/S06_Accuracy_Dashboards_Accountability_and_Tolerance.html">S06 · Accuracy Dashboards, Accountability and Tolerance Bands per BU</a></li></ul></div><div><h3>Key concepts & formulas</h3><ul class="links num"><li><a href="concepts/C01_MAPE_Mean_Absolute_Percentage_Error_and_Its.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C01_MAPE_Mean_Absolute_Percentage_Error_and_Its.html">C01 · MAPE: Mean Absolute Percentage Error and Its Weaknesses</a></li><li><a href="concepts/C02_WAPE_and_Forecast_Accuracy_Percentage.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C02_WAPE_and_Forecast_Accuracy_Percentage.html">C02 · WAPE and Forecast Accuracy Percentage</a></li><li><a href="concepts/C03_Bias_Percentage_Direction_of_Forecast_Error.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C03_Bias_Percentage_Direction_of_Forecast_Error.html">C03 · Bias Percentage: Direction of Forecast Error</a></li><li><a href="concepts/C04_MAD_and_the_Tracking_Signal_for_Systematic_Bias.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C04_MAD_and_the_Tracking_Signal_for_Systematic_Bias.html">C04 · MAD and the Tracking Signal for Systematic Bias</a></li><li><a href="concepts/C05_RMSE_Root_Mean_Square_Error_and_Large_Miss_Penalty.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C05_RMSE_Root_Mean_Square_Error_and_Large_Miss_Penalty.html">C05 · RMSE: Root Mean Square Error and Large-Miss Penalty</a></li><li><a href="concepts/C06_Forecast_Value_Added_Formula_and_Interpretation.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T5_Forecast_accuracy_MAPE_WAPE_bias/concepts/C06_Forecast_Value_Added_Formula_and_Interpretation.html">C06 · Forecast Value Added Formula and Interpretation</a></li></ul></div></div></section><article class="note"><blockquote>
+<p><strong>Roadmap topic:</strong> Forecast Accuracy Tracking (MAPE / Bias): Measuring forecast error across business units to eliminate systematic sandbagging or over-optimism</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>A rolling forecast is only valuable if it is reliable enough to act on: to set production plans, release capex, give market guidance or decide whether to defer hiring. Forecast accuracy tracking closes the loop. It compares what each business unit said would happen with what actually happened, measures the size of the miss (accuracy) and its direction (bias), and does so consistently over time so that patterns — a BU that always under-calls revenue, a cost centre that always over-calls spend — become visible and can be fixed. In Indian companies with strong incentive linkage to AOP attainment, sandbagging (deliberately conservative revenue forecasts that make targets easy to beat) and its mirror image, over-optimism (forecasts that protect headcount or capex budgets), are both common; neither is detectable from a single month's variance.</p>
+<p>The topic builds a measurement system in layers. First, the <strong>error metrics</strong> themselves (s01) — MAD, MAPE, WAPE, RMSE, bias and tracking signal — each answering a different question and each with known failure modes (c01–c05). Second, the <strong>measurement lag</strong> (s02): accuracy is only meaningful against the forecast that was available when decisions were made, so we compare actuals with the forecast submitted one, three or six months earlier, which depends on the locked versions from Topic 4. Third, the <strong>aggregation level</strong> (s03): errors net off at higher levels, so a company-level accuracy of 98% can hide BUs that are each 15% wrong in opposite directions. Fourth, <strong>diagnosis</strong>: detecting sandbagging and over-optimism by BU (s04) and testing whether each human adjustment in the forecasting process actually improves on a naive or statistical baseline — Forecast Value Added (s05, c06). Finally, <strong>governance</strong>: dashboards, tolerance bands and accountability so the metrics change behaviour (s06).</p>
+<p>For FP&amp;A roles this topic is where the analyst moves from producing forecasts to managing the forecasting process. Interviewers ask "how do you know your forecast is any good?", "how would you spot a BU that is sandbagging?" and "why isn't MAPE enough?". The supply-chain world (demand planning, S&amp;OP) has used these metrics for decades; finance teams increasingly borrow them, adapted for financial lines such as revenue, gross margin, opex and cash.</p>
+<h2 id="concept-map">Concept map</h2>
+<table>
+<thead>
+<tr>
+<th>Subtopic / concept</th>
+<th>Role in the topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s01 Error metrics</td>
+<td>Defines MAD, MAPE, WAPE, RMSE, bias and tracking signal and when to use each</td>
+</tr>
+<tr>
+<td>s02 Measurement lag</td>
+<td>Compares actuals with forecasts made n months earlier (lag-1, lag-3, lag-6)</td>
+</tr>
+<tr>
+<td>s03 Aggregation level</td>
+<td>BU/product/account accuracy; how errors net off at higher levels</td>
+</tr>
+<tr>
+<td>s04 Sandbagging and over-optimism</td>
+<td>Persistent directional bias by BU; statistical and behavioural detection</td>
+</tr>
+<tr>
+<td>s05 Forecast Value Added</td>
+<td>Tests whether each process step beats a naive or statistical baseline</td>
+</tr>
+<tr>
+<td>s06 Dashboards and tolerance bands</td>
+<td>Accountability, thresholds per BU and reporting design</td>
+</tr>
+<tr>
+<td>c01 MAPE</td>
+<td>Average absolute % error; undefined at zero, skewed by small actuals</td>
+</tr>
+<tr>
+<td>c02 WAPE and accuracy %</td>
+<td>Volume-weighted absolute error; accuracy = 1 − WAPE floored at 0</td>
+</tr>
+<tr>
+<td>c03 Bias %</td>
+<td>Signed aggregate error; positive = over-forecast, negative = under-forecast</td>
+</tr>
+<tr>
+<td>c04 MAD and tracking signal</td>
+<td>Average absolute error and cumulative error ÷ MAD; flag at magnitude above 4</td>
+</tr>
+<tr>
+<td>c05 RMSE</td>
+<td>Root-mean-square error; penalises large misses</td>
+</tr>
+<tr>
+<td>c06 FVA</td>
+<td>Naive error minus submitted error; positive means the process adds value</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-concepts-to-study">Related concepts to study</h2>
+<h3 id="demand-planning-and-sop-accuracy-practices">Demand planning and S&amp;OP accuracy practices</h3>
+<p><em>Demand planning / S&amp;OP forecast accuracy practices (supply chain linkage)</em></p>
+<p>In Sales &amp; Operations Planning (S&amp;OP), demand planners forecast units by SKU-location and measure WAPE, bias and FVA at a fixed lag — typically the lag matching the production or procurement lead time (e.g., lag-2 for a plant with an eight-week planning horizon). The finance revenue forecast should be the S&amp;OP unit forecast multiplied by price, so the two processes must reconcile monthly. When finance's revenue forecast diverges from supply chain's unit plan, one of them is wrong — and accuracy tracking on both shows which. FMCG and pharma companies in India (with distributor-led secondary sales) commonly run monthly S&amp;OP cycles where the demand review precedes the financial reforecast. Borrow their discipline: fixed lag, consistent hierarchy, FVA by step.</p>
+<h3 id="dax-measures-for-mape-and-bias-week-11">DAX measures for MAPE and bias (Week 11)</h3>
+<p><em>→ Week 11: DAX measures for MAPE/bias by BU and lag</em></p>
+<p>In Power BI, store actuals and every locked forecast version in one fact table with a Lag column (months between version cutoff and target month). Measures then follow the formulas in c01–c03: for example <code>Abs Error = SUMX(Fact, ABS([Actual] - [Forecast]))</code>, <code>WAPE = DIVIDE([Abs Error], SUMX(Fact, ABS([Actual])))</code> and <code>Bias % = DIVIDE(SUM(Fact[Forecast]) - SUM(Fact[Actual]), SUM(Fact[Actual]))</code>. Because <code>SUMX</code> iterates at row level before aggregating, the absolute value is taken at the granularity of the row, preventing BU errors from netting. Slicers on Lag, BU and Account then reproduce the s02 and s03 analyses interactively; a calculation group can switch the metric.</p>
+<h3 id="behavioural-finance-anchoring-optimism-and-sandbagging">Behavioural finance: anchoring, optimism and sandbagging</h3>
+<p><em>Behavioural finance: anchoring, optimism bias, incentive-driven sandbagging</em></p>
+<p>Forecast errors are rarely random. <strong>Anchoring</strong> makes forecasters stick close to the budget or last forecast and under-adjust to new information (so errors are autocorrelated). <strong>Optimism bias</strong> and the planning fallacy make project and new-product forecasts systematically high. <strong>Incentive-driven sandbagging</strong> arises when bonuses pay for beating a forecast or budget that the forecaster helps set, so the rational strategy is to under-call revenue and over-call cost. Recognising the mechanism suggests the remedy: anchoring is reduced by starting from statistical baselines; optimism by reference-class data; sandbagging by decoupling incentives from self-set forecasts and publishing bias by BU.</p>
+<h3 id="naive-forecasts-as-benchmarks">Naive forecasts as benchmarks</h3>
+<p><em>Naive forecasts (last period, seasonal naive) as benchmarks</em></p>
+<p>A naive forecast uses no judgement: <strong>last period</strong> (next month = this month), <strong>seasonal naive</strong> (next October = last October, possibly scaled by YTD growth) or a simple moving average. They cost nothing and set the minimum standard. If a BU's elaborate bottom-up forecast has a higher WAPE than seasonal naive, the process is destroying value — that is the essence of FVA (s05, c06). For Indian businesses with strong festive (Diwali, Navratri) and fiscal-year-end (March) seasonality, seasonal naive is usually a far tougher benchmark than last-period naive, and should be the default comparator for monthly revenue lines.</p>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<h3 id="reporting-mape-only">Reporting MAPE only</h3>
+<p><em>Reporting MAPE only, which hides direction; always pair with bias.</em></p>
+<p>MAPE uses absolute errors, so a BU that over-forecasts by 8% every month and one that alternates ±8% get the same MAPE — yet the first is systematically biased (fixable by recalibration) and the second is noisy. People report MAPE alone because it is the best-known metric. Correct treatment: always show an accuracy metric (WAPE or MAPE) alongside bias % and, for persistence, the tracking signal. Detect it in review by asking: "Is this BU's error mostly in one direction?" If the dashboard cannot answer, it is incomplete.</p>
+<h3 id="measuring-only-at-total-company-level">Measuring only at total-company level</h3>
+<p><em>Measuring accuracy at total-company level where BU errors offset.</em></p>
+<p>Company revenue forecast within 1% looks excellent, but if Exports was 12% over and Domestic 9% under, both forecasts were poor and the operational decisions taken on them (production allocation, working capital) were wrong. Netting occurs because signed errors cancel when lines are summed before taking the absolute value. Correct treatment: compute absolute errors at the decision level (BU, product group, key account) and then aggregate the absolute errors (s03). Detect it by comparing total-level WAPE with the sum-of-BU WAPE; a large gap signals offsetting errors.</p>
+<h3 id="comparing-actuals-to-the-latest-lag-0-forecast">Comparing actuals to the latest (lag-0) forecast</h3>
+<p><em>Comparing actuals to the latest (lag-0) forecast, which inflates accuracy.</em></p>
+<p>The forecast for September prepared after August close, or the "flash" updated in the last week of September, contains most of the answer; comparing September actuals against it makes accuracy look high. But production, procurement and guidance decisions were made on the forecast available one to six months earlier. Correct treatment: fix the measurement lag to the decision horizon (s02) and use locked versions (Topic 4). Detect it by checking which version each accuracy figure uses; if accuracy improves suspiciously when moving from quarterly to monthly reforecasts, the lag has probably shortened.</p>
+<h3 id="using-mape-on-low-volume-or-near-zero-lines">Using MAPE on low-volume or near-zero lines</h3>
+<p><em>Using MAPE on low-volume or near-zero lines, producing meaningless percentages.</em></p>
+<p>A new product with ₹2 lakh actual sales against a ₹10 lakh forecast shows a 400% APE, swamping the average; a line with zero actual makes MAPE undefined (division by zero). People do it because they apply one metric uniformly. Correct treatment: use WAPE (volume-weighted) for portfolios, exclude or separately report lines below a materiality threshold, use absolute ₹ error (MAD) for small lines and floor accuracy at 0. Detect it by sorting the APE column — a few extreme values driving the MAPE are the signature.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-bu-accuracy-diagnosis-l3">Q1. BU accuracy diagnosis [L3]</h3>
+<p>Kaveri Consumer Ltd has three BUs. Lag-3 revenue forecasts and actuals for Q2 FY26 (₹ crore):</p>
+<table>
+<thead>
+<tr>
+<th>BU</th>
+<th>Month</th>
+<th>Forecast</th>
+<th>Actual</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Foods</td>
+<td>Jul</td>
+<td>120</td>
+<td>132</td>
+</tr>
+<tr>
+<td>Foods</td>
+<td>Aug</td>
+<td>125</td>
+<td>138</td>
+</tr>
+<tr>
+<td>Foods</td>
+<td>Sep</td>
+<td>130</td>
+<td>141</td>
+</tr>
+<tr>
+<td>Personal care</td>
+<td>Jul</td>
+<td>80</td>
+<td>72</td>
+</tr>
+<tr>
+<td>Personal care</td>
+<td>Aug</td>
+<td>84</td>
+<td>76</td>
+</tr>
+<tr>
+<td>Personal care</td>
+<td>Sep</td>
+<td>88</td>
+<td>79</td>
+</tr>
+<tr>
+<td>Exports</td>
+<td>Jul</td>
+<td>12</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Exports</td>
+<td>Aug</td>
+<td>14</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Exports</td>
+<td>Sep</td>
+<td>15</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<p>(a) Compute MAPE, WAPE and bias % for each BU and for the company (aggregating absolute errors, and separately on company-level monthly totals). (b) Explain the difference between the two company-level WAPE figures. (c) Which BU shows signs of sandbagging and which of over-optimism? (d) Why is Exports' MAPE misleading? (e) Recommend the metric set and tolerance bands for the Board dashboard.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Compute errors row by row first; for the company-level total version, sum forecasts and actuals by month before taking absolute differences.</p>
+</blockquote>
+<h3 id="q2-designing-the-accuracy-tracker-l3">Q2. Designing the accuracy tracker [L3]</h3>
+<p>Specify the data model and Excel/Power BI build for a forecast-accuracy tracker that covers 4 BUs, 6 key accounts (revenue, gross margin, A&amp;P, employee cost, other opex, EBITDA), monthly forecasts from April 2025, and lag-1, lag-3 and lag-6 measurement. Include: fact-table columns, how the Lag column is computed from version cutoff and target month, the measures for WAPE, bias, tracking signal and FVA vs seasonal naive, the dashboard layout and the tolerance-band logic.</p>
+<h3 id="q3-tracking-signal-and-fva-case-l2">Q3. Tracking signal and FVA case [L2]</h3>
+<p>A B2B services BU's monthly revenue errors (Actual − Forecast, ₹ lakh) for Apr–Sep FY26 at lag-1 were: −18, −22, −15, −20, −25, −19. Monthly actuals were 410, 425, 418, 440, 452, 447. A seasonal-naive forecast had absolute errors of 30, 12, 28, 26, 18, 24. (a) Compute MAD, cumulative error, tracking signal, WAPE and bias %. (b) Compute FVA on a WAPE basis versus seasonal naive. (c) Write a short memo to the CFO interpreting the results and recommending actions.</p>
+<h3 id="q4-incentive-design-and-sandbagging-l3">Q4. Incentive design and sandbagging [L3]</h3>
+<p>The sales incentive of an NSE-listed building-materials company pays 100% bonus at 100% of the BU's own Q2 forecast and up to 150% for exceeding it. Over six quarters, the North BU's revenue bias % has been −7%, −9%, −6%, −8%, −10% and −7%. (a) Explain the behavioural mechanism. (b) Propose two changes to the incentive scheme and two process controls to reduce sandbagging. (c) Explain how you would present the evidence to the BU head constructively and how the Ind AS 19 bonus accrual might be affected.</p></section>
+<nav class="pager"><a class="prev" href="../T4_Version_and_scenario_governance/concepts/C05_Scenario_vs_Sensitivity_Coherent_Assumption_Sets.html">← Scenario vs Sensitivity: Coherent Assumption Sets vs…</a><a class="next" href="subtopics/S01_Forecast_Error_Metrics_MAD_MAPE_WAPE_RMSE_Bias.html">Forecast Error Metrics: MAD, MAPE, WAPE, RMSE, Bias,… →</a></nav>
+</main></div></body></html>

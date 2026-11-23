@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PY YTD, YTD Growth, MoM % and YoY % Measures · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S03_PY_YTD_YTD_Growth_MoM_and_YoY_Measures.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T4 · Time intelligence for April–March FY</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Time intelligence for April–March FY</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_YTD_QTD_and_MTD_Measures_for_an_AprilMarch_Fiscal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S01_YTD_QTD_and_MTD_Measures_for_an_AprilMarch_Fiscal.html">YTD, QTD and MTD Measures for an April–March Fiscal Year</a></li><li><a href="S02_SAMEPERIODLASTYEAR_vs_DATEADD_vs_PARALLELPERIOD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S02_SAMEPERIODLASTYEAR_vs_DATEADD_vs_PARALLELPERIOD.html">SAMEPERIODLASTYEAR vs DATEADD vs PARALLELPERIOD</a></li><li><a href="S03_PY_YTD_YTD_Growth_MoM_and_YoY_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S03_PY_YTD_YTD_Growth_MoM_and_YoY_Measures.html">PY YTD, YTD Growth, MoM % and YoY % Measures</a></li><li><a href="S04_Rolling_12_Month_and_Trailing_3_Month_Windows_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S04_Rolling_12_Month_and_Trailing_3_Month_Windows_with.html">Rolling 12-Month and Trailing 3-Month Windows with DATESINPERIOD</a></li><li><a href="S05_Capping_Time_Intelligence_at_the_Last_Actuals_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S05_Capping_Time_Intelligence_at_the_Last_Actuals_Date.html">Capping Time Intelligence at the Last Actuals Date</a></li><li><a href="S06_Time_Intelligence_Prerequisites_Marked_Contiguous.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S06_Time_Intelligence_Prerequisites_Marked_Contiguous.html">Time-Intelligence Prerequisites: Marked, Contiguous Date Table</a></li><li><a href="S07_Calculation_Groups_and_Field_Parameters_for_Time.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S07_Calculation_Groups_and_Field_Parameters_for_Time.html">Calculation Groups and Field Parameters for Time-Intelligence Views</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_TOTALYTD_with_331_Equals_CALCULATE_with_DATESYTD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C01_TOTALYTD_with_331_Equals_CALCULATE_with_DATESYTD.html">TOTALYTD with &quot;3/31&quot; Equals CALCULATE with DATESYTD</a></li><li><a href="../concepts/C02_PY_YTD_via_SAMEPERIODLASTYEAR_and_the_YoY_Measure.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C02_PY_YTD_via_SAMEPERIODLASTYEAR_and_the_YoY_Measure.html">PY YTD via SAMEPERIODLASTYEAR and the YoY % Measure</a></li><li><a href="../concepts/C03_Prior_Month_Actual_with_DATEADD_and_the_MoM.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C03_Prior_Month_Actual_with_DATEADD_and_the_MoM.html">Prior-Month Actual with DATEADD and the MoM % Measure</a></li><li><a href="../concepts/C04_Rolling_12_Month_Measure_with_DATESINPERIOD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C04_Rolling_12_Month_Measure_with_DATESINPERIOD.html">Rolling 12-Month Measure with DATESINPERIOD</a></li><li><a href="../concepts/C05_Last_Actual_Date_and_Capping_YTD_at_Posted_Data.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C05_Last_Actual_Date_and_Capping_YTD_at_Posted_Data.html">Last Actual Date and Capping YTD at Posted Data</a></li><li><a href="../concepts/C06_Locale_Parsing_of_the_Year_End_String_in_DATESYTD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C06_Locale_Parsing_of_the_Year_End_String_in_DATESYTD.html">Locale Parsing of the Year-End String in DATESYTD</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>PY YTD, YTD Growth, MoM % and YoY % Measures</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> PY YTD, YTD growth, MoM % and YoY % measures</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>The first page of almost every Indian MIS pack is a KPI strip: Revenue YTD ₹ x crore, +y% YoY; EBITDA margin;
+month-on-month trend. Analysts on the sell side compute the same YoY and QoQ growth from published SEBI results.
+In a model these numbers are <em>derived</em> measures built by branching from a small number of base measures. Getting
+the branching right — and blanking growth where it is meaningless — is what separates a usable dashboard from one
+the CFO stops trusting.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="measure-branching-tree">Measure branching tree</h3>
+<pre><code class="language-DAX">Actual       = SUM ( GL[Amount] )                                   -- base
+YTD Actual   = CALCULATE ( [Actual], DATESYTD ( 'Date'[Date], &quot;3/31&quot; ) )
+PY Actual    = CALCULATE ( [Actual], SAMEPERIODLASTYEAR ( 'Date'[Date] ) )
+PY YTD       = CALCULATE ( [YTD Actual], SAMEPERIODLASTYEAR ( 'Date'[Date] ) )
+PM Actual    = CALCULATE ( [Actual], DATEADD ( 'Date'[Date], -1, MONTH ) )
+
+YTD Growth ₹ = [YTD Actual] - [PY YTD]
+YoY %        = DIVIDE ( [YTD Actual] - [PY YTD], [PY YTD] )
+MoM ₹        = [Actual] - [PM Actual]
+MoM %        = DIVIDE ( [Actual] - [PM Actual], [PM Actual] )
+</code></pre>
+<p>Each derived measure references other measures, never raw columns, so a change to the base (say, excluding
+inter-company accounts) flows everywhere.</p>
+<h3 id="how-py-ytd-evaluates">How PY YTD evaluates</h3>
+<p><code>PY YTD = CALCULATE([YTD Actual], SAMEPERIODLASTYEAR('Date'[Date]))</code>. For a cell showing December 2025:</p>
+<ol>
+<li>Filter context: 1–31 December 2025.</li>
+<li><code>SAMEPERIODLASTYEAR</code> replaces it with 1–31 December 2024.</li>
+<li><code>[YTD Actual]</code> runs inside that context: <code>DATESYTD</code> takes the last visible date (31 December 2024) and returns
+   1 April 2024 – 31 December 2024.</li>
+<li><code>[Actual]</code> sums that window.</li>
+</ol>
+<p>An equivalent single-step form is <code>CALCULATE([Actual], DATESYTD(SAMEPERIODLASTYEAR('Date'[Date]), "3/31"))</code>.</p>
+<h3 id="growth-definitions">Growth definitions</h3>
+<p>\[
+\text{YoY \%} = \frac{\text{YTD}_{t} - \text{YTD}_{t-1}}{\text{YTD}_{t-1}}
+\qquad
+\text{MoM \%} = \frac{A_{m} - A_{m-1}}{A_{m-1}}
+\]</p>
+<p>where \(\text{YTD}_{t}\) is current-year YTD, \(\text{YTD}_{t-1}\) the same window last year, \(A_{m}\) the month's
+actual and \(A_{m-1}\) the previous month's actual. YoY can also be computed at month level (<code>[Actual]</code> vs
+<code>[PY Actual]</code>) or quarter level — make the label explicit ("YoY % (YTD)" vs "YoY % (Month)").</p>
+<h3 id="sign-awareness">Sign-awareness</h3>
+<p>Revenue in the GL is credit (negative). If the base measure is not sign-flipped, both numerator and denominator are
+negative and YoY % still works for revenue (−120 vs −100 gives +20%). It breaks when the base changes sign — a loss
+turning into a profit — or for expense lines where an increase in spend is adverse. Rules:</p>
+<ul>
+<li>Compute growth on presentation-signed measures (revenue positive).</li>
+<li>If the PY base can be negative (EBIT, PAT), divide by <code>ABS([PY YTD])</code> so that moving from −50 to +30 shows as
+  positive growth (+160%), and consider blanking or labelling "n.m." (not meaningful) when the base is negative or
+  tiny.</li>
+<li>For cost lines, a separate favourable/adverse indicator is clearer than a raw growth %.</li>
+</ul>
+<pre><code class="language-DAX">YoY % (sign-aware) =
+VAR cy = [YTD Actual]
+VAR py = [PY YTD]
+RETURN
+    IF ( NOT ISBLANK ( py ) &amp;&amp; py &lt;&gt; 0, DIVIDE ( cy - py, ABS ( py ) ) )
+</code></pre>
+<h3 id="blanking-at-the-wrong-grain">Blanking at the wrong grain</h3>
+<p>MoM % is meaningful only at month level. At a quarter or FY total, <code>DATEADD(..., -1, MONTH)</code> shifts the whole
+selection by a month and produces a "Q3 vs July–November" style number. Guard it:</p>
+<pre><code class="language-DAX">MoM % (safe) =
+IF (
+    ISINSCOPE ( 'Date'[MonthYear] ),
+    DIVIDE ( [Actual] - [PM Actual], [PM Actual] )
+)
+</code></pre>
+<p>Similarly, blank PY-based measures for the first year of data (PY is blank, so growth would be blank anyway with
+<code>DIVIDE</code>, but a <code>YTD Growth ₹</code> subtraction would show the full current YTD as "growth").</p>
+<pre><code class="language-DAX">YTD Growth ₹ (safe) =
+VAR py = [PY YTD]
+RETURN IF ( NOT ISBLANK ( py ), [YTD Actual] - py )
+</code></pre>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>Revenue (₹ crore):</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Oct 2025</th>
+<th>Nov 2025</th>
+<th>YTD Nov FY26</th>
+<th>YTD Nov FY25</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue</td>
+<td>42.0</td>
+<td>39.9</td>
+<td>301.5</td>
+<td>268.0</td>
+</tr>
+</tbody>
+</table>
+<p>MoM % for November = (39.9 − 42.0) / 42.0 = −5.0%. YTD growth ₹ = 33.5 crore; YoY % (YTD) = 33.5 / 268.0 = 12.5%.
+A seasonal business (festive sales in October) shows a negative MoM every November, which is why FP&amp;A reviews lean
+on YoY and YTD rather than MoM.</p>
+<h3 id="presentation">Presentation</h3>
+<ul>
+<li>Format growth measures with a percentage format and one decimal; apply conditional formatting (green/red) but
+  reverse the colour logic for cost lines.</li>
+<li>Put growth measures in a "Growth" display folder; keep ₹ and % variants adjacent.</li>
+<li>In a matrix with months on columns, MoM % next to each month is noisy — a separate trend chart is usually better.</li>
+</ul>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Partial current month:</strong> YoY at month level compares a partial November with a full prior-year November (s05).</li>
+<li><strong>Base effects:</strong> a PY month depressed by a one-off (plant shutdown, demonetisation-style shock) inflates YoY;
+  commentary should separate base effect from underlying growth.</li>
+<li><strong>Acquisitions and disposals:</strong> reported YoY mixes organic and inorganic growth. Like-for-like growth needs a
+  flag on entities or branches (e.g., <code>Branch[IsLFL]</code>) applied to both periods.</li>
+<li><strong>Currency:</strong> for export businesses, YoY in ₹ includes FX translation; constant-currency growth re-prices both
+  years at one rate.</li>
+<li><strong>Ratios:</strong> YoY change of a margin is expressed in basis points (<code>[EBITDA %] - [PY EBITDA %]</code>), not as a % growth
+  of a %.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Build PY YTD by wrapping the YTD measure in <code>SAMEPERIODLASTYEAR</code>; the inner <code>DATESYTD</code> re-evaluates in the shifted
+  context.</li>
+<li>Derived measures reference measures, not columns: one base, many branches.</li>
+<li>Use <code>DIVIDE</code> and <code>ABS</code> for growth on bases that can be zero or negative; label "n.m." where appropriate.</li>
+<li>Blank MoM above month level with <code>ISINSCOPE</code>; blank growth where PY does not exist.</li>
+<li>Margin changes are in percentage points or basis points, not growth %.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-write-the-kpi-strip-l1">Q1. Write the KPI strip [L1]</h3>
+<p>Using base measure <code>[Actual]</code> (presentation-signed) and a Date table marked as date table, write measures for
+YTD Revenue, PY YTD Revenue, YTD Growth ₹, YoY % and MoM %, including the guards described in this note.</p>
+<h3 id="q2-ebit-turning-positive-l2">Q2. EBIT turning positive [L2]</h3>
+<p>EBIT YTD December was −₹ 6.4 crore in FY25 and +₹ 3.2 crore in FY26. Compute what a naive <code>DIVIDE(cy − py, py)</code>
+returns and what the sign-aware version returns, and recommend what the board pack should show for this line.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Think about the sign of the denominator before deciding whether a percentage is meaningful at all.</p>
+</blockquote>
+<h3 id="q3-seasonal-mom-noise-l2">Q3. Seasonal MoM noise [L2]</h3>
+<p>A consumer durables company has monthly revenue (₹ crore) of Sep 55, Oct 92, Nov 61, Dec 48 in FY26 and Sep 50,
+Oct 70, Nov 76, Dec 45 in FY25 (Diwali fell in early November 2024 and late October 2025). Compute MoM % and month
+YoY % for October and November FY26, and draft a two-line commentary explaining which measure the sales head should
+focus on.</p>
+<h3 id="q4-like-for-like-growth-l3">Q4. Like-for-like growth [L3]</h3>
+<p>The company acquired a 12-branch chain on 1 October 2024. Design a branch-level flag and the DAX measures needed to
+show reported YoY %, inorganic contribution and like-for-like YoY % for YTD December FY26, explaining exactly which
+branches are included in each period.</p></section>
+<nav class="pager"><a class="prev" href="S02_SAMEPERIODLASTYEAR_vs_DATEADD_vs_PARALLELPERIOD.html">← SAMEPERIODLASTYEAR vs DATEADD vs PARALLELPERIOD</a><a class="next" href="S04_Rolling_12_Month_and_Trailing_3_Month_Windows_with.html">Rolling 12-Month and Trailing 3-Month Windows with… →</a></nav>
+</main></div></body></html>

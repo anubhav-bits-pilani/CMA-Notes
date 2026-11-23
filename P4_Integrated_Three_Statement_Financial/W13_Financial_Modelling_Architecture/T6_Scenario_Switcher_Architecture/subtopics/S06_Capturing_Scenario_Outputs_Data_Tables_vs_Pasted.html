@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capturing Scenario Outputs: Data Tables vs Pasted Static Values · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S06_Capturing_Scenario_Outputs_Data_Tables_vs_Pasted.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T6 · Scenario Switcher Architecture</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · Scenario Switcher Architecture</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Single_Scenario_Selector_Cell_with_Data_Validation.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S01_Single_Scenario_Selector_Cell_with_Data_Validation.html">Single Scenario Selector Cell with Data-Validation Dropdown</a></li><li><a href="S02_Scenario_Driver_Blocks_Base_Bull_Bear_Rows_and_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S02_Scenario_Driver_Blocks_Base_Bull_Bear_Rows_and_the.html">Scenario Driver Blocks: Base, Bull, Bear Rows and the Live Row</a></li><li><a href="S03_Scenario_Selection_Functions_CHOOSE_INDEX_XLOOKUP.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S03_Scenario_Selection_Functions_CHOOSE_INDEX_XLOOKUP.html">Scenario Selection Functions: CHOOSE, INDEX, XLOOKUP, SWITCH</a></li><li><a href="S04_Which_Drivers_to_Flex_Volume_Price_Stores_Margin.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S04_Which_Drivers_to_Flex_Volume_Price_Stores_Margin.html">Which Drivers to Flex: Volume, Price, Stores, Margin, Wages, Capex, NWC</a></li><li><a href="S05_Coherent_Scenario_Narratives_vs_Single_Variable.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S05_Coherent_Scenario_Narratives_vs_Single_Variable.html">Coherent Scenario Narratives vs Single-Variable Tweaks</a></li><li><a href="S06_Capturing_Scenario_Outputs_Data_Tables_vs_Pasted.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S06_Capturing_Scenario_Outputs_Data_Tables_vs_Pasted.html">Capturing Scenario Outputs: Data Tables vs Pasted Static Values</a></li><li><a href="S07_Scenario_Labelling_on_Outputs_and_Documented_Case.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S07_Scenario_Labelling_on_Outputs_and_Documented_Case.html">Scenario Labelling on Outputs and Documented Case Rationale</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_The_Live_Row_CHOOSE_or_INDEX_on_the_Scenario_Code.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C01_The_Live_Row_CHOOSE_or_INDEX_on_the_Scenario_Code.html">The Live Row: CHOOSE or INDEX on the Scenario Code</a></li><li><a href="../concepts/C02_One_Switch_Only_No_Scenario_Logic_Outside_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C02_One_Switch_Only_No_Scenario_Logic_Outside_the.html">One Switch Only: No Scenario Logic Outside the Driver Block</a></li><li><a href="../concepts/C03_Scenario_Summary_via_a_One_Variable_Data_Table_on.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C03_Scenario_Summary_via_a_One_Variable_Data_Table_on.html">Scenario Summary via a One-Variable Data Table on the Switch</a></li><li><a href="../concepts/C04_Live_Scenario_Header_Label_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C04_Live_Scenario_Header_Label_Formula.html">Live Scenario Header Label Formula</a></li><li><a href="../concepts/C05_Internal_Consistency_of_Scenarios_Growth_Needs.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C05_Internal_Consistency_of_Scenarios_Growth_Needs.html">Internal Consistency of Scenarios: Growth Needs Capex, Stress Needs Funding</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Capturing Scenario Outputs: Data Tables vs Pasted Static Values</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Scenario output capture: summary table via data table on the switch cell vs pasted static outputs</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>The scenario switch runs one case at a time, but decision-makers want to see all cases side by side: EV, share price,
+EBITDA, net debt, covenant headroom for Base, Bull and Bear in one table. There are two ways to produce it. A
+<strong>data table</strong> on the switch cell recalculates the model for each case and populates the table live. <strong>Pasted static
+outputs</strong> (copying values after flipping the switch manually, or via a macro) freeze results. Live tables never go
+stale but cost calculation time and have Excel constraints; static pastes are fast but go out of date the moment an
+assumption changes — a frequent source of inconsistency between a model's summary page and its live outputs in IC
+papers and lender decks.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="live-capture-one-variable-data-table-on-the-switch">Live capture: one-variable data table on the switch</h3>
+<p>Excel's What-If Analysis → Data Table substitutes each value in a list into an input cell and records the resulting
+outputs. For scenarios:</p>
+<ol>
+<li>On the <strong>same sheet as the selector cell</strong> (Excel requires the data table's input cell to be on the same sheet as
+   the table), lay out a column of codes 1, 2, 3.</li>
+<li>In the row above the first code, to the right, link the outputs: <code>=EV</code>, <code>=Equity_Value_per_Share</code>,
+   <code>=EBITDA_FY27</code>, <code>=Net_Debt_FY27</code>, <code>=Min_DSCR</code>.</li>
+<li>Select the whole block (codes column plus output row and the empty grid).</li>
+<li>Data → What-If Analysis → Data Table → <strong>Column input cell</strong> = the <code>Scenario</code> cell. Leave Row input cell blank.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Scenario</th>
+<th>EV (₹ crore)</th>
+<th>Value per share (₹)</th>
+<th>FY27 EBITDA (₹ crore)</th>
+<th>FY27 net debt (₹ crore)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td><code>=EV</code></td>
+<td><code>=Price</code></td>
+<td><code>=EBITDA_FY27</code></td>
+<td><code>=Net_Debt_FY27</code></td>
+</tr>
+<tr>
+<td>1</td>
+<td>Base</td>
+<td>{TABLE}</td>
+<td>{TABLE}</td>
+<td>{TABLE}</td>
+<td>{TABLE}</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Bull</td>
+<td>{TABLE}</td>
+<td>{TABLE}</td>
+<td>{TABLE}</td>
+<td>{TABLE}</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Bear</td>
+<td>{TABLE}</td>
+<td>{TABLE}</td>
+<td>{TABLE}</td>
+<td>{TABLE}</td>
+</tr>
+</tbody>
+</table>
+<p>The Scenario name column is a label (<code>=INDEX(Scenario_Names, code)</code>), not part of the data table.</p>
+<p>Properties:</p>
+<ul>
+<li><strong>Live</strong> — every assumption change updates all cases.</li>
+<li><strong>Constraint</strong> — the input cell (Scenario) must be on the table's sheet; if the selector is on Inputs, place the
+  scenario summary on Inputs, or move the selector to the Cover and put the summary there (the topic pitfall on
+  cross-sheet data tables).</li>
+<li><strong>Calculation cost</strong> — each data table cell triggers a full model recalculation; with many tables and circularity,
+  models become slow. Many builders set Calculation to "Automatic except for data tables" and press F9 to refresh —
+  then the Cover must warn that the summary may be stale.</li>
+<li><strong>Circularity</strong> — data tables and iterative calculation (interest on average debt) interact badly; use the
+  circularity breaker (<code>Circ</code>) or a copy-paste macro approach for the debt interest loop (Week 15).</li>
+<li><strong>Auditability</strong> — the <code>{=TABLE(,Scenario)}</code> array cannot be edited cell by cell; reviewers need to know it is a
+  data table.</li>
+</ul>
+<h3 id="static-capture-pasted-values">Static capture: pasted values</h3>
+<p>Flip the switch to each case, copy outputs, paste as values into a summary table. Usually automated with a short
+macro that loops the scenario, recalculates and writes values.</p>
+<ul>
+<li><strong>Pros:</strong> no calculation overhead; works with circular models; outputs can be archived with a timestamp.</li>
+<li><strong>Cons:</strong> goes stale silently when any assumption changes; manual versions are error-prone (wrong case active when
+  pasting); values are hardcodes (blue by convention) in an output area.</li>
+</ul>
+<p>Controls if you use static capture:</p>
+<ul>
+<li>Stamp each block with the date/time and model version when captured.</li>
+<li>Add a <strong>staleness check</strong>: compare the static value for the currently active case with the live output:</li>
+</ul>
+<pre><code>Stale_Flag = --(ABS(INDEX(Static_EV_Col, Scenario) - EV) &gt; 0.5)
+</code></pre>
+<p>and feed it to the Checks sheet so the master flag on the Cover warns when the snapshot no longer matches.
+- Colour the static block as hardcoded inputs and label it "Snapshot — values as at [timestamp]".</p>
+<h3 id="choosing-between-them">Choosing between them</h3>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Preferred capture</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Small–medium model, no circularity, live decision work</td>
+<td>Data table</td>
+</tr>
+<tr>
+<td>Large model, slow recalculation, circular interest</td>
+<td>Macro-driven static snapshot with staleness check</td>
+</tr>
+<tr>
+<td>Final IC/lender pack</td>
+<td>Static snapshot archived with the version, plus live table in the model</td>
+</tr>
+<tr>
+<td>Rolling forecasts in FP&amp;A</td>
+<td>Live table or Power BI reading exported scenario outputs</td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-to-capture">What to capture</h3>
+<p>A scenario summary typically includes: revenue and EBITDA (selected years and CAGR), EBITDA margin, PAT, capex, FCF,
+net debt and leverage (net debt ÷ EBITDA), minimum covenant headroom (DSCR, interest cover), DCF EV, equity value per
+share and implied multiples. Keep the same output list for every case and every version, so comparisons over time
+are meaningful.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Two-way tables.</strong> A two-variable data table with Scenario on one axis and, for example, WACC on the other gives a
+  scenario × sensitivity grid; both input cells must be on the same sheet as the table.</li>
+<li><strong>Multiple summary tables.</strong> Each data table multiplies recalculation; consolidate outputs into one table rather
+  than several.</li>
+<li><strong>Excel Scenario Manager.</strong> Built-in Scenario Manager stores sets of input values and can produce a summary report;
+  it is opaque (values hidden in the tool), limited to 32 changing cells and poorly auditable — not recommended for
+  institutional models.</li>
+<li><strong>Power BI.</strong> For dashboards, export each case's outputs to a table (or use Power BI what-if parameters on a
+  simplified driver model) rather than linking to the live case.</li>
+<li><strong>Rounding and units.</strong> Keep the summary in ₹ crore with consistent decimals; per-share values in ₹ with two
+  decimals.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>A one-variable data table with Scenario as the column input cell captures all cases live.</li>
+<li>The data table must sit on the same sheet as the selector cell.</li>
+<li>Data tables cost recalculation time and interact badly with circularity — manage calculation mode and warn users.</li>
+<li>Static snapshots are fast but go stale; timestamp them and add a staleness check.</li>
+<li>Capture a consistent set of outputs across cases and versions.</li>
+<li>Avoid Excel Scenario Manager for institutional models.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-build-the-summary-table-l1">Q1. Build the summary table [L1]</h3>
+<p>Write the step-by-step procedure to build a scenario summary data table returning EV, value per share, FY27 EBITDA,
+FY27 net debt and minimum DSCR for three cases, including where the table must be placed and how the scenario names
+are displayed.</p>
+<h3 id="q2-staleness-check-l2">Q2. Staleness check [L2]</h3>
+<p>Your model uses a macro-captured static summary. Write the check formulas that flag (a) a mismatch between the static
+value and the live output for the active case, for EV and FY27 EBITDA, and (b) a snapshot older than the last change
+to the Assumptions sheet version number. Explain how both reach the Cover.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Compare INDEX of the snapshot column at the active code with the live output, and compare version stamps.</p>
+</blockquote>
+<h3 id="q3-choosing-capture-method-l2">Q3. Choosing capture method [L2]</h3>
+<p>A Trent model has iterative interest calculation, 45 sheets and a full recalculation time of six seconds. The IC wants
+a live scenario table during a meeting. Recommend a capture approach and the controls you would put in place.</p>
+<h3 id="q4-scenario-wacc-grid-l3">Q4. Scenario × WACC grid [L3]</h3>
+<p>Design a two-variable data table showing equity value per share for three scenarios against WACC of 10.5%, 11.0%,
+11.5%, 12.0% and 12.5%. Specify the layout, input cells, sheet placement constraints and the calculation-mode setting,
+and explain how you would label the output to prevent misreading.</p></section>
+<nav class="pager"><a class="prev" href="S05_Coherent_Scenario_Narratives_vs_Single_Variable.html">← Coherent Scenario Narratives vs Single-Variable Tweaks</a><a class="next" href="S07_Scenario_Labelling_on_Outputs_and_Documented_Case.html">Scenario Labelling on Outputs and Documented Case Rationale →</a></nav>
+</main></div></body></html>

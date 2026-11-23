@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapping Schedule III Line Items to a Model Chart of Accounts · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S02_Mapping_Schedule_III_Line_Items_to_a_Model_Chart.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T3 · Historical Data Ingestion &amp;…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Historical Data Ingestion &amp; Normalization</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Sources_of_Historical_Data_for_Indian_Listed.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S01_Sources_of_Historical_Data_for_Indian_Listed.html">Sources of Historical Data for Indian Listed Companies</a></li><li><a href="S02_Mapping_Schedule_III_Line_Items_to_a_Model_Chart.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S02_Mapping_Schedule_III_Line_Items_to_a_Model_Chart.html">Mapping Schedule III Line Items to a Model Chart of Accounts</a></li><li><a href="S03_Consolidated_vs_Standalone_Basis_NCI_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S03_Consolidated_vs_Standalone_Basis_NCI_and.html">Consolidated vs Standalone Basis, NCI and Associates</a></li><li><a href="S04_EBITDA_Normalisation_Exceptional_Other_Income.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S04_EBITDA_Normalisation_Exceptional_Other_Income.html">EBITDA Normalisation: Exceptional, Other Income, Leases, ESOPs, Forex</a></li><li><a href="S05_Restatements_Discontinued_Operations_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S05_Restatements_Discontinued_Operations_and.html">Restatements, Discontinued Operations and Acquisitions</a></li><li><a href="S06_Annual_Balance_Checks_and_CFS_to_BS_Cash.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S06_Annual_Balance_Checks_and_CFS_to_BS_Cash.html">Annual Balance Checks and CFS-to-BS Cash Reconciliation</a></li><li><a href="S07_Deriving_Historical_Ratios_as_Forecast_Anchors.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S07_Deriving_Historical_Ratios_as_Forecast_Anchors.html">Deriving Historical Ratios as Forecast Anchors</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Historical_Balance_Check_Assets_Equal_Equity_Plus.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C01_Historical_Balance_Check_Assets_Equal_Equity_Plus.html">Historical Balance Check: Assets Equal Equity Plus Liabilities</a></li><li><a href="../concepts/C02_CFS_Closing_Cash_to_Balance_Sheet_Cash.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C02_CFS_Closing_Cash_to_Balance_Sheet_Cash.html">CFS Closing Cash to Balance Sheet Cash Reconciliation</a></li><li><a href="../concepts/C03_Adjusted_EBITDA_Bridge_from_PBT.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C03_Adjusted_EBITDA_Bridge_from_PBT.html">Adjusted EBITDA Bridge from PBT</a></li><li><a href="../concepts/C04_Effective_Tax_Rate_with_Current_and_Deferred_Split.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C04_Effective_Tax_Rate_with_Current_and_Deferred_Split.html">Effective Tax Rate with Current and Deferred Split</a></li><li><a href="../concepts/C05_Operating_Net_Working_Capital_What_to_Exclude.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C05_Operating_Net_Working_Capital_What_to_Exclude.html">Operating Net Working Capital: What to Exclude</a></li><li><a href="../concepts/C06_Explicit_Rounding_Line_Instead_of_a_Balancing_Plug.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C06_Explicit_Rounding_Line_Instead_of_a_Balancing_Plug.html">Explicit Rounding Line Instead of a Balancing Plug</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Mapping Schedule III Line Items to a Model Chart of Accounts</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Mapping Schedule III line items to a standardised model chart of accounts across 3–5 years</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Reported statements are designed for statutory presentation; a model needs a stable set of lines that are forecastable, comparable across years and comparable across peers. The mapping from Schedule III captions (and their notes) to a model chart of accounts (CoA) is where historical analysis is either made reliable or quietly corrupted — by lines that move between captions from year to year, by "other expenses" that hide freight and A&amp;P, by lease liabilities that sit inside "other financial liabilities". A documented mapping lets you reload a new year in minutes and defend every historical ratio.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="schedule-iii-division-ii-structure">Schedule III Division II structure</h3>
+<p>Division II applies to companies following Ind AS (other than NBFCs, which use Division III). The P&amp;L is presented <strong>by nature</strong> of expense (<em>Ind AS 1.99–1.105</em>; Schedule III requires nature-wise presentation). Key captions:</p>
+<table>
+<thead>
+<tr>
+<th>P&amp;L caption (Schedule III Div II)</th>
+<th>Typical sub-items in notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue from operations</td>
+<td>Sale of products, sale of services, other operating revenue (scrap, export incentives)</td>
+</tr>
+<tr>
+<td>Other income</td>
+<td>Interest, dividends, fair-value gains on investments, profit on sale of PPE, rental income</td>
+</tr>
+<tr>
+<td>Cost of materials consumed</td>
+<td>Raw and packing materials</td>
+</tr>
+<tr>
+<td>Purchases of stock-in-trade</td>
+<td>Traded goods</td>
+</tr>
+<tr>
+<td>Changes in inventories of FG, WIP and stock-in-trade</td>
+<td>Opening minus closing</td>
+</tr>
+<tr>
+<td>Employee benefits expense</td>
+<td>Salaries, PF and other funds, gratuity, ESOP (share-based payment) expense, staff welfare</td>
+</tr>
+<tr>
+<td>Finance costs</td>
+<td>Interest on borrowings, interest on lease liabilities, other borrowing costs, exchange differences regarded as borrowing cost</td>
+</tr>
+<tr>
+<td>Depreciation and amortisation expense</td>
+<td>PPE, intangibles, ROU assets</td>
+</tr>
+<tr>
+<td>Other expenses</td>
+<td>Power and fuel, freight, A&amp;P, rent (short-term/variable), royalty, repairs, CSR, legal, travel</td>
+</tr>
+<tr>
+<td>Exceptional items</td>
+<td>Impairment, restructuring, gains on disposal of businesses</td>
+</tr>
+<tr>
+<td>Tax expense</td>
+<td>Current tax, deferred tax, prior-period tax</td>
+</tr>
+<tr>
+<td>Profit from discontinued operations</td>
+<td>Post-tax, per <em>Ind AS 105</em></td>
+</tr>
+<tr>
+<td>Other comprehensive income</td>
+<td>Remeasurement of defined benefit plans, FVOCI equity, cash-flow hedges, FCTR</td>
+</tr>
+</tbody>
+</table>
+<p>BS: Non-current assets (PPE, CWIP, ROU assets, goodwill, other intangibles, financial assets, deferred tax assets, other non-current assets), current assets (inventories, financial assets: investments, trade receivables, cash and cash equivalents, bank balances other than cash and cash equivalents, loans, others; current tax assets; other current assets), equity (share capital, other equity, NCI), non-current and current liabilities (borrowings, lease liabilities, trade payables, other financial liabilities, provisions, deferred tax liabilities, other liabilities). Lease liabilities are shown separately in the BS since the 2021 Schedule III amendment.</p>
+<h3 id="designing-the-model-coa">Designing the model CoA</h3>
+<p>Principles:</p>
+<ol>
+<li><strong>Forecastability</strong>: each model line must have a driver (revenue → volume × price; employee cost → headcount × CTC; freight → % of revenue or per tonne).</li>
+<li><strong>Separation of operating and non-operating items</strong>: other income, exceptional items, share of associates and finance costs are separate lines (s04).</li>
+<li><strong>Cost behaviour</strong>: split "other expenses" into variable (freight, power, royalty), semi-variable and fixed (store opex, corporate overheads) using the note (topic t5).</li>
+<li><strong>Stability</strong>: the CoA must accommodate all five historical years without changing.</li>
+<li><strong>BS split for NWC vs debt vs other</strong>: operating NWC lines are separated from cash, investments, debt, lease liabilities and dividends payable (c05).</li>
+</ol>
+<p>Example P&amp;L CoA for Pidilite-type company:</p>
+<table>
+<thead>
+<tr>
+<th>Model line</th>
+<th>Mapped from</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue – sale of products</td>
+<td>Revenue note: sale of products</td>
+</tr>
+<tr>
+<td>Revenue – other operating</td>
+<td>Revenue note: other operating revenue</td>
+</tr>
+<tr>
+<td>COGS</td>
+<td>Materials consumed + purchases of stock-in-trade + changes in inventories</td>
+</tr>
+<tr>
+<td>Employee cost (ex-ESOP)</td>
+<td>Employee benefits expense less share-based payment expense</td>
+</tr>
+<tr>
+<td>ESOP expense</td>
+<td>Employee benefits note</td>
+</tr>
+<tr>
+<td>A&amp;P</td>
+<td>Other expenses note: advertisement and sales promotion</td>
+</tr>
+<tr>
+<td>Freight &amp; forwarding</td>
+<td>Other expenses note</td>
+</tr>
+<tr>
+<td>Power &amp; fuel</td>
+<td>Other expenses note</td>
+</tr>
+<tr>
+<td>Other opex</td>
+<td>Other expenses residual</td>
+</tr>
+<tr>
+<td>Other income – treasury</td>
+<td>Other income note: interest, dividend, MF gains</td>
+</tr>
+<tr>
+<td>Other income – other</td>
+<td>Rental, misc</td>
+</tr>
+<tr>
+<td>D&amp;A – owned</td>
+<td>Depreciation note: PPE + intangibles</td>
+</tr>
+<tr>
+<td>D&amp;A – ROU</td>
+<td>Depreciation note: ROU assets</td>
+</tr>
+<tr>
+<td>Finance cost – borrowings</td>
+<td>Finance cost note</td>
+</tr>
+<tr>
+<td>Finance cost – leases</td>
+<td>Finance cost note: interest on lease liabilities</td>
+</tr>
+<tr>
+<td>Exceptional items</td>
+<td>P&amp;L caption</td>
+</tr>
+<tr>
+<td>Share of profit of associates/JVs</td>
+<td>P&amp;L caption (consolidated)</td>
+</tr>
+<tr>
+<td>Tax – current / deferred</td>
+<td>Tax note</td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-mapping-table">The mapping table</h3>
+<p>Implement mapping as data, not as hand-typed links:</p>
+<table>
+<thead>
+<tr>
+<th>Source caption / XBRL tag</th>
+<th>Note ref</th>
+<th>Model line</th>
+<th>Sign</th>
+<th>Basis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cost of materials consumed</td>
+<td>Note 24</td>
+<td>COGS</td>
+<td>+</td>
+<td>Consolidated</td>
+</tr>
+<tr>
+<td>Purchases of stock-in-trade</td>
+<td>P&amp;L</td>
+<td>COGS</td>
+<td>+</td>
+<td>Consolidated</td>
+</tr>
+<tr>
+<td>Changes in inventories</td>
+<td>Note 25</td>
+<td>COGS</td>
+<td>+ (as reported: increase negative)</td>
+<td>Consolidated</td>
+</tr>
+<tr>
+<td>Advertisement and sales promotion</td>
+<td>Note 29</td>
+<td>A&amp;P</td>
+<td>+</td>
+<td>Consolidated</td>
+</tr>
+</tbody>
+</table>
+<p>Historicals then use SUMIFS over a raw-data tab:</p>
+<pre><code>=SUMIFS(Raw!$F:$F, Raw!$D:$D, $B12, Raw!$E:$E, H$3)
+</code></pre>
+<p>(Use bounded ranges or a Table in practice — topic t2 s08.) A check row per year confirms that the sum of mapped lines equals the reported total (e.g., total expenses) and that <strong>unmapped items = 0</strong>.</p>
+<h3 id="tie-outs">Tie-outs</h3>
+<p>For every year, tie: revenue from operations, total income, total expenses, PBT, tax, PAT, PAT attributable to owners, total assets, total equity, total liabilities, cash and cash equivalents, closing cash in CFS. Differences beyond rounding indicate mapping errors (pitfall: forcing balance via "other liabilities").</p>
+<h3 id="illustration">Illustration</h3>
+<p>FY24 other expenses of ₹2,810 crore (₹ crore, illustrative), note breakdown: power 260, freight 610, A&amp;P 1,160, royalty 40, repairs 120, rent 35, CSR 45, miscellaneous 540. Mapping: A&amp;P 1,160; Freight 610; Power 260; Other opex = 2,810 − 1,160 − 610 − 260 = 780 (including royalty, repairs, rent, CSR, misc). Check: mapped lines sum to 2,810.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Lines changing caption across years</strong> (e.g., "Packing materials" moved from other expenses to materials consumed in FY23): use the latest comparatives and restate older years using note detail where possible; document.</li>
+<li><strong>Function-wise P&amp;L in group companies abroad</strong>: not applicable for Ind AS consolidated statements, but subsidiaries' data from foreign filings may be function-wise.</li>
+<li><strong>Other operating revenue that is non-recurring</strong> (one-time export incentive true-up): keep within revenue as reported but tag for normalisation.</li>
+<li><strong>Current maturities of long-term debt</strong> sit within current borrowings — map to debt, not NWC.</li>
+<li><strong>Capital creditors</strong> inside other financial liabilities — exclude from NWC; they relate to capex.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Schedule III Div II gives a nature-wise P&amp;L and a current/non-current BS — the natural template for historicals.</li>
+<li>Design a CoA that is forecastable, separates operating from non-operating, reflects cost behaviour and is stable across years.</li>
+<li>Implement mapping as a table with SUMIFS, with sign and basis columns.</li>
+<li>Check every year that mapped totals equal reported totals and unmapped items are zero.</li>
+<li>Use note detail to split "other expenses" and to isolate lease, ESOP and treasury items.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-map-the-pl-l1">Q1. Map the P&amp;L [L1]</h3>
+<p>Map these Schedule III/notes items to a model CoA (revenue, COGS, employee, A&amp;P, freight, other opex, other income, D&amp;A, finance cost, exceptional, tax): sale of products; scrap sales; purchases of stock-in-trade; contribution to provident fund; share-based payment expense; interest on lease liabilities; depreciation on ROU assets; fair-value gain on liquid mutual funds; impairment of goodwill; provision for doubtful debts; CSR expenditure; current tax of earlier years.</p>
+<h3 id="q2-build-the-mapping-engine-l2">Q2. Build the mapping engine [L2]</h3>
+<p>Design the raw-data table, mapping table and Historicals SUMIFS formula for loading five years of a company's P&amp;L from XBRL, including sign handling and an "unmapped" check. Specify column names and the check formula.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> The unmapped check is the total of raw items whose mapping lookup returns no model line.</p>
+</blockquote>
+<h3 id="q3-caption-change-across-years-l2">Q3. Caption change across years [L2]</h3>
+<p>A company reclassified "Stores and spares consumed" (₹85 crore in FY23, ₹92 crore in FY24) from cost of materials consumed to other expenses in its FY25 annual report, restating FY24 but not FY23. Explain how you would build a consistent five-year series and what you would document.</p>
+<h3 id="q4-bs-coa-design-l3">Q4. BS CoA design [L3]</h3>
+<p>Design a balance-sheet model CoA for Trent (consolidated) that supports NWC, PPE, lease, debt, tax and equity schedules, mapping each Schedule III caption (including other financial assets/liabilities sub-items such as security deposits, capital creditors, unpaid dividends and interest accrued) to a model line and stating whether it is operating NWC, capex-related, debt-like, cash-like or equity.</p></section>
+<nav class="pager"><a class="prev" href="S01_Sources_of_Historical_Data_for_Indian_Listed.html">← Sources of Historical Data for Indian Listed Companies</a><a class="next" href="S03_Consolidated_vs_Standalone_Basis_NCI_and.html">Consolidated vs Standalone Basis, NCI and Associates →</a></nav>
+</main></div></body></html>

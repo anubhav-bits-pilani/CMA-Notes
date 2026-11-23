@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Table.FillDown Fills Only Nulls: Replace Blanks First · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C03_TableFillDown_Fills_Only_Nulls_Replace_Blanks.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T2 · Cleaning messy ERP/Tally exports</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Cleaning messy ERP/Tally exports</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Skipping_Report_Headers_Conditionally_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S01_Skipping_Report_Headers_Conditionally_and.html">Skipping Report Headers Conditionally and Promoting Headers</a></li><li><a href="../subtopics/S02_Removing_Blank_Subtotal_and_Grand_Total_Rows_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S02_Removing_Blank_Subtotal_and_Grand_Total_Rows_by.html">Removing Blank, Subtotal and Grand Total Rows by Condition</a></li><li><a href="../subtopics/S03_Filling_Down_Cost_Centre_and_Group_Headers_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S03_Filling_Down_Cost_Centre_and_Group_Headers_in.html">Filling Down Cost-Centre and Group Headers in Report Layouts</a></li><li><a href="../subtopics/S04_Splitting_Ledger_Code_and_Name_Parsing_Tally_DrCr.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S04_Splitting_Ledger_Code_and_Name_Parsing_Tally_DrCr.html">Splitting Ledger Code and Name; Parsing Tally Dr/Cr Amounts</a></li><li><a href="../subtopics/S05_Trimming_Non_Breaking_Spaces_and_Non_Printable.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S05_Trimming_Non_Breaking_Spaces_and_Non_Printable.html">Trimming Non-Breaking Spaces and Non-Printable Characters</a></li><li><a href="../subtopics/S06_Fixing_Date_Locales_and_Indian_Digit_Grouping_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S06_Fixing_Date_Locales_and_Indian_Digit_Grouping_in.html">Fixing Date Locales and Indian Digit Grouping in Text Amounts</a></li><li><a href="../subtopics/S07_Error_Handling_Remove_Errors_Keep_Errors_and_try.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S07_Error_Handling_Remove_Errors_Keep_Errors_and_try.html">Error Handling: Remove Errors, Keep Errors and try ... otherwise</a></li><li><a href="../subtopics/S08_Export_Layouts_Tally_Day_BookLedgerTB_SAP_FBL3N.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S08_Export_Layouts_Tally_Day_BookLedgerTB_SAP_FBL3N.html">Export Layouts: Tally Day Book/Ledger/TB, SAP FBL3N, S_ALR, Oracle TB</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Conditional_TableSkip_Followed_by_PromoteHeaders.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C01_Conditional_TableSkip_Followed_by_PromoteHeaders.html">Conditional Table.Skip Followed by PromoteHeaders</a></li><li><a href="C02_Filtering_Out_Null_and_Total_Rows_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C02_Filtering_Out_Null_and_Total_Rows_with.html">Filtering Out Null and Total Rows with Table.SelectRows</a></li><li><a href="C03_TableFillDown_Fills_Only_Nulls_Replace_Blanks.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C03_TableFillDown_Fills_Only_Nulls_Replace_Blanks.html">Table.FillDown Fills Only Nulls: Replace Blanks First</a></li><li><a href="C04_TableSplitColumn_at_Each_Delimiter_into_Code_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C04_TableSplitColumn_at_Each_Delimiter_into_Code_and.html">Table.SplitColumn at Each Delimiter into Code and Name</a></li><li><a href="C05_Cleaning_Text_Replace_Char_160_TextClean_TextTrim.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C05_Cleaning_Text_Replace_Char_160_TextClean_TextTrim.html">Cleaning Text: Replace Char 160, Text.Clean, Text.Trim</a></li><li><a href="C06_TransformColumnTypes_with_an_Explicit_en_IN.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C06_TransformColumnTypes_with_an_Explicit_en_IN.html">TransformColumnTypes with an Explicit en-IN Culture</a></li><li><a href="C07_Converting_Tally_DrCr_Suffix_Balances_into_Signed.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C07_Converting_Tally_DrCr_Suffix_Balances_into_Signed.html">Converting Tally Dr/Cr Suffix Balances into Signed Numbers</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Table.FillDown Fills Only Nulls: Replace Blanks First</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>Table.FillDown(t, {"CostCentre"})</code> only fills nulls, so first run <code>Table.ReplaceValue(t, "", null, Replacer.ReplaceValue, {"CostCentre"})</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p><code>Table.FillDown(table as table, columns as list) as table</code> replaces each <strong>null</strong> value in the listed columns with the nearest preceding <strong>non-null</strong> value, in current row order. An empty string <code>""</code> is a non-null value, so it is neither filled nor skipped — it becomes the value carried down.</p>
+<p><code>Table.ReplaceValue(table, oldValue, newValue, replacer, columnsToSearch)</code> with <code>Replacer.ReplaceValue</code> replaces cells whose <strong>entire value</strong> equals <code>oldValue</code>; here every <code>""</code> in CostCentre becomes <code>null</code>, making the column fillable.</p>
+<h2 id="explanation">Explanation</h2>
+<p>Where empty strings come from: CSV parsing returns <code>""</code> for empty fields between delimiters; Excel cells containing a formula returning <code>""</code> or a stray space; Tally exports with blank-looking cells containing a space or char 160. In the preview, <code>null</code> shows in italics as <em>null</em>, while <code>""</code> shows as an empty cell — a visual clue worth learning.</p>
+<p>What goes wrong without the replace: suppose rows are Header "Mumbai HO", detail, detail (CostCentre <code>""</code>), detail (<code>""</code>). Fill Down sees <code>""</code> as a value: the detail rows keep <code>""</code> instead of "Mumbai HO". Worse, if some rows are <code>null</code> and some <code>""</code>, fills stop and restart unpredictably.</p>
+<p><code>Replacer.ReplaceValue</code> vs <code>Replacer.ReplaceText</code>: the first replaces whole cell values (correct here — and the only one that can produce <code>null</code>); the second replaces substrings inside text, and replacing <code>""</code> as a substring is meaningless.</p>
+<p>Handling spaces as well as empties:</p>
+<pre><code>Blanks = Table.TransformColumns(t, {{&quot;CostCentre&quot;, each
+           let x = if _ = null then null else Text.Trim(Text.Replace(Text.From(_), Character.FromNumber(160), &quot; &quot;))
+           in if x = null or x = &quot;&quot; then null else x, type nullable text}}),
+Filled = Table.FillDown(Blanks, {&quot;CostCentre&quot;})
+</code></pre>
+<p>Sequence rules:</p>
+<ol>
+<li>Skip report header and promote (c01).</li>
+<li>Create the header column (only header rows populated).</li>
+<li>Convert blanks to null.</li>
+<li>Fill Down — <strong>before</strong> any sort, merge or filter that changes order.</li>
+<li>Remove header-only rows and total rows (c02).</li>
+</ol>
+<h2 id="illustration">Illustration</h2>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th>Particulars</th>
+<th>CostCentre (raw)</th>
+<th>After FillDown only</th>
+<th>After Replace + FillDown</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Mumbai HO</td>
+<td>Mumbai HO</td>
+<td>Mumbai HO</td>
+<td>Mumbai HO</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Salaries</td>
+<td>""</td>
+<td>""</td>
+<td>Mumbai HO</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Rent</td>
+<td>null</td>
+<td>""</td>
+<td>Mumbai HO</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Pune Plant</td>
+<td>Pune Plant</td>
+<td>Pune Plant</td>
+<td>Pune Plant</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Power &amp; Fuel</td>
+<td>""</td>
+<td>""</td>
+<td>Pune Plant</td>
+</tr>
+</tbody>
+</table>
+<p>Without the replace, row 3 inherits <code>""</code> from row 2 — every detail row ends up with no cost centre and a cost-centre P&amp;L shows everything as "(Blank)".</p>
+<h2 id="connections">Connections</h2>
+<p>Implements s03 (filling down headers). Related to s05 (char 160 and spaces that also defeat the fill), the pitfall on running Fill Down after a sort/filter, and Topic 3 (Fill Down on transposed multi-row headers, where empty strings from Excel merged cells cause the same issue).</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-diagnose-l1">Q1. Diagnose [L1]</h3>
+<p>After Fill Down on Department, 40% of rows still show an empty Department although each block has a header. List two possible causes and the M step that fixes each.</p>
+<h3 id="q2-write-the-robust-step-l2">Q2. Write the robust step [L2]</h3>
+<p>Write M that converts <code>""</code>, whitespace-only values and values consisting only of char 160 in the columns Branch and CostCentre to null, then fills both columns down.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Use one <code>Table.TransformColumns</code> with a list of two column transformations sharing a function.</p>
+</blockquote>
+<h3 id="q3-replacer-choice-l1">Q3. Replacer choice [L1]</h3>
+<p>Explain the difference between <code>Replacer.ReplaceValue</code> and <code>Replacer.ReplaceText</code>, and give one example from a bank narration where each would be the correct choice.</p></section>
+<nav class="pager"><a class="prev" href="C02_Filtering_Out_Null_and_Total_Rows_with.html">← Filtering Out Null and Total Rows with Table.SelectRows</a><a class="next" href="C04_TableSplitColumn_at_Each_Delimiter_into_Code_and.html">Table.SplitColumn at Each Delimiter into Code and Name →</a></nav>
+</main></div></body></html>

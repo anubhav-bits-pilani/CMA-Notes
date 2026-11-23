@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LET for Named Steps and LAMBDA Functions in Name Manager · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S06_LET_for_Named_Steps_and_LAMBDA_Functions_in_Name.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T4 · Dynamic arrays and LET/LAMBDA</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Dynamic arrays and LET/LAMBDA</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Spill_Behaviour_SPILL_the_Operator_and_Implicit.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S01_Spill_Behaviour_SPILL_the_Operator_and_Implicit.html">Spill Behaviour, #SPILL!, the # Operator and Implicit Intersection</a></li><li><a href="S02_FILTER_with_ANDOR_Logic_for_Exception_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S02_FILTER_with_ANDOR_Logic_for_Exception_Lists.html">FILTER with AND/OR Logic for Exception Lists</a></li><li><a href="S03_UNIQUE_for_Dynamic_CoA_and_Department_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S03_UNIQUE_for_Dynamic_CoA_and_Department_Lists.html">UNIQUE for Dynamic CoA and Department Lists</a></li><li><a href="S04_SORT_and_SORTBY_for_Top_N_Expense_and_Ranked.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S04_SORT_and_SORTBY_for_Top_N_Expense_and_Ranked.html">SORT and SORTBY for Top-N Expense and Ranked Ageing Reports</a></li><li><a href="S05_SEQUENCE_for_Monthly_Timelines_Loan_Schedules_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S05_SEQUENCE_for_Monthly_Timelines_Loan_Schedules_and.html">SEQUENCE for Monthly Timelines, Loan Schedules and Period Counters</a></li><li><a href="S06_LET_for_Named_Steps_and_LAMBDA_Functions_in_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S06_LET_for_Named_Steps_and_LAMBDA_Functions_in_Name.html">LET for Named Steps and LAMBDA Functions in Name Manager</a></li><li><a href="S07_LAMBDA_Helpers_and_Array_Reshaping_Functions.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S07_LAMBDA_Helpers_and_Array_Reshaping_Functions.html">LAMBDA Helpers and Array Reshaping Functions</a></li><li><a href="S08_GROUPBY_and_PIVOTBY_as_Formula_Based_Pivots.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S08_GROUPBY_and_PIVOTBY_as_Formula_Based_Pivots.html">GROUPBY and PIVOTBY as Formula-Based Pivots</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_FILTER_with_Two_AND_Conditions_and_an_ifempty.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C01_FILTER_with_Two_AND_Conditions_and_an_ifempty.html">FILTER with Two AND Conditions and an if_empty Message</a></li><li><a href="../concepts/C02_Sorted_Unique_Account_List_for_a_Selected_FY.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C02_Sorted_Unique_Account_List_for_a_Selected_FY.html">Sorted Unique Account List for a Selected FY</a></li><li><a href="../concepts/C03_Top_10_Vendors_by_Spend_with_TAKE_and_SORTBY.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C03_Top_10_Vendors_by_Spend_with_TAKE_and_SORTBY.html">Top 10 Vendors by Spend with TAKE and SORTBY</a></li><li><a href="../concepts/C04_EOMONTH_with_SEQUENCE_for_Horizontal_Month_End.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C04_EOMONTH_with_SEQUENCE_for_Horizontal_Month_End.html">EOMONTH with SEQUENCE for Horizontal Month-End Headers</a></li><li><a href="../concepts/C05_LET_for_a_Safe_Gross_Margin_Calculation.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C05_LET_for_a_Safe_Gross_Margin_Calculation.html">LET for a Safe Gross Margin Calculation</a></li><li><a href="../concepts/C06_FYEND_A_Named_LAMBDA_for_the_Indian_Financial_Year.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C06_FYEND_A_Named_LAMBDA_for_the_Indian_Financial_Year.html">FYEND: A Named LAMBDA for the Indian Financial Year</a></li><li><a href="../concepts/C07_SCAN_for_Running_Closing_Balances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C07_SCAN_for_Running_Closing_Balances.html">SCAN for Running Closing Balances</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>LET for Named Steps and LAMBDA Functions in Name Manager</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> LET for naming intermediate steps; LAMBDA functions saved in Name Manager for reuse</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Finance formulas grow long: a gross-margin cell that computes revenue and COGS with two SUMIFS, guards against zero revenue and rounds the result can easily run to 300 characters, with the same SUMIFS repeated three times. Repetition is slow (each copy recalculates) and dangerous (a reviewer edits one copy and not the others). LET names each intermediate result once, so the formula reads like a calculation memo and calculates each step once. LAMBDA goes a step further: it turns a tested piece of logic — the Indian FY of a date, a TDS rate band, an ECL bucket — into a custom function stored in Name Manager, so every analyst in the team uses the identical, reviewed rule without VBA or macros. Both features are a big part of "zero-error formula engineering", this week's objective.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="let-syntax">LET syntax</h3>
+<pre><code class="language-excel">=LET(name1, value1, [name2, value2, ...], calculation)
+</code></pre>
+<ul>
+<li>Names follow defined-name rules: start with a letter, no spaces, cannot look like a cell address (<code>rev</code> is fine; <code>GM1</code> is not, because GM1 is a cell).</li>
+<li>Each name can use earlier names.</li>
+<li>The final argument is the result; it may itself be an array that spills.</li>
+<li>Names are local to the formula; they do not appear in Name Manager.</li>
+</ul>
+<h3 id="let-for-a-margin-cell">LET for a margin cell</h3>
+<p>Before:</p>
+<pre><code class="language-excel">=IF(SUMIFS(GL[Amt],GL[FSLine],&quot;Revenue&quot;,GL[Date],&quot;&lt;=&quot;&amp;C4)=0, 0,
+   (SUMIFS(GL[Amt],GL[FSLine],&quot;Revenue&quot;,GL[Date],&quot;&lt;=&quot;&amp;C4)
+    - SUMIFS(GL[Amt],GL[FSLine],&quot;COGS&quot;,GL[Date],&quot;&lt;=&quot;&amp;C4))
+   / SUMIFS(GL[Amt],GL[FSLine],&quot;Revenue&quot;,GL[Date],&quot;&lt;=&quot;&amp;C4))
+</code></pre>
+<p>After:</p>
+<pre><code class="language-excel">=LET(
+   d, C4,
+   rev,  SUMIFS(GL[Amt], GL[FSLine], &quot;Revenue&quot;, GL[Date], &quot;&lt;=&quot;&amp;d),
+   cogs, SUMIFS(GL[Amt], GL[FSLine], &quot;COGS&quot;,    GL[Date], &quot;&lt;=&quot;&amp;d),
+   IF(rev=0, 0, (rev - cogs) / rev))
+</code></pre>
+<p>Benefits: each SUMIFS is computed once (three fewer full scans of the GL per cell), the logic is reviewable line by line, and the header reference <code>C4</code> appears once — changing it to a different header is a single edit. Use Alt+Enter line breaks and indentation inside the formula bar; Excel preserves them.</p>
+<h3 id="let-for-debugging">LET for debugging</h3>
+<p>Swap the final argument to any intermediate name to inspect it: change <code>IF(rev=0, …)</code> to <code>cogs</code> temporarily and the cell shows COGS. This is faster than Evaluate Formula for long formulas and is the standard technique under time pressure in the speed test.</p>
+<h3 id="lambda-syntax">LAMBDA syntax</h3>
+<pre><code class="language-excel">=LAMBDA([param1, param2, ...], calculation)
+</code></pre>
+<p>A LAMBDA typed into a cell without arguments returns #CALC!. Test it inline by calling it immediately:</p>
+<pre><code class="language-excel">=LAMBDA(d, YEAR(d) + (MONTH(d) &gt;= 4))(A2)
+</code></pre>
+<p>Once correct, save it:</p>
+<ol>
+<li>Formulas → Name Manager → New (or Ctrl+F3).</li>
+<li>Name: <code>FYEND</code>. Scope: Workbook. Comment: "Indian FY end year of a date (FY ends 31 March)".</li>
+<li>Refers to: <code>=LAMBDA(d, YEAR(d) + (MONTH(d) &gt;= 4))</code>.</li>
+<li>Use anywhere: <code>=FYEND(A2)</code> returns 2026 for any date from 1-Apr-2025 to 31-Mar-2026.</li>
+</ol>
+<p>The function accepts arrays too: <code>=FYEND(GL[Date])</code> spills the FY for every row.</p>
+<h3 id="useful-finance-lambdas">Useful finance LAMBDAs</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Refers to</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>FYEND</code></td>
+<td><code>=LAMBDA(d, YEAR(d)+(MONTH(d)&gt;=4))</code></td>
+<td>FY tag on GL rows</td>
+</tr>
+<tr>
+<td><code>FYMONTH</code></td>
+<td><code>=LAMBDA(d, MOD(MONTH(d)+8, 12)+1)</code></td>
+<td>April = 1 … March = 12</td>
+</tr>
+<tr>
+<td><code>SAFEDIV</code></td>
+<td><code>=LAMBDA(n, dnm, IF(dnm=0, 0, n/dnm))</code></td>
+<td>margins and ratios</td>
+</tr>
+<tr>
+<td><code>AGEBUCKET</code></td>
+<td><code>=LAMBDA(days, XLOOKUP(days, {0,31,91,181}, {"0-30","31-90","91-180","&gt;180"}, , -1))</code></td>
+<td>ageing labels</td>
+</tr>
+<tr>
+<td><code>GSTGROSS</code></td>
+<td><code>=LAMBDA(amt, rate, amt*(1+rate))</code></td>
+<td>invoice value</td>
+</tr>
+</tbody>
+</table>
+<p>Optional parameters use square brackets and ISOMITTED: <code>=LAMBDA(n, d, [z], IF(d=0, IF(ISOMITTED(z), 0, z), n/d))</code> lets the caller choose what to return on zero denominators.</p>
+<h3 id="governance-of-lambdas">Governance of LAMBDAs</h3>
+<p>A LAMBDA is a workbook-level model component, so treat it like code:</p>
+<ul>
+<li>Document each in the Name Manager comment and on a "Functions" sheet that lists name, parameters, purpose, author, date and a test case with expected output.</li>
+<li>Keep a test block: <code>=FYEND(DATE(2026,3,31))</code> must return 2026; <code>=FYEND(DATE(2026,4,1))</code> must return 2027; flag if not.</li>
+<li>Copying a sheet that uses a LAMBDA into another workbook brings the name with it; conflicting names with different definitions cause silent divergence — check Name Manager after merges.</li>
+<li>Share libraries via a template workbook or the Advanced Formula Environment add-in (Excel Labs), which supports editing names as code modules.</li>
+</ul>
+<h3 id="recursion">Recursion</h3>
+<p>A named LAMBDA can call itself, which enables iterative logic (e.g. compounding until a threshold). Use sparingly: recursion depth is limited and errors are hard to audit. In finance, SCAN and REDUCE (s07) usually replace recursion more transparently.</p>
+<h3 id="illustration">Illustration</h3>
+<p>GL Table with 24,000 rows. A gross margin grid of 15 departments × 12 months originally used the "before" formula (three revenue SUMIFS + one COGS SUMIFS per cell = 4 × 180 = 720 SUMIFS). The LET version uses 2 × 180 = 360. Recalculation time on a typical laptop roughly halves, and the formula length falls from about 280 to about 160 characters. For department Sales in Apr-25: rev = ₹3.20 crore, cogs = ₹2.08 crore, margin = 35.0%; for a dormant department with rev = 0, the result is 0, not #DIV/0!.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Name collisions.</strong> A LET name that matches a workbook defined name overrides it inside the formula only — confusing for reviewers. Use distinct names (prefix <code>_</code> or lowercase).</li>
+<li><strong>Names that look like cells.</strong> <code>Q1</code>, <code>FY26</code>, <code>TDS1</code> are cell addresses in Excel's grid (columns up to XFD), so they fail as LET or LAMBDA names. Use <code>q_1</code>, <code>fy_26</code>.</li>
+<li><strong>Version compatibility.</strong> LET and LAMBDA require Microsoft 365 or Excel 2021 (LET) / 2024 (LAMBDA). Recipients on Excel 2019 see #NAME?; distribute values-only copies to them.</li>
+<li><strong>Hidden logic risk.</strong> LAMBDAs hide calculations behind a name; auditors may treat them like macros. Keep the Functions sheet and test cases.</li>
+<li><strong>Volatility.</strong> LET does not make volatile functions non-volatile; <code>LET(t, TODAY(), …)</code> still recalculates every time.</li>
+<li><strong>Over-nesting.</strong> A LET with 15 steps is often a sign the calculation belongs on a visible calculation sheet, where each step is inspectable.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>LET names intermediate results, computes each once and makes long formulas reviewable.</li>
+<li>Swap the final argument to an intermediate name to debug quickly.</li>
+<li>LAMBDA creates custom functions; test inline, then save in Name Manager with a comment.</li>
+<li>Build a small library (FYEND, FYMONTH, SAFEDIV, AGEBUCKET) and document it with test cases.</li>
+<li>Both require modern Excel; recipients on older versions see #NAME?.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-rewrite-with-let-l1">Q1. Rewrite with LET [L1]</h3>
+<p>Rewrite this formula with LET so each SUMIFS is evaluated once: <code>=IF(SUMIFS(TB[Bal],TB[Grp],"Current Liabilities")=0,"n/a",SUMIFS(TB[Bal],TB[Grp],"Current Assets")/SUMIFS(TB[Bal],TB[Grp],"Current Liabilities"))</code>. Name the variables meaningfully.</p>
+<h3 id="q2-build-and-document-a-lambda-l2">Q2. Build and document a LAMBDA [L2]</h3>
+<p>Create a LAMBDA named <code>TDS194J</code> that takes a professional-fee amount and returns TDS at 10%, but zero if the amount is ₹50,000 or less (the threshold as revised by Finance Act 2025 from ₹30,000; treat it as a single-payment test and pass the threshold as an optional parameter so the function survives future changes). Write the Refers To formula, the inline test call, three test cases with the inputs you would use, and the Name Manager comment.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Test the boundary values — exactly at the threshold and one rupee above.</p>
+</blockquote>
+<h3 id="q3-debug-with-let-l2">Q3. Debug with LET [L2]</h3>
+<p>A LET formula computing EBITDA margin returns 112% for one department. Describe a step-by-step debugging approach using only the LET structure (no Evaluate Formula), and list three data problems that could produce a margin above 100%.</p>
+<h3 id="q4-invalid-names-l1">Q4. Invalid names [L1]</h3>
+<p>Explain why each of these LET names fails or is risky: <code>GM1</code>, <code>FY26</code>, <code>rev cogs</code>, <code>Revenue</code> (when a workbook name <code>Revenue</code> already exists), <code>1stQtr</code>.</p>
+<h3 id="q5-function-library-for-a-team-l3">Q5. Function library for a team [L3]</h3>
+<p>Your FP&amp;A team of six maintains 20 monthly MIS workbooks. Propose a governance approach for a shared LAMBDA library (FYEND, FYMONTH, SAFEDIV, AGEBUCKET and four others of your choice): where it lives, how changes are versioned and tested, how you detect divergent definitions across workbooks, and what you send to stakeholders still on Excel 2019.</p></section>
+<nav class="pager"><a class="prev" href="S05_SEQUENCE_for_Monthly_Timelines_Loan_Schedules_and.html">← SEQUENCE for Monthly Timelines, Loan Schedules and Period…</a><a class="next" href="S07_LAMBDA_Helpers_and_Array_Reshaping_Functions.html">LAMBDA Helpers and Array Reshaping Functions →</a></nav>
+</main></div></body></html>

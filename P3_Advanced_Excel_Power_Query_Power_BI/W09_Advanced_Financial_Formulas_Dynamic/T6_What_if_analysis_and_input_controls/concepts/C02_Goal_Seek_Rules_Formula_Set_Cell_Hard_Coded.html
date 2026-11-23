@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Goal Seek Rules: Formula Set Cell, Hard-Coded Changing Cell · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C02_Goal_Seek_Rules_Formula_Set_Cell_Hard_Coded.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T6 · What-if analysis and input controls</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · What-if analysis and input controls</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_One_and_Two_Variable_Data_Tables_for_Sensitivity.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S01_One_and_Two_Variable_Data_Tables_for_Sensitivity.html">One- and Two-Variable Data Tables for Sensitivity Analysis</a></li><li><a href="../subtopics/S02_Goal_Seek_for_Break_Even_Target_Margin_Price_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S02_Goal_Seek_for_Break_Even_Target_Margin_Price_and.html">Goal Seek for Break-Even, Target-Margin Price and Required Growth</a></li><li><a href="../subtopics/S03_Scenario_Manager_Scenarios_Changing_Cells_and_the.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S03_Scenario_Manager_Scenarios_Changing_Cells_and_the.html">Scenario Manager: Scenarios, Changing Cells and the Summary Report</a></li><li><a href="../subtopics/S04_Data_Validation_Dropdowns_Dependent_Lists_Limits.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S04_Data_Validation_Dropdowns_Dependent_Lists_Limits.html">Data Validation: Dropdowns, Dependent Lists, Limits and Messages</a></li><li><a href="../subtopics/S05_Formula_Based_Conditional_Formatting_for_Variances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S05_Formula_Based_Conditional_Formatting_for_Variances.html">Formula-Based Conditional Formatting for Variances and Scenarios</a></li><li><a href="../subtopics/S06_Form_Controls_Linked_to_Cells_for_Model_Dashboards.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S06_Form_Controls_Linked_to_Cells_for_Model_Dashboards.html">Form Controls Linked to Cells for Model Dashboards</a></li><li><a href="../subtopics/S07_Solver_for_Product_Mix_and_Capital_Rationing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S07_Solver_for_Product_Mix_and_Capital_Rationing.html">Solver for Product Mix and Capital Rationing</a></li><li><a href="../subtopics/S08_Calculation_Mode_Automatic_Except_Data_Tables_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S08_Calculation_Mode_Automatic_Except_Data_Tables_and.html">Calculation Mode: Automatic Except Data Tables and F9 Recalculation</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_The_TABLE_Array_Formula_and_the_Same_Sheet_Input.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C01_The_TABLE_Array_Formula_and_the_Same_Sheet_Input.html">The TABLE Array Formula and the Same-Sheet Input Rule</a></li><li><a href="C02_Goal_Seek_Rules_Formula_Set_Cell_Hard_Coded.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C02_Goal_Seek_Rules_Formula_Set_Cell_Hard_Coded.html">Goal Seek Rules: Formula Set Cell, Hard-Coded Changing Cell</a></li><li><a href="C03_Dependent_Dropdown_Sources_INDIRECT_vs_a_Spill.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C03_Dependent_Dropdown_Sources_INDIRECT_vs_a_Spill.html">Dependent Dropdown Sources: INDIRECT vs a Spill Reference</a></li><li><a href="C04_Conditional_Format_Rule_for_Negative_Rows_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C04_Conditional_Format_Rule_for_Negative_Rows_Column.html">Conditional Format Rule for Negative Rows: Column Locked, Row Relative</a></li><li><a href="C05_Variance_Flag_Rule_with_a_Named_Threshold_Input.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C05_Variance_Flag_Rule_with_a_Named_Threshold_Input.html">Variance Flag Rule with a Named Threshold Input</a></li><li><a href="C06_Scenario_Manager_Limits_32_Changing_Cells_and_a.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C06_Scenario_Manager_Limits_32_Changing_Cells_and_a.html">Scenario Manager Limits: 32 Changing Cells and a Static Summary</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Goal Seek Rules: Formula Set Cell, Hard-Coded Changing Cell</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Goal Seek: the Set cell must hold a formula, and the By-changing cell must be a hard-coded input</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>Goal Seek solves</p>
+<p>\[
+f(x) = T
+\]</p>
+<p>for one input \(x\), where:</p>
+<ul>
+<li><strong>Set cell</strong> — holds the formula \(f(x)\), the output to be driven to a target (EBIT, margin, NPV, DSCR).</li>
+<li><strong>To value</strong> — the target \(T\), typed as a number (it cannot be a cell reference).</li>
+<li><strong>By changing cell</strong> — holds \(x\), a <strong>constant</strong> (hard-coded input) on which the Set cell depends, directly or through a chain of formulas.</li>
+</ul>
+<p>Goal Seek iterates on \(x\) until \(\lvert f(x) - T \rvert\) is within the Maximum Change tolerance (File → Options → Formulas; default 0.001) or the iteration limit (default 100) is reached, then writes the solved \(x\) into the changing cell.</p>
+<h2 id="explanation">Explanation</h2>
+<p><strong>Why the Set cell must be a formula.</strong> Goal Seek observes how the Set cell responds to changes in the changing cell. A constant does not respond; Excel rejects it ("Cell must contain a formula").</p>
+<p><strong>Why the changing cell must be a constant.</strong> Goal Seek overwrites the changing cell with trial values. If it held a formula, solving would destroy model logic; Excel rejects it ("Cell must contain a value"). If your driver is itself calculated (e.g. volume = prior year × (1 + growth)), Goal Seek the underlying input (growth), not the calculated volume.</p>
+<p><strong>The dependency must exist.</strong> If the Set cell does not depend on the changing cell — for example because of a broken link or a hard-coded value somewhere in the chain — Goal Seek reports it may not have found a solution, or returns the unchanged value. Use Trace Dependents from the changing cell to confirm the path.</p>
+<p><strong>Target as a reference.</strong> Because "To value" must be typed, build a gap cell <code>=Output - TargetCell</code> and set it to 0. The target then lives visibly in the model.</p>
+<p><strong>Consequences for governance.</strong> After solving, the changing cell holds a hard-coded result that no longer tracks the logic that produced it. If other assumptions change, the solved value is stale. Record solves in a log, use a dedicated solve cell where possible, and keep a gap cell to detect drift.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Break-even: price ₹1,500, variable cost ₹900 per unit, fixed costs ₹2.4 crore.</p>
+<table>
+<thead>
+<tr>
+<th>Cell</th>
+<th>Content</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C4 Volume</td>
+<td>30,000</td>
+<td>Constant (changing cell)</td>
+</tr>
+<tr>
+<td>C5 Contribution</td>
+<td><code>=C4*(1500-900)</code></td>
+<td>Formula</td>
+</tr>
+<tr>
+<td>C6 EBIT</td>
+<td><code>=C5-24000000</code></td>
+<td>Formula (Set cell)</td>
+</tr>
+</tbody>
+</table>
+<p>Goal Seek: Set C6, To 0, By changing C4 → 40,000 units.</p>
+<p>Errors to recognise:</p>
+<ul>
+<li>Set cell = C4 (a constant) → "must contain a formula".</li>
+<li>Changing cell = C5 (a formula) → "must contain a value".</li>
+<li>If C6 were typed as −60,00,000 (pasted as value earlier), Goal Seek cannot find a solution because C6 no longer depends on C4.</li>
+</ul>
+<h2 id="connections">Connections</h2>
+<p>Applies s02 (Goal Seek uses) and supports CVP break-even and margin-of-safety work in Week 21. The pitfall "Goal Seek overwrites an input with no audit trail" follows directly from the hard-coded changing-cell requirement. Model hygiene (blue inputs, black formulas — a related item) makes the two cell types visually distinct, so the right cells are chosen quickly in the speed test.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-diagnose-the-error-messages-l1">Q1. Diagnose the error messages [L1]</h3>
+<p>For each Goal Seek attempt, predict the outcome and explain: (a) Set cell = the revenue growth input; (b) By changing cell = FY27 revenue (a formula); (c) Set cell = FY27 PAT, By changing = FY27 volume growth, but PAT links to a pasted-values copy of the P&amp;L.</p>
+<h3 id="q2-target-held-in-a-cell-l2">Q2. Target held in a cell [L2]</h3>
+<p>The CFO's target ROCE of 18% is held in a named input <code>ROCE_Target</code>, and the model's ROCE depends on price through revenue and working capital. Design a Goal Seek set-up that uses the named target without typing 18% into the dialog, and explain how you would detect that the solved price has become stale after a later change in capex.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Create a cell whose zero value means the target is met.</p>
+</blockquote>
+<h3 id="q3-calculated-drivers-l2">Q3. Calculated drivers [L2]</h3>
+<p>In a model, FY27 volume = FY26 volume × (1 + growth), where growth is an input, and EBITDA depends on volume. A junior asks why Goal Seek will not change FY27 volume to hit an EBITDA of ₹120 crore. Explain, and set out the correct Goal Seek.</p></section>
+<nav class="pager"><a class="prev" href="C01_The_TABLE_Array_Formula_and_the_Same_Sheet_Input.html">← The TABLE Array Formula and the Same-Sheet Input Rule</a><a class="next" href="C03_Dependent_Dropdown_Sources_INDIRECT_vs_a_Spill.html">Dependent Dropdown Sources: INDIRECT vs a Spill Reference →</a></nav>
+</main></div></body></html>

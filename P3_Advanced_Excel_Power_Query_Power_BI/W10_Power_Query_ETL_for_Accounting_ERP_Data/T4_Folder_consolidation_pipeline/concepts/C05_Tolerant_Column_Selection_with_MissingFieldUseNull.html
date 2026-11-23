@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tolerant Column Selection with MissingField.UseNull · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C05_Tolerant_Column_Selection_with_MissingFieldUseNull.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T4 · Folder consolidation pipeline</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Folder consolidation pipeline</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_FolderFiles_and_SharePointFiles_Sources_and_File.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S01_FolderFiles_and_SharePointFiles_Sources_and_File.html">Folder.Files and SharePoint.Files: Sources and File-Scope Filters</a></li><li><a href="../subtopics/S02_Combine_Files_Artefacts_Sample_Parameter_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S02_Combine_Files_Artefacts_Sample_Parameter_and.html">Combine Files Artefacts: Sample, Parameter and Transform Function</a></li><li><a href="../subtopics/S03_Writing_a_Custom_File_Cleaning_Function_by_Hand.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S03_Writing_a_Custom_File_Cleaning_Function_by_Hand.html">Writing a Custom File-Cleaning Function by Hand</a></li><li><a href="../subtopics/S04_Reading_Branch_and_Month_from_the_File_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S04_Reading_Branch_and_Month_from_the_File_Name.html">Reading Branch and Month from the File Name</a></li><li><a href="../subtopics/S05_Schema_Drift_Tolerant_Column_Selection_Across.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S05_Schema_Drift_Tolerant_Column_Selection_Across.html">Schema Drift: Tolerant Column Selection Across Branch Files</a></li><li><a href="../subtopics/S06_Multi_Bank_Statements_One_Function_per_Bank_Then.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S06_Multi_Bank_Statements_One_Function_per_Bank_Then.html">Multi-Bank Statements: One Function per Bank, Then Table.Combine</a></li><li><a href="../subtopics/S07_Monthly_Drop_In_Workflow_Archiving_and_Duplicate.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S07_Monthly_Drop_In_Workflow_Archiving_and_Duplicate.html">Monthly Drop-In Workflow, Archiving and Duplicate-File Detection</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_FolderFiles_Output_Columns_and_Which_to_Trust.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C01_FolderFiles_Output_Columns_and_Which_to_Trust.html">Folder.Files Output Columns and Which to Trust</a></li><li><a href="C02_Filtering_by_Extension_and_Excluding_Temp_Files.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C02_Filtering_by_Extension_and_Excluding_Temp_Files.html">Filtering by Extension and Excluding Temp Files</a></li><li><a href="C03_The_fxCleanTB_Function_Signature.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C03_The_fxCleanTB_Function_Signature.html">The fxCleanTB Function Signature</a></li><li><a href="C04_Invoking_per_File_and_Appending_with_TableCombine.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C04_Invoking_per_File_and_Appending_with_TableCombine.html">Invoking per File and Appending with Table.Combine</a></li><li><a href="C05_Tolerant_Column_Selection_with_MissingFieldUseNull.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C05_Tolerant_Column_Selection_with_MissingFieldUseNull.html">Tolerant Column Selection with MissingField.UseNull</a></li><li><a href="C06_Parsing_Branch_and_Period_with_Text_Delimiter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C06_Parsing_Branch_and_Period_with_Text_Delimiter.html">Parsing Branch and Period with Text Delimiter Functions</a></li><li><a href="C07_Guarding_the_Refresh_Against_One_Bad_File.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C07_Guarding_the_Refresh_Against_One_Bad_File.html">Guarding the Refresh Against One Bad File</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Tolerant Column Selection with MissingField.UseNull</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>Table.SelectColumns(t, {"Date","Ledger","Debit","Credit"}, MissingField.UseNull)</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-m">Table.SelectColumns(t, {&quot;Date&quot;, &quot;Ledger&quot;, &quot;Debit&quot;, &quot;Credit&quot;}, MissingField.UseNull)
+</code></pre>
+<p><code>Table.SelectColumns(table, columns, optional missingField)</code> returns only the listed columns, in the listed order. The third argument controls what happens when a listed column does not exist in <code>table</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Behaviour when a listed column is missing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MissingField.Error</code> (default)</td>
+<td>Raises an error: the column wasn't found</td>
+</tr>
+<tr>
+<td><code>MissingField.Ignore</code></td>
+<td>Skips the missing column; output has fewer columns</td>
+</tr>
+<tr>
+<td><code>MissingField.UseNull</code></td>
+<td>Adds the missing column filled with null</td>
+</tr>
+</tbody>
+</table>
+<p>Columns present in <code>table</code> but not listed are removed.</p>
+<h2 id="explanation">Explanation</h2>
+<p>In a folder pipeline the same step runs against every file. Some branch files lack an optional column (Date in a TB export, Cost Centre in older templates). With the default option the whole refresh fails on one file; with <code>Ignore</code>, the shape varies by file and downstream type steps referencing the missing column fail; with <code>UseNull</code>, every file yields <strong>exactly the same schema</strong> in the same order, which is what a consolidation needs.</p>
+<p>The same option exists on other column-oriented functions — <code>Table.RenameColumns</code>, <code>Table.RemoveColumns</code>, <code>Table.ReorderColumns</code>, <code>Table.TransformColumns</code> — and on <code>Record.SelectFields</code> and similar record functions. Typical pairing inside a cleaning function:</p>
+<ol>
+<li>Normalise header text (trim, clean, case).</li>
+<li><code>Table.RenameColumns(t, synonyms, MissingField.Ignore)</code> to map variants to standard names.</li>
+<li><code>Table.SelectColumns(t, target, MissingField.UseNull)</code> to force the target schema.</li>
+<li><code>Table.TransformColumnTypes</code> on the target columns.</li>
+</ol>
+<p>The judgement call: tolerance must not become blindness. A null-filled <strong>mandatory</strong> column (Ledger, Debit or Credit for a TB) means the file was not understood. Pair <code>UseNull</code> with a check that flags files where a mandatory column is entirely null, or use <code>MissingField.Error</code> for mandatory columns and <code>UseNull</code> only for optional ones:</p>
+<pre><code class="language-m">Mandatory = Table.SelectColumns(t, {&quot;Ledger&quot;, &quot;Debit&quot;, &quot;Credit&quot;}),
+WithOptional = Table.SelectColumns(t, {&quot;Ledger&quot;, &quot;Debit&quot;, &quot;Credit&quot;, &quot;Date&quot;, &quot;Cost Centre&quot;}, MissingField.UseNull)
+</code></pre>
+<p>Evaluating <code>Mandatory</code> first (and discarding it) is a cheap assertion that errors on bad files, which <code>try</code> then logs.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Four branch TB files after renaming:</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Columns present</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MUM</td>
+<td>Ledger, Debit, Credit</td>
+</tr>
+<tr>
+<td>DEL</td>
+<td>Date, Ledger, Debit, Credit, Group</td>
+</tr>
+<tr>
+<td>BLR</td>
+<td>Ledger, Credit, Debit</td>
+</tr>
+<tr>
+<td>HYD</td>
+<td>Ledger, Debit Amt, Credit</td>
+</tr>
+</tbody>
+</table>
+<p><code>Table.SelectColumns(t, {"Date","Ledger","Debit","Credit"}, MissingField.UseNull)</code> gives all four files the columns Date, Ledger, Debit, Credit. Date is null for MUM, BLR and HYD; Group is dropped from DEL; BLR's order is corrected. HYD's Debit is null because "Debit Amt" was not in the synonym list — the HYD file fails Dr = Cr and appears in the exception log, which is the intended outcome.</p>
+<h2 id="connections">Connections</h2>
+<p>Subtopic s05 (schema drift) and s06 (common bank schema); concept c04 (<code>Table.Combine</code>, which also null-fills by name). Topic t1's pitfall on the auto Changed Type step: selecting with <code>UseNull</code> before typing ensures the type step never hits a missing column. In data-model terms (Week 11), a fixed fact-table schema keeps relationships and measures stable across refreshes.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-option-choice-per-column-l1">Q1. Option choice per column [L1]</h3>
+<p>A bank function must output TxnDate, ValueDate, Narration, Ref, Withdrawal, Deposit. ValueDate and Ref are absent from one bank's export. Write the selection step(s) so that TxnDate, Narration, Withdrawal and Deposit are mandatory and the other two are optional.</p>
+<h3 id="q2-detect-null-filled-mandatory-columns-l2">Q2. Detect null-filled mandatory columns [L2]</h3>
+<p>Write a step for the per-file log that returns <code>true</code> when a nested table's Debit column contains only nulls, and explain why <code>List.NonNullCount</code> is preferable to checking the first row.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> <code>List.NonNullCount(t[Debit]) = 0</code> works whether the column was missing or genuinely empty.</p>
+</blockquote>
+<h3 id="q3-ignore-vs-usenull-downstream-l2">Q3. Ignore vs UseNull downstream [L2]</h3>
+<p>Describe what happens in a subsequent <code>Table.TransformColumnTypes(t, {{"Date", type date}})</code> step for a file without a Date column when the selection used <code>MissingField.Ignore</code>, versus <code>MissingField.UseNull</code>.</p></section>
+<nav class="pager"><a class="prev" href="C04_Invoking_per_File_and_Appending_with_TableCombine.html">← Invoking per File and Appending with Table.Combine</a><a class="next" href="C06_Parsing_Branch_and_Period_with_Text_Delimiter.html">Parsing Branch and Period with Text Delimiter Functions →</a></nav>
+</main></div></body></html>

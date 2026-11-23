@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Incremental Refresh Filter on RangeStart and RangeEnd · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C01_Incremental_Refresh_Filter_on_RangeStart_and.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T5 · Finalising Project 3: one-click refresh</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Finalising Project 3: one-click refresh</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_End_to_End_Architecture_Source_Folders_to_Report.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S01_End_to_End_Architecture_Source_Folders_to_Report.html">End-to-End Architecture: Source Folders to Report and Cube Pack</a></li><li><a href="../subtopics/S02_Parameters_for_Folder_Path_As_of_Date_FY_Start_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S02_Parameters_for_Folder_Path_As_of_Date_FY_Start_and.html">Parameters for Folder Path, As-of Date, FY Start and Environment</a></li><li><a href="../subtopics/S03_Excel_Refresh_Orchestration_Refresh_All_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S03_Excel_Refresh_Orchestration_Refresh_All_and.html">Excel Refresh Orchestration: Refresh All and Connection Settings</a></li><li><a href="../subtopics/S04_Publishing_Scheduled_Refresh_and_Gateways_for_On.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S04_Publishing_Scheduled_Refresh_and_Gateways_for_On.html">Publishing, Scheduled Refresh and Gateways for On-Prem and Tally</a></li><li><a href="../subtopics/S05_Incremental_Refresh_with_RangeStart_and_RangeEnd.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S05_Incremental_Refresh_with_RangeStart_and_RangeEnd.html">Incremental Refresh with RangeStart and RangeEnd for GL History</a></li><li><a href="../subtopics/S06_Performance_Tuning_Columns_Cardinality_Analyzer.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S06_Performance_Tuning_Columns_Cardinality_Analyzer.html">Performance Tuning: Columns, Cardinality, Analyzer Tools</a></li><li><a href="../subtopics/S07_Packaging_PBIXPBIP_pbit_Template_Documentation_CFO.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S07_Packaging_PBIXPBIP_pbit_Template_Documentation_CFO.html">Packaging: PBIX/PBIP, .pbit Template, Documentation, CFO Guide</a></li><li><a href="../subtopics/S08_Distribution_Apps_Subscriptions_Exports_and_Teams.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S08_Distribution_Apps_Subscriptions_Exports_and_Teams.html">Distribution: Apps, Subscriptions, Exports and Teams Embedding</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Incremental_Refresh_Filter_on_RangeStart_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C01_Incremental_Refresh_Filter_on_RangeStart_and.html">Incremental Refresh Filter on RangeStart and RangeEnd</a></li><li><a href="C02_Scheduled_Refresh_Limits_8_per_Day_on_Pro_48_on.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C02_Scheduled_Refresh_Limits_8_per_Day_on_Pro_48_on.html">Scheduled Refresh Limits: 8 per Day on Pro, 48 on Premium</a></li><li><a href="C03_SharePointFiles_for_Gateway_Free_Cloud_Refresh.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C03_SharePointFiles_for_Gateway_Free_Cloud_Refresh.html">SharePoint.Files for Gateway-Free Cloud Refresh</a></li><li><a href="C04_One_Click_Excel_Refresh_Macro_or_Power_Automate.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C04_One_Click_Excel_Refresh_Macro_or_Power_Automate.html">One-Click Excel Refresh Macro or Power Automate Flow</a></li><li><a href="C05_Performance_Analyzer_to_DAX_Studio_Server_Timings.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C05_Performance_Analyzer_to_DAX_Studio_Server_Timings.html">Performance Analyzer to DAX Studio Server Timings</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Incremental Refresh Filter on RangeStart and RangeEnd</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Incremental refresh filter: <code>Table.SelectRows(GL, each [PostingDateTime] &gt;= RangeStart and [PostingDateTime] &lt; RangeEnd)</code> (datetime parameters, foldable source)</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-M">let
+    Source = Sql.Database(&quot;finsql.contoso.local&quot;, &quot;FinanceDW&quot;),
+    GL     = Source{[Schema = &quot;dbo&quot;, Item = &quot;GL_Lines&quot;]}[Data],
+    Filtered =
+        Table.SelectRows(
+            GL,
+            each [PostingDateTime] &gt;= RangeStart and [PostingDateTime] &lt; RangeEnd
+        )
+in
+    Filtered
+</code></pre>
+<ul>
+<li><code>RangeStart</code>, <code>RangeEnd</code> — Power Query parameters with these exact (case-sensitive) names and type <strong>Date/Time</strong>.
+  The Service overwrites their values for each partition at refresh.</li>
+<li><code>[PostingDateTime]</code> — a datetime column on the fact.</li>
+<li><code>&gt;=</code> on the start and <code>&lt;</code> on the end — half-open interval, so each row belongs to exactly one partition.</li>
+<li><em>Foldable source</em> — the filter must translate into the source query (e.g. a SQL <code>WHERE</code>) for each partition to read
+  only its slice.</li>
+</ul>
+<p>For a partition \(p\) with bounds \([s_p, e_p)\), the rows loaded are:</p>
+<p>\[
+R_p = \{\, r \in \text{GL} : s_p \le t_r &lt; e_p \,\}
+\]</p>
+<p>where \(t_r\) is the posting datetime of row \(r\). Because partitions tile time without overlap,
+\(\sum_p \lvert R_p \rvert = \lvert \text{GL} \rvert\) within the archive window.</p>
+<h2 id="explanation">Explanation</h2>
+<p>The filter is what turns an ordinary import query into a partitionable one. After you define the policy (archive
+5 years, refresh last 2 months) and publish, the Service creates year/quarter/month partitions, sets RangeStart and
+RangeEnd for each, and runs the query per partition. Only partitions inside the incremental window are reprocessed on
+later refreshes.</p>
+<p>Conditions and pitfalls:</p>
+<ul>
+<li><strong>Type.</strong> Parameters must be Date/Time. If the column is a date, either filter a datetime column or convert:
+  <code>DateTime.From([PostingDate]) &gt;= RangeStart</code> — but conversions can stop folding on some sources. If the source uses
+  integer keys (20260331), convert the parameter instead with a small function so the column stays native.</li>
+<li><strong>Both bounds inclusive</strong> (<code>&lt;=</code> on the end) double-loads rows exactly at boundaries — e.g. a voucher at 01-04-2026
+  00:00 lands in March and April partitions, and the TB no longer balances by month (Topic 4 controls catch it).</li>
+<li><strong>Folding.</strong> Check with <em>View Native Query</em> on the filter step. Placing the filter early, directly after navigation,
+  maximises folding; steps such as adding an index column or merging with a local Excel file before the filter break it.</li>
+<li><strong>Desktop behaviour.</strong> Desktop loads only rows between the parameters' current values; set them to a short recent
+  range to keep the PBIX small.</li>
+<li><strong>Non-foldable sources</strong> (CSV folders) still work if you filter the file list by a period derived from the file name,
+  but each partition re-reads folder metadata; acceptable for modest volumes.</li>
+<li><strong>One filter only.</strong> Apply RangeStart/RangeEnd filtering to the fact table(s) that need it; dimensions refresh in full.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>Policy: archive 6 years, incrementally refresh the last 2 months, refresh date 10 May 2026. Partitions refreshed:
+April 2026 \([\text{01-04-2026}, \text{01-05-2026})\) and May 2026 \([\text{01-05-2026}, \text{01-06-2026})\). A
+voucher posted 30-04-2026 23:59 is in April; one posted 01-05-2026 00:00 is in May. The SQL sent for April folds to:
+<code>WHERE PostingDateTime &gt;= '2026-04-01 00:00:00' AND PostingDateTime &lt; '2026-05-01 00:00:00'</code>, reading 0.7 million
+rows instead of 64 million.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>s05 (incremental refresh) covers the policy settings, change detection and audit-window choices.</li>
+<li>s02 (parameters): RangeStart/RangeEnd are special-purpose parameters alongside SiteUrl and AsOfDate.</li>
+<li>s06 (performance): incremental refresh is the refresh-time counterpart of model-size tuning.</li>
+<li>Topic 4 s07: once applied in the Service, change control must use PBIP/XMLA because the PBIX cannot be downloaded.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-correcting-a-filter-l1">Q1. Correcting a filter [L1]</h3>
+<p>A developer writes <code>Table.SelectRows(GL, each [PostingDate] &gt;= RangeStart and [PostingDate] &lt;= RangeEnd)</code>, where
+<code>PostingDate</code> is of type date and the parameters are of type date. List every problem and write the corrected step.</p>
+<h3 id="q2-integer-date-key-l2">Q2. Integer date key [L2]</h3>
+<p>The source fact has <code>DateKey</code> (integer, yyyymmdd) but no datetime column. Write an M function that converts a datetime
+parameter to the key, and the filter step that uses it, so that the filter still folds to SQL.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Format the datetime as text in the yyyyMMdd pattern and convert to a number.</p>
+</blockquote>
+<h3 id="q3-boundary-test-l2">Q3. Boundary test [L2]</h3>
+<p>Describe a test, using DAX measures on the published model, that would prove no GL rows are duplicated or lost at
+partition boundaries after enabling incremental refresh.</p></section>
+<nav class="pager"><a class="prev" href="../subtopics/S08_Distribution_Apps_Subscriptions_Exports_and_Teams.html">← Distribution: Apps, Subscriptions, Exports and Teams…</a><a class="next" href="C02_Scheduled_Refresh_Limits_8_per_Day_on_Pro_48_on.html">Scheduled Refresh Limits: 8 per Day on Pro, 48 on Premium →</a></nav>
+</main></div></body></html>

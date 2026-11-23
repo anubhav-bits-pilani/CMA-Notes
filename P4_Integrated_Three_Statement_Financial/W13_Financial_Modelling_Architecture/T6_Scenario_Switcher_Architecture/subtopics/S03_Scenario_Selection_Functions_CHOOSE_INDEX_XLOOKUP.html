@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scenario Selection Functions: CHOOSE, INDEX, XLOOKUP, SWITCH · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S03_Scenario_Selection_Functions_CHOOSE_INDEX_XLOOKUP.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T6 · Scenario Switcher Architecture</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · Scenario Switcher Architecture</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Single_Scenario_Selector_Cell_with_Data_Validation.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S01_Single_Scenario_Selector_Cell_with_Data_Validation.html">Single Scenario Selector Cell with Data-Validation Dropdown</a></li><li><a href="S02_Scenario_Driver_Blocks_Base_Bull_Bear_Rows_and_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S02_Scenario_Driver_Blocks_Base_Bull_Bear_Rows_and_the.html">Scenario Driver Blocks: Base, Bull, Bear Rows and the Live Row</a></li><li><a href="S03_Scenario_Selection_Functions_CHOOSE_INDEX_XLOOKUP.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S03_Scenario_Selection_Functions_CHOOSE_INDEX_XLOOKUP.html">Scenario Selection Functions: CHOOSE, INDEX, XLOOKUP, SWITCH</a></li><li><a href="S04_Which_Drivers_to_Flex_Volume_Price_Stores_Margin.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S04_Which_Drivers_to_Flex_Volume_Price_Stores_Margin.html">Which Drivers to Flex: Volume, Price, Stores, Margin, Wages, Capex, NWC</a></li><li><a href="S05_Coherent_Scenario_Narratives_vs_Single_Variable.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S05_Coherent_Scenario_Narratives_vs_Single_Variable.html">Coherent Scenario Narratives vs Single-Variable Tweaks</a></li><li><a href="S06_Capturing_Scenario_Outputs_Data_Tables_vs_Pasted.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S06_Capturing_Scenario_Outputs_Data_Tables_vs_Pasted.html">Capturing Scenario Outputs: Data Tables vs Pasted Static Values</a></li><li><a href="S07_Scenario_Labelling_on_Outputs_and_Documented_Case.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S07_Scenario_Labelling_on_Outputs_and_Documented_Case.html">Scenario Labelling on Outputs and Documented Case Rationale</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_The_Live_Row_CHOOSE_or_INDEX_on_the_Scenario_Code.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C01_The_Live_Row_CHOOSE_or_INDEX_on_the_Scenario_Code.html">The Live Row: CHOOSE or INDEX on the Scenario Code</a></li><li><a href="../concepts/C02_One_Switch_Only_No_Scenario_Logic_Outside_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C02_One_Switch_Only_No_Scenario_Logic_Outside_the.html">One Switch Only: No Scenario Logic Outside the Driver Block</a></li><li><a href="../concepts/C03_Scenario_Summary_via_a_One_Variable_Data_Table_on.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C03_Scenario_Summary_via_a_One_Variable_Data_Table_on.html">Scenario Summary via a One-Variable Data Table on the Switch</a></li><li><a href="../concepts/C04_Live_Scenario_Header_Label_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C04_Live_Scenario_Header_Label_Formula.html">Live Scenario Header Label Formula</a></li><li><a href="../concepts/C05_Internal_Consistency_of_Scenarios_Growth_Needs.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C05_Internal_Consistency_of_Scenarios_Growth_Needs.html">Internal Consistency of Scenarios: Growth Needs Capex, Stress Needs Funding</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Scenario Selection Functions: CHOOSE, INDEX, XLOOKUP, SWITCH</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Selection functions: CHOOSE, INDEX, XLOOKUP, SWITCH; avoid volatile OFFSET/INDIRECT</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>The Live row formula is copied across every forecast column of every flexed driver — often several hundred cells in
+a full model. The function chosen for it affects transparency (can a reviewer see which rows feed it?), robustness
+(does it break when rows are inserted?), performance (does it recalculate on every keystroke?) and auditability (do
+Trace Precedents and Inquire show the true dependencies?). Four non-volatile functions do the job well; two volatile
+functions, OFFSET and INDIRECT, are common in older models and should be avoided. Model-audit firms routinely flag
+OFFSET/INDIRECT-based scenario switches as a high-risk finding.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="choose">CHOOSE</h3>
+<pre><code>=CHOOSE(Scenario, H20, H21, H22)
+</code></pre>
+<ul>
+<li>Returns the nth argument, n = <code>Scenario</code>.</li>
+<li><strong>Pros:</strong> most readable; each case's cell is an explicit precedent, so Trace Precedents shows exactly three
+  arrows; robust to row insertions (references adjust); non-volatile.</li>
+<li><strong>Cons:</strong> arguments must be listed individually (unwieldy beyond five or six cases); adding a case requires editing
+  every Live formula; if <code>Scenario</code> exceeds the number of arguments, returns #VALUE!.</li>
+<li><strong>Best for:</strong> three to five cases — the standard choice.</li>
+</ul>
+<h3 id="index">INDEX</h3>
+<pre><code>=INDEX(H20:H22, Scenario)
+</code></pre>
+<ul>
+<li>Returns the nth cell of a contiguous range.</li>
+<li><strong>Pros:</strong> compact; adding a case means inserting a row inside the range (references expand); non-volatile;
+  returns a reference, so it can be used inside other range functions.</li>
+<li><strong>Cons:</strong> relies on the block's rows being contiguous and in the code order — a row inserted inside the block
+  (e.g., a note row) shifts which case is returned without error. Trace Precedents shows the whole range, not the
+  selected cell.</li>
+<li><strong>Best for:</strong> larger case counts and when blocks are strictly standardised.</li>
+</ul>
+<h3 id="xlookup">XLOOKUP</h3>
+<pre><code>=XLOOKUP(Scenario, $C20:$C22, H20:H22)
+</code></pre>
+<p>where column C holds the code for each case row (1, 2, 3).</p>
+<ul>
+<li><strong>Pros:</strong> looks up by code, not by position — row order inside the block no longer matters; explicit
+  not-found handling (<code>if_not_found</code> argument) can return an error message; non-volatile; available in Microsoft 365
+  and Excel 2021+.</li>
+<li><strong>Cons:</strong> needs a code column in every block; not available in Excel 2016/2019 — a real issue if counterparties
+  (lenders, auditors) use older versions, where it returns #NAME?. INDEX/MATCH is the backward-compatible equivalent:
+  <code>=INDEX(H20:H22, MATCH(Scenario, $C20:$C22, 0))</code>.</li>
+<li><strong>Best for:</strong> models with many cases or where blocks may be reordered.</li>
+</ul>
+<h3 id="switch">SWITCH</h3>
+<pre><code>=SWITCH(Scenario, 1, H20, 2, H21, 3, H22, NA())
+</code></pre>
+<ul>
+<li>Evaluates <code>Scenario</code> against listed values and returns the matching result; a default (here <code>NA()</code>) handles
+  invalid codes.</li>
+<li><strong>Pros:</strong> explicit value-to-result mapping; built-in default; non-volatile; works with text codes
+  (<code>SWITCH(Scenario_Name,"Base",…)</code>).</li>
+<li><strong>Cons:</strong> longer than CHOOSE; Excel 2019+ only; text codes are fragile.</li>
+<li><strong>Best for:</strong> when codes are non-contiguous (e.g., 1, 2, 3, 9 = "Lender") or a default is required.</li>
+</ul>
+<h3 id="why-avoid-offset-and-indirect">Why avoid OFFSET and INDIRECT</h3>
+<pre><code>=OFFSET(H19, Scenario, 0)                 ' volatile
+=INDIRECT(&quot;H&quot;&amp;(19+Scenario))              ' volatile and text-based
+</code></pre>
+<ul>
+<li><strong>Volatility.</strong> Both recalculate on every change anywhere in the workbook, not just when their precedents change.
+  Hundreds of volatile cells, plus everything that depends on them, slow large models and data tables markedly.</li>
+<li><strong>Opacity.</strong> Trace Precedents cannot follow OFFSET's target or INDIRECT's text address; Inquire and model-audit
+  tools may miss the dependency. A reviewer cannot see which cell feeds the result.</li>
+<li><strong>Fragility.</strong> INDIRECT uses text addresses that do <em>not</em> update when rows or columns are inserted or sheets
+  renamed — a classic silent error. OFFSET depends on a fixed row count from an anchor; inserting a row inside the
+  block shifts results.</li>
+<li><strong>Standards.</strong> FAST and the ICAEW Code discourage volatile and text-built references; Big 4 model review checklists
+  flag them.</li>
+</ul>
+<h3 id="comparison">Comparison</h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Volatile</th>
+<th>Order-dependent</th>
+<th>Shows precedents clearly</th>
+<th>Version</th>
+<th>Typical use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CHOOSE</td>
+<td>No</td>
+<td>Yes (argument order)</td>
+<td>Yes</td>
+<td>All</td>
+<td>Default for 3–5 cases</td>
+</tr>
+<tr>
+<td>INDEX</td>
+<td>No</td>
+<td>Yes (row order)</td>
+<td>Range only</td>
+<td>All</td>
+<td>Compact, many cases</td>
+</tr>
+<tr>
+<td>XLOOKUP</td>
+<td>No</td>
+<td>No (by code)</td>
+<td>Range only</td>
+<td>365/2021+</td>
+<td>Reorderable blocks</td>
+</tr>
+<tr>
+<td>INDEX/MATCH</td>
+<td>No</td>
+<td>No (by code)</td>
+<td>Range only</td>
+<td>All</td>
+<td>Backward-compatible lookup</td>
+</tr>
+<tr>
+<td>SWITCH</td>
+<td>No</td>
+<td>No (explicit map)</td>
+<td>Yes</td>
+<td>2019+</td>
+<td>Non-contiguous codes, default</td>
+</tr>
+<tr>
+<td>OFFSET</td>
+<td><strong>Yes</strong></td>
+<td>Yes</td>
+<td>No</td>
+<td>All</td>
+<td>Avoid</td>
+</tr>
+<tr>
+<td>INDIRECT</td>
+<td><strong>Yes</strong></td>
+<td>Yes</td>
+<td>No</td>
+<td>All</td>
+<td>Avoid</td>
+</tr>
+</tbody>
+</table>
+<h3 id="selecting-whole-rows-dynamic-arrays">Selecting whole rows (dynamic arrays)</h3>
+<p>In Microsoft 365 a single formula can return the whole Live row: <code>=CHOOSE(Scenario, H20:L20, H21:L21, H22:L22)</code> spills
+across. This reduces formula count but breaks the "one formula per cell, identical across the row" visual audit and
+can confuse users of older versions. Most institutional models still use per-cell formulas.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Invalid selector values.</strong> CHOOSE and INDEX error on out-of-range codes (#VALUE!, #REF!); this is desirable
+  because it is visible. Do not wrap Live formulas in IFERROR — it would hide an invalid selector (w13 t2 c03).</li>
+<li><strong>Mixed functions.</strong> Use one selection function throughout the model; mixing CHOOSE in some blocks and INDEX in
+  others confuses reviewers.</li>
+<li><strong>Performance.</strong> In very large models, the selection function is rarely the bottleneck unless volatile; data tables
+  over the scenario switch are a bigger cost (s06).</li>
+<li><strong>Legacy models.</strong> When inheriting an OFFSET-based switch, replace it block by block and reconcile outputs before and
+  after the change for each scenario.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>CHOOSE is the default Live-row function for three to five cases: readable and non-volatile.</li>
+<li>INDEX is compact but depends on row order; XLOOKUP and INDEX/MATCH select by code.</li>
+<li>SWITCH maps explicit codes and provides a default for invalid values.</li>
+<li>OFFSET and INDIRECT are volatile, opaque to auditing tools and fragile to insertions — avoid them.</li>
+<li>Never wrap selection formulas in IFERROR; let invalid selectors surface.</li>
+<li>Use one selection function consistently across the model.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-rewrite-a-volatile-switch-l1">Q1. Rewrite a volatile switch [L1]</h3>
+<p>A legacy model uses <code>=OFFSET(Assumptions!G40,Scenario,0)</code> in every Live cell. Rewrite it using CHOOSE and using INDEX,
+and explain two risks of the original formula.</p>
+<h3 id="q2-row-insertion-test-l2">Q2. Row insertion test [L2]</h3>
+<p>In a block where Base, Bull and Bear are rows 50–52 and the Live row is 53, a user inserts a comment row between Base
+and Bull. Explain what happens to CHOOSE-, INDEX-, XLOOKUP- and INDIRECT-based Live rows, and which remain correct.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider whether each function tracks cell references, ranges, codes or text addresses.</p>
+</blockquote>
+<h3 id="q3-version-compatibility-l2">Q3. Version compatibility [L2]</h3>
+<p>Your client's lender uses Excel 2016. Your model uses XLOOKUP for Live rows and SWITCH for a label. Describe what the
+lender will see and how you would redesign the formulas for compatibility while preserving lookup-by-code.</p>
+<h3 id="q4-interview-choose-a-function-l1">Q4. Interview — choose a function [L1]</h3>
+<p>An interviewer asks: "Which function do you use for scenario switches, and why not OFFSET?" Prepare a 60-second answer.</p></section>
+<nav class="pager"><a class="prev" href="S02_Scenario_Driver_Blocks_Base_Bull_Bear_Rows_and_the.html">← Scenario Driver Blocks: Base, Bull, Bear Rows and the Live…</a><a class="next" href="S04_Which_Drivers_to_Flex_Volume_Price_Stores_Margin.html">Which Drivers to Flex: Volume, Price, Stores, Margin,… →</a></nav>
+</main></div></body></html>

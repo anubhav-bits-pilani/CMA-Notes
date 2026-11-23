@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Actual/Forecast Flags and Per-Column Data Source Switching · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S04_ActualForecast_Flags_and_Per_Column_Data_Source.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 5</a> <span>›</span> <a href="../../index.html">Week 18</a> <span>›</span> <a href="../index.html">T1 · 12/18-month rolling forecast timeline…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · 12/18-month rolling forecast timeline mechanics</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Rolling_Horizon_Design_12_Month_18_Month_and_5.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S01_Rolling_Horizon_Design_12_Month_18_Month_and_5.html">Rolling Horizon Design: 12-Month, 18-Month and 5-Quarter Windows</a></li><li><a href="S02_Reforecast_Cadence_and_Decoupling_from_the_AOP.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S02_Reforecast_Cadence_and_Decoupling_from_the_AOP.html">Reforecast Cadence and Decoupling from the AOP</a></li><li><a href="S03_Dynamic_Timeline_Headers_Driven_by_a_Single_Cutoff.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S03_Dynamic_Timeline_Headers_Driven_by_a_Single_Cutoff.html">Dynamic Timeline Headers Driven by a Single Cutoff Date</a></li><li><a href="S04_ActualForecast_Flags_and_Per_Column_Data_Source.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S04_ActualForecast_Flags_and_Per_Column_Data_Source.html">Actual/Forecast Flags and Per-Column Data Source Switching</a></li><li><a href="S05_Pulling_Actuals_from_a_Long_Format_Database_with.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S05_Pulling_Actuals_from_a_Long_Format_Database_with.html">Pulling Actuals from a Long-Format Database with SUMIFS</a></li><li><a href="S06_Forecast_Granularity_Fewer_Lines_than_the_Budget.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S06_Forecast_Granularity_Fewer_Lines_than_the_Budget.html">Forecast Granularity: Fewer Lines than the Budget</a></li><li><a href="S07_EPM_Support_for_Rolling_Forecasts_Anaplan_Adaptive.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S07_EPM_Support_for_Rolling_Forecasts_Anaplan_Adaptive.html">EPM Support for Rolling Forecasts: Anaplan, Adaptive and EPBCS</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_First_Forecast_Month_and_SEQUENCE_Driven_Month_End.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C01_First_Forecast_Month_and_SEQUENCE_Driven_Month_End.html">First Forecast Month and SEQUENCE-Driven Month-End Headers</a></li><li><a href="../concepts/C02_Non_Dynamic_Array_Header_Formula_Using_a_COLUMN.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C02_Non_Dynamic_Array_Header_Formula_Using_a_COLUMN.html">Non-Dynamic-Array Header Formula Using a COLUMN Offset</a></li><li><a href="../concepts/C03_Actual_Flag_and_the_IF_SUMIFS_Value_Switch.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C03_Actual_Flag_and_the_IF_SUMIFS_Value_Switch.html">Actual Flag and the IF-SUMIFS Value Switch</a></li><li><a href="../concepts/C04_Constant_Length_Rolling_Horizon.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C04_Constant_Length_Rolling_Horizon.html">Constant-Length Rolling Horizon</a></li><li><a href="../concepts/C05_Prefer_INDEXXLOOKUP_over_Volatile_OFFSETINDIRECT.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C05_Prefer_INDEXXLOOKUP_over_Volatile_OFFSETINDIRECT.html">Prefer INDEX/XLOOKUP over Volatile OFFSET/INDIRECT</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Actual/Forecast Flags and Per-Column Data Source Switching</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Actual/forecast flags and automatic switching of data source per column</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A rolling forecast and an LE grid both mix two fundamentally different kinds of numbers in one row: closed, audited-quality actuals and forward-looking estimates. Each column must know which kind it holds, pull from the right source, and look different on screen so a reader never mistakes a forecast for an actual. Getting this wrong is a real control issue — a forecast number presented as an actual in a Board pack or a lender compliance certificate is a misstatement. The flag row is also what makes YTD/YTG splits, LE totals and accuracy measurements automatic.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-flag">The flag</h3>
+<p>Under each date header, compute a binary flag:</p>
+<pre><code>=--(C$4&lt;=Cutoff)
+</code></pre>
+<p>The comparison returns TRUE/FALSE; the double unary <code>--</code> converts it to 1/0, which can be multiplied, summed and used in <code>SUMPRODUCT</code>. With dynamic arrays, <code>=--(C4#&lt;=Cutoff)</code> spills the flag row in one cell. A three-state flag is useful in some designs:</p>
+<table>
+<thead>
+<tr>
+<th>Flag value</th>
+<th>Meaning</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 / "A"</td>
+<td>Actual (closed)</td>
+<td><code>Hdr&lt;=Cutoff</code></td>
+</tr>
+<tr>
+<td>0 / "F"</td>
+<td>Forecast</td>
+<td><code>Hdr&gt;Cutoff</code> and within horizon</td>
+</tr>
+<tr>
+<td>"P"</td>
+<td>Prior year / out of horizon</td>
+<td><code>Hdr&lt;FYStart</code></td>
+</tr>
+</tbody>
+</table>
+<p>Keep the numeric 0/1 flag for calculation and derive text labels from it for display.</p>
+<h3 id="switching-the-data-source">Switching the data source</h3>
+<p>Each value cell selects its source based on the flag:</p>
+<pre><code>=IF(C$7, SUMIFS(Act[Amt],Act[Month],C$4,Act[Acct],$A10), C$30)
+</code></pre>
+<p>where row 30 is the forecast calculation for the same account (driver-based, Topic 3). Three architectures are common:</p>
+<ol>
+<li><strong>Inline switch</strong> (above): one formula per cell chooses between actuals and the forecast row. Simple, transparent.</li>
+<li><strong>Three-block layout:</strong> an Actuals block (pulls actuals for all months, zero for future), a Forecast block (calculates all months, including closed ones — useful for accuracy comparison), and an Output block <code>=Act*Flag + Fcst*(1-Flag)</code>. More rows, but each block has one formula type, which auditors prefer.</li>
+<li><strong>Database switch:</strong> a single <code>SUMIFS</code> with a version criterion that is "Actual" for closed months and "Working Fcst" otherwise: <code>=SUMIFS(Fact[Amt],Fact[Month],C$4,Fact[Acct],$A10,Fact[Version],IF(C$7,"Actual","WkgFcst"))</code>. Cleanest when all data, including forecasts, live in the fact table.</li>
+</ol>
+<p>The arithmetic form <code>=Flag*Actual + (1-Flag)*Forecast</code> avoids <code>IF</code> and works with array maths, but it evaluates both branches — fine for numbers, but an error in either branch propagates. <code>IF</code> evaluates only the chosen branch.</p>
+<h3 id="using-the-flag-downstream">Using the flag downstream</h3>
+<ul>
+<li><strong>YTD and YTG:</strong> <code>YTD = SUMPRODUCT(C10:N10, C$7:N$7)</code>; <code>YTG = SUMPRODUCT(C10:N10, 1-C$7:N$7)</code>; <code>LE = YTD + YTG</code>.</li>
+<li><strong>Forecast drivers that depend on last actual:</strong> e.g. opening headcount for the first forecast month = closing actual headcount of the cutoff month: <code>=XLOOKUP(Cutoff, C$4:N$4, C20:N20)</code>.</li>
+<li><strong>Balance sheet roll-forwards:</strong> in a 3-statement forecast, closing balances for actual months come from the trial balance, while forecast months roll forward from the last actual closing balance. The flag decides which formula applies, and a check confirms the first forecast month's opening equals the cutoff month's actual closing.</li>
+</ul>
+<h3 id="visual-distinction">Visual distinction</h3>
+<p>Readers must see the boundary instantly:</p>
+<ul>
+<li>Conditional formatting rule on the grid: formula <code>=C$7=1</code>, grey fill; forecast columns white or light blue.</li>
+<li>A vertical border at the boundary: rule <code>=AND(C$7=1,D$7=0)</code> applies a right border.</li>
+<li>Header label row: "Act Sep-25" / "Fcst Oct-25".</li>
+<li>In Power BI, an <code>IsActual</code> column in the date table drives a conditional format or separate line series (solid for actual, dashed for forecast).</li>
+</ul>
+<h3 id="illustration">Illustration</h3>
+<p>FY26 grid, cutoff 30-Sep-2025. Revenue row (₹ crore): actuals Apr–Sep 80, 84, 82, 88, 91, 95 (sum 520); forecast Oct–Mar 120, 115, 98, 96, 94, 102 (sum 625). Flag row: 1,1,1,1,1,1,0,0,0,0,0,0. YTD = 520, YTG = 625, LE = 1,145. When October closes with actual 112, the flag for October becomes 1, the cell now pulls 112 instead of 120, YTD = 632, YTG = 505, LE = 1,137 — the ₹8 crore fall is the actualisation effect in the forecast bridge.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Soft close vs hard close:</strong> if the cutoff is moved after a soft close (before final adjustments such as Ind AS 115 cut-off or inventory provisions), actuals will change after the forecast is published. Either move the cutoff only after hard close or add a "provisional" flag state and disclose it.</li>
+<li><strong>Partial-month actuals:</strong> some teams use flash actuals for the current month (e.g. sales up to the 20th + forecast for the rest). Keep these out of the binary flag; treat them as a forecast input.</li>
+<li><strong>Post-close adjustments to earlier months:</strong> prior-period corrections flow into the actuals table and change YTD; the bridge must show them separately, and under Ind AS 8 material prior-period errors are corrected retrospectively in statutory reporting, which may not match management reporting.</li>
+<li><strong>Accounts with no forecast logic:</strong> if the forecast row is blank, forecast months return zero silently; add a check that every forecast-flagged column is non-zero for material accounts.</li>
+<li><strong>Don't overwrite the forecast row:</strong> keep the forecast block calculating for closed months too if you want lag-0 comparisons; snapshots (Topic 4) are still needed for lag-n accuracy.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>The flag <code>--(Hdr&lt;=Cutoff)</code> turns the cutoff into a 1/0 row that every formula can use.</li>
+<li>Switch data source per column via inline <code>IF</code>, a three-block layout, or a version criterion in a database <code>SUMIFS</code>.</li>
+<li><code>SUMPRODUCT</code> with the flag row gives YTD, YTG and LE with no manual ranges.</li>
+<li>Format actual and forecast columns differently and mark the boundary; label headers "Act"/"Fcst".</li>
+<li>Move the cutoff only after hard close, or explicitly label provisional actuals.</li>
+<li>Check that forecast months are populated and that first forecast openings tie to last actual closings.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-flag-driven-ytdytg-l1">Q1. Flag-driven YTD/YTG [L1]</h3>
+<p>For a FY26 grid with cutoff 31-Aug-2025, write the flag formula, and the YTD, YTG and LE formulas for a revenue row in C10:N10. State the flag row values.</p>
+<h3 id="q2-three-block-layout-for-payroll-l2">Q2. Three-block layout for payroll [L2]</h3>
+<p>Design a three-block layout (Actual, Forecast, Output) for employee cost with forecast = headcount × average monthly CTC × (1 + increment from July). Opening headcount 1,240 at 30-Sep-2025 (actual), monthly net hires 15, average CTC ₹92,000 per month, annual increment 9% effective July 2026. Write the formulas for each block for a rolling 12-month window and explain how the first forecast month's headcount is linked to the last actual.</p>
+<h3 id="q3-provisional-actuals-dilemma-l3">Q3. Provisional actuals dilemma [L3]</h3>
+<p>The Board pack is due on WD 5. Hard close is WD 7 because Ind AS 115 revenue cut-off and expected-credit-loss provisioning entries are finalised then. Propose how the forecast flag, labelling and the version snapshot should handle the WD 5 pack, and how differences discovered at hard close should be reported.</p>
+<h3 id="q4-visual-boundary-and-power-bi-l2">Q4. Visual boundary and Power BI [L2]</h3>
+<p>Write the conditional-formatting rules that shade actual columns grey and draw a right border at the last actual column in Excel. Then describe the date-table column and DAX measure you would use in Power BI to plot actuals as a solid line and forecast as a dashed line on the same chart.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Two measures, each returning BLANK on the other side of the boundary, give two series.</p>
+</blockquote></section>
+<nav class="pager"><a class="prev" href="S03_Dynamic_Timeline_Headers_Driven_by_a_Single_Cutoff.html">← Dynamic Timeline Headers Driven by a Single Cutoff Date</a><a class="next" href="S05_Pulling_Actuals_from_a_Long_Format_Database_with.html">Pulling Actuals from a Long-Format Database with SUMIFS →</a></nav>
+</main></div></body></html>

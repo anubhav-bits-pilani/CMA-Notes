@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trend Visuals: Actual vs Budget vs PY Combos and Rolling 12 Months · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S03_Trend_Visuals_Actual_vs_Budget_vs_PY_Combos_and.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T1 · Executive dashboard visual architecture</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Executive dashboard visual architecture</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Executive_Page_Layout_KPI_Row_Trend_Row_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S01_Executive_Page_Layout_KPI_Row_Trend_Row_and.html">Executive Page Layout: KPI Row, Trend Row and Variance Row</a></li><li><a href="S02_Card_Visuals_New_Card_KPI_Visual_and_Reference.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S02_Card_Visuals_New_Card_KPI_Visual_and_Reference.html">Card Visuals: New Card, KPI Visual and Reference Labels</a></li><li><a href="S03_Trend_Visuals_Actual_vs_Budget_vs_PY_Combos_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S03_Trend_Visuals_Actual_vs_Budget_vs_PY_Combos_and.html">Trend Visuals: Actual vs Budget vs PY Combos and Rolling 12 Months</a></li><li><a href="S04_Waterfall_Bridges_EBITDA_Revenue_and_Cash_Flow.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S04_Waterfall_Bridges_EBITDA_Revenue_and_Cash_Flow.html">Waterfall Bridges: EBITDA, Revenue and Cash Flow</a></li><li><a href="S05_Variance_Visuals_Diverging_Bars_FavAdv_Colours_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S05_Variance_Visuals_Diverging_Bars_FavAdv_Colours_and.html">Variance Visuals: Diverging Bars, Fav/Adv Colours and IBCS Notation</a></li><li><a href="S06_Indian_Number_Formatting_Crore_and_Lakh_Units.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S06_Indian_Number_Formatting_Crore_and_Lakh_Units.html">Indian Number Formatting: ₹ Crore and Lakh Units, Consistent Decimals</a></li><li><a href="S07_Theme_JSON_Canvas_Size_Accessibility_and_Mobile.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S07_Theme_JSON_Canvas_Size_Accessibility_and_Mobile.html">Theme JSON, Canvas Size, Accessibility and Mobile Layout</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Waterfall_Visual_CategoryBreakdown_or_a_Bridge.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C01_Waterfall_Visual_CategoryBreakdown_or_a_Bridge.html">Waterfall Visual: Category/Breakdown or a Bridge-Step Table</a></li><li><a href="../concepts/C02_Variance_Colour_Measure_via_fx_Conditional.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C02_Variance_Colour_Measure_via_fx_Conditional.html">Variance Colour Measure via fx Conditional Formatting</a></li><li><a href="../concepts/C03_Crore_Measures_and_Dynamic_Format_Strings_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C03_Crore_Measures_and_Dynamic_Format_Strings_for.html">Crore Measures and Dynamic Format Strings for Indian Units</a></li><li><a href="../concepts/C04_Net_Debt_Measure_Closing_Borrowings_Less_Cash_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C04_Net_Debt_Measure_Closing_Borrowings_Less_Cash_and.html">Net Debt Measure: Closing Borrowings Less Cash and Equivalents</a></li><li><a href="../concepts/C05_Margin_Variance_in_Percentage_Points_EBITDA_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C05_Margin_Variance_in_Percentage_Points_EBITDA_vs.html">Margin Variance in Percentage Points: EBITDA % vs Budget</a></li><li><a href="../concepts/C06_Excel_Native_Waterfall_Chart_with_Set_as_Total.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C06_Excel_Native_Waterfall_Chart_with_Set_as_Total.html">Excel Native Waterfall Chart with &quot;Set as Total&quot;</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Trend Visuals: Actual vs Budget vs PY Combos and Rolling 12 Months</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Trend visuals: line/column combos for Actual vs Budget vs PY, and rolling 12 months</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A month's number on a card cannot tell whether a variance is a one-off or a drift. The trend row answers that.
+Finance teams use two standard trend views: a fiscal-month combo chart comparing Actual with Budget and Prior Year
+(PY), and a rolling 12-month (R12M or LTM) series that strips out seasonality. Both appear in every Indian listed
+company's internal MIS — LTM revenue and EBITDA are also the basis for leverage covenants (Net Debt / LTM EBITDA)
+and for valuation multiples in later weeks — so the trend row must be numerically exact, not just visually neat.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-actual-vs-budget-vs-py-combo">The Actual vs Budget vs PY combo</h3>
+<p>Use the <strong>Line and clustered column chart</strong> (or Line and stacked column):</p>
+<table>
+<thead>
+<tr>
+<th>Well</th>
+<th>Field / measure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-axis</td>
+<td><code>'Date'[FiscalMonthName]</code> sorted by <code>'Date'[FiscalMonthNo]</code> (Apr = 1 … Mar = 12), or <code>'Date'[MonthEnd]</code></td>
+</tr>
+<tr>
+<td>Column y-axis</td>
+<td><code>[Actual Revenue]</code></td>
+</tr>
+<tr>
+<td>Line y-axis</td>
+<td><code>[Revenue Budget]</code>, <code>[Revenue PY]</code></td>
+</tr>
+</tbody>
+</table>
+<p>Design choices that carry meaning:</p>
+<ul>
+<li><strong>Columns for Actual, lines for comparatives.</strong> Actual is "what happened" (solid mass); Budget and PY are
+  reference levels (lines). Budget dashed or a distinct grey, PY a lighter line. This is close to IBCS notation
+  (s05): Actual solid, Plan outlined, PY grey.</li>
+<li><strong>Same axis.</strong> All three series are in ₹ crore and must share one y-axis. Turn off the secondary axis
+  (<em>Y-axis &gt; Show secondary</em> off, or <em>Align zeros</em>) — a secondary axis with different scale makes Budget look met
+  when it is not.</li>
+<li><strong>Start y-axis at zero for columns.</strong> Truncated column axes exaggerate differences.</li>
+<li><strong>Future months.</strong> Budget exists for all twelve months; actuals only to the close month. Make the Actual
+  measure return BLANK after <code>[Last Actual Date]</code> so columns stop and the budget line continues — the gap visually
+  shows the remaining plan.</li>
+</ul>
+<p>A guarded actual measure:</p>
+<pre><code class="language-DAX">Actual Revenue Trend =
+VAR LastActual = [Last Actual Date]
+RETURN
+    IF ( MIN ( 'Date'[Date] ) &lt;= LastActual, [Revenue] )
+</code></pre>
+<p>PY by month uses <code>SAMEPERIODLASTYEAR</code> or <code>DATEADD(..., -1, YEAR)</code> over the fiscal Date table from Week 11.</p>
+<h3 id="cumulative-ytd-variant">Cumulative (YTD) variant</h3>
+<p>A cumulative chart (YTD Actual columns vs YTD Budget line) shows whether the year is recovering. Use the Week 11
+<code>TOTALYTD([Revenue], 'Date'[Date], "3/31")</code> pattern; the line resets in April if the year-end string is correct.</p>
+<h3 id="rolling-12-months">Rolling 12 months</h3>
+<p>R12M at month m is the sum of the last 12 months ending at m:</p>
+<p>\[
+\text{R12M}_m = \sum_{k=m-11}^{m} \text{Revenue}_k
+\]</p>
+<p>where \(m\) is the month on the x-axis. DAX:</p>
+<pre><code class="language-DAX">Revenue R12M =
+VAR EndDate = MAX ( 'Date'[Date] )
+RETURN
+    IF (
+        EndDate &lt;= [Last Actual Date],
+        CALCULATE ( [Revenue], DATESINPERIOD ( 'Date'[Date], EndDate, -12, MONTH ) )
+    )
+</code></pre>
+<p>Show R12M for the last 24 months so the user sees the slope. Two points matter:</p>
+<ol>
+<li><strong>Window beyond the slicer.</strong> If the FY slicer filters the Date table to FY2025-26, a 24-month axis is
+   impossible. Either use a disconnected or secondary date table for the axis, or apply the FY slicer only through
+   "Edit interactions" (Topic 2) and let the R12M visual use a relative month filter (last 24 months up to the
+   selected month).</li>
+<li><strong>Completeness.</strong> R12M needs 12 actual months; for the first 11 months of the data, return BLANK or flag
+   "partial" by counting months with data: <code>CALCULATE(DISTINCTCOUNT('Date'[MonthEnd]), DATESINPERIOD(...), GL)</code>.</li>
+</ol>
+<h3 id="showing-a-trailing-window-ending-at-the-selected-month">Showing a trailing window ending at the selected month</h3>
+<p>CFOs often want "the 12 months up to the selected month" on a combo chart. A common pattern uses a disconnected
+axis date table <code>AxisDate</code> and a measure that respects the selected month from the main Date slicer:</p>
+<pre><code class="language-DAX">Revenue Trailing Axis =
+VAR SelEnd   = MAX ( 'Date'[Date] )
+VAR AxisEnd  = MAX ( AxisDate[Date] )
+VAR InWindow = AxisEnd &lt;= SelEnd &amp;&amp; AxisEnd &gt; EDATE ( SelEnd, -12 )
+RETURN
+    IF ( InWindow,
+         CALCULATE ( [Revenue], REMOVEFILTERS ( 'Date' ),
+                     TREATAS ( VALUES ( AxisDate[Date] ), 'Date'[Date] ) ) )
+</code></pre>
+<h3 id="illustration">Illustration</h3>
+<p>Sahyadri Chemicals revenue (₹ Cr): April 2024 to March 2025 totals ₹1,128.0 Cr. April 2025 revenue is ₹101.6 Cr
+versus ₹92.4 Cr in April 2024.</p>
+<p>\[
+\text{R12M}_{\text{Apr-25}} = 1{,}128.0 - 92.4 + 101.6 = 1{,}137.2 \text{ Cr}
+\]</p>
+<p>The combo chart for FY2025-26 shows April–October columns, the budget line from April to March, and the PY line;
+the R12M line rises from ₹1,137.2 Cr to ₹1,192 Cr by October, confirming that the year-on-year growth is real even
+though monthly Actual is below Budget.</p>
+<h3 id="formatting-checklist">Formatting checklist</h3>
+<ul>
+<li>Data labels only on the last point or only on Actual columns; never on all three series.</li>
+<li>Legend at top-left, or direct labels at line ends.</li>
+<li>Gridlines light grey or off; one decimal ₹ crore on axis.</li>
+<li>Tooltips show Actual, Budget, PY, Var and Var % (or a report-page tooltip, Topic 2).</li>
+</ul>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Fiscal month sort.</strong> Sorting month names alphabetically (Apr, Aug, Dec…) is the most frequent trend bug; use
+  <em>Sort by column</em>.</li>
+<li><strong>Leap year and 53-week calendars.</strong> Monthly R12M is unaffected; weekly R52W in retail requires a 4-4-5 calendar.</li>
+<li><strong>Acquisitions.</strong> R12M jumps when a subsidiary is acquired; show an organic R12M or annotate the step.</li>
+<li><strong>Budget phasing.</strong> If the annual budget is phased equally (1/12 per month), seasonal businesses will show
+  false variances; use a phased budget.</li>
+<li><strong>PY restatement.</strong> If PY is restated (Ind AS 8 error correction or a common-control merger), the PY line must
+  use restated data.</li>
+<li><strong>Ratio trends.</strong> EBITDA % R12M is R12M EBITDA divided by R12M revenue, not the average of 12 monthly margins.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Actual as columns, Budget and PY as lines, all on one zero-based axis.</li>
+<li>Blank actuals after the last close date so the remaining budget is visible.</li>
+<li>R12M uses <code>DATESINPERIOD(..., -12, MONTH)</code> and needs 12 complete months.</li>
+<li>A trailing window beyond the FY slicer needs a disconnected axis table or interaction control.</li>
+<li>Sort fiscal months by FiscalMonthNo; compute ratio trends from rolled-up numerator and denominator.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-r12m-by-hand-l1">Q1. R12M by hand [L1]</h3>
+<p>Monthly revenue (₹ Cr) for Apr-2024 to Mar-2025 is 92.4, 88.1, 90.7, 94.2, 89.5, 93.0, 99.8, 96.4, 95.1, 92.6,
+91.9, 104.3. April–June 2025 revenue is 101.6, 97.3 and 95.8. Compute R12M for June 2025 and the change versus
+R12M at March 2025.</p>
+<h3 id="q2-build-the-combo-l2">Q2. Build the combo [L2]</h3>
+<p>Specify the fields, measures (with DAX) and formatting settings for a combo chart showing FY2025-26 monthly EBITDA:
+Actual columns to the last closed month, Budget dashed line for all months, and PY line, including how future
+months are handled.</p>
+<h3 id="q3-secondary-axis-trap-l2">Q3. Secondary axis trap [L2]</h3>
+<p>A draft chart shows Actual revenue columns on the primary axis (0–120) and Budget on a secondary axis
+(80–115). Explain why reviewers concluded "we are on budget" when Actual was 6% below Budget, and how to fix the
+visual.</p>
+<h3 id="q4-24-month-r12m-under-an-fy-slicer-l3">Q4. 24-month R12M under an FY slicer [L3]</h3>
+<p>The CFO wants the R12M EBITDA margin line for the 24 months ending at the selected month, while the rest of the
+page is filtered to the selected FY. Design the model objects and DAX needed, and explain how the slicer
+interaction works.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> The axis cannot come from the Date table that the FY slicer filters.</p>
+</blockquote></section>
+<nav class="pager"><a class="prev" href="S02_Card_Visuals_New_Card_KPI_Visual_and_Reference.html">← Card Visuals: New Card, KPI Visual and Reference Labels</a><a class="next" href="S04_Waterfall_Bridges_EBITDA_Revenue_and_Cash_Flow.html">Waterfall Bridges: EBITDA, Revenue and Cash Flow →</a></nav>
+</main></div></body></html>

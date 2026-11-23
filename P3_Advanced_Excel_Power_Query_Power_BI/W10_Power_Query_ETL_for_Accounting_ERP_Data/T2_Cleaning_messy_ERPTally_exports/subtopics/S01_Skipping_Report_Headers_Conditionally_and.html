@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skipping Report Headers Conditionally and Promoting Headers · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S01_Skipping_Report_Headers_Conditionally_and.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T2 · Cleaning messy ERP/Tally exports</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Cleaning messy ERP/Tally exports</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Skipping_Report_Headers_Conditionally_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S01_Skipping_Report_Headers_Conditionally_and.html">Skipping Report Headers Conditionally and Promoting Headers</a></li><li><a href="S02_Removing_Blank_Subtotal_and_Grand_Total_Rows_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S02_Removing_Blank_Subtotal_and_Grand_Total_Rows_by.html">Removing Blank, Subtotal and Grand Total Rows by Condition</a></li><li><a href="S03_Filling_Down_Cost_Centre_and_Group_Headers_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S03_Filling_Down_Cost_Centre_and_Group_Headers_in.html">Filling Down Cost-Centre and Group Headers in Report Layouts</a></li><li><a href="S04_Splitting_Ledger_Code_and_Name_Parsing_Tally_DrCr.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S04_Splitting_Ledger_Code_and_Name_Parsing_Tally_DrCr.html">Splitting Ledger Code and Name; Parsing Tally Dr/Cr Amounts</a></li><li><a href="S05_Trimming_Non_Breaking_Spaces_and_Non_Printable.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S05_Trimming_Non_Breaking_Spaces_and_Non_Printable.html">Trimming Non-Breaking Spaces and Non-Printable Characters</a></li><li><a href="S06_Fixing_Date_Locales_and_Indian_Digit_Grouping_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S06_Fixing_Date_Locales_and_Indian_Digit_Grouping_in.html">Fixing Date Locales and Indian Digit Grouping in Text Amounts</a></li><li><a href="S07_Error_Handling_Remove_Errors_Keep_Errors_and_try.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S07_Error_Handling_Remove_Errors_Keep_Errors_and_try.html">Error Handling: Remove Errors, Keep Errors and try ... otherwise</a></li><li><a href="S08_Export_Layouts_Tally_Day_BookLedgerTB_SAP_FBL3N.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S08_Export_Layouts_Tally_Day_BookLedgerTB_SAP_FBL3N.html">Export Layouts: Tally Day Book/Ledger/TB, SAP FBL3N, S_ALR, Oracle TB</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Conditional_TableSkip_Followed_by_PromoteHeaders.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C01_Conditional_TableSkip_Followed_by_PromoteHeaders.html">Conditional Table.Skip Followed by PromoteHeaders</a></li><li><a href="../concepts/C02_Filtering_Out_Null_and_Total_Rows_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C02_Filtering_Out_Null_and_Total_Rows_with.html">Filtering Out Null and Total Rows with Table.SelectRows</a></li><li><a href="../concepts/C03_TableFillDown_Fills_Only_Nulls_Replace_Blanks.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C03_TableFillDown_Fills_Only_Nulls_Replace_Blanks.html">Table.FillDown Fills Only Nulls: Replace Blanks First</a></li><li><a href="../concepts/C04_TableSplitColumn_at_Each_Delimiter_into_Code_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C04_TableSplitColumn_at_Each_Delimiter_into_Code_and.html">Table.SplitColumn at Each Delimiter into Code and Name</a></li><li><a href="../concepts/C05_Cleaning_Text_Replace_Char_160_TextClean_TextTrim.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C05_Cleaning_Text_Replace_Char_160_TextClean_TextTrim.html">Cleaning Text: Replace Char 160, Text.Clean, Text.Trim</a></li><li><a href="../concepts/C06_TransformColumnTypes_with_an_Explicit_en_IN.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C06_TransformColumnTypes_with_an_Explicit_en_IN.html">TransformColumnTypes with an Explicit en-IN Culture</a></li><li><a href="../concepts/C07_Converting_Tally_DrCr_Suffix_Balances_into_Signed.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C07_Converting_Tally_DrCr_Suffix_Balances_into_Signed.html">Converting Tally Dr/Cr Suffix Balances into Signed Numbers</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Skipping Report Headers Conditionally and Promoting Headers</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Skipping report headers (company name, period, captions) with conditional <code>Table.Skip</code>, then promoting headers</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Almost no ERP export is a clean table. A Tally Prime Trial Balance exported to Excel starts with the company name, address lines, "Trial Balance", the period "1-Apr-2025 to 31-Mar-2026", then a two-line caption ("Particulars | Closing Balance" over "Debit | Credit"). An HDFC statement CSV has 15–20 lines of account details before the column header. SAP S_ALR_87012277 prints a report title, selection criteria and page headers. The number of these lines changes — a longer address, a different period text, an extra filter line — so "Remove Top Rows: 6" works this month and silently eats a ledger next month. Conditional skipping finds the header row by its <strong>content</strong>, which is stable, rather than its <strong>position</strong>, which is not.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="positional-vs-conditional-skip">Positional vs conditional skip</h3>
+<p><code>Table.Skip(table, countOrCondition)</code> removes rows from the top. The second argument can be:</p>
+<ul>
+<li>a <strong>number</strong> — <code>Table.Skip(Source, 6)</code> drops exactly six rows (what "Remove Top Rows" generates);</li>
+<li>a <strong>condition function</strong> — <code>Table.Skip(Source, each [Column1] &lt;&gt; "Particulars")</code> drops rows <strong>while</strong> the condition is true and stops at the first row where it is false. That first false row (the header) is kept.</li>
+</ul>
+<p>The condition version is the refresh-safe one: however many lines precede the header, skipping stops exactly at it. <code>Table.FirstN</code> and <code>Table.RemoveFirstN</code> take the same two forms.</p>
+<h3 id="promoting-headers">Promoting headers</h3>
+<p>After the skip, the header row is the first row. <code>Table.PromoteHeaders(table, [PromoteAllScalars=true])</code> turns it into column names. <code>PromoteAllScalars=true</code> promotes numbers and dates as text names too (otherwise a header cell like <code>2026</code> or a date-formatted month would stay <code>Column5</code>). Then:</p>
+<ul>
+<li>Rename ambiguous names (Tally often gives <code>Column2</code>/<code>Column3</code> under a merged "Closing Balance" caption, or duplicates like <code>Debit</code> and <code>Debit_1</code>).</li>
+<li>Remove the auto <code>Changed Type</code> step if auto-detection is still on (Topic 1 s04).</li>
+</ul>
+<h3 id="choosing-a-reliable-marker">Choosing a reliable marker</h3>
+<p>Pick a cell that appears <strong>only</strong> in the header row and always appears:</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Marker</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tally TB (Excel)</td>
+<td>"Particulars" in first column</td>
+<td><code>each [Column1] &lt;&gt; "Particulars"</code></td>
+</tr>
+<tr>
+<td>HDFC CSV</td>
+<td>"Date" in first column and "Narration" in second</td>
+<td><code>each not ([Column1] = "Date" and [Column2] = "Narration")</code></td>
+</tr>
+<tr>
+<td>ICICI CSV</td>
+<td>header starts with "S No."</td>
+<td><code>each [Column1] &lt;&gt; "S No."</code></td>
+</tr>
+<tr>
+<td>SAP FBL3N (spreadsheet export)</td>
+<td>"Document Number" or "DocumentNo"</td>
+<td><code>each not List.Contains(Record.FieldValues(_), "Document Number")</code></td>
+</tr>
+</tbody>
+</table>
+<p>Making the marker robust to case and stray spaces:</p>
+<pre><code>Skipped = Table.Skip(Source, each Text.Trim(Text.Upper(Text.From([Column1] ?? &quot;&quot;))) &lt;&gt; &quot;PARTICULARS&quot;)
+</code></pre>
+<p><code>Text.From(... ?? "")</code> handles nulls in blank lines (comparing null to text is fine, but <code>Text.Trim(null)</code> returns null and <code>Text.Upper</code> of null returns null, so the coalesce keeps the logic simple). The "search any column" form, using <code>Record.FieldValues(_)</code>, is useful when the header might start in column B.</p>
+<h3 id="two-line-headers">Two-line headers</h3>
+<p>Tally's TB with "Closing Balance" over "Debit | Credit" has the useful names on the <strong>second</strong> header line. Options: skip to the first header line, then <code>Table.Skip(_, 1)</code> to drop it and promote the second; or combine both lines (<code>Table.Transpose</code>, merge, transpose back — the same technique as multi-row budget headers in Topic 3). Simplest robust pattern for a known layout: skip to the second line by its marker (e.g. <code>each [Column2] &lt;&gt; "Debit"</code>), promote, then rename <code>Column1</code> to <code>Particulars</code>.</p>
+<h3 id="capturing-header-metadata-before-skipping">Capturing header metadata before skipping</h3>
+<p>The skipped lines often hold information you need — the period ("1-Apr-2025 to 31-Mar-2026"), bank account number, branch name. Capture it in a separate step before skipping, then add it as a column:</p>
+<pre><code>let
+    Source   = Excel.Workbook(File.Contents(pPath), null, true){[Item=&quot;TB&quot;,Kind=&quot;Sheet&quot;]}[Data],
+    PeriodTx = List.First(List.Select(Source[Column1], each _ &lt;&gt; null and Text.Contains(Text.From(_), &quot; to &quot;))),
+    Skipped  = Table.Skip(Source, each [Column1] &lt;&gt; &quot;Particulars&quot;),
+    Promoted = Table.PromoteHeaders(Skipped, [PromoteAllScalars=true]),
+    WithPer  = Table.AddColumn(Promoted, &quot;PeriodText&quot;, each PeriodTx, type text)
+in
+    WithPer
+</code></pre>
+<h3 id="illustration">Illustration</h3>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th>Column1</th>
+<th>Column2</th>
+<th>Column3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Sharma Auto Components Pvt Ltd</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Plot 14, MIDC Bhosari, Pune</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Trial Balance</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>1-Apr-2025 to 31-Mar-2026</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Particulars</td>
+<td>Debit</td>
+<td>Credit</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Capital Account</td>
+<td></td>
+<td>2,50,00,000.00</td>
+</tr>
+</tbody>
+</table>
+<p><code>Table.Skip(Source, each [Column1] &lt;&gt; "Particulars")</code> drops rows 1–4 and keeps row 5 onward; promotion gives columns Particulars, Debit, Credit. If next month's export has a second address line, rows 1–5 are dropped and the result is identical. "Remove Top Rows: 4" would have left the address line as the header.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Marker never found</strong>: if the condition is never false, <code>Table.Skip</code> removes <strong>every</strong> row and returns an empty table — no error. Add a guard: <code>if Table.IsEmpty(Skipped) then error "Header 'Particulars' not found in " &amp; pFileName else Skipped</code>. Silent empty outputs are worse than failures.</li>
+<li><strong>Marker appears in data</strong>: a ledger named "Particulars Suspense" does not match an exact equality test, but <code>Text.Contains</code> would; prefer exact matches.</li>
+<li><strong>Repeated page headers</strong> further down (SAP list output, PDF-to-Excel conversions) are not handled by <code>Table.Skip</code>, which only acts at the top; remove them with a row filter (s02).</li>
+<li><strong>Header cells with line breaks</strong> (<code>"Closing#(lf)Balance"</code>) — clean with <code>Text.Clean</code> before matching or renaming.</li>
+<li><strong>CSV vs Excel</strong>: in CSV everything is text; in Excel the period line may be a real date — <code>Text.From</code> it before testing.</li>
+<li><strong>Promote before cleaning</strong> (the UI default) makes the company name the header; always skip first.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Use <code>Table.Skip</code> with a condition so header skipping depends on content, not row count.</li>
+<li>Choose a marker unique to the header row; normalise case, spaces and nulls before comparing.</li>
+<li>Promote with <code>PromoteAllScalars=true</code>, then rename ambiguous columns explicitly.</li>
+<li>Capture period, account or branch text from the report header before skipping it.</li>
+<li>Guard against an empty result when the marker is missing — fail loudly.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-write-the-skip-l1">Q1. Write the skip [L1]</h3>
+<p>An ICICI statement CSV has 12 to 16 lines of account details before a header row whose first cell is "S No." and second cell is "Value Date". Write the M steps to skip to the header and promote it, robust to leading/trailing spaces in the marker cell.</p>
+<h3 id="q2-capture-the-account-number-l2">Q2. Capture the account number [L2]</h3>
+<p>The same file has a line <code>Account Number : 000405012345</code> somewhere in the top 16 lines. Extend your query to capture the account number (as text, keeping leading zeros) and add it as a column on every transaction row.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Select from the first column's list before skipping, then extract the text after the colon.</p>
+</blockquote>
+<h3 id="q3-two-line-tally-caption-l2">Q3. Two-line Tally caption [L2]</h3>
+<p>A Tally TB export has row 7: "Particulars | Closing Balance | (blank)" and row 8: "(blank) | Debit | Credit". Write two alternative M approaches to end up with headers Particulars, Debit, Credit, and say which is more robust if Tally adds an "Opening Balance" pair of columns.</p>
+<h3 id="q4-silent-failure-l2">Q4. Silent failure [L2]</h3>
+<p>A refresh produced an empty consolidated TB for the Nagpur branch without any error. Explain how a conditional <code>Table.Skip</code> could cause this, and write the guard you would add so that the refresh fails with a meaningful message naming the file.</p>
+<h3 id="q5-review-the-generated-steps-l1">Q5. Review the generated steps [L1]</h3>
+<p>The UI generated: Promoted Headers → Changed Type → Removed Top Rows (4) → Promoted Headers1 → Changed Type1. List the problems and rewrite as a two-step refresh-safe sequence.</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← Cleaning messy ERP/Tally exports</a><a class="next" href="S02_Removing_Blank_Subtotal_and_Grand_Total_Rows_by.html">Removing Blank, Subtotal and Grand Total Rows by Condition →</a></nav>
+</main></div></body></html>

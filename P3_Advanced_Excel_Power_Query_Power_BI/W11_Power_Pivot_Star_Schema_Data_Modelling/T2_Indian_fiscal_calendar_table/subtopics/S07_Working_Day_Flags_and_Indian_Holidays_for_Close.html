@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Working-Day Flags and Indian Holidays for Close Metrics · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S07_Working_Day_Flags_and_Indian_Holidays_for_Close.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T2 · Indian fiscal calendar table</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Indian fiscal calendar table</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Building_the_Date_Dimension_DAX_CALENDAR_vs_Power.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S01_Building_the_Date_Dimension_DAX_CALENDAR_vs_Power.html">Building the Date Dimension: DAX CALENDAR vs Power Query List.Dates</a></li><li><a href="S02_Contiguous_Whole_Fiscal_Year_Date_Range_Covering.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S02_Contiguous_Whole_Fiscal_Year_Date_Range_Covering.html">Contiguous Whole-Fiscal-Year Date Range Covering All Facts</a></li><li><a href="S03_Fiscal_Calendar_Columns_FY_Quarter_Month_Week_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S03_Fiscal_Calendar_Columns_FY_Quarter_Month_Week_and.html">Fiscal Calendar Columns: FY, Quarter, Month, Week and Period Key</a></li><li><a href="S04_Sort_by_Column_Fiscal_Month_Order_Starting_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S04_Sort_by_Column_Fiscal_Month_Order_Starting_in.html">Sort by Column: Fiscal Month Order Starting in April</a></li><li><a href="S05_Month_and_FY_Offset_Columns_for_Dynamic_Period.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S05_Month_and_FY_Offset_Columns_for_Dynamic_Period.html">Month and FY Offset Columns for Dynamic Period Filters</a></li><li><a href="S06_Mark_as_Date_Table_and_Turn_Off_Auto_DateTime.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S06_Mark_as_Date_Table_and_Turn_Off_Auto_DateTime.html">Mark as Date Table and Turn Off Auto Date/Time</a></li><li><a href="S07_Working_Day_Flags_and_Indian_Holidays_for_Close.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S07_Working_Day_Flags_and_Indian_Holidays_for_Close.html">Working-Day Flags and Indian Holidays for Close Metrics</a></li><li><a href="S08_IsClosedPeriod_and_IsYTD_Flags_for_Like_for_Like.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S08_IsClosedPeriod_and_IsYTD_Flags_for_Like_for_Like.html">IsClosedPeriod and IsYTD Flags for Like-for-Like Comparisons</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_DAX_Fiscal_Date_Table_with_an_FYEnd_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C01_DAX_Fiscal_Date_Table_with_an_FYEnd_Column.html">DAX Fiscal Date Table with an FYEnd Column</a></li><li><a href="../concepts/C02_CALENDARAUTO3_for_Whole_March_Ending_Fiscal_Years.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C02_CALENDARAUTO3_for_Whole_March_Ending_Fiscal_Years.html">CALENDARAUTO(3) for Whole March-Ending Fiscal Years</a></li><li><a href="../concepts/C03_Fiscal_Month_and_Fiscal_Quarter_Formulas.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C03_Fiscal_Month_and_Fiscal_Quarter_Formulas.html">Fiscal Month and Fiscal Quarter Formulas</a></li><li><a href="../concepts/C04_Fiscal_Week_Number_Anchored_on_1_April.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C04_Fiscal_Week_Number_Anchored_on_1_April.html">Fiscal Week Number Anchored on 1 April</a></li><li><a href="../concepts/C05_Month_Offset_from_Today.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C05_Month_Offset_from_Today.html">Month Offset from Today</a></li><li><a href="../concepts/C06_Power_Query_Date_List_with_ListDates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C06_Power_Query_Date_List_with_ListDates.html">Power Query Date List with List.Dates</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Working-Day Flags and Indian Holidays for Close Metrics</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Working-day flags and Indian holidays for close-calendar metrics</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>The month-end close is managed in <strong>working days</strong>, not calendar days: "TB on WD2, MIS on WD4, board pack on WD7".
+Close-calendar dashboards track whether each task finished on its due working day, how many working days the
+close took, and how many journals were posted after WD3. Collections and payments analysis also needs working days —
+DSO-style metrics on bank working days, cheque-clearing timelines, and payment runs that skip bank holidays.
+In India, holidays differ by state (Maharashtra Day, Pongal, Onam, Durga Puja), banks close on second and fourth
+Saturdays, and many festival dates move every year, so a generic <code>WEEKDAY</code> test is not enough. A Date table with
+working-day flags driven by a maintained holiday list solves all of these at once.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="holiday-master">Holiday master</h3>
+<p>Maintain a small table (Excel/SharePoint list) loaded through Power Query:</p>
+<table>
+<thead>
+<tr>
+<th>HolidayDate</th>
+<th>HolidayName</th>
+<th>Scope</th>
+<th>State</th>
+<th>Applies To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>26-Jan-2026</td>
+<td>Republic Day</td>
+<td>National</td>
+<td>All</td>
+<td>Company, Bank</td>
+</tr>
+<tr>
+<td>04-Mar-2026</td>
+<td>Holi</td>
+<td>State</td>
+<td>Maharashtra</td>
+<td>Company, Bank</td>
+</tr>
+<tr>
+<td>01-May-2026</td>
+<td>Maharashtra Day</td>
+<td>State</td>
+<td>Maharashtra</td>
+<td>Company, Bank</td>
+</tr>
+<tr>
+<td>15-Aug-2025</td>
+<td>Independence Day</td>
+<td>National</td>
+<td>All</td>
+<td>Company, Bank</td>
+</tr>
+<tr>
+<td>02-Oct-2025</td>
+<td>Gandhi Jayanti</td>
+<td>National</td>
+<td>All</td>
+<td>Company, Bank</td>
+</tr>
+<tr>
+<td>21-Oct-2025</td>
+<td>Diwali (Lakshmi Puja)</td>
+<td>Company</td>
+<td>All</td>
+<td>Company</td>
+</tr>
+</tbody>
+</table>
+<p>(Festival dates above are illustrative; take actual dates each year from the company's published holiday list and,
+for bank holidays, the RBI's state-wise list under the Negotiable Instruments Act.) Three national holidays
+(26 January, 15 August, 2 October) are fixed; most others vary with the lunar calendar.</p>
+<h3 id="date-table-columns">Date table columns</h3>
+<p>Power Query (merge the holiday list on Date for the relevant scope, e.g. head office state):</p>
+<pre><code class="language-M">AddDOW     = Table.AddColumn(Prev, &quot;WeekdayNo&quot;, each Date.DayOfWeek([Date], Day.Monday) + 1, Int64.Type),
+AddSatNo   = Table.AddColumn(AddDOW, &quot;SaturdayOfMonth&quot;,
+                 each if [WeekdayNo] = 6 then Number.IntegerDivide(Date.Day([Date]) - 1, 7) + 1 else null, Int64.Type),
+MergeHol   = Table.NestedJoin(AddSatNo, {&quot;Date&quot;}, HolidaysHO, {&quot;HolidayDate&quot;}, &quot;Hol&quot;, JoinKind.LeftOuter),
+AddIsHol   = Table.AddColumn(MergeHol, &quot;IsHoliday&quot;, each Table.RowCount([Hol]) &gt; 0, type logical),
+AddIsWD    = Table.AddColumn(AddIsHol, &quot;IsWorkingDay&quot;,
+                 each [WeekdayNo] &lt;&gt; 7 and not [IsHoliday]
+                      and not ([WeekdayNo] = 6 and List.Contains({2, 4}, [SaturdayOfMonth])), type logical),
+Cleaned    = Table.RemoveColumns(AddIsWD, {&quot;Hol&quot;})
+</code></pre>
+<p>This encodes a typical Indian office calendar: Sundays off, second and fourth Saturdays off, plus holidays. Adjust
+the weekend rule to the entity (many corporates have all Saturdays off; plants may work six days).</p>
+<p>Then add, in DAX or Power Query:</p>
+<ul>
+<li><strong>WorkingDayNoInMonth:</strong> cumulative count of working days within the month, blank on non-working days. WD1 is
+  the first working day of the month.</li>
+<li><strong>WorkingDaysInMonth:</strong> total working days in the month.</li>
+<li><strong>WorkingDayNoAfterMonthEnd:</strong> for close tracking, working days elapsed after the prior month-end (the "close
+  day" of the prior month: 1 May = WD1 of the April close if 1 May is a working day; if 1 May is Maharashtra Day,
+  2 May is WD1).</li>
+</ul>
+<pre><code class="language-DAX">WorkingDayNoInMonth =
+IF (
+    'Date'[IsWorkingDay],
+    CALCULATE (
+        COUNTROWS ( 'Date' ),
+        ALLEXCEPT ( 'Date', 'Date'[MonthEnd] ),
+        'Date'[Date] &lt;= EARLIER ( 'Date'[Date] ),
+        'Date'[IsWorkingDay] = TRUE ()
+    )
+)
+</code></pre>
+<p>In a calculated column, <code>CALCULATE</code> triggers context transition (the current row becomes a filter on every
+column of <code>'Date'</code>); <code>ALLEXCEPT('Date', 'Date'[MonthEnd])</code> removes those filters except the month, and the
+<code>EARLIER</code> comparison restores the "up to this date" condition. A VAR-based version (<code>VAR d = 'Date'[Date]</code>) is
+clearer and avoids EARLIER.</p>
+<p>DAX also offers <code>NETWORKDAYS(start, end, [weekend], [holidays])</code> (added in 2023) for ad hoc counts in measures,
+where <code>holidays</code> is a single-column table of dates and <code>weekend</code> is a code (1 = Sat–Sun; 11 = Sunday only). It
+cannot express "second and fourth Saturday" rules, so for Indian calendars the flag-based approach is more
+accurate.</p>
+<h3 id="close-calendar-metrics">Close-calendar metrics</h3>
+<p>With a Close fact (task, owner, due WD, completion timestamp) or GL posting timestamps:</p>
+<pre><code class="language-DAX">Close Days Taken =
+VAR MonthClosed = MAX ( 'Date'[MonthEnd] )
+VAR SignOff     = CALCULATE ( MAX ( Close[SignOffDate] ), Close[Task] = &quot;MIS release&quot; )
+RETURN
+    CALCULATE (
+        COUNTROWS ( 'Date' ),
+        REMOVEFILTERS ( 'Date' ),
+        'Date'[Date] &gt; MonthClosed,
+        'Date'[Date] &lt;= SignOff,
+        'Date'[IsWorkingDay] = TRUE ()
+    )
+
+Late Journals (after WD3) =
+CALCULATE (
+    DISTINCTCOUNT ( GL[VoucherNo] ),
+    GL[EntryWorkingDayAfterClose] &gt; 3
+)
+</code></pre>
+<p>(The second needs an entry-date column on GL mapped to a working-day number via the Date table — usually computed in
+Power Query by merging GL entry date to Date.)</p>
+<p>Other uses: average daily sales per working day (\(\text{Revenue} / \text{WorkingDaysInMonth}\)) to normalise
+months with many holidays (October–November festival months); bank-working-day ageing of receipts; payroll
+attendance.</p>
+<h3 id="illustration">Illustration</h3>
+<p>April 2026, Mumbai head office, rule: Sundays and 2nd/4th Saturdays off, holidays per company list (assume
+3-Apr Good Friday, 14-Apr Ambedkar Jayanti). Calendar days 30; Sundays 4 (5, 12, 19, 26); 2nd and 4th Saturdays 2
+(11 and 25); holidays 2 → working days \(30 - 4 - 2 - 2 = 22\). If March 2026 MIS sign-off happened on 8 April,
+working days after 31 March up to 8 April: 1, 2, 4, 6, 7, 8 April (3 April holiday, 5 April Sunday) = 6 → close
+took WD6 against a WD4 target.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Multi-state entities.</strong> A company with plants in Gujarat, Tamil Nadu and West Bengal has different holiday sets;
+  keep IsWorkingDay per location in a separate Location × Date table, or flag only the head-office calendar used
+  for close.</li>
+<li><strong>Holidays on weekends.</strong> A holiday on a Sunday does not reduce working days twice — the logic above handles it.</li>
+<li><strong>Declared holidays.</strong> Elections and sudden state holidays (bandh, weather) are added mid-year; refresh the list.</li>
+<li><strong>Bank vs company calendar.</strong> Payment run and NEFT/RTGS availability follow bank holidays (RTGS operates 24×7 since
+  December 2020, but cheque clearing does not); keep separate flags.</li>
+<li><strong>Fiscal year-end.</strong> 31 March is a working day for banks for government transactions in many years per RBI
+  instructions, even if a Sunday; annual closing on 1 April is a bank holiday for public dealing.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Close calendars run in working days; build IsWorkingDay from weekend rules plus a maintained holiday list.</li>
+<li>Indian rules: Sundays, second/fourth Saturdays (banks and many offices), national and state holidays.</li>
+<li>Add WorkingDayNoInMonth and WorkingDaysInMonth for WD-based close metrics and per-working-day normalisation.</li>
+<li>NETWORKDAYS handles simple weekends; flags handle Indian Saturday rules and state calendars.</li>
+<li>Keep separate company and bank calendars where payments and close differ.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-count-working-days-l1">Q1. Count working days [L1]</h3>
+<p>For October 2025 at a Bengaluru office (Sundays and 2nd/4th Saturdays off; holidays 2-Oct Gandhi Jayanti, 20-Oct
+Naraka Chaturdashi, 22-Oct Balipadyami; 1-Oct is a Wednesday), compute total working days and identify WD1–WD5 of
+November's close of October books if 1-Nov (Kannada Rajyotsava) is a holiday and 2-Nov is a Sunday.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Work out the date of each Saturday in October from the weekday of 1 October.</p>
+</blockquote>
+<h3 id="q2-build-the-column-l2">Q2. Build the column [L2]</h3>
+<p>Write a DAX calculated column <code>WorkingDayNoInMonth</code> using VAR instead of EARLIER, and a second column
+<code>WorkingDaysInMonth</code>. Explain how context transition affects your expression.</p>
+<h3 id="q3-normalise-sales-l2">Q3. Normalise sales [L2]</h3>
+<p>Revenue: October 2025 ₹48 crore with 21 working days; November 2025 ₹46 crore with 22 working days. Write a measure
+for revenue per working day and explain whether it should total at quarter level as a sum or a ratio.</p>
+<h3 id="q4-close-dashboard-design-l3">Q4. Close dashboard design [L3]</h3>
+<p>Design a close-calendar dashboard for a listed company that targets MIS on WD4 and board pack on WD7: list the facts
+and Date columns needed, three KPIs with their DAX logic in outline, and how you handle a plant in a different state
+with different holidays.</p></section>
+<nav class="pager"><a class="prev" href="S06_Mark_as_Date_Table_and_Turn_Off_Auto_DateTime.html">← Mark as Date Table and Turn Off Auto Date/Time</a><a class="next" href="S08_IsClosedPeriod_and_IsYTD_Flags_for_Like_for_Like.html">IsClosedPeriod and IsYTD Flags for Like-for-Like Comparisons →</a></nav>
+</main></div></body></html>

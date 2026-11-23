@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XNPV and XIRR: The 365-Day Basis from the First Date · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C04_XNPV_and_XIRR_The_365_Day_Basis_from_the_First.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T5 · Financial and date functions</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Financial and date functions</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Period_End_Logic_with_EOMONTH_and_EDATE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S01_Period_End_Logic_with_EOMONTH_and_EDATE.html">Period-End Logic with EOMONTH and EDATE</a></li><li><a href="../subtopics/S02_Day_Count_Conventions_with_YEARFRAC_Bases_04.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S02_Day_Count_Conventions_with_YEARFRAC_Bases_04.html">Day-Count Conventions with YEARFRAC Bases 0–4</a></li><li><a href="../subtopics/S03_NPV_vs_XNPV_Periodic_and_Dated_Cash_Flows.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S03_NPV_vs_XNPV_Periodic_and_Dated_Cash_Flows.html">NPV vs XNPV: Periodic and Dated Cash Flows</a></li><li><a href="../subtopics/S04_IRR_vs_XIRR_vs_MIRR_for_Irregular_Project_Cash.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S04_IRR_vs_XIRR_vs_MIRR_for_Irregular_Project_Cash.html">IRR vs XIRR vs MIRR for Irregular Project Cash Flows</a></li><li><a href="../subtopics/S05_Loan_Amortisation_with_PMT_IPMT_PPMT_CUMIPMT_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S05_Loan_Amortisation_with_PMT_IPMT_PPMT_CUMIPMT_and.html">Loan Amortisation with PMT, IPMT, PPMT, CUMIPMT and CUMPRINC</a></li><li><a href="../subtopics/S06_EMI_Schedules_and_Ind_AS_116_Lease_Liability.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S06_EMI_Schedules_and_Ind_AS_116_Lease_Liability.html">EMI Schedules and Ind AS 116 Lease Liability Schedules</a></li><li><a href="../subtopics/S07_Close_Calendars_with_WORKDAYINTL_NETWORKDAYSINTL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S07_Close_Calendars_with_WORKDAYINTL_NETWORKDAYSINTL.html">Close Calendars with WORKDAY.INTL, NETWORKDAYS.INTL and Holidays</a></li><li><a href="../subtopics/S08_Fiscal_Year_Helpers_FY_Start_FY_End_and_Fiscal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S08_Fiscal_Year_Helpers_FY_Start_FY_End_and_Fiscal.html">Fiscal-Year Helpers: FY Start, FY End and Fiscal Month</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Month_End_Month_Start_and_Same_Day_Offsets_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C01_Month_End_Month_Start_and_Same_Day_Offsets_with.html">Month-End, Month-Start and Same-Day Offsets with EOMONTH and EDATE</a></li><li><a href="C02_YEARFRAC_Basis_1_vs_Basis_3_for_Accruals.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C02_YEARFRAC_Basis_1_vs_Basis_3_for_Accruals.html">YEARFRAC Basis 1 vs Basis 3 for Accruals</a></li><li><a href="C03_NPV_Plus_CF0_Why_NPV_Discounts_Its_First_Value.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C03_NPV_Plus_CF0_Why_NPV_Discounts_Its_First_Value.html">NPV Plus CF0: Why NPV Discounts Its First Value</a></li><li><a href="C04_XNPV_and_XIRR_The_365_Day_Basis_from_the_First.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C04_XNPV_and_XIRR_The_365_Day_Basis_from_the_First.html">XNPV and XIRR: The 365-Day Basis from the First Date</a></li><li><a href="C05_PMT_IPMT_and_PPMT_EMI_and_Its_InterestPrincipal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C05_PMT_IPMT_and_PPMT_EMI_and_Its_InterestPrincipal.html">PMT, IPMT and PPMT: EMI and Its Interest/Principal Split</a></li><li><a href="C06_MIRR_Fixing_IRRs_Reinvestment_and_Multiple_Root.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C06_MIRR_Fixing_IRRs_Reinvestment_and_Multiple_Root.html">MIRR: Fixing IRR&#x27;s Reinvestment and Multiple-Root Problems</a></li><li><a href="C07_FY_End_Date_and_Fiscal_Month_Formulas_for_an.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C07_FY_End_Date_and_Fiscal_Month_Formulas_for_an.html">FY End Date and Fiscal Month Formulas for an April–March Year</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>XNPV and XIRR: The 365-Day Basis from the First Date</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>=XNPV(r, values, dates)</code> and <code>=XIRR(values, dates, [guess])</code> use a 365-day basis from the first date</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-excel">=XNPV(r, values, dates)
+=XIRR(values, dates, [guess])
+</code></pre>
+<p>\[
+\text{XNPV}(r) = \sum_{i=1}^{n} \frac{P_i}{(1+r)^{(d_i - d_1)/365}}
+\qquad
+\text{XIRR} = r^{*} \text{ such that } \text{XNPV}(r^{*}) = 0
+\]</p>
+<p>where \(P_i\) is the cash flow on date \(d_i\), \(d_1\) is the <strong>first date in the dates array</strong>, \(r\) is an annual effective rate and the exponent is the elapsed time in years on a fixed 365-day basis.</p>
+<h2 id="explanation">Explanation</h2>
+<p>Both functions measure time in days from the first date and convert to years by dividing by 365 — always 365, even across leap years. Three consequences follow:</p>
+<ol>
+<li><strong>The first date is the anchor.</strong> The first flow has exponent 0 and is undiscounted. For a valuation as of a date with no cash flow on that date, insert a zero flow on the valuation date as the first row; otherwise the PV is computed as of the first cash-flow date. No date may be earlier than the first date (#NUM!).</li>
+<li><strong>Rates are annual effective.</strong> XIRR's output can be compared directly with an annual hurdle or WACC; XNPV's input must be an annual effective rate even if flows are monthly.</li>
+<li><strong>Leap-year drift is small but real.</strong> A flow exactly one calendar year after a 29 February-spanning anchor is at 366/365 = 1.0027 years. Reconciling an XNPV to an NPV with annual periods will show small differences for this reason.</li>
+</ol>
+<p>Practical requirements:</p>
+<ul>
+<li><code>values</code> and <code>dates</code> must be the same size; dates must be true dates (text from ERP exports → #VALUE!).</li>
+<li>XIRR needs at least one positive and one negative value (#NUM! otherwise), and may need a <code>guess</code> for unusual patterns (default 10%).</li>
+<li>Dates need not be sorted after the first, but sorted data is easier to review.</li>
+<li>Non-numeric values in <code>values</code> produce #VALUE!; blanks are a problem — use 0.</li>
+</ul>
+<p>Typical uses: SIP and mutual fund returns (XIRR is the standard measure on Indian investment platforms), PE/VC fund IRR from capital calls and distributions, project returns with milestone flows, DCFs with stub periods or specific flow dates, deferred consideration, and lease liabilities with irregular payment dates.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Investment (₹ lakh), valuation and return at 12%:</p>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Flow</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>15-Jun-2025</td>
+<td>−100</td>
+</tr>
+<tr>
+<td>31-Dec-2025</td>
+<td>30</td>
+</tr>
+<tr>
+<td>30-Sep-2026</td>
+<td>40</td>
+</tr>
+<tr>
+<td>31-Mar-2027</td>
+<td>50</td>
+</tr>
+<tr>
+<td>30-Jun-2028</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>=XNPV(12%, C2:C6, B2:B6)</code> = 17.73, valued as of 15-Jun-2025 (the first date).</li>
+<li><code>=XIRR(C2:C6, B2:B6)</code> = 25.2% p.a.</li>
+<li>Treating the same flows as equally spaced years: NPV = 6.97 and IRR = 15.3%.</li>
+</ul>
+<p>Valuing as of 1-Apr-2025 instead: add a first row (1-Apr-2025, 0). Each exponent increases by 75/365, so XNPV falls by a factor of \(1.12^{-75/365}\): 17.73 × 0.9770 ≈ 17.32.</p>
+<h2 id="connections">Connections</h2>
+<p>Core to s03 (NPV vs XNPV) and s04 (IRR vs XIRR vs MIRR). The 365-day convention should match stub-period fractions computed with YEARFRAC basis 3 (c02) when a DCF is built with explicit discount factors (Weeks 15–16). The Saturday assessment includes XNPV/XIRR with irregular dates; the pitfall "XIRR on text dates gives #VALUE!" applies directly.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-anchor-the-valuation-l1">Q1. Anchor the valuation [L1]</h3>
+<p>Flows of ₹−50 crore on 10-Aug-2025 and ₹+18, +22, +25 crore on 31-Mar-2026, 31-Mar-2027 and 31-Mar-2028 are to be valued as of 30-Jun-2025 at 11%. Set up the values/dates arrays and the XNPV formula, and explain what value you get if you omit the anchor row.</p>
+<h3 id="q2-pe-fund-xirr-l2">Q2. PE fund XIRR [L2]</h3>
+<p>A fund called capital of ₹10 crore (5-May-2021), ₹15 crore (18-Jan-2022) and ₹8 crore (30-Nov-2022), distributed ₹6 crore (12-Mar-2024) and ₹14 crore (20-Sep-2025), and has a NAV of ₹31 crore on 31-Mar-2026. Set up the XIRR calculation, state the sign of each flow, and explain how the NAV is treated.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> The NAV is treated as if it were a distribution on the valuation date.</p>
+</blockquote>
+<h3 id="q3-reconcile-xnpv-and-npv-l2">Q3. Reconcile XNPV and NPV [L2]</h3>
+<p>An analyst finds that NPV with annual periods gives ₹212.4 crore and XNPV with FY-end dates gives ₹212.9 crore for the same project. Give two reasons for the difference and state which is more defensible for an Ind AS 36 value-in-use calculation.</p></section>
+<nav class="pager"><a class="prev" href="C03_NPV_Plus_CF0_Why_NPV_Discounts_Its_First_Value.html">← NPV Plus CF0: Why NPV Discounts Its First Value</a><a class="next" href="C05_PMT_IPMT_and_PPMT_EMI_and_Its_InterestPrincipal.html">PMT, IPMT and PPMT: EMI and Its Interest/Principal Split →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EBITDA % with a Dynamic Format String in the P&amp;L Matrix · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C04_EBITDA_with_a_Dynamic_Format_String_in_the_PL.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T6 · P&amp;L layout, subtotals and sign-flip</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · P&amp;L layout, subtotals and sign-flip</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_The_PL_Layout_Dimension_Lines_Sort_Order_Type_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S01_The_PL_Layout_Dimension_Lines_Sort_Order_Type_and.html">The P&amp;L Layout Dimension: Lines, Sort Order, Type and Sign</a></li><li><a href="../subtopics/S02_Mapping_CoA_to_Layout_Lines_and_Computing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S02_Mapping_CoA_to_Layout_Lines_and_Computing.html">Mapping CoA to Layout Lines and Computing Subtotals by Sort Order</a></li><li><a href="../subtopics/S03_Row_Level_Measure_Dispatch_with_SWITCHTRUE_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S03_Row_Level_Measure_Dispatch_with_SWITCHTRUE_and.html">Row-Level Measure Dispatch with SWITCH(TRUE()) and SELECTEDVALUE</a></li><li><a href="../subtopics/S04_Sign_Convention_Credits_Negative_in_the_GL_Flipped.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S04_Sign_Convention_Credits_Negative_in_the_GL_Flipped.html">Sign Convention: Credits Negative in the GL, Flipped for Presentation</a></li><li><a href="../subtopics/S05_Margin_Rows_GM_EBITDA_EBIT_with_Dynamic_Format.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S05_Margin_Rows_GM_EBITDA_EBIT_with_Dynamic_Format.html">Margin Rows (GM %, EBITDA %, EBIT %) with Dynamic Format Strings</a></li><li><a href="../subtopics/S06_Formatting_the_PL_Matrix_Layout_Spacers_Bold.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S06_Formatting_the_PL_Matrix_Layout_Spacers_Bold.html">Formatting the P&amp;L Matrix: Layout, Spacers, Bold Subtotals, Empty Rows</a></li><li><a href="../subtopics/S07_Alternatives_Calculation_Groups_Field_Parameters.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S07_Alternatives_Calculation_Groups_Field_Parameters.html">Alternatives: Calculation Groups, Field Parameters, Visual Calcs, Excel</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_The_PnL_Dispatcher_Measure_with_SWITCHTRUE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C01_The_PnL_Dispatcher_Measure_with_SWITCHTRUE.html">The PnL Dispatcher Measure with SWITCH(TRUE())</a></li><li><a href="C02_Actual_Signed_Applying_the_CoA_Sign_Factor_Row_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C02_Actual_Signed_Applying_the_CoA_Sign_Factor_Row_by.html">Actual Signed: Applying the CoA Sign Factor Row by Row</a></li><li><a href="C03_The_Subtotal_Measure_Removing_the_Layout_Filter_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C03_The_Subtotal_Measure_Removing_the_Layout_Filter_by.html">The Subtotal Measure: Removing the Layout Filter by Sort Order</a></li><li><a href="C04_EBITDA_with_a_Dynamic_Format_String_in_the_PL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C04_EBITDA_with_a_Dynamic_Format_String_in_the_PL.html">EBITDA % with a Dynamic Format String in the P&amp;L Matrix</a></li><li><a href="C05_Blanking_PL_Grand_Totals_with_ISINSCOPE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C05_Blanking_PL_Grand_Totals_with_ISINSCOPE.html">Blanking P&amp;L Grand Totals with ISINSCOPE</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>EBITDA % with a Dynamic Format String in the P&amp;L Matrix</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>EBITDA % = DIVIDE([EBITDA], [Revenue])</code>, with <code>IF(SELECTEDVALUE(Layout[Type]) = "Ratio", "0.0%", "#,##0")</code> as a dynamic format string</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-DAX">EBITDA % = DIVIDE ( [EBITDA], [Revenue] )
+
+-- Format string expression on the [PnL] dispatcher (Format: Dynamic)
+IF ( SELECTEDVALUE ( Layout[Type] ) = &quot;Ratio&quot;, &quot;0.0%&quot;, &quot;#,##0&quot; )
+</code></pre>
+<p>\[
+\text{EBITDA \%} = \frac{\text{EBITDA}}{\text{Revenue}}
+\]</p>
+<p>where both are profit-signed measures evaluated in the same filter context (period, branch, scenario). <code>DIVIDE</code> returns
+BLANK when revenue is zero or blank. The format string expression returns a format per cell: percentage on Ratio rows,
+whole ₹ on all others.</p>
+<h2 id="explanation">Explanation</h2>
+<p><strong>The ratio.</strong> EBITDA % is non-additive: it is recomputed from EBITDA and Revenue in every context, so the YTD column
+shows YTD EBITDA ÷ YTD revenue, not an average of monthly margins, and a region row shows that region's margin. In the
+dispatcher, the Ratio branch calls a margin measure that picks numerator and denominator from the layout row (s05), or a
+dedicated measure such as this one.</p>
+<p><strong>The format.</strong> A matrix column has one measure, but rows mix ₹ values and percentages. A <em>dynamic format string</em> lets a
+measure's format be a DAX expression evaluated for each cell. In Power BI Desktop: select the measure, set Format to
+<em>Dynamic</em>, and enter the expression in the format-string box. <code>SELECTEDVALUE(Layout[Type])</code> gives the row type, so
+Ratio rows get <code>"0.0%"</code> and others <code>"#,##0"</code>. The underlying value remains a number (0.1708, not "17.1%"), which keeps:</p>
+<ul>
+<li>conditional formatting rules working (colour EBITDA % red below 15%),</li>
+<li>sorting and totals numeric,</li>
+<li>exports to Excel numeric (with the format applied where supported).</li>
+</ul>
+<p>Contrast with <code>FORMAT([EBITDA %], "0.0%")</code>, which returns <strong>text</strong>: it left-aligns, cannot be conditionally formatted by
+value, breaks column totals and exports as text.</p>
+<p>Refinements:</p>
+<ul>
+<li>Brackets for negatives and dash for zero: <code>"#,##0;(#,##0);-"</code> and <code>"0.0%;(0.0%);-"</code>.</li>
+<li>Scale for ₹ lakh or crore in the measure (<code>÷ 1e5</code>, <code>÷ 1e7</code>) — format strings can scale only by thousands.</li>
+<li>Guard against negative revenue: return BLANK when <code>[Revenue] &lt;= 0</code> for margin rows.</li>
+<li>In a calculation group, the item's format string expression overrides the measure's; use
+  <code>SELECTEDMEASUREFORMATSTRING()</code> to defer to the dynamic format of <code>[PnL]</code> for non-% items.</li>
+<li>Dynamic format strings for measures became generally available in Power BI in 2024; Excel clients connected to the
+  model may not honour them in every version — test.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>YTD December FY26 (₹ lakh): Revenue 48,000; EBITDA 8,200; Budget revenue 50,000; Budget EBITDA 9,250.</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th>Type</th>
+<th>Value returned</th>
+<th>Format applied</th>
+<th>Displayed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue from operations</td>
+<td>Account</td>
+<td>48000</td>
+<td><code>#,##0</code></td>
+<td>48,000</td>
+</tr>
+<tr>
+<td>EBITDA</td>
+<td>Subtotal</td>
+<td>8200</td>
+<td><code>#,##0</code></td>
+<td>8,200</td>
+</tr>
+<tr>
+<td>EBITDA %</td>
+<td>Ratio</td>
+<td>0.17083</td>
+<td><code>0.0%</code></td>
+<td>17.1%</td>
+</tr>
+<tr>
+<td>EBITDA % (Budget)</td>
+<td>Ratio</td>
+<td>0.185</td>
+<td><code>0.0%</code></td>
+<td>18.5%</td>
+</tr>
+<tr>
+<td>EBITDA % variance</td>
+<td>Ratio</td>
+<td>−0.01417</td>
+<td><code>0.0%</code></td>
+<td>−1.4% (i.e., −142 bps)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="connections">Connections</h2>
+<p>Margin rows and layout-driven numerator/denominator references are in s05; the dispatcher that calls it is c01 and s03;
+EBITDA itself is the subtotal of c03. The DIVIDE semantics come from Topic 3 (c07). EBITDA margin is the second measure
+in this week's Saturday test, alongside R12M Revenue (Topic 4), and in Weeks 17–20 margin variances in bps are standard
+MIS commentary.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-write-the-format-expression-l1">Q1. Write the format expression [L1]</h3>
+<p>Write a dynamic format string expression for <code>[PnL]</code> that shows Ratio rows as <code>0.0%</code> with brackets for negatives, Account
+and Subtotal rows as whole numbers with brackets for negatives and a dash for zero, and Header/Spacer rows as nothing.</p>
+<h3 id="q2-monthly-vs-ytd-margin-l2">Q2. Monthly vs YTD margin [L2]</h3>
+<p>Monthly revenue (₹ lakh) Oct 1,200, Nov 1,050, Dec 1,350 and EBITDA 228, 147, 270. Compute the monthly EBITDA %, the Q3
+EBITDA %, and the simple average of the monthly margins, and explain which one the Q3 column of the matrix must show.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> The ratio is recomputed from the quarter's numerator and denominator.</p>
+</blockquote>
+<h3 id="q3-format-migration-l2">Q3. FORMAT() migration [L2]</h3>
+<p>A report uses <code>IF(t = "Ratio", FORMAT([Margin %], "0.0%"), FORMAT([Subtotal], "#,##0"))</code> in its P&amp;L measure. List what
+breaks for the finance user in the report and in Analyze in Excel, and rewrite the measure and its format string.</p></section>
+<nav class="pager"><a class="prev" href="C03_The_Subtotal_Measure_Removing_the_Layout_Filter_by.html">← The Subtotal Measure: Removing the Layout Filter by Sort…</a><a class="next" href="C05_Blanking_PL_Grand_Totals_with_ISINSCOPE.html">Blanking P&amp;L Grand Totals with ISINSCOPE →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schema Drift: Tolerant Column Selection Across Branch Files · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S05_Schema_Drift_Tolerant_Column_Selection_Across.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T4 · Folder consolidation pipeline</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Folder consolidation pipeline</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_FolderFiles_and_SharePointFiles_Sources_and_File.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S01_FolderFiles_and_SharePointFiles_Sources_and_File.html">Folder.Files and SharePoint.Files: Sources and File-Scope Filters</a></li><li><a href="S02_Combine_Files_Artefacts_Sample_Parameter_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S02_Combine_Files_Artefacts_Sample_Parameter_and.html">Combine Files Artefacts: Sample, Parameter and Transform Function</a></li><li><a href="S03_Writing_a_Custom_File_Cleaning_Function_by_Hand.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S03_Writing_a_Custom_File_Cleaning_Function_by_Hand.html">Writing a Custom File-Cleaning Function by Hand</a></li><li><a href="S04_Reading_Branch_and_Month_from_the_File_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S04_Reading_Branch_and_Month_from_the_File_Name.html">Reading Branch and Month from the File Name</a></li><li><a href="S05_Schema_Drift_Tolerant_Column_Selection_Across.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S05_Schema_Drift_Tolerant_Column_Selection_Across.html">Schema Drift: Tolerant Column Selection Across Branch Files</a></li><li><a href="S06_Multi_Bank_Statements_One_Function_per_Bank_Then.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S06_Multi_Bank_Statements_One_Function_per_Bank_Then.html">Multi-Bank Statements: One Function per Bank, Then Table.Combine</a></li><li><a href="S07_Monthly_Drop_In_Workflow_Archiving_and_Duplicate.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S07_Monthly_Drop_In_Workflow_Archiving_and_Duplicate.html">Monthly Drop-In Workflow, Archiving and Duplicate-File Detection</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_FolderFiles_Output_Columns_and_Which_to_Trust.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C01_FolderFiles_Output_Columns_and_Which_to_Trust.html">Folder.Files Output Columns and Which to Trust</a></li><li><a href="../concepts/C02_Filtering_by_Extension_and_Excluding_Temp_Files.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C02_Filtering_by_Extension_and_Excluding_Temp_Files.html">Filtering by Extension and Excluding Temp Files</a></li><li><a href="../concepts/C03_The_fxCleanTB_Function_Signature.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C03_The_fxCleanTB_Function_Signature.html">The fxCleanTB Function Signature</a></li><li><a href="../concepts/C04_Invoking_per_File_and_Appending_with_TableCombine.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C04_Invoking_per_File_and_Appending_with_TableCombine.html">Invoking per File and Appending with Table.Combine</a></li><li><a href="../concepts/C05_Tolerant_Column_Selection_with_MissingFieldUseNull.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C05_Tolerant_Column_Selection_with_MissingFieldUseNull.html">Tolerant Column Selection with MissingField.UseNull</a></li><li><a href="../concepts/C06_Parsing_Branch_and_Period_with_Text_Delimiter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C06_Parsing_Branch_and_Period_with_Text_Delimiter.html">Parsing Branch and Period with Text Delimiter Functions</a></li><li><a href="../concepts/C07_Guarding_the_Refresh_Against_One_Bad_File.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C07_Guarding_the_Refresh_Against_One_Bad_File.html">Guarding the Refresh Against One Bad File</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Schema Drift: Tolerant Column Selection Across Branch Files</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Schema drift: column order or names that differ by branch; selecting columns tolerantly</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Branch accountants do not coordinate their exports. One branch runs Tally Prime 4 with "Debit Amount", another runs an older release with "Debit", a third adds a "Cost Centre" column, a fourth reorders columns because their TB configuration shows Closing first. Each difference is called <strong>schema drift</strong>. A pipeline that assumes one fixed schema either crashes ("column not found") or — worse — silently produces wrong numbers (an all-null Debit column for one branch). Making the pipeline drift-tolerant, and making drift visible, is what lets it run unattended month after month.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="kinds-of-drift">Kinds of drift</h3>
+<table>
+<thead>
+<tr>
+<th>Drift</th>
+<th>Example</th>
+<th>Typical effect if unhandled</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Column order</td>
+<td>Ledger, Debit, Credit vs Ledger, Credit, Debit</td>
+<td>Harmless if selected by name; disastrous if by position (<code>Column2</code>)</td>
+</tr>
+<tr>
+<td>Column names</td>
+<td>"Debit" vs "Debit Amount" vs "Dr"</td>
+<td>Column missing: error, or null values after combine</td>
+</tr>
+<tr>
+<td>Extra columns</td>
+<td>"Cost Centre" in one branch</td>
+<td>Dropped by sample-based expand; harmless otherwise</td>
+</tr>
+<tr>
+<td>Missing columns</td>
+<td>No "Group" column in one branch</td>
+<td><code>Table.SelectColumns</code> / Changed Type error</td>
+</tr>
+<tr>
+<td>Case and spaces</td>
+<td>"debit " vs "Debit"</td>
+<td>Treated as different columns; M names are case-sensitive</td>
+</tr>
+<tr>
+<td>Header row position</td>
+<td>Header on row 5 vs row 8</td>
+<td>Wrong row promoted, all names wrong</td>
+</tr>
+</tbody>
+</table>
+<h3 id="principle-1-never-address-columns-by-position">Principle 1: never address columns by position</h3>
+<p>Steps such as <code>Table.RenameColumns(t, {{"Column2", "Debit"}})</code> or <code>Table.ColumnNames(t){1}</code> assume order. After promoting headers, always use names. If a file has no header, read positions only after verifying a known header row exists.</p>
+<h3 id="principle-2-normalise-header-names-first">Principle 2: normalise header names first</h3>
+<p>Inside the cleaning function, immediately after promoting headers, standardise names so that later steps see one vocabulary:</p>
+<pre><code class="language-m">Promoted = Table.PromoteHeaders(Skipped, [PromoteAllScalars = true]),
+CleanNames = Table.TransformColumnNames(Promoted, each Text.Proper(Text.Trim(Text.Clean(_)))),
+Renamed = Table.RenameColumns(CleanNames, {
+        {&quot;Debit Amount&quot;, &quot;Debit&quot;}, {&quot;Dr&quot;, &quot;Debit&quot;}, {&quot;Dr Amount&quot;, &quot;Debit&quot;},
+        {&quot;Credit Amount&quot;, &quot;Credit&quot;}, {&quot;Cr&quot;, &quot;Credit&quot;}, {&quot;Cr Amount&quot;, &quot;Credit&quot;},
+        {&quot;Particulars&quot;, &quot;Ledger&quot;}, {&quot;Account Name&quot;, &quot;Ledger&quot;}},
+    MissingField.Ignore)
+</code></pre>
+<p><code>Table.TransformColumnNames</code> applies a function to every header (trim, clean, proper case). <code>Table.RenameColumns</code> with <code>MissingField.Ignore</code> renames only the variants present. A cleaner design keeps the synonym list in a mapping table (<code>HeaderMap</code> with columns <code>From</code>, <code>To</code>) on a sheet and converts it with <code>Table.ToRows(HeaderMap)</code> — finance users can then add a new synonym without editing M. Beware: if a file contains both "Dr" and "Debit", renaming both to "Debit" raises a duplicate-column error, which is the correct outcome (it needs a human).</p>
+<h3 id="principle-3-select-a-fixed-output-schema-tolerantly">Principle 3: select a fixed output schema tolerantly</h3>
+<pre><code class="language-m">Result = Table.SelectColumns(Renamed, {&quot;Ledger&quot;, &quot;Group&quot;, &quot;Debit&quot;, &quot;Credit&quot;, &quot;Cost Centre&quot;}, MissingField.UseNull)
+</code></pre>
+<p><code>MissingField.UseNull</code> adds any missing column filled with null; extra columns are dropped. <code>MissingField.Ignore</code> simply leaves missing columns out (shape varies by file); the default <code>MissingField.Error</code> fails. For a consolidation, <code>UseNull</code> is usually right: every nested table has an identical shape, and <code>Table.Combine</code> produces a predictable output.</p>
+<h3 id="principle-4-append-by-name-with-tablecombine">Principle 4: append by name with Table.Combine</h3>
+<p><code>Table.Combine</code> aligns columns by name, not position, and unions the column set: if one table has a column others lack, the others get null. Combined with Principle 3, the output schema is exactly your target list.</p>
+<h3 id="principle-5-make-drift-visible">Principle 5: make drift visible</h3>
+<p>Tolerance without visibility hides problems. Build a drift log from the nested tables before selection:</p>
+<pre><code class="language-m">DriftLog = Table.AddColumn(WithRaw, &quot;Columns&quot;, each Text.Combine(Table.ColumnNames([Raw]), &quot;, &quot;), type text),
+MissingDebit = Table.SelectRows(DriftLog, each not List.Contains(Table.ColumnNames([Raw]), &quot;Debit&quot;))
+</code></pre>
+<p>Load a small table showing, per file, the raw header list and which target columns were null-filled. A Dr = Cr check per file is the ultimate test: if Debit was null-filled for a TB, the file cannot balance.</p>
+<h3 id="typing-after-normalisation">Typing after normalisation</h3>
+<p>Apply <code>Table.TransformColumnTypes</code> only to the target columns and only after selection, so a type step never references a column that may be missing. If an optional column may be absent from the whole output, typing it is still safe because <code>UseNull</code> guarantees it exists.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>Four branch files arrive:</p>
+<table>
+<thead>
+<tr>
+<th>Branch</th>
+<th>Raw headers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MUM</td>
+<td>Particulars, Debit, Credit</td>
+</tr>
+<tr>
+<td>DEL</td>
+<td>Particulars, Credit, Debit, Cost Centre</td>
+</tr>
+<tr>
+<td>BLR</td>
+<td>Account Name, Dr Amount, Cr Amount</td>
+</tr>
+<tr>
+<td>HYD</td>
+<td>particulars , Debit , Credit</td>
+</tr>
+</tbody>
+</table>
+<p>After trim/clean/proper-case and the synonym rename, all four expose Ledger, Debit, Credit (DEL also Cost Centre). <code>Table.SelectColumns(..., {"Ledger","Debit","Credit","Cost Centre"}, MissingField.UseNull)</code> gives four identical shapes; Cost Centre is null for MUM, BLR and HYD. Without the trim step, HYD's "Debit " would not match the rename list and would be null-filled — the drift log and an unbalanced HYD file would flag it.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Semantic drift.</strong> Same name, different meaning: one branch's "Amount" is net (Dr positive), another's is closing balance with Dr/Cr suffix. Names cannot detect this; per-file balance checks can.</li>
+<li><strong>Proper case side effects.</strong> <code>Text.Proper</code> turns "GSTIN" into "Gstin"; map to target names after normalisation, and be consistent.</li>
+<li><strong>Duplicate headers.</strong> Two blank header cells promote as "Column5" and "Column6"; drop unnamed columns by pattern (<code>Text.StartsWith(name, "Column")</code>) only after confirming they are empty.</li>
+<li><strong>Excel sources.</strong> Sheet name drift ("TB" vs "Trial Balance") is drift too; navigate by <code>Kind = "Sheet"</code> and a name list, or use the first sheet deliberately.</li>
+<li><strong>Over-tolerance.</strong> A pipeline that accepts anything will one day accept a P&amp;L instead of a TB. Require a minimum set of columns and fail the file (into the error log) if they are absent.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Schema drift covers order, names, extra/missing columns, case/whitespace and header position.</li>
+<li>Reference columns by name only; normalise headers with <code>Table.TransformColumnNames</code> and a synonym map.</li>
+<li>Use <code>Table.SelectColumns(..., MissingField.UseNull)</code> to force a fixed schema, then <code>Table.Combine</code>.</li>
+<li>Log raw headers and null-filled columns per file so tolerance does not hide errors.</li>
+<li>Per-file Dr = Cr checks catch semantic drift that name matching cannot.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-choose-the-missingfield-option-l1">Q1. Choose the MissingField option [L1]</h3>
+<p>For each scenario state whether <code>MissingField.Error</code>, <code>MissingField.Ignore</code> or <code>MissingField.UseNull</code> is appropriate and why: (a) final schema enforcement in a TB cleaning function; (b) renaming synonym headers; (c) a step that must fail loudly if the "Ledger" column is absent.</p>
+<h3 id="q2-header-map-from-a-sheet-l2">Q2. Header map from a sheet [L2]</h3>
+<p>A sheet table <code>HeaderMap</code> has columns From and To with 14 synonym rows. Write the M that loads it and uses it in <code>Table.RenameColumns</code> with <code>MissingField.Ignore</code> inside <code>fxCleanTB</code>. Explain one Formula.Firewall risk and how to avoid it.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> <code>Table.ToRows</code> returns a list of {From, To} pairs, which is the shape <code>Table.RenameColumns</code> expects.</p>
+</blockquote>
+<h3 id="q3-diagnose-a-balanced-but-wrong-consolidation-l3">Q3. Diagnose a balanced-but-wrong consolidation [L3]</h3>
+<p>The consolidated September TB shows total debits ₹204.9 crore and total credits ₹214.7 crore. No refresh error occurred. The per-file log shows the Chennai branch with debits ₹0 and credits ₹9.8 crore; Chennai's raw header is "Particulars, Dr., Credit" while the synonym map contains "Dr" and "Dr Amount". Explain exactly which steps produced this result without an error, why the difference equals Chennai's credits, and which two controls would have stopped the output from being used.</p>
+<h3 id="q4-drift-log-specification-l2">Q4. Drift log specification [L2]</h3>
+<p>Specify the columns of a drift-log query loaded to a sheet each month (one row per file), including raw header list, missing target columns, extra columns and a balance check. Write the M for at least two of those columns.</p></section>
+<nav class="pager"><a class="prev" href="S04_Reading_Branch_and_Month_from_the_File_Name.html">← Reading Branch and Month from the File Name</a><a class="next" href="S06_Multi_Bank_Statements_One_Function_per_Bank_Then.html">Multi-Bank Statements: One Function per Bank, Then… →</a></nav>
+</main></div></body></html>

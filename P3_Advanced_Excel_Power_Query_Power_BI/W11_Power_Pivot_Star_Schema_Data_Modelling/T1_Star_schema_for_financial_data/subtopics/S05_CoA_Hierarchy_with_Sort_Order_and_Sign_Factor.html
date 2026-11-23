@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CoA Hierarchy with Sort-Order and Sign-Factor Columns · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S05_CoA_Hierarchy_with_Sort_Order_and_Sign_Factor.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T1 · Star schema for financial data</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Star schema for financial data</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Facts_vs_Dimensions_in_a_Financial_Star_Schema.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S01_Facts_vs_Dimensions_in_a_Financial_Star_Schema.html">Facts vs Dimensions in a Financial Star Schema</a></li><li><a href="S02_Defining_Fact_Grain_and_Handling_Mixed_Grain.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S02_Defining_Fact_Grain_and_Handling_Mixed_Grain.html">Defining Fact Grain and Handling Mixed Grain (Budget vs Actual)</a></li><li><a href="S03_Relationship_Properties_Cardinality_Direction.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S03_Relationship_Properties_Cardinality_Direction.html">Relationship Properties: Cardinality, Direction, Active Status</a></li><li><a href="S04_Role_Playing_Dates_via_Inactive_Relationships.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S04_Role_Playing_Dates_via_Inactive_Relationships.html">Role-Playing Dates via Inactive Relationships</a></li><li><a href="S05_CoA_Hierarchy_with_Sort_Order_and_Sign_Factor.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S05_CoA_Hierarchy_with_Sort_Order_and_Sign_Factor.html">CoA Hierarchy with Sort-Order and Sign-Factor Columns</a></li><li><a href="S06_Surrogate_Keys_and_an_Unmapped_Member_for_Missing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S06_Surrogate_Keys_and_an_Unmapped_Member_for_Missing.html">Surrogate Keys and an Unmapped Member for Missing Accounts</a></li><li><a href="S07_Avoiding_Snowflakes_and_Flat_Tables_Diagram_View.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S07_Avoiding_Snowflakes_and_Flat_Tables_Diagram_View.html">Avoiding Snowflakes and Flat Tables; Diagram View vs Model View</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_USERELATIONSHIP_to_Activate_an_Inactive_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C01_USERELATIONSHIP_to_Activate_an_Inactive_Date.html">USERELATIONSHIP to Activate an Inactive Date Relationship</a></li><li><a href="../concepts/C02_Store_Budget_on_the_First_Day_of_the_Month.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C02_Store_Budget_on_the_First_Day_of_the_Month.html">Store Budget on the First Day of the Month</a></li><li><a href="../concepts/C03_Virtual_Relationship_with_TREATAS_for_Month_Grain.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C03_Virtual_Relationship_with_TREATAS_for_Month_Grain.html">Virtual Relationship with TREATAS for Month-Grain Budget</a></li><li><a href="../concepts/C04_CROSSFILTER_for_Per_Measure_Bidirectional.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C04_CROSSFILTER_for_Per_Measure_Bidirectional.html">CROSSFILTER for Per-Measure Bidirectional Filtering</a></li><li><a href="../concepts/C05_Referential_Integrity_Test_with_EXCEPT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C05_Referential_Integrity_Test_with_EXCEPT.html">Referential Integrity Test with EXCEPT</a></li><li><a href="../concepts/C06_Hide_Fact_Foreign_Keys_Expose_Attributes_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C06_Hide_Fact_Foreign_Keys_Expose_Attributes_and.html">Hide Fact Foreign Keys; Expose Attributes and Measures</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>CoA Hierarchy with Sort-Order and Sign-Factor Columns</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> CoA hierarchy: Account → FS sub-line → FS line → Statement, with sort-order and sign-factor columns</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>The Chart of Accounts dimension is the bridge between the ledger as booked and the statements as presented. It
+turns 600 Tally ledgers or SAP GL accounts into a Schedule III Division II Balance Sheet and Statement of Profit
+and Loss, an MIS P&amp;L with EBITDA, and drillable analysis. The hierarchy columns decide how the matrix groups rows;
+the sort-order columns decide whether "Revenue from operations" appears above "Other income"; and the sign-factor
+column decides whether revenue shows as a positive ₹ figure even though it is a credit in the books. A poorly built
+CoA dimension is the most common reason a Power BI P&amp;L fails to tie to the signed financial statements.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-four-level-hierarchy">The four-level hierarchy</h3>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Example (P&amp;L)</th>
+<th>Example (BS)</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Statement</td>
+<td>Profit and Loss</td>
+<td>Balance Sheet</td>
+<td>Top split; also drives additivity (flow vs balance)</td>
+</tr>
+<tr>
+<td>FS line</td>
+<td>Employee benefits expense</td>
+<td>Trade receivables</td>
+<td>Schedule III face line</td>
+</tr>
+<tr>
+<td>FS sub-line</td>
+<td>Salaries and wages</td>
+<td>Unsecured, considered good</td>
+<td>Schedule III note-level line</td>
+</tr>
+<tr>
+<td>Account</td>
+<td>510100 Salaries – Staff</td>
+<td>130210 Debtors – Domestic</td>
+<td>Ledger as booked</td>
+</tr>
+</tbody>
+</table>
+<p>The FS line and sub-line labels should follow Schedule III Division II wording (Ind AS companies) so that the model
+output can be traced to the notes to accounts. For MIS views you may add a parallel set of columns (MIS line, MIS
+group) because management P&amp;L layouts (Gross margin, Contribution, EBITDA) often differ from the statutory face.</p>
+<p>A typical CoA dimension:</p>
+<table>
+<thead>
+<tr>
+<th>AccountKey</th>
+<th>AccountCode</th>
+<th>AccountName</th>
+<th>FSSubLine</th>
+<th>FSLine</th>
+<th>Statement</th>
+<th>AccountType</th>
+<th>SubLineSort</th>
+<th>LineSort</th>
+<th>StatementSort</th>
+<th>SignFactor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>101</td>
+<td>400100</td>
+<td>Sales – Domestic</td>
+<td>Sale of products</td>
+<td>Revenue from operations</td>
+<td>Profit and Loss</td>
+<td>Income</td>
+<td>110</td>
+<td>100</td>
+<td>2</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>102</td>
+<td>400900</td>
+<td>Scrap sales</td>
+<td>Other operating revenue</td>
+<td>Revenue from operations</td>
+<td>Profit and Loss</td>
+<td>Income</td>
+<td>120</td>
+<td>100</td>
+<td>2</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>230</td>
+<td>510100</td>
+<td>Salaries – Staff</td>
+<td>Salaries and wages</td>
+<td>Employee benefits expense</td>
+<td>Profit and Loss</td>
+<td>Expense</td>
+<td>410</td>
+<td>400</td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>410</td>
+<td>130210</td>
+<td>Debtors – Domestic</td>
+<td>Unsecured, considered good</td>
+<td>Trade receivables</td>
+<td>Balance Sheet</td>
+<td>Asset</td>
+<td>2310</td>
+<td>2300</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>520</td>
+<td>210100</td>
+<td>Sundry creditors – MSME</td>
+<td>Dues of micro and small enterprises</td>
+<td>Trade payables</td>
+<td>Balance Sheet</td>
+<td>Liability</td>
+<td>3410</td>
+<td>3400</td>
+<td>1</td>
+<td>-1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="building-the-hierarchy-in-the-model">Building the hierarchy in the model</h3>
+<ol>
+<li>Load CoA from the Week 10 mapping table (one row per account, unique AccountKey).</li>
+<li>In Power BI Model view, right-click FSLine → <em>Create hierarchy</em>, and add FSSubLine and AccountName beneath
+   Statement → FSLine. In Power Pivot Diagram View, use the <em>Create Hierarchy</em> button on the CoA table.</li>
+<li>Hide the individual level columns if you want users to use only the hierarchy (optional).</li>
+<li>Put the hierarchy on matrix rows; users expand with +/− or drill-down.</li>
+</ol>
+<p>Hierarchies in a dimension table must be <strong>balanced or handled for raggedness</strong>: every account must have a
+sub-line and a line. If a ledger maps directly to an FS line with no sub-line, repeat the FS line name in the
+sub-line column (or use a "— " placeholder) rather than leaving blank, otherwise the matrix shows a blank row.</p>
+<h3 id="sort-order-columns">Sort-order columns</h3>
+<p>Text sorts alphabetically by default: "Cost of materials consumed" would precede "Revenue from operations". Fix it
+with <strong>Sort by Column</strong>: select <code>CoA[FSLine]</code> → Column tools → <em>Sort by column</em> → <code>CoA[LineSort]</code>. Do the same for
+FSSubLine (by SubLineSort) and Statement (by StatementSort).</p>
+<p>Rules for sort columns:</p>
+<ul>
+<li>Each label must map to <strong>exactly one</strong> sort value. If "Other expenses" has LineSort 700 for one account and 710
+  for another, Power BI rejects the sort ("There can't be more than one value in LineSort for the same value in
+  FSLine").</li>
+<li>Use gapped numbers (100, 200 …) to allow insertion of new lines without renumbering.</li>
+<li>Encode the statement order in the number (P&amp;L lines 100–999, BS lines 2000–4999) so a combined sort works.</li>
+<li>In Excel PivotTables over Power Pivot, Sort by Column set in the data model is respected once you refresh; you
+  can also use a custom list, but the model approach is portable.</li>
+</ul>
+<h3 id="sign-factor-column">Sign-factor column</h3>
+<p>The GL stores debits positive and credits negative. Revenue (a credit) therefore sums to a negative number. For
+presentation, the CoA carries <code>SignFactor</code>:</p>
+<ul>
+<li><strong>-1</strong> for credit-natured accounts presented as positives: income, liabilities, equity.</li>
+<li><strong>+1</strong> for debit-natured accounts: expenses and assets.</li>
+</ul>
+<p>Measures then apply it:</p>
+<pre><code class="language-DAX">Actual Signed =
+SUMX ( GL, GL[Amount] * RELATED ( CoA[SignFactor] ) )
+</code></pre>
+<p>For a P&amp;L that computes profit as Income − Expenses, you then subtract expense lines from income lines in subtotal
+logic (topic 6). An alternative convention keeps the raw signs and computes profit as the negative of the raw sum
+(because credits − debits = profit). Choose one convention and document it in the CoA table.</p>
+<p>The sign factor must follow the <strong>presentation nature of the FS line the account rolls into</strong>, not the normal
+balance of the individual ledger. This matters for <strong>contra accounts</strong>: the allowance for expected credit loss is a
+credit-natured ledger, but it rolls into Trade receivables (an asset line), so its SignFactor must be +1 so that
+the credit nets against gross debtors. If you derive SignFactor mechanically from each ledger's normal balance
+(Cr → -1), the allowance is flipped positive and <em>added</em> to receivables. The same applies to purchase returns
+under Purchases, sales returns and discounts under Revenue, and accumulated depreciation under PPE. The factor is
+stored per account (so RELATED can apply it row by row and exceptions are possible), but a review check should
+confirm that every account within an FS line carries the same SignFactor.</p>
+<h3 id="illustration">Illustration</h3>
+<p>GL for April 2025: Sales – Domestic −₹2,40,00,000 (credit), Scrap sales −₹6,00,000, Salaries – Staff
++₹38,00,000. With SignFactor, Revenue from operations shows ₹2,46,00,000 and Employee benefits expense shows
+₹38,00,000; raw <code>SUM(GL[Amount])</code> for the whole P&amp;L would show −₹2,08,00,000, i.e. a profit of ₹2.08 crore in the
+"credits negative" convention.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Accounts that flip nature.</strong> A bank account in overdraft is a liability at year-end (Schedule III requires
+  presentation under borrowings). Handle by a measure that reclassifies negative balances, not by changing CoA.</li>
+<li><strong>Same ledger in different FS lines across years.</strong> A CoA remap (e.g. moving freight from Other expenses to Cost
+  of goods sold) changes history unless you use a Type 2 slowly changing dimension (see topic Related concepts).</li>
+<li><strong>Multiple hierarchies.</strong> Statutory (Schedule III) and MIS layouts can both live on CoA as separate column sets;
+  the P&amp;L layout dimension in topic 6 adds subtotals that a CoA hierarchy cannot represent.</li>
+<li><strong>Other comprehensive income.</strong> OCI items (remeasurement of defined benefit plans, FVOCI equity) need their own
+  FSLine under the P&amp;L statement, below PAT.</li>
+<li><strong>Ragged levels.</strong> Avoid blank intermediate levels; Power BI's matrix shows blank rows for them. The tabular
+  hierarchy "Hide Members" property is not exposed in the Power BI Desktop UI (only via external tools such as
+  Tabular Editor) and behaviour varies by client, so fix raggedness in the data.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>CoA holds the Account → FS sub-line → FS line → Statement hierarchy aligned to Schedule III wording.</li>
+<li>Every label level needs a one-to-one sort column applied with Sort by Column.</li>
+<li>SignFactor is an account-level attribute (-1 for credit-natured presentation, +1 for debit-natured).</li>
+<li>Apply sign factors in DAX via RELATED at row level, or in Power Query once — never both.</li>
+<li>Keep hierarchies balanced; fill missing levels rather than leaving blanks.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-map-the-ledgers-l1">Q1. Map the ledgers [L1]</h3>
+<p>Assign FSSubLine, FSLine, Statement and SignFactor for these ledgers of an Ind AS company: GST Output CGST, Interest
+on FD received, Provision for gratuity (non-current), Freight inward, Security deposit – electricity board, Bank
+OD – HDFC, Retained earnings.</p>
+<h3 id="q2-sort-order-failure-l2">Q2. Sort-order failure [L2]</h3>
+<p>Setting Sort by Column on <code>CoA[FSLine]</code> by <code>CoA[LineSort]</code> fails with an error. The CoA has 640 rows. Explain the
+cause and write a DAX query or Power Query step that lists the offending FS lines.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Count distinct LineSort values per FSLine.</p>
+</blockquote>
+<h3 id="q3-contra-account-sign-l2">Q3. Contra-account sign [L2]</h3>
+<p>Trade receivables in the TB at 31 March 2026: Debtors – Domestic ₹18.6 crore (Dr), Debtors – Export ₹4.2 crore (Dr),
+Allowance for expected credit loss ₹1.1 crore (Cr). Show what the matrix would display for Trade receivables
+if SignFactor were derived from each ledger's normal balance (Dr = +1, Cr = -1) versus set by the FS line the ledger
+rolls into, and state which is correct and what review check would have caught the error.</p>
+<h3 id="q4-design-for-statutory-and-mis-l3">Q4. Design for statutory and MIS [L3]</h3>
+<p>Management's MIS P&amp;L groups: Net revenue, Material cost, Contribution, Manpower, Other opex, EBITDA. The statutory
+P&amp;L follows Schedule III Division II. Design the CoA dimension columns (names, sort columns, sign columns) so that
+both views come from the same GL measures, and explain how you would test that both total to the same PAT.</p>
+<h3 id="q5-interview-why-sign-factor-in-a-dimension-l1">Q5. Interview: why sign factor in a dimension [L1]</h3>
+<p>Explain to an interviewer why the sign factor belongs in the CoA dimension rather than as an IF on the account type
+inside every measure.</p></section>
+<nav class="pager"><a class="prev" href="S04_Role_Playing_Dates_via_Inactive_Relationships.html">← Role-Playing Dates via Inactive Relationships</a><a class="next" href="S06_Surrogate_Keys_and_an_Unmapped_Member_for_Missing.html">Surrogate Keys and an Unmapped Member for Missing Accounts →</a></nav>
+</main></div></body></html>

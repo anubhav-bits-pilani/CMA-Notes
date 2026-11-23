@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Decomposing Forecast-to-Forecast Movements · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/concepts/C03_Decomposing_Forecast_to_Forecast_Movements.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 5</a> <span>›</span> <a href="../../index.html">Week 18</a> <span>›</span> <a href="../index.html">T4 · Version and scenario governance</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Version and scenario governance</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Versions_vs_Scenarios_Time_Snapshots_vs.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S01_Versions_vs_Scenarios_Time_Snapshots_vs.html">Versions vs Scenarios: Time Snapshots vs Alternative Assumptions</a></li><li><a href="../subtopics/S02_Long_Format_Version_Storage_Instead_of_Sheet_per.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S02_Long_Format_Version_Storage_Instead_of_Sheet_per.html">Long-Format Version Storage Instead of Sheet-per-Version</a></li><li><a href="../subtopics/S03_Scenario_Switching_with_Selectors_and_Data.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S03_Scenario_Switching_with_Selectors_and_Data.html">Scenario Switching with Selectors and Data Validation</a></li><li><a href="../subtopics/S04_Version_Locking_Snapshots_Protection_Change_Logs.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S04_Version_Locking_Snapshots_Protection_Change_Logs.html">Version Locking: Snapshots, Protection, Change Logs and Naming</a></li><li><a href="../subtopics/S05_Version_Comparisons_and_Forecast_to_Forecast.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S05_Version_Comparisons_and_Forecast_to_Forecast.html">Version Comparisons and Forecast-to-Forecast Movement Bridges</a></li><li><a href="../subtopics/S06_Stress_Scenarios_and_Contingency_Triggers_Beyond.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S06_Stress_Scenarios_and_Contingency_Triggers_Beyond.html">Stress Scenarios and Contingency Triggers Beyond Sensitivities</a></li><li><a href="../subtopics/S07_EPM_Equivalents_EPBCS_Anaplan_and_Adaptive_Version.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S07_EPM_Equivalents_EPBCS_Anaplan_and_Adaptive_Version.html">EPM Equivalents: EPBCS, Anaplan and Adaptive Version Handling</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Multi_Criteria_Version_Lookup_with_XLOOKUP_or.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/concepts/C01_Multi_Criteria_Version_Lookup_with_XLOOKUP_or.html">Multi-Criteria Version Lookup with XLOOKUP or SUMIFS</a></li><li><a href="C02_Scenario_Selector_with_CHOOSE_or_INDEX.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/concepts/C02_Scenario_Selector_with_CHOOSE_or_INDEX.html">Scenario Selector with CHOOSE or INDEX</a></li><li><a href="C03_Decomposing_Forecast_to_Forecast_Movements.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/concepts/C03_Decomposing_Forecast_to_Forecast_Movements.html">Decomposing Forecast-to-Forecast Movements</a></li><li><a href="C04_One_Working_Version_Rule_and_Frozen_Prior_Versions.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/concepts/C04_One_Working_Version_Rule_and_Frozen_Prior_Versions.html">One Working Version Rule and Frozen Prior Versions</a></li><li><a href="C05_Scenario_vs_Sensitivity_Coherent_Assumption_Sets.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/concepts/C05_Scenario_vs_Sensitivity_Coherent_Assumption_Sets.html">Scenario vs Sensitivity: Coherent Assumption Sets vs One-Variable Flex</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Decomposing Forecast-to-Forecast Movements</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Forecast movement = Current forecast − Prior forecast, decomposed into actualisation, driver changes, new risks/opportunities</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>\[
+\Delta F = F_{\text{cur}} - F_{\text{prior}} = \underbrace{\sum_{m \in M_{\text{new}}} (A_m - F^{\text{prior}}_m)}_{\text{Actualisation}} + \underbrace{\sum_{d} \Delta_{d}}_{\text{Driver changes}} + \underbrace{\sum_{i} (\text{O}_i p_i) - \sum_{j} (\text{R}_j p_j)}_{\text{New R\&amp;O}} + \varepsilon
+\]</p>
+<ul>
+<li>\(F_{\text{cur}}, F_{\text{prior}}\) — full-year (or rolling-horizon) value in the current and prior locked forecast versions.</li>
+<li>\(M_{\text{new}}\) — months that were forecast in the prior version but are actual in the current one (e.g., Jul–Sep when moving from 3+9 to 6+6).</li>
+<li>\(A_m\) — actual for month \(m\); \(F^{\text{prior}}_m\) — what the prior version forecast for that month.</li>
+<li>\(\Delta_d\) — effect on the remaining (still-forecast) months of updating driver \(d\) (volume, price, mix, cost rate, FX, timing), each computed holding the others at their already-updated or prior values in a documented sequence.</li>
+<li>\(\text{O}_i, \text{R}_j\) — new opportunities and risks not in the prior version; \(p_i, p_j\) their probabilities if included on a weighted basis.</li>
+<li>\(\varepsilon\) — unexplained residual, which should be close to zero.</li>
+</ul>
+<h2 id="explanation">Explanation</h2>
+<p>The decomposition separates three fundamentally different causes of change:</p>
+<ol>
+<li><strong>Actualisation</strong> — the past has happened. Nothing can be done about it, but it tests the prior forecast's credibility and often signals whether the remaining months are also mis-forecast. It is computed only on the newly closed months; months that were already actual in both versions contribute zero (if they do not, someone changed actuals or the mapping).</li>
+<li><strong>Driver changes</strong> — management has changed its view of the future. These should be attributable to named operational drivers (Topic 3) and owners. A sequential "flex one driver at a time" approach gives a clean waterfall; because drivers interact multiplicatively (volume × price), the order matters and the joint effect lands in whichever driver is flexed last. Document the order (common convention: volume → price/mix → cost rates → FX) and keep it constant across cycles.</li>
+<li><strong>New risks and opportunities</strong> — discrete events that were not in the prior view. Keeping them separate prevents genuine one-offs from being buried inside "volume".</li>
+</ol>
+<p>Other normalisations — FX translation, mapping changes, scope changes (acquisitions) — are shown as separate bars so that they do not distort the operational story. The residual \(\varepsilon\) must be reported, never plugged into a driver bar; a policy such as "below 5% of \(\lvert \Delta F \rvert\) or ₹1 crore, whichever is higher" is typical.</p>
+<p>The prior forecast must be the <strong>locked</strong> snapshot (c04), otherwise the starting point of the bridge is not the number management was shown.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Narmada Electricals, FY26 revenue (₹ crore). Q1F (3+9) = 1,840.0; Q2F (6+6) = 1,792.0; \(\Delta F = -48.0\).</p>
+<ul>
+<li>Actualisation: Jul–Sep actual 428.0 vs Q1F forecast 445.0 → −17.0.</li>
+<li>H2 volume: Q1F assumed 2.40 lakh units; Q2F assumes 2.28 lakh units at Q1F price ₹40,000/unit → \(-0.12 \text{ lakh} \times \text{₹}40{,}000 = -48.0\) crore.</li>
+<li>H2 price: Q2F price ₹41,000 on 2.28 lakh units → \(+2.28 \text{ lakh} \times \text{₹}1{,}000 = +22.8\) crore.</li>
+<li>New risk: loss of a state-utility tender, ₹12.0 crore × 50% probability → −6.0.</li>
+<li>Residual: \(-48.0 - (-17.0 - 48.0 + 22.8 - 6.0) = +0.2\).</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Bar</th>
+<th>₹ crore</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q1F revenue</td>
+<td>1,840.0</td>
+</tr>
+<tr>
+<td>Actualisation</td>
+<td>−17.0</td>
+</tr>
+<tr>
+<td>Volume</td>
+<td>−48.0</td>
+</tr>
+<tr>
+<td>Price</td>
+<td>+22.8</td>
+</tr>
+<tr>
+<td>New risk (weighted)</td>
+<td>−6.0</td>
+</tr>
+<tr>
+<td>Residual</td>
+<td>+0.2</td>
+</tr>
+<tr>
+<td>Q2F revenue</td>
+<td>1,792.0</td>
+</tr>
+</tbody>
+</table>
+<p>Note that H1 months already actual in Q1F (Apr–Jun) contribute zero, and the Q1F H2 value (2.40 × ₹40,000 = ₹960 crore) and Q2F H2 value (2.28 × ₹41,000 = ₹934.8 crore, before the weighted risk) reconcile through the volume and price bars.</p>
+<h2 id="connections">Connections</h2>
+<p>Applied in s05 (comparisons and bridges), dependent on locked snapshots from s04/c04, and stored by version in the long table (s02, c01). The driver bars come from Topic 3's driver tree; the R&amp;O bar uses Topic 2's probability-weighted overlay (risk-adjusted LE). Lag-n accuracy in Topic 5 measures the actualisation bar systematically over time. In Week 20 the bridge becomes the LE walk in the MBR pack.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-build-the-bridge-l2">Q1. Build the bridge [L2]</h3>
+<p>Q2F FY26 EBITDA is ₹265 crore; Q3F (9+3) is ₹248 crore. Oct–Dec actual EBITDA was ₹91 crore against a Q2F forecast of ₹99 crore for those months. For Jan–Mar, Q2F assumed contribution of ₹4,200/tonne on 1,40,000 tonnes; Q3F assumes ₹4,050/tonne on 1,38,000 tonnes. A new opportunity (export rebate) of ₹5 crore at 60% probability is included. Fixed costs for Jan–Mar are unchanged. Prepare the bridge with volume flexed before contribution rate and report the residual.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Volume effect uses the prior contribution rate; rate effect uses the new volume.</p>
+</blockquote>
+<h3 id="q2-order-dependence-l2">Q2. Order dependence [L2]</h3>
+<p>Using the volume and price data in the illustration, recompute the price and volume bars flexing price first. Explain which bar absorbs the joint effect in each order and why consistency across cycles matters more than which order is chosen.</p>
+<h3 id="q3-interview-non-zero-prior-actual-months-l3">Q3. Interview: non-zero prior-actual months [L3]</h3>
+<p>In a Q2F vs Q1F bridge, April–June (actual in both versions) shows a ₹3.4 crore difference. List three possible causes, the evidence you would examine for each, and how each should be presented in the bridge.</p></section>
+<nav class="pager"><a class="prev" href="C02_Scenario_Selector_with_CHOOSE_or_INDEX.html">← Scenario Selector with CHOOSE or INDEX</a><a class="next" href="C04_One_Working_Version_Rule_and_Frozen_Prior_Versions.html">One Working Version Rule and Frozen Prior Versions →</a></nav>
+</main></div></body></html>

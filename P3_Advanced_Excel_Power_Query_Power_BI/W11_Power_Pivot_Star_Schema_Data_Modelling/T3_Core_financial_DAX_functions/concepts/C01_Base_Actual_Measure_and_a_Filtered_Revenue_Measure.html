@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Base Actual Measure and a Filtered Revenue Measure · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T3 · Core financial DAX functions</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Core financial DAX functions</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Row_Context_Filter_Context_and_Context_Transition.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S01_Row_Context_Filter_Context_and_Context_Transition.html">Row Context, Filter Context and Context Transition</a></li><li><a href="../subtopics/S02_CALCULATE_Filter_Arguments_and_Modifiers.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S02_CALCULATE_Filter_Arguments_and_Modifiers.html">CALCULATE Filter Arguments and Modifiers</a></li><li><a href="../subtopics/S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html">Iterators SUMX and AVERAGEX for Row-Level Maths</a></li><li><a href="../subtopics/S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html">FILTER vs Boolean Column Filters: Meaning and Performance</a></li><li><a href="../subtopics/S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html">ALL, ALLEXCEPT and ALLSELECTED for Share and Contribution Analysis</a></li><li><a href="../subtopics/S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html">RELATED and RELATEDTABLE in Columns and Iterators</a></li><li><a href="../subtopics/S07_DIVIDE_Measures_vs_Calculated_Columns_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S07_DIVIDE_Measures_vs_Calculated_Columns_and.html">DIVIDE, Measures vs Calculated Columns, and VAR/RETURN</a></li><li><a href="../subtopics/S08_Explicit_Measures_Display_Folders_and_LakhCrore.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S08_Explicit_Measures_Display_Folders_and_LakhCrore.html">Explicit Measures, Display Folders and ₹ Lakh/Crore Formats</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html">Base Actual Measure and a Filtered Revenue Measure</a></li><li><a href="C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html">Percentage of Total Opex with ALL on Cost Centre</a></li><li><a href="C03_Percentage_within_Statement_with_ALLEXCEPT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C03_Percentage_within_Statement_with_ALLEXCEPT.html">Percentage within Statement with ALLEXCEPT</a></li><li><a href="C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html">FX-Converted Revenue with SUMX and RELATED</a></li><li><a href="C05_Sign_Aware_Variance_with_VAR_and_ABS.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C05_Sign_Aware_Variance_with_VAR_and_ABS.html">Sign-Aware Variance % with VAR and ABS</a></li><li><a href="C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html">KEEPFILTERS to Intersect Rather Than Overwrite</a></li><li><a href="C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html">DIVIDE and Its BLANK Default for Zero Denominators</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Base Actual Measure and a Filtered Revenue Measure</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>Actual = SUM(GL[Amount])</code>; <code>Revenue = CALCULATE([Actual], CoA[FSLine] = "Revenue")</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-DAX">Actual  = SUM ( GL[Amount] )
+Revenue = CALCULATE ( [Actual], CoA[FSLine] = &quot;Revenue&quot; )
+</code></pre>
+<ul>
+<li><code>[Actual]</code> — base measure: sum of GL amounts (debits positive, credits negative) visible in the current filter
+  context.</li>
+<li><code>[Revenue]</code> — derived measure: <code>[Actual]</code> evaluated with the filter on <code>CoA[FSLine]</code> replaced by "Revenue" (in a
+  Schedule III-labelled CoA this would read "Revenue from operations").</li>
+<li>Internally the boolean filter is <code>FILTER(ALL(CoA[FSLine]), CoA[FSLine] = "Revenue")</code>.</li>
+</ul>
+<h2 id="explanation">Explanation</h2>
+<p>This pair is the root of <strong>measure branching</strong>: one base measure holds the aggregation logic; every P&amp;L line, variance
+and time-intelligence measure is built on it. If the base changes (e.g. to exclude reversal entries, or apply a sign
+factor), every derived measure inherits the change.</p>
+<p>Behaviour to understand:</p>
+<ul>
+<li><strong>Overwrite semantics.</strong> On a matrix with FSLine on rows, <code>[Revenue]</code> shows the revenue total on every row because
+  the row's FSLine filter is replaced. Use it in cards, KPI rows and ratio denominators (<code>DIVIDE([EBITDA],
+  [Revenue])</code>) where you want revenue regardless of the row. For row-aware behaviour use KEEPFILTERS (c06).</li>
+<li><strong>Other filters survive.</strong> Date, Branch, CostCentre and other CoA columns (e.g. AccountName) still filter. On an
+  account row belonging to Employee benefits, <code>[Revenue]</code> returns blank, because AccountName and FSLine filters
+  intersect to nothing.</li>
+<li><strong>Sign.</strong> With credits negative, <code>[Revenue]</code> is negative. Either define a sign-flipped measure
+  (<code>Revenue = -CALCULATE([Actual], …)</code>) or use a signed base (<code>[Actual Signed]</code> from topic 6). Decide once.</li>
+<li><strong>Hard-coded labels.</strong> The string must match the CoA exactly (case-insensitive in DAX, but spaces and wording
+  matter). If the FS line is renamed in the mapping, the measure silently returns blank. Many teams filter on a stable
+  code column (<code>CoA[FSLineCode] = "PL010"</code>) instead.</li>
+<li><strong>Budget twin.</strong> Create <code>Revenue Budget = CALCULATE([Budget], CoA[FSLine] = "Revenue")</code> so variance is
+  <code>[Revenue] - [Revenue Budget]</code>.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>FY2025-26 GL by FS line (₹ crore, raw signs): Revenue −640, Other income −18, Cost of materials 352, Employee benefits
+74, Other expenses 96, Depreciation 28, Finance costs 12, Tax expense 24.</p>
+<table>
+<thead>
+<tr>
+<th>Matrix row</th>
+<th><code>[Actual]</code></th>
+<th><code>[Revenue]</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue</td>
+<td>−640</td>
+<td>−640</td>
+</tr>
+<tr>
+<td>Other income</td>
+<td>−18</td>
+<td>−640</td>
+</tr>
+<tr>
+<td>Employee benefits</td>
+<td>74</td>
+<td>−640</td>
+</tr>
+<tr>
+<td>Total (P&amp;L)</td>
+<td>−72</td>
+<td>−640</td>
+</tr>
+</tbody>
+</table>
+<p>The P&amp;L total −72 = profit after tax ₹72 crore in credit-negative convention. <code>DIVIDE(-[Actual], -[Revenue])</code> on the
+total gives PAT margin \(\frac{72}{640} = 11.25\%\).</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Subtopic s02 (boolean filters overwrite) and s04 (filter columns, not tables).</li>
+<li>Concept c06 (KEEPFILTERS for row-aware lines); topic 6 (P&amp;L layout, sign flip and subtotals).</li>
+<li>Week cross-cutting concept: measure branching from base measures.</li>
+<li>Weeks 17–20: Revenue Budget and Revenue Forecast as twins of the same pattern.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-branch-the-measures-l1">Q1. Branch the measures [L1]</h3>
+<p>Starting from <code>[Actual]</code> and <code>[Budget]</code>, write measures for Revenue, Revenue Budget, Revenue Variance ₹ and Revenue
+Variance %, presenting revenue as positive.</p>
+<h3 id="q2-blank-after-remap-l2">Q2. Blank after remap [L2]</h3>
+<p>After the CoA mapping file is updated, <code>[Revenue]</code> returns blank for all periods while <code>[Actual]</code> is unchanged.
+Explain the likely cause and propose a more robust design for line-level measures.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Look at what the boolean filter compares against.</p>
+</blockquote>
+<h3 id="q3-row-aware-vs-card-l2">Q3. Row-aware vs card [L2]</h3>
+<p>Explain what <code>[Revenue]</code> shows in (a) a card filtered to FY2025-26 and Branch = Pune, (b) a matrix with AccountName
+on rows, (c) a matrix with FSLine on rows, and state which display is misleading and how you would fix it.</p></section>
+<nav class="pager"><a class="prev" href="../subtopics/S08_Explicit_Measures_Display_Folders_and_LakhCrore.html">← Explicit Measures, Display Folders and ₹ Lakh/Crore Formats</a><a class="next" href="C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html">Percentage of Total Opex with ALL on Cost Centre →</a></nav>
+</main></div></body></html>

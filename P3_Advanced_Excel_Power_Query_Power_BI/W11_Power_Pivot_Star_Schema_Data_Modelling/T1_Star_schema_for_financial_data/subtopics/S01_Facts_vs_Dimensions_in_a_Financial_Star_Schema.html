@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facts vs Dimensions in a Financial Star Schema · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S01_Facts_vs_Dimensions_in_a_Financial_Star_Schema.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T1 · Star schema for financial data</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Star schema for financial data</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Facts_vs_Dimensions_in_a_Financial_Star_Schema.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S01_Facts_vs_Dimensions_in_a_Financial_Star_Schema.html">Facts vs Dimensions in a Financial Star Schema</a></li><li><a href="S02_Defining_Fact_Grain_and_Handling_Mixed_Grain.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S02_Defining_Fact_Grain_and_Handling_Mixed_Grain.html">Defining Fact Grain and Handling Mixed Grain (Budget vs Actual)</a></li><li><a href="S03_Relationship_Properties_Cardinality_Direction.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S03_Relationship_Properties_Cardinality_Direction.html">Relationship Properties: Cardinality, Direction, Active Status</a></li><li><a href="S04_Role_Playing_Dates_via_Inactive_Relationships.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S04_Role_Playing_Dates_via_Inactive_Relationships.html">Role-Playing Dates via Inactive Relationships</a></li><li><a href="S05_CoA_Hierarchy_with_Sort_Order_and_Sign_Factor.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S05_CoA_Hierarchy_with_Sort_Order_and_Sign_Factor.html">CoA Hierarchy with Sort-Order and Sign-Factor Columns</a></li><li><a href="S06_Surrogate_Keys_and_an_Unmapped_Member_for_Missing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S06_Surrogate_Keys_and_an_Unmapped_Member_for_Missing.html">Surrogate Keys and an Unmapped Member for Missing Accounts</a></li><li><a href="S07_Avoiding_Snowflakes_and_Flat_Tables_Diagram_View.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S07_Avoiding_Snowflakes_and_Flat_Tables_Diagram_View.html">Avoiding Snowflakes and Flat Tables; Diagram View vs Model View</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_USERELATIONSHIP_to_Activate_an_Inactive_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C01_USERELATIONSHIP_to_Activate_an_Inactive_Date.html">USERELATIONSHIP to Activate an Inactive Date Relationship</a></li><li><a href="../concepts/C02_Store_Budget_on_the_First_Day_of_the_Month.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C02_Store_Budget_on_the_First_Day_of_the_Month.html">Store Budget on the First Day of the Month</a></li><li><a href="../concepts/C03_Virtual_Relationship_with_TREATAS_for_Month_Grain.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C03_Virtual_Relationship_with_TREATAS_for_Month_Grain.html">Virtual Relationship with TREATAS for Month-Grain Budget</a></li><li><a href="../concepts/C04_CROSSFILTER_for_Per_Measure_Bidirectional.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C04_CROSSFILTER_for_Per_Measure_Bidirectional.html">CROSSFILTER for Per-Measure Bidirectional Filtering</a></li><li><a href="../concepts/C05_Referential_Integrity_Test_with_EXCEPT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C05_Referential_Integrity_Test_with_EXCEPT.html">Referential Integrity Test with EXCEPT</a></li><li><a href="../concepts/C06_Hide_Fact_Foreign_Keys_Expose_Attributes_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C06_Hide_Fact_Foreign_Keys_Expose_Attributes_and.html">Hide Fact Foreign Keys; Expose Attributes and Measures</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Facts vs Dimensions in a Financial Star Schema</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Facts vs dimensions: GL Transactions, Budget and TB balances as facts; CoA, Calendar, Cost Centre, Branch as dimensions</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Every FP&amp;A dashboard, MIS pack or variance report built on Power Pivot or Power BI rests on one design decision:
+which tables hold <em>numbers you aggregate</em> (facts) and which hold <em>labels you slice by</em> (dimensions). Get this right
+and a single <code>[Actual]</code> measure works for revenue by branch, opex by cost centre and EBITDA by quarter. Get it wrong
+and you end up writing a separate measure per report, totals that double-count, and slicers that silently fail
+to filter one of your tables. For an auditor moving into FP&amp;A, the analogy is the trial balance working paper:
+the TB amounts are the facts, and the grouping schedule (account → Schedule III line) is the dimension.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="what-a-fact-table-is">What a fact table is</h3>
+<p>A fact table records <strong>measurable events or states</strong> at a defined grain. Its columns are of two kinds:</p>
+<ul>
+<li><strong>Foreign keys</strong> pointing to dimensions (AccountKey, CostCentreKey, BranchKey, Date).</li>
+<li><strong>Numeric measures</strong> to be aggregated (Amount, Qty, Balance).</li>
+</ul>
+<p>Fact tables are long and narrow: lakhs or crores of rows, few columns. They should contain almost no descriptive
+text. In a finance model there are typically three facts:</p>
+<table>
+<thead>
+<tr>
+<th>Fact</th>
+<th>Grain</th>
+<th>Nature</th>
+<th>Typical source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GL Transactions (<code>GL</code>)</td>
+<td>One row per voucher line (journal line)</td>
+<td>Transaction fact — flows, additive</td>
+<td>Tally Day Book export, SAP FAGLL03/ACDOCA, Oracle GL lines</td>
+</tr>
+<tr>
+<td>Budget (<code>Budget</code>)</td>
+<td>One row per account × cost centre × month</td>
+<td>Plan fact — flows, additive</td>
+<td>Long (unpivoted) budget table from Week 10</td>
+</tr>
+<tr>
+<td>TB balances (<code>TB</code>)</td>
+<td>One row per account × month-end</td>
+<td>Periodic snapshot fact — balances, semi-additive</td>
+<td>Month-end trial balance extracts</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>GL fact</strong> carries PostingDate, DocDate, DueDate, VoucherNo, AccountKey, CostCentreKey, BranchKey and Amount
+(debits positive, credits negative). The <strong>Budget fact</strong> carries MonthStart (or MonthEnd), AccountKey, CostCentreKey
+and Amount. The <strong>TB fact</strong> carries MonthEnd, AccountKey and Balance. Note that TB balances are not summable across
+time — a March balance plus a February balance is meaningless — which is why the TB is classed as a <em>snapshot</em>
+fact and needs semi-additive measures (topic 5 of this week).</p>
+<h3 id="what-a-dimension-table-is">What a dimension table is</h3>
+<p>A dimension describes the <strong>who, what, where, when</strong> of a fact row. It is short and wide: one row per member,
+many descriptive attributes, and a unique key.</p>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Key</th>
+<th>Attributes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chart of Accounts (<code>CoA</code>)</td>
+<td>AccountKey</td>
+<td>AccountCode, AccountName, FSSubLine, FSLine, Statement, SortOrder, SignFactor, Account type (Asset/Liability/Equity/Income/Expense)</td>
+</tr>
+<tr>
+<td>Calendar (<code>'Date'</code>)</td>
+<td>Date</td>
+<td>FY, FiscalQuarter, FiscalMonthNo, MonthName, MonthEnd, PeriodKey, flags</td>
+</tr>
+<tr>
+<td>Cost Centre (<code>CostCentre</code>)</td>
+<td>CostCentreKey</td>
+<td>CC code, CC name, Department, Function (Sales, Admin, Plant), Owner</td>
+</tr>
+<tr>
+<td>Branch (<code>Branch</code>)</td>
+<td>BranchKey</td>
+<td>Branch name, City, State, GSTIN, Region, Zone</td>
+</tr>
+</tbody>
+</table>
+<p>Dimensions are where filters originate. When a user picks "FY2024-25" in a slicer, the filter is placed on
+<code>'Date'[FY]</code>; it flows across the one-to-many relationship into GL, Budget and TB simultaneously. A <strong>conformed
+dimension</strong> is one shared by several facts with identical keys and meaning — CoA and Date are conformed across all
+three facts here, which is what makes Actual-vs-Budget possible without any lookup gymnastics.</p>
+<h3 id="deciding-fact-or-dimension">Deciding: fact or dimension?</h3>
+<p>Use these tests:</p>
+<ol>
+<li><strong>Do I sum, count or average it?</strong> Then it is a measure in a fact. Amount, Qty, Balance, Headcount.</li>
+<li><strong>Do I filter, group or label by it?</strong> Then it belongs in a dimension. Account name, State, Department.</li>
+<li><strong>Is it repeated across many rows with the same value?</strong> Text repeated on every voucher line (e.g. "Salaries &amp;
+   Wages" on 40,000 payroll lines) is a dimension attribute that has leaked into the fact.</li>
+<li><strong>Does it change independently of the transaction?</strong> Account-to-FS-line mapping changes when you restructure
+   the P&L; that is a dimension property, not an event property.</li>
+</ol>
+<p>Some items are borderline. Voucher type (Payment, Receipt, Journal, Sales) can stay as a low-cardinality column in
+GL ("degenerate dimension") or become a small <code>VoucherType</code> dimension. Voucher number is a classic <strong>degenerate
+dimension</strong>: it identifies the document but has no attributes worth a separate table, so it stays in the fact.
+Narration text is high-cardinality and rarely sliced; keep it only if drill-through needs it.</p>
+<h3 id="the-resulting-shape">The resulting shape</h3>
+<table>
+<thead>
+<tr>
+<th>Dimension (one side)</th>
+<th>GL (many)</th>
+<th>Budget (many)</th>
+<th>TB (many)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CoA[AccountKey]</td>
+<td>GL[AccountKey]</td>
+<td>Budget[AccountKey]</td>
+<td>TB[AccountKey]</td>
+</tr>
+<tr>
+<td>'Date'[Date]</td>
+<td>GL[PostingDate]</td>
+<td>Budget[MonthStart]</td>
+<td>TB[MonthEnd]</td>
+</tr>
+<tr>
+<td>CostCentre[CostCentreKey]</td>
+<td>GL[CostCentreKey]</td>
+<td>Budget[CostCentreKey]</td>
+<td>not used</td>
+</tr>
+<tr>
+<td>Branch[BranchKey]</td>
+<td>GL[BranchKey]</td>
+<td>not used (unless budget is branch-wise)</td>
+<td>not used</td>
+</tr>
+</tbody>
+</table>
+<p>Each fact relates to each dimension it uses through a single-direction, one-to-many relationship from dimension
+(one side) to fact (many side). Facts never relate directly to each other: GL and Budget are compared through the
+dimensions they share, inside measures:</p>
+<pre><code class="language-DAX">Actual   = SUM ( GL[Amount] )
+Budget   = SUM ( Budget[Amount] )
+Variance = [Actual] - [Budget]
+</code></pre>
+<p>Placed in a matrix with <code>CoA[FSLine]</code> on rows and <code>'Date'[FY]</code> on columns, all three evaluate correctly because the
+row and column filters reach both facts via conformed dimensions.</p>
+<h3 id="illustration">Illustration</h3>
+<p>A mid-size NSE-listed FMCG company has 4.2 crore GL lines over five years, 600 GL accounts, 85 cost centres,
+32 branches. A flat extract with account names, branch city and cost-centre names on every line would carry
+perhaps 25 text columns × 4.2 crore rows. In a star schema the GL fact keeps 8 columns (mostly integers), and the
+descriptive text lives once in dimensions of 600, 85, 32 and ~1,826 rows. VertiPaq compresses integer key columns
+extremely well, so the model shrinks from several GB to a few hundred MB, and refresh time falls accordingly.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Branch vs Cost Centre overlap.</strong> Many Indian companies encode branch inside the cost-centre code (e.g.
+  "MUM-SALES"). Decide whether Branch is a separate dimension keyed in GL, or an attribute of CostCentre. If a
+  cost centre can post to several branches (shared services), Branch must be its own key on the fact.</li>
+<li><strong>GSTIN as a dimension.</strong> For GST reconciliation views, Branch with GSTIN and State acts as a registration
+  dimension; do not store GSTIN text in GL.</li>
+<li><strong>TB as a separate fact or derived?</strong> If you have a complete GL from inception (including opening balance
+  entries), TB balances can be derived as cumulative GL. Many teams still load month-end TB snapshots because they
+  are the audited reference and the GL history may be incomplete after an ERP migration (e.g. Tally to SAP).</li>
+<li><strong>Budget at a coarser level.</strong> Budget may be at FSLine or cost-centre-group level rather than account level;
+  then it relates to a different granularity of the dimension (see s02).</li>
+<li><strong>Intercompany partner</strong> is a dimension (Entity), not a text column in GL, if consolidation eliminations are
+  in scope.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Facts hold keys and numbers at a declared grain; dimensions hold one row per member with descriptive attributes.</li>
+<li>GL Transactions and Budget are additive flow facts; TB balances are a periodic snapshot fact that is semi-additive.</li>
+<li>CoA, Calendar, Cost Centre and Branch are conformed dimensions shared by the facts, enabling Actual vs Budget.</li>
+<li>Facts never join to each other; comparison happens in measures through shared dimensions.</li>
+<li>Repeated descriptive text in a fact is a design smell — move it to the dimension.</li>
+<li>Voucher number is a degenerate dimension and may stay in the fact.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-classify-the-columns-l1">Q1. Classify the columns [L1]</h3>
+<p>A Tally Day Book export has the columns: Date, VoucherType, VoucherNo, LedgerName, LedgerGroup, ParentGroup,
+CostCentre, CostCategory, BranchName, BranchState, Narration, Debit, Credit. Classify each as fact key, fact
+measure, degenerate dimension, or dimension attribute, and state which dimension table each attribute should move to.</p>
+<h3 id="q2-design-three-facts-l2">Q2. Design three facts [L2]</h3>
+<p>A company has: (a) 1.8 crore GL lines from FY2020-21 to date; (b) an annual budget by account, cost centre and
+month for FY2025-26; (c) month-end TB extracts for 60 months. List the tables you would create, the keys on each
+fact, the measures, and which dimensions are conformed across which facts. Draw the relationships with cardinality.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Check whether every fact uses every dimension — TB, for instance, may not carry cost centre.</p>
+</blockquote>
+<h3 id="q3-size-argument-for-a-cfo-l2">Q3. Size argument for a CFO [L2]</h3>
+<p>The finance controller wants "one big table" because "it is easier for users". The flat file has 3.5 crore rows
+and 22 columns, of which 14 are text descriptions. Write a 150-word argument, with a rough estimate of what moves
+out of the fact, for adopting a star schema instead.</p>
+<h3 id="q4-branch-as-attribute-or-dimension-l3">Q4. Branch as attribute or dimension [L3]</h3>
+<p>Shared-services cost centre "HO-FIN" posts expenses that are allocated to branches through journals carrying a
+branch tag. Decide whether Branch should be a separate dimension with its own key on GL or an attribute of
+CostCentre, and explain the reporting consequences of each choice for a branch-wise P&amp;L.</p>
+<h3 id="q5-interview-conformed-dimensions-l1">Q5. Interview: conformed dimensions [L1]</h3>
+<p>In an interview you are asked, "Why can you put Actual and Budget side by side in a matrix if there is no
+relationship between the GL and Budget tables?" Give a precise answer using the terms filter propagation and
+conformed dimension.</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← Star schema for financial data</a><a class="next" href="S02_Defining_Fact_Grain_and_Handling_Mixed_Grain.html">Defining Fact Grain and Handling Mixed Grain (Budget vs… →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Error Detection: Hard-Codes, Broken Links, #REF!, IFERROR, Circularity · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/subtopics/S03_Error_Detection_Hard_Codes_Broken_Links_REF.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 6</a> <span>›</span> <a href="../../index.html">Week 23</a> <span>›</span> <a href="../index.html">T2 · Model Audit and QA Checklist</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Model Audit and QA Checklist</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Modelling_Standards_FAST_ICAEW_Code_and_One.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/subtopics/S01_Modelling_Standards_FAST_ICAEW_Code_and_One.html">Modelling Standards: FAST, ICAEW Code and One Formula per Row</a></li><li><a href="S02_Integrity_Checks_Balance_Cash_Roll_Forwards_and.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/subtopics/S02_Integrity_Checks_Balance_Cash_Roll_Forwards_and.html">Integrity Checks: Balance, Cash, Roll-Forwards and Signs</a></li><li><a href="S03_Error_Detection_Hard_Codes_Broken_Links_REF.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/subtopics/S03_Error_Detection_Hard_Codes_Broken_Links_REF.html">Error Detection: Hard-Codes, Broken Links, #REF!, IFERROR, Circularity</a></li><li><a href="S04_Excel_Audit_Toolkit_Tracing_Evaluate_Go_To_Special.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/subtopics/S04_Excel_Audit_Toolkit_Tracing_Evaluate_Go_To_Special.html">Excel Audit Toolkit: Tracing, Evaluate, Go To Special, Inquire</a></li><li><a href="S05_Sensitivity_Integrity_Live_Data_Tables_and_Tested.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/subtopics/S05_Sensitivity_Integrity_Live_Data_Tables_and_Tested.html">Sensitivity Integrity: Live Data Tables and Tested Scenarios</a></li><li><a href="S06_Presentation_Standards_Colour_Codes_Units_Freeze.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/subtopics/S06_Presentation_Standards_Colour_Codes_Units_Freeze.html">Presentation Standards: Colour Codes, Units, Freeze Panes, Grouping</a></li><li><a href="S07_Print_Ready_Page_Setup_for_Models_and_Output_Packs.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/subtopics/S07_Print_Ready_Page_Setup_for_Models_and_Output_Packs.html">Print-Ready Page Setup for Models and Output Packs</a></li><li><a href="S08_The_Executive_Cover_Sheet_Purpose_Outputs_Checks.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/subtopics/S08_The_Executive_Cover_Sheet_Purpose_Outputs_Checks.html">The Executive Cover Sheet: Purpose, Outputs, Checks, Versions</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_The_Master_Check_Aggregating_Every_Integrity_Test.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/concepts/C01_The_Master_Check_Aggregating_Every_Integrity_Test.html">The Master Check: Aggregating Every Integrity Test</a></li><li><a href="../concepts/C02_Row_Consistency_Test_with_FORMULATEXT_and_R1C1.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/concepts/C02_Row_Consistency_Test_with_FORMULATEXT_and_R1C1.html">Row Consistency Test with FORMULATEXT and R1C1 View</a></li><li><a href="../concepts/C03_Cash_Check_and_Retained_Earnings_Roll_Forward.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/concepts/C03_Cash_Check_and_Retained_Earnings_Roll_Forward.html">Cash Check and Retained-Earnings Roll-Forward Check</a></li><li><a href="../concepts/C04_Flex_Testing_Stressing_Inputs_to_Extremes.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/concepts/C04_Flex_Testing_Stressing_Inputs_to_Extremes.html">Flex Testing: Stressing Inputs to Extremes</a></li><li><a href="../concepts/C05_Calculation_Mode_Automatic_Except_for_Data_Tables.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/concepts/C05_Calculation_Mode_Automatic_Except_for_Data_Tables.html">Calculation Mode: Automatic Except for Data Tables</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Error Detection: Hard-Codes, Broken Links, #REF!, IFERROR, Circularity</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Error detection: hard-codes inside formulas, broken links, <code>#REF!</code>, masked errors via blanket <code>IFERROR</code>, circular references</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Studies of operational spreadsheets have repeatedly found errors in a large share of the models examined, and
+the most damaging errors are often invisible: a growth rate typed into a formula, a link to last year's file, an
+<code>IFERROR</code> returning zero where a calculation failed. In a valuation, one hidden hard-code in the terminal year can
+move value per share by 10–20%. Auditors, investment committees and capstone reviewers therefore look for these
+five error classes first. Each has a characteristic cause, a detection method and a fix, and together they form the
+core of the one-hour model audit in the week's checklist.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="1-hard-codes-inside-formulas">1. Hard-codes inside formulas</h3>
+<p><strong>What:</strong> a number typed into a formula that should be an input: <code>=J20*1.08</code>, <code>=K45+15</code>, <code>=L30*0.2517</code>. Exceptions
+that are usually acceptable are mathematical constants (<code>/2</code> for an average, <code>*12</code> for months, <code>/365</code>, <code>/100</code> for
+units), and these should be documented.</p>
+<p><strong>Why it is dangerous:</strong> invisible on the face of the sheet, not changed by the scenario switch or sensitivity
+tables, and impossible to source.</p>
+<p><strong>Detection:</strong></p>
+<ul>
+<li>Go To Special → Constants on calculation ranges finds pure hard-codes (s04).</li>
+<li><code>ISFORMULA</code>-based conditional formatting highlights constants in forecast blocks.</li>
+<li>Hard-codes <em>inside</em> formulas need a text search: Find (Ctrl+F, Look in: Formulas) for <code>*1.</code>, <code>+1</code>, <code>0.25</code>, or a
+  helper row with <code>=FORMULATEXT(J20)</code> plus a search for digits.</li>
+<li>The Inquire add-in's Workbook Analysis report lists formulas containing constants.</li>
+</ul>
+<p><strong>Fix:</strong> move the constant to an input row (blue) with a label, unit and source, and reference it.</p>
+<h3 id="2-broken-links">2. Broken links</h3>
+<p><strong>What:</strong> references to other workbooks (<code>='[Peers_v3.xlsx]Comps'!F12</code>) that no longer exist, have moved or are an
+old version. Opening the file triggers an "update links" prompt, and if the user declines or the source is missing,
+the stale cached value persists without warning.</p>
+<p><strong>Detection:</strong> Data → Edit Links (or Workbook Links in Microsoft 365) lists every external source and its status.
+Find <code>[</code> in formulas. Inquire also reports links. Check named ranges (Name Manager) and chart series for hidden
+external references.</p>
+<p><strong>Fix:</strong> for a capstone, have <strong>no external links</strong>. Paste the peer data as values on a dated input sheet with a
+source note, then Break Link. If links are essential (a live FP&amp;A consolidation), document the source path on the
+Cover.</p>
+<h3 id="3-ref-errors">3. #REF! errors</h3>
+<p><strong>What:</strong> a reference whose target cell, row, column or sheet was deleted. It appears as <code>=#REF!*J12</code> in the formula.</p>
+<p><strong>Detection:</strong> Go To Special → Formulas → Errors, Find "#REF!" in formulas, and the master check (errors propagate
+into totals and checks). Inside an iterative loop, <code>#REF!</code> floods the model (Week 23 t1 c06).</p>
+<p><strong>Fix:</strong> restore the reference (undo, or rebuild from the row's consistent neighbours). Prevention: do not delete
+rows that feed other sheets without first tracing dependents (s04). Use Ctrl+[ to check before deleting.</p>
+<h3 id="4-masked-errors-via-blanket-iferror">4. Masked errors via blanket IFERROR</h3>
+<p><strong>What:</strong> wrapping whole calculations in <code>IFERROR(…,0)</code> or <code>IFERROR(…,"")</code> so that any error, including a
+genuine <code>#REF!</code> or a wrong lookup, silently becomes zero (topic pitfall 1).</p>
+<p><strong>Why people do it:</strong> to make a model look clean, or to handle a known, legitimate case (division by zero in
+years with no revenue) with a catch-all.</p>
+<p><strong>Correct practice:</strong></p>
+<ul>
+<li>Handle the <em>specific</em> expected condition explicitly: <code>=IF(J10=0,0,J20/J10)</code> instead of <code>=IFERROR(J20/J10,0)</code>.</li>
+<li>For lookups, use <code>IFNA</code> (catches only <code>#N/A</code>) or <code>XLOOKUP</code>'s <code>if_not_found</code> argument, so other errors still
+  surface.</li>
+<li>If <code>IFERROR</code> is unavoidable, return a visible flag (<code>"CHECK"</code>) or feed an error-count check.</li>
+</ul>
+<p><strong>Detection:</strong> Find <code>IFERROR</code> across the workbook, list each instance, and justify or replace it. Temporarily
+replace <code>IFERROR(</code> with a dummy text such as <code>xIFERROR(</code> and see which cells would error.</p>
+<h3 id="5-circular-references">5. Circular references</h3>
+<p><strong>What:</strong> a formula chain that refers back to itself. Intended circularity (interest on average debt) differs from
+accidental circularity (e.g. tax computed on PBT that includes interest income on cash that depends on tax paid,
+created by an innocent link).</p>
+<p><strong>Detection:</strong> with iterative calculation <strong>off</strong>, Excel shows "Circular References" in the status bar and under
+Formulas → Error Checking → Circular References, which lists the cells. With iteration <strong>on</strong>, Excel stays silent,
+so audit with the circuit breaker at 0 and iteration off and confirm that no circular warning remains.</p>
+<p><strong>Fix:</strong> remove accidental loops (link to opening balances), and confine intended loops to one documented loop with
+a circuit breaker (t1 c06).</p>
+<h3 id="error-count-check">Error-count check</h3>
+<p>Add an error-count row to the Checks tab for each calculation sheet:</p>
+<pre><code>=SUMPRODUCT(--ISERROR(IS!E8:S120))
+</code></pre>
+<p>It feeds the master check, so any error anywhere turns the Cover to "ERROR". This only works if errors are not
+masked, which is one more reason to avoid blanket <code>IFERROR</code>.</p>
+<h3 id="audit-routine-one-hour">Audit routine (one hour)</h3>
+<table>
+<thead>
+<tr>
+<th>Minutes</th>
+<th>Test</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–10</td>
+<td>Error and circularity scan</td>
+<td>Go To Special → Errors; status bar circular warning with iteration off</td>
+</tr>
+<tr>
+<td>10–20</td>
+<td>External links and names</td>
+<td>Edit Links; Name Manager filter for errors/external</td>
+</tr>
+<tr>
+<td>20–35</td>
+<td>Hard-codes</td>
+<td>Go To Special → Constants on calc sheets; Find for embedded numbers; <code>FORMULATEXT</code> review</td>
+</tr>
+<tr>
+<td>35–45</td>
+<td><code>IFERROR</code> inventory</td>
+<td>Find all; justify or replace</td>
+</tr>
+<tr>
+<td>45–55</td>
+<td>Row consistency</td>
+<td>R1C1 view or <code>FORMULATEXT</code> comparison (c02)</td>
+</tr>
+<tr>
+<td>55–60</td>
+<td>Checks and flex test</td>
+<td>Master check, one extreme input (c04)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Unit constants.</strong> <code>/10^7</code> to convert rupees to crore is acceptable if consistently applied and noted. A
+  better approach is a named unit factor input.</li>
+<li><strong>Hard-coded historical actuals</strong> are inputs, not errors, but they belong on Historicals with a source, not
+  typed into a statement sheet.</li>
+<li><strong><code>IFERROR</code> around <code>XIRR</code> or <code>IRR</code></strong>: these can fail to converge for legitimate cash flow patterns. Return a
+  flag text rather than zero.</li>
+<li><strong>Phantom links</strong> that remain in charts, data validation lists or defined names after you break cell links.
+  Check all three.</li>
+<li><strong>Deliberate circularity versus FAST preference.</strong> Even if your loop is intended, an external reviewer may
+  require it removed. Have the opening-balance fallback ready.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>The five error classes are hard-codes in formulas, broken external links, <code>#REF!</code>, masked errors and circular references.</li>
+<li>Find hard-codes with Go To Special, <code>ISFORMULA</code> formatting and formula-text searches, then move them to labelled inputs.</li>
+<li>Eliminate external links in portfolio models. Paste values with dated sources and check names and charts for residual links.</li>
+<li>Replace blanket <code>IFERROR</code> with explicit conditions or <code>IFNA</code>, and let genuine errors surface into an error-count check.</li>
+<li>Audit circularity with iteration off and the circuit breaker at 0. Accept only one documented, switchable loop.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-classify-and-fix-l1">Q1. Classify and fix [L1]</h3>
+<p>For each formula, identify the error class and write the corrected version with any new input rows: (a)
+<code>=K30*(1+0.06)</code>; (b) <code>=IFERROR(VLOOKUP(B5,Peers!A:F,4,0),0)</code>; (c) <code>='[Capex_plan_old.xlsx]Sheet1'!D9</code>; (d)
+<code>=#REF!+K44</code>; (e) <code>=K40*0.2517</code>.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Decide for each whether the fix is relocation, replacement or removal.</p>
+</blockquote>
+<h3 id="q2-iferror-inventory-l2">Q2. IFERROR inventory [L2]</h3>
+<p>A model has 214 <code>IFERROR</code> instances. Describe a step-by-step method to inventory them, decide which are
+justified, and replace the rest, including how you would prove that no hidden error was introduced or removed.</p>
+<h3 id="q3-accidental-circularity-l2">Q3. Accidental circularity [L2]</h3>
+<p>After you add interest income on average cash to the IS, Excel reports a circular reference although your debt
+interest uses opening balances. Trace the loop in words and propose two ways to resolve it.</p>
+<h3 id="q4-audit-under-time-pressure-l3">Q4. Audit under time pressure [L3]</h3>
+<p>You are given a 22-sheet DCF model built by someone else and one hour before an investment committee meeting.
+Using the audit routine in these notes, prepare a minute-by-minute plan and a one-page findings template with
+severity ratings (critical, major, minor) and the value impact of each finding.</p>
+<h3 id="q5-error-count-check-design-l2">Q5. Error-count check design [L2]</h3>
+<p>Write the formulas for an error-count row on the Checks tab covering the IS, BS, CFS and DCF sheets, and explain
+why the check is meaningless if blanket <code>IFERROR</code> is used elsewhere in the model.</p></section>
+<nav class="pager"><a class="prev" href="S02_Integrity_Checks_Balance_Cash_Roll_Forwards_and.html">← Integrity Checks: Balance, Cash, Roll-Forwards and Signs</a><a class="next" href="S04_Excel_Audit_Toolkit_Tracing_Evaluate_Go_To_Special.html">Excel Audit Toolkit: Tracing, Evaluate, Go To Special,… →</a></nav>
+</main></div></body></html>

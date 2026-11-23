@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Actual Signed: Applying the CoA Sign Factor Row by Row · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C02_Actual_Signed_Applying_the_CoA_Sign_Factor_Row_by.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T6 · P&amp;L layout, subtotals and sign-flip</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · P&amp;L layout, subtotals and sign-flip</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_The_PL_Layout_Dimension_Lines_Sort_Order_Type_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S01_The_PL_Layout_Dimension_Lines_Sort_Order_Type_and.html">The P&amp;L Layout Dimension: Lines, Sort Order, Type and Sign</a></li><li><a href="../subtopics/S02_Mapping_CoA_to_Layout_Lines_and_Computing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S02_Mapping_CoA_to_Layout_Lines_and_Computing.html">Mapping CoA to Layout Lines and Computing Subtotals by Sort Order</a></li><li><a href="../subtopics/S03_Row_Level_Measure_Dispatch_with_SWITCHTRUE_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S03_Row_Level_Measure_Dispatch_with_SWITCHTRUE_and.html">Row-Level Measure Dispatch with SWITCH(TRUE()) and SELECTEDVALUE</a></li><li><a href="../subtopics/S04_Sign_Convention_Credits_Negative_in_the_GL_Flipped.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S04_Sign_Convention_Credits_Negative_in_the_GL_Flipped.html">Sign Convention: Credits Negative in the GL, Flipped for Presentation</a></li><li><a href="../subtopics/S05_Margin_Rows_GM_EBITDA_EBIT_with_Dynamic_Format.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S05_Margin_Rows_GM_EBITDA_EBIT_with_Dynamic_Format.html">Margin Rows (GM %, EBITDA %, EBIT %) with Dynamic Format Strings</a></li><li><a href="../subtopics/S06_Formatting_the_PL_Matrix_Layout_Spacers_Bold.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S06_Formatting_the_PL_Matrix_Layout_Spacers_Bold.html">Formatting the P&amp;L Matrix: Layout, Spacers, Bold Subtotals, Empty Rows</a></li><li><a href="../subtopics/S07_Alternatives_Calculation_Groups_Field_Parameters.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S07_Alternatives_Calculation_Groups_Field_Parameters.html">Alternatives: Calculation Groups, Field Parameters, Visual Calcs, Excel</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_The_PnL_Dispatcher_Measure_with_SWITCHTRUE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C01_The_PnL_Dispatcher_Measure_with_SWITCHTRUE.html">The PnL Dispatcher Measure with SWITCH(TRUE())</a></li><li><a href="C02_Actual_Signed_Applying_the_CoA_Sign_Factor_Row_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C02_Actual_Signed_Applying_the_CoA_Sign_Factor_Row_by.html">Actual Signed: Applying the CoA Sign Factor Row by Row</a></li><li><a href="C03_The_Subtotal_Measure_Removing_the_Layout_Filter_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C03_The_Subtotal_Measure_Removing_the_Layout_Filter_by.html">The Subtotal Measure: Removing the Layout Filter by Sort Order</a></li><li><a href="C04_EBITDA_with_a_Dynamic_Format_String_in_the_PL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C04_EBITDA_with_a_Dynamic_Format_String_in_the_PL.html">EBITDA % with a Dynamic Format String in the P&amp;L Matrix</a></li><li><a href="C05_Blanking_PL_Grand_Totals_with_ISINSCOPE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C05_Blanking_PL_Grand_Totals_with_ISINSCOPE.html">Blanking P&amp;L Grand Totals with ISINSCOPE</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Actual Signed: Applying the CoA Sign Factor Row by Row</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>Actual Signed = SUMX(GL, GL[Amount] * RELATED(CoA[SignFactor]))</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-DAX">Actual Signed = SUMX ( GL, GL[Amount] * RELATED ( CoA[SignFactor] ) )
+</code></pre>
+<p>\[
+\text{Actual Signed} = \sum_{r \in \text{GL}} \text{Amount}_{r} \times \text{SF}\big(\text{Account}_{r}\big)
+\]</p>
+<p>where \(\text{Amount}_{r}\) is the natural-signed amount on GL row \(r\) (debit positive, credit negative) and
+\(\text{SF}(a)\) is the sign factor of account \(a\) in the CoA (−1 for P&amp;L accounts in the profit-signed convention, so
+income becomes positive and expenses negative).</p>
+<h2 id="explanation">Explanation</h2>
+<p><code>SUMX</code> iterates the GL rows visible in the current filter context. For each row, <code>RELATED(CoA[SignFactor])</code> follows the
+many-to-one relationship from GL to CoA and fetches the account's sign factor — <code>RELATED</code> works because the iterator
+creates a row context on the many side. The product is summed.</p>
+<p>Why a per-account sign factor rather than a blanket <code>-[Actual]</code>:</p>
+<ul>
+<li><strong>Mixed statements.</strong> A BS layout needs +1 for assets and −1 for liabilities/equity, while P&amp;L lines need −1; a single
+  measure serves both if the factor lives in the CoA.</li>
+<li><strong>Contra accounts</strong> (sales returns within revenue, accumulated depreciation within PPE) keep their natural sign and are
+  handled correctly by the same factor as their parent line.</li>
+<li><strong>Transparency.</strong> The sign rule is visible data that a reviewer can audit in the CoA table.</li>
+</ul>
+<p>Performance: iterating every GL row is fine for a few million rows, but an equivalent that iterates only the distinct
+sign values is faster on large facts:</p>
+<pre><code class="language-DAX">Actual Signed (fast) =
+SUMX ( VALUES ( CoA[SignFactor] ), CoA[SignFactor] * [Actual] )
+</code></pre>
+<p>Here <code>[Actual]</code> (a measure) is evaluated for each distinct sign factor through context transition — usually two
+iterations instead of millions.</p>
+<p>Rules to keep the sign consistent:</p>
+<ul>
+<li>Flip in <strong>one place only</strong> — if Power Query has already flipped revenue, set factors to +1 or remove the Power Query
+  step.</li>
+<li>Apply the <strong>same factor to Budget</strong> (<code>Budget Signed</code>) after normalising the budget to the GL's natural convention.</li>
+<li>Compute <strong>subtotals from Actual Signed</strong>, never from display-flipped values.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>GL rows for October 2025 (₹ lakh):</p>
+<table>
+<thead>
+<tr>
+<th>Account</th>
+<th>Amount (natural)</th>
+<th>SignFactor</th>
+<th>Product</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sales of products</td>
+<td>−3,450</td>
+<td>−1</td>
+<td>3,450</td>
+</tr>
+<tr>
+<td>Sale of services</td>
+<td>−250</td>
+<td>−1</td>
+<td>250</td>
+</tr>
+<tr>
+<td>Sales returns</td>
+<td>100</td>
+<td>−1</td>
+<td>−100</td>
+</tr>
+<tr>
+<td>Raw material consumed</td>
+<td>2,050</td>
+<td>−1</td>
+<td>−2,050</td>
+</tr>
+<tr>
+<td>Freight inward</td>
+<td>40</td>
+<td>−1</td>
+<td>−40</td>
+</tr>
+</tbody>
+</table>
+<p><code>Actual Signed</code> for Revenue from operations = 3,450 + 250 − 100 = 3,600; for Cost of materials = −2,090; Gross Profit =
+1,510. The same rows with a blanket <code>-[Actual]</code> would give the same P&amp;L numbers, but the per-account factor also serves a
+balance-sheet layout from the same measure.</p>
+<h2 id="connections">Connections</h2>
+<p>The Account branch of the dispatcher (c01), the input to subtotals (c03) and margins (c04); the sign layers are explained
+in s04. <code>RELATED</code> and iterator row context were covered in Topic 3 (s03, s06). The CoA's SignFactor column was built in
+Week 10's mapping table and Topic 1's CoA hierarchy (s05).</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-compute-signed-values-l1">Q1. Compute signed values [L1]</h3>
+<p>GL amounts for Q3 FY26 (₹ lakh): Revenue −10,800; Discounts allowed 260; Other income −150; Materials 6,100; Employee
+1,580; Other expenses 1,240; D&amp;A 410. With SignFactor −1 for all P&amp;L accounts, compute Actual Signed per line and the
+running subtotals to EBIT (Other income below EBIT).</p>
+<h3 id="q2-fast-version-l2">Q2. Fast version [L2]</h3>
+<p>Explain step by step how <code>SUMX(VALUES(CoA[SignFactor]), CoA[SignFactor] * [Actual])</code> arrives at the same result as the
+row-by-row version on a matrix row for "Revenue from operations", including the role of context transition. Under what
+CoA design would it return a wrong answer?</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider what happens if the matrix row is not filtered to CoA at all, or if a measure without CALCULATE were used inside.</p>
+</blockquote>
+<h3 id="q3-bs-layout-with-the-same-measure-l2">Q3. BS layout with the same measure [L2]</h3>
+<p>Design SignFactor values for a balance sheet layout (PPE, accumulated depreciation, receivables, ECL allowance, cash,
+share capital, retained earnings, borrowings, payables) so that <code>Actual Signed</code> presents assets and claims as positive,
+and state the check that proves the balance sheet balances.</p></section>
+<nav class="pager"><a class="prev" href="C01_The_PnL_Dispatcher_Measure_with_SWITCHTRUE.html">← The PnL Dispatcher Measure with SWITCH(TRUE())</a><a class="next" href="C03_The_Subtotal_Measure_Removing_the_Layout_Filter_by.html">The Subtotal Measure: Removing the Layout Filter by Sort… →</a></nav>
+</main></div></body></html>

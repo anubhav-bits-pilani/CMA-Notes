@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USERELATIONSHIP to Activate an Inactive Date Relationship · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C01_USERELATIONSHIP_to_Activate_an_Inactive_Date.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T1 · Star schema for financial data</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Star schema for financial data</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Facts_vs_Dimensions_in_a_Financial_Star_Schema.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S01_Facts_vs_Dimensions_in_a_Financial_Star_Schema.html">Facts vs Dimensions in a Financial Star Schema</a></li><li><a href="../subtopics/S02_Defining_Fact_Grain_and_Handling_Mixed_Grain.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S02_Defining_Fact_Grain_and_Handling_Mixed_Grain.html">Defining Fact Grain and Handling Mixed Grain (Budget vs Actual)</a></li><li><a href="../subtopics/S03_Relationship_Properties_Cardinality_Direction.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S03_Relationship_Properties_Cardinality_Direction.html">Relationship Properties: Cardinality, Direction, Active Status</a></li><li><a href="../subtopics/S04_Role_Playing_Dates_via_Inactive_Relationships.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S04_Role_Playing_Dates_via_Inactive_Relationships.html">Role-Playing Dates via Inactive Relationships</a></li><li><a href="../subtopics/S05_CoA_Hierarchy_with_Sort_Order_and_Sign_Factor.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S05_CoA_Hierarchy_with_Sort_Order_and_Sign_Factor.html">CoA Hierarchy with Sort-Order and Sign-Factor Columns</a></li><li><a href="../subtopics/S06_Surrogate_Keys_and_an_Unmapped_Member_for_Missing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S06_Surrogate_Keys_and_an_Unmapped_Member_for_Missing.html">Surrogate Keys and an Unmapped Member for Missing Accounts</a></li><li><a href="../subtopics/S07_Avoiding_Snowflakes_and_Flat_Tables_Diagram_View.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S07_Avoiding_Snowflakes_and_Flat_Tables_Diagram_View.html">Avoiding Snowflakes and Flat Tables; Diagram View vs Model View</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_USERELATIONSHIP_to_Activate_an_Inactive_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C01_USERELATIONSHIP_to_Activate_an_Inactive_Date.html">USERELATIONSHIP to Activate an Inactive Date Relationship</a></li><li><a href="C02_Store_Budget_on_the_First_Day_of_the_Month.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C02_Store_Budget_on_the_First_Day_of_the_Month.html">Store Budget on the First Day of the Month</a></li><li><a href="C03_Virtual_Relationship_with_TREATAS_for_Month_Grain.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C03_Virtual_Relationship_with_TREATAS_for_Month_Grain.html">Virtual Relationship with TREATAS for Month-Grain Budget</a></li><li><a href="C04_CROSSFILTER_for_Per_Measure_Bidirectional.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C04_CROSSFILTER_for_Per_Measure_Bidirectional.html">CROSSFILTER for Per-Measure Bidirectional Filtering</a></li><li><a href="C05_Referential_Integrity_Test_with_EXCEPT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C05_Referential_Integrity_Test_with_EXCEPT.html">Referential Integrity Test with EXCEPT</a></li><li><a href="C06_Hide_Fact_Foreign_Keys_Expose_Attributes_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C06_Hide_Fact_Foreign_Keys_Expose_Attributes_and.html">Hide Fact Foreign Keys; Expose Attributes and Measures</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>USERELATIONSHIP to Activate an Inactive Date Relationship</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>CALCULATE([Actual], USERELATIONSHIP(GL[DueDate], 'Date'[Date]))</code> activates an inactive relationship</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-DAX">Actual by Due Date =
+CALCULATE (
+    [Actual],
+    USERELATIONSHIP ( GL[DueDate], 'Date'[Date] )
+)
+</code></pre>
+<ul>
+<li><code>[Actual]</code> is the base measure <code>SUM(GL[Amount])</code>.</li>
+<li><code>GL[DueDate]</code> is the many-side column; <code>'Date'[Date]</code> is the one-side key. The two must already be linked by an
+  <strong>inactive</strong> relationship in the model.</li>
+<li><code>USERELATIONSHIP</code> is a CALCULATE modifier: during this evaluation, the named relationship becomes active and the
+  otherwise active relationship between the same tables (GL[PostingDate] → 'Date'[Date]) is ignored.</li>
+</ul>
+<h2 id="explanation">Explanation</h2>
+<p>Power BI and Power Pivot allow only one active relationship between two tables, to keep filter paths unambiguous.
+When a fact has several date roles, the extra relationships are created but left inactive (dashed line). They do
+nothing until a measure explicitly requests them.</p>
+<p>Key rules:</p>
+<ul>
+<li><strong>Exists first.</strong> USERELATIONSHIP cannot invent a relationship. If no relationship (active or inactive) exists
+  between the two columns, the measure errors.</li>
+<li><strong>Argument order does not matter.</strong> Either column can be first; the engine identifies the relationship.</li>
+<li><strong>Only inside CALCULATE/CALCULATETABLE</strong> (or functions that accept CALCULATE modifiers). It cannot be used
+  stand-alone or in a calculated column's RELATED call.</li>
+<li><strong>Several at once.</strong> More than one USERELATIONSHIP can appear in a CALCULATE when they activate relationships
+  between different pairs of tables (Microsoft documents a limit of 10 nested calls).</li>
+<li><strong>Outer vs inner.</strong> An inner CALCULATE's USERELATIONSHIP takes precedence over an outer one for the same pair,
+  so a base measure that already activates DueDate cannot be "switched back" by the caller without editing it.</li>
+<li><strong>RLS restriction.</strong> Per Microsoft documentation, it errors if row-level security is defined on a table involved
+  in the relationship.</li>
+</ul>
+<p>Time intelligence inside such a measure follows the activated relationship, because the date set built on
+<code>'Date'[Date]</code> now filters GL through DueDate.</p>
+<h2 id="illustration">Illustration</h2>
+<p>GL extract for trade receivables of a Bengaluru-based NSE-listed auto-ancillary company:</p>
+<table>
+<thead>
+<tr>
+<th>Voucher</th>
+<th>PostingDate</th>
+<th>DueDate</th>
+<th>Amount (₹)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SI-1101</td>
+<td>18-Feb-2026</td>
+<td>19-Apr-2026</td>
+<td>24,50,000</td>
+</tr>
+<tr>
+<td>SI-1145</td>
+<td>06-Mar-2026</td>
+<td>05-May-2026</td>
+<td>31,20,000</td>
+</tr>
+<tr>
+<td>SI-1188</td>
+<td>28-Mar-2026</td>
+<td>27-Apr-2026</td>
+<td>18,75,000</td>
+</tr>
+</tbody>
+</table>
+<p>With FY2025-26 March selected, <code>[Actual]</code> (posting date) returns ₹49,95,000 (the two March invoices). In a matrix
+with April 2026 on columns, <code>[Actual by Due Date]</code> returns ₹43,25,000 (SI-1101 and SI-1188 fall due in April),
+which feeds the April collections forecast. The same Date slicer drives both measures.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Subtopic s04 (role-playing dates) gives the design context; s03 explains why only one path may be active.</li>
+<li>Topic 4 time intelligence: YTD by due date wraps TOTALYTD inside this CALCULATE.</li>
+<li>Weeks 17–20 cash-flow forecasting uses due-date receivables and payables profiles.</li>
+<li>Audit practice: cut-off testing compares document-date and posting-date roles.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-payables-due-next-quarter-l1">Q1. Payables due next quarter [L1]</h3>
+<p>Write a measure that returns trade payables due in the selected fiscal quarter, using an inactive relationship from
+<code>GL[DueDate]</code> to <code>'Date'[Date]</code> and filtering CoA[FSLine] to "Trade payables".</p>
+<h3 id="q2-why-it-returns-the-same-number-l2">Q2. Why it returns the same number [L2]</h3>
+<p>A colleague's measure <code>CALCULATE([Actual], USERELATIONSHIP(GL[DocDate], 'Date'[Date]))</code> returns identical values to
+<code>[Actual]</code> for every month of FY2025-26. List three possible reasons and how you would confirm each.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Check the model, the data itself and where the visual's date field comes from.</p>
+</blockquote>
+<h3 id="q3-two-roles-in-one-measure-l3">Q3. Two roles in one measure [L3]</h3>
+<p>Write a measure that returns the amount of invoices posted in the selected month that are due after the end of the
+current fiscal year (31 March), and explain how the relationship and column-comparison logic interact.</p></section>
+<nav class="pager"><a class="prev" href="../subtopics/S07_Avoiding_Snowflakes_and_Flat_Tables_Diagram_View.html">← Avoiding Snowflakes and Flat Tables; Diagram View vs Model…</a><a class="next" href="C02_Store_Budget_on_the_First_Day_of_the_Month.html">Store Budget on the First Day of the Month →</a></nav>
+</main></div></body></html>

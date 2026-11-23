@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Performance Tuning: Columns, Cardinality, Analyzer Tools · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S06_Performance_Tuning_Columns_Cardinality_Analyzer.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T5 · Finalising Project 3: one-click refresh</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Finalising Project 3: one-click refresh</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_End_to_End_Architecture_Source_Folders_to_Report.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S01_End_to_End_Architecture_Source_Folders_to_Report.html">End-to-End Architecture: Source Folders to Report and Cube Pack</a></li><li><a href="S02_Parameters_for_Folder_Path_As_of_Date_FY_Start_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S02_Parameters_for_Folder_Path_As_of_Date_FY_Start_and.html">Parameters for Folder Path, As-of Date, FY Start and Environment</a></li><li><a href="S03_Excel_Refresh_Orchestration_Refresh_All_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S03_Excel_Refresh_Orchestration_Refresh_All_and.html">Excel Refresh Orchestration: Refresh All and Connection Settings</a></li><li><a href="S04_Publishing_Scheduled_Refresh_and_Gateways_for_On.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S04_Publishing_Scheduled_Refresh_and_Gateways_for_On.html">Publishing, Scheduled Refresh and Gateways for On-Prem and Tally</a></li><li><a href="S05_Incremental_Refresh_with_RangeStart_and_RangeEnd.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S05_Incremental_Refresh_with_RangeStart_and_RangeEnd.html">Incremental Refresh with RangeStart and RangeEnd for GL History</a></li><li><a href="S06_Performance_Tuning_Columns_Cardinality_Analyzer.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S06_Performance_Tuning_Columns_Cardinality_Analyzer.html">Performance Tuning: Columns, Cardinality, Analyzer Tools</a></li><li><a href="S07_Packaging_PBIXPBIP_pbit_Template_Documentation_CFO.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S07_Packaging_PBIXPBIP_pbit_Template_Documentation_CFO.html">Packaging: PBIX/PBIP, .pbit Template, Documentation, CFO Guide</a></li><li><a href="S08_Distribution_Apps_Subscriptions_Exports_and_Teams.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/subtopics/S08_Distribution_Apps_Subscriptions_Exports_and_Teams.html">Distribution: Apps, Subscriptions, Exports and Teams Embedding</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Incremental_Refresh_Filter_on_RangeStart_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C01_Incremental_Refresh_Filter_on_RangeStart_and.html">Incremental Refresh Filter on RangeStart and RangeEnd</a></li><li><a href="../concepts/C02_Scheduled_Refresh_Limits_8_per_Day_on_Pro_48_on.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C02_Scheduled_Refresh_Limits_8_per_Day_on_Pro_48_on.html">Scheduled Refresh Limits: 8 per Day on Pro, 48 on Premium</a></li><li><a href="../concepts/C03_SharePointFiles_for_Gateway_Free_Cloud_Refresh.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C03_SharePointFiles_for_Gateway_Free_Cloud_Refresh.html">SharePoint.Files for Gateway-Free Cloud Refresh</a></li><li><a href="../concepts/C04_One_Click_Excel_Refresh_Macro_or_Power_Automate.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C04_One_Click_Excel_Refresh_Macro_or_Power_Automate.html">One-Click Excel Refresh Macro or Power Automate Flow</a></li><li><a href="../concepts/C05_Performance_Analyzer_to_DAX_Studio_Server_Timings.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/concepts/C05_Performance_Analyzer_to_DAX_Studio_Server_Timings.html">Performance Analyzer to DAX Studio Server Timings</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Performance Tuning: Columns, Cardinality, Analyzer Tools</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Performance tuning: removing unused columns, lowering cardinality, Performance Analyzer, VertiPaq Analyzer in DAX Studio</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A CFO will tolerate a slow dashboard once. Visuals that take five seconds to render, a voucher drill-through that
+spins, or a refresh that runs into the morning review all erode trust in the pack. Most performance problems in finance
+models are not DAX cleverness problems; they are model-size problems — too many columns, high-cardinality columns that
+nobody uses, datetime stamps where dates suffice. The tools to diagnose them (Performance Analyzer, DAX Studio and
+VertiPaq Analyzer) are free and expected knowledge for a Power BI-heavy FP&amp;A or reporting role.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="how-vertipaq-stores-data">How VertiPaq stores data</h3>
+<p>The import engine (VertiPaq) stores each column separately, compressed with dictionary encoding (each distinct value
+stored once, rows hold an integer index) and run-length encoding. Consequences:</p>
+<ul>
+<li><strong>Column count</strong> matters: every column costs memory, even if no visual uses it.</li>
+<li><strong>Cardinality</strong> (number of distinct values) drives dictionary size and compression. A <code>Narration</code> text column with
+  a different value on every row is very expensive; a <code>VoucherType</code> with eight values is nearly free.</li>
+<li><strong>Sort order</strong> affects run-length compression; the engine chooses it, but low-cardinality columns compress best.</li>
+</ul>
+<h3 id="1-removing-unused-columns">1. Removing unused columns</h3>
+<p>Remove columns in Power Query (Choose Columns), not by hiding them in the model. Candidates in a GL extract:
+<code>CreatedBy</code>, <code>AlteredOn</code>, <code>GUID</code>, <code>MasterID</code>, duplicated descriptive columns (ledger name in GL when CoA has it),
+and source-system audit fields. Keep only keys, dates, amounts and the attributes the report uses. Narration is often
+needed for the voucher drill-through; keep it but consider truncating to 100 characters.</p>
+<p>Rule of thumb: each fact column must answer "which visual, measure, relationship or control uses this?".</p>
+<h3 id="2-lowering-cardinality">2. Lowering cardinality</h3>
+<table>
+<thead>
+<tr>
+<th>Technique</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Split datetime into date and time (or drop time)</td>
+<td><code>PostingDateTime</code> → <code>PostingDate</code> (≈ 2,000 distinct values over 5 years instead of millions)</td>
+</tr>
+<tr>
+<td>Round or fix decimals</td>
+<td>Amounts as Fixed decimal (<code>Currency.Type</code>, four decimal places) instead of floating decimal</td>
+</tr>
+<tr>
+<td>Integer surrogate keys</td>
+<td>Replace text <code>AccountCode</code> "GL-4105-ADV" with an integer key in both GL and CoA</td>
+</tr>
+<tr>
+<td>Move descriptive attributes to dimensions</td>
+<td>Vendor name in <code>Vendor</code> table, not repeated on each GL line</td>
+</tr>
+<tr>
+<td>Disable Auto date/time</td>
+<td>Options &gt; Data load &gt; untick Auto date/time — removes a hidden date table per date column</td>
+</tr>
+<tr>
+<td>Remove or bucket IDs</td>
+<td>Drop <code>LineGUID</code>; keep <code>VoucherNo</code> only if drill-through needs it</td>
+</tr>
+<tr>
+<td>Pre-aggregate where detail is unnecessary</td>
+<td>Budget at Month × Ledger × Cost centre, not daily</td>
+</tr>
+</tbody>
+</table>
+<p>Also avoid calculated columns on large facts when Power Query can create the column (better compression, no
+storage of intermediate results); and avoid bidirectional relationships and many-to-many where not needed, which slow
+queries rather than storage.</p>
+<h3 id="3-performance-analyzer-in-desktop">3. Performance Analyzer (in Desktop)</h3>
+<p>View &gt; Performance Analyzer &gt; Start recording &gt; Refresh visuals. For each visual it lists:</p>
+<ul>
+<li><strong>DAX query</strong> — time for the engine to return results;</li>
+<li><strong>Visual display</strong> — rendering time in the browser/Desktop;</li>
+<li><strong>Other</strong> — waiting for other visuals or background work.</li>
+</ul>
+<p>High DAX query time points to model or measure issues; high visual display time points to too many data points (a
+table of 50,000 voucher rows, a scatter with thousands of points). Use "Copy query" to take the DAX into DAX Studio
+(concept c05). Test with realistic slicer selections and clear the cache between tests (in Desktop, reopening the
+file or using the "Clear cache" feature in DAX Studio).</p>
+<h3 id="4-vertipaq-analyzer-in-dax-studio">4. VertiPaq Analyzer in DAX Studio</h3>
+<p>DAX Studio (free, connects to an open Desktop model or an XMLA endpoint) &gt; Advanced &gt; View Metrics runs VertiPaq
+Analyzer. Key views:</p>
+<ul>
+<li><strong>Tables</strong> — total size, row count per table;</li>
+<li><strong>Columns</strong> — cardinality, total size, dictionary size, data size, percentage of database;</li>
+<li><strong>Relationships</strong> — referential-integrity violations (missing keys — useful as a completeness cross-check of
+  Topic 4's unmapped-ledger control);</li>
+<li><strong>Partitions</strong> — useful with incremental refresh.</li>
+</ul>
+<p>Sort columns by total size; the top five are usually the whole story. Metrics can be exported as a <code>.vpax</code> file to
+share or compare before/after.</p>
+<h3 id="illustration">Illustration</h3>
+<p>A Delhi NCR distribution company's model is 1.8 GB and refresh takes 70 minutes. VertiPaq Analyzer shows:</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Cardinality</th>
+<th>Size</th>
+<th>% of model</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GL[PostingDateTime]</td>
+<td>38,400,000</td>
+<td>610 MB</td>
+<td>34%</td>
+</tr>
+<tr>
+<td>GL[LineGUID]</td>
+<td>42,100,000</td>
+<td>540 MB</td>
+<td>30%</td>
+</tr>
+<tr>
+<td>GL[Narration]</td>
+<td>18,900,000</td>
+<td>310 MB</td>
+<td>17%</td>
+</tr>
+<tr>
+<td>GL[Amount] (decimal)</td>
+<td>6,200,000</td>
+<td>120 MB</td>
+<td>7%</td>
+</tr>
+<tr>
+<td>Others</td>
+<td>—</td>
+<td>220 MB</td>
+<td>12%</td>
+</tr>
+</tbody>
+</table>
+<p>Actions: replace <code>PostingDateTime</code> with a date (cardinality ≈ 2,200), drop <code>LineGUID</code>, truncate narration to 80
+characters, convert Amount to fixed decimal, disable Auto date/time. Result: 520 MB, refresh 24 minutes, P&amp;L page
+query times from 2.8 s to 0.4 s.</p>
+<h3 id="measure-level-tuning-brief">Measure-level tuning (brief)</h3>
+<p>After the model is lean, tune slow measures: use variables to avoid repeated evaluation; prefer filter arguments on
+columns (<code>CoA[FSLine] = "Revenue"</code>) over <code>FILTER(ALL(GL), …)</code> on the fact; avoid iterating the fact table with
+<code>SUMX</code> where <code>SUM</code> works; avoid <code>IFERROR</code> and heavy <code>FORMAT</code> in measures used in large tables; and pre-compute static
+classifications in Power Query.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Narration vs performance.</strong> Auditors and controllers want narration on the drill-through page. Keep it, but only
+  in the fact used by drill-through, and make the detail page filter-required (Topic 2 pitfall on unfiltered voucher
+  tables).</li>
+<li><strong>Fixed decimal precision</strong> stores four decimal places; fine for ₹ amounts, not for FX rates needing more precision.</li>
+<li><strong>Integer keys</strong> require mapping in both fact and dimension; keep the natural code as an attribute in the dimension
+  for display and drill-through.</li>
+<li><strong>DirectQuery</strong> models are tuned differently (source indexes, aggregations); these notes assume Import.</li>
+<li><strong>Desktop vs Service.</strong> Desktop timings on a powerful laptop understate Service times under concurrency; test in the
+  Service too.</li>
+<li><strong>Over-tuning.</strong> Don't drop a column a control depends on (e.g. <code>Source.Name</code> for per-file controls) — summarise it to
+  a separate control table instead.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>VertiPaq compresses by column; size is driven by column count and cardinality.</li>
+<li>Remove unused columns in Power Query, split or drop datetime, use fixed decimals and integer keys, and turn off Auto
+  date/time.</li>
+<li>Performance Analyzer separates DAX query time from visual display time per visual.</li>
+<li>VertiPaq Analyzer in DAX Studio ranks columns by size and cardinality; the top few usually explain the problem.</li>
+<li>Fix the model before the measures; then tune measures with variables and column filters.</li>
+<li>Keep columns needed by drill-through and controls, but in their leanest form.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-ranking-reduction-actions-l1">Q1. Ranking reduction actions [L1]</h3>
+<p>A GL fact has these columns: <code>VoucherNo</code> (2.1m distinct), <code>LineGUID</code> (9.4m), <code>PostingDateTime</code> (8.7m), <code>AccountCode</code>
+(text, 900), <code>CostCentre</code> (text, 140), <code>Narration</code> (6.0m), <code>Amount</code> (decimal, 3.1m), <code>CreatedBy</code> (60). The table has
+9.4 million rows. Rank the columns by likely size and propose an action for each.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Think in terms of distinct values per column and whether any report element uses it.</p>
+</blockquote>
+<h3 id="q2-reading-performance-analyzer-l2">Q2. Reading Performance Analyzer [L2]</h3>
+<p>On the expense page, Performance Analyzer shows: matrix by BU and cost centre — DAX query 2,950 ms, visual display
+180 ms; voucher table — DAX query 410 ms, visual display 3,600 ms; card — DAX query 25 ms, other 3,100 ms. Interpret
+each and propose the next diagnostic or fix.</p>
+<h3 id="q3-before-and-after-evidence-l2">Q3. Before-and-after evidence [L2]</h3>
+<p>Describe how you would document the performance improvement of your model for the Project 3 submission, including the
+tools, the metrics captured before and after, and the file formats.</p>
+<h3 id="q4-trade-off-case-l3">Q4. Trade-off case [L3]</h3>
+<p>The controller insists on keeping full narration, voucher-level GUIDs and the creation timestamp for forensic analysis,
+while the CFO wants sub-second executive pages. Propose a model design (one or two models, aggregation tables, column
+choices) that satisfies both, and explain the refresh and governance implications.</p></section>
+<nav class="pager"><a class="prev" href="S05_Incremental_Refresh_with_RangeStart_and_RangeEnd.html">← Incremental Refresh with RangeStart and RangeEnd for GL…</a><a class="next" href="S07_Packaging_PBIXPBIP_pbit_Template_Documentation_CFO.html">Packaging: PBIX/PBIP, .pbit Template, Documentation, CFO… →</a></nav>
+</main></div></body></html>

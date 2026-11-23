@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>P&amp;L layout, subtotals and sign-flip · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/index.html" data-kind="topic">
+<header class="top"><a class="brand" href="../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../index.html">Home</a> <span>›</span> <a href="../../index.html">Phase 3</a> <span>›</span> <a href="../index.html">Week 11</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">Week 11</a></div><ul class="side-links"><li><a href="../T1_Star_schema_for_financial_data/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/index.html">T1 · Star schema for financial data</a></li><li><a href="../T2_Indian_fiscal_calendar_table/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/index.html">T2 · Indian fiscal calendar table</a></li><li><a href="../T3_Core_financial_DAX_functions/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/index.html">T3 · Core financial DAX functions</a></li><li><a href="../T4_Time_intelligence_for_AprilMarch_FY/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/index.html">T4 · Time intelligence for April–March FY</a></li><li><a href="../T5_Semi_additive_balance_sheet_measures/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/index.html">T5 · Semi-additive balance sheet measures</a></li><li><a href="index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/index.html">T6 · P&amp;L layout, subtotals and sign-flip</a></li></ul></aside>
+<main class="content">
+<div class="kind">Topic</div>
+<h1>P&amp;L layout, subtotals and sign-flip</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<section class="index"><h2>Notes in this topic</h2><div class="cols"><div><h3>Subtopics</h3><ul class="links num"><li><a href="subtopics/S01_The_PL_Layout_Dimension_Lines_Sort_Order_Type_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S01_The_PL_Layout_Dimension_Lines_Sort_Order_Type_and.html">S01 · The P&amp;L Layout Dimension: Lines, Sort Order, Type and Sign</a></li><li><a href="subtopics/S02_Mapping_CoA_to_Layout_Lines_and_Computing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S02_Mapping_CoA_to_Layout_Lines_and_Computing.html">S02 · Mapping CoA to Layout Lines and Computing Subtotals by Sort Order</a></li><li><a href="subtopics/S03_Row_Level_Measure_Dispatch_with_SWITCHTRUE_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S03_Row_Level_Measure_Dispatch_with_SWITCHTRUE_and.html">S03 · Row-Level Measure Dispatch with SWITCH(TRUE()) and SELECTEDVALUE</a></li><li><a href="subtopics/S04_Sign_Convention_Credits_Negative_in_the_GL_Flipped.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S04_Sign_Convention_Credits_Negative_in_the_GL_Flipped.html">S04 · Sign Convention: Credits Negative in the GL, Flipped for Presentation</a></li><li><a href="subtopics/S05_Margin_Rows_GM_EBITDA_EBIT_with_Dynamic_Format.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S05_Margin_Rows_GM_EBITDA_EBIT_with_Dynamic_Format.html">S05 · Margin Rows (GM %, EBITDA %, EBIT %) with Dynamic Format Strings</a></li><li><a href="subtopics/S06_Formatting_the_PL_Matrix_Layout_Spacers_Bold.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S06_Formatting_the_PL_Matrix_Layout_Spacers_Bold.html">S06 · Formatting the P&amp;L Matrix: Layout, Spacers, Bold Subtotals, Empty Rows</a></li><li><a href="subtopics/S07_Alternatives_Calculation_Groups_Field_Parameters.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S07_Alternatives_Calculation_Groups_Field_Parameters.html">S07 · Alternatives: Calculation Groups, Field Parameters, Visual Calcs, Excel</a></li></ul></div><div><h3>Key concepts & formulas</h3><ul class="links num"><li><a href="concepts/C01_The_PnL_Dispatcher_Measure_with_SWITCHTRUE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C01_The_PnL_Dispatcher_Measure_with_SWITCHTRUE.html">C01 · The PnL Dispatcher Measure with SWITCH(TRUE())</a></li><li><a href="concepts/C02_Actual_Signed_Applying_the_CoA_Sign_Factor_Row_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C02_Actual_Signed_Applying_the_CoA_Sign_Factor_Row_by.html">C02 · Actual Signed: Applying the CoA Sign Factor Row by Row</a></li><li><a href="concepts/C03_The_Subtotal_Measure_Removing_the_Layout_Filter_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C03_The_Subtotal_Measure_Removing_the_Layout_Filter_by.html">C03 · The Subtotal Measure: Removing the Layout Filter by Sort Order</a></li><li><a href="concepts/C04_EBITDA_with_a_Dynamic_Format_String_in_the_PL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C04_EBITDA_with_a_Dynamic_Format_String_in_the_PL.html">C04 · EBITDA % with a Dynamic Format String in the P&amp;L Matrix</a></li><li><a href="concepts/C05_Blanking_PL_Grand_Totals_with_ISINSCOPE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C05_Blanking_PL_Grand_Totals_with_ISINSCOPE.html">C05 · Blanking P&amp;L Grand Totals with ISINSCOPE</a></li></ul></div></div></section><article class="note"><blockquote>
+<p><strong>Roadmap topic:</strong> P&amp;L Subtotal &amp; Sign-Flip Logic: Using SWITCH(TRUE(), ...) in DAX to render formatted P&amp;L statements with Gross Profit, EBITDA, and EBIT margins inside Pivot/Matrix visuals</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>A statement of profit and loss is a designed document: account groups in a prescribed order, interleaved with computed
+subtotals (Gross Profit, EBITDA, EBIT, PBT, PAT), margin rows, headings and spacing, with income shown positive whatever
+the ledger's debit/credit convention. A BI model's natural output — a matrix of accounts with an automatic total — is not
+that document. This topic closes the gap with four pieces: a <strong>layout dimension</strong> that makes the statement's structure
+data; a <strong>sign convention</strong> that keeps arithmetic simple and presentation familiar; a <strong>dispatcher measure</strong> that routes
+each row to the right calculation with <code>SWITCH(TRUE(), …)</code> and <code>SELECTEDVALUE</code>; and <strong>formatting</strong> that makes the matrix
+look like the board pack.</p>
+<p>For FP&amp;A and reporting roles this is the capstone of the week. The monthly MIS P&amp;L, the Actual / Budget / Variance pack
+of Weeks 17–20, the quarterly results deck and the CFO's dashboard all render from it. It also concentrates the most
+common, most visible bugs — blank subtotal rows, revenue showing negative, favourable variances coloured red — so
+reviewers and interviewers probe it hard.</p>
+<p>Learning sequence: design the <strong>layout table</strong> (s01); <strong>map the CoA</strong> to its lines and compute <strong>subtotals from sort-order
+ranges</strong> (s02, c03); decide the <strong>sign convention</strong> and implement <code>Actual Signed</code> (s04, c02); build the <strong>dispatcher</strong>
+(s03, c01); add <strong>margin rows with dynamic format strings</strong> (s05, c04); <strong>format the matrix</strong> and blank meaningless totals
+(s06, c05); and evaluate <strong>alternatives</strong> — calculation groups, field parameters, visual calculations, Excel PivotTables
+(s07).</p>
+<h2 id="concept-map">Concept map</h2>
+<table>
+<thead>
+<tr>
+<th>Subtopic / concept</th>
+<th>Role in the topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s01 P&amp;L layout dimension</td>
+<td>One row per printed line: LineID, label, sort order, type, sign</td>
+</tr>
+<tr>
+<td>s02 CoA mapping and sort-order subtotals</td>
+<td>Accounts land on lines; GP/EBITDA/EBIT/PBT/PAT as running sums</td>
+</tr>
+<tr>
+<td>s03 Dispatch with SWITCH(TRUE()) and SELECTEDVALUE</td>
+<td>One measure renders every row type</td>
+</tr>
+<tr>
+<td>s04 Sign convention</td>
+<td>Natural storage, profit-signed computation, optional display flip</td>
+</tr>
+<tr>
+<td>s05 Margin rows with dynamic format strings</td>
+<td>GM %, EBITDA %, EBIT % in a ₹ column, still numeric</td>
+</tr>
+<tr>
+<td>s06 Matrix formatting</td>
+<td>Stepped layout off, spacers, shaded subtotals, empty rows</td>
+</tr>
+<tr>
+<td>s07 Alternatives</td>
+<td>Calculation groups, field parameters, visual calcs, Excel PivotTables</td>
+</tr>
+<tr>
+<td>c01 PnL dispatcher</td>
+<td>The router measure</td>
+</tr>
+<tr>
+<td>c02 Actual Signed</td>
+<td>Sign factor applied per account</td>
+</tr>
+<tr>
+<td>c03 Subtotal</td>
+<td>REMOVEFILTERS(Layout) plus sort-order condition</td>
+</tr>
+<tr>
+<td>c04 EBITDA % with dynamic format</td>
+<td>Ratio measure and per-row format</td>
+</tr>
+<tr>
+<td>c05 ISINSCOPE guard</td>
+<td>Blanks the automatic grand total</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-concepts-to-study">Related concepts to study</h2>
+<h3 id="weeks-14-schedule-iii-division-ii-pl-format">Weeks 1–4: Schedule III Division II P&amp;L format</h3>
+<p><em>→ Week 1–4: Schedule III Division II P&amp;L format and Ind AS line items</em></p>
+<p>Schedule III Division II (Ind AS companies) prescribes the statement of profit and loss: Revenue from operations, Other
+income, Total income; expenses by nature (cost of materials consumed, purchases of stock-in-trade, changes in inventories,
+employee benefits expense, finance costs, depreciation and amortisation, other expenses), Total expenses; profit before
+exceptional items and tax; exceptional items; tax (current and deferred); profit for the period; OCI split into items that
+will and will not be reclassified to P&L; total comprehensive income; EPS. Your statutory layout table should mirror it
+exactly, with range subtotals for Total income and Total expenses. EBITDA is not a Schedule III line (though Schedule III
+permits companies to present EBITDA as a separate line item on the face of the statement) — keep it in the MIS layout.</p>
+<h3 id="weeks-1720-mis-pl-with-variance-columns">Weeks 17–20: MIS P&amp;L with variance columns</h3>
+<p><em>→ Week 17–20: MIS P&amp;L with Actual / Budget / Variance columns and favourable/adverse logic</em></p>
+<p>The budgeting weeks add Budget and Forecast scenarios to the same layout. In a profit-signed model, <code>Var ₹ = Actual −
+Budget</code> is favourable when positive on every line — revenue above budget and costs below budget both give positive
+variances — so one conditional-formatting rule (green &gt; 0) works for the whole statement. If expenses are displayed as
+positive numbers, the favourable rule must be reversed on expense lines using the layout's display sign. Var % on margin
+rows becomes a basis-point variance, and YTD columns use the capped YTD logic from Topic 4.</p>
+<h3 id="calculation-groups-for-scenario-columns">Calculation groups for scenario columns</h3>
+<p><em>Calculation groups for switching Actual / Budget / PY columns</em></p>
+<p>Instead of writing <code>PnL Actual</code>, <code>PnL Budget</code>, <code>PnL PY</code>, <code>PnL Var ₹</code> and <code>PnL Var %</code> measures, a <em>Scenario View</em>
+calculation group applies each view to the single <code>[PnL]</code> dispatcher via <code>SELECTEDMEASURE()</code>. Put the group's column on
+the matrix columns and the dispatcher in values: rows come from the layout table, columns from the calculation group.
+Format string expressions per item (Var % as percentage, others deferring to <code>SELECTEDMEASUREFORMATSTRING()</code>) keep the
+dynamic ₹/% formatting intact. Remember precedence if a Time Calc group (YTD, PY) is also present.</p>
+<h3 id="week-12-excel-cube-formulas-for-board-packs">Week 12: Excel cube formulas for board packs</h3>
+<p><em>→ w12_t3: Excel cube formulas for fixed board-pack layouts</em></p>
+<p>When a board pack must have a fixed, formatted layout — bold subtotals, commentary boxes, specific cells referenced by
+charts — Excel cube formulas read individual values from the Power Pivot or published Power BI model: <code>CUBEMEMBER</code> picks a
+layout line, a period and a scenario; <code>CUBEVALUE</code> returns <code>[PnL]</code> for that intersection. The layout table and dispatcher
+built here are exactly what those formulas query, so the same logic serves the interactive Power BI matrix and the static
+Excel pack, with one source of truth.</p>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<h3 id="blank-subtotal-rows">Blank subtotal rows</h3>
+<p><em>Subtotal rows show blank because the layout row filters out every account and the layout filter was not removed</em></p>
+<p><strong>Mistake:</strong> computing the subtotal with <code>CALCULATE([Actual Signed], Layout[SortOrder] &lt; s, …)</code> without
+<code>REMOVEFILTERS(Layout)</code>. <strong>Why:</strong> a boolean filter on <code>SortOrder</code> replaces only that column's filter, and people assume it
+replaces the row filter. <strong>Correct treatment:</strong> capture <code>s</code> in a variable, then <code>REMOVEFILTERS(Layout)</code> and re-filter to
+Account lines below <code>s</code> (c03). <strong>Detect it:</strong> every Subtotal and Ratio row is blank while Account rows are correct;
+evaluating the measure in DAX query view with only <code>Layout[LineID] = "PL040"</code> returns blank.</p>
+<h3 id="flipping-signs-twice-or-inconsistently">Flipping signs twice or inconsistently</h3>
+<p><em>Flipping signs twice (in Power Query and in DAX), or inconsistently between Actual and Budget</em></p>
+<p><strong>Mistake:</strong> Power Query multiplies revenue by −1 and DAX applies a −1 SignFactor again; or the GL is natural-signed while
+the budget upload has revenue and costs positive. <strong>Why:</strong> different people own the Power Query and DAX layers, and
+budget templates are designed for planners. <strong>Correct treatment:</strong> store natural signs, flip once in DAX, normalise the
+budget to natural signs in Power Query, and document the convention in the model. <strong>Detect it:</strong> revenue shows negative;
+variances are roughly twice the expected size; Actual and Budget revenue have opposite signs; the profit-signed sum of all
+lines does not equal PAT in the TB.</p>
+<h3 id="favourableadverse-not-reversed-for-expenses">Favourable/adverse not reversed for expenses</h3>
+<p><em>Favourable/adverse variance logic not reversed for expense lines</em></p>
+<p><strong>Mistake:</strong> colouring <code>Actual − Budget &gt; 0</code> green on every row when expenses are displayed as positive numbers, so a cost
+overrun shows green. <strong>Why:</strong> the rule is right for revenue and is copied down. <strong>Correct treatment:</strong> compute variances
+in the profit-signed convention (positive always favourable) or multiply by the layout's display sign before applying the
+rule; for Ratio rows, use percentage-point logic. <strong>Detect it:</strong> review a line where costs clearly exceeded budget and
+check its colour; test a matrix with one deliberately adverse expense line.</p>
+<h3 id="hard-coded-lineids-in-switch">Hard-coded LineIDs in SWITCH</h3>
+<p><em>Hard-coding LineIDs inside SWITCH without a layout table, which makes restructuring painful</em></p>
+<p><strong>Mistake:</strong> <code>SWITCH(TRUE(), lid = "PL040", [Gross Profit], lid = "PL070", [EBITDA], lid = "PL075", [EBITDA %], …)</code> with
+one branch per line, or a calculated row list in DAX. <strong>Why:</strong> it is the quickest way to make the first version work.
+<strong>Correct treatment:</strong> dispatch on <code>Layout[Type]</code> and drive subtotals and ratios from layout columns (SortOrder,
+SubtotalFrom/To, RatioNumeratorLine/DenominatorLine), so new lines need only table edits. <strong>Detect it:</strong> the dispatcher has
+more branches than there are line types; adding "Exceptional items" requires editing DAX in several measures.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-build-the-mis-pl-end-to-end-l3">Q1. Build the MIS P&amp;L end to end [L3]</h3>
+<p>A listed auto-components company has a GL with natural signs and a CoA of 180 P&amp;L accounts. YTD December FY26 profit-signed
+values by line (₹ crore): Revenue 1,240; Cost of materials −742; Changes in inventories 8; Employee −118; Other expenses
+−171; D&amp;A −52; Other income 14; Finance costs −29; Exceptional items (VRS) −12; Tax −34. Budget: Revenue 1,300; Materials
+−780; Changes in inventories 0; Employee −112; Other expenses −176; D&amp;A −50; Other income 10; Finance costs −31;
+Exceptional 0; Tax −40. (a) Design the layout table with sort orders, types and ratio references, placing Other income
+below EBIT and exceptional items between PBT-before-exceptional and PBT. (b) Write <code>Actual Signed</code>, <code>Subtotal</code>, <code>Margin %</code>
+and <code>PnL</code> measures and the dynamic format string. (c) Compute every row for Actual, Budget, Var ₹ and Var % (margins in
+bps). (d) State the conditional-formatting rule for favourable/adverse.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Fix the sign convention first; then subtotals are running sums and variances have a single favourable direction.</p>
+</blockquote>
+<h3 id="q2-debug-a-broken-pl-matrix-l2">Q2. Debug a broken P&amp;L matrix [L2]</h3>
+<p>A matrix shows Revenue −₹ 1,240 crore, blank Gross Profit and EBITDA rows, EBITDA % as left-aligned text, a "Total" row of
+₹ 2,870 crore at the bottom, and missing "Expenses" header and spacer rows. Diagnose each symptom, naming the DAX or
+setting at fault, and write the corrected measures and settings.</p>
+<h3 id="q3-statutory-and-mis-formats-from-one-model-l3">Q3. Statutory and MIS formats from one model [L3]</h3>
+<p>Design a model that renders both a Schedule III Division II statement (with Total income, Total expenses, exceptional
+items, OCI and total comprehensive income) and an MIS format (GP, EBITDA, EBIT with margins) from the same GL and CoA.
+Specify the tables and relationships, how the user switches formats, how range and cumulative subtotals coexist, how OCI
+accounts are excluded from the MIS view, and the reconciliation check showing both formats give the same profit for the
+period.</p>
+<h3 id="q4-choose-the-rendering-approach-l2">Q4. Choose the rendering approach [L2]</h3>
+<p>The CFO wants (i) an interactive monthly P&amp;L with drill to GL vouchers, (ii) a quarterly board pack in a fixed format with
+true bold subtotals and commentary, and (iii) a KPI page where the user picks EBITDA, EBITDA % or PAT and compares to
+Budget or PY. Recommend for each the combination of layout table, calculation groups, field parameters, visual
+calculations, Excel PivotTables or cube formulas, and list the tests you would run before go-live.</p></section>
+<nav class="pager"><a class="prev" href="../T5_Semi_additive_balance_sheet_measures/concepts/C06_DSO_Measure_from_Average_Receivables_and_Days_in.html">← DSO Measure from Average Receivables and Days in Period</a><a class="next" href="subtopics/S01_The_PL_Layout_Dimension_Lines_Sort_Order_Type_and.html">The P&amp;L Layout Dimension: Lines, Sort Order, Type and Sign →</a></nav>
+</main></div></body></html>

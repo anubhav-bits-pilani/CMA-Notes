@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One- and Two-Variable Data Tables for Sensitivity Analysis · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S01_One_and_Two_Variable_Data_Tables_for_Sensitivity.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T6 · What-if analysis and input controls</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · What-if analysis and input controls</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_One_and_Two_Variable_Data_Tables_for_Sensitivity.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S01_One_and_Two_Variable_Data_Tables_for_Sensitivity.html">One- and Two-Variable Data Tables for Sensitivity Analysis</a></li><li><a href="S02_Goal_Seek_for_Break_Even_Target_Margin_Price_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S02_Goal_Seek_for_Break_Even_Target_Margin_Price_and.html">Goal Seek for Break-Even, Target-Margin Price and Required Growth</a></li><li><a href="S03_Scenario_Manager_Scenarios_Changing_Cells_and_the.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S03_Scenario_Manager_Scenarios_Changing_Cells_and_the.html">Scenario Manager: Scenarios, Changing Cells and the Summary Report</a></li><li><a href="S04_Data_Validation_Dropdowns_Dependent_Lists_Limits.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S04_Data_Validation_Dropdowns_Dependent_Lists_Limits.html">Data Validation: Dropdowns, Dependent Lists, Limits and Messages</a></li><li><a href="S05_Formula_Based_Conditional_Formatting_for_Variances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S05_Formula_Based_Conditional_Formatting_for_Variances.html">Formula-Based Conditional Formatting for Variances and Scenarios</a></li><li><a href="S06_Form_Controls_Linked_to_Cells_for_Model_Dashboards.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S06_Form_Controls_Linked_to_Cells_for_Model_Dashboards.html">Form Controls Linked to Cells for Model Dashboards</a></li><li><a href="S07_Solver_for_Product_Mix_and_Capital_Rationing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S07_Solver_for_Product_Mix_and_Capital_Rationing.html">Solver for Product Mix and Capital Rationing</a></li><li><a href="S08_Calculation_Mode_Automatic_Except_Data_Tables_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S08_Calculation_Mode_Automatic_Except_Data_Tables_and.html">Calculation Mode: Automatic Except Data Tables and F9 Recalculation</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_The_TABLE_Array_Formula_and_the_Same_Sheet_Input.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C01_The_TABLE_Array_Formula_and_the_Same_Sheet_Input.html">The TABLE Array Formula and the Same-Sheet Input Rule</a></li><li><a href="../concepts/C02_Goal_Seek_Rules_Formula_Set_Cell_Hard_Coded.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C02_Goal_Seek_Rules_Formula_Set_Cell_Hard_Coded.html">Goal Seek Rules: Formula Set Cell, Hard-Coded Changing Cell</a></li><li><a href="../concepts/C03_Dependent_Dropdown_Sources_INDIRECT_vs_a_Spill.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C03_Dependent_Dropdown_Sources_INDIRECT_vs_a_Spill.html">Dependent Dropdown Sources: INDIRECT vs a Spill Reference</a></li><li><a href="../concepts/C04_Conditional_Format_Rule_for_Negative_Rows_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C04_Conditional_Format_Rule_for_Negative_Rows_Column.html">Conditional Format Rule for Negative Rows: Column Locked, Row Relative</a></li><li><a href="../concepts/C05_Variance_Flag_Rule_with_a_Named_Threshold_Input.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C05_Variance_Flag_Rule_with_a_Named_Threshold_Input.html">Variance Flag Rule with a Named Threshold Input</a></li><li><a href="../concepts/C06_Scenario_Manager_Limits_32_Changing_Cells_and_a.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C06_Scenario_Manager_Limits_32_Changing_Cells_and_a.html">Scenario Manager Limits: 32 Changing Cells and a Static Summary</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>One- and Two-Variable Data Tables for Sensitivity Analysis</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> 1D Data Tables (one input, many outputs) and 2D Data Tables (two inputs, one output) for sensitivity</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Every model output rests on assumptions, and decision-makers want to know how much the answer moves when an assumption moves. A DCF without a WACC × terminal growth grid, a budget without a price or volume sensitivity, or a project appraisal without an IRR-vs-capex table is incomplete in any investment committee, board or banker review. Data Tables are Excel's built-in engine for this: they re-run the <em>entire</em> model for each input value and write the results into a grid, without copying the model. They are also a fixture of the Saturday speed test (2D Data Table) and a standard interview question: "why must the input cells be on the same sheet?".</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="how-a-data-table-works">How a Data Table works</h3>
+<p>A Data Table substitutes each value from its input row/column into a designated <strong>input cell</strong> in the model, recalculates, and records the output formula's result. Internally Excel writes an array formula <code>{=TABLE(row_input_cell, column_input_cell)}</code> into the result cells. You cannot edit, delete or type over part of it — only the whole result block.</p>
+<p>Requirements:</p>
+<ul>
+<li>The <strong>input cell</strong> must be a hard-coded assumption that the output depends on (directly or through a chain of formulas).</li>
+<li>The input cell must be on the <strong>same sheet</strong> as the Data Table. If your assumptions live on an Inputs sheet, either build the table on the Inputs sheet, or create a local "sensitivity driver" cell on the table's sheet that the Inputs sheet links to in a controlled way (see edge cases).</li>
+<li>The output reference must be a formula that links to the model's result cell.</li>
+</ul>
+<p>Menu path: Data → What-If Analysis → Data Table (keyboard: Alt, A, W, T).</p>
+<h3 id="1d-data-table-one-input-many-outputs">1D Data Table — one input, many outputs</h3>
+<p>Layout (column-oriented):</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td></td>
+<td><code>=EBIT</code></td>
+<td><code>=PAT</code></td>
+<td><code>=EBIT_Margin</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td>600</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>625</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>650</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>675</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>700</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Put the input values (selling price per unit) down column B from B5.</li>
+<li>In the row above the first value and one column to the right (C4, D4, E4), link to each output.</li>
+<li>Select B4:E9 → Data Table → <strong>Column input cell</strong> = the price assumption cell. Leave Row input cell blank.</li>
+</ol>
+<p>Excel fills C5:E9. For a row-oriented 1D table, put values across a row, outputs down the first column, and use <strong>Row input cell</strong>.</p>
+<p>Illustration: volume 2,00,000 units, variable cost ₹420 per unit, fixed costs ₹3 crore. EBIT = 2,00,000 × (P − 420) − 3,00,00,000.</p>
+<table>
+<thead>
+<tr>
+<th>Price (₹)</th>
+<th>EBIT (₹ crore)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>600</td>
+<td>0.60</td>
+</tr>
+<tr>
+<td>625</td>
+<td>1.10</td>
+</tr>
+<tr>
+<td>650</td>
+<td>1.60</td>
+</tr>
+<tr>
+<td>675</td>
+<td>2.10</td>
+</tr>
+<tr>
+<td>700</td>
+<td>2.60</td>
+</tr>
+</tbody>
+</table>
+<p>Each ₹25 price step moves EBIT by ₹50 lakh — a price elasticity view the sales head can use immediately.</p>
+<h3 id="2d-data-table-two-inputs-one-output">2D Data Table — two inputs, one output</h3>
+<p>Layout: the output formula goes in the <strong>top-left corner</strong>, row-input values across the top, column-input values down the left.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+<th>F</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td><code>=EV</code></td>
+<td>4.0%</td>
+<td>5.0%</td>
+<td>6.0%</td>
+</tr>
+<tr>
+<td>6</td>
+<td>11.0%</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>12.0%</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>13.0%</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Select C5:F8 → Data Table → <strong>Row input cell</strong> = terminal growth cell; <strong>Column input cell</strong> = WACC cell.</p>
+<p>Illustration: a simplified Gordon-growth EV with next-year FCF of ₹100 crore, EV = 100 ÷ (WACC − g), in ₹ crore:</p>
+<table>
+<thead>
+<tr>
+<th>WACC \ g</th>
+<th>4.0%</th>
+<th>5.0%</th>
+<th>6.0%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11.0%</td>
+<td>1,428.6</td>
+<td>1,666.7</td>
+<td>2,000.0</td>
+</tr>
+<tr>
+<td>12.0%</td>
+<td>1,250.0</td>
+<td>1,428.6</td>
+<td>1,666.7</td>
+</tr>
+<tr>
+<td>13.0%</td>
+<td>1,111.1</td>
+<td>1,250.0</td>
+<td>1,428.6</td>
+</tr>
+</tbody>
+</table>
+<p>The convexity is visible: a 1-point fall in WACC at 6% growth adds ₹333 crore, at 4% growth only ₹179 crore. That is the key message of a DCF sensitivity — terminal value assumptions dominate.</p>
+<h3 id="presentation-conventions">Presentation conventions</h3>
+<ul>
+<li>Format the corner cell with a custom number format <code>;;;</code> or a label like "WACC ↓ / g →" by using a format such as <code>"WACC \ g"</code> so the output formula is hidden but still present.</li>
+<li>Highlight the base case cell (conditional formatting rule comparing row/column values with the live inputs, s05).</li>
+<li>Keep input steps symmetric around the base case and show the base case in the middle.</li>
+<li>State units (₹ crore, %), and whether values are per share or equity value.</li>
+</ul>
+<h3 id="multiple-outputs-in-2d">Multiple outputs in 2D</h3>
+<p>A 2D table returns only one output. For several outputs (EV, equity value per share, implied EV/EBITDA), build one table per output, or make the corner formula switchable via a dropdown and CHOOSE (w9_t2) — then re-calculate.</p>
+<h3 id="data-tables-vs-alternatives">Data Tables vs alternatives</h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Live?</th>
+<th>Multiple inputs</th>
+<th>Speed</th>
+<th>Audit trail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data Table</td>
+<td>Yes (recalc)</td>
+<td>1 or 2</td>
+<td>Slow on big models</td>
+<td>Visible grid</td>
+</tr>
+<tr>
+<td>Scenario Manager (s03)</td>
+<td>No — static summary</td>
+<td>Up to 32 cells</td>
+<td>One-off</td>
+<td>Snapshot</td>
+</tr>
+<tr>
+<td>CHOOSE/INDEX switch (w9_t2)</td>
+<td>Yes</td>
+<td>Many, one case at a time</td>
+<td>Fast</td>
+<td>Clear</td>
+</tr>
+<tr>
+<td>Manual flex with formulas (e.g. direct Gordon formula in each cell)</td>
+<td>Yes</td>
+<td>Any</td>
+<td>Fast</td>
+<td>Works only when output is a closed-form formula</td>
+</tr>
+</tbody>
+</table>
+<p>Data Tables are the only tool that re-runs the full model (including schedules, circularity and checks) for each grid point.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Same-sheet rule.</strong> If the WACC lives on an Inputs sheet, a common workaround is to put a "sensitivity override" cell beside the table and have the Inputs sheet's WACC formula use it (<code>=IF(Override="", BaseWACC, Override)</code>). This must be documented, and the override left blank after use, or the whole model silently runs on the override value.</li>
+<li><strong>Calculation mode.</strong> Data Tables are often set to "Automatic except for data tables" for speed; results then go stale until F9 (s08).</li>
+<li><strong>Circularity.</strong> Models with iterative calculation (interest on average debt) can make Data Tables unstable; test convergence.</li>
+<li><strong>Do not reference the table's own results</strong> inside the model — it creates circular logic.</li>
+<li><strong>Row vs column input confusion.</strong> Swapping them gives a wrong but plausible grid; check the base-case cell equals the live model output.</li>
+<li><strong>Grid size.</strong> A 15 × 15 table on a large model means 225 full recalculations per change; keep grids to what is presented.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>A Data Table substitutes values into an input cell, recalculates the whole model and records results as <code>{=TABLE()}</code>.</li>
+<li>1D: values in one column/row, multiple output links; 2D: one output in the corner, two input series.</li>
+<li>Input cells must be on the same sheet as the table; use a documented override cell if inputs are elsewhere.</li>
+<li>Check the base-case cell in the grid equals the live model output.</li>
+<li>Data Tables are slow; manage calculation mode deliberately and press F9 before reading results.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-build-a-1d-table-l1">Q1. Build a 1D table [L1]</h3>
+<p>A product has a contribution margin of ₹380 per unit at a price of ₹1,200, fixed costs of ₹4.56 crore and budgeted volume of 1.5 lakh units. Describe the layout and Data Table dialog entries for a 1D table showing EBIT, EBIT margin and break-even volume for prices from ₹1,100 to ₹1,300 in steps of ₹50.</p>
+<h3 id="q2-dcf-sensitivity-grid-l2">Q2. DCF sensitivity grid [L2]</h3>
+<p>Your DCF has WACC (11.8%) and terminal growth (5.0%) on an Inputs sheet and the per-share value on a Valuation sheet. Design a 2D Data Table showing per-share value for WACC 10.8%–12.8% (0.5% steps) and growth 4.0%–6.0% (0.5% steps). Explain how you handle the same-sheet requirement, how you highlight the base case, and the check you would add.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Think about where the input cells physically sit and how a blank override cell can make the model revert to base.</p>
+</blockquote>
+<h3 id="q3-wrong-but-plausible-l2">Q3. Wrong but plausible [L2]</h3>
+<p>A colleague's 2D table shows values that decline left to right across growth rates 4%–6%. Identify the most likely set-up error, explain how to confirm it in under a minute, and how to fix it.</p>
+<h3 id="q4-interview-why-same-sheet-l1">Q4. Interview: why same sheet? [L1]</h3>
+<p>Answer the interview question: "Why must Data Table input cells be on the same sheet as the table, and what do you do in a model where all assumptions sit on one Inputs tab?"</p>
+<h3 id="q5-choosing-the-sensitivity-tool-l3">Q5. Choosing the sensitivity tool [L3]</h3>
+<p>For a 3-statement model with 40 assumptions, a debt schedule with iterative interest and a DCF, recommend which combination of Data Tables, a live scenario switch and Scenario Manager you would use for (a) the board's base/upside/downside presentation, (b) a WACC × growth grid, (c) a 10-variable tornado chart, and justify each choice in terms of speed, auditability and staleness risk.</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← What-if analysis and input controls</a><a class="next" href="S02_Goal_Seek_for_Break_Even_Target_Margin_Price_and.html">Goal Seek for Break-Even, Target-Margin Price and Required… →</a></nav>
+</main></div></body></html>

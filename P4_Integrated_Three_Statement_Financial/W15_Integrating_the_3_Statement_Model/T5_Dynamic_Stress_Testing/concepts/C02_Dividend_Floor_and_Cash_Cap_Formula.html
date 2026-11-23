@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dividend Floor and Cash Cap Formula · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C02_Dividend_Floor_and_Cash_Cap_Formula.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 15</a> <span>›</span> <a href="../index.html">T5 · Dynamic Stress Testing</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Dynamic Stress Testing</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Toggling_Base_Bull_and_Bear_with_a_Zero_Check_in.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S01_Toggling_Base_Bull_and_Bear_with_a_Zero_Check_in.html">Toggling Base, Bull and Bear with a Zero Check in Every Year</a></li><li><a href="../subtopics/S02_Extreme_Input_Stress_Tests_Growth_Margins_Capex.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S02_Extreme_Input_Stress_Tests_Growth_Margins_Capex.html">Extreme Input Stress Tests: Growth, Margins, Capex and WC Days</a></li><li><a href="../subtopics/S03_Revolver_Behaviour_in_a_Recession_Draw_Within.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S03_Revolver_Behaviour_in_a_Recession_Draw_Within.html">Revolver Behaviour in a Recession: Draw Within Limit, Flag Shortfall</a></li><li><a href="../subtopics/S04_Negative_PBT_Loss_Carry_Forward_No_Negative_Tax.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S04_Negative_PBT_Loss_Carry_Forward_No_Negative_Tax.html">Negative PBT: Loss Carry-Forward, No Negative Tax, DTA Recognition</a></li><li><a href="../subtopics/S05_Dividends_Under_Losses_Floored_at_Zero_Capped_by.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S05_Dividends_Under_Losses_Floored_at_Zero_Capped_by.html">Dividends Under Losses: Floored at Zero, Capped by Profits and Cash</a></li><li><a href="../subtopics/S06_Covenant_Flags_Net_DebtEBITDA_DSCR_and_ICR_Breach.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S06_Covenant_Flags_Net_DebtEBITDA_DSCR_and_ICR_Breach.html">Covenant Flags: Net Debt/EBITDA, DSCR and ICR Breach Years</a></li><li><a href="../subtopics/S07_The_Checks_Dashboard_Balance_Cash_Liquidity_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S07_The_Checks_Dashboard_Balance_Cash_Liquidity_and.html">The Checks Dashboard: Balance, Cash, Liquidity and Convergence</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Current_Tax_with_Loss_Set_Off_and_the_Sec_72_Loss.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C01_Current_Tax_with_Loss_Set_Off_and_the_Sec_72_Loss.html">Current Tax with Loss Set-Off and the Sec 72 Loss Corkscrew</a></li><li><a href="C02_Dividend_Floor_and_Cash_Cap_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C02_Dividend_Floor_and_Cash_Cap_Formula.html">Dividend Floor and Cash Cap Formula</a></li><li><a href="C03_The_Binary_Error_Flag_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C03_The_Binary_Error_Flag_Formula.html">The Binary Error Flag Formula</a></li><li><a href="C04_Goal_Seek_and_Data_Tables_to_Find_Breaking_Points.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C04_Goal_Seek_and_Data_Tables_to_Find_Breaking_Points.html">Goal Seek and Data Tables to Find Breaking Points</a></li><li><a href="C05_Scenario_Invariance_A_Linked_Model_Balances_for.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C05_Scenario_Invariance_A_Linked_Model_Balances_for.html">Scenario Invariance: A Linked Model Balances for Any Input</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Dividend Floor and Cash Cap Formula</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Dividends = MAX(0, PAT × Payout), optionally MIN with cash available</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>\[
+D_t = \min\left(\max(0,\; \text{PAT}^{\text{owners}}_t \times p),\; \max(0,\; C^{\text{pre-div}}_t - C^{\min})\right)
+\]</p>
+<p>where \( D_t \) is the dividend paid to the parent's shareholders in year \( t \), \( \text{PAT}^{\text{owners}}_t \) is profit attributable to owners of the parent, \( p \) is the payout ratio, \( C^{\text{pre-div}}_t \) is closing cash before dividends, and \( C^{\min} \) is the minimum operating cash balance. The outer <code>MIN</code> is optional. Without it, the formula reduces to the floored payout \( \max(0, \text{PAT}^{\text{owners}}_t \times p) \).</p>
+<h2 id="explanation">Explanation</h2>
+<ul>
+<li><strong>The floor</strong> stops a loss from creating a negative dividend, which would be an implied capital injection by shareholders. A negative dividend raises cash and equity together, so the BS still balances, and the balance check cannot detect the error. Only logic or a sign check can.</li>
+<li><strong>The cash cap</strong> stops the model from paying dividends it cannot fund without breaching minimum cash or drawing the revolver. In practice boards cut dividends when liquidity is tight, and lenders often restrict distributions through covenants.</li>
+<li><strong>Owners' PAT</strong> is the right base in consolidated models. NCI dividends are paid by subsidiaries and modelled separately in the NCI corkscrew.</li>
+<li><strong>Legal limits</strong> (Sec 123 of the Companies Act 2013 and Rule 3 of the Companies (Declaration and Payment of Dividend) Rules, 2014) sit on top. Previous losses must be set off against current profits, and declarations out of reserves are capped. Add them as a further <code>MIN</code> term when relevant (s05).</li>
+<li><strong>Timing:</strong> if dividends are paid in the year after the profit year (the AGM-approved final dividend, Ind AS 10.12–13), use prior-year PAT inside the floor and the current year's cash for the cap.</li>
+<li><strong>Circularity:</strong> if interest income depends on average cash, the cash cap enters the loop. Route it through the breaker, or compute available cash before interest income.</li>
+</ul>
+<p>Excel:</p>
+<pre><code class="language-excel">Div_Floor = MAX(0, PAT_Owners * Payout)
+Div_Cash  = MAX(0, Cash_Pre_Div - Min_Cash)
+Dividend  = IF(Cash_Cap_On, MIN(Div_Floor, Div_Cash), Div_Floor)
+</code></pre>
+<p>Always enter dividends as a positive number in the equity schedule, with the CFS applying the minus sign (or the reverse, as long as you are consistent, per Topic 4 s05).</p>
+<h2 id="illustration">Illustration</h2>
+<p>Ganga Pharma Ltd (₹ crore), payout 40%, minimum cash 150, cash cap on:</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th>FY26E</th>
+<th>FY27E</th>
+<th>FY28E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PAT to owners</td>
+<td>180</td>
+<td>−50</td>
+<td>120</td>
+</tr>
+<tr>
+<td>PAT × payout</td>
+<td>72</td>
+<td>−20</td>
+<td>48</td>
+</tr>
+<tr>
+<td>Floored</td>
+<td>72</td>
+<td>0</td>
+<td>48</td>
+</tr>
+<tr>
+<td>Cash before dividend</td>
+<td>400</td>
+<td>210</td>
+<td>175</td>
+</tr>
+<tr>
+<td>Cash available (above 150)</td>
+<td>250</td>
+<td>60</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Dividend</td>
+<td>72</td>
+<td>0</td>
+<td>25</td>
+</tr>
+</tbody>
+</table>
+<p>Without the floor, FY27E would show a −20 "dividend" that adds ₹20 crore to cash and equity. Without the cash cap, FY28E would pay 48 and leave cash at 127, below the minimum, which would force a revolver draw to fund a dividend.</p>
+<h2 id="connections">Connections</h2>
+<p>This concept is the formula behind s05 (dividends under losses) and feeds the equity corkscrew from t3 (other equity = opening + PAT to owners − dividends + other movements). It interacts with s03 (revolver), because a cash cap stops dividends from being revolver-funded, and with s06, because DSCR-based dividend lock-ups are common covenants. On the checks dashboard (s07) it pairs with the "negative dividends" and "dividends &gt; free cash" checks. In Week 16, the FCFE and dividend discount approaches use the same capped dividend logic.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-apply-the-formula-l1">Q1. Apply the formula [L1]</h3>
+<p>PAT to owners for FY26E–FY29E is ₹90, −₹40, ₹30 and ₹150 crore. Payout is 35%, minimum cash is ₹80 crore, and cash before dividends is ₹200, ₹110, ₹95 and ₹260 crore. Compute dividends with (a) the floor only, and (b) the floor and cash cap. Explain one consequence of each difference for the BS and CFS.</p>
+<h3 id="q2-prior-year-pat-basis-l2">Q2. Prior-year PAT basis [L2]</h3>
+<p>A model pays dividends in the year after the profit year at 30% of prior-year PAT to owners. FY25A PAT is ₹220 crore, FY26E is −₹60 crore and FY27E is ₹140 crore. Minimum cash is ₹100 crore and cash before dividends is ₹160 crore in FY26E, ₹90 crore in FY27E and ₹210 crore in FY28E. Compute dividends paid in FY26E, FY27E and FY28E, and write the Excel formula for FY27E using named ranges.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> The floor references the prior year's PAT, but the cash cap references the current year's cash.</p>
+</blockquote>
+<h3 id="q3-why-the-balance-check-misses-it-l2">Q3. Why the balance check misses it [L2]</h3>
+<p>Explain, using a ₹100 crore loss at 30% payout, why a model with <code>Dividend = PAT × Payout</code> still balances, and design two dashboard checks that would detect the error. State which category (integrity error or business warning) each check belongs to.</p></section>
+<nav class="pager"><a class="prev" href="C01_Current_Tax_with_Loss_Set_Off_and_the_Sec_72_Loss.html">← Current Tax with Loss Set-Off and the Sec 72 Loss Corkscrew</a><a class="next" href="C03_The_Binary_Error_Flag_Formula.html">The Binary Error Flag Formula →</a></nav>
+</main></div></body></html>

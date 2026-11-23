@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PMT, IPMT and PPMT: EMI and Its Interest/Principal Split · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C05_PMT_IPMT_and_PPMT_EMI_and_Its_InterestPrincipal.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T5 · Financial and date functions</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Financial and date functions</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Period_End_Logic_with_EOMONTH_and_EDATE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S01_Period_End_Logic_with_EOMONTH_and_EDATE.html">Period-End Logic with EOMONTH and EDATE</a></li><li><a href="../subtopics/S02_Day_Count_Conventions_with_YEARFRAC_Bases_04.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S02_Day_Count_Conventions_with_YEARFRAC_Bases_04.html">Day-Count Conventions with YEARFRAC Bases 0–4</a></li><li><a href="../subtopics/S03_NPV_vs_XNPV_Periodic_and_Dated_Cash_Flows.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S03_NPV_vs_XNPV_Periodic_and_Dated_Cash_Flows.html">NPV vs XNPV: Periodic and Dated Cash Flows</a></li><li><a href="../subtopics/S04_IRR_vs_XIRR_vs_MIRR_for_Irregular_Project_Cash.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S04_IRR_vs_XIRR_vs_MIRR_for_Irregular_Project_Cash.html">IRR vs XIRR vs MIRR for Irregular Project Cash Flows</a></li><li><a href="../subtopics/S05_Loan_Amortisation_with_PMT_IPMT_PPMT_CUMIPMT_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S05_Loan_Amortisation_with_PMT_IPMT_PPMT_CUMIPMT_and.html">Loan Amortisation with PMT, IPMT, PPMT, CUMIPMT and CUMPRINC</a></li><li><a href="../subtopics/S06_EMI_Schedules_and_Ind_AS_116_Lease_Liability.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S06_EMI_Schedules_and_Ind_AS_116_Lease_Liability.html">EMI Schedules and Ind AS 116 Lease Liability Schedules</a></li><li><a href="../subtopics/S07_Close_Calendars_with_WORKDAYINTL_NETWORKDAYSINTL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S07_Close_Calendars_with_WORKDAYINTL_NETWORKDAYSINTL.html">Close Calendars with WORKDAY.INTL, NETWORKDAYS.INTL and Holidays</a></li><li><a href="../subtopics/S08_Fiscal_Year_Helpers_FY_Start_FY_End_and_Fiscal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S08_Fiscal_Year_Helpers_FY_Start_FY_End_and_Fiscal.html">Fiscal-Year Helpers: FY Start, FY End and Fiscal Month</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Month_End_Month_Start_and_Same_Day_Offsets_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C01_Month_End_Month_Start_and_Same_Day_Offsets_with.html">Month-End, Month-Start and Same-Day Offsets with EOMONTH and EDATE</a></li><li><a href="C02_YEARFRAC_Basis_1_vs_Basis_3_for_Accruals.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C02_YEARFRAC_Basis_1_vs_Basis_3_for_Accruals.html">YEARFRAC Basis 1 vs Basis 3 for Accruals</a></li><li><a href="C03_NPV_Plus_CF0_Why_NPV_Discounts_Its_First_Value.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C03_NPV_Plus_CF0_Why_NPV_Discounts_Its_First_Value.html">NPV Plus CF0: Why NPV Discounts Its First Value</a></li><li><a href="C04_XNPV_and_XIRR_The_365_Day_Basis_from_the_First.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C04_XNPV_and_XIRR_The_365_Day_Basis_from_the_First.html">XNPV and XIRR: The 365-Day Basis from the First Date</a></li><li><a href="C05_PMT_IPMT_and_PPMT_EMI_and_Its_InterestPrincipal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C05_PMT_IPMT_and_PPMT_EMI_and_Its_InterestPrincipal.html">PMT, IPMT and PPMT: EMI and Its Interest/Principal Split</a></li><li><a href="C06_MIRR_Fixing_IRRs_Reinvestment_and_Multiple_Root.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C06_MIRR_Fixing_IRRs_Reinvestment_and_Multiple_Root.html">MIRR: Fixing IRR&#x27;s Reinvestment and Multiple-Root Problems</a></li><li><a href="C07_FY_End_Date_and_Fiscal_Month_Formulas_for_an.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C07_FY_End_Date_and_Fiscal_Month_Formulas_for_an.html">FY End Date and Fiscal Month Formulas for an April–March Year</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>PMT, IPMT and PPMT: EMI and Its Interest/Principal Split</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>=PMT(rate/12, years*12, -Principal)</code>; <code>=IPMT(rate/12, per, nper, pv)</code>; PPMT + IPMT = PMT for each period</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-excel">=PMT(rate/12, years*12, -Principal)          monthly EMI (positive)
+=IPMT(rate/12, per, nper, pv)                interest in payment number per
+=PPMT(rate/12, per, nper, pv)                principal in payment number per
+</code></pre>
+<p>With periodic rate \(i\), number of periods \(n\) and principal \(P\):</p>
+<p>\[
+\text{PMT} = \frac{P\, i}{1-(1+i)^{-n}}, \qquad
+\text{IPMT}_k = i \cdot B_{k-1}, \qquad
+\text{PPMT}_k = \text{PMT} - \text{IPMT}_k
+\]</p>
+<p>where \(B_{k-1}\) is the outstanding balance after \(k-1\) payments, so that for every period \(k\):</p>
+<p>\[
+\text{PPMT}_k + \text{IPMT}_k = \text{PMT}
+\]</p>
+<h2 id="explanation">Explanation</h2>
+<p><strong>Period matching.</strong> <code>rate/12</code> and <code>years*12</code> convert an annual nominal rate and a tenor in years to monthly terms — both must change together. This is right for Indian bank EMI loans, which quote a nominal annual rate with monthly rests. If the annual rate is an effective rate, the monthly rate is \((1+r)^{1/12}-1\) instead.</p>
+<p><strong>Sign convention.</strong> Excel's financial functions treat cash received as positive and cash paid as negative. Entering <code>-Principal</code> for pv makes PMT positive (the borrower's perspective flipped for display). In the IPMT/PPMT signature in the concept, <code>pv</code> is shown without a sign: if you pass <code>+Principal</code>, IPMT and PPMT return negatives; pass <code>-Principal</code> (as with PMT) to get positives. Be consistent across the three so that PPMT + IPMT = PMT holds with the same sign.</p>
+<p><strong>Mechanics.</strong> The payment is constant; interest falls each period because it is charged on a declining balance, so the principal portion rises. Early EMIs are mostly interest — the reason prepayments early in a home loan save the most interest.</p>
+<p><strong>Optional arguments.</strong> <code>fv</code> (default 0) handles balloon payments; <code>type</code> 1 means payments at period start (advance), which lowers PMT by a factor of \(1+i\) and makes IPMT for period 1 zero.</p>
+<p><strong>Arrays.</strong> <code>per</code> can be an array (<code>SEQUENCE(n)</code>), so IPMT and PPMT spill an entire schedule in one formula each (w9_t4 s05).</p>
+<h2 id="illustration">Illustration</h2>
+<p>₹40 lakh home loan, 8.5% nominal annual, 20 years, monthly in arrears; i = 0.70833%, n = 240.</p>
+<table>
+<thead>
+<tr>
+<th>Formula</th>
+<th>Result (₹)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>=PMT(8.5%/12, 20*12, -4000000)</code></td>
+<td>34,713</td>
+</tr>
+<tr>
+<td><code>=IPMT(8.5%/12, 1, 240, -4000000)</code></td>
+<td>28,333</td>
+</tr>
+<tr>
+<td><code>=PPMT(8.5%/12, 1, 240, -4000000)</code></td>
+<td>6,380</td>
+</tr>
+<tr>
+<td>Check: IPMT + PPMT − PMT for period 1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>At period 120 (end of year 10), interest has fallen to about ₹19,936 and principal risen to about ₹14,777 — still the same EMI. The check <code>=IPMT(i,k,n,-P) + PPMT(i,k,n,-P) - PMT(i,n,-P)</code> should be zero for any k; put it in the model for a sample of periods or as a spilled check column.</p>
+<h2 id="connections">Connections</h2>
+<p>Builds s05 (loan amortisation) and s06 (EMI schedules). CUMIPMT/CUMPRINC aggregate IPMT/PPMT over a period range for annual models and Schedule III current-maturity splits. RATE and NPER back-solve the rate or tenor (topic related item), and EFFECT/NOMINAL handle rate quotes. Debt schedules in the 3-statement model (Weeks 13–16) and the checklist item on loan calculations rest on this concept.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-car-loan-l1">Q1. Car loan [L1]</h3>
+<p>A ₹12 lakh car loan at 9.25% nominal for 4 years, EMIs in arrears. Write formulas for the EMI, the interest and principal in month 25, and a check cell proving the split.</p>
+<h3 id="q2-advance-emis-l2">Q2. Advance EMIs [L2]</h3>
+<p>A two-wheeler financier collects the first EMI on the disbursement date (advance EMI) on a ₹1.5 lakh loan at 14% for 24 months. Write PMT, IPMT and PPMT formulas with the correct <code>type</code> argument, and explain why IPMT for period 1 is zero.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> With type 1, no time has elapsed before the first payment.</p>
+</blockquote>
+<h3 id="q3-wrong-sign-wrong-period-l2">Q3. Wrong sign, wrong period [L2]</h3>
+<p>A model has <code>=PMT(9%, 60, 5000000)</code> for a 5-year monthly loan of ₹50 lakh. Identify both errors, state the approximate magnitude of the EMI it shows, and write the corrected formula.</p></section>
+<nav class="pager"><a class="prev" href="C04_XNPV_and_XIRR_The_365_Day_Basis_from_the_First.html">← XNPV and XIRR: The 365-Day Basis from the First Date</a><a class="next" href="C06_MIRR_Fixing_IRRs_Reinvestment_and_Multiple_Root.html">MIRR: Fixing IRR&#x27;s Reinvestment and Multiple-Root Problems →</a></nav>
+</main></div></body></html>

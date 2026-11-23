@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linking Chart Titles and Labels to Cells for Dynamic Updates · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S06_Linking_Chart_Titles_and_Labels_to_Cells_for.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 2</a> <span>›</span> <a href="../../index.html">Week 8</a> <span>›</span> <a href="../index.html">T4 · Charting for Financial Reports</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Charting for Financial Reports</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_EBITDA_Bridge_Waterfalls_Price_Volume_Mix_and_Cost.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S01_EBITDA_Bridge_Waterfalls_Price_Volume_Mix_and_Cost.html">EBITDA Bridge Waterfalls: Price, Volume, Mix and Cost Drivers</a></li><li><a href="S02_Clustered_Column_Trends_and_Combo_Charts_with_a.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S02_Clustered_Column_Trends_and_Combo_Charts_with_a.html">Clustered Column Trends and Combo Charts with a Margin Axis</a></li><li><a href="S03_ROIC_vs_Revenue_Growth_Bubble_Charts_with_Median.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S03_ROIC_vs_Revenue_Growth_Bubble_Charts_with_Median.html">ROIC vs Revenue Growth Bubble Charts with Median Quadrants</a></li><li><a href="S04_Native_Excel_Waterfall_vs_Stacked_Column.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S04_Native_Excel_Waterfall_vs_Stacked_Column.html">Native Excel Waterfall vs Stacked-Column Workaround</a></li><li><a href="S05_Chart_Hygiene_for_Peer_Financial_Reports.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S05_Chart_Hygiene_for_Peer_Financial_Reports.html">Chart Hygiene for Peer Financial Reports</a></li><li><a href="S06_Linking_Chart_Titles_and_Labels_to_Cells_for.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S06_Linking_Chart_Titles_and_Labels_to_Cells_for.html">Linking Chart Titles and Labels to Cells for Dynamic Updates</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Bridge_Integrity_The_Zero_Check_Cell.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/concepts/C01_Bridge_Integrity_The_Zero_Check_Cell.html">Bridge Integrity: The Zero-Check Cell</a></li><li><a href="../concepts/C02_Price_and_Volume_Effects_in_a_Revenue_or_EBITDA.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/concepts/C02_Price_and_Volume_Effects_in_a_Revenue_or_EBITDA.html">Price and Volume Effects in a Revenue or EBITDA Bridge</a></li><li><a href="../concepts/C03_Gross_Margin_Effect_Isolating_Raw_Material.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/concepts/C03_Gross_Margin_Effect_Isolating_Raw_Material.html">Gross Margin Effect: Isolating Raw Material Inflation</a></li><li><a href="../concepts/C04_IBCS_SUCCESS_Notation_and_Tuftes_Data_Ink_Ratio.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/concepts/C04_IBCS_SUCCESS_Notation_and_Tuftes_Data_Ink_Ratio.html">IBCS SUCCESS Notation and Tufte&#x27;s Data-Ink Ratio</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Linking Chart Titles and Labels to Cells for Dynamic Updates</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Linking chart titles and labels to cells for dynamic updates</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A Project 2 workbook has twenty or more charts, and the numbers behind them change many times before
+submission — a reclassification in the standardized statements, a normalization adjustment, a switch from
+reported to Ind AS 116-neutral EBITDA. If titles and labels are typed, every change risks a chart whose action
+title says "margin expanded 120 bps" while the plotted data now show 90 bps. Linking titles, subtitles, data
+labels and source notes to cells makes the narrative layer update with the data and turns the chart into part
+of the checked model rather than a static picture. The same technique underpins FP&amp;A monthly packs, where the
+month, the variance and the commentary headline must roll forward without manual edits.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="linking-a-chart-title-to-a-cell">Linking a chart title to a cell</h3>
+<ol>
+<li>Click the chart title once to select it (do not enter text-edit mode).</li>
+<li>Click in the formula bar, type <code>=</code>, then click the cell containing the title text, and press Enter. The
+   formula bar shows a reference such as <code>='Charts'!B4</code>.</li>
+<li>The title now displays the cell's current value, including any formula result.</li>
+</ol>
+<p>The same method works for <strong>axis titles</strong>, <strong>individual data labels</strong> (select the label twice so only one is
+selected, then type <code>=</code> in the formula bar), and <strong>text boxes or shapes</strong> placed on the chart. Note that the
+link must be a single-cell reference; you cannot type a formula directly into the title — build the text in a
+cell and link to it. Some of the newer chart types (waterfall, histogram, treemap) have had limitations on
+cell-linked titles and labels in certain Excel builds; test before relying on them.</p>
+<h3 id="building-dynamic-title-text">Building dynamic title text</h3>
+<p>Construct the text in a cell with concatenation and TEXT for formatting:</p>
+<pre><code>=&quot;Titan: EBITDA margin &quot;&amp;IF(MarginChg&gt;=0,&quot;expanded &quot;,&quot;contracted &quot;)
+ &amp;TEXT(ABS(MarginChg)*10000,&quot;0&quot;)&amp;&quot; bps to &quot;&amp;TEXT(Margin25,&quot;0.0%&quot;)&amp;&quot; in FY25&quot;
+</code></pre>
+<p>With <code>MarginChg</code> = 0.0120 and <code>Margin25</code> = 0.1250, the title reads "Titan: EBITDA margin expanded 120 bps to
+12.5% in FY25". If the data change so the margin falls, the verb flips automatically.</p>
+<p>A subtitle cell holds the descriptor and basis:</p>
+<pre><code>=&quot;EBITDA margin, %, FY23–FY25 | &quot;&amp;BasisLabel&amp;&quot; | &quot;&amp;ConsolLabel
+</code></pre>
+<p>where <code>BasisLabel</code> might return "Post-Ind AS 116" or "Pre-Ind AS 116 (lease rentals deducted)" from a
+selector cell, and <code>ConsolLabel</code> returns "Consolidated".</p>
+<p>Tips:</p>
+<ul>
+<li>TEXT format strings mirror number formats: <code>"#,##0"</code> for ₹ crore, <code>"0.0%"</code> for margins, <code>"0.0x"</code> for leverage.</li>
+<li>Use <code>TEXTJOIN</code> for lists (e.g., names of peers above median).</li>
+<li>Use <code>CHAR(10)</code> for a line break inside a linked text box (with Wrap Text on in the source cell).</li>
+<li>Keep a hard cap on length: action titles over roughly 90 characters wrap awkwardly on a slide.</li>
+</ul>
+<h3 id="data-labels-from-cells">Data labels from cells</h3>
+<p>Excel 2013 and later: Format Data Labels → Label Options → <strong>Value From Cells</strong> → select a range. Each point
+takes the label from the corresponding cell. Uses:</p>
+<ul>
+<li>Company names on scatter/bubble points.</li>
+<li>Signed labels on a stacked-column waterfall, e.g., <code>=IF(d&lt;0,"("&amp;TEXT(-d,"0.0")&amp;")","+"&amp;TEXT(d,"0.0"))</code>.</li>
+<li>Combined labels: "₹22,600 cr | 6.5%" on a revenue bar.</li>
+<li>Variance labels against prior year.</li>
+</ul>
+<p>Untick <em>Value</em> when using Value From Cells alone, or both appear.</p>
+<h3 id="dynamic-chart-ranges">Dynamic chart ranges</h3>
+<p>Linking text is half the job; the plotted range must also update.</p>
+<ul>
+<li><strong>Excel Tables</strong>: a chart built on a Table expands automatically when a new row (e.g., FY26) is added.
+  This is the simplest and most robust method.</li>
+<li><strong>Named ranges with INDEX</strong> (non-volatile): e.g., a name <code>RevPlot</code> defined as
+  <code>=Feed!C5:INDEX(Feed!C5:Z5,1,YearsShown)</code>; then edit the series formula to
+  <code>=SERIES(Feed!B5,'Project2.xlsx'!YearsPlot,'Project2.xlsx'!RevPlot,1)</code>. Names in series formulas must be
+  qualified by the workbook or sheet name. Avoid OFFSET where possible — it is volatile and slows large
+  workbooks.</li>
+<li><strong>Company selector</strong>: a data-validation dropdown (<code>SelCo</code>) on the charts sheet drives a feed block via
+  XLOOKUP or INDEX/MATCH, so one chart can show any peer; the title cell references <code>SelCo</code> too.</li>
+<li><strong>Dynamic arrays</strong> (Microsoft 365): a spill range cannot be typed directly as a series reference, but a
+  defined name pointing at the spill (e.g., <code>=Calc!B2#</code>) can be used in the series formula in current builds.</li>
+</ul>
+<h3 id="linking-to-the-commentary">Linking to the commentary</h3>
+<p>The same cells that drive chart titles can feed the narrative in the commentary sheet and the executive
+summary, so the report's text, tables and charts quote the same number. A good practice is a <strong>"key numbers"
+block</strong> — one cell per figure quoted in the report (margin change, ROIC gap, CCC days) — from which titles,
+labels and commentary all draw.</p>
+<h3 id="controls">Controls</h3>
+<ul>
+<li>Add a check that every chart title cell is non-blank and below the length limit.</li>
+<li>Keep title-text cells on the charts sheet next to each chart's feed block, coloured as formulas.</li>
+<li>When exporting to PowerPoint or Word, paste charts <strong>linked</strong> if the deck must update, and refresh links
+  (File → Info → Edit Links) before the final PDF; otherwise paste as picture only at the very end, after the
+  final check.</li>
+</ul>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Overconfident automation</strong>: an auto-generated verb ("expanded") is safe; an auto-generated <em>judgement</em>
+  ("strongly outperformed") is not, because the threshold for "strongly" is arbitrary. Keep evaluative words
+  in reviewed text or tie them to explicit thresholds.</li>
+<li><strong>Rounding in titles</strong>: a title saying "120 bps" while the label shows 12.4% and 11.3% (110 bps apparent)
+  confuses readers; round from the same underlying values and display enough precision.</li>
+<li><strong>Broken links after copying sheets</strong>: copying a chart to another workbook keeps references to the source
+  file; check Edit Links before sending.</li>
+<li><strong>Hidden rows and columns</strong>: by default, charts do not plot data in hidden cells (Select Data → Hidden and
+  Empty Cells); hiding a feed column can make a series vanish.</li>
+<li><strong>Language and units</strong>: if the report switches from ₹ crore to ₹ million for an international reader, the
+  unit text must come from the same unit selector as the conversion factor.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Select a title, label or text box, type <code>=</code> in the formula bar and click a cell to link it.</li>
+<li>Build title text in cells with TEXT, IF and concatenation so wording and numbers update together.</li>
+<li>Value From Cells gives per-point labels for names, signed bridge labels and combined labels.</li>
+<li>Use Excel Tables or INDEX-based names (qualified in the series formula) for expanding ranges.</li>
+<li>A key-numbers block feeds titles, labels and commentary so every quoted figure has one source.</li>
+<li>Automate factual wording; keep evaluative language under review.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-dynamic-action-title-l2">Q1. Dynamic action title [L2]</h3>
+<p>Write a cell formula that produces the title "Kalyan's CCC improved by 12 days to 98 days in FY25" when CCC
+fell, and "Kalyan's CCC worsened by 7 days to 117 days in FY25" when it rose, driven by named cells <code>CCC24</code>,
+<code>CCC25</code> and <code>CoName</code>. Handle the case where CCC is unchanged.</p>
+<h3 id="q2-selector-driven-chart-l3">Q2. Selector-driven chart [L3]</h3>
+<p>Specify the layout, named ranges, formulas and chart settings for a single combo chart that shows revenue
+and EBITDA margin for whichever of Infosys, TCS or Wipro is chosen in a dropdown, with a title, subtitle and
+source note that all update with the selection.</p>
+<h3 id="q3-diagnose-a-stale-chart-l1">Q3. Diagnose a stale chart [L1]</h3>
+<p>After you added FY25 data, a peer chart still shows only FY22–FY24, and its title still reads "FY24". List
+three possible causes and how you would make the chart robust to future additions.</p>
+<h3 id="q4-label-design-for-a-waterfall-l2">Q4. Label design for a waterfall [L2]</h3>
+<p>For a stacked-column EBITDA bridge, write the label formula for a helper column that shows increases as
+"+16.0", decreases as "(27.0)" and totals as "70.6", given a Type column and a signed Value column, and
+explain where the Value From Cells range should point.</p></section>
+<nav class="pager"><a class="prev" href="S05_Chart_Hygiene_for_Peer_Financial_Reports.html">← Chart Hygiene for Peer Financial Reports</a><a class="next" href="../concepts/C01_Bridge_Integrity_The_Zero_Check_Cell.html">Bridge Integrity: The Zero-Check Cell →</a></nav>
+</main></div></body></html>

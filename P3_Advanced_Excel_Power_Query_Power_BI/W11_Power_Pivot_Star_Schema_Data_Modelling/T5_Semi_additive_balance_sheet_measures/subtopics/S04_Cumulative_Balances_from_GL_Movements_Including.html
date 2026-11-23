@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cumulative Balances from GL Movements, Including Opening Entries · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S04_Cumulative_Balances_from_GL_Movements_Including.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T5 · Semi-additive balance sheet measures</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Semi-additive balance sheet measures</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Additive_Semi_Additive_and_Non_Additive_Financial.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S01_Additive_Semi_Additive_and_Non_Additive_Financial.html">Additive, Semi-Additive and Non-Additive Financial Measures</a></li><li><a href="S02_Snapshot_Facts_vs_Transaction_Facts_for_Balances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S02_Snapshot_Facts_vs_Transaction_Facts_for_Balances.html">Snapshot Facts vs Transaction Facts for Balances</a></li><li><a href="S03_Closing_Balance_LASTDATE_vs_LASTNONBLANK_vs_a_MAX.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S03_Closing_Balance_LASTDATE_vs_LASTNONBLANK_vs_a_MAX.html">Closing Balance: LASTDATE vs LASTNONBLANK vs a MAX-Date Filter</a></li><li><a href="S04_Cumulative_Balances_from_GL_Movements_Including.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S04_Cumulative_Balances_from_GL_Movements_Including.html">Cumulative Balances from GL Movements, Including Opening Entries</a></li><li><a href="S05_Opening_Balances_with_OPENINGBALANCEMONTH_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S05_Opening_Balances_with_OPENINGBALANCEMONTH_and.html">Opening Balances with OPENINGBALANCEMONTH and OPENINGBALANCEYEAR</a></li><li><a href="S06_Average_Balances_for_DSO_Interest_Cost_and_Return.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S06_Average_Balances_for_DSO_Interest_Cost_and_Return.html">Average Balances for DSO, Interest Cost and Return Ratios</a></li><li><a href="S07_Cash_Net_Working_Capital_and_Net_Debt_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S07_Cash_Net_Working_Capital_and_Net_Debt_Measures.html">Cash, Net Working Capital and Net Debt Measures over Time</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Closing_Balance_with_LASTDATE_on_a_Snapshot_Fact.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C01_Closing_Balance_with_LASTDATE_on_a_Snapshot_Fact.html">Closing Balance with LASTDATE on a Snapshot Fact</a></li><li><a href="../concepts/C02_LASTNONBLANK_Closing_Balance_at_the_Last_Date_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C02_LASTNONBLANK_Closing_Balance_at_the_Last_Date_with.html">LASTNONBLANK: Closing Balance at the Last Date with Data</a></li><li><a href="../concepts/C03_Cumulative_Balance_with_FILTER_over_ALL_Dates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C03_Cumulative_Balance_with_FILTER_over_ALL_Dates.html">Cumulative Balance with FILTER over ALL Dates</a></li><li><a href="../concepts/C04_CLOSINGBALANCEYEAR_and_OPENINGBALANCEYEAR_with_a.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C04_CLOSINGBALANCEYEAR_and_OPENINGBALANCEYEAR_with_a.html">CLOSINGBALANCEYEAR and OPENINGBALANCEYEAR with a March Year-End</a></li><li><a href="../concepts/C05_Average_Receivables_with_AVERAGEX_over_Month_Ends.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C05_Average_Receivables_with_AVERAGEX_over_Month_Ends.html">Average Receivables with AVERAGEX over Month-Ends</a></li><li><a href="../concepts/C06_DSO_Measure_from_Average_Receivables_and_Days_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C06_DSO_Measure_from_Average_Receivables_and_Days_in.html">DSO Measure from Average Receivables and Days in Period</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Cumulative Balances from GL Movements, Including Opening Entries</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Cumulative balance from movements: running total from inception, including opening entries</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>When the model holds GL movements rather than month-end TBs, every balance sheet number is a running total: the sum of
+all postings to that account from the first day of the books (or from the opening-balance entry) up to the as-of date.
+This is how the ledger itself works — a balance is opening plus debits minus credits — and it lets the same fact
+drive P&amp;L, balance sheet, cash-flow movements and voucher-level drill-through. It is also the pattern most likely to
+produce a balance sheet that does not balance, because it depends on opening entries and on how P&amp;L accounts are
+rolled into reserves.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-running-total-measure">The running-total measure</h3>
+<pre><code class="language-DAX">Cum Bal =
+CALCULATE (
+    SUM ( GL[Amount] ),
+    FILTER ( ALL ( 'Date'[Date] ), 'Date'[Date] &lt;= MAX ( 'Date'[Date] ) )
+)
+</code></pre>
+<p>Mechanics:</p>
+<ol>
+<li><code>MAX('Date'[Date])</code> — evaluated in the outer context inside <code>FILTER</code>'s condition, but <code>FILTER</code> iterates
+   <code>ALL('Date'[Date])</code> in a row context, and <code>MAX</code> there still sees the <em>outer filter context</em> (row context does not
+   filter), so it returns the period-end of the cell (e.g., 31 October 2025).</li>
+<li><code>ALL('Date'[Date])</code> removes the filter on the date column; <code>FILTER</code> keeps dates up to that period-end — every date
+   from the start of the calendar.</li>
+<li><code>CALCULATE</code> applies that list; because the Date table is marked, filters on other Date columns (month, FY) are
+   removed too. All GL rows dated on or before the as-of date are summed.</li>
+</ol>
+<p>A more readable and usually faster equivalent:</p>
+<pre><code class="language-DAX">Cum Bal =
+VAR asOf = MAX ( 'Date'[Date] )
+RETURN
+    CALCULATE ( SUM ( GL[Amount] ), REMOVEFILTERS ( 'Date' ), 'Date'[Date] &lt;= asOf )
+</code></pre>
+<p>At any period row, the result is the closing balance at that period's end; the quarter shows the quarter-end balance
+and the FY shows 31 March — semi-additive by construction.</p>
+<h3 id="opening-entries">Opening entries</h3>
+<p>A movement-based model starts on some date (say 1 April 2023). Everything before that must arrive as <strong>opening
+entries</strong>: one row per BS account carrying the audited closing balance at 31 March 2023, voucher type "Opening".
+Rules:</p>
+<ul>
+<li><strong>Date them on the first day of the Date table</strong> (1 April 2023) or extend the calendar back to cover them. An
+  opening entry dated outside the Date table does not join to a calendar date and its inclusion depends on accident.</li>
+<li><strong>Include every BS account</strong> — share capital, reserves, deferred tax, provisions, not only debtors and creditors.
+  The opening entries must sum to zero (debits = credits).</li>
+<li><strong>Exclude them from P&amp;L views</strong>: P&amp;L measures filter <code>CoA[Statement] = "PL"</code>, and opening entries hit only BS
+  accounts. If the prior-year profit is in "Profit and Loss Account" (Tally style), map it to Retained earnings.</li>
+<li><strong>Flag them</strong> (<code>GL[VoucherType] = "Opening"</code>) so movement analyses (cash flow, receivables roll-forward) can
+  exclude them.</li>
+</ul>
+<h3 id="rolling-pl-into-retained-earnings">Rolling P&amp;L into retained earnings</h3>
+<p>In the GL, P&amp;L accounts are never "closed" in DAX: <code>Cum Bal</code> for a revenue account at 31 October 2025 accumulates
+revenue since April 2023. On the balance sheet, those P&amp;L accounts must be presented as part of <strong>Other equity —
+Retained earnings / Surplus in the statement of P&amp;L</strong> (Schedule III, Division II), split into:</p>
+<ul>
+<li><strong>Prior years' profits</strong>: cumulative P&amp;L of all fiscal years before the current one.</li>
+<li><strong>Current-year profit</strong>: YTD P&amp;L of the current fiscal year.</li>
+</ul>
+<pre><code class="language-DAX">Retained Earnings (incl. P&amp;L roll) =
+VAR asOf = MAX ( 'Date'[Date] )
+RETURN
+    CALCULATE ( SUM ( GL[Amount] ), REMOVEFILTERS ( 'Date' ), 'Date'[Date] &lt;= asOf,
+                REMOVEFILTERS ( CoA ), CoA[FSLine] = &quot;Retained earnings&quot; )
+    + CALCULATE ( SUM ( GL[Amount] ), REMOVEFILTERS ( 'Date' ), 'Date'[Date] &lt;= asOf,
+                  REMOVEFILTERS ( CoA ), CoA[Statement] = &quot;PL&quot; )
+
+Profit for the Period =
+VAR asOf    = MAX ( 'Date'[Date] )
+VAR fyStart = DATE ( YEAR ( EDATE ( asOf, -3 ) ), 4, 1 )   -- 1 April of the FY containing asOf
+RETURN
+    CALCULATE ( SUM ( GL[Amount] ), REMOVEFILTERS ( 'Date' ),
+                'Date'[Date] &gt;= fyStart, 'Date'[Date] &lt;= asOf,
+                REMOVEFILTERS ( CoA ), CoA[Statement] = &quot;PL&quot; )
+
+Retained Earnings Brought Forward =
+[Retained Earnings (incl. P&amp;L roll)] - [Profit for the Period]
+</code></pre>
+<p><code>EDATE(asOf, -3)</code> moves back three months so that dates from April to December map to the same calendar year and
+January–March map back to the previous one; this gives the FY start without a Date-table lookup. In a layout-driven
+balance sheet, "Retained earnings brought forward" and "Profit for the period" can be shown as separate lines, which
+together equal Other equity — surplus in the statement of profit and loss.</p>
+<p>If the ERP <em>does</em> post year-end closing entries (P&amp;L accounts zeroed into retained earnings at 31 March), do not add
+P&amp;L again for closed years: include P&amp;L only from the start of the current FY. Know your source.</p>
+<h3 id="the-balancing-check">The balancing check</h3>
+<p>With signed amounts (debits positive, credits negative), all BS accounts plus all P&amp;L accounts cumulatively sum to
+zero at every date — the trial balance balances. Build a check measure:</p>
+<pre><code class="language-DAX">TB Check = CALCULATE ( [Cum Bal], REMOVEFILTERS ( CoA ) )
+</code></pre>
+<p>It must be zero (within rounding) on every month-end. A non-zero value means an unbalanced load (missing opening
+entry, filtered voucher type, partial refresh).</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>Opening entries at 1 April 2024 (₹ lakh): Cash 400 Dr, Receivables 900 Dr, Payables 600 Cr, Share capital 300 Cr,
+Retained earnings 400 Cr. FY25 movements: sales 5,000 (Receivables Dr / Revenue Cr), collections 4,700 (Cash Dr /
+Receivables Cr), expenses 4,200 (Payables Cr / Expenses Dr), payments 4,100 (Payables Dr / Cash Cr).</p>
+<table>
+<thead>
+<tr>
+<th>Account</th>
+<th>Cum Bal at 31 Mar 2025</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cash</td>
+<td>400 + 4,700 − 4,100 = 1,000 Dr</td>
+</tr>
+<tr>
+<td>Receivables</td>
+<td>900 + 5,000 − 4,700 = 1,200 Dr</td>
+</tr>
+<tr>
+<td>Payables</td>
+<td>600 + 4,200 − 4,100 = 700 Cr</td>
+</tr>
+<tr>
+<td>Share capital</td>
+<td>300 Cr</td>
+</tr>
+<tr>
+<td>Retained earnings (account)</td>
+<td>400 Cr</td>
+</tr>
+<tr>
+<td>P&amp;L accounts (Revenue 5,000 Cr, Expenses 4,200 Dr)</td>
+<td>800 Cr</td>
+</tr>
+<tr>
+<td>Retained earnings presented</td>
+<td>400 + 800 = 1,200 Cr</td>
+</tr>
+</tbody>
+</table>
+<p>Assets 2,200 = Payables 700 + Share capital 300 + Retained earnings 1,200. Without the P&amp;L roll the balance sheet
+would be short by 800.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Performance:</strong> a running total from inception over a daily calendar is fine for tens of millions of rows in
+  VertiPaq; if matrices slow down, pre-aggregate an account-month snapshot in Power Query and keep GL for drill.</li>
+<li><strong>Restated history:</strong> re-mapping an account to a new FS line instantly restates all historical balances; good for
+  comparability, but historical reports will not match previously issued packs.</li>
+<li><strong>Multiple entities:</strong> with entity on rows, <code>Cum Bal</code> is per entity; inter-company eliminations must be posted as an
+  elimination entity, or the group balance sheet will be grossed up.</li>
+<li><strong>Foreign-currency balances:</strong> INR cumulative balances on monetary items need month-end revaluation entries
+  (Ind AS 21); otherwise the model differs from the TB by the unrealised exchange difference.</li>
+<li><strong>Opening entries for P&amp;L accounts in a mid-year migration:</strong> if the model starts on 1 October, opening P&amp;L YTD
+  balances must be loaded too, or H1 profit is missing from the current-year profit line.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li><code>Cum Bal</code> sums all movements up to the as-of date, removing all Date filters; it is semi-additive by construction.</li>
+<li>Opening entries must cover every BS account, net to zero, and fall within the Date table.</li>
+<li>P&amp;L accounts must be rolled into retained earnings in BS presentation (prior years plus current YTD), unless the ERP
+  posts closing entries.</li>
+<li>A TB check (all accounts cumulative = 0) on every month-end proves completeness.</li>
+<li>Choose the readable <code>VAR</code> + <code>REMOVEFILTERS</code> form; pre-aggregate only if performance requires.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-write-and-explain-l1">Q1. Write and explain [L1]</h3>
+<p>Write the <code>Cum Bal</code> measure in both the <code>FILTER(ALL(...))</code> and the <code>VAR</code> + <code>REMOVEFILTERS</code> forms, and explain why
+<code>MAX('Date'[Date])</code> inside the <code>FILTER</code> condition returns the period-end of the cell rather than each iterated date.</p>
+<h3 id="q2-build-a-balanced-balance-sheet-l2">Q2. Build a balanced balance sheet [L2]</h3>
+<p>Opening entries at 1 April 2025 (₹ lakh): PPE 2,500 Dr, Inventory 800 Dr, Cash 300 Dr, Borrowings 1,200 Cr, Share
+capital 1,000 Cr, Retained earnings 1,400 Cr. April–September movements: revenue 3,600 (all collected in cash),
+material cost 2,100 (paid in cash), depreciation 150, interest 60 (paid), loan repayment 200. Compute each account's
+cumulative balance at 30 September 2025, the retained earnings to present, and verify assets = equity + liabilities.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Post each movement as a two-sided entry first, then accumulate by account.</p>
+</blockquote>
+<h3 id="q3-closing-entries-in-the-source-l2">Q3. Closing entries in the source [L2]</h3>
+<p>Your source ERP posts a closing entry each 31 March transferring all P&amp;L balances to Retained earnings. Explain what
+the <code>Retained Earnings (incl. P&amp;L roll)</code> measure in this note would show at 31 October 2025 and rewrite it so it is
+correct for this ERP.</p>
+<h3 id="q4-tb-check-failing-l3">Q4. TB check failing [L3]</h3>
+<p>The <code>TB Check</code> measure is zero for all months to March 2025 and then −₹ 3.4 lakh for every month from April 2025. List
+the plausible causes (at least four, covering data load, Power Query steps, CoA mapping and Date table), and describe
+the DAX queries or visuals you would use to isolate the cause.</p></section>
+<nav class="pager"><a class="prev" href="S03_Closing_Balance_LASTDATE_vs_LASTNONBLANK_vs_a_MAX.html">← Closing Balance: LASTDATE vs LASTNONBLANK vs a MAX-Date…</a><a class="next" href="S05_Opening_Balances_with_OPENINGBALANCEMONTH_and.html">Opening Balances with OPENINGBALANCEMONTH and… →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CLOSINGBALANCEYEAR and OPENINGBALANCEYEAR with a March Year-End · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C04_CLOSINGBALANCEYEAR_and_OPENINGBALANCEYEAR_with_a.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T5 · Semi-additive balance sheet measures</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Semi-additive balance sheet measures</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Additive_Semi_Additive_and_Non_Additive_Financial.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S01_Additive_Semi_Additive_and_Non_Additive_Financial.html">Additive, Semi-Additive and Non-Additive Financial Measures</a></li><li><a href="../subtopics/S02_Snapshot_Facts_vs_Transaction_Facts_for_Balances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S02_Snapshot_Facts_vs_Transaction_Facts_for_Balances.html">Snapshot Facts vs Transaction Facts for Balances</a></li><li><a href="../subtopics/S03_Closing_Balance_LASTDATE_vs_LASTNONBLANK_vs_a_MAX.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S03_Closing_Balance_LASTDATE_vs_LASTNONBLANK_vs_a_MAX.html">Closing Balance: LASTDATE vs LASTNONBLANK vs a MAX-Date Filter</a></li><li><a href="../subtopics/S04_Cumulative_Balances_from_GL_Movements_Including.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S04_Cumulative_Balances_from_GL_Movements_Including.html">Cumulative Balances from GL Movements, Including Opening Entries</a></li><li><a href="../subtopics/S05_Opening_Balances_with_OPENINGBALANCEMONTH_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S05_Opening_Balances_with_OPENINGBALANCEMONTH_and.html">Opening Balances with OPENINGBALANCEMONTH and OPENINGBALANCEYEAR</a></li><li><a href="../subtopics/S06_Average_Balances_for_DSO_Interest_Cost_and_Return.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S06_Average_Balances_for_DSO_Interest_Cost_and_Return.html">Average Balances for DSO, Interest Cost and Return Ratios</a></li><li><a href="../subtopics/S07_Cash_Net_Working_Capital_and_Net_Debt_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S07_Cash_Net_Working_Capital_and_Net_Debt_Measures.html">Cash, Net Working Capital and Net Debt Measures over Time</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Closing_Balance_with_LASTDATE_on_a_Snapshot_Fact.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C01_Closing_Balance_with_LASTDATE_on_a_Snapshot_Fact.html">Closing Balance with LASTDATE on a Snapshot Fact</a></li><li><a href="C02_LASTNONBLANK_Closing_Balance_at_the_Last_Date_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C02_LASTNONBLANK_Closing_Balance_at_the_Last_Date_with.html">LASTNONBLANK: Closing Balance at the Last Date with Data</a></li><li><a href="C03_Cumulative_Balance_with_FILTER_over_ALL_Dates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C03_Cumulative_Balance_with_FILTER_over_ALL_Dates.html">Cumulative Balance with FILTER over ALL Dates</a></li><li><a href="C04_CLOSINGBALANCEYEAR_and_OPENINGBALANCEYEAR_with_a.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C04_CLOSINGBALANCEYEAR_and_OPENINGBALANCEYEAR_with_a.html">CLOSINGBALANCEYEAR and OPENINGBALANCEYEAR with a March Year-End</a></li><li><a href="C05_Average_Receivables_with_AVERAGEX_over_Month_Ends.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C05_Average_Receivables_with_AVERAGEX_over_Month_Ends.html">Average Receivables with AVERAGEX over Month-Ends</a></li><li><a href="C06_DSO_Measure_from_Average_Receivables_and_Days_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C06_DSO_Measure_from_Average_Receivables_and_Days_in.html">DSO Measure from Average Receivables and Days in Period</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>CLOSINGBALANCEYEAR and OPENINGBALANCEYEAR with a March Year-End</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>CLOSINGBALANCEYEAR([Snapshot Bal], 'Date'[Date], "3/31")</code>; <code>OPENINGBALANCEYEAR([Cum Bal], 'Date'[Date], "3/31")</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-DAX">Closing Bal FY = CLOSINGBALANCEYEAR ( [Snapshot Bal], 'Date'[Date], &quot;3/31&quot; )
+Opening Bal FY = OPENINGBALANCEYEAR ( [Cum Bal], 'Date'[Date], &quot;3/31&quot; )
+</code></pre>
+<p>For the fiscal year \(Y\) containing the last visible date (FY ending 31 March \(Y\)):</p>
+<p>\[
+\text{Closing}_{\text{FY}} = X\big(\text{31 Mar } Y\big) \qquad \text{Opening}_{\text{FY}} = X\big(\text{31 Mar } (Y-1)\big)
+\]</p>
+<p>where \(X(d)\) is the balance measure passed as the first argument, evaluated with the date filter set to the single
+date \(d\). Full syntax: <code>CLOSINGBALANCEYEAR(expression, dates [, filter] [, year_end_date])</code>, and the same for
+<code>OPENINGBALANCEYEAR</code>.</p>
+<h2 id="explanation">Explanation</h2>
+<p>Both functions are date-shifting wrappers around <code>CALCULATE</code>. They do not know whether the measure is a snapshot sum or
+a cumulative total; they only set the date. Hence the pairing in the concept:</p>
+<ul>
+<li><strong>Snapshot fact → CLOSINGBALANCEYEAR([Snapshot Bal], …)</strong> with <code>[Snapshot Bal] = SUM(TB[Balance])</code>. At 31 March of the
+  FY the TB snapshot exists (once the year is closed), so the measure returns the audited closing balance. For the
+  current FY before year-end, the date 31 March 2026 has no snapshot and the result is blank.</li>
+<li><strong>Movement fact → OPENINGBALANCEYEAR([Cum Bal], …)</strong> with <code>[Cum Bal]</code> a running total. At 31 March of the prior FY the
+  cumulative measure returns the closing balance carried forward, which is the opening of the current FY. Behaviourally,
+  the opening functions evaluate at the day <em>before</em> the period starts, although the official documentation words it
+  as the first date of the period — test once against a known TB.</li>
+</ul>
+<p>The year-end string sets which 31 March counts. Without it the functions use 31 December: <code>OPENINGBALANCEYEAR</code>
+would return the balance at 31 December of the previous calendar year, a date that appears in no Ind AS statement.
+The string is parsed in the model locale (<code>"3/31"</code> or <code>"31/3"</code>, Topic 4 c06).</p>
+<p>Interaction with the Date table: the opening of the first FY in the model needs the prior 31 March to exist in the
+Date table. If the calendar starts on 1 April 2023, the FY24 opening is blank. Extend the calendar back by a year and
+date opening entries on 31 March 2023.</p>
+<p>Note the asymmetric pitfall with <code>CLOSINGBALANCEYEAR</code> on a cumulative measure: for an incomplete year it evaluates at
+31 March 2026, where <code>[Cum Bal]</code> simply returns the latest cumulative balance (no postings after the last actual
+date) — a number that looks like a year-end balance but is not. Cap or label it.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Inventories (₹ lakh). Snapshot TB at 31 March 2024: 2,860; at 31 March 2025: 3,140. Movement GL gives cumulative 3,140
+at 31 March 2025 and 3,420 at 31 October 2025 (data to that date).</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th><code>Closing Bal FY</code> (snapshot)</th>
+<th><code>Opening Bal FY</code> (cumulative)</th>
+<th><code>CLOSINGBALANCEYEAR([Cum Bal], …)</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY25</td>
+<td>3,140</td>
+<td>2,860</td>
+<td>3,140</td>
+</tr>
+<tr>
+<td>FY26 (to Oct)</td>
+<td>blank</td>
+<td>3,140</td>
+<td>3,420 (not a year-end figure)</td>
+</tr>
+<tr>
+<td>Oct 2025 row</td>
+<td>blank (31 Mar 2026)</td>
+<td>3,140</td>
+<td>3,420</td>
+</tr>
+</tbody>
+</table>
+<p>The opening measure gives the same FY26 opening on every month row of FY26, which is what a roll-forward schedule needs.</p>
+<h2 id="connections">Connections</h2>
+<p>Part of the opening/closing family explained in s05 (month and quarter variants, roll-forwards, calendar coverage);
+the expressions come from s02 (snapshot) and s04/c03 (cumulative). The year-end string links to Topic 4 (c06). In Week
+14's 3-statement model, opening = prior closing is the linking rule for every BS schedule; in Weeks 1–4, it is the
+carry-forward of balances at year-end close.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-which-date-is-evaluated-l1">Q1. Which date is evaluated? [L1]</h3>
+<p>For a matrix cell showing August 2025, state the exact date at which each of the two measures in the concept is
+evaluated, and what changes if the year-end argument is omitted.</p>
+<h3 id="q2-build-an-equity-roll-forward-l2">Q2. Build an equity roll-forward [L2]</h3>
+<p>Retained earnings (credit, shown positive, ₹ crore): 31 March 2025 balance 420; FY26 profit 96 (YTD to 31 December 64);
+final dividend for FY25 paid in August 2025 of 18; interim dividend November 2025 of 10. Lay out the FY26 YTD December
+roll-forward and specify which measure (opening function, movement filter, cumulative measure) provides each line.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Decide first whether profit is coming from P&amp;L accounts rolled in or from a posted closing entry.</p>
+</blockquote>
+<h3 id="q3-blank-first-year-opening-l2">Q3. Blank first-year opening [L2]</h3>
+<p>Your Date table starts on 1 April 2024 and GL opening entries are dated 1 April 2024. Explain what <code>Opening Bal FY</code>
+returns for FY25 and how FY25 movements are distorted in a PPE roll-forward, then specify the calendar and data changes
+that fix it.</p></section>
+<nav class="pager"><a class="prev" href="C03_Cumulative_Balance_with_FILTER_over_ALL_Dates.html">← Cumulative Balance with FILTER over ALL Dates</a><a class="next" href="C05_Average_Receivables_with_AVERAGEX_over_Month_Ends.html">Average Receivables with AVERAGEX over Month-Ends →</a></nav>
+</main></div></body></html>

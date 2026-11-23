@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scenario Labelling on Outputs and Documented Case Rationale · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S07_Scenario_Labelling_on_Outputs_and_Documented_Case.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T6 · Scenario Switcher Architecture</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · Scenario Switcher Architecture</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Single_Scenario_Selector_Cell_with_Data_Validation.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S01_Single_Scenario_Selector_Cell_with_Data_Validation.html">Single Scenario Selector Cell with Data-Validation Dropdown</a></li><li><a href="S02_Scenario_Driver_Blocks_Base_Bull_Bear_Rows_and_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S02_Scenario_Driver_Blocks_Base_Bull_Bear_Rows_and_the.html">Scenario Driver Blocks: Base, Bull, Bear Rows and the Live Row</a></li><li><a href="S03_Scenario_Selection_Functions_CHOOSE_INDEX_XLOOKUP.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S03_Scenario_Selection_Functions_CHOOSE_INDEX_XLOOKUP.html">Scenario Selection Functions: CHOOSE, INDEX, XLOOKUP, SWITCH</a></li><li><a href="S04_Which_Drivers_to_Flex_Volume_Price_Stores_Margin.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S04_Which_Drivers_to_Flex_Volume_Price_Stores_Margin.html">Which Drivers to Flex: Volume, Price, Stores, Margin, Wages, Capex, NWC</a></li><li><a href="S05_Coherent_Scenario_Narratives_vs_Single_Variable.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S05_Coherent_Scenario_Narratives_vs_Single_Variable.html">Coherent Scenario Narratives vs Single-Variable Tweaks</a></li><li><a href="S06_Capturing_Scenario_Outputs_Data_Tables_vs_Pasted.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S06_Capturing_Scenario_Outputs_Data_Tables_vs_Pasted.html">Capturing Scenario Outputs: Data Tables vs Pasted Static Values</a></li><li><a href="S07_Scenario_Labelling_on_Outputs_and_Documented_Case.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S07_Scenario_Labelling_on_Outputs_and_Documented_Case.html">Scenario Labelling on Outputs and Documented Case Rationale</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_The_Live_Row_CHOOSE_or_INDEX_on_the_Scenario_Code.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C01_The_Live_Row_CHOOSE_or_INDEX_on_the_Scenario_Code.html">The Live Row: CHOOSE or INDEX on the Scenario Code</a></li><li><a href="../concepts/C02_One_Switch_Only_No_Scenario_Logic_Outside_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C02_One_Switch_Only_No_Scenario_Logic_Outside_the.html">One Switch Only: No Scenario Logic Outside the Driver Block</a></li><li><a href="../concepts/C03_Scenario_Summary_via_a_One_Variable_Data_Table_on.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C03_Scenario_Summary_via_a_One_Variable_Data_Table_on.html">Scenario Summary via a One-Variable Data Table on the Switch</a></li><li><a href="../concepts/C04_Live_Scenario_Header_Label_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C04_Live_Scenario_Header_Label_Formula.html">Live Scenario Header Label Formula</a></li><li><a href="../concepts/C05_Internal_Consistency_of_Scenarios_Growth_Needs.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C05_Internal_Consistency_of_Scenarios_Growth_Needs.html">Internal Consistency of Scenarios: Growth Needs Capex, Stress Needs Funding</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Scenario Labelling on Outputs and Documented Case Rationale</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Scenario labelling on every output page and documented rationale per case</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Outputs travel. A DCF summary is pasted into an IC memo, a P&amp;L page is printed for a board pack, a chart is dropped
+into a lender presentation. Once separated from the model, nothing shows which case produced the numbers unless the
+page itself says so. Misread scenarios are a classic failure in practice: a Bear-case valuation quoted as Base in a
+fairness opinion discussion, or a Bull-case budget circulated as the plan. Labelling every output page with a live
+scenario header, and documenting the rationale for every case, closes the gap. It is also a requirement in model-review
+checklists (ICAEW Code: designed for the end user; outputs clearly labelled) and a basic expectation of auditors and
+rating agencies reviewing management forecasts — for example in Ind AS 36 impairment testing, where cash-flow
+projections must be based on reasonable and supportable assumptions that the auditor will trace.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="live-scenario-header">Live scenario header</h3>
+<p>Every output sheet (Executive Summary, P&amp;L, BS, CFS, DCF, Comps, charts) carries a header formula in a consistent
+location, typically cell B2 or the sheet title row:</p>
+<pre><code>=&quot;Scenario: &quot;&amp;INDEX(Scenario_Names,Scenario)
+</code></pre>
+<p>Extend it to include units and version so that a printed page is self-describing:</p>
+<pre><code>=&quot;Trent Ltd (Consolidated) | ₹ crore | Scenario: &quot;&amp;INDEX(Scenario_Names,Scenario)&amp;&quot; | v&quot;&amp;Model_Version
+</code></pre>
+<p>Rules:</p>
+<ul>
+<li><strong>Formula, not text.</strong> A typed "Base case" header will be wrong the moment someone flips the switch.</li>
+<li><strong>Same position on every sheet</strong>, so reviewers know where to look and print areas include it.</li>
+<li><strong>Print headers.</strong> Excel's Page Setup header/footer cannot contain formulas directly; place the label inside the
+  print area (top rows) and set those rows to repeat at top (Page Layout → Print Titles).</li>
+<li><strong>Conditional formatting.</strong> Colour the header differently when a non-Base case is active (e.g., amber fill for
+  Bull/Bear) — a visual warning before printing or circulating (connects to the "left Bear active" pitfall).</li>
+<li><strong>Charts.</strong> Use a chart title linked to a cell (select the title, type <code>=</code> and click the header cell) so charts
+  pasted elsewhere carry the scenario name.</li>
+</ul>
+<h3 id="labelling-the-scenario-summary">Labelling the scenario summary</h3>
+<p>The data-table summary (s06) shows all cases; label it "All scenarios" and show the active case separately so readers
+do not confuse the live pages with the summary. If static snapshots are used, include the capture timestamp and version.</p>
+<h3 id="documented-rationale-per-case">Documented rationale per case</h3>
+<p>Each case needs a written rationale stored in the model, not in an email. A "Scenario notes" block on the Assumptions
+sheet or a dedicated sheet holds:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Base</th>
+<th>Bull</th>
+<th>Bear</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>One-line narrative</td>
+<td>Guidance-consistent growth; stable margins</td>
+<td>Faster rollout and LFL; mild margin gain</td>
+<td>Urban demand slowdown FY27–FY28; slower openings; markdowns</td>
+</tr>
+<tr>
+<td>Key driver differences vs Base</td>
+<td>—</td>
+<td>Store adds +25%, LFL +4 pp, GM +100 bps</td>
+<td>Store adds −33%, LFL −6 pp, GM −150 bps, DIO +10</td>
+</tr>
+<tr>
+<td>Evidence / sources</td>
+<td>FY26 Q2 concall guidance; 5-year averages</td>
+<td>Peer best-in-class performance; FY23 rebound</td>
+<td>FY20–FY21 and FY17 analogues; industry slowdown data</td>
+</tr>
+<tr>
+<td>Management response assumed</td>
+<td>—</td>
+<td>Additional DC capex</td>
+<td>Capex deferral, A&amp;P trimmed</td>
+</tr>
+<tr>
+<td>Owner and date</td>
+<td>Analyst, date</td>
+<td>Analyst, date</td>
+<td>Analyst, date</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>Approved / Draft</td>
+<td>Approved / Draft</td>
+<td>Approved / Draft</td>
+</tr>
+</tbody>
+</table>
+<p>This connects to the week's assumption log (each driver with source and rationale): the log documents <em>driver values</em>;
+the scenario notes document <em>why the set of values hangs together</em>.</p>
+<h3 id="change-log-for-scenarios">Change log for scenarios</h3>
+<p>When a case is revised (e.g., Bear store adds changed after a new concall), record it in the Cover change log with the
+version number, date, what changed and why. Over a deal or budget cycle, the change log answers the inevitable question,
+"why is Bear EV ₹2,000 crore higher than last month?"</p>
+<h3 id="checks-tied-to-labelling">Checks tied to labelling</h3>
+<ul>
+<li><strong>Base active on save/circulation</strong>: a check <code>=--(Scenario&lt;&gt;1)</code> shown on the Cover as "Non-Base case active"; some
+  teams add a workbook-open message or a pre-save macro reminder.</li>
+<li><strong>All output sheets labelled</strong>: a simple audit — every output sheet's header cell contains "Scenario:" — can be
+  tested with <code>=COUNTIF(Header_Cells,"*Scenario:*")=Output_Sheet_Count</code> where <code>Header_Cells</code> is a list of links to each
+  sheet's header.</li>
+<li><strong>Rationale completeness</strong>: every case has a non-blank narrative and status: <code>=COUNTBLANK(Scenario_Notes_Range)=0</code>.</li>
+</ul>
+<h3 id="fpa-and-reporting-context">FP&amp;A and reporting context</h3>
+<p>In budget packs, label versions as well as scenarios (Budget v3 — Base; Reforecast Q2 — Downside). In Power BI, add a
+scenario slicer and display the selected scenario in a card on every page; never publish a report where the scenario is
+implicit.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Hidden scenario.</strong> If a fourth "Management" case exists but is not presented, ensure outputs never default to it
+  silently; exclude it from the dropdown when circulating externally.</li>
+<li><strong>Mixed-case pages.</strong> A page that intentionally shows Base P&amp;L with Bear valuation must label both explicitly —
+  generally avoid such pages.</li>
+<li><strong>Exported PDFs.</strong> Export after checking the header; include a footer with file name and version.</li>
+<li><strong>Confidentiality.</strong> Scenario notes may contain sensitive judgements (e.g., about management credibility); decide
+  whether to strip them before external circulation, but keep them in the master file.</li>
+<li><strong>Rationale drift.</strong> Narratives must be updated when driver values change; a stale narrative is worse than none
+  because it misleads reviewers.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Every output sheet carries a live, formula-driven scenario header in a consistent location.</li>
+<li>Include entity basis, units and version in the header so printed pages are self-describing.</li>
+<li>Link chart titles to header cells; use conditional formatting to flag non-Base cases.</li>
+<li>Document each case's narrative, key differences, evidence, management response, owner and status in the model.</li>
+<li>Log scenario revisions in the Cover change log.</li>
+<li>Add checks for non-Base active, missing headers and incomplete rationale.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-header-formula-l1">Q1. Header formula [L1]</h3>
+<p>Write a header formula for a DCF sheet that shows company name, entity basis, units, scenario name and model version,
+using named ranges <code>Company</code>, <code>Basis</code>, <code>Units</code>, <code>Scenario_Names</code>, <code>Scenario</code> and <code>Model_Version</code>.</p>
+<h3 id="q2-print-ready-labelling-l2">Q2. Print-ready labelling [L2]</h3>
+<p>A board member printed the P&amp;L page and the scenario label did not appear. Explain the likely cause and the Page Setup
+and layout changes that guarantee the label prints on every page.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider where the label sits relative to the print area and repeated title rows.</p>
+</blockquote>
+<h3 id="q3-rationale-table-l2">Q3. Rationale table [L2]</h3>
+<p>Draft the scenario rationale table for a Pidilite model with Base, Bull and Bear (input-cost spike) cases, including
+narrative, key driver differences, evidence and management response.</p>
+<h3 id="q4-review-case-l3">Q4. Review case [L3]</h3>
+<p>An IC paper quotes a Trent value per share that matches the model's Bull case while the text calls it "our base case".
+Describe the controls (labelling, checks, change log, circulation process) that would have prevented this, and how you
+would investigate which version and case produced the number.</p></section>
+<nav class="pager"><a class="prev" href="S06_Capturing_Scenario_Outputs_Data_Tables_vs_Pasted.html">← Capturing Scenario Outputs: Data Tables vs Pasted Static…</a><a class="next" href="../concepts/C01_The_Live_Row_CHOOSE_or_INDEX_on_the_Scenario_Code.html">The Live Row: CHOOSE or INDEX on the Scenario Code →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Change Control: PBIP in Git, Measure Docs, Deployment Pipelines · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S07_Change_Control_PBIP_in_Git_Measure_Docs_Deployment.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T4 · Data governance and audit-trail controls</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Data governance and audit-trail controls</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Control_Measures_Dr_Cr_TB_Nets_to_Zero_A_L_E.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S01_Control_Measures_Dr_Cr_TB_Nets_to_Zero_A_L_E.html">Control Measures: Dr = Cr, TB Nets to Zero, A = L + E</a></li><li><a href="S02_GL_to_Dashboard_Tie_Out_Against_Source_TB_Control.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S02_GL_to_Dashboard_Tie_Out_Against_Source_TB_Control.html">GL-to-Dashboard Tie-Out Against Source TB Control Totals</a></li><li><a href="S03_Completeness_Checks_Unmapped_Ledgers_Row_Counts.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S03_Completeness_Checks_Unmapped_Ledgers_Row_Counts.html">Completeness Checks: Unmapped Ledgers, Row Counts, Missing Months</a></li><li><a href="S04_Refresh_Metadata_Last_Refresh_Latest_Posting_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S04_Refresh_Metadata_Last_Refresh_Latest_Posting_Date.html">Refresh Metadata: Last Refresh, Latest Posting Date, Source Files</a></li><li><a href="S05_Control_Panel_Page_with_PassFail_Indicators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S05_Control_Panel_Page_with_PassFail_Indicators.html">Control Panel Page with Pass/Fail Indicators</a></li><li><a href="S06_Access_Governance_RLS_Roles_Labels_Endorsement.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S06_Access_Governance_RLS_Roles_Labels_Endorsement.html">Access Governance: RLS, Roles, Labels, Endorsement, Lineage</a></li><li><a href="S07_Change_Control_PBIP_in_Git_Measure_Docs_Deployment.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/subtopics/S07_Change_Control_PBIP_in_Git_Measure_Docs_Deployment.html">Change Control: PBIP in Git, Measure Docs, Deployment Pipelines</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Dr_Cr_Diff_and_Dr_Cr_Status_Control_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C01_Dr_Cr_Diff_and_Dr_Cr_Status_Control_Measures.html">Dr Cr Diff and Dr Cr Status Control Measures</a></li><li><a href="../concepts/C02_BS_Check_Assets_Minus_Liabilities_Minus_Equity.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C02_BS_Check_Assets_Minus_Liabilities_Minus_Equity.html">BS Check: Assets Minus Liabilities Minus Equity Equals Zero</a></li><li><a href="../concepts/C03_Unmapped_Count_with_EXCEPT_over_GL_and_CoA_Account.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C03_Unmapped_Count_with_EXCEPT_over_GL_and_CoA_Account.html">Unmapped Count with EXCEPT over GL and CoA Account Codes</a></li><li><a href="../concepts/C04_Tie_out_Diff_Dashboard_Revenue_vs_TB_Control.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C04_Tie_out_Diff_Dashboard_Revenue_vs_TB_Control.html">Tie-out Diff: Dashboard Revenue vs TB Control Totals</a></li><li><a href="../concepts/C05_IST_Last_Refresh_Table_in_Power_Query.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C05_IST_Last_Refresh_Table_in_Power_Query.html">IST Last-Refresh Table in Power Query</a></li><li><a href="../concepts/C06_Per_File_Control_Totals_with_TableGroup_on.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/concepts/C06_Per_File_Control_Totals_with_TableGroup_on.html">Per-File Control Totals with Table.Group on Source.Name</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Change Control: PBIP in Git, Measure Docs, Deployment Pipelines</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Change control: PBIP files in Git, measure documentation, deployment pipelines (Dev/Test/Prod)</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A finance pack is a piece of software that computes reported numbers. Changing a measure, a mapping or a filter
+changes what the CFO sees, so it needs the same discipline as a change to an ERP configuration: a record of what
+changed, who changed it, why, who approved it, and a way to test before production. Auditors testing ITGCs call this
+<em>change management</em>. Without it, the classic failure is "someone edited the PBIX on their laptop, published over
+production, and EBITDA for last quarter moved by ₹2 crore — nobody knows why". The Companies (Accounts) Rules'
+audit-trail requirement (edit log for books of account, applicable from FY2023-24) covers the accounting software
+itself, not your BI layer, but the same principle — every change traceable — is what reviewers expect of reporting
+tools that sit on top of the books.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="1-pbip-files-in-git">1. PBIP files in Git</h3>
+<p>A PBIX is a binary zip: two versions cannot be meaningfully compared. The <strong>Power BI Project (PBIP)</strong> format
+(File &gt; Save as &gt; Power BI project) saves the same content as a folder of text files:</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Pack.pbip</code></td>
+<td>Pointer file that opens the project in Desktop</td>
+</tr>
+<tr>
+<td><code>Pack.SemanticModel/</code></td>
+<td>The model definition — in TMDL (Tabular Model Definition Language) or <code>model.bim</code> JSON: tables, columns, measures, relationships, roles, Power Query expressions</td>
+</tr>
+<tr>
+<td><code>Pack.Report/</code></td>
+<td>Report definition (legacy <code>report.json</code> or the newer PBIR folder format with one file per page/visual)</td>
+</tr>
+<tr>
+<td><code>.pbi/cache.abf</code></td>
+<td>Local data cache — excluded from Git via the generated <code>.gitignore</code></td>
+</tr>
+</tbody>
+</table>
+<p>Because measures are plain text, a Git diff shows exactly that <code>EBITDA</code> changed from
+<code>[Revenue] - [Operating Costs]</code> to <code>[Revenue] - [Operating Costs] - [Other Opex]</code>. Typical workflow:</p>
+<ol>
+<li>Developer creates a branch (<code>feature/add-ebitda-margin-pp</code>).</li>
+<li>Edits in Desktop, saves PBIP, commits with a message referencing the change request.</li>
+<li>Opens a pull request; reviewer (the reporting lead) reviews the TMDL diff and the control-page results.</li>
+<li>Merge to <code>main</code>; <code>main</code> is synced to the Dev workspace through <strong>Fabric Git integration</strong> (Azure DevOps or GitHub)
+   or deployed by a CI pipeline.</li>
+</ol>
+<p>PBIP, TMDL and the PBIR report format have been moving from preview towards general availability since 2023, in
+stages; check their status (and any preview-feature switches) in your Desktop version before standardising.</p>
+<h3 id="2-measure-documentation">2. Measure documentation</h3>
+<p>Every production measure needs, at minimum: name, business definition, DAX, format, owner, and which control or
+source it ties to. Store as much as possible <strong>inside the model</strong> so it travels with it:</p>
+<ul>
+<li><strong>Description</strong> property on each measure (shows as a tooltip in the Fields pane and in Excel's field list).</li>
+<li><strong>Display folders</strong> (<code>Controls</code>, <code>P&amp;L\Base</code>, <code>P&amp;L\Variance</code>, <code>Time intelligence</code>) to make the library navigable.</li>
+<li>A generated data dictionary: the DAX function <code>INFO.VIEW.MEASURES()</code> (or <code>INFO.MEASURES()</code>), available in recent
+  Desktop versions, returns measures with expressions and descriptions — query it in DAX query view and copy to
+  the user guide. In DAX Studio, the DMV <code>$SYSTEM.TMSCHEMA_MEASURES</code> does the same for older versions. Tabular
+  Editor can also export documentation and apply naming checks via its Best Practice Analyzer.</li>
+</ul>
+<p>A minimal dictionary entry:</p>
+<table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Definition</th>
+<th>DAX (summary)</th>
+<th>Format</th>
+<th>Ties to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EBITDA</td>
+<td>PBT + finance costs + D&amp;A − other income (per company's KPI definition)</td>
+<td><code>[PBT] + [Finance Costs] + [D&amp;A] - [Other Income]</code></td>
+<td>₹ Cr, 2 dp</td>
+<td>ERP P&amp;L via C05</td>
+</tr>
+<tr>
+<td>Dr Cr Diff</td>
+<td>Debits minus credits, account filters removed</td>
+<td><code>SUM(GL[Debit]) - SUM(GL[Credit])</code></td>
+<td>₹, 2 dp</td>
+<td>Control C01</td>
+</tr>
+</tbody>
+</table>
+<p>Note the definition column: EBITDA is a non-GAAP measure; whether other income is excluded is a company policy,
+and SEBI and auditors expect it to be applied consistently with what is disclosed in results presentations.</p>
+<h3 id="3-deployment-pipelines-dev-test-prod">3. Deployment pipelines (Dev → Test → Prod)</h3>
+<p>Power BI/Fabric deployment pipelines move content between workspaces assigned to stages (default three: Development,
+Test, Production; up to ten stages are configurable). Steps:</p>
+<ol>
+<li>Create the pipeline, assign a workspace to each stage. Workspaces must be on Premium, Premium Per User or Fabric
+   capacity.</li>
+<li>Developer publishes to Dev. Compare view shows differences between stages (new, different, same).</li>
+<li><strong>Deploy to Test</strong>. Set <strong>deployment rules</strong> per stage: data source rules (Test points at the UAT SharePoint folder)
+   and parameter rules (e.g. <code>FolderPath</code>, <code>Environment = "TEST"</code>). Rules apply after deployment so the same
+   definition targets different sources.</li>
+<li>Test: refresh, check the control page, compare totals with the previous Prod version, user acceptance by the
+   reporting lead.</li>
+<li><strong>Deploy to Prod</strong> — permissions can be restricted so only the reporting lead or IT can deploy to Production.
+   Deployment history records who deployed what and when.</li>
+</ol>
+<p>Deploying a semantic model replaces metadata but keeps data in the target (a refresh is needed only if the change
+requires it); RLS role memberships and credentials in the target stage are not overwritten.</p>
+<p>Without Premium, a manual equivalent is three workspaces (Dev/Test/Prod) and a documented publish procedure — weaker
+but better than publishing straight to production.</p>
+<h3 id="4-the-change-log">4. The change log</h3>
+<p>Tie it together with a change register (SharePoint list or Jira): ID, description, requested by, approved by,
+branch/commit, deployment date, controls result before and after. For material changes (e.g. remapping a ledger from
+Other expenses to Cost of materials consumed), record the effect on each reported line for prior periods, because the
+CFO may have already presented those numbers.</p>
+<h3 id="illustration">Illustration</h3>
+<p>Change request CR-047: "Reclassify freight-inward ledgers (5 ledgers, ₹6.4 crore YTD) from Other expenses to Cost of
+materials consumed per Schedule III". The mapping change is a CSV edit in the CoA file (data, not model), so Git holds
+the CoA mapping file too. The PR shows the five rows changed; Test-stage refresh shows Other expenses down ₹6.4 crore,
+COGS up ₹6.4 crore, PBT unchanged, all controls PASS. The reporting lead approves; deployment to Prod at 18:00 after
+the daily refresh; the CFO is told that gross margin for April–September is restated by 1.1 pp.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Mapping tables are code too.</strong> CoA mappings and control tolerances drive numbers; version them in Git (CSV) or a
+  SharePoint list with version history.</li>
+<li><strong>Hotfixes.</strong> An urgent fix during close still goes through Git; allow an expedited approval but no direct edits in
+  Prod.</li>
+<li><strong>Report-only changes</strong> (layout, colours) carry lower risk; you may skip Test for them, but document the policy.</li>
+<li><strong>Large models</strong> cannot be downloaded as PBIX once incremental refresh is applied in the Service; PBIP plus
+  deployment pipelines (or XMLA-based tools) is then the only practical change path.</li>
+<li><strong>Excel cube packs</strong> depend on measure names; renaming a measure breaks every <code>CUBEVALUE</code> referencing it. Treat names
+  as an interface and avoid renames, or search the workbooks first.</li>
+<li><strong>Secrets</strong> (connection strings, keys) never go into Git.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Save the pack as PBIP so measures, queries and report definitions are diffable text in Git.</li>
+<li>Review changes by pull request with the control-page results as evidence.</li>
+<li>Document measures inside the model (descriptions, display folders) and generate a dictionary from it.</li>
+<li>Use deployment pipelines with stage-specific rules for data sources and parameters; restrict Prod deployment.</li>
+<li>Keep mapping tables under version control, because they change numbers as much as DAX does.</li>
+<li>Record material changes and their effect on previously reported figures.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-pbix-vs-pbip-l1">Q1. PBIX vs PBIP [L1]</h3>
+<p>Explain to a finance manager why the team is moving from emailing PBIX files to a PBIP project in Git, naming the
+folders in a PBIP project and what each contains.</p>
+<h3 id="q2-deployment-rules-l2">Q2. Deployment rules [L2]</h3>
+<p>Your Dev workspace reads <code>https://contoso.sharepoint.com/sites/FinanceDev/GL/</code>, Test reads <code>.../FinanceUAT/GL/</code> and
+Prod reads <code>.../Finance/GL/</code>. The model has parameters <code>SiteUrl</code> and <code>Environment</code>. Describe the pipeline stages,
+the rules you would configure and the checks to perform before deploying to Prod.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Think about which rule type applies to parameters and what must be refreshed after deployment.</p>
+</blockquote>
+<h3 id="q3-change-request-evidence-l2">Q3. Change request evidence [L2]</h3>
+<p>A change redefines EBITDA to exclude ₹1.2 crore per quarter of foreign-exchange gains previously in Other income.
+List the artefacts (diff, control results, dictionary update, communication) that should be attached to the change
+request, and the numbers you would report as the impact on Q1–Q3 FY2025-26.</p>
+<h3 id="q4-designing-change-control-without-premium-l3">Q4. Designing change control without Premium [L3]</h3>
+<p>A mid-size listed company has Power BI Pro only and two BI developers. Design a practical change-control process
+covering Git, workspaces, approval, documentation and audit evidence, and identify which risks remain compared with
+deployment pipelines.</p>
+<h3 id="q5-interview-measure-names-as-an-interface-l1">Q5. Interview: measure names as an interface [L1]</h3>
+<p>Why might renaming <code>[Actual]</code> to <code>[Actual ₹]</code> break things outside Power BI, and how would you find out before you do it?</p></section>
+<nav class="pager"><a class="prev" href="S06_Access_Governance_RLS_Roles_Labels_Endorsement.html">← Access Governance: RLS, Roles, Labels, Endorsement, Lineage</a><a class="next" href="../concepts/C01_Dr_Cr_Diff_and_Dr_Cr_Status_Control_Measures.html">Dr Cr Diff and Dr Cr Status Control Measures →</a></nav>
+</main></div></body></html>

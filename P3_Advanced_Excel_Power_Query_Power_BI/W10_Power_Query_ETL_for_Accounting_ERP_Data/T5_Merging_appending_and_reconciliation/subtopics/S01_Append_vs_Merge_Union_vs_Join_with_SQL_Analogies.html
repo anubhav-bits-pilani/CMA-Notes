@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Append vs Merge: Union vs Join with SQL Analogies · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S01_Append_vs_Merge_Union_vs_Join_with_SQL_Analogies.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T5 · Merging, appending and reconciliation…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Merging, appending and reconciliation joins</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Append_vs_Merge_Union_vs_Join_with_SQL_Analogies.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S01_Append_vs_Merge_Union_vs_Join_with_SQL_Analogies.html">Append vs Merge: Union vs Join with SQL Analogies</a></li><li><a href="S02_The_Six_Join_Kinds_and_Their_Role_in_a.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S02_The_Six_Join_Kinds_and_Their_Role_in_a.html">The Six Join Kinds and Their Role in a Reconciliation</a></li><li><a href="S03_Bank_vs_Book_Matching_on_Amount_Reference_and_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S03_Bank_vs_Book_Matching_on_Amount_Reference_and_Date.html">Bank vs Book Matching on Amount, Reference and Date Window</a></li><li><a href="S04_Normalising_Composite_Keys_Before_Merging.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S04_Normalising_Composite_Keys_Before_Merging.html">Normalising Composite Keys Before Merging</a></li><li><a href="S05_Fuzzy_Merge_for_Vendor_and_Customer_Names.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S05_Fuzzy_Merge_for_Vendor_and_Customer_Names.html">Fuzzy Merge for Vendor and Customer Names</a></li><li><a href="S06_Repeated_Identical_Amounts_Sequence_Keys_for_One.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S06_Repeated_Identical_Amounts_Sequence_Keys_for_One.html">Repeated Identical Amounts: Sequence Keys for One-to-One Matching</a></li><li><a href="S07_Other_Reconciliations_GSTR_2B_AR_Control_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S07_Other_Reconciliations_GSTR_2B_AR_Control_and.html">Other Reconciliations: GSTR-2B, AR Control and Intercompany</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_LeftAnti_Join_Items_in_the_Bank_but_Not_in_the.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C01_LeftAnti_Join_Items_in_the_Bank_but_Not_in_the.html">LeftAnti Join: Items in the Bank but Not in the Books</a></li><li><a href="../concepts/C02_RightAnti_Join_Items_in_the_Books_but_Not_in_the.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C02_RightAnti_Join_Items_in_the_Books_but_Not_in_the.html">RightAnti Join: Items in the Books but Not in the Bank</a></li><li><a href="../concepts/C03_Expanding_Merged_Columns_with_Prefixed_Names.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C03_Expanding_Merged_Columns_with_Prefixed_Names.html">Expanding Merged Columns with Prefixed Names</a></li><li><a href="../concepts/C04_TableFuzzyNestedJoin_Syntax_and_Options.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C04_TableFuzzyNestedJoin_Syntax_and_Options.html">Table.FuzzyNestedJoin Syntax and Options</a></li><li><a href="../concepts/C05_Duplicate_Safe_Keys_with_Group_By_and_Index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C05_Duplicate_Safe_Keys_with_Group_By_and_Index.html">Duplicate-Safe Keys with Group By and Index</a></li><li><a href="../concepts/C06_Sign_Alignment_Between_Bank_and_Book.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C06_Sign_Alignment_Between_Bank_and_Book.html">Sign Alignment Between Bank and Book</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Append vs Merge: Union vs Join with SQL Analogies</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Append (<code>Table.Combine</code>) vs Merge (<code>Table.NestedJoin</code>): union vs join, with SQL analogies</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Append and Merge are the two ways to bring tables together, and confusing them is a classic beginner error with real financial consequences: appending a bank statement under a ledger double counts cash, while merging twelve monthly TBs on Ledger produces a wide, unusable table. Append stacks <strong>more rows of the same thing</strong> (months, branches, banks, scenarios). Merge <strong>matches rows of different things</strong> on a key (bank lines to book lines, invoices to a vendor master, ledgers to a Chart of Accounts mapping). Every reconciliation and every consolidation uses both, in a particular order.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="append-tablecombine">Append: Table.Combine</h3>
+<pre><code class="language-m">AllBanks = Table.Combine({HDFC, ICICI, SBI})
+</code></pre>
+<p>Append returns the rows of every input table, one after another. The UI (Home &gt; Append Queries, or Append Queries as New) offers "Two tables" or "Three or more tables" and generates <code>Table.Combine</code>.</p>
+<ul>
+<li><strong>Columns align by name</strong>, not position. A column missing in one table is filled with null for that table's rows. Column order follows the first table, with new names appended at the end.</li>
+<li><strong>Duplicates are kept</strong>: it behaves like <code>UNION ALL</code>, not <code>UNION</code>. For distinct rows, follow with <code>Table.Distinct</code>.</li>
+<li><strong>Types</strong>: if the same column has different types across inputs, the result type is broadened (often to <code>any</code>); retype after appending.</li>
+<li><strong>Folding</strong>: appending two tables from the same SQL database can fold to <code>UNION ALL</code>; file sources never fold.</li>
+</ul>
+<p>SQL analogy:</p>
+<pre><code class="language-sql">SELECT Date, Ref, Amount FROM hdfc
+UNION ALL
+SELECT Date, Ref, Amount FROM icici;
+</code></pre>
+<p>The key difference: SQL matches columns by <strong>position</strong> and requires equal column counts; M matches by <strong>name</strong> and tolerates different column sets.</p>
+<h3 id="merge-tablenestedjoin">Merge: Table.NestedJoin</h3>
+<pre><code class="language-m">Merged = Table.NestedJoin(Bank, {&quot;Ref&quot;, &quot;Amount&quot;}, Book, {&quot;Ref&quot;, &quot;Amount&quot;}, &quot;Book&quot;, JoinKind.LeftOuter)
+</code></pre>
+<p>Merge (Home &gt; Merge Queries) matches rows of the first (left) table to rows of the second (right) table where the key columns are equal, and adds <strong>one new column containing a nested table</strong> of the matching right rows for each left row. You then expand that column (choose which right-side columns to bring in) or aggregate it (count, sum).</p>
+<ul>
+<li><strong>Keys</strong> can be one or several columns; the UI selects them with Ctrl-click, and the order of selection pairs the columns.</li>
+<li><strong>Join kind</strong> is the sixth argument: <code>JoinKind.LeftOuter</code> (default in the UI), <code>RightOuter</code>, <code>FullOuter</code>, <code>Inner</code>, <code>LeftAnti</code>, <code>RightAnti</code>.</li>
+<li><strong>Equality is exact and type-sensitive</strong>: text "123" ≠ number 123; "ACME" ≠ "Acme"; null matches null.</li>
+<li><strong>Nested result</strong>: a left row with three matches gets a nested table of three rows; expanding produces three output rows.</li>
+</ul>
+<p><code>Table.Join</code> is the flat alternative: it returns the joined columns directly (no nested column), but fails if both tables have a column with the same name, so it suits joins where you control names. <code>Table.NestedJoin</code> is what the UI generates and what most recon queries use.</p>
+<p>SQL analogy:</p>
+<pre><code class="language-sql">SELECT k.*, b.VchNo, b.Narration
+FROM bank k
+LEFT JOIN book b ON k.Ref = b.Ref AND k.Amount = b.Amount;
+</code></pre>
+<h3 id="choosing-between-them">Choosing between them</h3>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Are the inputs the same kind of record from different files, periods or entities?</td>
+<td>Append</td>
+</tr>
+<tr>
+<td>Do I need attributes from another table for each row (lookup)?</td>
+<td>Merge, LeftOuter, expand</td>
+</tr>
+<tr>
+<td>Do I need to know which rows have no counterpart?</td>
+<td>Merge, LeftAnti / RightAnti</td>
+</tr>
+<tr>
+<td>Do I need Actual and Budget side by side for variance?</td>
+<td>Append with a Scenario column (long), then pivot or measure — or Merge on the dimension keys after grouping to the same grain</td>
+</tr>
+</tbody>
+</table>
+<p>The last row matters for FP&amp;A: appending Actual and Budget with a Scenario column produces a long fact table that a data model handles well; merging them requires both to be at exactly the same grain first.</p>
+<h3 id="typical-sequence-in-a-reconciliation">Typical sequence in a reconciliation</h3>
+<ol>
+<li><strong>Append</strong> the monthly or multi-bank statement files into one Bank table (folder pipeline).</li>
+<li><strong>Append</strong> book extracts for the same accounts into one Book table.</li>
+<li><strong>Normalise</strong> keys and signs on both.</li>
+<li><strong>Merge</strong> Bank to Book with anti-joins to produce exceptions; Inner to produce matched pairs.</li>
+<li><strong>Append</strong> the exception lists (with a Side column: "Bank only" / "Book only") into one exceptions table loaded to a sheet.</li>
+</ol>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>Bank (April) has 1,500 rows, Book has 1,460. Appending them gives 2,960 rows — meaningless for reconciliation, but exactly right if the goal is a combined "all cash movements" table with a Source column. Merging Bank to Book (Inner on Ref + Amount) gives 1,380 matched rows; LeftAnti gives 120 bank-only rows; RightAnti gives 80 book-only rows. Check: \(1{,}380 + 120 = 1{,}500\) bank rows and \(1{,}380 + 80 = 1{,}460\) book rows — the identity holds only if keys are unique on each side, which is the subject of the sequence-key subtopic.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Append with renamed columns.</strong> "Amount" in one table and "Amt" in another append as two separate half-null columns; standardise names first.</li>
+<li><strong>Merge direction.</strong> Left and right are not symmetric: LeftOuter keeps all left rows; choose the table whose completeness you care about as the left table.</li>
+<li><strong>Merging on calculated keys.</strong> Create the key as a column on both sides before merging; the merge dialog cannot use expressions.</li>
+<li><strong>Self-merge.</strong> Merging a table with itself (e.g. for duplicate-payment tests) is valid and common; use Reference queries to avoid recursion.</li>
+<li><strong>Performance.</strong> Merges on file sources are performed in memory; buffer the lookup table for repeated merges.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Append = stack rows (<code>Table.Combine</code>, like <code>UNION ALL</code> but matched by column name).</li>
+<li>Merge = match rows on keys (<code>Table.NestedJoin</code>, like <code>JOIN</code>), producing a nested table column to expand or aggregate.</li>
+<li>Merge equality is exact and type-sensitive; null matches null in M.</li>
+<li>Recons typically append within each side, then merge across sides, then append the exception lists.</li>
+<li>For FP&amp;A, append Actual and Budget with a Scenario column rather than merging them side by side.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-append-or-merge-l1">Q1. Append or merge? [L1]</h3>
+<p>For each task, state Append or Merge and the join kind if relevant: (a) combine Apr–Mar branch TBs; (b) add the Schedule III line item to each TB ledger from a mapping table; (c) list vendors in the payment file not present in the vendor master; (d) stack Actual and Budget fact tables for a variance model.</p>
+<h3 id="q2-predict-the-append-l2">Q2. Predict the append [L2]</h3>
+<p>Table Actual has Date, Account, Dept, Amount (24,000 rows). Table Budget has Account, Dept, Date, Amount, Scenario (6,000 rows). Describe the result of <code>Table.Combine({Actual, Budget})</code>: columns, order, row count and nulls. Then write the steps to make the result a clean long fact table.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Add the missing Scenario column to Actual before appending.</p>
+</blockquote>
+<h3 id="q3-sql-to-m-l2">Q3. SQL to M [L2]</h3>
+<p>Translate into M: <code>SELECT k.*, b.VchNo FROM bank k INNER JOIN book b ON k.Ref = b.Ref AND k.Amount = b.Amount;</code> Name each step and explain why the M result needs an expand step that the SQL does not.</p>
+<h3 id="q4-reconciliation-identity-l2">Q4. Reconciliation identity [L2]</h3>
+<p>After merging, Inner returns 2,410 rows, LeftAnti 165 rows and RightAnti 97 rows. The bank table has 2,560 rows and the book table 2,470. Explain what the mismatch between these counts tells you and how you would locate the cause.</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← Merging, appending and reconciliation joins</a><a class="next" href="S02_The_Six_Join_Kinds_and_Their_Role_in_a.html">The Six Join Kinds and Their Role in a Reconciliation →</a></nav>
+</main></div></body></html>

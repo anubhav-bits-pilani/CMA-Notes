@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dependent Dropdown Sources: INDIRECT vs a Spill Reference · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C03_Dependent_Dropdown_Sources_INDIRECT_vs_a_Spill.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T6 · What-if analysis and input controls</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · What-if analysis and input controls</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_One_and_Two_Variable_Data_Tables_for_Sensitivity.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S01_One_and_Two_Variable_Data_Tables_for_Sensitivity.html">One- and Two-Variable Data Tables for Sensitivity Analysis</a></li><li><a href="../subtopics/S02_Goal_Seek_for_Break_Even_Target_Margin_Price_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S02_Goal_Seek_for_Break_Even_Target_Margin_Price_and.html">Goal Seek for Break-Even, Target-Margin Price and Required Growth</a></li><li><a href="../subtopics/S03_Scenario_Manager_Scenarios_Changing_Cells_and_the.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S03_Scenario_Manager_Scenarios_Changing_Cells_and_the.html">Scenario Manager: Scenarios, Changing Cells and the Summary Report</a></li><li><a href="../subtopics/S04_Data_Validation_Dropdowns_Dependent_Lists_Limits.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S04_Data_Validation_Dropdowns_Dependent_Lists_Limits.html">Data Validation: Dropdowns, Dependent Lists, Limits and Messages</a></li><li><a href="../subtopics/S05_Formula_Based_Conditional_Formatting_for_Variances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S05_Formula_Based_Conditional_Formatting_for_Variances.html">Formula-Based Conditional Formatting for Variances and Scenarios</a></li><li><a href="../subtopics/S06_Form_Controls_Linked_to_Cells_for_Model_Dashboards.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S06_Form_Controls_Linked_to_Cells_for_Model_Dashboards.html">Form Controls Linked to Cells for Model Dashboards</a></li><li><a href="../subtopics/S07_Solver_for_Product_Mix_and_Capital_Rationing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S07_Solver_for_Product_Mix_and_Capital_Rationing.html">Solver for Product Mix and Capital Rationing</a></li><li><a href="../subtopics/S08_Calculation_Mode_Automatic_Except_Data_Tables_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S08_Calculation_Mode_Automatic_Except_Data_Tables_and.html">Calculation Mode: Automatic Except Data Tables and F9 Recalculation</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_The_TABLE_Array_Formula_and_the_Same_Sheet_Input.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C01_The_TABLE_Array_Formula_and_the_Same_Sheet_Input.html">The TABLE Array Formula and the Same-Sheet Input Rule</a></li><li><a href="C02_Goal_Seek_Rules_Formula_Set_Cell_Hard_Coded.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C02_Goal_Seek_Rules_Formula_Set_Cell_Hard_Coded.html">Goal Seek Rules: Formula Set Cell, Hard-Coded Changing Cell</a></li><li><a href="C03_Dependent_Dropdown_Sources_INDIRECT_vs_a_Spill.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C03_Dependent_Dropdown_Sources_INDIRECT_vs_a_Spill.html">Dependent Dropdown Sources: INDIRECT vs a Spill Reference</a></li><li><a href="C04_Conditional_Format_Rule_for_Negative_Rows_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C04_Conditional_Format_Rule_for_Negative_Rows_Column.html">Conditional Format Rule for Negative Rows: Column Locked, Row Relative</a></li><li><a href="C05_Variance_Flag_Rule_with_a_Named_Threshold_Input.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C05_Variance_Flag_Rule_with_a_Named_Threshold_Input.html">Variance Flag Rule with a Named Threshold Input</a></li><li><a href="C06_Scenario_Manager_Limits_32_Changing_Cells_and_a.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C06_Scenario_Manager_Limits_32_Changing_Cells_and_a.html">Scenario Manager Limits: 32 Changing Cells and a Static Summary</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Dependent Dropdown Sources: INDIRECT vs a Spill Reference</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Dependent list source <code>=INDIRECT(&#36;B2)</code>, or a spill reference <code>=&#36;H&#36;2#</code> pointing at a UNIQUE output</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>Two ways to supply the <strong>Source</strong> of a Data Validation list:</p>
+<p><strong>1. INDIRECT for dependent lists</strong></p>
+<pre><code class="language-excel">=INDIRECT($B2)
+</code></pre>
+<p>Returns the range whose <em>name</em> is the text in B2. If B2 holds "Sales" and a defined name <code>Sales</code> refers to the Sales cost-centre list, the dropdown in C2 shows those cost centres. Column B is locked, row relative, so the rule copied down column C looks at each row's own department.</p>
+<p><strong>2. A spill reference to a dynamic list</strong></p>
+<p>Source: <code>=&#36;H&#36;2#</code> — an absolute reference to the anchor H2 plus the spill operator <code>#</code>, where H2 contains, for example:</p>
+<pre><code class="language-excel">=SORT(UNIQUE(GL[Dept]))
+</code></pre>
+<p>The dropdown always lists exactly the values currently in the spill, growing and shrinking with the data.</p>
+<h2 id="explanation">Explanation</h2>
+<p><strong>INDIRECT method — how it works and why it is fragile.</strong> Data Validation evaluates the source formula each time the dropdown opens. INDIRECT converts text to a reference, so each department name must match a defined name exactly. Constraints:</p>
+<ul>
+<li>Names cannot contain spaces or start with digits: "Plant Pune" must map to <code>Plant_Pune</code> via <code>=INDIRECT(SUBSTITUTE($B2, " ", "_"))</code>.</li>
+<li>Renaming a department in the parent list breaks the child silently (the dropdown shows nothing).</li>
+<li>Every new department needs a new named range created by hand.</li>
+<li>INDIRECT is volatile, though inside validation the performance cost is negligible.</li>
+</ul>
+<p>It is the only formula-only method that works <strong>row by row</strong> for long input templates in all Excel versions, which is why it remains widespread.</p>
+<p><strong>Spill-reference method — dynamic and maintenance-free.</strong> Data Validation accepts a spill reference (in Microsoft 365) as a list source, either directly or via a defined name (<code>DeptList</code> referring to <code>=Lists!H2#</code>, stored absolute by Name Manager). New departments appear automatically when the GL or mapping Table grows. For a dependent list from a single selector, put a FILTER spill on the Lists sheet:</p>
+<pre><code class="language-excel">=SORT(FILTER(Map[CostCentre], Map[Dept]=Inputs!B2, &quot;—&quot;))
+</code></pre>
+<p>and point the child validation at that spill. The limitation: one spill serves one selector cell, so row-by-row dependent lists need either INDIRECT or a helper spill per row.</p>
+<p><strong>Absolute vs relative.</strong> For the spill source, the reference must be absolute so every validated cell points at the same list. For the INDIRECT source, the parent reference is usually column-absolute, row-relative, so each row reads its own parent.</p>
+<p><strong>Clean-up rule.</strong> Neither method clears the child value when the parent changes. Add a validity check such as <code>=COUNTIFS(Map[Dept], B2, Map[CostCentre], C2)=1</code> with conditional formatting.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Mapping Table <code>Map</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Dept</th>
+<th>CostCentre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sales</td>
+<td>S-North</td>
+</tr>
+<tr>
+<td>Sales</td>
+<td>S-West</td>
+</tr>
+<tr>
+<td>Marketing</td>
+<td>M-Digital</td>
+</tr>
+<tr>
+<td>Marketing</td>
+<td>M-Events</td>
+</tr>
+<tr>
+<td>Plant Pune</td>
+<td>P-Assembly</td>
+</tr>
+</tbody>
+</table>
+<p>INDIRECT set-up: names <code>Sales</code> (S-North, S-West), <code>Marketing</code> (M-Digital, M-Events), <code>Plant_Pune</code> (P-Assembly); child source uses SUBSTITUTE. Adding "Plant Chakan" requires a new name <code>Plant_Chakan</code>.</p>
+<p>Spill set-up: Lists!H2 <code>=SORT(UNIQUE(Map[Dept]))</code> feeds the department dropdown (via the absolute spill reference); Lists!J2 <code>=SORT(FILTER(Map[CostCentre], Map[Dept]=Inputs!B2, "—"))</code> feeds the cost-centre dropdown. Adding "Plant Chakan" rows to <code>Map</code> updates both lists with no other change.</p>
+<h2 id="connections">Connections</h2>
+<p>Implements s04 (Data Validation dropdowns), uses UNIQUE/SORT/FILTER from w9_t4, and feeds scenario-index formulas (<code>MATCH(Scenario, ScenarioList, 0)</code> with CHOOSE) from w9_t2. The pitfall "list sources on fixed ranges do not grow" is solved by the spill method. Avoiding volatile INDIRECT and OFFSET in large models is a related item in w9_t2.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-build-both-versions-l1">Q1. Build both versions [L1]</h3>
+<p>For entities (India, UAE, UK) and their cost centres, write the named ranges and validation sources for an INDIRECT-based dependent dropdown, then the UNIQUE/FILTER spills and validation sources for the spill-based version.</p>
+<h3 id="q2-why-is-the-dropdown-empty-l2">Q2. Why is the dropdown empty? [L2]</h3>
+<p>After the department "Plant Pune" was renamed "Pune Plant" in the master list, users report that the cost-centre dropdown is empty for that department, while previously entered rows still show old cost centres. Explain both symptoms and propose a robust redesign.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider what INDIRECT is looking for and whether validation re-checks existing entries.</p>
+</blockquote>
+<h3 id="q3-choosing-a-method-for-a-300-row-template-l2">Q3. Choosing a method for a 300-row template [L2]</h3>
+<p>A capex budget template needs department and cost-centre dropdowns on each of 300 rows and will be used by colleagues on Microsoft 365 and Excel 2019. Recommend a method, explain the trade-offs, and describe the checks you would add before consolidation.</p></section>
+<nav class="pager"><a class="prev" href="C02_Goal_Seek_Rules_Formula_Set_Cell_Hard_Coded.html">← Goal Seek Rules: Formula Set Cell, Hard-Coded Changing Cell</a><a class="next" href="C04_Conditional_Format_Rule_for_Negative_Rows_Column.html">Conditional Format Rule for Negative Rows: Column Locked,… →</a></nav>
+</main></div></body></html>

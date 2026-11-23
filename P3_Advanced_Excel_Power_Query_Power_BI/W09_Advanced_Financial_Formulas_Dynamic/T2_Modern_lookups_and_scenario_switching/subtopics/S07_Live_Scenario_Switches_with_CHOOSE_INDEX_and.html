@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Scenario Switches with CHOOSE, INDEX and SWITCH · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S07_Live_Scenario_Switches_with_CHOOSE_INDEX_and.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T2 · Modern lookups and scenario switching</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Modern lookups and scenario switching</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_XLOOKUP_Arguments_Not_Found_Value_Match_Mode_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S01_XLOOKUP_Arguments_Not_Found_Value_Match_Mode_and.html">XLOOKUP Arguments: Not-Found Value, Match Mode and Search Mode</a></li><li><a href="S02_Approximate_Match_Lookups_for_Slabs_TDS_Rates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S02_Approximate_Match_Lookups_for_Slabs_TDS_Rates.html">Approximate-Match Lookups for Slabs, TDS Rates, Tiers and Bands</a></li><li><a href="S03_Reverse_Search_for_Latest_Price_FX_Rate_and_Last.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S03_Reverse_Search_for_Latest_Price_FX_Rate_and_Last.html">Reverse Search for Latest Price, FX Rate and Last Payment Date</a></li><li><a href="S04_Two_Way_Lookups_on_Account_Month_Grids.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S04_Two_Way_Lookups_on_Account_Month_Grids.html">Two-Way Lookups on Account × Month Grids</a></li><li><a href="S05_XLOOKUP_Returning_Rows_Columns_and_Range.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S05_XLOOKUP_Returning_Rows_Columns_and_Range.html">XLOOKUP Returning Rows, Columns and Range References</a></li><li><a href="S06_XMATCH_and_INDEX_XMATCH_for_Dynamic_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S06_XMATCH_and_INDEX_XMATCH_for_Dynamic_Column.html">XMATCH and INDEX-XMATCH for Dynamic Column Selection</a></li><li><a href="S07_Live_Scenario_Switches_with_CHOOSE_INDEX_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S07_Live_Scenario_Switches_with_CHOOSE_INDEX_and.html">Live Scenario Switches with CHOOSE, INDEX and SWITCH</a></li><li><a href="S08_Multi_Key_Lookups_Helper_Keys_vs_Boolean_Arrays.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S08_Multi_Key_Lookups_Helper_Keys_vs_Boolean_Arrays.html">Multi-Key Lookups: Helper Keys vs Boolean Arrays</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_The_Fully_Specified_XLOOKUP_for_Ledger_Mapping.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C01_The_Fully_Specified_XLOOKUP_for_Ledger_Mapping.html">The Fully Specified XLOOKUP for Ledger Mapping</a></li><li><a href="../concepts/C02_Next_Smaller_XLOOKUP_for_Slab_Rates_Without.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C02_Next_Smaller_XLOOKUP_for_Slab_Rates_Without.html">Next-Smaller XLOOKUP for Slab Rates Without Sorting</a></li><li><a href="../concepts/C03_Nested_XLOOKUP_as_a_Two_Way_Lookup.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C03_Nested_XLOOKUP_as_a_Two_Way_Lookup.html">Nested XLOOKUP as a Two-Way Lookup</a></li><li><a href="../concepts/C04_INDEX_MATCH_MATCH_The_Version_Proof_Two_Way_Lookup.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C04_INDEX_MATCH_MATCH_The_Version_Proof_Two_Way_Lookup.html">INDEX-MATCH-MATCH: The Version-Proof Two-Way Lookup</a></li><li><a href="../concepts/C05_Boolean_Array_XLOOKUP_for_Multi_Criteria_Lookups.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C05_Boolean_Array_XLOOKUP_for_Multi_Criteria_Lookups.html">Boolean-Array XLOOKUP for Multi-Criteria Lookups</a></li><li><a href="../concepts/C06_CHOOSE_Driven_by_a_MATCH_Index_for_Scenario.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C06_CHOOSE_Driven_by_a_MATCH_Index_for_Scenario.html">CHOOSE Driven by a MATCH Index for Scenario Selection</a></li><li><a href="../concepts/C07_Dynamic_Period_Window_with_XLOOKUPXLOOKUP.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C07_Dynamic_Period_Window_with_XLOOKUPXLOOKUP.html">Dynamic Period Window with XLOOKUP:XLOOKUP</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Live Scenario Switches with CHOOSE, INDEX and SWITCH</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Scenario switches (Base / Upside / Downside) with CHOOSE, INDEX or SWITCH driven by a dropdown cell</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Every budget, forecast, DCF and lender model has to answer "what if things go better or worse?". The professional answer is a <strong>live scenario switch</strong>: a single dropdown on the cover or assumptions sheet that re-points every driver to the chosen case, so the whole three-statement model, valuation and covenant tests recalculate instantly. Unlike Scenario Manager (which pastes static values) the switch is transparent, auditable and compatible with Data Tables — you can even run a Data Table over the scenario index to show all cases side by side. It is a staple of banking and FP&amp;A models and a frequent model-test task.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="architecture">Architecture</h3>
+<ol>
+<li><strong>Scenario list</strong> — a small Table or named range <code>ScenList</code> = {Base; Upside; Downside}.</li>
+<li><strong>Selector cell</strong> — <code>Scenario</code>, a Data Validation list dropdown sourced from <code>ScenList</code>, placed on the cover/control sheet, formatted as an input.</li>
+<li><strong>Index cell</strong> — <code>ScenIdx</code> <code>=XMATCH(Scenario, ScenList)</code> (or <code>MATCH(Scenario, ScenList, 0)</code>), returning 1, 2 or 3.</li>
+<li><strong>Case block</strong> — for each driver, one column per scenario on the assumptions sheet.</li>
+<li><strong>Live column</strong> — a column beside the case block that picks the active value; <strong>all model formulas reference only the live column</strong>.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Driver</th>
+<th>Live</th>
+<th>Base</th>
+<th>Upside</th>
+<th>Downside</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Volume growth</td>
+<td>(formula)</td>
+<td>8.0%</td>
+<td>12.0%</td>
+<td>3.0%</td>
+</tr>
+<tr>
+<td>Realisation growth</td>
+<td>(formula)</td>
+<td>4.0%</td>
+<td>5.5%</td>
+<td>1.5%</td>
+</tr>
+<tr>
+<td>Gross margin</td>
+<td>(formula)</td>
+<td>38.0%</td>
+<td>40.0%</td>
+<td>34.0%</td>
+</tr>
+<tr>
+<td>Debtor days</td>
+<td>(formula)</td>
+<td>55</td>
+<td>50</td>
+<td>68</td>
+</tr>
+</tbody>
+</table>
+<p>Separating the live column from the case columns is the key discipline: model calculations never point directly at Base/Upside/Downside cells, so adding a scenario changes only the selector logic.</p>
+<h3 id="option-1-choose">Option 1 — CHOOSE</h3>
+<pre><code class="language-excel">=CHOOSE(ScenIdx, D6, E6, F6)
+</code></pre>
+<p>CHOOSE returns the <code>index_num</code>-th value from its list (up to 254 values). It is explicit and easy to read for three cases. Weaknesses: adding a fourth scenario means editing every live formula; an index outside 1–3 returns <code>#VALUE!</code>; and a non-integer index is truncated (2.7 → 2).</p>
+<p>CHOOSE can also return ranges: <code>=SUM(CHOOSE(ScenIdx, Base_Rev, Up_Rev, Down_Rev))</code> sums the chosen named range — useful for switching whole rows.</p>
+<h3 id="option-2-index-or-index-xmatch">Option 2 — INDEX (or INDEX-XMATCH)</h3>
+<pre><code class="language-excel">=INDEX(D6:F6, ScenIdx)
+</code></pre>
+<p>INDEX over the case row picks the column by position. Adding a scenario column inside the block (and extending the range) needs no formula change if the block is a named range or Table. With headers, avoid the index cell entirely: <code>=INDEX(D6:F6, XMATCH(Scenario, D5:F5))</code>, or <code>=XLOOKUP(Scenario, D5:F5, D6:F6)</code>. This is the most scalable option for models with many scenarios.</p>
+<h3 id="option-3-switch">Option 3 — SWITCH</h3>
+<pre><code class="language-excel">=SWITCH(Scenario, &quot;Base&quot;, D6, &quot;Upside&quot;, E6, &quot;Downside&quot;, F6, NA())
+</code></pre>
+<p>SWITCH matches the scenario <strong>name</strong> directly, so no index cell is needed, and the final default (<code>NA()</code>) makes an invalid selection loud. Like CHOOSE, it must be edited for every new scenario; it is readable for short lists.</p>
+<h3 id="comparison">Comparison</h3>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>CHOOSE</th>
+<th>INDEX / XLOOKUP</th>
+<th>SWITCH</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Driven by</td>
+<td>index number</td>
+<td>index or header name</td>
+<td>scenario name</td>
+</tr>
+<tr>
+<td>Adding a scenario</td>
+<td>edit every formula</td>
+<td>extend the block only</td>
+<td>edit every formula</td>
+</tr>
+<tr>
+<td>Invalid selection</td>
+<td><code>#VALUE!</code></td>
+<td><code>#REF!</code> / <code>#N/A</code></td>
+<td>default value</td>
+</tr>
+<tr>
+<td>Readability</td>
+<td>high for 3 cases</td>
+<td>medium</td>
+<td>high</td>
+</tr>
+<tr>
+<td>Data Table on the index</td>
+<td>yes</td>
+<td>yes</td>
+<td>needs a name-to-index layer</td>
+</tr>
+<tr>
+<td>Versions</td>
+<td>all</td>
+<td>all (XLOOKUP 2021+)</td>
+<td>Excel 2019+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="showing-all-scenarios-at-once">Showing all scenarios at once</h3>
+<p>Because the switch is formula-driven, a one-variable Data Table with <code>ScenIdx</code> (or a hard-coded index input it reads from) as the column input cell and outputs such as EBITDA, PAT, equity IRR and minimum DSCR across the top produces a live side-by-side summary — something Scenario Manager can only do as a static snapshot. (Data Table input cells must be on the same sheet as the table; put the index input on that sheet.)</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>FY27 revenue build: FY26 revenue ₹420 crore; Live volume growth and realisation growth are selected by <code>ScenIdx</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Volume</th>
+<th>Price</th>
+<th>FY27 revenue = 420 × (1 + v) × (1 + p)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base (1)</td>
+<td>8.0%</td>
+<td>4.0%</td>
+<td>₹471.7 crore</td>
+</tr>
+<tr>
+<td>Upside (2)</td>
+<td>12.0%</td>
+<td>5.5%</td>
+<td>₹496.3 crore</td>
+</tr>
+<tr>
+<td>Downside (3)</td>
+<td>3.0%</td>
+<td>1.5%</td>
+<td>₹439.1 crore</td>
+</tr>
+</tbody>
+</table>
+<p>Switching the dropdown from Base to Downside changes the live column, revenue falls by ₹32.6 crore and every downstream line — receivables via debtor days, working capital, cash, DSCR — moves with it.</p>
+<h3 id="controls-and-presentation">Controls and presentation</h3>
+<ul>
+<li>Show the active scenario name in every output header (<code>="Projected P&amp;L – "&amp;Scenario&amp;" case"</code>), so printed pages cannot be misread.</li>
+<li>Conditional formatting on the case block to highlight the active column (<code>=D$5=Scenario</code>).</li>
+<li>A check that <code>ScenIdx</code> is a valid number: <code>=ISNUMBER(ScenIdx)</code>.</li>
+<li>Keep the scenario dropdown on one control sheet only; multiple selectors drift apart.</li>
+</ul>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Scenarios that change structure</strong> (e.g. a new plant in Upside only) need flags (1/0) switched by scenario, not just different growth rates.</li>
+<li><strong>Mixed scenario combinations</strong> (Upside volume with Downside price) need separate selectors per driver group — more flexible but harder to communicate; document the combination shown.</li>
+<li><strong>Hard-coded overrides</strong> typed into the live column break the switch silently; colour the live column as formulas (black) and protect it.</li>
+<li><strong>Circularity and Goal Seek</strong> interplay: Goal Seek on a scenario model overwrites one case input; record the result as a named scenario rather than leaving it in the Base column.</li>
+<li><strong>CHOOSE with ranges</strong> of different sizes returns inconsistent arrays — keep scenario rows aligned.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>One dropdown → one index cell → one live column; model formulas read only the live column.</li>
+<li>CHOOSE is simplest for a fixed short list; INDEX/XLOOKUP scales best; SWITCH matches names with a safe default.</li>
+<li>A Data Table over the scenario index gives a live all-scenarios summary.</li>
+<li>Label every output with the active scenario and highlight the active case column.</li>
+<li>Live switches are preferable to Scenario Manager's static snapshots for modelling work.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-build-the-switch-l1">Q1. Build the switch [L1]</h3>
+<p>Set up a scenario switch for five drivers (volume growth, price growth, gross margin, employee cost inflation, capex as % of revenue) with Base, Upside and Downside values of your choice. Write the formulas for the index cell, the Live column using CHOOSE, and the same Live column using INDEX with XMATCH on headers.</p>
+<h3 id="q2-adding-a-management-case-l2">Q2. Adding a Management case [L2]</h3>
+<p>The CFO asks for a fourth "Board" case. Compare the work required under CHOOSE, INDEX-XMATCH and SWITCH implementations across a model with 140 live driver formulas, and state which you would choose for a lender model that will be revised monthly.</p>
+<h3 id="q3-scenario-summary-table-l2">Q3. Scenario summary table [L2]</h3>
+<p>Design a one-variable Data Table that shows FY27 revenue, EBITDA, PAT and minimum DSCR for all three scenarios simultaneously, given the switch reads <code>ScenIdx</code>. Specify where the input cell must sit, what goes in the column of input values, and what calculation setting may hide stale results.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> The Data Table substitutes values into a cell that the switch reads — think about what that cell must contain.</p>
+</blockquote>
+<h3 id="q4-revenue-scenarios-l1">Q4. Revenue scenarios [L1]</h3>
+<p>FY26 revenue is ₹265 crore. Base: volume +6%, price +3%; Upside: +10%, +4.5%; Downside: 0%, +1%. Set up the CHOOSE-based switch and write the formula for FY27 revenue so it updates when the dropdown changes.</p>
+<h3 id="q5-structural-scenario-l3">Q5. Structural scenario [L3]</h3>
+<p>In the Upside case, a second production line starts in October 2026 adding 30% capacity, with ₹85 crore capex in Q1 FY27. Explain how you would represent this in a switch-driven model (flags, timing inputs, capex schedule) so that the Base and Downside cases are unaffected and the switch still works with a single dropdown.</p></section>
+<nav class="pager"><a class="prev" href="S06_XMATCH_and_INDEX_XMATCH_for_Dynamic_Column.html">← XMATCH and INDEX-XMATCH for Dynamic Column Selection</a><a class="next" href="S08_Multi_Key_Lookups_Helper_Keys_vs_Boolean_Arrays.html">Multi-Key Lookups: Helper Keys vs Boolean Arrays →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rolling 12-Month and Trailing 3-Month Windows with DATESINPERIOD · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S04_Rolling_12_Month_and_Trailing_3_Month_Windows_with.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T4 · Time intelligence for April–March FY</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Time intelligence for April–March FY</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_YTD_QTD_and_MTD_Measures_for_an_AprilMarch_Fiscal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S01_YTD_QTD_and_MTD_Measures_for_an_AprilMarch_Fiscal.html">YTD, QTD and MTD Measures for an April–March Fiscal Year</a></li><li><a href="S02_SAMEPERIODLASTYEAR_vs_DATEADD_vs_PARALLELPERIOD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S02_SAMEPERIODLASTYEAR_vs_DATEADD_vs_PARALLELPERIOD.html">SAMEPERIODLASTYEAR vs DATEADD vs PARALLELPERIOD</a></li><li><a href="S03_PY_YTD_YTD_Growth_MoM_and_YoY_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S03_PY_YTD_YTD_Growth_MoM_and_YoY_Measures.html">PY YTD, YTD Growth, MoM % and YoY % Measures</a></li><li><a href="S04_Rolling_12_Month_and_Trailing_3_Month_Windows_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S04_Rolling_12_Month_and_Trailing_3_Month_Windows_with.html">Rolling 12-Month and Trailing 3-Month Windows with DATESINPERIOD</a></li><li><a href="S05_Capping_Time_Intelligence_at_the_Last_Actuals_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S05_Capping_Time_Intelligence_at_the_Last_Actuals_Date.html">Capping Time Intelligence at the Last Actuals Date</a></li><li><a href="S06_Time_Intelligence_Prerequisites_Marked_Contiguous.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S06_Time_Intelligence_Prerequisites_Marked_Contiguous.html">Time-Intelligence Prerequisites: Marked, Contiguous Date Table</a></li><li><a href="S07_Calculation_Groups_and_Field_Parameters_for_Time.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S07_Calculation_Groups_and_Field_Parameters_for_Time.html">Calculation Groups and Field Parameters for Time-Intelligence Views</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_TOTALYTD_with_331_Equals_CALCULATE_with_DATESYTD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C01_TOTALYTD_with_331_Equals_CALCULATE_with_DATESYTD.html">TOTALYTD with &quot;3/31&quot; Equals CALCULATE with DATESYTD</a></li><li><a href="../concepts/C02_PY_YTD_via_SAMEPERIODLASTYEAR_and_the_YoY_Measure.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C02_PY_YTD_via_SAMEPERIODLASTYEAR_and_the_YoY_Measure.html">PY YTD via SAMEPERIODLASTYEAR and the YoY % Measure</a></li><li><a href="../concepts/C03_Prior_Month_Actual_with_DATEADD_and_the_MoM.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C03_Prior_Month_Actual_with_DATEADD_and_the_MoM.html">Prior-Month Actual with DATEADD and the MoM % Measure</a></li><li><a href="../concepts/C04_Rolling_12_Month_Measure_with_DATESINPERIOD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C04_Rolling_12_Month_Measure_with_DATESINPERIOD.html">Rolling 12-Month Measure with DATESINPERIOD</a></li><li><a href="../concepts/C05_Last_Actual_Date_and_Capping_YTD_at_Posted_Data.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C05_Last_Actual_Date_and_Capping_YTD_at_Posted_Data.html">Last Actual Date and Capping YTD at Posted Data</a></li><li><a href="../concepts/C06_Locale_Parsing_of_the_Year_End_String_in_DATESYTD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C06_Locale_Parsing_of_the_Year_End_String_in_DATESYTD.html">Locale Parsing of the Year-End String in DATESYTD</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Rolling 12-Month and Trailing 3-Month Windows with DATESINPERIOD</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Rolling 12-month and trailing 3-month windows with DATESINPERIOD</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>YTD numbers reset every April, which makes trend lines saw-toothed and hides momentum in Q1. Rolling windows fix
+that: Rolling 12-Month (R12M, also called LTM or TTM) revenue and EBITDA smooth seasonality, give an annualised run
+rate at any month-end, and are the basis for LTM multiples (EV/LTM EBITDA) in valuation, LTM covenant tests (Net
+Debt / LTM EBITDA) in bank sanction letters, and trailing-3-month (T3M) run rates in sales reviews. The Saturday
+assessment this week asks for an R12M Revenue measure explicitly.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="datesinperiod">DATESINPERIOD</h3>
+<pre><code class="language-DAX">DATESINPERIOD ( &lt;dates&gt;, &lt;start_date&gt;, &lt;number_of_intervals&gt;, &lt;interval&gt; )
+</code></pre>
+<ul>
+<li><code>dates</code>: the Date table date column.</li>
+<li><code>start_date</code>: the anchor date — usually <code>MAX('Date'[Date])</code>, the last visible date.</li>
+<li><code>number_of_intervals</code>: negative to look back (−12, −3), positive to look forward.</li>
+<li><code>interval</code>: <code>DAY</code>, <code>MONTH</code>, <code>QUARTER</code> or <code>YEAR</code>.</li>
+</ul>
+<p>It returns the contiguous set of dates from the anchor back (or forward) by the given span. With anchor 30 November
+2025 and −12 MONTH, the result is 1 December 2024 – 30 November 2025: twelve whole months ending on the anchor.
+Unlike <code>DATESYTD</code>, it does not reset at year boundaries.</p>
+<h3 id="the-core-measures">The core measures</h3>
+<pre><code class="language-DAX">Rolling 12M =
+CALCULATE (
+    [Actual],
+    DATESINPERIOD ( 'Date'[Date], MAX ( 'Date'[Date] ), -12, MONTH )
+)
+
+Trailing 3M =
+CALCULATE (
+    [Actual],
+    DATESINPERIOD ( 'Date'[Date], MAX ( 'Date'[Date] ), -3, MONTH )
+)
+
+T3M Monthly Avg = DIVIDE ( [Trailing 3M], 3 )
+T3M Annualised  = [Trailing 3M] * 4
+</code></pre>
+<p><code>MAX('Date'[Date])</code> is evaluated in the outer filter context <em>before</em> <code>CALCULATE</code> replaces the date filter — the
+filter arguments of <code>CALCULATE</code> are computed in the original context, so the anchor is the month-end of the row
+being displayed.</p>
+<h3 id="rolling-margins">Rolling margins</h3>
+<p>Ratios over a rolling window are computed as ratio of rolling sums, never as averages of monthly ratios:</p>
+<p>\[
+\text{R12M EBITDA \%} = \frac{\sum_{m=t-11}^{t} \text{EBITDA}_{m}}{\sum_{m=t-11}^{t} \text{Revenue}_{m}}
+\]</p>
+<pre><code class="language-DAX">R12M Revenue     = CALCULATE ( [Revenue], DATESINPERIOD ( 'Date'[Date], MAX ( 'Date'[Date] ), -12, MONTH ) )
+R12M EBITDA      = CALCULATE ( [EBITDA],  DATESINPERIOD ( 'Date'[Date], MAX ( 'Date'[Date] ), -12, MONTH ) )
+R12M EBITDA %    = DIVIDE ( [R12M EBITDA], [R12M Revenue] )
+</code></pre>
+<h3 id="guarding-incomplete-windows">Guarding incomplete windows</h3>
+<p>Two failure modes:</p>
+<ol>
+<li><strong>Not enough history.</strong> In the first eleven months of data, R12M is a partial sum and looks like a collapse
+   relative to later months. Blank it when fewer than 12 months have data.</li>
+<li><strong>Future months in the Date table.</strong> If the Date table runs to 31 March 2026 and actuals stop at 30 November
+   2025, an FY26 total row has anchor 31 March 2026: the window is April 2025 – March 2026, which contains only eight
+   months of actuals. The value equals YTD, labelled as R12M — misleading.</li>
+</ol>
+<pre><code class="language-DAX">Rolling 12M (guarded) =
+VAR anchor =
+    MIN ( MAX ( 'Date'[Date] ), [Last Actual Date] )
+VAR window =
+    DATESINPERIOD ( 'Date'[Date], anchor, -12, MONTH )
+VAR monthsWithData =
+    CALCULATE (
+        COUNTROWS ( SUMMARIZE ( GL, 'Date'[MonthEnd] ) ),
+        window
+    )
+RETURN
+    IF ( monthsWithData = 12, CALCULATE ( [Actual], window ) )
+</code></pre>
+<p><code>SUMMARIZE(GL, 'Date'[MonthEnd])</code> is evaluated <em>inside</em> the window, so it lists only the month-ends that actually
+have GL rows. (Passing the <code>GL</code> table itself as a <code>CALCULATE</code> filter argument would not work: filter arguments are
+evaluated in the outer context, where GL is restricted to the current month.) <code>MIN</code> with two scalar arguments
+returns the earlier date. An alternative is a Date-table column <code>MonthsSinceDataStart</code> and a check that the anchor
+month is at least month 12.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>Monthly revenue (₹ crore) and the R12M at two month-ends:</p>
+<table>
+<thead>
+<tr>
+<th>Window</th>
+<th>Months included</th>
+<th>Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R12M at Nov 2025</td>
+<td>Dec 2024 – Nov 2025</td>
+<td>482.0</td>
+</tr>
+<tr>
+<td>R12M at Oct 2025</td>
+<td>Nov 2024 – Oct 2025</td>
+<td>476.5</td>
+</tr>
+</tbody>
+</table>
+<p>If November 2025 revenue is 41.0 and November 2024 revenue was 35.5, the R12M moved by 41.0 − 35.5 = 5.5: each month
+the window adds the new month and drops the same month a year earlier. That identity is a handy reconciliation:</p>
+<p>\[
+\text{R12M}_{t} = \text{R12M}_{t-1} + A_{t} - A_{t-12}
+\]</p>
+<p>It also gives R12M from YTD figures, the way analysts compute LTM from published results:</p>
+<p>\[
+\text{LTM}_{\text{Dec FY26}} = \text{FY25 full year} - \text{YTD Dec FY25} + \text{YTD Dec FY26}
+\]</p>
+<h3 id="other-rolling-variants">Other rolling variants</h3>
+<ul>
+<li><strong>Rolling 12M average monthly</strong>: <code>DIVIDE([Rolling 12M], 12)</code>.</li>
+<li><strong>Rolling average balance</strong> (semi-additive, see t5): <code>AVERAGEX</code> over the 12 month-ends in the window of
+  <code>[Closing Bal]</code>, not <code>CALCULATE</code> of a sum.</li>
+<li><strong>Rolling by days</strong>: <code>DATESINPERIOD(..., -90, DAY)</code> for a 90-day collections window.</li>
+<li><strong>Forward windows</strong>: <code>DATESINPERIOD(..., +12, MONTH)</code> from the forecast start for "next 12 months" pipeline.</li>
+<li><strong>DATESBETWEEN</strong>: explicit start and end, e.g., <code>DATESBETWEEN('Date'[Date], EDATE(anchor, -12) + 1, anchor)</code>.</li>
+</ul>
+<h3 id="visual-design">Visual design</h3>
+<p>A line chart of monthly Actual with R12M on a secondary axis (or R12M / 12 on the same axis) shows trend and
+seasonality together. In covenant monitoring, plot Net Debt / R12M EBITDA against the covenant threshold (say
+3.0×) with month-ends on the axis.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Anchor at day level:</strong> on a daily axis the window is "the last 12 months to this day" — fine for flash reports,
+  but the window then contains a partial first month.</li>
+<li><strong>Month-end arithmetic:</strong> a 28 February anchor with −12 MONTH returns 1 March – 28 February; DAX handles month
+  ends, but test the 29 February 2024 case once.</li>
+<li><strong>Covenant definitions:</strong> bank sanction letters often define LTM EBITDA with add-backs (exceptional items,
+  non-cash Ind AS 102 share-based payment, Ind AS 116 lease adjustments). The R12M measure must follow the
+  contract definition, not the reported EBITDA line.</li>
+<li><strong>Acquired entities:</strong> pro-forma LTM includes the acquiree's pre-acquisition months — requires a separate
+  pro-forma fact, not the GL.</li>
+<li><strong>Performance:</strong> DATESINPERIOD over a daily Date table is cheap; an R12M calculated in a matrix with hundreds of
+  accounts × 36 months is still fine. Avoid <code>FILTER(ALL('Date'), ...)</code> with row-by-row comparisons where
+  <code>DATESINPERIOD</code> suffices.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li><code>DATESINPERIOD('Date'[Date], MAX('Date'[Date]), -12, MONTH)</code> returns the 12 months ending on the visible month-end.</li>
+<li>The anchor is evaluated in the outer context; cap it at the last actual date to avoid future-month windows.</li>
+<li>Blank R12M until 12 months of data exist; check with a distinct count of month-ends with postings.</li>
+<li>Rolling ratios are ratios of rolling sums.</li>
+<li>\(\text{R12M}_{t} = \text{R12M}_{t-1} + A_{t} - A_{t-12}\) is the reconciliation check.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-write-r12m-and-t3m-l1">Q1. Write R12M and T3M [L1]</h3>
+<p>Write DAX measures for R12M Revenue, R12M EBITDA, R12M EBITDA % and T3M Annualised Revenue, assuming base measures
+<code>[Revenue]</code> and <code>[EBITDA]</code> exist and the Date table is marked.</p>
+<h3 id="q2-ltm-from-published-results-l2">Q2. LTM from published results [L2]</h3>
+<p>A listed company reported FY25 revenue of ₹ 2,140 crore, 9M FY25 (April–December 2024) revenue of ₹ 1,560 crore and
+9M FY26 revenue of ₹ 1,742 crore. Compute LTM December 2025 revenue and explain how your DAX R12M measure should be
+reconciled to this figure.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> LTM = last full year, minus the comparative stub, plus the current stub.</p>
+</blockquote>
+<h3 id="q3-r12m-that-equals-ytd-l2">Q3. R12M that equals YTD [L2]</h3>
+<p>A user notices that the FY26 total row in a matrix shows R12M Revenue equal to YTD Revenue. Actuals are loaded to
+31 October 2025 and the Date table runs to 31 March 2026. Explain the cause step by step and rewrite the measure to
+fix it.</p>
+<h3 id="q4-covenant-dashboard-l3">Q4. Covenant dashboard [L3]</h3>
+<p>A term loan sanction letter requires Net Debt / LTM EBITDA ≤ 3.25× tested quarterly, where EBITDA excludes
+exceptional items and adds back Ind AS 102 share-based payment expense. Design the measures (including how you
+identify exceptional items and ESOP expense in the CoA), the guard for incomplete windows, and the visual that a
+treasury head would use to see headroom at each quarter-end of FY25 and FY26.</p>
+<h3 id="q5-rolling-average-monthly-versus-r12m-ratio-l2">Q5. Rolling average monthly versus R12M ratio [L2]</h3>
+<p>Monthly EBITDA margins for the last three months were 18%, 12% and 21% on revenues of ₹ 20 crore, ₹ 50 crore and
+₹ 30 crore. Compute the simple average of the margins and the T3M margin computed as a ratio of sums, and explain
+which one a T3M EBITDA % measure should return.</p></section>
+<nav class="pager"><a class="prev" href="S03_PY_YTD_YTD_Growth_MoM_and_YoY_Measures.html">← PY YTD, YTD Growth, MoM % and YoY % Measures</a><a class="next" href="S05_Capping_Time_Intelligence_at_the_Last_Actuals_Date.html">Capping Time Intelligence at the Last Actuals Date →</a></nav>
+</main></div></body></html>

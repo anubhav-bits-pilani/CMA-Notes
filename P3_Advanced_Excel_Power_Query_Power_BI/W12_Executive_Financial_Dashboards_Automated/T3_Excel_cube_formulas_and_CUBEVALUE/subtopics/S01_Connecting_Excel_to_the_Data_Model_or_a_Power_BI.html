@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connecting Excel to the Data Model or a Power BI Semantic Model · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S01_Connecting_Excel_to_the_Data_Model_or_a_Power_BI.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T3 · Excel cube formulas and CUBEVALUE</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Excel cube formulas and CUBEVALUE</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Connecting_Excel_to_the_Data_Model_or_a_Power_BI.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S01_Connecting_Excel_to_the_Data_Model_or_a_Power_BI.html">Connecting Excel to the Data Model or a Power BI Semantic Model</a></li><li><a href="S02_Converting_PivotTables_to_Cube_Formulas_with_OLAP.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S02_Converting_PivotTables_to_Cube_Formulas_with_OLAP.html">Converting PivotTables to Cube Formulas with OLAP Tools</a></li><li><a href="S03_The_Cube_Function_Family_CUBEMEMBER_to.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S03_The_Cube_Function_Family_CUBEMEMBER_to.html">The Cube Function Family: CUBEMEMBER to CUBEMEMBERPROPERTY</a></li><li><a href="S04_MDX_Unique_Names_for_Members_and_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S04_MDX_Unique_Names_for_Members_and_Measures.html">MDX Unique Names for Members and Measures</a></li><li><a href="S05_Connecting_Slicers_to_Cube_Formulas_by_Slicer_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S05_Connecting_Slicers_to_Cube_Formulas_by_Slicer_Name.html">Connecting Slicers to Cube Formulas by Slicer Name</a></li><li><a href="S06_Free_Form_Board_Pack_Layouts_with_Live_Cube.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S06_Free_Form_Board_Pack_Layouts_with_Live_Cube.html">Free-Form Board-Pack Layouts with Live Cube Numbers</a></li><li><a href="S07_Dynamic_Top_N_Lists_with_a_Sorted_CUBESET_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S07_Dynamic_Top_N_Lists_with_a_Sorted_CUBESET_and.html">Dynamic Top N Lists with a Sorted CUBESET and CUBERANKEDMEMBER</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_CUBEVALUE_with_Literal_Measure_and_Member_Strings.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C01_CUBEVALUE_with_Literal_Measure_and_Member_Strings.html">CUBEVALUE with Literal Measure and Member Strings</a></li><li><a href="../concepts/C02_Building_Cube_Members_from_Cell_Labels_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C02_Building_Cube_Members_from_Cell_Labels_with.html">Building Cube Members from Cell Labels with CUBEMEMBER</a></li><li><a href="../concepts/C03_Passing_a_Slicer_Name_as_a_CUBEVALUE_Member.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C03_Passing_a_Slicer_Name_as_a_CUBEVALUE_Member.html">Passing a Slicer Name as a CUBEVALUE Member Argument</a></li><li><a href="../concepts/C04_Sorted_CUBESET_of_Vendors_sortorder_2_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C04_Sorted_CUBESET_of_Vendors_sortorder_2_for.html">Sorted CUBESET of Vendors: sort_order 2 for Descending</a></li><li><a href="../concepts/C05_CUBERANKEDMEMBER_with_ROWS_and_CUBESETCOUNT_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C05_CUBERANKEDMEMBER_with_ROWS_and_CUBESETCOUNT_for.html">CUBERANKEDMEMBER with ROWS() and CUBESETCOUNT for Ranked Lists</a></li><li><a href="../concepts/C06_Connection_Names_for_Power_BI_Semantic_Models_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C06_Connection_Names_for_Power_BI_Semantic_Models_in.html">Connection Names for Power BI Semantic Models in Cube Formulas</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Connecting Excel to the Data Model or a Power BI Semantic Model</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Connecting Excel to models: the workbook Data Model (Power Pivot), or a Power BI semantic model via Analyze in Excel</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Boards and audit committees in India still receive the monthly pack as an Excel or PDF document laid out in
+Schedule III format, with variance columns and commentary. Power BI is excellent for exploration but poor at
+pixel-exact, free-form statement layouts. The answer is not to re-key numbers into Excel but to connect Excel to
+the same model that feeds Power BI and pull numbers with cube formulas. The first decision is <em>which</em> model Excel
+connects to: the workbook's own Data Model (Power Pivot), or a published Power BI semantic model through Analyze in
+Excel. That choice determines refresh, security, file size and whether the Excel pack and the Power BI report are
+guaranteed to agree.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="option-1-the-workbook-data-model-power-pivot">Option 1: the workbook Data Model (Power Pivot)</h3>
+<p>The Data Model is an in-memory VertiPaq (tabular) engine inside the .xlsx file, the same engine family as Power BI.
+Tables loaded from Power Query with <em>Add this data to the Data Model</em>, relationships in the Power Pivot diagram
+view, and DAX measures (Power Pivot &gt; Measures, or right-click a table in the PivotTable field list &gt; Add Measure)
+make it a full star schema.</p>
+<ul>
+<li><strong>Connection name:</strong> <code>ThisWorkbookDataModel</code> — fixed and used as the first argument of every cube formula.</li>
+<li><strong>Refresh:</strong> Data &gt; Refresh All re-runs Power Query and reloads the model; the cube formulas then recalculate.</li>
+<li><strong>When to use:</strong> a standalone Excel pack, smaller data (a few million rows is fine), no Power BI licence, or
+  when the finance team owns the workbook end to end.</li>
+<li><strong>Limits:</strong> the file carries the data (size grows), two people cannot co-author model changes, and the measure
+  library may drift from the Power BI model unless both are generated from one source.</li>
+</ul>
+<p>Enable the Power Pivot add-in (File &gt; Options &gt; Add-ins &gt; COM Add-ins &gt; Microsoft Power Pivot for Excel) to edit
+the model; consumers do not need it to use cube formulas.</p>
+<h3 id="option-2-a-power-bi-semantic-model-via-analyze-in-excel">Option 2: a Power BI semantic model via Analyze in Excel</h3>
+<p>A published semantic model can be queried from Excel with a live connection:</p>
+<ul>
+<li>In the Power BI Service: open the semantic model or report &gt; <strong>Export &gt; Analyze in Excel</strong> (downloads a workbook
+  with a connected PivotTable), or</li>
+<li>In Excel: <strong>Data &gt; Get Data &gt; From Power Platform &gt; From Power BI</strong> (or Insert &gt; PivotTable &gt; From Power BI),
+  then pick the semantic model.</li>
+</ul>
+<p>Excel talks to the model over the XMLA/MSOLAP protocol (the provider is installed with recent Microsoft 365
+builds). No data is imported — every PivotTable and cube formula sends queries to the Service.</p>
+<ul>
+<li><strong>Connection name:</strong> Excel creates a connection whose name typically contains the workspace/model identity —
+  check Data &gt; Queries &amp; Connections &gt; Connections. Concept c06: this name replaces <code>ThisWorkbookDataModel</code> in
+  every cube formula. Rename the connection to something short (e.g. <code>PBI_FinancePack</code>) <strong>before</strong> writing
+  formulas.</li>
+<li><strong>Permissions:</strong> users need <strong>Build</strong> permission on the semantic model (granted directly or via workspace
+  Contributor and above, or via an App setting).</li>
+<li><strong>Security:</strong> RLS defined on the model applies to Excel users — a BU head's board pack shows only their BU.</li>
+<li><strong>Sensitivity labels:</strong> a label on the semantic model (e.g. "Confidential – Finance") is inherited by the Excel
+  file when the connection is created, if the tenant enables inheritance (related item in the topic).</li>
+<li><strong>Refresh:</strong> the model refreshes in the Service (scheduled refresh, gateway); Excel's Refresh All only re-queries.</li>
+</ul>
+<h3 id="comparing-the-options">Comparing the options</h3>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Workbook Data Model</th>
+<th>Power BI semantic model</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Where data lives</td>
+<td>Inside the .xlsx</td>
+<td>Power BI Service</td>
+</tr>
+<tr>
+<td>Measure library</td>
+<td>Separate copy unless synchronised</td>
+<td>Same as the Power BI report (single source of truth)</td>
+</tr>
+<tr>
+<td>Refresh</td>
+<td>Excel Refresh All (needs source access)</td>
+<td>Scheduled in the Service; Excel re-queries</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>File-level only</td>
+<td>RLS, workspace roles, sensitivity labels</td>
+</tr>
+<tr>
+<td>Offline use</td>
+<td>Yes</td>
+<td>No (needs connectivity and sign-in)</td>
+</tr>
+<tr>
+<td>File size</td>
+<td>Grows with data</td>
+<td>Small</td>
+</tr>
+<tr>
+<td>Licence</td>
+<td>Excel only</td>
+<td>Power BI Pro/PPU or Premium/Fabric capacity</td>
+</tr>
+</tbody>
+</table>
+<p>For Project 3, the target architecture is Option 2: one semantic model feeding both the Power BI pack and the Excel
+board pack. Option 1 is the fallback for users without Power BI, and the learning environment for cube formulas.</p>
+<h3 id="getting-from-a-pivottable-to-cube-formulas">Getting from a PivotTable to cube formulas</h3>
+<p>Whichever model you use, start by building a PivotTable on it (Insert &gt; PivotTable &gt; From Data Model, or the
+Analyze in Excel PivotTable), then convert to formulas (s02) or write CUBE functions directly (s03).</p>
+<h3 id="illustration">Illustration</h3>
+<p>Sahyadri's finance team builds the board pack in Excel. Phase 1: the Week 10 Power Query pipeline loads GL, CoA,
+Date and Budget into the workbook Data Model; measures <code>[Actual]</code>, <code>[Budget]</code>, <code>[Revenue]</code> are created in Power
+Pivot; cube formulas use <code>ThisWorkbookDataModel</code>. Phase 2: after the Power BI model is published to the "Finance –
+Prod" workspace, the board pack's connection is switched to the semantic model (connection renamed
+<code>PBI_FinancePack</code>), the cube formulas' first argument changes to a cell containing the connection name, and the
+workbook's own model is deleted. FY2025-26 revenue in both the Power BI card and the Excel pack is ₹1,240.6 Cr.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Implicit vs explicit measures.</strong> Live connections expose only measures defined in the model; implicit
+  "Sum of Amount" may not be available. Always use explicit measures.</li>
+<li><strong>Desktop-only models.</strong> Excel cannot connect live to a PBIX open in Power BI Desktop for production use
+  (developers can via the local port with external tools); publish first.</li>
+<li><strong>Mixed connections.</strong> A cube formula cannot combine members from two connections; one sheet section, one
+  connection.</li>
+<li><strong>Calculation groups and field parameters</strong> behave differently in Excel PivotTables; test before relying on
+  them.</li>
+<li><strong>Authentication prompts.</strong> Users outside the tenant or with expired sessions see sign-in prompts and #N/A;
+  include a "Refresh/sign-in" instruction in the user guide.</li>
+<li><strong>Version.</strong> Older Excel versions (2016 perpetual) may lack the Power BI connector; standardise on Microsoft 365.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Excel cube formulas can target the workbook Data Model (<code>ThisWorkbookDataModel</code>) or a Power BI semantic model.</li>
+<li>The Power BI semantic model route gives one measure library, RLS, sensitivity labels and Service refresh.</li>
+<li>Users need Build permission on the semantic model; RLS applies to their Excel queries.</li>
+<li>Rename the live connection to a short stable name before writing formulas.</li>
+<li>Use explicit measures only; implicit measures are not reliable through live connections.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-choose-the-connection-l1">Q1. Choose the connection [L1]</h3>
+<p>For each scenario choose the Data Model or a Power BI semantic model and justify: (a) a 3-person finance team with
+no Power BI licences; (b) a listed group with 40 BU heads needing BU-restricted board packs; (c) an offline
+board pack reviewed on a flight.</p>
+<h3 id="q2-permission-failure-l2">Q2. Permission failure [L2]</h3>
+<p>A BU controller opens the Excel board pack connected to the "Finance Pack" semantic model and every cube cell
+shows #N/A after refresh, while the CFO's copy works. List the access and connectivity causes you would check, in
+order.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Separate sign-in, permission, RLS and connection-name causes.</p>
+</blockquote>
+<h3 id="q3-migration-plan-l3">Q3. Migration plan [L3]</h3>
+<p>The board pack currently uses <code>ThisWorkbookDataModel</code> with 1,200 cube formulas. Write a migration plan to a Power BI
+semantic model that keeps the pack working at each step, including connection naming, formula changes, measure
+reconciliation and a parallel-run test.</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← Excel cube formulas and CUBEVALUE</a><a class="next" href="S02_Converting_PivotTables_to_Cube_Formulas_with_OLAP.html">Converting PivotTables to Cube Formulas with OLAP Tools →</a></nav>
+</main></div></body></html>

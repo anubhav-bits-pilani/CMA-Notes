@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NPV vs XNPV: Periodic and Dated Cash Flows · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S03_NPV_vs_XNPV_Periodic_and_Dated_Cash_Flows.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T5 · Financial and date functions</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Financial and date functions</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Period_End_Logic_with_EOMONTH_and_EDATE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S01_Period_End_Logic_with_EOMONTH_and_EDATE.html">Period-End Logic with EOMONTH and EDATE</a></li><li><a href="S02_Day_Count_Conventions_with_YEARFRAC_Bases_04.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S02_Day_Count_Conventions_with_YEARFRAC_Bases_04.html">Day-Count Conventions with YEARFRAC Bases 0–4</a></li><li><a href="S03_NPV_vs_XNPV_Periodic_and_Dated_Cash_Flows.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S03_NPV_vs_XNPV_Periodic_and_Dated_Cash_Flows.html">NPV vs XNPV: Periodic and Dated Cash Flows</a></li><li><a href="S04_IRR_vs_XIRR_vs_MIRR_for_Irregular_Project_Cash.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S04_IRR_vs_XIRR_vs_MIRR_for_Irregular_Project_Cash.html">IRR vs XIRR vs MIRR for Irregular Project Cash Flows</a></li><li><a href="S05_Loan_Amortisation_with_PMT_IPMT_PPMT_CUMIPMT_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S05_Loan_Amortisation_with_PMT_IPMT_PPMT_CUMIPMT_and.html">Loan Amortisation with PMT, IPMT, PPMT, CUMIPMT and CUMPRINC</a></li><li><a href="S06_EMI_Schedules_and_Ind_AS_116_Lease_Liability.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S06_EMI_Schedules_and_Ind_AS_116_Lease_Liability.html">EMI Schedules and Ind AS 116 Lease Liability Schedules</a></li><li><a href="S07_Close_Calendars_with_WORKDAYINTL_NETWORKDAYSINTL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S07_Close_Calendars_with_WORKDAYINTL_NETWORKDAYSINTL.html">Close Calendars with WORKDAY.INTL, NETWORKDAYS.INTL and Holidays</a></li><li><a href="S08_Fiscal_Year_Helpers_FY_Start_FY_End_and_Fiscal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S08_Fiscal_Year_Helpers_FY_Start_FY_End_and_Fiscal.html">Fiscal-Year Helpers: FY Start, FY End and Fiscal Month</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Month_End_Month_Start_and_Same_Day_Offsets_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C01_Month_End_Month_Start_and_Same_Day_Offsets_with.html">Month-End, Month-Start and Same-Day Offsets with EOMONTH and EDATE</a></li><li><a href="../concepts/C02_YEARFRAC_Basis_1_vs_Basis_3_for_Accruals.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C02_YEARFRAC_Basis_1_vs_Basis_3_for_Accruals.html">YEARFRAC Basis 1 vs Basis 3 for Accruals</a></li><li><a href="../concepts/C03_NPV_Plus_CF0_Why_NPV_Discounts_Its_First_Value.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C03_NPV_Plus_CF0_Why_NPV_Discounts_Its_First_Value.html">NPV Plus CF0: Why NPV Discounts Its First Value</a></li><li><a href="../concepts/C04_XNPV_and_XIRR_The_365_Day_Basis_from_the_First.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C04_XNPV_and_XIRR_The_365_Day_Basis_from_the_First.html">XNPV and XIRR: The 365-Day Basis from the First Date</a></li><li><a href="../concepts/C05_PMT_IPMT_and_PPMT_EMI_and_Its_InterestPrincipal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C05_PMT_IPMT_and_PPMT_EMI_and_Its_InterestPrincipal.html">PMT, IPMT and PPMT: EMI and Its Interest/Principal Split</a></li><li><a href="../concepts/C06_MIRR_Fixing_IRRs_Reinvestment_and_Multiple_Root.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C06_MIRR_Fixing_IRRs_Reinvestment_and_Multiple_Root.html">MIRR: Fixing IRR&#x27;s Reinvestment and Multiple-Root Problems</a></li><li><a href="../concepts/C07_FY_End_Date_and_Fiscal_Month_Formulas_for_an.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C07_FY_End_Date_and_Fiscal_Month_Formulas_for_an.html">FY End Date and Fiscal Month Formulas for an April–March Year</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>NPV vs XNPV: Periodic and Dated Cash Flows</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> NPV vs XNPV: periodic vs dated cash flows, and how the t=0 flow is treated</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Discounting is everywhere in the target roles: DCF valuation, capital budgeting, Ind AS 116 lease liabilities, Ind AS 36 value-in-use tests, Ind AS 109 fair values, deferred consideration in acquisitions and provisions under Ind AS 37. Excel offers two functions that look interchangeable but rest on different timing assumptions. NPV assumes equal periods and discounts its <em>first</em> value by one full period; XNPV discounts each flow by its actual date. Using NPV on flows that include the initial investment, or on irregular dates, is one of the most common errors found in valuation reviews and interview case tests — and it is silent, producing a plausible but wrong number.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="npv-periodic-flows">NPV — periodic flows</h3>
+<pre><code class="language-excel">=NPV(rate, value1, [value2], ...)
+</code></pre>
+<p>\[
+\text{NPV}(r; v_1, \dots, v_n) = \sum_{i=1}^{n} \frac{v_i}{(1+r)^{i}}
+\]</p>
+<p>where \(r\) is the rate per period and \(v_i\) the flow at the <strong>end</strong> of period \(i\). The first value is discounted one full period. Consequences:</p>
+<ul>
+<li>A flow at t = 0 (the initial investment, an upfront fee) must be <strong>added outside</strong> the function: <code>=NPV(r, CF1:CFn) + CF0</code>.</li>
+<li>Including CF0 in the range (<code>=NPV(r, CF0:CFn)</code>) discounts everything one period too far — the result equals the true NPV ÷ (1 + r).</li>
+<li>Periods must be equal (years, quarters or months) and the rate must match the period (annual rate for annual flows; convert for monthly).</li>
+<li>Blank cells are ignored (not treated as zero), so a gap in the range shifts later flows one period earlier — fill blanks with 0.</li>
+</ul>
+<h3 id="xnpv-dated-flows">XNPV — dated flows</h3>
+<pre><code class="language-excel">=XNPV(rate, values, dates)
+</code></pre>
+<p>\[
+\text{XNPV} = \sum_{i=1}^{n} \frac{P_i}{(1+r)^{(d_i - d_1)/365}}
+\]</p>
+<p>where \(P_i\) is the flow on date \(d_i\), \(d_1\) is the <strong>first date in the array</strong> and \(r\) is an annual rate. Key behaviours:</p>
+<ul>
+<li>The first flow is <strong>not discounted</strong> (exponent 0) — it is the t = 0 flow, included in the range.</li>
+<li>Discounting is always on an actual/365 basis from the first date, regardless of leap years.</li>
+<li>Dates need not be sorted, but none may precede the first date; the first date is the valuation anchor. Keep them in order for readability.</li>
+<li><code>values</code> and <code>dates</code> must be the same size; any text date returns #VALUE!; a date earlier than the first returns #NUM!.</li>
+<li>If the valuation date has no flow, put a 0 flow on that date as the first row so the anchor is right.</li>
+</ul>
+<h3 id="same-flows-three-formulas">Same flows, three formulas</h3>
+<p>Project: investment ₹100 lakh, inflows ₹30, 40, 50 and 20 lakh. Rate 12%.</p>
+<p><strong>Case A — annual flows at FY-ends</strong> (1-Apr-2025 investment; inflows 31-Mar-2026 … 31-Mar-2029):</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Formula</th>
+<th>Result (₹ lakh)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Correct NPV</td>
+<td><code>=NPV(12%, C2:C5) + C1</code></td>
+<td>6.97</td>
+</tr>
+<tr>
+<td>Wrong — CF0 inside</td>
+<td><code>=NPV(12%, C1:C5)</code></td>
+<td>6.23 (= 6.97 ÷ 1.12)</td>
+</tr>
+<tr>
+<td>XNPV</td>
+<td><code>=XNPV(12%, C1:C5, B1:B5)</code></td>
+<td>6.99</td>
+</tr>
+</tbody>
+</table>
+<p>XNPV differs slightly from NPV because year 3 contains 29-Feb-2028 (366 days, but XNPV divides by 365) and because 1-Apr to 31-Mar is 364 days.</p>
+<p><strong>Case B — irregular dates</strong> (investment 15-Jun-2025; inflows 31-Dec-2025, 30-Sep-2026, 31-Mar-2027, 30-Jun-2028):</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Result (₹ lakh)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NPV treating flows as annual</td>
+<td>6.97</td>
+</tr>
+<tr>
+<td>XNPV on actual dates</td>
+<td>17.73</td>
+</tr>
+</tbody>
+</table>
+<p>The first inflow arrives after about 6.5 months, not 12; NPV's equal-period assumption understates value by more than half. Whenever flows are not evenly spaced — milestone billing, deferred consideration, a stub first period in a DCF — use XNPV.</p>
+<h3 id="valuation-date-mechanics-in-a-dcf">Valuation-date mechanics in a DCF</h3>
+<p>In a DCF with a valuation date of 30-Sep-2025 and FY-end forecast flows, two approaches are common:</p>
+<ol>
+<li><strong>XNPV</strong> with a first row (30-Sep-2025, 0) and subsequent rows for each forecast flow on its assumed date (FY-end, or mid-period for the mid-year convention). The stub is handled automatically.</li>
+<li><strong>Discount factors</strong> with explicit period counters: <code>t = YEARFRAC(ValDate, FlowDate, 3)</code> and <code>DF = 1/(1+r)^t</code>, then <code>=SUMPRODUCT(Flows, DF)</code>. This is more transparent (each factor is visible) and allows mid-year adjustments, so many modellers prefer it to XNPV for presentation, using XNPV as a cross-check.</li>
+</ol>
+<p>The two must agree when the same dates and actual/365 basis are used.</p>
+<h3 id="rate-period-matching">Rate period matching</h3>
+<ul>
+<li>NPV: rate per period. For monthly lease payments at an annual IBR of 9.6% (nominal, monthly compounding), use <code>9.6%/12</code>; if the 9.6% is an effective annual rate, use <code>(1+9.6%)^(1/12)-1</code>.</li>
+<li>XNPV: always an <strong>annual effective</strong> rate, because exponents are in years.</li>
+</ul>
+<h3 id="ind-as-context">Ind AS context</h3>
+<ul>
+<li><strong>Ind AS 116</strong> lease liability = PV of unpaid lease payments discounted at the rate implicit in the lease or, if not readily determinable, the lessee's incremental borrowing rate. Payments in advance are t = 0 flows (not discounted) — the classic place where <code>NPV(...)+CF0</code> matters (s06).</li>
+<li><strong>Ind AS 36</strong> value in use discounts pre-tax cash flows at a pre-tax rate; dated discounting matters where cash flows are uneven within years.</li>
+<li><strong>Ind AS 113</strong> fair values often use dated flows — XNPV is the natural tool.</li>
+</ul>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Blanks vs zeros.</strong> NPV skips blanks; XNPV with a blank value in the array returns an error or treats it inconsistently — always use 0.</li>
+<li><strong>Negative rates</strong> are allowed in NPV; XNPV accepts rates above −100%.</li>
+<li><strong>Very first date not earliest.</strong> If an earlier date appears later in the array, XNPV returns #NUM!; sort or anchor correctly.</li>
+<li><strong>Mixing conventions.</strong> Using XNPV for valuation and NPV for the sensitivity table produces inconsistent numbers; use one method throughout and reconcile.</li>
+<li><strong>Inflation and real/nominal.</strong> Both functions are agnostic; match nominal flows with nominal rates.</li>
+<li><strong>XNPV in Data Tables</strong> works, but in large sensitivity grids SUMPRODUCT with discount factors is faster and easier to audit.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>NPV discounts the first value by one period; add the t = 0 flow outside: <code>=NPV(r, CF1:CFn) + CF0</code>.</li>
+<li>XNPV discounts by actual days ÷ 365 from the first date; the first flow is undiscounted and belongs inside the range.</li>
+<li>Use XNPV (or explicit YEARFRAC discount factors) whenever flows are irregular or a stub period exists.</li>
+<li>NPV uses a per-period rate; XNPV always needs an annual effective rate.</li>
+<li>Blank cells, text dates and mis-anchored first dates are the usual sources of silent errors.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-spot-the-error-l1">Q1. Spot the error [L1]</h3>
+<p>A capex proposal shows <code>=NPV(11%, B5:B10)</code> where B5 is the initial outlay of −₹8 crore and B6:B10 are annual inflows of ₹2.2 crore each. State what the formula actually computes, write the correct formula, and state the relationship between the two results.</p>
+<h3 id="q2-milestone-contract-l2">Q2. Milestone contract [L2]</h3>
+<p>A ₹45 crore EPC contract is valued on 1-Jul-2025. Expected net flows (₹ crore): −12 on 1-Jul-2025, −8 on 15-Nov-2025, +10 on 31-Mar-2026, +18 on 30-Sep-2026, +9 on 31-Jan-2027. At 13% annual, write the XNPV formula and the equivalent SUMPRODUCT with YEARFRAC discount factors, and explain why NPV would be inappropriate.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Both methods should agree to the rupee if the same anchor date and 365-day basis are used.</p>
+</blockquote>
+<h3 id="q3-monthly-lease-at-a-quoted-annual-rate-l2">Q3. Monthly lease at a quoted annual rate [L2]</h3>
+<p>A warehouse lease requires ₹6 lakh per month in arrears for 48 months; the lessee's IBR is quoted as 10.2% p.a. Write NPV-based and XNPV-based formulas for the lease liability at commencement, state the rate input each requires, and explain why the two results differ slightly.</p>
+<h3 id="q4-dcf-valuation-date-l3">Q4. DCF valuation date [L3]</h3>
+<p>A company's DCF has FY27–FY31 free cash flows of ₹40, 46, 52, 57 and 61 crore, assumed to arrive mid-year, and a valuation date of 31-Dec-2025 (so FY26's remaining Q4 cash flow of ₹9 crore is also included at 31-Mar-2026). Design the date column and discounting approach using XNPV, then using explicit discount factors, and describe a reconciliation check between them.</p>
+<h3 id="q5-interview-npv-vs-xnpv-l1">Q5. Interview: NPV vs XNPV [L1]</h3>
+<p>In 60 seconds, explain to an interviewer the difference between NPV and XNPV, including how each treats the first cash flow, and give one example of where using NPV would materially misstate value.</p></section>
+<nav class="pager"><a class="prev" href="S02_Day_Count_Conventions_with_YEARFRAC_Bases_04.html">← Day-Count Conventions with YEARFRAC Bases 0–4</a><a class="next" href="S04_IRR_vs_XIRR_vs_MIRR_for_Irregular_Project_Cash.html">IRR vs XIRR vs MIRR for Irregular Project Cash Flows →</a></nav>
+</main></div></body></html>

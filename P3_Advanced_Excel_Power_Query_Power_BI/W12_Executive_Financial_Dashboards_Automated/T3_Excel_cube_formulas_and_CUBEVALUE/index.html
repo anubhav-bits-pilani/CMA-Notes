@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Excel cube formulas and CUBEVALUE · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/index.html" data-kind="topic">
+<header class="top"><a class="brand" href="../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../index.html">Home</a> <span>›</span> <a href="../../index.html">Phase 3</a> <span>›</span> <a href="../index.html">Week 12</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">Week 12</a></div><ul class="side-links"><li><a href="../T1_Executive_dashboard_visual_architecture/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/index.html">T1 · Executive dashboard visual architecture</a></li><li><a href="../T2_Slicers_drill_through_and_tooltips/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/index.html">T2 · Slicers, drill-through and tooltips</a></li><li><a href="index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/index.html">T3 · Excel cube formulas and CUBEVALUE</a></li><li><a href="../T4_Data_governance_and_audit_trail_controls/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T4_Data_governance_and_audit_trail_controls/index.html">T4 · Data governance and audit-trail controls</a></li><li><a href="../T5_Finalising_Project_3_one_click_refresh/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T5_Finalising_Project_3_one_click_refresh/index.html">T5 · Finalising Project 3: one-click refresh</a></li></ul></aside>
+<main class="content">
+<div class="kind">Topic</div>
+<h1>Excel cube formulas and CUBEVALUE</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<section class="index"><h2>Notes in this topic</h2><div class="cols"><div><h3>Subtopics</h3><ul class="links num"><li><a href="subtopics/S01_Connecting_Excel_to_the_Data_Model_or_a_Power_BI.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S01_Connecting_Excel_to_the_Data_Model_or_a_Power_BI.html">S01 · Connecting Excel to the Data Model or a Power BI Semantic Model</a></li><li><a href="subtopics/S02_Converting_PivotTables_to_Cube_Formulas_with_OLAP.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S02_Converting_PivotTables_to_Cube_Formulas_with_OLAP.html">S02 · Converting PivotTables to Cube Formulas with OLAP Tools</a></li><li><a href="subtopics/S03_The_Cube_Function_Family_CUBEMEMBER_to.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S03_The_Cube_Function_Family_CUBEMEMBER_to.html">S03 · The Cube Function Family: CUBEMEMBER to CUBEMEMBERPROPERTY</a></li><li><a href="subtopics/S04_MDX_Unique_Names_for_Members_and_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S04_MDX_Unique_Names_for_Members_and_Measures.html">S04 · MDX Unique Names for Members and Measures</a></li><li><a href="subtopics/S05_Connecting_Slicers_to_Cube_Formulas_by_Slicer_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S05_Connecting_Slicers_to_Cube_Formulas_by_Slicer_Name.html">S05 · Connecting Slicers to Cube Formulas by Slicer Name</a></li><li><a href="subtopics/S06_Free_Form_Board_Pack_Layouts_with_Live_Cube.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S06_Free_Form_Board_Pack_Layouts_with_Live_Cube.html">S06 · Free-Form Board-Pack Layouts with Live Cube Numbers</a></li><li><a href="subtopics/S07_Dynamic_Top_N_Lists_with_a_Sorted_CUBESET_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S07_Dynamic_Top_N_Lists_with_a_Sorted_CUBESET_and.html">S07 · Dynamic Top N Lists with a Sorted CUBESET and CUBERANKEDMEMBER</a></li></ul></div><div><h3>Key concepts & formulas</h3><ul class="links num"><li><a href="concepts/C01_CUBEVALUE_with_Literal_Measure_and_Member_Strings.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C01_CUBEVALUE_with_Literal_Measure_and_Member_Strings.html">C01 · CUBEVALUE with Literal Measure and Member Strings</a></li><li><a href="concepts/C02_Building_Cube_Members_from_Cell_Labels_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C02_Building_Cube_Members_from_Cell_Labels_with.html">C02 · Building Cube Members from Cell Labels with CUBEMEMBER</a></li><li><a href="concepts/C03_Passing_a_Slicer_Name_as_a_CUBEVALUE_Member.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C03_Passing_a_Slicer_Name_as_a_CUBEVALUE_Member.html">C03 · Passing a Slicer Name as a CUBEVALUE Member Argument</a></li><li><a href="concepts/C04_Sorted_CUBESET_of_Vendors_sortorder_2_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C04_Sorted_CUBESET_of_Vendors_sortorder_2_for.html">C04 · Sorted CUBESET of Vendors: sort_order 2 for Descending</a></li><li><a href="concepts/C05_CUBERANKEDMEMBER_with_ROWS_and_CUBESETCOUNT_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C05_CUBERANKEDMEMBER_with_ROWS_and_CUBESETCOUNT_for.html">C05 · CUBERANKEDMEMBER with ROWS() and CUBESETCOUNT for Ranked Lists</a></li><li><a href="concepts/C06_Connection_Names_for_Power_BI_Semantic_Models_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C06_Connection_Names_for_Power_BI_Semantic_Models_in.html">C06 · Connection Names for Power BI Semantic Models in Cube Formulas</a></li></ul></div></div></section><article class="note"><blockquote>
+<p><strong>Roadmap topic:</strong> Excel Cube Formulas &amp; CUBEVALUE Reporting: Connecting Excel management packs directly to Power Pivot data models for bespoke board-pack layouts</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>Most Indian boards and audit committees still receive an Excel or PDF pack laid out like the published financial
+statements: Schedule III line order, note references, variance columns and analyst commentary. Power BI is the
+exploration tool; Excel remains the presentation tool for these fixed layouts. Cube formulas join the two: each
+cell of a free-form Excel sheet asks the same data model — the workbook's Power Pivot model or a published Power BI
+semantic model — for a measure value at a specific intersection. The pack then refreshes with the model instead of
+being re-keyed or rebuilt from exported TBs with SUMIFS.</p>
+<p>For FP&amp;A and reporting roles, this skill closes the "single source of truth" loop of Week 12: the Power BI report
+and the Excel board pack read the same measures, so the ₹1,240.6 Cr revenue on the Power BI card is the same
+number in the board pack, by construction. It is also a frequent interview differentiator — many candidates know
+PivotTables; few can build and debug a cube-formula pack.</p>
+<p>The learning sequence: first decide what Excel connects to — the workbook Data Model or a Power BI semantic model
+via Analyze in Excel (s01). Then generate correct formulas quickly by converting a PivotTable with OLAP Tools (s02).
+Learn the six cube functions and what each returns (s03), and the MDX unique-name grammar that every argument uses
+(s04). Make the pack interactive by passing slicers to formulas by name (s05). Design free-form Schedule III layouts
+with variance columns and period-keyed commentary (s06). Finally, build expanding Top N lists with a sorted CUBESET
+and CUBERANKEDMEMBER (s07). The key concepts are the canonical formulas behind these steps: the literal CUBEVALUE
+(c01), members built from cell labels (c02), the fill-ready CUBEVALUE with a slicer (c03), the sorted CUBESET
+(c04), the ranked-member list sized by CUBESETCOUNT (c05) and the connection-name switch for Power BI models (c06).</p>
+<h2 id="concept-map">Concept map</h2>
+<table>
+<thead>
+<tr>
+<th>Subtopic / concept</th>
+<th>Role in the topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s01 Connecting Excel to models</td>
+<td>Workbook Data Model vs Power BI semantic model (Analyze in Excel)</td>
+</tr>
+<tr>
+<td>s02 Convert to Formulas</td>
+<td>Fast, syntax-correct starting grid from a PivotTable</td>
+</tr>
+<tr>
+<td>s03 Cube function family</td>
+<td>What each of the six functions does and returns</td>
+</tr>
+<tr>
+<td>s04 MDX unique names</td>
+<td>Grammar for members, measures, sets and tuples; key formats</td>
+</tr>
+<tr>
+<td>s05 Slicers by name</td>
+<td>Interactive selection feeding formulas across sheets</td>
+</tr>
+<tr>
+<td>s06 Free-form board-pack layouts</td>
+<td>Schedule III format, variance columns, commentary</td>
+</tr>
+<tr>
+<td>s07 Dynamic Top N</td>
+<td>Sorted CUBESET read with CUBERANKEDMEMBER</td>
+</tr>
+<tr>
+<td>c01 Literal CUBEVALUE</td>
+<td>Base syntax with measure and member strings</td>
+</tr>
+<tr>
+<td>c02 CUBEMEMBER from labels</td>
+<td>Copyable rows driven by key cells</td>
+</tr>
+<tr>
+<td>c03 CUBEVALUE with slicer</td>
+<td>Fill-ready workhorse formula with mixed references</td>
+</tr>
+<tr>
+<td>c04 Sorted CUBESET</td>
+<td>sort_order 2 = descending by a measure</td>
+</tr>
+<tr>
+<td>c05 CUBERANKEDMEMBER + CUBESETCOUNT</td>
+<td>Ranked lists that size themselves</td>
+</tr>
+<tr>
+<td>c06 Connection name</td>
+<td>Switching from ThisWorkbookDataModel to a Power BI model</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-concepts-to-study">Related concepts to study</h2>
+<h3 id="getpivotdata-as-a-lighter-alternative">GETPIVOTDATA as a lighter alternative</h3>
+<p><em>GETPIVOTDATA as a lighter alternative, and its limits</em></p>
+<p><code>GETPIVOTDATA(data_field, pivot_table, [field1, item1], …)</code> reads a value from an existing PivotTable; on OLAP pivots
+it uses MDX names, e.g. <code>GETPIVOTDATA("[Measures].[Actual]", Pivot!A3, "[CoA].[FSLine]", "[CoA].[FSLine].&amp;[Revenue]")</code>.
+It is lighter to learn and refreshes with the pivot, so it suits small packs built on a hidden "engine" pivot.
+Limits: the pivot must exist and must currently display the requested item (filtered-out or collapsed items return</p>
+<h1 id="ref-layout-changes-to-the-pivot-can-break-references-and-every-value-depends-on-a-pivots-shape-cube-formulas">REF!), layout changes to the pivot can break references, and every value depends on a pivot's shape. Cube formulas</h1>
+<p>query the model directly and have none of these dependencies.</p>
+<h3 id="monthly-mis-board-pack-weeks-1720">Monthly MIS board pack (Weeks 17–20)</h3>
+<p><em>→ Week 17–20: monthly MIS board pack with commentary and variance columns</em></p>
+<p>Weeks 17–20 run a full monthly MIS cycle: close, flash results, variance analysis (price/volume/mix, cost
+variances), rolling forecast refresh and the board pack. The cube-formula layout from s06 becomes the template for
+that pack, with additional pages (segment results, working capital, cash flow, capex, headcount) and forecast
+columns (Full-year Budget, Latest Estimate). The period-keyed commentary table is extended with owner and approval
+status, and the materiality-trigger column becomes a review control in the monthly calendar.</p>
+<h3 id="live-connections-and-sensitivity-label-inheritance">Live connections and sensitivity-label inheritance</h3>
+<p><em>Live connections to Power BI semantic models, including sensitivity-label inheritance in Excel</em></p>
+<p>A live connection (Analyze in Excel, or Get Data &gt; From Power BI) keeps data in the Service; Excel sends queries
+under the user's identity. RLS applies, Build permission is required, and the model's measure library is shared.
+When the semantic model carries a Microsoft Purview sensitivity label (e.g. "Confidential – Finance"), Excel
+applies that label to the workbook when the connection is created — if the tenant has enabled label inheritance
+from Power BI to Office files — so encryption and DLP policies follow the data into the board pack. Check the
+workbook's label before e-mailing a pack outside the finance team.</p>
+<h3 id="schedule-iii-presentation-format-weeks-14">Schedule III presentation format (Weeks 1–4)</h3>
+<p><em>→ Week 1–4: Schedule III presentation format</em></p>
+<p>Weeks 1–4 covered Schedule III Division II (Ind AS): the balance sheet and statement of profit and loss formats,
+current/non-current classification, required sub-classifications (e.g. trade payables MSME/others, current
+maturities within current borrowings after the 2021 amendments), rounding rules by turnover, and the notes
+structure. The board-pack layout in s06 follows that order and wording so directors see management numbers in the
+same shape as the audited statements; the hidden key column maps each Schedule III line to <code>CoA[FSLine]</code> keys.</p>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<h3 id="wrong-member-keys-and-silent-na">Wrong member keys and silent #N/A</h3>
+<p><em>Wrong member keys or special characters in <code>&amp;[...]</code> return #N/A that is easy to miss</em></p>
+<p>A trailing space from a Tally export, a renamed FS line, an unescaped <code>]</code>, or "Power &amp; Fuel" vs "Power &amp; fuel" makes
+a member invalid. The cell shows #N/A — but if wrapped in IFERROR or summed with error-tolerant formulas, the line
+silently drops to zero. Correct treatment: clean keys in Power Query, build members from key cells (c02), never
+IFERROR a cube value to zero, and add a check cell <code>=SUMPRODUCT(--ISNA(range))</code> that must be 0. Detection: the
+check cell, plus a total-vs-parent-member reconciliation.</p>
+<h3 id="thousands-of-separate-cubevalue-queries">Thousands of separate CUBEVALUE queries</h3>
+<p><em>Thousands of separate CUBEVALUE queries slow recalculation; prefer CUBESET-driven structures</em></p>
+<p>Packs grow by copying blocks: 40 lines × 24 months × 6 scenarios × 5 BUs is 28,800 CUBEVALUE cells, each a query
+context; recalculation and refresh become minutes long, especially over a Power BI live connection. Correct
+treatment: restrict sheets to what the board reads, put scenarios on measures rather than separate blocks, use
+CUBESET-driven lists and sets as arguments (one value over a set instead of many summed values), and keep
+calculation automatic but avoid volatile functions in member strings. Detection: time Refresh All and calculation;
+count cube formulas with Find (Formulas containing "CUBEVALUE").</p>
+<h3 id="date-members-use-the-key-format">Date members use the key format</h3>
+<p><em>Date members use the key format, not the displayed label text</em></p>
+<p>Builders type the date as they see it ("31-10-2025" or "Oct-25") into <code>&amp;[...]</code>, which is a caption, not the key;
+the formula returns #N/A. Correct treatment: build keys as <code>TEXT(d,"yyyy-mm-dd") &amp; "T00:00:00"</code>, or (better) add
+text key columns to the Date table (<code>MonthKey</code> = "2025-10", <code>FY</code> = "FY2025-26") and use those as members.
+Detection: convert a pivot with the date field to formulas and compare the generated unique name.</p>
+<h3 id="pasting-values-and-hard-coded-plugs">Pasting values and hard-coded plugs</h3>
+<p><em>Pasting values over cube formulas or hard-coding plugs into the board pack</em></p>
+<p>Under deadline pressure, someone pastes values to "freeze" a version or types a number to make a total agree. Next
+month the pasted cells do not refresh, and the plug hides a mapping error — exactly what auditors and audit
+committees should never see. Correct treatment: freeze versions by saving a PDF or a separate archived copy, fix
+mappings in the source or CoA, and record adjustments as documented ledgers in the model. Detection: Go To Special &gt;
+Constants within the numbers zone (should select nothing), a cell-style convention (formula cells locked and
+protected), and an ISFORMULA-based check count.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-build-the-board-pack-pl-l3">Q1. Build the board-pack P&amp;L [L3]</h3>
+<p>Sahyadri's semantic model (<code>PBI_FinancePack</code>) has measures <code>[Actual ₹ Cr]</code>, <code>[Budget ₹ Cr]</code>, <code>[PY ₹ Cr]</code>,
+<code>[Variance Fav/Adv ₹ Cr]</code> and FS line keys in <code>CoA[FSLine]</code>. (a) Design the sheet layout (key column, labels,
+columns for month and YTD Actual/Budget/Var/PY, commentary). (b) Write the formulas for the first line with correct
+anchoring, using <code>Conn</code>, <code>Slicer_FY</code>, <code>Slicer_BusinessUnit</code> and a month member built from a <code>'Date'[MonthKey]</code> key in
+row 4. (c) Specify the checks block (invalid members, total vs parent member, tie-out to the Power BI revenue card
+of ₹1,240.6 Cr for FY2025-26).</p>
+<h3 id="q2-top-vendors-page-l2">Q2. Top vendors page [L2]</h3>
+<p>Build a Top N vendors section for the selected FY and BU: (a) the CUBESET with context in sort_by and NonEmpty;
+(b) CUBESETCOUNT and guarded CUBERANKEDMEMBER rows for N from a named cell; (c) values, Others and coverage; (d)
+explain why the list would be misordered without the context tuple, using FY2025-26 Polymers data: Gujarat
+Industries Power ₹8.94 Cr, Reliance Polymers ₹7.20 Cr, IOCL ₹6.85 Cr, Gujarat Gas ₹6.85 Cr, BASF India ₹4.10 Cr, total
+vendor expense ₹101.30 Cr.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> CUBESET has no slicer argument, so the sort sees the default context.</p>
+</blockquote>
+<h3 id="q3-migrate-and-govern-l3">Q3. Migrate and govern [L3]</h3>
+<p>The pack currently uses <code>ThisWorkbookDataModel</code> with 1,500 cube formulas, three slicers and pasted values in the
+commentary-adjacent "adjusted" column. Plan the migration to a Power BI semantic model: connection naming, slicer
+recreation, removal of pasted values and plugs, sensitivity labels, RLS testing with a BU-head account, and a
+parallel-run reconciliation for two months.</p>
+<h3 id="q4-debugging-under-time-pressure-l2">Q4. Debugging under time pressure [L2]</h3>
+<p>Ten minutes before the board pack is due, three lines show #N/A, the YTD block takes four minutes to calculate, and
+the October column shows September numbers. Write your triage sequence, the most likely cause of each symptom and
+the fix.</p></section>
+<nav class="pager"><a class="prev" href="../T2_Slicers_drill_through_and_tooltips/concepts/C05_Slicer_Responsive_Vendor_Ranking_with_RANKX_and.html">← Slicer-Responsive Vendor Ranking with RANKX and ALLSELECTED</a><a class="next" href="subtopics/S01_Connecting_Excel_to_the_Data_Model_or_a_Power_BI.html">Connecting Excel to the Data Model or a Power BI Semantic… →</a></nav>
+</main></div></body></html>

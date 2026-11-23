@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MMULT Dimensions: (1×n)·(n×m) Gives a 1×m Allocation · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C05_MMULT_Dimensions_1nnm_Gives_a_1m_Allocation.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T3 · SUMPRODUCT weighted averages and matrix…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · SUMPRODUCT weighted averages and matrix math</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Weighted_Average_Cost_of_Debt_Across_Borrowing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S01_Weighted_Average_Cost_of_Debt_Across_Borrowing.html">Weighted Average Cost of Debt Across Borrowing Tranches</a></li><li><a href="../subtopics/S02_Weighted_Average_Inventory_Cost_and_Weighted.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S02_Weighted_Average_Inventory_Cost_and_Weighted.html">Weighted Average Inventory Cost and Weighted Credit Period / DSO</a></li><li><a href="../subtopics/S03_Boolean_Array_Multi_Condition_Sums_Without_Helper.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S03_Boolean_Array_Multi_Condition_Sums_Without_Helper.html">Boolean-Array Multi-Condition Sums Without Helper Columns</a></li><li><a href="../subtopics/S04_Coercing_TRUEFALSE_to_10_Double_Unary_1_and_N.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S04_Coercing_TRUEFALSE_to_10_Double_Unary_1_and_N.html">Coercing TRUE/FALSE to 1/0: Double Unary, ×1 and N()</a></li><li><a href="../subtopics/S05_Cohort_Retention_Matrices_Acquisition_Month_Active.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S05_Cohort_Retention_Matrices_Acquisition_Month_Active.html">Cohort Retention Matrices: Acquisition Month × Active Month</a></li><li><a href="../subtopics/S06_MMULT_and_TRANSPOSE_for_Cost_Pool_Driver.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S06_MMULT_and_TRANSPOSE_for_Cost_Pool_Driver.html">MMULT and TRANSPOSE for Cost-Pool × Driver Allocations</a></li><li><a href="../subtopics/S07_SUMPRODUCT_vs_SUMIFS_Performance_on_Large_Ranges.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S07_SUMPRODUCT_vs_SUMIFS_Performance_on_Large_Ranges.html">SUMPRODUCT vs SUMIFS Performance on Large Ranges</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Pre_Tax_and_Post_Tax_Kd_with_SUMPRODUCT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C01_Pre_Tax_and_Post_Tax_Kd_with_SUMPRODUCT.html">Pre-Tax and Post-Tax Kd with SUMPRODUCT</a></li><li><a href="C02_SUMPRODUCT_with_MONTH_and_LEFT_on_Whole_Columns.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C02_SUMPRODUCT_with_MONTH_and_LEFT_on_Whole_Columns.html">SUMPRODUCT with MONTH and LEFT on Whole Columns</a></li><li><a href="C03_Comma_Form_SUMPRODUCT_and_Why_Arrays_Must_Be.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C03_Comma_Form_SUMPRODUCT_and_Why_Arrays_Must_Be.html">Comma-Form SUMPRODUCT and Why Arrays Must Be Numeric</a></li><li><a href="C04_The_Cohort_Retention_Cell_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C04_The_Cohort_Retention_Cell_Formula.html">The Cohort Retention Cell Formula</a></li><li><a href="C05_MMULT_Dimensions_1nnm_Gives_a_1m_Allocation.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C05_MMULT_Dimensions_1nnm_Gives_a_1m_Allocation.html">MMULT Dimensions: (1×n)·(n×m) Gives a 1×m Allocation</a></li><li><a href="C06_The_General_Guarded_Weighted_Average_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C06_The_General_Guarded_Weighted_Average_Formula.html">The General Guarded Weighted-Average Formula</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>MMULT Dimensions: (1×n)·(n×m) Gives a 1×m Allocation</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>=MMULT(CostPool_row, Driver_matrix)</code>: (1×n)·(n×m) gives 1×m and spills in Microsoft 365</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>For a row vector \(\mathbf{p}\) of dimension \(1 \times n\) and a matrix \(\mathbf{D}\) of dimension \(n \times m\),</p>
+<p>\[
+\mathbf{a} = \mathbf{p}\,\mathbf{D}, \qquad a_j = \sum_{i=1}^{n} p_i \, D_{ij}, \quad j = 1, \dots, m
+\]</p>
+<p>where \(p_i\) is the amount in cost pool \(i\), \(D_{ij}\) the share (or rate) of pool \(i\) assigned to receiver \(j\), and \(\mathbf{a}\) the \(1 \times m\) result. The <strong>inner dimensions</strong> (\(n\) columns of <code>CostPool_row</code> and \(n\) rows of <code>Driver_matrix</code>) must match; the result takes the <strong>outer dimensions</strong> (1 row, \(m\) columns). In Microsoft 365, entering the formula in one cell spills the 1 × m result to the right.</p>
+<h2 id="explanation">Explanation</h2>
+<p><strong>Dimension rule.</strong> MMULT(array1, array2) requires <code>COLUMNS(array1) = ROWS(array2)</code>; otherwise <code>#VALUE!</code>. The output has <code>ROWS(array1)</code> rows and <code>COLUMNS(array2)</code> columns. Check before building: <code>=COLUMNS(CostPool_row)=ROWS(Driver_matrix)</code>.</p>
+<p><strong>Spill behaviour.</strong> In Microsoft 365 the result spills into m cells; reference it elsewhere with the spill operator (for example <code>K5#</code>). The spill area must be empty (<code>#SPILL!</code> otherwise) and cannot be inside an Excel Table. In Excel 2019 and earlier, select exactly 1 × m cells, type the formula and press Ctrl+Shift+Enter; the array formula can then only be edited as a block.</p>
+<p><strong>Numeric inputs only.</strong> Any blank, text or logical cell in either array makes MMULT return <code>#VALUE!</code> for the whole result. Fill empty driver cells with 0 and keep labels outside the referenced ranges.</p>
+<p><strong>Completeness property.</strong> If each row of <code>Driver_matrix</code> sums to 1 (shares), then <code>SUM(result) = SUM(CostPool_row)</code>. This is the natural check cell. If the matrix holds rates instead (₹ per unit of driver), the property does not hold and the check becomes driver-volume based.</p>
+<p><strong>Orientation variants.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Inputs</th>
+<th>Formula</th>
+<th>Result shape</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pools as row (1×n), shares n×m</td>
+<td><code>MMULT(Pools, Shares)</code></td>
+<td>1×m row</td>
+</tr>
+<tr>
+<td>Pools as column (n×1), shares n×m</td>
+<td><code>MMULT(TRANSPOSE(Pools), Shares)</code></td>
+<td>1×m row</td>
+</tr>
+<tr>
+<td>Pools as column (n×1), shares n×m</td>
+<td><code>MMULT(TRANSPOSE(Shares), Pools)</code></td>
+<td>m×1 column</td>
+</tr>
+<tr>
+<td>Monthly pools (12×n), shares n×m</td>
+<td><code>MMULT(PoolsByMonth, Shares)</code></td>
+<td>12×m: every month allocated at once</td>
+</tr>
+</tbody>
+</table>
+<p>The last row shows MMULT's power: one formula allocates all twelve months.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Cost pools (₹ lakh) as a row: IT 18, HR 6, Admin 12 (n = 3). Receivers: Retail, Wholesale, Online, Exports (m = 4).</p>
+<table>
+<thead>
+<tr>
+<th>Pool \ BU</th>
+<th>Retail</th>
+<th>Wholesale</th>
+<th>Online</th>
+<th>Exports</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IT</td>
+<td>0.35</td>
+<td>0.15</td>
+<td>0.40</td>
+<td>0.10</td>
+</tr>
+<tr>
+<td>HR</td>
+<td>0.50</td>
+<td>0.20</td>
+<td>0.15</td>
+<td>0.15</td>
+</tr>
+<tr>
+<td>Admin</td>
+<td>0.40</td>
+<td>0.25</td>
+<td>0.20</td>
+<td>0.15</td>
+</tr>
+</tbody>
+</table>
+<p>Dimensions (1×3)·(3×4) → 1×4. Result:</p>
+<ul>
+<li>Retail = 18×0.35 + 6×0.50 + 12×0.40 = 6.30 + 3.00 + 4.80 = ₹14.10 lakh</li>
+<li>Wholesale = 2.70 + 1.20 + 3.00 = ₹6.90 lakh</li>
+<li>Online = 7.20 + 0.90 + 2.40 = ₹10.50 lakh</li>
+<li>Exports = 1.80 + 0.90 + 1.80 = ₹4.50 lakh</li>
+</ul>
+<p>Total ₹36.00 lakh = 18 + 6 + 12 — complete. If the IT row's Exports cell were blank instead of 0.10, the whole output would show <code>#VALUE!</code>.</p>
+<h2 id="connections">Connections</h2>
+<p>The formula behind the MMULT/TRANSPOSE allocation subtopic and the CMA activity-based costing link in this topic's related concepts (cost pools × driver rates). Its spill behaviour belongs to the dynamic-array rules of topic 4. In FP&amp;A (Weeks 17–20) it drives monthly shared-cost allocations in BU P&Ls; in DAX the same allocation is usually done row by row with SUMX over a driver table.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-dimension-check-l1">Q1. Dimension check [L1]</h3>
+<p>State the result shape, or the error, for each: (a) <code>MMULT</code> of a 1×5 row and a 5×3 matrix; (b) a 5×1 column and a 5×3 matrix; (c) a 12×5 block and a 5×3 matrix; (d) <code>TRANSPOSE</code> of a 5×3 matrix multiplied by a 5×1 column.</p>
+<h3 id="q2-twelve-months-at-once-l2">Q2. Twelve months at once [L2]</h3>
+<p>Monthly cost pools for FY26 (12 months × 4 pools) are in C6:F17 and the share matrix (4 pools × 6 BUs) in I6:N9. Write one formula that produces the full 12 × 6 allocation, a check that each month's allocations equal that month's pools, and explain what happens in Excel 2019.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Compare row totals of the result with row totals of the pools block.</p>
+</blockquote>
+<h3 id="q3-rates-instead-of-shares-l2">Q3. Rates instead of shares [L2]</h3>
+<p>An ABC model has activity cost-driver rates (₹ per setup, ₹ per inspection, ₹ per order) as a 1×3 row and a 3×5 matrix of driver volumes by product. Explain what <code>MMULT(Rates, Volumes)</code> returns, why the completeness check differs from a share-matrix allocation, and how you would reconcile the result to total activity cost.</p></section>
+<nav class="pager"><a class="prev" href="C04_The_Cohort_Retention_Cell_Formula.html">← The Cohort Retention Cell Formula</a><a class="next" href="C06_The_General_Guarded_Weighted_Average_Formula.html">The General Guarded Weighted-Average Formula →</a></nav>
+</main></div></body></html>

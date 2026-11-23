@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Single Scenario Selector Cell with Data-Validation Dropdown · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S01_Single_Scenario_Selector_Cell_with_Data_Validation.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T6 · Scenario Switcher Architecture</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · Scenario Switcher Architecture</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Single_Scenario_Selector_Cell_with_Data_Validation.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S01_Single_Scenario_Selector_Cell_with_Data_Validation.html">Single Scenario Selector Cell with Data-Validation Dropdown</a></li><li><a href="S02_Scenario_Driver_Blocks_Base_Bull_Bear_Rows_and_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S02_Scenario_Driver_Blocks_Base_Bull_Bear_Rows_and_the.html">Scenario Driver Blocks: Base, Bull, Bear Rows and the Live Row</a></li><li><a href="S03_Scenario_Selection_Functions_CHOOSE_INDEX_XLOOKUP.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S03_Scenario_Selection_Functions_CHOOSE_INDEX_XLOOKUP.html">Scenario Selection Functions: CHOOSE, INDEX, XLOOKUP, SWITCH</a></li><li><a href="S04_Which_Drivers_to_Flex_Volume_Price_Stores_Margin.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S04_Which_Drivers_to_Flex_Volume_Price_Stores_Margin.html">Which Drivers to Flex: Volume, Price, Stores, Margin, Wages, Capex, NWC</a></li><li><a href="S05_Coherent_Scenario_Narratives_vs_Single_Variable.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S05_Coherent_Scenario_Narratives_vs_Single_Variable.html">Coherent Scenario Narratives vs Single-Variable Tweaks</a></li><li><a href="S06_Capturing_Scenario_Outputs_Data_Tables_vs_Pasted.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S06_Capturing_Scenario_Outputs_Data_Tables_vs_Pasted.html">Capturing Scenario Outputs: Data Tables vs Pasted Static Values</a></li><li><a href="S07_Scenario_Labelling_on_Outputs_and_Documented_Case.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S07_Scenario_Labelling_on_Outputs_and_Documented_Case.html">Scenario Labelling on Outputs and Documented Case Rationale</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_The_Live_Row_CHOOSE_or_INDEX_on_the_Scenario_Code.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C01_The_Live_Row_CHOOSE_or_INDEX_on_the_Scenario_Code.html">The Live Row: CHOOSE or INDEX on the Scenario Code</a></li><li><a href="../concepts/C02_One_Switch_Only_No_Scenario_Logic_Outside_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C02_One_Switch_Only_No_Scenario_Logic_Outside_the.html">One Switch Only: No Scenario Logic Outside the Driver Block</a></li><li><a href="../concepts/C03_Scenario_Summary_via_a_One_Variable_Data_Table_on.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C03_Scenario_Summary_via_a_One_Variable_Data_Table_on.html">Scenario Summary via a One-Variable Data Table on the Switch</a></li><li><a href="../concepts/C04_Live_Scenario_Header_Label_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C04_Live_Scenario_Header_Label_Formula.html">Live Scenario Header Label Formula</a></li><li><a href="../concepts/C05_Internal_Consistency_of_Scenarios_Growth_Needs.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C05_Internal_Consistency_of_Scenarios_Growth_Needs.html">Internal Consistency of Scenarios: Growth Needs Capex, Stress Needs Funding</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Single Scenario Selector Cell with Data-Validation Dropdown</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Single selector cell with data-validation dropdown (1 = Base, 2 = Bull, 3 = Bear) on Cover/Inputs</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A model that supports scenarios must make it impossible to be ambiguous about which scenario is running. In
+investment committees, lender presentations and board budget reviews, the first question about any output page is
+"which case is this?" — and the most embarrassing error in practice is a model emailed with the Bear case live while
+everyone reads it as Base. The single selector cell is the control point that prevents this: one cell, in one place,
+validated to accept only defined values, named so every formula refers to it the same way, and displayed prominently
+on the Cover. Everything else in scenario architecture (driver blocks, live rows, output capture) depends on this one
+cell being unique and reliable.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="design-of-the-selector">Design of the selector</h3>
+<table>
+<thead>
+<tr>
+<th>Design element</th>
+<th>Rule</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Location</td>
+<td>One cell on the Cover or at the top of the Inputs/Assumptions sheet</td>
+<td>Visible on opening; one control point</td>
+</tr>
+<tr>
+<td>Content</td>
+<td>Integer code: 1 = Base, 2 = Bull, 3 = Bear</td>
+<td>Integers feed CHOOSE/INDEX directly; no text matching</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Named range <code>Scenario</code> (workbook scope)</td>
+<td>Every formula reads the same cell; auditable via Name Manager</td>
+</tr>
+<tr>
+<td>Validation</td>
+<td>Data → Data Validation → List or whole number 1–3</td>
+<td>Prevents 4, 2.5, blank or text</td>
+</tr>
+<tr>
+<td>Label</td>
+<td>Adjacent cell shows the scenario name via INDEX</td>
+<td>User sees "Bear", not just "3"</td>
+</tr>
+<tr>
+<td>Formatting</td>
+<td>Blue input font, distinctive input fill, border</td>
+<td>Colour convention (w13 t2): hardcoded input</td>
+</tr>
+<tr>
+<td>Protection</td>
+<td>Only this cell (and other inputs) unlocked on the Cover</td>
+<td>Prevents overwriting labels or formulas</td>
+</tr>
+</tbody>
+</table>
+<p>Integer codes are preferred over text ("Base", "Bull", "Bear") because selection functions use positions; a text
+selector requires a MATCH step and fails silently on a typo or trailing space.</p>
+<h3 id="building-the-dropdown">Building the dropdown</h3>
+<ol>
+<li>Create a small scenario list on the Inputs sheet (or a Lists sheet):</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Scenario name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Base</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Bull</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Bear</td>
+</tr>
+</tbody>
+</table>
+<ol start="2">
+<li>Name the code column <code>Scenario_Codes</code> and the name column <code>Scenario_Names</code>.</li>
+<li>Select the selector cell, Data → Data Validation → Allow: List → Source: <code>=Scenario_Codes</code>. Tick "In-cell
+   dropdown". Add an Input Message ("Select 1 = Base, 2 = Bull, 3 = Bear") and an Error Alert of style Stop.</li>
+<li>Name the cell <code>Scenario</code> (Formulas → Define Name, scope Workbook).</li>
+<li>Next to it, the label: <code>=INDEX(Scenario_Names, Scenario)</code>.</li>
+</ol>
+<p>An alternative is a list validation on the <em>names</em> with a hidden helper <code>=MATCH(Selected_Name, Scenario_Names, 0)</code>
+producing the code. This is friendlier for non-modellers but adds a step; whichever is chosen, the code cell is what
+calculations reference.</p>
+<p>Data validation can be bypassed by pasting values into the cell. Add a check on the Checks sheet:</p>
+<pre><code>Scenario_Check = --OR(Scenario&lt;1, Scenario&gt;COUNTA(Scenario_Names), Scenario&lt;&gt;INT(Scenario))
+</code></pre>
+<p>which feeds the master check on the Cover (w13 t1 c04).</p>
+<h3 id="where-to-put-it-cover-vs-inputs">Where to put it — Cover vs Inputs</h3>
+<ul>
+<li><strong>Cover</strong> — maximum visibility; the scenario is the first thing anyone sees; works well with a master check and a
+  version stamp next to it. Recommended for models circulated to non-builders.</li>
+<li><strong>Inputs/Assumptions top</strong> — keeps all inputs on one sheet (cleaner FAST/ICAEW separation); the Cover then <em>displays</em>
+  the scenario via a link (<code>=Scenario</code> and the label), formatted as a link (green), not as an input.</li>
+</ul>
+<p>Never have two input cells that both look like selectors. If the Cover displays the scenario, the displayed cell must
+be a formula, not a second input.</p>
+<h3 id="additional-controls-next-to-the-selector">Additional controls next to the selector</h3>
+<p>The selector often sits in a small control panel with related switches, each with its own named cell:</p>
+<table>
+<thead>
+<tr>
+<th>Switch</th>
+<th>Name</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scenario</td>
+<td><code>Scenario</code></td>
+<td>1/2/3</td>
+</tr>
+<tr>
+<td>Circularity breaker</td>
+<td><code>Circ</code></td>
+<td>0/1 (Week 15)</td>
+</tr>
+<tr>
+<td>Units display</td>
+<td><code>Units_Div</code></td>
+<td>1 (₹ crore) or 100 (₹ '00 crore) — display only</td>
+</tr>
+<tr>
+<td>Lease treatment memo</td>
+<td><code>IndAS116_View</code></td>
+<td>1 = post, 2 = pre (output memo only)</td>
+</tr>
+</tbody>
+</table>
+<p>Keep the scenario switch distinct from sensitivity inputs (Week 16) — scenarios swap coherent driver sets; sensitivities
+flex one or two variables.</p>
+<h3 id="five-case-extensions">Five-case extensions</h3>
+<p>Some models need more than three cases (Base, Bull, Bear, Management case, Lender/Downside). The architecture
+generalises: extend <code>Scenario_Codes</code> to 1–5, add rows to each driver block (s02), and validation and CHOOSE/INDEX
+selection extend naturally. Keep the code order fixed once outputs have been circulated, because changing the meaning
+of "2" silently changes every downstream number.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Data tables and the selector.</strong> A data table that loops the scenario must be on the same sheet as the selector
+  cell (Excel requires the row/column input cell to be on the data-table sheet) — a reason some builders put the
+  selector on the Cover alongside the scenario summary (s06).</li>
+<li><strong>Calculation mode.</strong> If the workbook is in "Automatic except data tables", changing the selector updates the model
+  but not the summary table until F9; label this on the Cover.</li>
+<li><strong>Macros.</strong> VBA buttons that set the scenario are acceptable for convenience, but the selector cell must remain the
+  single source; never let macros write driver values directly.</li>
+<li><strong>Version stamping.</strong> Record the scenario active at save time in the file name or a "Saved with scenario" cell —
+  combined with a pre-circulation check that the Base case is active (topic pitfall).</li>
+<li><strong>Power BI and dashboards.</strong> If outputs feed Power BI, export all three cases rather than the live case alone,
+  otherwise the dashboard reflects whichever case was last selected.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>One selector cell, named <code>Scenario</code>, holding an integer code with data validation.</li>
+<li>Show the scenario name next to it with INDEX; colour it as an input and unlock only that cell.</li>
+<li>Integer codes avoid text-matching errors and feed CHOOSE/INDEX directly.</li>
+<li>Add a check that catches invalid values pasted over validation.</li>
+<li>If the selector sits on Inputs, the Cover displays it by formula — never a second input.</li>
+<li>Keep code meanings fixed once outputs are circulated; extend to more cases by adding codes.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-build-the-selector-l1">Q1. Build the selector [L1]</h3>
+<p>Write step-by-step instructions to create a scenario selector on a Cover sheet with codes 1–3, a dropdown, an error
+alert, a workbook-scoped name and a label cell showing the scenario name. Include the exact formula for the label.</p>
+<h3 id="q2-validation-bypass-check-l2">Q2. Validation bypass check [L2]</h3>
+<p>A user pastes "Bull" (text) into the selector cell, bypassing data validation. Describe what happens to CHOOSE-based
+live rows, write a check formula that flags the problem, and explain how it reaches the master check on the Cover.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Test for non-numeric, out-of-range and non-integer values in one expression.</p>
+</blockquote>
+<h3 id="q3-cover-vs-inputs-placement-l2">Q3. Cover vs Inputs placement [L2]</h3>
+<p>Your model will be used by a lender's credit team who will only flip scenarios and print outputs. Recommend where to
+place the selector and what to place next to it, and justify the choice against FAST/ICAEW separation principles.</p>
+<h3 id="q4-extending-to-five-cases-l3">Q4. Extending to five cases [L3]</h3>
+<p>A private-equity client wants Base, Bull, Bear, Management and Lender cases. Specify every change needed to the
+selector, lists, driver blocks, label formulas and summary table, and the risks of re-ordering the codes after outputs
+have been shared.</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← Scenario Switcher Architecture</a><a class="next" href="S02_Scenario_Driver_Blocks_Base_Bull_Bear_Rows_and_the.html">Scenario Driver Blocks: Base, Bull, Bear Rows and the Live… →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scenario Switcher Architecture · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/index.html" data-kind="topic">
+<header class="top"><a class="brand" href="../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../index.html">Home</a> <span>›</span> <a href="../../index.html">Phase 4</a> <span>›</span> <a href="../index.html">Week 13</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">Week 13</a></div><ul class="side-links"><li><a href="../T1_Modelling_Architecture_Best_Practices/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/index.html">T1 · Modelling Architecture &amp; Best Practices</a></li><li><a href="../T2_Color_Coding_Formula_Integrity_Rules/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/index.html">T2 · Color Coding &amp; Formula Integrity Rules</a></li><li><a href="../T3_Historical_Data_Ingestion_Normalization/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/index.html">T3 · Historical Data Ingestion &amp; Normalization</a></li><li><a href="../T4_Granular_Revenue_Forecasting/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/index.html">T4 · Granular Revenue Forecasting</a></li><li><a href="../T5_Cost_Structure_Forecasting/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T5_Cost_Structure_Forecasting/index.html">T5 · Cost Structure Forecasting</a></li><li><a href="index.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/index.html">T6 · Scenario Switcher Architecture</a></li></ul></aside>
+<main class="content">
+<div class="kind">Topic</div>
+<h1>Scenario Switcher Architecture</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<section class="index"><h2>Notes in this topic</h2><div class="cols"><div><h3>Subtopics</h3><ul class="links num"><li><a href="subtopics/S01_Single_Scenario_Selector_Cell_with_Data_Validation.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S01_Single_Scenario_Selector_Cell_with_Data_Validation.html">S01 · Single Scenario Selector Cell with Data-Validation Dropdown</a></li><li><a href="subtopics/S02_Scenario_Driver_Blocks_Base_Bull_Bear_Rows_and_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S02_Scenario_Driver_Blocks_Base_Bull_Bear_Rows_and_the.html">S02 · Scenario Driver Blocks: Base, Bull, Bear Rows and the Live Row</a></li><li><a href="subtopics/S03_Scenario_Selection_Functions_CHOOSE_INDEX_XLOOKUP.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S03_Scenario_Selection_Functions_CHOOSE_INDEX_XLOOKUP.html">S03 · Scenario Selection Functions: CHOOSE, INDEX, XLOOKUP, SWITCH</a></li><li><a href="subtopics/S04_Which_Drivers_to_Flex_Volume_Price_Stores_Margin.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S04_Which_Drivers_to_Flex_Volume_Price_Stores_Margin.html">S04 · Which Drivers to Flex: Volume, Price, Stores, Margin, Wages, Capex, NWC</a></li><li><a href="subtopics/S05_Coherent_Scenario_Narratives_vs_Single_Variable.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S05_Coherent_Scenario_Narratives_vs_Single_Variable.html">S05 · Coherent Scenario Narratives vs Single-Variable Tweaks</a></li><li><a href="subtopics/S06_Capturing_Scenario_Outputs_Data_Tables_vs_Pasted.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S06_Capturing_Scenario_Outputs_Data_Tables_vs_Pasted.html">S06 · Capturing Scenario Outputs: Data Tables vs Pasted Static Values</a></li><li><a href="subtopics/S07_Scenario_Labelling_on_Outputs_and_Documented_Case.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S07_Scenario_Labelling_on_Outputs_and_Documented_Case.html">S07 · Scenario Labelling on Outputs and Documented Case Rationale</a></li></ul></div><div><h3>Key concepts & formulas</h3><ul class="links num"><li><a href="concepts/C01_The_Live_Row_CHOOSE_or_INDEX_on_the_Scenario_Code.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C01_The_Live_Row_CHOOSE_or_INDEX_on_the_Scenario_Code.html">C01 · The Live Row: CHOOSE or INDEX on the Scenario Code</a></li><li><a href="concepts/C02_One_Switch_Only_No_Scenario_Logic_Outside_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C02_One_Switch_Only_No_Scenario_Logic_Outside_the.html">C02 · One Switch Only: No Scenario Logic Outside the Driver Block</a></li><li><a href="concepts/C03_Scenario_Summary_via_a_One_Variable_Data_Table_on.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C03_Scenario_Summary_via_a_One_Variable_Data_Table_on.html">C03 · Scenario Summary via a One-Variable Data Table on the Switch</a></li><li><a href="concepts/C04_Live_Scenario_Header_Label_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C04_Live_Scenario_Header_Label_Formula.html">C04 · Live Scenario Header Label Formula</a></li><li><a href="concepts/C05_Internal_Consistency_of_Scenarios_Growth_Needs.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C05_Internal_Consistency_of_Scenarios_Growth_Needs.html">C05 · Internal Consistency of Scenarios: Growth Needs Capex, Stress Needs Funding</a></li></ul></div></div></section><article class="note"><blockquote>
+<p><strong>Roadmap topic:</strong> Scenario Switcher Architecture: Building Base, Bull, and Bear case driver blocks controlled via a single scenario selector cell</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>Every forecast is wrong; the useful question is how wrong it could be and what would happen if it were. Scenario
+analysis answers that by running the whole model under a small number of coherent alternative worlds — typically
+Base, Bull and Bear — and comparing the results. For the model to support this reliably, scenarios must be an
+<em>architectural</em> feature, not an afterthought: one selector cell controls the case; driver blocks on the Assumptions
+sheet hold each case's values; one Live row per driver feeds the calculations; outputs are captured side by side and
+labelled so no one misreads which case they are looking at. Built this way, flipping from Base to Bear is a single
+keystroke, every schedule responds (revenue, costs, capex, working capital, debt, valuation), and a reviewer can see
+exactly what differs between cases.</p>
+<p>In the target roles this is routine. Sell-side and buy-side analysts present Bull/Base/Bear price targets; transaction
+services and lenders run management, base and downside cases through acquisition and project-finance models; FP&amp;A teams
+maintain budget, stretch and downside versions and update them through rolling forecasts. Model reviewers check the
+switch mechanics first — scattered <code>IF(Scenario=…)</code> logic, volatile OFFSET switches and data tables pointing at
+another sheet's switch are standard audit findings. The architecture also pays off later in this phase: Week 15 stress
+tests run through the same switch, and Week 16 contrasts scenarios with sensitivity grids.</p>
+<p>The learning sequence follows the data flow. Set up the single selector with data validation (s01) and the one-switch
+rule (c02). Build driver blocks with Base/Bull/Bear rows and a Live row (s02, c01) using non-volatile selection functions
+(s03). Decide which drivers to flex across the chain from demand to cash (s04) and tie them together with coherent
+narratives rather than single-variable tweaks (s05), checking internal consistency of growth, capex, NWC and funding (c05).
+Finally, capture outputs in a scenario summary (s06, c03) and label every output page and document each case (s07, c04).</p>
+<h2 id="concept-map">Concept map</h2>
+<table>
+<thead>
+<tr>
+<th>Subtopic / concept</th>
+<th>Role in the topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s01 Single selector cell with dropdown</td>
+<td>One validated, named control point for the active case</td>
+</tr>
+<tr>
+<td>s02 Driver blocks with Live row</td>
+<td>Base/Bull/Bear rows per driver per year; Live row feeds calculations</td>
+</tr>
+<tr>
+<td>s03 Selection functions</td>
+<td>CHOOSE, INDEX, XLOOKUP, SWITCH; avoid volatile OFFSET/INDIRECT</td>
+</tr>
+<tr>
+<td>s04 Drivers to flex</td>
+<td>Volume, price, store adds, gross margin, wages, capex, DSO/DIO/DPO</td>
+</tr>
+<tr>
+<td>s05 Coherent narratives</td>
+<td>Scenarios as consistent stories, not independent tweaks</td>
+</tr>
+<tr>
+<td>s06 Output capture</td>
+<td>Live data table on the switch vs static pasted snapshots</td>
+</tr>
+<tr>
+<td>s07 Labelling and rationale</td>
+<td>Live headers on every output page; documented case rationale</td>
+</tr>
+<tr>
+<td>c01 Live row formula</td>
+<td><code>CHOOSE(Scenario,…)</code> or <code>INDEX(range,Scenario)</code></td>
+</tr>
+<tr>
+<td>c02 One switch only</td>
+<td>No scenario logic outside driver blocks</td>
+</tr>
+<tr>
+<td>c03 Scenario summary data table</td>
+<td>1D data table with Scenario as column input</td>
+</tr>
+<tr>
+<td>c04 Header label formula</td>
+<td><code>="Scenario: "&amp;INDEX(Scenario_Names,Scenario)</code></td>
+</tr>
+<tr>
+<td>c05 Internal consistency</td>
+<td>Bull carries capex and NWC; Bear carries deleveraging or revolver use</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-concepts-to-study">Related concepts to study</h2>
+<h3 id="week-15-stress-testing-through-the-switch">Week 15: Stress testing through the switch</h3>
+<p><em>→ Week 15 (w15_t5): stress testing runs through this switch</em></p>
+<p>In Week 15 the integrated model gains a debt schedule, revolver and minimum cash logic, and stress tests ask how far
+operating drivers can deteriorate before covenants break or the revolver limit is exhausted. Those stress cases should be
+additional codes on the same selector (e.g., 4 = Lender stress) with their own driver-block rows, not a parallel set of
+overrides. Because the switch architecture already flexes volume, margins, capex and NWC days coherently, stress tests
+inherit those links; what changes is severity and, sometimes, deliberate combination of adverse moves beyond a single
+narrative. Build the selector and blocks now so they extend cleanly.</p>
+<h3 id="week-16-sensitivity-grids-vs-scenarios">Week 16: Sensitivity grids vs scenarios</h3>
+<p><em>→ Week 16 (w16_t5): sensitivity grids vs scenarios</em></p>
+<p>Week 16 introduces sensitivity analysis — one- and two-variable data tables over WACC, terminal growth, exit multiples
+or single operating drivers — and tornado charts ranking driver impact. Sensitivities and scenarios answer different
+questions: a sensitivity isolates how much value depends on one variable with everything else held constant; a scenario
+shows the outcome of a coherent alternative world. They combine usefully (a Scenario × WACC grid), and the tornado
+helps choose which drivers to flex in scenarios (s04). Keep the mechanisms separate in the model: sensitivity inputs
+are not scenario codes, and sensitivity data tables must also sit on the sheet of their input cells.</p>
+<h3 id="phase-5-budget-versions-and-rolling-forecast-scenarios">Phase 5: Budget versions and rolling forecast scenarios</h3>
+<p><em>→ Phase 5 (W17–20): budget versions and rolling forecast scenarios</em></p>
+<p>FP&amp;A uses the same architecture with different vocabulary: Budget, Stretch and Downside versions; Reforecast Q1, Q2;
+management and board cases. Driver blocks hold the version assumptions (volume, price, headcount, increments, opex
+inflation), and a version selector drives the plan. Rolling forecasts update the Base drivers each quarter as actuals
+land, often keeping Bull/Bear as deltas around the latest Base (s02 base-plus-delta style). Version labelling and a
+change log become critical when the board approves one version and management reports against another. The discipline
+learned here transfers directly to planning tools and Excel-based budget models.</p>
+<h3 id="phase-3-power-bi-what-if-parameters">Phase 3: Power BI what-if parameters</h3>
+<p><em>→ Phase 3 (W9–12): Power BI what-if parameters as the reporting analogue</em></p>
+<p>In Power BI, a what-if parameter creates a disconnected table of values and a measure returning the selected value
+(via <code>SELECTEDVALUE</code>), exposed through a slicer; measures then use the parameter to recompute results — the reporting
+analogue of the selector cell and Live row. A scenario dimension table (Base, Bull, Bear) with driver values by year,
+filtered by a slicer, mirrors the driver block. Two cautions from this topic carry over: show the selected scenario
+visibly on every report page (a card), and avoid embedding scenario logic in many separate measures — centralise it in
+one driver measure that others reference.</p>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<h3 id="scenario-ifs-scattered-across-calculation-sheets">Scenario IFs scattered across calculation sheets</h3>
+<p><em>Scenario IF statements scattered across calculation sheets</em></p>
+<p>The mistake: formulas such as <code>=IF(Scenario=3, Revenue*0.9, Revenue)</code> on the revenue sheet, a separate capex IF on the
+PPE sheet, and a days IF on the working capital sheet. It happens because adding an IF in place is faster than adding a
+driver row. It hides assumptions, breaks row consistency, and makes cases incoherent and unauditable. The correct
+treatment is the one-switch rule (c02): every case difference is a value in a driver block; calculations reference Live
+rows only. Detect it by searching formulas for "Scenario" (Find in formulas, or Trace Dependents from the selector):
+every hit outside the Assumptions Live rows, labels, checks and summary table is a finding.</p>
+<h3 id="bear-case-that-cuts-revenue-only">Bear case that cuts revenue only</h3>
+<p><em>Bear case cuts revenue but leaves costs, capex and NWC days unchanged</em></p>
+<p>The mistake: the Bear case lowers a revenue growth rate while COGS, staff, opex, capex and working-capital days stay at
+Base. It happens when the model's costs are % of revenue (so they fall pro rata, preserving margins) or when only the
+revenue block has scenario rows. The result is a Bear case with unchanged margins, too much capex and unrealistically
+good cash conversion — or, conversely, costs that do not respond to lower volume at all. The correct treatment is to flex
+the full driver set coherently (s04, s05) on a driver-based cost structure (Topic 5), including NWC days and capex timing,
+and to check consistency (c05). Detect it by comparing Bear vs Base on margin, capex ÷ revenue and NWC days in the
+scenario summary.</p>
+<h3 id="data-table-on-a-different-sheet-from-the-switch">Data table on a different sheet from the switch</h3>
+<p><em>Data table on one sheet pointing at a switch on another sheet (Excel disallows it)</em></p>
+<p>The mistake: building the scenario summary data table on an Outputs sheet while the <code>Scenario</code> cell sits on Inputs.
+Excel rejects it ("Input cell reference is not valid"), and builders then work around it with fragile links — for
+example, making the Inputs selector a formula pointing at an Outputs cell, which creates two apparent switches, or pasting
+static values. The correct treatment is to place the data table on the same sheet as the selector (often both on the
+Cover), or to move the selector to the sheet hosting the summary, keeping one input cell (s01, s06, c03). Detect it by
+checking that the selector is a blue hardcoded input (not a formula) and that the summary table is a genuine
+<code>{=TABLE(...)}</code> on that sheet.</p>
+<h3 id="file-circulated-with-bull-or-bear-active">File circulated with Bull or Bear active</h3>
+<p><em>File saved and circulated with Bear/Bull left active</em></p>
+<p>The mistake: the analyst finishes testing the Bear case, saves and emails the file; recipients read Bear outputs as Base.
+It happens under time pressure, especially when headers are typed rather than formula-driven. The correct treatment: live
+scenario headers on every output page (c04), a visible "non-Base case active" flag on the Cover with conditional
+formatting, a pre-circulation checklist (selector = 1, master check = 0, data tables refreshed), and optionally a file-name
+convention that includes the active case. Detect it by opening the file and reading the Cover flag and headers before
+using any number; in review, check the selector value of every file version circulated.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-build-the-switch-for-a-trent-model-l3">Q1. Build the switch for a Trent model [L3]</h3>
+<p>You are building the Week 13 exercise model for Trent. (a) Specify the selector cell, name list, validation and Cover
+display. (b) Design driver blocks for Zudio and Westside store additions, LFL, gross margin, store staff increment, fit-out
+capex per sq ft, inventory days and payable days, with illustrative Base/Bull/Bear values for FY26E–FY30E and a written
+narrative for each case. (c) Write the Live row formula and the integrity check for one block. (d) Lay out the scenario
+summary data table, naming its sheet and outputs. (e) Describe the checks that feed the master flag on the Cover.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Decide first where the selector lives, because the summary data table must share its sheet.</p>
+</blockquote>
+<h3 id="q2-refactor-a-legacy-model-l2">Q2. Refactor a legacy model [L2]</h3>
+<p>A Pidilite model inherited from a colleague has: an <code>OFFSET</code>-based scenario switch on Inputs; <code>IF(Scenario=3,…)</code> haircuts
+on revenue and gross margin in the P&L; a separate "Capex case" dropdown on the PPE sheet; a scenario summary pasted as
+values dated four months ago; and typed "Base case" headers on outputs. List every finding with its risk, and set out a
+step-by-step refactoring plan, including how you would reconcile outputs before and after for each case.</p>
+<h3 id="q3-coherent-bear-case-with-funding-consequences-l3">Q3. Coherent Bear case with funding consequences [L3]</h3>
+<p>For a retailer with FY27E Base revenue ₹24,000 crore, EBITDA ₹3,900 crore, capex ₹1,450 crore, DIO 65, DPO 60, DSO 5,
+opening cash ₹900 crore, minimum cash ₹300 crore and a ₹1,000 crore revolver at 9.5%: (a) write a demand-slowdown Bear
+narrative; (b) set Bear values for LFL, store adds, gross margin, A&amp;P %, capex, DIO and DPO; (c) estimate Bear EBITDA,
+change in NWC, pre-financing FCF and revolver draw with stated assumptions for COGS and tax; (d) explain which management
+responses you included and why; (e) list the consistency checks the Bear case passes.</p>
+<h3 id="q4-interview-scenarios-vs-sensitivities-and-controls-l2">Q4. Interview — scenarios vs sensitivities and controls [L2]</h3>
+<p>An interviewer asks: "How do you build scenarios in a model, how are they different from sensitivities, and how do you
+make sure nobody misreads which case they are looking at?" Prepare a structured three-minute answer covering the
+selector, driver blocks, selection functions, narratives, output capture and labelling controls.</p></section>
+<nav class="pager"><a class="prev" href="../T5_Cost_Structure_Forecasting/concepts/C06_EBITDA_Margin_Bridge_Gross_Margin_Employee_and.html">← EBITDA Margin Bridge: Gross Margin, Employee and Other Opex…</a><a class="next" href="subtopics/S01_Single_Scenario_Selector_Cell_with_Data_Validation.html">Single Scenario Selector Cell with Data-Validation Dropdown →</a></nav>
+</main></div></body></html>

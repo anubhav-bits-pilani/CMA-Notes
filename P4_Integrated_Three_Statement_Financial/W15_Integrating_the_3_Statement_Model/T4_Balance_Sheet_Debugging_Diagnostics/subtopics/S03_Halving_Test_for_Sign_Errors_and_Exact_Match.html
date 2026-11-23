@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Halving Test for Sign Errors and Exact-Match Search for Omissions · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S03_Halving_Test_for_Sign_Errors_and_Exact_Match.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 15</a> <span>›</span> <a href="../index.html">T4 · Balance Sheet Debugging Diagnostics</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Balance Sheet Debugging Diagnostics</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Clean_Historicals_First_Then_Find_the_First.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S01_Clean_Historicals_First_Then_Find_the_First.html">Clean Historicals First, Then Find the First Imbalanced Year</a></li><li><a href="S02_Reading_the_Pattern_of_the_Balance_Check_Across.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S02_Reading_the_Pattern_of_the_Balance_Check_Across.html">Reading the Pattern of the Balance Check Across Years</a></li><li><a href="S03_Halving_Test_for_Sign_Errors_and_Exact_Match.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S03_Halving_Test_for_Sign_Errors_and_Exact_Match.html">Halving Test for Sign Errors and Exact-Match Search for Omissions</a></li><li><a href="S04_Line_by_Line_ΔBS_vs_CFS_Reconciliation_Block.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S04_Line_by_Line_ΔBS_vs_CFS_Reconciliation_Block.html">Line-by-Line ΔBS vs CFS Reconciliation Block</a></li><li><a href="S05_Breaker_Off_Opening_Links_and_Sign_Conventions_in.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S05_Breaker_Off_Opening_Links_and_Sign_Conventions_in.html">Breaker Off, Opening Links and Sign Conventions in Corkscrews</a></li><li><a href="S06_Hunting_Hardcodes_with_Go_To_Special_Trace.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S06_Hunting_Hardcodes_with_Go_To_Special_Trace.html">Hunting Hardcodes with Go To Special, Trace Precedents and Inquire</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Difference_of_X_Means_Omission_2X_Means_Wrong_Sign.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C01_Difference_of_X_Means_Omission_2X_Means_Wrong_Sign.html">Difference of X Means Omission; 2X Means Wrong Sign</a></li><li><a href="../concepts/C02_Constant_vs_Growing_Difference_Opening_Error_or.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C02_Constant_vs_Growing_Difference_Opening_Error_or.html">Constant vs Growing Difference: Opening Error or Flow Error</a></li><li><a href="../concepts/C03_The_Cash_Check_Separating_CFS_Errors_from_BS_Link.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C03_The_Cash_Check_Separating_CFS_Errors_from_BS_Link.html">The Cash Check: Separating CFS Errors from BS Link Errors</a></li><li><a href="../concepts/C04_The_Transaction_Triad_PL_CFS_and_BS_Impact.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C04_The_Transaction_Triad_PL_CFS_and_BS_Impact.html">The Transaction Triad: P&amp;L, CFS and BS Impact</a></li><li><a href="../concepts/C05_Typical_Culprits_Behind_a_Balance_Sheet_Imbalance.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C05_Typical_Culprits_Behind_a_Balance_Sheet_Imbalance.html">Typical Culprits Behind a Balance Sheet Imbalance</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Halving Test for Sign Errors and Exact-Match Search for Omissions</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Halving test for sign errors; exact-match search for omitted items</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Once you know the first imbalanced year and the pattern, the size of the difference is your most useful clue. Most model imbalances are either a BS movement with no CFS counterpart (an omission) or a movement entered in the CFS with the wrong sign (a sign error). These two error types leave different arithmetic fingerprints. An omission leaves a difference equal to the item. A sign error leaves a difference equal to twice the item. Searching the model for a number equal to the difference, or to half the difference, often finds the culprit in under a minute. This is the modelling version of the TB habit of halving a difference to find an entry posted on the wrong side. Because it is quick, it should always come before the slower line-by-line reconciliation (s04).</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="why-omission-gives-x-and-a-sign-error-gives-2x">Why omission gives X and a sign error gives 2X</h3>
+<p>Let a BS item move by \( X \) in the year (for example, inventory rises by ₹20 crore, which should be a cash outflow of ₹20 crore).</p>
+<ul>
+<li><strong>Correct:</strong> CFS records −20, cash falls by 20, inventory rises by 20. Total assets unchanged. Check = 0.</li>
+<li><strong>Omitted:</strong> CFS records 0, so cash does not fall. Inventory rises by 20, total assets are 20 too high. Check = +20 = X.</li>
+<li><strong>Wrong sign:</strong> CFS records +20, so cash rises by 20 instead of falling. Inventory +20 and cash +20 makes total assets 40 too high. Check = +40 = 2X.</li>
+</ul>
+<p>The general rule:</p>
+<p>\[
+\text{Check} = \begin{cases} X &amp; \text{if the movement is omitted from the CFS} \\ 2X &amp; \text{if the movement is in the CFS with the wrong sign} \end{cases}
+\]</p>
+<p>The sign of the check tells you which side is overstated. If the convention is Assets − (Equity + Liabilities), a positive check means assets are too high or liabilities/equity too low.</p>
+<h3 id="exact-match-search-omissions">Exact-match search (omissions)</h3>
+<p>Procedure for the first imbalanced year with difference \( D \):</p>
+<ol>
+<li>Copy the difference to a scratch cell and note it to 2–3 decimals (for example 6.384).</li>
+<li>Scan the <strong>movement</strong> rows of every schedule for \( D \): Δ receivables, Δ inventory, Δ payables, Δ provisions, Δ DTL/DTA, ESOP charge, impairment, ROU additions, CWIP additions, NCI share of profit, dividends declared vs paid, Δ interest accrued.</li>
+<li>Use Find (Ctrl+F, Look in: <strong>Values</strong>, Within: Workbook) with the number formatted as displayed. Find searches the <em>displayed</em> value, so set consistent decimals, or search for a truncated string like "6.38".</li>
+<li>Faster in larger models: build a "movement register" helper that stacks every schedule's movement rows for the target year, and use <code>=MATCH(TRUE, INDEX(ABS(Movements-D)&lt;0.001,0),0)</code> to return the position of the matching item.</li>
+</ol>
+<p>Common exact matches:</p>
+<table>
+<thead>
+<tr>
+<th>Difference equals</th>
+<th>Likely omission</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Share-based payment expense</td>
+<td>Not added back in CFO (reserve credited, P&amp;L charged, no cash)</td>
+</tr>
+<tr>
+<td>ΔDTL</td>
+<td>Deferred tax not added back (or DTL not moved on BS)</td>
+</tr>
+<tr>
+<td>ROU additions</td>
+<td>New leases: BS ROU and lease liability both up. Or the addition is put in capex in CFI</td>
+</tr>
+<tr>
+<td>NCI share of profit</td>
+<td>CFO starts at PAT to owners, but the NCI corkscrew adds the NCI share</td>
+</tr>
+<tr>
+<td>Dividend declared − paid</td>
+<td>Dividends payable not on BS, or CFS uses declared amount</td>
+</tr>
+<tr>
+<td>Impairment</td>
+<td>P&amp;L charge not added back</td>
+</tr>
+</tbody>
+</table>
+<h3 id="halving-test-sign-errors">Halving test (sign errors)</h3>
+<p>If no exact match, compute \( D/2 \) and repeat the search. The most frequent 2X errors:</p>
+<ul>
+<li><strong>ΔNWC sign.</strong> The CFS shows <code>=Closing - Opening</code> for an asset (should be <code>=Opening - Closing</code>), or the liability movement is negated.</li>
+<li><strong>Capex entered as positive</strong> in CFI, or disposal proceeds entered as negative.</li>
+<li><strong>Debt repayment entered as inflow</strong>, often when the debt schedule stores repayments as negative numbers and the CFS adds a second minus.</li>
+<li><strong>Dividends added</strong> in CFF because the equity schedule already stores them as negative.</li>
+<li><strong>ΔDTA treated like ΔDTL.</strong> An increase in DTA is a non-cash <em>credit</em> in the P&amp;L, so it is deducted in CFO, not added.</li>
+</ul>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>Narmada Auto Components Ltd, FY27E (first imbalanced year). Check = +36.00 (assets too high).</p>
+<p>Candidate movements for FY27E (₹ crore):</p>
+<table>
+<thead>
+<tr>
+<th>Movement</th>
+<th>Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Δ Trade receivables</td>
+<td>+18.00</td>
+</tr>
+<tr>
+<td>Δ Inventory</td>
+<td>+24.00</td>
+</tr>
+<tr>
+<td>Δ Trade payables</td>
+<td>+11.00</td>
+</tr>
+<tr>
+<td>ESOP charge</td>
+<td>4.50</td>
+</tr>
+<tr>
+<td>Δ DTL</td>
+<td>2.20</td>
+</tr>
+<tr>
+<td>ROU additions</td>
+<td>9.00</td>
+</tr>
+</tbody>
+</table>
+<p>Exact match for 36.00: none. Halving: 18.00 matches <strong>Δ trade receivables</strong>. Hypothesis: the receivables increase has been added to CFO instead of deducted. Open the CFS row and confirm: <code>=WC!H22-WC!G22</code> (closing − opening) where the template convention requires <code>=WC!G22-WC!H22</code>. Fix it and the check returns to 0.</p>
+<p>Also consider <strong>combinations</strong>. If no single item matches \( D \) or \( D/2 \), test pairs. A check of 13.50 could be ESOP 4.50 omitted plus ROU additions 9.00 omitted. Two simultaneous omissions are common in a newly added block (for example, a lease schedule that was never wired into the CFS).</p>
+<h3 id="sign-of-the-difference-narrows-the-side">Sign of the difference narrows the side</h3>
+<table>
+<thead>
+<tr>
+<th>Check (A − L − E)</th>
+<th>Means</th>
+<th>Typical cause</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Positive</td>
+<td>Assets overstated or L/E understated</td>
+<td>Cash too high (outflow omitted or mis-signed as inflow)</td>
+</tr>
+<tr>
+<td>Negative</td>
+<td>Assets understated or L/E overstated</td>
+<td>Cash too low (inflow omitted or mis-signed as outflow)</td>
+</tr>
+</tbody>
+</table>
+<p>Because cash is the balancing asset, most errors show up through cash. A positive check usually means the CFS shows too much cash: an outflow was missed or reversed.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>The item is the difference, but the error is elsewhere.</strong> If the ESOP charge is 4.50 and the check is 4.50, the error could be in the CFS (add-back missing) <em>or</em> on the BS (reserve not credited). The cash check (c03) separates these.</li>
+<li><strong>Coincidental matches.</strong> In a large model many numbers are close to \( D \). Prefer matches that fit the pattern too (s02). A recurring 4.50 difference plus a constant 4.50 ESOP charge is strong evidence. A one-off match in a growing pattern is weak.</li>
+<li><strong>Tax-effected differences.</strong> If a P&amp;L item is mis-signed <em>before</em> tax, the BS difference may be \( 2X(1-t) \) because tax also moves. For example, an expense of 10 entered as income changes PAT by \( 2 \times 10 \times (1 - 0.2517) = 14.97 \). But if both the P&amp;L and BS treat the item consistently, the model still balances. Tax effects create imbalances only if tax is linked inconsistently.</li>
+<li><strong>Circular models.</strong> A sign error in interest changes cash, which changes interest income, which changes tax. The difference is no longer a clean 2X. Switch the breaker off first.</li>
+<li><strong>Find vs displayed values.</strong> Excel Find matches the formatted text. A cell showing 18.0 will not match a search for 18.00. Use the MATCH-on-values approach for reliability.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>An omitted movement leaves a difference of exactly X. A movement with the wrong sign leaves 2X.</li>
+<li>Search for \( D \) first, then \( D/2 \), then pairs of items. Use value-based MATCH rather than Find for reliability.</li>
+<li>The sign of the check tells you which side is overstated. A positive A − L − E usually means cash is too high.</li>
+<li>ΔNWC direction, capex sign, repayment sign, dividends and ΔDTA vs ΔDTL are the classic 2X errors.</li>
+<li>Confirm every hypothesis by checking that the pattern across years fits, not just the first-year number.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-omission-or-sign-error-l1">Q1. Omission or sign error? [L1]</h3>
+<p>Check (A − L − E) in FY26E is −14.80 crore. Candidate FY26E movements: Δ trade payables +7.40, ESOP charge 3.70, Δ DTL 14.80, ROU additions 11.10, Δ provisions +2.60. (a) Identify every item consistent with an exact match and every item consistent with the halving test. (b) For each candidate, describe what the CFS line would look like if it were the cause. (c) State which candidate is more consistent with a negative check, explaining why.</p>
+<h3 id="q2-repayment-stored-as-negative-l2">Q2. Repayment stored as negative [L2]</h3>
+<p>The debt schedule of Pench Infra Ltd stores repayments as negative numbers (FY27E repayment shown as −60). The CFS row "Repayment of borrowings" uses <code>=-Debt!H18</code>. The BS borrowings row uses <code>=Debt!H15</code> where <code>H15 = G15 + H17 + H18</code> (opening + drawdown + repayment). (a) Compute the FY27E check impact. (b) Explain which convention is wrong and propose a single consistent sign convention for the debt schedule and CFS. (c) Explain how a reviewer could detect this type of error without computing the check.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Trace whether the CFS shows the repayment as an inflow or an outflow.</p>
+</blockquote>
+<h3 id="q3-two-item-combination-l2">Q3. Two-item combination [L2]</h3>
+<p>FY28E check = +22.70. Movements: Δ inventory +15.20, Δ receivables +9.80, ESOP charge 5.60, Δ DTL 1.90, lease additions 17.10, Δ dividends payable 2.40. No single exact or halved match exists. (a) Find all pairs of items whose omission would produce the difference. (b) Find any combination of one omission and one sign error that would produce the difference. (c) Explain how you would use the check pattern in other years to choose between the combinations.</p>
+<h3 id="q4-pre-tax-sign-error-l3">Q4. Pre-tax sign error [L3]</h3>
+<p>In a model taxed at 25.17%, an analyst enters a one-off insurance claim receipt of ₹20 crore (received in cash in FY26E) as an expense instead of income in the P&amp;L. The tax schedule computes tax on PBT, and the CFS starts at PAT. (a) Explain whether the BS will balance and why. (b) State the effect on PAT, cash and equity compared with the correct treatment. (c) Explain why the balance check cannot detect this error and which check or review step would.</p></section>
+<nav class="pager"><a class="prev" href="S02_Reading_the_Pattern_of_the_Balance_Check_Across.html">← Reading the Pattern of the Balance Check Across Years</a><a class="next" href="S04_Line_by_Line_ΔBS_vs_CFS_Reconciliation_Block.html">Line-by-Line ΔBS vs CFS Reconciliation Block →</a></nav>
+</main></div></body></html>

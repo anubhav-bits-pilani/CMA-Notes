@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Splitting Ledger Code and Name; Parsing Tally Dr/Cr Amounts · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S04_Splitting_Ledger_Code_and_Name_Parsing_Tally_DrCr.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T2 · Cleaning messy ERP/Tally exports</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Cleaning messy ERP/Tally exports</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Skipping_Report_Headers_Conditionally_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S01_Skipping_Report_Headers_Conditionally_and.html">Skipping Report Headers Conditionally and Promoting Headers</a></li><li><a href="S02_Removing_Blank_Subtotal_and_Grand_Total_Rows_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S02_Removing_Blank_Subtotal_and_Grand_Total_Rows_by.html">Removing Blank, Subtotal and Grand Total Rows by Condition</a></li><li><a href="S03_Filling_Down_Cost_Centre_and_Group_Headers_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S03_Filling_Down_Cost_Centre_and_Group_Headers_in.html">Filling Down Cost-Centre and Group Headers in Report Layouts</a></li><li><a href="S04_Splitting_Ledger_Code_and_Name_Parsing_Tally_DrCr.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S04_Splitting_Ledger_Code_and_Name_Parsing_Tally_DrCr.html">Splitting Ledger Code and Name; Parsing Tally Dr/Cr Amounts</a></li><li><a href="S05_Trimming_Non_Breaking_Spaces_and_Non_Printable.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S05_Trimming_Non_Breaking_Spaces_and_Non_Printable.html">Trimming Non-Breaking Spaces and Non-Printable Characters</a></li><li><a href="S06_Fixing_Date_Locales_and_Indian_Digit_Grouping_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S06_Fixing_Date_Locales_and_Indian_Digit_Grouping_in.html">Fixing Date Locales and Indian Digit Grouping in Text Amounts</a></li><li><a href="S07_Error_Handling_Remove_Errors_Keep_Errors_and_try.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S07_Error_Handling_Remove_Errors_Keep_Errors_and_try.html">Error Handling: Remove Errors, Keep Errors and try ... otherwise</a></li><li><a href="S08_Export_Layouts_Tally_Day_BookLedgerTB_SAP_FBL3N.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S08_Export_Layouts_Tally_Day_BookLedgerTB_SAP_FBL3N.html">Export Layouts: Tally Day Book/Ledger/TB, SAP FBL3N, S_ALR, Oracle TB</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Conditional_TableSkip_Followed_by_PromoteHeaders.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C01_Conditional_TableSkip_Followed_by_PromoteHeaders.html">Conditional Table.Skip Followed by PromoteHeaders</a></li><li><a href="../concepts/C02_Filtering_Out_Null_and_Total_Rows_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C02_Filtering_Out_Null_and_Total_Rows_with.html">Filtering Out Null and Total Rows with Table.SelectRows</a></li><li><a href="../concepts/C03_TableFillDown_Fills_Only_Nulls_Replace_Blanks.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C03_TableFillDown_Fills_Only_Nulls_Replace_Blanks.html">Table.FillDown Fills Only Nulls: Replace Blanks First</a></li><li><a href="../concepts/C04_TableSplitColumn_at_Each_Delimiter_into_Code_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C04_TableSplitColumn_at_Each_Delimiter_into_Code_and.html">Table.SplitColumn at Each Delimiter into Code and Name</a></li><li><a href="../concepts/C05_Cleaning_Text_Replace_Char_160_TextClean_TextTrim.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C05_Cleaning_Text_Replace_Char_160_TextClean_TextTrim.html">Cleaning Text: Replace Char 160, Text.Clean, Text.Trim</a></li><li><a href="../concepts/C06_TransformColumnTypes_with_an_Explicit_en_IN.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C06_TransformColumnTypes_with_an_Explicit_en_IN.html">TransformColumnTypes with an Explicit en-IN Culture</a></li><li><a href="../concepts/C07_Converting_Tally_DrCr_Suffix_Balances_into_Signed.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C07_Converting_Tally_DrCr_Suffix_Balances_into_Signed.html">Converting Tally Dr/Cr Suffix Balances into Signed Numbers</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Splitting Ledger Code and Name; Parsing Tally Dr/Cr Amounts</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Splitting "400100 - Sales Domestic" into code and name; parsing Tally amounts with Dr/Cr suffixes</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Two of the most common shapes in Indian ERP exports need parsing before anything else works. First, <strong>combined ledger labels</strong>: SAP, Oracle and many Tally setups (where ledger names are prefixed with codes) give "400100 - Sales Domestic" in one column. Mapping to a Chart of Accounts or Schedule III line needs the <strong>code</strong> as a join key and the <strong>name</strong> for display. Second, <strong>Tally closing balances</strong> are often exported as a single text column such as "1,23,456.00 Dr" or "45,000.00 Cr" rather than separate Debit/Credit columns. Until that text becomes a signed number, you cannot sum, test Dr = Cr or compare with a bank file.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="splitting-code-and-name">Splitting code and name</h3>
+<p>The UI path is <strong>Split Column → By Delimiter</strong>, which generates <code>Table.SplitColumn</code>. Key choices:</p>
+<table>
+<thead>
+<tr>
+<th>Choice</th>
+<th>M</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Delimiter <code>" - "</code> at each occurrence</td>
+<td><code>Splitter.SplitTextByDelimiter(" - ")</code></td>
+<td>Never for names — "Sales - Exports - SEZ" would split into three</td>
+</tr>
+<tr>
+<td>At the <strong>left-most</strong> delimiter only</td>
+<td><code>Splitter.SplitTextByEachDelimiter({" - "}, QuoteStyle.None, false)</code></td>
+<td>Code first, name may contain " - "</td>
+</tr>
+<tr>
+<td>At the right-most delimiter</td>
+<td><code>Splitter.SplitTextByEachDelimiter({" - "}, QuoteStyle.None, true)</code></td>
+<td>Name first, code last ("Sales Domestic (400100)")</td>
+</tr>
+<tr>
+<td>By positions</td>
+<td><code>Splitter.SplitTextByPositions({0, 6})</code></td>
+<td>Fixed-width codes, no delimiter</td>
+</tr>
+<tr>
+<td>Digit to non-digit transition</td>
+<td><code>Splitter.SplitTextByCharacterTransition({"0".."9"}, (c) =&gt; not List.Contains({"0".."9"}, c))</code></td>
+<td>"400100Sales Domestic"</td>
+</tr>
+</tbody>
+</table>
+<p>Robust M for the common case (c04):</p>
+<pre><code>Split = Table.SplitColumn(t, &quot;Ledger&quot;,
+          Splitter.SplitTextByEachDelimiter({&quot; - &quot;}), {&quot;Code&quot;, &quot;Name&quot;}),
+Typed = Table.TransformColumns(Split, {{&quot;Code&quot;, Text.Trim, type text}, {&quot;Name&quot;, Text.Trim, type text}})
+</code></pre>
+<p>Alternatives without splitting the original column, which keep the source column for audit:</p>
+<pre><code>AddCode = Table.AddColumn(t, &quot;Code&quot;, each Text.Trim(Text.BeforeDelimiter([Ledger], &quot;-&quot;)), type text),
+AddName = Table.AddColumn(AddCode, &quot;Name&quot;, each Text.Trim(Text.AfterDelimiter([Ledger], &quot;-&quot;)), type text)
+</code></pre>
+<p><code>Text.BeforeDelimiter</code> and <code>Text.AfterDelimiter</code> take an optional index (<code>{0, RelativePosition.FromStart}</code>) to choose which occurrence; the default is the first.</p>
+<p><strong>Rows with no delimiter</strong> (e.g. "Suspense Account" with no code): <code>Table.SplitColumn</code> puts the whole text into Code and null into Name — the code column now holds a name. Guard:</p>
+<pre><code>AddCode = Table.AddColumn(t, &quot;Code&quot;, each
+            let p = Text.BeforeDelimiter([Ledger], &quot; - &quot;) in
+            if Text.Contains([Ledger], &quot; - &quot;) and Text.Select(p, {&quot;0&quot;..&quot;9&quot;}) = p then p else null,
+            type nullable text)
+</code></pre>
+<p>Then list rows with null Code in an exceptions query — they are unmapped ledgers.</p>
+<p><strong>Keep codes as text</strong> — "001200" must not become 1200; type the Code column as <code>type text</code> immediately.</p>
+<h3 id="parsing-tally-drcr-amounts">Parsing Tally Dr/Cr amounts</h3>
+<p>Tally's TB "Closing Balance" in single-column mode, and the Ledger report's running balance, use a suffix: <code>"1,23,456.00 Dr"</code>, <code>"45,000.00 Cr"</code>. Sign convention to adopt in the model: <strong>Debit positive, Credit negative</strong> (so a TB sums to zero and a P&amp;L sums to the loss / negative profit). Formula (c07):</p>
+<pre><code>Signed = Table.AddColumn(t, &quot;Amount&quot;, each
+           (if Text.EndsWith(Text.Trim([Bal]), &quot;Cr&quot;) then -1 else 1)
+           * Number.From(Text.Select([Bal], {&quot;0&quot;..&quot;9&quot;, &quot;.&quot;})), type number)
+</code></pre>
+<p>How it works: <code>Text.Select</code> keeps only digits and the decimal point, which removes the Indian grouping commas, spaces, the ₹ sign and the Dr/Cr suffix; <code>Number.From</code> converts; the sign multiplier comes from the suffix.</p>
+<p>Hardening:</p>
+<ul>
+<li><strong>Nulls/blanks</strong>: <code>Text.Select(null, ...)</code> errors. Use <code>if [Bal] = null or Text.Trim([Bal]) = "" then null else ...</code>.</li>
+<li><strong>Case and spacing variants</strong>: "Cr.", "CR", "cr" — normalise with <code>Text.Upper(Text.Trim(...))</code> and test <code>Text.EndsWith(x, "CR") or Text.EndsWith(x, "CR.")</code>.</li>
+<li><strong>Negative signs or brackets</strong> in some exports ("(45,000.00)" or "-45,000.00"): <code>Text.Select</code> strips them, so the sign is lost. Detect brackets/minus first and multiply.</li>
+<li><strong>Locale</strong>: <code>Number.From</code> with "." as decimal works in all English cultures; for robustness use <code>Number.FromText(x, "en-US")</code> after <code>Text.Select</code>.</li>
+</ul>
+<h3 id="separate-debitcredit-columns">Separate Debit/Credit columns</h3>
+<p>When Tally exports separate Debit and Credit columns (text with Indian grouping), convert each with an explicit culture and compute the signed net:</p>
+<pre><code>Typed = Table.TransformColumnTypes(t, {{&quot;Debit&quot;, type number}, {&quot;Credit&quot;, type number}}, &quot;en-IN&quot;),
+Net   = Table.AddColumn(Typed, &quot;Amount&quot;, each ([Debit] ?? 0) - ([Credit] ?? 0), type number)
+</code></pre>
+<h3 id="illustration">Illustration</h3>
+<table>
+<thead>
+<tr>
+<th>Ledger</th>
+<th>Bal</th>
+<th>Code</th>
+<th>Name</th>
+<th>Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>400100 - Sales Domestic</td>
+<td>4,82,36,190.00 Cr</td>
+<td>400100</td>
+<td>Sales Domestic</td>
+<td>−4,82,36,190.00</td>
+</tr>
+<tr>
+<td>400200 - Sales - Exports - SEZ</td>
+<td>1,05,00,000.00 Cr</td>
+<td>400200</td>
+<td>Sales - Exports - SEZ</td>
+<td>−1,05,00,000.00</td>
+</tr>
+<tr>
+<td>510100 - Purchases RM</td>
+<td>3,12,45,600.50 Dr</td>
+<td>510100</td>
+<td>Purchases RM</td>
+<td>3,12,45,600.50</td>
+</tr>
+<tr>
+<td>Suspense Account</td>
+<td>12,500.00 Dr</td>
+<td>null</td>
+<td>Suspense Account (flag)</td>
+<td>12,500.00</td>
+</tr>
+</tbody>
+</table>
+<p>The second row shows why "each occurrence" splitting is wrong; the fourth shows why the no-delimiter guard is needed. A balanced TB of signed amounts must sum to zero (within paise).</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Hyphen vs en-dash</strong>: copy-pasted ledger names may use "–" (en-dash) or "—". Include them as alternative delimiters or normalise with <code>Text.Replace</code> first.</li>
+<li><strong>Codes with letters</strong> (Oracle segments "01-4001-000-IN") — the code itself contains hyphens. Split by the delimiter with spaces (" - "), or by position if the segment structure is fixed; never on "-" alone.</li>
+<li><strong>"Dr" inside the number text</strong> like "Dr 1,23,456.00" (prefix style) — test <code>Text.StartsWith</code> too.</li>
+<li><strong>Sign convention mismatch</strong> across sources: SAP exports credits as negative already; Tally suffixes; bank files have separate withdrawal/deposit columns. Normalise each source to Dr positive before combining (Topic 5 sign alignment).</li>
+<li><strong>Paise precision</strong>: after parsing, type as <code>Currency.Type</code> or check with a tolerance.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Split code/name at the <strong>first</strong> (or last) delimiter only, keep the code as text, and flag rows without a code.</li>
+<li><code>Text.BeforeDelimiter</code>/<code>Text.AfterDelimiter</code> add columns while preserving the original label for audit.</li>
+<li>Convert Tally "Dr/Cr" text by stripping to digits and dot, then applying a sign from the suffix.</li>
+<li>Handle nulls, case/spacing variants, brackets and minus signs before trusting the parse.</li>
+<li>Adopt one sign convention (Dr positive) for every source before combining; a TB must then net to zero.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-split-safely-l1">Q1. Split safely [L1]</h3>
+<p>Write M to split the column Account (values like "610210 - Repairs - Plant &amp; Machinery", "700100 - Interest on Term Loan", "Round Off") into Code and Name, ensuring names with hyphens stay intact and rows without a code get a null Code.</p>
+<h3 id="q2-parse-drcr-variants-l2">Q2. Parse Dr/Cr variants [L2]</h3>
+<p>A Tally export's Closing column contains: "1,23,456.00 Dr", "45,000.00 Cr.", "  7,890.50 CR", "", null, "(2,500.00) Dr". Write a custom column that converts all of them to signed amounts (Dr positive), returning null for blanks, and state what you would do with the last value.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Normalise case and trim first; decide how brackets interact with the suffix and document the rule.</p>
+</blockquote>
+<h3 id="q3-oracle-segments-l2">Q3. Oracle segments [L2]</h3>
+<p>An Oracle TB export has "01-4001-000-IN - Domestic Sales" in one column, where the code has four hyphen-separated segments (Company-Account-CostCentre-Country). Design the M to produce Company, Account, CostCentre, Country and Name columns, all as text.</p>
+<h3 id="q4-tb-integrity-after-parsing-l2">Q4. TB integrity after parsing [L2]</h3>
+<p>After parsing, the signed amounts of a 1,450-ledger TB sum to ₹2,46,91,000 instead of zero. List four parsing errors that could cause this and, for each, a Power Query check that would reveal it.</p>
+<h3 id="q5-interview-why-text-codes-l1">Q5. Interview: why text codes? [L1]</h3>
+<p>Explain in under 120 words why account codes and cost-centre codes should be typed as text, with one example of a failure when typed as whole numbers.</p></section>
+<nav class="pager"><a class="prev" href="S03_Filling_Down_Cost_Centre_and_Group_Headers_in.html">← Filling Down Cost-Centre and Group Headers in Report Layouts</a><a class="next" href="S05_Trimming_Non_Breaking_Spaces_and_Non_Printable.html">Trimming Non-Breaking Spaces and Non-Printable Characters →</a></nav>
+</main></div></body></html>

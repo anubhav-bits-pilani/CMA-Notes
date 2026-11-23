@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Closing Balance: LASTDATE vs LASTNONBLANK vs a MAX-Date Filter · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S03_Closing_Balance_LASTDATE_vs_LASTNONBLANK_vs_a_MAX.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T5 · Semi-additive balance sheet measures</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Semi-additive balance sheet measures</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Additive_Semi_Additive_and_Non_Additive_Financial.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S01_Additive_Semi_Additive_and_Non_Additive_Financial.html">Additive, Semi-Additive and Non-Additive Financial Measures</a></li><li><a href="S02_Snapshot_Facts_vs_Transaction_Facts_for_Balances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S02_Snapshot_Facts_vs_Transaction_Facts_for_Balances.html">Snapshot Facts vs Transaction Facts for Balances</a></li><li><a href="S03_Closing_Balance_LASTDATE_vs_LASTNONBLANK_vs_a_MAX.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S03_Closing_Balance_LASTDATE_vs_LASTNONBLANK_vs_a_MAX.html">Closing Balance: LASTDATE vs LASTNONBLANK vs a MAX-Date Filter</a></li><li><a href="S04_Cumulative_Balances_from_GL_Movements_Including.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S04_Cumulative_Balances_from_GL_Movements_Including.html">Cumulative Balances from GL Movements, Including Opening Entries</a></li><li><a href="S05_Opening_Balances_with_OPENINGBALANCEMONTH_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S05_Opening_Balances_with_OPENINGBALANCEMONTH_and.html">Opening Balances with OPENINGBALANCEMONTH and OPENINGBALANCEYEAR</a></li><li><a href="S06_Average_Balances_for_DSO_Interest_Cost_and_Return.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S06_Average_Balances_for_DSO_Interest_Cost_and_Return.html">Average Balances for DSO, Interest Cost and Return Ratios</a></li><li><a href="S07_Cash_Net_Working_Capital_and_Net_Debt_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S07_Cash_Net_Working_Capital_and_Net_Debt_Measures.html">Cash, Net Working Capital and Net Debt Measures over Time</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Closing_Balance_with_LASTDATE_on_a_Snapshot_Fact.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C01_Closing_Balance_with_LASTDATE_on_a_Snapshot_Fact.html">Closing Balance with LASTDATE on a Snapshot Fact</a></li><li><a href="../concepts/C02_LASTNONBLANK_Closing_Balance_at_the_Last_Date_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C02_LASTNONBLANK_Closing_Balance_at_the_Last_Date_with.html">LASTNONBLANK: Closing Balance at the Last Date with Data</a></li><li><a href="../concepts/C03_Cumulative_Balance_with_FILTER_over_ALL_Dates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C03_Cumulative_Balance_with_FILTER_over_ALL_Dates.html">Cumulative Balance with FILTER over ALL Dates</a></li><li><a href="../concepts/C04_CLOSINGBALANCEYEAR_and_OPENINGBALANCEYEAR_with_a.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C04_CLOSINGBALANCEYEAR_and_OPENINGBALANCEYEAR_with_a.html">CLOSINGBALANCEYEAR and OPENINGBALANCEYEAR with a March Year-End</a></li><li><a href="../concepts/C05_Average_Receivables_with_AVERAGEX_over_Month_Ends.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C05_Average_Receivables_with_AVERAGEX_over_Month_Ends.html">Average Receivables with AVERAGEX over Month-Ends</a></li><li><a href="../concepts/C06_DSO_Measure_from_Average_Receivables_and_Days_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C06_DSO_Measure_from_Average_Receivables_and_Days_in.html">DSO Measure from Average Receivables and Days in Period</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Closing Balance: LASTDATE vs LASTNONBLANK vs a MAX-Date Filter</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Closing balance with LASTDATE vs LASTNONBLANK (last date with data) vs a MAX-date filter</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>On a snapshot fact, the closing balance is "the balance on the last date of the period". The question is <em>which</em> last
+date: the last date of the calendar period, the last date that actually has data, or an explicitly computed date.
+The three DAX patterns give the same answer for closed months and different answers for the current partial period,
+for quarters and years that are not complete, and for accounts that stopped having snapshots. The wrong choice shows
+as a blank FY26 balance sheet, or as a "total" that silently drops accounts.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="pattern-1-lastdate-last-calendar-date">Pattern 1 — LASTDATE (last calendar date)</h3>
+<pre><code class="language-DAX">Closing Bal = CALCULATE ( SUM ( TB[Balance] ), LASTDATE ( 'Date'[Date] ) )
+</code></pre>
+<p><code>LASTDATE('Date'[Date])</code> returns a one-row table with the latest date <strong>visible in the Date table</strong> in the current
+filter context — the calendar end of the period, whether or not data exists there. For a month row it is the
+month-end; for Q3 FY26 it is 31 December 2025; for the FY26 row it is 31 March 2026.</p>
+<ul>
+<li>Correct when snapshots exist for every period-end displayed.</li>
+<li>Returns <strong>blank</strong> if the period-end has no snapshot: the current month before close, the FY26 row in November, or
+  a quarter whose last month is unloaded.</li>
+<li>Fast: a single-date filter.</li>
+</ul>
+<h3 id="pattern-2-lastnonblank-last-date-that-has-data">Pattern 2 — LASTNONBLANK (last date that has data)</h3>
+<pre><code class="language-DAX">Closing Bal LNB =
+CALCULATE (
+    SUM ( TB[Balance] ),
+    LASTNONBLANK ( 'Date'[Date], CALCULATE ( SUM ( TB[Balance] ) ) )
+)
+</code></pre>
+<p><code>LASTNONBLANK(column, expression)</code> iterates the visible dates and returns the latest one for which the expression is
+not blank. The inner <code>CALCULATE</code> forces context transition so the expression is evaluated <em>for each date</em>; without it,
+<code>SUM(TB[Balance])</code> would be evaluated in the outer context (the whole period) for every date and always be non-blank,
+so the function would return the calendar last date — exactly like <code>LASTDATE</code>.</p>
+<ul>
+<li>At FY26 in November, returns the 31 October snapshot date — the latest available balance.</li>
+<li>The "last date with data" is determined <strong>for the current filter context as a whole</strong>. At a total over several
+  accounts, it is the latest date on which <em>any</em> account has data. If account A has snapshots to 31 October and
+  account B only to 30 September (e.g., a dormant subsidiary that stopped sending TBs), the total uses 31 October and
+  B contributes nothing.</li>
+<li>Slower: it evaluates the expression for each visible date (acceptable for a month-end snapshot of a few years).</li>
+<li><code>LASTNONBLANKVALUE('Date'[Date], SUM(TB[Balance]))</code> is a newer shorthand returning the value directly.</li>
+</ul>
+<h3 id="pattern-3-explicit-max-date-filter">Pattern 3 — explicit MAX-date filter</h3>
+<pre><code class="language-DAX">Closing Bal MAX =
+VAR lastDataDate =
+    CALCULATE ( MAX ( TB[Date] ) )            -- last snapshot date within the visible period
+RETURN
+    CALCULATE ( SUM ( TB[Balance] ), 'Date'[Date] = lastDataDate )
+</code></pre>
+<p><code>MAX(TB[Date])</code> in the current context returns the latest snapshot date within the visible period (because the period
+filter flows from Date to TB). The balance is then filtered to that date. Variants:</p>
+<ul>
+<li><code>lastDataDate = MIN(MAX('Date'[Date]), [Last Actual Date])</code> — calendar end capped at the global last actuals date,
+  so every account uses the same as-of date and future periods resolve to the latest close.</li>
+<li>Using <code>REMOVEFILTERS(CoA)</code> inside the <code>MAX</code> to choose one date for all accounts, then applying it per account.</li>
+</ul>
+<p>This pattern is the most transparent (the date is explicit and can be displayed in a tooltip: "Balance as at 31
+October 2025"), and with a global cap it gives one consistent as-of date for the whole balance sheet.</p>
+<h3 id="per-account-last-date">Per-account last date</h3>
+<p>If each account (or entity) must use <em>its own</em> last date, iterate:</p>
+<pre><code class="language-DAX">Closing Bal per Account =
+SUMX ( VALUES ( CoA[AccountKey] ), [Closing Bal LNB] )
+</code></pre>
+<p>Context transition evaluates <code>LASTNONBLANK</code> per account, then sums. This is right for "latest known balance per
+subsidiary" in an incomplete consolidation but wrong for a balance sheet that must be as at one date — mixing dates in
+a balance sheet breaks the accounting equation.</p>
+<h3 id="comparison-at-a-glance">Comparison at a glance</h3>
+<p>Snapshots loaded to 31 October 2025; Account B (a dormant entity) last snapshot 30 September 2025. Balances (₹ lakh):
+A = 1,480 at 31 October (1,450 at 30 September); B = 300 at 30 September.</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th>LASTDATE</th>
+<th>LASTNONBLANK</th>
+<th>MAX-date (capped)</th>
+<th>Per-account LNB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sep 2025, total</td>
+<td>1,750</td>
+<td>1,750</td>
+<td>1,750</td>
+<td>1,750</td>
+</tr>
+<tr>
+<td>Oct 2025, total</td>
+<td>1,480 (B blank)</td>
+<td>1,480</td>
+<td>1,480</td>
+<td>1,480 (B has no October data)</td>
+</tr>
+<tr>
+<td>Q3 FY26 (Oct–Dec), total</td>
+<td>blank</td>
+<td>1,480</td>
+<td>1,480</td>
+<td>1,480</td>
+</tr>
+<tr>
+<td>FY26, total</td>
+<td>blank</td>
+<td>1,480</td>
+<td>1,480</td>
+<td>1,780 (A at 31 Oct + B at 30 Sep)</td>
+</tr>
+</tbody>
+</table>
+<p>Which is "right" depends on the question: a balance sheet as at 31 October should show 1,480 and flag that B is
+missing; an "exposure" report may prefer 1,780 at the FY level with B's as-of date shown. Note how the per-account
+version changes with the width of the period on the row — another reason to prefer an explicit, global as-of date for
+financial statements.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Zero vs blank:</strong> an account with a genuine zero balance must have a row with 0 (or the closing logic treats it as
+  missing). Power Query loads that drop zero rows make <code>LASTNONBLANK</code> skip to an older date with a non-zero balance —
+  the balance appears to "resurrect". Keep zeros or use the global MAX-date pattern.</li>
+<li><strong>Daily snapshots with weekends:</strong> bank balance snapshots may not exist for Sundays; <code>LASTDATE</code> on a weekly or
+  monthly row ending on a Sunday returns blank, <code>LASTNONBLANK</code> returns Saturday.</li>
+<li><strong>Snapshots dated on the first of the month:</strong> if the TB export is stamped 1 November for "closing October", every
+  pattern is off by a month. Fix in Power Query: re-date to month-end.</li>
+<li><strong>Visual totals across time:</strong> none of the patterns sum across months; but a <em>grand total across months in a
+  column-less table</em> should be suppressed or labelled "as at".</li>
+<li><strong>Performance:</strong> for large daily snapshots prefer the MAX-date pattern over <code>LASTNONBLANK</code> with an expensive inner
+  expression.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li><code>LASTDATE</code> = calendar end of the period; blank if no snapshot exists there.</li>
+<li><code>LASTNONBLANK</code> = last date with data in the current context; needs <code>CALCULATE</code> inside for context transition.</li>
+<li>The MAX-date filter makes the as-of date explicit and, with a global cap, consistent across the balance sheet.</li>
+<li>Per-account last dates (<code>SUMX</code> over accounts) answer a different question and can mix dates.</li>
+<li>Keep zero-balance rows in snapshots; decide and document which as-of rule the report uses.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-predict-the-outputs-l1">Q1. Predict the outputs [L1]</h3>
+<p>Snapshots exist for every month-end to 30 November 2025. For the rows November 2025, December 2025, Q3 FY26 and FY26,
+state what <code>LASTDATE</code>, <code>LASTNONBLANK</code> and the capped MAX-date pattern each return as the as-of date.</p>
+<h3 id="q2-missing-context-transition-l2">Q2. Missing context transition [L2]</h3>
+<p>A colleague writes <code>CALCULATE(SUM(TB[Balance]), LASTNONBLANK('Date'[Date], SUM(TB[Balance])))</code> and finds it behaves
+exactly like <code>LASTDATE</code>. Explain why, step by step, and correct it.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Ask in which filter context <code>SUM(TB[Balance])</code> is evaluated for each date of the iteration.</p>
+</blockquote>
+<h3 id="q3-dormant-subsidiary-l2">Q3. Dormant subsidiary [L2]</h3>
+<p>A group of four entities sends month-end TBs; Entity D stopped at 31 August 2025 pending liquidation. Cash balances
+at 31 October 2025 (₹ lakh): A 620, B 410, C 180; D's last cash balance 75 at 31 August. Compute the group cash shown
+on the October row and the FY26 row under each pattern in this note, and recommend what the treasury dashboard should
+show with what disclosure.</p>
+<h3 id="q4-zero-balances-dropped-l3">Q4. Zero balances dropped [L3]</h3>
+<p>A Power Query step filters out TB rows where Balance = 0 "to save space". An overdraft account was −₹ 540 lakh at 31
+August 2025 and fully repaid (0) at 30 September and 31 October. Explain what each closing-balance pattern shows for
+this account at September and October, the impact on Net Debt, and how you would fix the pipeline and add a test.</p></section>
+<nav class="pager"><a class="prev" href="S02_Snapshot_Facts_vs_Transaction_Facts_for_Balances.html">← Snapshot Facts vs Transaction Facts for Balances</a><a class="next" href="S04_Cumulative_Balances_from_GL_Movements_Including.html">Cumulative Balances from GL Movements, Including Opening… →</a></nav>
+</main></div></body></html>

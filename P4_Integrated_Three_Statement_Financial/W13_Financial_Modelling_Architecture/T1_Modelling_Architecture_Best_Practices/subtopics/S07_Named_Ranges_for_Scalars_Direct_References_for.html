@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Named Ranges for Scalars, Direct References for Rows · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S07_Named_Ranges_for_Scalars_Direct_References_for.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T1 · Modelling Architecture &amp; Best Practices</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Modelling Architecture &amp; Best Practices</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Tab_Flow_of_an_Institutional_Three_Statement_Model.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S01_Tab_Flow_of_an_Institutional_Three_Statement_Model.html">Tab Flow of an Institutional Three-Statement Model</a></li><li><a href="S02_Separating_Inputs_Calculations_and_Outputs.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S02_Separating_Inputs_Calculations_and_Outputs.html">Separating Inputs, Calculations and Outputs</a></li><li><a href="S03_Single_Master_Timeline_Row_and_Period_Flags.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S03_Single_Master_Timeline_Row_and_Period_Flags.html">Single Master Timeline Row and Period Flags</a></li><li><a href="S04_Identical_Column_Structure_on_Every_Calculation.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S04_Identical_Column_Structure_on_Every_Calculation.html">Identical Column Structure on Every Calculation Sheet</a></li><li><a href="S05_Cover_Sheet_Identity_Basis_Units_and_Change_Log.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S05_Cover_Sheet_Identity_Basis_Units_and_Change_Log.html">Cover Sheet: Identity, Basis, Units and Change Log</a></li><li><a href="S06_Checks_Sheet_and_the_Master_Integrity_Flag.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S06_Checks_Sheet_and_the_Master_Integrity_Flag.html">Checks Sheet and the Master Integrity Flag</a></li><li><a href="S07_Named_Ranges_for_Scalars_Direct_References_for.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S07_Named_Ranges_for_Scalars_Direct_References_for.html">Named Ranges for Scalars, Direct References for Rows</a></li><li><a href="S08_Version_Control_File_Naming_and_Transparent.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S08_Version_Control_File_Naming_and_Transparent.html">Version Control, File Naming and Transparent Protection</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_FAST_Standard_Flexible_Appropriate_Structured.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C01_FAST_Standard_Flexible_Appropriate_Structured.html">FAST Standard: Flexible, Appropriate, Structured, Transparent</a></li><li><a href="../concepts/C02_ICAEW_Financial_Modelling_Code_Principles_for.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C02_ICAEW_Financial_Modelling_Code_Principles_for.html">ICAEW Financial Modelling Code: Principles for Reliable Models</a></li><li><a href="../concepts/C03_Column_Consistency_Same_Column_Same_Period_Every.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C03_Column_Consistency_Same_Column_Same_Period_Every.html">Column Consistency: Same Column, Same Period, Every Sheet</a></li><li><a href="../concepts/C04_Master_Check_Formula_on_the_Cover.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C04_Master_Check_Formula_on_the_Cover.html">Master Check Formula on the Cover</a></li><li><a href="../concepts/C05_Sign_Convention_Declared_Once_and_Applied.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C05_Sign_Convention_Declared_Once_and_Applied.html">Sign Convention Declared Once and Applied Everywhere</a></li><li><a href="../concepts/C06_Units_Model_in_Crore_and_Convert_Before_Ingestion.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C06_Units_Model_in_Crore_and_Convert_Before_Ingestion.html">Units: Model in ₹ Crore and Convert Before Ingestion</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Named Ranges for Scalars, Direct References for Rows</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Named ranges for scalars (Tax_Rate, Scenario, Circ) vs direct references for time-series rows</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Named ranges make formulas read like sentences — <code>=PBT*Tax_Rate</code> is self-documenting in a way that <code>=H45*Inputs!$E$12</code> is not. But names used indiscriminately become a second, invisible model: hundreds of names, some pointing at deleted ranges, some duplicated at sheet scope, some covering whole rows so that formulas no longer reveal which period they use. The practitioner rule — names for global scalars and switches, direct cell references for time-series rows — captures most of the benefit with little of the cost. It is also a frequent interview question ("When do you use named ranges?") and a standard item in model-audit checklists.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="what-to-name">What to name</h3>
+<table>
+<thead>
+<tr>
+<th>Candidate</th>
+<th>Name?</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Corporate tax rate 25.168% (Sec 115BAA incl. surcharge 10% and cess 4%)</td>
+<td>Yes: <code>Tax_Rate</code></td>
+<td>Global scalar used across Tax, DCF, WACC</td>
+</tr>
+<tr>
+<td>Scenario selector (1/2/3)</td>
+<td>Yes: <code>Scenario</code></td>
+<td>Single control cell referenced by every Live row</td>
+</tr>
+<tr>
+<td>Circularity switch</td>
+<td>Yes: <code>Circ</code></td>
+<td>Single control referenced by Debt and interest logic</td>
+</tr>
+<tr>
+<td>Last actual period end</td>
+<td>Yes: <code>Last_Actual_End</code></td>
+<td>Drives flags</td>
+</tr>
+<tr>
+<td>Tolerance for checks</td>
+<td>Yes: <code>Tolerance</code></td>
+<td>Shared by all checks</td>
+</tr>
+<tr>
+<td>Units divisor (e.g., 10 for ₹ mn → ₹ crore)</td>
+<td>Yes: <code>Mn_to_Cr</code></td>
+<td>Makes conversions explicit</td>
+</tr>
+<tr>
+<td>Terminal growth, WACC</td>
+<td>Yes: <code>TGR</code>, <code>WACC</code></td>
+<td>Valuation scalars</td>
+</tr>
+<tr>
+<td>Revenue row FY21A–FY30E</td>
+<td>No (direct reference)</td>
+<td>Time series — period must stay visible</td>
+</tr>
+<tr>
+<td>DSO by year</td>
+<td>No</td>
+<td>Time series</td>
+</tr>
+<tr>
+<td>Scenario names list (Base, Bull, Bear)</td>
+<td>Yes: <code>Scenario_Names</code></td>
+<td>Lookup list for labels and validation</td>
+</tr>
+</tbody>
+</table>
+<h3 id="why-scalars-benefit-from-names">Why scalars benefit from names</h3>
+<ol>
+<li><strong>Readability:</strong> <code>=EBIT*(1-Tax_Rate)</code> reads correctly to a non-builder.</li>
+<li><strong>Absolute by default:</strong> a name behaves like <code>$E$12</code>, so copying across never shifts it.</li>
+<li><strong>Single point of change:</strong> moving the input cell does not break formulas.</li>
+<li><strong>Data validation and links:</strong> <code>Scenario</code> is easier to reference from a data table, a chart title or VBA.</li>
+</ol>
+<h3 id="why-time-series-rows-should-be-direct-references">Why time-series rows should be direct references</h3>
+<p>If you name the revenue row <code>Revenue</code> (=<code>Revenue!$H$40:$Q$40</code>) and write <code>=Revenue*EBITDA_Margin</code> in column M, Excel's implicit intersection (or, in Excel 365, dynamic-array spill behaviour, which may return a #SPILL! or require <code>@</code>) decides which column is used. The period dependency becomes invisible: a reviewer cannot see that M uses M. With <code>=M40*M55</code> the column alignment is explicit and auditable (s04). Direct references also make Trace Precedents arrows point to the exact cell.</p>
+<p>Exception: whole-row names are useful in aggregate functions that deliberately operate on the entire row, e.g., the master check <code>=SUMPRODUCT(ABS(Check_Rows))</code> (c04), or <code>=NPV(WACC, FCFF_Forecast)</code> if the range is fixed and documented.</p>
+<h3 id="naming-conventions">Naming conventions</h3>
+<ul>
+<li>Use underscores, no spaces: <code>Tax_Rate</code>, <code>Min_Cash</code>, <code>Revolver_Limit</code>.</li>
+<li>Prefix by type if the model is large: <code>in_Tax_Rate</code> (input), <code>sw_Scenario</code> (switch), <code>ck_Master</code> (check).</li>
+<li>Workbook scope only, unless there is a reason for sheet scope. Duplicate sheet-scope names (created when copying sheets between workbooks) are a common source of confusion.</li>
+<li>Document every name in a "Names" table on the Model map: name, refers to, purpose. Formulas → Name Manager → filter "Names with errors" to find broken names; Formulas → Use in Formula → Paste Names → Paste List to print the list.</li>
+</ul>
+<h3 id="creating-names">Creating names</h3>
+<ul>
+<li>Select the cell, type the name in the Name Box (left of the formula bar), press Enter.</li>
+<li>Or Formulas → Define Name, setting scope to Workbook and adding a comment.</li>
+<li>For label-adjacent scalars, Formulas → Create from Selection (left column) creates names from row labels in bulk.</li>
+</ul>
+<h3 id="let-as-a-complement">LET as a complement</h3>
+<p>Excel 365's <code>LET</code> gives local names inside one formula — e.g.,</p>
+<pre><code>=LET(rev, M40, margin, M55, ebitda, rev*margin, ebitda - M60)
+</code></pre>
+<p>It improves readability of a single long formula but should not replace splitting genuinely long logic into helper rows (topic t2, c05).</p>
+<h3 id="illustration">Illustration</h3>
+<p>Tax block (₹ crore), FY26E:</p>
+<pre><code>PBT (row 80)           : 2,150.0
+Tax expense (row 81)   : =M80*Tax_Rate        → 2,150.0 × 25.168% = 541.1
+PAT (row 82)           : =M80-M81             → 1,608.9
+</code></pre>
+<p>If <code>Tax_Rate</code> were a time-series (e.g., a company moving from the old regime to 115BAA in FY27), it becomes a row on Inputs (<code>M30</code> etc.), and the formula becomes <code>=M80*Inputs!M30</code> (pulled locally first as a green link). The scalar name is replaced by a row reference precisely because it now varies by period.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Scalars that later become time-varying.</strong> Start with a row if there is any chance (tax regime transitions, phased MAT credit utilisation).</li>
+<li><strong>Names in external links.</strong> Names referring to other workbooks persist even after the link is "broken" and can re-establish external links; clean them in Name Manager.</li>
+<li><strong>Hidden names.</strong> Some add-ins create hidden names; Inquire's Workbook Analysis lists them. Delete unknown hidden names only after checking dependencies.</li>
+<li><strong>Data tables and names.</strong> A data table's row/column input cell must be on the same sheet as the table; a name pointing to an input on another sheet does not get around this (topic t6 pitfall).</li>
+<li><strong>Over-naming.</strong> Five hundred names in a 20-tab model is a smell; most should be direct references.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Name global scalars and switches: <code>Tax_Rate</code>, Scenario, Circ, WACC, TGR, Tolerance, unit divisors.</li>
+<li>Use direct cell references for time-series rows so the period dependency stays visible.</li>
+<li>Keep names at workbook scope, follow a naming convention and document them in a names table.</li>
+<li>Use Name Manager regularly to delete broken, duplicate or external-pointing names.</li>
+<li>When a scalar starts varying by period, convert it to a timeline row.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-name-or-reference-l1">Q1. Name or reference? [L1]</h3>
+<p>For each item decide whether it should be a named range or a direct reference and why: (a) WACC 11.8%; (b) Zudio store additions FY26E–FY30E; (c) iterative calculation switch; (d) the master check cell; (e) ₹ lakh → ₹ crore divisor; (f) DPO by year.</p>
+<h3 id="q2-implicit-intersection-trap-l2">Q2. Implicit intersection trap [L2]</h3>
+<p>A model defines <code>Revenue = Calc!$H$40:$Q$40</code> and in Calc!M60 has <code>=Revenue*Margin</code> where Margin is a scalar name. The file is opened in Excel 365 and the formula now shows <code>=@Revenue*Margin</code>. Explain what Excel is doing, what happens if the formula is moved to a different row, and how you would rewrite it.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider what implicit intersection returns when the formula is no longer in a column covered by the range.</p>
+</blockquote>
+<h3 id="q3-tax-regime-transition-l2">Q3. Tax regime transition [L2]</h3>
+<p>A company stays on the old regime with MAT credit until FY27E (effective current tax rate 34.944% on normal income) and opts for Sec 115BAA (25.168%) from FY28E. Redesign the tax-rate input from a named scalar to a time-series, and write the FY28E tax formula on the Tax tab.</p>
+<h3 id="q4-name-hygiene-review-l3">Q4. Name hygiene review [L3]</h3>
+<p>A model you inherit has 640 names, including 210 with #REF!, 85 sheet-scoped duplicates and 30 referencing a file on a former employee's desktop. Write a step-by-step clean-up procedure, the checks you would run before and after, and the policy you would add to the Model map.</p></section>
+<nav class="pager"><a class="prev" href="S06_Checks_Sheet_and_the_Master_Integrity_Flag.html">← Checks Sheet and the Master Integrity Flag</a><a class="next" href="S08_Version_Control_File_Naming_and_Transparent.html">Version Control, File Naming and Transparent Protection →</a></nav>
+</main></div></body></html>

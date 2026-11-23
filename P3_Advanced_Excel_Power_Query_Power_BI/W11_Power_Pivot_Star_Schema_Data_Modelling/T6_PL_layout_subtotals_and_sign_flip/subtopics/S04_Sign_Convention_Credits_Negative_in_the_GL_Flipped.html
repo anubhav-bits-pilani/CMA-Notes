@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Convention: Credits Negative in the GL, Flipped for Presentation · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S04_Sign_Convention_Credits_Negative_in_the_GL_Flipped.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T6 · P&amp;L layout, subtotals and sign-flip</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · P&amp;L layout, subtotals and sign-flip</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_The_PL_Layout_Dimension_Lines_Sort_Order_Type_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S01_The_PL_Layout_Dimension_Lines_Sort_Order_Type_and.html">The P&amp;L Layout Dimension: Lines, Sort Order, Type and Sign</a></li><li><a href="S02_Mapping_CoA_to_Layout_Lines_and_Computing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S02_Mapping_CoA_to_Layout_Lines_and_Computing.html">Mapping CoA to Layout Lines and Computing Subtotals by Sort Order</a></li><li><a href="S03_Row_Level_Measure_Dispatch_with_SWITCHTRUE_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S03_Row_Level_Measure_Dispatch_with_SWITCHTRUE_and.html">Row-Level Measure Dispatch with SWITCH(TRUE()) and SELECTEDVALUE</a></li><li><a href="S04_Sign_Convention_Credits_Negative_in_the_GL_Flipped.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S04_Sign_Convention_Credits_Negative_in_the_GL_Flipped.html">Sign Convention: Credits Negative in the GL, Flipped for Presentation</a></li><li><a href="S05_Margin_Rows_GM_EBITDA_EBIT_with_Dynamic_Format.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S05_Margin_Rows_GM_EBITDA_EBIT_with_Dynamic_Format.html">Margin Rows (GM %, EBITDA %, EBIT %) with Dynamic Format Strings</a></li><li><a href="S06_Formatting_the_PL_Matrix_Layout_Spacers_Bold.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S06_Formatting_the_PL_Matrix_Layout_Spacers_Bold.html">Formatting the P&amp;L Matrix: Layout, Spacers, Bold Subtotals, Empty Rows</a></li><li><a href="S07_Alternatives_Calculation_Groups_Field_Parameters.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S07_Alternatives_Calculation_Groups_Field_Parameters.html">Alternatives: Calculation Groups, Field Parameters, Visual Calcs, Excel</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_The_PnL_Dispatcher_Measure_with_SWITCHTRUE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C01_The_PnL_Dispatcher_Measure_with_SWITCHTRUE.html">The PnL Dispatcher Measure with SWITCH(TRUE())</a></li><li><a href="../concepts/C02_Actual_Signed_Applying_the_CoA_Sign_Factor_Row_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C02_Actual_Signed_Applying_the_CoA_Sign_Factor_Row_by.html">Actual Signed: Applying the CoA Sign Factor Row by Row</a></li><li><a href="../concepts/C03_The_Subtotal_Measure_Removing_the_Layout_Filter_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C03_The_Subtotal_Measure_Removing_the_Layout_Filter_by.html">The Subtotal Measure: Removing the Layout Filter by Sort Order</a></li><li><a href="../concepts/C04_EBITDA_with_a_Dynamic_Format_String_in_the_PL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C04_EBITDA_with_a_Dynamic_Format_String_in_the_PL.html">EBITDA % with a Dynamic Format String in the P&amp;L Matrix</a></li><li><a href="../concepts/C05_Blanking_PL_Grand_Totals_with_ISINSCOPE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C05_Blanking_PL_Grand_Totals_with_ISINSCOPE.html">Blanking P&amp;L Grand Totals with ISINSCOPE</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Sign Convention: Credits Negative in the GL, Flipped for Presentation</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Sign convention: credits negative in the GL, with a presentation flip for revenue and income</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Every ERP and every Tally export stores amounts either as signed values (debits positive, credits negative) or as
+separate Dr/Cr columns that Power Query combines into one signed column (Week 10). That convention is ideal for
+arithmetic — a trial balance sums to zero, NWC is the net debit of operating accounts — but nobody wants to read
+"Revenue −4,100". Presentation needs revenue and income shown positive, and either expenses shown negative (profit-signed)
+or positive with "Less:" semantics. Where and how the sign is flipped decides whether subtotals add up, whether Actual
+and Budget are comparable, and whether favourable/adverse logic works. Sign errors are the most common P&amp;L model bug,
+and they are often invisible until a total is checked against the TB.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="three-sign-layers">Three sign layers</h3>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Convention</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Storage (GL fact)</td>
+<td>Debit +, Credit − (natural)</td>
+<td>TB balances to zero; one rule for every account</td>
+</tr>
+<tr>
+<td>Computation (profit-signed)</td>
+<td>Income +, Expense − (multiply all P&amp;L by −1)</td>
+<td>Subtotals are simple sums; Variance = Actual − Budget is favourable when positive</td>
+</tr>
+<tr>
+<td>Display (optional)</td>
+<td>Income +, Expense +</td>
+<td>Matches printed statements that list expenses as positive numbers</td>
+</tr>
+</tbody>
+</table>
+<p>The key design rule: <strong>flip once, in one place, and compute subtotals in the profit-signed layer.</strong> Display flips, if
+used, are applied last, row by row, and never feed back into subtotals.</p>
+<h3 id="implementing-the-profit-signed-layer">Implementing the profit-signed layer</h3>
+<p>Put a <code>SignFactor</code> in the CoA: −1 for all P&amp;L accounts (both income and expense), +1 for BS accounts if you want
+assets positive, or −1 for liabilities and equity in a BS layout.</p>
+<pre><code class="language-DAX">Actual Signed = SUMX ( GL, GL[Amount] * RELATED ( CoA[SignFactor] ) )
+</code></pre>
+<p>Revenue (credit −4,100) × −1 = +4,100. Materials (debit +2,380) × −1 = −2,380. Gross Profit = 4,100 + (−2,380) = 1,720.</p>
+<p>A faster equivalent that avoids iterating every GL row:</p>
+<pre><code class="language-DAX">Actual Signed =
+SUMX ( VALUES ( CoA[SignFactor] ), CoA[SignFactor] * [Actual] )
+</code></pre>
+<p>It iterates only the distinct sign values (two), computing <code>[Actual]</code> for each through context transition. For P&amp;L-only
+models with a uniform −1, even simpler: <code>Actual Signed = -[Actual]</code> restricted to P&amp;L accounts. The per-account
+<code>SignFactor</code> keeps the model general (BS layouts, contra accounts).</p>
+<h3 id="display-flip-expenses-shown-positive">Display flip (expenses shown positive)</h3>
+<p>If the board pack prints "Cost of materials consumed 2,380" and computes "Gross Profit 1,720", apply a display sign on
+the <strong>layout line</strong>, not on the CoA:</p>
+<pre><code class="language-DAX">PnL Display =
+VAR t = SELECTEDVALUE ( Layout[Type] )
+VAR displaySign = SELECTEDVALUE ( Layout[SignFactor], 1 )
+VAR v =
+    SWITCH (
+        TRUE (),
+        t = &quot;Account&quot;,  [Actual Signed],
+        t = &quot;Subtotal&quot;, [Subtotal],
+        t = &quot;Ratio&quot;,    [Margin %]
+    )
+RETURN
+    IF ( t = &quot;Ratio&quot;, v, v * displaySign )
+</code></pre>
+<p><code>Layout[SignFactor]</code> = −1 on expense lines, +1 on income and subtotals. The subtotal itself is still computed from
+profit-signed account values, so GP is correct whatever the display sign.</p>
+<h3 id="where-not-to-flip">Where <em>not</em> to flip</h3>
+<ul>
+<li><strong>Not in Power Query and DAX both.</strong> If Power Query already multiplies revenue by −1 ("make revenue positive") and DAX
+  applies <code>SignFactor</code> = −1 again, revenue turns negative. Decide: storage stays natural; flips live in DAX (or, if you
+  flip in Power Query, set every DAX SignFactor to +1 and document it).</li>
+<li><strong>Not differently for Actual and Budget.</strong> Budgets are often prepared in Excel with revenue positive and costs positive
+  (a planner's view), whereas GL actuals are natural-signed. Normalise the budget to the GL's natural convention in Power
+  Query (multiply revenue/income budget lines by −1 so they are credits) and then apply the same DAX SignFactor to both.
+  Test: <code>Actual Signed</code> and <code>Budget Signed</code> for revenue are both positive.</li>
+<li><strong>Not in calculated columns on the fact</strong> unless needed for performance; a sign column in the fact duplicates CoA
+  logic and drifts when an account is reclassified.</li>
+</ul>
+<h3 id="contra-and-mixed-nature-accounts">Contra and mixed-nature accounts</h3>
+<ul>
+<li><strong>Sales returns, discounts, GST-inclusive revenue adjustments</strong> are debit-natured within Revenue: with a uniform −1
+  they correctly reduce revenue (debit 120 × −1 = −120).</li>
+<li><strong>Changes in inventories</strong> can be debit or credit: the same rule handles both.</li>
+<li><strong>FX gain/loss</strong> accounts flip between income and expense; map them to one line (e.g., Other income or Other expenses)
+  and let the sign speak, or split by sign in Power Query if the statement requires gains and losses on separate lines.</li>
+<li><strong>Balance sheet</strong>: for a BS layout, a SignFactor of +1 on assets and −1 on liabilities/equity gives positive
+  presentation; the BS check is then Assets − (Liabilities + Equity) = 0.</li>
+</ul>
+<h3 id="worked-illustration">Worked illustration</h3>
+<table>
+<thead>
+<tr>
+<th>Account</th>
+<th>GL natural</th>
+<th>SignFactor</th>
+<th>Profit-signed</th>
+<th>Display sign</th>
+<th>Displayed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue from operations</td>
+<td>−4,100</td>
+<td>−1</td>
+<td>4,100</td>
+<td>+1</td>
+<td>4,100</td>
+</tr>
+<tr>
+<td>Sales returns (within revenue)</td>
+<td>120</td>
+<td>−1</td>
+<td>−120</td>
+<td>+1</td>
+<td>(part of revenue 3,980)</td>
+</tr>
+<tr>
+<td>Cost of materials</td>
+<td>2,380</td>
+<td>−1</td>
+<td>−2,380</td>
+<td>−1</td>
+<td>2,380</td>
+</tr>
+<tr>
+<td>Gross Profit</td>
+<td>—</td>
+<td>—</td>
+<td>1,600</td>
+<td>+1</td>
+<td>1,600</td>
+</tr>
+</tbody>
+</table>
+<p>Revenue net of returns = 4,100 − 120 = 3,980; GP = 3,980 − 2,380 = 1,600.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Budget uploaded with mixed signs</strong> (some cost centres entering costs as negatives): normalise in Power Query using the
+  CoA's natural-balance attribute (<code>CoA[NormalBalance] = "Dr"/"Cr"</code>): <code>Amount = ABS(Input) × (if Dr then 1 else −1)</code> — but
+  only if inputs are never genuinely contra; otherwise enforce a template.</li>
+<li><strong>Signed variances on ratio rows:</strong> variances of margins are percentage points and are not sign-flipped.</li>
+<li><strong>Exports to Excel:</strong> users summing an exported column with display-flipped expenses and positive subtotals will
+  double-count; label exports or export profit-signed values.</li>
+<li><strong>Visual-level "absolute value" tricks</strong> (e.g., custom format <code>#,##0;#,##0</code> hiding minus signs) make negative revenue
+  (credit notes exceeding sales in a month) look positive — avoid format strings that drop the sign.</li>
+<li><strong>Tally exports</strong> often show Dr/Cr in a separate column with positive amounts; the combine step in Power Query must use
+  the Dr/Cr indicator, not the ledger group, to sign the amount.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Store natural signs (Dr +, Cr −); compute in profit-signed form (all P&amp;L × −1); display-flip last, per layout line.</li>
+<li>Subtotals must be computed from profit-signed account values, never from display-flipped values.</li>
+<li>Flip in exactly one place — never in both Power Query and DAX — and the same way for Actual and Budget.</li>
+<li><code>SUMX(VALUES(CoA[SignFactor]), CoA[SignFactor] * [Actual])</code> is a fast alternative to iterating the GL.</li>
+<li>Contra accounts (returns, discounts) are handled correctly by a uniform P&amp;L flip.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-apply-the-layers-l1">Q1. Apply the layers [L1]</h3>
+<p>GL natural amounts for October 2025 (₹ lakh): Revenue −3,600; Other income −90; Materials 2,050; Employee 520; Other
+expenses 410; D&amp;A 140; Finance costs 75; Tax 120. Compute profit-signed values for each line and GP (revenue less
+materials), EBITDA, EBIT, PBT and PAT using the s01 layout, and state which lines would carry a display sign of −1 if
+expenses are printed positive.</p>
+<h3 id="q2-double-flip-l2">Q2. Double flip [L2]</h3>
+<p>After a Power Query change, the dashboard shows Revenue −₹ 41 crore and EBITDA −₹ 49 crore while the TB shows revenue of
+₹ 41 crore (credit) and an operating profit. Explain how a double flip produces these numbers, why EBITDA became more
+negative than revenue, and how you would make the model robust against this.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Work through what happens to income and expense lines separately when only one of them is flipped twice.</p>
+</blockquote>
+<h3 id="q3-budget-sign-normalisation-l2">Q3. Budget sign normalisation [L2]</h3>
+<p>The FY26 budget workbook has revenue and all costs as positive numbers. Write the Power Query (M) logic or DAX logic to
+normalise it to the GL's natural convention using <code>CoA[NormalBalance]</code>, and describe the test that proves Actual and
+Budget are on the same basis.</p>
+<h3 id="q4-fx-gains-and-losses-l3">Q4. FX gains and losses [L3]</h3>
+<p>Foreign-exchange differences post to one GL account that is a net gain in some months and a net loss in others. The
+company's policy (common Schedule III practice) presents a net gain for the period within Other income and a net loss
+within Other expenses. Design the mapping and
+DAX so that the YTD statement shows the net figure on the correct line, and explain why monthly and YTD presentations
+can place the account on different lines.</p></section>
+<nav class="pager"><a class="prev" href="S03_Row_Level_Measure_Dispatch_with_SWITCHTRUE_and.html">← Row-Level Measure Dispatch with SWITCH(TRUE()) and…</a><a class="next" href="S05_Margin_Rows_GM_EBITDA_EBIT_with_Dynamic_Format.html">Margin Rows (GM %, EBITDA %, EBIT %) with Dynamic Format… →</a></nav>
+</main></div></body></html>

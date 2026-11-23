@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Star schema for financial data · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/index.html" data-kind="topic">
+<header class="top"><a class="brand" href="../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../index.html">Home</a> <span>›</span> <a href="../../index.html">Phase 3</a> <span>›</span> <a href="../index.html">Week 11</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">Week 11</a></div><ul class="side-links"><li><a href="index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/index.html">T1 · Star schema for financial data</a></li><li><a href="../T2_Indian_fiscal_calendar_table/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/index.html">T2 · Indian fiscal calendar table</a></li><li><a href="../T3_Core_financial_DAX_functions/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/index.html">T3 · Core financial DAX functions</a></li><li><a href="../T4_Time_intelligence_for_AprilMarch_FY/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/index.html">T4 · Time intelligence for April–March FY</a></li><li><a href="../T5_Semi_additive_balance_sheet_measures/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/index.html">T5 · Semi-additive balance sheet measures</a></li><li><a href="../T6_PL_layout_subtotals_and_sign_flip/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/index.html">T6 · P&amp;L layout, subtotals and sign-flip</a></li></ul></aside>
+<main class="content">
+<div class="kind">Topic</div>
+<h1>Star schema for financial data</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<section class="index"><h2>Notes in this topic</h2><div class="cols"><div><h3>Subtopics</h3><ul class="links num"><li><a href="subtopics/S01_Facts_vs_Dimensions_in_a_Financial_Star_Schema.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S01_Facts_vs_Dimensions_in_a_Financial_Star_Schema.html">S01 · Facts vs Dimensions in a Financial Star Schema</a></li><li><a href="subtopics/S02_Defining_Fact_Grain_and_Handling_Mixed_Grain.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S02_Defining_Fact_Grain_and_Handling_Mixed_Grain.html">S02 · Defining Fact Grain and Handling Mixed Grain (Budget vs Actual)</a></li><li><a href="subtopics/S03_Relationship_Properties_Cardinality_Direction.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S03_Relationship_Properties_Cardinality_Direction.html">S03 · Relationship Properties: Cardinality, Direction, Active Status</a></li><li><a href="subtopics/S04_Role_Playing_Dates_via_Inactive_Relationships.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S04_Role_Playing_Dates_via_Inactive_Relationships.html">S04 · Role-Playing Dates via Inactive Relationships</a></li><li><a href="subtopics/S05_CoA_Hierarchy_with_Sort_Order_and_Sign_Factor.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S05_CoA_Hierarchy_with_Sort_Order_and_Sign_Factor.html">S05 · CoA Hierarchy with Sort-Order and Sign-Factor Columns</a></li><li><a href="subtopics/S06_Surrogate_Keys_and_an_Unmapped_Member_for_Missing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S06_Surrogate_Keys_and_an_Unmapped_Member_for_Missing.html">S06 · Surrogate Keys and an Unmapped Member for Missing Accounts</a></li><li><a href="subtopics/S07_Avoiding_Snowflakes_and_Flat_Tables_Diagram_View.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S07_Avoiding_Snowflakes_and_Flat_Tables_Diagram_View.html">S07 · Avoiding Snowflakes and Flat Tables; Diagram View vs Model View</a></li></ul></div><div><h3>Key concepts & formulas</h3><ul class="links num"><li><a href="concepts/C01_USERELATIONSHIP_to_Activate_an_Inactive_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C01_USERELATIONSHIP_to_Activate_an_Inactive_Date.html">C01 · USERELATIONSHIP to Activate an Inactive Date Relationship</a></li><li><a href="concepts/C02_Store_Budget_on_the_First_Day_of_the_Month.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C02_Store_Budget_on_the_First_Day_of_the_Month.html">C02 · Store Budget on the First Day of the Month</a></li><li><a href="concepts/C03_Virtual_Relationship_with_TREATAS_for_Month_Grain.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C03_Virtual_Relationship_with_TREATAS_for_Month_Grain.html">C03 · Virtual Relationship with TREATAS for Month-Grain Budget</a></li><li><a href="concepts/C04_CROSSFILTER_for_Per_Measure_Bidirectional.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C04_CROSSFILTER_for_Per_Measure_Bidirectional.html">C04 · CROSSFILTER for Per-Measure Bidirectional Filtering</a></li><li><a href="concepts/C05_Referential_Integrity_Test_with_EXCEPT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C05_Referential_Integrity_Test_with_EXCEPT.html">C05 · Referential Integrity Test with EXCEPT</a></li><li><a href="concepts/C06_Hide_Fact_Foreign_Keys_Expose_Attributes_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C06_Hide_Fact_Foreign_Keys_Expose_Attributes_and.html">C06 · Hide Fact Foreign Keys; Expose Attributes and Measures</a></li></ul></div></div></section><article class="note"><blockquote>
+<p><strong>Roadmap topic:</strong> Dimensional Modelling (Star Schema): Designing Fact tables (GL Transactions, Budget) linked via 1-to-many relationships to Dimension tables (Chart of Accounts, Calendar, Cost Center)</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>Dimensional modelling is the discipline of shaping data so that analytical questions become simple filters and
+sums. In a finance context the facts are the GL transactions you posted, the budget you approved and the
+month-end trial balances you signed off; the dimensions are the Chart of Accounts, the fiscal calendar, cost
+centres and branches. A <strong>star schema</strong> places each fact at the centre, connected by one-to-many, single-direction
+relationships to small, descriptive dimension tables. Every DAX measure you write this week — Actual, Budget,
+Variance, YTD, closing balance, the formatted P&amp;L — assumes this shape. When the shape is wrong, DAX becomes
+convoluted and numbers silently go wrong.</p>
+<p>For the target roles this matters directly. FP&amp;A analysts in Indian corporates and GCCs are expected to own the
+"semantic model" behind MIS dashboards: the controller asks why Budget does not respond to a branch slicer, the CFO
+asks why the P&amp;L total does not equal the sum of lines, the auditor asks how unmapped ledgers are controlled. Each
+answer is a modelling answer. Your audit and TB-finalisation background is an advantage: a CoA mapping is a
+grouping schedule, referential integrity is completeness testing, and the "(Blank)" member is a suspense account
+nobody reconciled.</p>
+<p>The learning sequence runs from design to hygiene. Start with <strong>what is a fact and what is a dimension</strong> (s01) and
+<strong>declaring the grain</strong> of each fact, including the monthly-budget-versus-daily-actual problem (s02). Then learn the
+three <strong>relationship properties</strong> — cardinality, direction, active status (s03) — and apply the active/inactive
+rule to <strong>role-playing dates</strong> (s04). Build the <strong>CoA hierarchy</strong> with sort and sign columns (s05), protect it with
+<strong>surrogate keys and an Unmapped member</strong> (s06), and finally recognise the anti-patterns — <strong>snowflakes and flat
+tables</strong> — in Power Pivot's Diagram View and Power BI's Model view (s07). The concepts give you the DAX tools that
+sit on top of the design: USERELATIONSHIP (c01), MonthStart budgets (c02), TREATAS (c03), CROSSFILTER (c04), the
+referential integrity test (c05) and the rule to hide fact keys (c06).</p>
+<p>By the end you should be able to sketch, on a whiteboard, a model with GL, Budget and TB facts sharing CoA, Date,
+CostCentre and Branch, defend every relationship's cardinality and direction, and list the data-quality checks that
+prove it ties to the TB.</p>
+<h2 id="concept-map">Concept map</h2>
+<table>
+<thead>
+<tr>
+<th>Subtopic / concept</th>
+<th>Role in the topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s01 Facts vs dimensions</td>
+<td>Classifies GL, Budget, TB as facts and CoA, Calendar, Cost Centre, Branch as dimensions</td>
+</tr>
+<tr>
+<td>s02 Grain and mixed grain</td>
+<td>Declares the row meaning per fact and bridges monthly Budget to daily Date</td>
+</tr>
+<tr>
+<td>s03 Relationship properties</td>
+<td>Sets cardinality 1:*, single direction, one active path</td>
+</tr>
+<tr>
+<td>s04 Role-playing dates</td>
+<td>Handles posting, document and due dates through inactive relationships</td>
+</tr>
+<tr>
+<td>s05 CoA hierarchy</td>
+<td>Account → FS sub-line → FS line → Statement with sort and sign columns</td>
+</tr>
+<tr>
+<td>s06 Surrogate keys and Unmapped</td>
+<td>Integer keys and an explicit member for unmapped ledgers</td>
+</tr>
+<tr>
+<td>s07 Snowflakes, flat tables, tools</td>
+<td>Anti-patterns and the Diagram View vs Model view toolset</td>
+</tr>
+<tr>
+<td>c01 USERELATIONSHIP</td>
+<td>Activates an inactive date role inside a measure</td>
+</tr>
+<tr>
+<td>c02 Budget on MonthStart</td>
+<td>Simplest physical fix for month-grain budget</td>
+</tr>
+<tr>
+<td>c03 TREATAS</td>
+<td>Virtual relationship for budget keyed by MonthEnd or FS line</td>
+</tr>
+<tr>
+<td>c04 CROSSFILTER</td>
+<td>Bidirectional filtering per measure rather than in the model</td>
+</tr>
+<tr>
+<td>c05 RI test with EXCEPT</td>
+<td>Detects fact keys missing from the dimension</td>
+</tr>
+<tr>
+<td>c06 Hide fact keys</td>
+<td>Forces users onto dimension attributes and explicit measures</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-concepts-to-study">Related concepts to study</h2>
+<h3 id="kimball-modelling-conformed-dimensions-and-scd-types">Kimball modelling: conformed dimensions and SCD types</h3>
+<p><em>Kimball modelling: conformed dimensions, and Type 1/Type 2 slowly changing dimensions for CoA remaps</em></p>
+<p>Ralph Kimball's dimensional method underlies Power BI modelling. A <strong>conformed dimension</strong> has the same keys and
+attribute meanings across facts — CoA and Date shared by GL, Budget and TB — which is what lets Actual and Budget sit
+in one matrix. <strong>Slowly changing dimensions</strong> handle attribute changes: <strong>Type 1</strong> overwrites (remap freight from Other
+expenses to Cost of materials and all history moves — good for comparability), <strong>Type 2</strong> adds a new row with a new
+surrogate key and effective dates (history stays under the old mapping — good for "as reported" views). Finance
+teams usually want Type 1 for MIS restatement and keep a Type 2 or snapshot copy for audit trail of what was
+reported. Decide explicitly when the CoA is remapped mid-year.</p>
+<h3 id="oltp-normalisation-vs-analytical-stars">OLTP normalisation vs analytical stars</h3>
+<p><em>Normalised OLTP schemas (your MySQL background) vs analytical star schemas</em></p>
+<p>OLTP schemas (Tally's internal data, an ERP's MySQL or HANA tables) are normalised to third normal form to avoid
+update anomalies: ledgers reference groups, groups reference parent groups, vouchers reference voucher types. That
+suits fast inserts and integrity, not analysis. Analytical stars deliberately <strong>denormalise</strong> dimensions — repeating
+"Revenue from operations" on every revenue account row — to shorten filter paths, enable single-table hierarchies
+and compress well in columnar storage. Your SQL instincts about keys, joins and uniqueness transfer directly; your
+instinct to normalise does not. Write SQL views or Power Query merges that flatten lookup chains into one dimension.</p>
+<h3 id="week-10-power-query-feeding-the-model">Week 10 Power Query feeding the model</h3>
+<p><em>→ Week 10: Power Query outputs feed each fact and dimension</em></p>
+<p>Last week's outputs are this week's tables: the cleaned GL query becomes the GL fact (typed, keys trimmed, AccountKey
+assigned), the unpivoted long budget becomes the Budget fact (with MonthStart added), and the CoA mapping with FS
+lines and sign factors becomes the CoA dimension. Power Query is where grain is fixed, surrogate keys and the
+Unmapped member are created, snowflakes are flattened, and data types are set so relationships match. Disable load on
+staging queries so only facts and dimensions reach the model. If a modelling problem can be fixed upstream in Power
+Query, fix it there rather than in DAX.</p>
+<h3 id="budget-and-forecast-facts-in-weeks-1720">Budget and Forecast facts in Weeks 17–20</h3>
+<p><em>→ Week 17–20: Budget and Forecast facts sharing conformed dimensions for variance analysis</em></p>
+<p>The FP&amp;A weeks add more plan facts: annual budget, revised estimates (RE1, RE2), rolling forecasts. Each is a fact
+at month grain (account or FS line × cost centre × month × version) sharing the conformed CoA, Date and CostCentre
+dimensions. Variance analysis (price/volume/mix, favourable/adverse) then becomes measure arithmetic across facts.
+Design decisions made now — MonthStart keys, a Version column, budget at the same CoA granularity or via TREATAS —
+determine whether adding a forecast fact later is a one-hour job or a model rebuild. Full-year outlook = YTD actual</p>
+<ul>
+<li>remaining forecast relies on both facts responding to the same Date filters.</li>
+</ul>
+<h3 id="vertipaq-compression">VertiPaq compression</h3>
+<p><em>VertiPaq compression: column cardinality, removing unused columns, integer keys</em></p>
+<p>VertiPaq, the in-memory columnar engine in Power BI and Power Pivot, stores each column separately with dictionary
+and run-length encoding. Memory depends mainly on <strong>column cardinality</strong> (number of distinct values), not row count.
+Narration text or VoucherNo with lakhs of distinct values is expensive; a FY column with five values is nearly free.
+Practical rules: remove unused columns (every column costs memory even if hidden), use integer surrogate keys rather
+than long text keys, split datetime into date only, round amounts to two decimals, and keep descriptive text in
+small dimensions. VertiPaq Analyzer in DAX Studio shows size per column so you can target the worst offenders.</p>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<h3 id="bidirectional-relationships-everywhere">Bidirectional relationships everywhere</h3>
+<p><em>Bidirectional relationships everywhere, causing ambiguous paths and wrong totals</em></p>
+<p>The mistake: setting every relationship's cross-filter direction to Both so that "everything filters everything",
+often because a slicer showed irrelevant members or a dimension count was wrong. With two facts sharing dimensions,
+this creates multiple paths between tables; Power BI deactivates relationships to resolve ambiguity, and totals for
+Budget or TB become wrong or repeat. Correct treatment: keep all fact–dimension relationships single direction;
+use <code>CROSSFILTER(..., BOTH)</code> inside the specific measure, or a visual-level filter on the slicer. Detect in review
+by scanning the Model view for double arrows and dashed lines you did not create, and by testing Budget totals by
+each dimension against the source.</p>
+<h3 id="budget-keyed-on-month-text">Budget keyed on month text</h3>
+<p><em>Budget keyed on month text, forcing a many-to-many link to the Date table</em></p>
+<p>The mistake: relating Budget[Month] ("Apr-25" or "April") or PeriodKey to a non-unique column in Date. Because
+both sides repeat, Power BI offers only many-to-many; April budget may then appear under every April in the
+calendar, or totals behave unpredictably. It happens because the budget workbook naturally has months as text
+headers. Correct treatment: convert to a real MonthStart date in Power Query and relate to <code>'Date'[Date]</code> (c02), or
+use TREATAS on MonthEnd (c03). Detect by any <em>:</em> relationship in the model involving Date, and by comparing the
+model's FY budget total with the approved budget file.</p>
+<h3 id="descriptions-kept-in-the-fact">Descriptions kept in the fact</h3>
+<p><em>Account names and descriptions kept in the fact table instead of the dimension</em></p>
+<p>The mistake: leaving AccountName, LedgerGroup, CostCentreName or BranchCity on GL rows because the ERP extract had
+them. It bloats memory (text repeated on crores of rows), makes slicers on those columns filter only GL (Budget and
+TB ignore them), and creates conflicting descriptions when a ledger is renamed mid-year. Correct treatment: keep
+only keys and amounts in the fact; take descriptions from the dimension. Detect by scanning fact columns for text
+fields and by checking whether any visual slices by a fact column; VertiPaq Analyzer will show these as large
+columns.</p>
+<h3 id="mismatched-key-types-and-trailing-spaces">Mismatched key types and trailing spaces</h3>
+<p><em>Key columns with mismatched types or trailing spaces, producing a "(Blank)" member that holds totals</em></p>
+<p>The mistake: GL AccountCode loaded as text "400100 " (trailing space from a fixed-width export) or as a number
+while CoA has text; or dates with a time part. Power Query merges are exact and case-sensitive, so these rows fail
+to map, receive null keys and land in the virtual blank member, which shows "(Blank)" and quietly holds amounts.
+Correct treatment: set identical data types on both sides, apply <code>Text.Trim</code>, <code>Text.Clean</code> and consistent case before
+merging, convert datetimes to dates, and map residual misses to the Unmapped member (s06). Detect with the RI test
+(c05), a null-key count on the fact, and a "(Blank)" row check in the P&amp;L matrix.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-design-the-star-for-a-listed-manufacturer-l3">Q1. Design the star for a listed manufacturer [L3]</h3>
+<p>A Pune-based NSE-listed auto-components manufacturer (FY ending 31 March) gives you: (a) SAP GL line items from
+1-Apr-2021, 2.6 crore rows with PostingDate, DocDate, DueDate, GLAccount (text), CostCentre, ProfitCentre (branch),
+Amount; (b) FY2025-26 budget workbook by GL account × cost centre with months as columns Apr–Mar; (c) month-end TB
+for 60 months; (d) a CoA mapping sheet with 712 rows, of which 708 distinct GL accounts; (e) a cost-centre master
+with Department and Function in separate sheets. Required: (i) list the facts with their grain statements;
+(ii) list the dimensions with keys and attributes; (iii) specify each relationship's cardinality, direction and
+active status; (iv) describe how you handle the budget grain and the 4 duplicate mappings; (v) list the
+data-quality measures you would build.</p>
+<h3 id="q2-debug-a-model-that-does-not-tie-l3">Q2. Debug a model that does not tie [L3]</h3>
+<p>A Power BI MIS model shows FY2025-26 PAT of ₹48.6 crore against signed financial statements of ₹51.2 crore. You
+find: CoA–GL relationship set to Both; Budget related to Date on MonthName (many-to-many); GL[AccountCode] is text
+with some trailing spaces; there is a "(Blank)" row in the P&amp;L matrix holding ₹2.6 crore of expense; a report-level
+slicer uses <code>GL[PostingDate]</code>. Required: explain how each finding could contribute to wrong or misleading figures,
+the order in which you would fix them, the DAX or Power Query used for each fix, and the tests that prove the
+final model ties to the TB.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Separate issues that change Actual from those that only change Budget or slicer behaviour.</p>
+</blockquote>
+<h3 id="q3-role-playing-dates-and-receivables-l2">Q3. Role-playing dates and receivables [L2]</h3>
+<p>Using the GL described in Q1, write measures for: (a) revenue by posting date; (b) receivables by due date for the
+collections forecast; (c) the count of customer invoices with document date in March 2026 but posting date in April</p>
+<ol start="2026">
+<li>For each, state the relationship used and how the Date table filters flow. Then explain whether a separate</li>
+</ol>
+<p>'Due Date' table is needed for a posting-month × due-month matrix.</p>
+<h3 id="q4-budget-at-fs-line-level-with-remapped-coa-l3">Q4. Budget at FS-line level with remapped CoA [L3]</h3>
+<p>Mid-year (October 2025), management moves "Freight outward" from Other expenses to a new MIS line "Distribution
+cost". The FY2025-26 budget was prepared at FS-line level under the old mapping (Other expenses budget ₹22 crore,
+including ₹6 crore freight). Required: (i) explain how Type 1 and Type 2 handling of the CoA change affects the
+Actual vs Budget report for H1 and H2; (ii) design the Budget fact and the DAX (TREATAS or physical relationship)
+so variance by FS line is meaningful; (iii) recommend a disclosure note for the MIS pack.</p>
+<h3 id="q5-size-and-performance-review-l2">Q5. Size and performance review [L2]</h3>
+<p>VertiPaq Analyzer shows the model at 2.8 GB: GL[Narration] 1.1 GB, GL[AccountName] 420 MB, GL[PostingDateTime]
+(datetime) 380 MB, GL[VoucherNo] 300 MB, GL[Amount] 210 MB. Propose specific changes for each column, estimate
+which give the largest saving, and explain any reporting capability you would lose and how to preserve it
+(e.g. drill-through to narration).</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← Week 11: Power Pivot, Star-Schema Data Modelling &amp;…</a><a class="next" href="subtopics/S01_Facts_vs_Dimensions_in_a_Financial_Star_Schema.html">Facts vs Dimensions in a Financial Star Schema →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Goal Seek for Break-Even, Target-Margin Price and Required Growth · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S02_Goal_Seek_for_Break_Even_Target_Margin_Price_and.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T6 · What-if analysis and input controls</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · What-if analysis and input controls</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_One_and_Two_Variable_Data_Tables_for_Sensitivity.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S01_One_and_Two_Variable_Data_Tables_for_Sensitivity.html">One- and Two-Variable Data Tables for Sensitivity Analysis</a></li><li><a href="S02_Goal_Seek_for_Break_Even_Target_Margin_Price_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S02_Goal_Seek_for_Break_Even_Target_Margin_Price_and.html">Goal Seek for Break-Even, Target-Margin Price and Required Growth</a></li><li><a href="S03_Scenario_Manager_Scenarios_Changing_Cells_and_the.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S03_Scenario_Manager_Scenarios_Changing_Cells_and_the.html">Scenario Manager: Scenarios, Changing Cells and the Summary Report</a></li><li><a href="S04_Data_Validation_Dropdowns_Dependent_Lists_Limits.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S04_Data_Validation_Dropdowns_Dependent_Lists_Limits.html">Data Validation: Dropdowns, Dependent Lists, Limits and Messages</a></li><li><a href="S05_Formula_Based_Conditional_Formatting_for_Variances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S05_Formula_Based_Conditional_Formatting_for_Variances.html">Formula-Based Conditional Formatting for Variances and Scenarios</a></li><li><a href="S06_Form_Controls_Linked_to_Cells_for_Model_Dashboards.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S06_Form_Controls_Linked_to_Cells_for_Model_Dashboards.html">Form Controls Linked to Cells for Model Dashboards</a></li><li><a href="S07_Solver_for_Product_Mix_and_Capital_Rationing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S07_Solver_for_Product_Mix_and_Capital_Rationing.html">Solver for Product Mix and Capital Rationing</a></li><li><a href="S08_Calculation_Mode_Automatic_Except_Data_Tables_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/subtopics/S08_Calculation_Mode_Automatic_Except_Data_Tables_and.html">Calculation Mode: Automatic Except Data Tables and F9 Recalculation</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_The_TABLE_Array_Formula_and_the_Same_Sheet_Input.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C01_The_TABLE_Array_Formula_and_the_Same_Sheet_Input.html">The TABLE Array Formula and the Same-Sheet Input Rule</a></li><li><a href="../concepts/C02_Goal_Seek_Rules_Formula_Set_Cell_Hard_Coded.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C02_Goal_Seek_Rules_Formula_Set_Cell_Hard_Coded.html">Goal Seek Rules: Formula Set Cell, Hard-Coded Changing Cell</a></li><li><a href="../concepts/C03_Dependent_Dropdown_Sources_INDIRECT_vs_a_Spill.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C03_Dependent_Dropdown_Sources_INDIRECT_vs_a_Spill.html">Dependent Dropdown Sources: INDIRECT vs a Spill Reference</a></li><li><a href="../concepts/C04_Conditional_Format_Rule_for_Negative_Rows_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C04_Conditional_Format_Rule_for_Negative_Rows_Column.html">Conditional Format Rule for Negative Rows: Column Locked, Row Relative</a></li><li><a href="../concepts/C05_Variance_Flag_Rule_with_a_Named_Threshold_Input.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C05_Variance_Flag_Rule_with_a_Named_Threshold_Input.html">Variance Flag Rule with a Named Threshold Input</a></li><li><a href="../concepts/C06_Scenario_Manager_Limits_32_Changing_Cells_and_a.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T6_What_if_analysis_and_input_controls/concepts/C06_Scenario_Manager_Limits_32_Changing_Cells_and_a.html">Scenario Manager Limits: 32 Changing Cells and a Static Summary</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Goal Seek for Break-Even, Target-Margin Price and Required Growth</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Goal Seek for break-even volume, price for a target margin, and required growth rate</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Many management questions are backwards: not "what is profit at this volume?" but "what volume makes profit zero?", "what price gives a 20% EBITDA margin?", "what revenue growth do we need to hit ₹800 crore by FY30?", "what WACC makes the DCF equal the current share price?". When the model is a long chain of formulas with no closed-form inverse — tax, working capital, depreciation and debt schedules in between — Goal Seek finds the input that delivers a target output by iteration. It is quick, available in every Excel version, and a standard tool for CVP analysis (Week 21) and for implied-assumption checks in valuation. Its weakness is governance: it overwrites an input with a hard-coded result and leaves no trail.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="mechanics">Mechanics</h3>
+<p>Data → What-If Analysis → Goal Seek (Alt, A, W, G). Three fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Must be</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Set cell</td>
+<td>A <strong>formula</strong> cell (the output)</td>
+<td>EBIT</td>
+</tr>
+<tr>
+<td>To value</td>
+<td>A typed number (not a reference)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>By changing cell</td>
+<td>A <strong>hard-coded input</strong> cell the Set cell depends on</td>
+<td>Volume</td>
+</tr>
+</tbody>
+</table>
+<p>Goal Seek iterates (secant/Newton-style) on the changing cell until the Set cell is within tolerance of the target, then asks whether to keep the result. It changes <strong>one</strong> input only. Iteration limits come from File → Options → Formulas → Maximum Iterations (default 100) and Maximum Change (default 0.001) — tighten Maximum Change for large-value models where 0.001 is too coarse, or loosen it if convergence fails.</p>
+<h3 id="use-1-break-even-volume">Use 1: break-even volume</h3>
+<p>Model: price ₹1,500 per unit, variable cost ₹900, fixed costs ₹2.4 crore.</p>
+<ul>
+<li>EBIT = Volume × (1,500 − 900) − 2,40,00,000.</li>
+<li>Goal Seek: Set EBIT, To 0, By changing Volume → 40,000 units.</li>
+</ul>
+<p>Closed form exists here (Fixed ÷ Contribution per unit = 2.4 crore ÷ 600 = 40,000), which is a good check. Goal Seek earns its keep when the P&amp;L includes step costs, volume-linked discounts, or contribution varying by mix — situations where the algebra is messy.</p>
+<h3 id="use-2-price-for-a-target-margin">Use 2: price for a target margin</h3>
+<p>Full cost per unit ₹850 (including allocated overheads); target EBIT margin 20% of price.</p>
+<ul>
+<li>Margin = (P − 850) ÷ P. Goal Seek: Set Margin, To 0.2, By changing Price → ₹1,062.50.</li>
+<li>Check: (1,062.50 − 850) ÷ 1,062.50 = 20%.</li>
+</ul>
+<p>Note the target value is typed as 0.2 (or 20%) — Goal Seek's "To value" cannot be a cell reference. If the target changes often, build a <strong>gap cell</strong> <code>=Margin - TargetMargin</code> and Goal Seek it to 0; the target then lives in a visible input cell.</p>
+<h3 id="use-3-required-growth-rate">Use 3: required growth rate</h3>
+<p>Revenue FY26 ₹500 crore; target FY30 ₹800 crore; model projects revenue with a constant growth input g.</p>
+<ul>
+<li>FY30 revenue = 500 × (1 + g)^4. Goal Seek: Set FY30 revenue, To 800, By changing g → 12.47%.</li>
+<li>Closed-form check: <code>=(800/500)^(1/4) - 1</code> = 12.47%.</li>
+</ul>
+<p>In a full model, the FY30 <em>EBITDA</em> or <em>PAT</em> target may depend on growth through margins, operating leverage and interest — Goal Seek handles that indirect path.</p>
+<h3 id="other-common-uses">Other common uses</h3>
+<ul>
+<li><strong>Implied WACC or implied growth:</strong> the WACC at which DCF value per share equals the market price (a market-implied sanity check).</li>
+<li><strong>Maximum debt:</strong> the loan amount at which DSCR equals the covenant minimum of 1.30×.</li>
+<li><strong>Required price increase</strong> to absorb a wage settlement or commodity rise.</li>
+<li><strong>IRR-style checks</strong> where IRR cannot be applied directly (e.g. the rate at which a complex lease schedule's PV equals a given amount).</li>
+</ul>
+<h3 id="making-goal-seek-auditable">Making Goal Seek auditable</h3>
+<p>Because Goal Seek leaves a hard-coded number in the input cell:</p>
+<ol>
+<li><strong>Use a dedicated "solve" cell</strong>, not the live assumption. Copy the model's driver into a solve cell for the exercise, or point the model to <code>=IF(UseSolve, SolveCell, BaseInput)</code>.</li>
+<li><strong>Record the result</strong> in a results log: date, Set cell, target, changing cell, result, who ran it.</li>
+<li><strong>Re-run after changes.</strong> The solved value does not update when other assumptions change — the gap cell (<code>Margin − Target</code>) is a cheap staleness detector: if it is no longer zero, re-solve.</li>
+<li><strong>Prefer closed-form or live alternatives</strong> where possible: break-even = Fixed ÷ Contribution; required CAGR = (End ÷ Start)^(1/n) − 1. These stay live.</li>
+<li>For repeated solves (e.g. break-even for each of 20 products), a VBA loop or Solver is more controlled than manual Goal Seek runs.</li>
+</ol>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>No solution or wrong root.</strong> If the target is unreachable (EBIT can never reach zero because contribution is negative), Goal Seek reports it may not have found a solution. Non-monotonic models (e.g. tax kinks, MAT/115BAA switches) can converge to a local root; try different starting values.</li>
+<li><strong>Changing cell contains a formula.</strong> Goal Seek refuses ("cell must contain a value"). Point it at the underlying input.</li>
+<li><strong>Integer answers.</strong> Break-even volume of 40,000.4 units must be rounded up for decisions; Goal Seek returns decimals.</li>
+<li><strong>Precision.</strong> With Maximum Change 0.001 and outputs in rupees, the answer may be off by a fraction of a rupee — fine. With outputs in ₹ crore, 0.001 crore = ₹1 lakh — not fine for a precise target.</li>
+<li><strong>Data Tables and Goal Seek</strong> do not mix directly; you cannot Goal Seek each cell of a grid.</li>
+<li><strong>Circular models</strong> (interest on average debt) can make Goal Seek unstable; enable iterative calculation and test convergence.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Goal Seek: Set cell (formula) → To value (typed number) → By changing cell (hard-coded input); one input only.</li>
+<li>Classic uses: break-even volume, price for a target margin, required growth, implied WACC, maximum debt for a DSCR.</li>
+<li>Validate with closed-form formulas where they exist.</li>
+<li>Goal Seek overwrites an input and does not update; use solve cells, gap cells and a results log.</li>
+<li>Tighten Maximum Change for models measured in large units.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-break-even-with-step-costs-l2">Q1. Break-even with step costs [L2]</h3>
+<p>A plant has price ₹2,200 per unit, variable cost ₹1,450, fixed costs of ₹3.0 crore up to 50,000 units and ₹3.6 crore above 50,000 units (a second shift). Set up the EBIT formula, run Goal Seek for break-even, and explain why the result may depend on the starting value of volume. State the break-even volume(s) you expect.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Check whether break-even is reachable in each fixed-cost band separately.</p>
+</blockquote>
+<h3 id="q2-target-margin-with-a-gap-cell-l1">Q2. Target margin with a gap cell [L1]</h3>
+<p>Design a model where the target EBITDA margin is an input cell (18%) and Goal Seek solves for price, without typing 18% into the Goal Seek dialog. Write the formulas and the dialog entries.</p>
+<h3 id="q3-implied-wacc-l2">Q3. Implied WACC [L2]</h3>
+<p>A DCF gives ₹1,420 per share at WACC 12%; the NSE price is ₹1,250. Describe the Goal Seek set-up to find the market-implied WACC, the controls you would put in place so the model's base WACC is not overwritten, and how you would interpret the result for an equity research note.</p>
+<h3 id="q4-debt-sizing-l3">Q4. Debt sizing [L3]</h3>
+<p>A project finance model must size senior debt so that the minimum DSCR over the loan life equals 1.30×. Debt amount drives interest, repayments and DSCR through a schedule. Explain how you would use Goal Seek (and its limits), and how you would document the solved debt amount for lenders.</p>
+<h3 id="q5-review-finding-l2">Q5. Review finding [L2]</h3>
+<p>During review of a budget model you find the FY27 volume input is 1,83,467.29 units with no source note, and a colleague says "I Goal Seeked it to hit the ₹50 crore EBITDA target last month". Since then, raw material prices have been updated. Explain the risk, how you would detect similar hard-coded solves across the model, and how you would redesign the process.</p></section>
+<nav class="pager"><a class="prev" href="S01_One_and_Two_Variable_Data_Tables_for_Sensitivity.html">← One- and Two-Variable Data Tables for Sensitivity Analysis</a><a class="next" href="S03_Scenario_Manager_Scenarios_Changing_Cells_and_the.html">Scenario Manager: Scenarios, Changing Cells and the Summary… →</a></nav>
+</main></div></body></html>

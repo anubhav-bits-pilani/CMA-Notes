@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mixed References and F4 Cycling for Copy-Across P&amp;L Grids · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S08_Mixed_References_and_F4_Cycling_for_Copy_Across_PL.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T1 · Multi-criteria logic and GL rollups</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Multi-criteria logic and GL rollups</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Nested_IF_vs_IFS_vs_SWITCH_for_Account_Code.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S01_Nested_IF_vs_IFS_vs_SWITCH_for_Account_Code.html">Nested IF vs IFS vs SWITCH for Account-Code Classification</a></li><li><a href="S02_SUMIFS_for_Multi_Department_GL_Rollups_by_Group.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S02_SUMIFS_for_Multi_Department_GL_Rollups_by_Group.html">SUMIFS for Multi-Department GL Rollups by Group, Cost Centre and Month</a></li><li><a href="S03_COUNTIFS_Data_Quality_Tests_on_GL_and_TB_Dumps.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S03_COUNTIFS_Data_Quality_Tests_on_GL_and_TB_Dumps.html">COUNTIFS Data-Quality Tests on GL and TB Dumps</a></li><li><a href="S04_AVERAGEIFS_MAXIFS_and_MINIFS_for_ARAP_and_Sales.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S04_AVERAGEIFS_MAXIFS_and_MINIFS_for_ARAP_and_Sales.html">AVERAGEIFS, MAXIFS and MINIFS for AR/AP and Sales Analytics</a></li><li><a href="S05_Criteria_Syntax_Operators_Concatenation_Wildcards.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S05_Criteria_Syntax_Operators_Concatenation_Wildcards.html">Criteria Syntax: Operators, Concatenation, Wildcards and Date Ranges</a></li><li><a href="S06_OR_Logic_in_SUMIFS_with_Array_Constants_Wrapped_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S06_OR_Logic_in_SUMIFS_with_Array_Constants_Wrapped_in.html">OR Logic in SUMIFS with Array Constants Wrapped in SUM</a></li><li><a href="S07_Excel_Tables_and_Structured_References_for_Self.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S07_Excel_Tables_and_Structured_References_for_Self.html">Excel Tables and Structured References for Self-Expanding Rollups</a></li><li><a href="S08_Mixed_References_and_F4_Cycling_for_Copy_Across_PL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S08_Mixed_References_and_F4_Cycling_for_Copy_Across_PL.html">Mixed References and F4 Cycling for Copy-Across P&amp;L Grids</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_The_Department_Account_Month_SUMIFS_Grid_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C01_The_Department_Account_Month_SUMIFS_Grid_Formula.html">The Department × Account × Month SUMIFS Grid Formula</a></li><li><a href="../concepts/C02_IFS_with_a_TRUE_Catch_All_for_Account.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C02_IFS_with_a_TRUE_Catch_All_for_Account.html">IFS with a TRUE Catch-All for Account Classification</a></li><li><a href="../concepts/C03_SUM_of_SUMIFS_with_an_Array_Constant_for_OR_Logic.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C03_SUM_of_SUMIFS_with_an_Array_Constant_for_OR_Logic.html">SUM of SUMIFS with an Array Constant for OR Logic</a></li><li><a href="../concepts/C04_MAXIFS_and_MINIFS_Signature_and_the_Zero_When.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C04_MAXIFS_and_MINIFS_Signature_and_the_Zero_When.html">MAXIFS and MINIFS: Signature and the Zero-When-Empty Trap</a></li><li><a href="../concepts/C05_COUNTIFS_Duplicate_Posting_Flag_in_a_Calculated.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C05_COUNTIFS_Duplicate_Posting_Flag_in_a_Calculated.html">COUNTIFS Duplicate-Posting Flag in a Calculated Column</a></li><li><a href="../concepts/C06_AVERAGEIFS_and_the_DIV0_Result_on_No_Matches.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C06_AVERAGEIFS_and_the_DIV0_Result_on_No_Matches.html">AVERAGEIFS and the #DIV/0! Result on No Matches</a></li><li><a href="../concepts/C07_Range_Criteria_for_Numeric_Account_Codes_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C07_Range_Criteria_for_Numeric_Account_Codes_vs.html">Range Criteria for Numeric Account Codes vs Wildcards on Text</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Mixed References and F4 Cycling for Copy-Across P&amp;L Grids</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Mixed referencing (<code>$A5</code>,
+<code>C$4</code>) and F4 cycling for copy-across P&amp;L grids</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A monthly P&amp;L or department grid typically has 40–80 rows and 12–24 columns: roughly a thousand cells. A professional grid has <strong>one formula</strong> written once in the top-left cell and copied across and down unchanged; every cell is then structurally identical, so reviewing one cell reviews them all. That only works when each reference is anchored correctly — row labels locked to their column, period headers locked to their row, inputs locked completely. Wrong anchoring is the root cause of "row 37 picks up the wrong month" errors that survive review because the numbers look plausible. Interviewers for FP&amp;A roles routinely test this with a blank grid and a stopwatch.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-four-reference-types">The four reference types</h3>
+<p>A dollar sign before the column letter freezes the column; a dollar sign before the row number freezes the row.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Example</th>
+<th>When copied right</th>
+<th>When copied down</th>
+<th>Typical use in a grid</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Relative</td>
+<td><code>C4</code></td>
+<td>column shifts</td>
+<td>row shifts</td>
+<td>values in the same grid position</td>
+</tr>
+<tr>
+<td>Absolute</td>
+<td><code>&#36;C&#36;4</code></td>
+<td>fixed</td>
+<td>fixed</td>
+<td>single input: tax rate, threshold, FX rate</td>
+</tr>
+<tr>
+<td>Row-absolute (mixed)</td>
+<td><code>C$4</code></td>
+<td>column shifts</td>
+<td>row fixed</td>
+<td><strong>month/period headers</strong> in a header row</td>
+</tr>
+<tr>
+<td>Column-absolute (mixed)</td>
+<td><code>$A5</code></td>
+<td>column fixed</td>
+<td>row shifts</td>
+<td><strong>account / FS line labels</strong> in a label column</td>
+</tr>
+</tbody>
+</table>
+<p>The memory aid: the <code>$</code> sits in front of whatever must <strong>not</strong> move.</p>
+<h3 id="f4-cycling">F4 cycling</h3>
+<p>With the cursor on or inside a reference in the formula bar (or while building a formula by clicking cells), press <strong>F4</strong> to cycle:</p>
+<table>
+<thead>
+<tr>
+<th>Press</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Typed</td>
+<td><code>A1</code></td>
+</tr>
+<tr>
+<td>F4 once</td>
+<td><code>&#36;A&#36;1</code> (absolute)</td>
+</tr>
+<tr>
+<td>F4 twice</td>
+<td><code>A$1</code> (row locked)</td>
+</tr>
+<tr>
+<td>F4 three times</td>
+<td><code>$A1</code> (column locked)</td>
+</tr>
+<tr>
+<td>F4 four times</td>
+<td><code>A1</code> (back to relative)</td>
+</tr>
+</tbody>
+</table>
+<p>On laptops where F4 is a media key, use <strong>Fn+F4</strong>, or switch the function-key lock. On Mac Excel the shortcut is <strong>Cmd+T</strong> (or Fn+F4 depending on settings). Selecting a whole formula in the bar and pressing F4 cycles all references in the selection together — handy but risky when the references need different anchoring. Outside edit mode, F4 means "repeat last action" — a different feature.</p>
+<h3 id="anatomy-of-a-copy-across-grid">Anatomy of a copy-across grid</h3>
+<p>Layout: FS lines in A5:A40, departments in B5:B40, month-start dates in C3:N3.</p>
+<pre><code class="language-excel">=SUMIFS(GL[Amount],
+        GL[FSLine], $A5,
+        GL[Dept], $B5,
+        GL[Date], &quot;&gt;=&quot;&amp;C$3,
+        GL[Date], &quot;&lt;=&quot;&amp;EOMONTH(C$3,0))
+</code></pre>
+<p>Reading each anchor:</p>
+<ul>
+<li><code>$A5</code> (and likewise the department reference in column B) — the labels are always in columns A and B (column locked), but each row reads its own label (row free).</li>
+<li><code>C$3</code> — the header is always in row 3 (row locked), but each column reads its own month (column free).</li>
+<li><code>GL[Amount]</code> etc. — structured references need no <code>$</code>; they are copied by Ctrl+C/Ctrl+V without shifting (but see the drag-fill caveat in the Tables note).</li>
+</ul>
+<p>Write it once in C5, then <strong>Ctrl+C</strong>, select C5:N40, <strong>Ctrl+V</strong> (or Ctrl+R to fill right and Ctrl+D to fill down). The same pattern applies to a budget grid with a scenario input: an input such as the growth rate is fully absolute or, better, a named cell (<code>GrowthRate</code>), which never needs <code>$</code>.</p>
+<h3 id="variance-and-percentage-columns">Variance and percentage columns</h3>
+<p>For a budget-vs-actual block where actuals are in C:N and budgets in P:AA, a variance in AC5 copied across: <code>=C5-P5</code> (relative, both shift together). A percentage of revenue line where revenue sits in row 5: <code>=C12/C$5</code> — the denominator row is locked so every expense row divides by revenue of its own month. A growth % across months: <code>=D5/C5-1</code>, fully relative.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>Grid snippet (₹ lakh):</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>C (Apr-25)</th>
+<th>D (May-25)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>Revenue</td>
+<td>420.0</td>
+<td>455.0</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Employee cost</td>
+<td>63.0</td>
+<td>66.5</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Rent</td>
+<td>21.0</td>
+<td>21.0</td>
+</tr>
+</tbody>
+</table>
+<p>The %-of-revenue block mirrors the expense rows from row 30 onwards, so C30 holds <code>=C12/C$5</code> (employee cost as % of April revenue = 63.0 ÷ 420.0 = 15.0%). Copying C30 to D31 gives <code>=D13/D$5</code> = 21.0 ÷ 455.0 = 4.6% (rent as % of May revenue). If the author had written <code>=C12/C5</code>, D31 would become <code>=D13/D6</code> — dividing by whatever is in row 6, often a blank, producing <code>#DIV/0!</code>, or worse, a plausible wrong number.</p>
+<h3 id="speed-technique">Speed technique</h3>
+<ol>
+<li>Build the top-left formula by clicking cells; press F4 immediately after each click to set the anchor.</li>
+<li>Test by copying one cell <strong>right</strong> and one cell <strong>down</strong> and inspecting with <strong>Ctrl+[</strong> (go to precedents) or F2.</li>
+<li>Fill the block; switch on <strong>Ctrl+`</strong> (show formulas) and scan for any cell that looks different.</li>
+<li>Use Go To Special → Row differences (Ctrl+) or Column differences (Ctrl+Shift+|) on the block to find any inconsistent formula.</li>
+</ol>
+<h3 id="r1c1-view-as-an-audit-tool">R1C1 view as an audit tool</h3>
+<p>File → Options → Formulas → R1C1 reference style rewrites references as offsets: <code>C$3</code> typed in column C becomes <code>R3C</code> (row 3, same column) and <code>$A5</code> typed in row 5 becomes <code>RC1</code> (same row, column 1). In a correctly built grid, every cell's formula text is therefore <strong>identical</strong> in R1C1 view, and any cell whose text differs is an inconsistency. Inquire's Workbook Analysis and Spreadsheet Compare use the same principle to flag inconsistent formulas.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Inserted columns.</strong> Inserting a column inside the grid adjusts all references automatically, but an inserted column between labels and data can make <code>$A5</code> point at the wrong label column only if labels were moved — keep labels in fixed columns.</li>
+<li><strong>Fully absolute inputs vs names.</strong> Named inputs (<code>TaxRate</code>) are clearer and immune to anchoring errors; use them for every single-cell assumption.</li>
+<li><strong>Copying formulas to another sheet</strong> keeps anchors but changes sheet context; references to the source sheet remain.</li>
+<li><strong>Mixed anchors in conditional formatting</strong>: the same logic applies (<code>=$E5&lt;0</code> colours a whole row based on column E), and errors there are invisible until data changes.</li>
+<li><strong>Over-anchoring</strong> (making everything absolute "to be safe") forces manual edits in every cell, defeating the one-formula principle.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li><code>$</code> freezes what follows it: column-absolute for label columns, row-absolute for header rows.</li>
+<li>F4 cycles absolute → row-locked → column-locked → relative; use Fn+F4 on laptops.</li>
+<li>One formula, copied across and down, is the standard for P&amp;L and MIS grids.</li>
+<li>Test a new grid formula by copying one cell right and one down before filling.</li>
+<li>Use named cells for single inputs; they never need <code>$</code>.</li>
+<li>Row/column-difference selection and R1C1 view expose inconsistent formulas fast.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-anchor-the-grid-l1">Q1. Anchor the grid [L1]</h3>
+<p>FS lines are in A6:A45, months (month-start dates) in D4:O4, and a Table <code>GL</code> has FSLine, Date and Amount. Write the formula for D6 that can be copied to D6:O45 without editing, and state for each reference what would go wrong if its <code>$</code> were omitted.</p>
+<h3 id="q2-percentage-of-revenue-block-l1">Q2. Percentage-of-revenue block [L1]</h3>
+<p>Revenue is in row 8 (columns D:O) and expense lines in rows 10–30. Write the formula for D40 (the first row of a % of revenue block mirroring row 10) that copies correctly to D40:O60.</p>
+<h3 id="q3-find-the-inconsistent-cell-l2">Q3. Find the inconsistent cell [L2]</h3>
+<p>A 36 × 12 department grid was built by a colleague; one cell in row 22 was overwritten with a hard-coded ₹4,75,000 and another in column K had its date reference edited to point at J3. Describe at least three Excel techniques to find both cells in under two minutes.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Think about show-formulas view, Go To Special and the Inquire add-in.</p>
+</blockquote>
+<h3 id="q4-budget-grid-with-growth-input-l2">Q4. Budget grid with growth input [L2]</h3>
+<p>FY26 actual revenue by product is in C6:C20. Build an FY27 monthly budget grid in E6:P20 where each month equals the annual actual × (1 + growth rate in a named cell <code>Gr</code>) × the month's seasonality weight in E3:P3. Write the E6 formula and explain the anchoring of each reference.</p>
+<h3 id="q5-timed-interview-drill-l3">Q5. Timed interview drill [L3]</h3>
+<p>You are given a blank sheet with 25 expense ledgers in column A, 4 departments in row 2 (C2:F2) and a GL Table with Ledger, Dept and Amount. In five minutes you must build the department × ledger matrix, a row total, a column total and a check cell that compares the grand total with the GL total. Describe your exact keystroke sequence and formulas, and explain how you would prove the grid is consistent.</p></section>
+<nav class="pager"><a class="prev" href="S07_Excel_Tables_and_Structured_References_for_Self.html">← Excel Tables and Structured References for Self-Expanding…</a><a class="next" href="../concepts/C01_The_Department_Account_Month_SUMIFS_Grid_Formula.html">The Department × Account × Month SUMIFS Grid Formula →</a></nav>
+</main></div></body></html>

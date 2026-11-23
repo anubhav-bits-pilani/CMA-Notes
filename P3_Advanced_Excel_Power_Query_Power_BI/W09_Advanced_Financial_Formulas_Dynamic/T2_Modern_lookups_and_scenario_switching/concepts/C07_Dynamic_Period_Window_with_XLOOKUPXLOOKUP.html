@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic Period Window with XLOOKUP:XLOOKUP · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C07_Dynamic_Period_Window_with_XLOOKUPXLOOKUP.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T2 · Modern lookups and scenario switching</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Modern lookups and scenario switching</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_XLOOKUP_Arguments_Not_Found_Value_Match_Mode_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S01_XLOOKUP_Arguments_Not_Found_Value_Match_Mode_and.html">XLOOKUP Arguments: Not-Found Value, Match Mode and Search Mode</a></li><li><a href="../subtopics/S02_Approximate_Match_Lookups_for_Slabs_TDS_Rates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S02_Approximate_Match_Lookups_for_Slabs_TDS_Rates.html">Approximate-Match Lookups for Slabs, TDS Rates, Tiers and Bands</a></li><li><a href="../subtopics/S03_Reverse_Search_for_Latest_Price_FX_Rate_and_Last.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S03_Reverse_Search_for_Latest_Price_FX_Rate_and_Last.html">Reverse Search for Latest Price, FX Rate and Last Payment Date</a></li><li><a href="../subtopics/S04_Two_Way_Lookups_on_Account_Month_Grids.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S04_Two_Way_Lookups_on_Account_Month_Grids.html">Two-Way Lookups on Account × Month Grids</a></li><li><a href="../subtopics/S05_XLOOKUP_Returning_Rows_Columns_and_Range.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S05_XLOOKUP_Returning_Rows_Columns_and_Range.html">XLOOKUP Returning Rows, Columns and Range References</a></li><li><a href="../subtopics/S06_XMATCH_and_INDEX_XMATCH_for_Dynamic_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S06_XMATCH_and_INDEX_XMATCH_for_Dynamic_Column.html">XMATCH and INDEX-XMATCH for Dynamic Column Selection</a></li><li><a href="../subtopics/S07_Live_Scenario_Switches_with_CHOOSE_INDEX_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S07_Live_Scenario_Switches_with_CHOOSE_INDEX_and.html">Live Scenario Switches with CHOOSE, INDEX and SWITCH</a></li><li><a href="../subtopics/S08_Multi_Key_Lookups_Helper_Keys_vs_Boolean_Arrays.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S08_Multi_Key_Lookups_Helper_Keys_vs_Boolean_Arrays.html">Multi-Key Lookups: Helper Keys vs Boolean Arrays</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_The_Fully_Specified_XLOOKUP_for_Ledger_Mapping.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C01_The_Fully_Specified_XLOOKUP_for_Ledger_Mapping.html">The Fully Specified XLOOKUP for Ledger Mapping</a></li><li><a href="C02_Next_Smaller_XLOOKUP_for_Slab_Rates_Without.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C02_Next_Smaller_XLOOKUP_for_Slab_Rates_Without.html">Next-Smaller XLOOKUP for Slab Rates Without Sorting</a></li><li><a href="C03_Nested_XLOOKUP_as_a_Two_Way_Lookup.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C03_Nested_XLOOKUP_as_a_Two_Way_Lookup.html">Nested XLOOKUP as a Two-Way Lookup</a></li><li><a href="C04_INDEX_MATCH_MATCH_The_Version_Proof_Two_Way_Lookup.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C04_INDEX_MATCH_MATCH_The_Version_Proof_Two_Way_Lookup.html">INDEX-MATCH-MATCH: The Version-Proof Two-Way Lookup</a></li><li><a href="C05_Boolean_Array_XLOOKUP_for_Multi_Criteria_Lookups.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C05_Boolean_Array_XLOOKUP_for_Multi_Criteria_Lookups.html">Boolean-Array XLOOKUP for Multi-Criteria Lookups</a></li><li><a href="C06_CHOOSE_Driven_by_a_MATCH_Index_for_Scenario.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C06_CHOOSE_Driven_by_a_MATCH_Index_for_Scenario.html">CHOOSE Driven by a MATCH Index for Scenario Selection</a></li><li><a href="C07_Dynamic_Period_Window_with_XLOOKUPXLOOKUP.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C07_Dynamic_Period_Window_with_XLOOKUPXLOOKUP.html">Dynamic Period Window with XLOOKUP:XLOOKUP</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Dynamic Period Window with XLOOKUP:XLOOKUP</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>=SUM(XLOOKUP(StartM, Months, Row):XLOOKUP(EndM, Months, Row))</code> sums a dynamic period window</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>Let <code>Months</code> be the header row \((m_1, \dots, m_n)\) and <code>Row</code> the aligned value row \((x_1, \dots, x_n)\). With \(a\) the position of <code>StartM</code> and \(b\) the position of <code>EndM</code> in <code>Months</code>, each XLOOKUP returns a <strong>reference</strong> to cell \(x_a\) or \(x_b\); the range operator <code>:</code> joins them into the range from \(x_a\) to \(x_b\), and</p>
+<p>\[
+\text{Window sum} = \sum_{j=\min(a,b)}^{\max(a,b)} x_j
+\]</p>
+<p>The window length is \(\lvert b - a \rvert + 1\) months.</p>
+<h2 id="explanation">Explanation</h2>
+<p><strong>References, not values.</strong> Most functions return values, but XLOOKUP and INDEX return references when their return array is a worksheet range. That is what lets <code>:</code> build a range between two lookups. The formula is non-volatile — it recalculates only when its inputs change — unlike OFFSET- or INDIRECT-based windows, which recalculate on every change anywhere in the workbook.</p>
+<p><strong>Same range at both ends.</strong> Both XLOOKUPs must return cells from the same <code>Row</code>. If <code>Row</code> is a computed array (<code>Row*1</code>, <code>VALUE(Row)</code>), there is no reference and the <code>:</code> operator produces <code>#VALUE!</code>.</p>
+<p><strong>Reversed inputs.</strong> If <code>StartM</code> is later than <code>EndM</code>, the range is still built (Excel normalises the corners), so the SUM covers the same months — no error. That is mathematically harmless for SUM but usually indicates a user error in the dropdown; add a check <code>=StartM&lt;=EndM</code>.</p>
+<p><strong>Not-found behaviour.</strong> If either month is missing from <code>Months</code> (e.g. a rolling-12 start before the first month of history), the XLOOKUP returns <code>#N/A</code> and so does the SUM. Supplying a text <code>if_not_found</code> would break the <code>:</code> operator; validate inputs instead, or clamp the start with <code>MAX(StartM, first month)</code>.</p>
+<p><strong>Typical inputs.</strong></p>
+<ul>
+<li>YTD: <code>StartM</code> = FY start (01-Apr), <code>EndM</code> = selected month.</li>
+<li>QTD: <code>StartM</code> = fiscal quarter start of the selected month.</li>
+<li>Trailing 3 / 12 months: <code>StartM = EDATE(Sel, -2)</code> or <code>EDATE(Sel, -11)</code>.</li>
+</ul>
+<p><strong>Other aggregators.</strong> The same window works with AVERAGE, MAX, MIN, COUNT and COLUMNS (window length). Legacy equivalent: <code>SUM(INDEX(Row, MATCH(StartM, Months, 0)):INDEX(Row, MATCH(EndM, Months, 0)))</code>.</p>
+<h2 id="illustration">Illustration</h2>
+<p>FY26 EBITDA row (₹ crore), headers 01-Apr-2025 … 01-Mar-2026:</p>
+<table>
+<thead>
+<tr>
+<th>Apr</th>
+<th>May</th>
+<th>Jun</th>
+<th>Jul</th>
+<th>Aug</th>
+<th>Sep</th>
+<th>Oct</th>
+<th>Nov</th>
+<th>Dec</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2.1</td>
+<td>2.4</td>
+<td>2.2</td>
+<td>2.8</td>
+<td>3.0</td>
+<td>3.1</td>
+<td>3.6</td>
+<td>3.3</td>
+<td>3.4</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Selected month 01-Dec-2025, YTD window Apr–Dec: 2.1 + 2.4 + 2.2 + 2.8 + 3.0 + 3.1 + 3.6 + 3.3 + 3.4 = ₹25.9 crore.</li>
+<li>QTD (Oct–Dec): ₹10.3 crore.</li>
+<li>Trailing three months to November (Sep–Nov): ₹10.0 crore.</li>
+<li>Average monthly EBITDA YTD: <code>=AVERAGE(window)</code> = ₹2.88 crore; window length <code>=COLUMNS(window)</code> = 9.</li>
+</ul>
+<p>Changing the selected month to 01-Jan-2026 updates all four without editing any formula.</p>
+<h2 id="connections">Connections</h2>
+<p>Applies the range-reference behaviour from the XLOOKUP-returning-rows subtopic and contrasts with the volatile OFFSET/INDIRECT alternatives listed under related concepts. The month headers it relies on are built with EOMONTH/SEQUENCE, and the dropdowns for <code>StartM</code>/<code>EndM</code> are Data Validation lists. In FP&amp;A (Weeks 17–20) the same window logic produces YTD, QTD and rolling-forecast views; in DAX (Week 11) it becomes time-intelligence functions such as DATESYTD.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-window-toolkit-l1">Q1. Window toolkit [L1]</h3>
+<p>Using named ranges <code>Months</code> and <code>PAT</code>, write formulas for FY26 YTD PAT to the selected month <code>Sel</code>, QTD PAT for the fiscal quarter containing <code>Sel</code>, and the number of months in the YTD window.</p>
+<h3 id="q2-trailing-12-with-short-history-l2">Q2. Trailing-12 with short history [L2]</h3>
+<p>A business started operations in 01-Jul-2025, so the 24-month grid starting 01-Apr-2025 has zeros for April–June 2025 and real data from July. For <code>Sel</code> = 01-Feb-2026, explain what a trailing-12 window formula returns and how you would present an annualised run-rate instead.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Decide whether pre-launch months should be inside the window at all, and adjust the start accordingly.</p>
+</blockquote>
+<h3 id="q3-debug-the-window-l2">Q3. Debug the window [L2]</h3>
+<p>The formula <code>=SUM(XLOOKUP(StartM, Months, Rev, "n/a"):XLOOKUP(EndM, Months, Rev, "n/a"))</code> returns <code>#VALUE!</code> for some selections and correct totals for others. Explain both behaviours and correct the design.</p></section>
+<nav class="pager"><a class="prev" href="C06_CHOOSE_Driven_by_a_MATCH_Index_for_Scenario.html">← CHOOSE Driven by a MATCH Index for Scenario Selection</a><a class="next" href="../../T3_SUMPRODUCT_weighted_averages_and_matrix/index.html">SUMPRODUCT weighted averages and matrix math →</a></nav>
+</main></div></body></html>

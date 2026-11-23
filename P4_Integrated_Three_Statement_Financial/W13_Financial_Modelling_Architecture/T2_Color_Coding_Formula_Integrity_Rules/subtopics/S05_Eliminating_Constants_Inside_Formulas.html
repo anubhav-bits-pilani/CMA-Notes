@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eliminating Constants Inside Formulas · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S05_Eliminating_Constants_Inside_Formulas.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T2 · Color Coding &amp; Formula Integrity Rules</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Color Coding &amp; Formula Integrity Rules</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Font_Colour_Convention_Inputs_Formulas_and_Links.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S01_Font_Colour_Convention_Inputs_Formulas_and_Links.html">Font Colour Convention: Inputs, Formulas and Links</a></li><li><a href="S02_Input_Fill_Styles_and_Excel_Cell_Styles.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S02_Input_Fill_Styles_and_Excel_Cell_Styles.html">Input Fill Styles and Excel Cell Styles</a></li><li><a href="S03_One_Consistent_Formula_per_Forecast_Row.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S03_One_Consistent_Formula_per_Forecast_Row.html">One Consistent Formula per Forecast Row</a></li><li><a href="S04_Absolute_and_Mixed_References_for_Constants_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S04_Absolute_and_Mixed_References_for_Constants_and.html">Absolute and Mixed References for Constants and Flags</a></li><li><a href="S05_Eliminating_Constants_Inside_Formulas.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S05_Eliminating_Constants_Inside_Formulas.html">Eliminating Constants Inside Formulas</a></li><li><a href="S06_Excel_Formula_Auditing_Tools_and_Shortcuts.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S06_Excel_Formula_Auditing_Tools_and_Shortcuts.html">Excel Formula Auditing Tools and Shortcuts</a></li><li><a href="S07_Go_To_Special_and_Inquire_for_Inconsistency_Scans.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S07_Go_To_Special_and_Inquire_for_Inconsistency_Scans.html">Go To Special and Inquire for Inconsistency Scans</a></li><li><a href="S08_Avoiding_Volatile_Functions_and_Whole_Column.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S08_Avoiding_Volatile_Functions_and_Whole_Column.html">Avoiding Volatile Functions and Whole-Column References</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_One_Row_One_Formula_The_R1C1_Consistency_Test.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C01_One_Row_One_Formula_The_R1C1_Consistency_Test.html">One Row, One Formula: The R1C1 Consistency Test</a></li><li><a href="../concepts/C02_Go_To_Special_Constants_Test_on_Calculation_Sheets.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C02_Go_To_Special_Constants_Test_on_Calculation_Sheets.html">Go To Special Constants Test on Calculation Sheets</a></li><li><a href="../concepts/C03_Targeted_Error_Guards_Instead_of_Blanket_IFERROR.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C03_Targeted_Error_Guards_Instead_of_Blanket_IFERROR.html">Targeted Error Guards Instead of Blanket IFERROR</a></li><li><a href="../concepts/C04_Link_Once_Then_Reference_Locally.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C04_Link_Once_Then_Reference_Locally.html">Link Once, Then Reference Locally</a></li><li><a href="../concepts/C05_Replacing_Nested_IFs_and_Splitting_Long_Formulas.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C05_Replacing_Nested_IFs_and_Splitting_Long_Formulas.html">Replacing Nested IFs and Splitting Long Formulas</a></li><li><a href="../concepts/C06_Timeline_Flags_for_Switching_Logic_Without.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C06_Timeline_Flags_for_Switching_Logic_Without.html">Timeline Flags for Switching Logic Without Breaking Rows</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Eliminating Constants Inside Formulas</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Eliminating constants inside formulas; every number traced to an Inputs cell</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A number embedded in a formula is an assumption without a label, a source, a units statement or a scenario. It does not show up when someone reviews the Inputs tab, it does not move when the scenario switch flips, and it is invisible to Go To Special → Constants, which selects only cells that are themselves constants. The Saturday assessment for this week is precisely a hunt for these. In Big 4 model reviews, "hardcodes in formulas" is the most frequently raised finding, and in FP&amp;A it is the usual explanation for "the forecast didn't change when we updated the assumption".</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="what-counts-as-an-embedded-constant">What counts as an embedded constant</h3>
+<table>
+<thead>
+<tr>
+<th>Example</th>
+<th>Hidden assumption</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>=L40*1.12</code></td>
+<td>12% growth</td>
+<td>Growth row on Inputs, <code>=L40*(1+M38)</code></td>
+</tr>
+<tr>
+<td><code>=M40*0.25168</code></td>
+<td>Tax rate</td>
+<td>Named <code>Tax_Rate</code></td>
+</tr>
+<tr>
+<td><code>=M40/365*45</code></td>
+<td>45 DSO days</td>
+<td>DSO row on Inputs</td>
+</tr>
+<tr>
+<td><code>=M40-32</code></td>
+<td>One-off adjustment of ₹32 crore</td>
+<td>Labelled adjustment row on Inputs</td>
+</tr>
+<tr>
+<td><code>=M50*M51/10000000</code></td>
+<td>Unit conversion ₹ → ₹ crore</td>
+<td>Named <code>Rs_per_Cr</code></td>
+</tr>
+<tr>
+<td><code>=IF(M7&gt;3,M60*1.02,M60)</code></td>
+<td>Threshold year 3 and 2% step</td>
+<td>Flag row and step input</td>
+</tr>
+<tr>
+<td><code>=MIN(M70,0.9)</code></td>
+<td>90% utilisation cap</td>
+<td>Named <code>Max_Util</code></td>
+</tr>
+<tr>
+<td><code>=M40*(1+5%)^(M7-1)</code></td>
+<td>5% inflation</td>
+<td>Constant-column input or row</td>
+</tr>
+</tbody>
+</table>
+<h3 id="acceptable-constants">Acceptable constants</h3>
+<p>A small set of structural constants carry no assumption and may remain inline if their meaning is obvious:</p>
+<ul>
+<li>0 and 1 (e.g., <code>=MAX(0,…)</code>, <code>=1-M4</code>), and –1 for sign flips.</li>
+<li>12 (months), 100 (percent conversion when units are explicit) — though many house styles still name them.</li>
+<li>Days in year — 365 is common, but because some models use 360 or actual days, a named <code>Days_in_Year</code> is safer.</li>
+</ul>
+<p>Everything else — growth, rates, thresholds, caps, adjustments, unit divisors, dates — goes to Inputs.</p>
+<h3 id="the-traceability-standard">The traceability standard</h3>
+<p>"Every number traced to an Inputs cell" means that for any value in the model you can follow precedents back to a blue cell on Inputs (or Historicals) that has:</p>
+<ol>
+<li>A label describing the driver.</li>
+<li>Units.</li>
+<li>A source (annual report page, concall date, industry report, management guidance) or rationale.</li>
+<li>A scenario dimension if it is a flexed driver (topic t6).</li>
+</ol>
+<p>This is the assumption log of the week's cross-cutting concepts.</p>
+<h3 id="detection-techniques">Detection techniques</h3>
+<ol>
+<li><strong>Show formulas</strong> (Ctrl+<code>`</code>) and scan for digits other than 0/1 inside formulas.</li>
+<li><strong>FORMULATEXT helper row</strong>: below a block, <code>=FORMULATEXT(M40)</code> across the row; or a test <code>=SUMPRODUCT(--ISNUMBER(SEARCH({"0.","1.","2.","3.","4.","5.","6.","7.","8.","9."},FORMULATEXT(M40))))&gt;0</code> to flag decimals.</li>
+<li><strong>Find</strong> (Ctrl+F) with Look in: Formulas for patterns like <code>*1.</code>, <code>/365</code>, <code>%)</code>, <code>*0.</code>.</li>
+<li><strong>Inquire → Workbook Analysis</strong>: lists formulas containing numeric constants by sheet.</li>
+<li><strong>Third-party tools</strong>: PerfectXL, Arixcel Explorer and OAK highlight "hard-coded numbers in formulas".</li>
+<li><strong>Flex test</strong>: change an input (e.g., all growth rates +1%) and check that every row that should move does — rows that don't respond often contain embedded constants.</li>
+</ol>
+<h3 id="remediation-workflow">Remediation workflow</h3>
+<ol>
+<li>List every embedded constant found (sheet, cell, value, meaning).</li>
+<li>Create the input row or named scalar on Inputs with label, units, source.</li>
+<li>Link the input onto the calc sheet (green), then rewrite the formula to reference it locally.</li>
+<li>Verify results are unchanged (compare a key output before and after, e.g., EV and FY30E PAT, to ₹0.01 crore).</li>
+<li>Record in the change log.</li>
+</ol>
+<h3 id="illustration">Illustration</h3>
+<p>Before (Opex tab, FY27E):</p>
+<pre><code>=N40*0.118+45
+</code></pre>
+<p>Meaning, after asking the builder: A&amp;P at 11.8% of revenue plus ₹45 crore for a brand launch. With FY27E revenue ₹15,700 crore, A&amp;P = 1,852.6 + 45 = ₹1,897.6 crore. After:</p>
+<table>
+<thead>
+<tr>
+<th>Inputs row</th>
+<th>Driver</th>
+<th>Units</th>
+<th>FY26E</th>
+<th>FY27E</th>
+<th>FY28E</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>80</td>
+<td>A&amp;P % of revenue</td>
+<td>%</td>
+<td>11.8%</td>
+<td>11.8%</td>
+<td>11.8%</td>
+<td>FY23–25 average</td>
+</tr>
+<tr>
+<td>81</td>
+<td>One-off launch A&amp;P</td>
+<td>₹ crore</td>
+<td>0</td>
+<td>45</td>
+<td>0</td>
+<td>Management guidance, Q2FY26 concall</td>
+</tr>
+</tbody>
+</table>
+<p>Opex tab: <code>=N40*N80+N81</code> (with N80, N81 local green links). Same result, but now the scenario switch can flex A&amp;P and the launch spend is visible and dated.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Constants in lookup arguments</strong> (<code>MATCH(…,0)</code> exact-match type, <code>INDEX(…,1)</code>) are function parameters, not assumptions.</li>
+<li><strong>Rounding</strong> (<code>ROUND(x,2)</code>) — the digits are a precision choice; prefer not rounding in calcs at all.</li>
+<li><strong>CHOOSE indexes</strong> (<code>CHOOSE(Scenario,…)</code>) — the scenario options are structural.</li>
+<li><strong>Dates inside formulas</strong> (<code>=IF(M2&gt;DATE(2027,3,31),…)</code>) are assumptions — move to Inputs.</li>
+<li><strong>Hardcodes in Historicals</strong> are actual data, not assumptions; they must be blue and sourced, but they are not embedded constants.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Any number in a formula other than structural 0/1/–1 (and clearly labelled unit constants) is a hidden assumption.</li>
+<li>Move every assumption to Inputs with label, units, source and scenario dimension.</li>
+<li>Go To Special → Constants does not find embedded constants; use show-formulas, FORMULATEXT, Find, Inquire or a flex test.</li>
+<li>Remediate by creating the input, linking locally, rewriting, and proving outputs unchanged.</li>
+<li>Traceability to Inputs is the foundation of the assumption log and scenario switching.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-extract-the-assumptions-l1">Q1. Extract the assumptions [L1]</h3>
+<p>For each formula, list the embedded assumptions and design the Inputs rows to replace them: (a) <code>=M40*(1-0.035)</code>; (b) <code>=MIN(M70*1.08,1200)</code> (capacity in tonnes); (c) <code>=M90/365*60</code>; (d) <code>=IF(M3&gt;=2028,M55*0.95,M55)</code>.</p>
+<h3 id="q2-build-a-hardcode-detector-l2">Q2. Build a hardcode detector [L2]</h3>
+<p>Design a helper block, using only native Excel 365 functions, that flags any cell in the forecast range M40:Q120 of a calc sheet whose formula contains a decimal point or a digit other than 0 and 1. Explain its limitations.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> FORMULATEXT returns the formula as text; consider what false positives references like M40 create.</p>
+</blockquote>
+<h3 id="q3-flex-test-l2">Q3. Flex test [L2]</h3>
+<p>Describe a flex test that would reveal embedded constants in a Trent revenue and opex build, specifying which inputs you would change, by how much, and what pattern of responses in which rows would signal a hidden constant.</p>
+<h3 id="q4-review-finding-write-up-l3">Q4. Review finding write-up [L3]</h3>
+<p>You found 46 embedded constants in a client's Ind AS 36 impairment model for a cement CGU, including a hardcoded terminal growth of 5% and a WACC of 12.5% inside the discount-factor formulas. Write the review finding (observation, risk, impact estimate approach, recommendation) suitable for an audit file.</p></section>
+<nav class="pager"><a class="prev" href="S04_Absolute_and_Mixed_References_for_Constants_and.html">← Absolute and Mixed References for Constants and Flags</a><a class="next" href="S06_Excel_Formula_Auditing_Tools_and_Shortcuts.html">Excel Formula Auditing Tools and Shortcuts →</a></nav>
+</main></div></body></html>

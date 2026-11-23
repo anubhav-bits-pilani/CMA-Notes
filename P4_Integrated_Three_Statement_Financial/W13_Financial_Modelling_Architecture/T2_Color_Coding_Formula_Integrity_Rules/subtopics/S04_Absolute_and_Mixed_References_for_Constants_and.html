@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Absolute and Mixed References for Constants and Flags · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S04_Absolute_and_Mixed_References_for_Constants_and.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T2 · Color Coding &amp; Formula Integrity Rules</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Color Coding &amp; Formula Integrity Rules</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Font_Colour_Convention_Inputs_Formulas_and_Links.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S01_Font_Colour_Convention_Inputs_Formulas_and_Links.html">Font Colour Convention: Inputs, Formulas and Links</a></li><li><a href="S02_Input_Fill_Styles_and_Excel_Cell_Styles.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S02_Input_Fill_Styles_and_Excel_Cell_Styles.html">Input Fill Styles and Excel Cell Styles</a></li><li><a href="S03_One_Consistent_Formula_per_Forecast_Row.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S03_One_Consistent_Formula_per_Forecast_Row.html">One Consistent Formula per Forecast Row</a></li><li><a href="S04_Absolute_and_Mixed_References_for_Constants_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S04_Absolute_and_Mixed_References_for_Constants_and.html">Absolute and Mixed References for Constants and Flags</a></li><li><a href="S05_Eliminating_Constants_Inside_Formulas.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S05_Eliminating_Constants_Inside_Formulas.html">Eliminating Constants Inside Formulas</a></li><li><a href="S06_Excel_Formula_Auditing_Tools_and_Shortcuts.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S06_Excel_Formula_Auditing_Tools_and_Shortcuts.html">Excel Formula Auditing Tools and Shortcuts</a></li><li><a href="S07_Go_To_Special_and_Inquire_for_Inconsistency_Scans.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S07_Go_To_Special_and_Inquire_for_Inconsistency_Scans.html">Go To Special and Inquire for Inconsistency Scans</a></li><li><a href="S08_Avoiding_Volatile_Functions_and_Whole_Column.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S08_Avoiding_Volatile_Functions_and_Whole_Column.html">Avoiding Volatile Functions and Whole-Column References</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_One_Row_One_Formula_The_R1C1_Consistency_Test.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C01_One_Row_One_Formula_The_R1C1_Consistency_Test.html">One Row, One Formula: The R1C1 Consistency Test</a></li><li><a href="../concepts/C02_Go_To_Special_Constants_Test_on_Calculation_Sheets.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C02_Go_To_Special_Constants_Test_on_Calculation_Sheets.html">Go To Special Constants Test on Calculation Sheets</a></li><li><a href="../concepts/C03_Targeted_Error_Guards_Instead_of_Blanket_IFERROR.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C03_Targeted_Error_Guards_Instead_of_Blanket_IFERROR.html">Targeted Error Guards Instead of Blanket IFERROR</a></li><li><a href="../concepts/C04_Link_Once_Then_Reference_Locally.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C04_Link_Once_Then_Reference_Locally.html">Link Once, Then Reference Locally</a></li><li><a href="../concepts/C05_Replacing_Nested_IFs_and_Splitting_Long_Formulas.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C05_Replacing_Nested_IFs_and_Splitting_Long_Formulas.html">Replacing Nested IFs and Splitting Long Formulas</a></li><li><a href="../concepts/C06_Timeline_Flags_for_Switching_Logic_Without.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C06_Timeline_Flags_for_Switching_Logic_Without.html">Timeline Flags for Switching Logic Without Breaking Rows</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Absolute and Mixed References for Constants and Flags</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Absolute/mixed referencing ($C5, C$5) for constant-column drivers and timeline flags</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>One formula per row (s03) is only achievable if the formula can be written once in the first forecast column and copied to the last without editing. That depends on anchoring references correctly: a driver held in the constant column must stay in that column as the formula moves right, and a timeline flag in row 4 must stay in row 4 as the formula is copied down to other rows. Mixed references (<code>$E20</code>, <code>M$4</code>) are the mechanism. Getting them wrong produces the most common copying errors in modelling tests — a tax rate that drifts to an empty cell, a flag that drifts into a revenue row.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-four-reference-types">The four reference types</h3>
+<table>
+<thead>
+<tr>
+<th>Reference</th>
+<th>Column</th>
+<th>Row</th>
+<th>Behaviour when copied right</th>
+<th>When copied down</th>
+<th>Typical use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>E20</code></td>
+<td>Relative</td>
+<td>Relative</td>
+<td>Becomes F20</td>
+<td>Becomes E21</td>
+<td>Same-period values on the same row structure</td>
+</tr>
+<tr>
+<td><code>$E20</code></td>
+<td>Absolute</td>
+<td>Relative</td>
+<td>Stays E20</td>
+<td>Becomes E21</td>
+<td>Constant column driver for each row</td>
+</tr>
+<tr>
+<td><code>E$20</code> / <code>M$4</code></td>
+<td>Relative</td>
+<td>Absolute</td>
+<td>Becomes F$20 / N$4</td>
+<td>Stays row 20 / row 4</td>
+<td>Timeline rows and flags</td>
+</tr>
+<tr>
+<td><code>$E$20</code></td>
+<td>Absolute</td>
+<td>Absolute</td>
+<td>Stays</td>
+<td>Stays</td>
+<td>Single scalar (better: a named range)</td>
+</tr>
+</tbody>
+</table>
+<p>F4 cycles through the four forms while editing a reference.</p>
+<h3 id="constant-column-drivers-e5">Constant-column drivers: <code>$E5</code></h3>
+<p>In the standard column layout (topic t1, s04), column E holds a per-row constant: useful life, a cap, a base-year value or a scalar linked from Inputs. A depreciation block:</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th>Label</th>
+<th>Units</th>
+<th>E (const)</th>
+<th>M (FY26E)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30</td>
+<td>Capex – stores</td>
+<td>₹ crore</td>
+<td></td>
+<td><code>=Inputs!M50</code></td>
+</tr>
+<tr>
+<td>31</td>
+<td>Useful life – stores</td>
+<td>years</td>
+<td>10</td>
+<td></td>
+</tr>
+<tr>
+<td>32</td>
+<td>Depreciation on FY26E additions</td>
+<td>₹ crore</td>
+<td></td>
+<td><code>=M30/$E31</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>$E31</code> keeps the column fixed as the formula copies across FY27E–FY30E, while the row stays relative — so if the block is copied down for "Capex – warehouses" with its own life in E35, the formula picks up E35 automatically.</p>
+<h3 id="timeline-flags-m4">Timeline flags: <code>M$4</code></h3>
+<p>Flags live in fixed rows at the top of every sheet (topic t1, s03): row 4 actual flag, row 5 forecast flag, row 7 counter. A formula referencing them must anchor the row:</p>
+<pre><code>=M$4*Hist!M40 + M$5*(L41*(1+M42))
+</code></pre>
+<p>Copying this formula down to another line item keeps the flag references in rows 4 and 5, while the line-specific references (<code>L41</code>, <code>M42</code>) shift. Without <code>$</code> on the row, the copied formula would reference row 5 and 6 and treat a forecast flag as an actual flag.</p>
+<h3 id="combining-both-inflation-index-example">Combining both: inflation index example</h3>
+<p>A cost index compounding from a base year:</p>
+<pre><code>Row 7 (counter): 1, 2, 3, 4, 5 for FY26E–FY30E
+Row 60 (inflation, const in E60): 6.0%
+Row 61 (index):  =(1+$E60)^M$7
+Row 62 (cost):   =Base_Cost*M61
+</code></pre>
+<p><code>$E60</code> fixes the constant column; <code>M$7</code> fixes the counter row. FY28E index = 1.06³ = 1.1910.</p>
+<h3 id="absolute-references-vs-named-ranges">Absolute references vs named ranges</h3>
+<p>For workbook-wide scalars (tax rate, scenario, circularity switch), named ranges are clearer than <code>$E$12</code> (topic t1, s07). Use <code>$E5</code>-style mixed references for row-specific constants that differ by line item; use names for global constants.</p>
+<h3 id="common-errors-and-how-they-show-up">Common errors and how they show up</h3>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Symptom</th>
+<th>Detection</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Relative reference to a constant (<code>E31</code> instead of <code>$E31</code>)</td>
+<td>FY27E refers to F31 (blank) → depreciation 0 or #DIV/0!</td>
+<td>Row of zeros or errors after the first year</td>
+</tr>
+<tr>
+<td>Absolute row missing on a flag (<code>M4</code> instead of <code>M$4</code>)</td>
+<td>Copied rows reference wrong flags</td>
+<td>Row differences scan; R1C1 shows R[-36]C instead of R4C</td>
+</tr>
+<tr>
+<td>Fully absolute where relative needed (<code>$M$40</code>)</td>
+<td>All years use FY26E revenue</td>
+<td>Flat row; R1C1 shows R40C13 across row</td>
+</tr>
+<tr>
+<td>Mixed in wrong direction (<code>E$31</code>)</td>
+<td>Copying right drifts to F$31</td>
+<td>Same as relative case</td>
+</tr>
+</tbody>
+</table>
+<p>R1C1 view (c01) makes anchoring visible: <code>$E31</code> appears as <code>R[0]C5</code> (or <code>RC5</code>) and <code>M$4</code> as <code>R4C</code>.</p>
+<h3 id="illustration">Illustration</h3>
+<p>Employee cost per store for Trent with store-level CTC inflation in constant column E:</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th>Label</th>
+<th>E</th>
+<th>M (FY26E)</th>
+<th>N (FY27E)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>70</td>
+<td>Average stores</td>
+<td></td>
+<td>1,050</td>
+<td>1,250</td>
+</tr>
+<tr>
+<td>71</td>
+<td>Staff per store</td>
+<td>18</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>72</td>
+<td>CTC per staff, ₹ lakh</td>
+<td></td>
+<td>3.00</td>
+<td><code>=M72*(1+$E73)</code></td>
+</tr>
+<tr>
+<td>73</td>
+<td>Increment</td>
+<td>9.0%</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>74</td>
+<td>Store staff cost, ₹ crore</td>
+<td></td>
+<td><code>=M70*$E71*M72/100</code></td>
+<td><code>=N70*$E71*N72/100</code></td>
+</tr>
+</tbody>
+</table>
+<p>FY26E = 1,050 × 18 × 3.00 / 100 = ₹567.0 crore; FY27E CTC = 3.27, cost = 1,250 × 18 × 3.27 / 100 = ₹735.8 crore. The FY27E formula is the FY26E formula copied right, unchanged in structure.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Constant that becomes time-varying.</strong> If increments differ by year, move from <code>$E73</code> to a timeline row; do not mix constants in E with yearly overrides in the row.</li>
+<li><strong>Copying blocks between sheets.</strong> Mixed references survive copying if both sheets share the column layout; otherwise they misalign — another reason for identical layouts.</li>
+<li><strong>Structured references in tables</strong> follow different rules (<code>[@Revenue]</code>); avoid mixing tables and timeline rows in calc sheets.</li>
+<li><strong>Dynamic arrays.</strong> Spilled formulas (<code>=M30:Q30/$E31</code>) produce one formula for the row; useful but less familiar to reviewers and harder to override per cell. Many house styles still prefer copied formulas.</li>
+<li><strong>Pre-timeline column G for corkscrews</strong> is referenced relatively (<code>L90</code> from M) — not anchored.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li><code>$E5</code> anchors the constant column; <code>M$4</code> anchors the flag row; <code>$E$5</code> is a scalar better replaced by a name.</li>
+<li>Write the formula once in the first forecast column with correct anchoring, then copy across and down.</li>
+<li>R1C1 view reveals anchoring errors immediately.</li>
+<li>Row-specific constants live in the constant column; global constants are named ranges.</li>
+<li>Errors show up as zeros, flat rows or #DIV/0! after the first forecast year — scan for them.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-anchor-the-formula-l1">Q1. Anchor the formula [L1]</h3>
+<p>Write the FY26E formula (column M) for FY26E–FY30E depreciation on opening net block at a WDV rate held in column E of row 25, with opening net block in row 24, so that it can be copied across and down to three asset classes without editing.</p>
+<h3 id="q2-debug-copied-formulas-l2">Q2. Debug copied formulas [L2]</h3>
+<p>After copying, a row shows FY26E ₹120.0, FY27E ₹0.0, FY28E #DIV/0!, FY29E ₹0.0, FY30E ₹0.0. The FY26E formula is <code>=M30/E31</code>. Explain the failure, write the corrected formula and describe how R1C1 view would have revealed it.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Ask what column E31 becomes in each subsequent column.</p>
+</blockquote>
+<h3 id="q3-flags-in-a-copied-block-l2">Q3. Flags in a copied block [L2]</h3>
+<p>You copy a five-row block (revenue, COGS, gross profit, A&amp;P, EBITDA) from row 40 to row 140 on the same sheet. The block's formulas use <code>M4</code> and <code>M5</code> for the actual/forecast flags. Explain what breaks, how to fix the block before copying, and how to test the copy.</p>
+<h3 id="q4-inflation-index-design-l3">Q4. Inflation index design [L3]</h3>
+<p>Design a reusable opex block for four cost lines (power, freight, store maintenance, corporate overheads), each with its own inflation rate in the constant column and a base FY25A cost, such that the same formula works for all lines and years. Base costs: ₹420, ₹610, ₹280, ₹350 crore; inflation 5%, 6%, 7%, 8%. State the FY27E value for one line as a check of your layout.</p></section>
+<nav class="pager"><a class="prev" href="S03_One_Consistent_Formula_per_Forecast_Row.html">← One Consistent Formula per Forecast Row</a><a class="next" href="S05_Eliminating_Constants_Inside_Formulas.html">Eliminating Constants Inside Formulas →</a></nav>
+</main></div></body></html>

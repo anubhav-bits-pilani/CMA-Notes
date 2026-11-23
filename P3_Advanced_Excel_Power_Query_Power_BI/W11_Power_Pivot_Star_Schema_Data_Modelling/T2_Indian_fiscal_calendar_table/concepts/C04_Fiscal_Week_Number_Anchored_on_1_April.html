@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiscal Week Number Anchored on 1 April · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C04_Fiscal_Week_Number_Anchored_on_1_April.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T2 · Indian fiscal calendar table</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Indian fiscal calendar table</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Building_the_Date_Dimension_DAX_CALENDAR_vs_Power.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S01_Building_the_Date_Dimension_DAX_CALENDAR_vs_Power.html">Building the Date Dimension: DAX CALENDAR vs Power Query List.Dates</a></li><li><a href="../subtopics/S02_Contiguous_Whole_Fiscal_Year_Date_Range_Covering.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S02_Contiguous_Whole_Fiscal_Year_Date_Range_Covering.html">Contiguous Whole-Fiscal-Year Date Range Covering All Facts</a></li><li><a href="../subtopics/S03_Fiscal_Calendar_Columns_FY_Quarter_Month_Week_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S03_Fiscal_Calendar_Columns_FY_Quarter_Month_Week_and.html">Fiscal Calendar Columns: FY, Quarter, Month, Week and Period Key</a></li><li><a href="../subtopics/S04_Sort_by_Column_Fiscal_Month_Order_Starting_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S04_Sort_by_Column_Fiscal_Month_Order_Starting_in.html">Sort by Column: Fiscal Month Order Starting in April</a></li><li><a href="../subtopics/S05_Month_and_FY_Offset_Columns_for_Dynamic_Period.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S05_Month_and_FY_Offset_Columns_for_Dynamic_Period.html">Month and FY Offset Columns for Dynamic Period Filters</a></li><li><a href="../subtopics/S06_Mark_as_Date_Table_and_Turn_Off_Auto_DateTime.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S06_Mark_as_Date_Table_and_Turn_Off_Auto_DateTime.html">Mark as Date Table and Turn Off Auto Date/Time</a></li><li><a href="../subtopics/S07_Working_Day_Flags_and_Indian_Holidays_for_Close.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S07_Working_Day_Flags_and_Indian_Holidays_for_Close.html">Working-Day Flags and Indian Holidays for Close Metrics</a></li><li><a href="../subtopics/S08_IsClosedPeriod_and_IsYTD_Flags_for_Like_for_Like.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S08_IsClosedPeriod_and_IsYTD_Flags_for_Like_for_Like.html">IsClosedPeriod and IsYTD Flags for Like-for-Like Comparisons</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_DAX_Fiscal_Date_Table_with_an_FYEnd_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C01_DAX_Fiscal_Date_Table_with_an_FYEnd_Column.html">DAX Fiscal Date Table with an FYEnd Column</a></li><li><a href="C02_CALENDARAUTO3_for_Whole_March_Ending_Fiscal_Years.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C02_CALENDARAUTO3_for_Whole_March_Ending_Fiscal_Years.html">CALENDARAUTO(3) for Whole March-Ending Fiscal Years</a></li><li><a href="C03_Fiscal_Month_and_Fiscal_Quarter_Formulas.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C03_Fiscal_Month_and_Fiscal_Quarter_Formulas.html">Fiscal Month and Fiscal Quarter Formulas</a></li><li><a href="C04_Fiscal_Week_Number_Anchored_on_1_April.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C04_Fiscal_Week_Number_Anchored_on_1_April.html">Fiscal Week Number Anchored on 1 April</a></li><li><a href="C05_Month_Offset_from_Today.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C05_Month_Offset_from_Today.html">Month Offset from Today</a></li><li><a href="C06_Power_Query_Date_List_with_ListDates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C06_Power_Query_Date_List_with_ListDates.html">Power Query Date List with List.Dates</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Fiscal Week Number Anchored on 1 April</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Fiscal week: <code>INT(([Date] - DATE([FYEnd] - 1, 4, 1)) / 7) + 1</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-DAX">FiscalWeek = INT ( ( 'Date'[Date] - DATE ( 'Date'[FYEnd] - 1, 4, 1 ) ) / 7 ) + 1
+</code></pre>
+<p>\[
+\text{FiscalWeek}(d) = \left\lfloor \frac{d - \text{FYStart}(d)}{7} \right\rfloor + 1, \qquad \text{FYStart}(d) = \text{DATE}(\text{FYEnd}(d) - 1, 4, 1)
+\]</p>
+<ul>
+<li>\(d - \text{FYStart}(d)\) is the number of days elapsed since 1 April of the date's fiscal year (0 on 1 April).</li>
+<li>Dividing by 7 and truncating gives completed weeks; adding 1 makes week 1 the first seven days.</li>
+</ul>
+<h2 id="explanation">Explanation</h2>
+<p>This defines <strong>FY-anchored weeks</strong>: week 1 is always 1–7 April, week 2 is 8–14 April, and so on, regardless of the
+weekday on which 1 April falls. Properties:</p>
+<ul>
+<li>Weeks 1–52 have exactly seven days (days 0–363 elapsed).</li>
+<li><strong>Week 53</strong> contains the remaining day(s): 31 March in a 365-day fiscal year; 30 and 31 March in a 366-day fiscal
+  year (one containing 29 February, e.g. FY2023-24 and FY2027-28).</li>
+<li>Each fiscal year has the same week boundaries in day-of-year terms, which makes "week 20 this year vs week 20
+  last year" a like-for-like comparison of the same 7-day span.</li>
+</ul>
+<p>Limitations:</p>
+<ul>
+<li>Weeks do not start on a fixed weekday, so weekday mix varies (week 1 of FY2025-26 starts Tuesday 1-Apr-2025; of
+  FY2026-27, Wednesday 1-Apr-2026). Retail and sales teams that think in Monday–Sunday weeks find this confusing.</li>
+<li>Week 53 is a stub: exclude it or merge it into week 52 in weekly trend charts, or it shows as a dip.</li>
+<li>DAX date subtraction returns a number of days only when both operands are dates; ensure <code>'Date'[Date]</code> has no time
+  part, or wrap with <code>INT</code>.</li>
+</ul>
+<p>Monday-start alternative (week 1 = the week containing 1 April):</p>
+<pre><code class="language-DAX">FiscalWeekMon =
+VAR FYStart = DATE ( 'Date'[FYEnd] - 1, 4, 1 )
+VAR FirstMonday = FYStart - WEEKDAY ( FYStart, 2 ) + 1
+RETURN
+    INT ( ( 'Date'[Date] - FirstMonday ) / 7 ) + 1
+</code></pre>
+<p><code>WEEKDAY(date, 2)</code> returns 1 for Monday through 7 for Sunday; FirstMonday is the Monday on or before 1 April. This
+yields a partial week 1 and possibly a week 53, but every week runs Monday to Sunday.</p>
+<p>Power Query equivalent of the FY-anchored version:
+<code>Number.IntegerDivide(Duration.Days([Date] - #date([FYEnd] - 1, 4, 1)), 7) + 1</code>.</p>
+<h2 id="illustration">Illustration</h2>
+<p>FY2025-26 (FYStart 1-Apr-2025):</p>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Days elapsed</th>
+<th>INT(days / 7)</th>
+<th>FiscalWeek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01-Apr-2025</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>07-Apr-2025</td>
+<td>6</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>08-Apr-2025</td>
+<td>7</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>15-Aug-2025</td>
+<td>136</td>
+<td>19</td>
+<td>20</td>
+</tr>
+<tr>
+<td>30-Mar-2026</td>
+<td>363</td>
+<td>51</td>
+<td>52</td>
+</tr>
+<tr>
+<td>31-Mar-2026</td>
+<td>364</td>
+<td>52</td>
+<td>53</td>
+</tr>
+</tbody>
+</table>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Subtopic s03 (column specification) and s07 (working days within weeks).</li>
+<li>Related item: 4-4-5 and retail calendars — fiscal weeks are their building block, with offset-based time
+  intelligence instead of built-in functions.</li>
+<li>Concept c05 (offset columns): a WeekOffset column can be built from FYEnd and FiscalWeek.</li>
+<li>FP&amp;A practice: weekly sales flash and 13-week cash-flow forecasts in Weeks 17–20.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-compute-weeks-l1">Q1. Compute weeks [L1]</h3>
+<p>Compute FiscalWeek for 14-Apr-2025, 1-Oct-2025, 29-Feb-2024 and 31-Mar-2024, showing days elapsed for each.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> For 2024 dates, the fiscal year began 1-Apr-2023.</p>
+</blockquote>
+<h3 id="q2-compare-definitions-l2">Q2. Compare definitions [L2]</h3>
+<p>For FY2026-27 (1-Apr-2026 is a Wednesday), give the date ranges of week 1 and week 2 under the FY-anchored formula and
+under the Monday-start alternative, and explain which you would use for a weekly sales dashboard and why.</p>
+<h3 id="q3-week-offset-for-13-week-cash-flow-l3">Q3. Week offset for 13-week cash flow [L3]</h3>
+<p>Design a WeekOffset column relative to the as-of week (as-of week = 0) that works across fiscal years, suitable for a
+13-week rolling cash forecast, and explain how week 53 should be treated.</p></section>
+<nav class="pager"><a class="prev" href="C03_Fiscal_Month_and_Fiscal_Quarter_Formulas.html">← Fiscal Month and Fiscal Quarter Formulas</a><a class="next" href="C05_Month_Offset_from_Today.html">Month Offset from Today →</a></nav>
+</main></div></body></html>

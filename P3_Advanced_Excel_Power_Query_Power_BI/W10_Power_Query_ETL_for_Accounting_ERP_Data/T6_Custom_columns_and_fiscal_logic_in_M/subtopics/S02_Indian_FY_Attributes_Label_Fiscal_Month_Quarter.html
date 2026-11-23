@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indian FY Attributes: Label, Fiscal Month, Quarter and Sort Key · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S02_Indian_FY_Attributes_Label_Fiscal_Month_Quarter.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T6 · Custom columns and fiscal logic in M</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · Custom columns and fiscal logic in M</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Column_From_Examples_Custom_Column_and_Conditional.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S01_Column_From_Examples_Custom_Column_and_Conditional.html">Column From Examples, Custom Column and Conditional Column</a></li><li><a href="S02_Indian_FY_Attributes_Label_Fiscal_Month_Quarter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S02_Indian_FY_Attributes_Label_Fiscal_Month_Quarter.html">Indian FY Attributes: Label, Fiscal Month, Quarter and Sort Key</a></li><li><a href="S03_Receivable_and_Payable_Ageing_Against_an_As_Of.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S03_Receivable_and_Payable_Ageing_Against_an_As_Of.html">Receivable and Payable Ageing Against an As-Of-Date Parameter</a></li><li><a href="S04_Conditional_Logic_in_M_ifthenelse_andor_and_Null.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S04_Conditional_Logic_in_M_ifthenelse_andor_and_Null.html">Conditional Logic in M: if/then/else, and/or, and Null Coalescing</a></li><li><a href="S05_Type_Ascription_on_New_Columns.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S05_Type_Ascription_on_New_Columns.html">Type Ascription on New Columns</a></li><li><a href="S06_Group_By_Aggregations_for_Summary_Outputs_During.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S06_Group_By_Aggregations_for_Summary_Outputs_During.html">Group By Aggregations for Summary Outputs During Ingestion</a></li><li><a href="S07_Date_Functions_for_Fiscal_and_Ageing_Logic.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S07_Date_Functions_for_Fiscal_and_Ageing_Logic.html">Date Functions for Fiscal and Ageing Logic</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_FY_End_Year_and_FY_Label_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C01_FY_End_Year_and_FY_Label_Formula.html">FY End Year and FY Label Formula</a></li><li><a href="../concepts/C02_Fiscal_Month_Number_with_NumberMod.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C02_Fiscal_Month_Number_with_NumberMod.html">Fiscal Month Number with Number.Mod</a></li><li><a href="../concepts/C03_Fiscal_Quarter_with_NumberIntegerDivide.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C03_Fiscal_Quarter_with_NumberIntegerDivide.html">Fiscal Quarter with Number.IntegerDivide</a></li><li><a href="../concepts/C04_Ageing_Bucket_Expression_with_DurationDays.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C04_Ageing_Bucket_Expression_with_DurationDays.html">Ageing Bucket Expression with Duration.Days</a></li><li><a href="../concepts/C05_Null_Safe_Net_Amount_and_Operator_Precedence.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C05_Null_Safe_Net_Amount_and_Operator_Precedence.html">Null-Safe Net Amount and Operator Precedence</a></li><li><a href="../concepts/C06_TableGroup_by_FY_and_Ledger_with_a_Typed_Sum.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C06_TableGroup_by_FY_and_Ledger_with_a_Typed_Sum.html">Table.Group by FY and Ledger with a Typed Sum</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Indian FY Attributes: Label, Fiscal Month, Quarter and Sort Key</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Indian FY attributes: FY label (FY2025-26), fiscal month number, fiscal quarter, period sort key</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Indian companies report on a financial year running 1 April to 31 March — mandatory under Sec 2(41) of the Companies Act, 2013 (with limited exceptions for certain subsidiaries of foreign companies on Tribunal approval) and the "previous year" basis of the Income-tax Act. Every MIS, budget, board pack and Power BI report slices by FY, quarter and month in that order: April is month 1, Q1 is April–June, and the sequence must sort Apr, May … Mar, not alphabetically or in calendar order. Calendar-based attributes from tools built for January year-ends (Date.QuarterOfYear, default date hierarchies) silently produce the wrong quarter for Indian data. Building correct fiscal attributes at ingestion prevents an entire class of reporting errors.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="definitions-and-conventions">Definitions and conventions</h3>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Definition</th>
+<th>Example for 15-Feb-2026</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY end year</td>
+<td>Calendar year in which the FY ends</td>
+<td>2026</td>
+</tr>
+<tr>
+<td>FY start year</td>
+<td>FY end year − 1</td>
+<td>2025</td>
+</tr>
+<tr>
+<td>FY label</td>
+<td>"FY" + start year + "-" + last two digits of end year</td>
+<td>FY2025-26</td>
+</tr>
+<tr>
+<td>Fiscal month</td>
+<td>April = 1 … March = 12</td>
+<td>11</td>
+</tr>
+<tr>
+<td>Fiscal quarter</td>
+<td>Q1 Apr–Jun, Q2 Jul–Sep, Q3 Oct–Dec, Q4 Jan–Mar</td>
+<td>Q4</td>
+</tr>
+<tr>
+<td>Period sort key</td>
+<td>FY end year × 100 + fiscal month</td>
+<td>202611</td>
+</tr>
+<tr>
+<td>Month label</td>
+<td>"Feb-26" or "Feb 2026"</td>
+<td>Feb-26</td>
+</tr>
+</tbody>
+</table>
+<p>Labels vary by company: "FY2025-26", "FY 25-26", "FY26" (meaning the year ending March 2026), "2025-26". Agree the house convention with management reporting and use exactly that, because labels are used as join and slicer values against budgets and prior-year data.</p>
+<h3 id="m-implementation">M implementation</h3>
+<pre><code class="language-m">let
+    Source   = GL,
+    WithDate = Table.TransformColumns(Source, {{&quot;PostingDate&quot;, Date.From, type date}}),
+    FYEnd    = Table.AddColumn(WithDate, &quot;FYEndYear&quot;, each
+                   Date.Year([PostingDate]) + (if Date.Month([PostingDate]) &gt;= 4 then 1 else 0), Int64.Type),
+    FYLabel  = Table.AddColumn(FYEnd, &quot;FY&quot;, each
+                   &quot;FY&quot; &amp; Text.From([FYEndYear] - 1) &amp; &quot;-&quot; &amp; Text.End(Text.From([FYEndYear]), 2), type text),
+    FMonth   = Table.AddColumn(FYLabel, &quot;FiscalMonth&quot;, each
+                   Number.Mod(Date.Month([PostingDate]) + 8, 12) + 1, Int64.Type),
+    FQtr     = Table.AddColumn(FMonth, &quot;FiscalQuarter&quot;, each
+                   &quot;Q&quot; &amp; Text.From(Number.IntegerDivide([FiscalMonth] - 1, 3) + 1), type text),
+    SortKey  = Table.AddColumn(FQtr, &quot;PeriodKey&quot;, each [FYEndYear] * 100 + [FiscalMonth], Int64.Type),
+    MonthLbl = Table.AddColumn(SortKey, &quot;MonthLabel&quot;, each
+                   Date.ToText([PostingDate], [Format = &quot;MMM-yy&quot;, Culture = &quot;en-IN&quot;]), type text)
+in
+    MonthLbl
+</code></pre>
+<p>How the formulas work:</p>
+<ul>
+<li><strong>FY end year</strong>: April–December belong to the FY ending the next calendar year (+1); January–March belong to the FY ending this year (+0).</li>
+<li><strong>Fiscal month</strong>: \(\text{FM} = ((m + 8) \bmod 12) + 1\), where \(m\) is the calendar month. April: \((4 + 8) \bmod 12 = 0\), so FM = 1. March: \((3 + 8) \bmod 12 = 11\), so FM = 12. Equivalent readable form: <code>if m &gt;= 4 then m - 3 else m + 9</code>.</li>
+<li><strong>Fiscal quarter</strong>: \(\text{FQ} = \lfloor (\text{FM} - 1) / 3 \rfloor + 1\). <code>Number.IntegerDivide</code> performs the floor division for positive numbers.</li>
+<li><strong>Period sort key</strong>: an integer that sorts chronologically across years (202601 = April 2025, 202612 = March 2026, 202701 = April 2026). It is also a compact join key to a monthly budget.</li>
+<li><strong>Month label</strong>: a text label for display; never sort by it. In Power BI, set <strong>Sort by column</strong> of MonthLabel to PeriodKey or FiscalMonth.</li>
+</ul>
+<h3 id="quarter-end-dates">Quarter-end dates</h3>
+<p>Indian fiscal quarters end on 30 June, 30 September, 31 December and 31 March — the same dates as calendar quarter ends. So <code>Date.EndOfQuarter([PostingDate])</code> gives the correct fiscal quarter-end <strong>date</strong>, even though <code>Date.QuarterOfYear</code> gives the wrong quarter <strong>number</strong> (April returns 2). This is useful for SEBI LODR Reg 33 quarterly results periods, where the quarter-end date is what matters.</p>
+<h3 id="where-to-compute">Where to compute</h3>
+<p>In a flat Excel output, add the attributes to the fact. In a data model, compute them once in a Calendar dimension (Week 11) and keep only the date in facts. In both cases the M is the same.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Month</th>
+<th>FY end year</th>
+<th>FY</th>
+<th>Fiscal month</th>
+<th>Fiscal quarter</th>
+<th>PeriodKey</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01-04-2025</td>
+<td>4</td>
+<td>2026</td>
+<td>FY2025-26</td>
+<td>1</td>
+<td>Q1</td>
+<td>202601</td>
+</tr>
+<tr>
+<td>30-09-2025</td>
+<td>9</td>
+<td>2026</td>
+<td>FY2025-26</td>
+<td>6</td>
+<td>Q2</td>
+<td>202606</td>
+</tr>
+<tr>
+<td>31-12-2025</td>
+<td>12</td>
+<td>2026</td>
+<td>FY2025-26</td>
+<td>9</td>
+<td>Q3</td>
+<td>202609</td>
+</tr>
+<tr>
+<td>31-03-2026</td>
+<td>3</td>
+<td>2026</td>
+<td>FY2025-26</td>
+<td>12</td>
+<td>Q4</td>
+<td>202612</td>
+</tr>
+<tr>
+<td>01-04-2026</td>
+<td>4</td>
+<td>2027</td>
+<td>FY2026-27</td>
+<td>1</td>
+<td>Q1</td>
+<td>202701</td>
+</tr>
+</tbody>
+</table>
+<p>The first and last two rows are the boundary tests every implementation should pass.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Datetime inputs.</strong> <code>Date.Month</code> and <code>Date.Year</code> work on datetimes too, but convert to date first so that the column is a clean date for the model and for joins.</li>
+<li><strong>Century rollover in labels.</strong> <code>Text.End(Text.From(2100), 2)</code> gives "00"; harmless in practice, but string-based labels should be tested if long horizons (lease schedules to 2099) are modelled.</li>
+<li><strong>Thirteenth period.</strong> Some ERPs (SAP special periods 13–16) post year-end adjustments to periods beyond 12 dated 31 March. A date-based fiscal month maps them to 12; if you need to distinguish them, carry the ERP period field as well.</li>
+<li><strong>Non-standard year-ends.</strong> Subsidiaries of foreign groups may report to the parent on a December year-end; keep both calendars and label clearly.</li>
+<li><strong>Text vs number FY.</strong> Storing FY as text is fine for display; store FYEndYear as an integer for arithmetic (prior year = FYEndYear − 1).</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>FY end year = calendar year + 1 for April–December, + 0 for January–March.</li>
+<li>Fiscal month = <code>Number.Mod(Date.Month(d) + 8, 12) + 1</code>; fiscal quarter from fiscal month by integer division.</li>
+<li>Use an integer PeriodKey (FY end year × 100 + fiscal month) for sorting and monthly joins.</li>
+<li>Calendar quarter-end dates coincide with Indian fiscal quarter ends, but calendar quarter numbers do not.</li>
+<li>Agree the FY label convention with management reporting and test boundary dates.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-compute-the-attributes-l1">Q1. Compute the attributes [L1]</h3>
+<p>For 5-Jan-2026, 30-Jun-2025, 1-Oct-2025 and 31-Mar-2025, compute FY end year, FY label (FY2025-26 style), fiscal month, fiscal quarter and PeriodKey.</p>
+<h3 id="q2-alternate-label-convention-l2">Q2. Alternate label convention [L2]</h3>
+<p>Management uses "FY26" for the year ending 31-Mar-2026 and "Q3 FY26" for Oct–Dec 2025. Write M for both labels, typed as text, and a check query that flags any row where your label differs from the label in an imported budget file.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> The two-digit year in "FY26" is the FY end year.</p>
+</blockquote>
+<h3 id="q3-sort-order-defect-l2">Q3. Sort-order defect [L2]</h3>
+<p>A Power BI matrix shows months in the order Apr-25, Aug-25, Dec-25, Feb-26, Jan-26, Jul-25… Explain the cause, the Power Query column you would add and the model setting you would change.</p>
+<h3 id="q4-quarter-functions-trap-l2">Q4. Quarter functions trap [L2]</h3>
+<p>A colleague uses <code>"Q" &amp; Text.From(Date.QuarterOfYear([Date]))</code> for fiscal quarters. Show the result for 15-May-2025 and 10-Feb-2026, explain the error, and state whether <code>Date.EndOfQuarter</code> has the same problem.</p></section>
+<nav class="pager"><a class="prev" href="S01_Column_From_Examples_Custom_Column_and_Conditional.html">← Column From Examples, Custom Column and Conditional Column</a><a class="next" href="S03_Receivable_and_Payable_Ageing_Against_an_As_Of.html">Receivable and Payable Ageing Against an As-Of-Date… →</a></nav>
+</main></div></body></html>

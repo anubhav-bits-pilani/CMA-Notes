@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generic Excel Variance Formula: Type-Driven or Negative-Cost Storage · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T5_Favourableunfavourable_sign_conventions/concepts/C02_Generic_Excel_Variance_Formula_Type_Driven_or.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 5</a> <span>›</span> <a href="../../index.html">Week 19</a> <span>›</span> <a href="../index.html">T5 · Favourable/unfavourable sign conventions</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Favourable/unfavourable sign conventions</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Natural_ERP_Sign_versus_Presentation_Sign.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T5_Favourableunfavourable_sign_conventions/subtopics/S01_Natural_ERP_Sign_versus_Presentation_Sign.html">Natural (ERP) Sign versus Presentation Sign</a></li><li><a href="../subtopics/S02_FavAdv_Display_Conventions_Brackets_Colours_and.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T5_Favourableunfavourable_sign_conventions/subtopics/S02_FavAdv_Display_Conventions_Brackets_Colours_and.html">Fav/(Adv) Display Conventions: Brackets, Colours and Better/(Worse)</a></li><li><a href="../subtopics/S03_Account_Type_Driven_Variance_Formulas_for_PL_and.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T5_Favourableunfavourable_sign_conventions/subtopics/S03_Account_Type_Driven_Variance_Formulas_for_PL_and.html">Account-Type Driven Variance Formulas for P&amp;L and Balance Sheet Lines</a></li><li><a href="../subtopics/S04_Variance_When_Budgets_Are_Negative_Zero_or_Change.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T5_Favourableunfavourable_sign_conventions/subtopics/S04_Variance_When_Budgets_Are_Negative_Zero_or_Change.html">Variance % When Budgets Are Negative, Zero or Change Sign</a></li><li><a href="../subtopics/S05_One_Sign_Convention_Across_PL_Scorecard_Bridges.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T5_Favourableunfavourable_sign_conventions/subtopics/S05_One_Sign_Convention_Across_PL_Scorecard_Bridges.html">One Sign Convention Across P&amp;L, Scorecard, Bridges and Power BI</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Revenue_and_Cost_Variance_Formulas_Positive_Means.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T5_Favourableunfavourable_sign_conventions/concepts/C01_Revenue_and_Cost_Variance_Formulas_Positive_Means.html">Revenue and Cost Variance Formulas: Positive Means Favourable</a></li><li><a href="C02_Generic_Excel_Variance_Formula_Type_Driven_or.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T5_Favourableunfavourable_sign_conventions/concepts/C02_Generic_Excel_Variance_Formula_Type_Driven_or.html">Generic Excel Variance Formula: Type-Driven or Negative-Cost Storage</a></li><li><a href="C03_Variance_Rule_Divide_by_ABSBudget_Show_nm_When.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T5_Favourableunfavourable_sign_conventions/concepts/C03_Variance_Rule_Divide_by_ABSBudget_Show_nm_When.html">Variance % Rule: Divide by ABS(Budget), Show n.m. When Invalid</a></li><li><a href="C04_ERP_Trial_Balance_Flip_for_Credit_Nature_Accounts.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T5_Favourableunfavourable_sign_conventions/concepts/C04_ERP_Trial_Balance_Flip_for_Credit_Nature_Accounts.html">ERP Trial Balance Flip for Credit-Nature Accounts</a></li><li><a href="C05_IBCS_Colour_Rule_Green_and_Red_Mean_Good_and_Bad.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W19_Advanced_Variance_Analysis_Price_Volume/T5_Favourableunfavourable_sign_conventions/concepts/C05_IBCS_Colour_Rule_Green_and_Red_Mean_Good_and_Bad.html">IBCS Colour Rule: Green and Red Mean Good and Bad</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Generic Excel Variance Formula: Type-Driven or Negative-Cost Storage</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Generic: <code>=IF(Type="Revenue",Act-Bud,Bud-Act)</code> or store costs as negatives so <code>=Act-Bud</code> always gives favourable positive</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>Two equivalent designs produce a variance in which positive is always favourable.</p>
+<p><strong>Design 1 — type-driven formula on unsigned amounts:</strong></p>
+<p>\[
+V = d \times (A - B),
+\qquad
+d = \begin{cases} +1 &amp; \text{revenue, income, margin, better-if-higher KPI} \\ -1 &amp; \text{cost, contra-revenue, worse-if-higher KPI} \end{cases}
+\]</p>
+<p>implemented as <code>=IF(Type="Revenue",Act-Bud,Bud-Act)</code> or, more generally, <code>=Dir*(Act-Bud)</code>.</p>
+<p><strong>Design 2 — signed (profit-effect) storage:</strong> store revenue as positive and costs as negative, \(A' = d \times A\) and \(B' = d \times B\). Then for every line:</p>
+<p>\[
+V = A' - B'
+\]</p>
+<p>implemented as <code>=Act-Bud</code> throughout. Here \(A, B\) are unsigned actual and budget amounts, \(A', B'\) are signed amounts and \(d\) is the direction factor.</p>
+<h2 id="explanation">Explanation</h2>
+<p>Both designs encode the same fact — whether a line adds to or subtracts from profit — in a different place. Design 1 keeps amounts familiar (all positive, Schedule III look) and puts the logic in the formula via a Type or Dir attribute. Design 2 puts the logic in the data, so formulas are trivially uniform and subtotals are plain sums, at the cost of tables that show costs as negatives unless a display layer converts them.</p>
+<p>Practical guidance:</p>
+<ul>
+<li>The bare <code>IF(Type="Revenue",…)</code> form handles only two types; anything not exactly "Revenue" (e.g., "Other income", "Revenue " with a trailing space, "Margin") falls into the cost branch. Prefer a lookup of a numeric Dir: <code>=XLOOKUP($A8,Map[Line],Map[Dir],"Missing")*(D8-C8)</code>, which errors visibly on unmapped lines.</li>
+<li>Design 2 suits models and Power BI datasets; Design 1 suits presentation tables. Many teams use Design 2 underneath and display ABS values with Design 1-style variances.</li>
+<li>Never mix the two in one workbook without labelling: applying <code>=Bud-Act</code> to a negatively stored cost double-flips and turns a saving into an adverse variance.</li>
+<li>KPIs extend Design 1 naturally through Dir; Design 2 is awkward for KPIs (negative DSO is odd), so KPI scorecards usually use Design 1.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>Same data, both designs (₹ lakh):</p>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Dir</th>
+<th>Budget</th>
+<th>Actual</th>
+<th>Design 1 <code>=Dir*(Act-Bud)</code></th>
+<th>Signed budget</th>
+<th>Signed actual</th>
+<th>Design 2 <code>=Act-Bud</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue</td>
+<td>+1</td>
+<td>2,400</td>
+<td>2,520</td>
+<td>120</td>
+<td>2,400</td>
+<td>2,520</td>
+<td>120</td>
+</tr>
+<tr>
+<td>COGS</td>
+<td>−1</td>
+<td>1,440</td>
+<td>1,560</td>
+<td>(120)</td>
+<td>(1,440)</td>
+<td>(1,560)</td>
+<td>(120)</td>
+</tr>
+<tr>
+<td>Employee cost</td>
+<td>−1</td>
+<td>210</td>
+<td>198</td>
+<td>12</td>
+<td>(210)</td>
+<td>(198)</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Other expenses</td>
+<td>−1</td>
+<td>330</td>
+<td>351</td>
+<td>(21)</td>
+<td>(330)</td>
+<td>(351)</td>
+<td>(21)</td>
+</tr>
+<tr>
+<td>EBITDA</td>
+<td>+1</td>
+<td>420</td>
+<td>411</td>
+<td>(9)</td>
+<td>420</td>
+<td>411</td>
+<td>(9)</td>
+</tr>
+</tbody>
+</table>
+<p>In Design 2 the EBITDA row is simply <code>=SUM</code> of the signed lines (2,400 − 1,440 − 210 − 330 = 420), and the variance column also sums. The double-flip error: applying Design 1's <code>=Bud-Act</code> to the signed COGS gives −1,440 − (−1,560) = +120, showing a ₹120 lakh overspend as favourable.</p>
+<h2 id="connections">Connections</h2>
+<p>This is the implementation of c01, depends on the sign transformation of s01/c04, and is the Excel counterpart of the DAX patterns from Week 11 (sign factor attributes and calculation groups). It feeds the consistency design in s05 and the bridge sign rule in topic 4, where every step is a signed EBITDA effect.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-robust-lookup-formula-l1">Q1. Robust lookup formula [L1]</h3>
+<p>Rewrite <code>=IF(B8="Revenue",D8-C8,C8-D8)</code> as a lookup-driven formula that (a) handles revenue, other income, contra-revenue, cost, subtotal and KPI rows, and (b) visibly flags any line missing from the mapping table. State the mapping-table columns required.</p>
+<h3 id="q2-spot-the-double-flip-l2">Q2. Spot the double flip [L2]</h3>
+<p>A workbook stores costs as negatives. An analyst copies a variance formula <code>=C8-D8</code> (Budget − Actual) from an older unsigned template onto all cost rows. Budget employee cost −₹410 lakh, actual −₹435 lakh; budget revenue ₹4,200 lakh, actual ₹4,150 lakh (revenue row uses <code>=D8-C8</code>). Compute what the sheet shows for each line and for EBITDA, compare with the correct values, and describe a check that would have caught it.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Recompute EBITDA variance directly from the EBITDA row and compare it with the sum of line variances.</p>
+</blockquote>
+<h3 id="q3-choosing-a-design-l3">Q3. Choosing a design [L3]</h3>
+<p>You are building (a) a board-pack P&amp;L table, (b) a 3-statement model's P&amp;L, and (c) a Power BI dataset feeding both a P&amp;L matrix and an EBITDA bridge. Recommend Design 1 or Design 2 for each, with reasons, and explain how you would keep their variances identical.</p></section>
+<nav class="pager"><a class="prev" href="C01_Revenue_and_Cost_Variance_Formulas_Positive_Means.html">← Revenue and Cost Variance Formulas: Positive Means…</a><a class="next" href="C03_Variance_Rule_Divide_by_ABSBudget_Show_nm_When.html">Variance % Rule: Divide by ABS(Budget), Show n.m. When… →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modelling Architecture &amp; Best Practices · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/index.html" data-kind="topic">
+<header class="top"><a class="brand" href="../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../index.html">Home</a> <span>›</span> <a href="../../index.html">Phase 4</a> <span>›</span> <a href="../index.html">Week 13</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">Week 13</a></div><ul class="side-links"><li><a href="index.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/index.html">T1 · Modelling Architecture &amp; Best Practices</a></li><li><a href="../T2_Color_Coding_Formula_Integrity_Rules/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/index.html">T2 · Color Coding &amp; Formula Integrity Rules</a></li><li><a href="../T3_Historical_Data_Ingestion_Normalization/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/index.html">T3 · Historical Data Ingestion &amp; Normalization</a></li><li><a href="../T4_Granular_Revenue_Forecasting/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/index.html">T4 · Granular Revenue Forecasting</a></li><li><a href="../T5_Cost_Structure_Forecasting/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T5_Cost_Structure_Forecasting/index.html">T5 · Cost Structure Forecasting</a></li><li><a href="../T6_Scenario_Switcher_Architecture/index.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/index.html">T6 · Scenario Switcher Architecture</a></li></ul></aside>
+<main class="content">
+<div class="kind">Topic</div>
+<h1>Modelling Architecture &amp; Best Practices</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<section class="index"><h2>Notes in this topic</h2><div class="cols"><div><h3>Subtopics</h3><ul class="links num"><li><a href="subtopics/S01_Tab_Flow_of_an_Institutional_Three_Statement_Model.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S01_Tab_Flow_of_an_Institutional_Three_Statement_Model.html">S01 · Tab Flow of an Institutional Three-Statement Model</a></li><li><a href="subtopics/S02_Separating_Inputs_Calculations_and_Outputs.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S02_Separating_Inputs_Calculations_and_Outputs.html">S02 · Separating Inputs, Calculations and Outputs</a></li><li><a href="subtopics/S03_Single_Master_Timeline_Row_and_Period_Flags.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S03_Single_Master_Timeline_Row_and_Period_Flags.html">S03 · Single Master Timeline Row and Period Flags</a></li><li><a href="subtopics/S04_Identical_Column_Structure_on_Every_Calculation.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S04_Identical_Column_Structure_on_Every_Calculation.html">S04 · Identical Column Structure on Every Calculation Sheet</a></li><li><a href="subtopics/S05_Cover_Sheet_Identity_Basis_Units_and_Change_Log.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S05_Cover_Sheet_Identity_Basis_Units_and_Change_Log.html">S05 · Cover Sheet: Identity, Basis, Units and Change Log</a></li><li><a href="subtopics/S06_Checks_Sheet_and_the_Master_Integrity_Flag.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S06_Checks_Sheet_and_the_Master_Integrity_Flag.html">S06 · Checks Sheet and the Master Integrity Flag</a></li><li><a href="subtopics/S07_Named_Ranges_for_Scalars_Direct_References_for.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S07_Named_Ranges_for_Scalars_Direct_References_for.html">S07 · Named Ranges for Scalars, Direct References for Rows</a></li><li><a href="subtopics/S08_Version_Control_File_Naming_and_Transparent.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/subtopics/S08_Version_Control_File_Naming_and_Transparent.html">S08 · Version Control, File Naming and Transparent Protection</a></li></ul></div><div><h3>Key concepts & formulas</h3><ul class="links num"><li><a href="concepts/C01_FAST_Standard_Flexible_Appropriate_Structured.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C01_FAST_Standard_Flexible_Appropriate_Structured.html">C01 · FAST Standard: Flexible, Appropriate, Structured, Transparent</a></li><li><a href="concepts/C02_ICAEW_Financial_Modelling_Code_Principles_for.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C02_ICAEW_Financial_Modelling_Code_Principles_for.html">C02 · ICAEW Financial Modelling Code: Principles for Reliable Models</a></li><li><a href="concepts/C03_Column_Consistency_Same_Column_Same_Period_Every.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C03_Column_Consistency_Same_Column_Same_Period_Every.html">C03 · Column Consistency: Same Column, Same Period, Every Sheet</a></li><li><a href="concepts/C04_Master_Check_Formula_on_the_Cover.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C04_Master_Check_Formula_on_the_Cover.html">C04 · Master Check Formula on the Cover</a></li><li><a href="concepts/C05_Sign_Convention_Declared_Once_and_Applied.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C05_Sign_Convention_Declared_Once_and_Applied.html">C05 · Sign Convention Declared Once and Applied Everywhere</a></li><li><a href="concepts/C06_Units_Model_in_Crore_and_Convert_Before_Ingestion.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T1_Modelling_Architecture_Best_Practices/concepts/C06_Units_Model_in_Crore_and_Convert_Before_Ingestion.html">C06 · Units: Model in ₹ Crore and Convert Before Ingestion</a></li></ul></div></div></section><article class="note"><blockquote>
+<p><strong>Roadmap topic:</strong> Modelling Architecture &amp; Best Practices: Modular tab design (Cover, Executive Summary, Assumptions, Historicals, Working Capital, PPE, Debt, Tax, 3-Statement Model, DCF, Comps)</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>Model architecture is the set of structural decisions made before the first forecast formula: which tabs exist and in what order, where inputs live, how time is represented, how columns are laid out, how integrity is checked and how the file is identified, versioned and protected. These decisions are invisible when they are right and expensive when they are wrong — a misaligned timeline or a hardcode buried in a calculation can survive several review cycles because the model still balances. Institutional modelling teams (equity research, investment banking, transaction services, corporate FP&amp;A) therefore impose a standard architecture so that any team member can open any model and know where everything is.</p>
+<p>For someone moving from audit and GL finalisation into FP&amp;A and valuation, architecture is the bridge between accounting knowledge and model-building speed. You already know what a balance sheet must contain; architecture is about arranging the workbook so the balance sheet can be built, checked and changed reliably for ten periods and three scenarios. Interview modelling tests in India (case studies on Trent, Pidilite, Asian Paints, Titan and similar NSE names) are marked as much on structure — Cover, checks, colour coding, timeline — as on the valuation answer.</p>
+<p>The subtopics follow a natural learning sequence. Start with the <strong>tab flow</strong> (s01) — the macro architecture from Cover to Outputs. Then the <strong>separation of inputs, calculations and outputs</strong> (s02), which determines what may appear on each tab. Next, the <strong>master timeline</strong> (s03) and the <strong>identical column structure</strong> (s04) that make every calculation sheet line up period by period. With the skeleton in place, build the <strong>Cover</strong> (s05) as the model's identity document and the <strong>Checks sheet</strong> (s06) that rolls every integrity test into one master flag. Finally, decide how <strong>named ranges</strong> are used (s07) and set up <strong>version control and transparent protection</strong> (s08). The concepts — FAST (c01), the ICAEW Code (c02), column consistency (c03), the master check formula (c04), sign convention (c05) and units (c06) — are the rules that run through all of them.</p>
+<p>The roadmap's tab list (Cover, Executive Summary, Assumptions, Historicals, Working Capital, PPE, Debt, Tax, 3-Statement Model, DCF, Comps) maps directly onto s01: the Executive Summary is the Outputs/Dashboard zone, Assumptions is the Inputs zone, and the schedules (WC, PPE, Debt, Tax, Equity) feed the 3-Statement Model, which in turn feeds DCF and Comps. This week builds the skeleton, historicals and operating schedules; Week 14 completes the balance-sheet schedules and Week 15 integrates.</p>
+<h2 id="concept-map">Concept map</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Role in the topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s01 Tab flow</td>
+<td>Macro sequence of tabs in the direction of calculation</td>
+</tr>
+<tr>
+<td>s02 Inputs / calcs / outputs separation</td>
+<td>Rule for what each zone may contain; left-to-right, top-to-bottom flow</td>
+</tr>
+<tr>
+<td>s03 Master timeline</td>
+<td>One source for FY labels, 31-March period ends, counters and A/E flags</td>
+</tr>
+<tr>
+<td>s04 Identical column structure</td>
+<td>Fixed label/units/constant/timeline columns on every calc sheet</td>
+</tr>
+<tr>
+<td>s05 Cover sheet</td>
+<td>Identity, basis, units, sign convention, version, author, change log</td>
+</tr>
+<tr>
+<td>s06 Checks sheet</td>
+<td>Balance, cash, revolver, circularity checks rolled into a master flag</td>
+</tr>
+<tr>
+<td>s07 Named ranges</td>
+<td>Names for global scalars and switches; direct references for rows</td>
+</tr>
+<tr>
+<td>s08 Version control and protection</td>
+<td>File naming, change trail, protection without hiding logic</td>
+</tr>
+<tr>
+<td>c01 FAST Standard</td>
+<td>Detailed design rules: one formula per row, no mixed units, short formulas</td>
+</tr>
+<tr>
+<td>c02 ICAEW Code</td>
+<td>Principles: separation, layout, documented assumptions, checks, end-user design</td>
+</tr>
+<tr>
+<td>c03 Column consistency</td>
+<td>Same column = same period on every sheet</td>
+</tr>
+<tr>
+<td>c04 Master check formula</td>
+<td><code>SUMPRODUCT(ABS())</code> aggregation with tolerance and conditional formatting</td>
+</tr>
+<tr>
+<td>c05 Sign convention</td>
+<td>One declared convention for costs and flows</td>
+</tr>
+<tr>
+<td>c06 Units</td>
+<td>₹ crore throughout; convert sources at ingestion</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-concepts-to-study">Related concepts to study</h2>
+<h3 id="phase-3-excel-tooling">Phase 3 Excel tooling</h3>
+<p><em>→ Phase 3 (W9–12): named ranges, structured references, Power Query for historical pulls</em></p>
+<p>Phase 3 built the Excel and Power Query skills this architecture uses. Named ranges (s07) are the Name Manager and Name Box techniques from Phase 3, now applied with a policy: scalars named, rows referenced directly. Structured references (<code>Table1[Revenue]</code>) belong mainly on raw-data and lookup tabs — Excel tables do not fit the timeline-in-columns layout of calc sheets well, because a table's columns are fields, not periods. Power Query is the ingestion layer: it pulls XBRL or Screener/Capitaline exports, unpivots years, converts units and loads a clean table to a raw-data tab, which the Historicals tab then maps via SUMIFS. Keeping Power Query output on its own visible tab preserves the input–calc–output separation and allows refresh without breaking formulas.</p>
+<h3 id="ssrb-and-big-4-review-checklists">SSRB and Big 4 review checklists</h3>
+<p><em>SSRB Best Practice Modelling and Big 4 model-audit review checklists</em></p>
+<p>The Spreadsheet Standards Review Board (SSRB) publishes Best Practice Spreadsheet Modelling Standards (the "BPM" standards), another rulebook alongside FAST. Big 4 model-assurance teams (Deloitte, EY, KPMG, PwC) and specialist firms such as Operis use review checklists derived from these: structure (tab flow, separation, timeline), formula integrity (row consistency, no hardcodes, no volatile functions), checks (balance, cash, sources/uses), documentation (Cover, assumptions log) and output tie-outs. Studying a checklist teaches you to build for review: if you know the reviewer will run Go To Special → Constants on every calc sheet and compare row formulas in R1C1, you build so those tests pass. In Indian project-finance and PE deals, lenders often commission such a review before financial close.</p>
+<h3 id="schedule-iii-division-ii-as-the-template">Schedule III Division II as the template</h3>
+<p><em>Schedule III (Companies Act 2013) Division II as the template for historical line items</em></p>
+<p>Division II of Schedule III prescribes the format of the balance sheet and statement of profit and loss for Ind AS companies (other than NBFCs, which use Division III). Using its captions as the model's chart of accounts — revenue from operations, other income, cost of materials consumed, purchases of stock-in-trade, changes in inventories, employee benefits expense, finance costs, depreciation and amortisation, other expenses, exceptional items, tax — means historical data loads with minimal reclassification and the forecast statements look like the annual report. The 2021 amendments (effective FY2021-22) added disclosures such as ageing of trade receivables and payables, CWIP ageing and key ratios, which give ready historical drivers. Topic t3 maps these line items into the model chart of accounts.</p>
+<h3 id="week-15-dependency">Week 15 dependency</h3>
+<p><em>→ Week 15: integrated linking depends on the timeline and layout set here</em></p>
+<p>Week 15 links the P&amp;L, balance sheet and cash flow statement through the schedules and resolves circularity. Every link there assumes what this topic establishes: one master timeline so that FY27E on the Debt tab is FY27E on the 3-statement tab; identical columns so links point to their own column letter; a declared sign convention so CFS lines do not flip; a Checks sheet so a balance failure is seen immediately; and a <code>Circ</code> switch with a circuit breaker. A model whose architecture was improvised in Week 13 typically needs rebuilding in Week 15. Treat this week's skeleton as the template for all later weeks.</p>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<h3 id="hardcodes-buried-inside-formulas">Hardcodes buried inside formulas</h3>
+<p><em>Hardcodes buried inside calculation formulas (e.g., <code>=C12*1.12</code>) instead of linked inputs</em></p>
+<p><strong>The mistake:</strong> typing a growth rate, margin, tax rate or one-off adjustment directly into a formula. <strong>Why it happens:</strong> speed — the analyst is testing an idea and never comes back; or a manager asks for "just make FY27 12% growth". <strong>Correct treatment:</strong> every number that is an assumption lives on Inputs with a label, units and source; calc formulas reference it (preferably via a local green link). Structural constants (12 months, 365 days, 100%) are tolerable but better named. <strong>Detection:</strong> Go To Special → Constants finds only pure constants, not formulas containing constants, so use Inquire's Workbook Analysis (its formula categories flag formulas containing numeric constants), the show-formulas shortcut (Ctrl + grave accent) to scan for digits, or a review row of <code>=FORMULATEXT(M40)</code> copied across so embedded numbers stand out. The Saturday assessment specifically tests zero hardcodes in forecast formulas.</p>
+<h3 id="misaligned-sheet-timelines">Misaligned sheet timelines</h3>
+<p><em>Sheets with different start columns or timelines, causing misaligned cross-sheet links</em></p>
+<p><strong>The mistake:</strong> one tab starts its timeline in column G, another in H; or one tab begins at FY22 because it was copied from an older model. <strong>Why it happens:</strong> sheets built at different times or by different people; a column inserted on one sheet only. <strong>Correct treatment:</strong> build all calc sheets from one template; link rows 1–8 of each to the master timeline; never insert columns on a single sheet. <strong>Detection:</strong> an alignment check per sheet (<code>=SUMPRODUCT(--(H2:Q2&lt;&gt;Timeline!H2:Q2))</code>) rolled into the master check; visually, a cross-sheet reference whose column letter differs from its host column is a red flag. Remember that misalignment usually does <em>not</em> break the balance check, because the wrong-period number flows consistently through all three statements.</p>
+<h3 id="merged-cells-hidden-rows-and-tab-sprawl">Merged cells, hidden rows and tab sprawl</h3>
+<p><em>Merged cells, hidden rows and one-tab-per-line-item sprawl that kill transparency</em></p>
+<p><strong>The mistake:</strong> merged headers across timeline columns; hidden rows containing adjustments; a separate tab for each expense line (Rent, Power, Freight, Travel…). <strong>Why it happens:</strong> presentation habits from reporting packs; attempts to "tidy" the model; building one schedule at a time without a design. <strong>Correct treatment:</strong> use Center Across Selection instead of merging; group rows with Data → Group instead of hiding; consolidate similar small schedules onto one Opex tab with consistent blocks; split a tab only when size or ownership justifies it. <strong>Detection:</strong> Inquire Workbook Analysis lists hidden rows, sheets and merged cells; row-number gaps reveal hidden rows; a tab count above ~20 in a single-company model signals sprawl.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-architecture-review-of-an-inherited-model-l3">Q1. Architecture review of an inherited model [L3]</h3>
+<p>You inherit a Pidilite Industries model with these features: 27 tabs including separate tabs for "A&amp;P", "Freight", "Power" and "Royalty"; timelines starting in column F on 9 tabs and column G on 18 tabs; FY labels typed as text; tax rate 25.17% typed inside the Tax tab formulas; a hidden row 88 on the Opex tab with "adj –32"; no Cover and no Checks sheet; and the file named "<code>Pidilite_final_new.xlsx</code>". (a) List every architectural defect against FAST and the ICAEW Code. (b) Propose the target tab flow and column structure. (c) Sequence the remediation so the model keeps balancing at each step. (d) Draft the Cover and change-log entries for the remediated v2.0.</p>
+<h3 id="q2-skeleton-build-for-trent-ltd-l3">Q2. Skeleton build for Trent Ltd [L3]</h3>
+<p>Build the skeleton specification (no numbers beyond those given) for a Trent Ltd consolidated model: historicals FY21A–FY25A, forecasts FY26E–FY30E, ₹ crore, Convention A signs, valuation date 30-Sep-2025. Specify: (a) master timeline inputs and the formulas for period end, FY label, A/E flags, counter and stub fraction; (b) column layout for calc sheets; (c) named ranges you would create (with values: tax rate 25.168%, scenario 1, Circ 1, tolerance 0.001); (d) the list of check rows and the master check formula; (e) Cover contents.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Decide the stub logic in the timeline block rather than inside the DCF formulas.</p>
+</blockquote>
+<h3 id="q3-units-signs-and-basis-case-l2">Q3. Units, signs and basis case [L2]</h3>
+<p>An analyst's model for a mid-cap retailer loads FY21–FY22 from standalone annual reports in ₹ lakh and FY23–FY25 from consolidated reports in ₹ crore. Expenses were pasted from XBRL with negative signs for FY23–FY25 and positive for FY21–FY22. The balance check shows differences of 0.0 in FY23–FY25 and of 41,250 and 48,900 in FY21–FY22. (a) Explain each defect and its effect on growth rates and margins. (b) Explain the balance-check pattern. (c) Specify the corrected ingestion design (raw-data tab, conversion factors, sign rules, basis choice). (d) State the Cover disclosures required.</p>
+<h3 id="q4-master-check-and-circularity-governance-l2">Q4. Master check and circularity governance [L2]</h3>
+<p>A model with average-balance interest shows a green master check in Base but a red one in Bear. The Checks sheet reveals: balance 0.000 all years; cash 0.000 all years; revolver breach FY28E ₹62.0 crore, FY29E ₹118.0 crore; circularity "ON". (a) Interpret the result. (b) Explain why the master check design is right to show red even though the statements balance. (c) Propose model responses (e.g., equity raise assumption, capex deferral, higher limit) and how each would be documented. (d) Explain how you would show all-scenario check status on the Cover.</p>
+<h3 id="q5-interview-defend-your-architecture-l1">Q5. Interview: defend your architecture [L1]</h3>
+<p>In a modelling interview you are asked to walk through your tab structure in two minutes and then asked, "Why not put assumptions next to each calculation?" and "Why do you name the tax rate but not revenue?" Prepare structured answers to the walk-through and both follow-ups.</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← Week 13: Financial Modelling Architecture, Formatting &amp;…</a><a class="next" href="subtopics/S01_Tab_Flow_of_an_Institutional_Three_Statement_Model.html">Tab Flow of an Institutional Three-Statement Model →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grid 1: WACC vs Terminal Growth on Implied Share Price · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S02_Grid_1_WACC_vs_Terminal_Growth_on_Implied_Share.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 16</a> <span>›</span> <a href="../index.html">T5 · Multi-Dimensional Sensitivity Tables</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Multi-Dimensional Sensitivity Tables</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Excel_Data_Tables_Row_and_Column_Input_Cells.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S01_Excel_Data_Tables_Row_and_Column_Input_Cells.html">Excel Data Tables: Row and Column Input Cells</a></li><li><a href="S02_Grid_1_WACC_vs_Terminal_Growth_on_Implied_Share.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S02_Grid_1_WACC_vs_Terminal_Growth_on_Implied_Share.html">Grid 1: WACC vs Terminal Growth on Implied Share Price</a></li><li><a href="S03_Grid_2_WACC_vs_Exit_Multiple_on_Implied_Share.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S03_Grid_2_WACC_vs_Exit_Multiple_on_Implied_Share.html">Grid 2: WACC vs Exit Multiple on Implied Share Price</a></li><li><a href="S04_Extra_Grids_Operating_Drivers_on_EV_and_Upside_vs.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S04_Extra_Grids_Operating_Drivers_on_EV_and_Upside_vs.html">Extra Grids: Operating Drivers on EV and Upside vs CMP</a></li><li><a href="S05_Heat_Map_Formatting_with_the_Base_Case_at_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S05_Heat_Map_Formatting_with_the_Base_Case_at_the.html">Heat-Map Formatting with the Base Case at the Centre</a></li><li><a href="S06_Calculation_Mode_and_F9_Refresh_Discipline_for.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S06_Calculation_Mode_and_F9_Refresh_Discipline_for.html">Calculation Mode and F9 Refresh Discipline for Data Tables</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_TABLE_Row_and_Column_Input_Mapping.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C01_TABLE_Row_and_Column_Input_Mapping.html">TABLE() Row and Column Input Mapping</a></li><li><a href="../concepts/C02_Centre_Cell_Must_Equal_Model_Output.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C02_Centre_Cell_Must_Equal_Model_Output.html">Centre Cell Must Equal Model Output</a></li><li><a href="../concepts/C03_Data_Table_Input_Cells_Must_Be_on_the_Same_Sheet.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C03_Data_Table_Input_Cells_Must_Be_on_the_Same_Sheet.html">Data Table Input Cells Must Be on the Same Sheet</a></li><li><a href="../concepts/C04_Masking_Invalid_Grid_Cells_Where_g_WACC.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C04_Masking_Invalid_Grid_Cells_Where_g_WACC.html">Masking Invalid Grid Cells Where g ≥ WACC</a></li><li><a href="../concepts/C05_Running_Grids_with_the_Circularity_Breaker_On.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C05_Running_Grids_with_the_Circularity_Breaker_On.html">Running Grids with the Circularity Breaker On</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Grid 1: WACC vs Terminal Growth on Implied Share Price</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Grid 1: WACC (±100 bp, 50 bp steps) vs terminal growth on implied share price</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>The WACC × perpetuity-growth grid is the single most common exhibit in Indian DCF reports, fairness opinions and IC memos. Both inputs are judgemental. WACC depends on the risk-free date, the ERP source and the beta method. Terminal growth depends on long-run inflation and real-growth views. Both act through the terminal value, which typically makes up 60–80% of EV. The grid shows the reader how far the value moves for reasonable disagreement on these inputs, which is the honest way to present a DCF. It is also the grid most often challenged in review: are the steps sensible, is the centre the base case, are the invalid corners masked?</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="specification">Specification</h3>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Standard choice</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Output</td>
+<td>Implied share price per diluted share (₹)</td>
+<td>The decision variable versus CMP</td>
+</tr>
+<tr>
+<td>WACC axis</td>
+<td>Base ±100 bp in 50 bp steps, giving 5 columns</td>
+<td>Covers typical input uncertainty: G-Sec moves, ERP choice, beta range</td>
+</tr>
+<tr>
+<td>g axis</td>
+<td>Base ±100 bp in 50 bp steps (5 rows), or ±50 bp in 25 bp steps for tighter views</td>
+<td>Long-run inflation-plus-real-growth uncertainty</td>
+</tr>
+<tr>
+<td>Centre</td>
+<td>Base WACC, base g</td>
+<td>Proves the wiring (concept c02) and anchors the heat map</td>
+</tr>
+<tr>
+<td>Orientation</td>
+<td>WACC across (row input), g down (column input)</td>
+<td>Market convention. Readers scan left to right for discount-rate effect</td>
+</tr>
+</tbody>
+</table>
+<p>Why ±100 bp on WACC? India's 10-year G-Sec yield has moved within a range of roughly 6–7.5% in recent years. Damodaran's India ERP has moved by 50–100 bp between annual updates. Peer-beta choices typically shift Ke by 50–150 bp. A ±100 bp band is therefore a realistic "reasonable disagreement" range. Wider bands (±200 bp) produce corners with little information value.</p>
+<h3 id="mechanics-in-the-gordon-model">Mechanics in the Gordon model</h3>
+<p>The terminal value is:</p>
+<p>\[
+TV_n = \frac{FCFF_n \times (1+g)}{WACC - g}
+\]</p>
+<p>Its sensitivity rises sharply as WACC − g narrows, so the grid is <strong>non-linear</strong>. Values rise faster toward the top-right (high g, low WACC) than they fall toward the opposite corner. Always present the grid rather than quoting "±x% per 50 bp".</p>
+<p>When g changes, the model must also change the <strong>terminal-year reinvestment</strong>, or the TV is internally inconsistent. In a value-driver formulation (topic t3, c02), \(TV = NOPAT_{n+1}(1 - g/RONIC) \div (WACC - g)\), so higher g automatically means more reinvestment. Under the simple Gordon form on FCFF_n, link terminal FCFF to a reinvestment rate of g ÷ RONIC so the grid flexes economically rather than mechanically.</p>
+<h3 id="wiring">Wiring</h3>
+<ol>
+<li>Create the driver cells on the DCF sheet. Using offsets, <code>D5</code> holds the WACC offset (0.00%) and <code>D6</code> holds the g offset (0.00%). Model WACC is <code>=WACC!C25 + D5</code>, and the model g is <code>=Inputs!g_base + D6</code>.</li>
+<li>Ensure <strong>every</strong> discount-factor formula, the TV formula and the TV discount factor reference the model WACC cell, and that the TV and terminal reinvestment reference the model g cell.</li>
+<li>Put the header values in place. The WACC offsets across the top are −1.0%, −0.5%, 0.0%, +0.5%, +1.0%. The g offsets down the side are −1.0% … +1.0%.</li>
+<li>Add display headers on a row and column outside the table, such as <code>=WACC!C25 + I20</code>, so readers see absolute rates.</li>
+<li>The corner cell is <code>=Implied_Price</code>.</li>
+<li>Run Data Table with row input <code>$D$5</code> and column input <code>$D$6</code>.</li>
+</ol>
+<h3 id="reading-the-grid">Reading the grid</h3>
+<table>
+<thead>
+<tr>
+<th>g ↓ / WACC →</th>
+<th>11.0%</th>
+<th>11.5%</th>
+<th>12.0%</th>
+<th>12.5%</th>
+<th>13.0%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4.5%</td>
+<td>568</td>
+<td>524</td>
+<td>486</td>
+<td>452</td>
+<td>423</td>
+</tr>
+<tr>
+<td>5.0%</td>
+<td>609</td>
+<td>559</td>
+<td>516</td>
+<td>478</td>
+<td>446</td>
+</tr>
+<tr>
+<td>5.5%</td>
+<td>659</td>
+<td>600</td>
+<td><strong>550</strong></td>
+<td>508</td>
+<td>471</td>
+</tr>
+<tr>
+<td>6.0%</td>
+<td>718</td>
+<td>649</td>
+<td>591</td>
+<td>542</td>
+<td>500</td>
+</tr>
+<tr>
+<td>6.5%</td>
+<td>790</td>
+<td>707</td>
+<td>639</td>
+<td>582</td>
+<td>534</td>
+</tr>
+</tbody>
+</table>
+<p>These are Shakti Auto Components values (₹ per share, illustrative, holding diluted shares constant).</p>
+<p>The grid supports several observations:</p>
+<ul>
+<li>Across the WACC ±100 bp band at base g, value ranges from ₹ 471 to ₹ 659, about −14% to +20% around the base.</li>
+<li>Across g ±100 bp at base WACC, value ranges from ₹ 486 to ₹ 639.</li>
+<li>The top-right corner (WACC 11%, g 6.5%) implies WACC − g of 4.5%. Cross-check the implied exit multiple, which may be implausible for an auto-component supplier.</li>
+<li>With CMP at ₹ 405, every cell in the grid shows upside. The investment conclusion is robust to these inputs.</li>
+</ul>
+<h3 id="supplementary-rows">Supplementary rows</h3>
+<p>Below the grid, add two rows:</p>
+<ul>
+<li><strong>implied terminal EV/EBITDA</strong> at base WACC for each g</li>
+<li><strong>TV % of EV</strong></li>
+</ul>
+<p>These rows let readers see when a growth assumption implies an exit multiple far above the mature-peer range.</p>
+<h3 id="constraints-on-g">Constraints on g</h3>
+<p>The g axis must respect the topic t3 caps. g should stay below long-run nominal GDP growth, and Damodaran's practical cap is g ≤ Rf. Any cell where \(g \ge WACC\) must be masked (concept c04). With a base WACC of 12% and g up to 6.5%, no cell is invalid. For a low-WACC utility (WACC 9.5%, g up to 7%), corners can approach the danger zone.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Ke vs WACC grids for FCFE models</strong> (banks, NBFCs). Flex Ke and g on equity value. The structure is the same.</li>
+<li><strong>Mid-year TV discounting choice.</strong> The grid inherits it. State it in the footnote.</li>
+<li><strong>Asymmetric steps.</strong> Use 25 bp steps for g in utility or regulated businesses where g is tightly anchored, and 50 bp for WACC.</li>
+<li><strong>Scenario switch.</strong> The grid recalculates for the active scenario. Label the grid with the scenario name, for example via <code>="Scenario: "&amp;Scenario_Name</code>.</li>
+<li><strong>Dilution recalculated per cell.</strong> If the TSM uses the implied price, each cell solves its own dilution. Use the closed form (topic t4, c03) to avoid iterative calculation inside tables.</li>
+<li><strong>Rounding of headers.</strong> Use exact decimal inputs (0.005), not values derived through floating-point arithmetic, so that base-case highlighting formulas match.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>The standard Grid 1 is WACC ±100 bp × g ±100 bp in 50 bp steps on implied price, centred on the base.</li>
+<li>Route every WACC and g use, including TV and terminal reinvestment, through the driver cells.</li>
+<li>Offset inputs keep the grid centred and live to the WACC tab and scenarios.</li>
+<li>The grid is non-linear. Present it in full, with implied exit multiple and TV % rows.</li>
+<li>Respect the g caps and mask invalid cells.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-build-specification-for-a-cement-company-l2">Q1. Build specification for a cement company [L2]</h3>
+<p>The base WACC is 11.6% (from the WACC tab) and the base g is 5.0%. Terminal FCFF is ₹ 1,450 crore, RONIC is 14% and the CMP is ₹ 9,800. Diluted shares are 7.4 crore, and net claims deducted in the bridge are ₹ 3,200 crore. Specify the offset driver cells, header values, display headers, dialog entries and supplementary rows. Write the formula for terminal FCFF that makes reinvestment respond to g.</p>
+<h3 id="q2-asymmetry-explanation-l2">Q2. Asymmetry explanation [L2]</h3>
+<p>Using the Shakti grid above, compute the percentage change in price from the centre to each of the four corners. Explain mathematically why the changes are asymmetric. Explain what this means for how you describe valuation risk to an investment committee.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Write TV as a function of the spread WACC − g and differentiate.</p>
+</blockquote>
+<h3 id="q3-review-grid-centred-on-the-wrong-base-l1">Q3. Review: grid centred on the wrong base [L1]</h3>
+<p>A grid's WACC headers run 11.0%–13.0%, but the WACC tab was updated to 12.4% after a G-Sec move. The headers were typed as constants. Describe what the reader now sees, why the highlighted centre cell is misleading, and how the offset design prevents this.</p>
+<h3 id="q4-fcfe-variant-for-an-nbfc-l3">Q4. FCFE variant for an NBFC [L3]</h3>
+<p>Adapt Grid 1 for an FCFE valuation of an NBFC, with a Ke base of 14.5%, g of 6.0% and book-value growth linked to ROE. Specify what replaces WACC, what the output cell should be, and which supplementary rows are most informative (for example implied P/B).</p></section>
+<nav class="pager"><a class="prev" href="S01_Excel_Data_Tables_Row_and_Column_Input_Cells.html">← Excel Data Tables: Row and Column Input Cells</a><a class="next" href="S03_Grid_2_WACC_vs_Exit_Multiple_on_Implied_Share.html">Grid 2: WACC vs Exit Multiple on Implied Share Price →</a></nav>
+</main></div></body></html>

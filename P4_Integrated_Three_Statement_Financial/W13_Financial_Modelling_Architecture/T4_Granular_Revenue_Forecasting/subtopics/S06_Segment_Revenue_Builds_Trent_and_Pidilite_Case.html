@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Segment Revenue Builds: Trent and Pidilite Case Structures · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S06_Segment_Revenue_Builds_Trent_and_Pidilite_Case.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T4 · Granular Revenue Forecasting</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Granular Revenue Forecasting</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Volume_Price_Mix_Revenue_Decomposition_UVG.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S01_Volume_Price_Mix_Revenue_Decomposition_UVG.html">Volume × Price × Mix Revenue Decomposition (UVG, Realisation, Mix)</a></li><li><a href="S02_Store_Rollout_Revenue_Build_Stores_Area_Revenue.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S02_Store_Rollout_Revenue_Build_Stores_Area_Revenue.html">Store Rollout Revenue Build: Stores, Area, Revenue per Sq Ft, LFL</a></li><li><a href="S03_Store_Maturity_Curves_and_Vintage_Cohort_Revenue.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S03_Store_Maturity_Curves_and_Vintage_Cohort_Revenue.html">Store Maturity Curves and Vintage Cohort Revenue Builds</a></li><li><a href="S04_Capacity_Led_Revenue_Build_Capacity_Utilisation.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S04_Capacity_Led_Revenue_Build_Capacity_Utilisation.html">Capacity-Led Revenue Build: Capacity, Utilisation, Realisation</a></li><li><a href="S05_Customer_Cohort_and_ARPU_Revenue_Models_with.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S05_Customer_Cohort_and_ARPU_Revenue_Models_with.html">Customer Cohort and ARPU Revenue Models with Retention Curves</a></li><li><a href="S06_Segment_Revenue_Builds_Trent_and_Pidilite_Case.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S06_Segment_Revenue_Builds_Trent_and_Pidilite_Case.html">Segment Revenue Builds: Trent and Pidilite Case Structures</a></li><li><a href="S07_Top_Down_Revenue_Cross_Check_Market_Size_Share_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S07_Top_Down_Revenue_Cross_Check_Market_Size_Share_and.html">Top-Down Revenue Cross-Check: Market Size, Share and Nominal GDP</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Revenue_Identity_Volume_Realisation_and_Compounded.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C01_Revenue_Identity_Volume_Realisation_and_Compounded.html">Revenue Identity: Volume × Realisation and Compounded Growth</a></li><li><a href="../concepts/C02_Revenue_Bearing_Stores_Average_and_Timing_Weighted.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C02_Revenue_Bearing_Stores_Average_and_Timing_Weighted.html">Revenue-Bearing Stores: Average and Timing-Weighted Counts</a></li><li><a href="../concepts/C03_Retail_Revenue_Average_Area_Revenue_per_Sq_Ft_with.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C03_Retail_Revenue_Average_Area_Revenue_per_Sq_Ft_with.html">Retail Revenue: Average Area × Revenue per Sq Ft with LFL</a></li><li><a href="../concepts/C04_Capacity_Revenue_Capacity_Utilisation_Price_with_a.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C04_Capacity_Revenue_Capacity_Utilisation_Price_with_a.html">Capacity Revenue: Capacity × Utilisation × Price with a Practical Cap</a></li><li><a href="../concepts/C05_Cohort_Revenue_Initial_Customers_Retention_by_Age.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C05_Cohort_Revenue_Initial_Customers_Retention_by_Age.html">Cohort Revenue: Initial Customers × Retention by Age × ARPU by Age</a></li><li><a href="../concepts/C06_Ind_AS_115_Revenue_Basis_Net_of_GST_Discounts_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C06_Ind_AS_115_Revenue_Basis_Net_of_GST_Discounts_and.html">Ind AS 115 Revenue Basis: Net of GST, Discounts and Variable Consideration</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Segment Revenue Builds: Trent and Pidilite Case Structures</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Segment builds: Trent (Westside, Zudio, Star) or Pidilite (Consumer &amp; Bazaar vs B2B; domestic vs international)</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Consolidated revenue is the sum of businesses with very different growth drivers, margins and capital intensity.
+Trent's value-fashion Zudio stores grow store count at a pace the premium Westside format does not; Pidilite's
+Consumer &amp; Bazaar (C&amp;B) adhesives and waterproofing behave differently from its B2B industrial adhesives and
+pigments business, and its international subsidiaries carry FX and country risk. Forecasting one consolidated
+growth rate averages away exactly the information an analyst is paid to have an opinion on. A segment build
+also anchors on audited disclosure: Ind AS 108 <em>Operating Segments</em> requires segment revenue and results as
+reviewed by the chief operating decision maker (CODM), so segment-level history is reconcilable to the financial
+statements, while format-level and geography-level detail comes from investor presentations and concalls.</p>
+<p>This subtopic is the bridge between the generic methods (s01–s05) and the Week 13 exercise.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="step-1-define-the-segment-tree-and-reconcile-to-reported-revenue">Step 1 — define the segment tree and reconcile to reported revenue</h3>
+<p>Before forecasting, define the hierarchy and prove it adds up to reported revenue from operations for each
+historical year:</p>
+<p>\[
+\text{Revenue from operations} = \sum \text{Segment revenue} - \text{Inter-segment eliminations} + \text{Other operating revenue}
+\]</p>
+<p>Keep a reconciliation row per year (target difference = 0, or an explicit "unallocated/other" line disclosed by the
+company). Choose consolidated vs standalone deliberately (w13 t3 s03): the entity basis determines which
+businesses even appear in revenue.</p>
+<h3 id="trent-format-led-retail-build">Trent — format-led retail build</h3>
+<p><strong>Structure.</strong> Trent's fashion business is run under Westside (premium-mid, in-house brands, larger stores),
+Zudio (value fashion, smaller stores, rapid Tier-2/3 expansion) and other lifestyle concepts (Utsa, Samoh,
+Misbu and beauty). The Star grocery business is operated through Trent Hypermarket Pvt Ltd, a joint venture with
+Tesco — in Trent's consolidated financial statements it is equity-accounted under Ind AS 28, so Star's revenue
+does <em>not</em> sit in consolidated revenue from operations; Trent's share of its profit appears below EBITDA in
+"share of profit/(loss) of joint ventures and associates". Modelling Star's stores and revenue is still useful
+for valuing the JV stake (sum-of-the-parts), but it must not be added to consolidated revenue.</p>
+<p><strong>Driver tree per format</strong> (from s02 and s03):</p>
+<table>
+<thead>
+<tr>
+<th>Driver</th>
+<th>Westside</th>
+<th>Zudio</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Opening stores, gross adds, closures</td>
+<td>Moderate adds (~25–40 a year)</td>
+<td>High adds (150–250 a year)</td>
+<td>Annual report store counts, concall guidance</td>
+</tr>
+<tr>
+<td>Average new-store area</td>
+<td>Larger (~20,000+ sq ft)</td>
+<td>Smaller (~7,000–10,000 sq ft)</td>
+<td>Investor presentation area disclosures</td>
+</tr>
+<tr>
+<td>Mature revenue per sq ft</td>
+<td>Higher</td>
+<td>Lower (value pricing)</td>
+<td>Derived: format revenue ÷ average area</td>
+</tr>
+<tr>
+<td>LFL</td>
+<td>Single-digit to low-teens</td>
+<td>Single-digit to low-teens</td>
+<td>Concall commentary</td>
+</tr>
+<tr>
+<td>Maturity curve</td>
+<td>Slower (mall-dependent)</td>
+<td>Faster (high street, price-led)</td>
+<td>Calibrated assumption</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Other revenue lines.</strong> Online sales (Westside.com, partner platforms), franchise/royalty income, and the
+international Zudio stores (first stores outside India opened in Dubai) should be separate rows with their own
+drivers or modest growth assumptions. Illustrative magnitude (not actuals): if Zudio's average area grows 35%
+and revenue per sq ft 4%, Zudio revenue grows about 40%; if Westside's area grows 10% with 7% density growth,
+Westside grows about 18%; the blended rate depends on the shifting weights — mix in reverse (s01).</p>
+<p><strong>Checks specific to Trent.</strong> Total area and store count by format reconcile to the latest disclosed figures;
+blended revenue per sq ft falls as Zudio's share rises (mix), which is not a deterioration; store adds tie to the
+Ind AS 116 lease addition schedule and fit-out capex in Week 14.</p>
+<h3 id="pidilite-category-and-channel-build">Pidilite — category and channel build</h3>
+<p><strong>Structure.</strong> Pidilite reports operating segments under Ind AS 108 as Consumer &amp; Bazaar (C&amp;B: Fevicol,
+Fevikwik, M-Seal, Dr. Fixit, Araldite consumer range, art and craft) and Business-to-Business (B2B: industrial
+adhesives, synthetic resins, pigments and construction-chemical project sales), with a small "others" segment.
+C&amp;B is the large majority of revenue. Geographically, standalone (India) is the bulk; consolidated adds
+international subsidiaries (South Asia, Middle East, Africa, Americas, South-East Asia) and domestic
+subsidiaries/JVs.</p>
+<p><strong>Driver tree:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Driver</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C&amp;B domestic</td>
+<td>UVG × price/mix (s01); sub-categories: adhesives &amp; sealants, waterproofing, art &amp; craft</td>
+<td>Quarterly UVG and price commentary</td>
+</tr>
+<tr>
+<td>B2B domestic</td>
+<td>Industrial volume growth tied to IIP/packaging/textiles demand × price</td>
+<td>Segment disclosure, concall</td>
+</tr>
+<tr>
+<td>International</td>
+<td>Local-currency growth × INR/FCY translation</td>
+<td>Subsidiary financials (AOC-1), concall</td>
+</tr>
+<tr>
+<td>Eliminations</td>
+<td>Inter-segment sales (e.g., resins supplied to C&amp;B)</td>
+<td>Segment note</td>
+</tr>
+</tbody>
+</table>
+<p>UVG is the anchor: Pidilite discusses C&amp;B UVG separately from value growth, and price changes follow VAM and other
+raw material cycles — when VAM falls, price cuts can make value growth lag volume growth (Topic 5 links this to
+gross margin). International revenue in rupees:</p>
+<p>\[
+\text{Revenue}_{\text{INR},t} = \text{Revenue}_{\text{LC},t-1} \times (1 + g_{\text{LC}}) \times \text{FX}_t
+\]</p>
+<p>so currency depreciation in, for example, Bangladesh or Egypt can cut reported rupee revenue even with healthy
+local growth. Use average exchange rates for revenue (Ind AS 21 translation of income items).</p>
+<h3 id="step-2-segment-outputs-and-validation">Step 2 — segment outputs and validation</h3>
+<p>For each segment produce: revenue, growth decomposition (volume/area, price/density, mix), and share of total.
+Validate against: (a) historical segment growth distribution; (b) management guidance ranges; (c) the top-down
+check (s07). Where segment EBIT is disclosed (Ind AS 108), build segment margins as well — this supports a
+sum-of-the-parts valuation later in the course.</p>
+<h3 id="implementation-notes">Implementation notes</h3>
+<ul>
+<li>One block per segment, same column structure as every other sheet (w13 t1 s04).</li>
+<li>Inputs per segment on the Assumptions sheet, grouped so the scenario switch (Topic 6) flexes each segment's
+  drivers independently.</li>
+<li>Segment total feeds the 3-statement P&amp;L through a single link row (link once, reference locally).</li>
+</ul>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Segment re-organisation.</strong> Companies re-cast segments (Pidilite has re-classified products between C&amp;B and B2B
+  in the past); use the latest comparatives and re-cast history (w13 t3 s05).</li>
+<li><strong>JVs and associates.</strong> Star (Trent) and Pidilite's JVs are equity-accounted; do not add their revenue.</li>
+<li><strong>Acquisitions.</strong> Pidilite's acquisitions (e.g., Araldite consumer business) add inorganic revenue — separate
+  them for UVG purposes in the first year.</li>
+<li><strong>Disclosure gaps.</strong> Trent does not publish audited revenue by format; derived densities are estimates — show
+  them as assumptions, not facts.</li>
+<li><strong>Transfer pricing between segments.</strong> Inter-segment pricing can shift margins between segments without
+  affecting consolidated results.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Build revenue at the segment/format level and reconcile every historical year to reported revenue.</li>
+<li>Trent: format builds for Westside and Zudio; Star is an equity-accounted JV, not consolidated revenue.</li>
+<li>Pidilite: C&amp;B and B2B domestic builds on UVG × price, plus international in local currency × FX.</li>
+<li>Use Ind AS 108 segment data as the audited anchor, investor materials for drivers.</li>
+<li>Keep segment inputs grouped so scenarios can flex each segment.</li>
+<li>Re-cast history when segments are reorganised.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-segment-reconciliation-l1">Q1. Segment reconciliation [L1]</h3>
+<p>A company reports segment revenues of ₹6,420 crore (Segment A) and ₹1,880 crore (Segment B), inter-segment
+revenue of ₹140 crore included in Segment B, and revenue from operations of ₹8,195 crore. Build the
+reconciliation and identify what the remaining difference could represent.</p>
+<h3 id="q2-trent-consolidated-revenue-l2">Q2. Trent consolidated revenue [L2]</h3>
+<p>A junior analyst adds Star's store count × revenue per store to Trent's consolidated revenue forecast. Explain
+the error with reference to Ind AS 28 and Ind AS 110, where Star should appear in the consolidated P&amp;L and
+valuation, and how to correct the model.</p>
+<h3 id="q3-pidilite-international-translation-l2">Q3. Pidilite international translation [L2]</h3>
+<p>Pidilite's Bangladesh subsidiary earns BDT 900 crore in FY25 at an average rate of ₹0.71 per BDT. Local growth
+for FY26 is expected at 12% and the average rate at ₹0.66 per BDT. Compute FY26 revenue in ₹ crore and the
+growth in rupee terms, and explain how you would present the FX effect in the segment bridge.</p>
+<h3 id="q4-exercise-design-segment-driver-map-l3">Q4. Exercise design — segment driver map [L3]</h3>
+<p>For either Trent or Pidilite, design the full segment driver map for a five-year forecast: list each segment,
+its drivers, the data source for each driver, the historical years needed, and the checks that prove the segment
+build reconciles to reported revenue.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Start from the Ind AS 108 note and the latest investor presentation, then work down to the drivers.</p>
+</blockquote></section>
+<nav class="pager"><a class="prev" href="S05_Customer_Cohort_and_ARPU_Revenue_Models_with.html">← Customer Cohort and ARPU Revenue Models with Retention…</a><a class="next" href="S07_Top_Down_Revenue_Cross_Check_Market_Size_Share_and.html">Top-Down Revenue Cross-Check: Market Size, Share and… →</a></nav>
+</main></div></body></html>

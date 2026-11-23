@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chart Hygiene for Peer Financial Reports · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S05_Chart_Hygiene_for_Peer_Financial_Reports.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 2</a> <span>›</span> <a href="../../index.html">Week 8</a> <span>›</span> <a href="../index.html">T4 · Charting for Financial Reports</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Charting for Financial Reports</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_EBITDA_Bridge_Waterfalls_Price_Volume_Mix_and_Cost.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S01_EBITDA_Bridge_Waterfalls_Price_Volume_Mix_and_Cost.html">EBITDA Bridge Waterfalls: Price, Volume, Mix and Cost Drivers</a></li><li><a href="S02_Clustered_Column_Trends_and_Combo_Charts_with_a.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S02_Clustered_Column_Trends_and_Combo_Charts_with_a.html">Clustered Column Trends and Combo Charts with a Margin Axis</a></li><li><a href="S03_ROIC_vs_Revenue_Growth_Bubble_Charts_with_Median.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S03_ROIC_vs_Revenue_Growth_Bubble_Charts_with_Median.html">ROIC vs Revenue Growth Bubble Charts with Median Quadrants</a></li><li><a href="S04_Native_Excel_Waterfall_vs_Stacked_Column.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S04_Native_Excel_Waterfall_vs_Stacked_Column.html">Native Excel Waterfall vs Stacked-Column Workaround</a></li><li><a href="S05_Chart_Hygiene_for_Peer_Financial_Reports.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S05_Chart_Hygiene_for_Peer_Financial_Reports.html">Chart Hygiene for Peer Financial Reports</a></li><li><a href="S06_Linking_Chart_Titles_and_Labels_to_Cells_for.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S06_Linking_Chart_Titles_and_Labels_to_Cells_for.html">Linking Chart Titles and Labels to Cells for Dynamic Updates</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Bridge_Integrity_The_Zero_Check_Cell.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/concepts/C01_Bridge_Integrity_The_Zero_Check_Cell.html">Bridge Integrity: The Zero-Check Cell</a></li><li><a href="../concepts/C02_Price_and_Volume_Effects_in_a_Revenue_or_EBITDA.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/concepts/C02_Price_and_Volume_Effects_in_a_Revenue_or_EBITDA.html">Price and Volume Effects in a Revenue or EBITDA Bridge</a></li><li><a href="../concepts/C03_Gross_Margin_Effect_Isolating_Raw_Material.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/concepts/C03_Gross_Margin_Effect_Isolating_Raw_Material.html">Gross Margin Effect: Isolating Raw Material Inflation</a></li><li><a href="../concepts/C04_IBCS_SUCCESS_Notation_and_Tuftes_Data_Ink_Ratio.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/concepts/C04_IBCS_SUCCESS_Notation_and_Tuftes_Data_Ink_Ratio.html">IBCS SUCCESS Notation and Tufte&#x27;s Data-Ink Ratio</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Chart Hygiene for Peer Financial Reports</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Chart hygiene: consistent company colours, direct labels, units (₹ crore, %), source notes, no 3D/gridline clutter</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Research heads, credit committees and CFOs judge an analyst's rigour within seconds of opening a report, and
+charts are what they see first. A chart with mismatched colours, a legend the reader must decode, no units
+and no source looks unchecked — and an unchecked-looking chart makes the reader distrust the numbers behind
+it. Hygiene is not decoration: each rule below removes a specific opportunity for misreading. In Project 2,
+where the reader compares three peers across a dozen exhibits, consistency across charts matters as much
+as the quality of any one chart.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="consistent-company-colours">Consistent company colours</h3>
+<p>Assign every company one colour <strong>once</strong>, in a colour key on the cover or definitions sheet, and use it in
+every chart, table highlight and slide.</p>
+<ul>
+<li><strong>Focal-company highlighting</strong>: if the report is about one company versus peers, give the focal company a
+  strong colour and peers shades of grey. If all peers are equal subjects, use three distinct, colour-blind
+  safe hues (e.g., dark blue, orange, teal) with similar visual weight.</li>
+<li><strong>Years or scenarios within a company</strong>: use tints of the company colour (light for FY23, dark for FY25),
+  following IBCS practice of darker = more recent/actual.</li>
+<li><strong>Semantic colours are reserved</strong>: green/red (or blue/orange for colour-blind safety) only for good/bad
+  variances, never as company colours.</li>
+<li>Implement through a <strong>custom theme</strong> (Page Layout → Colors → Customize Colors) so Accent 1–3 are the
+  company colours, and a saved chart template (<code>.crtx</code>). Never rely on Excel's default series colour order,
+  which changes when series are reordered or one company is filtered out.</li>
+</ul>
+<h3 id="direct-labels-instead-of-legends">Direct labels instead of legends</h3>
+<p>A legend forces the eye to travel between the key and the data. Prefer:</p>
+<ul>
+<li>Series names placed at the end of each line (a data label on the last point showing <em>Series Name</em>).</li>
+<li>Company names inside or beside bars, or as category labels.</li>
+<li>Data labels on bars showing the value, after which the value axis and gridlines can be deleted.</li>
+</ul>
+<p>Keep labels sparse: label endpoints and the points the narrative discusses, not every point on a 12-quarter
+line.</p>
+<h3 id="units-and-number-formats">Units and number formats</h3>
+<p>Every chart states its unit, once, in the subtitle or axis title: "₹ crore", "%", "days", "x". Conventions
+for Project 2:</p>
+<table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Unit</th>
+<th>Excel format code</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue, EBITDA, net debt</td>
+<td>₹ crore</td>
+<td><code>#,##0</code> or <code>#,##0.0</code></td>
+<td>22,600</td>
+</tr>
+<tr>
+<td>Margins, ROIC, growth</td>
+<td>%</td>
+<td><code>0.0%</code></td>
+<td>14.2%</td>
+</tr>
+<tr>
+<td>Change in margin</td>
+<td>bps</td>
+<td><code>#,##0" bps"</code> (on a value already ×10,000)</td>
+<td>180 bps</td>
+</tr>
+<tr>
+<td>CCC, DSO, DIO</td>
+<td>days</td>
+<td><code>0" days"</code> or <code>0</code> with unit in title</td>
+<td>74</td>
+</tr>
+<tr>
+<td>Leverage, multiples</td>
+<td>x</td>
+<td><code>0.0"x"</code></td>
+<td>1.8x</td>
+</tr>
+<tr>
+<td>Negatives</td>
+<td>parentheses</td>
+<td><code>#,##0;(#,##0)</code></td>
+<td>(27)</td>
+</tr>
+</tbody>
+</table>
+<p>Indian lakh-crore grouping (1,23,456) is common in Indian annual reports; Excel needs a custom format or the
+Windows regional setting to show it. Whichever grouping you pick, use it everywhere in the report. Never mix
+₹ crore and ₹ million, or crore and lakh, across exhibits; convert in the standardized statements, not in the
+chart.</p>
+<h3 id="source-notes">Source notes</h3>
+<p>Every chart carries a source line in small grey text below the plot area, e.g.:</p>
+<p><em>Source: Company annual reports FY23–FY25 (consolidated, Ind AS); Q4 FY25 Reg 33 results; analyst
+calculations. EBITDA excludes other income; Ind AS 116 basis. FY ends 31 March.</em></p>
+<p>The source line should name the documents, the basis (consolidated/standalone, framework, normalized or
+reported) and any definitional choice that a reader might otherwise question. Build it as a text box linked
+to a cell so it updates with the basis selector.</p>
+<h3 id="removing-clutter">Removing clutter</h3>
+<p>Tufte's data-ink principle: erase ink that does not show data. Practical deletions:</p>
+<ul>
+<li><strong>No 3D</strong> — 3D columns and pies distort length and angle perception and hide values behind each other.</li>
+<li><strong>Gridlines</strong>: delete or lighten to very pale grey; if bars are directly labelled, no gridlines are needed.</li>
+<li><strong>Borders</strong> around the chart area and plot area: remove.</li>
+<li><strong>Axis lines</strong>: keep the category axis baseline (zero line) in a darker grey; remove the value axis line.</li>
+<li><strong>Shadows, gradients, glow, bevel</strong>: never.</li>
+<li><strong>Legends</strong>: remove when direct labels are used.</li>
+<li><strong>Decimal clutter</strong>: round to the precision the reader needs (₹ crore with no decimals for large companies).</li>
+<li><strong>Pie charts</strong>: avoid for peer comparisons; a sorted bar chart is easier to compare.</li>
+</ul>
+<h3 id="titles-and-layout">Titles and layout</h3>
+<p>The chart title is an <strong>action title</strong> that states the conclusion ("Titan's ROIC lead widened to 9 pp in
+FY25"); a smaller subtitle gives the metric, unit and period ("ROIC, %, FY23–FY25"). Align charts on a grid,
+use identical sizes for charts of the same type (Format → Size: exact height and width), and use one font
+family throughout.</p>
+<h3 id="accessibility">Accessibility</h3>
+<p>Add alt text (right-click → Edit Alt Text) summarising the message; ensure contrast is sufficient in a
+greyscale printout; never rely on colour alone to distinguish series — combine colour with labels or marker
+shapes.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Brand colours</strong>: using each company's corporate colour is tempting but often produces clashing or
+  near-identical hues (several Indian IT firms use blue). Readability beats brand fidelity.</li>
+<li><strong>Many years of quarterly data</strong>: direct labels on every point clutter; label only first, last, max and
+  min, and keep a light axis.</li>
+<li><strong>Unit choice for very different scales</strong>: TCS-scale revenue in ₹ crore with no decimals and a small-cap peer
+  in the same chart may need indexed values instead.</li>
+<li><strong>Rounding mismatch</strong>: labels rounded to whole crore may not visibly sum to a rounded total; show one
+  decimal in bridges or footnote "figures may not add due to rounding".</li>
+<li><strong>Printing</strong>: a colour palette that works on screen may be indistinguishable in black-and-white print;
+  test-print or preview in greyscale.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Fix one colour per company in a theme and template; reserve red/green for variances.</li>
+<li>Direct labels beat legends; once bars are labelled, remove the value axis and gridlines.</li>
+<li>Every chart states unit, period and basis; every chart has a source line.</li>
+<li>No 3D, no shadows, minimal gridlines — maximise data ink.</li>
+<li>Use action titles plus a descriptive subtitle; size and align charts consistently.</li>
+<li>Consistency across all exhibits matters more than any single chart's styling.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-chart-audit-l1">Q1. Chart audit [L1]</h3>
+<p>A draft exhibit shows a 3D clustered column chart of FY23–FY25 revenue for three IT peers, default Office
+colours, a legend at the bottom, major and minor gridlines, value axis labelled "Rs." with values like
+"245,315.00", and no source. List every hygiene fix in the order you would apply them.</p>
+<h3 id="q2-colour-key-design-l2">Q2. Colour key design [L2]</h3>
+<p>Design the colour key for a Project 2 report on Titan, Kalyan Jewellers and Senco Gold that includes peer
+comparison charts, per-company year trends, budget-versus-actual style variance bars and a
+colour-blind-safe requirement. Specify how you would implement it in Excel so it cannot drift.</p>
+<h3 id="q3-writing-source-notes-l2">Q3. Writing source notes [L2]</h3>
+<p>Write source lines for (a) an ROIC chart using consolidated Ind AS figures with leases capitalised and
+goodwill included in invested capital; (b) a quarterly revenue chart combining Reg 33 results for Q1–Q3 and
+audited annual results for Q4; (c) a chart showing Infosys revenue derived from the IFRS 20-F converted at
+an average rate.</p>
+<h3 id="q4-units-from-a-raw-xbrl-extract-l2">Q4. Units from a raw XBRL extract [L2]</h3>
+<p>Your raw extract holds values in absolute rupees (e.g., 2,26,00,00,00,000). Excel's trailing-comma format
+scaling divides by 1,000 per comma. Explain whether you can display these values in ₹ crore purely through a
+number format, what goes wrong if you try, and where in the workbook the unit conversion should happen
+instead. Then write a format that shows ₹ million from the same raw values with negatives in parentheses.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Check whether one crore is a power of 1,000.</p>
+</blockquote></section>
+<nav class="pager"><a class="prev" href="S04_Native_Excel_Waterfall_vs_Stacked_Column.html">← Native Excel Waterfall vs Stacked-Column Workaround</a><a class="next" href="S06_Linking_Chart_Titles_and_Labels_to_Cells_for.html">Linking Chart Titles and Labels to Cells for Dynamic Updates →</a></nav>
+</main></div></body></html>

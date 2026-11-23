@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Live Row: CHOOSE or INDEX on the Scenario Code · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C01_The_Live_Row_CHOOSE_or_INDEX_on_the_Scenario_Code.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T6 · Scenario Switcher Architecture</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · Scenario Switcher Architecture</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Single_Scenario_Selector_Cell_with_Data_Validation.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S01_Single_Scenario_Selector_Cell_with_Data_Validation.html">Single Scenario Selector Cell with Data-Validation Dropdown</a></li><li><a href="../subtopics/S02_Scenario_Driver_Blocks_Base_Bull_Bear_Rows_and_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S02_Scenario_Driver_Blocks_Base_Bull_Bear_Rows_and_the.html">Scenario Driver Blocks: Base, Bull, Bear Rows and the Live Row</a></li><li><a href="../subtopics/S03_Scenario_Selection_Functions_CHOOSE_INDEX_XLOOKUP.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S03_Scenario_Selection_Functions_CHOOSE_INDEX_XLOOKUP.html">Scenario Selection Functions: CHOOSE, INDEX, XLOOKUP, SWITCH</a></li><li><a href="../subtopics/S04_Which_Drivers_to_Flex_Volume_Price_Stores_Margin.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S04_Which_Drivers_to_Flex_Volume_Price_Stores_Margin.html">Which Drivers to Flex: Volume, Price, Stores, Margin, Wages, Capex, NWC</a></li><li><a href="../subtopics/S05_Coherent_Scenario_Narratives_vs_Single_Variable.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S05_Coherent_Scenario_Narratives_vs_Single_Variable.html">Coherent Scenario Narratives vs Single-Variable Tweaks</a></li><li><a href="../subtopics/S06_Capturing_Scenario_Outputs_Data_Tables_vs_Pasted.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S06_Capturing_Scenario_Outputs_Data_Tables_vs_Pasted.html">Capturing Scenario Outputs: Data Tables vs Pasted Static Values</a></li><li><a href="../subtopics/S07_Scenario_Labelling_on_Outputs_and_Documented_Case.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S07_Scenario_Labelling_on_Outputs_and_Documented_Case.html">Scenario Labelling on Outputs and Documented Case Rationale</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_The_Live_Row_CHOOSE_or_INDEX_on_the_Scenario_Code.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C01_The_Live_Row_CHOOSE_or_INDEX_on_the_Scenario_Code.html">The Live Row: CHOOSE or INDEX on the Scenario Code</a></li><li><a href="C02_One_Switch_Only_No_Scenario_Logic_Outside_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C02_One_Switch_Only_No_Scenario_Logic_Outside_the.html">One Switch Only: No Scenario Logic Outside the Driver Block</a></li><li><a href="C03_Scenario_Summary_via_a_One_Variable_Data_Table_on.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C03_Scenario_Summary_via_a_One_Variable_Data_Table_on.html">Scenario Summary via a One-Variable Data Table on the Switch</a></li><li><a href="C04_Live_Scenario_Header_Label_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C04_Live_Scenario_Header_Label_Formula.html">Live Scenario Header Label Formula</a></li><li><a href="C05_Internal_Consistency_of_Scenarios_Growth_Needs.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C05_Internal_Consistency_of_Scenarios_Growth_Needs.html">Internal Consistency of Scenarios: Growth Needs Capex, Stress Needs Funding</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>The Live Row: CHOOSE or INDEX on the Scenario Code</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Live row: <code>=CHOOSE(Scenario,Base_Row,Bull_Row,Bear_Row)</code> or <code>=INDEX(Base_Row:Bear_Row,Scenario)</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>For each flexed driver \(d\) and forecast period \(t\):</p>
+<p>\[
+d^{\text{Live}}_t = d^{(s)}_t, \qquad s = \text{Scenario} \in \{1, 2, 3\}
+\]</p>
+<p>where \(d^{(1)}_t\), \(d^{(2)}_t\), \(d^{(3)}_t\) are the Base, Bull and Bear input values in period \(t\) and
+Scenario is the single named selector cell. In Excel, in the Live row cell for column H:</p>
+<pre><code>=CHOOSE(Scenario, H20, H21, H22)
+</code></pre>
+<p>or, with the three case rows contiguous and in code order:</p>
+<pre><code>=INDEX(H20:H22, Scenario)
+</code></pre>
+<p>copied identically across all forecast columns. Calculation sheets reference only the Live row.</p>
+<h2 id="explanation">Explanation</h2>
+<p>The Live row is the interface between scenario inputs and calculations. Its value at any moment equals the active case's
+value; when the selector changes, every Live row changes together, and every calculation follows. This gives the
+architecture three properties:</p>
+<ol>
+<li><strong>Single point of control</strong> — only the selector decides the case (c02).</li>
+<li><strong>Calculation sheets are scenario-agnostic</strong> — a revenue formula reads "Live store adds" and does not care which case
+   is running, which keeps formulas short and consistent.</li>
+<li><strong>Side-by-side review</strong> — all three cases' values are visible in the block for reviewers.</li>
+</ol>
+<p>CHOOSE vs INDEX:</p>
+<ul>
+<li><strong>CHOOSE</strong> lists each case cell explicitly — clearest for Trace Precedents, robust to inserted rows inside the block
+  (references move with the cells), but adding a fourth case requires editing every formula.</li>
+<li><strong>INDEX</strong> is compact and extends naturally if a case row is inserted <em>within</em> the range, but returns the wrong row
+  silently if a non-case row (e.g., a note) is inserted inside the block, because it selects by position.</li>
+</ul>
+<p>Both are non-volatile. Avoid OFFSET and INDIRECT (s03). Do not wrap the Live row in IFERROR: an invalid selector should
+produce a visible error that the Checks sheet catches.</p>
+<p>Referencing: the row references are relative in the column (they must move as the formula copies across) and need no
+row anchoring because the formula is not copied down. <code>Scenario</code> is a name — effectively absolute.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Driver block for value-format LFL (FY26E–FY28E):</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th>Label</th>
+<th>FY26E</th>
+<th>FY27E</th>
+<th>FY28E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>40</td>
+<td>LFL — Base</td>
+<td>6.0%</td>
+<td>6.0%</td>
+<td>5.5%</td>
+</tr>
+<tr>
+<td>41</td>
+<td>LFL — Bull</td>
+<td>9.0%</td>
+<td>8.5%</td>
+<td>8.0%</td>
+</tr>
+<tr>
+<td>42</td>
+<td>LFL — Bear</td>
+<td>1.0%</td>
+<td>2.0%</td>
+<td>4.0%</td>
+</tr>
+<tr>
+<td>43</td>
+<td>LFL — Live</td>
+<td><code>=CHOOSE(Scenario,H40,H41,H42)</code></td>
+<td>same pattern</td>
+<td>same pattern</td>
+</tr>
+</tbody>
+</table>
+<p>With Scenario = 3, row 43 shows 1.0%, 2.0%, 4.0%. The revenue sheet's density row uses
+<code>=G25*(1+Assumptions!H43)</code> — the same formula regardless of case. Flipping to 2 changes density growth to 9.0%, 8.5%,
+8.0% and every downstream line updates.</p>
+<h2 id="connections">Connections</h2>
+<p>Implements s02 (driver blocks) using the functions compared in s03. It depends on the selector of s01 and the
+one-switch rule of c02. The integrity check that the Live row equals the selected case links to w13 t2 (one formula per
+row, no overrides) and to the master check on the Cover (w13 t1 c04).</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-write-the-live-row-l1">Q1. Write the Live row [L1]</h3>
+<p>A gross margin block has Base in row 60, Bull in row 61 and Bear in row 62, with forecast years in columns H to L.
+Write the Live row formula for column H using CHOOSE and using INDEX, and state what each returns when Scenario = 2.</p>
+<h3 id="q2-insertion-risk-l2">Q2. Insertion risk [L2]</h3>
+<p>A colleague inserts a "Source: concall Q2 FY26" note row between Bull and Bear in an INDEX-based block. Explain what
+the Live row now returns for each scenario code and how a check would detect it.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> INDEX selects by position within the range, so count rows after the insertion.</p>
+</blockquote>
+<h3 id="q3-defending-the-design-l2">Q3. Defending the design [L2]</h3>
+<p>A senior banker asks why you do not simply put <code>IF(Scenario=1,…,IF(Scenario=2,…,…))</code> directly inside the revenue
+formulas. Give three reasons the Live row approach is better.</p></section>
+<nav class="pager"><a class="prev" href="../subtopics/S07_Scenario_Labelling_on_Outputs_and_Documented_Case.html">← Scenario Labelling on Outputs and Documented Case Rationale</a><a class="next" href="C02_One_Switch_Only_No_Scenario_Logic_Outside_the.html">One Switch Only: No Scenario Logic Outside the Driver Block →</a></nav>
+</main></div></body></html>

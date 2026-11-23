@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deriving Historical Ratios as Forecast Anchors · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S07_Deriving_Historical_Ratios_as_Forecast_Anchors.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T3 · Historical Data Ingestion &amp;…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Historical Data Ingestion &amp; Normalization</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Sources_of_Historical_Data_for_Indian_Listed.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S01_Sources_of_Historical_Data_for_Indian_Listed.html">Sources of Historical Data for Indian Listed Companies</a></li><li><a href="S02_Mapping_Schedule_III_Line_Items_to_a_Model_Chart.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S02_Mapping_Schedule_III_Line_Items_to_a_Model_Chart.html">Mapping Schedule III Line Items to a Model Chart of Accounts</a></li><li><a href="S03_Consolidated_vs_Standalone_Basis_NCI_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S03_Consolidated_vs_Standalone_Basis_NCI_and.html">Consolidated vs Standalone Basis, NCI and Associates</a></li><li><a href="S04_EBITDA_Normalisation_Exceptional_Other_Income.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S04_EBITDA_Normalisation_Exceptional_Other_Income.html">EBITDA Normalisation: Exceptional, Other Income, Leases, ESOPs, Forex</a></li><li><a href="S05_Restatements_Discontinued_Operations_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S05_Restatements_Discontinued_Operations_and.html">Restatements, Discontinued Operations and Acquisitions</a></li><li><a href="S06_Annual_Balance_Checks_and_CFS_to_BS_Cash.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S06_Annual_Balance_Checks_and_CFS_to_BS_Cash.html">Annual Balance Checks and CFS-to-BS Cash Reconciliation</a></li><li><a href="S07_Deriving_Historical_Ratios_as_Forecast_Anchors.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S07_Deriving_Historical_Ratios_as_Forecast_Anchors.html">Deriving Historical Ratios as Forecast Anchors</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Historical_Balance_Check_Assets_Equal_Equity_Plus.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C01_Historical_Balance_Check_Assets_Equal_Equity_Plus.html">Historical Balance Check: Assets Equal Equity Plus Liabilities</a></li><li><a href="../concepts/C02_CFS_Closing_Cash_to_Balance_Sheet_Cash.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C02_CFS_Closing_Cash_to_Balance_Sheet_Cash.html">CFS Closing Cash to Balance Sheet Cash Reconciliation</a></li><li><a href="../concepts/C03_Adjusted_EBITDA_Bridge_from_PBT.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C03_Adjusted_EBITDA_Bridge_from_PBT.html">Adjusted EBITDA Bridge from PBT</a></li><li><a href="../concepts/C04_Effective_Tax_Rate_with_Current_and_Deferred_Split.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C04_Effective_Tax_Rate_with_Current_and_Deferred_Split.html">Effective Tax Rate with Current and Deferred Split</a></li><li><a href="../concepts/C05_Operating_Net_Working_Capital_What_to_Exclude.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C05_Operating_Net_Working_Capital_What_to_Exclude.html">Operating Net Working Capital: What to Exclude</a></li><li><a href="../concepts/C06_Explicit_Rounding_Line_Instead_of_a_Balancing_Plug.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C06_Explicit_Rounding_Line_Instead_of_a_Balancing_Plug.html">Explicit Rounding Line Instead of a Balancing Plug</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Deriving Historical Ratios as Forecast Anchors</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Historical ratio derivation: growth, margins, DSO/DIO/DPO, capex/sales, D&amp;A/opening gross block, effective tax rate</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Forecast drivers are claims about the future; historical ratios are the evidence. Every assumption on the Inputs tab — growth, gross margin, working-capital days, capex intensity, depreciation rate, tax rate — should sit next to its historical range so that a reviewer can see whether the forecast is continuity, improvement or deterioration, and why. Ratios derived from mapped, normalised, checked historicals (s02–s06) also feed Phase 2-style peer benchmarking and forensic review. Getting definitions right matters: DIO on revenue rather than COGS, or depreciation on closing rather than opening gross block, produces drivers that do not reproduce history when plugged back into the forecast logic.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="principle-compute-ratios-with-the-same-formula-the-forecast-will-invert">Principle: compute ratios with the same formula the forecast will invert</h3>
+<p>If forecast receivables will be <code>Revenue × DSO / 365</code>, historical DSO must be <code>Receivables / Revenue × 365</code> with the same revenue definition (revenue from operations net of GST, as reported) and the same balance (closing or average). Back-testing — applying the historical ratio to historical drivers — should reproduce the historical balance.</p>
+<h3 id="ratio-definitions">Ratio definitions</h3>
+<table>
+<thead>
+<tr>
+<th>Ratio</th>
+<th>Formula</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue growth</td>
+<td>\( g_t = \frac{R_t}{R_{t-1}} - 1 \)</td>
+<td>Use continuing, organic, normalised revenue (s05); also CAGR</td>
+</tr>
+<tr>
+<td>CAGR</td>
+<td>\( \left(\frac{R_T}{R_0}\right)^{1/n} - 1 \)</td>
+<td>\( n \) = number of years</td>
+</tr>
+<tr>
+<td>Gross margin</td>
+<td>\( \frac{R - \text{COGS}}{R} \)</td>
+<td>COGS = materials + purchases + Δ inventories</td>
+</tr>
+<tr>
+<td>EBITDA margin</td>
+<td>\( \frac{\text{Adj. EBITDA}}{R} \)</td>
+<td>State Ind AS 116 basis (s04)</td>
+</tr>
+<tr>
+<td>Line-item % of revenue</td>
+<td>Employee, A&amp;P, freight, other opex</td>
+<td>Inputs for variable/semi-variable costs (topic t5)</td>
+</tr>
+<tr>
+<td>DSO</td>
+<td>\( \frac{\text{Trade receivables}}{R} \times 365 \)</td>
+<td>Closing balance; average if seasonality or growth is large</td>
+</tr>
+<tr>
+<td>DIO</td>
+<td>\( \frac{\text{Inventories}}{\text{COGS}} \times 365 \)</td>
+<td>On COGS, not revenue; retail may use inventory/revenue for simplicity — be consistent</td>
+</tr>
+<tr>
+<td>DPO</td>
+<td>\( \frac{\text{Trade payables}}{\text{COGS}} \times 365 \) or on purchases</td>
+<td>Purchases = COGS + closing inventory − opening inventory</td>
+</tr>
+<tr>
+<td>Cash conversion cycle</td>
+<td>DSO + DIO − DPO</td>
+<td></td>
+</tr>
+<tr>
+<td>Capex / sales</td>
+<td>\( \frac{\text{Purchase of PPE and intangibles (CFS)}}{R} \)</td>
+<td>Use CFS capex (cash), net of disposals separately</td>
+</tr>
+<tr>
+<td>D&amp;A / opening gross block</td>
+<td>\( \frac{\text{D\&amp;A}_t}{\text{Gross block}_{t-1}} \)</td>
+<td>Owned assets; ROU depreciation separately on opening ROU</td>
+</tr>
+<tr>
+<td>Effective tax rate</td>
+<td>\( \frac{\text{Total tax expense}}{\text{PBT}} \)</td>
+<td>Split current/deferred; exclude equity-method share from PBT (c04)</td>
+</tr>
+<tr>
+<td>Other: ROCE, asset turnover, NWC % revenue</td>
+<td></td>
+<td>For reasonableness checks</td>
+</tr>
+</tbody>
+</table>
+<h3 id="why-da-on-opening-gross-block">Why D&amp;A on opening gross block</h3>
+<p>Assets added during the year depreciate only partly; using opening gross block approximates the asset base available for the whole year, and in the forecast, \( \text{D\&amp;A}_t = r \times \text{Opening gross block}_t + \frac{r}{2} \times \text{Additions}_t \) is a common refinement (Week 14). Using closing gross block understates the rate in high-capex years. Separate <strong>owned PPE</strong>, <strong>intangibles</strong> and <strong>ROU assets</strong> — their lives and patterns differ (ROU depreciation follows lease terms).</p>
+<h3 id="days-conventions">Days conventions</h3>
+<ul>
+<li>365 days (most common), 360 (some banks) — name it (<code>Days_in_Year</code>).</li>
+<li>Closing vs average balance: average smooths growth effects but needs an opening balance (lose one year of history). For a fast-growing retailer like Trent (revenue growth &gt; 40% in some years), closing-balance DIO looks low relative to average — pick one and forecast consistently.</li>
+<li>Retail cash sales: DSO near zero; inventory days and payables dominate NWC.</li>
+</ul>
+<h3 id="excel-layout">Excel layout</h3>
+<p>On the Historicals tab (or a "Ratios" block), below the mapped statements:</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th>Ratio</th>
+<th>Units</th>
+<th>FY21A</th>
+<th>…</th>
+<th>FY25A</th>
+<th>3-yr avg</th>
+<th>5-yr avg</th>
+<th>Min</th>
+<th>Max</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Averages over actual years only, using flags: <code>=SUMPRODUCT(H50:Q50,H$8:Q$8)/SUM(H$8:Q$8)</code> where row 8 is a "last-3-actual-years" flag. The Inputs tab shows the historical range beside each forecast driver.</p>
+<h3 id="illustration-crore-fy25">Illustration (₹ crore, FY25)</h3>
+<p>Revenue 10,000; COGS 5,600; receivables 820; inventories 1,380; payables 1,050; opening inventory 1,250; CFS capex 520; D&amp;A (owned) 290; opening gross block (owned) 4,150; PBT (excl. associates) 1,950; tax expense 498 (current 470, deferred 28).</p>
+<ul>
+<li>Gross margin = 4,400 / 10,000 = 44.0%.</li>
+<li>DSO = 820 / 10,000 × 365 = 29.9 days.</li>
+<li>DIO = 1,380 / 5,600 × 365 = 89.9 days.</li>
+<li>Purchases = 5,600 + 1,380 − 1,250 = 5,730; DPO on purchases = 1,050 / 5,730 × 365 = 66.9 days (on COGS: 68.4 days).</li>
+<li>Capex / sales = 5.2%.</li>
+<li>D&amp;A / opening gross block = 290 / 4,150 = 7.0% (≈ 14-year average life).</li>
+<li>ETR = 498 / 1,950 = 25.5% (current 24.1%, deferred 1.4%), close to the Sec 115BAA rate of 25.168%.</li>
+</ul>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>COVID year FY2020-21</strong> distorts growth, margins and days — consider excluding from averages, or show both.</li>
+<li><strong>Acquisition years</strong>: closing balances include the acquiree but revenue only part-year — inflates days; use pro forma or average.</li>
+<li><strong>Factoring/bill discounting</strong>: derecognised receivables lower DSO; check notes.</li>
+<li><strong>Supplier finance</strong> (reverse factoring) arrangements can inflate DPO; the IASB's 2023 amendments to IAS 7 and IFRS 7 added specific disclosures — check whether and from when MCA has notified the equivalent Ind AS 7/Ind AS 107 amendments before relying on them.</li>
+<li><strong>Capex in CFS vs PPE additions</strong>: differ by capital creditors and CWIP movements — be clear which you forecast.</li>
+<li><strong>ETR anomalies</strong>: losses, MAT, deferred tax remeasurement on regime change, tax on dividends — explain rather than average.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Define each ratio exactly as the forecast will invert it, and back-test.</li>
+<li>DIO and DPO on COGS (or purchases); DSO on revenue; state closing vs average.</li>
+<li>D&amp;A rate on opening gross block, split owned PPE, intangibles and ROU.</li>
+<li>ETR = total tax ÷ PBT (excluding equity-method share), split current/deferred.</li>
+<li>Present ranges (3-year, 5-year, min, max) beside each forecast driver and flag abnormal years.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-compute-the-ratios-l1">Q1. Compute the ratios [L1]</h3>
+<p>FY24 and FY25 (₹ crore): revenue 8,600 / 9,700; COGS 4,900 / 5,450; receivables 690 / 760; inventories 1,120 / 1,240; payables 820 / 905; CFS capex 410 / 480; owned D&amp;A 245 / 272; gross block (closing) FY23 3,500, FY24 3,880, FY25 4,330; PBT 1,610 / 1,830; tax 410 / 468. Compute FY25 growth, gross margin, DSO, DIO, DPO (on COGS, closing balances), capex/sales, D&amp;A/opening gross block and ETR.</p>
+<h3 id="q2-average-vs-closing-days-l2">Q2. Average vs closing days [L2]</h3>
+<p>For a retailer growing revenue 45% in FY25 (FY24 revenue ₹12,400 crore), inventory rose from ₹1,700 crore to ₹2,350 crore and COGS was ₹10,100 crore in FY25. Compute DIO on closing and on average inventory, explain the difference, and recommend which to use for a forecast where growth slows to 25%.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider which convention reproduces the forecast closing inventory you actually need for the balance sheet.</p>
+</blockquote>
+<h3 id="q3-da-driver-choice-l2">Q3. D&amp;A driver choice [L2]</h3>
+<p>Explain why D&amp;A divided by closing gross block understates the depreciation rate in a heavy capex year, illustrating with: opening gross block ₹2,000 crore, additions ₹1,000 crore on 1 October, straight-line life 10 years, no disposals.</p>
+<h3 id="q4-driver-justification-table-l3">Q4. Driver justification table [L3]</h3>
+<p>For a Pidilite-type model, build the Inputs-tab layout showing for each driver (UVG, price/mix, gross margin, A&amp;P %, employee cost growth, DSO, DIO, DPO, capex/sales, D&amp;A rate, ETR) the FY21–FY25 historical values, 3- and 5-year averages, the FY26E–FY30E assumption, and a rationale column; write the rationale for three drivers where you would deliberately depart from history.</p></section>
+<nav class="pager"><a class="prev" href="S06_Annual_Balance_Checks_and_CFS_to_BS_Cash.html">← Annual Balance Checks and CFS-to-BS Cash Reconciliation</a><a class="next" href="../concepts/C01_Historical_Balance_Check_Assets_Equal_Equity_Plus.html">Historical Balance Check: Assets Equal Equity Plus… →</a></nav>
+</main></div></body></html>

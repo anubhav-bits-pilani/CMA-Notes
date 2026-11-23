@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Referential Integrity Test with EXCEPT · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C05_Referential_Integrity_Test_with_EXCEPT.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T1 · Star schema for financial data</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Star schema for financial data</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Facts_vs_Dimensions_in_a_Financial_Star_Schema.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S01_Facts_vs_Dimensions_in_a_Financial_Star_Schema.html">Facts vs Dimensions in a Financial Star Schema</a></li><li><a href="../subtopics/S02_Defining_Fact_Grain_and_Handling_Mixed_Grain.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S02_Defining_Fact_Grain_and_Handling_Mixed_Grain.html">Defining Fact Grain and Handling Mixed Grain (Budget vs Actual)</a></li><li><a href="../subtopics/S03_Relationship_Properties_Cardinality_Direction.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S03_Relationship_Properties_Cardinality_Direction.html">Relationship Properties: Cardinality, Direction, Active Status</a></li><li><a href="../subtopics/S04_Role_Playing_Dates_via_Inactive_Relationships.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S04_Role_Playing_Dates_via_Inactive_Relationships.html">Role-Playing Dates via Inactive Relationships</a></li><li><a href="../subtopics/S05_CoA_Hierarchy_with_Sort_Order_and_Sign_Factor.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S05_CoA_Hierarchy_with_Sort_Order_and_Sign_Factor.html">CoA Hierarchy with Sort-Order and Sign-Factor Columns</a></li><li><a href="../subtopics/S06_Surrogate_Keys_and_an_Unmapped_Member_for_Missing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S06_Surrogate_Keys_and_an_Unmapped_Member_for_Missing.html">Surrogate Keys and an Unmapped Member for Missing Accounts</a></li><li><a href="../subtopics/S07_Avoiding_Snowflakes_and_Flat_Tables_Diagram_View.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S07_Avoiding_Snowflakes_and_Flat_Tables_Diagram_View.html">Avoiding Snowflakes and Flat Tables; Diagram View vs Model View</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_USERELATIONSHIP_to_Activate_an_Inactive_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C01_USERELATIONSHIP_to_Activate_an_Inactive_Date.html">USERELATIONSHIP to Activate an Inactive Date Relationship</a></li><li><a href="C02_Store_Budget_on_the_First_Day_of_the_Month.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C02_Store_Budget_on_the_First_Day_of_the_Month.html">Store Budget on the First Day of the Month</a></li><li><a href="C03_Virtual_Relationship_with_TREATAS_for_Month_Grain.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C03_Virtual_Relationship_with_TREATAS_for_Month_Grain.html">Virtual Relationship with TREATAS for Month-Grain Budget</a></li><li><a href="C04_CROSSFILTER_for_Per_Measure_Bidirectional.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C04_CROSSFILTER_for_Per_Measure_Bidirectional.html">CROSSFILTER for Per-Measure Bidirectional Filtering</a></li><li><a href="C05_Referential_Integrity_Test_with_EXCEPT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C05_Referential_Integrity_Test_with_EXCEPT.html">Referential Integrity Test with EXCEPT</a></li><li><a href="C06_Hide_Fact_Foreign_Keys_Expose_Attributes_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C06_Hide_Fact_Foreign_Keys_Expose_Attributes_and.html">Hide Fact Foreign Keys; Expose Attributes and Measures</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Referential Integrity Test with EXCEPT</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Referential integrity test: <code>COUNTROWS(EXCEPT(VALUES(GL[AccountKey]), VALUES(CoA[AccountKey])))</code> should be 0</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-DAX">RI Orphan Accounts =
+COUNTROWS (
+    EXCEPT (
+        VALUES ( GL[AccountKey] ),
+        VALUES ( CoA[AccountKey] )
+    )
+)
+</code></pre>
+<ul>
+<li><code>VALUES(GL[AccountKey])</code> — distinct account keys present in the fact.</li>
+<li><code>VALUES(CoA[AccountKey])</code> — distinct keys in the dimension.</li>
+<li><code>EXCEPT(A, B)</code> — rows of A not in B (set difference).</li>
+<li>Result: the number of fact keys with no matching dimension row. <strong>Expected value: 0</strong> (DAX returns BLANK when the
+  set is empty, which a card shows as "(Blank)"; wrap with <code>+ 0</code> or <code>COALESCE(..., 0)</code> to show 0).</li>
+</ul>
+<h2 id="explanation">Explanation</h2>
+<p>Referential integrity (RI) means every foreign key in a fact matches a primary key in its dimension. In SQL
+databases this is enforced by FOREIGN KEY constraints; in Power BI it is <strong>not enforced</strong>. Unmatched fact rows are
+assigned to the virtual blank member of the dimension, and the amounts surface as "(Blank)" — or vanish from FS
+lines while staying in the grand total.</p>
+<p>Points to note:</p>
+<ul>
+<li><strong>VALUES vs DISTINCT on the dimension.</strong> <code>VALUES(CoA[AccountKey])</code> includes the virtual blank row when orphans
+  exist. EXCEPT still returns the orphan keys because the orphans' actual key values (e.g. 905) are not equal to
+  BLANK. <code>DISTINCT</code> excludes the blank row; either works for this test.</li>
+<li><strong>Filter context matters.</strong> As a measure, the test respects slicers. Put it on a card with no filters, or wrap it
+  in <code>CALCULATE(..., REMOVEFILTERS())</code> so it always tests the whole model.</li>
+<li><strong>Listing orphans.</strong> In DAX query view: <code>EVALUATE EXCEPT(VALUES(GL[AccountKey]), VALUES(CoA[AccountKey]))</code>.</li>
+<li><strong>Amount at risk.</strong> Pair the count with value:
+  <code>CALCULATE([Actual], ISBLANK(CoA[AccountKey]))</code> is one approach; a cleaner one sums GL rows whose key is in the
+  EXCEPT result using <code>TREATAS</code>.</li>
+<li><strong>Repeat per relationship.</strong> Test CostCentre, Branch, Date (any posting date outside the calendar range) and the
+  Budget fact as well.</li>
+<li>If you implemented the Unmapped member (s06), this test should always return 0 by construction; it then guards
+  against regressions in the Power Query keying logic.</li>
+<li>Power BI's own relationship diagnostics do not show orphan counts; DAX Studio's VertiPaq Analyzer does report
+  "RI violations" per relationship, a useful cross-check.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>March 2026 refresh. GL has 640 distinct AccountKeys; CoA has 636 rows. The test returns 6 — not 4 — because two CoA
+keys have no postings (irrelevant here) and six GL keys are missing from CoA. Listing them shows 905–910, all
+ledgers created on 20 March for a new subsidiary branch. GL postings on those keys total net ₹38.4 lakh debit,
+which appeared in the P&amp;L matrix as a "(Blank)" FS line row. After adding the six accounts to the CoA mapping and
+refreshing, the test returns blank (0).</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Subtopic s06 (surrogate keys and Unmapped member) and pitfall on mismatched key types and trailing spaces.</li>
+<li>SQL background: <code>SELECT g.AccountKey FROM GL g LEFT JOIN CoA c ON ... WHERE c.AccountKey IS NULL</code> is the same
+  anti-join.</li>
+<li>Week 10 Power Query: an anti-join merge (Left Anti) produces the same list before load.</li>
+<li>Month-end close controls: include RI tests on the data-quality page alongside TB tie-out checks.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-extend-the-test-l1">Q1. Extend the test [L1]</h3>
+<p>Write RI test measures for CostCentre and Date relationships to GL, and one for the Budget fact's AccountKey, each
+independent of report filters.</p>
+<h3 id="q2-quantify-orphans-l2">Q2. Quantify orphans [L2]</h3>
+<p>Write a measure that returns the net GL amount on account keys that are missing from CoA, without relying on the
+"(Blank)" member, and explain how it behaves when a user filters FY2025-26.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Use the EXCEPT result as a filter on the GL key column.</p>
+</blockquote>
+<h3 id="q3-zero-orphans-but-a-blank-row-l2">Q3. Zero orphans but a blank row [L2]</h3>
+<p>The RI test returns 0, yet the P&amp;L matrix shows a "(Blank)" row with ₹12 lakh. Keys are integers. Explain how this
+can happen (consider what VALUES returns on each side when some GL rows have a null AccountKey) and write an
+additional test that would catch it.</p></section>
+<nav class="pager"><a class="prev" href="C04_CROSSFILTER_for_Per_Measure_Bidirectional.html">← CROSSFILTER for Per-Measure Bidirectional Filtering</a><a class="next" href="C06_Hide_Fact_Foreign_Keys_Expose_Attributes_and.html">Hide Fact Foreign Keys; Expose Attributes and Measures →</a></nav>
+</main></div></body></html>

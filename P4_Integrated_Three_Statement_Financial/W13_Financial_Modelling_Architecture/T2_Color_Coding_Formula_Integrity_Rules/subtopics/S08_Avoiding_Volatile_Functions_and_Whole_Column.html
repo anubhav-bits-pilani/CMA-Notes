@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avoiding Volatile Functions and Whole-Column References · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S08_Avoiding_Volatile_Functions_and_Whole_Column.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T2 · Color Coding &amp; Formula Integrity Rules</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Color Coding &amp; Formula Integrity Rules</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Font_Colour_Convention_Inputs_Formulas_and_Links.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S01_Font_Colour_Convention_Inputs_Formulas_and_Links.html">Font Colour Convention: Inputs, Formulas and Links</a></li><li><a href="S02_Input_Fill_Styles_and_Excel_Cell_Styles.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S02_Input_Fill_Styles_and_Excel_Cell_Styles.html">Input Fill Styles and Excel Cell Styles</a></li><li><a href="S03_One_Consistent_Formula_per_Forecast_Row.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S03_One_Consistent_Formula_per_Forecast_Row.html">One Consistent Formula per Forecast Row</a></li><li><a href="S04_Absolute_and_Mixed_References_for_Constants_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S04_Absolute_and_Mixed_References_for_Constants_and.html">Absolute and Mixed References for Constants and Flags</a></li><li><a href="S05_Eliminating_Constants_Inside_Formulas.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S05_Eliminating_Constants_Inside_Formulas.html">Eliminating Constants Inside Formulas</a></li><li><a href="S06_Excel_Formula_Auditing_Tools_and_Shortcuts.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S06_Excel_Formula_Auditing_Tools_and_Shortcuts.html">Excel Formula Auditing Tools and Shortcuts</a></li><li><a href="S07_Go_To_Special_and_Inquire_for_Inconsistency_Scans.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S07_Go_To_Special_and_Inquire_for_Inconsistency_Scans.html">Go To Special and Inquire for Inconsistency Scans</a></li><li><a href="S08_Avoiding_Volatile_Functions_and_Whole_Column.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S08_Avoiding_Volatile_Functions_and_Whole_Column.html">Avoiding Volatile Functions and Whole-Column References</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_One_Row_One_Formula_The_R1C1_Consistency_Test.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C01_One_Row_One_Formula_The_R1C1_Consistency_Test.html">One Row, One Formula: The R1C1 Consistency Test</a></li><li><a href="../concepts/C02_Go_To_Special_Constants_Test_on_Calculation_Sheets.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C02_Go_To_Special_Constants_Test_on_Calculation_Sheets.html">Go To Special Constants Test on Calculation Sheets</a></li><li><a href="../concepts/C03_Targeted_Error_Guards_Instead_of_Blanket_IFERROR.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C03_Targeted_Error_Guards_Instead_of_Blanket_IFERROR.html">Targeted Error Guards Instead of Blanket IFERROR</a></li><li><a href="../concepts/C04_Link_Once_Then_Reference_Locally.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C04_Link_Once_Then_Reference_Locally.html">Link Once, Then Reference Locally</a></li><li><a href="../concepts/C05_Replacing_Nested_IFs_and_Splitting_Long_Formulas.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C05_Replacing_Nested_IFs_and_Splitting_Long_Formulas.html">Replacing Nested IFs and Splitting Long Formulas</a></li><li><a href="../concepts/C06_Timeline_Flags_for_Switching_Logic_Without.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C06_Timeline_Flags_for_Switching_Logic_Without.html">Timeline Flags for Switching Logic Without Breaking Rows</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Avoiding Volatile Functions and Whole-Column References</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Avoiding volatile functions (OFFSET, INDIRECT, TODAY) and whole-column references</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Volatile functions recalculate every time anything in the workbook changes, not only when their inputs change. In a 3-statement model with iterative circularity and scenario data tables, a handful of OFFSET or INDIRECT formulas can turn a one-second recalculation into a thirty-second one, which in turn tempts users to switch to manual calculation — and manual calculation is how stale numbers reach board packs. Volatile functions also hide dependencies from Trace Precedents and model-audit tools, and TODAY/NOW make results change by date, so the same file gives different answers on different days. Whole-column references (<code>A:A</code>) cause similar bloat. Both are standard review findings.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="what-volatility-means">What volatility means</h3>
+<p>Excel's calculation engine tracks a dependency tree; normally only cells downstream of a change recalculate. A <strong>volatile</strong> function is marked to recalculate on every calculation event, and so is everything that depends on it. Volatile functions include:</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Why volatile</th>
+<th>Typical (mis)use in models</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OFFSET</code></td>
+<td>Returns a reference computed at runtime</td>
+<td>Scenario selection, dynamic ranges, "last n years"</td>
+</tr>
+<tr>
+<td><code>INDIRECT</code></td>
+<td>Builds a reference from text</td>
+<td>Sheet-name switching, scenario selection by text</td>
+</tr>
+<tr>
+<td><code>TODAY</code>, <code>NOW</code></td>
+<td>Depend on clock</td>
+<td>Valuation date, "days since", version stamps</td>
+</tr>
+<tr>
+<td><code>RAND</code>, <code>RANDBETWEEN</code>, <code>RANDARRAY</code></td>
+<td>Random</td>
+<td>Monte Carlo (legitimate in a separate simulation model)</td>
+</tr>
+<tr>
+<td><code>CELL</code> (some arguments), <code>INFO</code></td>
+<td>Environment</td>
+<td>Filename display</td>
+</tr>
+</tbody>
+</table>
+<p><code>INDEX</code> (used in reference form, e.g., <code>A1:INDEX(A:A,n)</code>) is <strong>not</strong> volatile in modern Excel and is the standard replacement for OFFSET. <code>SUMIF</code>/<code>SUMIFS</code> are not volatile.</p>
+<h3 id="why-they-hurt-models">Why they hurt models</h3>
+<ol>
+<li><strong>Performance</strong>: every dependent recalculates on every edit; with iterative calculation and data tables (topic t6), calculation repeats many times.</li>
+<li><strong>Opacity</strong>: <code>=INDIRECT("'"&amp;B5&amp;"'!M40")</code> has no static precedent; Trace Precedents shows nothing, Inquire can't map it, and renaming a sheet breaks it silently (text doesn't update).</li>
+<li><strong>Non-reproducibility</strong>: <code>=TODAY()</code> as valuation date means the DCF changes daily; outputs can't be reproduced for audit.</li>
+<li><strong>Fragility</strong>: OFFSET with hardcoded offsets (<code>OFFSET(A1,5,3)</code>) breaks when rows or columns are inserted.</li>
+</ol>
+<h3 id="replacements">Replacements</h3>
+<table>
+<thead>
+<tr>
+<th>Need</th>
+<th>Volatile approach</th>
+<th>Non-volatile replacement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pick scenario row</td>
+<td><code>=OFFSET(M20,Scenario-1,0)</code></td>
+<td><code>=CHOOSE(Scenario,M20,M21,M22)</code> or <code>=INDEX(M20:M22,Scenario)</code></td>
+</tr>
+<tr>
+<td>Pick by sheet name</td>
+<td><code>=INDIRECT(Sheet&amp;"!M40")</code></td>
+<td>Bring all candidates into one block; <code>=INDEX(...)</code> or <code>CHOOSE</code></td>
+</tr>
+<tr>
+<td>Dynamic range end</td>
+<td><code>=SUM(OFFSET(H40,0,0,1,n))</code></td>
+<td><code>=SUM(H40:INDEX(H40:Q40,n))</code> or <code>=SUMIFS(H40:Q40,H$7:Q$7,"&lt;="&amp;n)</code></td>
+</tr>
+<tr>
+<td>Last actual value</td>
+<td><code>=OFFSET(G40,0,COUNT(H40:Q40))</code></td>
+<td><code>=INDEX(H40:Q40,MATCH(Last_Actual_End,H$2:Q$2,0))</code> or <code>=SUMPRODUCT(H40:Q40,H$8:Q$8)</code> with a last-actual flag</td>
+</tr>
+<tr>
+<td>Valuation date</td>
+<td><code>=TODAY()</code></td>
+<td>Blue input <code>Valuation_Date</code> = 30-Sep-2025</td>
+</tr>
+<tr>
+<td>Version stamp</td>
+<td><code>=NOW()</code></td>
+<td>Typed date in change log</td>
+</tr>
+</tbody>
+</table>
+<h3 id="whole-column-and-whole-row-references">Whole-column and whole-row references</h3>
+<p><code>=SUMIFS(Data!C:C,Data!A:A,"FY25",Data!B:B,"Revenue")</code> references 1,048,576 rows per column. Excel optimises many functions to the used range, but not all (SUMPRODUCT and array formulas over whole columns are particularly slow), and whole-column references:</p>
+<ul>
+<li>Bloat calculation chains, especially with many formulas.</li>
+<li>Risk picking up stray data below the intended table (a note typed in row 5,000 enters the sum).</li>
+<li>Make audit harder (what is the intended range?).</li>
+</ul>
+<p>Prefer bounded ranges (<code>Data!$C$2:$C$5000</code>), Excel Tables with structured references (<code>tbl_XBRL[Value]</code>) which auto-expand, or named dynamic ranges built with INDEX.</p>
+<h3 id="calculation-settings">Calculation settings</h3>
+<p>Keep calculation on <strong>Automatic</strong> (or "Automatic except for data tables" if large data tables slow the model — and display a warning on the Cover to press F9). Never deliver a model in Manual mode without a prominent note: a user opening it may see stale outputs. With circularity, File → Options → Formulas → Enable iterative calculation (e.g., 100 iterations, max change 0.001) and show the status on the Cover (topic t1, s06).</p>
+<h3 id="illustration">Illustration</h3>
+<p>A scenario block in a Pidilite model uses <code>=OFFSET(Inputs!$E$20,Scenario*3-3,M$7)</code> across 400 driver cells, and a data table runs three scenarios across 12 outputs. Every edit triggers recalculation of all 400 OFFSETs and their dependents, and each data-table pass repeats it; recalc time is 14 seconds. Replacing with <code>=INDEX(Inputs!M20:M22,Scenario)</code> (non-volatile) reduces recalc to under 1 second, and Trace Precedents now shows the three scenario rows as precedents.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Monte Carlo</strong> legitimately uses RAND; isolate it in a separate simulation workbook or sheet with manual calculation and documented seeds/run counts.</li>
+<li><strong>Filename display</strong> via <code>CELL("filename")</code> on the Cover is acceptable if not used in calculations.</li>
+<li><strong>INDIRECT for consolidation templates</strong> across many identical subsidiary tabs is tempting; prefer Power Query to append subsidiary data, or a 3D SUM (<code>=SUM(Sub1:Sub8!M40)</code>) with documented start/end tabs.</li>
+<li><strong>Conditional formatting</strong> formulas are also recalculated frequently; keep them simple.</li>
+<li><strong>Dynamic arrays</strong> (FILTER, SORT, UNIQUE) are not volatile but spill ranges can be large; bound their inputs.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>OFFSET, INDIRECT, TODAY/NOW, RAND are volatile: they recalculate on every change and hide dependencies.</li>
+<li>Replace OFFSET/INDIRECT with INDEX, CHOOSE, XLOOKUP or SUMIFS; replace TODAY with a dated input.</li>
+<li>Avoid whole-column references; use bounded ranges or Excel Tables.</li>
+<li>Keep calculation automatic; if not, warn prominently on the Cover.</li>
+<li>Volatility is both a performance and an auditability problem.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-identify-volatility-l1">Q1. Identify volatility [L1]</h3>
+<p>Which of the following are volatile, and what would you replace each with: (a) <code>=OFFSET(M20,Scenario-1,0)</code>; (b) <code>=INDEX(M20:M22,Scenario)</code>; (c) <code>=YEARFRAC(TODAY(),M2)</code>; (d) <code>=INDIRECT("Inputs!M"&amp;ROW())</code>; (e) <code>=SUMIFS(C:C,A:A,"FY25")</code>?</p>
+<h3 id="q2-rewrite-a-dynamic-sum-l2">Q2. Rewrite a dynamic sum [L2]</h3>
+<p>Rewrite <code>=AVERAGE(OFFSET(H45,0,COUNT(H45:Q45)-3,1,3))</code> (average of the last three actual-year DSO values) without volatile functions, using the timeline flags available in rows 4–8.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> A flag that is 1 only for the last three actual years turns the average into SUMPRODUCT divided by a count.</p>
+</blockquote>
+<h3 id="q3-reproducibility-issue-l2">Q3. Reproducibility issue [L2]</h3>
+<p>An Ind AS 113 fair-value model for an unlisted investment uses <code>=TODAY()</code> to compute discounting periods. The auditor re-performs the calculation three weeks after the reporting date and gets a different value. Explain the issue, the correct design, and what documentation the auditor will expect.</p>
+<h3 id="q4-performance-remediation-l3">Q4. Performance remediation [L3]</h3>
+<p>A 20-tab group budget model takes 45 seconds to recalculate, with iterative calculation on and three data tables. Inquire shows 1,800 OFFSET formulas, 600 INDIRECTs and 250 SUMPRODUCTs over whole columns. Design a remediation plan, prioritising by impact and risk, with tests proving results are unchanged.</p></section>
+<nav class="pager"><a class="prev" href="S07_Go_To_Special_and_Inquire_for_Inconsistency_Scans.html">← Go To Special and Inquire for Inconsistency Scans</a><a class="next" href="../concepts/C01_One_Row_One_Formula_The_R1C1_Consistency_Test.html">One Row, One Formula: The R1C1 Consistency Test →</a></nav>
+</main></div></body></html>

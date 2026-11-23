@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Handling Net-Cash Peers and Outliers in the Matrix · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T2_Relative_Margin_and_Capital_Efficiency/subtopics/S04_Handling_Net_Cash_Peers_and_Outliers_in_the_Matrix.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 2</a> <span>›</span> <a href="../../index.html">Week 8</a> <span>›</span> <a href="../index.html">T2 · Relative Margin and Capital Efficiency…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Relative Margin and Capital Efficiency Matrix</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Metric_Set_for_the_Capital_Efficiency_Matrix.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T2_Relative_Margin_and_Capital_Efficiency/subtopics/S01_Metric_Set_for_the_Capital_Efficiency_Matrix.html">Metric Set for the Capital Efficiency Matrix</a></li><li><a href="S02_Normalizing_Metrics_Rank_Percentile_Z_Score_and.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T2_Relative_Margin_and_Capital_Efficiency/subtopics/S02_Normalizing_Metrics_Rank_Percentile_Z_Score_and.html">Normalizing Metrics: Rank, Percentile, Z-Score and Direction</a></li><li><a href="S03_Composite_Weighted_Score_and_Sensitivity_to.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T2_Relative_Margin_and_Capital_Efficiency/subtopics/S03_Composite_Weighted_Score_and_Sensitivity_to.html">Composite Weighted Score and Sensitivity to Weights</a></li><li><a href="S04_Handling_Net_Cash_Peers_and_Outliers_in_the_Matrix.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T2_Relative_Margin_and_Capital_Efficiency/subtopics/S04_Handling_Net_Cash_Peers_and_Outliers_in_the_Matrix.html">Handling Net-Cash Peers and Outliers in the Matrix</a></li><li><a href="S05_Quadrant_Views_and_Heat_Map_Formatting_for_Peer.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T2_Relative_Margin_and_Capital_Efficiency/subtopics/S05_Quadrant_Views_and_Heat_Map_Formatting_for_Peer.html">Quadrant Views and Heat-Map Formatting for Peer Matrices</a></li><li><a href="S06_Testing_Ranking_Robustness_to_Pre_and_Post_Ind_AS.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T2_Relative_Margin_and_Capital_Efficiency/subtopics/S06_Testing_Ranking_Robustness_to_Pre_and_Post_Ind_AS.html">Testing Ranking Robustness to Pre- and Post-Ind AS 116 Definitions</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Three_Year_Revenue_CAGR.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T2_Relative_Margin_and_Capital_Efficiency/concepts/C01_Three_Year_Revenue_CAGR.html">Three-Year Revenue CAGR</a></li><li><a href="../concepts/C02_Margin_Stability_as_the_Coefficient_of_Variation.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T2_Relative_Margin_and_Capital_Efficiency/concepts/C02_Margin_Stability_as_the_Coefficient_of_Variation.html">Margin Stability as the Coefficient of Variation</a></li><li><a href="../concepts/C03_Direction_Adjusted_Z_Score_for_Peer_Metrics.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T2_Relative_Margin_and_Capital_Efficiency/concepts/C03_Direction_Adjusted_Z_Score_for_Peer_Metrics.html">Direction-Adjusted Z-Score for Peer Metrics</a></li><li><a href="../concepts/C04_Composite_Score_as_a_Weighted_Sum_of_Normalized.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T2_Relative_Margin_and_Capital_Efficiency/concepts/C04_Composite_Score_as_a_Weighted_Sum_of_Normalized.html">Composite Score as a Weighted Sum of Normalized Scores</a></li><li><a href="../concepts/C05_Value_Creation_Spread_ROIC_Minus_WACC.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T2_Relative_Margin_and_Capital_Efficiency/concepts/C05_Value_Creation_Spread_ROIC_Minus_WACC.html">Value Creation Spread: ROIC Minus WACC</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Handling Net-Cash Peers and Outliers in the Matrix</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Handling net-cash peers and outliers (cap/floor, separate net-cash flag)</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Two kinds of awkward data break naive matrices. First, <strong>net-cash peers</strong>. Infosys, TCS and Wipro all hold more cash and liquid investments than debt, including lease liabilities. Their net debt/EBITDA is negative, and the ratio's behaviour near zero and below zero is not monotonic in "risk". Second, <strong>outliers</strong>: an asset-light peer with 70% ROIC, a jeweller with 300 inventory days, or a year with a one-off margin spike. Under z-score normalisation (s02) one extreme value can dominate a composite (s03), and under ranking it can hide meaningful gaps. Both problems appear in almost every Indian peer set. A reviewer will test how you dealt with them before trusting the ranking.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="why-net-debtebitda-misbehaves">Why net debt/EBITDA misbehaves</h3>
+<p>\[
+\text{ND/EBITDA} = \frac{\text{Borrowings} + \text{Lease liabilities} - \text{Cash} - \text{Liquid investments}}{\text{EBITDA}}
+\]</p>
+<ul>
+<li><strong>Negative numerator (net cash).</strong> A value of −1.5x means net cash equal to 1.5 years of EBITDA. More negative is "safer", but beyond a point extra cash says nothing about operating quality. It may even signal poor capital allocation (lazy balance sheet, low payout).</li>
+<li><strong>Small or negative denominator.</strong> As EBITDA approaches zero the ratio explodes. A peer with net debt ₹500 crore and EBITDA ₹10 crore shows 50x. With EBITDA of −₹10 crore it shows −50x, which a naive "lower is better" ranking would score as the <em>safest</em> company.</li>
+<li><strong>Sign ambiguity.</strong> Negative ND/EBITDA can mean net cash with positive EBITDA (good) or net debt with negative EBITDA (very bad). The ratio alone cannot tell them apart.</li>
+</ul>
+<h3 id="treatment-1-capfloor-the-ratio-before-normalising">Treatment 1: cap/floor the ratio before normalising</h3>
+<p>Define a bounded "leverage score input":</p>
+<p>\[
+L_i =
+\begin{cases}
+\text{Cap} &amp; \text{if EBITDA}_i \le 0 \text{ and ND}_i &gt; 0 \\
+\max(\text{Floor}, \min(\text{Cap}, \text{ND}_i / \text{EBITDA}_i)) &amp; \text{if EBITDA}_i &gt; 0
+\end{cases}
+\]</p>
+<p>with, for example, Floor = 0.0x (all net-cash peers treated as equally unlevered) and Cap = 5.0x (stressed). For the rare case of negative EBITDA with net cash, set the flag and assess manually.</p>
+<pre><code>=LET(nd, B12, e, B13, cap, 5, flr, 0,
+     IF(e&lt;=0, IF(nd&gt;0, cap, NA()),
+        MAX(flr, MIN(cap, nd/e))))
+</code></pre>
+<p>With Floor = 0, the three net-cash IT peers all score identically on leverage. That is correct, because leverage then contributes no ranking information, which matches the s03 advice to weight it near zero for IT.</p>
+<h3 id="treatment-2-a-separate-net-cash-flag">Treatment 2: a separate net-cash flag</h3>
+<p>Show a <strong>net-cash flag</strong> (Yes/No) and <strong>net cash as % of market cap or of total assets</strong> as context columns <em>outside</em> the composite. The reader sees that TCS holds, say, net cash of 5% of market cap without that number distorting the operating ranking. For jewellers, where some peers are levered and others nearly net-cash, use a flag column plus the capped ratio.</p>
+<h3 id="treatment-3-substitute-a-better-behaved-metric">Treatment 3: substitute a better-behaved metric</h3>
+<ul>
+<li><strong>Net debt/(Net debt + Equity)</strong> (net gearing) is bounded below by a negative number but stays monotonic and is not sensitive to EBITDA near zero.</li>
+<li><strong>EBITDA/interest</strong> (interest coverage) is higher-is-better. Cap it (for example at 30x) because net-cash firms have tiny interest costs (mostly lease interest).</li>
+<li><strong>Net cash/EBITDA</strong> (sign-flipped) for an all-net-cash set, if you genuinely want to reward liquidity. State why.</li>
+</ul>
+<h3 id="outliers-in-other-metrics">Outliers in other metrics</h3>
+<p><strong>Detect.</strong> Flag values beyond the peer median ± 2 × MAD (median absolute deviation), or beyond Q1 − 1.5 × IQR and Q3 + 1.5 × IQR. With 3–5 peers, statistical tests are weak, so combine them with judgement: is the value economically explained?</p>
+<p><strong>Classify.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Outlier type</th>
+<th>Example</th>
+<th>Treatment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data error</td>
+<td>Unit mismatch (₹ lakh vs ₹ crore)</td>
+<td>Fix the data (topic t1 s06)</td>
+</tr>
+<tr>
+<td>One-off event</td>
+<td>Inventory gain on customs-duty cut, divestment gain</td>
+<td>Normalise (Week 5) and keep</td>
+</tr>
+<tr>
+<td>Structural difference</td>
+<td>70% ROIC from an asset-light model; 300-day DIO from studded mix</td>
+<td>Keep, cap the score, caveat</td>
+</tr>
+<tr>
+<td>Definition difference</td>
+<td>One peer includes unbilled revenue in DSO</td>
+<td>Fix the definition (pitfall 3)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cap/floor (winsorise) techniques.</strong></p>
+<ul>
+<li><strong>Winsorise raw values</strong> at the peer 5th/95th percentile (large sets) or at fixed economically sensible bounds (ROIC capped at 60%, CCC floored at −30 days).</li>
+<li><strong>Cap normalised scores</strong>, for example z-scores capped at ±2.0 so no single metric contributes more than \(2 \times w_m\) to the composite.</li>
+</ul>
+<pre><code>=MAX(-2, MIN(2, z))
+</code></pre>
+<ul>
+<li><strong>Use rank or percentile</strong> for that metric only if the raw distribution is extremely skewed. Do not mix methods across metrics (s02). If you must switch, switch the whole matrix and show the alternative.</li>
+</ul>
+<h3 id="illustration-jewellers-with-a-near-zero-ebitda-peer">Illustration: jewellers with a near-zero EBITDA peer</h3>
+<table>
+<thead>
+<tr>
+<th>₹ crore</th>
+<th>Peer J1</th>
+<th>Peer J2</th>
+<th>Peer J3</th>
+<th>Peer J4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Net debt (incl. leases and GML)</td>
+<td>2,400</td>
+<td>3,800</td>
+<td>−150</td>
+<td>900</td>
+</tr>
+<tr>
+<td>EBITDA</td>
+<td>4,600</td>
+<td>1,900</td>
+<td>420</td>
+<td>30</td>
+</tr>
+<tr>
+<td>Raw ND/EBITDA</td>
+<td>0.52x</td>
+<td>2.00x</td>
+<td>−0.36x</td>
+<td>30.0x</td>
+</tr>
+<tr>
+<td>Capped/floored input \(L_i\) (Floor 0, Cap 5)</td>
+<td>0.52x</td>
+<td>2.00x</td>
+<td>0.00x</td>
+<td>5.00x</td>
+</tr>
+<tr>
+<td>Net-cash flag</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>Raw ratios would give J4's 30x an enormous negative z-score and squash J1–J3 together. After capping, J4 is simply "worst" at 5x, and J3 is recognised as unlevered without being over-rewarded for its small cash pile.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Cash that is not free.</strong> Earmarked balances, margin money, unpaid dividend accounts and customer advances (jewellery gold-saving schemes) are not surplus cash. Exclude them from the cash deducted in net debt.</li>
+<li><strong>Gold metal loans.</strong> Including GML in net debt can swing a jeweller from net-cash to levered. Apply one rule to all peers and disclose it.</li>
+<li><strong>Lease liabilities.</strong> Post-<em>Ind AS 116</em>, a net-cash IT company can become "net debt" if lease liabilities exceed surplus cash. Check both definitions (s06).</li>
+<li><strong>Choosing the cap.</strong> Tie the cap to an economic threshold, such as rating-agency comfort levels (around 3–4x for many corporates). Do not tie it to whatever value makes the chart look tidy.</li>
+<li><strong>Outliers in the base year.</strong> A CAGR base-year outlier (a COVID-hit FY21) distorts growth. Shift the window or show a two-period CAGR as a cross-check.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Net debt/EBITDA is non-monotonic around zero and explodes as EBITDA approaches zero. Never rank it raw.</li>
+<li>Floor net-cash peers at 0x, cap stressed peers (for example 5x), and treat negative EBITDA with net debt as "worst".</li>
+<li>Show a separate net-cash flag and net cash as % of market cap or assets outside the composite.</li>
+<li>Detect outliers with median/MAD or IQR plus judgement, and classify them as error, one-off, structural or definitional before treating them.</li>
+<li>Cap normalised scores (for example ±2) or winsorise raw values so no single metric dominates, and disclose the rule.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-capfloor-leverage-inputs-l1">Q1. Cap/floor leverage inputs [L1]</h3>
+<p>Four IT peers have net debt (including lease liabilities) of −₹62,000 crore, −₹38,000 crore, −₹14,500 crore and +₹1,200 crore. Their EBITDA is ₹68,000 crore, ₹40,000 crore, ₹18,000 crore and ₹2,100 crore. Compute raw ND/EBITDA and capped/floored inputs with Floor 0x and Cap 4x. Explain what weight you would give the leverage metric and why.</p>
+<h3 id="q2-the-negative-ebitda-trap-l2">Q2. The negative-EBITDA trap [L2]</h3>
+<p>A naive matrix ranks five companies on raw ND/EBITDA ascending: A: −1.2x (net cash, EBITDA positive), B: 0.8x, C: 2.1x, D: −6.0x (net debt ₹600 crore, EBITDA −₹100 crore), E: 3.5x. Show the naive ranking and explain the error. Then construct the corrected inputs and ranking, and write the footnote.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Separate the sign of the numerator from the sign of the denominator before interpreting.</p>
+</blockquote>
+<h3 id="q3-outlier-classification-and-treatment-l2">Q3. Outlier classification and treatment [L2]</h3>
+<p>In a five-peer jewellery set, DIO values are 165, 180, 210, 225 and 340 days. Peer 5's 340 days reflects a 45% studded and diamond mix against 15–25% for others, plus a ₹600 crore inventory pre-build for 40 new stores opening in Q1 of the next year. Classify the outlier, propose a treatment (raw-value adjustment, score cap or caveat), compute median ± 2 × MAD, and draft the matrix footnote.</p>
+<h3 id="q4-designing-net-debt-definitions-l3">Q4. Designing net-debt definitions [L3]</h3>
+<p>Write the definitions-sheet entry for "Net debt" for a jewellery peer set. Cover borrowings, gold metal loans, lease liabilities, cash, bank balances other than cash, earmarked balances, customer advances under gold-savings schemes and current investments. Then explain how each choice could change the ranking of a peer with large gold-savings scheme deposits.</p>
+<h3 id="q5-excel-implementation-of-score-caps-l2">Q5. Excel implementation of score caps [L2]</h3>
+<p>Write the formulas that (a) compute direction-adjusted z-scores for a seven-metric by five-peer matrix in one dynamic array, (b) cap them at ±2 and (c) flag every capped cell for conditional formatting. Explain how the master check summary should report the number of capped cells.</p></section>
+<nav class="pager"><a class="prev" href="S03_Composite_Weighted_Score_and_Sensitivity_to.html">← Composite Weighted Score and Sensitivity to Weights</a><a class="next" href="S05_Quadrant_Views_and_Heat_Map_Formatting_for_Peer.html">Quadrant Views and Heat-Map Formatting for Peer Matrices →</a></nav>
+</main></div></body></html>

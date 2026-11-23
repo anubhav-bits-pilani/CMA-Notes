@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Defending DCF Mechanics: Horizon, Terminal Value, Sensitivities · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P6_Corporate_Finance_Strategy_Capstone/W24_Technical_Interview_Sprints_Modelling/T4_FPA_and_Valuation_Case_Interviews/subtopics/S02_Defending_DCF_Mechanics_Horizon_Terminal_Value.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 6</a> <span>›</span> <a href="../../index.html">Week 24</a> <span>›</span> <a href="../index.html">T4 · FP&amp;A and Valuation Case Interviews</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · FP&amp;A and Valuation Case Interviews</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Defending_WACC_Inputs_in_an_Indian_Valuation.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W24_Technical_Interview_Sprints_Modelling/T4_FPA_and_Valuation_Case_Interviews/subtopics/S01_Defending_WACC_Inputs_in_an_Indian_Valuation.html">Defending WACC Inputs in an Indian Valuation Interview</a></li><li><a href="S02_Defending_DCF_Mechanics_Horizon_Terminal_Value.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W24_Technical_Interview_Sprints_Modelling/T4_FPA_and_Valuation_Case_Interviews/subtopics/S02_Defending_DCF_Mechanics_Horizon_Terminal_Value.html">Defending DCF Mechanics: Horizon, Terminal Value, Sensitivities</a></li><li><a href="S03_Working_Capital_Drivers_and_the_Profits_Up_Cash.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W24_Technical_Interview_Sprints_Modelling/T4_FPA_and_Valuation_Case_Interviews/subtopics/S03_Working_Capital_Drivers_and_the_Profits_Up_Cash.html">Working Capital Drivers and the &quot;Profits Up, Cash Down&quot; Case</a></li><li><a href="S04_PVM_FX_and_Cost_Bridges_Variance_Narratives_That.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W24_Technical_Interview_Sprints_Modelling/T4_FPA_and_Valuation_Case_Interviews/subtopics/S04_PVM_FX_and_Cost_Bridges_Variance_Narratives_That.html">PVM, FX and Cost Bridges: Variance Narratives That Land</a></li><li><a href="S05_Business_Partnering_Cases_Margins_Pricing_Capex.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W24_Technical_Interview_Sprints_Modelling/T4_FPA_and_Valuation_Case_Interviews/subtopics/S05_Business_Partnering_Cases_Margins_Pricing_Capex.html">Business-Partnering Cases: Margins, Pricing, Capex, Headcount</a></li><li><a href="S06_FPA_Frameworks_Trees_30_60_90_Plans_and_KPI.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W24_Technical_Interview_Sprints_Modelling/T4_FPA_and_Valuation_Case_Interviews/subtopics/S06_FPA_Frameworks_Trees_30_60_90_Plans_and_KPI.html">FP&amp;A Frameworks: Trees, 30-60-90 Plans and KPI Selection</a></li><li><a href="S07_The_Two_Minute_Answer_Headline_Three_Drivers_Next.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W24_Technical_Interview_Sprints_Modelling/T4_FPA_and_Valuation_Case_Interviews/subtopics/S07_The_Two_Minute_Answer_Headline_Three_Drivers_Next.html">The Two-Minute Answer: Headline, Three Drivers, Next Steps</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_DSO_DIO_DPO_and_the_Cash_Conversion_Cycle.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W24_Technical_Interview_Sprints_Modelling/T4_FPA_and_Valuation_Case_Interviews/concepts/C01_DSO_DIO_DPO_and_the_Cash_Conversion_Cycle.html">DSO, DIO, DPO and the Cash Conversion Cycle</a></li><li><a href="../concepts/C02_Price_and_Volume_Variances_Getting_the_Quantities.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W24_Technical_Interview_Sprints_Modelling/T4_FPA_and_Valuation_Case_Interviews/concepts/C02_Price_and_Volume_Variances_Getting_the_Quantities.html">Price and Volume Variances: Getting the Quantities Right</a></li><li><a href="../concepts/C03_Mix_Variance_and_the_Price_Mix_Volume_Identity.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W24_Technical_Interview_Sprints_Modelling/T4_FPA_and_Valuation_Case_Interviews/concepts/C03_Mix_Variance_and_the_Price_Mix_Volume_Identity.html">Mix Variance and the Price + Mix + Volume Identity</a></li><li><a href="../concepts/C04_Blume_Adjusted_Beta_and_After_Tax_Cost_of_Debt.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W24_Technical_Interview_Sprints_Modelling/T4_FPA_and_Valuation_Case_Interviews/concepts/C04_Blume_Adjusted_Beta_and_After_Tax_Cost_of_Debt.html">Blume-Adjusted Beta and After-Tax Cost of Debt</a></li><li><a href="../concepts/C05_The_EBITDA_Bridge_from_Prior_Period_to_Current.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W24_Technical_Interview_Sprints_Modelling/T4_FPA_and_Valuation_Case_Interviews/concepts/C05_The_EBITDA_Bridge_from_Prior_Period_to_Current.html">The EBITDA Bridge from Prior Period to Current</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Defending DCF Mechanics: Horizon, Terminal Value, Sensitivities</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> DCF defence: forecast horizon, terminal growth vs nominal GDP, TV % of EV, mid-year convention, sensitivity ranges</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Once the WACC is defended, interviewers move to the structure of the DCF itself: why five years and not ten, why 5% terminal growth, why the terminal value is 75% of enterprise value, why you used mid-year discounting, and what range of values you would put in front of an investment committee. These questions reveal whether a model was built with judgement or copied from a template. In Indian practice the answers must also satisfy registered valuer reports under the Companies (Registered Valuers and Valuation) Rules, 2017, ICAI Valuation Standards (notably the income approach in ICAI VS 103) and fairness opinions under SEBI rules, where reviewers scrutinise exactly these choices.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="forecast-horizon">Forecast horizon</h3>
+<p>The explicit forecast period should run <strong>until the business reaches a steady state</strong> — stable margins, reinvestment consistent with long-run growth, ROIC converging towards a sustainable level. Practical guidance:</p>
+<ul>
+<li><strong>5 years</strong>: mature businesses (FMCG, utilities) where management plans exist and growth converges quickly.</li>
+<li><strong>7–10 years</strong>: high-growth or cyclical businesses (SaaS, EV components, new capacity ramp-ups) — short horizons force too much value into the terminal value at an unsteady state.</li>
+<li><strong>Asset life</strong>: concession assets (toll roads, airports, power PPAs) use the concession period with no or limited terminal value.</li>
+</ul>
+<p>Defence line: "I used seven years because the new plant reaches full utilisation in year 5 and margins normalise by year 7; extending further adds forecast error without changing the steady-state assumptions." A <strong>fade period</strong> (two-stage or three-stage model) bridges high growth to terminal growth.</p>
+<h3 id="terminal-value-growth-vs-nominal-gdp">Terminal value: growth vs nominal GDP</h3>
+<p>Gordon growth terminal value at the end of year \(N\):</p>
+<p>\[
+TV_N = \frac{FCFF_{N+1}}{WACC - g} = \frac{FCFF_N \times (1+g)}{WACC - g}
+\]</p>
+<p>where \(g\) is the perpetual nominal growth rate. The terminal growth <strong>must not exceed long-run nominal GDP growth</strong> of the economy in the currency of the cash flows; otherwise the company eventually becomes larger than the economy. India's nominal GDP growth has averaged around 10–11% over long periods (real ~6–7% plus inflation ~4–5%); long-run expectations are lower as the economy matures. Practitioners in INR valuations usually use <strong>4–6%</strong> — roughly long-run inflation (RBI's 4% CPI target) plus modest real growth — for mature companies. Using 8–9% because "India grows fast" is usually challenged: high growth belongs in the explicit period.</p>
+<p>Consistency checks:</p>
+<ul>
+<li><strong>Reinvestment</strong>: \(g = \text{RONIC} \times \text{reinvestment rate}\). If terminal FCFF assumes capex equals depreciation, then real growth is implausible — set terminal reinvestment = \(g \div \text{RONIC}\) of NOPAT.</li>
+<li><strong>Exit multiple cross-check</strong>: implied EV/EBITDA from the Gordon TV should be in a reasonable range relative to current peer multiples (adjusted for maturity).</li>
+<li><strong>Currency</strong>: a USD-based DCF uses USD long-run growth (~2–4%), not Indian rates.</li>
+</ul>
+<h3 id="tv-as-a-percentage-of-ev">TV as a percentage of EV</h3>
+<p>\[
+\text{TV share} = \frac{PV(TV)}{EV} = \frac{TV_N \div (1+WACC)^N}{\sum PV(FCFF_t) + PV(TV)}
+\]</p>
+<p>For a five-year DCF of a growing company, 60–80% is common; above 85% signals that the explicit period is too short, growth too front-loaded, or near-term FCFF depressed by heavy capex. It is not "wrong" by itself — but you must show you know it and have stress-tested \(g\) and WACC. Interview line: "TV is 72% of EV; a 50 bp change in terminal growth moves value by about 6%, so I spent most time validating terminal margins and reinvestment."</p>
+<h3 id="mid-year-convention">Mid-year convention</h3>
+<p>Cash flows arrive through the year, not on 31 March. The mid-year convention discounts each year's FCFF by \(t - 0.5\) periods:</p>
+<p>\[
+PV(FCFF_t) = \frac{FCFF_t}{(1 + WACC)^{t - 0.5}}
+\]</p>
+<p>Effect: value rises by roughly \((1 + WACC)^{0.5} - 1\) ≈ 5.8% at 12% WACC on the explicit-period cash flows. For the Gordon TV, consistency requires discounting TV at \(N - 0.5\) when TV is built from mid-year cash flows (the perpetuity formula values flows from \(N+1\) onward as at \(N\); applying mid-year to it is consistent if annual flows are mid-year), but <strong>not</strong> when using an exit multiple, which values the business at a point in time (\(N\)). Stub periods (valuation date mid-year) need fractional periods — a common live-test trap.</p>
+<pre><code>Excel: Discount factor (mid-year): =1/(1+WACC)^(Period-0.5)
+       Stub: Period = YEARFRAC(ValDate, FYEnd) for year 1, then +1
+       TV (Gordon): =FCFF_N*(1+g)/(WACC-g)
+</code></pre>
+<h3 id="sensitivity-ranges">Sensitivity ranges</h3>
+<p>A DCF is a range, not a point. Standard practice:</p>
+<table>
+<thead>
+<tr>
+<th>Sensitivity</th>
+<th>Typical range</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WACC</td>
+<td>±1.0% in 0.5% steps</td>
+<td>Discount rate uncertainty (ERP, beta)</td>
+</tr>
+<tr>
+<td>Terminal growth</td>
+<td>±1.0% in 0.5% steps</td>
+<td>Long-run assumptions</td>
+</tr>
+<tr>
+<td>EBITDA margin (terminal)</td>
+<td>±200 bp</td>
+<td>Operating performance</td>
+</tr>
+<tr>
+<td>Revenue CAGR</td>
+<td>±2–3%</td>
+<td>Business plan risk</td>
+</tr>
+<tr>
+<td>Exit multiple (if used)</td>
+<td>±1–2×</td>
+<td>Market reference</td>
+</tr>
+</tbody>
+</table>
+<p>Present a two-way table (WACC × g) with the base case highlighted, a football field combining DCF, trading comparables and transaction comparables, and a scenario case (base/bull/bear) with probability weights where appropriate. Implement with Excel data tables (<code>Data → What-If Analysis → Data Table</code>), keeping calculation set to "Automatic except data tables" during build for speed.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>FCFF (₹ crore): Y1 100, Y2 115, Y3 130, Y4 145, Y5 160; WACC 12%; g 5%; mid-year convention.</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>FCFF</th>
+<th>Discount factor (t − 0.5)</th>
+<th>PV</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>100</td>
+<td>0.9449</td>
+<td>94.5</td>
+</tr>
+<tr>
+<td>2</td>
+<td>115</td>
+<td>0.8437</td>
+<td>97.0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>130</td>
+<td>0.7533</td>
+<td>97.9</td>
+</tr>
+<tr>
+<td>4</td>
+<td>145</td>
+<td>0.6726</td>
+<td>97.5</td>
+</tr>
+<tr>
+<td>5</td>
+<td>160</td>
+<td>0.6005</td>
+<td>96.1</td>
+</tr>
+<tr>
+<td>Sum</td>
+<td></td>
+<td></td>
+<td>483.0</td>
+</tr>
+</tbody>
+</table>
+<p>\(TV_5 = 160 \times 1.05 \div 0.07 = 2{,}400\); PV at 4.5 periods = 2,400 × 0.6005 = 1,441.2. EV = 1,924.2; TV share = 75%. Implied terminal EV/FCFF multiple = 15×.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Negative or near-zero WACC − g spreads</strong>: if g approaches WACC the TV explodes; any \(g \geq WACC\) is invalid.</li>
+<li><strong>Cyclical companies</strong> (steel, cement): normalise terminal margins to mid-cycle, not the latest peak.</li>
+<li><strong>Working capital in terminal year</strong>: terminal ΔWC should be consistent with g (WC grows with revenue).</li>
+<li><strong>Ind AS 116</strong>: if EBITDA excludes rent, lease liabilities must be in net debt; mixing bases distorts both TV and EV-to-equity bridge.</li>
+<li><strong>Tax</strong>: terminal tax at the marginal rate (25.168%) once tax holidays and losses are exhausted; separate PV for loss tax shields.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Choose the horizon by when the business reaches steady state, not by template default.</li>
+<li>Terminal growth in INR should sit below long-run nominal GDP and be consistent with reinvestment and RONIC.</li>
+<li>Know your TV share of EV and the sensitivity of value to g and WACC.</li>
+<li>Apply mid-year discounting consistently (perpetuity yes, exit multiple no) and handle stubs.</li>
+<li>Present a range via two-way sensitivities and scenarios, and say which assumption drives it.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-horizon-choice-l1">Q1. Horizon choice [L1]</h3>
+<p>For each, recommend an explicit forecast horizon and terminal method, with a one-line justification: (a) a listed FMCG company; (b) a toll road SPV with 14 years left on the concession; (c) a SaaS company growing 40% with negative FCFF; (d) a cement company at peak-cycle margins.</p>
+<h3 id="q2-terminal-value-consistency-l2">Q2. Terminal value consistency [L2]</h3>
+<p>A model uses year-5 NOPAT ₹200 crore, terminal growth 6%, WACC 12% and terminal FCFF = NOPAT (capex = depreciation, no WC change). Compute the TV, then recompute it assuming RONIC of 15% with reinvestment set consistently, and explain the difference to an interviewer.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Reinvestment rate equals growth divided by RONIC.</p>
+</blockquote>
+<h3 id="q3-mid-year-and-stub-period-l2">Q3. Mid-year and stub period [L2]</h3>
+<p>The valuation date is 30 September 2025; FY ends 31 March. FCFF for H2 FY26 is ₹60 crore, then FY27–FY30 ₹130, 145, 160, 175 crore; WACC 11.5%; g 5%. Set out the period numbers and discount factors under the mid-year convention, compute EV, and state the TV share.</p>
+<h3 id="q4-defend-the-tv-share-l3">Q4. Defend the TV share [L3]</h3>
+<p>A portfolio reviewer notes your DCF has 88% of EV in terminal value with terminal growth of 7% for an Indian specialty retailer. Prepare a two-minute defence or revision plan covering horizon, growth vs nominal GDP, reinvestment, exit multiple cross-check and sensitivity ranges, using illustrative numbers.</p></section>
+<nav class="pager"><a class="prev" href="S01_Defending_WACC_Inputs_in_an_Indian_Valuation.html">← Defending WACC Inputs in an Indian Valuation Interview</a><a class="next" href="S03_Working_Capital_Drivers_and_the_Profits_Up_Cash.html">Working Capital Drivers and the &quot;Profits Up, Cash Down&quot; Case →</a></nav>
+</main></div></body></html>

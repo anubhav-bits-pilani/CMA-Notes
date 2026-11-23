@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building the Circuit-Breaker Toggle for Interest · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/subtopics/S04_Building_the_Circuit_Breaker_Toggle_for_Interest.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 14</a> <span>›</span> <a href="../index.html">T4 · Managing Interest Circularity Safely</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Managing Interest Circularity Safely</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_The_InterestDebt_Circular_Loop_Through_PAT_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/subtopics/S01_The_InterestDebt_Circular_Loop_Through_PAT_and.html">The Interest–Debt Circular Loop Through PAT and Cash Flow</a></li><li><a href="S02_The_Second_Loop_Interest_Income_on_Average_Cash.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/subtopics/S02_The_Second_Loop_Interest_Income_on_Average_Cash.html">The Second Loop: Interest Income on Average Cash</a></li><li><a href="S03_Excel_Iterative_Calculation_Settings_for_Circular.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/subtopics/S03_Excel_Iterative_Calculation_Settings_for_Circular.html">Excel Iterative Calculation Settings for Circular Models</a></li><li><a href="S04_Building_the_Circuit_Breaker_Toggle_for_Interest.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/subtopics/S04_Building_the_Circuit_Breaker_Toggle_for_Interest.html">Building the Circuit-Breaker Toggle for Interest</a></li><li><a href="S05_Alternatives_to_Iterative_Circularity_in_Debt.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/subtopics/S05_Alternatives_to_Iterative_Circularity_in_Debt.html">Alternatives to Iterative Circularity in Debt Models</a></li><li><a href="S06_FAST_and_ICAEW_Stance_on_Circularity_vs_Banking.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/subtopics/S06_FAST_and_ICAEW_Stance_on_Circularity_vs_Banking.html">FAST and ICAEW Stance on Circularity vs Banking Practice</a></li><li><a href="S07_Recovering_a_Model_with_an_Error_Trapped_in_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/subtopics/S07_Recovering_a_Model_with_an_Error_Trapped_in_the.html">Recovering a Model with an Error Trapped in the Loop</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Circuit_Breaker_Interest_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/concepts/C01_Circuit_Breaker_Interest_Formula.html">Circuit-Breaker Interest Formula</a></li><li><a href="../concepts/C02_Copy_Paste_Macro_for_Solving_Interest_Without.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/concepts/C02_Copy_Paste_Macro_for_Solving_Interest_Without.html">Copy-Paste Macro for Solving Interest Without Circularity</a></li><li><a href="../concepts/C03_Iterative_Calculation_Is_an_Application_Level.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/concepts/C03_Iterative_Calculation_Is_an_Application_Level.html">Iterative Calculation Is an Application-Level Setting</a></li><li><a href="../concepts/C04_Materiality_of_Average_vs_Opening_Balance_Interest.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/concepts/C04_Materiality_of_Average_vs_Opening_Balance_Interest.html">Materiality of Average vs Opening-Balance Interest</a></li><li><a href="../concepts/C05_Convergence_Check_for_Circular_Interest.html" data-uid="P4_Integrated_Three_Statement_Financial/W14_Supporting_Schedules_Working_Capital_PPE/T4_Managing_Interest_Circularity_Safely/concepts/C05_Convergence_Check_for_Circular_Interest.html">Convergence Check for Circular Interest</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Building the Circuit-Breaker Toggle for Interest</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Circuit-breaker toggle to zero or opening-balance interest to flush errors</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A circular model without a breaker is fragile: one error value that enters the loop feeds back into itself every iteration and never clears, even after the cause is fixed. The breaker is a single switch cell that cuts the loop by replacing average-balance interest with a non-circular alternative — zero interest or opening-balance interest — so the model recalculates in a single pass, the error is flushed out, and the loop can then be reconnected. Model auditors, lenders' technical advisors and interviewers all look for it. In live deal work it is also the tool you reach for before running data tables, before debugging a balance-sheet imbalance and before handing a file to someone whose Excel may have iteration disabled.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="design-of-the-switch-cell">Design of the switch cell</h3>
+<ul>
+<li><strong>Location:</strong> one cell, on the Cover or Inputs tab, clearly labelled, formatted as an input (blue font / yellow fill per your colour convention), with a named range such as <code>Circ</code>.</li>
+<li><strong>States:</strong> at minimum 1 = circular (average-balance), 0 = off. Better practice uses three states:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Mode</th>
+<th>Interest formula behaviour</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Circular</td>
+<td>Rate × average(opening, closing)</td>
+<td>Normal delivery mode</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Opening balance</td>
+<td>Rate × opening</td>
+<td>Data tables, quick checks, users without iteration</td>
+</tr>
+<tr>
+<td>0</td>
+<td>Zero</td>
+<td>0</td>
+<td>Flushing trapped errors; isolating linking errors</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Data validation:</strong> restrict to the list 0, 1, 2 (Data → Data Validation → List) so typos cannot create an undefined state.</li>
+<li><strong>Status display:</strong> a formula next to the cell such as <code>=CHOOSE(Circ+1,"OFF – zero interest","ON – average balance","OFF – opening balance")</code> and conditional formatting (red when not 1) so no one delivers a file with the breaker off by accident.</li>
+</ul>
+<h3 id="where-the-breaker-must-be-applied">Where the breaker must be applied</h3>
+<p>Every cell that closes a loop must pass through the switch:</p>
+<ul>
+<li>Interest expense on each tranche that uses closing balance (revolver, swept loans, NCDs with sweep).</li>
+<li>Commitment fee on the average undrawn revolver.</li>
+<li>Interest income on average cash (s02).</li>
+<li>Any other formula referencing a balance that depends on post-interest cash — e.g., a DSCR-driven cash trap, an interest-cover-based dividend lock-up.</li>
+</ul>
+<p>A common error is applying the switch to the revolver only. With <code>Circ = 0</code> the model then remains circular through interest income; with iteration disabled Excel will still warn. The test of a complete breaker: set <code>Circ = 0</code> or <code>2</code>, disable iteration, recalculate — there must be <strong>no</strong> circular-reference warning.</p>
+<h3 id="why-zero-and-opening-balance-modes-are-both-useful">Why zero and opening-balance modes are both useful</h3>
+<p><strong>Opening-balance mode</strong> keeps the P&amp;L economically sensible: interest is understated or overstated only by \(\text{Rate} \times \Delta\text{Debt} \div 2\) (c04). Use it for sensitivity tables and for sharing with users who cannot enable iteration.</p>
+<p><strong>Zero mode</strong> is the cleanest for error flushing: no interest cell depends on any debt balance, so the error cannot persist in interest; it also isolates whether a balance-sheet imbalance is linked to the financing block. It distorts PAT heavily, so never present outputs in zero mode.</p>
+<h3 id="flushing-procedure-the-reason-the-breaker-exists">Flushing procedure (the reason the breaker exists)</h3>
+<ol>
+<li>Fix the underlying cause (restore the deleted reference, guard the zero denominator).</li>
+<li>Set <code>Circ = 0</code> (or 2). The loop is cut; every cell recalculates in one pass from clean inputs. The trapped error disappears.</li>
+<li>Confirm all checks pass in the non-circular state.</li>
+<li>Set <code>Circ = 1</code>. The loop restarts from a clean seed and converges.</li>
+<li>Run the convergence check.</li>
+</ol>
+<p>The full recovery routine including the case where you cannot find the cause is in s07.</p>
+<h3 id="formula-pattern">Formula pattern</h3>
+<p>With three states:</p>
+<pre><code>=IF(Circ=1, Rate*AVERAGE(Open_Debt,Close_Debt), IF(Circ=2, Rate*Open_Debt, 0))
+</code></pre>
+<p>Or with CHOOSE (index must start at 1):</p>
+<pre><code>=CHOOSE(Circ+1, 0, Rate*AVERAGE(Open_Debt,Close_Debt), Rate*Open_Debt)
+</code></pre>
+<p>The IF version is more readable for reviewers. See c01 for the exact concept formula and naming discussion.</p>
+<h3 id="automatic-error-triggered-breaker">Automatic error-triggered breaker</h3>
+<p>Some models add an automatic trip: the effective switch is the user switch multiplied by an error test.</p>
+<pre><code>Circ_Eff: =IF(ISERROR(SUM(Debt_Block_Totals)), 0, Circ)
+</code></pre>
+<p>Interest formulas then reference <code>Circ_Eff</code>. If an error appears in the financing block, interest drops to zero for one calculation, which flushes the loop; on the next pass, if the error has cleared, interest reconnects. This self-heals transient errors but can hide persistent ones (the model silently runs at zero interest). If used, display <code>Circ_Eff</code> prominently and fail a check whenever it differs from <code>Circ</code>. Many reviewers prefer a purely manual switch for this reason.</p>
+<h3 id="illustration">Illustration</h3>
+<p>FY27E: opening revolver ₹120 crore, closing (converged) ₹146 crore, rate 9.5%; opening term loan ₹500 crore, closing ₹420 crore (scheduled), rate 8.75%.</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Revolver interest (₹ cr)</th>
+<th>Term-loan interest (₹ cr)</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 Circular</td>
+<td>9.5% × 133 = 12.64</td>
+<td>8.75% × 460 = 40.25</td>
+<td>52.89</td>
+</tr>
+<tr>
+<td>2 Opening</td>
+<td>9.5% × 120 = 11.40</td>
+<td>8.75% × 500 = 43.75</td>
+<td>55.15</td>
+</tr>
+<tr>
+<td>0 Zero</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>The term loan has a known closing balance, so its average-balance interest need not pass through the breaker — but many modellers route all tranches through the switch for a consistent opening-mode output. Whichever choice, document it. (In mode 2 the revolver closing would itself change; the table holds it constant for simplicity.)</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Breaker in a scenario manager:</strong> if scenarios are run via a macro, force <code>Circ = 1</code> at the end of the macro, otherwise the last scenario run may leave the file in opening mode.</li>
+<li><strong>Multiple breakers:</strong> avoid separate switches for each tranche; a single master switch (with optional tranche overrides) prevents half-circular states.</li>
+<li><strong>Opening-mode fidelity:</strong> for a model with heavy intra-year repayment (e.g., a bullet repaid in month 2), opening mode overstates interest materially; consider a timing factor input rather than the breaker.</li>
+<li><strong>Deliverable state:</strong> decide and document whether the delivered file is in mode 1 or 2. Investment-banking deliverables are usually mode 1; files sent to clients' finance teams without modelling experience are often mode 2 with a note.</li>
+<li><strong>Error inside the breaker formula itself:</strong> if <code>Rate</code> or <code>Open_Debt</code> is the erroring cell, the breaker will not help — the error is upstream of the switch and is not a loop issue.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>One named, validated switch cell with clear states (1 circular, 2 opening, 0 zero) and a visible status flag.</li>
+<li>Route every loop-closing formula — interest expense, commitment fees, interest income, cash traps — through the same switch.</li>
+<li>Test completeness: breaker off + iteration off must produce no circular-reference warning.</li>
+<li>Zero mode flushes errors; opening mode keeps outputs sensible for data tables and non-iterating users.</li>
+<li>Automatic error-trip breakers self-heal but can hide persistent errors; flag any difference from the user switch.</li>
+<li>Never deliver a file with the breaker in an undocumented state.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-write-the-three-state-breaker-l1">Q1. Write the three-state breaker [L1]</h3>
+<p>Using named ranges <code>Circ</code>, <code>Rev_Rate</code>, <code>Rev_Open</code>, <code>Rev_Close</code>, write the revolver interest formula supporting modes 0, 1 and 2, and the data-validation rule for the switch cell.</p>
+<h3 id="q2-incomplete-breaker-diagnosis-l2">Q2. Incomplete breaker diagnosis [L2]</h3>
+<p>With <code>Circ = 0</code> and iteration disabled, Excel still warns of a circular reference in a model with a revolver, a cash sweep on the term loan, interest income on cash and a commitment fee. List the cells you would inspect, in order, and explain how Formulas → Error Checking → Circular References helps.</p>
+<h3 id="q3-mode-comparison-l2">Q3. Mode comparison [L2]</h3>
+<p>FY28E: opening revolver ₹60 crore, converged closing ₹15 crore, rate 10.25%; commitment fee 0.40% on average undrawn amount of a ₹200 crore limit; opening cash ₹40 crore, closing ₹40 crore, yield 6.5%. Compute revolver interest, commitment fee and interest income under modes 1, 2 and 0, holding closing balances constant, and the net finance cost in each mode.</p>
+<h3 id="q4-auto-trip-design-review-l3">Q4. Auto-trip design review [L3]</h3>
+<p>A model uses <code>Circ_Eff = IF(ISERROR(Total_Debt_Close),0,Circ)</code>. A reviewer finds the FY30E P&amp;L shows zero interest while the switch reads 1. Explain how this could happen, why it is dangerous, and what check and display you would add.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Think about an error that persists rather than one that is transient.</p>
+</blockquote></section>
+<nav class="pager"><a class="prev" href="S03_Excel_Iterative_Calculation_Settings_for_Circular.html">← Excel Iterative Calculation Settings for Circular Models</a><a class="next" href="S05_Alternatives_to_Iterative_Circularity_in_Debt.html">Alternatives to Iterative Circularity in Debt Models →</a></nav>
+</main></div></body></html>

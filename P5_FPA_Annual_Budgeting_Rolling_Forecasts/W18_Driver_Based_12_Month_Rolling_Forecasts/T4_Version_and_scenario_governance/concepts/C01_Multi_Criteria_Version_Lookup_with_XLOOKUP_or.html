@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multi-Criteria Version Lookup with XLOOKUP or SUMIFS · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/concepts/C01_Multi_Criteria_Version_Lookup_with_XLOOKUP_or.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 5</a> <span>›</span> <a href="../../index.html">Week 18</a> <span>›</span> <a href="../index.html">T4 · Version and scenario governance</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Version and scenario governance</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Versions_vs_Scenarios_Time_Snapshots_vs.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S01_Versions_vs_Scenarios_Time_Snapshots_vs.html">Versions vs Scenarios: Time Snapshots vs Alternative Assumptions</a></li><li><a href="../subtopics/S02_Long_Format_Version_Storage_Instead_of_Sheet_per.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S02_Long_Format_Version_Storage_Instead_of_Sheet_per.html">Long-Format Version Storage Instead of Sheet-per-Version</a></li><li><a href="../subtopics/S03_Scenario_Switching_with_Selectors_and_Data.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S03_Scenario_Switching_with_Selectors_and_Data.html">Scenario Switching with Selectors and Data Validation</a></li><li><a href="../subtopics/S04_Version_Locking_Snapshots_Protection_Change_Logs.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S04_Version_Locking_Snapshots_Protection_Change_Logs.html">Version Locking: Snapshots, Protection, Change Logs and Naming</a></li><li><a href="../subtopics/S05_Version_Comparisons_and_Forecast_to_Forecast.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S05_Version_Comparisons_and_Forecast_to_Forecast.html">Version Comparisons and Forecast-to-Forecast Movement Bridges</a></li><li><a href="../subtopics/S06_Stress_Scenarios_and_Contingency_Triggers_Beyond.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S06_Stress_Scenarios_and_Contingency_Triggers_Beyond.html">Stress Scenarios and Contingency Triggers Beyond Sensitivities</a></li><li><a href="../subtopics/S07_EPM_Equivalents_EPBCS_Anaplan_and_Adaptive_Version.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S07_EPM_Equivalents_EPBCS_Anaplan_and_Adaptive_Version.html">EPM Equivalents: EPBCS, Anaplan and Adaptive Version Handling</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Multi_Criteria_Version_Lookup_with_XLOOKUP_or.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/concepts/C01_Multi_Criteria_Version_Lookup_with_XLOOKUP_or.html">Multi-Criteria Version Lookup with XLOOKUP or SUMIFS</a></li><li><a href="C02_Scenario_Selector_with_CHOOSE_or_INDEX.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/concepts/C02_Scenario_Selector_with_CHOOSE_or_INDEX.html">Scenario Selector with CHOOSE or INDEX</a></li><li><a href="C03_Decomposing_Forecast_to_Forecast_Movements.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/concepts/C03_Decomposing_Forecast_to_Forecast_Movements.html">Decomposing Forecast-to-Forecast Movements</a></li><li><a href="C04_One_Working_Version_Rule_and_Frozen_Prior_Versions.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/concepts/C04_One_Working_Version_Rule_and_Frozen_Prior_Versions.html">One Working Version Rule and Frozen Prior Versions</a></li><li><a href="C05_Scenario_vs_Sensitivity_Coherent_Assumption_Sets.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/concepts/C05_Scenario_vs_Sensitivity_Coherent_Assumption_Sets.html">Scenario vs Sensitivity: Coherent Assumption Sets vs One-Variable Flex</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Multi-Criteria Version Lookup with XLOOKUP or SUMIFS</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Live value = <code>=XLOOKUP(1,(Tbl[Version]=SelVer)*(Tbl[Acct]=$A5)*(Tbl[Month]=C$4),Tbl[Amt])</code> or <code>SUMIFS</code> with version criterion</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>The live value in any report cell is retrieved from a long-format table by matching every dimension, including the selected version:</p>
+<pre><code>=XLOOKUP(1, (Tbl[Version]=SelVer) * (Tbl[Acct]=$A5) * (Tbl[Month]=C$4), Tbl[Amt])
+
+=SUMIFS(Tbl[Amt], Tbl[Version], SelVer, Tbl[Acct], $A5, Tbl[Month], C$4)
+</code></pre>
+<p>where <code>Tbl</code> is the long-format Excel Table, <code>SelVer</code> is the named version-selector cell, <code>$A5</code> is the account code in the row label (column-anchored), <code>C$4</code> is the month-end date in the header (row-anchored) and <code>Tbl[Amt]</code> is the amount column. Logically:</p>
+<p>\[
+V_{a,m} = \sum_{r} \text{Amt}_r \times \mathbf{1}[\text{Ver}_r = v^{*}] \times \mathbf{1}[\text{Acct}_r = a] \times \mathbf{1}[\text{Month}_r = m]
+\]</p>
+<p>with \(v^{*}\) the selected version, \(a\) the account, \(m\) the month, and \(\mathbf{1}[\cdot]\) an indicator equal to 1 when the condition holds and 0 otherwise.</p>
+<h2 id="explanation">Explanation</h2>
+<p><strong>How the <code>XLOOKUP</code> works.</strong> Each comparison <code>(Tbl[Version]=SelVer)</code> produces an array of TRUE/FALSE. Multiplying arrays coerces them to 1/0 and acts as a logical AND, so the product is 1 only on rows where all conditions hold. <code>XLOOKUP(1, …)</code> returns the amount of the <em>first</em> such row. It requires Excel 365/2021 (dynamic arrays); in older versions the equivalent is <code>INDEX(Tbl[Amt], MATCH(1, (…)*(…)*(…), 0))</code> entered as an array formula.</p>
+<p><strong>How <code>SUMIFS</code> differs.</strong> <code>SUMIFS</code> adds <em>all</em> matching rows. If the table holds exactly one row per key, both return the same value. They diverge in three situations:</p>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th><code>XLOOKUP(1, …)</code></th>
+<th><code>SUMIFS</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Key missing (e.g., no forecast for a new account)</td>
+<td><code>#N/A</code> (use the <code>if_not_found</code> argument, e.g. <code>0</code>)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Duplicate key (version loaded twice)</td>
+<td>First match only — understated</td>
+<td>Doubled — overstated</td>
+</tr>
+<tr>
+<td>Data at finer grain (several cost centres per account)</td>
+<td>First cost centre only — wrong</td>
+<td>Correct aggregate</td>
+</tr>
+<tr>
+<td>Text amounts</td>
+<td>Returns the text</td>
+<td>Ignores them</td>
+</tr>
+</tbody>
+</table>
+<p>Because forecast tables usually hold multiple rows per account (cost centres, products), <strong><code>SUMIFS</code> is the default for financial retrieval</strong>; <code>XLOOKUP</code> is preferable for retrieving attributes or rates where a unique row is guaranteed (e.g., an FX rate for a version and month) and where a missing value should be flagged rather than treated as zero.</p>
+<p><strong>Adding the version criterion</strong> is what makes the report version-agnostic. The same formula serves Budget, Q1F, Q2F or Actual simply by changing <code>SelVer</code>; a comparison column uses <code>CmpVer</code>. A scenario criterion <code>Tbl[Scenario], SelScen</code> is added the same way.</p>
+<p><strong>Anchoring.</strong> <code>$A5</code> (column fixed) and <code>C$4</code> (row fixed) allow one formula to be filled across the whole grid. The header must be a true date equal to the stored month-end; a header of 1-Oct-2025 will not match a stored 31-Oct-2025.</p>
+<p><strong>Performance.</strong> Array multiplication in <code>XLOOKUP</code> scans every row for every cell; on 200,000 rows × 1,000 cells this is slow. <code>SUMIFS</code> is highly optimised. For large data, aggregate in Power Query or use the Data Model.</p>
+<h2 id="illustration">Illustration</h2>
+<p><code>Tbl</code> contains, among others:</p>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Scenario</th>
+<th>Acct</th>
+<th>CostCentre</th>
+<th>Month</th>
+<th>Amt (₹ lakh)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q1F</td>
+<td>Base</td>
+<td>6100</td>
+<td>CC-101</td>
+<td>31-Oct-2025</td>
+<td>42.0</td>
+</tr>
+<tr>
+<td>Q1F</td>
+<td>Base</td>
+<td>6100</td>
+<td>CC-102</td>
+<td>31-Oct-2025</td>
+<td>18.5</td>
+</tr>
+<tr>
+<td>Q2F</td>
+<td>Base</td>
+<td>6100</td>
+<td>CC-101</td>
+<td>31-Oct-2025</td>
+<td>44.2</td>
+</tr>
+<tr>
+<td>Q2F</td>
+<td>Base</td>
+<td>6100</td>
+<td>CC-102</td>
+<td>31-Oct-2025</td>
+<td>17.9</td>
+</tr>
+</tbody>
+</table>
+<p>With <code>SelVer = "Q2F"</code>, <code>$A5 = 6100</code>, <code>C$4 = 31-Oct-2025</code>: <code>SUMIFS</code> returns ₹62.1 lakh (44.2 + 17.9). The <code>XLOOKUP</code> version returns ₹44.2 lakh — only CC-101 — understating October staff cost by ₹17.9 lakh. Switching <code>SelVer</code> to "Q1F" gives ₹60.5 lakh via <code>SUMIFS</code>, so the comparison column shows a ₹1.6 lakh adverse movement.</p>
+<h2 id="connections">Connections</h2>
+<p>This is the retrieval engine for s02 (long-format layout) and s05 (comparison grid), and works together with the scenario selector in c02 and s03. It extends Topic 1's actual-pull formula (<code>SUMIFS</code> keyed on month-end dates) by adding a version criterion. In Week 11 the Power BI equivalent is a measure filtered by a Version slicer, and in EPM (s07) it is simply a member selection on the Version or Scenario dimension.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-write-version-aware-formulas-l1">Q1. Write version-aware formulas [L1]</h3>
+<p>Using a table <code>Fact</code> with columns Version, Scenario, Entity, Acct, Month and Amt, write: (a) a <code>SUMIFS</code> returning Q2F Downside revenue (account 4000) for entity "South" for the month in <code>F$6</code>; (b) an <code>XLOOKUP</code> returning the FX rate from a table <code>FX</code> (columns Version, Month, Rate) for the selected version and month, returning the text "MISSING" if not found.</p>
+<h3 id="q2-diagnose-diverging-results-l2">Q2. Diagnose diverging results [L2]</h3>
+<p>A report shows Q2F travel expense (account 6500) for November 2025 as ₹9.6 lakh using <code>XLOOKUP(1,…)</code> and ₹28.8 lakh using <code>SUMIFS</code>. The table has 14 cost centres. (a) Explain the two possible causes of the difference. (b) Write two check formulas that distinguish between them.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> One cause is legitimate finer grain; the other is a duplicated load. Count rows per cost centre for the key.</p>
+</blockquote>
+<h3 id="q3-header-mismatch-l1">Q3. Header mismatch [L1]</h3>
+<p>A colleague's report returns zero in every column for Q2F although the data exists. The header row was created as <code>=DATE(2025,4+COLUMN()-3,1)</code>. Explain the problem and give a corrected header formula consistent with the stored month-end dates.</p></section>
+<nav class="pager"><a class="prev" href="../subtopics/S07_EPM_Equivalents_EPBCS_Anaplan_and_Adaptive_Version.html">← EPM Equivalents: EPBCS, Anaplan and Adaptive Version…</a><a class="next" href="C02_Scenario_Selector_with_CHOOSE_or_INDEX.html">Scenario Selector with CHOOSE or INDEX →</a></nav>
+</main></div></body></html>

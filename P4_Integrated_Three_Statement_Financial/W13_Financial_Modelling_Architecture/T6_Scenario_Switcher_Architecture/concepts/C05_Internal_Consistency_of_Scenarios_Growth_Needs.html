@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Internal Consistency of Scenarios: Growth Needs Capex, Stress Needs Funding · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C05_Internal_Consistency_of_Scenarios_Growth_Needs.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T6 · Scenario Switcher Architecture</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · Scenario Switcher Architecture</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Single_Scenario_Selector_Cell_with_Data_Validation.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S01_Single_Scenario_Selector_Cell_with_Data_Validation.html">Single Scenario Selector Cell with Data-Validation Dropdown</a></li><li><a href="../subtopics/S02_Scenario_Driver_Blocks_Base_Bull_Bear_Rows_and_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S02_Scenario_Driver_Blocks_Base_Bull_Bear_Rows_and_the.html">Scenario Driver Blocks: Base, Bull, Bear Rows and the Live Row</a></li><li><a href="../subtopics/S03_Scenario_Selection_Functions_CHOOSE_INDEX_XLOOKUP.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S03_Scenario_Selection_Functions_CHOOSE_INDEX_XLOOKUP.html">Scenario Selection Functions: CHOOSE, INDEX, XLOOKUP, SWITCH</a></li><li><a href="../subtopics/S04_Which_Drivers_to_Flex_Volume_Price_Stores_Margin.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S04_Which_Drivers_to_Flex_Volume_Price_Stores_Margin.html">Which Drivers to Flex: Volume, Price, Stores, Margin, Wages, Capex, NWC</a></li><li><a href="../subtopics/S05_Coherent_Scenario_Narratives_vs_Single_Variable.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S05_Coherent_Scenario_Narratives_vs_Single_Variable.html">Coherent Scenario Narratives vs Single-Variable Tweaks</a></li><li><a href="../subtopics/S06_Capturing_Scenario_Outputs_Data_Tables_vs_Pasted.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S06_Capturing_Scenario_Outputs_Data_Tables_vs_Pasted.html">Capturing Scenario Outputs: Data Tables vs Pasted Static Values</a></li><li><a href="../subtopics/S07_Scenario_Labelling_on_Outputs_and_Documented_Case.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S07_Scenario_Labelling_on_Outputs_and_Documented_Case.html">Scenario Labelling on Outputs and Documented Case Rationale</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_The_Live_Row_CHOOSE_or_INDEX_on_the_Scenario_Code.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C01_The_Live_Row_CHOOSE_or_INDEX_on_the_Scenario_Code.html">The Live Row: CHOOSE or INDEX on the Scenario Code</a></li><li><a href="C02_One_Switch_Only_No_Scenario_Logic_Outside_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C02_One_Switch_Only_No_Scenario_Logic_Outside_the.html">One Switch Only: No Scenario Logic Outside the Driver Block</a></li><li><a href="C03_Scenario_Summary_via_a_One_Variable_Data_Table_on.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C03_Scenario_Summary_via_a_One_Variable_Data_Table_on.html">Scenario Summary via a One-Variable Data Table on the Switch</a></li><li><a href="C04_Live_Scenario_Header_Label_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C04_Live_Scenario_Header_Label_Formula.html">Live Scenario Header Label Formula</a></li><li><a href="C05_Internal_Consistency_of_Scenarios_Growth_Needs.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C05_Internal_Consistency_of_Scenarios_Growth_Needs.html">Internal Consistency of Scenarios: Growth Needs Capex, Stress Needs Funding</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Internal Consistency of Scenarios: Growth Needs Capex, Stress Needs Funding</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Internal consistency: Bull growth carries higher capex and NWC; Bear carries deleverage/revolver use</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>A scenario is internally consistent when its operating, investment and financing drivers describe the same world:</p>
+<p>\[
+\Delta \text{Revenue}^{(s)} &gt; 0 \;\Rightarrow\; \Delta \text{Capex}^{(s)} \ge 0 \text{ and } \Delta \text{NWC}^{(s)} \ge 0 \quad (\text{Bull})
+\]</p>
+<p>\[
+\Delta \text{FCF}^{(s)} &lt; 0 \;\Rightarrow\; \text{Revolver draw}^{(s)} &gt; 0 \text{ or } \text{Cash}^{(s)} \downarrow \text{ or deleveraging actions} \quad (\text{Bear})
+\]</p>
+<p>where \(\Delta\) denotes the difference versus Base for scenario \(s\), capex includes growth and maintenance capex,
+NWC is operating net working capital, and FCF is free cash flow. Growth must be paid for; shortfalls must be funded.</p>
+<h2 id="explanation">Explanation</h2>
+<p><strong>Bull growth carries higher capex and NWC.</strong> Revenue growth in a retailer comes from more stores (fit-out capex,
+leases, inventory) and in a manufacturer from more capacity (expansion capex) and higher receivables and inventory.
+A Bull case with higher revenue but Base capex and NWC implies impossibly high asset turnover and overstates FCF and
+valuation. Because the drivers link physically (stores → capex; revenue and COGS × days → NWC), a driver-based model
+produces this automatically if the Bull case flexes store adds or capacity rather than a revenue growth rate. Note
+that Bull FCF can be <em>lower</em> than Base in early years.</p>
+<p><strong>Bear carries deleverage or revolver use.</strong> In a Bear case, EBITDA falls and working capital often worsens (longer
+DSO, higher DIO). Cash falls; if minimum cash is breached, the revolver draws (Week 15), raising interest cost and
+reducing covenant headroom. Management's plausible response — deferring growth capex, cutting dividends, slowing store
+openings, selling non-core assets — should be part of the Bear narrative (s05). Equally, if the company has net cash
+(as Trent or Pidilite historically), the Bear case shows that cushion eroding rather than a revolver draw. A Bear case
+in which net debt is unchanged from Base signals that the cash consequences were not modelled.</p>
+<p>Consistency checks to include in the model:</p>
+<ul>
+<li><strong>Capex intensity</strong>: capex ÷ incremental revenue, by case, within a sensible band of history.</li>
+<li><strong>Asset turnover</strong>: revenue ÷ net fixed assets by case — Bull should not show a jump without a reason.</li>
+<li><strong>NWC days</strong>: Bear days should not be better than Base without a narrative.</li>
+<li><strong>Funding</strong>: revolver balance, minimum cash, net debt ÷ EBITDA and DSCR by case on the scenario summary (c03).</li>
+<li><strong>Margin direction</strong>: Bear EBITDA margin should fall because of operating leverage (Topic 5) unless offsets are argued.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>FY27E, illustrative retailer (₹ crore):</p>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Bear</th>
+<th>Base</th>
+<th>Bull</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue</td>
+<td>21,500</td>
+<td>24,000</td>
+<td>26,800</td>
+</tr>
+<tr>
+<td>EBITDA</td>
+<td>3,100</td>
+<td>3,900</td>
+<td>4,500</td>
+</tr>
+<tr>
+<td>Store additions</td>
+<td>120</td>
+<td>180</td>
+<td>230</td>
+</tr>
+<tr>
+<td>Capex</td>
+<td>1,050</td>
+<td>1,450</td>
+<td>1,850</td>
+</tr>
+<tr>
+<td>Increase in NWC</td>
+<td>850</td>
+<td>400</td>
+<td>560</td>
+</tr>
+<tr>
+<td>Pre-financing FCF (EBITDA − tax − capex − ΔNWC − lease payments)</td>
+<td>(100)</td>
+<td>600</td>
+<td>520</td>
+</tr>
+<tr>
+<td>Dividends</td>
+<td>300</td>
+<td>300</td>
+<td>300</td>
+</tr>
+<tr>
+<td>Cash flow after dividends</td>
+<td>(400)</td>
+<td>300</td>
+<td>220</td>
+</tr>
+<tr>
+<td>Revolver draw (after using ₹100 crore of cash above minimum)</td>
+<td>300</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Net debt ÷ EBITDA</td>
+<td>0.4x</td>
+<td>(0.2)x</td>
+<td>(0.2)x</td>
+</tr>
+</tbody>
+</table>
+<p>Bull has higher EBITDA but lower FCF than Base (capex and NWC absorb growth). Bear's NWC increase is the <em>largest</em>
+despite lower revenue because inventory days rise; it draws the revolver. These relationships come from the drivers,
+not from typed outputs.</p>
+<h2 id="connections">Connections</h2>
+<p>The coherence principle of s05 applied to cash and funding, using the drivers of s04 (store adds, capex, DSO/DIO/DPO).
+It anticipates Week 14 (capex and NWC schedules), Week 15 (revolver, minimum cash, stress tests through this switch) and
+the topic pitfall of a Bear case that cuts revenue but leaves costs, capex and NWC unchanged. Scenario summaries (c03)
+should display the credit metrics that reveal consistency.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-spot-the-inconsistency-l1">Q1. Spot the inconsistency [L1]</h3>
+<p>A Bull case shows revenue +15% vs Base, capex unchanged, NWC unchanged and FCF +30%. Explain why this is inconsistent and
+which drivers should change.</p>
+<h3 id="q2-bear-funding-l2">Q2. Bear funding [L2]</h3>
+<p>In the Bear case, FY27 pre-financing FCF is ₹(420) crore, opening cash ₹350 crore, minimum cash ₹200 crore and the
+revolver limit ₹500 crore at 9.5% interest (on average balance, ignore circularity for this question). Compute the
+revolver draw and approximate interest, and describe two management actions that could be modelled as Bear-case
+responses.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Cash available above the minimum funds part of the shortfall before the revolver.</p>
+</blockquote>
+<h3 id="q3-consistency-checks-l2">Q3. Consistency checks [L2]</h3>
+<p>Design four checks for the Checks sheet that flag internally inconsistent scenarios (one each for capex, NWC, margins
+and funding), stating the formula logic and whether each should be a hard error or a warning.</p></section>
+<nav class="pager"><a class="prev" href="C04_Live_Scenario_Header_Label_Formula.html">← Live Scenario Header Label Formula</a><a class="next" href="../../../W14_Supporting_Schedules_Working_Capital_PPE/index.html">Week 14: Supporting Schedules (Working Capital, PPE, Debt &amp;… →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Net Present Value and Its Excel Implementation · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/concepts/C01_Net_Present_Value_and_Its_Excel_Implementation.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 6</a> <span>›</span> <a href="../../index.html">Week 21</a> <span>›</span> <a href="../index.html">T3 · Capital Budgeting: NPV, IRR, MIRR, PI,…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Capital Budgeting: NPV, IRR, MIRR, PI, EAA</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Incremental_Project_Cash_Flows_Capex_to_Terminal.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/subtopics/S01_Incremental_Project_Cash_Flows_Capex_to_Terminal.html">Incremental Project Cash Flows: Capex to Terminal Value</a></li><li><a href="../subtopics/S02_Relevance_Rules_for_Project_Cash_Flows.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/subtopics/S02_Relevance_Rules_for_Project_Cash_Flows.html">Relevance Rules for Project Cash Flows</a></li><li><a href="../subtopics/S03_Indian_Tax_Depreciation_Shield_WDV_Blocks_Half.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/subtopics/S03_Indian_Tax_Depreciation_Shield_WDV_Blocks_Half.html">Indian Tax Depreciation Shield: WDV Blocks, Half-Rate, Additional</a></li><li><a href="../subtopics/S04_Tax_Regime_Choice_Sec_115BAA_vs_Old_Regime_in.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/subtopics/S04_Tax_Regime_Choice_Sec_115BAA_vs_Old_Regime_in.html">Tax Regime Choice: Sec 115BAA vs Old Regime in Project Models</a></li><li><a href="../subtopics/S05_NPV_vs_IRR_Conflicts_Fisher_Rate_and_Multiple_IRRs.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/subtopics/S05_NPV_vs_IRR_Conflicts_Fisher_Rate_and_Multiple_IRRs.html">NPV vs IRR Conflicts, Fisher Rate and Multiple IRRs</a></li><li><a href="../subtopics/S06_Capital_Rationing_PI_Ranking_and_NPV_Maximising.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/subtopics/S06_Capital_Rationing_PI_Ranking_and_NPV_Maximising.html">Capital Rationing: PI Ranking and NPV-Maximising Combinations</a></li><li><a href="../subtopics/S07_Unequal_Life_Mutually_Exclusive_Projects_Chains_vs.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/subtopics/S07_Unequal_Life_Mutually_Exclusive_Projects_Chains_vs.html">Unequal-Life Mutually Exclusive Projects: Chains vs EAA</a></li><li><a href="../subtopics/S08_Inflation_Consistency_and_Project_Risk_Analysis.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/subtopics/S08_Inflation_Consistency_and_Project_Risk_Analysis.html">Inflation Consistency and Project Risk Analysis Techniques</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Net_Present_Value_and_Its_Excel_Implementation.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/concepts/C01_Net_Present_Value_and_Its_Excel_Implementation.html">Net Present Value and Its Excel Implementation</a></li><li><a href="C02_IRR_XIRR_and_Modified_IRR.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/concepts/C02_IRR_XIRR_and_Modified_IRR.html">IRR, XIRR and Modified IRR</a></li><li><a href="C03_Profitability_Index_PV_of_Inflows_per_Rupee.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/concepts/C03_Profitability_Index_PV_of_Inflows_per_Rupee.html">Profitability Index: PV of Inflows per Rupee Invested</a></li><li><a href="C04_Equivalent_Annual_Annuity_for_Unequal_Lives.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/concepts/C04_Equivalent_Annual_Annuity_for_Unequal_Lives.html">Equivalent Annual Annuity for Unequal Lives</a></li><li><a href="C05_After_Tax_Salvage_Under_the_Block_of_Assets_Method.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/concepts/C05_After_Tax_Salvage_Under_the_Block_of_Assets_Method.html">After-Tax Salvage Under the Block-of-Assets Method</a></li><li><a href="C06_Operating_Cash_Flow_With_Tax_Shield_and_the_Fisher.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/concepts/C06_Operating_Cash_Flow_With_Tax_Shield_and_the_Fisher.html">Operating Cash Flow With Tax Shield and the Fisher Relation</a></li><li><a href="C07_Discounted_Payback_Period.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W21_CVP_Operating_Financial_Leverage_Capital/T3_Capital_Budgeting_NPV_IRR_MIRR_PI_EAA/concepts/C07_Discounted_Payback_Period.html">Discounted Payback Period</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Net Present Value and Its Excel Implementation</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> NPV = Σ CF_t ÷ (1 + r)^t − I0; Excel <code>=NPV(r, CF1:CFn) + CF0</code> (CF0 is outside the NPV function); <code>=XNPV</code> for dated flows</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>\[
+\text{NPV} = \sum_{t=1}^{n} \frac{\text{CF}_t}{(1 + r)^t} - I_0
+\]</p>
+<p>where \(\text{CF}_t\) is the incremental after-tax free cash flow in period \(t\), \(r\) is the discount rate per
+period appropriate to the cash flows' risk and definition (WACC for FCFF, Ke for FCFE), \(n\) is the number of
+periods, and \(I_0\) is the initial outlay at \(t = 0\). Accept independent projects with NPV \(&gt; 0\); among mutually
+exclusive projects of equal life, choose the highest NPV.</p>
+<p>For dated flows:</p>
+<p>\[
+\text{XNPV} = \sum_{j} \frac{\text{CF}_j}{(1 + r)^{(d_j - d_0)/365}}
+\]</p>
+<p>where \(d_j\) is the date of cash flow \(j\) and \(d_0\) the date of the first cash flow.</p>
+<h2 id="explanation">Explanation</h2>
+<p>NPV is the increase in shareholder wealth (on an enterprise basis for FCFF) from undertaking the project. It is
+additive across projects, uses the opportunity cost of capital as the reinvestment rate, and accounts for scale.
+These properties make it the primary decision rule.</p>
+<p><strong>Excel mechanics and traps:</strong></p>
+<ul>
+<li><code>=NPV(rate, value1, …)</code> discounts the <strong>first</strong> value by one full period. It assumes the first cash flow occurs at
+  the end of period 1. So the Year 0 outlay must be added outside: <code>=NPV(r, C5:L5) + B5</code>, where <code>B5</code> is the
+  (negative) Year 0 flow. Putting Year 0 inside the function discounts it by a year and understates the outlay's
+  weight, overstating NPV for projects with a negative Year 0 flow.</li>
+<li><code>=XNPV(rate, values, dates)</code> uses actual dates with a 365-day year and discounts to the <strong>first date</strong> in the
+  range. Use it for construction-phase flows on irregular dates, or for mid-year conventions. The rate is an
+  annual effective rate.</li>
+<li>Mid-year convention without <code>XNPV</code>: multiply the <code>NPV</code> result by \((1 + r)^{0.5}\), or discount each flow at
+  \(t - 0.5\) explicitly.</li>
+<li><code>NPV</code> ignores blank cells but treats zeros as values. A blank in the middle of the range shifts the timing of later
+  flows; use zeros, not blanks.</li>
+<li>Per-period rate: for quarterly flows, use the quarterly rate \((1 + r)^{0.25} - 1\), not \(r \div 4\), if \(r\) is
+  an annual effective rate.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>A Kolkata FMCG company's new packaging line (₹ crore; WACC 11.5%):</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FCFF</td>
+<td>−75</td>
+<td>15</td>
+<td>22</td>
+<td>25</td>
+<td>25</td>
+<td>38</td>
+</tr>
+</tbody>
+</table>
+<p>Correct: <code>=NPV(11.5%, C2:G2) + B2</code> gives \(15 \div 1.115 + 22 \div 1.115^2 + 25 \div 1.115^3 + 25 \div 1.115^4 + 38
+\div 1.115^5 - 75\). The discount factors are 0.8969, 0.8044, 0.7214, 0.6470 and 0.5803, giving PVs of 13.45, 17.70,
+18.03, 16.17 and 22.05, which total ₹87.41 crore. NPV \(= \text{₹}12.41\) crore.</p>
+<p>Wrong: <code>=NPV(11.5%, B2:G2)</code> gives \((87.41 - 75) \div 1.115 = \text{₹}11.13\) crore, because it treats every flow as
+one year later.</p>
+<p>If the outlay actually occurs on 1 October 2026 and inflows on each 31 March from 2028, <code>XNPV</code> with those dates gives
+the precise answer.</p>
+<h2 id="connections">Connections</h2>
+<p>NPV is the anchor of this topic: IRR is the rate at which NPV \(= 0\) (c02), PI is NPV scaled by outlay (c03), EAA is
+NPV annualised (c04), and discounted payback uses the same discounting (c07). The discount rate comes from Week 16
+(WACC) and t4 (project-specific hurdle rates). The cash flows come from s01–s04. In the Week 21 exercise, NPV is the
+headline output, with Goal Seek on utilisation to find NPV \(= 0\).</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-compute-npv-correctly-l1">Q1. Compute NPV correctly [L1]</h3>
+<p>A project has flows (₹ crore) of −120 in Year 0 and 30, 35, 40, 40, 45 in Years 1–5. WACC is 12%. Compute NPV, then
+compute the result an analyst would get by including Year 0 inside Excel's <code>NPV</code> function, and explain the difference.</p>
+<h3 id="q2-xnpv-for-construction-flows-l2">Q2. XNPV for construction flows [L2]</h3>
+<p>Capex of ₹200 crore is paid on 1 April 2026 and ₹150 crore on 1 January 2027. Operating inflows of ₹90 crore arrive on
+31 March of each year from 2028 to 2033. WACC is 12%. Write the Excel formula you would use, explain the date
+convention, and estimate the NPV.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> XNPV discounts to the first date in the range, so order the dates and include all flows.</p>
+</blockquote>
+<h3 id="q3-mid-year-convention-l2">Q3. Mid-year convention [L2]</h3>
+<p>Explain how switching from a year-end to a mid-year convention changes the NPV of a project with mostly positive
+operating flows, and show the adjustment factor for a 12% rate.</p></section>
+<nav class="pager"><a class="prev" href="../subtopics/S08_Inflation_Consistency_and_Project_Risk_Analysis.html">← Inflation Consistency and Project Risk Analysis Techniques</a><a class="next" href="C02_IRR_XIRR_and_Modified_IRR.html">IRR, XIRR and Modified IRR →</a></nav>
+</main></div></body></html>

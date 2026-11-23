@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conditional Logic in M: if/then/else, and/or, and Null Coalescing · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S04_Conditional_Logic_in_M_ifthenelse_andor_and_Null.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T6 · Custom columns and fiscal logic in M</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · Custom columns and fiscal logic in M</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Column_From_Examples_Custom_Column_and_Conditional.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S01_Column_From_Examples_Custom_Column_and_Conditional.html">Column From Examples, Custom Column and Conditional Column</a></li><li><a href="S02_Indian_FY_Attributes_Label_Fiscal_Month_Quarter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S02_Indian_FY_Attributes_Label_Fiscal_Month_Quarter.html">Indian FY Attributes: Label, Fiscal Month, Quarter and Sort Key</a></li><li><a href="S03_Receivable_and_Payable_Ageing_Against_an_As_Of.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S03_Receivable_and_Payable_Ageing_Against_an_As_Of.html">Receivable and Payable Ageing Against an As-Of-Date Parameter</a></li><li><a href="S04_Conditional_Logic_in_M_ifthenelse_andor_and_Null.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S04_Conditional_Logic_in_M_ifthenelse_andor_and_Null.html">Conditional Logic in M: if/then/else, and/or, and Null Coalescing</a></li><li><a href="S05_Type_Ascription_on_New_Columns.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S05_Type_Ascription_on_New_Columns.html">Type Ascription on New Columns</a></li><li><a href="S06_Group_By_Aggregations_for_Summary_Outputs_During.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S06_Group_By_Aggregations_for_Summary_Outputs_During.html">Group By Aggregations for Summary Outputs During Ingestion</a></li><li><a href="S07_Date_Functions_for_Fiscal_and_Ageing_Logic.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S07_Date_Functions_for_Fiscal_and_Ageing_Logic.html">Date Functions for Fiscal and Ageing Logic</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_FY_End_Year_and_FY_Label_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C01_FY_End_Year_and_FY_Label_Formula.html">FY End Year and FY Label Formula</a></li><li><a href="../concepts/C02_Fiscal_Month_Number_with_NumberMod.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C02_Fiscal_Month_Number_with_NumberMod.html">Fiscal Month Number with Number.Mod</a></li><li><a href="../concepts/C03_Fiscal_Quarter_with_NumberIntegerDivide.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C03_Fiscal_Quarter_with_NumberIntegerDivide.html">Fiscal Quarter with Number.IntegerDivide</a></li><li><a href="../concepts/C04_Ageing_Bucket_Expression_with_DurationDays.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C04_Ageing_Bucket_Expression_with_DurationDays.html">Ageing Bucket Expression with Duration.Days</a></li><li><a href="../concepts/C05_Null_Safe_Net_Amount_and_Operator_Precedence.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C05_Null_Safe_Net_Amount_and_Operator_Precedence.html">Null-Safe Net Amount and Operator Precedence</a></li><li><a href="../concepts/C06_TableGroup_by_FY_and_Ledger_with_a_Typed_Sum.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C06_TableGroup_by_FY_and_Ledger_with_a_Typed_Sum.html">Table.Group by FY and Ledger with a Typed Sum</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Conditional Logic in M: if/then/else, and/or, and Null Coalescing</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> <code>if ... then ... else</code>, nested conditions, <code>and</code>/<code>or</code>, null coalescing with <code>??</code></p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Almost every finance attribute built in Power Query is a condition: the FY end year depends on whether the month is April or later; an ageing bucket depends on a range of days; an MSME breach depends on both the vendor's status and the days outstanding; a net amount depends on which of Debit or Credit is populated. M's conditional syntax is small, but its rules on <strong>null</strong> differ from Excel and SQL, and most silent errors in custom columns come from nulls: a null Debit makes the net amount null, a null date makes a range test raise an error, a null text makes a concatenated label null. Knowing exactly how M treats null in comparisons, logic and arithmetic is the difference between a column that is right and one that is right except for 2% of rows.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="if-then-else">if ... then ... else</h3>
+<pre><code class="language-m">if Date.Month([Date]) &gt;= 4 then 1 else 0
+</code></pre>
+<ul>
+<li><code>else</code> is <strong>mandatory</strong>; there is no implicit null. Use <code>else null</code> explicitly if needed.</li>
+<li>The condition must evaluate to a <strong>logical</strong> (<code>true</code>/<code>false</code>). If it evaluates to null or any non-logical value, M raises an error ("We cannot convert the value null to type Logical").</li>
+<li><code>if</code> is an expression and returns a value, so it can appear inside arithmetic: <code>Date.Year([Date]) + (if Date.Month([Date]) &gt;= 4 then 1 else 0)</code>. The parentheses are needed because <code>if ... else</code> extends as far right as possible.</li>
+</ul>
+<h3 id="nested-conditions">Nested conditions</h3>
+<pre><code class="language-m">if d &lt;= 30 then &quot;0-30&quot;
+else if d &lt;= 60 then &quot;31-60&quot;
+else if d &lt;= 90 then &quot;61-90&quot;
+else &quot;&gt;90&quot;
+</code></pre>
+<p>Conditions are tested in order and the first true branch wins, so each test only needs the upper bound. Put the most specific or exceptional cases first (null checks, disputed items) and the general fall-through last. For long mappings of discrete values (ledger group code to Schedule III line), a lookup is cleaner than a long chain: merge with a mapping table, or use a record:</p>
+<pre><code class="language-m">Map = [#&quot;10&quot; = &quot;Revenue&quot;, #&quot;20&quot; = &quot;Other income&quot;, #&quot;30&quot; = &quot;Cost of materials&quot;],
+Line = Record.FieldOrDefault(Map, [GroupCode], &quot;Unmapped&quot;)
+</code></pre>
+<h3 id="and-or-not">and, or, not</h3>
+<ul>
+<li><code>and</code>, <code>or</code> and <code>not</code> are lowercase keywords (not functions, not <code>&amp;&amp;</code>).</li>
+<li>Precedence: <code>not</code> binds tightest, then <code>and</code>, then <code>or</code>. <code>a or b and c</code> means <code>a or (b and c)</code>. Use parentheses whenever you mix them.</li>
+<li><code>and</code> and <code>or</code> short-circuit: in <code>[Days] &lt;&gt; null and [Days] &gt; 45</code>, the second test is not evaluated when Days is null, so no error is raised. This is the idiomatic null guard.</li>
+<li>Membership tests use <code>List.Contains({"Micro", "Small"}, [MSMEStatus])</code>, the equivalent of SQL <code>IN</code>.</li>
+</ul>
+<p>Example — MSME breach flag:</p>
+<pre><code class="language-m">Table.AddColumn(AP, &quot;MSMEBreach&quot;, each
+    List.Contains({&quot;Micro&quot;, &quot;Small&quot;}, [MSMEStatus])
+    and [DaysFromAcceptance] &lt;&gt; null
+    and [DaysFromAcceptance] &gt; 45, type logical)
+</code></pre>
+<h3 id="how-null-behaves">How null behaves</h3>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Result with null</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Equality <code>=</code>, <code>&lt;&gt;</code></td>
+<td>Logical; <code>null = null</code> is true, <code>null = 5</code> is false</td>
+<td><code>[Ref] = null</code> is the null test</td>
+</tr>
+<tr>
+<td>Relational <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code></td>
+<td>null</td>
+<td><code>null &lt;= 30</code> → null (then <code>if</code> raises an error)</td>
+</tr>
+<tr>
+<td>Arithmetic <code>+ - * /</code></td>
+<td>null</td>
+<td><code>null - 500</code> → null</td>
+</tr>
+<tr>
+<td>Text concatenation <code>&amp;</code></td>
+<td>null</td>
+<td><code>"FY" &amp; null</code> → null</td>
+</tr>
+<tr>
+<td><code>and</code> / <code>or</code></td>
+<td>Short-circuit; <code>false and null</code> → false, <code>true or null</code> → true</td>
+<td></td>
+</tr>
+<tr>
+<td>List functions</td>
+<td>Usually ignore nulls</td>
+<td><code>List.Sum({100, null, 50})</code> → 150</td>
+</tr>
+</tbody>
+</table>
+<p>The practical consequences: test for null before range comparisons; coalesce before arithmetic; coalesce before concatenation.</p>
+<h3 id="null-coalescing-with">Null coalescing with ??</h3>
+<p><code>x ?? y</code> returns <code>x</code> if <code>x</code> is not null, otherwise <code>y</code>. It replaces the verbose <code>if x = null then y else x</code>.</p>
+<pre><code class="language-m">Net    = ([Debit] ?? 0) - ([Credit] ?? 0)
+Party  = [PartyName] ?? [LedgerName] ?? &quot;Unknown&quot;
+Header = optionalHeader ?? &quot;Particulars&quot;
+</code></pre>
+<p><code>??</code> has <strong>lower precedence than arithmetic</strong>, so parentheses are essential: <code>[Debit] ?? 0 - [Credit] ?? 0</code> is parsed as <code>[Debit] ?? ((0 - [Credit]) ?? 0)</code>, which returns Debit unchanged whenever Debit is not null — the Credit is silently ignored. <code>??</code> chains right-to-left, so <code>a ?? b ?? c</code> returns the first non-null.</p>
+<p>Note that <code>??</code> tests only for null, not for empty text or zero. An empty string "" from a CSV is not null; convert blanks to null first (<code>Table.ReplaceValue(t, "", null, Replacer.ReplaceValue, {"Party"})</code>) or test <code>if x = null or x = "" then ...</code>.</p>
+<h3 id="errors-vs-nulls">Errors vs nulls</h3>
+<p>A condition that errors produces an Error cell, not a null. To convert errors into a default inside a column: <code>try &lt;expr&gt; otherwise &lt;default&gt;</code>. Use sparingly: hiding errors with <code>otherwise</code> can mask bad data; log them instead where they matter.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>Row values: Debit = null, Credit = 25,000, Days = null, MSMEStatus = "Micro".</p>
+<ul>
+<li><code>[Debit] - [Credit]</code> → null (row disappears from sums later).</li>
+<li><code>([Debit] ?? 0) - ([Credit] ?? 0)</code> → −25,000.</li>
+<li><code>[Debit] ?? 0 - [Credit] ?? 0</code> → <code>null ?? ((0 − 25,000) ?? 0)</code> → −25,000 here by coincidence; with Debit = 10,000 it returns 10,000 instead of −15,000.</li>
+<li><code>if [Days] &gt; 45 then "Breach" else "OK"</code> → error (condition is null).</li>
+<li><code>if [Days] &lt;&gt; null and [Days] &gt; 45 then "Breach" else if [Days] = null then "No date" else "OK"</code> → "No date".</li>
+</ul>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Type mixing in comparisons.</strong> <code>"45" &gt; 30</code> raises an error (text vs number); type columns before building conditions.</li>
+<li><strong>Case sensitivity.</strong> <code>[Status] = "micro"</code> is false for "Micro"; normalise with <code>Text.Upper</code> or compare with <code>Comparer.OrdinalIgnoreCase</code> via <code>Comparer.Equals</code>.</li>
+<li><strong>Floating-point equality.</strong> <code>0.1 + 0.2 = 0.3</code> is false; round before equality tests on amounts.</li>
+<li><strong>Booleans as numbers.</strong> Unlike Excel, <code>true + 1</code> is an error; use <code>if b then 1 else 0</code> or <code>Number.From(b)</code>.</li>
+<li><strong>Readable logic.</strong> For long chains, compute intermediate values in a <code>let</code> inside the <code>each</code> (e.g. <code>let d = ... in ...</code>) to avoid repeating expressions.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li><code>if ... then ... else</code> always needs <code>else</code>; its condition must be a logical, or M raises an error.</li>
+<li><code>and</code>/<code>or</code>/<code>not</code> are keywords with precedence not &gt; and &gt; or; they short-circuit, which makes <code>x &lt;&gt; null and x &gt; 45</code> safe.</li>
+<li>Null propagates through relational, arithmetic and concatenation operators; equality with null returns a logical.</li>
+<li><code>??</code> returns the first non-null value; it has lower precedence than arithmetic, so parenthesise.</li>
+<li><code>??</code> does not treat "" or 0 as null; clean blanks to null first.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-evaluate-the-expressions-l1">Q1. Evaluate the expressions [L1]</h3>
+<p>Give the result (value or error) of each: (a) <code>null = null</code>; (b) <code>null &gt; 0</code>; (c) <code>if null &gt; 0 then 1 else 0</code>; (d) <code>"FY" &amp; null</code>; (e) <code>5 ?? 0 - 3</code>; (f) <code>(null ?? 0) - 3</code>; (g) <code>List.Sum({10, null, 5})</code>.</p>
+<h3 id="q2-write-a-robust-net-amount-and-side-column-l2">Q2. Write a robust net-amount and side column [L2]</h3>
+<p>A TB has Debit and Credit columns as numbers with nulls and occasional zeros. Write M adding Net (Debit minus Credit, nulls as zero) and Side ("Dr", "Cr" or "Nil" based on Net), both typed.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Compute Net first, then derive Side from Net rather than from Debit and Credit separately.</p>
+</blockquote>
+<h3 id="q3-msme-and-disputed-logic-l2">Q3. MSME and disputed logic [L2]</h3>
+<p>Write a single Custom Column that returns "Disputed" if DisputeFlag is true, otherwise "MSME overdue" if the vendor is Micro or Small and DaysFromAcceptance exceeds 45, otherwise "Within terms" — handling nulls in DisputeFlag and DaysFromAcceptance without errors.</p>
+<h3 id="q4-precedence-bug-hunt-l2">Q4. Precedence bug hunt [L2]</h3>
+<p>The formula <code>each [Opening] ?? 0 + [Debit] ?? 0 - [Credit] ?? 0</code> is used to compute Closing. For a row with Opening = 50,000, Debit = 20,000, Credit = 5,000, state what it returns and why, then correct it.</p></section>
+<nav class="pager"><a class="prev" href="S03_Receivable_and_Payable_Ageing_Against_an_As_Of.html">← Receivable and Payable Ageing Against an As-Of-Date…</a><a class="next" href="S05_Type_Ascription_on_New_Columns.html">Type Ascription on New Columns →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rolling Horizon Design: 12-Month, 18-Month and 5-Quarter Windows · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S01_Rolling_Horizon_Design_12_Month_18_Month_and_5.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 5</a> <span>›</span> <a href="../../index.html">Week 18</a> <span>›</span> <a href="../index.html">T1 · 12/18-month rolling forecast timeline…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · 12/18-month rolling forecast timeline mechanics</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Rolling_Horizon_Design_12_Month_18_Month_and_5.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S01_Rolling_Horizon_Design_12_Month_18_Month_and_5.html">Rolling Horizon Design: 12-Month, 18-Month and 5-Quarter Windows</a></li><li><a href="S02_Reforecast_Cadence_and_Decoupling_from_the_AOP.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S02_Reforecast_Cadence_and_Decoupling_from_the_AOP.html">Reforecast Cadence and Decoupling from the AOP</a></li><li><a href="S03_Dynamic_Timeline_Headers_Driven_by_a_Single_Cutoff.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S03_Dynamic_Timeline_Headers_Driven_by_a_Single_Cutoff.html">Dynamic Timeline Headers Driven by a Single Cutoff Date</a></li><li><a href="S04_ActualForecast_Flags_and_Per_Column_Data_Source.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S04_ActualForecast_Flags_and_Per_Column_Data_Source.html">Actual/Forecast Flags and Per-Column Data Source Switching</a></li><li><a href="S05_Pulling_Actuals_from_a_Long_Format_Database_with.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S05_Pulling_Actuals_from_a_Long_Format_Database_with.html">Pulling Actuals from a Long-Format Database with SUMIFS</a></li><li><a href="S06_Forecast_Granularity_Fewer_Lines_than_the_Budget.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S06_Forecast_Granularity_Fewer_Lines_than_the_Budget.html">Forecast Granularity: Fewer Lines than the Budget</a></li><li><a href="S07_EPM_Support_for_Rolling_Forecasts_Anaplan_Adaptive.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S07_EPM_Support_for_Rolling_Forecasts_Anaplan_Adaptive.html">EPM Support for Rolling Forecasts: Anaplan, Adaptive and EPBCS</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_First_Forecast_Month_and_SEQUENCE_Driven_Month_End.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C01_First_Forecast_Month_and_SEQUENCE_Driven_Month_End.html">First Forecast Month and SEQUENCE-Driven Month-End Headers</a></li><li><a href="../concepts/C02_Non_Dynamic_Array_Header_Formula_Using_a_COLUMN.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C02_Non_Dynamic_Array_Header_Formula_Using_a_COLUMN.html">Non-Dynamic-Array Header Formula Using a COLUMN Offset</a></li><li><a href="../concepts/C03_Actual_Flag_and_the_IF_SUMIFS_Value_Switch.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C03_Actual_Flag_and_the_IF_SUMIFS_Value_Switch.html">Actual Flag and the IF-SUMIFS Value Switch</a></li><li><a href="../concepts/C04_Constant_Length_Rolling_Horizon.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C04_Constant_Length_Rolling_Horizon.html">Constant-Length Rolling Horizon</a></li><li><a href="../concepts/C05_Prefer_INDEXXLOOKUP_over_Volatile_OFFSETINDIRECT.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C05_Prefer_INDEXXLOOKUP_over_Volatile_OFFSETINDIRECT.html">Prefer INDEX/XLOOKUP over Volatile OFFSET/INDIRECT</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Rolling Horizon Design: 12-Month, 18-Month and 5-Quarter Windows</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Rolling horizon design: 12-month, 18-month (always shows next FY by Q3 of Indian FY) and 5-quarter rolling</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>The horizon decides what questions the forecast can answer. A treasury team planning a term-loan drawdown, a supply-chain head committing to festive inventory, and a Board approving next year's capex each need visibility beyond the fiscal year-end. With only an AOP, an Indian company's forward view shrinks from 12 months in April to 1 month in February — precisely when the next AOP is being negotiated. The horizon also determines model size, the number of months the driver sheet must cover, and how far the version table must reach. Choosing it is the first design decision for any rolling forecast, and interviewers routinely ask candidates to justify one.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="definitions">Definitions</h3>
+<p>A <strong>rolling forecast</strong> is a forecast of fixed length that advances one period each time a period closes. The horizon is measured from the first forecast month (the month after the cutoff), not from the fiscal year start. Three designs dominate practice.</p>
+<h3 id="12-month-rolling">12-month rolling</h3>
+<p>The window covers the next 12 months after the last closed month. With cutoff 30-Sep-2025 it runs October 2025–September 2026: six months of FY26 YTG and six months of FY27.</p>
+<ul>
+<li><strong>Strengths:</strong> aligns with how lenders and analysts think (NTM), with annual seasonality fully captured (every calendar month appears exactly once), and with a monthly close cadence.</li>
+<li><strong>Weaknesses:</strong> in April (cutoff 31-Mar) it shows only the current FY — no next-FY view at all; in Q1 it shows just a few months of the next FY.</li>
+</ul>
+<h3 id="18-month-rolling">18-month rolling</h3>
+<p>The window covers the next 18 months. The rationale for the Indian FY: at any cutoff from the end of Q2 onward, the window reaches the end of the <em>next</em> fiscal year.</p>
+<table>
+<thead>
+<tr>
+<th>Cutoff (last closed)</th>
+<th>18-month window</th>
+<th>Covers full next FY?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30-Jun-2025 (Q1 closed)</td>
+<td>Jul-25 to Dec-26</td>
+<td>FY27 to Dec-26 only (9 of 12 months)</td>
+</tr>
+<tr>
+<td>30-Sep-2025 (Q2 closed)</td>
+<td>Oct-25 to Mar-27</td>
+<td>Yes — all of FY27</td>
+</tr>
+<tr>
+<td>31-Dec-2025 (Q3 closed)</td>
+<td>Jan-26 to Jun-27</td>
+<td>Yes, plus Q1 FY28</td>
+</tr>
+<tr>
+<td>31-Mar-2026 (FY closed)</td>
+<td>Apr-26 to Sep-27</td>
+<td>FY27 plus H1 FY28</td>
+</tr>
+</tbody>
+</table>
+<p>So from the September close onwards — i.e. through Q3 and Q4 of the Indian FY, the AOP-preparation season — the 18-month window always contains the entire next fiscal year. The AOP for FY27 (typically prepared October–February, approved by the Board in February–March) can start from the rolling forecast's FY27 months rather than from a blank sheet. The cost is a larger model and more speculative outer months.</p>
+<h3 id="5-quarter-rolling">5-quarter rolling</h3>
+<p>The window covers the current quarter plus the next four quarters, at quarterly granularity (sometimes with months for the current quarter). With Q2 FY26 closed, the window is Q3 FY26 to Q3 FY27. It suits companies that reforecast quarterly, quarterly-reporting listed companies (SEBI LODR Reg 33 results are quarterly), and businesses whose drivers are not meaningful monthly (projects, capital goods, infrastructure EPC).</p>
+<h3 id="hybrid-designs">Hybrid designs</h3>
+<p>Common practice combines granularities: months for the first 6 months, quarters for months 7–18. This keeps operational accuracy where decisions are near-term and avoids false precision further out. In Excel, monthly and quarterly columns can be generated from the same cutoff: quarterly ends are <code>EOMONTH(Cutoff, 3*k + offset)</code> where the offset aligns to June/September/December/March quarter-ends.</p>
+<h3 id="choosing-the-horizon">Choosing the horizon</h3>
+<p>Consider:</p>
+<ol>
+<li><strong>Decision lead times</strong> — longest relevant lead time (capex orders, festive inventory, hiring) sets the minimum horizon.</li>
+<li><strong>Cadence</strong> — monthly reforecast pairs naturally with months; quarterly with quarters.</li>
+<li><strong>Data and driver availability</strong> — drivers beyond 12 months are often guesses; use trend or AOP-growth rules there.</li>
+<li><strong>Stakeholders</strong> — lenders (covenant headroom on rolling LTM), Board (next-FY preview), investors (NTM guidance).</li>
+</ol>
+<h3 id="excel-mechanics-for-horizon-length">Excel mechanics for horizon length</h3>
+<p>Parameterise the horizon so the same engine serves 12 or 18 months:</p>
+<pre><code>=EOMONTH(Cutoff, SEQUENCE(1, HorizonMonths))
+</code></pre>
+<p>with <code>HorizonMonths</code> a named input (12 or 18). Downstream totals by FY use <code>SUMIFS</code> on a fiscal-year helper row <code>=YEAR(EOMONTH(C$4,-3))+1</code>, so the window can straddle two or three FYs without special formulas.</p>
+<h3 id="illustration">Illustration</h3>
+<p>Cutoff 31-Dec-2025, 18-month window Jan-26 to Jun-27. Fiscal-year split: Jan–Mar 2026 (3 months, FY26 YTG), Apr-26–Mar-27 (12 months, FY27), Apr–Jun 2027 (3 months, FY28). A <code>SUMIFS</code> on the FY helper row returns FY27 = 12 months — a full draft of next year's AOP baseline.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Horizon vs reliability:</strong> months 13–18 are low-confidence. Show them in a separate band or at quarterly granularity, and do not hold managers accountable for them.</li>
+<li><strong>Partial-year totals:</strong> a 12-month window straddling two FYs should not be labelled "FY26" anywhere; always label "NTM" or by month range.</li>
+<li><strong>Year-end transition:</strong> at the March close, the FY26 LE becomes final actuals; the 12-month window is exactly FY27, which some companies use as the AOP draft. Ensure the AOP and the forecast are still stored as separate versions.</li>
+<li><strong>Seasonal businesses:</strong> a 5-quarter window always contains one quarter twice (e.g. Q3 FY26 and Q3 FY27), useful for year-on-year comparison of the peak.</li>
+<li><strong>Listed companies</strong> should keep in mind that NTM numbers circulated widely internally may become price-sensitive information under SEBI (PIT) Regulations; control distribution.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>A rolling horizon has fixed length measured from the first forecast month, not from the FY start.</li>
+<li>12-month rolling equals NTM and captures one full seasonal cycle; it gives no next-FY view in April.</li>
+<li>18-month rolling, from the Q2 (September) close onwards, always contains the entire next Indian FY — ideal for AOP preparation.</li>
+<li>5-quarter rolling suits quarterly cadence, quarterly reporting and project businesses.</li>
+<li>Hybrid month-then-quarter granularity balances near-term precision with long-range effort.</li>
+<li>Parameterise the horizon length and use a fiscal-year helper row so totals work across FY boundaries.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-window-mapping-for-three-cutoffs-l1">Q1. Window mapping for three cutoffs [L1]</h3>
+<p>For a company with an April–March FY, state the first and last month of (a) a 12-month and (b) an 18-month rolling window at cutoffs 31-Jul-2025, 30-Nov-2025 and 28-Feb-2026, and the number of FY27 months contained in each.</p>
+<h3 id="q2-choosing-a-horizon-for-an-epc-contractor-l3">Q2. Choosing a horizon for an EPC contractor [L3]</h3>
+<p>An NSE-listed EPC contractor has project durations of 18–30 months, quarterly results, milestone billing, and a Board that approves the AOP in March. Recommend a horizon (12-month, 18-month, 5-quarter or hybrid) and granularity, justify it against decision lead times and data availability, and describe what the forecast would show at the 31-Dec-2025 cutoff.</p>
+<h3 id="q3-parameterised-horizon-build-l2">Q3. Parameterised horizon build [L2]</h3>
+<p>Write formulas for a header row that spills <code>HorizonMonths</code> month-end dates from <code>Cutoff</code>, a fiscal-year helper row beneath it, and a block of three cells that totals forecast revenue (row 10) by FY for each FY appearing in the window. Explain how the block behaves when <code>HorizonMonths</code> changes from 12 to 18.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> <code>UNIQUE</code> on the FY helper row gives the list of FYs to total.</p>
+</blockquote>
+<h3 id="q4-hybrid-monthquarter-design-l2">Q4. Hybrid month/quarter design [L2]</h3>
+<p>Design an 18-month hybrid window with months 1–6 monthly and months 7–18 as quarters ending June/September/December/March. At cutoff 30-Sep-2025, list every column header and explain how you would generate the quarterly headers so that they remain aligned to Indian fiscal quarter-ends when the cutoff moves to 31-Oct-2025.</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← 12/18-month rolling forecast timeline mechanics</a><a class="next" href="S02_Reforecast_Cadence_and_Decoupling_from_the_AOP.html">Reforecast Cadence and Decoupling from the AOP →</a></nav>
+</main></div></body></html>

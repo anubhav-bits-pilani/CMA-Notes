@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scenario Driver Blocks: Base, Bull, Bear Rows and the Live Row · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S02_Scenario_Driver_Blocks_Base_Bull_Bear_Rows_and_the.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T6 · Scenario Switcher Architecture</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · Scenario Switcher Architecture</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Single_Scenario_Selector_Cell_with_Data_Validation.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S01_Single_Scenario_Selector_Cell_with_Data_Validation.html">Single Scenario Selector Cell with Data-Validation Dropdown</a></li><li><a href="S02_Scenario_Driver_Blocks_Base_Bull_Bear_Rows_and_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S02_Scenario_Driver_Blocks_Base_Bull_Bear_Rows_and_the.html">Scenario Driver Blocks: Base, Bull, Bear Rows and the Live Row</a></li><li><a href="S03_Scenario_Selection_Functions_CHOOSE_INDEX_XLOOKUP.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S03_Scenario_Selection_Functions_CHOOSE_INDEX_XLOOKUP.html">Scenario Selection Functions: CHOOSE, INDEX, XLOOKUP, SWITCH</a></li><li><a href="S04_Which_Drivers_to_Flex_Volume_Price_Stores_Margin.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S04_Which_Drivers_to_Flex_Volume_Price_Stores_Margin.html">Which Drivers to Flex: Volume, Price, Stores, Margin, Wages, Capex, NWC</a></li><li><a href="S05_Coherent_Scenario_Narratives_vs_Single_Variable.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S05_Coherent_Scenario_Narratives_vs_Single_Variable.html">Coherent Scenario Narratives vs Single-Variable Tweaks</a></li><li><a href="S06_Capturing_Scenario_Outputs_Data_Tables_vs_Pasted.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S06_Capturing_Scenario_Outputs_Data_Tables_vs_Pasted.html">Capturing Scenario Outputs: Data Tables vs Pasted Static Values</a></li><li><a href="S07_Scenario_Labelling_on_Outputs_and_Documented_Case.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/subtopics/S07_Scenario_Labelling_on_Outputs_and_Documented_Case.html">Scenario Labelling on Outputs and Documented Case Rationale</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_The_Live_Row_CHOOSE_or_INDEX_on_the_Scenario_Code.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C01_The_Live_Row_CHOOSE_or_INDEX_on_the_Scenario_Code.html">The Live Row: CHOOSE or INDEX on the Scenario Code</a></li><li><a href="../concepts/C02_One_Switch_Only_No_Scenario_Logic_Outside_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C02_One_Switch_Only_No_Scenario_Logic_Outside_the.html">One Switch Only: No Scenario Logic Outside the Driver Block</a></li><li><a href="../concepts/C03_Scenario_Summary_via_a_One_Variable_Data_Table_on.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C03_Scenario_Summary_via_a_One_Variable_Data_Table_on.html">Scenario Summary via a One-Variable Data Table on the Switch</a></li><li><a href="../concepts/C04_Live_Scenario_Header_Label_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C04_Live_Scenario_Header_Label_Formula.html">Live Scenario Header Label Formula</a></li><li><a href="../concepts/C05_Internal_Consistency_of_Scenarios_Growth_Needs.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T6_Scenario_Switcher_Architecture/concepts/C05_Internal_Consistency_of_Scenarios_Growth_Needs.html">Internal Consistency of Scenarios: Growth Needs Capex, Stress Needs Funding</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Scenario Driver Blocks: Base, Bull, Bear Rows and the Live Row</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Driver blocks: Base/Bull/Bear rows per driver per year plus one "Live" row feeding calculations</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>The selector cell decides <em>which</em> case runs; driver blocks hold <em>what</em> each case assumes. A driver block is a small,
+standardised group of rows on the Assumptions sheet — one row per scenario per driver, with values for every forecast
+year, and one Live row that picks the active scenario's values. Calculations reference only the Live row. This
+structure keeps all scenario logic in one place (the driver block), makes every case's assumptions visible
+side-by-side for review, and means calculation sheets never need to know that scenarios exist. It is the standard
+layout in bank and Big 4 models and is what a model auditor expects to find.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="block-layout">Block layout</h3>
+<p>Each driver occupies five rows (for three cases), all on the same timeline columns as every other sheet:</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th>Label</th>
+<th>Units</th>
+<th>Const</th>
+<th>FY26E</th>
+<th>FY27E</th>
+<th>FY28E</th>
+<th>FY29E</th>
+<th>FY30E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td>Zudio gross store additions — Base</td>
+<td>stores</td>
+<td></td>
+<td>200</td>
+<td>190</td>
+<td>180</td>
+<td>170</td>
+<td>160</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Zudio gross store additions — Bull</td>
+<td>stores</td>
+<td></td>
+<td>240</td>
+<td>230</td>
+<td>220</td>
+<td>210</td>
+<td>200</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Zudio gross store additions — Bear</td>
+<td>stores</td>
+<td></td>
+<td>140</td>
+<td>120</td>
+<td>110</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Zudio gross store additions — <strong>Live</strong></td>
+<td>stores</td>
+<td></td>
+<td>formula</td>
+<td>formula</td>
+<td>formula</td>
+<td>formula</td>
+<td>formula</td>
+</tr>
+<tr>
+<td>24</td>
+<td>(blank separator)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Conventions:</p>
+<ul>
+<li><strong>Inputs in blue</strong> on the Base/Bull/Bear rows; the <strong>Live row in black</strong> (same-sheet formula) and visually
+  distinguished (bold label, light shading, or a "Live" tag in the label column).</li>
+<li><strong>Same column structure</strong> as all calculation sheets (label, units, constant column, then aligned timeline), so the
+  calculation sheet can link the Live row with a column-consistent reference (w13 t1 s04, c03).</li>
+<li><strong>Live row formula</strong> identical across the row (w13 t2 c01):</li>
+</ul>
+<pre><code>H23: =CHOOSE(Scenario, H20, H21, H22)
+</code></pre>
+<p>copied to L23. <code>Scenario</code> is the named selector cell (s01).</p>
+<h3 id="historical-columns">Historical columns</h3>
+<p>Driver blocks usually start at the first forecast year. If the block spans the full timeline for column consistency,
+historical columns are left blank or show the historical value (computed on the Historicals sheet) in the Live row
+only, using a timeline flag:</p>
+<pre><code>=IF(Forecast_Flag=1, CHOOSE(Scenario, H20, H21, H22), Hist_Value)
+</code></pre>
+<p>Prefer keeping historicals out of the driver block entirely and letting the calculation row switch with the flag — the
+driver block then contains only forecast assumptions.</p>
+<h3 id="grouping-and-ordering-drivers">Grouping and ordering drivers</h3>
+<p>Organise the Assumptions sheet by driver category, each with its block:</p>
+<ol>
+<li>Macro: CPI, nominal GDP, USD/INR, commodity prices (VAM, cotton).</li>
+<li>Revenue: UVG, price, store additions, new-store area, LFL, maturity curve parameters.</li>
+<li>Costs: gross margin parameters (pass-through ratios), wage increments, A&amp;P %, opex inflation.</li>
+<li>Capital: capex per store or per tonne, maintenance capex, project dates.</li>
+<li>Working capital: DSO, DIO, DPO.</li>
+<li>Financing (often not scenario-flexed): interest rates, dividend payout.</li>
+</ol>
+<p>Not every driver must be flexed. Drivers that do not vary by case (e.g., tax rate) have a single input row — no
+block — to avoid clutter and the false impression that they are scenario-dependent.</p>
+<h3 id="single-value-vs-time-series-drivers">Single-value vs time-series drivers</h3>
+<p>Some scenario inputs are scalars (e.g., practical maximum utilisation, terminal growth if scenario-dependent). Use a
+compact block with the three values in the constant column and a Live cell:</p>
+<table>
+<thead>
+<tr>
+<th>Label</th>
+<th>Base</th>
+<th>Bull</th>
+<th>Bear</th>
+<th>Live</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Maturity curve age-0 factor</td>
+<td>65%</td>
+<td>70%</td>
+<td>55%</td>
+<td><code>=CHOOSE(Scenario, E31, F31, G31)</code></td>
+</tr>
+</tbody>
+</table>
+<p>Name the Live scalar (e.g., <code>Age0_Factor</code>) and reference it by name (w13 t1 s07).</p>
+<h3 id="bullbear-as-deltas-vs-absolute-values">Bull/Bear as deltas vs absolute values</h3>
+<p>Two input styles exist:</p>
+<ul>
+<li><strong>Absolute values</strong> for each case (as above). Transparent; reviewers see exact values.</li>
+<li><strong>Base plus delta</strong>: Bull row = Base + Bull delta; Bear row = Base − Bear delta, with deltas as inputs. Useful when
+  Base is updated frequently (rolling forecasts) and the spread between cases should persist. The Bull/Bear rows then
+  become formulas (black), and the delta rows are inputs (blue).</li>
+</ul>
+<p>Choose one style per model and document it. Mixing styles (some drivers absolute, some deltas) is a common source of
+review confusion.</p>
+<h3 id="checks-within-the-block">Checks within the block</h3>
+<ul>
+<li>Ordering check where economically required (e.g., Bull store adds ≥ Base ≥ Bear) — as a warning, since some drivers
+  legitimately invert (Bear capex may be <em>higher</em> for maintenance, or Bear DPO lower).</li>
+<li>Completeness: no blank cells in any case row across forecast years: <code>=COUNTBLANK(H20:L22)=0</code>.</li>
+<li>Live row = selected case: <code>=SUMPRODUCT(ABS(H23:L23-CHOOSE(Scenario,H20:L20,H21:L21,H22:L22)))&lt;0.0001</code> (a
+  belt-and-braces check that nobody has overwritten the Live row with a hardcode).</li>
+</ul>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Many segments.</strong> With Trent's formats or Pidilite's segments, the block count grows quickly (drivers × segments).
+  Keep one block per driver per segment, grouped by segment, with consistent ordering; avoid collapsing segments into a
+  single row with mixed meaning.</li>
+<li><strong>Driver blocks on calculation sheets.</strong> Do not place Base/Bull/Bear rows on calculation sheets "for convenience";
+  they belong on Assumptions to keep inputs separate (FAST/ICAEW).</li>
+<li><strong>Overrides.</strong> A one-year management override should be entered in the relevant case row with a comment, not typed
+  over the Live row.</li>
+<li><strong>Scenario-dependent timing.</strong> Project commissioning dates that vary by case are scalar inputs in a block; downstream
+  flags (commissioning flag by year) are calculations referencing the Live date.</li>
+<li><strong>Large models.</strong> If the Assumptions sheet becomes unwieldy, split by category (Assumptions_Revenue,
+  Assumptions_Cost), but keep the selector single.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Each flexed driver has Base, Bull and Bear rows plus one Live row on the Assumptions sheet.</li>
+<li>The Live row uses one consistent selection formula across the timeline; calculations reference only Live rows.</li>
+<li>Inputs blue, Live row black and visually tagged; same column structure as calc sheets.</li>
+<li>Do not create blocks for drivers that do not vary by case.</li>
+<li>Choose absolute values or base-plus-delta consistently, and document it.</li>
+<li>Add completeness and Live-row integrity checks.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-build-a-block-l1">Q1. Build a block [L1]</h3>
+<p>Lay out a driver block for Pidilite C&amp;B UVG for FY26–FY30 with Base 9%, 9%, 8%, 8%, 8%; Bull 12%, 11%, 10%, 10%, 9%;
+Bear 5%, 6%, 6%, 7%, 7%. Write the Live row formula for the first forecast column and explain which parts of the
+reference must be absolute, if any.</p>
+<h3 id="q2-delta-style-block-l2">Q2. Delta-style block [L2]</h3>
+<p>Redesign the Q1 block in base-plus-delta style with a Bull delta of +2.5 percentage points and a Bear delta of −3.0
+percentage points (both constant over time). State which cells are inputs and which are formulas, and how the colour
+convention applies.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> The deltas can sit in the constant column and be referenced with a column-anchored address.</p>
+</blockquote>
+<h3 id="q3-live-row-integrity-check-l2">Q3. Live-row integrity check [L2]</h3>
+<p>A reviewer suspects someone typed 10% over one cell of a Live row. Write a check formula that detects any mismatch
+between the Live row and the selected scenario row across all forecast years, and explain how you would surface it on
+the Cover.</p>
+<h3 id="q4-organising-a-multi-segment-assumptions-sheet-l3">Q4. Organising a multi-segment Assumptions sheet [L3]</h3>
+<p>For a Trent model with three formats and drivers for store additions, new-store area, LFL, gross margin, staff per
+store, store opex per sq ft, capex per sq ft and inventory days, design the Assumptions sheet structure (ordering,
+grouping, block sizes, naming) and estimate how many rows it needs. Explain how you would keep it navigable.</p></section>
+<nav class="pager"><a class="prev" href="S01_Single_Scenario_Selector_Cell_with_Data_Validation.html">← Single Scenario Selector Cell with Data-Validation Dropdown</a><a class="next" href="S03_Scenario_Selection_Functions_CHOOSE_INDEX_XLOOKUP.html">Scenario Selection Functions: CHOOSE, INDEX, XLOOKUP, SWITCH →</a></nav>
+</main></div></body></html>

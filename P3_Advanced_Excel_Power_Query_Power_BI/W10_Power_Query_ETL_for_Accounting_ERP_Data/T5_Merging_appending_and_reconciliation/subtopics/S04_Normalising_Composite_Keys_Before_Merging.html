@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Normalising Composite Keys Before Merging · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S04_Normalising_Composite_Keys_Before_Merging.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T5 · Merging, appending and reconciliation…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Merging, appending and reconciliation joins</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Append_vs_Merge_Union_vs_Join_with_SQL_Analogies.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S01_Append_vs_Merge_Union_vs_Join_with_SQL_Analogies.html">Append vs Merge: Union vs Join with SQL Analogies</a></li><li><a href="S02_The_Six_Join_Kinds_and_Their_Role_in_a.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S02_The_Six_Join_Kinds_and_Their_Role_in_a.html">The Six Join Kinds and Their Role in a Reconciliation</a></li><li><a href="S03_Bank_vs_Book_Matching_on_Amount_Reference_and_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S03_Bank_vs_Book_Matching_on_Amount_Reference_and_Date.html">Bank vs Book Matching on Amount, Reference and Date Window</a></li><li><a href="S04_Normalising_Composite_Keys_Before_Merging.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S04_Normalising_Composite_Keys_Before_Merging.html">Normalising Composite Keys Before Merging</a></li><li><a href="S05_Fuzzy_Merge_for_Vendor_and_Customer_Names.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S05_Fuzzy_Merge_for_Vendor_and_Customer_Names.html">Fuzzy Merge for Vendor and Customer Names</a></li><li><a href="S06_Repeated_Identical_Amounts_Sequence_Keys_for_One.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S06_Repeated_Identical_Amounts_Sequence_Keys_for_One.html">Repeated Identical Amounts: Sequence Keys for One-to-One Matching</a></li><li><a href="S07_Other_Reconciliations_GSTR_2B_AR_Control_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/subtopics/S07_Other_Reconciliations_GSTR_2B_AR_Control_and.html">Other Reconciliations: GSTR-2B, AR Control and Intercompany</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_LeftAnti_Join_Items_in_the_Bank_but_Not_in_the.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C01_LeftAnti_Join_Items_in_the_Bank_but_Not_in_the.html">LeftAnti Join: Items in the Bank but Not in the Books</a></li><li><a href="../concepts/C02_RightAnti_Join_Items_in_the_Books_but_Not_in_the.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C02_RightAnti_Join_Items_in_the_Books_but_Not_in_the.html">RightAnti Join: Items in the Books but Not in the Bank</a></li><li><a href="../concepts/C03_Expanding_Merged_Columns_with_Prefixed_Names.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C03_Expanding_Merged_Columns_with_Prefixed_Names.html">Expanding Merged Columns with Prefixed Names</a></li><li><a href="../concepts/C04_TableFuzzyNestedJoin_Syntax_and_Options.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C04_TableFuzzyNestedJoin_Syntax_and_Options.html">Table.FuzzyNestedJoin Syntax and Options</a></li><li><a href="../concepts/C05_Duplicate_Safe_Keys_with_Group_By_and_Index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C05_Duplicate_Safe_Keys_with_Group_By_and_Index.html">Duplicate-Safe Keys with Group By and Index</a></li><li><a href="../concepts/C06_Sign_Alignment_Between_Bank_and_Book.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/concepts/C06_Sign_Alignment_Between_Bank_and_Book.html">Sign Alignment Between Bank and Book</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Normalising Composite Keys Before Merging</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Normalising composite keys before merging (trim, upper case, strip leading zeros, matching types)</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Power Query merges use exact, type-sensitive, case-sensitive equality. "000417" and 417, "ACME LTD" and "Acme Ltd ", 125000 and 125000.0000001 all fail to match — silently. In real exports, these differences are the rule rather than the exception: Tally exports cheque numbers as text with leading zeros, the bank CSV exports them as numbers; SAP pads document numbers to 10 digits; amounts arrive as floating-point values with tiny binary residues. Normalising both sides of every key to one canonical form, before the merge, is the single biggest driver of match rate.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-canonical-key-principle">The canonical-key principle</h3>
+<p>For each key component, define one canonical representation and convert <strong>both</strong> sides to it, in a dedicated step or function. Do not normalise only one side; do not rely on "it looks the same in the preview".</p>
+<pre><code class="language-m">fxNormRef = (r as any) as nullable text =&gt;
+    let t = if r = null then null else Text.From(r),
+        c = if t = null then null else Text.Upper(Text.Trim(Text.Clean(Text.Replace(t, Character.FromNumber(160), &quot; &quot;)))),
+        d = if c = null then null else Text.Select(c, {&quot;0&quot;..&quot;9&quot;, &quot;A&quot;..&quot;Z&quot;}),
+        z = if d = null then null else Text.TrimStart(d, &quot;0&quot;)
+    in  if z = null or z = &quot;&quot; then null else z
+</code></pre>
+<h3 id="component-by-component">Component by component</h3>
+<p><strong>Whitespace and non-printables.</strong> <code>Text.Trim</code> removes leading/trailing spaces; <code>Text.Clean</code> removes control characters; non-breaking spaces (character 160) should be replaced with ordinary spaces explicitly before trimming: an embedded NBSP is never touched by <code>Text.Trim</code>, and relying on its default handling of edge NBSPs is not refresh-proof.</p>
+<p><strong>Case.</strong> M comparisons are case-sensitive by default. Convert both sides with <code>Text.Upper</code> (or <code>Text.Lower</code>). <code>Table.NestedJoin</code> accepts an optional key-equality comparer argument (e.g. <code>Comparer.OrdinalIgnoreCase</code>) in recent versions, but explicit normalisation is clearer, visible in the data and works everywhere.</p>
+<p><strong>Punctuation and separators.</strong> Invoice and reference numbers appear as "INV/25-26/0042", "INV-25-26-0042", "INV 2526 42". <code>Text.Select(t, {"0".."9", "A".."Z"})</code> keeps only letters and digits after upper-casing. Be careful: stripping separators can merge distinct numbers ("1-23" and "12-3" both become "123"); test for new collisions with a Group By count after normalisation.</p>
+<p><strong>Leading zeros.</strong> Cheque numbers ("000417"), SAP document numbers ("0090001234") and account numbers are padded differently by different systems. <code>Text.TrimStart(t, "0")</code> removes leading zeros. Alternatively pad both sides to a fixed width with <code>Text.PadStart(t, 6, "0")</code>. Never convert an account number to a number type to strip zeros: long account numbers exceed precision and lose digits.</p>
+<p><strong>Types.</strong> Both key columns must have the same type. For references, text is canonical (it preserves letters and length). For amounts, use a fixed-decimal number rounded to two places: <code>Number.Round([Amount], 2)</code> and type <code>Currency.Type</code> (fixed decimal), or convert to integer paise (<code>Number.Round([Amount] * 100, 0)</code>) to avoid floating-point mismatches such as 0.1 + 0.2 ≠ 0.3.</p>
+<p><strong>Dates.</strong> If a date is part of the key, convert datetime to date with <code>Date.From</code> on both sides; a book datetime of 01-04-2025 00:00 does not equal a date 01-04-2025.</p>
+<p><strong>Nulls and blanks.</strong> Convert empty strings to null and exclude null keys from exact matching: in M, null equals null, so blank references would match each other.</p>
+<h3 id="building-composite-keys">Building composite keys</h3>
+<p>Either merge on several normalised columns (<code>{"RefN", "AmtP"}</code>) or concatenate into one key text:</p>
+<pre><code class="language-m">WithKey = Table.AddColumn(t, &quot;Key&quot;, each
+    if [RefN] = null then null else [RefN] &amp; &quot;|&quot; &amp; Text.From([AmtPaise]), type text)
+</code></pre>
+<p>A concatenated key is easy to inspect and to use in multiple merges; include a separator that cannot appear in the components to avoid "12|345" vs "123|45" collisions.</p>
+<h3 id="checking-the-effect">Checking the effect</h3>
+<p>Measure match rate before and after normalisation with an Inner join count. Then check uniqueness on each side (<code>Table.Group(t, {"Key"}, {{"n", each Table.RowCount(_)}})</code> filtered to n &gt; 1). A good normalisation raises match rate without creating new duplicate keys.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<table>
+<thead>
+<tr>
+<th>Raw bank ref</th>
+<th>Raw book ref</th>
+<th>After normalisation</th>
+<th>Match?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>417 (number)</td>
+<td>"000417"</td>
+<td>"417" / "417"</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>"UTIB0001234 "</td>
+<td>"utib0001234"</td>
+<td>"UTIB0001234" both</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>"INV/25-26/0042"</td>
+<td>"INV-25-26-42"</td>
+<td>"INV25260042" / "INV252642"</td>
+<td>No — padding inside the number differs</td>
+</tr>
+</tbody>
+</table>
+<p>The third case shows the limit of generic normalisation; a domain-specific parser (extract the trailing invoice serial, <code>Text.AfterDelimiter(t, "/", {0, RelativePosition.FromEnd})</code>, strip zeros, recombine with the FY) is needed for invoice keys.</p>
+<p>On amounts: a bank deposit of ₹1,25,000.00 and a book entry computed as ₹1,05,932.20 + ₹19,067.80 (taxable value plus GST, summed in floating point) can differ in the 10th decimal place. Rounding both to paise makes them match.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Over-normalisation.</strong> Removing all non-digits from a narration-derived UTR may merge distinct references; normalise only the extracted reference, not whole narrations.</li>
+<li><strong>Culture-sensitive upper-casing.</strong> Use plain <code>Text.Upper</code> for ASCII references; culture effects are rare in Indian finance data but matter for some names.</li>
+<li><strong>Mixed instrument types.</strong> A cheque "417" and an internal transfer reference "417" in the same account can collide; include an instrument type in the key if both exist.</li>
+<li><strong>Normalise once, reuse.</strong> Put the logic in a function (<code>fxNormRef</code>) used by every recon, so improvements apply everywhere.</li>
+<li><strong>Keep raw values.</strong> Keep the original columns alongside normalised keys so exceptions are reported as the users know them.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Merges compare exactly: type, case, whitespace and padding all matter, and mismatches fail silently.</li>
+<li>Normalise both sides to one canonical form: trim and clean, replace char 160, upper-case, strip separators and leading zeros, align types.</li>
+<li>Round amounts to paise (or use fixed decimal) before using them as keys.</li>
+<li>Exclude null keys from exact matching because null equals null in M.</li>
+<li>Measure match rate and key uniqueness before and after normalisation.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-normalise-these-keys-l1">Q1. Normalise these keys [L1]</h3>
+<p>Give the canonical form under the <code>fxNormRef</code> function in the notes for: (a) " 000958 "; (b) 958; (c) "hdfc n 5250 4011"; (d) "" (empty string); (e) null.</p>
+<h3 id="q2-write-the-amount-key-l2">Q2. Write the amount key [L2]</h3>
+<p>Bank amounts arrive as text "1,25,000.00" (Indian grouping) and book amounts as decimal numbers with floating residues. Write M to create an integer-paise key <code>AmtPaise</code> on both sides and explain why the text must be converted with an explicit culture.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Convert with <code>Number.FromText(t, "en-IN")</code>, multiply by 100, then round to 0 decimals.</p>
+</blockquote>
+<h3 id="q3-collision-test-l2">Q3. Collision test [L2]</h3>
+<p>After stripping separators from invoice numbers, the purchase register shows 14 keys that occur more than once, whereas before normalisation there were 2. Explain what this indicates, how you would list the colliding raw values, and how you would redesign the key.</p>
+<h3 id="q4-silent-zero-matches-l2">Q4. Silent zero matches [L2]</h3>
+<p>A merge on ChequeNo returns no matches. Bank ChequeNo shows the 123 icon; book ChequeNo shows ABC and values like "000123". Explain two different fixes, and the risk of converting the book column to a number.</p></section>
+<nav class="pager"><a class="prev" href="S03_Bank_vs_Book_Matching_on_Amount_Reference_and_Date.html">← Bank vs Book Matching on Amount, Reference and Date Window</a><a class="next" href="S05_Fuzzy_Merge_for_Vendor_and_Customer_Names.html">Fuzzy Merge for Vendor and Customer Names →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculation Mode and F9 Refresh Discipline for Data Tables · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S06_Calculation_Mode_and_F9_Refresh_Discipline_for.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 16</a> <span>›</span> <a href="../index.html">T5 · Multi-Dimensional Sensitivity Tables</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Multi-Dimensional Sensitivity Tables</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Excel_Data_Tables_Row_and_Column_Input_Cells.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S01_Excel_Data_Tables_Row_and_Column_Input_Cells.html">Excel Data Tables: Row and Column Input Cells</a></li><li><a href="S02_Grid_1_WACC_vs_Terminal_Growth_on_Implied_Share.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S02_Grid_1_WACC_vs_Terminal_Growth_on_Implied_Share.html">Grid 1: WACC vs Terminal Growth on Implied Share Price</a></li><li><a href="S03_Grid_2_WACC_vs_Exit_Multiple_on_Implied_Share.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S03_Grid_2_WACC_vs_Exit_Multiple_on_Implied_Share.html">Grid 2: WACC vs Exit Multiple on Implied Share Price</a></li><li><a href="S04_Extra_Grids_Operating_Drivers_on_EV_and_Upside_vs.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S04_Extra_Grids_Operating_Drivers_on_EV_and_Upside_vs.html">Extra Grids: Operating Drivers on EV and Upside vs CMP</a></li><li><a href="S05_Heat_Map_Formatting_with_the_Base_Case_at_the.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S05_Heat_Map_Formatting_with_the_Base_Case_at_the.html">Heat-Map Formatting with the Base Case at the Centre</a></li><li><a href="S06_Calculation_Mode_and_F9_Refresh_Discipline_for.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/subtopics/S06_Calculation_Mode_and_F9_Refresh_Discipline_for.html">Calculation Mode and F9 Refresh Discipline for Data Tables</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_TABLE_Row_and_Column_Input_Mapping.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C01_TABLE_Row_and_Column_Input_Mapping.html">TABLE() Row and Column Input Mapping</a></li><li><a href="../concepts/C02_Centre_Cell_Must_Equal_Model_Output.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C02_Centre_Cell_Must_Equal_Model_Output.html">Centre Cell Must Equal Model Output</a></li><li><a href="../concepts/C03_Data_Table_Input_Cells_Must_Be_on_the_Same_Sheet.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C03_Data_Table_Input_Cells_Must_Be_on_the_Same_Sheet.html">Data Table Input Cells Must Be on the Same Sheet</a></li><li><a href="../concepts/C04_Masking_Invalid_Grid_Cells_Where_g_WACC.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C04_Masking_Invalid_Grid_Cells_Where_g_WACC.html">Masking Invalid Grid Cells Where g ≥ WACC</a></li><li><a href="../concepts/C05_Running_Grids_with_the_Circularity_Breaker_On.html" data-uid="P4_Integrated_Three_Statement_Financial/W16_DCF_Valuation_WACC_Relative_Valuation/T5_Multi_Dimensional_Sensitivity_Tables/concepts/C05_Running_Grids_with_the_Circularity_Breaker_On.html">Running Grids with the Circularity Breaker On</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Calculation Mode and F9 Refresh Discipline for Data Tables</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Calculation mode "Automatic except for data tables" and F9 refresh discipline</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Every cell of a data table triggers a full model recalculation. A 5×5 grid means 25 recalculations, and four grids mean 100, every time any cell in the workbook changes. In a Project 4/5 integrated model with a debt schedule, scenario switch, TSM dilution and a circularity, this turns every keystroke into a multi-second wait. Excel's answer is the calculation mode <strong>"Automatic except for data tables"</strong>. It keeps the model live but freezes the grids until you refresh them. The risk is the opposite problem: grids that silently show results from yesterday's inputs or from a different scenario. Calculation-mode discipline, meaning the setting, the refresh keys and a visible status check, is what separates professional models from fragile ones.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-three-calculation-modes">The three calculation modes</h3>
+<p>Set the mode via Formulas → Calculation Options, or File → Options → Formulas → Workbook Calculation.</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Model cells</th>
+<th>Data tables</th>
+<th>When to use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Automatic</td>
+<td>Recalculate on every change</td>
+<td>Recalculate on every change</td>
+<td>Small models, or final checks</td>
+</tr>
+<tr>
+<td><strong>Automatic except for data tables</strong></td>
+<td>Recalculate on every change</td>
+<td>Recalculate only on F9 / Calculate Now / Calculate Sheet</td>
+<td><strong>Default for valuation models with grids</strong></td>
+</tr>
+<tr>
+<td>Manual</td>
+<td>Recalculate only on F9</td>
+<td>Only on F9</td>
+<td>Very large models. Risky for everyday work</td>
+</tr>
+</tbody>
+</table>
+<p>Key behaviours:</p>
+<ul>
+<li>The calculation mode is an <strong>application-level</strong> setting, taken from the first workbook opened in the session and saved with the workbook. Opening a manual-mode file first can switch all open workbooks to manual. Check the status bar for "Calculate".</li>
+<li>"Recalculate workbook before saving" (in Manual mode options) can be ticked to reduce staleness risk.</li>
+</ul>
+<h3 id="refresh-keys">Refresh keys</h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>F9</strong></td>
+<td>Calculate all open workbooks, including data tables in "automatic except tables" mode</td>
+</tr>
+<tr>
+<td><strong>Shift+F9</strong></td>
+<td>Calculate the active sheet only, including its data tables</td>
+</tr>
+<tr>
+<td><strong>Ctrl+Alt+F9</strong></td>
+<td>Full calculation of all formulas, regardless of dirty status</td>
+</tr>
+<tr>
+<td><strong>Ctrl+Shift+Alt+F9</strong></td>
+<td>Rebuild the dependency tree, then full calculation. Use it when results look wrong after structural changes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="discipline-protocol">Discipline protocol</h3>
+<ol>
+<li><strong>Default setting.</strong> Save the model in "Automatic except for data tables". Note it in the cover-sheet instructions.</li>
+<li><strong>Status cell.</strong> Next to each grid, add a check <code>=IF(ROUND(K23,2)=ROUND(Implied_Price,2),"Grid current","STALE – press F9")</code>, where K23 is the centre cell. This uses concept c02, the centre-cell proof, as a freshness test. Show it in red via conditional formatting when stale. The check compares a frozen table value with a live model value, so it detects staleness immediately.</li>
+<li><strong>Master check.</strong> Roll all grid status cells into the model's master check (<code>=AND(...)</code>) on the cover sheet.</li>
+<li><strong>Before publishing.</strong> Press F9, confirm all grid checks show "current", confirm the scenario label, then copy values or a linked picture to the deck.</li>
+<li><strong>Scenario runs.</strong> After toggling the scenario switch, press F9 before reading any grid. For a set of scenario grids, use a small macro that loops over the scenarios, calculates and pastes values to a static "Sensitivity Pack" sheet with timestamps.</li>
+<li><strong>Circularity state.</strong> Set the breaker as concept c05 requires before refreshing.</li>
+</ol>
+<h3 id="speed-management">Speed management</h3>
+<ul>
+<li>Keep tables small (5×5) and limit the number of live tables. Derive the upside grids from the price grids by formula rather than with extra tables (s04).</li>
+<li>Avoid volatile functions (<code>OFFSET</code>, <code>INDIRECT</code>, <code>NOW</code>) in the calculation chain.</li>
+<li>Replace iterative TSM with the closed form, and use a circularity breaker for average-balance interest when running tables.</li>
+<li>Remove unused full-column references such as <code>A:A</code> in <code>SUMIFS</code> within the model chain.</li>
+<li>Use "Calculate Sheet" (Shift+F9) on the DCF sheet for quick checks when only that sheet's tables matter.</li>
+<li>Excel's multi-threaded calculation helps less with data tables, which are evaluated largely sequentially.</li>
+</ul>
+<h3 id="illustration-timing-impact">Illustration: timing impact</h3>
+<p>A Project 5 workbook has 3 statements, a debt schedule with average-balance interest (circular, iterative), the TSM and four 5×5 tables.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Time per edit</th>
+<th>Risk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Automatic, iterative on</td>
+<td>~25–40 s</td>
+<td>Usable only for final runs. Tables may not converge</td>
+</tr>
+<tr>
+<td>Automatic except tables, iterative on</td>
+<td>&lt; 1 s per edit; ~30 s on F9</td>
+<td>Stale tables if F9 is forgotten</td>
+</tr>
+<tr>
+<td>Automatic except tables, breaker on (non-circular), TSM closed form</td>
+<td>&lt; 1 s per edit; ~6 s on F9</td>
+<td>Lowest. Status checks catch staleness</td>
+</tr>
+</tbody>
+</table>
+<p>The timings are illustrative orders of magnitude for a mid-size model on a standard laptop.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Shared workbooks / SharePoint co-authoring.</strong> Calculation settings travel with the first-opened file. Collaborators may open in Automatic mode and experience slowness, or in manual mode and see stale numbers. Document the setting on the cover sheet.</li>
+<li><strong>Excel for the web</strong> supports data tables with limited control over calculation mode. Test before sharing web links to grid outputs.</li>
+<li><strong>VBA macros</strong> that change the calculation mode (<code>Application.Calculation = xlCalculationSemiautomatic</code>) must restore the user's setting at the end and on error.</li>
+<li><strong>Linked decks.</strong> Pasted-link charts and tables in PowerPoint update from the workbook's last calculated state. Refresh before updating links.</li>
+<li><strong>Audit trail.</strong> For external reports, archive a values-only copy of the grid with the date, scenario and model version.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>"Automatic except for data tables" keeps the model responsive and freezes the grids until F9.</li>
+<li>F9 or Shift+F9 refreshes the tables. Ctrl+Alt+F9 forces a full recalculation, and Ctrl+Shift+Alt+F9 rebuilds dependencies.</li>
+<li>A centre-cell status check next to each grid turns staleness into a visible error.</li>
+<li>Run tables with the circularity breaker on and closed-form dilution for speed and stability.</li>
+<li>Pre-publication protocol: F9, check all grid flags, confirm the scenario label, then export.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-status-check-build-l1">Q1. Status-check build [L1]</h3>
+<p>Write the formula and conditional-format rule for a grid status cell, where the grid centre is <code>K23</code>, the model output is <code>DCF!$E$40</code>, and you want "Current" in green or "STALE – press F9" in red. Explain why this check detects staleness only for the centre cell. State what additional check would confirm that off-centre cells are current.</p>
+<h3 id="q2-calculation-mode-incident-l2">Q2. Calculation-mode incident [L2]</h3>
+<p>An analyst sent a deck with a WACC × g grid showing a base price of ₹ 610, while the model's DCF output was ₹ 574 after a late WACC update. The workbook was in "Automatic except for data tables" mode. Write a short incident note covering the root cause, why the error was not caught, and the controls that will prevent recurrence.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Think about which cells recalculated after the WACC change, and which did not.</p>
+</blockquote>
+<h3 id="q3-scenario-pack-macro-specification-l3">Q3. Scenario pack macro specification [L3]</h3>
+<p>Specify (in pseudocode or step list, not full VBA) a macro that, for each of three scenarios (Base, Bull, Bear):</p>
+<ul>
+<li>sets the scenario switch</li>
+<li>turns the circularity breaker on</li>
+<li>calculates</li>
+<li>copies Grids 1–4 as values to a "Sensitivity Pack" sheet with scenario labels and a timestamp</li>
+<li>restores the original scenario, breaker and calculation mode</li>
+</ul>
+<p>Include error handling.</p>
+<h3 id="q4-speed-optimisation-review-l2">Q4. Speed optimisation review [L2]</h3>
+<p>A model takes 45 seconds per F9 with four 7×7 tables. Propose five specific changes, ranked by expected time saving, and explain the trade-off each one involves.</p></section>
+<nav class="pager"><a class="prev" href="S05_Heat_Map_Formatting_with_the_Base_Case_at_the.html">← Heat-Map Formatting with the Base Case at the Centre</a><a class="next" href="../concepts/C01_TABLE_Row_and_Column_Input_Mapping.html">TABLE() Row and Column Input Mapping →</a></nav>
+</main></div></body></html>

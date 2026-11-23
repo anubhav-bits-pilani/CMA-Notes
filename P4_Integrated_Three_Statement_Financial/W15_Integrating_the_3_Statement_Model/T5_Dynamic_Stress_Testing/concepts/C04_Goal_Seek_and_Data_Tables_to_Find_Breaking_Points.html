@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Goal Seek and Data Tables to Find Breaking Points · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C04_Goal_Seek_and_Data_Tables_to_Find_Breaking_Points.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 15</a> <span>›</span> <a href="../index.html">T5 · Dynamic Stress Testing</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Dynamic Stress Testing</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Toggling_Base_Bull_and_Bear_with_a_Zero_Check_in.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S01_Toggling_Base_Bull_and_Bear_with_a_Zero_Check_in.html">Toggling Base, Bull and Bear with a Zero Check in Every Year</a></li><li><a href="../subtopics/S02_Extreme_Input_Stress_Tests_Growth_Margins_Capex.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S02_Extreme_Input_Stress_Tests_Growth_Margins_Capex.html">Extreme Input Stress Tests: Growth, Margins, Capex and WC Days</a></li><li><a href="../subtopics/S03_Revolver_Behaviour_in_a_Recession_Draw_Within.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S03_Revolver_Behaviour_in_a_Recession_Draw_Within.html">Revolver Behaviour in a Recession: Draw Within Limit, Flag Shortfall</a></li><li><a href="../subtopics/S04_Negative_PBT_Loss_Carry_Forward_No_Negative_Tax.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S04_Negative_PBT_Loss_Carry_Forward_No_Negative_Tax.html">Negative PBT: Loss Carry-Forward, No Negative Tax, DTA Recognition</a></li><li><a href="../subtopics/S05_Dividends_Under_Losses_Floored_at_Zero_Capped_by.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S05_Dividends_Under_Losses_Floored_at_Zero_Capped_by.html">Dividends Under Losses: Floored at Zero, Capped by Profits and Cash</a></li><li><a href="../subtopics/S06_Covenant_Flags_Net_DebtEBITDA_DSCR_and_ICR_Breach.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S06_Covenant_Flags_Net_DebtEBITDA_DSCR_and_ICR_Breach.html">Covenant Flags: Net Debt/EBITDA, DSCR and ICR Breach Years</a></li><li><a href="../subtopics/S07_The_Checks_Dashboard_Balance_Cash_Liquidity_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S07_The_Checks_Dashboard_Balance_Cash_Liquidity_and.html">The Checks Dashboard: Balance, Cash, Liquidity and Convergence</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Current_Tax_with_Loss_Set_Off_and_the_Sec_72_Loss.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C01_Current_Tax_with_Loss_Set_Off_and_the_Sec_72_Loss.html">Current Tax with Loss Set-Off and the Sec 72 Loss Corkscrew</a></li><li><a href="C02_Dividend_Floor_and_Cash_Cap_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C02_Dividend_Floor_and_Cash_Cap_Formula.html">Dividend Floor and Cash Cap Formula</a></li><li><a href="C03_The_Binary_Error_Flag_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C03_The_Binary_Error_Flag_Formula.html">The Binary Error Flag Formula</a></li><li><a href="C04_Goal_Seek_and_Data_Tables_to_Find_Breaking_Points.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C04_Goal_Seek_and_Data_Tables_to_Find_Breaking_Points.html">Goal Seek and Data Tables to Find Breaking Points</a></li><li><a href="C05_Scenario_Invariance_A_Linked_Model_Balances_for.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C05_Scenario_Invariance_A_Linked_Model_Balances_for.html">Scenario Invariance: A Linked Model Balances for Any Input</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Goal Seek and Data Tables to Find Breaking Points</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Goal Seek/data tables to find breaking points (growth at which covenant breaches)</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>A <strong>breaking point</strong> is the value of an input \( x \) at which an output metric \( f(x) \) hits a threshold \( k \):</p>
+<p>\[
+x^{*} \text{ such that } f(x^{*}) = k
+\]</p>
+<p>For example, \( x \) might be revenue growth, \( f \) the FY28E net debt/EBITDA, and \( k \) the covenant maximum of 3.0x. The breaking point is found by:</p>
+<ul>
+<li><strong>Goal Seek</strong> (Data → What-If Analysis → Goal Seek): set cell = a headroom cell \( f(x) - k \), to value = 0, by changing cell = the input \( x \). Excel iterates numerically to a single solution.</li>
+<li><strong>Data tables</strong> (Data → What-If Analysis → Data Table): evaluate \( f(x) \) over a grid of \( x \) values (one-variable) or \( (x, y) \) pairs (two-variable), and read where \( f \) crosses \( k \).</li>
+</ul>
+<h2 id="explanation">Explanation</h2>
+<p><strong>Goal Seek</strong> gives one precise answer for one input. Practical rules:</p>
+<ul>
+<li>The "changing cell" must be a hardcoded input, not a formula. Point it at the scenario input or stress shock cell (for example, <code>Growth_Shock</code>), not the live selector.</li>
+<li>Target a <strong>headroom</strong> cell (covenant minus ratio) so the goal is always 0 and the sign shows the direction.</li>
+<li>Goal Seek finds <em>a</em> root, not necessarily the first. If the metric is non-monotonic (net debt/EBITDA can rise and then fall as working capital releases), start from a sensible initial value and confirm with a data table.</li>
+<li>In circular models Goal Seek runs on top of iteration and may fail to converge or return a stale answer. Run it with the breaker off for a first estimate, then refine with it on. Always check the convergence check afterwards.</li>
+<li>Goal Seek overwrites the input. Record the original value (or use a copy of the input cell) and restore it.</li>
+</ul>
+<p><strong>Data tables</strong> give a map across the whole range:</p>
+<ul>
+<li>One-variable: a column of growth rates and a header row of output formulas (FY28E net debt/EBITDA, minimum DSCR, minimum cash, maximum absolute BS check). The column input cell is the growth input.</li>
+<li>Two-variable: growth down the side, margin across the top, one output in the corner. This is good for "breach regions."</li>
+<li>The input cell must be on the <strong>same sheet</strong> as the data table. Put the table on the inputs sheet or route the input through a cell on the table's sheet.</li>
+<li>Data tables recalculate the entire model for each cell, which is slow with circularity. Use "Automatic except for data tables" and F9 when needed.</li>
+<li>Include <strong>the BS check</strong> as an output column. If any row shows a non-zero check, the model is not scenario-invariant at that input, so the breaking point read from it is invalid (c05).</li>
+</ul>
+<p><strong>Interpolation:</strong> with a grid in 5% steps, linear interpolation between the two rows that straddle the threshold gives a quick estimate. Goal Seek then confirms it.</p>
+<p>\[
+x^{*} \approx x_1 + (k - f_1) \times \frac{x_2 - x_1}{f_2 - f_1}
+\]</p>
+<p>where \( (x_1, f_1) \) and \( (x_2, f_2) \) are the grid points either side of \( k \).</p>
+<h2 id="illustration">Illustration</h2>
+<p>Bhagirathi Cables Ltd: FY28E net debt/EBITDA by uniform annual revenue growth (FY26E–FY28E), covenant ≤ 3.0x:</p>
+<table>
+<thead>
+<tr>
+<th>Growth</th>
+<th>FY28E ND/EBITDA</th>
+<th>Min DSCR</th>
+<th>Max abs BS check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+10%</td>
+<td>1.85x</td>
+<td>1.92x</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td>+5%</td>
+<td>2.30x</td>
+<td>1.64x</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td>0%</td>
+<td>2.78x</td>
+<td>1.38x</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td>−5%</td>
+<td>3.36x</td>
+<td>1.15x</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td>−10%</td>
+<td>4.10x</td>
+<td>0.94x</td>
+<td>0.000</td>
+</tr>
+</tbody>
+</table>
+<p>The leverage covenant is breached between 0% and −5%. By interpolation:</p>
+<p>\[
+x^{*} \approx 0\% + (3.0 - 2.78) \times \frac{-5\% - 0\%}{3.36 - 2.78} = -1.9\%
+\]</p>
+<p>Goal Seek on the headroom cell refines this to −1.8%. The DSCR covenant (≥ 1.20x) breaks slightly later, near −4%. Communicated result: "a sustained revenue decline of about 2% a year breaches the leverage covenant in FY28E, before DSCR becomes binding." The BS check column confirms every row is valid.</p>
+<h2 id="connections">Connections</h2>
+<p>This concept turns s06 covenant flags into management information and is the forerunner of Week 16 (w16_t5) sensitivity grids on valuation. It relies on c05 (scenario invariance), because a breaking point is only meaningful if the model balances at that input, and on the Week 13 scenario and input architecture (inputs as hardcoded cells, one location). In Phase 5 FP&amp;A work, breaking points become "headroom" statements in lender compliance packs and downside planning memos.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-set-up-goal-seek-l1">Q1. Set up Goal Seek [L1]</h3>
+<p>Describe, step by step, how you would use Goal Seek to find the EBITDA margin at which FY27E ICR equals the covenant of 2.5x. Name the set cell, the target value and the changing cell, and list two checks you would perform after Goal Seek finishes.</p>
+<h3 id="q2-interpolate-the-breaking-point-l2">Q2. Interpolate the breaking point [L2]</h3>
+<p>A one-variable data table for Sabari Tiles Ltd shows minimum DSCR of 1.34x at revenue growth of −2% and 1.12x at −6%, against a covenant of 1.20x. (a) Estimate the breaking-point growth by linear interpolation. (b) Explain why the true breaking point may differ. (c) Describe how you would confirm it.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Use the interpolation formula with the two straddling grid points.</p>
+</blockquote>
+<h3 id="q3-two-variable-breach-map-l3">Q3. Two-variable breach map [L3]</h3>
+<p>Design a two-variable data table showing, for growth from −20% to +20% (5% steps) and EBITDA margin from 8% to 20% (2% steps), whether any covenant is breached in any forecast year. Specify the corner formula, the input cells, how you would visualise the breach region with conditional formatting, and how you would guarantee that every cell in the table reflects a balanced model.</p></section>
+<nav class="pager"><a class="prev" href="C03_The_Binary_Error_Flag_Formula.html">← The Binary Error Flag Formula</a><a class="next" href="C05_Scenario_Invariance_A_Linked_Model_Balances_for.html">Scenario Invariance: A Linked Model Balances for Any Input →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Folder.Files Output Columns and Which to Trust · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C01_FolderFiles_Output_Columns_and_Which_to_Trust.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T4 · Folder consolidation pipeline</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Folder consolidation pipeline</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_FolderFiles_and_SharePointFiles_Sources_and_File.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S01_FolderFiles_and_SharePointFiles_Sources_and_File.html">Folder.Files and SharePoint.Files: Sources and File-Scope Filters</a></li><li><a href="../subtopics/S02_Combine_Files_Artefacts_Sample_Parameter_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S02_Combine_Files_Artefacts_Sample_Parameter_and.html">Combine Files Artefacts: Sample, Parameter and Transform Function</a></li><li><a href="../subtopics/S03_Writing_a_Custom_File_Cleaning_Function_by_Hand.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S03_Writing_a_Custom_File_Cleaning_Function_by_Hand.html">Writing a Custom File-Cleaning Function by Hand</a></li><li><a href="../subtopics/S04_Reading_Branch_and_Month_from_the_File_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S04_Reading_Branch_and_Month_from_the_File_Name.html">Reading Branch and Month from the File Name</a></li><li><a href="../subtopics/S05_Schema_Drift_Tolerant_Column_Selection_Across.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S05_Schema_Drift_Tolerant_Column_Selection_Across.html">Schema Drift: Tolerant Column Selection Across Branch Files</a></li><li><a href="../subtopics/S06_Multi_Bank_Statements_One_Function_per_Bank_Then.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S06_Multi_Bank_Statements_One_Function_per_Bank_Then.html">Multi-Bank Statements: One Function per Bank, Then Table.Combine</a></li><li><a href="../subtopics/S07_Monthly_Drop_In_Workflow_Archiving_and_Duplicate.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S07_Monthly_Drop_In_Workflow_Archiving_and_Duplicate.html">Monthly Drop-In Workflow, Archiving and Duplicate-File Detection</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_FolderFiles_Output_Columns_and_Which_to_Trust.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C01_FolderFiles_Output_Columns_and_Which_to_Trust.html">Folder.Files Output Columns and Which to Trust</a></li><li><a href="C02_Filtering_by_Extension_and_Excluding_Temp_Files.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C02_Filtering_by_Extension_and_Excluding_Temp_Files.html">Filtering by Extension and Excluding Temp Files</a></li><li><a href="C03_The_fxCleanTB_Function_Signature.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C03_The_fxCleanTB_Function_Signature.html">The fxCleanTB Function Signature</a></li><li><a href="C04_Invoking_per_File_and_Appending_with_TableCombine.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C04_Invoking_per_File_and_Appending_with_TableCombine.html">Invoking per File and Appending with Table.Combine</a></li><li><a href="C05_Tolerant_Column_Selection_with_MissingFieldUseNull.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C05_Tolerant_Column_Selection_with_MissingFieldUseNull.html">Tolerant Column Selection with MissingField.UseNull</a></li><li><a href="C06_Parsing_Branch_and_Period_with_Text_Delimiter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C06_Parsing_Branch_and_Period_with_Text_Delimiter.html">Parsing Branch and Period with Text Delimiter Functions</a></li><li><a href="C07_Guarding_the_Refresh_Against_One_Bad_File.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C07_Guarding_the_Refresh_Against_One_Bad_File.html">Guarding the Refresh Against One Bad File</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Folder.Files Output Columns and Which to Trust</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>Folder.Files(FolderPath)</code> returns Content, Name, Extension, Date modified and Folder Path columns</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p><code>Folder.Files(path as text)</code> returns a table with <strong>one row per file</strong> in the folder and all of its subfolders. The columns are:</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Content</code></td>
+<td>binary</td>
+<td>The file's bytes, read lazily when a step consumes it</td>
+</tr>
+<tr>
+<td><code>Name</code></td>
+<td>text</td>
+<td>File name with extension, e.g. <code>MUM_2025-04.csv</code></td>
+</tr>
+<tr>
+<td><code>Extension</code></td>
+<td>text</td>
+<td>Extension including the dot, original case, e.g. <code>.csv</code> or <code>.CSV</code></td>
+</tr>
+<tr>
+<td><code>Date accessed</code></td>
+<td>datetime</td>
+<td>Last access timestamp</td>
+</tr>
+<tr>
+<td><code>Date modified</code></td>
+<td>datetime</td>
+<td>Last save timestamp</td>
+</tr>
+<tr>
+<td><code>Date created</code></td>
+<td>datetime</td>
+<td>Creation timestamp on this file system</td>
+</tr>
+<tr>
+<td><code>Attributes</code></td>
+<td>record</td>
+<td>File attributes such as <code>Hidden</code>, <code>ReadOnly</code>, <code>Directory</code>, <code>Size</code></td>
+</tr>
+<tr>
+<td><code>Folder Path</code></td>
+<td>text</td>
+<td>Full path of the containing folder, ending with a backslash</td>
+</tr>
+</tbody>
+</table>
+<h2 id="explanation">Explanation</h2>
+<p>The function is the file <strong>inventory</strong>: metadata plus a handle (<code>Content</code>) to each file's bytes. Nothing is parsed until a later step passes <code>Content</code> to a parser such as <code>Csv.Document</code> or <code>Excel.Workbook</code>, so filtering on metadata first is both fast and safe.</p>
+<p>Which columns to trust for what:</p>
+<ul>
+<li><strong>Name</strong> is the primary business key. Branch and period should be parsed from it under an agreed naming convention.</li>
+<li><strong>Extension</strong> decides which parser to use; normalise case with <code>Text.Lower</code>.</li>
+<li><strong>Folder Path</strong> identifies subfolders. Because the function is recursive, it is the column you filter to exclude <code>Archive</code> or <code>Old</code> subfolders, or to read a period from a folder-per-month structure.</li>
+<li><strong>Attributes</strong> lets you exclude hidden and system files; access it safely as <code>[Attributes]?[Hidden]?</code>.</li>
+<li><strong>Date modified / Date created / Date accessed</strong> describe the file system, not the accounting. They change on re-export, copy, sync or simply opening and saving. Use them only to choose between versions or for operational logging, never as the accounting period.</li>
+</ul>
+<p><code>SharePoint.Files</code> returns the same column set, with <code>Folder Path</code> holding a URL. <code>Folder.Contents</code> is the non-recursive navigational counterpart.</p>
+<h2 id="illustration">Illustration</h2>
+<p>A folder <code>D:\Close\TB\</code> contains <code>MUM_2025-04.csv</code> (saved 3-May-2025) and a subfolder <code>Archive\</code> with <code>MUM_2025-03.csv</code> (saved 6-Apr-2025, re-saved 2-May-2025 after an audit adjustment). <code>Folder.Files("D:\Close\TB\")</code> returns 2 rows:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Extension</th>
+<th>Date modified</th>
+<th>Folder Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MUM_2025-04.csv</code></td>
+<td>.csv</td>
+<td>03-05-2025</td>
+<td><code>D:\Close\TB\</code></td>
+</tr>
+<tr>
+<td><code>MUM_2025-03.csv</code></td>
+<td>.csv</td>
+<td>02-05-2025</td>
+<td><code>D:\Close\TB\Archive\</code></td>
+</tr>
+</tbody>
+</table>
+<p>A pipeline that derived the period from <code>Date modified</code> would label both files May 2025. Parsing the name gives April and March correctly, and filtering <code>[Folder Path] = "D:\Close\TB\"</code> excludes the archived March file.</p>
+<h2 id="connections">Connections</h2>
+<p>Links to subtopic s01 (sources and filters), s04 (parsing the name), s07 (archiving and choosing between versions), and the topic pitfall on trusting Date modified. In Week 12, the same inventory from <code>SharePoint.Files</code> refreshes in the Service without a gateway. In audit terms, the inventory is the population; the filters are the completeness and occurrence controls.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-column-purposes-l1">Q1. Column purposes [L1]</h3>
+<p>For each of Name, Extension, Folder Path, Attributes and Date modified, state one legitimate use in a branch TB consolidation and one misuse to avoid.</p>
+<h3 id="q2-inventory-query-l2">Q2. Inventory query [L2]</h3>
+<p>Write a query <code>FileInventory</code> that returns, for every in-scope CSV in the folder parameter <code>FolderPath</code> (no subfolders), the columns Name, Branch, PeriodEnd, SizeKB (from <code>Attributes</code>) and Date modified, typed correctly, without opening any file contents.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> <code>[Attributes][Size]</code> is in bytes; divide by 1,024.</p>
+</blockquote>
+<h3 id="q3-version-selection-l2">Q3. Version selection [L2]</h3>
+<p>Two files exist for Kochi, October 2025: <code>KOC_2025-10.csv</code> in the inbox and <code>KOC_2025-10.csv</code> in <code>Inbox\Resubmitted\</code>. Explain how <code>Folder.Files</code> presents them, how you would decide which one to consolidate, and what role, if any, Date modified should play.</p></section>
+<nav class="pager"><a class="prev" href="../subtopics/S07_Monthly_Drop_In_Workflow_Archiving_and_Duplicate.html">← Monthly Drop-In Workflow, Archiving and Duplicate-File…</a><a class="next" href="C02_Filtering_by_Extension_and_Excluding_Temp_Files.html">Filtering by Extension and Excluding Temp Files →</a></nav>
+</main></div></body></html>

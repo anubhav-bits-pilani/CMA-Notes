@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guarding the Refresh Against One Bad File · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C07_Guarding_the_Refresh_Against_One_Bad_File.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T4 · Folder consolidation pipeline</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Folder consolidation pipeline</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_FolderFiles_and_SharePointFiles_Sources_and_File.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S01_FolderFiles_and_SharePointFiles_Sources_and_File.html">Folder.Files and SharePoint.Files: Sources and File-Scope Filters</a></li><li><a href="../subtopics/S02_Combine_Files_Artefacts_Sample_Parameter_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S02_Combine_Files_Artefacts_Sample_Parameter_and.html">Combine Files Artefacts: Sample, Parameter and Transform Function</a></li><li><a href="../subtopics/S03_Writing_a_Custom_File_Cleaning_Function_by_Hand.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S03_Writing_a_Custom_File_Cleaning_Function_by_Hand.html">Writing a Custom File-Cleaning Function by Hand</a></li><li><a href="../subtopics/S04_Reading_Branch_and_Month_from_the_File_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S04_Reading_Branch_and_Month_from_the_File_Name.html">Reading Branch and Month from the File Name</a></li><li><a href="../subtopics/S05_Schema_Drift_Tolerant_Column_Selection_Across.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S05_Schema_Drift_Tolerant_Column_Selection_Across.html">Schema Drift: Tolerant Column Selection Across Branch Files</a></li><li><a href="../subtopics/S06_Multi_Bank_Statements_One_Function_per_Bank_Then.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S06_Multi_Bank_Statements_One_Function_per_Bank_Then.html">Multi-Bank Statements: One Function per Bank, Then Table.Combine</a></li><li><a href="../subtopics/S07_Monthly_Drop_In_Workflow_Archiving_and_Duplicate.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S07_Monthly_Drop_In_Workflow_Archiving_and_Duplicate.html">Monthly Drop-In Workflow, Archiving and Duplicate-File Detection</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_FolderFiles_Output_Columns_and_Which_to_Trust.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C01_FolderFiles_Output_Columns_and_Which_to_Trust.html">Folder.Files Output Columns and Which to Trust</a></li><li><a href="C02_Filtering_by_Extension_and_Excluding_Temp_Files.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C02_Filtering_by_Extension_and_Excluding_Temp_Files.html">Filtering by Extension and Excluding Temp Files</a></li><li><a href="C03_The_fxCleanTB_Function_Signature.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C03_The_fxCleanTB_Function_Signature.html">The fxCleanTB Function Signature</a></li><li><a href="C04_Invoking_per_File_and_Appending_with_TableCombine.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C04_Invoking_per_File_and_Appending_with_TableCombine.html">Invoking per File and Appending with Table.Combine</a></li><li><a href="C05_Tolerant_Column_Selection_with_MissingFieldUseNull.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C05_Tolerant_Column_Selection_with_MissingFieldUseNull.html">Tolerant Column Selection with MissingField.UseNull</a></li><li><a href="C06_Parsing_Branch_and_Period_with_Text_Delimiter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C06_Parsing_Branch_and_Period_with_Text_Delimiter.html">Parsing Branch and Period with Text Delimiter Functions</a></li><li><a href="C07_Guarding_the_Refresh_Against_One_Bad_File.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C07_Guarding_the_Refresh_Against_One_Bad_File.html">Guarding the Refresh Against One Bad File</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Guarding the Refresh Against One Bad File</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Guard against one bad file failing the whole refresh: <code>each try fxCleanTB([Content]) otherwise null</code>, then log the failures</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-m">WithData = Table.AddColumn(InScope, &quot;Data&quot;, each try fxCleanTB([Content]) otherwise null),
+Good     = Table.SelectRows(WithData, each [Data] &lt;&gt; null),
+Failed   = Table.SelectRows(WithData, each [Data] = null),
+Combined = Table.Combine(Good[Data])
+</code></pre>
+<ul>
+<li><code>try x otherwise y</code> evaluates <code>x</code>; if <code>x</code> raises an error, the expression returns <code>y</code> instead.</li>
+<li><code>try x</code> on its own returns a record <code>[HasError = logical, Value = ..., Error = record]</code>, where the error record has <code>Reason</code>, <code>Message</code> and <code>Detail</code>.</li>
+<li>Newer M versions also support <code>try x catch (e) =&gt; ...</code>, giving access to the error inside the handler.</li>
+</ul>
+<h2 id="explanation">Explanation</h2>
+<p>Without a guard, one corrupt, wrongly formatted or half-uploaded file raises an error inside the nested <code>Data</code> column; <code>Table.Combine</code> propagates it and the entire refresh fails, often with a message that does not name the file. With the guard, failing files become null, are excluded from the combine and are listed separately, so 15 good branches still consolidate and the 16th is visibly missing.</p>
+<p>Two refinements make the log useful:</p>
+<ol>
+<li><strong>Keep the error message.</strong> <code>otherwise null</code> discards why the file failed. Use the record form instead:</li>
+</ol>
+<pre><code class="language-m">WithTry  = Table.AddColumn(InScope, &quot;Attempt&quot;, each try fxCleanTB([Content])),
+Good     = Table.SelectRows(WithTry, each not [Attempt][HasError]),
+Combined = Table.Combine(List.Transform(Good[Attempt], each [Value])),
+Errors   = Table.AddColumn(Table.SelectRows(WithTry, each [Attempt][HasError]),
+               &quot;Message&quot;, each [Attempt][Error][Message], type text)
+</code></pre>
+<p>Load <code>Errors</code> (Name, Message) to the Controls sheet.</p>
+<ol start="2">
+<li><strong>Raise meaningful errors inside the function.</strong> <code>error "Header 'Particulars' not found"</code> or <code>error Error.Record("BadLayout", "No header row", [File = name])</code> makes the log actionable.</li>
+</ol>
+<p><strong>Judgement:</strong> a guard trades availability for completeness. A consolidated TB missing one branch is wrong. The guard is therefore paired with a completeness check: expected branches (from the branch master) versus branches consolidated. For final reporting runs, many teams switch to fail-closed — if <code>Errors</code> has any rows, the output query raises an error — and use the tolerant mode only for interim refreshes.</p>
+<p>Note that <code>try</code> catches errors raised <strong>while evaluating</strong> the expression. Because M is lazy, errors in cells of a returned table (for example a type conversion error in row 900) may not surface until those cells are read. Force evaluation inside the guard where needed, e.g. <code>try Table.Buffer(fxCleanTB([Content]))</code>, or check cell-level errors with <code>Table.RowCount(Table.SelectRowsWithErrors(t))</code>.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Sixteen April branch files: 15 clean, and <code>GUW_2025-04.csv</code> was saved from Excel as UTF-16 with a semicolon delimiter. Unguarded: the refresh fails ("The column 'Particulars' of the table wasn't found"), and no output is produced. Guarded with the record form: Combined contains 15 branches (38,914 rows); Errors shows <code>GUW_2025-04.csv | Header 'Particulars' not found</code>; the completeness check shows "Expected 16, consolidated 15, missing GUW". The preparer re-requests the file instead of discovering the gap at review.</p>
+<h2 id="connections">Connections</h2>
+<p>Subtopic s03 (functions), s07 (Controls sheet in the monthly workflow); topic t2's subtopic on <code>try ... otherwise</code>, Remove Errors and Keep Errors for cell-level exception logs. The week's cross-cutting control-totals query uses the same nested column for row counts and Dr/Cr sums. In audit terms, the Errors list plus the completeness check form the exception report that a reviewer evidences.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-record-form-of-try-l1">Q1. Record form of try [L1]</h3>
+<p>State the fields of the record returned by <code>try fxCleanTB([Content])</code> for a successful call and for a failing call, and write the expression that extracts the error message.</p>
+<h3 id="q2-completeness-check-l2">Q2. Completeness check [L2]</h3>
+<p>Using <code>BranchMaster[Code]</code> (18 codes) and the parsed Branch column of successfully consolidated files, write a query that lists missing branches for the report period, and explain how it complements the Errors list.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> <code>List.Difference</code> returns items in the first list not found in the second.</p>
+</blockquote>
+<h3 id="q3-lazy-cell-errors-l3">Q3. Lazy cell errors [L3]</h3>
+<p>A file passes the <code>try</code> guard, but the consolidated table later shows Error cells in the Debit column for 12 rows, and loading to the sheet reports 12 errors. Explain why the guard did not catch them, and design two alternative ways to surface such rows in the exception log.</p></section>
+<nav class="pager"><a class="prev" href="C06_Parsing_Branch_and_Period_with_Text_Delimiter.html">← Parsing Branch and Period with Text Delimiter Functions</a><a class="next" href="../../T5_Merging_appending_and_reconciliation/index.html">Merging, appending and reconciliation joins →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sensitivity Integrity: Live Data Tables and Tested Scenarios · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/subtopics/S05_Sensitivity_Integrity_Live_Data_Tables_and_Tested.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 6</a> <span>›</span> <a href="../../index.html">Week 23</a> <span>›</span> <a href="../index.html">T2 · Model Audit and QA Checklist</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Model Audit and QA Checklist</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Modelling_Standards_FAST_ICAEW_Code_and_One.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/subtopics/S01_Modelling_Standards_FAST_ICAEW_Code_and_One.html">Modelling Standards: FAST, ICAEW Code and One Formula per Row</a></li><li><a href="S02_Integrity_Checks_Balance_Cash_Roll_Forwards_and.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/subtopics/S02_Integrity_Checks_Balance_Cash_Roll_Forwards_and.html">Integrity Checks: Balance, Cash, Roll-Forwards and Signs</a></li><li><a href="S03_Error_Detection_Hard_Codes_Broken_Links_REF.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/subtopics/S03_Error_Detection_Hard_Codes_Broken_Links_REF.html">Error Detection: Hard-Codes, Broken Links, #REF!, IFERROR, Circularity</a></li><li><a href="S04_Excel_Audit_Toolkit_Tracing_Evaluate_Go_To_Special.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/subtopics/S04_Excel_Audit_Toolkit_Tracing_Evaluate_Go_To_Special.html">Excel Audit Toolkit: Tracing, Evaluate, Go To Special, Inquire</a></li><li><a href="S05_Sensitivity_Integrity_Live_Data_Tables_and_Tested.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/subtopics/S05_Sensitivity_Integrity_Live_Data_Tables_and_Tested.html">Sensitivity Integrity: Live Data Tables and Tested Scenarios</a></li><li><a href="S06_Presentation_Standards_Colour_Codes_Units_Freeze.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/subtopics/S06_Presentation_Standards_Colour_Codes_Units_Freeze.html">Presentation Standards: Colour Codes, Units, Freeze Panes, Grouping</a></li><li><a href="S07_Print_Ready_Page_Setup_for_Models_and_Output_Packs.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/subtopics/S07_Print_Ready_Page_Setup_for_Models_and_Output_Packs.html">Print-Ready Page Setup for Models and Output Packs</a></li><li><a href="S08_The_Executive_Cover_Sheet_Purpose_Outputs_Checks.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/subtopics/S08_The_Executive_Cover_Sheet_Purpose_Outputs_Checks.html">The Executive Cover Sheet: Purpose, Outputs, Checks, Versions</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_The_Master_Check_Aggregating_Every_Integrity_Test.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/concepts/C01_The_Master_Check_Aggregating_Every_Integrity_Test.html">The Master Check: Aggregating Every Integrity Test</a></li><li><a href="../concepts/C02_Row_Consistency_Test_with_FORMULATEXT_and_R1C1.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/concepts/C02_Row_Consistency_Test_with_FORMULATEXT_and_R1C1.html">Row Consistency Test with FORMULATEXT and R1C1 View</a></li><li><a href="../concepts/C03_Cash_Check_and_Retained_Earnings_Roll_Forward.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/concepts/C03_Cash_Check_and_Retained_Earnings_Roll_Forward.html">Cash Check and Retained-Earnings Roll-Forward Check</a></li><li><a href="../concepts/C04_Flex_Testing_Stressing_Inputs_to_Extremes.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/concepts/C04_Flex_Testing_Stressing_Inputs_to_Extremes.html">Flex Testing: Stressing Inputs to Extremes</a></li><li><a href="../concepts/C05_Calculation_Mode_Automatic_Except_for_Data_Tables.html" data-uid="P6_Corporate_Finance_Strategy_Capstone/W23_Integrated_End_to_End_Capstone_Build/T2_Model_Audit_and_QA_Checklist/concepts/C05_Calculation_Mode_Automatic_Except_for_Data_Tables.html">Calculation Mode: Automatic Except for Data Tables</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Sensitivity Integrity: Live Data Tables and Tested Scenarios</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Sensitivity integrity: data tables wired to live inputs, calculation set appropriately, scenario switches tested end-to-end</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Sensitivity tables and scenarios are what turn a point estimate into a decision range. They are the heat map in
+the executive deck, the football field's DCF bar and the "what if" answer in an interview. They are also the part
+of the model most likely to be silently wrong. A data table whose input cell is on another sheet returns
+nonsense or a constant. A table that has not been recalculated shows yesterday's numbers. A bear-case switch that
+changes revenue but not capex makes the downside look milder than it is. Because these outputs are read without
+re-deriving them, integrity testing must be deliberate.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="data-table-mechanics">Data table mechanics</h3>
+<p>Data → What-If Analysis → <strong>Data Table</strong> creates a <code>{=TABLE(row_input, col_input)}</code> array:</p>
+<ol>
+<li>Place the output formula (e.g. <code>=DCF!H62</code> value per share) in the top-left corner of the table.</li>
+<li>Enter the row input values across the top (e.g. terminal g 4.0%–6.0%) and column input values down the left
+   (WACC 11.0%–14.0%).</li>
+<li>Select the whole block and set <strong>Row input cell</strong> = the g input cell and <strong>Column input cell</strong> = the WACC input cell.</li>
+</ol>
+<p>Excel substitutes each pair into the input cells, recalculates the whole model and records the output. Rules:</p>
+<ul>
+<li><strong>The input cells must be on the same sheet as the data table.</strong> Excel refuses ("Input cell reference is not
+  valid") if you point to another sheet. A common workaround then produces the topic pitfall: placing a local
+  copy of the input on the Sensitivity sheet that the model does not actually use.</li>
+<li><strong>Correct wiring</strong>: either build the data table on the Inputs sheet next to the live inputs, or make the model's
+  live input a formula that picks up a sensitivity "override" cell on the Sensitivity sheet:</li>
+</ul>
+<pre><code>Inputs!D20 (live WACC used by model):  =IF(Sens!$C$3=&quot;ON&quot;,Sens!$C$4,Inputs!D19)
+</code></pre>
+<p>Here Inputs!D19 is the base WACC and Sens!C4 is the data table's column input cell. Simplest of all is to
+  locate the WACC and g inputs on the DCF sheet and build the table there.
+- <strong>The table's axis values must be inputs, not formulas that depend on the input cell</strong>, otherwise the axis moves
+  as Excel substitutes values.
+- <strong>The centre value must reproduce the base output.</strong> Put the base WACC and g in the middle of the axes and check
+  that the centre cell equals the DCF output. Add this as a check row (Sens centre − DCF value = 0).</p>
+<h3 id="typical-capstone-sensitivity-set">Typical capstone sensitivity set</h3>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Rows × columns</th>
+<th>Output</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WACC × terminal g</td>
+<td>5 × 5 (±100 bps, ±1%)</td>
+<td>Value per share</td>
+<td>Core DCF sensitivity</td>
+</tr>
+<tr>
+<td>WACC × exit multiple</td>
+<td>5 × 5 (±2×)</td>
+<td>Value per share</td>
+<td>TV method sensitivity</td>
+</tr>
+<tr>
+<td>Volume growth × realisation growth</td>
+<td>5 × 5</td>
+<td>EV or FY28 EBITDA</td>
+<td>Operating sensitivity for FP&amp;A</td>
+</tr>
+<tr>
+<td>RM cost/tonne × realisation</td>
+<td>5 × 5</td>
+<td>EBITDA margin</td>
+<td>Margin squeeze</td>
+</tr>
+<tr>
+<td>One-way tornado</td>
+<td>Each key input ±10%</td>
+<td>Value per share</td>
+<td>Ranks value drivers</td>
+</tr>
+</tbody>
+</table>
+<p>Format with conditional formatting (3-colour scale) for heat maps. Show the CMP in the title so readers see where
+the market sits.</p>
+<h3 id="calculation-settings">Calculation settings</h3>
+<p>Data tables recalculate the whole model once per cell. A 5 × 5 table means 25 full recalculations, and five
+tables mean 125, so a large model with tables becomes slow. Options (Formulas → Calculation Options):</p>
+<ul>
+<li><strong>Automatic</strong>: everything recalculates on every change. This is the safest, but slow with many tables.</li>
+<li><strong>Automatic except for data tables</strong>: the model recalculates normally, while tables update only on F9 (c05).
+  This is the standard setting for large models, but you must <strong>press F9 before reading or pasting sensitivities</strong>,
+  and record the setting on the Cover.</li>
+<li><strong>Manual</strong>: risky for anything shared. Users see stale numbers. Avoid it in sent files.</li>
+</ul>
+<p>The calculation mode is application-wide: the first workbook opened in a session sets it, so a colleague's file
+can change your setting. Check the status bar for "Calculate" (it signals pending recalculation).</p>
+<h3 id="scenario-switches-tested-end-to-end">Scenario switches tested end to end</h3>
+<p>A scenario switch (base = 1, bull = 2, bear = 3) is only reliable if every scenario-dependent driver is wired
+through it and every output responds. End-to-end test procedure:</p>
+<ol>
+<li><strong>Inventory drivers</strong> on Inputs: list every driver that should differ by scenario (volume, realisation, cost per
+   unit, capex, commissioning date, working capital days, WACC adjustments if any).</li>
+<li><strong>Trace each to the live row</strong>: confirm that calculations reference only the live (selected) row, never
+   the base row directly. Search formulas for references to the base block (Find on the base row address).</li>
+<li><strong>Flip the switch</strong> to each scenario and record value per share, FY28 EBITDA, peak net debt/EBITDA and the master
+   check in a scenario results table. All checks must pass in every scenario.</li>
+<li><strong>Directional test</strong>: bull &gt; base &gt; bear for value and EBITDA. If bear capex is higher but value moves the "wrong"
+   way, investigate.</li>
+<li><strong>Delta test</strong>: change one driver in the bear block only and confirm that only the bear output moves.</li>
+<li><strong>Reset to base</strong> before saving and sending (topic pitfall), with the Cover showing the live scenario name in
+   large type and a check that turns amber if the switch is not on base.</li>
+</ol>
+<p>A scenario output table built with a one-variable data table on the switch cell gives all scenarios
+simultaneously: column input = switch cell, values 1, 2, 3, output = value per share. It obeys the same
+same-sheet rule, so place the switch on the sheet hosting the table or use the override approach.</p>
+<h3 id="illustration">Illustration</h3>
+<p>Base value per share ₹612 at WACC 12.3% and g 5.0%. Sensitivity table centre cell shows ₹598. Diagnosis: the table
+was last calculated before a capex update, because calculation was set to "Automatic except for data tables".
+After F9 the centre shows ₹612. The check row "Sens centre − DCF value" would have flagged the ₹14 difference.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Data tables inside circular models.</strong> Iterative calculation plus data tables can be slow or unstable. Switch
+  the circuit breaker to opening-balance interest for sensitivity runs, or accept longer calculation times, and
+  disclose which.</li>
+<li><strong>Scenario Manager (built-in tool).</strong> Excel's What-If → Scenario Manager stores input sets but is opaque and
+  rarely used in institutional models. Prefer the visible <code>CHOOSE</code>/<code>INDEX</code> block.</li>
+<li><strong>Asymmetric scenarios.</strong> Bear is often not the mirror image of bull (a commissioning delay matters more than an
+  early start). Do not force symmetric ±% changes.</li>
+<li><strong>Pasting sensitivities as values</strong> into a deck appendix. Paste after F9 and timestamp the paste.</li>
+<li><strong>Too many tables.</strong> Over five large tables, consider a macro-driven sensitivity loop or moving the analysis to a
+  separate copy.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Data table input cells must be on the table's own sheet. Wire them to the model's live inputs, never to orphan copies.</li>
+<li>The centre cell must reproduce the base output, so add it as a check.</li>
+<li>"Automatic except for data tables" speeds large models but requires F9 before reading. Record the mode on the Cover.</li>
+<li>Test scenarios end to end: driver inventory, live-row tracing, flip and record, directional and delta tests, all checks passing.</li>
+<li>Reset the switch to base before sending, and show the live scenario on the Cover.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-wiring-a-cross-sheet-sensitivity-l2">Q1. Wiring a cross-sheet sensitivity [L2]</h3>
+<p>Your WACC input is on Inputs!D19 and g on Inputs!D21, while the 5 × 5 data table must sit on the Sensitivity
+sheet. Design the override cells, the live-input formulas on Inputs and the data table set-up, and write the check
+that proves the table is live.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> The model must read one cell for each input whose value the table can drive.</p>
+</blockquote>
+<h3 id="q2-stale-table-diagnosis-l1">Q2. Stale table diagnosis [L1]</h3>
+<p>A reviewer notices that changing WACC on Inputs moves the DCF value but none of the sensitivity cells. List the
+three most likely causes and how to confirm each.</p>
+<h3 id="q3-scenario-test-log-l2">Q3. Scenario test log [L2]</h3>
+<p>Design a scenario test log table (columns and rows) for a base/bull/bear model with eight scenario drivers, including
+directional and delta tests, and specify the pass criteria for each test.</p>
+<h3 id="q4-performance-versus-safety-l3">Q4. Performance versus safety [L3]</h3>
+<p>A 40-sheet model with six data tables takes 90 seconds to recalculate in Automatic mode. The FP&amp;A head wants it
+shared with business unit controllers who are not modellers. Recommend calculation settings, design changes and
+user instructions, and explain the control risks of each option.</p></section>
+<nav class="pager"><a class="prev" href="S04_Excel_Audit_Toolkit_Tracing_Evaluate_Go_To_Special.html">← Excel Audit Toolkit: Tracing, Evaluate, Go To Special,…</a><a class="next" href="S06_Presentation_Standards_Colour_Codes_Units_Freeze.html">Presentation Standards: Colour Codes, Units, Freeze Panes,… →</a></nav>
+</main></div></body></html>

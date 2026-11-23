@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Negative PBT: Loss Carry-Forward, No Negative Tax, DTA Recognition · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S04_Negative_PBT_Loss_Carry_Forward_No_Negative_Tax.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 15</a> <span>›</span> <a href="../index.html">T5 · Dynamic Stress Testing</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Dynamic Stress Testing</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Toggling_Base_Bull_and_Bear_with_a_Zero_Check_in.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S01_Toggling_Base_Bull_and_Bear_with_a_Zero_Check_in.html">Toggling Base, Bull and Bear with a Zero Check in Every Year</a></li><li><a href="S02_Extreme_Input_Stress_Tests_Growth_Margins_Capex.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S02_Extreme_Input_Stress_Tests_Growth_Margins_Capex.html">Extreme Input Stress Tests: Growth, Margins, Capex and WC Days</a></li><li><a href="S03_Revolver_Behaviour_in_a_Recession_Draw_Within.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S03_Revolver_Behaviour_in_a_Recession_Draw_Within.html">Revolver Behaviour in a Recession: Draw Within Limit, Flag Shortfall</a></li><li><a href="S04_Negative_PBT_Loss_Carry_Forward_No_Negative_Tax.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S04_Negative_PBT_Loss_Carry_Forward_No_Negative_Tax.html">Negative PBT: Loss Carry-Forward, No Negative Tax, DTA Recognition</a></li><li><a href="S05_Dividends_Under_Losses_Floored_at_Zero_Capped_by.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S05_Dividends_Under_Losses_Floored_at_Zero_Capped_by.html">Dividends Under Losses: Floored at Zero, Capped by Profits and Cash</a></li><li><a href="S06_Covenant_Flags_Net_DebtEBITDA_DSCR_and_ICR_Breach.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S06_Covenant_Flags_Net_DebtEBITDA_DSCR_and_ICR_Breach.html">Covenant Flags: Net Debt/EBITDA, DSCR and ICR Breach Years</a></li><li><a href="S07_The_Checks_Dashboard_Balance_Cash_Liquidity_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S07_The_Checks_Dashboard_Balance_Cash_Liquidity_and.html">The Checks Dashboard: Balance, Cash, Liquidity and Convergence</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Current_Tax_with_Loss_Set_Off_and_the_Sec_72_Loss.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C01_Current_Tax_with_Loss_Set_Off_and_the_Sec_72_Loss.html">Current Tax with Loss Set-Off and the Sec 72 Loss Corkscrew</a></li><li><a href="../concepts/C02_Dividend_Floor_and_Cash_Cap_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C02_Dividend_Floor_and_Cash_Cap_Formula.html">Dividend Floor and Cash Cap Formula</a></li><li><a href="../concepts/C03_The_Binary_Error_Flag_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C03_The_Binary_Error_Flag_Formula.html">The Binary Error Flag Formula</a></li><li><a href="../concepts/C04_Goal_Seek_and_Data_Tables_to_Find_Breaking_Points.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C04_Goal_Seek_and_Data_Tables_to_Find_Breaking_Points.html">Goal Seek and Data Tables to Find Breaking Points</a></li><li><a href="../concepts/C05_Scenario_Invariance_A_Linked_Model_Balances_for.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C05_Scenario_Invariance_A_Linked_Model_Balances_for.html">Scenario Invariance: A Linked Model Balances for Any Input</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Negative PBT: Loss Carry-Forward, No Negative Tax, DTA Recognition</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Negative PBT: tax losses carried forward, no negative current tax, DTA recognition</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A recession or margin-collapse stress almost always produces at least one loss year. The tax schedule is where most models fail. Writing <code>Tax = PBT × t</code> gives a negative tax charge, which most modellers then treat as a cash refund, an inflow that does not exist under Indian tax law for ordinary business losses. The correct logic needs three things. Current tax is floored at zero. The loss is carried forward and used against future taxable profits, subject to time limits. The accounting benefit (a deferred tax asset) is recognised only if Ind AS 12 recognition criteria are met. Get this wrong and the downside case overstates cash, overstates PAT in loss years, and misstates tax in the recovery years, the period lenders care most about. In valuation, the tax shield from accumulated losses can also be a material value item.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="indian-tax-rules-the-model-must-reflect">Indian tax rules the model must reflect</h3>
+<ul>
+<li><strong>Business loss (Sec 72, Income-tax Act, 1961):</strong> carried forward for <strong>8 assessment years</strong> following the year of loss, set off only against business income. It requires the return of loss to be filed within the due date under Sec 139(1) (Sec 80).</li>
+<li><strong>Unabsorbed depreciation (Sec 32(2)):</strong> carried forward <strong>indefinitely</strong>, set off against any income except salary. No timely-filing condition applies.</li>
+<li><strong>Set-off order:</strong> current year depreciation first, then brought-forward business loss (time-limited, so used first), then unabsorbed depreciation.</li>
+<li><strong>Sec 115BAA companies (22% base rate, 25.168% effective with 10% surcharge and 4% cess):</strong> MAT does not apply. Losses and depreciation attributable to the disallowed deductions (for example, additional depreciation under Sec 32(1)(iia)) cannot be set off. Most other losses can be.</li>
+<li><strong>Sec 79:</strong> for companies in which the public are not substantially interested, a change in shareholding of more than 49% can lapse carried-forward losses (not unabsorbed depreciation). It rarely applies to listed companies but matters for private targets.</li>
+<li><strong>Income-tax Act, 2025:</strong> effective 1 April 2026 (tax year 2026–27), it replaces the 1961 Act and renumbers these provisions, while broadly retaining the 8-year loss and indefinite unabsorbed depreciation rules. Confirm current section numbers when citing in deliverables.</li>
+</ul>
+<h3 id="model-logic-current-tax">Model logic: current tax</h3>
+<p>Taxable income in a simple model is PBT adjusted for permanent differences (for example, non-deductible CSR spend under Sec 37 Explanation 2, disallowances) and timing differences (book vs tax depreciation). Then:</p>
+<pre><code class="language-excel">Loss_Utilised = MIN(Loss_BF_Open, MAX(0, Taxable_Income))
+Current_Tax   = MAX(0, Taxable_Income - Loss_Utilised) * Tax_Rate
+Loss_Created  = MAX(0, -Taxable_Income)
+Loss_BF_Close = Loss_BF_Open + Loss_Created - Loss_Utilised - Loss_Expired
+</code></pre>
+<p>For the 8-year expiry, track vintages (a loss layer per year of origin) and use them FIFO. In a 5-year forecast with no historical losses, expiry cannot occur within the horizon, but in a DCF terminal value or a company with legacy losses it matters (see c01).</p>
+<h3 id="model-logic-deferred-tax-on-losses">Model logic: deferred tax on losses</h3>
+<p>Ind AS 12.34: a DTA is recognised for the carry-forward of unused tax losses <strong>to the extent that it is probable</strong> that future taxable profit will be available. Ind AS 12.35: the existence of unused tax losses is strong evidence that future taxable profit may not be available, so an entity with a history of recent losses recognises a DTA only to the extent it has sufficient taxable temporary differences or <strong>convincing other evidence</strong>. Ind AS 12.36 lists the criteria: existing taxable temporary differences that will reverse, probability of profits before expiry, whether losses come from identifiable non-recurring causes, and tax planning opportunities. Ind AS 12.56 requires the carrying amount of a DTA to be reviewed at each reporting date.</p>
+<p>Modelling approach: add a switch <code>DTA_Recognise</code> (1/0) and optionally a recognition percentage.</p>
+<pre><code class="language-excel">DTA_Losses_Close = Loss_BF_Close * Tax_Rate * DTA_Recognise
+Deferred_Tax_on_Losses = -(DTA_Losses_Close - DTA_Losses_Open)
+</code></pre>
+<p>A negative deferred tax expense is a tax <strong>credit</strong> in the P&amp;L, and it is non-cash:</p>
+<ul>
+<li><strong>P&amp;L:</strong> total tax = current tax (≥ 0) + deferred tax (negative when the DTA builds, positive when it unwinds).</li>
+<li><strong>CFS:</strong> deduct the increase in DTA (non-cash credit) when starting from PAT. Under the Indian PBT-start format, simply deduct income taxes paid.</li>
+<li><strong>BS:</strong> DTA (or net against DTL where the Ind AS 12.74 offset conditions are met) under non-current assets.</li>
+</ul>
+<h3 id="illustration">Illustration</h3>
+<p>Krishna Hotels Ltd (₹ crore, tax 25.17%, no opening losses, DTA recognised):</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th>FY26E</th>
+<th>FY27E</th>
+<th>FY28E</th>
+<th>FY29E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PBT (= taxable income)</td>
+<td>−200</td>
+<td>−60</td>
+<td>120</td>
+<td>300</td>
+</tr>
+<tr>
+<td>Loss b/f opening</td>
+<td>0</td>
+<td>200</td>
+<td>260</td>
+<td>140</td>
+</tr>
+<tr>
+<td>Loss created</td>
+<td>200</td>
+<td>60</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Loss utilised</td>
+<td>0</td>
+<td>0</td>
+<td>120</td>
+<td>140</td>
+</tr>
+<tr>
+<td>Loss b/f closing</td>
+<td>200</td>
+<td>260</td>
+<td>140</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Current tax</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>40.27</td>
+</tr>
+<tr>
+<td>DTA closing (loss × t)</td>
+<td>50.34</td>
+<td>65.44</td>
+<td>35.24</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Deferred tax expense/(credit)</td>
+<td>(50.34)</td>
+<td>(15.10)</td>
+<td>30.20</td>
+<td>35.24</td>
+</tr>
+<tr>
+<td>Total tax</td>
+<td>(50.34)</td>
+<td>(15.10)</td>
+<td>30.20</td>
+<td>75.51</td>
+</tr>
+<tr>
+<td>PAT</td>
+<td>−149.66</td>
+<td>−44.90</td>
+<td>89.80</td>
+<td>224.49</td>
+</tr>
+</tbody>
+</table>
+<p>With recognition, total tax is 25.17% of PBT every year (ETR constant), but cash tax is zero until FY29E. Without recognition, FY26E–FY27E PAT equals PBT (no credit) and FY28E has zero total tax, so the ETR swings wildly. In both cases current tax is never negative and the BS balances, provided the DTA is on the BS and the CFS reverses the non-cash deferred tax.</p>
+<p>FY29E current tax: (300 − 140) × 25.17% = 40.27. Using the unrounded statutory rate of 25.168% gives 40.27 as well, but small rounding differences appear in other years, so use one named rate cell throughout.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Recognition judgement in a model.</strong> For a stressed case, many practitioners set <code>DTA_Recognise = 0</code>, because a sustained Bear case is exactly the "history of recent losses" in Ind AS 12.35. For a Base case with one cyclical loss year, recognition may be appropriate. State the choice on the assumptions sheet.</li>
+<li><strong>Unabsorbed depreciation in capex-heavy loss years.</strong> When tax depreciation (WDV) exceeds book depreciation, part of the tax loss is unabsorbed depreciation (indefinite). Pool it separately from business loss if the horizon or terminal value makes expiry relevant.</li>
+<li><strong>MAT for old-regime companies.</strong> Companies not under Sec 115BAA may pay MAT under Sec 115JB on book profit even with tax losses, and MAT credit (Sec 115JAA) is carried forward for 15 years. If the company is on the old regime, model MAT = MAX(normal tax, 15% × book profit plus surcharge and cess).</li>
+<li><strong>Advance tax and refunds.</strong> In a loss year after profitable years, advance tax paid may be refunded with interest. That is a legitimate cash inflow from prior-year overpayment, not a refund of current-year losses. Model it through the current tax asset/liability corkscrew if material.</li>
+<li><strong>Deferred tax on other timing differences</strong> (DTL on depreciation) continues to move in loss years. Do not switch off all deferred tax when PBT &lt; 0.</li>
+<li><strong>Group relief does not exist in India.</strong> Losses of one group company cannot be used by another except through specific amalgamation provisions (Sec 72A).</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Current tax is never negative. Use <code>MAX(0, Taxable income − Loss utilised) × t</code>.</li>
+<li>Track losses in a corkscrew: opening + created − utilised − expired = closing. Business loss lasts 8 years (Sec 72) and unabsorbed depreciation is indefinite (Sec 32(2)).</li>
+<li>DTA on losses is recognised only when future taxable profit is probable (Ind AS 12.34–36). Use a switch, and default to caution in stressed cases.</li>
+<li>Deferred tax credits are non-cash. The CFS must reverse them and the BS must show the DTA, or the model will not balance.</li>
+<li>Check that the new Income-tax Act, 2025 section references are current, and apply Sec 115BAA restrictions on loss set-off.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-loss-corkscrew-build-l2">Q1. Loss corkscrew build [L2]</h3>
+<p>Brahmani Shipping Ltd (tax 25.17%, Sec 115BAA, no opening losses) has taxable income of −₹90 crore (FY26E), −₹40 crore (FY27E), +₹30 crore (FY28E), +₹70 crore (FY29E) and +₹110 crore (FY30E). (a) Build the loss corkscrew and compute current tax for each year. (b) Compute the closing DTA each year if recognised in full. (c) Write the Excel formulas for loss utilised and current tax.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Utilisation in any year cannot exceed either the opening pool or that year's positive taxable income.</p>
+</blockquote>
+<h3 id="q2-recognition-judgement-l3">Q2. Recognition judgement [L3]</h3>
+<p>Sutlej Airlines Ltd has made tax losses in four of the last five years. Accumulated business losses total ₹2,400 crore, of which ₹600 crore expire within two years. Management's plan shows profitability from FY28E. The auditors have previously recognised a DTA only to the extent of taxable temporary differences of ₹300 crore. (a) Explain how Ind AS 12.35–36 applies. (b) Propose a model treatment for Base and Bear cases. (c) Explain the P&amp;L, CFS and BS effects of switching DTA recognition on in FY28E for the full remaining loss pool.</p>
+<h3 id="q3-negative-tax-bug-l1">Q3. Negative tax bug [L1]</h3>
+<p>A model uses <code>=PBT*Tax_Rate</code> for current tax and links taxes paid to current tax. In FY27E PBT is −₹80 crore at 25.17%. (a) Compute the erroneous current tax and its cash effect. (b) Explain why the BS still balances. (c) Write the corrected logic.</p>
+<h3 id="q4-unabsorbed-depreciation-vs-business-loss-l2">Q4. Unabsorbed depreciation vs business loss [L2]</h3>
+<p>In FY26E Pamba Cement Ltd has book PBT of −₹50 crore. Tax depreciation is ₹180 crore and book depreciation ₹120 crore, and there are no other differences. (a) Compute taxable income. (b) Split the tax loss into business loss and unabsorbed depreciation. (c) Explain how the split affects the carry-forward period and set-off order in later years.</p></section>
+<nav class="pager"><a class="prev" href="S03_Revolver_Behaviour_in_a_Recession_Draw_Within.html">← Revolver Behaviour in a Recession: Draw Within Limit, Flag…</a><a class="next" href="S05_Dividends_Under_Losses_Floored_at_Zero_Capped_by.html">Dividends Under Losses: Floored at Zero, Capped by Profits… →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiscal Calendar Columns: FY, Quarter, Month, Week and Period Key · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S03_Fiscal_Calendar_Columns_FY_Quarter_Month_Week_and.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T2 · Indian fiscal calendar table</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Indian fiscal calendar table</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Building_the_Date_Dimension_DAX_CALENDAR_vs_Power.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S01_Building_the_Date_Dimension_DAX_CALENDAR_vs_Power.html">Building the Date Dimension: DAX CALENDAR vs Power Query List.Dates</a></li><li><a href="S02_Contiguous_Whole_Fiscal_Year_Date_Range_Covering.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S02_Contiguous_Whole_Fiscal_Year_Date_Range_Covering.html">Contiguous Whole-Fiscal-Year Date Range Covering All Facts</a></li><li><a href="S03_Fiscal_Calendar_Columns_FY_Quarter_Month_Week_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S03_Fiscal_Calendar_Columns_FY_Quarter_Month_Week_and.html">Fiscal Calendar Columns: FY, Quarter, Month, Week and Period Key</a></li><li><a href="S04_Sort_by_Column_Fiscal_Month_Order_Starting_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S04_Sort_by_Column_Fiscal_Month_Order_Starting_in.html">Sort by Column: Fiscal Month Order Starting in April</a></li><li><a href="S05_Month_and_FY_Offset_Columns_for_Dynamic_Period.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S05_Month_and_FY_Offset_Columns_for_Dynamic_Period.html">Month and FY Offset Columns for Dynamic Period Filters</a></li><li><a href="S06_Mark_as_Date_Table_and_Turn_Off_Auto_DateTime.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S06_Mark_as_Date_Table_and_Turn_Off_Auto_DateTime.html">Mark as Date Table and Turn Off Auto Date/Time</a></li><li><a href="S07_Working_Day_Flags_and_Indian_Holidays_for_Close.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S07_Working_Day_Flags_and_Indian_Holidays_for_Close.html">Working-Day Flags and Indian Holidays for Close Metrics</a></li><li><a href="S08_IsClosedPeriod_and_IsYTD_Flags_for_Like_for_Like.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S08_IsClosedPeriod_and_IsYTD_Flags_for_Like_for_Like.html">IsClosedPeriod and IsYTD Flags for Like-for-Like Comparisons</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_DAX_Fiscal_Date_Table_with_an_FYEnd_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C01_DAX_Fiscal_Date_Table_with_an_FYEnd_Column.html">DAX Fiscal Date Table with an FYEnd Column</a></li><li><a href="../concepts/C02_CALENDARAUTO3_for_Whole_March_Ending_Fiscal_Years.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C02_CALENDARAUTO3_for_Whole_March_Ending_Fiscal_Years.html">CALENDARAUTO(3) for Whole March-Ending Fiscal Years</a></li><li><a href="../concepts/C03_Fiscal_Month_and_Fiscal_Quarter_Formulas.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C03_Fiscal_Month_and_Fiscal_Quarter_Formulas.html">Fiscal Month and Fiscal Quarter Formulas</a></li><li><a href="../concepts/C04_Fiscal_Week_Number_Anchored_on_1_April.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C04_Fiscal_Week_Number_Anchored_on_1_April.html">Fiscal Week Number Anchored on 1 April</a></li><li><a href="../concepts/C05_Month_Offset_from_Today.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C05_Month_Offset_from_Today.html">Month Offset from Today</a></li><li><a href="../concepts/C06_Power_Query_Date_List_with_ListDates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C06_Power_Query_Date_List_with_ListDates.html">Power Query Date List with List.Dates</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Fiscal Calendar Columns: FY, Quarter, Month, Week and Period Key</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Columns: FY label, fiscal quarter, fiscal month number, month name, month-end, fiscal week, period key (YYYYMM)</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>The columns on the Date table are the vocabulary of every finance report: "FY2025-26", "Q3", "Dec", "P09",
+"Week 38", "202512". They drive slicers, matrix headers, sort order, budget joins and custom time intelligence
+(for non-standard calendars and calculation groups). Each column must be computed with April–March logic, typed
+correctly, and paired with a numeric sort column where the label is text. An error in any one — say, a fiscal
+quarter that treats January as Q1 — propagates silently into every MIS pack.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="column-specification">Column specification</h3>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Example (15-Jan-2026)</th>
+<th>Logic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Date</td>
+<td>Date</td>
+<td>15-01-2026</td>
+<td>Key; one row per day</td>
+</tr>
+<tr>
+<td>FYEnd</td>
+<td>Whole number</td>
+<td>2026</td>
+<td>Year in which the FY ends</td>
+</tr>
+<tr>
+<td>FY (label)</td>
+<td>Text</td>
+<td>FY2025-26</td>
+<td>"FY" &amp; (FYEnd − 1) &amp; "-" &amp; last two digits of FYEnd</td>
+</tr>
+<tr>
+<td>FYShort</td>
+<td>Text</td>
+<td>FY26</td>
+<td>Alternative label used in many Indian MIS packs</td>
+</tr>
+<tr>
+<td>FiscalQuarterNo</td>
+<td>Whole number</td>
+<td>4</td>
+<td>ROUNDUP(FiscalMonthNo / 3, 0)</td>
+</tr>
+<tr>
+<td>FiscalQuarter</td>
+<td>Text</td>
+<td>Q4</td>
+<td>"Q" &amp; FiscalQuarterNo</td>
+</tr>
+<tr>
+<td>FYQuarter</td>
+<td>Text</td>
+<td>FY26 Q4</td>
+<td>Unique quarter label across years</td>
+</tr>
+<tr>
+<td>FiscalMonthNo</td>
+<td>Whole number</td>
+<td>10</td>
+<td>MOD(MONTH + 8, 12) + 1</td>
+</tr>
+<tr>
+<td>MonthName</td>
+<td>Text</td>
+<td>Jan</td>
+<td>FORMAT(Date, "mmm"); sorted by FiscalMonthNo</td>
+</tr>
+<tr>
+<td>MonthYear</td>
+<td>Text</td>
+<td>Jan-26</td>
+<td>Unique month label; sorted by PeriodKey</td>
+</tr>
+<tr>
+<td>MonthEnd</td>
+<td>Date</td>
+<td>31-01-2026</td>
+<td>EOMONTH(Date, 0)</td>
+</tr>
+<tr>
+<td>MonthStart</td>
+<td>Date</td>
+<td>01-01-2026</td>
+<td>EOMONTH(Date, −1) + 1</td>
+</tr>
+<tr>
+<td>FiscalWeek</td>
+<td>Whole number</td>
+<td>42</td>
+<td>INT((Date − FY start) / 7) + 1</td>
+</tr>
+<tr>
+<td>PeriodKey</td>
+<td>Whole number</td>
+<td>202601</td>
+<td>YEAR × 100 + MONTH (calendar YYYYMM)</td>
+</tr>
+<tr>
+<td>FiscalPeriodKey</td>
+<td>Whole number</td>
+<td>202610</td>
+<td>FYEnd × 100 + FiscalMonthNo (optional)</td>
+</tr>
+<tr>
+<td>DayOfFiscalYear</td>
+<td>Whole number</td>
+<td>290</td>
+<td>Date − FY start + 1 (for like-for-like flags)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fy-label">FY label</h3>
+<p>Indian practice varies: Companies Act and Ind AS financial statements say "year ended 31 March 2026"; the
+Income-tax Act uses "previous year 2025-26" and "assessment year 2026-27"; MIS decks commonly use "FY26" or
+"FY2025-26". Choose one display convention, but always keep the <strong>numeric FYEnd</strong> for sorting and arithmetic. Do
+not confuse FY with AY in tax-related reports.</p>
+<pre><code class="language-DAX">FYEnd = IF ( MONTH ( 'Date'[Date] ) &gt;= 4, YEAR ( 'Date'[Date] ) + 1, YEAR ( 'Date'[Date] ) )
+FY    = &quot;FY&quot; &amp; ( 'Date'[FYEnd] - 1 ) &amp; &quot;-&quot; &amp; RIGHT ( 'Date'[FYEnd], 2 )
+</code></pre>
+<p>"FY2025-26" sorts correctly as text because the start year leads; "FY26" also sorts correctly within the same
+century. Still set Sort by Column to FYEnd for safety.</p>
+<h3 id="fiscal-quarter-and-fiscal-month">Fiscal quarter and fiscal month</h3>
+<p>Fiscal month number maps April → 1 … March → 12 with <code>MOD(MONTH([Date]) + 8, 12) + 1</code> (concept c03). Quarter:</p>
+<pre><code class="language-DAX">FiscalQuarterNo = ROUNDUP ( 'Date'[FiscalMonthNo] / 3, 0 )
+FiscalQuarter   = &quot;Q&quot; &amp; 'Date'[FiscalQuarterNo]
+</code></pre>
+<p>So Q1 = Apr–Jun, Q2 = Jul–Sep, Q3 = Oct–Dec, Q4 = Jan–Mar — consistent with SEBI LODR Reg 33 quarterly results
+(quarters ending 30 June, 30 September, 31 December, 31 March). "Q4" alone is not unique across years; use
+FYQuarter ("FY26 Q4") on axes spanning several years.</p>
+<h3 id="month-name-and-month-end">Month name and month-end</h3>
+<p><code>FORMAT([Date], "mmm")</code> gives "Jan"; "mmmm" gives "January". Text month names must be sorted by FiscalMonthNo
+(s04). MonthEnd via <code>EOMONTH([Date], 0)</code> is the join key for TB snapshots and TREATAS budget patterns, and the
+anchor for month-level closing balances. MonthYear ("Jan-26") is a unique label for trend charts and must sort by
+PeriodKey, not alphabetically.</p>
+<h3 id="fiscal-week">Fiscal week</h3>
+<pre><code class="language-DAX">FiscalWeek = INT ( ( 'Date'[Date] - DATE ( 'Date'[FYEnd] - 1, 4, 1 ) ) / 7 ) + 1
+</code></pre>
+<p>Week 1 is 1–7 April regardless of weekday; week 52 ends on day 364 (30 March in a 365-day year), so week 53 holds
+31 March alone (or 30–31 March in a leap fiscal year, e.g. FY2023-24 which contains 29 Feb 2024). If weeks must
+start on Monday (sales reporting, payroll), use an alternative based on <code>WEEKDAY([Date], 2)</code> and accept a partial
+week 1. See concept c04.</p>
+<h3 id="period-key-yyyymm">Period key (YYYYMM)</h3>
+<p>PeriodKey = <code>YEAR([Date]) * 100 + MONTH([Date])</code> gives 202601 for January 2026. It is an integer, sorts
+chronologically, and matches budget and ERP period fields (SAP fiscal period with year). Some teams prefer a
+<strong>fiscal</strong> period key (FYEnd × 100 + FiscalMonthNo = 202610) that matches ERP posting periods (period 10 of
+FY2026). Label it clearly — mixing the two is a common reconciliation error.</p>
+<h3 id="power-query-equivalents">Power Query equivalents</h3>
+<pre><code class="language-M">AddFYEnd  = Table.AddColumn(Src, &quot;FYEnd&quot;, each if Date.Month([Date]) &gt;= 4 then Date.Year([Date]) + 1 else Date.Year([Date]), Int64.Type),
+AddFMNo   = Table.AddColumn(AddFYEnd, &quot;FiscalMonthNo&quot;, each Number.Mod(Date.Month([Date]) + 8, 12) + 1, Int64.Type),
+AddFQ     = Table.AddColumn(AddFMNo, &quot;FiscalQuarter&quot;, each &quot;Q&quot; &amp; Text.From(Number.RoundUp([FiscalMonthNo] / 3)), type text),
+AddMEnd   = Table.AddColumn(AddFQ, &quot;MonthEnd&quot;, each Date.EndOfMonth([Date]), type date),
+AddPKey   = Table.AddColumn(AddMEnd, &quot;PeriodKey&quot;, each Date.Year([Date]) * 100 + Date.Month([Date]), Int64.Type),
+AddFWeek  = Table.AddColumn(AddPKey, &quot;FiscalWeek&quot;, each Number.IntegerDivide(Duration.Days([Date] - #date([FYEnd] - 1, 4, 1)), 7) + 1, Int64.Type)
+</code></pre>
+<h3 id="illustration">Illustration</h3>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>FY</th>
+<th>FiscalQuarter</th>
+<th>FiscalMonthNo</th>
+<th>MonthName</th>
+<th>MonthEnd</th>
+<th>FiscalWeek</th>
+<th>PeriodKey</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01-Apr-2025</td>
+<td>FY2025-26</td>
+<td>Q1</td>
+<td>1</td>
+<td>Apr</td>
+<td>30-Apr-2025</td>
+<td>1</td>
+<td>202504</td>
+</tr>
+<tr>
+<td>30-Sep-2025</td>
+<td>FY2025-26</td>
+<td>Q2</td>
+<td>6</td>
+<td>Sep</td>
+<td>30-Sep-2025</td>
+<td>27</td>
+<td>202509</td>
+</tr>
+<tr>
+<td>01-Jan-2026</td>
+<td>FY2025-26</td>
+<td>Q4</td>
+<td>10</td>
+<td>Jan</td>
+<td>31-Jan-2026</td>
+<td>40</td>
+<td>202601</td>
+</tr>
+<tr>
+<td>31-Mar-2026</td>
+<td>FY2025-26</td>
+<td>Q4</td>
+<td>12</td>
+<td>Mar</td>
+<td>31-Mar-2026</td>
+<td>53</td>
+<td>202603</td>
+</tr>
+</tbody>
+</table>
+<p>Check one row by hand: 30-Sep-2025 is day 183 of the FY (April 30 + May 31 + June 30 + July 31 + August 31 +
+September 30 = 183), so \(\text{INT}(182 / 7) + 1 = 26 + 1 = 27\).</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Quarter labels for listed companies.</strong> Board and SEBI results use "quarter ended 31 December 2025"; build a
+  QuarterEnd date column for formal labels.</li>
+<li><strong>13 periods / special periods.</strong> SAP special periods 13–16 for year-end adjustments map to 31 March; do not
+  create fake dates.</li>
+<li><strong>Fiscal year changes.</strong> Sec 2(41) of the Companies Act requires a 31 March year-end for Indian companies (with
+  Tribunal-approved exceptions, e.g. subsidiaries of foreign companies); a Date table for an Indian group consolidating
+  a December-year-end foreign parent needs both calendar and fiscal attributes.</li>
+<li><strong>Week numbering conflicts.</strong> ISO weeks, Monday-start weeks and FY-anchored weeks give different numbers; state the
+  definition in the column description.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Keep a numeric FYEnd alongside the text FY label; choose one label convention (FY2025-26 or FY26).</li>
+<li>Fiscal month <code>MOD(MONTH + 8, 12) + 1</code>; fiscal quarter <code>ROUNDUP(FiscalMonthNo / 3, 0)</code> gives Apr–Jun as Q1.</li>
+<li>MonthEnd is the snapshot and TREATAS key; MonthYear needs PeriodKey as its sort column.</li>
+<li>FY-anchored fiscal weeks start 1 April and produce a short week 53.</li>
+<li>Distinguish calendar PeriodKey (202601) from fiscal period key (202610).</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-fill-the-row-l1">Q1. Fill the row [L1]</h3>
+<p>For 29-Feb-2024 compute FYEnd, FY label, FiscalQuarter, FiscalMonthNo, MonthEnd, FiscalWeek, PeriodKey and fiscal
+period key, showing the arithmetic for the week.</p>
+<h3 id="q2-quarter-end-label-l2">Q2. Quarter-end label [L2]</h3>
+<p>Write a DAX calculated column returning a formal label such as "Quarter ended 31 December 2025" for every date, and
+state its sort column.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> The quarter end is the month-end of the last fiscal month of the quarter.</p>
+</blockquote>
+<h3 id="q3-period-key-mismatch-l2">Q3. Period key mismatch [L2]</h3>
+<p>The budget file uses a period field "2026-10" meaning FY2025-26 period 10. A developer relates it to the Date
+table's PeriodKey after converting it to 202610. Explain what the report will show for January 2026 and correct the
+design.</p>
+<h3 id="q4-week-definition-for-sales-l3">Q4. Week definition for sales [L3]</h3>
+<p>Sales wants Monday-to-Sunday weeks numbered within the fiscal year, with week 1 being the week containing 1 April.
+Write the DAX for this column and compare it with the FY-anchored week from the notes for a 52-week trend chart.</p></section>
+<nav class="pager"><a class="prev" href="S02_Contiguous_Whole_Fiscal_Year_Date_Range_Covering.html">← Contiguous Whole-Fiscal-Year Date Range Covering All Facts</a><a class="next" href="S04_Sort_by_Column_Fiscal_Month_Order_Starting_in.html">Sort by Column: Fiscal Month Order Starting in April →</a></nav>
+</main></div></body></html>

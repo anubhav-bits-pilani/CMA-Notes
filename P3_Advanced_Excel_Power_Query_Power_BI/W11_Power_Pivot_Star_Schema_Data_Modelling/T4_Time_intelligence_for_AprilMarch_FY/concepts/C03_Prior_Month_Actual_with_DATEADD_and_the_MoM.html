@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prior-Month Actual with DATEADD and the MoM % Measure · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C03_Prior_Month_Actual_with_DATEADD_and_the_MoM.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T4 · Time intelligence for April–March FY</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Time intelligence for April–March FY</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_YTD_QTD_and_MTD_Measures_for_an_AprilMarch_Fiscal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S01_YTD_QTD_and_MTD_Measures_for_an_AprilMarch_Fiscal.html">YTD, QTD and MTD Measures for an April–March Fiscal Year</a></li><li><a href="../subtopics/S02_SAMEPERIODLASTYEAR_vs_DATEADD_vs_PARALLELPERIOD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S02_SAMEPERIODLASTYEAR_vs_DATEADD_vs_PARALLELPERIOD.html">SAMEPERIODLASTYEAR vs DATEADD vs PARALLELPERIOD</a></li><li><a href="../subtopics/S03_PY_YTD_YTD_Growth_MoM_and_YoY_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S03_PY_YTD_YTD_Growth_MoM_and_YoY_Measures.html">PY YTD, YTD Growth, MoM % and YoY % Measures</a></li><li><a href="../subtopics/S04_Rolling_12_Month_and_Trailing_3_Month_Windows_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S04_Rolling_12_Month_and_Trailing_3_Month_Windows_with.html">Rolling 12-Month and Trailing 3-Month Windows with DATESINPERIOD</a></li><li><a href="../subtopics/S05_Capping_Time_Intelligence_at_the_Last_Actuals_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S05_Capping_Time_Intelligence_at_the_Last_Actuals_Date.html">Capping Time Intelligence at the Last Actuals Date</a></li><li><a href="../subtopics/S06_Time_Intelligence_Prerequisites_Marked_Contiguous.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S06_Time_Intelligence_Prerequisites_Marked_Contiguous.html">Time-Intelligence Prerequisites: Marked, Contiguous Date Table</a></li><li><a href="../subtopics/S07_Calculation_Groups_and_Field_Parameters_for_Time.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S07_Calculation_Groups_and_Field_Parameters_for_Time.html">Calculation Groups and Field Parameters for Time-Intelligence Views</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_TOTALYTD_with_331_Equals_CALCULATE_with_DATESYTD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C01_TOTALYTD_with_331_Equals_CALCULATE_with_DATESYTD.html">TOTALYTD with &quot;3/31&quot; Equals CALCULATE with DATESYTD</a></li><li><a href="C02_PY_YTD_via_SAMEPERIODLASTYEAR_and_the_YoY_Measure.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C02_PY_YTD_via_SAMEPERIODLASTYEAR_and_the_YoY_Measure.html">PY YTD via SAMEPERIODLASTYEAR and the YoY % Measure</a></li><li><a href="C03_Prior_Month_Actual_with_DATEADD_and_the_MoM.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C03_Prior_Month_Actual_with_DATEADD_and_the_MoM.html">Prior-Month Actual with DATEADD and the MoM % Measure</a></li><li><a href="C04_Rolling_12_Month_Measure_with_DATESINPERIOD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C04_Rolling_12_Month_Measure_with_DATESINPERIOD.html">Rolling 12-Month Measure with DATESINPERIOD</a></li><li><a href="C05_Last_Actual_Date_and_Capping_YTD_at_Posted_Data.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C05_Last_Actual_Date_and_Capping_YTD_at_Posted_Data.html">Last Actual Date and Capping YTD at Posted Data</a></li><li><a href="C06_Locale_Parsing_of_the_Year_End_String_in_DATESYTD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C06_Locale_Parsing_of_the_Year_End_String_in_DATESYTD.html">Locale Parsing of the Year-End String in DATESYTD</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Prior-Month Actual with DATEADD and the MoM % Measure</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>PM Actual = CALCULATE([Actual], DATEADD('Date'[Date], -1, MONTH))</code>; <code>MoM % = DIVIDE([Actual] - [PM Actual], [PM Actual])</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-DAX">PM Actual = CALCULATE ( [Actual], DATEADD ( 'Date'[Date], -1, MONTH ) )
+MoM %     = DIVIDE ( [Actual] - [PM Actual], [PM Actual] )
+</code></pre>
+<p>\[
+\text{MoM \%}_{m} = \frac{A_{m} - A_{m-1}}{A_{m-1}}
+\]</p>
+<p>where \(A_{m}\) is the actual for the month in context and \(A_{m-1}\) the actual for the immediately preceding
+month. <code>DIVIDE</code> returns BLANK when \(A_{m-1}\) is zero or blank.</p>
+<h2 id="explanation">Explanation</h2>
+<p><code>DATEADD('Date'[Date], -1, MONTH)</code> takes the visible dates and shifts each back by one month, returning a contiguous
+set of the same shape. For a full-month context (1–30 November) it returns the full prior month (1–31 October),
+including the month-end extension when the current month is shorter than the previous one (all of 1–31 January for
+a February context). <code>CALCULATE</code> applies the shifted set, and the base measure is re-evaluated.</p>
+<p>Key behaviours:</p>
+<ul>
+<li><strong>Crosses fiscal-year boundaries naturally.</strong> April 2025's PM is March 2025 — the last month of FY25. No year-end
+  argument is involved.</li>
+<li><strong>Meaningless above month level.</strong> At a quarter context (1 October – 31 December), <code>DATEADD(-1, MONTH)</code> returns 1
+  September – 30 November: a shifted quarter, not a "previous month". At FY total it gives March prior year to
+  February. Guard with <code>ISINSCOPE('Date'[MonthYear])</code> or <code>HASONEVALUE('Date'[MonthEnd])</code>.</li>
+<li><strong>Partial months.</strong> If the current month is capped at the last actuals date (18 November), the shifted set is 1–18
+  October — like-for-like, which is good for a flash report but means the "PM Actual" shown is not October's full
+  number. Label accordingly.</li>
+<li><strong>QoQ variant.</strong> <code>DATEADD('Date'[Date], -1, QUARTER)</code> gives sequential-quarter comparisons, which listed-company
+  results commentary often uses alongside YoY.</li>
+<li><strong>Interpretation.</strong> MoM % is dominated by seasonality (festive quarter, March year-end billing push, monsoon
+  impact on construction). It is a monitoring metric, not a performance verdict.</li>
+</ul>
+<pre><code class="language-DAX">MoM % (guarded) =
+VAR cur = [Actual]
+VAR pm  = [PM Actual]
+RETURN
+    IF ( ISINSCOPE ( 'Date'[MonthYear] ), DIVIDE ( cur - pm, ABS ( pm ) ) )
+</code></pre>
+<h2 id="illustration">Illustration</h2>
+<p>A logistics company's freight revenue (₹ lakh):</p>
+<table>
+<thead>
+<tr>
+<th>Month</th>
+<th><code>[Actual]</code></th>
+<th><code>[PM Actual]</code></th>
+<th><code>[MoM %]</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Feb 2026</td>
+<td>1,240</td>
+<td>1,310</td>
+<td>−5.3%</td>
+</tr>
+<tr>
+<td>Mar 2026</td>
+<td>1,580</td>
+<td>1,240</td>
+<td>+27.4%</td>
+</tr>
+<tr>
+<td>Apr 2026</td>
+<td>1,190</td>
+<td>1,580</td>
+<td>−24.7%</td>
+</tr>
+<tr>
+<td>Q4 FY26 row</td>
+<td>4,130</td>
+<td>(Dec–Feb shifted: 3,860)</td>
+<td>blank (guarded)</td>
+</tr>
+</tbody>
+</table>
+<p>The April drop is the reversal of the March year-end push, not a business collapse — the commentary should say so,
+and a YoY comparison (April 2026 vs April 2025) is the better performance indicator.</p>
+<h2 id="connections">Connections</h2>
+<p>Applies the DATEADD mechanics of s02; sits in the growth set of s03 next to YoY %; partial-month treatment comes
+from s05; a calculation-group "PM" item (s07) generalises it to every measure; Power BI visual calculations offer
+<code>PREVIOUS()</code> as a visual-level alternative (topic overview). In Week 5–8 trend analysis and Week 17–20 rolling
+forecasts, month-on-month run-rate changes feed driver reviews.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-compute-and-guard-l1">Q1. Compute and guard [L1]</h3>
+<p>Monthly revenue (₹ crore): Oct 2025 42.0, Nov 2025 39.9, Dec 2025 44.1. Compute MoM % for November and December, and
+explain what an unguarded <code>MoM %</code> would display on the Q3 FY26 row and why it should be blank.</p>
+<h3 id="q2-qoq-for-a-results-table-l2">Q2. QoQ for a results table [L2]</h3>
+<p>Write measures for prior-quarter revenue and QoQ % suitable for a SEBI results presentation that shows Q3 FY26, Q2
+FY26 and Q3 FY25 columns, and state at which matrix level each should be visible.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Quarter-level guards use a quarter column with <code>ISINSCOPE</code>, and the YoY column uses a different shift.</p>
+</blockquote>
+<h3 id="q3-flash-report-labelling-l2">Q3. Flash report labelling [L2]</h3>
+<p>Actuals are posted to 18 November 2025. The flash report shows November MoM % of −22%. Explain how the guarded
+measure computed this number, whether the comparison is like-for-like, and what label you would put on the visual.</p></section>
+<nav class="pager"><a class="prev" href="C02_PY_YTD_via_SAMEPERIODLASTYEAR_and_the_YoY_Measure.html">← PY YTD via SAMEPERIODLASTYEAR and the YoY % Measure</a><a class="next" href="C04_Rolling_12_Month_Measure_with_DATESINPERIOD.html">Rolling 12-Month Measure with DATESINPERIOD →</a></nav>
+</main></div></body></html>

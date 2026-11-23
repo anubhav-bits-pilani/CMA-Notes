@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unpivoting TB Columns (Opening, Debit, Credit, Closing) · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S05_Unpivoting_TB_Columns_Opening_Debit_Credit_Closing.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T3 · Unpivoting wide budgets and TBs</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Unpivoting wide budgets and TBs</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Wide_Crosstab_vs_Long_Normalised_Data_and_Fact.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S01_Wide_Crosstab_vs_Long_Normalised_Data_and_Fact.html">Wide (Crosstab) vs Long (Normalised) Data and Fact Tables</a></li><li><a href="S02_Unpivot_Other_Columns_vs_Unpivot_Columns_vs_Only.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S02_Unpivot_Other_Columns_vs_Unpivot_Columns_vs_Only.html">Unpivot Other Columns vs Unpivot Columns vs Only Selected</a></li><li><a href="S03_Converting_Month_Header_Text_into_Real_Month_End.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S03_Converting_Month_Header_Text_into_Real_Month_End.html">Converting Month Header Text into Real Month-End Dates</a></li><li><a href="S04_Multi_Row_Headers_Transpose_Fill_Merge_Transpose.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S04_Multi_Row_Headers_Transpose_Fill_Merge_Transpose.html">Multi-Row Headers: Transpose, Fill, Merge, Transpose Back, Unpivot</a></li><li><a href="S05_Unpivoting_TB_Columns_Opening_Debit_Credit_Closing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S05_Unpivoting_TB_Columns_Opening_Debit_Credit_Closing.html">Unpivoting TB Columns (Opening, Debit, Credit, Closing)</a></li><li><a href="S06_Pivot_Column_as_the_Reverse_of_Unpivot_Including.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S06_Pivot_Column_as_the_Reverse_of_Unpivot_Including.html">Pivot Column as the Reverse of Unpivot, Including Don&#x27;t Aggregate</a></li><li><a href="S07_Target_Fact_Schema_Date_Account_Department.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S07_Target_Fact_Schema_Date_Account_Department.html">Target Fact Schema: Date, Account, Department, Scenario, Amount</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_TableUnpivotOtherColumns_with_Fixed_Identifier.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C01_TableUnpivotOtherColumns_with_Fixed_Identifier.html">Table.UnpivotOtherColumns with Fixed Identifier Columns</a></li><li><a href="../concepts/C02_Month_Label_to_Month_End_Date_with_DateFromText.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C02_Month_Label_to_Month_End_Date_with_DateFromText.html">Month Label to Month-End Date with Date.FromText and Format</a></li><li><a href="../concepts/C03_Multi_Row_Header_Recipe_Transpose_Fill_Combine.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C03_Multi_Row_Header_Recipe_Transpose_Fill_Combine.html">Multi-Row Header Recipe: Transpose, Fill, Combine, Unpivot, Split</a></li><li><a href="../concepts/C04_TablePivot_with_a_Dynamic_Value_List_and_ListSum.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C04_TablePivot_with_a_Dynamic_Value_List_and_ListSum.html">Table.Pivot with a Dynamic Value List and List.Sum</a></li><li><a href="../concepts/C05_Adding_a_Typed_Scenario_Column_Before_Appending_to.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C05_Adding_a_Typed_Scenario_Column_Before_Appending_to.html">Adding a Typed Scenario Column Before Appending to Actuals</a></li><li><a href="../concepts/C06_Unpivot_Drops_Null_Cells_Replace_Nulls_with_Zero.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C06_Unpivot_Drops_Null_Cells_Replace_Nulls_with_Zero.html">Unpivot Drops Null Cells: Replace Nulls with Zero When Needed</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Unpivoting TB Columns (Opening, Debit, Credit, Closing)</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Splitting TB columns (Opening, Debit, Credit, Closing) into an attribute and value pair</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A full Trial Balance export carries four measures per ledger: Opening balance, period Debits, period Credits and Closing balance — sometimes as eight columns when each balance is split Dr/Cr. For analysis and roll-forward checks (Opening + Debits − Credits = Closing), a long shape with a <strong>Measure</strong> (attribute) column and an <strong>Amount</strong> (value) column is often easier to filter, pivot and append across periods and branches. It also aligns with how multi-period TBs are stored in a consolidation fact: one row per ledger × period × measure. Knowing when to unpivot TB measures, and when to keep a couple of measure columns, is a modelling judgement.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-typical-tb-layouts">The typical TB layouts</h3>
+<p><strong>Four-column signed layout</strong> (after cleaning):</p>
+<table>
+<thead>
+<tr>
+<th>Ledger</th>
+<th>Opening</th>
+<th>Debit</th>
+<th>Credit</th>
+<th>Closing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trade Receivables</td>
+<td>45,60,000</td>
+<td>1,82,40,000</td>
+<td>1,75,10,000</td>
+<td>52,90,000</td>
+</tr>
+<tr>
+<td>Trade Payables</td>
+<td>−38,20,000</td>
+<td>1,40,00,000</td>
+<td>1,46,50,000</td>
+<td>−44,70,000</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tally eight-column layout</strong>: Opening Dr, Opening Cr, Transactions Dr, Transactions Cr, Closing Dr, Closing Cr (six amount columns) — with balances in either Dr or Cr column.</p>
+<h3 id="unpivoting-measures">Unpivoting measures</h3>
+<pre><code>Long = Table.UnpivotOtherColumns(TB, {&quot;Entity&quot;, &quot;Period&quot;, &quot;Ledger&quot;}, &quot;Measure&quot;, &quot;Amount&quot;)
+</code></pre>
+<p>Result: one row per ledger per measure — Measure ∈ {Opening, Debit, Credit, Closing}. A pivot or matrix can then show any measure combination, and filters like Measure = "Closing" give a closing TB.</p>
+<p>For the eight-column layout, unpivot first and then <strong>split the attribute</strong> into two columns:</p>
+<pre><code>Long  = Table.UnpivotOtherColumns(TB, {&quot;Ledger&quot;}, &quot;Attr&quot;, &quot;Amount&quot;),
+Split = Table.SplitColumn(Long, &quot;Attr&quot;, Splitter.SplitTextByEachDelimiter({&quot; &quot;}, QuoteStyle.None, true), {&quot;Measure&quot;, &quot;Side&quot;}),
+// &quot;Opening Dr&quot; → Measure &quot;Opening&quot;, Side &quot;Dr&quot;; &quot;Transactions Cr&quot; → &quot;Transactions&quot;, &quot;Cr&quot;
+Signed = Table.AddColumn(Split, &quot;Signed&quot;, each if [Side] = &quot;Cr&quot; then -[Amount] else [Amount], type number),
+Net    = Table.Group(Signed, {&quot;Ledger&quot;, &quot;Measure&quot;}, {{&quot;Amount&quot;, each List.Sum([Signed]), type number}})
+</code></pre>
+<p><code>startAtEnd = true</code> splits at the <strong>last</strong> space, so multi-word measures ("Closing Balance Dr") still split correctly. The Group By collapses Dr and Cr of the same balance into one signed amount for Opening and Closing; for Transactions you may prefer to keep Side to retain gross Dr and Cr movement.</p>
+<h3 id="roll-forward-check-on-the-long-table">Roll-forward check on the long table</h3>
+<p>With the long table from the four-column layout (<code>Long</code> in the first snippet, Measure ∈ {Opening, Debit, Credit, Closing}), the check is a pivot back to columns or a grouped calculation. For the eight-column layout, first rename Transactions/Dr and Transactions/Cr to Debit and Credit and keep them gross.</p>
+<p>\[
+\text{Opening} + \text{Debit} - \text{Credit} = \text{Closing}
+\]</p>
+<p>where Debit and Credit are gross positive movements and balances are signed Dr-positive. In M:</p>
+<pre><code>Pivoted = Table.Pivot(Long, List.Distinct(Long[Measure]), &quot;Measure&quot;, &quot;Amount&quot;, List.Sum),
+Check   = Table.AddColumn(Pivoted, &quot;Diff&quot;, each ([Opening] ?? 0) + ([Debit] ?? 0) - ([Credit] ?? 0) - ([Closing] ?? 0), type number),
+Breaks  = Table.SelectRows(Check, each Number.Abs([Diff]) &gt; 1)
+</code></pre>
+<p>Any row in <code>Breaks</code> indicates a parsing error, an omitted column, a sign error or a genuine data issue (e.g. Tally "difference in opening balances").</p>
+<h3 id="when-to-unpivot-measures-and-when-not-to">When to unpivot measures and when not to</h3>
+<table>
+<thead>
+<tr>
+<th>Use</th>
+<th>Shape</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Multi-period TB store; flexible reporting of any measure; appending branches and periods</td>
+<td>Long with Measure column</td>
+</tr>
+<tr>
+<td>Roll-forward checks, movement analysis with Dr and Cr side by side</td>
+<td>Wide on measures (Opening, Debit, Credit, Closing as columns), long on periods</td>
+</tr>
+<tr>
+<td>Power BI fact for P&amp;L/BS reporting</td>
+<td>Usually only <strong>closing (or movement) amount</strong> per ledger per month; opening is derived from prior closing</td>
+</tr>
+<tr>
+<td>DAX measures needing Dr and Cr together</td>
+<td>Keep Debit and Credit columns, or filter by Measure in measures</td>
+</tr>
+</tbody>
+</table>
+<p>In a star schema, mixing <strong>stock</strong> (balances — opening/closing) and <strong>flow</strong> (period debits/credits) measures in a single Amount column is risky: summing Amount across Measure values is meaningless. If you store them long, every DAX measure must filter Measure, and visuals must never total across it. Many teams store only signed <strong>movements</strong> (Debit − Credit per month) in the fact and compute balances as cumulative sums — the cleanest approach for monthly TBs.</p>
+<h3 id="illustration">Illustration</h3>
+<p>Branch TB for March 2026 with 3 ledgers and 4 measures → 12 long rows. Trade Receivables: Opening 45,60,000 + Debit 1,82,40,000 − Credit 1,75,10,000 = 52,90,000 = Closing ✓. Trade Payables (credit balance, signed negative): −38,20,000 + 1,40,00,000 − 1,46,50,000 = −44,70,000 = Closing ✓. A pivot of the long table on Measure reproduces the original columns, proving the unpivot lossless.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Balances in both Dr and Cr columns</strong> for the same ledger (rare but possible in summarised group rows) — the signed Group By nets them; flag rows where both are non-zero.</li>
+<li><strong>Closing in a single column with Dr/Cr suffix</strong> — parse first (Topic 2 c07), then unpivot.</li>
+<li><strong>YTD vs period movement</strong>: some exports give YTD debits/credits — label the Measure accordingly ("YTD Debit") and do not add YTD figures across months.</li>
+<li><strong>Nulls dropped by unpivot</strong>: a ledger with no movement has null Debit/Credit — its rows disappear, which can make a pivot show blanks rather than zeros; replace with 0 if completeness of the grid matters.</li>
+<li><strong>Opening of month = closing of previous month</strong> across files — check this continuity when appending monthly TBs (gaps reveal back-dated entries after a previous month's export).</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>TB measure columns can be unpivoted into a Measure/Amount pair; split "Opening Dr"-style headers into Measure and Side at the last space.</li>
+<li>Convert Dr/Cr sides into signed amounts and group to one figure per ledger per measure where appropriate.</li>
+<li>Use the long table to run roll-forward checks: Opening + Debit − Credit = Closing.</li>
+<li>Never sum Amount across stock and flow measures; filter by Measure in every calculation.</li>
+<li>For reporting facts, storing signed monthly movements and deriving balances is often cleaner.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-unpivot-and-split-l1">Q1. Unpivot and split [L1]</h3>
+<p>A Tally TB has columns Ledger, Opening Dr, Opening Cr, Transactions Dr, Transactions Cr, Closing Dr, Closing Cr. Write the M to produce Ledger, Measure, Side, Amount, and state how many rows result for 600 ledgers if 40% of the cells are blank.</p>
+<h3 id="q2-roll-forward-check-l2">Q2. Roll-forward check [L2]</h3>
+<p>Using the long table from Q1, write M that produces, per ledger, signed Opening and Closing, gross Debit and Credit, and a Diff column for the roll-forward test, listing only breaks above ₹1.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Sign the balances but keep the movements gross before pivoting.</p>
+</blockquote>
+<h3 id="q3-choose-the-fact-design-l2">Q3. Choose the fact design [L2]</h3>
+<p>For a Power BI P&amp;L and balance-sheet report built from 12 monthly TBs of 5 branches, compare (a) a long fact with Measure ∈ {Opening, Debit, Credit, Closing} and (b) a fact of signed monthly movements only. Discuss DAX complexity, risk of wrong totals and data volume.</p>
+<h3 id="q4-continuity-across-months-l3">Q4. Continuity across months [L3]</h3>
+<p>You append 12 monthly branch TBs (each with Opening and Closing). Design a check that confirms each ledger's April opening equals the prior March closing and each month's opening equals the previous month's closing, and explain what a break might indicate in an Indian audit context.</p></section>
+<nav class="pager"><a class="prev" href="S04_Multi_Row_Headers_Transpose_Fill_Merge_Transpose.html">← Multi-Row Headers: Transpose, Fill, Merge, Transpose Back,…</a><a class="next" href="S06_Pivot_Column_as_the_Reverse_of_Unpivot_Including.html">Pivot Column as the Reverse of Unpivot, Including Don&#x27;t… →</a></nav>
+</main></div></body></html>

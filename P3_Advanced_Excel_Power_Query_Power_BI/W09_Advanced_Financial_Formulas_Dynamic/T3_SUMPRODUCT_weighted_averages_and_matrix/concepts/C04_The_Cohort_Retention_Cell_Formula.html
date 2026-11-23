@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Cohort Retention Cell Formula · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C04_The_Cohort_Retention_Cell_Formula.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T3 · SUMPRODUCT weighted averages and matrix…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · SUMPRODUCT weighted averages and matrix math</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Weighted_Average_Cost_of_Debt_Across_Borrowing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S01_Weighted_Average_Cost_of_Debt_Across_Borrowing.html">Weighted Average Cost of Debt Across Borrowing Tranches</a></li><li><a href="../subtopics/S02_Weighted_Average_Inventory_Cost_and_Weighted.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S02_Weighted_Average_Inventory_Cost_and_Weighted.html">Weighted Average Inventory Cost and Weighted Credit Period / DSO</a></li><li><a href="../subtopics/S03_Boolean_Array_Multi_Condition_Sums_Without_Helper.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S03_Boolean_Array_Multi_Condition_Sums_Without_Helper.html">Boolean-Array Multi-Condition Sums Without Helper Columns</a></li><li><a href="../subtopics/S04_Coercing_TRUEFALSE_to_10_Double_Unary_1_and_N.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S04_Coercing_TRUEFALSE_to_10_Double_Unary_1_and_N.html">Coercing TRUE/FALSE to 1/0: Double Unary, ×1 and N()</a></li><li><a href="../subtopics/S05_Cohort_Retention_Matrices_Acquisition_Month_Active.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S05_Cohort_Retention_Matrices_Acquisition_Month_Active.html">Cohort Retention Matrices: Acquisition Month × Active Month</a></li><li><a href="../subtopics/S06_MMULT_and_TRANSPOSE_for_Cost_Pool_Driver.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S06_MMULT_and_TRANSPOSE_for_Cost_Pool_Driver.html">MMULT and TRANSPOSE for Cost-Pool × Driver Allocations</a></li><li><a href="../subtopics/S07_SUMPRODUCT_vs_SUMIFS_Performance_on_Large_Ranges.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S07_SUMPRODUCT_vs_SUMIFS_Performance_on_Large_Ranges.html">SUMPRODUCT vs SUMIFS Performance on Large Ranges</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Pre_Tax_and_Post_Tax_Kd_with_SUMPRODUCT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C01_Pre_Tax_and_Post_Tax_Kd_with_SUMPRODUCT.html">Pre-Tax and Post-Tax Kd with SUMPRODUCT</a></li><li><a href="C02_SUMPRODUCT_with_MONTH_and_LEFT_on_Whole_Columns.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C02_SUMPRODUCT_with_MONTH_and_LEFT_on_Whole_Columns.html">SUMPRODUCT with MONTH and LEFT on Whole Columns</a></li><li><a href="C03_Comma_Form_SUMPRODUCT_and_Why_Arrays_Must_Be.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C03_Comma_Form_SUMPRODUCT_and_Why_Arrays_Must_Be.html">Comma-Form SUMPRODUCT and Why Arrays Must Be Numeric</a></li><li><a href="C04_The_Cohort_Retention_Cell_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C04_The_Cohort_Retention_Cell_Formula.html">The Cohort Retention Cell Formula</a></li><li><a href="C05_MMULT_Dimensions_1nnm_Gives_a_1m_Allocation.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C05_MMULT_Dimensions_1nnm_Gives_a_1m_Allocation.html">MMULT Dimensions: (1×n)·(n×m) Gives a 1×m Allocation</a></li><li><a href="C06_The_General_Guarded_Weighted_Average_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C06_The_General_Guarded_Weighted_Average_Formula.html">The General Guarded Weighted-Average Formula</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>The Cohort Retention Cell Formula</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Retention cell: <code>=SUMPRODUCT((Cust[Cohort]=&#36;A5)*(Cust[ActiveMonth]=EDATE(&#36;A5, C&#36;4))) / &#36;B5</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>For cohort month \(c\) (in column A of the current row), months since acquisition \(k\) (in row 4 of the current column) and cohort size \(n_c\) (in column B):</p>
+<p>\[
+R_{c,k} = \frac{1}{n_c} \sum_{i \in \text{Cust}} \mathbf{1}\left[\text{Cohort}_i = c\right] \times \mathbf{1}\left[\text{ActiveMonth}_i = \text{EDATE}(c, k)\right]
+\]</p>
+<p>where each row \(i\) of <code>Cust</code> is one customer–month of activity, \(\text{Cohort}_i\) is that customer's acquisition month (month-start date), \(\text{ActiveMonth}_i\) the month-start date of the activity, and \(\mathbf{1}[\cdot]\) the indicator function. \(R_{c,k}\) is the share of the cohort active \(k\) months after acquisition.</p>
+<h2 id="explanation">Explanation</h2>
+<p><strong>What each part does.</strong></p>
+<ul>
+<li><code>(Cust[Cohort]=</code> cohort cell <code>)</code> — 1 for rows belonging to this cohort.</li>
+<li><code>EDATE(</code> cohort cell <code>,</code> header cell <code>)</code> — shifts the cohort month forward by the number of months in the header (0, 1, 2 …), producing the calendar month to test. EDATE keeps the day number, so cohorts and active months must both be stored as <strong>month-start</strong> dates (or both as month-end with EOMONTH logic).</li>
+<li><code>(Cust[ActiveMonth]=…)</code> — 1 for rows active in that calendar month.</li>
+<li>The product counts customer-months meeting both; dividing by the cohort size gives the retention rate.</li>
+<li>SUMPRODUCT is needed because the conditions are multiplied arrays; with a single product argument, the multiplication does the coercion.</li>
+</ul>
+<p><strong>Anchoring.</strong> The cohort column and cohort size column are column-absolute (A and B stay fixed while copying across), the header row is row-absolute (row 4 stays fixed while copying down). One formula fills the whole matrix.</p>
+<p><strong>Preconditions.</strong></p>
+<ol>
+<li><code>Cust</code> must be <strong>de-duplicated</strong> to one row per customer per active month — otherwise the numerator counts transactions and retention can exceed 100%.</li>
+<li>Cohort size in column B must be computed on the same basis (distinct customers acquired in that month).</li>
+<li>Dates must be true dates, consistently month-start.</li>
+</ol>
+<p><strong>Triangle and guard.</strong> Wrap with <code>IF(EDATE(cohort, k) &gt; LastMonth, "", …)</code> so unobservable future cells are blank rather than 0% (a 0% would be read as total churn and would drag down averages). Guard <code>n_c = 0</code> if any cohort can be empty.</p>
+<p><strong>Faster equivalent.</strong> <code>COUNTIFS(Cust[Cohort], cohort, Cust[ActiveMonth], EDATE(cohort, k)) / size</code> gives the same result with much better performance on large customer tables.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Cohort Jul-25, size 400 (in B5), A5 = 01-Jul-2025:</p>
+<table>
+<thead>
+<tr>
+<th>Header k</th>
+<th>EDATE(A5, k)</th>
+<th>Customers active</th>
+<th>Retention</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>01-Jul-2025</td>
+<td>400</td>
+<td>100.0%</td>
+</tr>
+<tr>
+<td>1</td>
+<td>01-Aug-2025</td>
+<td>268</td>
+<td>67.0%</td>
+</tr>
+<tr>
+<td>2</td>
+<td>01-Sep-2025</td>
+<td>222</td>
+<td>55.5%</td>
+</tr>
+<tr>
+<td>3</td>
+<td>01-Oct-2025</td>
+<td>206</td>
+<td>51.5%</td>
+</tr>
+</tbody>
+</table>
+<p>If the activity Table had not been de-duplicated and 30 customers placed two orders in August, the M1 numerator would be 298 and retention would show 74.5% — overstated by 7.5 points.</p>
+<h2 id="connections">Connections</h2>
+<p>The cell-level formula of the cohort-retention subtopic; it uses the boolean-product technique of the multi-condition subtopic and the mixed-referencing discipline of topic 1. EDATE is covered with the date functions in topic 5. In FP&amp;A (Weeks 17–20), the matrix feeds LTV, CAC payback and churn KPIs; in Power BI it becomes a matrix visual over a cohort table with a "months since acquisition" column.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-revenue-retention-version-l1">Q1. Revenue retention version [L1]</h3>
+<p>Modify the concept formula to compute revenue retention, where <code>Cust[Revenue]</code> holds revenue for each customer-month and column B holds the cohort's M0 revenue. Add the triangle blanking for months after <code>LastM</code>.</p>
+<h3 id="q2-month-end-dates-problem-l2">Q2. Month-end dates problem [L2]</h3>
+<p>In a colleague's file, Cohort holds month-end dates (31-Jan-2026, 28-Feb-2026 …) while ActiveMonth holds month-start dates. Explain what the concept formula returns, and fix it without rebuilding the data.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider what EDATE does to the day number, and which side should be converted.</p>
+</blockquote>
+<h3 id="q3-retention-above-100-l2">Q3. Retention above 100% [L2]</h3>
+<p>A retention matrix shows 108% at M2 for the Nov-25 cohort. List three possible causes in the data or formula and the test you would run for each.</p></section>
+<nav class="pager"><a class="prev" href="C03_Comma_Form_SUMPRODUCT_and_Why_Arrays_Must_Be.html">← Comma-Form SUMPRODUCT and Why Arrays Must Be Numeric</a><a class="next" href="C05_MMULT_Dimensions_1nnm_Gives_a_1m_Allocation.html">MMULT Dimensions: (1×n)·(n×m) Gives a 1×m Allocation →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Opening Balances with OPENINGBALANCEMONTH and OPENINGBALANCEYEAR · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S05_Opening_Balances_with_OPENINGBALANCEMONTH_and.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T5 · Semi-additive balance sheet measures</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Semi-additive balance sheet measures</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Additive_Semi_Additive_and_Non_Additive_Financial.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S01_Additive_Semi_Additive_and_Non_Additive_Financial.html">Additive, Semi-Additive and Non-Additive Financial Measures</a></li><li><a href="S02_Snapshot_Facts_vs_Transaction_Facts_for_Balances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S02_Snapshot_Facts_vs_Transaction_Facts_for_Balances.html">Snapshot Facts vs Transaction Facts for Balances</a></li><li><a href="S03_Closing_Balance_LASTDATE_vs_LASTNONBLANK_vs_a_MAX.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S03_Closing_Balance_LASTDATE_vs_LASTNONBLANK_vs_a_MAX.html">Closing Balance: LASTDATE vs LASTNONBLANK vs a MAX-Date Filter</a></li><li><a href="S04_Cumulative_Balances_from_GL_Movements_Including.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S04_Cumulative_Balances_from_GL_Movements_Including.html">Cumulative Balances from GL Movements, Including Opening Entries</a></li><li><a href="S05_Opening_Balances_with_OPENINGBALANCEMONTH_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S05_Opening_Balances_with_OPENINGBALANCEMONTH_and.html">Opening Balances with OPENINGBALANCEMONTH and OPENINGBALANCEYEAR</a></li><li><a href="S06_Average_Balances_for_DSO_Interest_Cost_and_Return.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S06_Average_Balances_for_DSO_Interest_Cost_and_Return.html">Average Balances for DSO, Interest Cost and Return Ratios</a></li><li><a href="S07_Cash_Net_Working_Capital_and_Net_Debt_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S07_Cash_Net_Working_Capital_and_Net_Debt_Measures.html">Cash, Net Working Capital and Net Debt Measures over Time</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Closing_Balance_with_LASTDATE_on_a_Snapshot_Fact.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C01_Closing_Balance_with_LASTDATE_on_a_Snapshot_Fact.html">Closing Balance with LASTDATE on a Snapshot Fact</a></li><li><a href="../concepts/C02_LASTNONBLANK_Closing_Balance_at_the_Last_Date_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C02_LASTNONBLANK_Closing_Balance_at_the_Last_Date_with.html">LASTNONBLANK: Closing Balance at the Last Date with Data</a></li><li><a href="../concepts/C03_Cumulative_Balance_with_FILTER_over_ALL_Dates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C03_Cumulative_Balance_with_FILTER_over_ALL_Dates.html">Cumulative Balance with FILTER over ALL Dates</a></li><li><a href="../concepts/C04_CLOSINGBALANCEYEAR_and_OPENINGBALANCEYEAR_with_a.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C04_CLOSINGBALANCEYEAR_and_OPENINGBALANCEYEAR_with_a.html">CLOSINGBALANCEYEAR and OPENINGBALANCEYEAR with a March Year-End</a></li><li><a href="../concepts/C05_Average_Receivables_with_AVERAGEX_over_Month_Ends.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C05_Average_Receivables_with_AVERAGEX_over_Month_Ends.html">Average Receivables with AVERAGEX over Month-Ends</a></li><li><a href="../concepts/C06_DSO_Measure_from_Average_Receivables_and_Days_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C06_DSO_Measure_from_Average_Receivables_and_Days_in.html">DSO Measure from Average Receivables and Days in Period</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Opening Balances with OPENINGBALANCEMONTH and OPENINGBALANCEYEAR</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Opening balances with OPENINGBALANCEMONTH/YEAR and the fiscal year-end argument</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Every balance sheet schedule in an Ind AS financial statement and every 3-statement model is a <strong>roll-forward</strong>:
+opening balance + additions − deletions ± other movements = closing balance (PPE under <em>Ind AS 16</em> reconciliation of
+carrying amount, provisions under <em>Ind AS 37</em>, borrowings in the Ind AS 7 net debt reconciliation, trade receivables
+in an ECL movement table). In a model, the opening balance of a period is the closing balance of the previous one.
+DAX provides a family of functions that evaluate a balance measure at period boundaries; used with the right
+year-end argument, they make roll-forward matrices a few lines of code.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-function-family">The function family</h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Evaluates the expression at</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OPENINGBALANCEMONTH(expr, dates [, filter])</code></td>
+<td>The day before the first date of the month in context (i.e., the previous month-end)</td>
+</tr>
+<tr>
+<td><code>OPENINGBALANCEQUARTER(expr, dates [, filter])</code></td>
+<td>The day before the first date of the quarter</td>
+</tr>
+<tr>
+<td><code>OPENINGBALANCEYEAR(expr, dates [, filter] [, year_end])</code></td>
+<td>The day before the first date of the year (with year-end "3/31": 31 March of the previous FY)</td>
+</tr>
+<tr>
+<td><code>CLOSINGBALANCEMONTH(expr, dates [, filter])</code></td>
+<td>The last date of the month in context</td>
+</tr>
+<tr>
+<td><code>CLOSINGBALANCEQUARTER(expr, dates [, filter])</code></td>
+<td>The last date of the quarter</td>
+</tr>
+<tr>
+<td><code>CLOSINGBALANCEYEAR(expr, dates [, filter] [, year_end])</code></td>
+<td>The last date of the year (31 March with "3/31")</td>
+</tr>
+</tbody>
+</table>
+<p>They are shorthand for <code>CALCULATE(expr, &lt;boundary date&gt;)</code>: <code>OPENINGBALANCEYEAR(expr, dates, "3/31")</code> behaves like
+<code>CALCULATE(expr, PREVIOUSDAY(STARTOFYEAR(dates, "3/31")))</code>, and <code>CLOSINGBALANCEYEAR</code> like
+<code>CALCULATE(expr, ENDOFYEAR(dates, "3/31"))</code>. Microsoft's documentation describes the opening functions loosely as
+evaluating "at the first date"; behaviourally the value returned is the balance at the end of the previous period,
+which is what an opening balance means. Verify once in your model with a known TB.</p>
+<p>Only the <strong>year</strong> variants take the year-end argument. Months are the same in both calendars, and fiscal quarters
+coincide with calendar quarters for an April–March year, so the month and quarter variants need nothing.</p>
+<h3 id="which-expression-to-pass">Which expression to pass</h3>
+<p>The functions do not compute balances; they move the date filter. The expression must already be a balance measure
+evaluated at a single date:</p>
+<ul>
+<li><strong>Snapshot fact:</strong> <code>[Snapshot Bal] = SUM(TB[Balance])</code> — at a single month-end date it returns that month's TB
+  balance. Opening for FY26 = TB at 31 March 2025.</li>
+<li><strong>Movement fact:</strong> <code>[Cum Bal]</code> (running total from inception, s04) — at a single date it returns the cumulative
+  balance to that date. Opening for FY26 = cumulative to 31 March 2025.</li>
+</ul>
+<pre><code class="language-DAX">Opening Bal FY   = OPENINGBALANCEYEAR  ( [Cum Bal], 'Date'[Date], &quot;3/31&quot; )
+Opening Bal Qtr  = OPENINGBALANCEQUARTER ( [Cum Bal], 'Date'[Date] )
+Opening Bal Mth  = OPENINGBALANCEMONTH ( [Cum Bal], 'Date'[Date] )
+Closing Bal FY   = CLOSINGBALANCEYEAR  ( [Snapshot Bal], 'Date'[Date], &quot;3/31&quot; )
+Movement         = CALCULATE ( SUM ( GL[Amount] ), GL[VoucherType] &lt;&gt; &quot;Opening&quot; )
+Closing (roll)   = [Opening Bal FY] + CALCULATE ( [Movement], DATESYTD ( 'Date'[Date], &quot;3/31&quot; ) )
+</code></pre>
+<p><code>Closing (roll)</code> must equal <code>[Cum Bal]</code> at the same date; that equality is the roll-forward control.</p>
+<h3 id="roll-forward-matrix">Roll-forward matrix</h3>
+<p>A schedule in the 3-statement style for borrowings, by quarter of FY26:</p>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Measure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Opening balance</td>
+<td><code>OPENINGBALANCEQUARTER([Cum Bal Borrowings], 'Date'[Date])</code></td>
+</tr>
+<tr>
+<td>Drawdowns</td>
+<td><code>CALCULATE(-[Movement], GL[TxnType] = "Drawdown")</code></td>
+</tr>
+<tr>
+<td>Repayments</td>
+<td><code>CALCULATE(-[Movement], GL[TxnType] = "Repayment")</code></td>
+</tr>
+<tr>
+<td>Ind AS 109 EIR unwinding</td>
+<td><code>CALCULATE(-[Movement], GL[TxnType] = "EIR")</code></td>
+</tr>
+<tr>
+<td>Closing balance</td>
+<td><code>CLOSINGBALANCEQUARTER([Cum Bal Borrowings], 'Date'[Date])</code></td>
+</tr>
+<tr>
+<td>Check</td>
+<td>Opening + movements − Closing = 0</td>
+</tr>
+</tbody>
+</table>
+<p>(Borrowings are credits; the minus signs present them as positive amounts.)</p>
+<h3 id="year-end-argument-and-locale">Year-end argument and locale</h3>
+<p>As for <code>DATESYTD</code>, the year-end string is parsed in the model locale (<code>"3/31"</code> vs <code>"31/3"</code>, see Topic 4 c06). Omitting it
+makes <code>OPENINGBALANCEYEAR</code> return the balance at 31 December of the previous calendar year — a value that looks
+plausible but corresponds to no reported date. Test: the FY26 opening must equal the audited 31 March 2025 balance in
+the FY25 annual report.</p>
+<h3 id="date-table-coverage">Date table coverage</h3>
+<p>The opening of the first FY in the model is evaluated on 31 March of the year <em>before</em> the calendar starts. If the
+Date table begins on 1 April 2023, <code>OPENINGBALANCEYEAR</code> for FY24 asks for 31 March 2023 — a date not in the table — and
+returns blank. Two consequences:</p>
+<ol>
+<li>Extend the Date table one year back (1 April 2022) if FY24 opening balances are needed in schedules.</li>
+<li>For roll-forwards, date the <strong>opening entries on 31 March 2023</strong> (inside the extended calendar) rather than on
+   1 April 2023. Then the FY24 opening equals the audited balance and FY24 movements exclude the opening voucher.
+   If they are dated 1 April 2023, FY24 opening = 0 and FY24 "movement" includes the whole opening balance.</li>
+</ol>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>Trade payables (credit, shown positive, ₹ lakh). Opening entry 31 March 2025: 2,140. FY26 movements: purchases
+Q1 3,050, payments Q1 2,900; purchases Q2 3,300, payments Q2 3,410.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Q1 FY26</th>
+<th>Q2 FY26</th>
+<th>H1 / YTD Sep</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Opening</td>
+<td>2,140</td>
+<td>2,290</td>
+<td>2,140 (OPENINGBALANCEYEAR)</td>
+</tr>
+<tr>
+<td>Purchases</td>
+<td>3,050</td>
+<td>3,300</td>
+<td>6,350</td>
+</tr>
+<tr>
+<td>Payments</td>
+<td>(2,900)</td>
+<td>(3,410)</td>
+<td>(6,310)</td>
+</tr>
+<tr>
+<td>Closing</td>
+<td>2,290</td>
+<td>2,180</td>
+<td>2,180</td>
+</tr>
+</tbody>
+</table>
+<p>The Q2 opening (2,290) comes from <code>OPENINGBALANCEQUARTER</code>, i.e., the balance at 30 June. On the YTD column, the opening
+must come from <code>OPENINGBALANCEYEAR</code> — using <code>OPENINGBALANCEQUARTER</code> on a two-quarter selection would give the
+opening of the last quarter in context, not of the half-year.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Period selection width:</strong> the functions use the period containing the <strong>last</strong> visible date for closings and
+  the corresponding start for openings; on a multi-month selection, <code>OPENINGBALANCEMONTH</code> returns the opening of the
+  last month, not of the selection. Use the function matching the column's grain, or compute opening as <code>[Cum Bal]</code> at
+  <code>MIN('Date'[Date]) - 1</code>.</li>
+<li><em><em>CLOSINGBALANCE</em> on incomplete periods:</em>* <code>CLOSINGBALANCEYEAR</code> evaluates at 31 March 2026 for FY26 — blank on a
+  snapshot fact before year-end, the cumulative-to-date value on a movement fact (because no postings exist after the
+  last actuals date). Cap or use <code>LASTNONBLANK</code>.</li>
+<li><strong>Snapshot dated month-start:</strong> if snapshots are stamped on the first of the month, <code>OPENINGBALANCEMONTH</code> (previous
+  month-end) hits no data. Re-date snapshots to month-end.</li>
+<li><strong>Reclassifications at year-end:</strong> current maturities of long-term borrowings are reclassified at 31 March under
+  Schedule III; if posted as a GL entry, the FY opening of "current borrowings" includes it — the roll-forward must
+  show a "reclassification" line.</li>
+<li><strong>Opening of P&amp;L lines:</strong> for P&amp;L accounts the opening concept is not meaningful except in a cumulative GL; restrict
+  opening/closing measures to BS accounts.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li><code>OPENINGBALANCE*</code> returns the previous period-end value; <code>CLOSINGBALANCE*</code> the period-end value.</li>
+<li>Only the year variants take a year-end argument; always pass <code>"3/31"</code> (locale-checked).</li>
+<li>Pass a balance measure (snapshot sum or cumulative) — the functions only move the date.</li>
+<li>Extend the calendar back a year and date opening entries on the prior 31 March for clean roll-forwards.</li>
+<li>Prove Opening + Movements = Closing for every schedule and period.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-write-a-ppe-roll-forward-l2">Q1. Write a PPE roll-forward [L2]</h3>
+<p>Using a movement GL with transaction types Addition, Disposal, Depreciation and Opening, write measures for a PPE
+roll-forward by quarter (opening, additions, disposals at carrying amount, depreciation, closing, check) for FY26,
+including the year-end argument where required.</p>
+<h3 id="q2-opening-blank-for-the-first-year-l1">Q2. Opening blank for the first year [L1]</h3>
+<p>The Date table runs 1 April 2023 – 31 March 2026 and opening entries are dated 1 April 2023. Explain what
+<code>OPENINGBALANCEYEAR([Cum Bal], 'Date'[Date], "3/31")</code> returns for FY24, FY25 and FY26 and what FY24 "additions" show,
+and propose the fix.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Find the exact date at which the FY24 opening is evaluated and whether it exists in the calendar.</p>
+</blockquote>
+<h3 id="q3-roll-forward-numbers-l2">Q3. Roll-forward numbers [L2]</h3>
+<p>Provision for warranties (₹ lakh): balance at 31 March 2025 was 480. FY26 Q1: created 95, utilised 60; Q2: created 110,
+utilised 140, unwinding of discount 6; Q3: created 100, utilised 90, reversed unused 25. Prepare the quarterly and YTD
+roll-forward table your measures should produce, identifying which DAX function provides each opening figure.</p>
+<h3 id="q4-missing-year-end-argument-l2">Q4. Missing year-end argument [L2]</h3>
+<p>A model omits the year-end argument in <code>OPENINGBALANCEYEAR</code>. The FY26 opening shown for cash is ₹ 1,060 lakh while the
+audited 31 March 2025 cash balance is ₹ 1,325 lakh. Explain exactly which balance ₹ 1,060 lakh represents and how a
+reviewer would detect this without opening the DAX code.</p></section>
+<nav class="pager"><a class="prev" href="S04_Cumulative_Balances_from_GL_Movements_Including.html">← Cumulative Balances from GL Movements, Including Opening…</a><a class="next" href="S06_Average_Balances_for_DSO_Interest_Cost_and_Return.html">Average Balances for DSO, Interest Cost and Return Ratios →</a></nav>
+</main></div></body></html>

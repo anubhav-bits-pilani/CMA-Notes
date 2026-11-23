@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PY YTD via SAMEPERIODLASTYEAR and the YoY % Measure · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C02_PY_YTD_via_SAMEPERIODLASTYEAR_and_the_YoY_Measure.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T4 · Time intelligence for April–March FY</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Time intelligence for April–March FY</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_YTD_QTD_and_MTD_Measures_for_an_AprilMarch_Fiscal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S01_YTD_QTD_and_MTD_Measures_for_an_AprilMarch_Fiscal.html">YTD, QTD and MTD Measures for an April–March Fiscal Year</a></li><li><a href="../subtopics/S02_SAMEPERIODLASTYEAR_vs_DATEADD_vs_PARALLELPERIOD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S02_SAMEPERIODLASTYEAR_vs_DATEADD_vs_PARALLELPERIOD.html">SAMEPERIODLASTYEAR vs DATEADD vs PARALLELPERIOD</a></li><li><a href="../subtopics/S03_PY_YTD_YTD_Growth_MoM_and_YoY_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S03_PY_YTD_YTD_Growth_MoM_and_YoY_Measures.html">PY YTD, YTD Growth, MoM % and YoY % Measures</a></li><li><a href="../subtopics/S04_Rolling_12_Month_and_Trailing_3_Month_Windows_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S04_Rolling_12_Month_and_Trailing_3_Month_Windows_with.html">Rolling 12-Month and Trailing 3-Month Windows with DATESINPERIOD</a></li><li><a href="../subtopics/S05_Capping_Time_Intelligence_at_the_Last_Actuals_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S05_Capping_Time_Intelligence_at_the_Last_Actuals_Date.html">Capping Time Intelligence at the Last Actuals Date</a></li><li><a href="../subtopics/S06_Time_Intelligence_Prerequisites_Marked_Contiguous.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S06_Time_Intelligence_Prerequisites_Marked_Contiguous.html">Time-Intelligence Prerequisites: Marked, Contiguous Date Table</a></li><li><a href="../subtopics/S07_Calculation_Groups_and_Field_Parameters_for_Time.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S07_Calculation_Groups_and_Field_Parameters_for_Time.html">Calculation Groups and Field Parameters for Time-Intelligence Views</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_TOTALYTD_with_331_Equals_CALCULATE_with_DATESYTD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C01_TOTALYTD_with_331_Equals_CALCULATE_with_DATESYTD.html">TOTALYTD with &quot;3/31&quot; Equals CALCULATE with DATESYTD</a></li><li><a href="C02_PY_YTD_via_SAMEPERIODLASTYEAR_and_the_YoY_Measure.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C02_PY_YTD_via_SAMEPERIODLASTYEAR_and_the_YoY_Measure.html">PY YTD via SAMEPERIODLASTYEAR and the YoY % Measure</a></li><li><a href="C03_Prior_Month_Actual_with_DATEADD_and_the_MoM.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C03_Prior_Month_Actual_with_DATEADD_and_the_MoM.html">Prior-Month Actual with DATEADD and the MoM % Measure</a></li><li><a href="C04_Rolling_12_Month_Measure_with_DATESINPERIOD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C04_Rolling_12_Month_Measure_with_DATESINPERIOD.html">Rolling 12-Month Measure with DATESINPERIOD</a></li><li><a href="C05_Last_Actual_Date_and_Capping_YTD_at_Posted_Data.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C05_Last_Actual_Date_and_Capping_YTD_at_Posted_Data.html">Last Actual Date and Capping YTD at Posted Data</a></li><li><a href="C06_Locale_Parsing_of_the_Year_End_String_in_DATESYTD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C06_Locale_Parsing_of_the_Year_End_String_in_DATESYTD.html">Locale Parsing of the Year-End String in DATESYTD</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>PY YTD via SAMEPERIODLASTYEAR and the YoY % Measure</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>PY YTD = CALCULATE([YTD Actual], SAMEPERIODLASTYEAR('Date'[Date]))</code>; <code>YoY % = DIVIDE([YTD Actual] - [PY YTD], [PY YTD])</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-DAX">PY YTD = CALCULATE ( [YTD Actual], SAMEPERIODLASTYEAR ( 'Date'[Date] ) )
+YoY %  = DIVIDE ( [YTD Actual] - [PY YTD], [PY YTD] )
+</code></pre>
+<p>\[
+\text{YoY \%} = \frac{\text{YTD}_{t} - \text{YTD}_{t-1}}{\text{YTD}_{t-1}}
+\]</p>
+<p>where \(\text{YTD}_{t}\) is the fiscal YTD to the last visible date and \(\text{YTD}_{t-1}\) is the fiscal YTD to the
+same date one year earlier. <code>DIVIDE</code> returns BLANK when \(\text{YTD}_{t-1}\) is zero or blank.</p>
+<h2 id="explanation">Explanation</h2>
+<p>The PY YTD measure is a <strong>nested context modification</strong>. <code>SAMEPERIODLASTYEAR</code> first replaces the visible dates with
+the same dates one year earlier; then <code>[YTD Actual]</code> — itself a <code>CALCULATE</code> with <code>DATESYTD</code> — runs inside that shifted
+context, reads its last date and expands back to 1 April of the prior FY. Because the shift happens before the YTD
+expansion, the result is "YTD to the same point last year", not "last year's full YTD".</p>
+<p>Order matters only in edge cases: <code>CALCULATE([Actual], DATESYTD(SAMEPERIODLASTYEAR('Date'[Date]), "3/31"))</code>
+gives the same result in standard month/quarter/year contexts. Both require the Date table to cover the prior year
+completely; for the first FY in the table PY YTD is blank, and <code>DIVIDE</code> correctly returns blank growth.</p>
+<p><code>YoY %</code> is a derived measure: it references <code>[YTD Actual]</code> and <code>[PY YTD]</code> rather than repeating their logic, so a fix
+to the YTD cap automatically flows through. Caveats:</p>
+<ul>
+<li><strong>Negative or near-zero bases.</strong> For EBIT or PAT that can be negative, use <code>ABS([PY YTD])</code> in the denominator and
+  consider showing "n.m." when the base is negative.</li>
+<li><strong>Partial periods.</strong> If the current year is capped at the last actuals date but PY YTD is not, YoY compares eight
+  and a half months with nine. Cap both (s05).</li>
+<li><strong>Additivity.</strong> YoY % is a ratio: its total is computed from total YTD and PY YTD, never by adding row
+  percentages. Branch-level YoY % does not sum to the company YoY %.</li>
+<li><strong>Variables for efficiency.</strong> <code>VAR cy = [YTD Actual] VAR py = [PY YTD] RETURN DIVIDE(cy - py, py)</code> evaluates each
+  once.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>Revenue (₹ crore), December 2025 row:</p>
+<table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Window</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[YTD Actual]</code></td>
+<td>1 Apr 2025 – 31 Dec 2025</td>
+<td>486.0</td>
+</tr>
+<tr>
+<td><code>[PY YTD]</code></td>
+<td>1 Apr 2024 – 31 Dec 2024</td>
+<td>432.0</td>
+</tr>
+<tr>
+<td><code>[YoY %]</code></td>
+<td>—</td>
+<td>(486.0 − 432.0) / 432.0 = 12.5%</td>
+</tr>
+</tbody>
+</table>
+<p>At the branch level, Pune shows +40% (₹ 14 crore vs ₹ 10 crore) and Chennai −5% (₹ 95 crore vs ₹ 100 crore); the
+average of those two percentages (17.5%) bears no relation to their combined growth ((109 − 110) / 110 = −0.9%).</p>
+<h2 id="connections">Connections</h2>
+<p>Builds on c01 (YTD Actual) and s02 (shape-preserving shift); s03 develops the full growth-measure set; s05 adds
+the like-for-like cap; s07 turns PY YTD and YoY % into calculation items. Week 5–8 ratio and trend analysis uses
+the same growth formula on published data; Weeks 17–20 use PY YTD as a comparative column in the MIS P&amp;L.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-evaluate-step-by-step-l1">Q1. Evaluate step by step [L1]</h3>
+<p>For a matrix cell showing Q2 FY26, list the date set after each step of evaluating <code>[PY YTD]</code> (outer context,
+after <code>SAMEPERIODLASTYEAR</code>, after <code>DATESYTD</code>), with exact start and end dates.</p>
+<h3 id="q2-growth-on-a-loss-making-line-l2">Q2. Growth on a loss-making line [L2]</h3>
+<p>PAT YTD December FY25 was −₹ 12.0 crore and YTD December FY26 is −₹ 4.0 crore. Compute what <code>YoY %</code> as written in
+the concept returns, explain why it is misleading, and write an improved measure with a rule for when to show "n.m.".</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Check the sign of the denominator and what a "negative growth" label would imply to a reader.</p>
+</blockquote>
+<h3 id="q3-branch-growth-reconciliation-l2">Q3. Branch growth reconciliation [L2]</h3>
+<p>Three branches have YTD revenue (CY, PY) in ₹ crore of Delhi (60, 50), Kolkata (30, 40) and Hyderabad (45, 30).
+Compute each branch's YoY % and the company YoY %, and explain why the matrix total row must not be a sum or average
+of the branch percentages.</p></section>
+<nav class="pager"><a class="prev" href="C01_TOTALYTD_with_331_Equals_CALCULATE_with_DATESYTD.html">← TOTALYTD with &quot;3/31&quot; Equals CALCULATE with DATESYTD</a><a class="next" href="C03_Prior_Month_Actual_with_DATEADD_and_the_MoM.html">Prior-Month Actual with DATEADD and the MoM % Measure →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Folder consolidation pipeline · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/index.html" data-kind="topic">
+<header class="top"><a class="brand" href="../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../index.html">Home</a> <span>›</span> <a href="../../index.html">Phase 3</a> <span>›</span> <a href="../index.html">Week 10</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">Week 10</a></div><ul class="side-links"><li><a href="../T1_Power_Query_architecture_and_M_basics/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/index.html">T1 · Power Query architecture and M basics</a></li><li><a href="../T2_Cleaning_messy_ERPTally_exports/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/index.html">T2 · Cleaning messy ERP/Tally exports</a></li><li><a href="../T3_Unpivoting_wide_budgets_and_TBs/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/index.html">T3 · Unpivoting wide budgets and TBs</a></li><li><a href="index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/index.html">T4 · Folder consolidation pipeline</a></li><li><a href="../T5_Merging_appending_and_reconciliation/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/index.html">T5 · Merging, appending and reconciliation joins</a></li><li><a href="../T6_Custom_columns_and_fiscal_logic_in_M/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/index.html">T6 · Custom columns and fiscal logic in M</a></li></ul></aside>
+<main class="content">
+<div class="kind">Topic</div>
+<h1>Folder consolidation pipeline</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<section class="index"><h2>Notes in this topic</h2><div class="cols"><div><h3>Subtopics</h3><ul class="links num"><li><a href="subtopics/S01_FolderFiles_and_SharePointFiles_Sources_and_File.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S01_FolderFiles_and_SharePointFiles_Sources_and_File.html">S01 · Folder.Files and SharePoint.Files: Sources and File-Scope Filters</a></li><li><a href="subtopics/S02_Combine_Files_Artefacts_Sample_Parameter_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S02_Combine_Files_Artefacts_Sample_Parameter_and.html">S02 · Combine Files Artefacts: Sample, Parameter and Transform Function</a></li><li><a href="subtopics/S03_Writing_a_Custom_File_Cleaning_Function_by_Hand.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S03_Writing_a_Custom_File_Cleaning_Function_by_Hand.html">S03 · Writing a Custom File-Cleaning Function by Hand</a></li><li><a href="subtopics/S04_Reading_Branch_and_Month_from_the_File_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S04_Reading_Branch_and_Month_from_the_File_Name.html">S04 · Reading Branch and Month from the File Name</a></li><li><a href="subtopics/S05_Schema_Drift_Tolerant_Column_Selection_Across.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S05_Schema_Drift_Tolerant_Column_Selection_Across.html">S05 · Schema Drift: Tolerant Column Selection Across Branch Files</a></li><li><a href="subtopics/S06_Multi_Bank_Statements_One_Function_per_Bank_Then.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S06_Multi_Bank_Statements_One_Function_per_Bank_Then.html">S06 · Multi-Bank Statements: One Function per Bank, Then Table.Combine</a></li><li><a href="subtopics/S07_Monthly_Drop_In_Workflow_Archiving_and_Duplicate.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S07_Monthly_Drop_In_Workflow_Archiving_and_Duplicate.html">S07 · Monthly Drop-In Workflow, Archiving and Duplicate-File Detection</a></li></ul></div><div><h3>Key concepts & formulas</h3><ul class="links num"><li><a href="concepts/C01_FolderFiles_Output_Columns_and_Which_to_Trust.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C01_FolderFiles_Output_Columns_and_Which_to_Trust.html">C01 · Folder.Files Output Columns and Which to Trust</a></li><li><a href="concepts/C02_Filtering_by_Extension_and_Excluding_Temp_Files.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C02_Filtering_by_Extension_and_Excluding_Temp_Files.html">C02 · Filtering by Extension and Excluding Temp Files</a></li><li><a href="concepts/C03_The_fxCleanTB_Function_Signature.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C03_The_fxCleanTB_Function_Signature.html">C03 · The fxCleanTB Function Signature</a></li><li><a href="concepts/C04_Invoking_per_File_and_Appending_with_TableCombine.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C04_Invoking_per_File_and_Appending_with_TableCombine.html">C04 · Invoking per File and Appending with Table.Combine</a></li><li><a href="concepts/C05_Tolerant_Column_Selection_with_MissingFieldUseNull.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C05_Tolerant_Column_Selection_with_MissingFieldUseNull.html">C05 · Tolerant Column Selection with MissingField.UseNull</a></li><li><a href="concepts/C06_Parsing_Branch_and_Period_with_Text_Delimiter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C06_Parsing_Branch_and_Period_with_Text_Delimiter.html">C06 · Parsing Branch and Period with Text Delimiter Functions</a></li><li><a href="concepts/C07_Guarding_the_Refresh_Against_One_Bad_File.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C07_Guarding_the_Refresh_Against_One_Bad_File.html">C07 · Guarding the Refresh Against One Bad File</a></li></ul></div></div></section><article class="note"><blockquote>
+<p><strong>Roadmap topic:</strong> Folder Consolidation Pipeline: Automatically appending 12 monthly branch trial balances or bank statements dropped into a single folder</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>A folder consolidation pipeline turns "one file per branch per month" into "one clean table" without anyone opening the files. The pattern is the backbone of almost every Power Query automation an FP&amp;A or financial reporting team builds: branch trial balances from Tally exported by twelve regional accountants, bank statement CSVs downloaded from four banks, GST purchase registers per GSTIN, or monthly payroll registers. Instead of copy-pasting each file into a master sheet (and silently missing one), you point Power Query at a folder, apply one transformation function to every file, stack the results and stamp each row with the branch and period it came from. Next month, someone drops new files in the folder and clicks <strong>Refresh All</strong>.</p>
+<p>For the target roles this matters for three reasons. First, it is the cheapest form of month-end close automation: the consolidated TB or bank feed is ready minutes after the last branch uploads. Second, it is auditable: every row carries <code>Source.Name</code>, so a reviewer can trace any number back to a physical file, and control totals per file can be compared with the source report footers. Third, it is a building block for the week's exercise (bank reconciliation across six CSVs) and for later weeks where the same folder feeds a Power BI data model and a scheduled refresh.</p>
+<p>The subtopics follow a learning sequence. Start with the <strong>source</strong> (<code>Folder.Files</code> / <code>SharePoint.Files</code>) and the <strong>filters</strong> that decide which files are in scope (s01). Then understand what the <strong>Combine Files</strong> button generates — Sample File, Parameter, Transform Sample File and the Transform File function (s02) — because most broken consolidations are broken in those helper queries. Next, learn to replace the generated scaffolding with a <strong>hand-written custom function</strong> that you control (s03), and to read <strong>Branch and Month from the file name</strong> (s04). With that core in place, handle the realities: <strong>schema drift</strong> between branches (s05), <strong>different bank layouts</strong> requiring one function per bank (s06), and the <strong>operational workflow</strong> of monthly drop-ins, archiving and duplicate detection (s07). The key concepts are the exact M expressions you will type repeatedly: the <code>Folder.Files</code> column set, the extension/temp-file filter, the function signature, the <code>Table.AddColumn</code> + <code>Table.Combine</code> invocation, tolerant column selection with <code>MissingField.UseNull</code>, file-name parsing with <code>Text.BeforeDelimiter</code> / <code>Text.BetweenDelimiters</code>, and the <code>try ... otherwise</code> guard that stops one bad file from failing the whole refresh.</p>
+<p>A well-built pipeline has a recognisable shape: a <code>FolderPath</code> parameter, a <code>Files</code> staging query (connection only) that filters and parses names, one or more <code>fx</code> function queries, a <code>Combined</code> query that invokes and appends, a <code>FileLog</code> validation query with row counts and Dr/Cr totals per file, and an <code>Errors</code> query listing files that failed. Everything downstream (the consolidated TB, the BRS exceptions) references <code>Combined</code>.</p>
+<h2 id="concept-map">Concept map</h2>
+<table>
+<thead>
+<tr>
+<th>Subtopic / concept</th>
+<th>Role in the topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s01 <code>Folder.Files</code> and <code>SharePoint.Files</code>, filters, excluding temp files</td>
+<td>Defines the file inventory and which files are in scope</td>
+</tr>
+<tr>
+<td>s02 Combine Files artefacts</td>
+<td>Explains the auto-generated helper queries and where they go wrong</td>
+</tr>
+<tr>
+<td>s03 Hand-written custom function</td>
+<td>Replaces generated scaffolding with a controlled, reusable <code>fx</code></td>
+</tr>
+<tr>
+<td>s04 Branch and Month from the file name</td>
+<td>Adds the dimension keys that the file contents usually lack</td>
+</tr>
+<tr>
+<td>s05 Schema drift</td>
+<td>Makes the pipeline tolerant of column order and name differences</td>
+</tr>
+<tr>
+<td>s06 Bank statements with different layouts</td>
+<td>One function per bank, mapped to a common schema, then combined</td>
+</tr>
+<tr>
+<td>s07 Monthly drop-in workflow</td>
+<td>Operating model: refresh, archive, detect duplicates</td>
+</tr>
+<tr>
+<td>c01 <code>Folder.Files</code> output columns</td>
+<td>Knowing which metadata columns exist and which to trust</td>
+</tr>
+<tr>
+<td>c02 Extension and <code>~$</code> filter</td>
+<td>The standard file-scope filter</td>
+</tr>
+<tr>
+<td>c03 <code>fxCleanTB</code> signature</td>
+<td>Template for a binary-in, table-out cleaning function</td>
+</tr>
+<tr>
+<td>c04 <code>Table.AddColumn</code> then <code>Table.Combine</code></td>
+<td>Invoking the function per file and appending by column name</td>
+</tr>
+<tr>
+<td>c05 <code>Table.SelectColumns</code> with <code>MissingField.UseNull</code></td>
+<td>Tolerant column selection against drift</td>
+</tr>
+<tr>
+<td>c06 <code>Text.BeforeDelimiter</code> / <code>Text.BetweenDelimiters</code></td>
+<td>Parsing branch and period from names</td>
+</tr>
+<tr>
+<td>c07 <code>try ... otherwise null</code> guard and failure log</td>
+<td>Fault isolation per file</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-concepts-to-study">Related concepts to study</h2>
+<h3 id="sharepointonedrive-refresh-in-the-service-week-12">SharePoint/OneDrive refresh in the Service (Week 12)</h3>
+<p><em>→ Week 12: SharePoint/OneDrive folders refresh in the Service without a gateway</em></p>
+<p>A local or network folder (<code>C:\Close\Branches</code> or <code>\\fileserver\finance</code>) is an on-premises source: once the report is published to the Power BI Service, scheduled refresh needs an on-premises data gateway installed on a machine that can see that path, and the gateway's service account needs read rights. A SharePoint Online document library or OneDrive for Business folder is a cloud source, so the Service can refresh it directly with OAuth credentials and no gateway. This is why mature finance teams move the drop folder to a SharePoint library before publishing. The M changes are small — <code>Folder.Files(FolderPath)</code> becomes <code>SharePoint.Files(SiteUrl, [ApiVersion = 15])</code> filtered on <code>[Folder Path]</code> — but the parameter must hold the site URL, not the folder URL. Week 12 covers credentials, privacy levels and refresh schedules in detail.</p>
+<h3 id="multi-branch-consolidation-and-eliminations-weeks-14">Multi-branch consolidation and eliminations (Weeks 1–4)</h3>
+<p><em>→ Week 1–4: multi-branch consolidation and inter-branch eliminations</em></p>
+<p>The folder pipeline only stacks branch TBs; it does not consolidate in the accounting sense. In a single legal entity with branches (common for Indian companies with branch accounting in Tally), the inter-branch accounts — "HO Account" in the branch books and "Branch Mumbai Current Account" in HO books — must net to zero after adjusting for goods and cash in transit. In a group, intercompany balances and unrealised profit are eliminated under Ind AS 110. In the pipeline, tag those ledgers via a mapping table (an <code>ElimFlag</code> column on the Chart of Accounts), build an elimination check query that sums them by period, and treat a non-zero residual as a reconciling item to investigate before reporting.</p>
+<h3 id="duplicate-detection-with-tabledistinct-or-group-by">Duplicate detection with Table.Distinct or Group By</h3>
+<p><em>Duplicate detection with <code>Table.Distinct</code> or Group By on file + voucher keys</em></p>
+<p>Two duplicate risks exist: duplicate files (the same branch-month dropped twice, e.g. <code>MUM_2025-04.csv</code> and <code>MUM_2025-04 (1).csv</code>) and duplicate rows within or across files (a voucher exported in both April and May because of a date filter overlap). For files, group the file inventory on parsed Branch + Period and flag counts above one. For rows, group the combined table on Branch + VoucherNo + Date + Amount with <code>Table.RowCount</code> and keep groups with more than one row as an exception list. <code>Table.Distinct</code> removes exact duplicates, but use it deliberately: two genuine ₹10,000 petty-cash vouchers on the same day are not duplicates, so the key must include a voucher number.</p>
+<h3 id="comparing-against-vstack-formula-consolidation-week-9">Comparing against VSTACK formula consolidation (Week 9)</h3>
+<p><em>→ Week 9: comparing against VSTACK-based formula consolidation</em></p>
+<p>In Excel 365, <code>=VSTACK(Apr:Mar!A2:F500)</code> stacks the same range across twelve sheets, and <code>FILTER</code>/<code>TOCOL</code> can drop blanks. This is fast to build and transparent, but it only works on sheets inside one workbook, needs fixed ranges or careful trimming, cannot read a folder, cannot clean Dr/Cr suffixes or report headers without heavy formulas, and recalculates on every edit. Power Query handles any number of files, applies cleaning once, logs errors and loads to the Data Model. A sound rule: VSTACK for small ad-hoc stacks inside one file; Power Query when files arrive monthly from outside.</p>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<h3 id="unrepresentative-sample-file">Unrepresentative sample file</h3>
+<p><em>An unrepresentative sample file, so the transform logic fails on other branches.</em></p>
+<p>Combine Files builds Transform Sample File from the first file in the filtered list (by default <code>Source{0}</code>). If that file is the cleanest branch — say Mumbai, with no subtotal rows and headers on row 5 — the recorded steps (Remove Top Rows 4, Removed Columns by name) fail or mis-clean Delhi's file with headers on row 7. People make this mistake because the preview looks perfect. Correct treatment: pick the messiest file as the sample (point the Sample File query at a named file, not position 0), and make the steps condition-based (<code>Table.Skip(each ...)</code>, filter by value). Detect it in review by comparing per-file row counts and Dr = Cr totals in the file log; a branch with zero rows or unbalanced totals signals a sample-fit failure.</p>
+<h3 id="expand-step-hard-codes-the-samples-columns">Expand step hard-codes the sample's columns</h3>
+<p><em>The expand step hard-codes the sample's column list, so new columns are silently dropped.</em></p>
+<p>The generated expand step uses <code>Table.ExpandTableColumn(..., Table.ColumnNames(#"Transform File"(#"Sample File")))</code>, i.e. only the columns that the sample produced. If a manual re-expand was done in the UI, the list is literally typed out. A new "Cost Centre" column in the Pune file never appears, and no error is raised. Correct treatment: make the function return a fixed target schema via <code>Table.SelectColumns(..., MissingField.UseNull)</code>, and append with <code>Table.Combine(Files[Data])</code>, which unions all column names. Detect by comparing the distinct column names across all nested tables with the output column list.</p>
+<h3 id="temp-lock-and-duplicate-files-double-counted">Temp, lock and duplicate files double counted</h3>
+<p><em>Temp files, lock files or old duplicate versions left in the folder get double counted.</em></p>
+<p>When someone has <code>Delhi_2025-05.xlsx</code> open, Excel creates a hidden lock file named with a <code>~$</code> prefix in the same folder; OneDrive sync adds "-conflict" copies; users save "v2" and "final" versions. <code>Folder.Files</code> returns all of them, including files in subfolders. Correct treatment: filter by extension, exclude the tilde-dollar lock-file prefix and hidden attributes, exclude an <code>Archive</code> subfolder via <code>[Folder Path]</code>, and enforce a naming convention validated by a regex-like parse (Branch must exist in the branch master, period must parse to a date). Detect with a Group By on Branch + Period that flags counts above one and fails the refresh or loads a visible warning.</p>
+<h3 id="trusting-date-modified-for-the-period">Trusting Date modified for the period</h3>
+<p><em>Relying on file "Date modified" instead of the period parsed from the name or contents.</em></p>
+<p><code>Date modified</code> records when the file was last saved, not the accounting period: a March TB re-exported on 5 May after audit adjustments shows May. Copying files across machines or syncing through OneDrive can also reset it. People use it because it is a ready-made date column. Correct treatment: derive the period from the file name (<code>Text.BetweenDelimiters([Name], "_", ".")</code>) and, ideally, cross-check against the "Period: 1-Apr-2025 to 30-Apr-2025" caption inside the file. Use <code>Date modified</code> only for operational purposes, such as picking the latest version among duplicates. Detect by a check query comparing the name period with the contents period.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-twelve-branch-tb-consolidator-design-l3">Q1. Twelve-branch TB consolidator design [L3]</h3>
+<p>Sixteen Tally branch TBs per month (CSV, 1,200–3,500 rows each) are emailed by branch accountants for FY2025-26. File names are inconsistent: <code>MUM_Apr25.csv</code>, <code>Mumbai-2025-04.csv</code>, <code>DEL_2025-04_final.csv</code>, <code>DEL_2025-04.csv</code>. Some branches add a "Cost Centre" column; two branches export with Dr/Cr suffixes in a single "Closing Balance" column, others use separate Debit and Credit columns. (a) Specify the folder structure and naming convention you would impose. (b) List every query in the pipeline with its load setting. (c) Write the M for the file-scope filter and name parsing. (d) Describe the controls that would make you comfortable signing off the consolidated TB.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Think in layers: parameter, file inventory, function(s), combine, validation log, error log.</p>
+</blockquote>
+<h3 id="q2-diagnosing-a-missing-branch-l2">Q2. Diagnosing a missing branch [L2]</h3>
+<p>After April refresh the consolidated TB total debits are ₹482.6 crore, but the sum of the sixteen branch report footers is ₹511.9 crore. The FileLog query shows fifteen files with rows and one file (<code>PUN_2025-04.csv</code>) with zero rows and no error. The Pune accountant used a new Tally template with three extra caption rows. Explain the probable cause in the generated helper queries, how you would confirm it in the editor, and the permanent fix.</p>
+<h3 id="q3-bank-folder-with-four-banks-l3">Q3. Bank folder with four banks [L3]</h3>
+<p>The treasury folder holds monthly CSVs from HDFC (columns: Date, Narration, Chq./Ref.No., Value Dt, Withdrawal Amt., Deposit Amt., Closing Balance), ICICI (Value Date, Transaction Date, Cheque Number, Transaction Remarks, Withdrawal Amount (INR ), Deposit Amount (INR ), Balance (INR )), SBI (Txn Date, Value Date, Description, Ref No./Cheque No., Debit, Credit, Balance) and Axis. Design the common target schema, the routing of each file to its bank function, and the guard that keeps the refresh running when the Axis file arrives as XLS instead of CSV. Write the M for the routing step.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> A record of functions keyed by bank code lets <code>Record.Field</code> pick the right function per row.</p>
+</blockquote>
+<h3 id="q4-duplicate-period-incident-l2">Q4. Duplicate-period incident [L2]</h3>
+<p>In May, Hyderabad's April TB was re-exported after an audit adjustment of ₹18.4 lakh and saved as <code>HYD_2025-04_rev.csv</code> next to the original <code>HYD_2025-04.csv</code>. Both were consolidated. (a) Quantify the effect on the April consolidated TB if the original TB totals were ₹36.2 crore on each side. (b) Design a duplicate-file detection query and state what it should output. (c) Propose a rule for which version wins, and explain why <code>Date modified</code> alone is not sufficient.</p>
+<h3 id="q5-interview-power-query-vs-vstack-vs-macro-l3">Q5. Interview: Power Query vs VSTACK vs macro [L3]</h3>
+<p>A CFO asks why the team should maintain a Power Query folder pipeline rather than a VBA macro or an Excel 365 VSTACK sheet for consolidating 14 branch TBs. Prepare a structured answer covering maintainability, auditability, handling of messy layouts, error isolation, refresh in the Power BI Service and key-person risk.</p></section>
+<nav class="pager"><a class="prev" href="../T3_Unpivoting_wide_budgets_and_TBs/concepts/C06_Unpivot_Drops_Null_Cells_Replace_Nulls_with_Zero.html">← Unpivot Drops Null Cells: Replace Nulls with Zero When…</a><a class="next" href="subtopics/S01_FolderFiles_and_SharePointFiles_Sources_and_File.html">Folder.Files and SharePoint.Files: Sources and File-Scope… →</a></nav>
+</main></div></body></html>

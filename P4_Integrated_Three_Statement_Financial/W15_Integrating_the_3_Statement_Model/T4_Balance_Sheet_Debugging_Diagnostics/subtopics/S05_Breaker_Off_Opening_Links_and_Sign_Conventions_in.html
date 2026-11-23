@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Breaker Off, Opening Links and Sign Conventions in Corkscrews · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S05_Breaker_Off_Opening_Links_and_Sign_Conventions_in.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 15</a> <span>›</span> <a href="../index.html">T4 · Balance Sheet Debugging Diagnostics</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Balance Sheet Debugging Diagnostics</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Clean_Historicals_First_Then_Find_the_First.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S01_Clean_Historicals_First_Then_Find_the_First.html">Clean Historicals First, Then Find the First Imbalanced Year</a></li><li><a href="S02_Reading_the_Pattern_of_the_Balance_Check_Across.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S02_Reading_the_Pattern_of_the_Balance_Check_Across.html">Reading the Pattern of the Balance Check Across Years</a></li><li><a href="S03_Halving_Test_for_Sign_Errors_and_Exact_Match.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S03_Halving_Test_for_Sign_Errors_and_Exact_Match.html">Halving Test for Sign Errors and Exact-Match Search for Omissions</a></li><li><a href="S04_Line_by_Line_ΔBS_vs_CFS_Reconciliation_Block.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S04_Line_by_Line_ΔBS_vs_CFS_Reconciliation_Block.html">Line-by-Line ΔBS vs CFS Reconciliation Block</a></li><li><a href="S05_Breaker_Off_Opening_Links_and_Sign_Conventions_in.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S05_Breaker_Off_Opening_Links_and_Sign_Conventions_in.html">Breaker Off, Opening Links and Sign Conventions in Corkscrews</a></li><li><a href="S06_Hunting_Hardcodes_with_Go_To_Special_Trace.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/subtopics/S06_Hunting_Hardcodes_with_Go_To_Special_Trace.html">Hunting Hardcodes with Go To Special, Trace Precedents and Inquire</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Difference_of_X_Means_Omission_2X_Means_Wrong_Sign.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C01_Difference_of_X_Means_Omission_2X_Means_Wrong_Sign.html">Difference of X Means Omission; 2X Means Wrong Sign</a></li><li><a href="../concepts/C02_Constant_vs_Growing_Difference_Opening_Error_or.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C02_Constant_vs_Growing_Difference_Opening_Error_or.html">Constant vs Growing Difference: Opening Error or Flow Error</a></li><li><a href="../concepts/C03_The_Cash_Check_Separating_CFS_Errors_from_BS_Link.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C03_The_Cash_Check_Separating_CFS_Errors_from_BS_Link.html">The Cash Check: Separating CFS Errors from BS Link Errors</a></li><li><a href="../concepts/C04_The_Transaction_Triad_PL_CFS_and_BS_Impact.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C04_The_Transaction_Triad_PL_CFS_and_BS_Impact.html">The Transaction Triad: P&amp;L, CFS and BS Impact</a></li><li><a href="../concepts/C05_Typical_Culprits_Behind_a_Balance_Sheet_Imbalance.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T4_Balance_Sheet_Debugging_Diagnostics/concepts/C05_Typical_Culprits_Behind_a_Balance_Sheet_Imbalance.html">Typical Culprits Behind a Balance Sheet Imbalance</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Breaker Off, Opening Links and Sign Conventions in Corkscrews</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Breaker off before debugging; check corkscrew opening links and sign conventions</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Two structural features of an integrated model cause most of the confusion when it does not balance. The first is <strong>circularity</strong>: interest on average cash and debt depends on closing cash, which depends on interest. With iterative calculation on, any error propagates through the loop, gets amplified or damped over iterations, and produces a check that changes on every recalculation. Sometimes the loop fails and every cell shows <code>#VALUE!</code> or <code>#NUM!</code>. The second is the <strong>corkscrew structure</strong> of every schedule (opening + additions − deductions = closing, with next year's opening = this year's closing). A broken opening link or an inconsistent sign convention inside a corkscrew causes a constant or growing error that looks mysterious until you inspect the schedule. Switching the breaker off and auditing the corkscrews should be the first structural steps of any debugging session.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-circularity-breaker">The circularity breaker</h3>
+<p>A standard implementation:</p>
+<pre><code class="language-excel">Interest_Debt = IF(Circ_Switch = 1, AVERAGE(Debt_Open, Debt_Close), Debt_Open) * Rate
+Interest_Cash = IF(Circ_Switch = 1, AVERAGE(Cash_Open, Cash_Close), Cash_Open) * Cash_Rate
+</code></pre>
+<p>Some modellers set the "off" value to zero rather than opening-balance interest. Opening-balance interest is better because the P&amp;L remains realistic and the model stays non-circular. With the switch at 0:</p>
+<ul>
+<li>No cell depends on the current-year closing cash or debt through interest, so the model is a straight chain.</li>
+<li>Iterative calculation can be turned off (File → Options → Formulas → Enable iterative calculation unchecked). Excel will then warn you about any <em>unintended</em> circular reference, which is a valuable diagnostic in itself.</li>
+<li>Every error is now deterministic: same value on every F9, and a clean X or 2X size.</li>
+</ul>
+<p><strong>Debugging protocol:</strong></p>
+<ol>
+<li>Note the check row with the breaker on (if it shows errors).</li>
+<li>Set <code>Circ_Switch = 0</code>, turn off iteration, press F9.</li>
+<li>If Excel reports a circular reference, trace it (Formulas → Error Checking → Circular References). An unintended loop, for example a revolver that references cash after the revolver or tax on interest income where cash includes the tax, must be removed.</li>
+<li>Debug with the breaker off until the check is 0 in all years.</li>
+<li>Turn the breaker and iteration back on (100 iterations, maximum change 0.001). Confirm the check is still 0 and the circularity convergence check (interest computed vs interest used) is within tolerance.</li>
+<li>If the model balances only with the breaker off, the error is inside the interest/revolver logic (for example, interest income on average cash routed to the P&amp;L but not into the CFS through PAT, or the revolver draw using closing cash <em>after</em> the draw).</li>
+</ol>
+<p><strong>Recovering a blown-up model:</strong> if errors have spread through the loop, set the switch to 0 and press F9. The non-circular chain recalculates cleanly and the errors clear. This is the main reason every model should have a breaker.</p>
+<h3 id="corkscrew-opening-links">Corkscrew opening links</h3>
+<p>Every schedule follows the same structure:</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th>FY26E</th>
+<th>FY27E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Opening</td>
+<td><code>=FY25A closing</code></td>
+<td><code>=FY26E closing</code></td>
+</tr>
+<tr>
+<td>+ Additions</td>
+<td>driver</td>
+<td>driver</td>
+</tr>
+<tr>
+<td>− Deductions</td>
+<td>driver</td>
+<td>driver</td>
+</tr>
+<tr>
+<td>Closing</td>
+<td><code>=Opening + Additions − Deductions</code></td>
+<td>same</td>
+</tr>
+</tbody>
+</table>
+<p>Failures to look for:</p>
+<ul>
+<li><strong>First-year opening hardcoded</strong> instead of linked to the historical BS. This often happens after a historical restatement, when the typed value is now stale. It produces a <strong>constant</strong> check.</li>
+<li><strong>Opening linked to the wrong year.</strong> For example, FY27E opening = FY25A closing, after a column was inserted and an absolute reference (<code>$G$15</code>) was copied across. This creates a growing or irregular check.</li>
+<li><strong>Opening linked to the BS row rather than the schedule's own closing.</strong> This works but creates two sources of truth. If the BS row is later changed to link elsewhere, the corkscrew breaks silently. Link opening to the schedule's prior closing, and link the BS to the schedule's closing.</li>
+<li><strong>Opening referencing a historical subtotal</strong> that excludes a component (for example, gross block excluding CWIP while the forecast schedule includes CWIP).</li>
+<li><strong>Closing formula including the opening twice,</strong> or missing a flow row added later (for example, "transfers from CWIP" inserted between existing rows but outside the <code>SUM</code>).</li>
+</ul>
+<p>A quick audit uses Go To Special → <strong>Row differences</strong> on the opening row across the forecast columns. Any cell whose formula differs in structure from its neighbours is highlighted (see s06).</p>
+<h3 id="sign-conventions">Sign conventions</h3>
+<p>Every model needs one written convention, stated on the cover, and applied consistently. The two common ones are:</p>
+<table>
+<thead>
+<tr>
+<th>Convention</th>
+<th>Schedules</th>
+<th>CFS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A: All positive</td>
+<td>Additions and deductions stored as positive numbers; closing = opening + additions − deductions</td>
+<td>CFS applies the sign: capex <code>=-Capex</code>, repayment <code>=-Repayment</code></td>
+</tr>
+<tr>
+<td>B: Signed flows</td>
+<td>Outflows/deductions stored as negatives; closing = <code>SUM(opening:flows)</code></td>
+<td>CFS links directly with no sign change: <code>=Repayment</code></td>
+</tr>
+</tbody>
+</table>
+<p>Errors arise when the two are mixed. If the debt schedule follows B (repayment −60) and the CFS follows A (<code>=-Repayment</code>), the CFS shows +60, a 2X error of 120. Typical mixed-convention traps:</p>
+<ul>
+<li><strong>Dividends:</strong> the equity schedule stores dividends as negatives, and the CFS adds another minus.</li>
+<li><strong>ΔNWC:</strong> the WC schedule computes "increase in working capital" as positive, and the CFS links it without negation. An increase in NWC is a cash outflow.</li>
+<li><strong>D&amp;A:</strong> the PPE schedule stores depreciation as negative (deduction from NBV), and the CFS add-back links it directly, so depreciation is <em>deducted</em> in CFO.</li>
+<li><strong>Tax:</strong> the tax schedule shows "tax paid" as negative, and the current tax liability corkscrew subtracts it again.</li>
+</ul>
+<p><strong>Test for convention consistency:</strong> for each flow, follow it from schedule → P&amp;L/CFS → BS and write down the sign at each step. A single sheet that lists every flow with its sign in each place (the BS–CFS mapping table from t3) makes this a 5-minute review.</p>
+<h3 id="illustration">Illustration</h3>
+<p>Vaigai Textiles Ltd: check = +80.00 in FY27E and every later year, and 0 in FY26E. The pattern (constant from FY27E) points to a one-off flow in FY27E. The PPE schedule has a one-off disposal in FY27E with NBV of 40, stored as a positive deduction. The CFS "Proceeds from disposal" links correctly to proceeds of 40, and since proceeds equal NBV there is no gain or loss. The fixed asset closing formula, however, is <code>=Opening + Capex + Disposal - Depreciation</code>, which <em>adds</em> the disposal instead of deducting it. BS PPE is therefore 80 too high (2 × 40) from FY27E onwards. The halving test (80 ÷ 2 = 40) matches the disposal NBV. The CFS was right, and the sign error sat inside the corkscrew. Lesson: check the convention inside each schedule's closing formula as well as between the schedule and the CFS.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Breaker off changes the numbers.</strong> With interest on opening balances, PAT and cash differ slightly from the circular answer. That is expected. You are checking for balance, not reproducing final values.</li>
+<li><strong>Multiple circularities</strong> (interest, revolver, cash sweep, management fee on EBITDA after fees). Each should route through the same switch, or the model needs a master switch that disables all of them.</li>
+<li><strong>Macro-based copy-paste circularity solvers</strong> (paste interest as values in a loop). Before debugging, confirm the pasted values are current. A stale pasted interest makes the P&amp;L and CFS inconsistent in ways that are hard to trace.</li>
+<li><strong>Historical columns using a different sign convention</strong> from the forecast (for example, cash flow history keyed as reported with brackets as negatives). Keep a clear line between actuals and forecast and normalise signs on input.</li>
+<li><strong>Absolute references in opening links</strong> (<code>=$G$20</code>) are a common reason why the second forecast year opens from the wrong place. Inspect FY27E's opening, not just FY26E's.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Turn the circularity breaker off (interest on opening balances) and iteration off before debugging. Errors become deterministic and Excel flags unintended loops.</li>
+<li>A model that balances only with the breaker on or only with it off has an error in the interest/revolver block.</li>
+<li>Every corkscrew's first-year opening must link to the historical BS, and each later opening to the schedule's own prior closing.</li>
+<li>Choose one sign convention (all-positive or signed flows), document it, and test each flow from schedule to CFS to BS.</li>
+<li>Use Row differences to spot opening and closing formulas that break the pattern across columns.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-setting-up-the-breaker-l1">Q1. Setting up the breaker [L1]</h3>
+<p>Write the Excel formulas for interest expense on a term loan and interest income on cash for FY27E, with a named switch <code>Circ_Switch</code> that toggles between average-balance interest (1) and opening-balance interest (0). Use names <code>TL_Open</code>, <code>TL_Close</code>, <code>TL_Rate</code>, <code>Cash_Open</code>, <code>Cash_Close</code>, <code>Cash_Rate</code>. Then explain why opening-balance interest is a better "off" state than zero.</p>
+<h3 id="q2-blown-up-model-recovery-l2">Q2. Blown-up model recovery [L2]</h3>
+<p>You change the Bear-case growth input from −5% to −40%, and every cell in the P&amp;L, BS and CFS turns to <code>#NUM!</code>. Iteration is on and interest is on average balances, including an uncapped revolver. (a) Explain how the error spread through the model. (b) Give the exact recovery steps. (c) Explain why the model may still need a fix even after it recalculates cleanly with the breaker off.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Think about what happens to the revolver and interest loop when cash goes deeply negative.</p>
+</blockquote>
+<h3 id="q3-mixed-sign-conventions-l2">Q3. Mixed sign conventions [L2]</h3>
+<p>A model has these conventions: the debt schedule stores repayments as negatives; the equity schedule stores dividends as positives; the PPE schedule stores depreciation as negatives; the WC schedule reports "(Increase)/decrease in WC" with the cash sign already applied. The CFS uses <code>=-Repayment</code>, <code>=-Dividends</code>, <code>=Depreciation</code> (add-back) and <code>=WC_Change</code>. FY27E values: repayment 50, dividends 30, depreciation 70, WC increase 25. (a) Identify every line with a sign error. (b) Compute the total check impact. (c) Recommend one convention and rewrite the four CFS formulas accordingly.</p>
+<h3 id="q4-opening-link-audit-l2">Q4. Opening link audit [L2]</h3>
+<p>Describe a 10-minute audit of opening links across a model with 9 corkscrew schedules over 5 forecast years. Specify which Excel features you would use, what you would look for in the FY26E column versus the FY27E–FY30E columns, and how you would document the result for a peer reviewer.</p></section>
+<nav class="pager"><a class="prev" href="S04_Line_by_Line_ΔBS_vs_CFS_Reconciliation_Block.html">← Line-by-Line ΔBS vs CFS Reconciliation Block</a><a class="next" href="S06_Hunting_Hardcodes_with_Go_To_Special_Trace.html">Hunting Hardcodes with Go To Special, Trace Precedents and… →</a></nav>
+</main></div></body></html>

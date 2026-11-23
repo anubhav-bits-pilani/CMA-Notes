@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COUNTIFS Duplicate-Posting Flag in a Calculated Column · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C05_COUNTIFS_Duplicate_Posting_Flag_in_a_Calculated.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T1 · Multi-criteria logic and GL rollups</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Multi-criteria logic and GL rollups</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Nested_IF_vs_IFS_vs_SWITCH_for_Account_Code.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S01_Nested_IF_vs_IFS_vs_SWITCH_for_Account_Code.html">Nested IF vs IFS vs SWITCH for Account-Code Classification</a></li><li><a href="../subtopics/S02_SUMIFS_for_Multi_Department_GL_Rollups_by_Group.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S02_SUMIFS_for_Multi_Department_GL_Rollups_by_Group.html">SUMIFS for Multi-Department GL Rollups by Group, Cost Centre and Month</a></li><li><a href="../subtopics/S03_COUNTIFS_Data_Quality_Tests_on_GL_and_TB_Dumps.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S03_COUNTIFS_Data_Quality_Tests_on_GL_and_TB_Dumps.html">COUNTIFS Data-Quality Tests on GL and TB Dumps</a></li><li><a href="../subtopics/S04_AVERAGEIFS_MAXIFS_and_MINIFS_for_ARAP_and_Sales.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S04_AVERAGEIFS_MAXIFS_and_MINIFS_for_ARAP_and_Sales.html">AVERAGEIFS, MAXIFS and MINIFS for AR/AP and Sales Analytics</a></li><li><a href="../subtopics/S05_Criteria_Syntax_Operators_Concatenation_Wildcards.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S05_Criteria_Syntax_Operators_Concatenation_Wildcards.html">Criteria Syntax: Operators, Concatenation, Wildcards and Date Ranges</a></li><li><a href="../subtopics/S06_OR_Logic_in_SUMIFS_with_Array_Constants_Wrapped_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S06_OR_Logic_in_SUMIFS_with_Array_Constants_Wrapped_in.html">OR Logic in SUMIFS with Array Constants Wrapped in SUM</a></li><li><a href="../subtopics/S07_Excel_Tables_and_Structured_References_for_Self.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S07_Excel_Tables_and_Structured_References_for_Self.html">Excel Tables and Structured References for Self-Expanding Rollups</a></li><li><a href="../subtopics/S08_Mixed_References_and_F4_Cycling_for_Copy_Across_PL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S08_Mixed_References_and_F4_Cycling_for_Copy_Across_PL.html">Mixed References and F4 Cycling for Copy-Across P&amp;L Grids</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_The_Department_Account_Month_SUMIFS_Grid_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C01_The_Department_Account_Month_SUMIFS_Grid_Formula.html">The Department × Account × Month SUMIFS Grid Formula</a></li><li><a href="C02_IFS_with_a_TRUE_Catch_All_for_Account.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C02_IFS_with_a_TRUE_Catch_All_for_Account.html">IFS with a TRUE Catch-All for Account Classification</a></li><li><a href="C03_SUM_of_SUMIFS_with_an_Array_Constant_for_OR_Logic.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C03_SUM_of_SUMIFS_with_an_Array_Constant_for_OR_Logic.html">SUM of SUMIFS with an Array Constant for OR Logic</a></li><li><a href="C04_MAXIFS_and_MINIFS_Signature_and_the_Zero_When.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C04_MAXIFS_and_MINIFS_Signature_and_the_Zero_When.html">MAXIFS and MINIFS: Signature and the Zero-When-Empty Trap</a></li><li><a href="C05_COUNTIFS_Duplicate_Posting_Flag_in_a_Calculated.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C05_COUNTIFS_Duplicate_Posting_Flag_in_a_Calculated.html">COUNTIFS Duplicate-Posting Flag in a Calculated Column</a></li><li><a href="C06_AVERAGEIFS_and_the_DIV0_Result_on_No_Matches.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C06_AVERAGEIFS_and_the_DIV0_Result_on_No_Matches.html">AVERAGEIFS and the #DIV/0! Result on No Matches</a></li><li><a href="C07_Range_Criteria_for_Numeric_Account_Codes_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C07_Range_Criteria_for_Numeric_Account_Codes_vs.html">Range Criteria for Numeric Account Codes vs Wildcards on Text</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>COUNTIFS Duplicate-Posting Flag in a Calculated Column</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>=COUNTIFS(GL[Voucher], [@Voucher], GL[Amount], [@Amount])&gt;1</code> flags duplicate postings</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>For each row \(r\) of Table <code>GL</code>, the flag is</p>
+<p>\[
+\text{Dup}_r = \left( \sum_{i \in GL} \mathbf{1}\left[V_i = V_r\right] \times \mathbf{1}\left[A_i = A_r\right] \right) &gt; 1
+\]</p>
+<p>where \(V\) is the voucher number, \(A\) the amount and \(\mathbf{1}[\cdot]\) the indicator function. The count always includes row \(r\) itself, so a value of 1 means "unique" and anything greater than 1 means at least one other row shares both the voucher number and the amount. The formula returns TRUE/FALSE.</p>
+<h2 id="explanation">Explanation</h2>
+<p><strong>Calculated column.</strong> Entered once in a new column of the Table, it fills down for every row, and <code>[@Voucher]</code> / <code>[@Amount]</code> refer to the current row. When the next GL dump is pasted, new rows get the flag automatically.</p>
+<p><strong>Choosing the key.</strong> Duplicate detection is only as good as the key:</p>
+<ul>
+<li>Voucher number alone flags every multi-line voucher (each Dr/Cr leg repeats the number). Adding Amount reduces this, but a JV with two identical ₹50,000 debit legs to different ledgers still flags — add <code>GL[Account], [@Account]</code> if lines legitimately repeat amounts.</li>
+<li>Tally numbers restart per voucher type, so add <code>GL[VchType], [@VchType]</code>; multi-year dumps need FY too.</li>
+<li>For purchase duplicates, the meaningful key is vendor GSTIN + supplier invoice number, not the internal voucher number.</li>
+</ul>
+<p><strong>Coercion trap.</strong> COUNTIFS treats numeric-looking text as numbers: vouchers "000123" and "123" are counted as the same, and identifiers longer than 15 digits are truncated in comparison. For such keys use <code>SUMPRODUCT(--EXACT(GL[Voucher],[@Voucher]), --(GL[Amount]=[@Amount]))&gt;1</code>.</p>
+<p><strong>Performance.</strong> Each row's COUNTIFS scans the whole column, so n rows cost about \(n^2\) comparisons. Fine for 20,000 rows; on 2 lakh rows prefer a sort-and-compare helper or Power Query Group By.</p>
+<p><strong>Reporting.</strong> Summarise with <code>=COUNTIFS(GL[Dup],TRUE)</code> and <code>=SUMIFS(GL[Amount],GL[Dup],TRUE)</code> in the check block; list the rows with <code>FILTER(GL, GL[Dup])</code> for investigation.</p>
+<h2 id="illustration">Illustration</h2>
+<table>
+<thead>
+<tr>
+<th>Voucher</th>
+<th>VchType</th>
+<th>Account</th>
+<th>Amount (₹)</th>
+<th>Count</th>
+<th>Dup</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PUR/0451</td>
+<td>Purchase</td>
+<td>510100</td>
+<td>4,72,000</td>
+<td>2</td>
+<td>TRUE</td>
+</tr>
+<tr>
+<td>PUR/0451</td>
+<td>Purchase</td>
+<td>510100</td>
+<td>4,72,000</td>
+<td>2</td>
+<td>TRUE</td>
+</tr>
+<tr>
+<td>JV/0102</td>
+<td>Journal</td>
+<td>640500</td>
+<td>50,000</td>
+<td>1</td>
+<td>FALSE</td>
+</tr>
+<tr>
+<td>JV/0102</td>
+<td>Journal</td>
+<td>230200</td>
+<td>-50,000</td>
+<td>1</td>
+<td>FALSE</td>
+</tr>
+</tbody>
+</table>
+<p>The PUR/0451 pair is a re-imported line — a genuine duplicate that would overstate purchases and GST input credit. The JV/0102 legs share the voucher number but differ in amount sign, so they are not flagged. Had the JV been a ₹50,000 debit to two expense ledgers, both legs would flag unless Account were added to the key.</p>
+<h2 id="connections">Connections</h2>
+<p>Applies the COUNTIFS data-quality subtopic and the Excel Tables subtopic (calculated columns and <code>[@Column]</code>). Feeds the week's check-cell discipline (a duplicate count of zero is a pre-condition for publishing the P&amp;L), the FILTER-based drill-down in the dynamic-arrays topic, and audit journal-entry testing under SA 240.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-strengthen-the-key-l1">Q1. Strengthen the key [L1]</h3>
+<p>Rewrite the flag for a Tally Day Book export that spans FY25 and FY26 and contains columns FY, VchType, VchNo, Ledger and Amount, so that legitimate multi-line vouchers and voucher-number restarts are not flagged.</p>
+<h3 id="q2-false-positives-and-negatives-l2">Q2. False positives and negatives [L2]</h3>
+<p>Give one realistic example each of (a) a false positive and (b) a false negative produced by the concept formula on a GL dump, and explain how you would adjust the key or the method for each.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider identical legs within one voucher, and the same invoice booked under two different voucher numbers.</p>
+</blockquote>
+<h3 id="q3-scale-problem-l2">Q3. Scale problem [L2]</h3>
+<p>A 2.6 lakh-row GL Table takes over four minutes to recalculate after you add the duplicate flag column. Describe two alternative approaches that produce the same duplicate list faster, and the trade-offs of each.</p></section>
+<nav class="pager"><a class="prev" href="C04_MAXIFS_and_MINIFS_Signature_and_the_Zero_When.html">← MAXIFS and MINIFS: Signature and the Zero-When-Empty Trap</a><a class="next" href="C06_AVERAGEIFS_and_the_DIV0_Result_on_No_Matches.html">AVERAGEIFS and the #DIV/0! Result on No Matches →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mark as Date Table and Turn Off Auto Date/Time · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S06_Mark_as_Date_Table_and_Turn_Off_Auto_DateTime.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T2 · Indian fiscal calendar table</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Indian fiscal calendar table</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Building_the_Date_Dimension_DAX_CALENDAR_vs_Power.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S01_Building_the_Date_Dimension_DAX_CALENDAR_vs_Power.html">Building the Date Dimension: DAX CALENDAR vs Power Query List.Dates</a></li><li><a href="S02_Contiguous_Whole_Fiscal_Year_Date_Range_Covering.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S02_Contiguous_Whole_Fiscal_Year_Date_Range_Covering.html">Contiguous Whole-Fiscal-Year Date Range Covering All Facts</a></li><li><a href="S03_Fiscal_Calendar_Columns_FY_Quarter_Month_Week_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S03_Fiscal_Calendar_Columns_FY_Quarter_Month_Week_and.html">Fiscal Calendar Columns: FY, Quarter, Month, Week and Period Key</a></li><li><a href="S04_Sort_by_Column_Fiscal_Month_Order_Starting_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S04_Sort_by_Column_Fiscal_Month_Order_Starting_in.html">Sort by Column: Fiscal Month Order Starting in April</a></li><li><a href="S05_Month_and_FY_Offset_Columns_for_Dynamic_Period.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S05_Month_and_FY_Offset_Columns_for_Dynamic_Period.html">Month and FY Offset Columns for Dynamic Period Filters</a></li><li><a href="S06_Mark_as_Date_Table_and_Turn_Off_Auto_DateTime.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S06_Mark_as_Date_Table_and_Turn_Off_Auto_DateTime.html">Mark as Date Table and Turn Off Auto Date/Time</a></li><li><a href="S07_Working_Day_Flags_and_Indian_Holidays_for_Close.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S07_Working_Day_Flags_and_Indian_Holidays_for_Close.html">Working-Day Flags and Indian Holidays for Close Metrics</a></li><li><a href="S08_IsClosedPeriod_and_IsYTD_Flags_for_Like_for_Like.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/subtopics/S08_IsClosedPeriod_and_IsYTD_Flags_for_Like_for_Like.html">IsClosedPeriod and IsYTD Flags for Like-for-Like Comparisons</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_DAX_Fiscal_Date_Table_with_an_FYEnd_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C01_DAX_Fiscal_Date_Table_with_an_FYEnd_Column.html">DAX Fiscal Date Table with an FYEnd Column</a></li><li><a href="../concepts/C02_CALENDARAUTO3_for_Whole_March_Ending_Fiscal_Years.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C02_CALENDARAUTO3_for_Whole_March_Ending_Fiscal_Years.html">CALENDARAUTO(3) for Whole March-Ending Fiscal Years</a></li><li><a href="../concepts/C03_Fiscal_Month_and_Fiscal_Quarter_Formulas.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C03_Fiscal_Month_and_Fiscal_Quarter_Formulas.html">Fiscal Month and Fiscal Quarter Formulas</a></li><li><a href="../concepts/C04_Fiscal_Week_Number_Anchored_on_1_April.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C04_Fiscal_Week_Number_Anchored_on_1_April.html">Fiscal Week Number Anchored on 1 April</a></li><li><a href="../concepts/C05_Month_Offset_from_Today.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C05_Month_Offset_from_Today.html">Month Offset from Today</a></li><li><a href="../concepts/C06_Power_Query_Date_List_with_ListDates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/concepts/C06_Power_Query_Date_List_with_ListDates.html">Power Query Date List with List.Dates</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Mark as Date Table and Turn Off Auto Date/Time</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Mark as Date Table and turn off Auto date/time</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Power BI ships with a convenience feature, <strong>Auto date/time</strong>, that silently creates a hidden calendar-year date
+table for every date column in the model. For an Indian finance model it is worse than useless: its hierarchy is
+Year (January–December) → Quarter (Q1 = Jan–Mar) → Month → Day, it bloats the model, and it tempts report authors
+into building visuals on <code>GL[PostingDate]</code> hierarchies that ignore your fiscal calendar and Budget. <strong>Marking</strong> your
+own Date table tells the engine "this is the calendar", which validates it and makes time intelligence behave
+predictably. Together these two settings are the first things a reviewer checks in a finance PBIX.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="auto-datetime-what-it-does">Auto date/time — what it does</h3>
+<p>When enabled, for each date or datetime column (in imported tables, excluding the marked Date table and calculated
+columns in some cases), Power BI creates a hidden <code>LocalDateTable_&lt;guid&gt;</code> with columns Year, Quarter, Month, Day and a
+hierarchy. The original column shows an expandable "Date Hierarchy" in the field list. Problems:</p>
+<ul>
+<li><strong>Calendar-year logic:</strong> Quarter 1 is January–March; Year is the calendar year. Indian FY reporting cannot use it.</li>
+<li><strong>Model bloat:</strong> a separate hidden table per date column, spanning whole calendar years for the column's range.
+  GL with PostingDate, DocDate and DueDate gets three hidden tables; a placeholder 01-01-1900 in DueDate creates a
+  table with 125+ years of days.</li>
+<li><strong>Wrong filtering:</strong> a visual using <code>GL[PostingDate].[Month]</code> filters GL only; Budget and TB ignore it.</li>
+<li><strong>Inconsistent DAX:</strong> measures referencing <code>GL[PostingDate].[Date]</code> (variation syntax) work only with the auto
+  table and break when it is turned off.</li>
+</ul>
+<h3 id="turning-it-off">Turning it off</h3>
+<ul>
+<li><strong>Current file:</strong> <em>File → Options and settings → Options → Current File → Data Load → Time intelligence →</em>
+  uncheck <strong>Auto date/time</strong>. This deletes the hidden tables on the next save/refresh.</li>
+<li><strong>Global default for new files:</strong> <em>Global → Data Load → Time intelligence → Auto date/time for new files</em> —
+  uncheck so every new model starts clean.</li>
+<li>Excel Power Pivot does not create auto date tables in the same way, but Excel PivotTables have their own <strong>date
+  grouping</strong> (Years/Quarters/Months) when a date field is placed on rows; it is also calendar-based. Use the
+  fiscal Date table's columns instead; automatic grouping can be disabled in Excel options (<em>File → Options →
+  Advanced → Data → Disable automatic grouping of Date/Time columns in PivotTables</em>).</li>
+</ul>
+<p>After turning it off, check for visuals or measures that used auto hierarchies; they break and must be repointed to
+the <code>'Date'</code> table's columns.</p>
+<h3 id="mark-as-date-table-requirements-and-steps">Mark as Date Table — requirements and steps</h3>
+<p>Power BI: select the Date table → <em>Table tools → Mark as date table</em> → choose the date column (<code>'Date'[Date]</code>).
+Power Pivot: <em>Design → Mark as Date Table</em>.</p>
+<p>Requirements enforced on marking:</p>
+<ol>
+<li>The column is of <strong>Date</strong> (or Date/Time) data type.</li>
+<li>Values are <strong>unique</strong>.</li>
+<li><strong>No blanks</strong>.</li>
+<li><strong>Contiguous</strong> — no missing dates between min and max.</li>
+</ol>
+<p>If the column is Date/Time, all values must have the same time (normally 00:00:00). Microsoft also recommends the
+table spans full years (for us, full fiscal years — s02).</p>
+<h3 id="what-marking-changes">What marking changes</h3>
+<ul>
+<li><strong>Disables auto date/time for that table</strong> and its column is recognised as the model calendar.</li>
+<li><strong>Time-intelligence functions</strong> (DATESYTD, SAMEPERIODLASTYEAR, DATEADD, DATESINPERIOD) work reliably even when the
+  relationship from Date to facts uses a <strong>non-date key</strong> (e.g. an integer DateKey 20250401). Without marking, a
+  CALCULATE that filters the date column through such a key does not automatically remove other filters on the Date
+  table.</li>
+<li><strong>Automatic ALL on the Date table:</strong> when a CALCULATE filter argument filters the marked date column, DAX
+  implicitly adds <code>REMOVEFILTERS('Date')</code>, so filters from MonthName, FiscalQuarter or FY slicers do not intersect
+  with the YTD date set. (The same behaviour applies without marking when the relationship is on a Date-typed
+  column — marking guarantees it regardless of key type.)</li>
+<li><strong>Q&amp;A and Analyze in Excel</strong> recognise the table as time-related; Excel PivotTables over the model show date
+  filters correctly.</li>
+<li>Enables the date table to be used in <strong>calculation groups</strong> with time-intelligence items robustly.</li>
+</ul>
+<h3 id="recommended-setup-sequence">Recommended setup sequence</h3>
+<ol>
+<li>Build the Date table (s01) with whole fiscal years (s02) and all columns (s03).</li>
+<li>Set data types: <code>Date</code> as Date (not Date/Time), integers as Whole number.</li>
+<li>Sort label columns (s04).</li>
+<li><strong>Mark as date table</strong> on <code>'Date'[Date]</code>.</li>
+<li>Turn off <strong>Auto date/time</strong> (current file and global).</li>
+<li>Relate <code>'Date'[Date]</code> (1) to each fact date column (*), single direction; set non-primary roles inactive.</li>
+<li>Hide fact date columns (topic 1 c06) so users use only <code>'Date'</code> fields.</li>
+<li>Verify: VertiPaq Analyzer in DAX Studio shows no <code>LocalDateTable_</code> tables.</li>
+</ol>
+<h3 id="illustration">Illustration</h3>
+<p>Before: a 640 MB PBIX for a Chennai logistics company with seven date columns across GL, AP and Fixed Assets. VertiPaq
+Analyzer lists seven LocalDateTables, one spanning 1900–2099 because of a placeholder "01-01-1900" in the asset
+disposal date, totalling about 35 MB and 1.3 lakh rows. A YTD matrix built on <code>GL[PostingDate]</code> hierarchy shows
+calendar-year YTD resetting in January. After: Auto date/time off, <code>'Date'</code> (1,826 rows) marked, visuals repointed to
+<code>'Date'[FY]</code>, <code>'Date'[MonthName]</code>; YTD with "3/31" resets in April and Budget responds to every date slicer.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Marking fails</strong> with "duplicate values" when the table has a time component on some rows or overlapping ranges
+  appended; with "missing dates" if built from GL distinct dates. Rebuild from CALENDAR/List.Dates.</li>
+<li><strong>Multiple date tables</strong> (role-playing copies) can each be marked.</li>
+<li><strong>DateKey integer relationships</strong> (common in SQL warehouses, e.g. 20250401) are fine if the table is marked on
+  the real Date column.</li>
+<li><strong>Composite / DirectQuery models:</strong> marking works, but contiguity must hold in the source.</li>
+<li><strong>Quick measures and visual "Show as YTD"</strong> features may assume auto date/time; prefer explicit measures.</li>
+<li><strong>Personal preference vs standard:</strong> some analysts like auto hierarchies for ad hoc work; in shared finance models
+  the standard should be off.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Auto date/time creates hidden calendar-year tables per date column — wrong for April–March and bloats the model.</li>
+<li>Turn it off in Current File and Global options; repoint any visuals that used it.</li>
+<li>Mark the custom Date table on a Date-typed, unique, non-blank, contiguous column.</li>
+<li>Marking ensures time intelligence works and Date filters are cleared correctly even with integer keys.</li>
+<li>Verify with VertiPaq Analyzer that no LocalDateTable remains.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-why-marking-failed-l1">Q1. Why marking failed [L1]</h3>
+<p>Marking <code>'Date'[Date]</code> fails. The table was built by taking distinct GL posting dates and appending budget dates.
+List every requirement that may be violated and how you would rebuild the table.</p>
+<h3 id="q2-hidden-tables-l2">Q2. Hidden tables [L2]</h3>
+<p>A model has date columns GL[PostingDate], GL[DocDate], GL[DueDate], FA[CapitalisationDate], FA[DisposalDate] and
+Employee[DOB]. Auto date/time is on. Estimate how many hidden tables exist, what drives their size, and describe the
+steps to remove them safely without breaking existing reports.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Some reports may reference the auto hierarchies; find them before switching off.</p>
+</blockquote>
+<h3 id="q3-integer-datekey-l2">Q3. Integer DateKey [L2]</h3>
+<p>A warehouse Date dimension relates to GL via DateKey (integer YYYYMMDD). The Date table is not marked. A YTD measure
+using <code>DATESYTD('Date'[Date], "3/31")</code> gives wrong results when a MonthName slicer is applied. Explain why and fix it.</p>
+<h3 id="q4-review-checklist-l3">Q4. Review checklist [L3]</h3>
+<p>Write a ten-point review checklist for the Date-related setup of a finance PBIX received from a junior analyst,
+covering Auto date/time, marking, range, types, relationships, sorting and visual usage.</p></section>
+<nav class="pager"><a class="prev" href="S05_Month_and_FY_Offset_Columns_for_Dynamic_Period.html">← Month and FY Offset Columns for Dynamic Period Filters</a><a class="next" href="S07_Working_Day_Flags_and_Indian_Holidays_for_Close.html">Working-Day Flags and Indian Holidays for Close Metrics →</a></nav>
+</main></div></body></html>

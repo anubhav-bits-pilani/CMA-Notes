@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SUM of SUMIFS with an Array Constant for OR Logic · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C03_SUM_of_SUMIFS_with_an_Array_Constant_for_OR_Logic.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T1 · Multi-criteria logic and GL rollups</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Multi-criteria logic and GL rollups</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Nested_IF_vs_IFS_vs_SWITCH_for_Account_Code.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S01_Nested_IF_vs_IFS_vs_SWITCH_for_Account_Code.html">Nested IF vs IFS vs SWITCH for Account-Code Classification</a></li><li><a href="../subtopics/S02_SUMIFS_for_Multi_Department_GL_Rollups_by_Group.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S02_SUMIFS_for_Multi_Department_GL_Rollups_by_Group.html">SUMIFS for Multi-Department GL Rollups by Group, Cost Centre and Month</a></li><li><a href="../subtopics/S03_COUNTIFS_Data_Quality_Tests_on_GL_and_TB_Dumps.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S03_COUNTIFS_Data_Quality_Tests_on_GL_and_TB_Dumps.html">COUNTIFS Data-Quality Tests on GL and TB Dumps</a></li><li><a href="../subtopics/S04_AVERAGEIFS_MAXIFS_and_MINIFS_for_ARAP_and_Sales.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S04_AVERAGEIFS_MAXIFS_and_MINIFS_for_ARAP_and_Sales.html">AVERAGEIFS, MAXIFS and MINIFS for AR/AP and Sales Analytics</a></li><li><a href="../subtopics/S05_Criteria_Syntax_Operators_Concatenation_Wildcards.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S05_Criteria_Syntax_Operators_Concatenation_Wildcards.html">Criteria Syntax: Operators, Concatenation, Wildcards and Date Ranges</a></li><li><a href="../subtopics/S06_OR_Logic_in_SUMIFS_with_Array_Constants_Wrapped_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S06_OR_Logic_in_SUMIFS_with_Array_Constants_Wrapped_in.html">OR Logic in SUMIFS with Array Constants Wrapped in SUM</a></li><li><a href="../subtopics/S07_Excel_Tables_and_Structured_References_for_Self.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S07_Excel_Tables_and_Structured_References_for_Self.html">Excel Tables and Structured References for Self-Expanding Rollups</a></li><li><a href="../subtopics/S08_Mixed_References_and_F4_Cycling_for_Copy_Across_PL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S08_Mixed_References_and_F4_Cycling_for_Copy_Across_PL.html">Mixed References and F4 Cycling for Copy-Across P&amp;L Grids</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_The_Department_Account_Month_SUMIFS_Grid_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C01_The_Department_Account_Month_SUMIFS_Grid_Formula.html">The Department × Account × Month SUMIFS Grid Formula</a></li><li><a href="C02_IFS_with_a_TRUE_Catch_All_for_Account.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C02_IFS_with_a_TRUE_Catch_All_for_Account.html">IFS with a TRUE Catch-All for Account Classification</a></li><li><a href="C03_SUM_of_SUMIFS_with_an_Array_Constant_for_OR_Logic.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C03_SUM_of_SUMIFS_with_an_Array_Constant_for_OR_Logic.html">SUM of SUMIFS with an Array Constant for OR Logic</a></li><li><a href="C04_MAXIFS_and_MINIFS_Signature_and_the_Zero_When.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C04_MAXIFS_and_MINIFS_Signature_and_the_Zero_When.html">MAXIFS and MINIFS: Signature and the Zero-When-Empty Trap</a></li><li><a href="C05_COUNTIFS_Duplicate_Posting_Flag_in_a_Calculated.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C05_COUNTIFS_Duplicate_Posting_Flag_in_a_Calculated.html">COUNTIFS Duplicate-Posting Flag in a Calculated Column</a></li><li><a href="C06_AVERAGEIFS_and_the_DIV0_Result_on_No_Matches.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C06_AVERAGEIFS_and_the_DIV0_Result_on_No_Matches.html">AVERAGEIFS and the #DIV/0! Result on No Matches</a></li><li><a href="C07_Range_Criteria_for_Numeric_Account_Codes_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C07_Range_Criteria_for_Numeric_Account_Codes_vs.html">Range Criteria for Numeric Account Codes vs Wildcards on Text</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>SUM of SUMIFS with an Array Constant for OR Logic</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>=SUM(SUMIFS(GL[Amount], GL[Dept], {"Sales","Marketing"}))</code> sums two criteria values (OR logic)</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>When a criterion is an array of \(k\) values \(\{c_1, c_2, \dots, c_k\}\), SUMIFS returns an array of \(k\) results, one per value. SUM then adds them:</p>
+<p>\[
+\text{Result} = \sum_{j=1}^{k} \; \sum_{i \in GL} \text{Amount}_i \times \mathbf{1}\left[\text{Dept}_i = c_j\right]
+\]</p>
+<p>where \(\mathbf{1}[\cdot]\) is the indicator function. Because a row can equal at most one \(c_j\) when the values are distinct, the double sum equals the sum over rows satisfying "\(\text{Dept}_i = c_1\) OR \(\text{Dept}_i = c_2\) OR …".</p>
+<h2 id="explanation">Explanation</h2>
+<p><strong>Why it works.</strong> SUMIFS itself is AND-only across different criteria pairs. Supplying an array in one criteria argument makes Excel lift the function over the array (it evaluates once per element). The inner result is <code>{Sales total, Marketing total}</code>; SUM collapses it to a scalar. In Microsoft 365, omitting SUM spills the two component totals into two cells — a quick way to audit the pieces.</p>
+<p><strong>Version behaviour.</strong> With an array <strong>constant</strong>, the formula works in all versions without Ctrl+Shift+Enter. If the constant is replaced by a <strong>range</strong> (e.g. a named list <code>SelDepts</code>), legacy Excel (2019 and earlier) needs Ctrl+Shift+Enter or SUMPRODUCT in place of SUM; Microsoft 365 handles it natively.</p>
+<p><strong>Conditions.</strong></p>
+<ul>
+<li>Values must be <strong>mutually exclusive</strong>. Equality tests on one column always are, unless the list contains a duplicate — <code>{"Sales","Sales"}</code> doubles Sales.</li>
+<li>Wildcard or operator criteria may overlap (<code>{"*Freight*","*Inward*"}</code> double counts "Freight Inward").</li>
+<li>With a second OR list on another column, orient one array horizontally (commas) and the other vertically (semicolons) to get all combinations; two horizontal arrays pair element-wise.</li>
+<li>Array constants hold only literal values — no cell references.</li>
+</ul>
+<p><strong>Good practice.</strong> Hard-coded constants embed policy inside formulas. In a model, move the list to a Table column on the assumptions sheet and reference it, so additions are visible and auditable.</p>
+<h2 id="illustration">Illustration</h2>
+<p>FY26 GL for one expense group (₹ lakh):</p>
+<table>
+<thead>
+<tr>
+<th>Dept</th>
+<th>Q1</th>
+<th>Q2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sales</td>
+<td>42.5</td>
+<td>44.0</td>
+</tr>
+<tr>
+<td>Marketing</td>
+<td>18.0</td>
+<td>26.5</td>
+</tr>
+<tr>
+<td>Admin</td>
+<td>12.0</td>
+<td>12.5</td>
+</tr>
+</tbody>
+</table>
+<p>With criteria for Q1 dates added, <code>SUMIFS(…, GL[Dept], {"Sales","Marketing"}, …)</code> returns <code>{42.5, 18.0}</code> and SUM gives ₹60.5 lakh — the S&amp;D employee cost for Q1. Changing the constant to <code>{"Sales";"Marketing"}</code> (vertical) gives the same result here because there is only one array. Adding a second criterion <code>GL[Branch], {"MUM","PUN"}</code> while keeping the department array horizontal would pair Sales–MUM and Marketing–PUN only; making the department array vertical produces all four department–branch combinations.</p>
+<h2 id="connections">Connections</h2>
+<p>Implements the OR-logic subtopic and relies on criteria syntax. It is the compact alternative to adding separate SUMIFS calls, and the scalar version of the boolean OR used inside SUMPRODUCT and FILTER (<code>+</code> between conditions) in the SUMPRODUCT and dynamic-arrays topics. In DAX (Week 11), the equivalent is <code>CALCULATE(SUM(GL[Amount]), GL[Dept] IN {"Sales","Marketing"})</code>.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-three-value-or-with-a-date-window-l1">Q1. Three-value OR with a date window [L1]</h3>
+<p>Write a formula for total "Travel" group expense in departments Sales, Marketing and Projects for the month whose start date is in C3, using an array constant.</p>
+<h3 id="q2-replace-the-constant-with-a-list-l2">Q2. Replace the constant with a list [L2]</h3>
+<p>Rewrite your Q1 answer so the department list comes from a Table column <code>Tbl_Depts[Dept]</code>. State what changes, if anything, for a user on Excel 2019, and add a check that the list has no duplicates.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> COUNTIF of the list against itself, compared with 1, reveals repeats.</p>
+</blockquote>
+<h3 id="q3-cross-product-audit-l2">Q3. Cross-product audit [L2]</h3>
+<p>A formula reads <code>=SUM(SUMIFS(GL[Amount], GL[Dept], {"Sales","Marketing"}, GL[Branch], {"MUM","PUN"}))</code> and is used to report "S&amp;D cost for West region". Department–branch totals (₹ lakh) are: Sales–MUM 30, Sales–PUN 12, Marketing–MUM 9, Marketing–PUN 7. What does the formula return, what should it return, and how do you fix it?</p></section>
+<nav class="pager"><a class="prev" href="C02_IFS_with_a_TRUE_Catch_All_for_Account.html">← IFS with a TRUE Catch-All for Account Classification</a><a class="next" href="C04_MAXIFS_and_MINIFS_Signature_and_the_Zero_When.html">MAXIFS and MINIFS: Signature and the Zero-When-Empty Trap →</a></nav>
+</main></div></body></html>

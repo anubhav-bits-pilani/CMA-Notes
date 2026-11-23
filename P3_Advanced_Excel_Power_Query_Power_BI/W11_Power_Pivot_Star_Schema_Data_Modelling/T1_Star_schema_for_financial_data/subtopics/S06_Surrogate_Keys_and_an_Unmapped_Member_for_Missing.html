@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Surrogate Keys and an Unmapped Member for Missing Accounts · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S06_Surrogate_Keys_and_an_Unmapped_Member_for_Missing.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T1 · Star schema for financial data</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Star schema for financial data</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Facts_vs_Dimensions_in_a_Financial_Star_Schema.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S01_Facts_vs_Dimensions_in_a_Financial_Star_Schema.html">Facts vs Dimensions in a Financial Star Schema</a></li><li><a href="S02_Defining_Fact_Grain_and_Handling_Mixed_Grain.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S02_Defining_Fact_Grain_and_Handling_Mixed_Grain.html">Defining Fact Grain and Handling Mixed Grain (Budget vs Actual)</a></li><li><a href="S03_Relationship_Properties_Cardinality_Direction.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S03_Relationship_Properties_Cardinality_Direction.html">Relationship Properties: Cardinality, Direction, Active Status</a></li><li><a href="S04_Role_Playing_Dates_via_Inactive_Relationships.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S04_Role_Playing_Dates_via_Inactive_Relationships.html">Role-Playing Dates via Inactive Relationships</a></li><li><a href="S05_CoA_Hierarchy_with_Sort_Order_and_Sign_Factor.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S05_CoA_Hierarchy_with_Sort_Order_and_Sign_Factor.html">CoA Hierarchy with Sort-Order and Sign-Factor Columns</a></li><li><a href="S06_Surrogate_Keys_and_an_Unmapped_Member_for_Missing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S06_Surrogate_Keys_and_an_Unmapped_Member_for_Missing.html">Surrogate Keys and an Unmapped Member for Missing Accounts</a></li><li><a href="S07_Avoiding_Snowflakes_and_Flat_Tables_Diagram_View.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/subtopics/S07_Avoiding_Snowflakes_and_Flat_Tables_Diagram_View.html">Avoiding Snowflakes and Flat Tables; Diagram View vs Model View</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_USERELATIONSHIP_to_Activate_an_Inactive_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C01_USERELATIONSHIP_to_Activate_an_Inactive_Date.html">USERELATIONSHIP to Activate an Inactive Date Relationship</a></li><li><a href="../concepts/C02_Store_Budget_on_the_First_Day_of_the_Month.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C02_Store_Budget_on_the_First_Day_of_the_Month.html">Store Budget on the First Day of the Month</a></li><li><a href="../concepts/C03_Virtual_Relationship_with_TREATAS_for_Month_Grain.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C03_Virtual_Relationship_with_TREATAS_for_Month_Grain.html">Virtual Relationship with TREATAS for Month-Grain Budget</a></li><li><a href="../concepts/C04_CROSSFILTER_for_Per_Measure_Bidirectional.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C04_CROSSFILTER_for_Per_Measure_Bidirectional.html">CROSSFILTER for Per-Measure Bidirectional Filtering</a></li><li><a href="../concepts/C05_Referential_Integrity_Test_with_EXCEPT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C05_Referential_Integrity_Test_with_EXCEPT.html">Referential Integrity Test with EXCEPT</a></li><li><a href="../concepts/C06_Hide_Fact_Foreign_Keys_Expose_Attributes_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/concepts/C06_Hide_Fact_Foreign_Keys_Expose_Attributes_and.html">Hide Fact Foreign Keys; Expose Attributes and Measures</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Surrogate Keys and an Unmapped Member for Missing Accounts</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Surrogate keys and an "Unmapped" member for accounts missing from the CoA</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Ledgers are created every month — a new vendor-specific expense ledger in Tally, a new GL code for a new GST rate,
+a new bank account. The CoA mapping sheet is maintained by a person, and it lags. When a GL row carries an account
+code that does not exist in the CoA dimension, Power BI silently assigns it to a virtual "(Blank)" member. The P&amp;L
+total still includes the amount, but no FS line does, so subtotals stop adding up to the total and the TB no longer
+ties line by line. A deliberate surrogate-key design with an explicit "Unmapped" member turns this silent failure
+into a visible, reviewable exception — exactly the control mindset an auditor brings to FP&amp;A.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="natural-keys-vs-surrogate-keys">Natural keys vs surrogate keys</h3>
+<ul>
+<li><strong>Natural (business) key:</strong> the code used in the source — Tally ledger name, SAP GL account "400100", cost
+  centre "MUM-SALES". Often text, sometimes reused, may differ across ERPs or company codes.</li>
+<li><strong>Surrogate key:</strong> a meaningless integer assigned in the dimension (AccountKey = 1, 2, 3 …), one per dimension
+  row, carried into the fact as the foreign key.</li>
+</ul>
+<p>Why surrogate keys help in finance models:</p>
+<ol>
+<li><strong>Compression and speed.</strong> Integer keys compress far better in VertiPaq than long text (Tally ledger names such
+   as "Rent – Andheri Office (FY24 lease)").</li>
+<li><strong>Multiple sources.</strong> After an ERP migration, Tally ledger "Salaries" and SAP account "510100" can both map to one
+   CoA row, or two rows with distinct keys, without collisions.</li>
+<li><strong>Type 2 history.</strong> A remapped account can get a new surrogate key (new row) while the old row keeps history
+   (see Kimball SCD in the topic note).</li>
+<li><strong>Special members.</strong> You can reserve key values such as <strong>-1 = "Unmapped"</strong> and <strong>-2 = "Not applicable"</strong>.</li>
+</ol>
+<p>In many Power BI finance models, a clean integer natural key (SAP account number) is used directly as the key; that
+is acceptable if it is unique, stable and single-source. Use surrogates when any of those conditions fails.</p>
+<h3 id="generating-surrogate-keys-in-power-query">Generating surrogate keys in Power Query</h3>
+<p>In the CoA query:</p>
+<pre><code class="language-M">let
+    Source  = Excel.CurrentWorkbook(){[Name = &quot;CoA_Map&quot;]}[Content],
+    Clean   = Table.TransformColumns(Source, {{&quot;AccountCode&quot;, each Text.Upper(Text.Trim(_)), type text}}),
+    Dedup   = Table.Distinct(Clean, {&quot;AccountCode&quot;}),
+    Indexed = Table.AddIndexColumn(Dedup, &quot;AccountKey&quot;, 1, 1, Int64.Type),
+    Unmapped = #table(
+        Table.ColumnNames(Indexed),
+        {{ &quot;UNMAPPED&quot;, &quot;Unmapped account&quot;, &quot;Unmapped&quot;, &quot;Unmapped&quot;, &quot;Unmapped&quot;, 9999, 1, -1 }}
+    )
+in
+    Table.Combine({Indexed, Unmapped})
+</code></pre>
+<p>The <code>#table</code> row must list values in the same column order as <code>Indexed</code>; adjust it to your actual columns (here
+illustratively AccountCode, AccountName, FSSubLine, FSLine, Statement, LineSort, SignFactor, AccountKey). A more
+robust pattern builds the Unmapped row as a record and appends it with <code>Table.InsertRows</code> or <code>Table.Combine</code> on a
+one-row table with matching column names.</p>
+<p>In the GL query, merge GL to CoA on the cleaned AccountCode (Left Outer join), expand AccountKey, and replace nulls:</p>
+<pre><code class="language-M">Merged   = Table.NestedJoin(GLClean, {&quot;AccountCode&quot;}, CoA, {&quot;AccountCode&quot;}, &quot;CoA&quot;, JoinKind.LeftOuter),
+Expanded = Table.ExpandTableColumn(Merged, &quot;CoA&quot;, {&quot;AccountKey&quot;}),
+Keyed    = Table.ReplaceValue(Expanded, null, -1, Replacer.ReplaceValue, {&quot;AccountKey&quot;}),
+Final    = Table.RemoveColumns(Keyed, {&quot;AccountCode&quot;})
+</code></pre>
+<p>Now every GL row has a valid AccountKey; unmatched rows point to -1, which exists in CoA as "Unmapped".</p>
+<h3 id="why-an-explicit-member-beats-blank">Why an explicit member beats "(Blank)"</h3>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Virtual "(Blank)"</th>
+<th>Explicit "Unmapped" member</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visibility</td>
+<td>Shows as "(Blank)" only if the column is on the visual; otherwise hidden in totals</td>
+<td>Shows as a named FS line in the P&amp;L/BS with its own sort position</td>
+</tr>
+<tr>
+<td>Sort and sign</td>
+<td>No sort order, no sign factor; amounts appear with raw sign</td>
+<td>Has LineSort (e.g. at the bottom) and a SignFactor</td>
+</tr>
+<tr>
+<td>Statement assignment</td>
+<td>None — falls outside both P&amp;L and BS filters</td>
+<td>Can be placed in a "Suspense" statement</td>
+</tr>
+<tr>
+<td>Monitoring</td>
+<td>Hard to alert on</td>
+<td>Easy: <code>[Actual]</code> for AccountKey -1 should be zero; build a card or data alert</td>
+</tr>
+</tbody>
+</table>
+<h3 id="monitoring-measures">Monitoring measures</h3>
+<pre><code class="language-DAX">Unmapped Amount =
+CALCULATE ( [Actual], CoA[AccountKey] = -1 )
+
+Unmapped Accounts =
+CALCULATE ( DISTINCTCOUNT ( GL[AccountCodeRaw] ), CoA[AccountKey] = -1 )
+</code></pre>
+<p>(Keep a raw code column in GL — hidden — only if you need to list the unmapped codes; otherwise produce the list in
+Power Query as a separate exception query.) Place the card on a "Data quality" page and ask the finance controller
+to clear it before the MIS is released. Combined with the referential integrity test in concept c05, this gives a
+two-layer control: c05 checks the keys, the Unmapped measure checks the money.</p>
+<h3 id="illustration">Illustration</h3>
+<p>March 2026 close: three new ledgers were created — "GST RCM Payable – Legal", "Freight – E-com" and
+"Interest on MSME delay". The CoA mapping sheet does not have them yet. GL postings: ₹1,85,000 credit, ₹7,40,000
+debit and ₹62,000 debit. Without the Unmapped member, the P&amp;L shows Total expenses that are ₹8,02,000 higher than the
+sum of FS lines, and the BS does not balance by ₹1,85,000 at line level. With the Unmapped member, the P&amp;L shows an
+"Unmapped" line of ₹8,02,000, the BS shows ₹1,85,000 in Suspense, and the data-quality card reads ₹6,17,000 net
+(debits less credits) with 3 unmapped codes.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Whitespace and case.</strong> "Rent " and "RENT" are different text keys; clean with <code>Text.Trim</code> and <code>Text.Upper</code>
+  (and <code>Text.Clean</code> for non-printing characters) on both sides before merging.</li>
+<li><strong>Type mismatch.</strong> Account 400100 as number in one table and "400100" as text in another will not match; set
+  types explicitly in both queries.</li>
+<li><strong>Unmapped vs Not applicable.</strong> Use -2 "Not applicable" for rows that legitimately have no cost centre
+  (balance-sheet postings), so the Unmapped bucket stays meaningful.</li>
+<li><strong>Merge cost.</strong> Merging a crore-row GL in Power Query is slower than letting the relationship do the work; for
+  very large models, compute keys in the source SQL or keep the natural key and add the Unmapped row with the
+  natural code values found by an anti-join.</li>
+<li><strong>Budget facts too.</strong> Budget lines for new accounts not yet in CoA need the same -1 treatment.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Surrogate keys are integer, meaningless, unique per dimension row; use them when natural keys are text, unstable
+  or multi-source.</li>
+<li>Reserve -1 for "Unmapped" (and -2 for "Not applicable") and add those rows explicitly to the dimension.</li>
+<li>Map unmatched fact rows to -1 in Power Query so no row falls into the virtual "(Blank)" member.</li>
+<li>Give the Unmapped member a sort position and a Suspense statement so it is visible in the P&amp;L and BS.</li>
+<li>Monitor with an Unmapped Amount measure and the referential integrity test; clear both before release.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-natural-or-surrogate-l1">Q1. Natural or surrogate [L1]</h3>
+<p>For each of these, say whether you would use the natural key directly or generate a surrogate key, with a reason:
+SAP GL account number (single company code), Tally ledger name, cost centre codes from two merged entities, GSTIN
+for Branch.</p>
+<h3 id="q2-power-query-build-l2">Q2. Power Query build [L2]</h3>
+<p>Write the Power Query steps to (a) add an Unmapped row with AccountKey -1 to CoA, and (b) assign AccountKey to GL by
+merging on a cleaned AccountCode, replacing unmatched keys with -1. Assume CoA columns AccountCode, AccountName,
+FSLine, Statement, LineSort, SignFactor.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Clean both sides identically before the merge; build the extra row with matching column names.</p>
+</blockquote>
+<h3 id="q3-quantify-the-gap-l2">Q3. Quantify the gap [L2]</h3>
+<p>In April 2026, GL has 1,26,400 lines totalling net ₹0 (balanced). CoA lacks 5 account codes carrying debits of
+₹14,20,000 and credits of ₹3,10,000. Describe exactly what a P&amp;L matrix shows with (a) no Unmapped member and
+(b) an Unmapped member, including the effect on the grand total and on the sum of visible FS lines.</p>
+<h3 id="q4-control-design-l3">Q4. Control design [L3]</h3>
+<p>Design a month-end data-quality page for the MIS model: list the measures, their thresholds, who owns clearing
+each exception and how the page integrates with the close calendar (working day 3 sign-off).</p>
+<h3 id="q5-interview-blank-row-l1">Q5. Interview: blank row [L1]</h3>
+<p>Explain what the "(Blank)" member in a Power BI dimension is, when the engine creates it, and why it can hold a
+material amount in a finance report.</p></section>
+<nav class="pager"><a class="prev" href="S05_CoA_Hierarchy_with_Sort_Order_and_Sign_Factor.html">← CoA Hierarchy with Sort-Order and Sign-Factor Columns</a><a class="next" href="S07_Avoiding_Snowflakes_and_Flat_Tables_Diagram_View.html">Avoiding Snowflakes and Flat Tables; Diagram View vs Model… →</a></nav>
+</main></div></body></html>

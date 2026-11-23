@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The P&amp;L Layout Dimension: Lines, Sort Order, Type and Sign · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S01_The_PL_Layout_Dimension_Lines_Sort_Order_Type_and.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T6 · P&amp;L layout, subtotals and sign-flip</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · P&amp;L layout, subtotals and sign-flip</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_The_PL_Layout_Dimension_Lines_Sort_Order_Type_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S01_The_PL_Layout_Dimension_Lines_Sort_Order_Type_and.html">The P&amp;L Layout Dimension: Lines, Sort Order, Type and Sign</a></li><li><a href="S02_Mapping_CoA_to_Layout_Lines_and_Computing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S02_Mapping_CoA_to_Layout_Lines_and_Computing.html">Mapping CoA to Layout Lines and Computing Subtotals by Sort Order</a></li><li><a href="S03_Row_Level_Measure_Dispatch_with_SWITCHTRUE_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S03_Row_Level_Measure_Dispatch_with_SWITCHTRUE_and.html">Row-Level Measure Dispatch with SWITCH(TRUE()) and SELECTEDVALUE</a></li><li><a href="S04_Sign_Convention_Credits_Negative_in_the_GL_Flipped.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S04_Sign_Convention_Credits_Negative_in_the_GL_Flipped.html">Sign Convention: Credits Negative in the GL, Flipped for Presentation</a></li><li><a href="S05_Margin_Rows_GM_EBITDA_EBIT_with_Dynamic_Format.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S05_Margin_Rows_GM_EBITDA_EBIT_with_Dynamic_Format.html">Margin Rows (GM %, EBITDA %, EBIT %) with Dynamic Format Strings</a></li><li><a href="S06_Formatting_the_PL_Matrix_Layout_Spacers_Bold.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S06_Formatting_the_PL_Matrix_Layout_Spacers_Bold.html">Formatting the P&amp;L Matrix: Layout, Spacers, Bold Subtotals, Empty Rows</a></li><li><a href="S07_Alternatives_Calculation_Groups_Field_Parameters.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S07_Alternatives_Calculation_Groups_Field_Parameters.html">Alternatives: Calculation Groups, Field Parameters, Visual Calcs, Excel</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_The_PnL_Dispatcher_Measure_with_SWITCHTRUE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C01_The_PnL_Dispatcher_Measure_with_SWITCHTRUE.html">The PnL Dispatcher Measure with SWITCH(TRUE())</a></li><li><a href="../concepts/C02_Actual_Signed_Applying_the_CoA_Sign_Factor_Row_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C02_Actual_Signed_Applying_the_CoA_Sign_Factor_Row_by.html">Actual Signed: Applying the CoA Sign Factor Row by Row</a></li><li><a href="../concepts/C03_The_Subtotal_Measure_Removing_the_Layout_Filter_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C03_The_Subtotal_Measure_Removing_the_Layout_Filter_by.html">The Subtotal Measure: Removing the Layout Filter by Sort Order</a></li><li><a href="../concepts/C04_EBITDA_with_a_Dynamic_Format_String_in_the_PL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C04_EBITDA_with_a_Dynamic_Format_String_in_the_PL.html">EBITDA % with a Dynamic Format String in the P&amp;L Matrix</a></li><li><a href="../concepts/C05_Blanking_PL_Grand_Totals_with_ISINSCOPE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C05_Blanking_PL_Grand_Totals_with_ISINSCOPE.html">Blanking P&amp;L Grand Totals with ISINSCOPE</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>The P&amp;L Layout Dimension: Lines, Sort Order, Type and Sign</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> A P&amp;L layout dimension: LineID, label, sort order, line type (Account / Subtotal / Ratio / Header), sign factor</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A financial statement is not a natural hierarchy of accounts. It interleaves account groups with computed subtotals
+(Gross Profit, EBITDA, EBIT, PBT, PAT), ratio rows (EBITDA %), headings ("Expenses") and blank spacers, in a sequence set
+by Schedule III or by the board's MIS format. A matrix visual can only show rows that exist in some table, in the order
+of some column. A <strong>layout dimension</strong> — a small table with one row per printed line — is how you make the statement's
+structure data rather than code: the MIS format can change (a new line for "Exceptional items", a re-sequenced cost
+block) by editing a table, without touching DAX.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="columns-of-the-layout-table">Columns of the layout table</h3>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LineID</code></td>
+<td>Text/int key</td>
+<td>Stable identifier, e.g., <code>PL010</code>; referenced by CoA mapping and by ratio definitions</td>
+</tr>
+<tr>
+<td><code>Line</code> (label)</td>
+<td>Text</td>
+<td>The text printed in the matrix: "Revenue from operations", "Gross Profit", "EBITDA %"</td>
+</tr>
+<tr>
+<td><code>SortOrder</code></td>
+<td>Integer</td>
+<td>Position in the statement (10, 20, 30 … with gaps for future insertions); <code>Line</code> is sorted by this column</td>
+</tr>
+<tr>
+<td><code>Type</code></td>
+<td>Text</td>
+<td><code>Account</code> (sum of mapped accounts), <code>Subtotal</code> (computed), <code>Ratio</code> (margin %), <code>Header</code> (label only), <code>Spacer</code> (blank row)</td>
+</tr>
+<tr>
+<td><code>SignFactor</code></td>
+<td>±1</td>
+<td>Display sign for the line (see s04): whether the presented value is flipped relative to the profit-signed computation</td>
+</tr>
+<tr>
+<td><code>Indent</code></td>
+<td>Integer</td>
+<td>0/1/2 for visual indentation (applied with leading spaces or a separate label column)</td>
+</tr>
+<tr>
+<td><code>IsBold</code> / <code>Style</code></td>
+<td>Text/flag</td>
+<td>Drives conditional formatting for subtotal rows</td>
+</tr>
+<tr>
+<td><code>RatioNumeratorLine</code>, <code>RatioDenominatorLine</code></td>
+<td>LineID</td>
+<td>For Ratio rows: which subtotal or line forms the numerator/denominator</td>
+</tr>
+<tr>
+<td><code>SubtotalFrom</code>, <code>SubtotalTo</code></td>
+<td>SortOrder</td>
+<td>Optional explicit ranges for non-cumulative subtotals ("Total expenses")</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-layout-mis-format">Example layout (MIS format)</h3>
+<table>
+<thead>
+<tr>
+<th>LineID</th>
+<th>Line</th>
+<th>SortOrder</th>
+<th>Type</th>
+<th>SignFactor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PL010</td>
+<td>Revenue from operations</td>
+<td>10</td>
+<td>Account</td>
+<td>1</td>
+</tr>
+<tr>
+<td>PL020</td>
+<td>Cost of materials consumed</td>
+<td>20</td>
+<td>Account</td>
+<td>1</td>
+</tr>
+<tr>
+<td>PL030</td>
+<td>Changes in inventories</td>
+<td>30</td>
+<td>Account</td>
+<td>1</td>
+</tr>
+<tr>
+<td>PL040</td>
+<td><strong>Gross Profit</strong></td>
+<td>40</td>
+<td>Subtotal</td>
+<td>1</td>
+</tr>
+<tr>
+<td>PL045</td>
+<td>GM %</td>
+<td>45</td>
+<td>Ratio</td>
+<td>1</td>
+</tr>
+<tr>
+<td>PL050</td>
+<td>Employee benefits expense</td>
+<td>50</td>
+<td>Account</td>
+<td>1</td>
+</tr>
+<tr>
+<td>PL060</td>
+<td>Other expenses</td>
+<td>60</td>
+<td>Account</td>
+<td>1</td>
+</tr>
+<tr>
+<td>PL070</td>
+<td><strong>EBITDA</strong></td>
+<td>70</td>
+<td>Subtotal</td>
+<td>1</td>
+</tr>
+<tr>
+<td>PL075</td>
+<td>EBITDA %</td>
+<td>75</td>
+<td>Ratio</td>
+<td>1</td>
+</tr>
+<tr>
+<td>PL080</td>
+<td>Depreciation and amortisation</td>
+<td>80</td>
+<td>Account</td>
+<td>1</td>
+</tr>
+<tr>
+<td>PL090</td>
+<td><strong>EBIT</strong></td>
+<td>90</td>
+<td>Subtotal</td>
+<td>1</td>
+</tr>
+<tr>
+<td>PL095</td>
+<td>EBIT %</td>
+<td>95</td>
+<td>Ratio</td>
+<td>1</td>
+</tr>
+<tr>
+<td>PL100</td>
+<td>Other income</td>
+<td>100</td>
+<td>Account</td>
+<td>1</td>
+</tr>
+<tr>
+<td>PL110</td>
+<td>Finance costs</td>
+<td>110</td>
+<td>Account</td>
+<td>1</td>
+</tr>
+<tr>
+<td>PL120</td>
+<td><strong>PBT</strong></td>
+<td>120</td>
+<td>Subtotal</td>
+<td>1</td>
+</tr>
+<tr>
+<td>PL130</td>
+<td>Tax expense</td>
+<td>130</td>
+<td>Account</td>
+<td>1</td>
+</tr>
+<tr>
+<td>PL140</td>
+<td><strong>PAT</strong></td>
+<td>140</td>
+<td>Subtotal</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Here every line uses the profit-signed convention (income positive, expenses negative), so <code>SignFactor</code> = 1 throughout;
+a team that prints expenses as positive numbers would set <code>SignFactor</code> = −1 on expense lines and apply it <em>after</em>
+subtotals are computed (s04). Whether Other income sits above or below EBITDA is a policy choice: Indian analysts usually
+exclude it from EBITDA; Schedule III's "Total income" includes it. The layout table makes that choice visible.</p>
+<h3 id="relationships">Relationships</h3>
+<pre><code>Layout (1) ──&lt; CoA (*) ──&lt; GL (*)
+              LineID        AccountKey
+</code></pre>
+<ul>
+<li>Each CoA account carries the <code>LineID</code> of the Account-type layout line it rolls into (s02). One account maps to one line
+  per layout; multiple layouts (Schedule III vs MIS) need either one LineID column per layout or a bridge table.</li>
+<li>Filters flow Layout → CoA → GL. Subtotal, Ratio, Header and Spacer lines have no accounts, so a filter from those rows
+  reaches no GL rows — which is why their values must be computed with the layout filter removed (s02, s03).</li>
+<li>This is a deliberate snowflake: Layout is an attribute table of CoA. It is acceptable because Layout is tiny and is
+  used only for statement rendering; it can also be flattened into CoA via Power Query if the model must stay a pure star.</li>
+</ul>
+<h3 id="building-the-table">Building the table</h3>
+<p>Maintain the layout in Excel or a SharePoint list owned by the financial controller, load through Power Query (Week 10),
+and validate on refresh:</p>
+<ul>
+<li><code>SortOrder</code> unique; <code>LineID</code> unique.</li>
+<li>Every Account line has at least one mapped CoA account; every P&amp;L CoA account maps to an Account line (an "Unmapped"
+  line catches the rest, Topic 1 s06).</li>
+<li>Every Ratio line references existing numerator/denominator lines.</li>
+</ul>
+<pre><code class="language-DAX">Unmapped P&amp;L Accounts =
+CALCULATE ( COUNTROWS ( CoA ), CoA[Statement] = &quot;PL&quot;, ISBLANK ( CoA[LineID] ) )
+</code></pre>
+<h3 id="sort-by-column">Sort by Column</h3>
+<p>Set <code>Layout[Line]</code> → <em>Sort by column</em> → <code>Layout[SortOrder]</code>. Without it, the matrix sorts labels alphabetically
+("Changes in inventories" before "Revenue"). A sort column must have exactly one value per label — two lines with the
+same label ("Others" under two sections) need distinct labels or a trailing space.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Multiple statements:</strong> a Balance Sheet layout and a Cash Flow layout can live in the same table with a <code>Statement</code>
+  column, or in separate tables; separate tables keep slicers simple.</li>
+<li><strong>Schedule III vs MIS:</strong> statutory presentation (Division II: revenue, other income, total income, expenses by nature,
+  exceptional items, tax, OCI) and management formats (contribution, EBITDA) differ; support both with a <code>LayoutName</code>
+  column and a slicer, plus one <code>LineID</code> mapping per layout.</li>
+<li><strong>Indentation:</strong> Power BI matrix has no per-row indent property; use leading non-breaking spaces in the label or a
+  separate "display label" column.</li>
+<li><strong>Header rows that disappear:</strong> headers return blank, so the matrix hides them unless "Show items with no data" is on
+  or the measure returns a value hidden by format (s06).</li>
+<li><strong>Version control:</strong> changing SortOrder or Type changes every report; keep the layout table under change control with
+  an effective-from date if historical packs must be reproducible.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>The layout dimension turns statement structure into data: one row per printed line.</li>
+<li>Core columns: LineID, label, SortOrder (with gaps), Type, SignFactor; add style, indent and ratio references.</li>
+<li>CoA maps accounts to Account lines; non-account lines reach no GL rows and need computed values.</li>
+<li>Sort the label by SortOrder; validate uniqueness and mapping completeness at refresh.</li>
+<li>Policy choices (Other income placement, expense sign display) belong in the table, not in DAX.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-design-a-schedule-iii-layout-l2">Q1. Design a Schedule III layout [L2]</h3>
+<p>Design the layout table (LineID, Line, SortOrder, Type, SignFactor) for a Schedule III Division II statement of profit
+and loss down to "Total comprehensive income for the period", including Total income, Total expenses, exceptional items,
+current and deferred tax and OCI lines. Mark which subtotals are cumulative and which need explicit ranges.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> "Total expenses" is not a running total of everything above it.</p>
+</blockquote>
+<h3 id="q2-validation-measures-l1">Q2. Validation measures [L1]</h3>
+<p>Write DAX measures that return (a) the number of P&amp;L accounts without a LineID, (b) the number of Account lines with no
+mapped accounts, and (c) the number of duplicate SortOrder values in the layout. State the expected value for each.</p>
+<h3 id="q3-two-formats-one-model-l3">Q3. Two formats, one model [L3]</h3>
+<p>The CFO wants a statutory Schedule III view and an MIS view (with EBITDA and contribution margin) from the same GL. Design
+the table structures (layout tables, CoA columns or bridge table) and relationships, explain how a slicer chooses the
+format, and describe one risk in each design.</p>
+<h3 id="q4-other-income-placement-l2">Q4. Other income placement [L2]</h3>
+<p>A company earns ₹ 18 crore of treasury income on FY26 revenue of ₹ 600 crore, with EBITDA (excluding other income) of
+₹ 84 crore. Show EBITDA and EBITDA % with other income included and excluded, and explain how the layout table would
+implement each choice.</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← P&amp;L layout, subtotals and sign-flip</a><a class="next" href="S02_Mapping_CoA_to_Layout_Lines_and_Computing.html">Mapping CoA to Layout Lines and Computing Subtotals by Sort… →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulling Actuals from a Long-Format Database with SUMIFS · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S05_Pulling_Actuals_from_a_Long_Format_Database_with.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 5</a> <span>›</span> <a href="../../index.html">Week 18</a> <span>›</span> <a href="../index.html">T1 · 12/18-month rolling forecast timeline…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · 12/18-month rolling forecast timeline mechanics</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Rolling_Horizon_Design_12_Month_18_Month_and_5.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S01_Rolling_Horizon_Design_12_Month_18_Month_and_5.html">Rolling Horizon Design: 12-Month, 18-Month and 5-Quarter Windows</a></li><li><a href="S02_Reforecast_Cadence_and_Decoupling_from_the_AOP.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S02_Reforecast_Cadence_and_Decoupling_from_the_AOP.html">Reforecast Cadence and Decoupling from the AOP</a></li><li><a href="S03_Dynamic_Timeline_Headers_Driven_by_a_Single_Cutoff.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S03_Dynamic_Timeline_Headers_Driven_by_a_Single_Cutoff.html">Dynamic Timeline Headers Driven by a Single Cutoff Date</a></li><li><a href="S04_ActualForecast_Flags_and_Per_Column_Data_Source.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S04_ActualForecast_Flags_and_Per_Column_Data_Source.html">Actual/Forecast Flags and Per-Column Data Source Switching</a></li><li><a href="S05_Pulling_Actuals_from_a_Long_Format_Database_with.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S05_Pulling_Actuals_from_a_Long_Format_Database_with.html">Pulling Actuals from a Long-Format Database with SUMIFS</a></li><li><a href="S06_Forecast_Granularity_Fewer_Lines_than_the_Budget.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S06_Forecast_Granularity_Fewer_Lines_than_the_Budget.html">Forecast Granularity: Fewer Lines than the Budget</a></li><li><a href="S07_EPM_Support_for_Rolling_Forecasts_Anaplan_Adaptive.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/subtopics/S07_EPM_Support_for_Rolling_Forecasts_Anaplan_Adaptive.html">EPM Support for Rolling Forecasts: Anaplan, Adaptive and EPBCS</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_First_Forecast_Month_and_SEQUENCE_Driven_Month_End.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C01_First_Forecast_Month_and_SEQUENCE_Driven_Month_End.html">First Forecast Month and SEQUENCE-Driven Month-End Headers</a></li><li><a href="../concepts/C02_Non_Dynamic_Array_Header_Formula_Using_a_COLUMN.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C02_Non_Dynamic_Array_Header_Formula_Using_a_COLUMN.html">Non-Dynamic-Array Header Formula Using a COLUMN Offset</a></li><li><a href="../concepts/C03_Actual_Flag_and_the_IF_SUMIFS_Value_Switch.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C03_Actual_Flag_and_the_IF_SUMIFS_Value_Switch.html">Actual Flag and the IF-SUMIFS Value Switch</a></li><li><a href="../concepts/C04_Constant_Length_Rolling_Horizon.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C04_Constant_Length_Rolling_Horizon.html">Constant-Length Rolling Horizon</a></li><li><a href="../concepts/C05_Prefer_INDEXXLOOKUP_over_Volatile_OFFSETINDIRECT.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T1_1218_month_rolling_forecast_timeline/concepts/C05_Prefer_INDEXXLOOKUP_over_Volatile_OFFSETINDIRECT.html">Prefer INDEX/XLOOKUP over Volatile OFFSET/INDIRECT</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Pulling Actuals from a Long-Format Database with SUMIFS</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Pulling actuals from a long-format database with <code>SUMIFS</code> keyed on month-end dates</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>The rolling forecast is only as fast as its actuals feed. If actuals are pasted into a wide grid each month, someone must align columns, check that the right month landed in the right place, and remember to extend formulas. A long-format database with one row per month × account × entity, queried with <code>SUMIFS</code> keyed on month-end dates, eliminates that: a new month is appended at the bottom, and every report picks it up when the cutoff moves. This is also the shape of every EPM data load and Power BI fact table, so building it in Excel is preparation for the tools used in large Indian FP&amp;A teams.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="long-format-vs-wide-format">Long format vs wide format</h3>
+<table>
+<thead>
+<tr>
+<th>Wide (avoid as storage)</th>
+<th>Long (store this way)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>One row per account, one column per month</td>
+<td>One row per account × entity × month</td>
+</tr>
+<tr>
+<td>New month = new column, formulas must extend</td>
+<td>New month = new rows appended</td>
+</tr>
+<tr>
+<td>Hard to add dimensions (entity, version)</td>
+<td>Any dimension is just another column</td>
+</tr>
+<tr>
+<td>Formula reads a column position</td>
+<td>Formula reads by criteria</td>
+</tr>
+</tbody>
+</table>
+<p>Minimum columns for the actuals table <code>Act</code>: <code>Month</code> (month-end date serial), <code>Entity</code>, <code>Acct</code> (forecast account / reporting line), <code>Amt</code> (signed amount in ₹, consistent sign convention), plus optional <code>GLCode</code>, <code>CostCentre</code>, <code>Source</code>, <code>LoadDate</code>.</p>
+<h3 id="why-month-end-dates-as-keys">Why month-end dates as keys</h3>
+<ul>
+<li><code>EOMONTH</code> produces month-ends, so headers and keys match natively.</li>
+<li>A date serial is unambiguous across regional settings; "Sep-25" text is not.</li>
+<li>Range criteria work: <code>"&gt;="&amp;FYStart</code> and <code>"&lt;="&amp;Cutoff</code> sum YTD in one <code>SUMIFS</code>, impossible with text periods.</li>
+<li>Fiscal-period codes from ERPs (SAP posting period 006 for September under an April FY, Tally's month names) must be converted on load — in Power Query with <code>Date.EndOfMonth</code> combined with <code>Date.AddMonths</code> from the fiscal-year start, or via a period-mapping table (FiscalYear, Period → MonthEnd).</li>
+</ul>
+<h3 id="the-core-formulas">The core formulas</h3>
+<p>Single month for one account:</p>
+<pre><code>=SUMIFS(Act[Amt],Act[Month],C$4,Act[Acct],$A10)
+</code></pre>
+<p>With entity selector (named <code>SelEntity</code>, "All" meaning consolidated):</p>
+<pre><code>=SUMIFS(Act[Amt],Act[Month],C$4,Act[Acct],$A10,Act[Entity],IF(SelEntity=&quot;All&quot;,&quot;*&quot;,SelEntity))
+</code></pre>
+<p>The wildcard <code>"*"</code> matches any text entity code — ensure entity codes are text, not numbers, or wildcard matching fails.</p>
+<p>YTD in one formula (no grid needed):</p>
+<pre><code>=SUMIFS(Act[Amt],Act[Acct],$A10,Act[Month],&quot;&gt;=&quot;&amp;FYStart,Act[Month],&quot;&lt;=&quot;&amp;Cutoff)
+</code></pre>
+<p>TTM:</p>
+<pre><code>=SUMIFS(Act[Amt],Act[Acct],$A10,Act[Month],&quot;&gt;&quot;&amp;EOMONTH(Cutoff,-12),Act[Month],&quot;&lt;=&quot;&amp;Cutoff)
+</code></pre>
+<h3 id="mapping-gl-to-forecast-accounts">Mapping GL to forecast accounts</h3>
+<p>Actuals come at GL-code level (hundreds of codes); the forecast runs at reporting-line level (s06). Map on load rather than in the grid: a <code>Map</code> table (<code>GLCode → Acct</code>, <code>CostCentre → BU</code>) merged in Power Query, or a helper column in <code>Act</code>: <code>=XLOOKUP([@GLCode],Map[GLCode],Map[Acct],"UNMAPPED")</code>. Add a check: <code>=SUMIFS(Act[Amt],Act[Acct],"UNMAPPED")</code> must be zero, and a TB tie-out: total of <code>Act</code> by month equals the trial balance P&amp;L total from the ERP.</p>
+<h3 id="sign-conventions">Sign conventions</h3>
+<p>Ledger extracts usually carry credits as negatives (revenue negative). Choose one convention for the forecast database — commonly <em>revenue positive, costs positive, profit = revenue − costs</em> — and flip signs during load using an <code>AcctType</code> attribute in the mapping table. Mixed conventions are the commonest cause of EBITDA doubling or cancelling in a new model.</p>
+<h3 id="performance">Performance</h3>
+<p><code>SUMIFS</code> on Excel Tables is fast even on 200,000 rows, but a 60-account × 18-month × 10-entity grid is 10,800 <code>SUMIFS</code>. Keep it fast by: restricting the actuals table to P&amp;L/BS lines needed, pre-aggregating to account × entity × month in Power Query (not transaction level), avoiding whole-column references (<code>A:A</code>) inside <code>SUMPRODUCT</code>, and using a pivot table or Power Pivot when slicing many dimensions.</p>
+<h3 id="illustration">Illustration</h3>
+<p><code>Act</code> contains (₹ lakh):</p>
+<table>
+<thead>
+<tr>
+<th>Month</th>
+<th>Entity</th>
+<th>Acct</th>
+<th>Amt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>31-Aug-2025</td>
+<td>MUM</td>
+<td>Revenue</td>
+<td>1,250</td>
+</tr>
+<tr>
+<td>31-Aug-2025</td>
+<td>BLR</td>
+<td>Revenue</td>
+<td>980</td>
+</tr>
+<tr>
+<td>30-Sep-2025</td>
+<td>MUM</td>
+<td>Revenue</td>
+<td>1,310</td>
+</tr>
+<tr>
+<td>30-Sep-2025</td>
+<td>BLR</td>
+<td>Revenue</td>
+<td>1,020</td>
+</tr>
+<tr>
+<td>30-Sep-2025</td>
+<td>MUM</td>
+<td>Freight</td>
+<td>64</td>
+</tr>
+</tbody>
+</table>
+<p>With header C4 = 30-Sep-2025, <code>A10</code> = "Revenue", <code>SelEntity</code> = "All": result 2,330. With <code>SelEntity</code> = "BLR": 1,020. Header 31-Oct-2025 returns 0 (no rows) — correct for an actual column only because the flag will route October to the forecast.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Zero vs missing:</strong> <code>SUMIFS</code> returns 0 for "no data loaded" and for "true zero". Add a load-status table (Month, Entity, Loaded Y/N) and a check that every month ≤ cutoff is loaded for every entity.</li>
+<li><strong>Duplicates:</strong> re-loading a month without deleting the earlier load doubles actuals. Use Power Query to replace (not append) the current month, or a <code>LoadID</code> and a check of row counts per month.</li>
+<li><strong>Late adjustments:</strong> a post-close journal for September posted in October's period appears in October; decide whether management actuals use posting period (simpler, ties to TB) or restated period, and document it.</li>
+<li><strong>Intercompany:</strong> consolidated actuals need intercompany eliminations; either load eliminated data from the consolidation tool or include an <code>Elim</code> entity.</li>
+<li><strong>Balance sheet accounts:</strong> store closing balances (not movements) per month and use exact-month criteria, never a YTD range sum.</li>
+<li><strong>Dates stored as text in the extract:</strong> <code>SUMIFS</code> silently returns zero; validate with <code>=COUNT(Act[Month])=ROWS(Act[Month])</code>.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Store actuals long: Month (month-end date) × Entity × Account × Amount, in a named Excel Table.</li>
+<li>Key everything on month-end date serials so headers from <code>EOMONTH</code> match exactly.</li>
+<li><code>SUMIFS</code> with range criteria gives single-month, YTD and TTM values from the same table.</li>
+<li>Map GL codes and flip signs at load, and check for unmapped amounts and TB tie-out.</li>
+<li>Protect against duplicates, missing loads and text dates with explicit checks.</li>
+<li>Pre-aggregate in Power Query to keep thousands of <code>SUMIFS</code> fast.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-writing-the-retrieval-formulas-l1">Q1. Writing the retrieval formulas [L1]</h3>
+<p>Given table <code>Act</code> with columns Month, Entity, Acct, Amt, write formulas for (a) September 2025 revenue for entity "PUN", (b) FY26 YTD revenue for all entities at the current <code>Cutoff</code>, and (c) TTM freight cost at the current <code>Cutoff</code>.</p>
+<h3 id="q2-converting-sap-posting-periods-l2">Q2. Converting SAP posting periods [L2]</h3>
+<p>An SAP extract has columns FiscalYear (2025), Period (001–012, with 001 = April under an April–March fiscal year variant; FiscalYear 2025 = April 2025–March 2026), GL, ProfitCentre and Balance (credits negative). Describe the Power Query steps to produce the <code>Act</code> table with month-end dates, mapped accounts and revenue-positive signs, and write the M or Excel formula that converts FiscalYear and Period into a month-end date.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Period 010 of FiscalYear 2025 is January 2026 — the calendar year changes in periods 010–012.</p>
+</blockquote>
+<h3 id="q3-tie-out-and-integrity-checks-l2">Q3. Tie-out and integrity checks [L2]</h3>
+<p>Design four checks for the actuals load of a 9-entity group: completeness, duplicates, mapping and TB tie-out. For each, write the Excel formula and explain what a non-zero result would indicate.</p>
+<h3 id="q4-diagnosing-doubled-actuals-l2">Q4. Diagnosing doubled actuals [L2]</h3>
+<p>After the October close, consolidated YTD revenue in the forecast shows ₹1,674 crore against ₹1,436 crore in the published management accounts. The controller re-ran the September Power Query refresh on WD 1 of October after an adjusting entry. Identify the likely cause, the quantity of the error implied if September revenue was ₹238 crore and other months are correct, and the process fix.</p></section>
+<nav class="pager"><a class="prev" href="S04_ActualForecast_Flags_and_Per_Column_Data_Source.html">← Actual/Forecast Flags and Per-Column Data Source Switching</a><a class="next" href="S06_Forecast_Granularity_Fewer_Lines_than_the_Budget.html">Forecast Granularity: Fewer Lines than the Budget →</a></nav>
+</main></div></body></html>

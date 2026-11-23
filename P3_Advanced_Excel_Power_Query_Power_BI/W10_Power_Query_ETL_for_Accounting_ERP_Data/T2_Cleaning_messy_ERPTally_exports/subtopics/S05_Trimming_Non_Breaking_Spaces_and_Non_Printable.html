@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trimming Non-Breaking Spaces and Non-Printable Characters · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S05_Trimming_Non_Breaking_Spaces_and_Non_Printable.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T2 · Cleaning messy ERP/Tally exports</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Cleaning messy ERP/Tally exports</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Skipping_Report_Headers_Conditionally_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S01_Skipping_Report_Headers_Conditionally_and.html">Skipping Report Headers Conditionally and Promoting Headers</a></li><li><a href="S02_Removing_Blank_Subtotal_and_Grand_Total_Rows_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S02_Removing_Blank_Subtotal_and_Grand_Total_Rows_by.html">Removing Blank, Subtotal and Grand Total Rows by Condition</a></li><li><a href="S03_Filling_Down_Cost_Centre_and_Group_Headers_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S03_Filling_Down_Cost_Centre_and_Group_Headers_in.html">Filling Down Cost-Centre and Group Headers in Report Layouts</a></li><li><a href="S04_Splitting_Ledger_Code_and_Name_Parsing_Tally_DrCr.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S04_Splitting_Ledger_Code_and_Name_Parsing_Tally_DrCr.html">Splitting Ledger Code and Name; Parsing Tally Dr/Cr Amounts</a></li><li><a href="S05_Trimming_Non_Breaking_Spaces_and_Non_Printable.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S05_Trimming_Non_Breaking_Spaces_and_Non_Printable.html">Trimming Non-Breaking Spaces and Non-Printable Characters</a></li><li><a href="S06_Fixing_Date_Locales_and_Indian_Digit_Grouping_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S06_Fixing_Date_Locales_and_Indian_Digit_Grouping_in.html">Fixing Date Locales and Indian Digit Grouping in Text Amounts</a></li><li><a href="S07_Error_Handling_Remove_Errors_Keep_Errors_and_try.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S07_Error_Handling_Remove_Errors_Keep_Errors_and_try.html">Error Handling: Remove Errors, Keep Errors and try ... otherwise</a></li><li><a href="S08_Export_Layouts_Tally_Day_BookLedgerTB_SAP_FBL3N.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S08_Export_Layouts_Tally_Day_BookLedgerTB_SAP_FBL3N.html">Export Layouts: Tally Day Book/Ledger/TB, SAP FBL3N, S_ALR, Oracle TB</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Conditional_TableSkip_Followed_by_PromoteHeaders.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C01_Conditional_TableSkip_Followed_by_PromoteHeaders.html">Conditional Table.Skip Followed by PromoteHeaders</a></li><li><a href="../concepts/C02_Filtering_Out_Null_and_Total_Rows_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C02_Filtering_Out_Null_and_Total_Rows_with.html">Filtering Out Null and Total Rows with Table.SelectRows</a></li><li><a href="../concepts/C03_TableFillDown_Fills_Only_Nulls_Replace_Blanks.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C03_TableFillDown_Fills_Only_Nulls_Replace_Blanks.html">Table.FillDown Fills Only Nulls: Replace Blanks First</a></li><li><a href="../concepts/C04_TableSplitColumn_at_Each_Delimiter_into_Code_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C04_TableSplitColumn_at_Each_Delimiter_into_Code_and.html">Table.SplitColumn at Each Delimiter into Code and Name</a></li><li><a href="../concepts/C05_Cleaning_Text_Replace_Char_160_TextClean_TextTrim.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C05_Cleaning_Text_Replace_Char_160_TextClean_TextTrim.html">Cleaning Text: Replace Char 160, Text.Clean, Text.Trim</a></li><li><a href="../concepts/C06_TransformColumnTypes_with_an_Explicit_en_IN.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C06_TransformColumnTypes_with_an_Explicit_en_IN.html">TransformColumnTypes with an Explicit en-IN Culture</a></li><li><a href="../concepts/C07_Converting_Tally_DrCr_Suffix_Balances_into_Signed.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C07_Converting_Tally_DrCr_Suffix_Balances_into_Signed.html">Converting Tally Dr/Cr Suffix Balances into Signed Numbers</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Trimming Non-Breaking Spaces and Non-Printable Characters</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Trimming and cleaning non-breaking spaces (char 160) and non-printable characters</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Invisible characters are the commonest reason a merge "should match but doesn't". A ledger name copied from a web portal, a vendor name in a GSTR-2B download, or a narration in a bank CSV frequently contains a <strong>non-breaking space</strong> (Unicode U+00A0, character code 160) instead of a normal space (code 32), a trailing tab, a carriage return from a multi-line cell, or a zero-width character from a PDF conversion. "ABC Traders" and "ABC Traders" with a char-160 look identical on screen, and Power Query's merge is exact, so the bank-to-book match fails, the CoA mapping shows a gap, and Group By shows the same ledger twice. Cleaning text <strong>before</strong> keys are built is mandatory hygiene.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="what-the-built-in-functions-do">What the built-in functions do</h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Removes</th>
+<th>Does not remove</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Text.Trim(text)</code></td>
+<td>Leading and trailing whitespace (spaces, tabs, line breaks and other Unicode whitespace characters at the ends)</td>
+<td>Whitespace <strong>inside</strong> the text (double spaces stay)</td>
+</tr>
+<tr>
+<td><code>Text.TrimStart</code> / <code>Text.TrimEnd</code></td>
+<td>Leading only / trailing only; optional list of characters to trim</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>Text.Clean(text)</code></td>
+<td>Control (non-printable) characters, e.g. codes 0–31 such as line feed, carriage return, tab</td>
+<td>Non-breaking space (160) — it is printable whitespace</td>
+</tr>
+<tr>
+<td><code>Text.Replace(text, old, new)</code></td>
+<td>Exact substring replacement</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>Text.Remove(text, chars)</code> / <code>Text.Select(text, chars)</code></td>
+<td>Remove or keep a list of characters</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>Character.FromNumber(n)</code></td>
+<td>Builds a character from its code, e.g. <code>Character.FromNumber(160)</code></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>Behaviour differs from Excel: Excel's <code>TRIM</code> removes only code-32 spaces but also collapses internal runs of spaces; Power Query's <code>Text.Trim</code> removes a broader set of whitespace at the ends but does <strong>not</strong> collapse internal spaces. Test rather than assume, especially with char 160 at the ends — explicitly replacing it first (c05) guarantees the result.</p>
+<h3 id="the-standard-cleaning-expression">The standard cleaning expression</h3>
+<p>Convert non-breaking spaces to normal spaces, strip control characters, trim the ends:</p>
+<pre><code>Clean = Table.TransformColumns(t, {
+          {&quot;Name&quot;, each Text.Trim(Text.Clean(Text.Replace(_, Character.FromNumber(160), &quot; &quot;))), type text},
+          {&quot;Narration&quot;, each Text.Trim(Text.Clean(Text.Replace(_, Character.FromNumber(160), &quot; &quot;))), type text}})
+</code></pre>
+<p>Order: replace 160 first (so that it becomes trimmable or collapsible), then <code>Text.Clean</code>, then <code>Text.Trim</code>. Apply to every column used as a key or grouping attribute.</p>
+<h3 id="collapsing-internal-double-spaces">Collapsing internal double spaces</h3>
+<p>"ABC  Traders" (two spaces) does not equal "ABC Traders". Two approaches:</p>
+<pre><code>// split on spaces, drop empties, re-join
+Collapse = (x as nullable text) as nullable text =&gt;
+             if x = null then null
+             else Text.Combine(List.Select(Text.Split(x, &quot; &quot;), each _ &lt;&gt; &quot;&quot;), &quot; &quot;)
+</code></pre>
+<p>or apply <code>Text.Replace(x, "  ", " ")</code> repeatedly inside <code>List.Accumulate</code>. The split/select/combine version handles any number of spaces in one pass.</p>
+<h3 id="a-reusable-cleaning-function">A reusable cleaning function</h3>
+<p>Put the rule in one function query and use it everywhere:</p>
+<pre><code>fxCleanText = (x as nullable text) as nullable text =&gt;
+    if x = null then null else
+    let
+        nbsp   = Text.Replace(x, Character.FromNumber(160), &quot; &quot;),
+        zw     = Text.Remove(nbsp, {Character.FromNumber(8203), Character.FromNumber(65279)}),
+        ctrl   = Text.Clean(zw),
+        parts  = List.Select(Text.Split(ctrl, &quot; &quot;), each _ &lt;&gt; &quot;&quot;),
+        joined = Text.Combine(parts, &quot; &quot;)
+    in
+        joined
+</code></pre>
+<p>Code 8203 is the zero-width space and 65279 the byte-order mark (BOM), which appears at the start of the first header in UTF-8 files saved by some tools — it makes the first column header an invisible BOM followed by "Date" rather than plain "Date", breaking <code>Table.SelectColumns</code>.</p>
+<p>Apply to many columns with a dynamic list:</p>
+<pre><code>TextCols = Table.ColumnsOfType(t, {type text, type nullable text}),
+Cleaned  = Table.TransformColumns(t, List.Transform(TextCols, each {_, fxCleanText, type nullable text}))
+</code></pre>
+<p><code>Table.ColumnsOfType</code> only works if columns are already typed as text; on untyped (<code>any</code>) columns list the names explicitly or use <code>Table.ColumnNames</code> with exclusions.</p>
+<h3 id="detecting-invisible-characters">Detecting invisible characters</h3>
+<ul>
+<li><strong>Length test</strong>: add a column <code>Text.Length([Name])</code> and compare with the visible length; a difference flags hidden characters.</li>
+<li><strong>Character codes</strong>: <code>List.Transform(Text.ToList([Name]), Character.ToNumber)</code> shows each code — look for 160, 9, 10, 13, 8203.</li>
+<li><strong>Column profile</strong>: distinct counts higher than expected ("ABC Traders" appearing twice in Group By).</li>
+<li><strong>Merge diagnostics</strong>: an anti-join listing keys that look identical in both tables.</li>
+</ul>
+<h3 id="case-normalisation">Case normalisation</h3>
+<p>Merges are case-sensitive by default. For keys, apply <code>Text.Upper</code> after cleaning (GSTIN and PAN are uppercase by definition; vendor names may vary). Keep a display version in proper case if needed, and join on the normalised key.</p>
+<h3 id="illustration">Illustration</h3>
+<p>Bank narration from an SBI CSV: <code>"NEFT/AXISP00123456/ RAMESH TRADERS "</code> with a char-160 before RAMESH and a CR/LF at the end. Book ledger: "Ramesh Traders". After <code>fxCleanText</code> and <code>Text.Upper</code> on both sides and extracting the party from the narration, both keys read "RAMESH TRADERS" with length 14. Before cleaning, the bank key had length 17 and the merge found no match.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Text.Clean removes line breaks inside narrations</strong>, joining words ("PAYMENTRECEIVED"). Replace line breaks with a space first if words span lines: <code>Text.Replace(x, "#(lf)", " ")</code>, likewise <code>"#(cr)"</code>.</li>
+<li><strong>Do not clean numeric columns as text</strong> after typing; clean before conversion — a char 160 in "1,23,456.00" makes number conversion fail with DataFormat.Error, so cleaning is also a typing prerequisite.</li>
+<li><strong>GSTIN/PAN</strong> should also have internal spaces removed entirely (<code>Text.Remove(x, " ")</code>), not just collapsed.</li>
+<li><strong>Trimming specific characters</strong>: <code>Text.Trim(x, {"*", " "})</code> removes SAP's asterisk markers at the ends.</li>
+<li><strong>Over-cleaning narrations</strong> can destroy information (e.g. the "/" separators used to parse UTRs); clean keys aggressively, narrations lightly.</li>
+<li><strong>Performance</strong>: row-wise text functions never fold; on SQL sources, do this after filtering, or in SQL (<code>LTRIM(RTRIM(REPLACE(x, CHAR(160), ' ')))</code>).</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Non-breaking space (160) is not removed by <code>Text.Clean</code> and may not be handled the way you expect by trimming; replace it explicitly first.</li>
+<li>Standard order: replace 160 → remove zero-width/BOM → <code>Text.Clean</code> → collapse internal spaces → trim.</li>
+<li>Wrap the rule in a reusable function and apply it to every key column with a dynamic list.</li>
+<li>Detect hidden characters with length tests and character-code lists before blaming the merge.</li>
+<li>Clean text before number conversion and before building merge keys; upper-case keys for matching.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-explain-the-failure-l1">Q1. Explain the failure [L1]</h3>
+<p>A merge of the CoA mapping on Ledger Name returns 1,180 matches out of 1,212 ledgers. The 32 unmatched names look identical in both tables. List the hidden-character causes you would test for and the M expression you would use to reveal each.</p>
+<h3 id="q2-write-the-cleaner-l2">Q2. Write the cleaner [L2]</h3>
+<p>Write a function <code>fxKey</code> that turns any vendor-name text into a matching key: replaces char 160, removes zero-width spaces and BOM, removes control characters (converting line breaks to spaces first), collapses internal spaces, trims, upper-cases and removes the suffixes " PVT LTD", " PRIVATE LIMITED" and " LTD".</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Process the suffix list with <code>List.Accumulate</code> or a nested replace after upper-casing.</p>
+</blockquote>
+<h3 id="q3-header-with-bom-l2">Q3. Header with BOM [L2]</h3>
+<p><code>Table.SelectColumns(Promoted, {"Date","Narration","Amount"})</code> fails with "The column 'Date' of the table wasn't found" although the preview shows a Date column. Explain the likely cause in a UTF-8 bank file and two ways to fix it.</p>
+<h3 id="q4-number-conversion-failure-l1">Q4. Number conversion failure [L1]</h3>
+<p><code>Table.TransformColumnTypes(t, {{"Amount", type number}}, "en-IN")</code> produces DataFormat.Error on 214 of 9,800 rows whose values look like "1,23,456.00". Describe how you would diagnose and fix the issue.</p>
+<h3 id="q5-excel-vs-power-query-trim-l2">Q5. Excel vs Power Query trim [L2]</h3>
+<p>Compare Excel <code>TRIM</code>/<code>CLEAN</code> with Power Query <code>Text.Trim</code>/<code>Text.Clean</code> on: internal double spaces, char 160 at the ends, char 160 in the middle, line feeds, and tabs. Then describe a small test table you would build to confirm the behaviour in your version.</p></section>
+<nav class="pager"><a class="prev" href="S04_Splitting_Ledger_Code_and_Name_Parsing_Tally_DrCr.html">← Splitting Ledger Code and Name; Parsing Tally Dr/Cr Amounts</a><a class="next" href="S06_Fixing_Date_Locales_and_Indian_Digit_Grouping_in.html">Fixing Date Locales and Indian Digit Grouping in Text… →</a></nav>
+</main></div></body></html>

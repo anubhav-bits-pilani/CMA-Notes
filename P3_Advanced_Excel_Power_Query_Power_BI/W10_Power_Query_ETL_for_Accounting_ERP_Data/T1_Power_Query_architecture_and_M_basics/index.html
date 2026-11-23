@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Power Query architecture and M basics · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/index.html" data-kind="topic">
+<header class="top"><a class="brand" href="../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../index.html">Home</a> <span>›</span> <a href="../../index.html">Phase 3</a> <span>›</span> <a href="../index.html">Week 10</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">Week 10</a></div><ul class="side-links"><li><a href="index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/index.html">T1 · Power Query architecture and M basics</a></li><li><a href="../T2_Cleaning_messy_ERPTally_exports/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/index.html">T2 · Cleaning messy ERP/Tally exports</a></li><li><a href="../T3_Unpivoting_wide_budgets_and_TBs/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/index.html">T3 · Unpivoting wide budgets and TBs</a></li><li><a href="../T4_Folder_consolidation_pipeline/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/index.html">T4 · Folder consolidation pipeline</a></li><li><a href="../T5_Merging_appending_and_reconciliation/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/index.html">T5 · Merging, appending and reconciliation joins</a></li><li><a href="../T6_Custom_columns_and_fiscal_logic_in_M/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/index.html">T6 · Custom columns and fiscal logic in M</a></li></ul></aside>
+<main class="content">
+<div class="kind">Topic</div>
+<h1>Power Query architecture and M basics</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<section class="index"><h2>Notes in this topic</h2><div class="cols"><div><h3>Subtopics</h3><ul class="links num"><li><a href="subtopics/S01_Power_Query_Connectors_for_Accounting_and_ERP_Data.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S01_Power_Query_Connectors_for_Accounting_and_ERP_Data.html">S01 · Power Query Connectors for Accounting and ERP Data Sources</a></li><li><a href="subtopics/S02_Power_Query_Editor_Anatomy_Steps_Formula_Bar_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S02_Power_Query_Editor_Anatomy_Steps_Formula_Bar_and.html">S02 · Power Query Editor Anatomy: Steps, Formula Bar and Dependencies</a></li><li><a href="subtopics/S03_M_Language_Structure_letin_Values_Records_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S03_M_Language_Structure_letin_Values_Records_Lists.html">S03 · M Language Structure: let/in, Values, Records, Lists and each</a></li><li><a href="subtopics/S04_Data_Types_and_Controlling_Automatic_Type.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S04_Data_Types_and_Controlling_Automatic_Type.html">S04 · Data Types and Controlling Automatic Type Detection</a></li><li><a href="subtopics/S05_Query_Folding_Which_Steps_Fold_Native_Query_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S05_Query_Folding_Which_Steps_Fold_Native_Query_and.html">S05 · Query Folding: Which Steps Fold, Native Query and Diagnostics</a></li><li><a href="subtopics/S06_Parameters_Staging_Queries_and_Reference_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S06_Parameters_Staging_Queries_and_Reference_vs.html">S06 · Parameters, Staging Queries and Reference vs Duplicate</a></li><li><a href="subtopics/S07_Load_Options_and_Refresh_Behaviour_in_Excel_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S07_Load_Options_and_Refresh_Behaviour_in_Excel_vs.html">S07 · Load Options and Refresh Behaviour in Excel vs Power BI</a></li><li><a href="subtopics/S08_Privacy_Levels_and_FormulaFirewall_Errors.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S08_Privacy_Levels_and_FormulaFirewall_Errors.html">S08 · Privacy Levels and Formula.Firewall Errors</a></li></ul></div><div><h3>Key concepts & formulas</h3><ul class="links num"><li><a href="concepts/C01_CsvDocument_with_FileContents_Delimiter_Encoding.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C01_CsvDocument_with_FileContents_Delimiter_Encoding.html">C01 · Csv.Document with File.Contents: Delimiter, Encoding, QuoteStyle</a></li><li><a href="concepts/C02_ExcelWorkbook_Navigation_to_a_Named_Sheet_or_Table.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C02_ExcelWorkbook_Navigation_to_a_Named_Sheet_or_Table.html">C02 · Excel.Workbook Navigation to a Named Sheet or Table</a></li><li><a href="concepts/C03_SqlDatabase_with_a_Native_Query_Blocks_Later.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C03_SqlDatabase_with_a_Native_Query_Blocks_Later.html">C03 · Sql.Database with a Native Query Blocks Later Folding</a></li><li><a href="concepts/C04_ValueNativeQuery_with_Parameters_and_EnableFolding.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C04_ValueNativeQuery_with_Parameters_and_EnableFolding.html">C04 · Value.NativeQuery with Parameters and EnableFolding</a></li><li><a href="concepts/C05_The_each_Keyword_and_the_Underscore_Parameter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C05_The_each_Keyword_and_the_Underscore_Parameter.html">C05 · The each Keyword and the Underscore Parameter</a></li><li><a href="concepts/C06_Folding_Breakers_TableBuffer_Index_Columns_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C06_Folding_Breakers_TableBuffer_Index_Columns_and.html">C06 · Folding Breakers: Table.Buffer, Index Columns and Custom Functions</a></li><li><a href="concepts/C07_MySQLDatabase_Connector_and_OdbcDataSource_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C07_MySQLDatabase_Connector_and_OdbcDataSource_for.html">C07 · MySQL.Database Connector and Odbc.DataSource for Tally</a></li></ul></div></div></section><article class="note"><blockquote>
+<p><strong>Roadmap topic:</strong> Power Query Architecture &amp; M Basics: Connecting to CSV, Excel workbooks, folders, and SQL databases; understanding query folding and applied steps</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>Power Query is the ETL (extract, transform, load) engine shared by Excel, Power BI Desktop, Power BI Dataflows and Fabric Dataflows Gen2. Under every button sits <strong>M</strong>, a functional, lazily evaluated language in which a query is a single <code>let ... in</code> expression of named, immutable steps. For a finance professional this means the month-end chores you currently do by hand in Excel — deleting Tally report headers, retyping dates, pasting six bank files one below another, VLOOKUP-ing ledgers against bank lines — can be written once as a recipe and replayed on every refresh. The recipe is visible (Applied Steps), reviewable (Advanced Editor) and traceable (Query Dependencies), which suits an audit-trained mindset.</p>
+<p>The architecture matters as much as the syntax. <strong>Connectors</strong> decide what work can be pushed to the source: database connectors (SQL Server, MySQL) support <strong>query folding</strong>, where your steps are translated into SQL and run on the server, whereas files (CSV, Excel, Folder, SharePoint) never fold. <strong>Types</strong> decide whether amounts sum and keys match; automatic type detection is a convenience that becomes a liability in recurring pipelines. <strong>Parameters</strong> and <strong>staging queries</strong> separate environment-specific values and source-specific cleaning from business logic. <strong>Load options</strong> decide where results land and how refresh behaves in Excel versus the Power BI Service. <strong>Privacy levels</strong> govern whether sources may be combined at all, and are behind the infamous Formula.Firewall errors.</p>
+<p>Learning sequence: start with connectors (s01) and the editor (s02) to get data in and see the steps; learn M structure (s03) so you can read what the UI writes; then control types (s04) before anything else goes wrong; understand folding (s05) for database sources; design pipelines with parameters and staging (s06); choose load destinations and understand refresh (s07); and finally learn to fix firewall errors (s08) because every reconciliation combines sources. The concept notes give you the exact M patterns you will reuse for the rest of the phase: reading CSV and Excel robustly (c01, c02), SQL with and without native queries (c03, c04), <code>each</code> and <code>_</code> (c05), the folding breakers (c06) and MySQL/Tally ODBC connectivity (c07).</p>
+<p>For FP&amp;A and reporting roles in India this topic is the foundation of the Week 10 exercise (bank reconciliation and multi-branch GL consolidation), the Week 11 data model and the Week 12 refresh/gateway setup. Interviewers for FP&amp;A analyst and finance automation roles regularly ask "What is query folding?", "Reference vs Duplicate?" and "How would you make this refresh on someone else's machine?" — all answered here.</p>
+<h2 id="concept-map">Concept map</h2>
+<table>
+<thead>
+<tr>
+<th>Subtopic / concept</th>
+<th>Role in the topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s01 Connectors</td>
+<td>Get data from CSV, Excel, Folder, SQL Server, MySQL/ODBC and SharePoint; know which fold</td>
+</tr>
+<tr>
+<td>s02 Editor anatomy</td>
+<td>Read and audit a query: Applied Steps, formula bar, Advanced Editor, Dependencies</td>
+</tr>
+<tr>
+<td>s03 M structure</td>
+<td>Understand <code>let ... in</code>, records, lists, tables, <code>each</code> and <code>_</code></td>
+</tr>
+<tr>
+<td>s04 Data types</td>
+<td>Turn off auto-detection; type deliberately with locale; keep identifiers as text</td>
+</tr>
+<tr>
+<td>s05 Query folding</td>
+<td>Push work to databases; verify with View Native Query and Diagnostics</td>
+</tr>
+<tr>
+<td>s06 Parameters and staging</td>
+<td>Remove hard-coding; layer queries; choose Reference vs Duplicate</td>
+</tr>
+<tr>
+<td>s07 Load options and refresh</td>
+<td>Connection only vs Table vs Data Model; Excel vs Power BI refresh</td>
+</tr>
+<tr>
+<td>s08 Privacy levels and firewall</td>
+<td>Combine sources legally; fix Formula.Firewall errors</td>
+</tr>
+<tr>
+<td>c01 <code>Csv.Document</code> options</td>
+<td>Robust CSV parsing: delimiter, UTF-8, quoted commas</td>
+</tr>
+<tr>
+<td>c02 <code>Excel.Workbook</code> navigation</td>
+<td>Pick a sheet/table from the navigation table; tolerate name drift</td>
+</tr>
+<tr>
+<td>c03 SQL native query vs navigation</td>
+<td>Native SQL blocks later folding; prefer navigation then filters</td>
+</tr>
+<tr>
+<td>c04 <code>Value.NativeQuery</code></td>
+<td>Bound parameters and <code>EnableFolding</code> on native SQL</td>
+</tr>
+<tr>
+<td>c05 <code>each</code> and <code>_</code></td>
+<td>The lambda shorthand behind every row rule</td>
+</tr>
+<tr>
+<td>c06 Folding breakers</td>
+<td>Buffer, index and custom functions go after foldable steps</td>
+</tr>
+<tr>
+<td>c07 MySQL and Tally ODBC</td>
+<td>Native MySQL connector requirement; ODBC DSN for Tally</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-concepts-to-study">Related concepts to study</h2>
+<h3 id="sql-equivalents-from-mysql">SQL equivalents from MySQL</h3>
+<p><em>SQL equivalents (WHERE, GROUP BY, JOIN, UNION) from your MySQL background</em></p>
+<p>Your MySQL experience transfers almost one-to-one. <code>WHERE</code> is <code>Table.SelectRows</code> (Filter Rows); <code>SELECT col1, col2</code> is <code>Table.SelectColumns</code> (Choose Columns); <code>GROUP BY ... SUM()</code> is <code>Table.Group</code>; <code>JOIN</code> is <code>Table.NestedJoin</code> + <code>Table.ExpandTableColumn</code> (Merge Queries) with join kinds matching <code>LEFT</code>, <code>RIGHT</code>, <code>FULL</code>, <code>INNER</code> plus the anti-joins SQL writes as <code>LEFT JOIN ... WHERE b.key IS NULL</code>; <code>UNION ALL</code> is <code>Table.Combine</code> (Append). Against a database these steps fold into exactly that SQL, so you can read View Native Query output like your own queries. Differences: Power Query keeps nested tables in cells after a merge, column names are case-sensitive, and <code>Table.Distinct</code> replaces <code>UNION</code> (without ALL) de-duplication.</p>
+<h3 id="excel-vs-power-bi-vs-dataflows-gen2">Excel vs Power BI vs Dataflows Gen2</h3>
+<p><em>Power Query in Excel vs Power BI Desktop vs Dataflows Gen2 (Fabric)</em></p>
+<p>The M engine is the same; the hosts differ. <strong>Excel</strong> Power Query loads to sheets or the Excel Data Model, refreshes on the desktop with per-user credentials and has no scheduling. <strong>Power BI Desktop</strong> loads to a VertiPaq model, adds folding indicators, query plans and Diagnostics, and publishes to the Service for scheduled refresh via gateways. <strong>Dataflows Gen2</strong> in Microsoft Fabric run Power Query Online in the cloud, write outputs to destinations such as a Lakehouse or Warehouse, and let several reports share one cleaned staging layer — useful when five FP&amp;A reports all need the same cleaned GL. Some connectors and functions differ by host (e.g. <code>Excel.CurrentWorkbook</code> exists only in Excel), so portable code avoids host-specific functions.</p>
+<h3 id="week-11-loading-into-the-data-model">Week 11: loading into the Data Model</h3>
+<p><em>→ Week 11: loading clean tables into the Data Model / Power Pivot</em></p>
+<p>Power Query output is the input to Week 11's star schema. Cleaned fact tables (GL lines, budget, bank) and dimensions (CoA, cost centre, calendar) load to the Data Model / Power Pivot, where relationships and DAX measures are defined. Decisions made now carry forward: correct types (dates as <code>date</code>, keys as text matching on both sides), long rather than wide facts, one row per grain, and staging queries left as connection only so that the model holds only what reports use. A poorly typed Power Query output becomes a broken relationship or a text column that cannot be summed in the model.</p>
+<h3 id="week-12-gateway-and-scheduled-refresh">Week 12: gateway and scheduled refresh</h3>
+<p><em>→ Week 12: refresh through the on-premises data gateway and scheduled refresh</em></p>
+<p>When the pipeline moves to the Power BI Service, every source must be reachable from the cloud. Cloud sources (SharePoint Online, OneDrive, Azure SQL) refresh directly. On-premises sources — a <code>D:\Finance</code> folder, an on-prem SQL Server, Tally ODBC on a branch PC — need an <strong>on-premises data gateway</strong> installed on a machine that can see them, with matching data source definitions, credentials and privacy levels. Parameters (s06) let you switch paths and servers between Desktop and Service, and folding (s05) is required for incremental refresh. Designs that ignore this in Week 10 have to be rebuilt in Week 12.</p>
+<h3 id="java-streams-parallels">Java streams parallels</h3>
+<p><em>Functional parallels to Java streams/lambdas: <code>List.Transform</code>, <code>List.Accumulate</code>, <code>List.Generate</code></em></p>
+<p>M is functional, much like Java streams. <code>List.Transform(list, each _ * 1.18)</code> is <code>list.stream().map(x -&gt; x * 1.18)</code>; <code>List.Select</code> is <code>filter</code>; <code>List.Sum</code> is <code>mapToDouble(...).sum()</code>. <code>List.Accumulate(list, seed, (state, current) =&gt; ...)</code> is <code>reduce</code> — useful for applying a list of find-replace pairs to narrations or building a running balance. <code>List.Generate(initial, condition, next, optional selector)</code> resembles a <code>for</code> loop or <code>Stream.iterate</code> with a predicate — used for paging through an API or generating month-end dates from a start date until an end date. As with streams, there is no mutation: each call returns a new value, and evaluation is lazy.</p>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<h3 id="hard-coded-absolute-paths">Hard-coded absolute paths</h3>
+<p><em>Hard-coded absolute paths (<code>C:\Users\...</code>) break on another machine; use a parameter or a named cell</em></p>
+<p>The UI writes the full path of the file you browsed to, such as <code>C:\Users\ankit\Downloads\TB_Mar26.xlsx</code>. It works for the author and fails for everyone else with <code>DataSource.NotFound</code>, and fails in the Power BI Service. People make the mistake because the first build is always a one-off test. Correct treatment: a typed text parameter (<code>pFolderPath</code>) or, in Excel, a named cell on a Control sheet, referenced by every source step; ideally a SharePoint/OneDrive location for team use. Detection in review: open the Advanced Editor of every source query and search for <code>C:\</code>, <code>D:\</code> or <code>Users\</code>; Data source settings also lists every distinct path the file uses.</p>
+<h3 id="auto-changed-type-hard-codes-column-names">Auto Changed Type hard-codes column names</h3>
+<p><em>The auto "Changed Type" step hard-codes column names that may be missing in next month's file</em></p>
+<p>Automatic type detection inserts <code>Table.TransformColumnTypes</code> listing every column from the sample file. Next month a bank renames "Withdrawal Amt." to "Withdrawal Amount", or a Tally export drops an empty column, and refresh fails with "The column ... wasn't found". It happens because the step is invisible until it fails. Correct treatment: turn off type detection for unstructured sources, delete the auto step, and type once after cleaning — with a dynamic column list where layouts vary and an explicit <code>"en-IN"</code> culture. Review check: any step named <code>Changed Type</code> immediately after Source or Promoted Headers is a red flag.</p>
+<h3 id="renaming-without-tracing-references">Renaming without tracing references</h3>
+<p><em>Renaming columns or steps without tracing downstream references leads to Expression.Error at refresh</em></p>
+<p>Renaming a query or a step is propagated automatically within the file, but renaming a <strong>column</strong> in a staging query is not: every downstream step that refers to <code>[Amt]</code> breaks once it becomes <code>[Amount]</code>, and DAX measures or Excel formulas pointing to the old name break too. People rename to tidy up, without checking dependants. Correct treatment: check Query Dependencies first, rename at the end of staging using a single explicit rename step, update dependants in the same session, and refresh all outputs before saving. Review check: refresh everything after any rename; search the M of dependent queries for the old name.</p>
+<h3 id="assuming-every-source-folds">Assuming every source folds</h3>
+<p><em>Assuming every source folds, when CSV and Excel files never do</em></p>
+<p>Users learn that "filter early" makes things fast and assume the same holds for a 400 MB CSV of SAP line items, or design incremental refresh on a folder of Excel files. File sources have no query engine; Power Query must read every byte, and View Native Query is always greyed out. Correct treatment: for large file-based data, reduce columns and rows as early as possible to cut memory, consider moving the data into a database or Dataflow/Lakehouse, and reserve folding-dependent designs (incremental refresh, DirectQuery) for database sources. Review check: list each query's source type; any performance or incremental-refresh claim on a file source should be challenged.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-design-a-source-layer-for-a-multi-entity-close-l3">Q1. Design a source layer for a multi-entity close [L3]</h3>
+<p>ABC Ltd (NSE-listed, FY ending 31 March) has: (i) three Tally companies whose TBs are exported monthly to <code>.xlsx</code> with sheet names that vary ("TB", "Trial Balance"); (ii) bank CSVs from HDFC and SBI, UTF-8, with quoted narrations containing commas; (iii) an on-prem SQL Server <code>FinanceDW</code> with a 35-million-row <code>GLLines</code> table for the SAP entity; (iv) a CoA mapping maintained in an Excel Table on SharePoint. The CFO wants a Power BI report refreshed daily in the Service.
+(a) Choose the connector and write the source M for each. (b) Design the parameter list and query layering with load settings. (c) Identify which steps can fold and which sources need a gateway. (d) State the privacy levels you would set and why.</p>
+<h3 id="q2-review-a-colleagues-file-l2">Q2. Review a colleague's file [L2]</h3>
+<p>A colleague's Excel workbook has one query with these steps: Source = <code>Csv.Document(File.Contents("C:\Users\neha\Desktop\bank_apr.csv"), [Delimiter=",", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None])</code>, Promoted Headers, Changed Type, Removed Top Rows (18), Removed Bottom Rows (3), Merged Queries with <code>TallyBank</code> (a SQL extract with a native query <code>SELECT * FROM BankBook</code>), Expanded, Added Index, Filtered Rows (Year = 2025). It is loaded to both a sheet and the Data Model. Write a structured review memo listing every issue, its consequence and the fix, grouped under connectors, types, folding, pipeline design and load settings.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Work through the topic subtopics in order and test each step against them.</p>
+</blockquote>
+<h3 id="q3-folding-and-performance-experiment-l2">Q3. Folding and performance experiment [L2]</h3>
+<p>Using a SQL Server (or MySQL) table of at least 1 million GL rows, build two versions of the same summary query (by Account and Month for one FY): one where an index column is added first, one where it is added last. Record refresh time, the native query shown at each step, and Query Diagnostics output. Write a one-paragraph conclusion suitable for an internal wiki.</p>
+<h3 id="q4-firewall-and-parameter-case-l2">Q4. Firewall and parameter case [L2]</h3>
+<p>An Excel recon file reads the folder path from named cell <code>rngPath</code>, the as-of date from named cell <code>rngAsOf</code>, bank files from that folder, and the book ledger via Tally ODBC. On a colleague's machine refresh fails with "Formula.Firewall: Query 'Recon' (step 'Files') references other queries or steps, so it may not directly access a data source". Explain the cause, redesign the queries, and state what the colleague also needs installed and configured for the ODBC source.</p>
+<h3 id="q5-m-reading-test-l1">Q5. M reading test [L1]</h3>
+<p>Explain in plain English what each line does, and identify what <code>_</code> refers to on each line where it appears:
+<code>Src = Excel.Workbook(File.Contents(pPath), null, true){[Item="Budget", Kind="Table"]}[Data]</code>, <code>Cols = List.RemoveItems(Table.ColumnNames(Src), {"Account","Dept"})</code>, <code>Pos = Table.SelectRows(Src, each [#"Apr-25"] &lt;&gt; null)</code>, <code>Up = Table.TransformColumns(Pos, {{"Dept", each Text.Upper(_), type text}})</code>, <code>Grp = Table.Group(Up, {"Dept"}, {{"Rows", each Table.RowCount(_), Int64.Type}})</code>.</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← Week 10: Power Query (ETL) for Accounting &amp; ERP Data…</a><a class="next" href="subtopics/S01_Power_Query_Connectors_for_Accounting_and_ERP_Data.html">Power Query Connectors for Accounting and ERP Data Sources →</a></nav>
+</main></div></body></html>

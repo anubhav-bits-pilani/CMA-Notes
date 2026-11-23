@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Volume × Price × Mix Revenue Decomposition (UVG, Realisation, Mix) · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S01_Volume_Price_Mix_Revenue_Decomposition_UVG.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T4 · Granular Revenue Forecasting</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Granular Revenue Forecasting</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Volume_Price_Mix_Revenue_Decomposition_UVG.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S01_Volume_Price_Mix_Revenue_Decomposition_UVG.html">Volume × Price × Mix Revenue Decomposition (UVG, Realisation, Mix)</a></li><li><a href="S02_Store_Rollout_Revenue_Build_Stores_Area_Revenue.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S02_Store_Rollout_Revenue_Build_Stores_Area_Revenue.html">Store Rollout Revenue Build: Stores, Area, Revenue per Sq Ft, LFL</a></li><li><a href="S03_Store_Maturity_Curves_and_Vintage_Cohort_Revenue.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S03_Store_Maturity_Curves_and_Vintage_Cohort_Revenue.html">Store Maturity Curves and Vintage Cohort Revenue Builds</a></li><li><a href="S04_Capacity_Led_Revenue_Build_Capacity_Utilisation.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S04_Capacity_Led_Revenue_Build_Capacity_Utilisation.html">Capacity-Led Revenue Build: Capacity, Utilisation, Realisation</a></li><li><a href="S05_Customer_Cohort_and_ARPU_Revenue_Models_with.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S05_Customer_Cohort_and_ARPU_Revenue_Models_with.html">Customer Cohort and ARPU Revenue Models with Retention Curves</a></li><li><a href="S06_Segment_Revenue_Builds_Trent_and_Pidilite_Case.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S06_Segment_Revenue_Builds_Trent_and_Pidilite_Case.html">Segment Revenue Builds: Trent and Pidilite Case Structures</a></li><li><a href="S07_Top_Down_Revenue_Cross_Check_Market_Size_Share_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/subtopics/S07_Top_Down_Revenue_Cross_Check_Market_Size_Share_and.html">Top-Down Revenue Cross-Check: Market Size, Share and Nominal GDP</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Revenue_Identity_Volume_Realisation_and_Compounded.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C01_Revenue_Identity_Volume_Realisation_and_Compounded.html">Revenue Identity: Volume × Realisation and Compounded Growth</a></li><li><a href="../concepts/C02_Revenue_Bearing_Stores_Average_and_Timing_Weighted.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C02_Revenue_Bearing_Stores_Average_and_Timing_Weighted.html">Revenue-Bearing Stores: Average and Timing-Weighted Counts</a></li><li><a href="../concepts/C03_Retail_Revenue_Average_Area_Revenue_per_Sq_Ft_with.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C03_Retail_Revenue_Average_Area_Revenue_per_Sq_Ft_with.html">Retail Revenue: Average Area × Revenue per Sq Ft with LFL</a></li><li><a href="../concepts/C04_Capacity_Revenue_Capacity_Utilisation_Price_with_a.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C04_Capacity_Revenue_Capacity_Utilisation_Price_with_a.html">Capacity Revenue: Capacity × Utilisation × Price with a Practical Cap</a></li><li><a href="../concepts/C05_Cohort_Revenue_Initial_Customers_Retention_by_Age.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C05_Cohort_Revenue_Initial_Customers_Retention_by_Age.html">Cohort Revenue: Initial Customers × Retention by Age × ARPU by Age</a></li><li><a href="../concepts/C06_Ind_AS_115_Revenue_Basis_Net_of_GST_Discounts_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T4_Granular_Revenue_Forecasting/concepts/C06_Ind_AS_115_Revenue_Basis_Net_of_GST_Discounts_and.html">Ind AS 115 Revenue Basis: Net of GST, Discounts and Variable Consideration</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Volume × Price × Mix Revenue Decomposition (UVG, Realisation, Mix)</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Volume × Price × Mix decomposition: underlying volume growth (UVG), price realisation, mix shift</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Every Indian consumer and materials company reports revenue growth in rupees, but managements guide, and
+analysts argue, in <em>volume</em>. Pidilite's quarterly commentary leads with "underlying volume growth" in Consumer &amp;
+Bazaar; Asian Paints talks of "volume growth vs value growth"; cement companies report tonnes and
+realisation per tonne. A forecast that models only rupee growth cannot answer the questions an investment
+committee or a CFO actually asks: how much of next year's 12% growth is price we have already taken, how much is
+real demand, and how much is customers trading up to premium products? Decomposition also matters for costs
+(Topic 5): volume drives raw-material consumption and freight; price does not. If price and volume are blurred,
+gross margin and operating leverage in the model are wrong by construction.</p>
+<p>In FP&amp;A, the same decomposition becomes the price-volume-mix (PVM) variance analysis of Phase 5: budget versus
+actual revenue is split into the effect of selling more units, charging a different price and selling a
+different blend. Building the forecast in the same three components means the variance bridge falls out of the
+model automatically.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-identity">The identity</h3>
+<p>Revenue for a single product is volume times realisation. For a portfolio, revenue is the sum over SKUs or
+categories:</p>
+<p>\[
+R_t = \sum_{i} Q_{i,t} \times P_{i,t}
+\]</p>
+<p>where \(Q_{i,t}\) is volume of product \(i\) in year \(t\) (tonnes, litres, units) and \(P_{i,t}\) is net
+realisation per unit (net of GST, trade discounts and schemes, as recognised under Ind AS 115). Growth then
+compounds multiplicatively:</p>
+<p>\[
+(1 + g_R) = (1 + g_Q) \times (1 + g_P) \times (1 + g_M)
+\]</p>
+<p>with \(g_Q\) = total volume growth, \(g_P\) = like-for-like price change and \(g_M\) = mix effect. The cross-term
+matters: 8% volume and 5% price give 13.4% value growth, not 13%.</p>
+<h3 id="underlying-volume-growth-uvg">Underlying volume growth (UVG)</h3>
+<p>UVG is the volume growth of the existing business, excluding acquisitions, divestments, new categories launched
+in the year, and one-offs such as channel stocking ahead of a price increase. Pidilite, for example, reports UVG
+for Consumer &amp; Bazaar separately from reported value growth. Steps to derive a clean historical UVG:</p>
+<ol>
+<li>Start from reported volume (or management-disclosed volume growth from the investor presentation/concall).</li>
+<li>Strip acquired volumes for the first twelve months after acquisition (inorganic contribution).</li>
+<li>Adjust for known channel inventory movements — e.g., pre-buying in March ahead of an April price hike
+   inflates Q4 and depresses Q1.</li>
+<li>Use a consistent base: if the company changes its volume metric (kg vs litres, or excludes a category),
+   re-base the prior year.</li>
+</ol>
+<p>Forecast UVG is a judgement anchored to real drivers: category penetration, rural/urban demand, construction and
+housing activity for adhesives/paints, and the company's own guidance. Typical Indian consumer UVG ranges 6–12%
+in normal years; anything above 15% for several years needs an explicit story (new distribution, category
+creation).</p>
+<h3 id="price-realisation">Price realisation</h3>
+<p>Price realisation is the change in net revenue per unit on a like-for-like basis — the same SKU at this year's
+net price versus last year's. Its components:</p>
+<ul>
+<li><strong>List price increases/decreases</strong> taken during the year (weighted by the months each applied).</li>
+<li><strong>Trade schemes, discounts and consumer promotions</strong> — under Ind AS 115 these reduce revenue, so an increase in
+  schemes is a negative price effect even if list price is unchanged.</li>
+<li><strong>GST rate changes</strong> — revenue is net of GST, so a GST cut passed on to consumers reduces gross price but not
+  net realisation; a cut <em>not</em> passed on increases net realisation.</li>
+</ul>
+<p>Timing weighting is essential. A 6% increase effective 1 October contributes roughly 3% to the current year's
+average realisation and the remaining ~3% to next year (the "carry-over" or "annualisation" effect):</p>
+<p>\[
+g_{P,t} \approx \text{Hike} \times \frac{\text{Months effective in year } t}{12}
+\]</p>
+<h3 id="mix-shift">Mix shift</h3>
+<p>Mix is the change in average realisation caused by selling a different blend of products at <em>unchanged</em> prices
+— for example, a larger share of premium waterproofing within construction chemicals, or Zudio growing faster
+than Westside within Trent. Mix is computed as a residual or directly:</p>
+<p>\[
+\text{Mix effect} = \sum_i \left(s_{i,t} - s_{i,t-1}\right) \times P_{i,t-1}
+\]</p>
+<p>where \(s_{i,t}\) is product \(i\)'s share of total volume. Positive mix means volume is shifting to
+higher-realisation products. Note that mix can be <em>negative</em> even in a healthy business: Trent's mix shifts
+towards the lower-price Zudio format, so blended revenue per sq ft can fall while every format is growing.</p>
+<h3 id="worked-illustration-two-product-decomposition">Worked illustration — two-product decomposition</h3>
+<p>An adhesives business sells two products (volumes in '000 tonnes, realisation ₹ crore per '000 tonnes):</p>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>FY25A volume</th>
+<th>FY25A price</th>
+<th>FY26E volume</th>
+<th>FY26E price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Standard adhesive</td>
+<td>100</td>
+<td>1.50</td>
+<td>104</td>
+<td>1.56</td>
+</tr>
+<tr>
+<td>Premium adhesive</td>
+<td>40</td>
+<td>3.00</td>
+<td>48</td>
+<td>3.12</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>140</td>
+<td>—</td>
+<td>152</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>FY25A revenue = 100 × 1.50 + 40 × 3.00 = ₹270 crore. FY26E revenue = 104 × 1.56 + 48 × 3.12 = 162.24 + 149.76 =
+₹312.00 crore, growth 15.6%.</p>
+<table>
+<thead>
+<tr>
+<th>Bridge step</th>
+<th>Computation</th>
+<th>₹ crore</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY25A revenue</td>
+<td></td>
+<td>270.00</td>
+</tr>
+<tr>
+<td>Volume (at FY25 mix and price)</td>
+<td>270 × (152 ÷ 140 − 1)</td>
+<td>+23.14</td>
+</tr>
+<tr>
+<td>Mix (at FY25 price)</td>
+<td>(104 × 1.50 + 48 × 3.00) − 270 × 152 ÷ 140</td>
+<td>300.00 − 293.14 = +6.86</td>
+</tr>
+<tr>
+<td>Price</td>
+<td>312.00 − 300.00</td>
+<td>+12.00</td>
+</tr>
+<tr>
+<td>FY26E revenue</td>
+<td></td>
+<td>312.00</td>
+</tr>
+</tbody>
+</table>
+<p>Volume growth 8.6%, mix 2.3%, price 4.0%; \(1.086 \times 1.023 \times 1.040 \approx 1.156\). The order of the
+bridge (volume first, then mix, then price) must be fixed and documented because the cross-terms land in
+whichever step is computed last.</p>
+<h3 id="model-implementation">Model implementation</h3>
+<p>Lay out one block per product or category on the Revenue sheet, each with three driver rows linked from
+Assumptions (volume growth, price change, optional months-effective) and calculated rows below:</p>
+<pre><code>Volume_t      = Volume_{t-1} * (1 + Vol_Growth_t)
+Realisation_t = Realisation_{t-1} * (1 + Price_Change_t)
+Revenue_t     = Volume_t * Realisation_t
+Check_t       = Revenue_t - SUM(Segment_Revenues_t)   ' must be 0
+</code></pre>
+<p>In Excel with the constant column in E and timeline from column H, a typical row is
+<code>=G15*(1+Inputs!H$22)</code> copied across, with historical columns holding blue hardcoded actuals and a timeline flag
+switching between them (see w13 t2 c06). Mix is not a separate input when you model products separately — it
+emerges from differential volume growth. If you model only a total, you need an explicit mix row, which is
+weaker and harder to defend.</p>
+<p>Add a decomposition output block (volume %, price %, mix %, value %) for each forecast year, and compare it with
+the historical decomposition. A forecast in which price contributes 8% a year in a 4% CPI economy without a
+commodity story is an immediate red flag.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>No disclosed volumes.</strong> Many Indian companies disclose only volume <em>growth</em> in concalls, not absolute
+  volumes. Build an index (FY21 = 100) and forecast the index; realisation is then revenue ÷ index, which is
+  usable for growth decomposition even without true units.</li>
+<li><strong>Grammage/pack-size changes.</strong> FMCG companies cut pack sizes instead of raising prices (hidden price
+  increase). Volume measured in packs overstates real volume; measure in kg/litres.</li>
+<li><strong>Deflation pass-through.</strong> When commodity prices fall (VAM, crude derivatives), companies pass on price cuts;
+  value growth can be below volume growth. Do not assume price growth is always positive.</li>
+<li><strong>Export revenue.</strong> Realisation in rupees moves with the exchange rate; split price into local-currency price
+  and FX translation for international segments.</li>
+<li><strong>Channel filling.</strong> A launch year often includes pipeline stocking at distributors; UVG for year 2 can look
+  weak against an inflated base.</li>
+<li><strong>Mix definitions.</strong> Decide whether mix is within a segment (premium vs standard adhesives) or across segments
+  (Consumer vs B2B); mixing both levels double-counts.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Revenue = Σ volume × net realisation; growth components compound multiplicatively.</li>
+<li>UVG is organic volume growth excluding acquisitions, launches and channel stocking; it is the core demand
+  driver.</li>
+<li>Price realisation must be time-weighted for mid-year hikes and is net of schemes and GST.</li>
+<li>Mix is the realisation change from selling a different blend at constant prices; it can be negative.</li>
+<li>Model products separately so mix emerges from the build rather than as a plug.</li>
+<li>Always output a historical and forecast decomposition and sanity-check price against CPI and commodity trends.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-three-way-bridge-for-a-paint-company-l2">Q1. Three-way bridge for a paint company [L2]</h3>
+<p>A decorative paint company sold 1,20,000 KL in FY25 at an average realisation of ₹2.10 lakh per KL across
+economy (50,000 KL at ₹1.40 lakh), mid (45,000 KL at ₹2.20 lakh) and luxury (25,000 KL at ₹3.32 lakh) ranges.
+For FY26 it expects economy volume +4%, mid +9%, luxury +16%, and a 3% list-price increase effective
+1 July 2025 across all ranges. Build the FY26 revenue and a volume–mix–price bridge in ₹ crore, stating the order
+of steps you use.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Time-weight the price increase for nine months and compute mix at FY25 prices.</p>
+</blockquote>
+<h3 id="q2-carry-over-price-effect-l1">Q2. Carry-over price effect [L1]</h3>
+<p>A company took a 5% price increase on 1 January 2025 and a further 2% on 1 October 2025. With no other price
+change, estimate the like-for-like price growth for FY25 and FY26 (years ending 31 March).</p>
+<h3 id="q3-value-growth-with-negative-mix-l2">Q3. Value growth with negative mix [L2]</h3>
+<p>Trent's blended revenue per sq ft fell in a year when Westside and Zudio each reported positive like-for-like
+growth. Explain the arithmetic of how this happens, and describe how you would present the decomposition to an
+investment committee so the fall is not misread as weakness.</p>
+<h3 id="q4-uvg-cleanup-from-concall-data-l3">Q4. UVG cleanup from concall data [L3]</h3>
+<p>A construction-chemicals company reports value growth of 18% in FY25. The concall states: 3% from an acquisition
+completed on 1 October 2024 (annual revenue run-rate ₹240 crore on a base of ₹4,000 crore), price increases
+contributing 2%, and channel stocking of ₹60 crore in March 2025 ahead of an April hike. Derive the underlying
+volume growth, set out your assumptions, and explain how you would treat the channel stocking in FY26.</p>
+<h3 id="q5-interview-why-not-just-grow-revenue-at-12-l1">Q5. Interview — why not just grow revenue at 12%? [L1]</h3>
+<p>An interviewer asks why you build revenue from volume and price when consensus simply has 12% growth. Give a
+structured answer covering cost linkage, scenario flexing and variance analysis.</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← Granular Revenue Forecasting</a><a class="next" href="S02_Store_Rollout_Revenue_Build_Stores_Area_Revenue.html">Store Rollout Revenue Build: Stores, Area, Revenue per Sq… →</a></nav>
+</main></div></body></html>

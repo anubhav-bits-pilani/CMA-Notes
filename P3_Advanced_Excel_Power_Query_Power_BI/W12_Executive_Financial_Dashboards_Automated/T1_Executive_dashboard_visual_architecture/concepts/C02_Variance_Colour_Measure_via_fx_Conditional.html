@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Variance Colour Measure via fx Conditional Formatting · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C02_Variance_Colour_Measure_via_fx_Conditional.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T1 · Executive dashboard visual architecture</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Executive dashboard visual architecture</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Executive_Page_Layout_KPI_Row_Trend_Row_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S01_Executive_Page_Layout_KPI_Row_Trend_Row_and.html">Executive Page Layout: KPI Row, Trend Row and Variance Row</a></li><li><a href="../subtopics/S02_Card_Visuals_New_Card_KPI_Visual_and_Reference.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S02_Card_Visuals_New_Card_KPI_Visual_and_Reference.html">Card Visuals: New Card, KPI Visual and Reference Labels</a></li><li><a href="../subtopics/S03_Trend_Visuals_Actual_vs_Budget_vs_PY_Combos_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S03_Trend_Visuals_Actual_vs_Budget_vs_PY_Combos_and.html">Trend Visuals: Actual vs Budget vs PY Combos and Rolling 12 Months</a></li><li><a href="../subtopics/S04_Waterfall_Bridges_EBITDA_Revenue_and_Cash_Flow.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S04_Waterfall_Bridges_EBITDA_Revenue_and_Cash_Flow.html">Waterfall Bridges: EBITDA, Revenue and Cash Flow</a></li><li><a href="../subtopics/S05_Variance_Visuals_Diverging_Bars_FavAdv_Colours_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S05_Variance_Visuals_Diverging_Bars_FavAdv_Colours_and.html">Variance Visuals: Diverging Bars, Fav/Adv Colours and IBCS Notation</a></li><li><a href="../subtopics/S06_Indian_Number_Formatting_Crore_and_Lakh_Units.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S06_Indian_Number_Formatting_Crore_and_Lakh_Units.html">Indian Number Formatting: ₹ Crore and Lakh Units, Consistent Decimals</a></li><li><a href="../subtopics/S07_Theme_JSON_Canvas_Size_Accessibility_and_Mobile.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/subtopics/S07_Theme_JSON_Canvas_Size_Accessibility_and_Mobile.html">Theme JSON, Canvas Size, Accessibility and Mobile Layout</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Waterfall_Visual_CategoryBreakdown_or_a_Bridge.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C01_Waterfall_Visual_CategoryBreakdown_or_a_Bridge.html">Waterfall Visual: Category/Breakdown or a Bridge-Step Table</a></li><li><a href="C02_Variance_Colour_Measure_via_fx_Conditional.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C02_Variance_Colour_Measure_via_fx_Conditional.html">Variance Colour Measure via fx Conditional Formatting</a></li><li><a href="C03_Crore_Measures_and_Dynamic_Format_Strings_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C03_Crore_Measures_and_Dynamic_Format_Strings_for.html">Crore Measures and Dynamic Format Strings for Indian Units</a></li><li><a href="C04_Net_Debt_Measure_Closing_Borrowings_Less_Cash_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C04_Net_Debt_Measure_Closing_Borrowings_Less_Cash_and.html">Net Debt Measure: Closing Borrowings Less Cash and Equivalents</a></li><li><a href="C05_Margin_Variance_in_Percentage_Points_EBITDA_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C05_Margin_Variance_in_Percentage_Points_EBITDA_vs.html">Margin Variance in Percentage Points: EBITDA % vs Budget</a></li><li><a href="C06_Excel_Native_Waterfall_Chart_with_Set_as_Total.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T1_Executive_dashboard_visual_architecture/concepts/C06_Excel_Native_Waterfall_Chart_with_Set_as_Total.html">Excel Native Waterfall Chart with &quot;Set as Total&quot;</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Variance Colour Measure via fx Conditional Formatting</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>Var Colour = IF([Variance Fav/Adv] &gt;= 0, "#2E7D32", "#C62828")</code> applied via fx conditional formatting (Field value)</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-DAX">Var Colour =
+IF ( [Variance Fav/Adv] &gt;= 0, &quot;#2E7D32&quot;, &quot;#C62828&quot; )
+</code></pre>
+<ul>
+<li><code>[Variance Fav/Adv]</code> is the sign-adjusted variance: positive = favourable to profit or cash, negative = adverse
+  (subtopic s05).</li>
+<li><code>"#2E7D32"</code> is a dark green (favourable); <code>"#C62828"</code> is a dark red (adverse). Any valid CSS colour string
+  (hex, or names like "Green") works, but hex codes matched to the theme <code>good</code>/<code>bad</code> colours are standard.</li>
+<li>The measure returns <strong>text</strong>. It is bound via <strong>fx</strong> next to a colour property (font colour, background, bar
+  fill, data label colour, card reference label colour) with <em>Format style</em> = <strong>Field value</strong> and <em>What field
+  should we base this on?</em> = <code>[Var Colour]</code>.</li>
+</ul>
+<h2 id="explanation">Explanation</h2>
+<p>Power BI conditional formatting offers three styles: Gradient, Rules and Field value. Gradient and Rules work on
+the raw numeric value of a field; they cannot know that a positive cost variance is bad unless you write separate
+rules per line. Field value lets a measure decide the colour with full DAX logic, so the favourable/adverse
+semantics live in the model and are reused everywhere — cards, matrix cells, diverging bars, waterfall-adjacent
+tables.</p>
+<p>Conditions and refinements:</p>
+<ul>
+<li><strong>Blank handling.</strong> If <code>[Variance Fav/Adv]</code> is BLANK (no budget), <code>BLANK() &gt;= 0</code> evaluates TRUE in DAX (blank
+  is treated as zero in comparisons), so the cell turns green. Guard it:
+  <code>IF(ISBLANK([Variance Fav/Adv]), "#9E9E9E", IF([Variance Fav/Adv] &gt;= 0, "#2E7D32", "#C62828"))</code>.</li>
+<li><strong>Materiality band.</strong> Small variances can be neutral grey: use <code>SWITCH(TRUE(), ABS(v) &lt; 0.5e7, "#9E9E9E",
+  v &gt;= 0, ...)</code> so ₹0.3 Cr noise does not flash red.</li>
+<li><strong>Context.</strong> In a matrix, the measure is evaluated per cell, so subtotal rows get their own colour from their own
+  fav/adv variance. This is why <code>[Variance Fav/Adv]</code> must aggregate correctly across lines with different signs.</li>
+<li><strong>Where it applies.</strong> Bar charts: Columns/Bars &gt; Colors &gt; fx. Matrix: Cell elements &gt; Font colour or Background
+  colour &gt; fx. New Card: Reference labels &gt; Value &gt; Colour &gt; fx. Waterfalls do not accept per-bar field-value
+  colours in the same way; they use sentiment colours.</li>
+<li><strong>Do not show it.</strong> The measure is for formatting only; hide it from report view or put it in a "Formatting"
+  display folder.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Raw var (₹ Cr)</th>
+<th>FavSign</th>
+<th>Fav/Adv</th>
+<th><code>[Var Colour]</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue</td>
+<td>−22.8</td>
+<td>+1</td>
+<td>−22.8</td>
+<td>#C62828</td>
+</tr>
+<tr>
+<td>Material cost</td>
+<td>−16.1</td>
+<td>−1</td>
+<td>+16.1</td>
+<td>#2E7D32</td>
+</tr>
+<tr>
+<td>Power and fuel</td>
+<td>+4.2</td>
+<td>−1</td>
+<td>−4.2</td>
+<td>#C62828</td>
+</tr>
+<tr>
+<td>Interest income</td>
+<td>+0.0</td>
+<td>+1</td>
+<td>0.0</td>
+<td>#2E7D32 (grey with the materiality band)</td>
+</tr>
+<tr>
+<td>New BU, no budget</td>
+<td>—</td>
+<td>+1</td>
+<td>BLANK</td>
+<td>#2E7D32 without the blank guard (wrong)</td>
+</tr>
+</tbody>
+</table>
+<p>Binding the same measure to the Var (₹) column font and to the diverging bar fill gives a consistent signal across
+Page 1.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Subtopic s05 defines <code>[Variance Fav/Adv]</code>; s02 uses it on card reference labels; s07 requires the hex codes to
+  match the theme and pass contrast checks.</li>
+<li>Topic 4 (controls) uses the same Field value technique for PASS/FAIL cells.</li>
+<li>Week 11's SignFactor provides the sign logic; Weeks 17–20 reuse the colour measure on variance analyses.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-three-state-colour-l1">Q1. Three-state colour [L1]</h3>
+<p>Write <code>[Var Colour 3]</code> returning grey for blank or variances below ₹50 lakh in absolute terms, green for favourable
+and red for adverse, and state where you would bind it in a matrix.</p>
+<h3 id="q2-rules-vs-field-value-l2">Q2. Rules vs field value [L2]</h3>
+<p>A colleague applied Rules formatting to the Var (₹) column: green if value &gt; 0, red if value &lt; 0. Using the
+illustration table, identify which rows are coloured wrongly and explain why Field value with a measure solves it.</p>
+<h3 id="q3-colour-blind-safe-variant-l2">Q3. Colour-blind-safe variant [L2]</h3>
+<p>Rewrite the colour measure to use a blue/orange palette and add a companion measure returning "▲" or "▼" for use as
+a text prefix, and explain how this meets accessibility guidance.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> The icon measure should use the same fav/adv sign test as the colour.</p>
+</blockquote></section>
+<nav class="pager"><a class="prev" href="C01_Waterfall_Visual_CategoryBreakdown_or_a_Bridge.html">← Waterfall Visual: Category/Breakdown or a Bridge-Step Table</a><a class="next" href="C03_Crore_Measures_and_Dynamic_Format_Strings_for.html">Crore Measures and Dynamic Format Strings for Indian Units →</a></nav>
+</main></div></body></html>

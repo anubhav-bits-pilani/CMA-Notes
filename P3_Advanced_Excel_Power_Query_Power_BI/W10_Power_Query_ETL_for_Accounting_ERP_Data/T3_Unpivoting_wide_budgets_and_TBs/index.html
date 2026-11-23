@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unpivoting wide budgets and TBs · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/index.html" data-kind="topic">
+<header class="top"><a class="brand" href="../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../index.html">Home</a> <span>›</span> <a href="../../index.html">Phase 3</a> <span>›</span> <a href="../index.html">Week 10</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">Week 10</a></div><ul class="side-links"><li><a href="../T1_Power_Query_architecture_and_M_basics/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/index.html">T1 · Power Query architecture and M basics</a></li><li><a href="../T2_Cleaning_messy_ERPTally_exports/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/index.html">T2 · Cleaning messy ERP/Tally exports</a></li><li><a href="index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/index.html">T3 · Unpivoting wide budgets and TBs</a></li><li><a href="../T4_Folder_consolidation_pipeline/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/index.html">T4 · Folder consolidation pipeline</a></li><li><a href="../T5_Merging_appending_and_reconciliation/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T5_Merging_appending_and_reconciliation/index.html">T5 · Merging, appending and reconciliation joins</a></li><li><a href="../T6_Custom_columns_and_fiscal_logic_in_M/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/index.html">T6 · Custom columns and fiscal logic in M</a></li></ul></aside>
+<main class="content">
+<div class="kind">Topic</div>
+<h1>Unpivoting wide budgets and TBs</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<section class="index"><h2>Notes in this topic</h2><div class="cols"><div><h3>Subtopics</h3><ul class="links num"><li><a href="subtopics/S01_Wide_Crosstab_vs_Long_Normalised_Data_and_Fact.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S01_Wide_Crosstab_vs_Long_Normalised_Data_and_Fact.html">S01 · Wide (Crosstab) vs Long (Normalised) Data and Fact Tables</a></li><li><a href="subtopics/S02_Unpivot_Other_Columns_vs_Unpivot_Columns_vs_Only.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S02_Unpivot_Other_Columns_vs_Unpivot_Columns_vs_Only.html">S02 · Unpivot Other Columns vs Unpivot Columns vs Only Selected</a></li><li><a href="subtopics/S03_Converting_Month_Header_Text_into_Real_Month_End.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S03_Converting_Month_Header_Text_into_Real_Month_End.html">S03 · Converting Month Header Text into Real Month-End Dates</a></li><li><a href="subtopics/S04_Multi_Row_Headers_Transpose_Fill_Merge_Transpose.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S04_Multi_Row_Headers_Transpose_Fill_Merge_Transpose.html">S04 · Multi-Row Headers: Transpose, Fill, Merge, Transpose Back, Unpivot</a></li><li><a href="subtopics/S05_Unpivoting_TB_Columns_Opening_Debit_Credit_Closing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S05_Unpivoting_TB_Columns_Opening_Debit_Credit_Closing.html">S05 · Unpivoting TB Columns (Opening, Debit, Credit, Closing)</a></li><li><a href="subtopics/S06_Pivot_Column_as_the_Reverse_of_Unpivot_Including.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S06_Pivot_Column_as_the_Reverse_of_Unpivot_Including.html">S06 · Pivot Column as the Reverse of Unpivot, Including Don&#x27;t Aggregate</a></li><li><a href="subtopics/S07_Target_Fact_Schema_Date_Account_Department.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S07_Target_Fact_Schema_Date_Account_Department.html">S07 · Target Fact Schema: Date, Account, Department, Scenario, Amount</a></li></ul></div><div><h3>Key concepts & formulas</h3><ul class="links num"><li><a href="concepts/C01_TableUnpivotOtherColumns_with_Fixed_Identifier.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C01_TableUnpivotOtherColumns_with_Fixed_Identifier.html">C01 · Table.UnpivotOtherColumns with Fixed Identifier Columns</a></li><li><a href="concepts/C02_Month_Label_to_Month_End_Date_with_DateFromText.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C02_Month_Label_to_Month_End_Date_with_DateFromText.html">C02 · Month Label to Month-End Date with Date.FromText and Format</a></li><li><a href="concepts/C03_Multi_Row_Header_Recipe_Transpose_Fill_Combine.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C03_Multi_Row_Header_Recipe_Transpose_Fill_Combine.html">C03 · Multi-Row Header Recipe: Transpose, Fill, Combine, Unpivot, Split</a></li><li><a href="concepts/C04_TablePivot_with_a_Dynamic_Value_List_and_ListSum.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C04_TablePivot_with_a_Dynamic_Value_List_and_ListSum.html">C04 · Table.Pivot with a Dynamic Value List and List.Sum</a></li><li><a href="concepts/C05_Adding_a_Typed_Scenario_Column_Before_Appending_to.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C05_Adding_a_Typed_Scenario_Column_Before_Appending_to.html">C05 · Adding a Typed Scenario Column Before Appending to Actuals</a></li><li><a href="concepts/C06_Unpivot_Drops_Null_Cells_Replace_Nulls_with_Zero.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C06_Unpivot_Drops_Null_Cells_Replace_Nulls_with_Zero.html">C06 · Unpivot Drops Null Cells: Replace Nulls with Zero When Needed</a></li></ul></div></div></section><article class="note"><blockquote>
+<p><strong>Roadmap topic:</strong> Unpivoting Wide Budgets &amp; Trial Balances: Transforming 12-month horizontal spreadsheets into normalized tabular fact tables (Date, Account, Department, Amount)</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>Finance people think in <strong>crosstabs</strong>: accounts down, months across, a total at the right. Budget templates, rolling forecasts, MIS packs, multi-period TBs and GST summaries all arrive in that wide shape. Analytical tools — the Excel Data Model, Power BI, SQL, any FP&amp;A planning platform — need the same data <strong>long</strong>: one row per date, account, department and scenario, with a single Amount column. <strong>Unpivoting</strong> is the transformation between the two, and it is the core skill behind loading budgets for budget-vs-actual reporting, building rolling-forecast facts and storing monthly TBs for trend analysis.</p>
+<p>The mechanics are simple; the judgement is not. Which unpivot command you use decides whether next year's months flow in automatically or are silently left out. Totals and remark columns sitting beside the months double count if swept into the unpivot. Month headers must become real month-end dates or the fact cannot relate to a Calendar and sorts alphabetically. Budget sheets often have two header rows (department over month) that need the transpose-fill-combine recipe. TB measure columns (Opening, Debit, Credit, Closing) can be unpivoted into measure/value pairs, but stock and flow measures must never be summed together. Unpivot drops nulls, which is usually right and occasionally wrong. And pivot — the reverse — is needed for wide outputs and check tables.</p>
+<p>Learning sequence: understand why facts must be long (s01); choose the refresh-safe unpivot (s02, c01, c06); convert month labels to dates (s03, c02); handle multi-row headers (s04, c03); apply the same thinking to TB measure columns (s05); reverse it with pivot where needed (s06, c04); and land everything in the target schema Date, Account, Department, Scenario, Amount, tagging scenarios before appending (s07, c05). This topic produces the Budget fact used in Week 11 and the plan-actual loads of Weeks 17–20, and it is the centre of this week's Saturday assessment.</p>
+<p>For FP&amp;A roles, this is the step that turns the annual budget from a spreadsheet into a dataset. Interviewers routinely ask candidates to unpivot a budget live, explain what happens when a new month column appears, or diagnose why budget totals doubled.</p>
+<h2 id="concept-map">Concept map</h2>
+<table>
+<thead>
+<tr>
+<th>Subtopic / concept</th>
+<th>Role in the topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s01 Wide vs long</td>
+<td>Why fact tables must be long; store long, present wide</td>
+</tr>
+<tr>
+<td>s02 Unpivot command choice</td>
+<td>Which variant survives new months; guarding against totals</td>
+</tr>
+<tr>
+<td>s03 Month header to date</td>
+<td>Real month-end dates for sorting and Calendar relationships</td>
+</tr>
+<tr>
+<td>s04 Multi-row headers</td>
+<td>Transpose, fill, combine, transpose back, unpivot, split</td>
+</tr>
+<tr>
+<td>s05 TB measure columns</td>
+<td>Unpivot Opening/Debit/Credit/Closing into Measure/Amount; roll-forward check</td>
+</tr>
+<tr>
+<td>s06 Pivot Column</td>
+<td>Reverse operation; aggregation and "Don't Aggregate"</td>
+</tr>
+<tr>
+<td>s07 Target schema</td>
+<td>Date, Account, Department, Scenario, Amount</td>
+</tr>
+<tr>
+<td>c01 <code>Table.UnpivotOtherColumns</code></td>
+<td>Fixed identifiers, dynamic value columns</td>
+</tr>
+<tr>
+<td>c02 Month text to month-end date</td>
+<td><code>Date.FromText</code> with format and culture, then <code>Date.EndOfMonth</code></td>
+</tr>
+<tr>
+<td>c03 Multi-row header recipe</td>
+<td>The exact chain of functions for two header levels</td>
+</tr>
+<tr>
+<td>c04 <code>Table.Pivot</code> with <code>List.Sum</code></td>
+<td>Dynamic pivot values and aggregation</td>
+</tr>
+<tr>
+<td>c05 Scenario column</td>
+<td>Tag each source before <code>Table.Combine</code></td>
+</tr>
+<tr>
+<td>c06 Unpivot drops nulls</td>
+<td>Replace with 0 only when zero rows must exist</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-concepts-to-study">Related concepts to study</h2>
+<h3 id="sql-union-all-and-excel-tocolhstack">SQL UNION ALL and Excel TOCOL/HSTACK</h3>
+<p><em>SQL UNION ALL per month as the manual equivalent; Excel <code>TOCOL</code>/<code>HSTACK</code> workarounds → Week 9</em></p>
+<p>In SQL, unpivoting a wide budget table by hand means one <code>SELECT Account, Department, '2025-04-30' AS Date, Apr25 AS Amount FROM Budget</code> per month, joined with <code>UNION ALL</code> — twelve blocks that must be edited every year (SQL Server's <code>UNPIVOT</code> operator shortens this but still lists columns). In Excel 365 (Week 9), <code>TOCOL(C2:N500)</code> flattens the month block into one column, and <code>HSTACK</code> with repeated identifier columns (via <code>CHOOSEROWS</code>/<code>TOCOL</code> on expanded identifiers) rebuilds keys alongside; it works but is fragile when ranges grow. Power Query's <code>Table.UnpivotOtherColumns</code> does the same in one step that adapts to new columns.</p>
+<h3 id="week-11-month-grain-budget-and-the-calendar">Week 11: month-grain budget and the Calendar</h3>
+<p><em>→ Week 11: Budget fact at month grain related to the Calendar dimension</em></p>
+<p>In the Week 11 star schema the Budget fact (month-end Date, Account, Department, Scenario, Amount) relates to a <strong>Calendar</strong> dimension at day grain through the month-end date. Because the budget has one date per month, measures work at month, quarter and FY level, but not at day level — slicing a budget by day shows values only on month-ends. Mark the Calendar as a date table, include FY attributes (FY2025-26, fiscal month, fiscal quarter), and ensure every month-end date in the fact exists in the Calendar. Getting real dates in this topic is what makes that relationship possible.</p>
+<h3 id="weeks-1720-budget-vs-actual-and-rolling-forecasts">Weeks 17–20: budget vs actual and rolling forecasts</h3>
+<p><em>→ Week 17–20: budget vs actual and rolling-forecast loads</em></p>
+<p>The FP&amp;A weeks build variance analysis (price/volume/mix, flex budgets), rolling 12–18 month forecasts and driver-based plans. Each forecast cycle produces a new wide file; the load must append it as a new Scenario/Version without overwriting the original budget, and must handle a moving window of months (new month in, oldest out). The patterns here — dynamic unpivot, month-header parsing, Scenario tagging, null policy, control totals per load — are exactly what keeps those recurring loads hands-off.</p>
+<h3 id="grain-alignment-between-budget-and-actuals">Grain alignment between budget and actuals</h3>
+<p><em>Grain alignment between monthly department budgets and daily ledger-level actuals</em></p>
+<p>Actuals are posted daily at ledger (and often cost-centre and voucher) level; budgets are usually monthly by department and sometimes by account group. To compare, both must meet at a <strong>common grain</strong>: aggregate actuals to month-end and to the budget's account level (via a CoA mapping from ledger to budget line), or allocate budget down to ledgers/days (rarely sensible). In a star schema, two facts at different grains can share dimensions — the budget fact relates to Calendar at month-end and to a budget-line level of the CoA, the actual fact at day and ledger. Mixing grains in one fact without aggregation produces misleading variances and subtotals.</p>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<h3 id="unpivoting-fixed-month-columns">Unpivoting fixed month columns</h3>
+<p><em>Using Unpivot Columns on fixed month columns, so next year's columns are silently left out</em></p>
+<p>When the step hard-codes the month columns — <code>Table.Unpivot(t, {"Apr-25", …, "Mar-26"}, ...)</code>, which is what "Unpivot Only Selected Columns" writes, or what results when someone edits the step to list months explicitly — next year's "Apr-26 … Mar-27" columns are not unpivoted and simply disappear from the long table; if the old month names vanish, the step errors. People do it because selecting the month columns feels natural and the result looks perfect on the day. Correct treatment: hard-code identifiers, not values (<code>Table.UnpivotOtherColumns</code>), or build the value list dynamically by parsing headers. Review check: read the formula bar after any UI unpivot; any literal month name inside the step is a red flag; compare row counts with rows × months.</p>
+<h3 id="totals-included-in-the-unpivot">Totals included in the unpivot</h3>
+<p><em>Leaving "Total"/"FY Total" columns in the unpivot, which double counts annual amounts</em></p>
+<p><code>Table.UnpivotOtherColumns</code> unpivots every non-identifier column, so FY Total, H1/H2 Total or "Q1" subtotal columns become extra rows with labels like "FY Total" in the Month column — doubling (or more) annual budget amounts. It happens because totals are part of every human-readable template. Correct treatment: remove derived columns before unpivoting (<code>Table.RemoveColumns</code> with <code>MissingField.Ignore</code>), or unpivot only headers that parse as months, and use the FY Total column as a control total before removing it. Review check: list the distinct Month values after unpivot — anything that is not a month label indicates a problem; reconcile the long total to the FY Total column.</p>
+<h3 id="month-labels-left-as-text">Month labels left as text</h3>
+<p><em>Keeping month labels as text, which breaks sort order (Apr, Aug, Dec...) and time intelligence</em></p>
+<p>Leaving "Apr-25" as text means visuals sort alphabetically (Apr, Aug, Dec, Feb …), no relationship to the Calendar is possible, YTD/QTD and prior-year comparisons cannot work, and budget cannot be matched to actuals by date. People skip the conversion because the labels look fine in a table. Correct treatment: convert to month-end dates with <code>Date.FromText</code> plus an explicit format and culture, then <code>Date.EndOfMonth</code>; derive labels and FY attributes from the date (preferably in the Calendar dimension). Review check: column type icon on Month must be a calendar (date), not ABC; a sorted visual must run Apr → Mar.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-department-budget-workbook-to-fact-l3">Q1. Department budget workbook to fact [L3]</h3>
+<p>Pump manufacturer Deccan Pumps Ltd (FY ending 31 March) sends a budget workbook with one sheet per department (Sales, Production, Admin). Each sheet: 3 report-header lines; row 4 headers "Account", "Apr-25" … "Mar-26", "FY Total", "Remarks"; accounts as "610100 - Salaries"; some blank month cells; a "Total" row at the bottom. The CoA master is a separate Excel Table with Code, Name, Schedule III Line, Type (Income/Expense).
+(a) Design the query layering. (b) Write the M that produces Date (month-end), Account (code), Department (from sheet name), Scenario ("Budget"), Amount — with income budget sign flipped to the Dr-positive convention using the CoA Type. (c) Write the control checks (row counts, totals vs FY Total, orphan accounts). (d) Explain what happens next year when the months change to Apr-26 … Mar-27 and how your design copes.</p>
+<h3 id="q2-multi-row-header-forecast-l2">Q2. Multi-row header forecast [L2]</h3>
+<p>A rolling forecast sheet has Scenario ("RF Sep-25") in cell B1, Region (North, South, West — merged across 18 month columns each) in row 2, Month ("Oct-25" … "Mar-27") in row 3, and accounts from row 4. Write the transformation to a long table with Scenario, Region, Date, Account and Amount, and state the expected row count for 120 accounts if 6% of cells are blank.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Capture B1 before reshaping; the header recipe handles rows 2 and 3.</p>
+</blockquote>
+<h3 id="q3-tb-measures-and-roll-forward-l2">Q3. TB measures and roll-forward [L2]</h3>
+<p>Twelve monthly TBs for FY2025-26 (columns Ledger, Opening, Debit, Credit, Closing; amounts signed Dr positive for balances, gross for movements) are to be stored long. (a) Write the unpivot to Ledger, Month, Measure, Amount. (b) Write the roll-forward check per ledger per month. (c) Write the continuity check that each month's Opening equals the previous month's Closing. (d) Recommend whether the Power BI fact should hold all four measures or only movements, with reasons.</p>
+<h3 id="q4-pivot-for-a-board-pack-l2">Q4. Pivot for a board pack [L2]</h3>
+<p>From the plan-actual fact (Date, Account, Department, Scenario, Amount), produce a wide output table for a selected quarter (parameter): rows Account; columns Actual, Budget, Variance, Variance %; summing duplicates and replacing nulls with 0. Explain why you would build this in Power Query rather than as a PivotTable, or vice versa.</p>
+<h3 id="q5-review-a-colleagues-budget-load-l2">Q5. Review a colleague's budget load [L2]</h3>
+<p>A colleague's query: Source → Promoted Headers → Changed Type (auto) → Unpivoted Only Selected Columns (12 months listed) → Renamed Attribute to Month → Appended Actuals. The budget total in Power BI is correct this year, the Month slicer sorts alphabetically, and the Scenario slicer is missing. Write a review memo listing each defect, its future consequence, and the corrected step list.</p></section>
+<nav class="pager"><a class="prev" href="../T2_Cleaning_messy_ERPTally_exports/concepts/C07_Converting_Tally_DrCr_Suffix_Balances_into_Signed.html">← Converting Tally Dr/Cr Suffix Balances into Signed Numbers</a><a class="next" href="subtopics/S01_Wide_Crosstab_vs_Long_Normalised_Data_and_Fact.html">Wide (Crosstab) vs Long (Normalised) Data and Fact Tables →</a></nav>
+</main></div></body></html>

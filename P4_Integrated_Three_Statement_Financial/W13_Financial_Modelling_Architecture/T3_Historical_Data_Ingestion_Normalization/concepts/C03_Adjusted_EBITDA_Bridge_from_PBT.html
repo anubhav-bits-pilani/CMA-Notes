@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adjusted EBITDA Bridge from PBT · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C03_Adjusted_EBITDA_Bridge_from_PBT.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T3 · Historical Data Ingestion &amp;…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Historical Data Ingestion &amp; Normalization</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Sources_of_Historical_Data_for_Indian_Listed.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S01_Sources_of_Historical_Data_for_Indian_Listed.html">Sources of Historical Data for Indian Listed Companies</a></li><li><a href="../subtopics/S02_Mapping_Schedule_III_Line_Items_to_a_Model_Chart.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S02_Mapping_Schedule_III_Line_Items_to_a_Model_Chart.html">Mapping Schedule III Line Items to a Model Chart of Accounts</a></li><li><a href="../subtopics/S03_Consolidated_vs_Standalone_Basis_NCI_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S03_Consolidated_vs_Standalone_Basis_NCI_and.html">Consolidated vs Standalone Basis, NCI and Associates</a></li><li><a href="../subtopics/S04_EBITDA_Normalisation_Exceptional_Other_Income.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S04_EBITDA_Normalisation_Exceptional_Other_Income.html">EBITDA Normalisation: Exceptional, Other Income, Leases, ESOPs, Forex</a></li><li><a href="../subtopics/S05_Restatements_Discontinued_Operations_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S05_Restatements_Discontinued_Operations_and.html">Restatements, Discontinued Operations and Acquisitions</a></li><li><a href="../subtopics/S06_Annual_Balance_Checks_and_CFS_to_BS_Cash.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S06_Annual_Balance_Checks_and_CFS_to_BS_Cash.html">Annual Balance Checks and CFS-to-BS Cash Reconciliation</a></li><li><a href="../subtopics/S07_Deriving_Historical_Ratios_as_Forecast_Anchors.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/subtopics/S07_Deriving_Historical_Ratios_as_Forecast_Anchors.html">Deriving Historical Ratios as Forecast Anchors</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Historical_Balance_Check_Assets_Equal_Equity_Plus.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C01_Historical_Balance_Check_Assets_Equal_Equity_Plus.html">Historical Balance Check: Assets Equal Equity Plus Liabilities</a></li><li><a href="C02_CFS_Closing_Cash_to_Balance_Sheet_Cash.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C02_CFS_Closing_Cash_to_Balance_Sheet_Cash.html">CFS Closing Cash to Balance Sheet Cash Reconciliation</a></li><li><a href="C03_Adjusted_EBITDA_Bridge_from_PBT.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C03_Adjusted_EBITDA_Bridge_from_PBT.html">Adjusted EBITDA Bridge from PBT</a></li><li><a href="C04_Effective_Tax_Rate_with_Current_and_Deferred_Split.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C04_Effective_Tax_Rate_with_Current_and_Deferred_Split.html">Effective Tax Rate with Current and Deferred Split</a></li><li><a href="C05_Operating_Net_Working_Capital_What_to_Exclude.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C05_Operating_Net_Working_Capital_What_to_Exclude.html">Operating Net Working Capital: What to Exclude</a></li><li><a href="C06_Explicit_Rounding_Line_Instead_of_a_Balancing_Plug.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T3_Historical_Data_Ingestion_Normalization/concepts/C06_Explicit_Rounding_Line_Instead_of_a_Balancing_Plug.html">Explicit Rounding Line Instead of a Balancing Plug</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Adjusted EBITDA Bridge from PBT</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Adjusted EBITDA = PBT + Finance costs + D&amp;A − Other income ± Exceptional items; state pre/post Ind AS 116</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>\[
+\text{Adj. EBITDA}_t = \text{PBT}_t + FC_t + DA_t - OI_t + EX_t
+\]</p>
+<p>where \( \text{PBT}_t \) is profit before tax (continuing operations, after exceptional items, and — in consolidated statements — excluding the share of profit of associates and JVs, i.e., subtract that share if PBT includes it), \( FC_t \) finance costs, \( DA_t \) depreciation and amortisation, \( OI_t \) other income, and \( EX_t \) exceptional items with sign such that an exceptional <strong>loss is added back</strong> and an exceptional <strong>gain is deducted</strong>. The basis must be stated:</p>
+<p>\[
+\text{Adj. EBITDA}^{\text{pre-116}}_t = \text{Adj. EBITDA}^{\text{post-116}}_t - LP_t
+\]</p>
+<p>where \( LP_t \) is cash lease payments for leases capitalised under Ind AS 116 (principal plus interest), or approximately ROU depreciation plus lease interest.</p>
+<h2 id="explanation">Explanation</h2>
+<p><strong>Why build from PBT rather than from revenue minus costs.</strong> The PBT route ties to an audited subtotal and makes each adjustment explicit; the top-down route (revenue − COGS − employee − other expenses) gives the same answer if the P&amp;L is fully mapped, and the two should be reconciled as a check.</p>
+<p><strong>Each term:</strong></p>
+<ul>
+<li><strong>Finance costs</strong> include interest on borrowings, lease interest and exchange differences regarded as borrowing costs (Schedule III); all added back.</li>
+<li><strong>D&amp;A</strong> includes ROU depreciation; added back.</li>
+<li><strong>Other income</strong> is deducted entirely unless specific items are genuinely operating and recurring (then reclassify to other operating revenue explicitly).</li>
+<li><strong>Exceptional items</strong>: the sign convention trips people — Schedule III shows exceptional items as a deduction from profit when they are expenses. Add back losses; deduct gains.</li>
+<li><strong>Share of associates/JVs</strong>: in Schedule III Division II consolidated P&amp;L it typically appears before PBT; remove it — it is post-tax income from non-consolidated entities.</li>
+</ul>
+<p><strong>Pre/post Ind AS 116.</strong> Post-116 EBITDA excludes fixed lease rent; pre-116 deducts it. Valuation and multiples must match: EV/EBITDA on post-116 EBITDA requires lease liabilities in net debt; pre-116 EBITDA pairs with EV excluding leases. Always label the row (e.g., "Adj. EBITDA (post-Ind AS 116)").</p>
+<p><strong>Other agreed adjustments</strong> (ESOP, operating vs financing forex, unlabelled one-offs — s04) are separate, labelled rows after the core bridge.</p>
+<h2 id="illustration">Illustration</h2>
+<p>FY25 consolidated (₹ crore): PBT 2,140 (includes share of JV loss of −35 and exceptional gain on sale of land +90); finance costs 260 (lease interest 180); D&amp;A 720 (ROU 390); other income 205; lease payments 610.</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>₹ crore</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PBT</td>
+<td>2,140</td>
+</tr>
+<tr>
+<td>Remove share of JV loss (add back 35)</td>
+<td>35</td>
+</tr>
+<tr>
+<td>+ Finance costs</td>
+<td>260</td>
+</tr>
+<tr>
+<td>+ D&amp;A</td>
+<td>720</td>
+</tr>
+<tr>
+<td>− Other income</td>
+<td>(205)</td>
+</tr>
+<tr>
+<td>− Exceptional gain</td>
+<td>(90)</td>
+</tr>
+<tr>
+<td>Adj. EBITDA (post-Ind AS 116)</td>
+<td>2,860</td>
+</tr>
+<tr>
+<td>− Lease payments</td>
+<td>(610)</td>
+</tr>
+<tr>
+<td>Adj. EBITDA (pre-Ind AS 116)</td>
+<td>2,250</td>
+</tr>
+</tbody>
+</table>
+<h2 id="connections">Connections</h2>
+<p>Implements s04 normalisation; feeds historical margins (s07) and the forecast definition of EBITDA in topics t4–t5 (cost structure, including the Ind AS 116 rent treatment). Valuation pairing with net debt in Week 16. Related pitfall: leaving treasury/other income inside operating EBITDA.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-compute-both-bases-l1">Q1. Compute both bases [L1]</h3>
+<p>FY25 (₹ crore): PBT 960 (after exceptional loss of 40, including share of associate profit 25); finance costs 110 (lease interest 70); D&amp;A 300 (ROU 160); other income 85; lease cash outflow 245. Compute adjusted EBITDA post- and pre-Ind AS 116.</p>
+<h3 id="q2-reconcile-to-management-ebitda-l2">Q2. Reconcile to management EBITDA [L2]</h3>
+<p>Management's presentation reports FY25 EBITDA of ₹1,375 crore for the company in Q1. List the definitional differences that could explain the gap to your adjusted figure and design the reconciliation table you would place on the Historicals tab.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Other income, exceptional items, associates and ESOP charges are the usual suspects.</p>
+</blockquote>
+<h3 id="q3-multiple-consistency-l2">Q3. Multiple consistency [L2]</h3>
+<p>A peer trades at 32x EV/EBITDA on post-Ind AS 116 EBITDA where EV includes lease liabilities. Your target's EBITDA in the comps sheet is pre-Ind AS 116. Explain the valuation error from applying 32x directly and how to correct it.</p></section>
+<nav class="pager"><a class="prev" href="C02_CFS_Closing_Cash_to_Balance_Sheet_Cash.html">← CFS Closing Cash to Balance Sheet Cash Reconciliation</a><a class="next" href="C04_Effective_Tax_Rate_with_Current_and_Deferred_Split.html">Effective Tax Rate with Current and Deferred Split →</a></nav>
+</main></div></body></html>

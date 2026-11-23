@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bridge Integrity: The Zero-Check Cell · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/concepts/C01_Bridge_Integrity_The_Zero_Check_Cell.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 2</a> <span>›</span> <a href="../../index.html">Week 8</a> <span>›</span> <a href="../index.html">T4 · Charting for Financial Reports</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Charting for Financial Reports</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_EBITDA_Bridge_Waterfalls_Price_Volume_Mix_and_Cost.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S01_EBITDA_Bridge_Waterfalls_Price_Volume_Mix_and_Cost.html">EBITDA Bridge Waterfalls: Price, Volume, Mix and Cost Drivers</a></li><li><a href="../subtopics/S02_Clustered_Column_Trends_and_Combo_Charts_with_a.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S02_Clustered_Column_Trends_and_Combo_Charts_with_a.html">Clustered Column Trends and Combo Charts with a Margin Axis</a></li><li><a href="../subtopics/S03_ROIC_vs_Revenue_Growth_Bubble_Charts_with_Median.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S03_ROIC_vs_Revenue_Growth_Bubble_Charts_with_Median.html">ROIC vs Revenue Growth Bubble Charts with Median Quadrants</a></li><li><a href="../subtopics/S04_Native_Excel_Waterfall_vs_Stacked_Column.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S04_Native_Excel_Waterfall_vs_Stacked_Column.html">Native Excel Waterfall vs Stacked-Column Workaround</a></li><li><a href="../subtopics/S05_Chart_Hygiene_for_Peer_Financial_Reports.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S05_Chart_Hygiene_for_Peer_Financial_Reports.html">Chart Hygiene for Peer Financial Reports</a></li><li><a href="../subtopics/S06_Linking_Chart_Titles_and_Labels_to_Cells_for.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/subtopics/S06_Linking_Chart_Titles_and_Labels_to_Cells_for.html">Linking Chart Titles and Labels to Cells for Dynamic Updates</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Bridge_Integrity_The_Zero_Check_Cell.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/concepts/C01_Bridge_Integrity_The_Zero_Check_Cell.html">Bridge Integrity: The Zero-Check Cell</a></li><li><a href="C02_Price_and_Volume_Effects_in_a_Revenue_or_EBITDA.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/concepts/C02_Price_and_Volume_Effects_in_a_Revenue_or_EBITDA.html">Price and Volume Effects in a Revenue or EBITDA Bridge</a></li><li><a href="C03_Gross_Margin_Effect_Isolating_Raw_Material.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/concepts/C03_Gross_Margin_Effect_Isolating_Raw_Material.html">Gross Margin Effect: Isolating Raw Material Inflation</a></li><li><a href="C04_IBCS_SUCCESS_Notation_and_Tuftes_Data_Ink_Ratio.html" data-uid="P2_Financial_Reporting_Listed_Company/W08_Peer_Benchmarking_Comparative_Analysis/T4_Charting_for_Financial_Reports/concepts/C04_IBCS_SUCCESS_Notation_and_Tuftes_Data_Ink_Ratio.html">IBCS SUCCESS Notation and Tufte&#x27;s Data-Ink Ratio</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Bridge Integrity: The Zero-Check Cell</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Bridge integrity: Start EBITDA + Σ driver effects = End EBITDA (zero-check cell)</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>For any bridge (waterfall) from a starting value to an ending value:</p>
+<p>\[
+\text{Check} = \text{EBITDA}_{\text{start}} + \sum_{k=1}^{n} D_k - \text{EBITDA}_{\text{end}} = 0
+\]</p>
+<p>where \(\text{EBITDA}_{\text{start}}\) is the prior-period EBITDA, \(D_k\) is the signed effect on EBITDA of
+driver \(k\) (positive if it increases EBITDA, negative if it reduces it), \(n\) is the number of driver bars,
+and \(\text{EBITDA}_{\text{end}}\) is the current-period EBITDA. Both endpoints must be <strong>linked</strong> to the same
+EBITDA definition used elsewhere in the report (reported or normalized), not typed. The check is held in a
+dedicated cell, rounded to a tolerance, and rolled into the workbook's master check summary.</p>
+<h2 id="explanation">Explanation</h2>
+<p>The identity is trivially true if one driver is computed as a balancing figure — which is exactly why
+balancing figures are dangerous. A bridge whose last bar is "Others = End − Start − Σ other drivers" will
+always pass, even if the endpoints are wrong or a driver is double-counted. Robust practice is therefore:</p>
+<ol>
+<li>Compute <strong>every</strong> driver independently from source data (price, volume, cost line changes).</li>
+<li>Link the endpoints to the ratio engine's EBITDA for each year.</li>
+<li>Calculate the check; any non-zero value signals an error in mapping, sign or definition.</li>
+<li>If an "Others" bar is used, show it explicitly, cap its acceptable size (e.g., under 10% of the total
+   change) and explain what it contains.</li>
+</ol>
+<p>Typical causes of a non-zero check:</p>
+<ul>
+<li>Endpoints on different bases (normalized start, reported end; pre- vs post-Ind AS 116).</li>
+<li>A cost line omitted (e.g., "changes in inventories of finished goods" left out of raw material).</li>
+<li>Other operating revenue or other income treated inconsistently between endpoints and drivers.</li>
+<li>Sign errors (a cost increase entered as a positive driver).</li>
+<li>Rounding: drivers computed from rounded ₹ crore figures may differ from the end total by a few tenths.</li>
+</ul>
+<p>Tolerance should reflect rounding of the source: Schedule III permits companies with turnover of ₹100 crore
+or more to round to the nearest lakh, million or crore (or decimals thereof), so if inputs are in ₹ crore with
+two decimals, a tolerance of ±0.05 crore per bridge is reasonable; anything larger is an error, not rounding.</p>
+<p>In Excel:</p>
+<pre><code>BridgeCheck = ROUND(StartEBITDA + SUM(Drivers) - EndEBITDA, 2)
+CheckFlag   = IF(ABS(BridgeCheck) &lt;= Tolerance, 0, 1)
+</code></pre>
+<p>Conditional-format the check cell (green 0, red otherwise) and add <code>CheckFlag</code> to the master check.</p>
+<h2 id="illustration">Illustration</h2>
+<p>A bridge for a jewellery peer (₹ crore): FY24 normalized EBITDA 1,300; drivers: revenue growth at prior gross
+margin +410, gross margin % change −190, employee cost −45, other opex −60, advertising −20. Sum of drivers =
++95, implying end EBITDA 1,395. The ratio engine shows FY25 normalized EBITDA of 1,480. Check = 1,300 + 95 −
+1,480 = −85. Investigation shows the FY25 endpoint was pulled from the reported row, which includes ₹85 crore
+of gold-metal-loan hedge gains that normalization removes — the endpoint, not the drivers, was wrong.</p>
+<h2 id="connections">Connections</h2>
+<p>Links to the EBITDA bridge subtopic (driver definitions), the native versus stacked waterfall subtopic
+(subtotal cells must be formula-driven), Week 5 normalized EBITDA (endpoint definition), and the Project 2
+workbook's master check summary (Topic 5 integrity checks). In FP&amp;A, the same identity governs
+budget-to-actual and forecast-to-forecast bridges in monthly packs.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-locate-the-break-l2">Q1. Locate the break [L2]</h3>
+<p>An EBITDA bridge for an FMCG peer shows: FY24 EBITDA ₹2,140 crore; volume +260; price +185; raw material
+−310; employee cost −72; other opex −48; FY25 EBITDA ₹2,190 crore. Compute the check value, list three
+plausible causes of the difference in order of likelihood, and describe how you would test each.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Compare the size of the gap with individual cost lines that are often omitted or reclassified.</p>
+</blockquote>
+<h3 id="q2-balancing-figure-policy-l3">Q2. Balancing-figure policy [L3]</h3>
+<p>Draft a short workbook policy on when an "Others" bar is allowed in a bridge, the maximum acceptable size,
+how it must be documented, and how the zero-check should be designed so a balancing figure cannot mask an
+endpoint error.</p>
+<h3 id="q3-tolerance-setting-l1">Q3. Tolerance setting [L1]</h3>
+<p>Your standardized statements are in ₹ crore to two decimals, converted from annual reports presented in
+₹ lakh. Propose a tolerance for bridge checks and justify it.</p></section>
+<nav class="pager"><a class="prev" href="../subtopics/S06_Linking_Chart_Titles_and_Labels_to_Cells_for.html">← Linking Chart Titles and Labels to Cells for Dynamic Updates</a><a class="next" href="C02_Price_and_Volume_Effects_in_a_Revenue_or_EBITDA.html">Price and Volume Effects in a Revenue or EBITDA Bridge →</a></nav>
+</main></div></body></html>

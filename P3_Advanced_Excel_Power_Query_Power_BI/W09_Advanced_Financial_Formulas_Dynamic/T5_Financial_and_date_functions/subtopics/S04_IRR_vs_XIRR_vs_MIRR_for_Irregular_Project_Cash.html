@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IRR vs XIRR vs MIRR for Irregular Project Cash Flows · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S04_IRR_vs_XIRR_vs_MIRR_for_Irregular_Project_Cash.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T5 · Financial and date functions</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Financial and date functions</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Period_End_Logic_with_EOMONTH_and_EDATE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S01_Period_End_Logic_with_EOMONTH_and_EDATE.html">Period-End Logic with EOMONTH and EDATE</a></li><li><a href="S02_Day_Count_Conventions_with_YEARFRAC_Bases_04.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S02_Day_Count_Conventions_with_YEARFRAC_Bases_04.html">Day-Count Conventions with YEARFRAC Bases 0–4</a></li><li><a href="S03_NPV_vs_XNPV_Periodic_and_Dated_Cash_Flows.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S03_NPV_vs_XNPV_Periodic_and_Dated_Cash_Flows.html">NPV vs XNPV: Periodic and Dated Cash Flows</a></li><li><a href="S04_IRR_vs_XIRR_vs_MIRR_for_Irregular_Project_Cash.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S04_IRR_vs_XIRR_vs_MIRR_for_Irregular_Project_Cash.html">IRR vs XIRR vs MIRR for Irregular Project Cash Flows</a></li><li><a href="S05_Loan_Amortisation_with_PMT_IPMT_PPMT_CUMIPMT_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S05_Loan_Amortisation_with_PMT_IPMT_PPMT_CUMIPMT_and.html">Loan Amortisation with PMT, IPMT, PPMT, CUMIPMT and CUMPRINC</a></li><li><a href="S06_EMI_Schedules_and_Ind_AS_116_Lease_Liability.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S06_EMI_Schedules_and_Ind_AS_116_Lease_Liability.html">EMI Schedules and Ind AS 116 Lease Liability Schedules</a></li><li><a href="S07_Close_Calendars_with_WORKDAYINTL_NETWORKDAYSINTL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S07_Close_Calendars_with_WORKDAYINTL_NETWORKDAYSINTL.html">Close Calendars with WORKDAY.INTL, NETWORKDAYS.INTL and Holidays</a></li><li><a href="S08_Fiscal_Year_Helpers_FY_Start_FY_End_and_Fiscal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S08_Fiscal_Year_Helpers_FY_Start_FY_End_and_Fiscal.html">Fiscal-Year Helpers: FY Start, FY End and Fiscal Month</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Month_End_Month_Start_and_Same_Day_Offsets_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C01_Month_End_Month_Start_and_Same_Day_Offsets_with.html">Month-End, Month-Start and Same-Day Offsets with EOMONTH and EDATE</a></li><li><a href="../concepts/C02_YEARFRAC_Basis_1_vs_Basis_3_for_Accruals.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C02_YEARFRAC_Basis_1_vs_Basis_3_for_Accruals.html">YEARFRAC Basis 1 vs Basis 3 for Accruals</a></li><li><a href="../concepts/C03_NPV_Plus_CF0_Why_NPV_Discounts_Its_First_Value.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C03_NPV_Plus_CF0_Why_NPV_Discounts_Its_First_Value.html">NPV Plus CF0: Why NPV Discounts Its First Value</a></li><li><a href="../concepts/C04_XNPV_and_XIRR_The_365_Day_Basis_from_the_First.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C04_XNPV_and_XIRR_The_365_Day_Basis_from_the_First.html">XNPV and XIRR: The 365-Day Basis from the First Date</a></li><li><a href="../concepts/C05_PMT_IPMT_and_PPMT_EMI_and_Its_InterestPrincipal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C05_PMT_IPMT_and_PPMT_EMI_and_Its_InterestPrincipal.html">PMT, IPMT and PPMT: EMI and Its Interest/Principal Split</a></li><li><a href="../concepts/C06_MIRR_Fixing_IRRs_Reinvestment_and_Multiple_Root.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C06_MIRR_Fixing_IRRs_Reinvestment_and_Multiple_Root.html">MIRR: Fixing IRR&#x27;s Reinvestment and Multiple-Root Problems</a></li><li><a href="../concepts/C07_FY_End_Date_and_Fiscal_Month_Formulas_for_an.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C07_FY_End_Date_and_Fiscal_Month_Formulas_for_an.html">FY End Date and Fiscal Month Formulas for an April–March Year</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>IRR vs XIRR vs MIRR for Irregular Project Cash Flows</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> IRR vs XIRR vs MIRR for irregular-dated project and investment cash flows</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Return metrics drive capital allocation: project approval hurdles, private equity and venture fund performance, mutual fund SIP returns, lender covenants on project finance, and management incentive plans. Three Excel functions compute "the return", and they answer subtly different questions. IRR assumes equally spaced flows; XIRR uses actual dates; MIRR replaces IRR's implicit reinvestment assumption with explicit finance and reinvestment rates and always gives a single answer. Picking the wrong one can overstate a project's return by many percentage points — a recurring theme in investment committee papers and in interviews for FP&amp;A and corporate finance roles.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="irr">IRR</h3>
+<pre><code class="language-excel">=IRR(values, [guess])
+</code></pre>
+<p>IRR is the rate \(r\) that sets the periodic NPV to zero:</p>
+<p>\[
+\sum_{t=0}^{n} \frac{CF_t}{(1+r)^{t}} = 0
+\]</p>
+<p>where \(CF_t\) is the flow at the end of period \(t\) (with \(CF_0\) undiscounted — unlike the NPV function, IRR treats the first value as t = 0). The result is a <strong>per-period</strong> rate: monthly flows give a monthly IRR, which must be annualised as \((1+r_m)^{12}-1\).</p>
+<p>Requirements and behaviour:</p>
+<ul>
+<li>At least one negative and one positive value, or #NUM!.</li>
+<li>Solved iteratively (up to 20 iterations within 0.00001%); <code>guess</code> (default 10%) helps convergence for unusual patterns.</li>
+<li>Blank cells are ignored — use zeros for periods with no flow.</li>
+</ul>
+<h3 id="xirr">XIRR</h3>
+<pre><code class="language-excel">=XIRR(values, dates, [guess])
+</code></pre>
+<p>XIRR is the annual rate that sets XNPV to zero:</p>
+<p>\[
+\sum_{i=1}^{n} \frac{P_i}{(1+r)^{(d_i-d_1)/365}} = 0
+\]</p>
+<p>where \(P_i\) is the flow on date \(d_i\) and \(d_1\) the first date. The result is already an <strong>annual effective</strong> rate. It is the correct metric for SIP or XIRR-based mutual fund returns (as reported by Indian AMCs and platforms), PE fund drawdowns and distributions, real-estate projects with milestone payments, and any project whose flows are not evenly spaced.</p>
+<h3 id="mirr">MIRR</h3>
+<pre><code class="language-excel">=MIRR(values, finance_rate, reinvest_rate)
+</code></pre>
+<p>\[
+\text{MIRR} = \left( \frac{\text{FV}(\text{positive flows at } r_{re})}{\text{PV}(\text{negative flows at } r_{fin})} \right)^{1/n} - 1
+\]</p>
+<p>where \(n\) is the number of periods (count of values minus 1), positive flows are compounded to the end at the reinvestment rate \(r_{re}\), and negative flows are discounted to t = 0 at the finance rate \(r_{fin}\). MIRR addresses two IRR weaknesses:</p>
+<ol>
+<li><strong>Reinvestment assumption.</strong> IRR implicitly assumes interim inflows are reinvested at the IRR itself. For a 35% IRR project, that is unrealistic; MIRR uses, say, the WACC.</li>
+<li><strong>Multiple IRRs.</strong> Non-conventional flows (sign changes more than once — e.g. a mining project with closure costs, or a contract with a large final penalty) can have several IRRs. MIRR has a single value.</li>
+</ol>
+<p>MIRR, like IRR, assumes equal periods. There is no built-in "XMIRR"; for dated flows, build it manually with XNPV-style discount and compound factors.</p>
+<h3 id="one-project-three-answers">One project, three answers</h3>
+<p>Flows (₹ lakh): −100, +30, +40, +50, +20.</p>
+<table>
+<thead>
+<tr>
+<th>Timing</th>
+<th>Function</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Annual, equally spaced</td>
+<td><code>=IRR(C1:C5)</code></td>
+<td>15.3%</td>
+</tr>
+<tr>
+<td>Annual; finance 10%, reinvest 12%</td>
+<td><code>=MIRR(C1:C5, 10%, 12%)</code></td>
+<td>13.9%</td>
+</tr>
+<tr>
+<td>Actual dates 15-Jun-2025, 31-Dec-2025, 30-Sep-2026, 31-Mar-2027, 30-Jun-2028</td>
+<td><code>=XIRR(C1:C5, B1:B5)</code></td>
+<td>25.2%</td>
+</tr>
+</tbody>
+</table>
+<p>The irregular-dated project returns much more than IRR suggests, because cash comes back faster than "one year per flow". Conversely, a project whose flows are delayed beyond equal spacing has XIRR below IRR. MIRR is below IRR because interim flows are reinvested at 12% rather than 15.3%.</p>
+<h3 id="multiple-irr-illustration">Multiple IRR illustration</h3>
+<p>Flows −100, +230, −132 (an upfront cost, a large inflow, then a decommissioning outflow). NPV is zero at both 10% and 20%: there are two IRRs, and Excel returns whichever its iteration finds from the guess (<code>=IRR(C1:C3, 5%)</code> vs <code>=IRR(C1:C3, 25%)</code>). MIRR with finance 10% and reinvest 12% gives about 11.0% — a single, decision-usable figure. Check the number of sign changes (Descartes' rule gives an upper bound on positive roots) before trusting IRR:</p>
+<pre><code class="language-excel">=SUMPRODUCT(--(SIGN(C2:C10) &lt;&gt; SIGN(C1:C9)), --(C2:C10&lt;&gt;0), --(C1:C9&lt;&gt;0))
+</code></pre>
+<p>More than one sign change → report NPV and MIRR, not IRR alone.</p>
+<h3 id="decision-rules-and-ranking">Decision rules and ranking</h3>
+<p>For independent conventional projects, IRR &gt; hurdle and NPV &gt; 0 agree. For <strong>mutually exclusive</strong> projects of different scale or timing, IRR rankings can conflict with NPV rankings; NPV (value added in ₹) governs. IRR's scale blindness — 40% on ₹1 crore vs 20% on ₹50 crore — is a standard interview probe.</p>
+<h3 id="practical-xirr-notes">Practical XIRR notes</h3>
+<ul>
+<li>First flow is usually the investment (negative); dates may be unsorted but the first date is the anchor.</li>
+<li>For a portfolio valued mid-way (e.g. a SIP), add the current value as a final positive flow on the valuation date.</li>
+<li>If XIRR returns #NUM!, check for no sign change, text dates, or provide a <code>guess</code> (e.g. −10% for loss-making investments).</li>
+<li>XIRR and XNPV use 365 days regardless of leap years.</li>
+</ul>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Monthly IRR not annualised.</strong> IRR on monthly flows of 1.2% presented as "1.2%" or "14.4%" (simple ×12) — the effective annual is \((1.012)^{12}-1 = 15.4\%\).</li>
+<li><strong>Zero vs blank.</strong> IRR on a range with blanks silently compresses the timeline; fill zeros.</li>
+<li><strong>Financing flows.</strong> Project IRR uses unlevered flows; equity IRR includes debt drawdowns and repayments. Do not mix.</li>
+<li><strong>Terminal value.</strong> In valuation, IRR including a terminal value is sensitive to the exit multiple; show sensitivity (w9_t6).</li>
+<li><strong>MIRR rate choice.</strong> Finance rate is typically the cost of debt or WACC; reinvestment rate the WACC. Document the choice; MIRR is only as good as these inputs.</li>
+<li><strong>Very short holding periods.</strong> XIRR on a 20-day trade annualises small gains into huge rates; report absolute return as well.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>IRR assumes equal periods and returns a per-period rate; XIRR uses actual dates and returns an annual rate.</li>
+<li>MIRR fixes the reinvestment assumption and the multiple-IRR problem, but still assumes equal periods.</li>
+<li>Irregular timing can move IRR by many percentage points — always use XIRR for dated flows.</li>
+<li>Check sign changes; with more than one, rely on NPV and MIRR.</li>
+<li>For ranking mutually exclusive projects, NPV governs over IRR.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-sip-return-l2">Q1. SIP return [L2]</h3>
+<p>An investor makes monthly SIP contributions of ₹25,000 on the 5th of each month from 5-Apr-2025 to 5-Mar-2026 (12 instalments). The portfolio value on 31-Mar-2026 is ₹3,18,400. Set up the values and dates columns and the XIRR formula, and explain why IRR on the same column would give a different, monthly figure.</p>
+<h3 id="q2-three-metrics-one-committee-paper-l2">Q2. Three metrics, one committee paper [L2]</h3>
+<p>A solar project costs ₹60 crore on 1-Oct-2025, receives a ₹6 crore capital subsidy on 31-Mar-2026, and generates net inflows of ₹11 crore per year at each 31 March from 2027 to 2036, with decommissioning cost of ₹8 crore on 31-Mar-2037. Write formulas for IRR (treating flows as annual), XIRR (actual dates) and MIRR (finance 9%, reinvest 11%). Explain which figure you would put in the investment committee paper and why.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Count the sign changes before relying on IRR.</p>
+</blockquote>
+<h3 id="q3-mutually-exclusive-projects-l2">Q3. Mutually exclusive projects [L2]</h3>
+<p>Project P: −₹5 crore, then +₹2.4 crore for 3 years. Project Q: −₹20 crore, then +₹8.5 crore for 3 years. Hurdle 12%. Describe the IRR and NPV calculations, identify the potential ranking conflict and state which project should be chosen and why.</p>
+<h3 id="q4-debug-xirr-num-and-value-l1">Q4. Debug XIRR #NUM! and #VALUE! [L1]</h3>
+<p>List four causes of XIRR errors on a 40-row cash-flow export from an ERP, distinguishing those that cause #VALUE! from those that cause #NUM!, and the fix for each.</p>
+<h3 id="q5-build-an-xmirr-l3">Q5. Build an XMIRR [L3]</h3>
+<p>Excel has no dated MIRR. Design a formula (LET is allowed) that computes a modified internal rate of return for dated flows, discounting negatives to the first date at a finance rate and compounding positives to the last date at a reinvestment rate, using actual/365 year fractions. Specify every intermediate variable.</p></section>
+<nav class="pager"><a class="prev" href="S03_NPV_vs_XNPV_Periodic_and_Dated_Cash_Flows.html">← NPV vs XNPV: Periodic and Dated Cash Flows</a><a class="next" href="S05_Loan_Amortisation_with_PMT_IPMT_PPMT_CUMIPMT_and.html">Loan Amortisation with PMT, IPMT, PPMT, CUMIPMT and CUMPRINC →</a></nav>
+</main></div></body></html>

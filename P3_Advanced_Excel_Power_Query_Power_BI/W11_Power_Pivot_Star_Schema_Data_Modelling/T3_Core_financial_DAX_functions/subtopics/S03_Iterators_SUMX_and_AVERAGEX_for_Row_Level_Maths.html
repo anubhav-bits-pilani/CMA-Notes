@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iterators SUMX and AVERAGEX for Row-Level Maths · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T3 · Core financial DAX functions</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Core financial DAX functions</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Row_Context_Filter_Context_and_Context_Transition.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S01_Row_Context_Filter_Context_and_Context_Transition.html">Row Context, Filter Context and Context Transition</a></li><li><a href="S02_CALCULATE_Filter_Arguments_and_Modifiers.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S02_CALCULATE_Filter_Arguments_and_Modifiers.html">CALCULATE Filter Arguments and Modifiers</a></li><li><a href="S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html">Iterators SUMX and AVERAGEX for Row-Level Maths</a></li><li><a href="S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html">FILTER vs Boolean Column Filters: Meaning and Performance</a></li><li><a href="S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html">ALL, ALLEXCEPT and ALLSELECTED for Share and Contribution Analysis</a></li><li><a href="S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html">RELATED and RELATEDTABLE in Columns and Iterators</a></li><li><a href="S07_DIVIDE_Measures_vs_Calculated_Columns_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S07_DIVIDE_Measures_vs_Calculated_Columns_and.html">DIVIDE, Measures vs Calculated Columns, and VAR/RETURN</a></li><li><a href="S08_Explicit_Measures_Display_Folders_and_LakhCrore.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S08_Explicit_Measures_Display_Folders_and_LakhCrore.html">Explicit Measures, Display Folders and ₹ Lakh/Crore Formats</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html">Base Actual Measure and a Filtered Revenue Measure</a></li><li><a href="../concepts/C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html">Percentage of Total Opex with ALL on Cost Centre</a></li><li><a href="../concepts/C03_Percentage_within_Statement_with_ALLEXCEPT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C03_Percentage_within_Statement_with_ALLEXCEPT.html">Percentage within Statement with ALLEXCEPT</a></li><li><a href="../concepts/C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html">FX-Converted Revenue with SUMX and RELATED</a></li><li><a href="../concepts/C05_Sign_Aware_Variance_with_VAR_and_ABS.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C05_Sign_Aware_Variance_with_VAR_and_ABS.html">Sign-Aware Variance % with VAR and ABS</a></li><li><a href="../concepts/C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html">KEEPFILTERS to Intersect Rather Than Overwrite</a></li><li><a href="../concepts/C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html">DIVIDE and Its BLANK Default for Zero Denominators</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Iterators SUMX and AVERAGEX for Row-Level Maths</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Iterators SUMX and AVERAGEX for row-level maths (qty × rate, FX conversion)</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Many finance numbers are not stored; they are computed per row and then aggregated: invoice value = quantity × rate,
+INR revenue = foreign-currency amount × that month's exchange rate, standard cost of sales = quantity × standard
+cost, GST = taxable value × rate. The order matters: \(\sum (q \times r) \neq (\sum q) \times (\sum r)\) and usually
+\(\neq (\sum q) \times \bar{r}\). Iterators perform the row-level multiplication first and aggregate second, inside a
+measure, so the result responds to every filter without bloating the model with calculated columns. AVERAGEX adds
+correct averaging at a chosen grain — average monthly sales, average daily cash — which simple AVERAGE over a fact
+column cannot do.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="syntax-and-semantics">Syntax and semantics</h3>
+<pre><code class="language-DAX">SUMX ( &lt;table&gt;, &lt;expression&gt; )
+AVERAGEX ( &lt;table&gt;, &lt;expression&gt; )
+</code></pre>
+<ol>
+<li>Evaluate <code>&lt;table&gt;</code> in the current filter context.</li>
+<li>For each row, create a row context and evaluate <code>&lt;expression&gt;</code>.</li>
+<li>Aggregate the per-row results: SUMX adds them; AVERAGEX averages them, ignoring blanks (blank results are not
+   counted in the denominator; zeros are).</li>
+</ol>
+<p>Family: SUMX, AVERAGEX, MINX, MAXX, COUNTX, COUNTAX, PRODUCTX, CONCATENATEX, RANKX. <code>SUM(col)</code> is syntactic sugar for
+<code>SUMX(table, col)</code>.</p>
+<h3 id="qty-rate">Qty × rate</h3>
+<pre><code class="language-DAX">Sales Value = SUMX ( Sales, Sales[Qty] * Sales[Rate] )
+</code></pre>
+<p>Row-level multiplication, then sum. Contrast:</p>
+<ul>
+<li><code>SUM(Sales[Qty]) * SUM(Sales[Rate])</code> — multiplies total quantity by the <em>sum</em> of rates: meaningless.</li>
+<li><code>SUM(Sales[Qty]) * AVERAGE(Sales[Rate])</code> — simple average rate, ignores the quantity mix; wrong whenever rates
+  vary across lines.</li>
+</ul>
+<h3 id="fx-conversion">FX conversion</h3>
+<p>Foreign-currency revenue must be converted at the rate applicable to each transaction (Ind AS 21.21: spot rate at
+the date of transaction, or an average rate for a period if rates do not fluctuate significantly — Ind AS 21.22).
+With a rate table FX (one row per currency × month, related many-to-one from Sales via a composite key or a
+CurrencyMonthKey):</p>
+<pre><code class="language-DAX">Revenue INR = SUMX ( Sales, Sales[AmountFC] * RELATED ( FX[Rate] ) )
+</code></pre>
+<p><code>RELATED</code> fetches the rate from the one side for the current Sales row (concept c04). If the rate table is daily
+and related through Date, the same pattern applies.</p>
+<p>Without a relationship (e.g. rates keyed by currency and MonthEnd), use LOOKUPVALUE inside the iterator — slower but
+flexible:</p>
+<pre><code class="language-DAX">Revenue INR (lookup) =
+SUMX (
+    Sales,
+    Sales[AmountFC]
+        * LOOKUPVALUE ( FX[Rate], FX[Currency], Sales[Currency], FX[MonthEnd], EOMONTH ( Sales[InvoiceDate], 0 ) )
+)
+</code></pre>
+<p>A faster pattern iterates at a coarser grain — currency × month — and converts aggregated FC amounts:</p>
+<pre><code class="language-DAX">Revenue INR (grouped) =
+SUMX (
+    SUMMARIZE ( Sales, FX[Currency], FX[MonthEnd] ),
+    CALCULATE ( SUM ( Sales[AmountFC] ) ) * CALCULATE ( MAX ( FX[Rate] ) )
+)
+</code></pre>
+<p>Valid when one rate applies per currency-month (average-rate policy). Context transition (<code>CALCULATE</code>) turns each
+group into filters on FX[Currency] and FX[MonthEnd]: those filters select exactly one FX row (its rate) and propagate
+to Sales, giving the group's FC total. Grouping by <code>'Date'[MonthEnd]</code> instead would be a subtle bug — the Date filter
+reaches Sales but not FX (FX sits on the one side of Sales), so <code>MAX(FX[Rate])</code> would return the highest rate of any
+month for that currency.</p>
+<h3 id="averagex-at-the-right-grain">AVERAGEX at the right grain</h3>
+<pre><code class="language-DAX">Avg Monthly Revenue = AVERAGEX ( VALUES ( 'Date'[MonthEnd] ), [Revenue] )
+Avg Daily Cash      = AVERAGEX ( VALUES ( 'Date'[Date] ), [Closing Cash] )
+Avg Invoice Value   = AVERAGEX ( VALUES ( Sales[InvoiceNo] ), [Sales Value] )
+</code></pre>
+<p>The table argument defines the averaging grain. <code>AVERAGE(GL[Amount])</code> averages voucher lines, which is almost never
+the business question. In AVERAGEX, months with blank <code>[Revenue]</code> are excluded; if a month with no sales should count
+as zero, use <code>[Revenue] + 0</code> (but then future months in the calendar also count — combine with an IsYTD filter).</p>
+<h3 id="calculated-column-vs-iterator">Calculated column vs iterator</h3>
+<table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>Model size</th>
+<th>Responds to filters</th>
+<th>Refresh cost</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Calculated column <code>Sales[Value] = [Qty] * [Rate]</code>, then <code>SUM</code></td>
+<td>Adds a column (high cardinality)</td>
+<td>Yes (aggregated by SUM)</td>
+<td>At refresh</td>
+<td>Very large models where query speed matters and the column compresses well</td>
+</tr>
+<tr>
+<td><code>SUMX(Sales, Sales[Qty] * Sales[Rate])</code></td>
+<td>No extra storage</td>
+<td>Yes</td>
+<td>At query</td>
+<td>Default; storage engine handles simple row maths efficiently</td>
+</tr>
+</tbody>
+</table>
+<p>For simple arithmetic between columns of the same table, VertiPaq's storage engine computes SUMX very quickly; prefer
+the measure. If the computation needs RELATED or LOOKUPVALUE across a crore rows, test both.</p>
+<h3 id="illustration">Illustration</h3>
+<table>
+<thead>
+<tr>
+<th>Invoice</th>
+<th>Currency</th>
+<th>AmountFC</th>
+<th>Month</th>
+<th>Rate (₹)</th>
+<th>INR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E-101</td>
+<td>USD</td>
+<td>50,000</td>
+<td>Apr-25</td>
+<td>85.50</td>
+<td>42,75,000</td>
+</tr>
+<tr>
+<td>E-102</td>
+<td>USD</td>
+<td>20,000</td>
+<td>May-25</td>
+<td>85.20</td>
+<td>17,04,000</td>
+</tr>
+<tr>
+<td>E-103</td>
+<td>EUR</td>
+<td>30,000</td>
+<td>May-25</td>
+<td>95.80</td>
+<td>28,74,000</td>
+</tr>
+</tbody>
+</table>
+<p><code>[Revenue INR]</code> for Q1 = ₹88,53,000. <code>SUM(Sales[AmountFC]) * AVERAGE(FX[Rate])</code> would add USD and EUR amounts
+(1,00,000 "FC") and multiply by an average rate (≈ 88.83) — ₹88.83 lakh, coincidentally close but conceptually wrong
+because it mixes currencies; change the mix and the error grows.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Blank rates.</strong> If FX has no row for a currency-month, RELATED returns blank and the line contributes blank —
+  revenue silently drops. Add a data-quality measure counting Sales rows with blank RELATED(FX[Rate]).</li>
+<li><strong>INR rows.</strong> Domestic sales in INR need a rate of 1 in FX (currency "INR") or <code>COALESCE(RELATED(FX[Rate]), 1)</code>
+  only for INR — never default all missing rates to 1.</li>
+<li><strong>Monetary items at closing rate.</strong> Receivables in FC at year-end are translated at the closing rate (Ind AS 21.23);
+  that is a balance-sheet measure using the closing rate, not the transaction rate.</li>
+<li><strong>Precision.</strong> Multiply then round at presentation, not per row, unless the ERP rounds per invoice (then match the
+  ERP to tie out).</li>
+<li><strong>PRODUCTX</strong> for compounding: <code>PRODUCTX(VALUES('Date'[MonthEnd]), 1 + [Monthly Return]) - 1</code> gives a compounded
+  return.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Iterators evaluate an expression per row, then aggregate — essential for qty × rate and FX conversion.</li>
+<li><code>SUMX(Sales, Sales[AmountFC] * RELATED(FX[Rate]))</code> converts at each transaction's rate per Ind AS 21.</li>
+<li>AVERAGEX's table argument defines the averaging grain (months, days, invoices).</li>
+<li>Prefer measures over calculated columns for simple row maths; test when lookups are heavy.</li>
+<li>Monitor blank rates — they silently drop revenue.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-correct-the-measure-l1">Q1. Correct the measure [L1]</h3>
+<p>Explain why <code>Sales Value = SUM(Sales[Qty]) * AVERAGE(Sales[Rate])</code> is wrong for an invoice table where rates vary by
+customer, and write the correct measure.</p>
+<h3 id="q2-fx-conversion-build-l2">Q2. FX conversion build [L2]</h3>
+<p>Sales has InvoiceDate, Currency (USD, EUR, AED, INR) and AmountFC. FX has Currency, MonthEnd and AvgRate. Describe the
+key you would create to relate Sales to FX, write the INR revenue measure, and write a data-quality measure that
+counts Sales rows lacking a rate.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> A composite key such as Currency &amp; MonthEnd can be built in Power Query on both tables.</p>
+</blockquote>
+<h3 id="q3-average-monthly-opex-l2">Q3. Average monthly opex [L2]</h3>
+<p>FY2025-26 opex by month (₹ crore): Apr 8.2, May 8.6, Jun 9.0, Jul 8.8, Aug 9.4, Sep 9.1; no actuals yet for Oct–Mar.
+Write a measure for average monthly opex for the FY that returns the average of the posted months only, and explain
+what <code>AVERAGEX(VALUES('Date'[MonthEnd]), [Opex] + 0)</code> would return instead.</p>
+<h3 id="q4-grouped-iteration-l3">Q4. Grouped iteration [L3]</h3>
+<p>Sales has 2 crore rows across 6 currencies and 60 months. Compare the row-by-row <code>SUMX</code> with <code>RELATED</code> and the grouped
+SUMMARIZE-based conversion on performance and correctness, and state the accounting policy condition under which the
+grouped version is valid.</p></section>
+<nav class="pager"><a class="prev" href="S02_CALCULATE_Filter_Arguments_and_Modifiers.html">← CALCULATE Filter Arguments and Modifiers</a><a class="next" href="S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html">FILTER vs Boolean Column Filters: Meaning and Performance →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GROUPBY and PIVOTBY as Formula-Based Pivots · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S08_GROUPBY_and_PIVOTBY_as_Formula_Based_Pivots.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T4 · Dynamic arrays and LET/LAMBDA</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Dynamic arrays and LET/LAMBDA</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Spill_Behaviour_SPILL_the_Operator_and_Implicit.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S01_Spill_Behaviour_SPILL_the_Operator_and_Implicit.html">Spill Behaviour, #SPILL!, the # Operator and Implicit Intersection</a></li><li><a href="S02_FILTER_with_ANDOR_Logic_for_Exception_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S02_FILTER_with_ANDOR_Logic_for_Exception_Lists.html">FILTER with AND/OR Logic for Exception Lists</a></li><li><a href="S03_UNIQUE_for_Dynamic_CoA_and_Department_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S03_UNIQUE_for_Dynamic_CoA_and_Department_Lists.html">UNIQUE for Dynamic CoA and Department Lists</a></li><li><a href="S04_SORT_and_SORTBY_for_Top_N_Expense_and_Ranked.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S04_SORT_and_SORTBY_for_Top_N_Expense_and_Ranked.html">SORT and SORTBY for Top-N Expense and Ranked Ageing Reports</a></li><li><a href="S05_SEQUENCE_for_Monthly_Timelines_Loan_Schedules_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S05_SEQUENCE_for_Monthly_Timelines_Loan_Schedules_and.html">SEQUENCE for Monthly Timelines, Loan Schedules and Period Counters</a></li><li><a href="S06_LET_for_Named_Steps_and_LAMBDA_Functions_in_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S06_LET_for_Named_Steps_and_LAMBDA_Functions_in_Name.html">LET for Named Steps and LAMBDA Functions in Name Manager</a></li><li><a href="S07_LAMBDA_Helpers_and_Array_Reshaping_Functions.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S07_LAMBDA_Helpers_and_Array_Reshaping_Functions.html">LAMBDA Helpers and Array Reshaping Functions</a></li><li><a href="S08_GROUPBY_and_PIVOTBY_as_Formula_Based_Pivots.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S08_GROUPBY_and_PIVOTBY_as_Formula_Based_Pivots.html">GROUPBY and PIVOTBY as Formula-Based Pivots</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_FILTER_with_Two_AND_Conditions_and_an_ifempty.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C01_FILTER_with_Two_AND_Conditions_and_an_ifempty.html">FILTER with Two AND Conditions and an if_empty Message</a></li><li><a href="../concepts/C02_Sorted_Unique_Account_List_for_a_Selected_FY.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C02_Sorted_Unique_Account_List_for_a_Selected_FY.html">Sorted Unique Account List for a Selected FY</a></li><li><a href="../concepts/C03_Top_10_Vendors_by_Spend_with_TAKE_and_SORTBY.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C03_Top_10_Vendors_by_Spend_with_TAKE_and_SORTBY.html">Top 10 Vendors by Spend with TAKE and SORTBY</a></li><li><a href="../concepts/C04_EOMONTH_with_SEQUENCE_for_Horizontal_Month_End.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C04_EOMONTH_with_SEQUENCE_for_Horizontal_Month_End.html">EOMONTH with SEQUENCE for Horizontal Month-End Headers</a></li><li><a href="../concepts/C05_LET_for_a_Safe_Gross_Margin_Calculation.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C05_LET_for_a_Safe_Gross_Margin_Calculation.html">LET for a Safe Gross Margin Calculation</a></li><li><a href="../concepts/C06_FYEND_A_Named_LAMBDA_for_the_Indian_Financial_Year.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C06_FYEND_A_Named_LAMBDA_for_the_Indian_Financial_Year.html">FYEND: A Named LAMBDA for the Indian Financial Year</a></li><li><a href="../concepts/C07_SCAN_for_Running_Closing_Balances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C07_SCAN_for_Running_Closing_Balances.html">SCAN for Running Closing Balances</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>GROUPBY and PIVOTBY as Formula-Based Pivots</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> GROUPBY and PIVOTBY (Microsoft 365) as formula-based pivots</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>PivotTables are fast to build but have three weaknesses in a controlled reporting model: they must be refreshed manually (a stale pivot in a board pack is a classic review finding), their layout shifts when new items appear, and they cannot be referenced cleanly by downstream formulas except through GETPIVOTDATA. GROUPBY and PIVOTBY are formula equivalents that recalculate automatically like any other formula, spill to the right size, and can feed further formulas through the <code>#</code> operator. For an FP&amp;A analyst producing a department × month expense summary or a vendor spend analysis every month, they collapse UNIQUE + SUMIFS + SORT + totals into one function call. They are also an excellent independent cross-check of a SUMIFS-built P&amp;L.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="groupby-one-dimensional-summaries">GROUPBY — one-dimensional summaries</h3>
+<pre><code class="language-excel">=GROUPBY(row_fields, values, function, [field_headers], [total_depth],
+         [sort_order], [filter_array], [field_relationship])
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Meaning</th>
+<th>Common choices</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>row_fields</td>
+<td>Column(s) to group by</td>
+<td><code>GL[Dept]</code> or <code>GL[[Dept]:[CostCentre]]</code></td>
+</tr>
+<tr>
+<td>values</td>
+<td>Column(s) to aggregate</td>
+<td><code>GL[Amount]</code></td>
+</tr>
+<tr>
+<td>function</td>
+<td>Aggregation</td>
+<td><code>SUM</code>, <code>AVERAGE</code>, <code>COUNT</code>, <code>COUNTA</code>, <code>MAX</code>, <code>MIN</code>, <code>PERCENTOF</code>, or a LAMBDA</td>
+</tr>
+<tr>
+<td>field_headers</td>
+<td>Whether data has headers / show headers</td>
+<td>0 no, 1 yes-don't show, 2 no-generate, 3 yes-show</td>
+</tr>
+<tr>
+<td>total_depth</td>
+<td>Totals and subtotals</td>
+<td>0 none, 1 grand total (default), 2 subtotals + grand total; negative puts totals at top</td>
+</tr>
+<tr>
+<td>sort_order</td>
+<td>Column index to sort by; negative for descending</td>
+<td><code>-2</code> sorts by the value column descending</td>
+</tr>
+<tr>
+<td>filter_array</td>
+<td>Boolean array of rows to include</td>
+<td><code>GL[FY]="FY26"</code></td>
+</tr>
+<tr>
+<td>field_relationship</td>
+<td>Hierarchy (0, default) or table (1)</td>
+<td>1 repeats labels on every row</td>
+</tr>
+</tbody>
+</table>
+<p>Example — FY26 spend by department, largest first, with grand total:</p>
+<pre><code class="language-excel">=GROUPBY(GL[Dept], GL[Amount], SUM, 3, 1, -2, GL[FY]=&quot;FY26&quot;)
+</code></pre>
+<p>This replaces:</p>
+<pre><code class="language-excel">=LET(d, UNIQUE(FILTER(GL[Dept], GL[FY]=&quot;FY26&quot;)),
+     a, SUMIFS(GL[Amount], GL[Dept], d, GL[FY], &quot;FY26&quot;),
+     VSTACK(SORTBY(HSTACK(d, a), a, -1), HSTACK(&quot;Total&quot;, SUM(a))))
+</code></pre>
+<p>Multiple aggregations: pass <code>HSTACK(SUM, COUNT)</code> as the function and the values twice (<code>HSTACK(GL[Amount], GL[Amount])</code>) to show total spend and number of entries side by side. <code>PERCENTOF</code> gives each group's share of the total.</p>
+<h3 id="pivotby-two-dimensional-cross-tab-summaries">PIVOTBY — two-dimensional (cross-tab) summaries</h3>
+<pre><code class="language-excel">=PIVOTBY(row_fields, col_fields, values, function, [field_headers],
+         [row_total_depth], [row_sort_order], [col_total_depth],
+         [col_sort_order], [filter_array], [relative_to])
+</code></pre>
+<p>Department × month expense grid:</p>
+<pre><code class="language-excel">=PIVOTBY(GLm[Dept], GLm[MonthEnd], GLm[Amount], SUM, 3, 1, 0, 1, 0,
+         GLm[FSLine]&lt;&gt;&quot;Revenue from operations&quot;)
+</code></pre>
+<p><code>MonthEnd</code> is a column of <code>EOMONTH(Date,0)</code> values in the mapped GL, so columns are real dates in chronological order (format the header row as <code>mmm-yy</code>). If you pivot by a text month ("Apr", "May"), the column order becomes alphabetical — Apr, Aug, Dec … — a recurring error.</p>
+<h3 id="custom-aggregations-with-lambda">Custom aggregations with LAMBDA</h3>
+<p>The function argument accepts any LAMBDA taking a column of values:</p>
+<pre><code class="language-excel">=GROUPBY(AR[Customer], AR[DaysOverdue], LAMBDA(x, MAX(x)))   oldest open item per customer
+=GROUPBY(Sales[Branch], Sales[Amount], LAMBDA(x, ROUND(SUM(x)/100000, 2)))   ₹ lakh
+</code></pre>
+<h3 id="hierarchies-for-schedule-iii-roll-ups">Hierarchies for Schedule III roll-ups</h3>
+<p>Pass two row fields to group FS line within Schedule III head, with subtotals:</p>
+<pre><code class="language-excel">=GROUPBY(GLm[[SchIIIHead]:[FSLine]], GLm[Amount], SUM, 3, 2)
+</code></pre>
+<p><code>total_depth</code> 2 gives a subtotal for each head (e.g. "Other expenses" with its FS lines beneath) and a grand total. Order follows the sort of row fields; to impose Schedule III order, include the sort key as the first row field and hide it with <code>CHOOSECOLS</code> / <code>DROP(…, , 1)</code>.</p>
+<h3 id="illustration">Illustration</h3>
+<p>Mapped GL extract (₹ lakh):</p>
+<table>
+<thead>
+<tr>
+<th>Dept</th>
+<th>MonthEnd</th>
+<th>Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sales</td>
+<td>30-Apr-25</td>
+<td>42</td>
+</tr>
+<tr>
+<td>Admin</td>
+<td>30-Apr-25</td>
+<td>18</td>
+</tr>
+<tr>
+<td>Sales</td>
+<td>31-May-25</td>
+<td>47</td>
+</tr>
+<tr>
+<td>Admin</td>
+<td>31-May-25</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Plant</td>
+<td>31-May-25</td>
+<td>61</td>
+</tr>
+</tbody>
+</table>
+<p><code>=PIVOTBY(T[Dept], T[MonthEnd], T[Amount], SUM)</code> returns:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Apr-25</th>
+<th>May-25</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Admin</td>
+<td>18</td>
+<td>16</td>
+<td>34</td>
+</tr>
+<tr>
+<td>Plant</td>
+<td></td>
+<td>61</td>
+<td>61</td>
+</tr>
+<tr>
+<td>Sales</td>
+<td>42</td>
+<td>47</td>
+<td>89</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>60</td>
+<td>124</td>
+<td>184</td>
+</tr>
+</tbody>
+</table>
+<p>Blank cells (Plant in April) are genuinely empty in the output, not zero. When June's GL is pasted into the source Table, a Jun-25 column appears automatically.</p>
+<h3 id="groupbypivotby-versus-pivottables-versus-sumifs-grids">GROUPBY/PIVOTBY versus PivotTables versus SUMIFS grids</h3>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>PivotTable</th>
+<th>GROUPBY / PIVOTBY</th>
+<th>UNIQUE + SUMIFS grid</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Refresh</td>
+<td>Manual (or on open)</td>
+<td>Automatic</td>
+<td>Automatic</td>
+</tr>
+<tr>
+<td>Layout control</td>
+<td>Pivot styles; limited</td>
+<td>Fixed by formula; limited formatting</td>
+<td>Full control (statement layout)</td>
+</tr>
+<tr>
+<td>Downstream references</td>
+<td>GETPIVOTDATA</td>
+<td><code>#</code> spill references</td>
+<td>Direct cell references</td>
+</tr>
+<tr>
+<td>Handles calculated FS lines (Gross margin, EBITDA)</td>
+<td>Calculated items, clumsy</td>
+<td>No — add with VSTACK</td>
+<td>Yes, natural</td>
+</tr>
+<tr>
+<td>Version</td>
+<td>All</td>
+<td>Current Microsoft 365 only</td>
+<td>365 for UNIQUE; SUMIFS everywhere</td>
+</tr>
+<tr>
+<td>Data size</td>
+<td>Data Model for millions</td>
+<td>Worksheet limits; slower above ~100k rows</td>
+<td>Similar</td>
+</tr>
+</tbody>
+</table>
+<p>Practical guidance: use PIVOTBY for analysis tabs and cross-checks; use a UNIQUE/SEQUENCE × SUMIFS grid for the presentation P&amp;L, where you need subtotal lines in Schedule III format, comparatives and fixed formats.</p>
+<h3 id="cross-check-pattern">Cross-check pattern</h3>
+<p>If the PIVOTBY spills from K5, its grand total is the bottom-right cell: <code>=TAKE(K5#, -1, -1)</code>. Put that beside the SUMIFS P&amp;L total with a difference cell. A difference flags a mapping or criteria error in one of the two methods — the same idea as using GETPIVOTDATA to cross-check SUMIFS in w9_t1.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Availability.</strong> GROUPBY and PIVOTBY are recent Microsoft 365 functions; Excel 2021/2024 perpetual and older builds show #NAME?. Check recipients' versions before using them in shared packs.</li>
+<li><strong>Cannot spill inside Tables</strong>, and the output size changes with data — reserve space as for any spill.</li>
+<li><strong>Sign conventions.</strong> Revenue as negative credits will show negative totals; pivot on a presentation-signed amount column.</li>
+<li><strong>Formatting</strong> is not carried with the data; apply number formats to the whole reserved area and use conditional formatting for total rows.</li>
+<li><strong>Text months</strong> sort alphabetically — always pivot on month-end dates.</li>
+<li><strong>Large data.</strong> Above roughly 100k rows, aggregate in Power Query or the Data Model (Week 10–11) and keep GROUPBY for the summarised output.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>GROUPBY summarises by row fields; PIVOTBY cross-tabulates rows × columns; both recalculate automatically.</li>
+<li>Key arguments: function (including LAMBDA), total_depth for subtotals, sort_order, and filter_array.</li>
+<li>Pivot on month-end dates, not text months, for chronological columns.</li>
+<li>Use them for analysis and cross-checks; build presentation P&amp;Ls with SUMIFS grids that support calculated lines.</li>
+<li>They are Microsoft 365-only — confirm recipients' Excel versions.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-argument-recall-l1">Q1. Argument recall [L1]</h3>
+<p>Write a GROUPBY formula that shows FY26 vendor spend from Table <code>Exp</code> (Vendor, FY, Amount), with headers displayed, a grand total, sorted by amount descending. Then modify it to show both total spend and invoice count.</p>
+<h3 id="q2-department-month-grid-l2">Q2. Department × month grid [L2]</h3>
+<p>The mapped GL Table <code>GLm</code> has Date, Dept, FSLine, Amount. Write the steps and formulas to produce a department × month expense grid for April–September 2025 only, columns in chronological order, excluding revenue lines, with row and column totals. Explain why you would add a MonthEnd column first.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> The filter_array can combine a date-range condition and an FS-line condition with <code>*</code>.</p>
+</blockquote>
+<h3 id="q3-cross-check-a-sumifs-pl-l2">Q3. Cross-check a SUMIFS P&amp;L [L2]</h3>
+<p>Your SUMIFS-based P&amp;L shows total expenses of ₹212.6 crore for FY26; a PIVOTBY on the same GL shows ₹214.1 crore. List four possible causes of the ₹1.5 crore gap and the order in which you would investigate them.</p>
+<h3 id="q4-choose-the-tool-l3">Q4. Choose the tool [L3]</h3>
+<p>The CFO of an NSE-listed auto-ancillary company wants (a) a board-pack P&amp;L in Schedule III format with comparatives, (b) an ad hoc analysis of spend by vendor and plant, and (c) a monthly cost-centre summary emailed to 40 plant managers, some on Excel 2019. For each, choose between PivotTable, GROUPBY/PIVOTBY and a SUMIFS grid, and justify the choice.</p>
+<h3 id="q5-custom-aggregation-l2">Q5. Custom aggregation [L2]</h3>
+<p>Using GROUPBY with a LAMBDA, write formulas for (a) the oldest open invoice age per customer, (b) average invoice value per branch in ₹ lakh rounded to one decimal, (c) count of invoices above ₹5 lakh per branch.</p></section>
+<nav class="pager"><a class="prev" href="S07_LAMBDA_Helpers_and_Array_Reshaping_Functions.html">← LAMBDA Helpers and Array Reshaping Functions</a><a class="next" href="../concepts/C01_FILTER_with_Two_AND_Conditions_and_an_ifempty.html">FILTER with Two AND Conditions and an ifempty Message →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SCAN for Running Closing Balances · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C07_SCAN_for_Running_Closing_Balances.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T4 · Dynamic arrays and LET/LAMBDA</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Dynamic arrays and LET/LAMBDA</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Spill_Behaviour_SPILL_the_Operator_and_Implicit.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S01_Spill_Behaviour_SPILL_the_Operator_and_Implicit.html">Spill Behaviour, #SPILL!, the # Operator and Implicit Intersection</a></li><li><a href="../subtopics/S02_FILTER_with_ANDOR_Logic_for_Exception_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S02_FILTER_with_ANDOR_Logic_for_Exception_Lists.html">FILTER with AND/OR Logic for Exception Lists</a></li><li><a href="../subtopics/S03_UNIQUE_for_Dynamic_CoA_and_Department_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S03_UNIQUE_for_Dynamic_CoA_and_Department_Lists.html">UNIQUE for Dynamic CoA and Department Lists</a></li><li><a href="../subtopics/S04_SORT_and_SORTBY_for_Top_N_Expense_and_Ranked.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S04_SORT_and_SORTBY_for_Top_N_Expense_and_Ranked.html">SORT and SORTBY for Top-N Expense and Ranked Ageing Reports</a></li><li><a href="../subtopics/S05_SEQUENCE_for_Monthly_Timelines_Loan_Schedules_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S05_SEQUENCE_for_Monthly_Timelines_Loan_Schedules_and.html">SEQUENCE for Monthly Timelines, Loan Schedules and Period Counters</a></li><li><a href="../subtopics/S06_LET_for_Named_Steps_and_LAMBDA_Functions_in_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S06_LET_for_Named_Steps_and_LAMBDA_Functions_in_Name.html">LET for Named Steps and LAMBDA Functions in Name Manager</a></li><li><a href="../subtopics/S07_LAMBDA_Helpers_and_Array_Reshaping_Functions.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S07_LAMBDA_Helpers_and_Array_Reshaping_Functions.html">LAMBDA Helpers and Array Reshaping Functions</a></li><li><a href="../subtopics/S08_GROUPBY_and_PIVOTBY_as_Formula_Based_Pivots.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S08_GROUPBY_and_PIVOTBY_as_Formula_Based_Pivots.html">GROUPBY and PIVOTBY as Formula-Based Pivots</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_FILTER_with_Two_AND_Conditions_and_an_ifempty.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C01_FILTER_with_Two_AND_Conditions_and_an_ifempty.html">FILTER with Two AND Conditions and an if_empty Message</a></li><li><a href="C02_Sorted_Unique_Account_List_for_a_Selected_FY.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C02_Sorted_Unique_Account_List_for_a_Selected_FY.html">Sorted Unique Account List for a Selected FY</a></li><li><a href="C03_Top_10_Vendors_by_Spend_with_TAKE_and_SORTBY.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C03_Top_10_Vendors_by_Spend_with_TAKE_and_SORTBY.html">Top 10 Vendors by Spend with TAKE and SORTBY</a></li><li><a href="C04_EOMONTH_with_SEQUENCE_for_Horizontal_Month_End.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C04_EOMONTH_with_SEQUENCE_for_Horizontal_Month_End.html">EOMONTH with SEQUENCE for Horizontal Month-End Headers</a></li><li><a href="C05_LET_for_a_Safe_Gross_Margin_Calculation.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C05_LET_for_a_Safe_Gross_Margin_Calculation.html">LET for a Safe Gross Margin Calculation</a></li><li><a href="C06_FYEND_A_Named_LAMBDA_for_the_Indian_Financial_Year.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C06_FYEND_A_Named_LAMBDA_for_the_Indian_Financial_Year.html">FYEND: A Named LAMBDA for the Indian Financial Year</a></li><li><a href="C07_SCAN_for_Running_Closing_Balances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C07_SCAN_for_Running_Closing_Balances.html">SCAN for Running Closing Balances</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>SCAN for Running Closing Balances</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>=SCAN(Opening, Movements, LAMBDA(acc, m, acc + m))</code> gives running closing balances</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-excel">=SCAN(Opening, Movements, LAMBDA(acc, m, acc + m))
+</code></pre>
+<ul>
+<li><code>Opening</code> — the initial value of the accumulator (opening balance).</li>
+<li><code>Movements</code> — a one-dimensional array of period movements (net debits/credits, billings less revenue, additions less depreciation).</li>
+<li><code>LAMBDA(acc, m, acc + m)</code> — for each element <code>m</code>, adds it to the running accumulator <code>acc</code>.</li>
+<li>SCAN returns the accumulator <strong>after each step</strong>, so the output has the same size as <code>Movements</code>.</li>
+</ul>
+<p>For periods \(t = 1, \dots, n\):</p>
+<p>\[
+C_t = C_{t-1} + M_t, \qquad C_0 = O
+\]</p>
+<p>where \(O\) is the opening balance, \(M_t\) the movement in period \(t\) and \(C_t\) the closing balance returned in position \(t\).</p>
+<h2 id="explanation">Explanation</h2>
+<p>A roll-forward (opening + movements = closing) is the backbone of every balance-sheet schedule: fixed assets, debt, deferred revenue, provisions, inventory, retained earnings. Traditionally it is built with a copy-across chain: closing = opening + movements, next opening = previous closing. That chain is reliable but must be extended by hand when the horizon grows. SCAN produces the whole closing row from one formula, and it resizes when <code>Movements</code> is a spill (for example a SUMIFS row driven by <code>EOMONTH(…, SEQUENCE(…))</code> headers).</p>
+<p>Related forms:</p>
+<ul>
+<li><strong>Opening row</strong>: <code>=VSTACK(Opening, DROP(close, -1))</code> (vertical) or <code>HSTACK(Opening, DROP(close, , -1))</code> (horizontal) — the prior period's closing shifted by one.</li>
+<li><strong>YTD cumulative</strong>: <code>SCAN(0, Monthly, LAMBDA(a, x, a + x))</code>.</li>
+<li><strong>End balance only</strong>: REDUCE with the same arguments.</li>
+<li><strong>Non-additive logic</strong>: the LAMBDA can be any expression of <code>acc</code> and <code>m</code>. A lease liability with monthly interest rate <code>i</code> and payments <code>p</code>: <code>SCAN(L0, p, LAMBDA(acc, x, acc*(1+i) - x))</code> — the interest depends on the running balance, which an additive cumulative sum cannot capture.</li>
+</ul>
+<p>Constraints:</p>
+<ul>
+<li><code>Movements</code> should be a single row or column. On a 2-D array SCAN runs row by row, left to right, carrying the accumulator from the end of one row to the start of the next.</li>
+<li>Signs must be consistent: increases positive, decreases negative (or the LAMBDA must subtract).</li>
+<li>Requires Microsoft 365 / Excel 2024.</li>
+<li>Reviewers cannot see intermediate opening balances unless you output them; for audit-facing schedules show opening, movements and closing as separate rows.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>Trade receivables, FY26 Q1 (₹ lakh). Opening on 1-Apr-2025: 820.</p>
+<table>
+<thead>
+<tr>
+<th>Month</th>
+<th>Billings</th>
+<th>Collections</th>
+<th>Movement</th>
+<th><code>SCAN</code> closing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apr-25</td>
+<td>310</td>
+<td>265</td>
+<td>+45</td>
+<td>865</td>
+</tr>
+<tr>
+<td>May-25</td>
+<td>295</td>
+<td>340</td>
+<td>−45</td>
+<td>820</td>
+</tr>
+<tr>
+<td>Jun-25</td>
+<td>330</td>
+<td>290</td>
+<td>+40</td>
+<td>860</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-excel">=SCAN(Opening, Billings - Collections, LAMBDA(acc, m, acc + m))
+</code></pre>
+<p>returns {865; 820; 860}. The June closing must agree with the trade receivables control ledger in the 30-Jun-2025 TB; a check cell <code>=TAKE(close, -1) - TB_Receivables</code> should be zero. DSO for the quarter can then use the average of opening and SCAN closings.</p>
+<h2 id="connections">Connections</h2>
+<p>Implements s07 (SCAN and REDUCE). Uses SEQUENCE/EOMONTH timelines from s05 and c04 for the period axis. It underpins the self-updating depreciation, loan amortisation and deferred revenue schedules of Weeks 13–16, and the Ind AS 116 lease liability unwinding of w9_t5. The DAX analogue is a cumulative total using <code>CALCULATE</code> with a date filter <code>&lt;= MAX(Date)</code> (Week 11).</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-opening-and-closing-rows-l1">Q1. Opening and closing rows [L1]</h3>
+<p>Movements for six months are in a horizontal spill <code>D8#</code> and the opening balance is in <code>Open</code>. Write formulas for the closing row with SCAN and the opening row derived from it, and a check that the last closing equals Open plus the sum of movements.</p>
+<h3 id="q2-loan-balance-with-interest-l2">Q2. Loan balance with interest [L2]</h3>
+<p>A ₹1.2 crore loan carries 0.85% monthly interest with EMI of ₹2,56,147 for 60 months. Write a SCAN formula for the closing balance each month, explain why the LAMBDA cannot be <code>acc + m</code>, and describe what the final value should be close to.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Interest is a function of the running balance, so it must be computed inside the LAMBDA.</p>
+</blockquote>
+<h3 id="q3-retained-earnings-roll-forward-l2">Q3. Retained earnings roll-forward [L2]</h3>
+<p>FY26 monthly profit after tax is a spill <code>PAT#</code>, opening retained earnings are ₹48 crore, and an interim dividend of ₹6 crore is paid in October. Design a SCAN-based roll-forward and explain how you would show the dividend as a separate visible movement for the reviewer.</p></section>
+<nav class="pager"><a class="prev" href="C06_FYEND_A_Named_LAMBDA_for_the_Indian_Financial_Year.html">← FYEND: A Named LAMBDA for the Indian Financial Year</a><a class="next" href="../../T5_Financial_and_date_functions/index.html">Financial and date functions →</a></nav>
+</main></div></body></html>

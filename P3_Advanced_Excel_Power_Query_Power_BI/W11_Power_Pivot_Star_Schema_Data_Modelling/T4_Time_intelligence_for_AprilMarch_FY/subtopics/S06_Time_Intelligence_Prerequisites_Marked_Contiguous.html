@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Time-Intelligence Prerequisites: Marked, Contiguous Date Table · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S06_Time_Intelligence_Prerequisites_Marked_Contiguous.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T4 · Time intelligence for April–March FY</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Time intelligence for April–March FY</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_YTD_QTD_and_MTD_Measures_for_an_AprilMarch_Fiscal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S01_YTD_QTD_and_MTD_Measures_for_an_AprilMarch_Fiscal.html">YTD, QTD and MTD Measures for an April–March Fiscal Year</a></li><li><a href="S02_SAMEPERIODLASTYEAR_vs_DATEADD_vs_PARALLELPERIOD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S02_SAMEPERIODLASTYEAR_vs_DATEADD_vs_PARALLELPERIOD.html">SAMEPERIODLASTYEAR vs DATEADD vs PARALLELPERIOD</a></li><li><a href="S03_PY_YTD_YTD_Growth_MoM_and_YoY_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S03_PY_YTD_YTD_Growth_MoM_and_YoY_Measures.html">PY YTD, YTD Growth, MoM % and YoY % Measures</a></li><li><a href="S04_Rolling_12_Month_and_Trailing_3_Month_Windows_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S04_Rolling_12_Month_and_Trailing_3_Month_Windows_with.html">Rolling 12-Month and Trailing 3-Month Windows with DATESINPERIOD</a></li><li><a href="S05_Capping_Time_Intelligence_at_the_Last_Actuals_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S05_Capping_Time_Intelligence_at_the_Last_Actuals_Date.html">Capping Time Intelligence at the Last Actuals Date</a></li><li><a href="S06_Time_Intelligence_Prerequisites_Marked_Contiguous.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S06_Time_Intelligence_Prerequisites_Marked_Contiguous.html">Time-Intelligence Prerequisites: Marked, Contiguous Date Table</a></li><li><a href="S07_Calculation_Groups_and_Field_Parameters_for_Time.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S07_Calculation_Groups_and_Field_Parameters_for_Time.html">Calculation Groups and Field Parameters for Time-Intelligence Views</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_TOTALYTD_with_331_Equals_CALCULATE_with_DATESYTD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C01_TOTALYTD_with_331_Equals_CALCULATE_with_DATESYTD.html">TOTALYTD with &quot;3/31&quot; Equals CALCULATE with DATESYTD</a></li><li><a href="../concepts/C02_PY_YTD_via_SAMEPERIODLASTYEAR_and_the_YoY_Measure.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C02_PY_YTD_via_SAMEPERIODLASTYEAR_and_the_YoY_Measure.html">PY YTD via SAMEPERIODLASTYEAR and the YoY % Measure</a></li><li><a href="../concepts/C03_Prior_Month_Actual_with_DATEADD_and_the_MoM.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C03_Prior_Month_Actual_with_DATEADD_and_the_MoM.html">Prior-Month Actual with DATEADD and the MoM % Measure</a></li><li><a href="../concepts/C04_Rolling_12_Month_Measure_with_DATESINPERIOD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C04_Rolling_12_Month_Measure_with_DATESINPERIOD.html">Rolling 12-Month Measure with DATESINPERIOD</a></li><li><a href="../concepts/C05_Last_Actual_Date_and_Capping_YTD_at_Posted_Data.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C05_Last_Actual_Date_and_Capping_YTD_at_Posted_Data.html">Last Actual Date and Capping YTD at Posted Data</a></li><li><a href="../concepts/C06_Locale_Parsing_of_the_Year_End_String_in_DATESYTD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C06_Locale_Parsing_of_the_Year_End_String_in_DATESYTD.html">Locale Parsing of the Year-End String in DATESYTD</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Time-Intelligence Prerequisites: Marked, Contiguous Date Table</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Prerequisites: marked Date table, contiguous dates, filters applied through the Date table</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>The DAX time-intelligence functions (<code>DATESYTD</code>, <code>SAMEPERIODLASTYEAR</code>, <code>DATEADD</code>, <code>DATESINPERIOD</code>, the opening/closing
+balance family) make assumptions about the date column they receive. When those assumptions are violated they rarely
+error — they return blanks, partial sums or totals that look plausible. In audit terms, these are control failures
+in the model's design rather than in individual measures, so they must be checked once, at the model level, before
+any measure is trusted.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="prerequisite-1-a-proper-date-table">Prerequisite 1: a proper Date table</h3>
+<p>The <code>dates</code> argument of a time-intelligence function should be the date column of a dedicated Date dimension that:</p>
+<ol>
+<li>Has <strong>one row per day</strong> — unique values, no duplicates.</li>
+<li>Is <strong>contiguous</strong> — every day from the first to the last date, no gaps (weekends and holidays included).</li>
+<li>Covers <strong>whole fiscal years</strong> — 1 April of the first FY to 31 March of the last FY, spanning every date in every
+   fact (GL posting dates, budget dates, due dates) plus a comparative year.</li>
+<li>Has a column of <strong>Date data type</strong> with no time component and no blanks.</li>
+</ol>
+<p>Why contiguity matters: functions like <code>DATEADD</code> and <code>SAMEPERIODLASTYEAR</code> shift the <em>visible dates</em>; if the shifted
+dates are missing from the table they simply drop out. <code>DATESYTD</code> returns the dates that exist between year start and
+the last visible date; if GL dates are used and no posting occurred on 1–3 April (holidays), they are not missing
+from the sum — but <code>DATEADD</code> on a gap-filled column can return the wrong set, and <code>PARALLELPERIOD</code>/
+<code>OPENINGBALANCEYEAR</code> look for specific boundary dates that might not exist.</p>
+<h3 id="prerequisite-2-mark-as-date-table">Prerequisite 2: Mark as Date Table</h3>
+<p>In Power BI Desktop: select the table → <em>Table tools</em> → <em>Mark as date table</em> → choose the date column. In Power Pivot
+(Excel): <em>Design</em> → <em>Mark as Date Table</em>. The engine validates uniqueness and contiguity at that moment and rejects
+the column if it fails.</p>
+<p>Effects of marking:</p>
+<ul>
+<li><strong>Automatic removal of Date-table filters.</strong> When a time-intelligence function (or any <code>CALCULATE</code> filter) sets a
+  filter on the marked date column, the engine adds <code>REMOVEFILTERS('Date')</code> implicitly, so filters on month name,
+  FY label, quarter or any other Date column do not intersect with the new date set. Without this, a matrix with
+  <code>'Date'[Month Name]</code> on rows would compute YTD for November as "dates in YTD <em>and</em> in November" = November only.</li>
+<li><strong>Date-key relationships work.</strong> If the relationship from the fact is on an integer <code>DateKey</code> (YYYYMMDD) rather
+  than a Date column, the implicit removal described above happens <strong>only</strong> if the table is marked. A relationship
+  on a column of Date type gets the behaviour even without marking, but marking is still recommended.</li>
+<li><strong>Auto date/time is disabled</strong> for that table's columns, removing hidden per-column date tables (and the
+  <code>[Date].[Year]</code> style hierarchies that confuse users).</li>
+</ul>
+<p>Also turn off <em>File → Options → Current file → Data load → Auto date/time</em> so that every date column in the model
+does not get its own hidden calendar.</p>
+<h3 id="prerequisite-3-filter-through-the-date-table">Prerequisite 3: filter through the Date table</h3>
+<p>Time intelligence works on the Date dimension, not on fact columns:</p>
+<ul>
+<li><strong>Pass <code>'Date'[Date]</code>, not <code>GL[Date]</code>.</strong> <code>DATESYTD(GL[Date], "3/31")</code> operates on the dates present in the GL —
+  a non-contiguous list — and filters the fact column directly, bypassing the dimension. It may return correct
+  numbers in simple visuals and wrong ones when another fact (Budget) is in the same visual, because Budget is not
+  filtered by <code>GL[Date]</code>.</li>
+<li><strong>Put Date-table columns on axes and slicers</strong>, never the fact's date column. A slicer on <code>GL[Date]</code> filters GL
+  only, so <code>CALCULATE</code> replacing the <code>'Date'</code> filter does not clear the slicer, and the YTD intersects with the slicer
+  range unexpectedly.</li>
+<li><strong>Hide fact date columns</strong> (and foreign keys generally, see t1 c06) so report builders cannot use them.</li>
+<li><strong>Single active relationship.</strong> For a fact with several dates (posting, document, due), only one relationship is
+  active; time-intelligence follows the active one unless <code>USERELATIONSHIP</code> is added inside the same <code>CALCULATE</code>.</li>
+</ul>
+<h3 id="diagnostic-checks">Diagnostic checks</h3>
+<p>Run these in DAX query view or DAX Studio before signing off a model:</p>
+<pre><code class="language-DAX">EVALUATE
+ROW (
+    &quot;Rows&quot;,        COUNTROWS ( 'Date' ),
+    &quot;Distinct&quot;,    DISTINCTCOUNT ( 'Date'[Date] ),
+    &quot;Span days&quot;,   INT ( MAX ( 'Date'[Date] ) - MIN ( 'Date'[Date] ) ) + 1,
+    &quot;First&quot;,       MIN ( 'Date'[Date] ),
+    &quot;Last&quot;,        MAX ( 'Date'[Date] ),
+    &quot;GL min&quot;,      MIN ( GL[Date] ),
+    &quot;GL max&quot;,      MAX ( GL[Date] ),
+    &quot;Orphan GL&quot;,   COUNTROWS ( EXCEPT ( VALUES ( GL[Date] ), VALUES ( 'Date'[Date] ) ) )
+)
+</code></pre>
+<p>Expected: Rows = Distinct = Span days; First is a 1 April; Last is a 31 March; GL min/max lie inside; Orphan GL = 0
+(an orphan usually means a datetime with a time part or a date outside the range).</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>A model built from a Tally export has a Date table generated from distinct GL dates: 1,019 rows for 1 April 2023 –
+31 March 2026 (1,096 days). Missing days are mostly Sundays and holidays. Symptoms observed:</p>
+<table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Expected (₹ lakh)</th>
+<th>Returned</th>
+<th>Cause</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PY Actual for Feb 2025</td>
+<td>1,840</td>
+<td>1,840</td>
+<td>Shift maps dates that exist</td>
+</tr>
+<tr>
+<td>PY YTD for 2 Apr 2025</td>
+<td>52</td>
+<td>Blank</td>
+<td>2 Apr 2024 was not in the table</td>
+</tr>
+<tr>
+<td>Opening Balance Year (FY26)</td>
+<td>12,400</td>
+<td>Blank</td>
+<td>31 Mar 2025 (a Monday holiday) missing</td>
+</tr>
+</tbody>
+</table>
+<p>The fix is a generated, contiguous calendar (t2), not more DAX.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Multiple Date tables:</strong> one per role (posting/due) is an alternative to inactive relationships, but each must be
+  marked and contiguous; it doubles slicer confusion. Prefer one Date table with <code>USERELATIONSHIP</code>.</li>
+<li><strong>DirectQuery sources:</strong> marking works, but generating the Date table in the source (SQL view) is preferable to a
+  calculated table for performance.</li>
+<li><strong>Budget at month grain:</strong> store on the first day (or last day) of the month and relate to <code>'Date'[Date]</code> (t1 c02);
+  time intelligence then works for Budget as for Actual.</li>
+<li><strong>Time zone:</strong> cloud exports in UTC can shift a 31 March 23:30 IST voucher into 31 March 18:00 UTC — still the same
+  date, but a 1 April 01:00 IST voucher lands on 31 March UTC, in the wrong FY. Convert to IST before truncating.</li>
+<li><strong>Weeks and 4-4-5 periods:</strong> built-in functions assume a Gregorian calendar; non-standard periods need custom
+  logic on fiscal columns (related item in topic overview).</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Time intelligence requires a unique, contiguous, whole-FY Date column of Date type.</li>
+<li>Marking the table validates it and makes the engine remove other Date-table filters when the date filter is
+  replaced.</li>
+<li>Always pass <code>'Date'[Date]</code> and use Date-table columns on visuals; hide fact date columns.</li>
+<li>Turn off Auto date/time for the file.</li>
+<li>Run a diagnostic query (rows = distinct = span; orphans = 0) before trusting any time-intelligence measure.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-diagnose-blank-ytd-l1">Q1. Diagnose blank YTD [L1]</h3>
+<p>A model relates <code>GL[DateKey]</code> (integer YYYYMMDD) to <code>'Date'[DateKey]</code>. The Date table is not marked. With
+<code>'Date'[Month Name]</code> on rows, the YTD measure returns the same value as the monthly measure. Explain the mechanism and
+the fix.</p>
+<h3 id="q2-write-the-diagnostic-query-l2">Q2. Write the diagnostic query [L2]</h3>
+<p>Write a DAX query that returns, for each fact table in a model (GL, Budget, AR Ledger), the minimum date, maximum date
+and count of dates not present in the Date table, and state the expected result for a model ready for time
+intelligence.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Combine <code>ROW</code> or <code>UNION</code> with <code>EXCEPT(VALUES(fact[Date]), VALUES('Date'[Date]))</code> per fact.</p>
+</blockquote>
+<h3 id="q3-slicer-on-the-fact-date-l2">Q3. Slicer on the fact date [L2]</h3>
+<p>A report has a between-dates slicer on <code>GL[PostingDate]</code> set to 1 October – 30 November 2025, and a card showing
+<code>TOTALYTD([Actual], 'Date'[Date], "3/31")</code>. Explain what the card shows and why, and redesign the page so the
+slicer and the YTD measure behave as the user expects.</p>
+<h3 id="q4-audit-checklist-for-a-time-intelligence-model-l3">Q4. Audit checklist for a time-intelligence model [L3]</h3>
+<p>You are reviewing a Power BI model built by a consultant for a listed NBFC's monthly MIS. Draft a ten-point review
+checklist covering the Date table, relationships, measure arguments and visuals, and for each point state the
+evidence you would collect (screenshot, query result, model metadata).</p></section>
+<nav class="pager"><a class="prev" href="S05_Capping_Time_Intelligence_at_the_Last_Actuals_Date.html">← Capping Time Intelligence at the Last Actuals Date</a><a class="next" href="S07_Calculation_Groups_and_Field_Parameters_for_Time.html">Calculation Groups and Field Parameters for… →</a></nav>
+</main></div></body></html>

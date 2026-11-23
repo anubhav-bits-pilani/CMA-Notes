@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AVERAGEIFS, MAXIFS and MINIFS for AR/AP and Sales Analytics · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S04_AVERAGEIFS_MAXIFS_and_MINIFS_for_ARAP_and_Sales.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T1 · Multi-criteria logic and GL rollups</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Multi-criteria logic and GL rollups</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Nested_IF_vs_IFS_vs_SWITCH_for_Account_Code.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S01_Nested_IF_vs_IFS_vs_SWITCH_for_Account_Code.html">Nested IF vs IFS vs SWITCH for Account-Code Classification</a></li><li><a href="S02_SUMIFS_for_Multi_Department_GL_Rollups_by_Group.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S02_SUMIFS_for_Multi_Department_GL_Rollups_by_Group.html">SUMIFS for Multi-Department GL Rollups by Group, Cost Centre and Month</a></li><li><a href="S03_COUNTIFS_Data_Quality_Tests_on_GL_and_TB_Dumps.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S03_COUNTIFS_Data_Quality_Tests_on_GL_and_TB_Dumps.html">COUNTIFS Data-Quality Tests on GL and TB Dumps</a></li><li><a href="S04_AVERAGEIFS_MAXIFS_and_MINIFS_for_ARAP_and_Sales.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S04_AVERAGEIFS_MAXIFS_and_MINIFS_for_ARAP_and_Sales.html">AVERAGEIFS, MAXIFS and MINIFS for AR/AP and Sales Analytics</a></li><li><a href="S05_Criteria_Syntax_Operators_Concatenation_Wildcards.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S05_Criteria_Syntax_Operators_Concatenation_Wildcards.html">Criteria Syntax: Operators, Concatenation, Wildcards and Date Ranges</a></li><li><a href="S06_OR_Logic_in_SUMIFS_with_Array_Constants_Wrapped_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S06_OR_Logic_in_SUMIFS_with_Array_Constants_Wrapped_in.html">OR Logic in SUMIFS with Array Constants Wrapped in SUM</a></li><li><a href="S07_Excel_Tables_and_Structured_References_for_Self.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S07_Excel_Tables_and_Structured_References_for_Self.html">Excel Tables and Structured References for Self-Expanding Rollups</a></li><li><a href="S08_Mixed_References_and_F4_Cycling_for_Copy_Across_PL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/subtopics/S08_Mixed_References_and_F4_Cycling_for_Copy_Across_PL.html">Mixed References and F4 Cycling for Copy-Across P&amp;L Grids</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_The_Department_Account_Month_SUMIFS_Grid_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C01_The_Department_Account_Month_SUMIFS_Grid_Formula.html">The Department × Account × Month SUMIFS Grid Formula</a></li><li><a href="../concepts/C02_IFS_with_a_TRUE_Catch_All_for_Account.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C02_IFS_with_a_TRUE_Catch_All_for_Account.html">IFS with a TRUE Catch-All for Account Classification</a></li><li><a href="../concepts/C03_SUM_of_SUMIFS_with_an_Array_Constant_for_OR_Logic.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C03_SUM_of_SUMIFS_with_an_Array_Constant_for_OR_Logic.html">SUM of SUMIFS with an Array Constant for OR Logic</a></li><li><a href="../concepts/C04_MAXIFS_and_MINIFS_Signature_and_the_Zero_When.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C04_MAXIFS_and_MINIFS_Signature_and_the_Zero_When.html">MAXIFS and MINIFS: Signature and the Zero-When-Empty Trap</a></li><li><a href="../concepts/C05_COUNTIFS_Duplicate_Posting_Flag_in_a_Calculated.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C05_COUNTIFS_Duplicate_Posting_Flag_in_a_Calculated.html">COUNTIFS Duplicate-Posting Flag in a Calculated Column</a></li><li><a href="../concepts/C06_AVERAGEIFS_and_the_DIV0_Result_on_No_Matches.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C06_AVERAGEIFS_and_the_DIV0_Result_on_No_Matches.html">AVERAGEIFS and the #DIV/0! Result on No Matches</a></li><li><a href="../concepts/C07_Range_Criteria_for_Numeric_Account_Codes_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T1_Multi_criteria_logic_and_GL_rollups/concepts/C07_Range_Criteria_for_Numeric_Account_Codes_vs.html">Range Criteria for Numeric Account Codes vs Wildcards on Text</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>AVERAGEIFS, MAXIFS and MINIFS for AR/AP and Sales Analytics</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> AVERAGEIFS, MAXIFS, MINIFS for average ticket size, largest open vendor payment, oldest open invoice</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Sums tell you how much; conditional averages and extremes tell you how it behaves. A CFO reviewing working capital asks "what is our average invoice value by channel?", "what is the single largest payment we still owe this vendor?", "how old is the oldest unpaid invoice from this customer?". These drive collection prioritisation, MSME 45-day compliance under Section 43B(h) of the Income-tax Act and the MSMED Act, credit-limit reviews and FP&amp;A unit-economics KPIs (average order value, average ticket size). AVERAGEIFS, MAXIFS and MINIFS answer them directly from the sub-ledger with the same criteria grammar as SUMIFS.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="signatures">Signatures</h3>
+<pre><code class="language-excel">=AVERAGEIFS(average_range, criteria_range1, criteria1, …)
+=MAXIFS(max_range, criteria_range1, criteria1, …)
+=MINIFS(min_range, criteria_range1, criteria1, …)
+</code></pre>
+<p>All three follow the SUMIFS pattern: the value range comes first, then up to 126/127 equal-sized criteria pairs combined with AND. MAXIFS and MINIFS arrived in Excel 2019 / Microsoft 365; in Excel 2016 they show <code>#NAME?</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Behaviour</th>
+<th>AVERAGEIFS</th>
+<th>MAXIFS / MINIFS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No row meets criteria</td>
+<td><code>#DIV/0!</code></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td>Text/blank in value range</td>
+<td>Ignored</td>
+<td>Ignored</td>
+</tr>
+<tr>
+<td>Zero values in value range</td>
+<td>Included in the average</td>
+<td>Included (0 can be the min)</td>
+</tr>
+<tr>
+<td>Typical wrapper</td>
+<td><code>IF(COUNTIFS(…)=0,"–",AVERAGEIFS(…))</code></td>
+<td><code>IF(COUNTIFS(…)=0,"–",MAXIFS(…))</code></td>
+</tr>
+</tbody>
+</table>
+<p>The "returns 0 when nothing matches" behaviour of MAXIFS/MINIFS is dangerous: for dates, 0 is 00-Jan-1900, and for amounts it is indistinguishable from a genuine zero. Always pair with a COUNTIFS test.</p>
+<h3 id="average-ticket-size">Average ticket size</h3>
+<p>Average invoice value by channel from a sales register <code>SR</code>:</p>
+<pre><code class="language-excel">=AVERAGEIFS(SR[Taxable], SR[Channel], $A5, SR[InvDate], &quot;&gt;=&quot;&amp;FYStart, SR[InvDate], &quot;&lt;=&quot;&amp;FYEnd, SR[VchType], &quot;Sales&quot;)
+</code></pre>
+<p>Judgement points:</p>
+<ul>
+<li><strong>Exclude credit notes</strong> (negative values) or they drag the average down — the <code>VchType</code> criterion does this.</li>
+<li>Decide <strong>taxable value vs invoice value</strong> (with GST) and say so in the KPI definition.</li>
+<li>Average per <strong>invoice</strong> requires one row per invoice. A line-level sales register (one row per item) gives average <strong>line</strong> value instead. Aggregate to invoice level first (Power Query Group By, or <code>UNIQUE</code> plus SUMIFS) if needed.</li>
+<li>Average of averages is wrong: the average ticket for two branches combined is total value ÷ total invoices, not the mean of the two branch averages.</li>
+</ul>
+<h3 id="largest-open-vendor-payment">Largest open vendor payment</h3>
+<p>From an AP open-items Table <code>AP</code> (Vendor, InvNo, InvDate, DueDate, Amount, Status):</p>
+<pre><code class="language-excel">=MAXIFS(AP[Amount], AP[Vendor], F2, AP[Status], &quot;Open&quot;)
+</code></pre>
+<p>To return the invoice number behind the maximum, combine with a multi-criteria lookup:</p>
+<pre><code class="language-excel">=XLOOKUP(1, (AP[Vendor]=F2)*(AP[Status]=&quot;Open&quot;)*(AP[Amount]=G2), AP[InvNo], &quot;None&quot;)
+</code></pre>
+<p>where G2 holds the MAXIFS result. If two open invoices share the maximum amount, XLOOKUP returns the first; FILTER returns all of them.</p>
+<h3 id="oldest-open-invoice">Oldest open invoice</h3>
+<p>Dates are serial numbers, so the oldest date is the <strong>minimum</strong>:</p>
+<pre><code class="language-excel">=MINIFS(AR[InvDate], AR[Customer], $A5, AR[Status], &quot;Open&quot;)
+</code></pre>
+<p>Format the result as a date. Age in days at the reporting date: <code>=ReportDate - MINIFS(…)</code>. Because an empty result is 0, the age of a customer with no open items would be about 46,000 days — wrap it:</p>
+<pre><code class="language-excel">=IF(COUNTIFS(AR[Customer],$A5,AR[Status],&quot;Open&quot;)=0,
+   &quot;&quot;,
+   ReportDate-MINIFS(AR[InvDate],AR[Customer],$A5,AR[Status],&quot;Open&quot;))
+</code></pre>
+<p>Use <strong>DueDate</strong> rather than InvDate when the question is "most overdue" rather than "oldest", and for micro and small enterprise vendors compare the oldest unpaid date with the 45-day limit (15 days where there is no written agreement) that drives the Section 43B(h) disallowance.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>AP open items for vendor "Kaveri Steels" (registered under Udyam as a small enterprise), report date 31-Mar-2026:</p>
+<table>
+<thead>
+<tr>
+<th>InvNo</th>
+<th>InvDate</th>
+<th>Amount (₹)</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KS/101</td>
+<td>05-Jan-2026</td>
+<td>8,40,000</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>KS/118</td>
+<td>02-Feb-2026</td>
+<td>12,75,000</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>KS/122</td>
+<td>20-Feb-2026</td>
+<td>3,10,000</td>
+<td>Paid</td>
+</tr>
+<tr>
+<td>KS/131</td>
+<td>10-Mar-2026</td>
+<td>6,05,000</td>
+<td>Open</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>MAXIFS</code> (Open) = ₹12,75,000 (KS/122 is paid, so ignored).</li>
+<li><code>MINIFS</code> on InvDate (Open) = 05-Jan-2026; age at 31-Mar-2026 = 85 days — beyond 45 days. If Kaveri is a micro or small enterprise, the unpaid amount is disallowed for FY26 under Section 43B(h) and allowed only in the year of actual payment (the usual pay-before-return-due-date relief in Section 43B does not extend to clause (h)).</li>
+<li><code>AVERAGEIFS</code> on Amount (Open) = (8,40,000 + 12,75,000 + 6,05,000) ÷ 3 = ₹9,06,667.</li>
+</ul>
+<h3 id="presentation">Presentation</h3>
+<p>In an ageing or vendor dashboard, place COUNTIFS, SUMIFS, AVERAGEIFS, MAXIFS and MINIFS side by side for each vendor or customer row — count, total, average, largest, oldest — all keyed on the same criteria. Ensure the criteria are identical across columns (same status, same date cut-off), or the columns will not be mutually consistent.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Blank vs zero.</strong> A blank amount is ignored by AVERAGEIFS; a zero is included. Partial-payment rows with 0 balance can depress averages — filter on <code>"&gt;0"</code>.</li>
+<li><strong>Negative amounts in AP.</strong> If AP balances are stored as credits (negative), MAXIFS returns the smallest liability. Use MINIFS on negative data, or build an absolute-value column.</li>
+<li><strong>Weighted vs simple averages.</strong> AVERAGEIFS is a simple mean. Average days outstanding weighted by amount needs SUMPRODUCT (see the SUMPRODUCT topic).</li>
+<li><strong>Date criteria on text dates</strong> silently exclude rows; check <code>COUNT</code> vs <code>ROWS</code>.</li>
+<li><strong>Ties.</strong> MAXIFS gives the value, not the row; decide how ties are reported.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>AVERAGEIFS, MAXIFS and MINIFS share the SUMIFS signature with the value range first.</li>
+<li>AVERAGEIFS returns <code>#DIV/0!</code> with no matches; MAXIFS/MINIFS return 0 — both need a COUNTIFS guard.</li>
+<li>"Oldest" is MINIFS on a date column; "most overdue" uses DueDate.</li>
+<li>Average ticket size needs one row per invoice and the exclusion of credit notes.</li>
+<li>Pair MAXIFS with a multi-criteria XLOOKUP or FILTER to identify which invoice holds the extreme value.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-customer-dashboard-row-l1">Q1. Customer dashboard row [L1]</h3>
+<p>A Table <code>AR</code> has Customer, InvNo, InvDate, DueDate, Amount, Status. For the customer in A6 and report date in <code>RptDate</code>, write formulas for count of open invoices, total open amount, average open invoice, largest open invoice, and oldest open due date — each returning a blank if the customer has no open items.</p>
+<h3 id="q2-average-ticket-size-by-channel-l2">Q2. Average ticket size by channel [L2]</h3>
+<p>A D2C brand's line-level sales register (2.4 lakh lines, FY26) has InvNo, InvDate, Channel (Website, Marketplace, Retail), SKU, Qty, Taxable, VchType (Sales, Credit Note). Explain why <code>AVERAGEIFS(SR[Taxable], SR[Channel], "Website")</code> does not give average order value, and describe a formula-only approach (no PivotTable) to compute it correctly for each channel.</p>
+<h3 id="q3-msme-payment-compliance-l2">Q3. MSME payment compliance [L2]</h3>
+<p>Vendors are flagged MSME in a column <code>AP[MSME]</code> ("Y"/"N"). Report date is 31-Mar-2026. Write formulas that, for each MSME vendor, return the oldest open invoice date, its age in days, and the total open amount older than 45 days. State the assumption about the agreed credit period you are making.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> The amount older than 45 days is a SUMIFS with a date criterion built from the report date.</p>
+</blockquote>
+<h3 id="q4-unexpected-1900-dates-l1">Q4. Unexpected 1900 dates [L1]</h3>
+<p>A colleague's vendor dashboard shows "00-01-1900" as the oldest open invoice for 14 vendors. Explain what happened and fix the formula.</p>
+<h3 id="q5-credit-sign-ap-data-l2">Q5. Credit-sign AP data [L2]</h3>
+<p>An SAP AP extract stores open liabilities as negative numbers (e.g. –12,75,000). Explain what <code>MAXIFS(AP[Amount], AP[Vendor], F2, AP[Status], "Open")</code> returns on this data and write two alternative formulas that return the largest liability as a positive number.</p></section>
+<nav class="pager"><a class="prev" href="S03_COUNTIFS_Data_Quality_Tests_on_GL_and_TB_Dumps.html">← COUNTIFS Data-Quality Tests on GL and TB Dumps</a><a class="next" href="S05_Criteria_Syntax_Operators_Concatenation_Wildcards.html">Criteria Syntax: Operators, Concatenation, Wildcards and… →</a></nav>
+</main></div></body></html>

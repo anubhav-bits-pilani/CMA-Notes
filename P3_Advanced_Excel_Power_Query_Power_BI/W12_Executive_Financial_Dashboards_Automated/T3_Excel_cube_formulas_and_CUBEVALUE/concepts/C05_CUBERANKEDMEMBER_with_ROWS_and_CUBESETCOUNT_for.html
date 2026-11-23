@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CUBERANKEDMEMBER with ROWS() and CUBESETCOUNT for Ranked Lists · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C05_CUBERANKEDMEMBER_with_ROWS_and_CUBESETCOUNT_for.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T3 · Excel cube formulas and CUBEVALUE</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Excel cube formulas and CUBEVALUE</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Connecting_Excel_to_the_Data_Model_or_a_Power_BI.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S01_Connecting_Excel_to_the_Data_Model_or_a_Power_BI.html">Connecting Excel to the Data Model or a Power BI Semantic Model</a></li><li><a href="../subtopics/S02_Converting_PivotTables_to_Cube_Formulas_with_OLAP.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S02_Converting_PivotTables_to_Cube_Formulas_with_OLAP.html">Converting PivotTables to Cube Formulas with OLAP Tools</a></li><li><a href="../subtopics/S03_The_Cube_Function_Family_CUBEMEMBER_to.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S03_The_Cube_Function_Family_CUBEMEMBER_to.html">The Cube Function Family: CUBEMEMBER to CUBEMEMBERPROPERTY</a></li><li><a href="../subtopics/S04_MDX_Unique_Names_for_Members_and_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S04_MDX_Unique_Names_for_Members_and_Measures.html">MDX Unique Names for Members and Measures</a></li><li><a href="../subtopics/S05_Connecting_Slicers_to_Cube_Formulas_by_Slicer_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S05_Connecting_Slicers_to_Cube_Formulas_by_Slicer_Name.html">Connecting Slicers to Cube Formulas by Slicer Name</a></li><li><a href="../subtopics/S06_Free_Form_Board_Pack_Layouts_with_Live_Cube.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S06_Free_Form_Board_Pack_Layouts_with_Live_Cube.html">Free-Form Board-Pack Layouts with Live Cube Numbers</a></li><li><a href="../subtopics/S07_Dynamic_Top_N_Lists_with_a_Sorted_CUBESET_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/subtopics/S07_Dynamic_Top_N_Lists_with_a_Sorted_CUBESET_and.html">Dynamic Top N Lists with a Sorted CUBESET and CUBERANKEDMEMBER</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_CUBEVALUE_with_Literal_Measure_and_Member_Strings.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C01_CUBEVALUE_with_Literal_Measure_and_Member_Strings.html">CUBEVALUE with Literal Measure and Member Strings</a></li><li><a href="C02_Building_Cube_Members_from_Cell_Labels_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C02_Building_Cube_Members_from_Cell_Labels_with.html">Building Cube Members from Cell Labels with CUBEMEMBER</a></li><li><a href="C03_Passing_a_Slicer_Name_as_a_CUBEVALUE_Member.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C03_Passing_a_Slicer_Name_as_a_CUBEVALUE_Member.html">Passing a Slicer Name as a CUBEVALUE Member Argument</a></li><li><a href="C04_Sorted_CUBESET_of_Vendors_sortorder_2_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C04_Sorted_CUBESET_of_Vendors_sortorder_2_for.html">Sorted CUBESET of Vendors: sort_order 2 for Descending</a></li><li><a href="C05_CUBERANKEDMEMBER_with_ROWS_and_CUBESETCOUNT_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C05_CUBERANKEDMEMBER_with_ROWS_and_CUBESETCOUNT_for.html">CUBERANKEDMEMBER with ROWS() and CUBESETCOUNT for Ranked Lists</a></li><li><a href="C06_Connection_Names_for_Power_BI_Semantic_Models_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T3_Excel_cube_formulas_and_CUBEVALUE/concepts/C06_Connection_Names_for_Power_BI_Semantic_Models_in.html">Connection Names for Power BI Semantic Models in Cube Formulas</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>CUBERANKEDMEMBER with ROWS() and CUBESETCOUNT for Ranked Lists</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>=CUBERANKEDMEMBER("ThisWorkbookDataModel", &#36;B&#36;2, ROWS(&#36;A&#36;5:A5))</code> with <code>=CUBESETCOUNT(&#36;B&#36;2)</code> to size the list</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code>A5:  =CUBERANKEDMEMBER("ThisWorkbookDataModel", &#36;B&#36;2, ROWS(&#36;A&#36;5:A5))
+C2:  =CUBESETCOUNT(&#36;B&#36;2)
+</code></pre>
+
+<ul>
+<li><strong>B2</strong> holds a CUBESET (Concept c04), absolute-referenced so every row points at the same set.</li>
+<li>The ROWS argument is an expanding range — its first cell (A5) is fully anchored, its last cell is relative —
+  so ROWS returns the count of rows from the first list row to the current one: 1 in row 5, 2 in row 6, …, n in row \(n + 4\). It is the rank to fetch.</li>
+<li><code>CUBERANKEDMEMBER(connection, set, rank)</code> returns the member at that position of the set; the cell displays its
+  caption and can be used as a member argument in CUBEVALUE.</li>
+<li><code>CUBESETCOUNT(set)</code> returns the number of members \(k\) in the set.</li>
+</ul>
+<p>The list is valid for ranks \(r\) with</p>
+<p>\[
+1 \le r \le \min(N, k)
+\]</p>
+<p>where \(N\) is the desired list length (Top N) and \(k\) the set size; beyond \(k\) CUBERANKEDMEMBER returns #N/A.</p>
+<h2 id="explanation">Explanation</h2>
+<p>The ROWS-based counter is preferred over typing 1, 2, 3 in a helper column because rows can be inserted or the
+block moved without renumbering, and preferred over <code>ROW()-4</code> because it does not depend on the sheet position.</p>
+<p>A complete, guarded list row (row-anchored references keep it fill-down safe):</p>
+<pre><code>A5:  =IF(ROWS(A$5:A5) &gt; MIN(TopN, C$2), &quot;&quot;, CUBERANKEDMEMBER(Conn, B$2, ROWS(A$5:A5)))
+B5:  =IF(A5 = &quot;&quot;, &quot;&quot;, CUBEVALUE(Conn, MsrExpense, Slicer_BU, A5))
+</code></pre>
+<ul>
+<li><code>TopN</code> is a named input (e.g. 10), <code>C2</code> the CUBESETCOUNT, <code>Conn</code> the connection name cell.</li>
+<li>The IF guard prevents #N/A when the set has fewer members than the pre-filled rows (a BU with only 6 vendors).</li>
+<li>CUBESETCOUNT also feeds captions: <code>="Top " &amp; MIN(TopN, C2) &amp; " of " &amp; C2 &amp; " vendors"</code>.</li>
+<li>The ranked member cells are live: after refresh, ranks change and the values beside them follow.</li>
+<li>If the set is built with context (selected FY in the sort tuple), the list re-ranks when the selection cell
+  changes.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>Set in B2: vendors for Polymers, FY2025-26, descending by expense; <code>C2</code> = 214; <code>TopN</code> = 5; list in rows 5–29.</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th>ROWS(...)</th>
+<th>A (member)</th>
+<th>B (₹ Cr)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>1</td>
+<td>Gujarat Industries Power</td>
+<td>8.94</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2</td>
+<td>Reliance Polymers</td>
+<td>7.20</td>
+</tr>
+<tr>
+<td>7</td>
+<td>3</td>
+<td>IOCL</td>
+<td>6.85</td>
+</tr>
+<tr>
+<td>8</td>
+<td>4</td>
+<td>Gujarat Gas</td>
+<td>6.85</td>
+</tr>
+<tr>
+<td>9</td>
+<td>5</td>
+<td>BASF India</td>
+<td>4.10</td>
+</tr>
+<tr>
+<td>10</td>
+<td>6</td>
+<td>(blank — beyond TopN)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Caption: "Top 5 of 214 vendors". Changing <code>TopN</code> to 10 fills rows 10–14 with no formula edits.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Subtopic s07 (Top N pattern with Others and coverage) and s03 (function family).</li>
+<li>Concept c04 (the sorted set) and Topic 2 c05 (Power BI rank measure); both packs should list the same top
+  vendors for the same selection.</li>
+<li>Topic 4: a check that the Top N list plus Others equals total vendor expense.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-trace-the-counter-l1">Q1. Trace the counter [L1]</h3>
+<p>For a list starting in row 12, state what the ROWS-based rank expression returns in rows 12, 15 and 30, and what
+happens if a row is inserted between rows 13 and 14.</p>
+<h3 id="q2-guard-the-list-l2">Q2. Guard the list [L2]</h3>
+<p>The set has 7 members, the list is pre-filled to 25 rows and <code>TopN</code> = 10. Describe what each row shows with and
+without the IF/MIN guard, and write the guarded formula.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Compare the rank with both TopN and the set count.</p>
+</blockquote>
+<h3 id="q3-two-lists-one-set-l2">Q3. Two lists, one set [L2]</h3>
+<p>Using a single CUBESET of cost centres sorted by <code>[Variance Fav/Adv]</code> descending, build a "Top 5 favourable" list
+and a "Top 5 adverse" list. Write the rank expressions for both.</p></section>
+<nav class="pager"><a class="prev" href="C04_Sorted_CUBESET_of_Vendors_sortorder_2_for.html">← Sorted CUBESET of Vendors: sortorder 2 for Descending</a><a class="next" href="C06_Connection_Names_for_Power_BI_Semantic_Models_in.html">Connection Names for Power BI Semantic Models in Cube… →</a></nav>
+</main></div></body></html>

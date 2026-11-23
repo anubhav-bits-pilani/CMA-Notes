@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Targeted Error Guards Instead of Blanket IFERROR · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C03_Targeted_Error_Guards_Instead_of_Blanket_IFERROR.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 13</a> <span>›</span> <a href="../index.html">T2 · Color Coding &amp; Formula Integrity Rules</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Color Coding &amp; Formula Integrity Rules</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Font_Colour_Convention_Inputs_Formulas_and_Links.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S01_Font_Colour_Convention_Inputs_Formulas_and_Links.html">Font Colour Convention: Inputs, Formulas and Links</a></li><li><a href="../subtopics/S02_Input_Fill_Styles_and_Excel_Cell_Styles.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S02_Input_Fill_Styles_and_Excel_Cell_Styles.html">Input Fill Styles and Excel Cell Styles</a></li><li><a href="../subtopics/S03_One_Consistent_Formula_per_Forecast_Row.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S03_One_Consistent_Formula_per_Forecast_Row.html">One Consistent Formula per Forecast Row</a></li><li><a href="../subtopics/S04_Absolute_and_Mixed_References_for_Constants_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S04_Absolute_and_Mixed_References_for_Constants_and.html">Absolute and Mixed References for Constants and Flags</a></li><li><a href="../subtopics/S05_Eliminating_Constants_Inside_Formulas.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S05_Eliminating_Constants_Inside_Formulas.html">Eliminating Constants Inside Formulas</a></li><li><a href="../subtopics/S06_Excel_Formula_Auditing_Tools_and_Shortcuts.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S06_Excel_Formula_Auditing_Tools_and_Shortcuts.html">Excel Formula Auditing Tools and Shortcuts</a></li><li><a href="../subtopics/S07_Go_To_Special_and_Inquire_for_Inconsistency_Scans.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S07_Go_To_Special_and_Inquire_for_Inconsistency_Scans.html">Go To Special and Inquire for Inconsistency Scans</a></li><li><a href="../subtopics/S08_Avoiding_Volatile_Functions_and_Whole_Column.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/subtopics/S08_Avoiding_Volatile_Functions_and_Whole_Column.html">Avoiding Volatile Functions and Whole-Column References</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_One_Row_One_Formula_The_R1C1_Consistency_Test.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C01_One_Row_One_Formula_The_R1C1_Consistency_Test.html">One Row, One Formula: The R1C1 Consistency Test</a></li><li><a href="C02_Go_To_Special_Constants_Test_on_Calculation_Sheets.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C02_Go_To_Special_Constants_Test_on_Calculation_Sheets.html">Go To Special Constants Test on Calculation Sheets</a></li><li><a href="C03_Targeted_Error_Guards_Instead_of_Blanket_IFERROR.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C03_Targeted_Error_Guards_Instead_of_Blanket_IFERROR.html">Targeted Error Guards Instead of Blanket IFERROR</a></li><li><a href="C04_Link_Once_Then_Reference_Locally.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C04_Link_Once_Then_Reference_Locally.html">Link Once, Then Reference Locally</a></li><li><a href="C05_Replacing_Nested_IFs_and_Splitting_Long_Formulas.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C05_Replacing_Nested_IFs_and_Splitting_Long_Formulas.html">Replacing Nested IFs and Splitting Long Formulas</a></li><li><a href="C06_Timeline_Flags_for_Switching_Logic_Without.html" data-uid="P4_Integrated_Three_Statement_Financial/W13_Financial_Modelling_Architecture/T2_Color_Coding_Formula_Integrity_Rules/concepts/C06_Timeline_Flags_for_Switching_Logic_Without.html">Timeline Flags for Switching Logic Without Breaking Rows</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Targeted Error Guards Instead of Blanket IFERROR</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Targeted error guards over IFERROR: <code>=IF(Denominator=0,0,Numerator/Denominator)</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>Where a formula has a known, legitimate error condition, guard against <strong>that condition only</strong>:</p>
+<pre><code>=IF(Denominator=0, 0, Numerator/Denominator)
+</code></pre>
+<p>rather than suppressing <strong>all</strong> errors:</p>
+<pre><code>=IFERROR(Numerator/Denominator, 0)
+</code></pre>
+<p>Formally, a targeted guard returns a defined value \( v \) only when a specific condition \( c \) holds, and otherwise lets the formula's result — including any unexpected error — propagate:</p>
+<p>\[
+\text{Result} = \begin{cases} v &amp; \text{if } c \\ f(x) &amp; \text{otherwise (errors propagate)} \end{cases}
+\]</p>
+<h2 id="explanation">Explanation</h2>
+<p><strong>Why IFERROR is dangerous.</strong> IFERROR catches #DIV/0!, but also #REF! (deleted rows or broken links), #NAME? (misspelt names), #VALUE! (text in a number cell) and #N/A (failed lookups). Each of those signals a defect. Wrapping in IFERROR converts a defect into a plausible zero that flows into the statements and may even let the balance check pass (if the zero enters both sides). This is a listed pitfall of this topic.</p>
+<p><strong>Choosing the guard.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Targeted guard</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ratio with possibly zero denominator (margin when revenue 0)</td>
+<td><code>=IF(M40=0,0,M60/M40)</code></td>
+</tr>
+<tr>
+<td>Growth rate with zero prior value</td>
+<td><code>=IF(L40=0,0,M40/L40-1)</code></td>
+</tr>
+<tr>
+<td>Days ratio with zero sales</td>
+<td><code>=IF(M40=0,0,M41/M40*Days_in_Year)</code></td>
+</tr>
+<tr>
+<td>Lookup that may legitimately not find a match</td>
+<td><code>=IFNA(XLOOKUP(…),0)</code> or XLOOKUP's <code>if_not_found</code> argument — catches only #N/A</td>
+</tr>
+<tr>
+<td>Negative under square root / log</td>
+<td><code>=IF(M50&lt;=0,0,LN(M50))</code></td>
+</tr>
+<tr>
+<td>Iterative circularity blow-ups</td>
+<td>Circuit breaker switch (topic t1, s06), not IFERROR</td>
+</tr>
+</tbody>
+</table>
+<p><strong>What value to return.</strong> Zero is common for ratios, but sometimes a blank-looking result (<code>""</code>) is used on output pages; avoid <code>""</code> in calc sheets because text in a numeric row breaks downstream arithmetic (#VALUE!) and SUM ignores it silently. For growth rates on zero bases, consider returning 0 and flagging in a note.</p>
+<p><strong>Excel's DIVIDE equivalent.</strong> In Power BI DAX, <code>DIVIDE(Numerator, Denominator, 0)</code> is the built-in targeted guard — it handles only division by zero.</p>
+<p><strong>Where IFERROR is acceptable.</strong> On presentation outputs where the error cause is fully understood (e.g., a chart helper), or in a raw-data parsing step — never in core calculation rows, and never wrapped around cross-sheet links.</p>
+<h2 id="illustration">Illustration</h2>
+<p>WC tab, DIO in FY26E for a new segment with no inventory yet:</p>
+<pre><code>Bad:   =IFERROR(M45/M41*365,0)
+Good:  =IF(M41=0,0,M45/M41*Days_in_Year)
+</code></pre>
+<p>Now suppose a row deletion on the Revenue tab breaks M41's link (<code>=#REF!</code>). The bad formula returns 0 DIO and inventory of ₹0 crore in the forecast — the model continues to balance, and a ₹380 crore inventory build vanishes from NWC, overstating FCFF by that amount in FY26E. The good formula returns #REF!, which propagates to the BS, trips the master check via SUMPRODUCT (topic t1, c04), and the error is fixed within minutes.</p>
+<h2 id="connections">Connections</h2>
+<p>Supports s06 (Error Checking, Trace Error) and s07 (Go To Special → Formulas → Errors) — targeted guards keep errors visible for these tools. Relates to topic t1's master check design (no IFERROR around checks) and to Week 15 debugging. Phase 3 DAX <code>DIVIDE</code> is the reporting analogue.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-rewrite-the-guards-l1">Q1. Rewrite the guards [L1]</h3>
+<p>Rewrite each formula with a targeted guard: (a) <code>=IFERROR(M60/M40,0)</code> (EBITDA margin); (b) <code>=IFERROR(M40/L40-1,0)</code> (growth); (c) <code>=IFERROR(VLOOKUP(B5,Map,2,FALSE),"Other")</code> (mapping an XBRL tag to model line).</p>
+<h3 id="q2-hidden-broken-link-l2">Q2. Hidden broken link [L2]</h3>
+<p>A Trent model's Debt tab uses <code>=IFERROR(Inputs!M60*M52,0)</code> for interest. After an analyst deletes a row on Inputs, FY26E–FY30E interest becomes zero but the master check stays green. Explain why, quantify the PAT effect if average debt is ₹1,200 crore at 8.5% and tax 25.168%, and describe the redesign.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Consider why the balance sheet still balances when interest is zero in every year.</p>
+</blockquote>
+<h3 id="q3-mapping-fallback-l2">Q3. Mapping fallback [L2]</h3>
+<p>When mapping XBRL tags to the model chart of accounts via XLOOKUP, some tags legitimately do not map. Design the formula and a check that ensures unmapped tags are visible and their total is reconciled, rather than silently dropped.</p></section>
+<nav class="pager"><a class="prev" href="C02_Go_To_Special_Constants_Test_on_Calculation_Sheets.html">← Go To Special Constants Test on Calculation Sheets</a><a class="next" href="C04_Link_Once_Then_Reference_Locally.html">Link Once, Then Reference Locally →</a></nav>
+</main></div></body></html>

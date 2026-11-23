@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAMEPERIODLASTYEAR vs DATEADD vs PARALLELPERIOD · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S02_SAMEPERIODLASTYEAR_vs_DATEADD_vs_PARALLELPERIOD.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T4 · Time intelligence for April–March FY</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Time intelligence for April–March FY</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_YTD_QTD_and_MTD_Measures_for_an_AprilMarch_Fiscal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S01_YTD_QTD_and_MTD_Measures_for_an_AprilMarch_Fiscal.html">YTD, QTD and MTD Measures for an April–March Fiscal Year</a></li><li><a href="S02_SAMEPERIODLASTYEAR_vs_DATEADD_vs_PARALLELPERIOD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S02_SAMEPERIODLASTYEAR_vs_DATEADD_vs_PARALLELPERIOD.html">SAMEPERIODLASTYEAR vs DATEADD vs PARALLELPERIOD</a></li><li><a href="S03_PY_YTD_YTD_Growth_MoM_and_YoY_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S03_PY_YTD_YTD_Growth_MoM_and_YoY_Measures.html">PY YTD, YTD Growth, MoM % and YoY % Measures</a></li><li><a href="S04_Rolling_12_Month_and_Trailing_3_Month_Windows_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S04_Rolling_12_Month_and_Trailing_3_Month_Windows_with.html">Rolling 12-Month and Trailing 3-Month Windows with DATESINPERIOD</a></li><li><a href="S05_Capping_Time_Intelligence_at_the_Last_Actuals_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S05_Capping_Time_Intelligence_at_the_Last_Actuals_Date.html">Capping Time Intelligence at the Last Actuals Date</a></li><li><a href="S06_Time_Intelligence_Prerequisites_Marked_Contiguous.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S06_Time_Intelligence_Prerequisites_Marked_Contiguous.html">Time-Intelligence Prerequisites: Marked, Contiguous Date Table</a></li><li><a href="S07_Calculation_Groups_and_Field_Parameters_for_Time.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/subtopics/S07_Calculation_Groups_and_Field_Parameters_for_Time.html">Calculation Groups and Field Parameters for Time-Intelligence Views</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_TOTALYTD_with_331_Equals_CALCULATE_with_DATESYTD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C01_TOTALYTD_with_331_Equals_CALCULATE_with_DATESYTD.html">TOTALYTD with &quot;3/31&quot; Equals CALCULATE with DATESYTD</a></li><li><a href="../concepts/C02_PY_YTD_via_SAMEPERIODLASTYEAR_and_the_YoY_Measure.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C02_PY_YTD_via_SAMEPERIODLASTYEAR_and_the_YoY_Measure.html">PY YTD via SAMEPERIODLASTYEAR and the YoY % Measure</a></li><li><a href="../concepts/C03_Prior_Month_Actual_with_DATEADD_and_the_MoM.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C03_Prior_Month_Actual_with_DATEADD_and_the_MoM.html">Prior-Month Actual with DATEADD and the MoM % Measure</a></li><li><a href="../concepts/C04_Rolling_12_Month_Measure_with_DATESINPERIOD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C04_Rolling_12_Month_Measure_with_DATESINPERIOD.html">Rolling 12-Month Measure with DATESINPERIOD</a></li><li><a href="../concepts/C05_Last_Actual_Date_and_Capping_YTD_at_Posted_Data.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C05_Last_Actual_Date_and_Capping_YTD_at_Posted_Data.html">Last Actual Date and Capping YTD at Posted Data</a></li><li><a href="../concepts/C06_Locale_Parsing_of_the_Year_End_String_in_DATESYTD.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/concepts/C06_Locale_Parsing_of_the_Year_End_String_in_DATESYTD.html">Locale Parsing of the Year-End String in DATESYTD</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>SAMEPERIODLASTYEAR vs DATEADD vs PARALLELPERIOD</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Prior-year comparisons with SAMEPERIODLASTYEAR, DATEADD and PARALLELPERIOD, and how they differ</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Prior-year comparatives are mandatory in Ind AS financial statements (<em>Ind AS 1.38</em>), in SEBI quarterly results
+(corresponding quarter of the previous year and YTD comparatives) and in every management dashboard ("vs LY").
+DAX offers three functions that look interchangeable but return different sets of dates. Picking the wrong one
+produces numbers that are internally consistent but silently cover the wrong period — the most dangerous kind of
+error in a board pack.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-three-functions">The three functions</h3>
+<p>All three are <em>table functions</em>: they take the dates currently visible in filter context and return a different
+set of dates, which <code>CALCULATE</code> then applies as the new date filter.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Syntax</th>
+<th>What it returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SAMEPERIODLASTYEAR</code></td>
+<td><code>SAMEPERIODLASTYEAR(dates)</code></td>
+<td>The visible dates shifted back exactly one year. Identical to <code>DATEADD(dates, -1, YEAR)</code></td>
+</tr>
+<tr>
+<td><code>DATEADD</code></td>
+<td><code>DATEADD(dates, n, DAY/MONTH/QUARTER/YEAR)</code></td>
+<td>The visible dates shifted by <em>n</em> intervals, keeping the same shape (contiguous set in, contiguous set out)</td>
+</tr>
+<tr>
+<td><code>PARALLELPERIOD</code></td>
+<td><code>PARALLELPERIOD(dates, n, MONTH/QUARTER/YEAR)</code></td>
+<td>The <strong>entire</strong> period(s) at the chosen granularity, <em>n</em> periods away from the visible dates — always whole months, whole calendar quarters or whole calendar years</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-DAX">PY Actual        = CALCULATE ( [Actual], SAMEPERIODLASTYEAR ( 'Date'[Date] ) )
+PY Actual (DA)   = CALCULATE ( [Actual], DATEADD ( 'Date'[Date], -1, YEAR ) )
+PY Full Month    = CALCULATE ( [Actual], PARALLELPERIOD ( 'Date'[Date], -12, MONTH ) )
+</code></pre>
+<h3 id="dateadd-shape-preserving-shift">DATEADD: shape-preserving shift</h3>
+<p><code>DATEADD</code> shifts each date and returns the shifted set. If the visible context is 1–15 November 2025, <code>DATEADD(...,
+-1, YEAR)</code> returns 1–15 November 2024. If the context is a whole month, it returns the whole corresponding month,
+and there is month-end handling: when the selection runs to the last day of a month, the result runs to the last day
+of the target month. So February 2025 (1–28 Feb) shifted back one year returns 1–29 February 2024, not just the first
+28 days. Shifting 29 February 2024 forward one year maps to 28 February 2025.</p>
+<p>Interval choices matter:</p>
+<ul>
+<li><code>DATEADD(..., -1, MONTH)</code> → prior month (MoM comparisons, s03).</li>
+<li><code>DATEADD(..., -1, QUARTER)</code> → prior quarter (QoQ, as needed for "sequential quarter" commentary in results).</li>
+<li><code>DATEADD(..., -1, YEAR)</code> → same period last year.</li>
+</ul>
+<h3 id="sameperiodlastyear-a-fixed-interval-dateadd">SAMEPERIODLASTYEAR: a fixed-interval DATEADD</h3>
+<p><code>SAMEPERIODLASTYEAR</code> has no interval argument; it is defined as a one-year back shift. It respects whatever period
+is selected — month, quarter, YTD window, or an arbitrary range — which is why it composes cleanly with YTD:</p>
+<pre><code class="language-DAX">PY YTD = CALCULATE ( [YTD Actual], SAMEPERIODLASTYEAR ( 'Date'[Date] ) )
+</code></pre>
+<h3 id="parallelperiod-whole-period-expansion">PARALLELPERIOD: whole-period expansion</h3>
+<p><code>PARALLELPERIOD</code> ignores the exact shape of the selection. It identifies the periods (at the chosen granularity)
+that contain the visible dates, moves <em>n</em> periods, and returns them <strong>in full</strong>. Two consequences:</p>
+<ol>
+<li>At month level, <code>PARALLELPERIOD(..., -12, MONTH)</code> returns the entire month a year earlier even if the current
+   context is a partial month (a date-range slicer ending on 15 November). Useful when you deliberately want a
+   full-month comparative; dangerous when you want like-for-like.</li>
+<li>With <code>YEAR</code> granularity it returns <strong>entire calendar years</strong> (January–December). <code>PARALLELPERIOD('Date'[Date],
+   -1, YEAR)</code> for November 2025 returns all of calendar 2024 — not FY25. There is no year-end argument. For an
+   April–March business, use <code>PARALLELPERIOD(..., -12, MONTH)</code> on a full-FY selection, <code>PREVIOUSYEAR(dates,
+   "3/31")</code>, or custom fiscal logic.</li>
+</ol>
+<h3 id="side-by-side-illustration">Side-by-side illustration</h3>
+<p>Date range slicer: 1 April 2025 – 15 November 2025 (a partial current month). Monthly revenue in FY25: Apr–Oct
+total ₹ 98 crore, November 2024 full month ₹ 17 crore, of which 1–15 November 2024 ₹ 8 crore. Calendar 2024 total
+₹ 190 crore.</p>
+<table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Dates returned</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SAMEPERIODLASTYEAR</code></td>
+<td>1 Apr 2024 – 15 Nov 2024</td>
+<td>98 + 8 = ₹ 106 crore</td>
+</tr>
+<tr>
+<td><code>DATEADD(-1, YEAR)</code></td>
+<td>1 Apr 2024 – 15 Nov 2024</td>
+<td>₹ 106 crore</td>
+</tr>
+<tr>
+<td><code>PARALLELPERIOD(-12, MONTH)</code></td>
+<td>1 Apr 2024 – 30 Nov 2024 (whole months)</td>
+<td>98 + 17 = ₹ 115 crore</td>
+</tr>
+<tr>
+<td><code>PARALLELPERIOD(-1, YEAR)</code></td>
+<td>1 Jan 2024 – 31 Dec 2024</td>
+<td>₹ 190 crore</td>
+</tr>
+</tbody>
+</table>
+<p>Only the first two give like-for-like comparison; the fourth is wrong for any Indian fiscal comparison.</p>
+<h3 id="related-helpers">Related helpers</h3>
+<ul>
+<li><code>PREVIOUSYEAR(dates, "3/31")</code>, <code>PREVIOUSQUARTER</code>, <code>PREVIOUSMONTH</code>, <code>PREVIOUSDAY</code> return the <strong>whole</strong> prior
+  period relative to the current selection (check dax.guide for whether the first or last visible date is the
+  anchor for each function). <code>PREVIOUSYEAR</code> does accept a year-end and is a clean way to get "full
+  prior FY" regardless of how much of the current FY is selected.</li>
+<li><code>NEXTYEAR</code>, <code>NEXTQUARTER</code>, <code>NEXTMONTH</code> are the forward equivalents (useful in forecast models).</li>
+<li><code>DATESBETWEEN</code> and <code>DATESINPERIOD</code> build explicit windows (s04).</li>
+</ul>
+<h3 id="choosing-the-function">Choosing the function</h3>
+<table>
+<thead>
+<tr>
+<th>Need</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Same months/days last year, including YTD windows</td>
+<td><code>SAMEPERIODLASTYEAR</code> or <code>DATEADD(..., -1, YEAR)</code></td>
+</tr>
+<tr>
+<td>Prior month / prior quarter</td>
+<td><code>DATEADD</code> with <code>MONTH</code> / <code>QUARTER</code></td>
+</tr>
+<tr>
+<td>Full prior FY whatever is selected</td>
+<td><code>PREVIOUSYEAR(..., "3/31")</code></td>
+</tr>
+<tr>
+<td>Full prior month even if current month is partial</td>
+<td><code>PARALLELPERIOD(..., -12, MONTH)</code> (deliberately)</td>
+</tr>
+<tr>
+<td>Prior calendar year (rare in India; e.g., a US parent)</td>
+<td><code>PARALLELPERIOD(..., -1, YEAR)</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Dates outside the Date table:</strong> if the shifted dates fall before the first date of the Date table, they are
+  dropped, so the first FY in the table always has blank PY. Extend the calendar one year further back than the
+  oldest comparative you need.</li>
+<li><strong>Non-contiguous selections:</strong> <code>DATEADD</code> requires a contiguous set in some engine versions and returns an error or
+  unexpected results with multi-select non-adjacent months; avoid multi-select on month slicers for PY visuals.</li>
+<li><strong>Leap years:</strong> a daily comparison on 29 February 2024 has no exact match in 2023; <code>SAMEPERIODLASTYEAR</code> maps it to
+  28 February 2023, so that day is double-counted against 28 February in a daily trend. Rarely material, but explain
+  it if a daily sales flash is audited.</li>
+<li><strong>Restated comparatives:</strong> if FY25 figures were restated (<em>Ind AS 8</em> prior period error, or a business combination
+  under common control under Appendix C of <em>Ind AS 103</em>), the PY measure reads whatever is in the GL. Comparative
+  restatements must be posted or loaded as a separate scenario, not overwritten silently.</li>
+<li><strong>Mixed granularity in one visual:</strong> at FY total, <code>DATEADD(..., -1, MONTH)</code> shifts the whole year by a month
+  (March prior FY to February) — nonsense. Blank MoM measures above month level (s03).</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li><code>SAMEPERIODLASTYEAR</code> = <code>DATEADD(dates, -1, YEAR)</code>; both preserve the shape of the selection.</li>
+<li><code>PARALLELPERIOD</code> returns whole periods; with <code>YEAR</code> it returns calendar years and has no fiscal argument.</li>
+<li>For "full prior FY", use <code>PREVIOUSYEAR(dates, "3/31")</code> or <code>PARALLELPERIOD(..., -12, MONTH)</code> on a full FY.</li>
+<li>Extend the Date table to cover all comparatives, or the earliest PY is blank.</li>
+<li>Test each PY measure against a known period (e.g., Q3 FY25 from the published results).</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-pick-the-function-l1">Q1. Pick the function [L1]</h3>
+<p>For each requirement, name the DAX function and write the measure: (a) revenue for the corresponding quarter of the
+previous year in a SEBI results table; (b) revenue for the immediately preceding quarter; (c) full FY24 revenue
+shown on every month row of FY25; (d) prior calendar-year revenue for a US parent reporting pack.</p>
+<h3 id="q2-reconcile-three-py-numbers-l2">Q2. Reconcile three PY numbers [L2]</h3>
+<p>A dashboard with a date-range slicer set to 1 April 2025 – 20 December 2025 shows three "PY" tiles: ₹ 142 crore,
+₹ 151 crore and ₹ 205 crore. FY25 monthly revenue: Apr–Nov 2024 total ₹ 128 crore, December 2024 ₹ 23 crore (1–20
+December 2024: ₹ 14 crore), and calendar 2024 total ₹ 205 crore. Identify which function each tile most likely uses
+and state which one the CFO should see.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Work out the date set each function would return for the slicer range, then add up the months.</p>
+</blockquote>
+<h3 id="q3-blank-py-in-the-first-year-l1">Q3. Blank PY in the first year [L1]</h3>
+<p>Your Date table runs from 1 April 2023 to 31 March 2026 and GL data starts from 1 April 2023. Explain why the
+FY24 "PY Actual" column is blank, whether that is correct, and what you would change if FY23 comparatives are loaded
+later from a legacy Tally export.</p>
+<h3 id="q4-restated-comparatives-l3">Q4. Restated comparatives [L3]</h3>
+<p>In FY26 the company corrects a material prior-period error (inventory overstated by ₹ 4.2 crore at 31 March 2025)
+under Ind AS 8. The FY25 GL is locked and will not be re-posted. Design how the model should present PY figures in
+the FY26 results pack so that <code>SAMEPERIODLASTYEAR</code>-based measures show restated comparatives, and explain how you
+would keep the original "as reported" FY25 figures available for audit trail.</p></section>
+<nav class="pager"><a class="prev" href="S01_YTD_QTD_and_MTD_Measures_for_an_AprilMarch_Fiscal.html">← YTD, QTD and MTD Measures for an April–March Fiscal Year</a><a class="next" href="S03_PY_YTD_YTD_Growth_MoM_and_YoY_Measures.html">PY YTD, YTD Growth, MoM % and YoY % Measures →</a></nav>
+</main></div></body></html>

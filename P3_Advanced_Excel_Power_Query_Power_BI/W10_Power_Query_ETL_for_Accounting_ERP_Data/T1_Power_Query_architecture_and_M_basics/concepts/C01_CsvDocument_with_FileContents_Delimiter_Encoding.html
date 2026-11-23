@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Csv.Document with File.Contents: Delimiter, Encoding, QuoteStyle · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C01_CsvDocument_with_FileContents_Delimiter_Encoding.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T1 · Power Query architecture and M basics</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T1 · Power Query architecture and M basics</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Power_Query_Connectors_for_Accounting_and_ERP_Data.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S01_Power_Query_Connectors_for_Accounting_and_ERP_Data.html">Power Query Connectors for Accounting and ERP Data Sources</a></li><li><a href="../subtopics/S02_Power_Query_Editor_Anatomy_Steps_Formula_Bar_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S02_Power_Query_Editor_Anatomy_Steps_Formula_Bar_and.html">Power Query Editor Anatomy: Steps, Formula Bar and Dependencies</a></li><li><a href="../subtopics/S03_M_Language_Structure_letin_Values_Records_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S03_M_Language_Structure_letin_Values_Records_Lists.html">M Language Structure: let/in, Values, Records, Lists and each</a></li><li><a href="../subtopics/S04_Data_Types_and_Controlling_Automatic_Type.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S04_Data_Types_and_Controlling_Automatic_Type.html">Data Types and Controlling Automatic Type Detection</a></li><li><a href="../subtopics/S05_Query_Folding_Which_Steps_Fold_Native_Query_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S05_Query_Folding_Which_Steps_Fold_Native_Query_and.html">Query Folding: Which Steps Fold, Native Query and Diagnostics</a></li><li><a href="../subtopics/S06_Parameters_Staging_Queries_and_Reference_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S06_Parameters_Staging_Queries_and_Reference_vs.html">Parameters, Staging Queries and Reference vs Duplicate</a></li><li><a href="../subtopics/S07_Load_Options_and_Refresh_Behaviour_in_Excel_vs.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S07_Load_Options_and_Refresh_Behaviour_in_Excel_vs.html">Load Options and Refresh Behaviour in Excel vs Power BI</a></li><li><a href="../subtopics/S08_Privacy_Levels_and_FormulaFirewall_Errors.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/subtopics/S08_Privacy_Levels_and_FormulaFirewall_Errors.html">Privacy Levels and Formula.Firewall Errors</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_CsvDocument_with_FileContents_Delimiter_Encoding.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C01_CsvDocument_with_FileContents_Delimiter_Encoding.html">Csv.Document with File.Contents: Delimiter, Encoding, QuoteStyle</a></li><li><a href="C02_ExcelWorkbook_Navigation_to_a_Named_Sheet_or_Table.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C02_ExcelWorkbook_Navigation_to_a_Named_Sheet_or_Table.html">Excel.Workbook Navigation to a Named Sheet or Table</a></li><li><a href="C03_SqlDatabase_with_a_Native_Query_Blocks_Later.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C03_SqlDatabase_with_a_Native_Query_Blocks_Later.html">Sql.Database with a Native Query Blocks Later Folding</a></li><li><a href="C04_ValueNativeQuery_with_Parameters_and_EnableFolding.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C04_ValueNativeQuery_with_Parameters_and_EnableFolding.html">Value.NativeQuery with Parameters and EnableFolding</a></li><li><a href="C05_The_each_Keyword_and_the_Underscore_Parameter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C05_The_each_Keyword_and_the_Underscore_Parameter.html">The each Keyword and the Underscore Parameter</a></li><li><a href="C06_Folding_Breakers_TableBuffer_Index_Columns_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C06_Folding_Breakers_TableBuffer_Index_Columns_and.html">Folding Breakers: Table.Buffer, Index Columns and Custom Functions</a></li><li><a href="C07_MySQLDatabase_Connector_and_OdbcDataSource_for.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T1_Power_Query_architecture_and_M_basics/concepts/C07_MySQLDatabase_Connector_and_OdbcDataSource_for.html">MySQL.Database Connector and Odbc.DataSource for Tally</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Csv.Document with File.Contents: Delimiter, Encoding, QuoteStyle</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>Csv.Document(File.Contents(FilePath), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv])</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p><code>File.Contents(path)</code> returns the raw <strong>binary</strong> of a file. <code>Csv.Document(binary, options)</code> parses that binary into a table with columns <code>Column1 … ColumnN</code>, all of type <code>any</code>/text. The options record controls parsing:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Meaning</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Delimiter</code></td>
+<td>Field separator</td>
+<td><code>","</code>, <code>"#(tab)"</code>, <code>";"</code> or the pipe character</td>
+</tr>
+<tr>
+<td><code>Columns</code></td>
+<td>Fixed number of columns (or a list of names)</td>
+<td>Omit to let the file decide</td>
+</tr>
+<tr>
+<td><code>Encoding</code></td>
+<td>Code page</td>
+<td><code>65001</code> = UTF-8, <code>1252</code> = Windows Western, <code>TextEncoding.Utf16</code></td>
+</tr>
+<tr>
+<td><code>QuoteStyle</code></td>
+<td>Treatment of quotes</td>
+<td><code>QuoteStyle.Csv</code> (quoted fields may contain delimiters and line breaks), <code>QuoteStyle.None</code> (quotes are literal characters)</td>
+</tr>
+<tr>
+<td><code>CsvStyle</code></td>
+<td>Quote handling at field start</td>
+<td><code>CsvStyle.QuoteAfterDelimiter</code>, <code>CsvStyle.QuoteAlways</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="explanation">Explanation</h2>
+<p>Separating the two functions matters: <code>File.Contents</code> is the only part that touches the file system, so in a folder pipeline you replace it with the <code>[Content]</code> binary from <code>Folder.Files</code> and keep the same <code>Csv.Document</code> call inside a function.</p>
+<p><strong>Encoding 65001 (UTF-8)</strong> is the safe default for modern bank and ERP exports; it reads ₹, en-dashes and Hindi narrations correctly. Files from older Windows software are often 1252; reading UTF-8 as 1252 produces mojibake such as <code>â‚¹</code> instead of ₹, which breaks text matching on narration. Check by inspecting a known special character after import.</p>
+<p><strong>QuoteStyle.Csv</strong> is essential for bank narrations like <code>"NEFT-SBIN0001234-ABC TRADERS, PUNE"</code>: with <code>QuoteStyle.None</code> the comma inside the quotes splits the field and shifts every following column by one — amounts land in the balance column, silently. <code>QuoteStyle.Csv</code> also permits line breaks inside quoted fields (common in SAP long texts), which <code>None</code> would treat as new rows.</p>
+<p><strong>Columns</strong>: the UI writes <code>Columns=7</code> from the sample; if a later file has 8 columns, the extra one is dropped without error. Omit <code>Columns</code> in recurring pipelines and select columns by name after promoting headers.</p>
+<p><strong>Delimiter</strong>: SAP downloads via "Unconverted" or spreadsheet export are frequently tab-delimited <code>.txt</code>; use <code>"#(tab)"</code>. Some European-format files use semicolons.</p>
+<h2 id="illustration">Illustration</h2>
+<p>An HDFC CSV with 18 header lines, then a header row "Date,Narration,Chq./Ref.No.,Value Dt,Withdrawal Amt.,Deposit Amt.,Closing Balance" and lines such as:</p>
+<p><code>02/04/25,"UPI-RAMESH KUMAR-PAYTM, NOIDA",0000412345678901,02/04/25,,25000.00,1245000.00</code></p>
+<pre><code>let
+    Source = Csv.Document(File.Contents(FilePath),
+                [Delimiter=&quot;,&quot;, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    FromHeader = Table.Skip(Source, each [Column1] &lt;&gt; &quot;Date&quot;),
+    Promoted = Table.PromoteHeaders(FromHeader, [PromoteAllScalars=true])
+in
+    Promoted
+</code></pre>
+<p>With <code>QuoteStyle.Csv</code>, the narration stays one field and "25000.00" sits under Deposit Amt. With <code>QuoteStyle.None</code>, "NOIDA" becomes the Chq./Ref.No. and the deposit shifts into Value Dt.</p>
+<h2 id="connections">Connections</h2>
+<p>Links to s01 (Text/CSV connector), s04 (types — keep reference numbers as text after parsing), Topic 2 (skipping report headers by condition) and Topic 4, where <code>File.Contents(FilePath)</code> is replaced by the <code>file as binary</code> parameter of a cleaning function applied to <code>Folder.Files</code>.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-repair-a-parse-l2">Q1. Repair a parse [L2]</h3>
+<p>An SBI CSV imported with <code>[Delimiter=",", Columns=6, Encoding=1252, QuoteStyle=QuoteStyle.None]</code> shows ₹ as garbled characters, about 8% of rows with amounts in the wrong column, and no "Branch Code" column although the file has one. Explain each symptom and write the corrected step.</p>
+<h3 id="q2-tab-delimited-sap-file-l1">Q2. Tab-delimited SAP file [L1]</h3>
+<p>Write the <code>Csv.Document</code> call to read <code>FBL3N_Apr26.txt</code>, a tab-delimited UTF-8 file whose long-text field may contain line breaks inside double quotes.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Use the M escape for a tab character.</p>
+</blockquote>
+<h3 id="q3-function-form-l2">Q3. Function form [L2]</h3>
+<p>Rewrite the HDFC illustration as a function <code>fxReadHDFC</code> that takes the file binary instead of a path, and explain why passing the binary rather than the path also helps avoid Formula.Firewall errors.</p></section>
+<nav class="pager"><a class="prev" href="../subtopics/S08_Privacy_Levels_and_FormulaFirewall_Errors.html">← Privacy Levels and Formula.Firewall Errors</a><a class="next" href="C02_ExcelWorkbook_Navigation_to_a_Named_Sheet_or_Table.html">Excel.Workbook Navigation to a Named Sheet or Table →</a></nav>
+</main></div></body></html>

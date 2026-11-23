@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Average Balances for DSO, Interest Cost and Return Ratios · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S06_Average_Balances_for_DSO_Interest_Cost_and_Return.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T5 · Semi-additive balance sheet measures</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Semi-additive balance sheet measures</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Additive_Semi_Additive_and_Non_Additive_Financial.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S01_Additive_Semi_Additive_and_Non_Additive_Financial.html">Additive, Semi-Additive and Non-Additive Financial Measures</a></li><li><a href="S02_Snapshot_Facts_vs_Transaction_Facts_for_Balances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S02_Snapshot_Facts_vs_Transaction_Facts_for_Balances.html">Snapshot Facts vs Transaction Facts for Balances</a></li><li><a href="S03_Closing_Balance_LASTDATE_vs_LASTNONBLANK_vs_a_MAX.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S03_Closing_Balance_LASTDATE_vs_LASTNONBLANK_vs_a_MAX.html">Closing Balance: LASTDATE vs LASTNONBLANK vs a MAX-Date Filter</a></li><li><a href="S04_Cumulative_Balances_from_GL_Movements_Including.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S04_Cumulative_Balances_from_GL_Movements_Including.html">Cumulative Balances from GL Movements, Including Opening Entries</a></li><li><a href="S05_Opening_Balances_with_OPENINGBALANCEMONTH_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S05_Opening_Balances_with_OPENINGBALANCEMONTH_and.html">Opening Balances with OPENINGBALANCEMONTH and OPENINGBALANCEYEAR</a></li><li><a href="S06_Average_Balances_for_DSO_Interest_Cost_and_Return.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S06_Average_Balances_for_DSO_Interest_Cost_and_Return.html">Average Balances for DSO, Interest Cost and Return Ratios</a></li><li><a href="S07_Cash_Net_Working_Capital_and_Net_Debt_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S07_Cash_Net_Working_Capital_and_Net_Debt_Measures.html">Cash, Net Working Capital and Net Debt Measures over Time</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Closing_Balance_with_LASTDATE_on_a_Snapshot_Fact.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C01_Closing_Balance_with_LASTDATE_on_a_Snapshot_Fact.html">Closing Balance with LASTDATE on a Snapshot Fact</a></li><li><a href="../concepts/C02_LASTNONBLANK_Closing_Balance_at_the_Last_Date_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C02_LASTNONBLANK_Closing_Balance_at_the_Last_Date_with.html">LASTNONBLANK: Closing Balance at the Last Date with Data</a></li><li><a href="../concepts/C03_Cumulative_Balance_with_FILTER_over_ALL_Dates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C03_Cumulative_Balance_with_FILTER_over_ALL_Dates.html">Cumulative Balance with FILTER over ALL Dates</a></li><li><a href="../concepts/C04_CLOSINGBALANCEYEAR_and_OPENINGBALANCEYEAR_with_a.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C04_CLOSINGBALANCEYEAR_and_OPENINGBALANCEYEAR_with_a.html">CLOSINGBALANCEYEAR and OPENINGBALANCEYEAR with a March Year-End</a></li><li><a href="../concepts/C05_Average_Receivables_with_AVERAGEX_over_Month_Ends.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C05_Average_Receivables_with_AVERAGEX_over_Month_Ends.html">Average Receivables with AVERAGEX over Month-Ends</a></li><li><a href="../concepts/C06_DSO_Measure_from_Average_Receivables_and_Days_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C06_DSO_Measure_from_Average_Receivables_and_Days_in.html">DSO Measure from Average Receivables and Days in Period</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Average Balances for DSO, Interest Cost and Return Ratios</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Average balances for ratios (average receivables for DSO, average debt for interest cost)</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Ratios that relate a flow to a balance — DSO (receivables to revenue), DIO, DPO, interest cost on debt, ROCE, asset
+turnover, NBFC yield on advances — should use the <strong>average</strong> balance over the period of the flow, not the closing
+balance. Closing balances distort ratios whenever balances move within the period: a company that collects heavily in
+March shows a flattering closing DSO; a borrower that draws a large loan on 25 March shows an absurdly low "effective
+interest rate". Credit rating agencies, bankers' CMA data analyses and equity analysts all compute averages, and your
+DAX measures must replicate the convention used by the reader.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="averaging-conventions">Averaging conventions</h3>
+<table>
+<thead>
+<tr>
+<th>Convention</th>
+<th>Formula</th>
+<th>Data needed</th>
+<th>Typical use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Two-point</td>
+<td>\(\frac{\text{Opening} + \text{Closing}}{2}\)</td>
+<td>Opening and closing</td>
+<td>Published-accounts analysis, annual ratios</td>
+</tr>
+<tr>
+<td>Month-end average</td>
+<td>\(\frac{1}{n}\sum_{m=1}^{n} \text{Closing}_{m}\)</td>
+<td>n month-end balances</td>
+<td>Internal MIS, quarterly ratios</td>
+</tr>
+<tr>
+<td>13-point</td>
+<td>\(\frac{1}{13}\left(\text{Opening}_{\text{FY}} + \sum_{m=1}^{12} \text{Closing}_{m}\right)\)</td>
+<td>Opening plus 12 month-ends</td>
+<td>Banks, NBFCs, rigorous ROCE</td>
+</tr>
+<tr>
+<td>Daily average</td>
+<td>\(\frac{1}{D}\sum_{d=1}^{D} \text{Bal}_{d}\)</td>
+<td>Daily balances</td>
+<td>Treasury, interest on CC/OD accounts, NBFC yield</td>
+</tr>
+</tbody>
+</table>
+<p>The more points, the closer the average follows intra-period movement; daily averages match how banks charge
+interest on cash credit facilities.</p>
+<h3 id="dax-patterns">DAX patterns</h3>
+<p>Month-end average over whatever period is visible:</p>
+<pre><code class="language-DAX">Avg AR = AVERAGEX ( VALUES ( 'Date'[MonthEnd] ), [Closing AR] )
+</code></pre>
+<p><code>VALUES('Date'[MonthEnd])</code> lists the month-ends in the current period (one for a month, three for a quarter, twelve for
+a year); <code>AVERAGEX</code> evaluates <code>[Closing AR]</code> for each through context transition and averages. <code>AVERAGEX</code> skips blanks,
+so future months without balances do not drag the average down — but zero balances are counted.</p>
+<p>Two-point average at month grain, using the opening function for the matching grain (the previous month-end):</p>
+<pre><code class="language-DAX">Avg AR 2pt (month) =
+VAR openBal  = OPENINGBALANCEMONTH ( [Closing AR], 'Date'[Date] )
+VAR closeBal = [Closing AR]
+RETURN DIVIDE ( openBal + closeBal, 2 )
+</code></pre>
+<p>At year grain, use the year variant with the fiscal year-end:</p>
+<pre><code class="language-DAX">Avg AR 2pt (year) =
+VAR openBal  = OPENINGBALANCEYEAR ( [Closing AR], 'Date'[Date], &quot;3/31&quot; )
+VAR closeBal = [Closing AR]
+RETURN DIVIDE ( openBal + closeBal, 2 )
+</code></pre>
+<p>13-point average for a fiscal year:</p>
+<pre><code class="language-DAX">Avg Debt 13pt =
+VAR openBal = OPENINGBALANCEYEAR ( [Closing Debt], 'Date'[Date], &quot;3/31&quot; )
+VAR sumMonth = SUMX ( VALUES ( 'Date'[MonthEnd] ), [Closing Debt] )
+VAR n = COUNTROWS ( VALUES ( 'Date'[MonthEnd] ) )
+RETURN DIVIDE ( openBal + sumMonth, n + 1 )
+</code></pre>
+<p>Daily average (movement fact, cumulative measure):</p>
+<pre><code class="language-DAX">Avg Debt Daily = AVERAGEX ( VALUES ( 'Date'[Date] ), [Cum Bal Debt] )
+</code></pre>
+<p>Daily averages iterate every date and evaluate a running total for each — heavier, but fine for a few accounts.</p>
+<h3 id="using-averages-in-ratios">Using averages in ratios</h3>
+<pre><code class="language-DAX">Effective Interest Rate =
+DIVIDE ( [Finance Cost on Borrowings], [Avg Debt 13pt] ) * DIVIDE ( 365, [Days in Period] )
+
+DSO = DIVIDE ( [Avg AR], [Revenue] ) * [Days in Period]
+</code></pre>
+<p>Annualisation: interest for a quarter divided by average debt gives a quarterly rate; multiply by 365 ÷ days in the
+period. DSO does not need annualising because revenue and days cover the same period.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>Term loan balance (₹ crore): 31 March 2025 = 100; month-ends April–February = 100 each; a ₹ 60 crore drawdown on 25
+March 2026 gives 31 March 2026 = 160. Interest for FY26 = ₹ 9.2 crore (9% on ≈100 for the year plus a few days on the
+new tranche).</p>
+<table>
+<thead>
+<tr>
+<th>Average used</th>
+<th>Value</th>
+<th>Implied rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Closing balance</td>
+<td>160</td>
+<td>5.75%</td>
+</tr>
+<tr>
+<td>Two-point</td>
+<td>(100 + 160) / 2 = 130</td>
+<td>7.08%</td>
+</tr>
+<tr>
+<td>13-point</td>
+<td>(100 + 11 × 100 + 160) / 13 = 104.6</td>
+<td>8.79%</td>
+</tr>
+<tr>
+<td>Daily</td>
+<td>≈ 101.0</td>
+<td>≈ 9.1%</td>
+</tr>
+</tbody>
+</table>
+<p>Only the daily and 13-point averages give a rate close to the contractual 9%; the closing-balance figure would mislead a
+lender's review into thinking the company borrows cheaply.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Grain mismatch:</strong> <code>Avg AR</code> on a month row averages one month-end, which equals the closing balance; if a monthly DSO
+  needs a two-point average, use the two-point version at month grain.</li>
+<li><strong>Partial periods:</strong> in an incomplete FY, <code>VALUES('Date'[MonthEnd])</code> includes future months; <code>AVERAGEX</code> skips blanks
+  on a snapshot fact, but on a movement fact <code>[Cum Bal]</code> returns the latest cumulative value for future dates (no new
+  postings) — cap at the last actual date or the average is biased toward the latest balance.</li>
+<li><strong>Seasonal businesses:</strong> sugar, fertiliser and seed companies have huge intra-year swings; a two-point average on 31
+  March balances can be far from typical working capital. Prefer month-end averages and disclose the convention.</li>
+<li><strong>Gross vs net receivables:</strong> DSO on gross (before ECL allowance under <em>Ind AS 109</em>) vs net receivables differs; pick
+  one and state it. Receivables include GST while revenue excludes it; either gross up revenue or disclose the bias
+  (see the DSO concept, c06).</li>
+<li><strong>Debt definitions:</strong> include current maturities and short-term borrowings; lease liabilities under <em>Ind AS 116</em> only
+  if finance cost includes lease interest — numerator and denominator must match.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Flow-to-balance ratios use average balances; closing balances distort when balances move.</li>
+<li><code>AVERAGEX(VALUES('Date'[MonthEnd]), [Closing X])</code> gives a month-end average at any grain; add the opening for 13-point.</li>
+<li>Two-point averages need an opening balance from the matching grain's opening function.</li>
+<li>Annualise period rates by 365 ÷ days in period; DSO needs no annualising.</li>
+<li>Match numerator and denominator definitions (gross/net, with/without leases, with/without GST).</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-compute-three-averages-l1">Q1. Compute three averages [L1]</h3>
+<p>Trade receivables (₹ lakh) at month-ends: 31 Mar 2025 1,200; Apr 1,260; May 1,310; Jun 1,180. Compute the two-point,
+month-end (3-point, April–June) and 4-point (opening plus three month-ends) averages for Q1 FY26, and state which DAX
+measure in this note produces each.</p>
+<h3 id="q2-effective-interest-rate-l2">Q2. Effective interest rate [L2]</h3>
+<p>A cash-credit facility had daily balances averaging ₹ 42 crore in Q3 FY26, month-end balances of ₹ 30 crore, ₹ 55 crore
+and ₹ 38 crore, an opening balance of ₹ 35 crore, and interest charged for the quarter of ₹ 0.95 crore. Compute the
+annualised rate under each averaging convention, and recommend which the treasury dashboard should show.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Use 92 days for October–December and keep the quarterly interest unannualised until the last step.</p>
+</blockquote>
+<h3 id="q3-future-months-in-the-average-l2">Q3. Future months in the average [L2]</h3>
+<p>In November 2025 a movement-based model shows FY26 average debt of ₹ 148 crore, while month-end balances April–November
+average ₹ 131 crore and the November balance is ₹ 172 crore. Explain how the future months distort the measure and
+rewrite it to average only closed months.</p>
+<h3 id="q4-ratio-convention-for-a-rating-presentation-l3">Q4. Ratio convention for a rating presentation [L3]</h3>
+<p>A CRISIL-style rating presentation needs FY25 and FY26 ROCE, DSO, DPO and interest coverage. Design the measures,
+specifying the averaging convention for each denominator, how lease liabilities and current maturities are treated,
+and how you would document the conventions so that the rating analyst can reproduce your numbers from the audited
+accounts.</p></section>
+<nav class="pager"><a class="prev" href="S05_Opening_Balances_with_OPENINGBALANCEMONTH_and.html">← Opening Balances with OPENINGBALANCEMONTH and…</a><a class="next" href="S07_Cash_Net_Working_Capital_and_Net_Debt_Measures.html">Cash, Net Working Capital and Net Debt Measures over Time →</a></nav>
+</main></div></body></html>

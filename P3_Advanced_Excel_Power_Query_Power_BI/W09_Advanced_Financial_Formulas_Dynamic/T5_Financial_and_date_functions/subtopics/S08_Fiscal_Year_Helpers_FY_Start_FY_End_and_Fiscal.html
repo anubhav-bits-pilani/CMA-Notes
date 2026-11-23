@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiscal-Year Helpers: FY Start, FY End and Fiscal Month · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S08_Fiscal_Year_Helpers_FY_Start_FY_End_and_Fiscal.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T5 · Financial and date functions</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Financial and date functions</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Period_End_Logic_with_EOMONTH_and_EDATE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S01_Period_End_Logic_with_EOMONTH_and_EDATE.html">Period-End Logic with EOMONTH and EDATE</a></li><li><a href="S02_Day_Count_Conventions_with_YEARFRAC_Bases_04.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S02_Day_Count_Conventions_with_YEARFRAC_Bases_04.html">Day-Count Conventions with YEARFRAC Bases 0–4</a></li><li><a href="S03_NPV_vs_XNPV_Periodic_and_Dated_Cash_Flows.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S03_NPV_vs_XNPV_Periodic_and_Dated_Cash_Flows.html">NPV vs XNPV: Periodic and Dated Cash Flows</a></li><li><a href="S04_IRR_vs_XIRR_vs_MIRR_for_Irregular_Project_Cash.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S04_IRR_vs_XIRR_vs_MIRR_for_Irregular_Project_Cash.html">IRR vs XIRR vs MIRR for Irregular Project Cash Flows</a></li><li><a href="S05_Loan_Amortisation_with_PMT_IPMT_PPMT_CUMIPMT_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S05_Loan_Amortisation_with_PMT_IPMT_PPMT_CUMIPMT_and.html">Loan Amortisation with PMT, IPMT, PPMT, CUMIPMT and CUMPRINC</a></li><li><a href="S06_EMI_Schedules_and_Ind_AS_116_Lease_Liability.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S06_EMI_Schedules_and_Ind_AS_116_Lease_Liability.html">EMI Schedules and Ind AS 116 Lease Liability Schedules</a></li><li><a href="S07_Close_Calendars_with_WORKDAYINTL_NETWORKDAYSINTL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S07_Close_Calendars_with_WORKDAYINTL_NETWORKDAYSINTL.html">Close Calendars with WORKDAY.INTL, NETWORKDAYS.INTL and Holidays</a></li><li><a href="S08_Fiscal_Year_Helpers_FY_Start_FY_End_and_Fiscal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S08_Fiscal_Year_Helpers_FY_Start_FY_End_and_Fiscal.html">Fiscal-Year Helpers: FY Start, FY End and Fiscal Month</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Month_End_Month_Start_and_Same_Day_Offsets_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C01_Month_End_Month_Start_and_Same_Day_Offsets_with.html">Month-End, Month-Start and Same-Day Offsets with EOMONTH and EDATE</a></li><li><a href="../concepts/C02_YEARFRAC_Basis_1_vs_Basis_3_for_Accruals.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C02_YEARFRAC_Basis_1_vs_Basis_3_for_Accruals.html">YEARFRAC Basis 1 vs Basis 3 for Accruals</a></li><li><a href="../concepts/C03_NPV_Plus_CF0_Why_NPV_Discounts_Its_First_Value.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C03_NPV_Plus_CF0_Why_NPV_Discounts_Its_First_Value.html">NPV Plus CF0: Why NPV Discounts Its First Value</a></li><li><a href="../concepts/C04_XNPV_and_XIRR_The_365_Day_Basis_from_the_First.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C04_XNPV_and_XIRR_The_365_Day_Basis_from_the_First.html">XNPV and XIRR: The 365-Day Basis from the First Date</a></li><li><a href="../concepts/C05_PMT_IPMT_and_PPMT_EMI_and_Its_InterestPrincipal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C05_PMT_IPMT_and_PPMT_EMI_and_Its_InterestPrincipal.html">PMT, IPMT and PPMT: EMI and Its Interest/Principal Split</a></li><li><a href="../concepts/C06_MIRR_Fixing_IRRs_Reinvestment_and_Multiple_Root.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C06_MIRR_Fixing_IRRs_Reinvestment_and_Multiple_Root.html">MIRR: Fixing IRR&#x27;s Reinvestment and Multiple-Root Problems</a></li><li><a href="../concepts/C07_FY_End_Date_and_Fiscal_Month_Formulas_for_an.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C07_FY_End_Date_and_Fiscal_Month_Formulas_for_an.html">FY End Date and Fiscal Month Formulas for an April–March Year</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Fiscal-Year Helpers: FY Start, FY End and Fiscal Month</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Fiscal-year helpers: FY start/end and fiscal month number derived from a date</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Excel's date functions think in calendar years: <code>YEAR</code>, <code>MONTH</code> and <code>QUARTER</code>-style logic assume January is month 1. Indian reporting runs April to March — the Companies Act FY (Sec 2(41)), the Income-tax previous year, GST annual returns and SEBI LODR quarterly results all use it. Every GL export, budget file and MIS grid therefore needs fiscal attributes derived from the transaction date: which FY it belongs to, the FY start and end dates, the fiscal month (April = 1), the fiscal quarter and YTD flags. Done inconsistently — <code>&gt;3</code> in one sheet, <code>&gt;=4</code> in another, a typed "FY" column in a third — these helpers are a common source of cut-off and comparative errors. Done once, cleanly, they underpin YTD vs prior-YTD comparisons, budget phasing and the date table of every Power BI model.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-core-formulas">The core formulas</h3>
+<p>Let <code>d</code> be a date.</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Formula</th>
+<th>d = 17-Aug-2025</th>
+<th>d = 12-Feb-2026</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY end year</td>
+<td><code>=YEAR(d) + (MONTH(d) &gt;= 4)</code></td>
+<td>2026</td>
+<td>2026</td>
+</tr>
+<tr>
+<td>FY label</td>
+<td><code>="FY" &amp; RIGHT(YEAR(d) + (MONTH(d) &gt;= 4), 2)</code></td>
+<td>FY26</td>
+<td>FY26</td>
+</tr>
+<tr>
+<td>Long label</td>
+<td><code>=(YEAR(d) - (MONTH(d) &lt; 4)) &amp; "-" &amp; RIGHT(YEAR(d) + (MONTH(d) &gt;= 4), 2)</code></td>
+<td>2025-26</td>
+<td>2025-26</td>
+</tr>
+<tr>
+<td>FY start date</td>
+<td><code>=DATE(YEAR(d) - (MONTH(d) &lt; 4), 4, 1)</code></td>
+<td>01-Apr-2025</td>
+<td>01-Apr-2025</td>
+</tr>
+<tr>
+<td>FY end date</td>
+<td><code>=DATE(YEAR(d) + (MONTH(d) &gt;= 4), 3, 31)</code></td>
+<td>31-Mar-2026</td>
+<td>31-Mar-2026</td>
+</tr>
+<tr>
+<td>Fiscal month (Apr = 1)</td>
+<td><code>=MOD(MONTH(d) + 8, 12) + 1</code></td>
+<td>5</td>
+<td>11</td>
+</tr>
+<tr>
+<td>Fiscal quarter</td>
+<td><code>=INT((MOD(MONTH(d) + 8, 12)) / 3) + 1</code></td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Days in FY</td>
+<td><code>=FYEnd - FYStart + 1</code></td>
+<td>365</td>
+<td>365</td>
+</tr>
+</tbody>
+</table>
+<p>How the logic works:</p>
+<ul>
+<li><code>(MONTH(d) &gt;= 4)</code> is TRUE (1) for April–December, so those dates belong to the FY ending in the <em>next</em> calendar year.</li>
+<li><code>(MONTH(d) &lt; 4)</code> is TRUE for January–March, so the FY <em>started</em> in the previous calendar year.</li>
+<li>Fiscal month: <code>MONTH + 8</code> maps April (4) to 12, <code>MOD(…,12)</code> maps it to 0, <code>+1</code> gives 1. March: 3 + 8 = 11 → 11 → 12. In general, for an FY starting in month \(s\):</li>
+</ul>
+<p>\[
+\text{FM} = \text{MOD}(M - s + 12,\ 12) + 1
+\]</p>
+<p>where \(M\) is the calendar month. For \(s = 4\), \(M - 4 + 12 = M + 8\).</p>
+<h3 id="generalising-the-start-month">Generalising the start month</h3>
+<p>Store the FY start month as an input <code>FYStartM</code> (4 for India, 1 for a US subsidiary, 7 for an Australian one):</p>
+<pre><code class="language-excel">FY end year   =YEAR(d) + (FYStartM &gt; 1) * (MONTH(d) &gt;= FYStartM)
+Fiscal month  =MOD(MONTH(d) - FYStartM + 12, 12) + 1
+FY start      =DATE(YEAR(d) - (MONTH(d) &lt; FYStartM), FYStartM, 1)
+FY end        =EOMONTH(DATE(YEAR(d) - (MONTH(d) &lt; FYStartM), FYStartM, 1), 11)
+</code></pre>
+<p>The <code>(FYStartM &gt; 1)</code> factor prevents a January-start entity from being shifted a year. These can be wrapped as LAMBDAs (w9_t4 c06) for reuse.</p>
+<h3 id="ytd-and-prior-ytd-logic">YTD and prior-YTD logic</h3>
+<p>With a report date <code>RD</code> (e.g. 31-Aug-2025), YTD is FY start to RD; prior YTD is the same window one year earlier:</p>
+<pre><code class="language-excel">YTD start     =DATE(YEAR(RD) - (MONTH(RD) &lt; 4), 4, 1)
+PYTD end      =EDATE(RD, -12)
+PYTD start    =EDATE(YTDStart, -12)
+YTD revenue   =SUMIFS(GL[Amt], GL[FSLine], &quot;Revenue&quot;, GL[Date], &quot;&gt;=&quot; &amp; YTDStart, GL[Date], &quot;&lt;=&quot; &amp; RD)
+</code></pre>
+<p>Using EDATE for prior-year dates keeps month-ends aligned (28/29 February handled automatically when RD is 29-Feb-2028 → 28-Feb-2027).</p>
+<p>A YTD flag on GL rows, for slicers or SUMPRODUCT: <code>=(GL[Date] &gt;= YTDStart) * (GL[Date] &lt;= RD)</code>.</p>
+<h3 id="budget-phasing-by-fiscal-month">Budget phasing by fiscal month</h3>
+<p>Annual budgets are phased by fiscal month — e.g. a seasonality vector with April = 1. Pick the phasing weight with <code>=INDEX(Phasing, FM)</code> where FM is the fiscal month of the header date. Using the calendar month here would put January's weight on April.</p>
+<h3 id="fiscal-attributes-as-a-dimension-table">Fiscal attributes as a dimension table</h3>
+<p>Rather than computing these on every GL row, build a <strong>date table</strong>: one row per day (or month) with Date, FY, FYLabel, FM, FQ, MonthEnd, IsYTD. Map GL rows by date with XLOOKUP, or in Power BI relate the GL to the date table (Week 11). A month-level version with SEQUENCE:</p>
+<pre><code class="language-excel">=LET(m, EOMONTH(DATE(2023,4,1), SEQUENCE(60, 1, 0)),
+     HSTACK(m, YEAR(m) + (MONTH(m) &gt;= 4), MOD(MONTH(m) + 8, 12) + 1,
+            INT(MOD(MONTH(m) + 8, 12) / 3) + 1))
+</code></pre>
+<h3 id="illustration">Illustration</h3>
+<p>GL date 12-Feb-2026, report date 28-Feb-2026:</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY</td>
+<td>FY26 (2025-26)</td>
+</tr>
+<tr>
+<td>FY start / end</td>
+<td>01-Apr-2025 / 31-Mar-2026</td>
+</tr>
+<tr>
+<td>Fiscal month</td>
+<td>11</td>
+</tr>
+<tr>
+<td>Fiscal quarter</td>
+<td>Q4</td>
+</tr>
+<tr>
+<td>In YTD?</td>
+<td>Yes (01-Apr-2025 to 28-Feb-2026)</td>
+</tr>
+<tr>
+<td>Prior-YTD window</td>
+<td>01-Apr-2024 to 28-Feb-2025</td>
+</tr>
+</tbody>
+</table>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Non-March year-ends.</strong> Some Indian subsidiaries of foreign groups have Tribunal approval under Sec 2(41) for a different FY (e.g. December). Parameterise the start month rather than hard-coding 4.</li>
+<li><strong>52/53-week years.</strong> Retail groups abroad sometimes use 4-4-5 calendars; formulas here do not apply — use a mapping table of period start/end dates.</li>
+<li><strong>Text dates</strong> from ERP exports break all helpers; convert first.</li>
+<li><strong>Quarter labels for LODR</strong> are FY quarters (Q1 = April–June), not calendar quarters; label "Q1 FY26" accordingly to avoid confusion with "Q1 2025".</li>
+<li><strong>Time stamps</strong> in dates do not affect MONTH/YEAR but do affect <code>&lt;=RD</code> criteria; use <code>&lt;RD+1</code>.</li>
+<li><strong>Comparatives after restatement.</strong> If prior-year figures are restated (Ind AS 8), the prior-YTD window must point at the restated data set, not the original GL.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>FY end year = <code>YEAR(d) + (MONTH(d) &gt;= 4)</code>; FY start = <code>DATE(YEAR(d) - (MONTH(d) &lt; 4), 4, 1)</code>.</li>
+<li>Fiscal month = <code>MOD(MONTH(d) + 8, 12) + 1</code>; fiscal quarter = <code>INT(MOD(MONTH(d)+8,12)/3) + 1</code>.</li>
+<li>Parameterise the FY start month for group entities with different year-ends.</li>
+<li>Build YTD and prior-YTD windows from a report-date input, with EDATE for the prior year.</li>
+<li>Centralise fiscal attributes in a date table rather than recomputing them in every formula.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-fill-the-attributes-l1">Q1. Fill the attributes [L1]</h3>
+<p>For the dates 1-Apr-2025, 31-Dec-2025, 1-Jan-2026 and 31-Mar-2026, write the formulas and state the FY label, FY start, FY end, fiscal month and fiscal quarter for each.</p>
+<h3 id="q2-ytd-vs-pytd-revenue-l2">Q2. YTD vs PYTD revenue [L2]</h3>
+<p>Given a GL Table with Date, FSLine and Amount (revenue negative as credits) covering FY24–FY26, and a report-date input <code>RD</code>, write formulas for YTD revenue, prior-YTD revenue and growth %, presenting revenue as positive. Test your logic for RD = 29-Feb-2028 in a future-year scenario and explain what the prior-YTD end date becomes.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> EDATE handles the 29 February case; the sign flip belongs in the presentation step.</p>
+</blockquote>
+<h3 id="q3-group-entities-with-different-year-ends-l2">Q3. Group entities with different year-ends [L2]</h3>
+<p>An Indian parent (April–March) has a US subsidiary (January–December) and an Australian subsidiary (July–June). Using a <code>FYStartM</code> column in the entity master, write generalised formulas for FY end year, fiscal month and FY start date, and show the results for the date 15-Aug-2025 for each entity.</p>
+<h3 id="q4-budget-phasing-bug-l2">Q4. Budget phasing bug [L2]</h3>
+<p>A budget model phases annual revenue of ₹240 crore using a seasonality vector (April 6%, May 7% … March 11%) with <code>=INDEX(Phasing, MONTH(Hdr))</code>. Explain exactly which months receive the wrong weights, the effect on Q1 FY26 budget, and the fix.</p>
+<h3 id="q5-date-table-design-l3">Q5. Date table design [L3]</h3>
+<p>Design a month-level date table for FY22–FY31 for an MIS model and a Power BI model: list the columns, write the spill formula(s) that generate it, and explain how the GL, budget and forecast tables would connect to it.</p></section>
+<nav class="pager"><a class="prev" href="S07_Close_Calendars_with_WORKDAYINTL_NETWORKDAYSINTL.html">← Close Calendars with WORKDAY.INTL, NETWORKDAYS.INTL and…</a><a class="next" href="../concepts/C01_Month_End_Month_Start_and_Same_Day_Offsets_with.html">Month-End, Month-Start and Same-Day Offsets with EOMONTH… →</a></nav>
+</main></div></body></html>

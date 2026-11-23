@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Filtering Out Null and Total Rows with Table.SelectRows · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C02_Filtering_Out_Null_and_Total_Rows_with.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T2 · Cleaning messy ERP/Tally exports</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Cleaning messy ERP/Tally exports</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Skipping_Report_Headers_Conditionally_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S01_Skipping_Report_Headers_Conditionally_and.html">Skipping Report Headers Conditionally and Promoting Headers</a></li><li><a href="../subtopics/S02_Removing_Blank_Subtotal_and_Grand_Total_Rows_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S02_Removing_Blank_Subtotal_and_Grand_Total_Rows_by.html">Removing Blank, Subtotal and Grand Total Rows by Condition</a></li><li><a href="../subtopics/S03_Filling_Down_Cost_Centre_and_Group_Headers_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S03_Filling_Down_Cost_Centre_and_Group_Headers_in.html">Filling Down Cost-Centre and Group Headers in Report Layouts</a></li><li><a href="../subtopics/S04_Splitting_Ledger_Code_and_Name_Parsing_Tally_DrCr.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S04_Splitting_Ledger_Code_and_Name_Parsing_Tally_DrCr.html">Splitting Ledger Code and Name; Parsing Tally Dr/Cr Amounts</a></li><li><a href="../subtopics/S05_Trimming_Non_Breaking_Spaces_and_Non_Printable.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S05_Trimming_Non_Breaking_Spaces_and_Non_Printable.html">Trimming Non-Breaking Spaces and Non-Printable Characters</a></li><li><a href="../subtopics/S06_Fixing_Date_Locales_and_Indian_Digit_Grouping_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S06_Fixing_Date_Locales_and_Indian_Digit_Grouping_in.html">Fixing Date Locales and Indian Digit Grouping in Text Amounts</a></li><li><a href="../subtopics/S07_Error_Handling_Remove_Errors_Keep_Errors_and_try.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S07_Error_Handling_Remove_Errors_Keep_Errors_and_try.html">Error Handling: Remove Errors, Keep Errors and try ... otherwise</a></li><li><a href="../subtopics/S08_Export_Layouts_Tally_Day_BookLedgerTB_SAP_FBL3N.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/subtopics/S08_Export_Layouts_Tally_Day_BookLedgerTB_SAP_FBL3N.html">Export Layouts: Tally Day Book/Ledger/TB, SAP FBL3N, S_ALR, Oracle TB</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Conditional_TableSkip_Followed_by_PromoteHeaders.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C01_Conditional_TableSkip_Followed_by_PromoteHeaders.html">Conditional Table.Skip Followed by PromoteHeaders</a></li><li><a href="C02_Filtering_Out_Null_and_Total_Rows_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C02_Filtering_Out_Null_and_Total_Rows_with.html">Filtering Out Null and Total Rows with Table.SelectRows</a></li><li><a href="C03_TableFillDown_Fills_Only_Nulls_Replace_Blanks.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C03_TableFillDown_Fills_Only_Nulls_Replace_Blanks.html">Table.FillDown Fills Only Nulls: Replace Blanks First</a></li><li><a href="C04_TableSplitColumn_at_Each_Delimiter_into_Code_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C04_TableSplitColumn_at_Each_Delimiter_into_Code_and.html">Table.SplitColumn at Each Delimiter into Code and Name</a></li><li><a href="C05_Cleaning_Text_Replace_Char_160_TextClean_TextTrim.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C05_Cleaning_Text_Replace_Char_160_TextClean_TextTrim.html">Cleaning Text: Replace Char 160, Text.Clean, Text.Trim</a></li><li><a href="C06_TransformColumnTypes_with_an_Explicit_en_IN.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C06_TransformColumnTypes_with_an_Explicit_en_IN.html">TransformColumnTypes with an Explicit en-IN Culture</a></li><li><a href="C07_Converting_Tally_DrCr_Suffix_Balances_into_Signed.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T2_Cleaning_messy_ERPTally_exports/concepts/C07_Converting_Tally_DrCr_Suffix_Balances_into_Signed.html">Converting Tally Dr/Cr Suffix Balances into Signed Numbers</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Filtering Out Null and Total Rows with Table.SelectRows</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>Table.SelectRows(t, each [Ledger] &lt;&gt; null and not Text.StartsWith([Ledger], "Total"))</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p><code>Table.SelectRows(table as table, condition as function) as table</code> returns the rows for which <code>condition(row)</code> is <code>true</code>. In the pattern, a row is kept when:</p>
+<p>\[
+\text{Ledger} \neq \text{null} \;\wedge\; \neg\,\text{StartsWith}(\text{Ledger}, \text{"Total"})
+\]</p>
+<p>The left test is evaluated first; because M's <code>and</code> <strong>short-circuits</strong>, the text function on the right is never called on a null value.</p>
+<h2 id="explanation">Explanation</h2>
+<p><strong>Why the null test must come first.</strong> <code>Text.StartsWith(null, "Total")</code> does not return false — it raises an error ("We cannot convert the value null to type Text"), turning the condition into an error for that row and failing the step at load. Placing <code>[Ledger] &lt;&gt; null and</code> in front prevents the call. The same logic applies to <code>or</code>: if the left side is true the right side is skipped.</p>
+<p><strong>What the condition removes</strong>: blank spacer rows (null ledger), group subtotals ("Total Current Assets"), and "Total" lines. It does <strong>not</strong> remove "Grand Total" (starts with "G"), empty strings <code>""</code> (not null), or rows with only spaces. A production version:</p>
+<pre><code>Kept = Table.SelectRows(t, each
+         let x = Text.Trim(Text.From([Ledger] ?? &quot;&quot;)) in
+         x &lt;&gt; &quot;&quot;
+         and not Text.StartsWith(x, &quot;Total&quot;, Comparer.OrdinalIgnoreCase)
+         and not List.Contains({&quot;Grand Total&quot;, &quot;Closing Balance&quot;, &quot;Opening Balance&quot;}, x, Comparer.OrdinalIgnoreCase))
+</code></pre>
+<p><code>Comparer.OrdinalIgnoreCase</code> makes the tests case-insensitive. <code>Text.StartsWith</code> accepts a comparer as the third argument; <code>List.Contains</code> accepts an equation criteria (comparer) as the third.</p>
+<p><strong>False positives</strong>: genuine ledgers starting with "Total" ("TotalEnergies Lubricants — Creditor", "Totally Fresh Foods") would be removed. Mitigations: test "Total " with a trailing space, require that the row has no voucher/document number, or keep a whitelist from the ledger master. Always build the <strong>inverse</strong> query (rows removed) and glance at it during review.</p>
+<p><strong>Folding</strong>: on SQL sources, <code>&lt;&gt; null</code> and <code>Text.StartsWith</code> fold to <code>IS NOT NULL</code> and <code>LIKE 'Total%'</code>; on files, nothing folds — irrelevant to correctness.</p>
+<h2 id="illustration">Illustration</h2>
+<table>
+<thead>
+<tr>
+<th>Ledger</th>
+<th>Debit</th>
+<th>Kept?</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>null</td>
+<td>null</td>
+<td>No</td>
+<td>Null ledger</td>
+</tr>
+<tr>
+<td>Sundry Debtors</td>
+<td>4,56,700</td>
+<td>Yes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Total Current Assets</td>
+<td>9,12,300</td>
+<td>No</td>
+<td>Starts with "Total"</td>
+</tr>
+<tr>
+<td>""</td>
+<td>null</td>
+<td>Yes (basic) / No (production)</td>
+<td>Empty string is not null</td>
+</tr>
+<tr>
+<td>Grand Total</td>
+<td>7,10,70,000</td>
+<td>Yes (basic) / No (production)</td>
+<td>Does not start with "Total"</td>
+</tr>
+<tr>
+<td>TotalEnergies Lubricants</td>
+<td>38,400</td>
+<td>No (basic) — false positive</td>
+<td>Starts with "Total"</td>
+</tr>
+</tbody>
+</table>
+<p>The basic pattern leaves two junk rows and drops one real ledger here; the production version plus a ledger-master whitelist handles all six.</p>
+<h2 id="connections">Connections</h2>
+<p>Implements s02 (removing subtotal rows by condition). Uses Topic 1 c05 (<code>each</code>). Pairs with c01 (skip header) and c03 (Fill Down) in the standard cleaning sequence. The control-total cross-cutting item uses the removed "Grand Total" row as a check.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-why-the-order-matters-l1">Q1. Why the order matters [L1]</h3>
+<p>Explain what happens at refresh if the condition is written <code>each not Text.StartsWith([Ledger], "Total") and [Ledger] &lt;&gt; null</code> on a table containing null ledgers, and why the original order avoids it.</p>
+<h3 id="q2-extend-the-rule-l2">Q2. Extend the rule [L2]</h3>
+<p>Rewrite the condition to also remove "Sub Total", "Page n of m" lines, repeated "Particulars" captions and rows containing only spaces or char 160, case-insensitively.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Normalise the text once in a <code>let</code> inside the <code>each</code>, then test the normalised value.</p>
+</blockquote>
+<h3 id="q3-inverse-query-for-review-l2">Q3. Inverse query for review [L2]</h3>
+<p>Write a second query that returns exactly the rows removed by your rule in Q2, with a column stating which test removed each row, and describe how a reviewer would use it each month.</p></section>
+<nav class="pager"><a class="prev" href="C01_Conditional_TableSkip_Followed_by_PromoteHeaders.html">← Conditional Table.Skip Followed by PromoteHeaders</a><a class="next" href="C03_TableFillDown_Fills_Only_Nulls_Replace_Blanks.html">Table.FillDown Fills Only Nulls: Replace Blanks First →</a></nav>
+</main></div></body></html>

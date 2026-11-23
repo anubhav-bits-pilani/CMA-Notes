@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Additive, Semi-Additive and Non-Additive Financial Measures · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S01_Additive_Semi_Additive_and_Non_Additive_Financial.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T5 · Semi-additive balance sheet measures</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Semi-additive balance sheet measures</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Additive_Semi_Additive_and_Non_Additive_Financial.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S01_Additive_Semi_Additive_and_Non_Additive_Financial.html">Additive, Semi-Additive and Non-Additive Financial Measures</a></li><li><a href="S02_Snapshot_Facts_vs_Transaction_Facts_for_Balances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S02_Snapshot_Facts_vs_Transaction_Facts_for_Balances.html">Snapshot Facts vs Transaction Facts for Balances</a></li><li><a href="S03_Closing_Balance_LASTDATE_vs_LASTNONBLANK_vs_a_MAX.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S03_Closing_Balance_LASTDATE_vs_LASTNONBLANK_vs_a_MAX.html">Closing Balance: LASTDATE vs LASTNONBLANK vs a MAX-Date Filter</a></li><li><a href="S04_Cumulative_Balances_from_GL_Movements_Including.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S04_Cumulative_Balances_from_GL_Movements_Including.html">Cumulative Balances from GL Movements, Including Opening Entries</a></li><li><a href="S05_Opening_Balances_with_OPENINGBALANCEMONTH_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S05_Opening_Balances_with_OPENINGBALANCEMONTH_and.html">Opening Balances with OPENINGBALANCEMONTH and OPENINGBALANCEYEAR</a></li><li><a href="S06_Average_Balances_for_DSO_Interest_Cost_and_Return.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S06_Average_Balances_for_DSO_Interest_Cost_and_Return.html">Average Balances for DSO, Interest Cost and Return Ratios</a></li><li><a href="S07_Cash_Net_Working_Capital_and_Net_Debt_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S07_Cash_Net_Working_Capital_and_Net_Debt_Measures.html">Cash, Net Working Capital and Net Debt Measures over Time</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Closing_Balance_with_LASTDATE_on_a_Snapshot_Fact.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C01_Closing_Balance_with_LASTDATE_on_a_Snapshot_Fact.html">Closing Balance with LASTDATE on a Snapshot Fact</a></li><li><a href="../concepts/C02_LASTNONBLANK_Closing_Balance_at_the_Last_Date_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C02_LASTNONBLANK_Closing_Balance_at_the_Last_Date_with.html">LASTNONBLANK: Closing Balance at the Last Date with Data</a></li><li><a href="../concepts/C03_Cumulative_Balance_with_FILTER_over_ALL_Dates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C03_Cumulative_Balance_with_FILTER_over_ALL_Dates.html">Cumulative Balance with FILTER over ALL Dates</a></li><li><a href="../concepts/C04_CLOSINGBALANCEYEAR_and_OPENINGBALANCEYEAR_with_a.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C04_CLOSINGBALANCEYEAR_and_OPENINGBALANCEYEAR_with_a.html">CLOSINGBALANCEYEAR and OPENINGBALANCEYEAR with a March Year-End</a></li><li><a href="../concepts/C05_Average_Receivables_with_AVERAGEX_over_Month_Ends.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C05_Average_Receivables_with_AVERAGEX_over_Month_Ends.html">Average Receivables with AVERAGEX over Month-Ends</a></li><li><a href="../concepts/C06_DSO_Measure_from_Average_Receivables_and_Days_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C06_DSO_Measure_from_Average_Receivables_and_Days_in.html">DSO Measure from Average Receivables and Days in Period</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Additive, Semi-Additive and Non-Additive Financial Measures</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Additive (P&amp;L flows) vs semi-additive (balances) vs non-additive (ratios) measures</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Every number in a finance model has an <em>additivity class</em> that decides how it may be aggregated. Revenue for a
+quarter is the sum of three months; receivables at a quarter-end are <strong>not</strong> the sum of three month-end balances;
+EBITDA margin for a quarter is neither a sum nor an average of monthly margins. A matrix in Power BI or a PivotTable
+on Power Pivot aggregates whatever the measure returns at every level — month, quarter, FY, total — so a measure
+written without considering additivity will produce absurd subtotals (₹ 13,800 lakh of "receivables" for a company
+whose TB shows ₹ 1,150 lakh). Classifying additivity is the first design decision for every measure, and it is the
+cross-cutting idea that decides which DAX pattern to use.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-three-classes">The three classes</h3>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Definition</th>
+<th>Finance examples</th>
+<th>Aggregation over time</th>
+<th>Aggregation over other dimensions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Additive</strong></td>
+<td>Can be summed across every dimension</td>
+<td>Revenue, COGS, employee cost, GST output tax, capex additions, cash receipts</td>
+<td>Sum</td>
+<td>Sum</td>
+</tr>
+<tr>
+<td><strong>Semi-additive</strong></td>
+<td>Can be summed across some dimensions but not time</td>
+<td>Cash balance, trade receivables, inventory, borrowings, headcount at month-end, FD balance</td>
+<td>Take the value at a point (closing, opening) or average</td>
+<td>Sum (across accounts, branches, entities)</td>
+</tr>
+<tr>
+<td><strong>Non-additive</strong></td>
+<td>Cannot be summed across any dimension</td>
+<td>Gross margin %, EBITDA %, DSO, ROCE, average selling price, distinct customer count, interest rate</td>
+<td>Recompute from components</td>
+<td>Recompute from components</td>
+</tr>
+</tbody>
+</table>
+<p>The distinction is between <strong>flows</strong> (measured over a period: P&amp;L items, cash-flow items, movements) and <strong>stocks</strong>
+(measured at a point in time: balance sheet items). Ratios combine flows and/or stocks and must always be recomputed
+at each level from their additive or semi-additive components.</p>
+<h3 id="additive-measures-pl-flows">Additive measures (P&amp;L flows)</h3>
+<pre><code class="language-DAX">Actual  = SUM ( GL[Amount] )
+Revenue = CALCULATE ( -[Actual], CoA[FSLine] = &quot;Revenue from operations&quot; )
+</code></pre>
+<p>A flow summed over months gives the quarter; summed over branches gives the company. Time intelligence (YTD, R12M,
+PY) applies directly. Even within the balance sheet, <em>movements</em> are additive: "receivables movement for Q3" =
+sum of monthly movements; "additions to PPE YTD" (from the fixed asset register or GL) = sum of monthly additions.</p>
+<h3 id="semi-additive-measures-balances">Semi-additive measures (balances)</h3>
+<p>A balance at 31 December is the result of everything posted since inception. Over the <em>time</em> dimension, the right
+aggregate is a point value:</p>
+<ul>
+<li><strong>Closing balance</strong> — value at the last date of the period (most common: balance sheet presentation, Schedule III
+  figures "as at" the reporting date).</li>
+<li><strong>Opening balance</strong> — value at the last date of the previous period (roll-forwards, s05).</li>
+<li><strong>Average balance</strong> — mean of period-end values (for DSO, interest yield, ROCE denominators, s06).</li>
+</ul>
+<p>Across accounts, branches and entities, balances <em>are</em> additive: receivables of Mumbai + Delhi = company
+receivables at the same date.</p>
+<pre><code class="language-DAX">Closing Bal =
+CALCULATE ( SUM ( TB[Balance] ), LASTDATE ( 'Date'[Date] ) )
+</code></pre>
+<p>At a month row, <code>LASTDATE</code> returns the month-end; at a quarter row, the quarter-end; at the FY row, 31 March — so the
+quarter shows the December balance, not the sum of three month-ends.</p>
+<h3 id="non-additive-measures-ratios">Non-additive measures (ratios)</h3>
+<pre><code class="language-DAX">EBITDA % = DIVIDE ( [EBITDA], [Revenue] )
+DSO      = DIVIDE ( [Avg AR], [Revenue] ) * [Days in Period]
+</code></pre>
+<p>Each is computed from its components in the current filter context, so the quarter margin is quarter EBITDA ÷ quarter
+revenue. A calculated column holding a ratio, or a measure that averages row-level ratios, is wrong at every subtotal.
+Distinct counts (number of active customers) are also non-additive: a customer buying in April and May is one
+customer for the quarter.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>Trade receivables (month-end TB, ₹ lakh) and revenue for Q3 FY26:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Oct</th>
+<th>Nov</th>
+<th>Dec</th>
+<th>Q3 (wrong: sum)</th>
+<th>Q3 (right)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue</td>
+<td>1,200</td>
+<td>1,050</td>
+<td>1,350</td>
+<td>3,600</td>
+<td>3,600 (sum)</td>
+</tr>
+<tr>
+<td>Closing AR</td>
+<td>1,480</td>
+<td>1,390</td>
+<td>1,520</td>
+<td>4,390</td>
+<td>1,520 (closing at 31 Dec)</td>
+</tr>
+<tr>
+<td>Avg AR (3 month-ends)</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>1,463</td>
+</tr>
+<tr>
+<td>Gross margin %</td>
+<td>32%</td>
+<td>28%</td>
+<td>35%</td>
+<td>95% or 31.7% (avg)</td>
+<td>GP ÷ Revenue for Q3</td>
+</tr>
+</tbody>
+</table>
+<p>Gross profit Oct 384, Nov 294, Dec 472.5; Q3 GP = 1,150.5, so Q3 margin = 1,150.5 ÷ 3,600 = 32.0% — neither the sum
+(95%) nor the simple average (31.7%) of monthly margins.</p>
+<h3 id="implementing-the-classification-in-a-model">Implementing the classification in a model</h3>
+<ol>
+<li>Add an attribute to the CoA (or the measure catalogue) such as <code>CoA[Statement]</code> = "PL" / "BS", or a measure-level
+   property noted in the description, so each FS line's additivity is known.</li>
+<li>Keep <strong>one base measure per class</strong>: <code>[Actual]</code> for flows, <code>[Closing Bal]</code> for balances.</li>
+<li>Route a mixed financial-statement matrix through a dispatcher: P&amp;L rows use <code>[Actual]</code> (with YTD views), BS rows use
+   <code>[Closing Bal]</code>.</li>
+</ol>
+<pre><code class="language-DAX">FS Value =
+IF (
+    SELECTEDVALUE ( CoA[Statement] ) = &quot;BS&quot;,
+    [Closing Bal],
+    [Actual]
+)
+</code></pre>
+<ol start="4">
+<li>Write ratio measures only with <code>DIVIDE</code> on measures, never on columns.</li>
+<li>Test totals: the FY row of each balance must equal the 31 March TB; the FY row of each flow must equal the sum of
+   months; each ratio at FY must equal FY numerator ÷ FY denominator.</li>
+</ol>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Headcount</strong> is semi-additive (people at month-end); <strong>FTE-months</strong> (person-months) is additive; average headcount
+  is semi-additive averaged. Know which one the HR cost-per-employee KPI needs.</li>
+<li><strong>Inventory valuation</strong> under Ind AS 2 is a balance; "consumption" (opening + purchases − closing) is a flow derived
+  from two balances and one flow.</li>
+<li><strong>Accrual-based flows</strong> such as Ind AS 116 interest on lease liabilities are additive; the lease liability is
+  semi-additive.</li>
+<li><strong>Mixed facts:</strong> a TB fact containing both P&amp;L and BS accounts at month-end needs the P&amp;L accounts' <em>movement</em> (or
+  YTD balance), not their cumulative balance, if your source TB is YTD-cumulative for P&amp;L (as most ERP TBs are).</li>
+<li><strong>"Average" is not always semi-additive:</strong> average invoice value (revenue ÷ invoice count) is non-additive.</li>
+<li><strong>Totals across time for a balance can still be useful</strong> for averages (sum of month-end balances ÷ 12), but never
+  displayed as a balance.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Flows are additive; balances are semi-additive (sum across accounts/entities, point-in-time across dates); ratios
+  are non-additive.</li>
+<li>Choose the measure pattern by class: SUM for flows, LASTDATE/LASTNONBLANK or cumulative patterns for balances,
+  DIVIDE of components for ratios.</li>
+<li>Quarter and FY rows are the acid test: balances must equal the period-end TB.</li>
+<li>Keep one base measure per class and dispatch by statement in mixed matrices.</li>
+<li>Distinct counts and averages are also non-additive.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-classify-the-kpis-l1">Q1. Classify the KPIs [L1]</h3>
+<p>Classify each of the following as additive, semi-additive or non-additive and state the correct aggregation for a
+quarter: (a) GST input tax credit availed; (b) balance in the electronic credit ledger; (c) inventory days; (d)
+number of active dealers; (e) term-loan principal outstanding; (f) interest expense on term loan; (g) month-end
+headcount; (h) salary cost per employee.</p>
+<h3 id="q2-fix-the-subtotals-l2">Q2. Fix the subtotals [L2]</h3>
+<p>A matrix with months on columns and FS lines on rows uses <code>SUM(TB[Balance])</code> for every line. For FY25 it shows Cash
+₹ 14,600 lakh, Borrowings −₹ 62,400 lakh and Revenue −₹ 18,900 lakh at the FY total, while the 31 March 2025 TB shows
+Cash ₹ 1,240 lakh and Borrowings −₹ 5,180 lakh, and revenue for FY25 is ₹ 18,900 lakh. Explain each number and design
+the measures (and any CoA column) needed to make the matrix correct.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Separate the treatment for BS and P&amp;L rows before thinking about signs.</p>
+</blockquote>
+<h3 id="q3-margin-aggregation-l2">Q3. Margin aggregation [L2]</h3>
+<p>Three branches report Q2 revenue (₹ crore) and EBITDA margin: Surat 40 at 22%, Nagpur 10 at 8%, Kochi 25 at 15%.
+Compute the company EBITDA % correctly and explain why a measure that averages branch margins gives a different
+answer.</p>
+<h3 id="q4-design-a-measure-catalogue-l3">Q4. Design a measure catalogue [L3]</h3>
+<p>You are building the standard measure catalogue for a group FP&amp;A model covering P&amp;L, balance sheet, cash flow and
+operational KPIs (headcount, store count, customers). Design the catalogue columns (name, additivity class, base
+pattern, time views allowed, format) and fill in ten representative rows, justifying the class chosen for each.</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← Semi-additive balance sheet measures</a><a class="next" href="S02_Snapshot_Facts_vs_Transaction_Facts_for_Balances.html">Snapshot Facts vs Transaction Facts for Balances →</a></nav>
+</main></div></body></html>

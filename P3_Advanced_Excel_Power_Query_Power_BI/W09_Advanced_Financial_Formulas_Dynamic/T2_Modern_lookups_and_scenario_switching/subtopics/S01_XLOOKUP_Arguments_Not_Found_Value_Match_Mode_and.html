@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XLOOKUP Arguments: Not-Found Value, Match Mode and Search Mode · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S01_XLOOKUP_Arguments_Not_Found_Value_Match_Mode_and.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T2 · Modern lookups and scenario switching</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Modern lookups and scenario switching</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_XLOOKUP_Arguments_Not_Found_Value_Match_Mode_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S01_XLOOKUP_Arguments_Not_Found_Value_Match_Mode_and.html">XLOOKUP Arguments: Not-Found Value, Match Mode and Search Mode</a></li><li><a href="S02_Approximate_Match_Lookups_for_Slabs_TDS_Rates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S02_Approximate_Match_Lookups_for_Slabs_TDS_Rates.html">Approximate-Match Lookups for Slabs, TDS Rates, Tiers and Bands</a></li><li><a href="S03_Reverse_Search_for_Latest_Price_FX_Rate_and_Last.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S03_Reverse_Search_for_Latest_Price_FX_Rate_and_Last.html">Reverse Search for Latest Price, FX Rate and Last Payment Date</a></li><li><a href="S04_Two_Way_Lookups_on_Account_Month_Grids.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S04_Two_Way_Lookups_on_Account_Month_Grids.html">Two-Way Lookups on Account × Month Grids</a></li><li><a href="S05_XLOOKUP_Returning_Rows_Columns_and_Range.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S05_XLOOKUP_Returning_Rows_Columns_and_Range.html">XLOOKUP Returning Rows, Columns and Range References</a></li><li><a href="S06_XMATCH_and_INDEX_XMATCH_for_Dynamic_Column.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S06_XMATCH_and_INDEX_XMATCH_for_Dynamic_Column.html">XMATCH and INDEX-XMATCH for Dynamic Column Selection</a></li><li><a href="S07_Live_Scenario_Switches_with_CHOOSE_INDEX_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S07_Live_Scenario_Switches_with_CHOOSE_INDEX_and.html">Live Scenario Switches with CHOOSE, INDEX and SWITCH</a></li><li><a href="S08_Multi_Key_Lookups_Helper_Keys_vs_Boolean_Arrays.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/subtopics/S08_Multi_Key_Lookups_Helper_Keys_vs_Boolean_Arrays.html">Multi-Key Lookups: Helper Keys vs Boolean Arrays</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_The_Fully_Specified_XLOOKUP_for_Ledger_Mapping.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C01_The_Fully_Specified_XLOOKUP_for_Ledger_Mapping.html">The Fully Specified XLOOKUP for Ledger Mapping</a></li><li><a href="../concepts/C02_Next_Smaller_XLOOKUP_for_Slab_Rates_Without.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C02_Next_Smaller_XLOOKUP_for_Slab_Rates_Without.html">Next-Smaller XLOOKUP for Slab Rates Without Sorting</a></li><li><a href="../concepts/C03_Nested_XLOOKUP_as_a_Two_Way_Lookup.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C03_Nested_XLOOKUP_as_a_Two_Way_Lookup.html">Nested XLOOKUP as a Two-Way Lookup</a></li><li><a href="../concepts/C04_INDEX_MATCH_MATCH_The_Version_Proof_Two_Way_Lookup.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C04_INDEX_MATCH_MATCH_The_Version_Proof_Two_Way_Lookup.html">INDEX-MATCH-MATCH: The Version-Proof Two-Way Lookup</a></li><li><a href="../concepts/C05_Boolean_Array_XLOOKUP_for_Multi_Criteria_Lookups.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C05_Boolean_Array_XLOOKUP_for_Multi_Criteria_Lookups.html">Boolean-Array XLOOKUP for Multi-Criteria Lookups</a></li><li><a href="../concepts/C06_CHOOSE_Driven_by_a_MATCH_Index_for_Scenario.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C06_CHOOSE_Driven_by_a_MATCH_Index_for_Scenario.html">CHOOSE Driven by a MATCH Index for Scenario Selection</a></li><li><a href="../concepts/C07_Dynamic_Period_Window_with_XLOOKUPXLOOKUP.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T2_Modern_lookups_and_scenario_switching/concepts/C07_Dynamic_Period_Window_with_XLOOKUPXLOOKUP.html">Dynamic Period Window with XLOOKUP:XLOOKUP</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>XLOOKUP Arguments: Not-Found Value, Match Mode and Search Mode</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> XLOOKUP arguments: if_not_found, match_mode (0, -1, 1, 2), search_mode (1, -1, 2, -2)</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>XLOOKUP is the default lookup in modern finance models: it maps ledgers to FS lines, pulls rates from slab tables, fetches the latest FX rate and drives two-way grid lookups. Its power is in the three optional arguments. Used deliberately, they replace a whole toolbox of older tricks — IFERROR wrappers, sorted helper columns, reverse-order copies and INDEX/MATCH combinations. Used carelessly, they create the quietest errors in a model: a "Not mapped" label that hides a broken key, an approximate match that returns the wrong slab, or a binary search on unsorted data that returns a plausible wrong number.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="full-signature">Full signature</h3>
+<pre><code class="language-excel">=XLOOKUP(lookup_value, lookup_array, return_array, [if_not_found], [match_mode], [search_mode])
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lookup_value</code></td>
+<td>what you are looking for (a value, or an array of values to spill)</td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>lookup_array</code></td>
+<td>one row or one column to search</td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>return_array</code></td>
+<td>range/array to return from; same length as <code>lookup_array</code> along the lookup dimension; may be several columns wide</td>
+<td>required</td>
+</tr>
+<tr>
+<td><code>if_not_found</code></td>
+<td>value returned when nothing matches</td>
+<td><code>#N/A</code></td>
+</tr>
+<tr>
+<td><code>match_mode</code></td>
+<td>how a match is defined</td>
+<td>0 (exact)</td>
+</tr>
+<tr>
+<td><code>search_mode</code></td>
+<td>direction and algorithm</td>
+<td>1 (first to last)</td>
+</tr>
+</tbody>
+</table>
+<p>Because <code>lookup_array</code> and <code>return_array</code> are separate, XLOOKUP can look <strong>left</strong>, is immune to inserted columns, and the return can be a whole row or block.</p>
+<h3 id="if_not_found"><code>if_not_found</code></h3>
+<p>The fourth argument replaces <code>IFERROR(VLOOKUP(…),"…")</code> — but only for the "not found" case. Other errors (a <code>#REF!</code> in the return array, a <code>#VALUE!</code> from mismatched array sizes) still show. That is precisely why it is better than IFERROR.</p>
+<p>Choose the value by purpose:</p>
+<ul>
+<li><strong>Mapping</strong>: <code>"Not mapped"</code> or <code>"UNMAPPED"</code> — a visible text flag that COUNTIF can count.</li>
+<li><strong>Rates or amounts feeding arithmetic</strong>: <code>0</code> only if zero is genuinely correct (e.g. no TDS applies); otherwise leave the <code>#N/A</code> visible so the model fails loudly.</li>
+<li><strong>Nothing</strong>: <code>""</code> for display layers only.</li>
+</ul>
+<p>Leaving the argument empty but present (<code>XLOOKUP(a,b,c,,-1)</code>) is allowed — two commas skip it, and it defaults to <code>#N/A</code>.</p>
+<h3 id="match_mode"><code>match_mode</code></h3>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+<th>Typical finance use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>exact match (default)</td>
+<td>ledger → FS line, GSTIN → vendor, employee ID → cost centre</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>exact match, or else the <strong>next smaller</strong> item</td>
+<td>tax slabs, TDS thresholds, commission tiers keyed on "From" amounts</td>
+</tr>
+<tr>
+<td>1</td>
+<td>exact match, or else the <strong>next larger</strong> item</td>
+<td>bands keyed on "Up to" amounts, next available shipment date, next interest reset date</td>
+</tr>
+<tr>
+<td>2</td>
+<td>wildcard match (<code>*</code>, <code>?</code>, <code>~</code>)</td>
+<td>partial ledger names ("<em>Freight</em>"), codes with prefixes</td>
+</tr>
+</tbody>
+</table>
+<p>Key behaviour: for -1 and 1, XLOOKUP finds the nearest item <strong>regardless of sort order</strong> when <code>search_mode</code> is 1 or -1 — it scans everything. This is a major difference from VLOOKUP/MATCH approximate match, which require ascending data. (Recent Microsoft 365 builds also add a regex match mode, 3; it is not available in Excel 2021/2024 perpetual and should not be relied on in shared models.)</p>
+<p>Wildcards in <code>match_mode</code> 2 work only on text and are case-insensitive. To search for a literal <code>*</code>, escape it with <code>~*</code>.</p>
+<h3 id="search_mode"><code>search_mode</code></h3>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>linear search from first to last (default)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>linear search from last to first</td>
+<td>none</td>
+</tr>
+<tr>
+<td>2</td>
+<td>binary search, data sorted ascending</td>
+<td>lookup array <strong>must</strong> be sorted ascending</td>
+</tr>
+<tr>
+<td>-2</td>
+<td>binary search, data sorted descending</td>
+<td>lookup array <strong>must</strong> be sorted descending</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>-1</strong> returns the <strong>last</strong> occurrence — the basis of "latest price/rate/payment" lookups on chronological data.</li>
+<li><strong>2 / -2</strong> are faster on very large lookup arrays (logarithmic rather than linear search), but on unsorted data they return wrong results <strong>without any error</strong>. In normal models (lookup tables of a few thousand rows) the speed gain is irrelevant; use binary search only for very large sorted tables, ideally with a sort check (<code>=AND(B3:B5000&gt;=B2:B4999)</code>).</li>
+</ul>
+<h3 id="combining-the-modes">Combining the modes</h3>
+<table>
+<thead>
+<tr>
+<th>Need</th>
+<th><code>match_mode</code></th>
+<th><code>search_mode</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Map ledger to FS line</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>First matching transaction</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Latest transaction for a vendor</td>
+<td>0</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>Slab rate for an income (From-based table)</td>
+<td>-1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Partial-name match, latest occurrence</td>
+<td>2</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>Exact match on 5 lakh-row sorted key list</td>
+<td>0</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>Mapping table <code>Map</code> (Ledger, FSLine) and TB ledger "Freight Outward – Exports":</p>
+<ul>
+<li><code>=XLOOKUP(A2, Map[Ledger], Map[FSLine], "Not mapped")</code> → "Not mapped" if the exact name is absent.</li>
+<li><code>=XLOOKUP("*Freight*", Map[Ledger], Map[FSLine], "Not mapped", 2)</code> → the FS line of the first ledger containing "Freight".</li>
+<li>Commission table with From values 0, 5,00,000, 10,00,000 and rates 2%, 3%, 4%: for sales of ₹7,40,000, <code>=XLOOKUP(740000, Comm[From], Comm[Rate], , -1)</code> → 3% (the next smaller From is 5,00,000).</li>
+<li>Price history sorted by date: <code>=XLOOKUP(F2, Px[SKU], Px[Rate], "No price", 0, -1)</code> → the most recent price for the SKU.</li>
+</ul>
+<h3 id="spilling-many-lookups">Spilling many lookups</h3>
+<p>If <code>lookup_value</code> is a range (e.g. <code>A2:A600</code>), XLOOKUP spills 599 results in one formula — useful for mapping a whole TB in one go: <code>=XLOOKUP(TB_Ledgers, Map[Ledger], Map[FSLine], "Not mapped")</code>. It cannot spill inside an Excel Table; in a Table, use the row form <code>[@Ledger]</code>.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong><code>if_not_found</code> hides key-quality problems.</strong> A mapping with 40 "Not mapped" ledgers may be 40 trailing-space issues. Always count the flags and investigate before mapping them manually.</li>
+<li><strong>Approximate modes with duplicates.</strong> If two rows share the same From value, the first (or last, with -1 search) is used — keep band tables unique.</li>
+<li><strong>Blank lookup value</strong> can match the first blank cell in the lookup array if one exists (returning that row's value) instead of reporting "not found". Guard: <code>IF(A2="","",XLOOKUP(…))</code>.</li>
+<li><strong>Data types.</strong> Exact match does not equate the number 410100 with the text "410100". Type mismatches are the most common cause of "Not mapped".</li>
+<li><strong>Compatibility.</strong> XLOOKUP is Excel 2021/2024 and Microsoft 365 only; Excel 2016/2019 shows <code>#NAME?</code>.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li><code>if_not_found</code> handles only the not-found case — better than IFERROR, which hides structural errors.</li>
+<li><code>match_mode</code>: 0 exact, -1 next smaller, 1 next larger, 2 wildcard; -1/1 do not need sorted data with linear search.</li>
+<li><code>search_mode</code>: 1 first-to-last, -1 last-to-first (latest record), 2/-2 binary (must be sorted, otherwise silent errors).</li>
+<li>Separate lookup and return arrays mean left lookups and no column-index breakage.</li>
+<li>Choose the not-found value by purpose: a text flag for mappings, a visible error for rates feeding arithmetic.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-pick-the-modes-l1">Q1. Pick the modes [L1]</h3>
+<p>For each requirement, write the XLOOKUP with appropriate <code>match_mode</code> and <code>search_mode</code>: (a) map a ledger name to its Schedule III line; (b) the latest invoice date for vendor in F2 from a chronological purchase register; (c) the depreciation rate for an asset cost of ₹7,80,000 from a band table with "From" values; (d) the cost centre for any ledger whose name contains "Plant 2".</p>
+<h3 id="q2-silent-binary-search-failure-l2">Q2. Silent binary-search failure [L2]</h3>
+<p>A colleague speeds up a 3 lakh-row product price lookup by using <code>search_mode</code> 2. Month-end gross margin by SKU shifts by up to 6% compared with last month for no business reason. Explain the likely cause, how to prove it with a formula, and when binary search is justified.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Binary search assumes something about the lookup array that XLOOKUP never checks.</p>
+</blockquote>
+<h3 id="q3-not-mapped-analysis-l2">Q3. Not-mapped analysis [L2]</h3>
+<p>After mapping a 540-ledger TB with <code>=XLOOKUP([@Ledger], Map[Ledger], Map[FSLine], "Not mapped")</code>, 23 ledgers show "Not mapped". Design a three-step diagnostic using formulas to classify them into trailing-space issues, data-type issues, and genuinely new ledgers.</p>
+<h3 id="q4-not-found-value-for-a-rate-lookup-l2">Q4. Not-found value for a rate lookup [L2]</h3>
+<p>A TDS calculation uses <code>=XLOOKUP([@Section], TDS[Section], TDS[Rate], 0) * [@Amount]</code>. Explain the business risk of the <code>0</code> default when a section code such as "194T" is missing from the rate table, and propose a better design including a check cell.</p>
+<h3 id="q5-interview-xlookup-vs-vlookup-approximate-l1">Q5. Interview: XLOOKUP vs VLOOKUP approximate [L1]</h3>
+<p>Explain, with a one-line example each, two ways in which XLOOKUP with <code>match_mode</code> -1 behaves differently from <code>VLOOKUP(…, TRUE)</code> on a tax slab table.</p></section>
+<nav class="pager"><a class="prev" href="../index.html">← Modern lookups and scenario switching</a><a class="next" href="S02_Approximate_Match_Lookups_for_Slabs_TDS_Rates.html">Approximate-Match Lookups for Slabs, TDS Rates, Tiers and… →</a></nav>
+</main></div></body></html>

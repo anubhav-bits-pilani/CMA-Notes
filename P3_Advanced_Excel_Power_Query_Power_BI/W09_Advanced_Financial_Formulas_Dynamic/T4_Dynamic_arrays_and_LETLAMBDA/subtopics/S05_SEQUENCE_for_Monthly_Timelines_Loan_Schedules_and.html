@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEQUENCE for Monthly Timelines, Loan Schedules and Period Counters · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S05_SEQUENCE_for_Monthly_Timelines_Loan_Schedules_and.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T4 · Dynamic arrays and LET/LAMBDA</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Dynamic arrays and LET/LAMBDA</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Spill_Behaviour_SPILL_the_Operator_and_Implicit.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S01_Spill_Behaviour_SPILL_the_Operator_and_Implicit.html">Spill Behaviour, #SPILL!, the # Operator and Implicit Intersection</a></li><li><a href="S02_FILTER_with_ANDOR_Logic_for_Exception_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S02_FILTER_with_ANDOR_Logic_for_Exception_Lists.html">FILTER with AND/OR Logic for Exception Lists</a></li><li><a href="S03_UNIQUE_for_Dynamic_CoA_and_Department_Lists.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S03_UNIQUE_for_Dynamic_CoA_and_Department_Lists.html">UNIQUE for Dynamic CoA and Department Lists</a></li><li><a href="S04_SORT_and_SORTBY_for_Top_N_Expense_and_Ranked.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S04_SORT_and_SORTBY_for_Top_N_Expense_and_Ranked.html">SORT and SORTBY for Top-N Expense and Ranked Ageing Reports</a></li><li><a href="S05_SEQUENCE_for_Monthly_Timelines_Loan_Schedules_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S05_SEQUENCE_for_Monthly_Timelines_Loan_Schedules_and.html">SEQUENCE for Monthly Timelines, Loan Schedules and Period Counters</a></li><li><a href="S06_LET_for_Named_Steps_and_LAMBDA_Functions_in_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S06_LET_for_Named_Steps_and_LAMBDA_Functions_in_Name.html">LET for Named Steps and LAMBDA Functions in Name Manager</a></li><li><a href="S07_LAMBDA_Helpers_and_Array_Reshaping_Functions.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S07_LAMBDA_Helpers_and_Array_Reshaping_Functions.html">LAMBDA Helpers and Array Reshaping Functions</a></li><li><a href="S08_GROUPBY_and_PIVOTBY_as_Formula_Based_Pivots.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/subtopics/S08_GROUPBY_and_PIVOTBY_as_Formula_Based_Pivots.html">GROUPBY and PIVOTBY as Formula-Based Pivots</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_FILTER_with_Two_AND_Conditions_and_an_ifempty.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C01_FILTER_with_Two_AND_Conditions_and_an_ifempty.html">FILTER with Two AND Conditions and an if_empty Message</a></li><li><a href="../concepts/C02_Sorted_Unique_Account_List_for_a_Selected_FY.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C02_Sorted_Unique_Account_List_for_a_Selected_FY.html">Sorted Unique Account List for a Selected FY</a></li><li><a href="../concepts/C03_Top_10_Vendors_by_Spend_with_TAKE_and_SORTBY.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C03_Top_10_Vendors_by_Spend_with_TAKE_and_SORTBY.html">Top 10 Vendors by Spend with TAKE and SORTBY</a></li><li><a href="../concepts/C04_EOMONTH_with_SEQUENCE_for_Horizontal_Month_End.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C04_EOMONTH_with_SEQUENCE_for_Horizontal_Month_End.html">EOMONTH with SEQUENCE for Horizontal Month-End Headers</a></li><li><a href="../concepts/C05_LET_for_a_Safe_Gross_Margin_Calculation.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C05_LET_for_a_Safe_Gross_Margin_Calculation.html">LET for a Safe Gross Margin Calculation</a></li><li><a href="../concepts/C06_FYEND_A_Named_LAMBDA_for_the_Indian_Financial_Year.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C06_FYEND_A_Named_LAMBDA_for_the_Indian_Financial_Year.html">FYEND: A Named LAMBDA for the Indian Financial Year</a></li><li><a href="../concepts/C07_SCAN_for_Running_Closing_Balances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T4_Dynamic_arrays_and_LETLAMBDA/concepts/C07_SCAN_for_Running_Closing_Balances.html">SCAN for Running Closing Balances</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>SEQUENCE for Monthly Timelines, Loan Schedules and Period Counters</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> SEQUENCE for monthly timelines, loan schedules and period counters</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Every model has a time axis. Hard-typed month headers ("Apr-25", "May-25" as text) are the single most common reason an MIS grid breaks: SUMIFS cannot match text months to real dates, roll-forwards need manual retyping, and a 12-month forecast cannot become 18 months without rework. SEQUENCE generates the axis from one start-date input and a period count, so the timeline, the period counter used in discounting and the row numbers of a loan schedule all flow from assumptions. This is the foundation for the rolling forecast headers of Weeks 17–20 and the self-updating debt and lease schedules of Weeks 13–16.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="syntax">Syntax</h3>
+<pre><code class="language-excel">=SEQUENCE(rows, [columns], [start], [step])
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Default</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rows</td>
+<td>—</td>
+<td>Number of rows to return</td>
+</tr>
+<tr>
+<td>columns</td>
+<td>1</td>
+<td>Number of columns</td>
+</tr>
+<tr>
+<td>start</td>
+<td>1</td>
+<td>First value</td>
+</tr>
+<tr>
+<td>step</td>
+<td>1</td>
+<td>Increment; may be negative or fractional</td>
+</tr>
+</tbody>
+</table>
+<p>The fill runs across the row first, then down. <code>SEQUENCE(2,3)</code> returns {1,2,3;4,5,6}.</p>
+<h3 id="monthly-timelines">Monthly timelines</h3>
+<p>Month-end dates are the correct header: they are real dates, so SUMIFS can use <code>"&gt;"&amp;EOMONTH(hdr,-1)</code> and <code>"&lt;="&amp;hdr</code> ranges.</p>
+<pre><code class="language-excel">=EOMONTH(StartDate, SEQUENCE(1, Months, 0))      horizontal month-ends
+=EOMONTH(StartDate, SEQUENCE(Months, 1, 0))      vertical month-ends
+=EDATE(StartDate, SEQUENCE(1, Months, 0))        same day each month
+=EOMONTH(StartDate, SEQUENCE(1, Qtrs, 2, 3))     quarter-ends (Jun, Sep, Dec, Mar if StartDate is in April)
+=DATE(YEAR(StartDate)+(MONTH(StartDate)&gt;=4)+SEQUENCE(1, Yrs, 0), 3, 31)   fiscal year-ends
+</code></pre>
+<p>With <code>StartDate</code> = 1-Apr-2025 and <code>Months</code> = 12, the first formula returns 30-Apr-2025 … 31-Mar-2026. Format the spill as <code>mmm-yy</code>; the underlying values remain dates. Downstream formulas reference the header with <code>C4#</code> (the spill operator, s01), so the grid widens to 18 months when <code>Months</code> is changed to 18.</p>
+<h3 id="period-counters">Period counters</h3>
+<p>DCF and project models need <em>t</em> = 1, 2, 3 … and sometimes stub fractions:</p>
+<pre><code class="language-excel">=SEQUENCE(1, Years)                       1 … n
+=SEQUENCE(1, Years, 0)                    0 … n-1 (for t=0 investment column)
+=SEQUENCE(1, Years, 0.5)                  0.5, 1.5, 2.5 … mid-year convention
+=YEARFRAC(ValDate, C4#)                   exact year fractions to each dated header
+</code></pre>
+<p>A discount-factor row then becomes <code>=1/(1+WACC)^C6#</code>.</p>
+<p>Flags are built from the same counter: <code>=--(C4#&lt;=LoanEnd)</code> returns 1 for months within the loan tenor, 0 after; <code>=--(MOD(SEQUENCE(1,Months),3)=0)</code> flags quarter-end months for GST-style quarterly filings or quarterly interest.</p>
+<h3 id="loan-schedule-rows">Loan schedule rows</h3>
+<p>A vertical schedule where the number of rows equals the tenor:</p>
+<pre><code class="language-excel">=SEQUENCE(Tenor*12)                        period numbers 1 … 60 for a 5-year EMI loan
+=EDATE(FirstEMIDate, SEQUENCE(Tenor*12, 1, 0))  EMI dates
+=PMT(Rate/12, Tenor*12, -Principal)        constant EMI (single cell)
+=IPMT(Rate/12, A8#, Tenor*12, -Principal)  interest per period (spills, since per is an array)
+=PPMT(Rate/12, A8#, Tenor*12, -Principal)  principal per period
+</code></pre>
+<p>Because IPMT and PPMT accept an array for <code>per</code>, the whole schedule spills from four formulas. The closing balance column uses SCAN (c07) or <code>=Principal - SCAN(0, PPMT_col, LAMBDA(a,x,a+x))</code>. Change <code>Tenor</code> from 5 to 7 years and the schedule extends to 84 rows with nothing copied down.</p>
+<h3 id="illustration-50-lakh-term-loan">Illustration: ₹50 lakh term loan</h3>
+<p>Inputs: Principal ₹50,00,000; Rate 9.6% p.a. (monthly rate 0.8%); Tenor 5 years; first EMI 30-Apr-2025.</p>
+<table>
+<thead>
+<tr>
+<th>Formula</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>=SEQUENCE(Tenor*12)</code></td>
+<td>1 … 60</td>
+</tr>
+<tr>
+<td><code>=EOMONTH(FirstEMI, SEQUENCE(60,1,0))</code></td>
+<td>30-Apr-2025 … 31-Mar-2030</td>
+</tr>
+<tr>
+<td><code>=PMT(0.008, 60, -5000000)</code></td>
+<td>₹1,05,254 (approx.)</td>
+</tr>
+<tr>
+<td>Interest in period 1</td>
+<td>₹50,00,000 × 0.8% = ₹40,000</td>
+</tr>
+<tr>
+<td>Principal in period 1</td>
+<td>₹1,05,254 − ₹40,000 = ₹65,254</td>
+</tr>
+</tbody>
+</table>
+<p>The final period's closing balance should be zero (to rounding) — make it a check cell.</p>
+<h3 id="two-dimensional-sequences">Two-dimensional sequences</h3>
+<p><code>SEQUENCE(Rows, Cols)</code> gives a numbered grid, useful for cohort triangles (acquisition month × months since acquisition) or for a MAKEARRAY-style calendar: <code>=StartDate + SEQUENCE(6, 7, 0)</code> with StartDate a Monday builds a 6-week close calendar block.</p>
+<h3 id="text-or-fiscal-labels-from-dates">Text or fiscal labels from dates</h3>
+<p>Keep dates as the header value and derive labels separately when needed:</p>
+<pre><code class="language-excel">=&quot;Q&quot; &amp; INT(MOD(MONTH(C4#)-4, 12)/3) + 1            fiscal quarter label (Apr–Jun = Q1)
+=&quot;FY&quot; &amp; RIGHT(YEAR(C4#) + (MONTH(C4#)&gt;=4), 2)         FY label, e.g. FY26
+</code></pre>
+<p>Labels are for display; criteria should always use the dates.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>EOMONTH vs EDATE.</strong> Chaining EDATE (each date one month after the previous cell) drifts: 31-Jan → 28-Feb → 28-Mar → 28-Apr. Offsetting from the original date with SEQUENCE avoids drift: <code>EDATE(31-Jan, {0,1,2})</code> returns 31-Jan, 28-Feb, 31-Mar. For month-end headers always use EOMONTH, which cannot drift.</li>
+<li><strong>Stub periods.</strong> If a model starts mid-month (acquisition on 14-Sep-2025), the first column is a stub; compute its fraction with <code>(EOMONTH(Start,0)-Start+1)/DAY(EOMONTH(Start,0))</code> and apply it to the first period's flows.</li>
+<li><strong>Spill references downstream.</strong> All grid formulas must use <code>C4#</code>; any fixed range like <code>C4:N4</code> breaks when <code>Months</code> changes.</li>
+<li><strong>Table conflict.</strong> SEQUENCE cannot be used to generate headers of an Excel Table (headers are static text). Keep the time axis as a spill on a normal range.</li>
+<li><strong>Zero or negative inputs.</strong> <code>SEQUENCE(0)</code> returns #CALC!. Validate period inputs (whole number ≥ 1).</li>
+<li><strong>Leap years</strong> affect day-based accruals, not EOMONTH headers; handle with YEARFRAC basis (w9_t5).</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>SEQUENCE generates the time axis and counters from a start date and a period-count input.</li>
+<li>Wrap it in EOMONTH for month-end headers — real dates that SUMIFS can range on.</li>
+<li>Counters with start 0 or 0.5 support t=0 and mid-year discounting; MOD-based flags mark quarter-ends.</li>
+<li>IPMT/PPMT accept array <code>per</code>, so a whole loan schedule spills from a SEQUENCE column.</li>
+<li>Reference headers with <code>#</code> and validate inputs so changing tenor or horizon resizes everything.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-headers-for-an-18-month-rolling-forecast-l1">Q1. Headers for an 18-month rolling forecast [L1]</h3>
+<p>The forecast starts in the month after the last actual month (input <code>LastActual</code> = 31-Oct-2025). Write formulas for (a) 18 horizontal month-end headers; (b) a row of fiscal-quarter labels; (c) a row of 1/0 flags that are 1 for months in FY26.</p>
+<h3 id="q2-spilling-loan-schedule-l2">Q2. Spilling loan schedule [L2]</h3>
+<p>A ₹2.4 crore machinery loan carries 10.2% p.a., repayable in 84 equal monthly instalments starting one month after disbursement on 15-May-2025. Write the SEQUENCE-based formulas for period number, EMI date, EMI, interest, principal and closing balance, and state the check you would place at the bottom.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> IPMT and PPMT accept the period-number spill directly; closing balance needs a running total.</p>
+</blockquote>
+<h3 id="q3-mid-year-discount-counter-l2">Q3. Mid-year discount counter [L2]</h3>
+<p>A 5-year DCF with valuation date 31-Mar-2026 uses mid-year discounting. Write a SEQUENCE formula for the discount periods and a discount-factor row at WACC 12.5%. Explain how the period row would change if the valuation date moved to 30-Sep-2026 (a stub of six months in FY27).</p>
+<h3 id="q4-why-did-the-grid-not-extend-l1">Q4. Why did the grid not extend? [L1]</h3>
+<p>A planner changed the <code>Months</code> input from 12 to 15. The header row extended, but the SUMIFS block below still shows 12 columns, and the total column double-counts. Identify the likely formula-reference mistakes and how to fix them.</p>
+<h3 id="q5-quarterly-interest-flags-l2">Q5. Quarterly interest flags [L2]</h3>
+<p>A debenture pays interest quarterly on 30 June, 30 September, 31 December and 31 March. Using a 36-month EOMONTH timeline starting April 2025, write a flag row identifying payment months and an interest row computing ₹10 crore × 8.4% ÷ 4 only in those months.</p></section>
+<nav class="pager"><a class="prev" href="S04_SORT_and_SORTBY_for_Top_N_Expense_and_Ranked.html">← SORT and SORTBY for Top-N Expense and Ranked Ageing Reports</a><a class="next" href="S06_LET_for_Named_Steps_and_LAMBDA_Functions_in_Name.html">LET for Named Steps and LAMBDA Functions in Name Manager →</a></nav>
+</main></div></body></html>

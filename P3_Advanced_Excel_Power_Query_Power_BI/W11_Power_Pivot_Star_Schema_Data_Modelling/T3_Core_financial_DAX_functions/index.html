@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Core financial DAX functions · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/index.html" data-kind="topic">
+<header class="top"><a class="brand" href="../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../index.html">Home</a> <span>›</span> <a href="../../index.html">Phase 3</a> <span>›</span> <a href="../index.html">Week 11</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">Week 11</a></div><ul class="side-links"><li><a href="../T1_Star_schema_for_financial_data/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T1_Star_schema_for_financial_data/index.html">T1 · Star schema for financial data</a></li><li><a href="../T2_Indian_fiscal_calendar_table/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T2_Indian_fiscal_calendar_table/index.html">T2 · Indian fiscal calendar table</a></li><li><a href="index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/index.html">T3 · Core financial DAX functions</a></li><li><a href="../T4_Time_intelligence_for_AprilMarch_FY/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T4_Time_intelligence_for_AprilMarch_FY/index.html">T4 · Time intelligence for April–March FY</a></li><li><a href="../T5_Semi_additive_balance_sheet_measures/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/index.html">T5 · Semi-additive balance sheet measures</a></li><li><a href="../T6_PL_layout_subtotals_and_sign_flip/index.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/index.html">T6 · P&amp;L layout, subtotals and sign-flip</a></li></ul></aside>
+<main class="content">
+<div class="kind">Topic</div>
+<h1>Core financial DAX functions</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<section class="index"><h2>Notes in this topic</h2><div class="cols"><div><h3>Subtopics</h3><ul class="links num"><li><a href="subtopics/S01_Row_Context_Filter_Context_and_Context_Transition.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S01_Row_Context_Filter_Context_and_Context_Transition.html">S01 · Row Context, Filter Context and Context Transition</a></li><li><a href="subtopics/S02_CALCULATE_Filter_Arguments_and_Modifiers.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S02_CALCULATE_Filter_Arguments_and_Modifiers.html">S02 · CALCULATE Filter Arguments and Modifiers</a></li><li><a href="subtopics/S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html">S03 · Iterators SUMX and AVERAGEX for Row-Level Maths</a></li><li><a href="subtopics/S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html">S04 · FILTER vs Boolean Column Filters: Meaning and Performance</a></li><li><a href="subtopics/S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html">S05 · ALL, ALLEXCEPT and ALLSELECTED for Share and Contribution Analysis</a></li><li><a href="subtopics/S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html">S06 · RELATED and RELATEDTABLE in Columns and Iterators</a></li><li><a href="subtopics/S07_DIVIDE_Measures_vs_Calculated_Columns_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S07_DIVIDE_Measures_vs_Calculated_Columns_and.html">S07 · DIVIDE, Measures vs Calculated Columns, and VAR/RETURN</a></li><li><a href="subtopics/S08_Explicit_Measures_Display_Folders_and_LakhCrore.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S08_Explicit_Measures_Display_Folders_and_LakhCrore.html">S08 · Explicit Measures, Display Folders and ₹ Lakh/Crore Formats</a></li></ul></div><div><h3>Key concepts & formulas</h3><ul class="links num"><li><a href="concepts/C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html">C01 · Base Actual Measure and a Filtered Revenue Measure</a></li><li><a href="concepts/C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html">C02 · Percentage of Total Opex with ALL on Cost Centre</a></li><li><a href="concepts/C03_Percentage_within_Statement_with_ALLEXCEPT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C03_Percentage_within_Statement_with_ALLEXCEPT.html">C03 · Percentage within Statement with ALLEXCEPT</a></li><li><a href="concepts/C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html">C04 · FX-Converted Revenue with SUMX and RELATED</a></li><li><a href="concepts/C05_Sign_Aware_Variance_with_VAR_and_ABS.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C05_Sign_Aware_Variance_with_VAR_and_ABS.html">C05 · Sign-Aware Variance % with VAR and ABS</a></li><li><a href="concepts/C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html">C06 · KEEPFILTERS to Intersect Rather Than Overwrite</a></li><li><a href="concepts/C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html">C07 · DIVIDE and Its BLANK Default for Zero Denominators</a></li></ul></div></div></section><article class="note"><blockquote>
+<p><strong>Roadmap topic:</strong> Core Financial DAX Functions: CALCULATE, SUMX, FILTER, ALL, ALLEXCEPT, RELATED, and DIVIDE (safe division without #DIV/0!)</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>DAX has more than 250 functions, but a finance model runs on about a dozen. CALCULATE changes filter context and
+underlies every line, period and scenario measure. SUMX and AVERAGEX do row-level maths — qty × rate, FX conversion,
+sign factors — before aggregating. FILTER, ALL, ALLEXCEPT and ALLSELECTED shape the sets of rows that numerators and
+denominators see. RELATED and RELATEDTABLE navigate relationships from inside row context. DIVIDE produces ratios
+that behave in every cell. VAR/RETURN keeps all of it readable. Master these and the time-intelligence,
+semi-additive and P&amp;L-layout topics of this week become applications rather than new material.</p>
+<p>The concepts that make these functions predictable are <strong>evaluation contexts</strong>: filter context (which rows are
+visible), row context (which row is current), and context transition (how CALCULATE and measure references turn a
+row into a filter). An FP&amp;A analyst who can explain why <code>SUMX(Customers, [Sales])</code> differs from
+<code>SUMX(Customers, SUM(Sales[Amount]))</code> can debug almost any wrong total without trial and error. For Indian finance
+roles, the payoff is concrete: % of revenue analyses that tie to Schedule III, FX-converted export revenue consistent
+with Ind AS 21, variance % that does not invert on expense lines, and ₹ lakh/crore formatting that a CFO accepts.</p>
+<p>The learning sequence: start with <strong>contexts and context transition</strong> (s01); learn <strong>CALCULATE's filter arguments and
+modifiers</strong> (s02); use <strong>iterators</strong> for row-level maths (s03); understand <strong>FILTER vs boolean filters</strong> for meaning and
+performance (s04); build <strong>share and contribution</strong> measures with ALL, ALLEXCEPT and ALLSELECTED (s05); navigate
+relationships with <strong>RELATED/RELATEDTABLE</strong> (s06); write <strong>safe ratios</strong> with DIVIDE, choose <strong>measures vs calculated
+columns</strong> and structure with <strong>VAR/RETURN</strong> (s07); and finish with <strong>explicit measures, display folders and Indian
+format strings</strong> (s08). The concepts are the canonical measures: base Actual and Revenue (c01), % of total opex (c02),
+% within statement (c03), FX revenue (c04), sign-aware variance % (c05), KEEPFILTERS (c06) and DIVIDE's blank
+default (c07).</p>
+<h2 id="concept-map">Concept map</h2>
+<table>
+<thead>
+<tr>
+<th>Subtopic / concept</th>
+<th>Role in the topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s01 Row vs filter context, context transition</td>
+<td>The evaluation model behind every DAX result</td>
+</tr>
+<tr>
+<td>s02 CALCULATE filters and modifiers</td>
+<td>Boolean and table filters; ALL, REMOVEFILTERS, KEEPFILTERS, USERELATIONSHIP</td>
+</tr>
+<tr>
+<td>s03 SUMX and AVERAGEX</td>
+<td>Row-level maths (qty × rate, FX) and averaging at a chosen grain</td>
+</tr>
+<tr>
+<td>s04 FILTER vs boolean filters</td>
+<td>Semantic and performance differences; filter columns, not tables</td>
+</tr>
+<tr>
+<td>s05 ALL, ALLEXCEPT, ALLSELECTED</td>
+<td>Denominators for % of total, % of parent and contribution</td>
+</tr>
+<tr>
+<td>s06 RELATED and RELATEDTABLE</td>
+<td>Navigating many → one and one → many from row context</td>
+</tr>
+<tr>
+<td>s07 DIVIDE, measures vs columns, VAR</td>
+<td>Safe ratios, correct object type, readable measures</td>
+</tr>
+<tr>
+<td>s08 Explicit measures, folders, formats</td>
+<td>Presentation layer: governance, organisation, ₹ lakh/crore</td>
+</tr>
+<tr>
+<td>c01 Actual and Revenue</td>
+<td>Base measure and a filtered derived measure</td>
+</tr>
+<tr>
+<td>c02 % of Total Opex</td>
+<td>ALL on a dimension for share of total</td>
+</tr>
+<tr>
+<td>c03 % within Statement</td>
+<td>ALLEXCEPT for share of a parent column</td>
+</tr>
+<tr>
+<td>c04 Revenue INR</td>
+<td>SUMX with RELATED for FX conversion</td>
+</tr>
+<tr>
+<td>c05 Var % with ABS</td>
+<td>Sign-aware variance percentage</td>
+</tr>
+<tr>
+<td>c06 KEEPFILTERS</td>
+<td>Intersecting rather than overwriting filters</td>
+</tr>
+<tr>
+<td>c07 DIVIDE default</td>
+<td>BLANK for zero or blank denominators</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-concepts-to-study">Related concepts to study</h2>
+<h3 id="sql-mental-model-for-filter-context">SQL mental model for filter context</h3>
+<p><em>SQL WHERE/GROUP BY mental model mapped to DAX filter context</em></p>
+<p>Your MySQL background maps well. A matrix cell is like one row of <code>SELECT FSLine, FY, SUM(Amount) FROM GL JOIN CoA
+… JOIN Date … WHERE &lt;slicers&gt; GROUP BY FSLine, FY</code>: the GROUP BY values of that row plus the WHERE clause form the
+filter context, and the measure is the aggregate. CALCULATE edits the WHERE clause for one expression — a boolean
+filter replaces the condition on one column, ALL deletes conditions, KEEPFILTERS ANDs a new condition. Relationships
+behave like pre-defined joins in which filters flow from dimension to fact. Where the analogy breaks: DAX evaluates
+each cell independently (totals are recomputed, not summed), and row context in iterators is closer to a correlated
+subquery than to a GROUP BY.</p>
+<h3 id="ratio-measures-in-weeks-58">Ratio measures in Weeks 5–8</h3>
+<p><em>→ Week 5–8: ratio measures (gross margin, ROCE, DSO) built with DIVIDE</em></p>
+<p>The financial-analysis weeks define the ratios — gross margin, EBITDA margin, ROCE, ROE, DSO, DIO, DPO, interest
+cover, debt/equity — with their Indian reporting nuances (Ind AS line items, exceptional items, lease liabilities in
+net debt). This topic gives the DAX form: each ratio is a DIVIDE of two branched measures, evaluated in filter context,
+never a calculated column. Balance-sheet denominators need average or closing balances (topic 5), and P&amp;L numerators
+need YTD or R12M windows for annualised ratios (topic 4). Defining ratio measures once, with documented sign
+conventions, makes the Week 5–8 analysis reproducible in Power BI.</p>
+<h3 id="dax-studio-dax-query-view-and-performance-analyzer">DAX Studio, DAX query view and Performance Analyzer</h3>
+<p><em>DAX Studio, DAX query view and Performance Analyzer for debugging</em></p>
+<p>Three tools turn DAX debugging from guesswork into inspection. <strong>Performance Analyzer</strong> (Power BI Desktop, Optimize
+ribbon) records each visual's DAX query and duration; copy the query to analyse it. <strong>DAX query view</strong> (in Desktop)
+lets you <code>EVALUATE</code> table expressions and <code>DEFINE MEASURE</code> locally — ideal for checking what <code>VALUES</code>, <code>FILTER</code> or
+<code>EXCEPT</code> return. <strong>DAX Studio</strong> (free, external) adds server timings (storage engine vs formula engine time, query
+plans), VertiPaq Analyzer for model size per column and RI violations, and the ability to run queries against
+published datasets via XMLA. Use them to test context assumptions with small tables before trusting a matrix.</p>
+<h3 id="selectedvalue-hasonevalue-and-isinscope">SELECTEDVALUE, HASONEVALUE and ISINSCOPE</h3>
+<p><em>SELECTEDVALUE, HASONEVALUE and ISINSCOPE for context-aware totals → <code>w11_t6</code></em></p>
+<p>These functions let a measure know <em>where</em> it is being evaluated. <code>HASONEVALUE(col)</code> is TRUE when exactly one value of
+the column is visible; <code>SELECTEDVALUE(col, alt)</code> returns that value (or alt); <code>ISINSCOPE(col)</code> is TRUE when the column
+is a grouping level in the current row of the visual — the reliable way to distinguish detail rows from subtotals and
+grand totals in a matrix hierarchy. In topic 6 they drive P&amp;L layout dispatch (<code>SWITCH(TRUE(), …)</code> by line type),
+blank meaningless grand totals, and % of parent at each hierarchy level (s05). They also guard non-additive measures
+(ratios, closing balances) from nonsensical totals.</p>
+<h3 id="daxguide-and-sqlbi">dax.guide and SQLBI</h3>
+<p><em>dax.guide and SQLBI articles for exact function semantics</em></p>
+<p>DAX semantics are subtle, and blog answers are often approximately right. <strong>dax.guide</strong> (maintained by SQLBI) documents
+every function's syntax, return type, context-transition behaviour, whether it is a CALCULATE modifier, and version
+compatibility (Power BI, Excel, SSAS). <strong>SQLBI</strong> articles and the book <em>The Definitive Guide to DAX</em> explain expanded
+tables, context transition, ALLSELECTED shadow filter contexts and filter-argument rules with rigorous examples.
+Microsoft Learn's DAX reference states restrictions such as boolean-filter rules. When a measure surprises you, check
+the function's page before rewriting the measure.</p>
+<h2 id="common-pitfalls">Common pitfalls</h2>
+<h3 id="calculated-columns-used-for-aggregations">Calculated columns used for aggregations</h3>
+<p><em>Using calculated columns for aggregations that should be measures, which bloats the model and ignores filter context</em></p>
+<p>The mistake: creating <code>CoA[FY26 Actual] = CALCULATE(SUM(GL[Amount]), 'Date'[FY] = "FY2025-26")</code> or <code>GL[Margin %]</code> as
+columns. People do it because columns feel like Excel helper columns and are visible in Data view. Columns are
+computed at refresh, stored (memory), static (they ignore slicers and the visual's context) and need duplicating for
+every period. Ratios stored per row sum meaninglessly. Correct: measures for anything in the values area; columns only
+for attributes used to slice, group, sort or key. Detect: review calculated columns that contain SUM, CALCULATE or a
+hard-coded period, and any numeric column summed in visuals.</p>
+<h3 id="filter-over-the-whole-fact-table">FILTER over the whole fact table</h3>
+<p><em><code>FILTER(GL, ...)</code> over the whole fact table instead of column filters: slow, with unexpected filter overrides</em></p>
+<p>The mistake: <code>CALCULATE([Actual], FILTER(GL, RELATED(CoA[FSLine]) = "Revenue"))</code>. It comes from SQL habits ("filter
+the table") and from older tutorials. FILTER iterates every visible GL row in the formula engine and returns a table
+of the whole expanded GL, which filters every related column — slow on crore-row facts and able to override filters
+inner measures expect to remove. Correct: boolean column filters on dimension columns (<code>CoA[FSLine] = "Revenue"</code>),
+KEEPFILTERS when intersect semantics are needed, and FILTER only over small tables (VALUES of a key) for
+measure-based conditions. Detect: search measures for <code>FILTER(GL</code> / <code>FILTER(Budget</code>; Performance Analyzer shows
+high formula-engine time.</p>
+<h3 id="variance-sign-flip-on-negative-budgets">Variance % sign flip on negative budgets</h3>
+<p><em>Variance % on negative (expense) budgets flips the sign; use <code>ABS</code> or sign-aware logic</em></p>
+<p>The mistake: <code>DIVIDE([Actual] - [Budget], [Budget])</code> when budgets can be negative — revenue in a credit-negative GL, or
+loss budgets after sign adjustment. A smaller-than-budgeted loss then shows a negative variance %, implying adverse
+performance. People miss it because test data uses positive revenue budgets. Correct: divide by <code>ABS(budget)</code> so the
+sign follows \(a - b\), and drive favourable/adverse labels from line type (expense lines reversed). Detect: test the
+measure on a line with a negative budget and on an expense line; compare signs of Variance ₹ and Variance %.</p>
+<h3 id="expecting-non-additive-measures-to-sum">Expecting non-additive measures to sum</h3>
+<p><em>Expecting non-additive measures (ratios, DISTINCTCOUNT) to total as the sum of their rows</em></p>
+<p>The mistake: expecting the total row of a "Gross Margin %" column to equal the sum (or simple average) of branch
+margins, or the total "Active customers" to equal the sum of customers per branch. DAX recomputes each total in its own
+filter context — total GM % = total GP ÷ total revenue (a weighted result), total distinct customers counts customers
+active in any branch once. This is correct behaviour; the error is in expectation or in using SUMX to force a sum.
+Correct: explain weighted totals to users; where a sum of per-row values is genuinely required (e.g. sum of branch
+minimums), use SUMX over the row dimension explicitly. Detect: reconcile totals by recomputing from components.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-build-the-core-measure-set-l3">Q1. Build the core measure set [L3]</h3>
+<p>A Kolkata-based FMCG company's model has GL (Amount, AccountKey, CostCentreKey, BranchKey, PostingDate), Budget (same
+keys, MonthStart), CoA (FSLine, Statement, AccountType, SignFactor), CostCentre (Function, Department), Branch
+(Region). FY2025-26 YTD figures (₹ crore, sign-adjusted): Revenue 1,250, Other income 22, Materials 690, Employee cost
+140, Other expenses 210; budget Revenue 1,300, Employee cost 132. Required: (i) write measures Actual, Actual Signed,
+Budget, Revenue, Employee Cost, Variance ₹, Variance % (sign-aware), Employee Cost % of Revenue, and each cost centre's
+share of company opex and of its Department's opex; (ii) state, for a matrix with FSLine on rows, which measures
+repeat the same value on every row and why; (iii) assign each measure to a display folder and format string.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Decide where overwrite semantics are wanted (ratio denominators) and where KEEPFILTERS is needed.</p>
+</blockquote>
+<h3 id="q2-debug-context-errors-l2">Q2. Debug context errors [L2]</h3>
+<p>Three measures misbehave: (a) a CoA calculated column <code>GL Total = SUM(GL[Amount])</code> shows ₹0 on every row; (b)
+<code>SUMX(Branch, SUM(GL[Amount]))</code> returns 32 times the expected total; (c) <code>CALCULATE([Actual], FILTER(GL,
+RELATED(CostCentre[Function]) = "Sales"))</code> takes 9 seconds and shows blanks on Admin rows where the business expected
+the Sales total. Required: explain each using filter context, row context and context transition, and rewrite each.</p>
+<h3 id="q3-export-revenue-and-margins-l3">Q3. Export revenue and margins [L3]</h3>
+<p>An NSE-listed IT services company bills in USD, EUR and GBP. Sales has InvoiceDate, Currency, AmountFC; FX has
+Currency, MonthEnd, AvgRate (company policy: monthly average per Ind AS 21.22). Required: (i) design the
+relationship and key; (ii) write Revenue INR, a missing-rate monitor and Revenue INR by due date (inactive DueDate
+relationship); (iii) write gross margin % by client using DIVIDE, explaining the total-row behaviour; (iv) state how
+you would present the results in ₹ crore with one decimal.</p>
+<h3 id="q4-contribution-analysis-for-the-board-l2">Q4. Contribution analysis for the board [L2]</h3>
+<p>The board wants: each region's share of national revenue, each branch's share of its region, and the cumulative share
+of the top branches nationally (Pareto). A Region slicer may be used. Required: write the three measures, specify ALL,
+ALLEXCEPT or ALLSELECTED for each with reasons, and explain what each shows when the Region slicer is set to "East".</p>
+<h3 id="q5-model-review-memo-l3">Q5. Model review memo [L3]</h3>
+<p>You inherit a model with 40 calculated columns on GL (including FY, FSLine via RELATED, monthly actuals by period,
+margin %), implicit measures used in all visuals, <code>/</code> used for all ratios and no folders. Write a review memo listing
+the issues in priority order, the risk each poses to reported numbers or performance, and the remediation plan,
+including how you would prove that the remediated model produces the same audited FY2024-25 figures.</p></section>
+<nav class="pager"><a class="prev" href="../T2_Indian_fiscal_calendar_table/concepts/C06_Power_Query_Date_List_with_ListDates.html">← Power Query Date List with List.Dates</a><a class="next" href="subtopics/S01_Row_Context_Filter_Context_and_Context_Transition.html">Row Context, Filter Context and Context Transition →</a></nav>
+</main></div></body></html>

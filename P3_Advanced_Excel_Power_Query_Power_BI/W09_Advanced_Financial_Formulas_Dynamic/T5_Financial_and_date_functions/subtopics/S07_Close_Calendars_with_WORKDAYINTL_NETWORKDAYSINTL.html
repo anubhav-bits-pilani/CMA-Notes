@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Close Calendars with WORKDAY.INTL, NETWORKDAYS.INTL and Holidays · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S07_Close_Calendars_with_WORKDAYINTL_NETWORKDAYSINTL.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T5 · Financial and date functions</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Financial and date functions</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Period_End_Logic_with_EOMONTH_and_EDATE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S01_Period_End_Logic_with_EOMONTH_and_EDATE.html">Period-End Logic with EOMONTH and EDATE</a></li><li><a href="S02_Day_Count_Conventions_with_YEARFRAC_Bases_04.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S02_Day_Count_Conventions_with_YEARFRAC_Bases_04.html">Day-Count Conventions with YEARFRAC Bases 0–4</a></li><li><a href="S03_NPV_vs_XNPV_Periodic_and_Dated_Cash_Flows.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S03_NPV_vs_XNPV_Periodic_and_Dated_Cash_Flows.html">NPV vs XNPV: Periodic and Dated Cash Flows</a></li><li><a href="S04_IRR_vs_XIRR_vs_MIRR_for_Irregular_Project_Cash.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S04_IRR_vs_XIRR_vs_MIRR_for_Irregular_Project_Cash.html">IRR vs XIRR vs MIRR for Irregular Project Cash Flows</a></li><li><a href="S05_Loan_Amortisation_with_PMT_IPMT_PPMT_CUMIPMT_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S05_Loan_Amortisation_with_PMT_IPMT_PPMT_CUMIPMT_and.html">Loan Amortisation with PMT, IPMT, PPMT, CUMIPMT and CUMPRINC</a></li><li><a href="S06_EMI_Schedules_and_Ind_AS_116_Lease_Liability.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S06_EMI_Schedules_and_Ind_AS_116_Lease_Liability.html">EMI Schedules and Ind AS 116 Lease Liability Schedules</a></li><li><a href="S07_Close_Calendars_with_WORKDAYINTL_NETWORKDAYSINTL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S07_Close_Calendars_with_WORKDAYINTL_NETWORKDAYSINTL.html">Close Calendars with WORKDAY.INTL, NETWORKDAYS.INTL and Holidays</a></li><li><a href="S08_Fiscal_Year_Helpers_FY_Start_FY_End_and_Fiscal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/subtopics/S08_Fiscal_Year_Helpers_FY_Start_FY_End_and_Fiscal.html">Fiscal-Year Helpers: FY Start, FY End and Fiscal Month</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Month_End_Month_Start_and_Same_Day_Offsets_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C01_Month_End_Month_Start_and_Same_Day_Offsets_with.html">Month-End, Month-Start and Same-Day Offsets with EOMONTH and EDATE</a></li><li><a href="../concepts/C02_YEARFRAC_Basis_1_vs_Basis_3_for_Accruals.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C02_YEARFRAC_Basis_1_vs_Basis_3_for_Accruals.html">YEARFRAC Basis 1 vs Basis 3 for Accruals</a></li><li><a href="../concepts/C03_NPV_Plus_CF0_Why_NPV_Discounts_Its_First_Value.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C03_NPV_Plus_CF0_Why_NPV_Discounts_Its_First_Value.html">NPV Plus CF0: Why NPV Discounts Its First Value</a></li><li><a href="../concepts/C04_XNPV_and_XIRR_The_365_Day_Basis_from_the_First.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C04_XNPV_and_XIRR_The_365_Day_Basis_from_the_First.html">XNPV and XIRR: The 365-Day Basis from the First Date</a></li><li><a href="../concepts/C05_PMT_IPMT_and_PPMT_EMI_and_Its_InterestPrincipal.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C05_PMT_IPMT_and_PPMT_EMI_and_Its_InterestPrincipal.html">PMT, IPMT and PPMT: EMI and Its Interest/Principal Split</a></li><li><a href="../concepts/C06_MIRR_Fixing_IRRs_Reinvestment_and_Multiple_Root.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C06_MIRR_Fixing_IRRs_Reinvestment_and_Multiple_Root.html">MIRR: Fixing IRR&#x27;s Reinvestment and Multiple-Root Problems</a></li><li><a href="../concepts/C07_FY_End_Date_and_Fiscal_Month_Formulas_for_an.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T5_Financial_and_date_functions/concepts/C07_FY_End_Date_and_Fiscal_Month_Formulas_for_an.html">FY End Date and Fiscal Month Formulas for an April–March Year</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Close Calendars with WORKDAY.INTL, NETWORKDAYS.INTL and Holidays</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Close calendars with NETWORKDAYS.INTL and WORKDAY.INTL plus Indian holiday lists</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A month-end close runs on working days: "WD+1 sub-ledgers closed, WD+3 provisional TB, WD+5 MIS to CFO, WD+7 board pack". Listed companies also work backwards from regulatory deadlines (SEBI LODR results within 45 days of quarter-end), and shared-service centres in India support group entities with different weekends — Saturday working at a plant, Friday–Saturday weekends at a Gulf subsidiary. Hard-typing close dates every month is error-prone around festivals and bank holidays. WORKDAY.INTL computes the date that is <em>n</em> working days away, and NETWORKDAYS.INTL counts working days between dates, both with configurable weekends and a holiday list. They also power working-day metrics: DSO-style collection lag in business days, SLA compliance for vendor payments and days-to-close KPIs.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="syntax">Syntax</h3>
+<pre><code class="language-excel">=WORKDAY.INTL(start_date, days, [weekend], [holidays])
+=NETWORKDAYS.INTL(start_date, end_date, [weekend], [holidays])
+</code></pre>
+<ul>
+<li><strong>WORKDAY.INTL</strong> returns the date <code>days</code> working days after (positive) or before (negative) <code>start_date</code>. The start date itself is not counted.</li>
+<li><strong>NETWORKDAYS.INTL</strong> returns the number of working days between the two dates, <strong>inclusive of both</strong> ends if they are working days.</li>
+<li><strong>weekend</strong> — a code or a 7-character string (Monday first), where 1 = non-working:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>String</th>
+<th>Weekend</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 (default)</td>
+<td><code>"0000011"</code></td>
+<td>Saturday, Sunday</td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>"0000001"</code></td>
+<td>Sunday only (many Indian factories, banks' working Saturdays)</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>"0000110"</code></td>
+<td>Friday, Saturday (UAE before 2022, Saudi Arabia)</td>
+</tr>
+<tr>
+<td>17</td>
+<td><code>"0000010"</code></td>
+<td>Saturday only</td>
+</tr>
+<tr>
+<td>—</td>
+<td><code>"0000111"</code></td>
+<td>Friday–Sunday (four-day-week pilots)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>holidays</strong> — a range or array of dates to exclude. Keep it as an Excel Table (<code>Hol[Date]</code>) so new holidays extend automatically.</li>
+</ul>
+<p>The older WORKDAY and NETWORKDAYS functions assume a Saturday–Sunday weekend; the <code>.INTL</code> versions are strictly more flexible and should be the default.</p>
+<h3 id="holiday-lists-for-india">Holiday lists for India</h3>
+<p>India has three tiers of holidays: national (Republic Day 26 January, Independence Day 15 August, Gandhi Jayanti 2 October), gazetted central holidays (Holi, Diwali, Eid, Christmas, Good Friday and others, many on lunar dates that change yearly), and state holidays under the Negotiable Instruments Act declared by state governments (relevant for bank settlement). Practical design:</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Date</td>
+<td>14-Apr-2026</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Dr Ambedkar Jayanti</td>
+</tr>
+<tr>
+<td>Scope</td>
+<td>National / State-MH / State-KA / Bank / NSE</td>
+</tr>
+<tr>
+<td>Applies to entity</td>
+<td>Pune plant, Bengaluru office …</td>
+</tr>
+</tbody>
+</table>
+<p>Then filter per entity with dynamic arrays: <code>FILTER(Hol[Date], (Hol[Scope]="National") + (Hol[Scope]=EntityState))</code>. Source dates each year from the company's HR holiday circular, the RBI holiday list (for bank-dependent steps such as payment runs) and the NSE trading-holiday circular (for market-dependent steps such as investment valuations). Lunar-calendar festivals move every year, so the list must be refreshed annually — a step that belongs on the close checklist.</p>
+<p>Banks in India are closed on the 2nd and 4th Saturdays of each month. To model a bank-day calendar with Sunday-only weekends plus those Saturdays, generate them:</p>
+<pre><code class="language-excel">first_sat  =m1 + MOD(7 - WEEKDAY(m1), 7)        m1 = first day of the month
+2nd/4th    =first_sat + {7, 21}
+</code></pre>
+<p>and append them to the holiday array with VSTACK.</p>
+<h3 id="close-calendar-build">Close calendar build</h3>
+<p>Inputs: period-end <code>PE</code> (e.g. 31-Mar-2026), a task table with WD offsets, an entity weekend code and the holiday list.</p>
+<pre><code class="language-excel">=WORKDAY.INTL(PE, Tasks[WD], EntWeekend, EntHolidays)
+</code></pre>
+<p>Illustration — FY26 year-end close, Saturday–Sunday weekend, holidays (illustrative) Good Friday 3-Apr-2026 and Ambedkar Jayanti 14-Apr-2026:</p>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>WD</th>
+<th>Date (Sat–Sun weekend)</th>
+<th>Date (Sunday-only weekend)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sub-ledgers closed</td>
+<td>1</td>
+<td>Wed 01-Apr-2026</td>
+<td>Wed 01-Apr-2026</td>
+</tr>
+<tr>
+<td>Provisional TB</td>
+<td>3</td>
+<td>Mon 06-Apr-2026</td>
+<td>Sat 04-Apr-2026</td>
+</tr>
+<tr>
+<td>MIS to CFO</td>
+<td>5</td>
+<td>Wed 08-Apr-2026</td>
+<td>Tue 07-Apr-2026</td>
+</tr>
+</tbody>
+</table>
+<p>From 31-Mar (Tuesday): WD1 = 1-Apr; WD2 = 2-Apr; 3-Apr is a holiday and 4–5 April a weekend, so WD3 = 6-Apr. Note 1 April is also a bank holiday for annual closing of accounts in most states — if a task depends on bank statements (bank reconciliation), use a bank calendar that includes it.</p>
+<p>Working days in April 2026 with these holidays: <code>=NETWORKDAYS.INTL(DATE(2026,4,1), DATE(2026,4,30), 1, Hol[Date])</code> = 20 (22 weekdays minus 2 holidays).</p>
+<h3 id="working-backwards-from-deadlines">Working backwards from deadlines</h3>
+<p>Negative <code>days</code> gives the latest start date: board meeting for Q4 results must be held by 30-May-2026 (60 days after 31-Mar-2026 for annual results under LODR Reg 33). The audit committee pack is due 5 working days earlier: <code>=WORKDAY.INTL(BoardDate, -5, 1, Hol[Date])</code>. If a computed date itself falls on a holiday and the rule is "next working day", use <code>=WORKDAY.INTL(d - 1, 1, …)</code> — this returns d if d is a working day, otherwise the next working day.</p>
+<h3 id="working-day-metrics">Working-day metrics</h3>
+<ul>
+<li><strong>Days to close</strong>: <code>=NETWORKDAYS.INTL(PE + 1, CloseDate, 1, Hol[Date])</code> — subtract nothing; the period-end is excluded by starting at PE + 1.</li>
+<li><strong>Vendor payment SLA</strong>: flag invoices where <code>NETWORKDAYS.INTL(InvRecd, PaidOn, 1, Hol) - 1 &gt; 10</code>.</li>
+<li><strong>Collection lag</strong> in business days for a cash-forecasting model.</li>
+</ul>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Inclusive counting.</strong> NETWORKDAYS.INTL counts both ends; "elapsed working days" usually needs <code>−1</code>. WORKDAY.INTL excludes the start. Mixing them produces off-by-one errors.</li>
+<li><strong>Holidays on weekends</strong> are ignored automatically (no double counting).</li>
+<li><strong>Holiday list types.</strong> Holidays stored as text or with times do not match; ensure true dates. A whole-column reference including the header text causes #VALUE!.</li>
+<li><strong>Entity-specific calendars.</strong> A group close with Indian, UAE and UK entities needs one weekend code and holiday list per entity; drive both from the entity master with XLOOKUP.</li>
+<li><strong>Restricted holidays</strong> (optional holidays in central government lists) are not office closures for most companies — exclude them unless HR declares them.</li>
+<li><strong>Statutory deadlines falling on holidays.</strong> Tax deadlines (TDS, GST) generally do not shift automatically; CBDT/CBIC circulars extend them case by case. Do not apply "next working day" logic to statutory dues without checking.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>WORKDAY.INTL returns the date n working days away; NETWORKDAYS.INTL counts working days inclusively.</li>
+<li>Weekend codes/strings handle Sunday-only Indian plants and Friday–Saturday Gulf subsidiaries.</li>
+<li>Maintain the holiday list as a Table with scope (national, state, bank, NSE) and refresh it each year for lunar-calendar festivals.</li>
+<li>Model the bank calendar separately (2nd/4th Saturdays, 1 April annual closing) for bank-dependent close steps.</li>
+<li>Use negative offsets to work back from LODR and board deadlines; watch inclusive vs exclusive counting.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-weekend-codes-l1">Q1. Weekend codes [L1]</h3>
+<p>Write WORKDAY.INTL formulas for "7 working days after 30-Sep-2025" for (a) the Mumbai office (Sat–Sun weekend), (b) the Nashik plant (Sunday weekend), (c) the Dubai subsidiary (Sat–Sun since 2022, but Friday half-day — explain how you would treat it), each using a holiday Table <code>Hol</code> filtered by entity.</p>
+<h3 id="q2-bank-calendar-generator-l2">Q2. Bank calendar generator [L2]</h3>
+<p>Write a formula that returns all 2nd and 4th Saturdays for FY27 (April 2026 to March 2027) as a vertical spill, and combine it with a national holiday list to compute the number of bank working days in each month of FY27 with a Sunday-only weekend.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Build the 12 month-start dates with EDATE and SEQUENCE, then compute the first Saturday of each.</p>
+</blockquote>
+<h3 id="q3-close-calendar-with-deadlines-l2">Q3. Close calendar with deadlines [L2]</h3>
+<p>For the quarter ended 30-Jun-2026, the company's close tasks are: WD2 sub-ledgers, WD4 TB, WD6 consolidation, WD9 MIS, and the board meeting must fall within the LODR deadline. Using a Sat–Sun weekend and a holiday list you specify for July–August 2026 (state your assumed dates), design the task table formulas and a check that flags any task scheduled after its deadline.</p>
+<h3 id="q4-off-by-one-dispute-l1">Q4. Off-by-one dispute [L1]</h3>
+<p>A shared-service centre reports average "days to pay" of 9 working days using <code>=NETWORKDAYS.INTL(Received, Paid, 1, Hol)</code>; the vendor claims 8. Explain the discrepancy and propose the correct formula.</p>
+<h3 id="q5-group-close-design-l3">Q5. Group close design [L3]</h3>
+<p>A group has entities in India (Sat–Sun office, Sunday-only plant), UAE (Sat–Sun) and Saudi Arabia (Fri–Sat). Design a single close calendar sheet where selecting an entity from a dropdown recomputes all task dates using that entity's weekend and holiday list. Specify the master tables, the lookup formulas and the controls you would add for annual holiday refresh.</p></section>
+<nav class="pager"><a class="prev" href="S06_EMI_Schedules_and_Ind_AS_116_Lease_Liability.html">← EMI Schedules and Ind AS 116 Lease Liability Schedules</a><a class="next" href="S08_Fiscal_Year_Helpers_FY_Start_FY_End_and_Fiscal.html">Fiscal-Year Helpers: FY Start, FY End and Fiscal Month →</a></nav>
+</main></div></body></html>

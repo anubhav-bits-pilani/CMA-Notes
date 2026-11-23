@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DIVIDE and Its BLANK Default for Zero Denominators · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T3 · Core financial DAX functions</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Core financial DAX functions</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Row_Context_Filter_Context_and_Context_Transition.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S01_Row_Context_Filter_Context_and_Context_Transition.html">Row Context, Filter Context and Context Transition</a></li><li><a href="../subtopics/S02_CALCULATE_Filter_Arguments_and_Modifiers.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S02_CALCULATE_Filter_Arguments_and_Modifiers.html">CALCULATE Filter Arguments and Modifiers</a></li><li><a href="../subtopics/S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html">Iterators SUMX and AVERAGEX for Row-Level Maths</a></li><li><a href="../subtopics/S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html">FILTER vs Boolean Column Filters: Meaning and Performance</a></li><li><a href="../subtopics/S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html">ALL, ALLEXCEPT and ALLSELECTED for Share and Contribution Analysis</a></li><li><a href="../subtopics/S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html">RELATED and RELATEDTABLE in Columns and Iterators</a></li><li><a href="../subtopics/S07_DIVIDE_Measures_vs_Calculated_Columns_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S07_DIVIDE_Measures_vs_Calculated_Columns_and.html">DIVIDE, Measures vs Calculated Columns, and VAR/RETURN</a></li><li><a href="../subtopics/S08_Explicit_Measures_Display_Folders_and_LakhCrore.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S08_Explicit_Measures_Display_Folders_and_LakhCrore.html">Explicit Measures, Display Folders and ₹ Lakh/Crore Formats</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html">Base Actual Measure and a Filtered Revenue Measure</a></li><li><a href="C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html">Percentage of Total Opex with ALL on Cost Centre</a></li><li><a href="C03_Percentage_within_Statement_with_ALLEXCEPT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C03_Percentage_within_Statement_with_ALLEXCEPT.html">Percentage within Statement with ALLEXCEPT</a></li><li><a href="C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html">FX-Converted Revenue with SUMX and RELATED</a></li><li><a href="C05_Sign_Aware_Variance_with_VAR_and_ABS.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C05_Sign_Aware_Variance_with_VAR_and_ABS.html">Sign-Aware Variance % with VAR and ABS</a></li><li><a href="C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html">KEEPFILTERS to Intersect Rather Than Overwrite</a></li><li><a href="C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html">DIVIDE and Its BLANK Default for Zero Denominators</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>DIVIDE and Its BLANK Default for Zero Denominators</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>DIVIDE(numerator, denominator, [alternate_result])</code> returns BLANK by default when the denominator is 0 or blank</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-DAX">DIVIDE ( &lt;numerator&gt;, &lt;denominator&gt; [, &lt;alternate_result&gt;] )
+</code></pre>
+<p>\[
+\text{DIVIDE}(n, d, r) =
+\begin{cases}
+n / d &amp; \text{if } d \ne 0 \text{ and } d \text{ is not blank} \\
+r &amp; \text{if } d = 0 \text{ or blank, and } r \text{ is supplied} \\
+\text{BLANK} &amp; \text{otherwise}
+\end{cases}
+\]</p>
+<h2 id="explanation">Explanation</h2>
+<ul>
+<li><strong>Default BLANK.</strong> A ratio with no meaningful denominator shows nothing, rather than Infinity, NaN or an error.</li>
+<li><strong>Blank numerator.</strong> <code>DIVIDE(BLANK(), 100)</code> returns BLANK; <code>DIVIDE(0, 100)</code> returns 0.</li>
+<li><strong>Alternate result.</strong> Supply 0 when you want the row visible with 0% (e.g. a coverage ratio where zero is
+  informative), or a sentinel value only if a format string handles it. Avoid a text alternate such as "n.m.": the
+  measure would then return mixed data types, which breaks numeric format strings, sorting and conditional formatting.
+  Produce "n.m." in a separate text measure for display if needed.</li>
+<li><strong>Versus <code>/</code>.</strong> <code>n / 0</code> returns Infinity (or NaN for 0/0) in DAX; Excel's <code>/</code> returns <code>#DIV/0!</code>. DIVIDE is the DAX
+  equivalent of <code>IFERROR(n/d, "")</code> with better semantics — it catches only the zero/blank denominator, not other
+  errors, and it is optimised by the engine.</li>
+<li><strong>Performance.</strong> DIVIDE is generally preferred for measure denominators; for division by a non-zero constant
+  (<code>[Amount] / 1E7</code> for crores), <code>/</code> is fine and slightly faster.</li>
+<li><strong>Visual behaviour.</strong> Blank values let matrices hide empty rows and columns and keep conditional formatting clean;
+  Infinity would dominate colour scales.</li>
+</ul>
+<p>Finance applications:</p>
+<pre><code class="language-DAX">Gross Margin % = DIVIDE ( [Gross Profit], [Revenue] )
+ROCE           = DIVIDE ( [EBIT], [Capital Employed] )
+Interest Cover = DIVIDE ( [EBIT], [Finance Costs] )
+DSO            = DIVIDE ( [Avg Trade Receivables], [Revenue] ) * [Days in Period]
+</code></pre>
+<p>For DSO, note the <code>* [Days in Period]</code> — if DIVIDE returns blank, blank × days = blank, which is the desired output.</p>
+<h2 id="illustration">Illustration</h2>
+<table>
+<thead>
+<tr>
+<th>Branch</th>
+<th>Revenue (₹ lakh)</th>
+<th>Gross Profit (₹ lakh)</th>
+<th><code>[GP] / [Revenue]</code></th>
+<th><code>DIVIDE([GP], [Revenue])</code></th>
+<th><code>DIVIDE([GP], [Revenue], 0)</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Indore</td>
+<td>900</td>
+<td>270</td>
+<td>30.0%</td>
+<td>30.0%</td>
+<td>30.0%</td>
+</tr>
+<tr>
+<td>Raipur (pre-launch)</td>
+<td>0</td>
+<td>−12</td>
+<td>−Infinity</td>
+<td>blank</td>
+<td>0.0%</td>
+</tr>
+<tr>
+<td>Bhopal (no data)</td>
+<td>blank</td>
+<td>blank</td>
+<td>blank</td>
+<td>blank</td>
+<td>0.0%</td>
+</tr>
+</tbody>
+</table>
+<p>With the alternate result 0, both Raipur and Bhopal rows appear, and Bhopal's "0.0%" is misleading because it had no
+activity at all. The default blank is usually the right choice.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Subtopic s07 (DIVIDE, measures vs columns, VAR/RETURN); concept c05 (variance % uses DIVIDE with ABS).</li>
+<li>Related item: ratio measures in Weeks 5–8 (gross margin, ROCE, DSO).</li>
+<li>Topic 5 (DSO and average balances) and topic 6 (margin rows with dynamic format strings).</li>
+<li>Excel modelling habit: IFERROR wrappers replaced by DIVIDE in DAX.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-predict-outputs-l1">Q1. Predict outputs [L1]</h3>
+<p>State the result of: <code>DIVIDE(50, 0)</code>, <code>DIVIDE(50, BLANK())</code>, <code>DIVIDE(BLANK(), 0, 0)</code>, <code>DIVIDE(0, 25)</code>, <code>50 / 0</code>, and
+<code>DIVIDE(50, 0, -1)</code>.</p>
+<h3 id="q2-interest-cover-l2">Q2. Interest cover [L2]</h3>
+<p>Write an Interest Cover measure that returns blank when finance costs are zero, and a separate text measure for a card
+that shows "No debt" in that case and the ratio formatted "0.0x" otherwise.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> FORMAT can convert the ratio to text for the card only.</p>
+</blockquote>
+<h3 id="q3-alternate-result-judgement-l2">Q3. Alternate result judgement [L2]</h3>
+<p>For a branch-wise matrix of collection efficiency (collections ÷ opening receivables + billing), decide whether to
+use the default blank or an alternate result of 0, considering new branches, closed branches and data gaps.</p></section>
+<nav class="pager"><a class="prev" href="C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html">← KEEPFILTERS to Intersect Rather Than Overwrite</a><a class="next" href="../../T4_Time_intelligence_for_AprilMarch_FY/index.html">Time intelligence for April–March FY →</a></nav>
+</main></div></body></html>

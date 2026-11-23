@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scenario Switching with Selectors and Data Validation · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S03_Scenario_Switching_with_Selectors_and_Data.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 5</a> <span>›</span> <a href="../../index.html">Week 18</a> <span>›</span> <a href="../index.html">T4 · Version and scenario governance</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Version and scenario governance</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Versions_vs_Scenarios_Time_Snapshots_vs.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S01_Versions_vs_Scenarios_Time_Snapshots_vs.html">Versions vs Scenarios: Time Snapshots vs Alternative Assumptions</a></li><li><a href="S02_Long_Format_Version_Storage_Instead_of_Sheet_per.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S02_Long_Format_Version_Storage_Instead_of_Sheet_per.html">Long-Format Version Storage Instead of Sheet-per-Version</a></li><li><a href="S03_Scenario_Switching_with_Selectors_and_Data.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S03_Scenario_Switching_with_Selectors_and_Data.html">Scenario Switching with Selectors and Data Validation</a></li><li><a href="S04_Version_Locking_Snapshots_Protection_Change_Logs.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S04_Version_Locking_Snapshots_Protection_Change_Logs.html">Version Locking: Snapshots, Protection, Change Logs and Naming</a></li><li><a href="S05_Version_Comparisons_and_Forecast_to_Forecast.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S05_Version_Comparisons_and_Forecast_to_Forecast.html">Version Comparisons and Forecast-to-Forecast Movement Bridges</a></li><li><a href="S06_Stress_Scenarios_and_Contingency_Triggers_Beyond.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S06_Stress_Scenarios_and_Contingency_Triggers_Beyond.html">Stress Scenarios and Contingency Triggers Beyond Sensitivities</a></li><li><a href="S07_EPM_Equivalents_EPBCS_Anaplan_and_Adaptive_Version.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/subtopics/S07_EPM_Equivalents_EPBCS_Anaplan_and_Adaptive_Version.html">EPM Equivalents: EPBCS, Anaplan and Adaptive Version Handling</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Multi_Criteria_Version_Lookup_with_XLOOKUP_or.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/concepts/C01_Multi_Criteria_Version_Lookup_with_XLOOKUP_or.html">Multi-Criteria Version Lookup with XLOOKUP or SUMIFS</a></li><li><a href="../concepts/C02_Scenario_Selector_with_CHOOSE_or_INDEX.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/concepts/C02_Scenario_Selector_with_CHOOSE_or_INDEX.html">Scenario Selector with CHOOSE or INDEX</a></li><li><a href="../concepts/C03_Decomposing_Forecast_to_Forecast_Movements.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/concepts/C03_Decomposing_Forecast_to_Forecast_Movements.html">Decomposing Forecast-to-Forecast Movements</a></li><li><a href="../concepts/C04_One_Working_Version_Rule_and_Frozen_Prior_Versions.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/concepts/C04_One_Working_Version_Rule_and_Frozen_Prior_Versions.html">One Working Version Rule and Frozen Prior Versions</a></li><li><a href="../concepts/C05_Scenario_vs_Sensitivity_Coherent_Assumption_Sets.html" data-uid="P5_FPA_Annual_Budgeting_Rolling_Forecasts/W18_Driver_Based_12_Month_Rolling_Forecasts/T4_Version_and_scenario_governance/concepts/C05_Scenario_vs_Sensitivity_Coherent_Assumption_Sets.html">Scenario vs Sensitivity: Coherent Assumption Sets vs One-Variable Flex</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Scenario Switching with Selectors and Data Validation</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Scenario switching using selectors (<code>CHOOSE</code>, <code>INDEX</code>/<code>XLOOKUP</code> on scenario tables) and data validation</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>A forecast model is only as useful as the speed with which it can answer "what if?". When the CFO asks in a review meeting to see the Downside EBITDA by quarter, the analyst should change one cell and have every schedule, chart and KPI recalculate — not open a different file. Scenario switches are also the backbone of Phase 4 three-statement models, lender cases and impairment models. Done badly (hard-coded overrides, hidden helper columns, <code>IF</code> chains nested five deep), they are the most error-prone part of a model; done well, they are transparent, auditable and impossible to leave in the "wrong" state unnoticed.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="anatomy-of-a-scenario-switch">Anatomy of a scenario switch</h3>
+<p>Every scenario switch has four components:</p>
+<ol>
+<li><strong>Selector cell</strong> — a single input (e.g., <code>Cover!C4</code>, named <code>ScenarioNo</code> or <code>SelScen</code>) holding a number (1, 2, 3) or a name ("Base", "Upside", "Downside").</li>
+<li><strong>Data validation</strong> — restricts the selector to valid values only (Data → Data Validation → List, source <code>=ScenList</code> where <code>ScenList</code> is a named range or a Table column). This prevents a typo such as "Downsid" from returning zeros silently.</li>
+<li><strong>Scenario table</strong> — assumptions laid out with one column per scenario (or rows in long format), clearly labelled, on an Inputs sheet.</li>
+<li><strong>Live column</strong> — the column the model actually uses, populated by a selector formula that picks the active scenario's value for each assumption.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Driver</th>
+<th>Unit</th>
+<th>Live</th>
+<th>Base</th>
+<th>Upside</th>
+<th>Downside</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Volume growth H2</td>
+<td>%</td>
+<td>(formula)</td>
+<td>8.0%</td>
+<td>12.0%</td>
+<td>2.0%</td>
+</tr>
+<tr>
+<td>Realisation / kg</td>
+<td>₹</td>
+<td>(formula)</td>
+<td>182</td>
+<td>186</td>
+<td>176</td>
+</tr>
+<tr>
+<td>Palm-oil cost / t</td>
+<td>₹</td>
+<td>(formula)</td>
+<td>1,08,000</td>
+<td>1,02,000</td>
+<td>1,22,000</td>
+</tr>
+<tr>
+<td>USD/INR</td>
+<td>₹</td>
+<td>(formula)</td>
+<td>86.5</td>
+<td>85.0</td>
+<td>89.0</td>
+</tr>
+<tr>
+<td>Debtor days</td>
+<td>days</td>
+<td>(formula)</td>
+<td>42</td>
+<td>40</td>
+<td>50</td>
+</tr>
+</tbody>
+</table>
+<p>The model's calculation sheets reference only the <strong>Live</strong> column. Nothing downstream ever points at the Base/Upside/Downside columns directly.</p>
+<h3 id="selector-formulas">Selector formulas</h3>
+<p><strong><code>CHOOSE</code></strong> — selects the nth argument:</p>
+<pre><code>=CHOOSE(ScenarioNo, E7, F7, G7)
+</code></pre>
+<p>Simple and readable for 2–4 scenarios. Weakness: each argument is a separate reference, so adding a fourth scenario means editing every formula, and arguments can be mis-ordered row by row.</p>
+<p><strong><code>INDEX</code> on a scenario range</strong> — selects the nth column of a contiguous block:</p>
+<pre><code>=INDEX($E7:$G7, 1, ScenarioNo)
+=INDEX(ScenRange,,ScenarioNo)        // whole column for array-aware use
+</code></pre>
+<p>Scales to any number of scenarios (just widen the range), has one consistent formula down the column and is non-volatile.</p>
+<p><strong><code>XLOOKUP</code> by scenario name</strong> — selects by header label:</p>
+<pre><code>=XLOOKUP(SelScen, $E$6:$G$6, $E7:$G7)
+</code></pre>
+<p>Robust to column re-ordering and self-documenting; the selector holds "Downside" rather than 3. Combine with <code>MATCH</code> in older Excel: <code>=INDEX($E7:$G7, MATCH(SelScen,$E$6:$G$6,0))</code>.</p>
+<p><strong>Long-format scenario table</strong> — if assumptions are stored as rows (Scenario, Driver, Month, Value), retrieve with <code>SUMIFS</code> or multi-criteria <code>XLOOKUP</code> (see c01):</p>
+<pre><code>=SUMIFS(Assump[Value], Assump[Scenario], SelScen, Assump[Driver], $A7, Assump[Month], D$5)
+</code></pre>
+<p>This is the most scalable choice when drivers vary by month.</p>
+<h3 id="data-validation-and-selector-hygiene">Data validation and selector hygiene</h3>
+<ul>
+<li>Source the list from a Table column (<code>=INDIRECT("ScenTbl[Name]")</code> is needed inside Data Validation for structured references; alternatively define a named range <code>ScenList</code> pointing to the column — prefer the named range to avoid the volatile <code>INDIRECT</code>).</li>
+<li>Set an Error Alert (Stop) so invalid entries are rejected.</li>
+<li>If the selector is a name, derive the number with <code>=MATCH(SelScen, ScenList, 0)</code> for any <code>CHOOSE</code>/<code>INDEX</code> that needs it.</li>
+<li>Display the active scenario prominently on every output page: a header formula such as <code>="FY26 Q2 Fcst – "&amp;SelScen&amp;" case"</code> and conditional formatting (e.g., red banner when not Base).</li>
+<li>Add a check cell: <code>=IF(ISNA(MATCH(SelScen,ScenList,0)),"ERROR – invalid scenario","OK")</code> linked to the model's master check.</li>
+</ul>
+<h3 id="combining-scenario-and-version-selectors">Combining scenario and version selectors</h3>
+<p>In a forecast model there are typically two selectors: <code>SelVer</code> (Budget, Q1F, Q2F) and <code>SelScen</code> (Base, Upside, Downside). Retrieval from the long fact table uses both criteria. A third selector, <code>CmpVer</code>, drives the comparison column. Keep all selectors on one Control panel at the top of the Cover or Report sheet.</p>
+<h3 id="running-all-scenarios-at-once">Running all scenarios at once</h3>
+<p>A switch shows one scenario at a time. For a Board page showing Base, Upside and Downside side by side, either (a) store each scenario's outputs as values in the long fact table after running it (a mini-snapshot, see s04), or (b) build the calculation so each scenario is calculated in parallel (three blocks or a dynamic array across scenarios), or (c) use a one-variable Data Table with <code>ScenarioNo</code> as the column input — acceptable for small models but slow and volatile (topic.md related item).</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>H2 FY26 revenue for a foods company: H1 actual volume 52,000 t; H2 base volume = H1 × (1 + growth). With <code>ScenarioNo = 3</code> (Downside), Live growth = <code>INDEX({8%,12%,2%},1,3)</code> = 2%, Live realisation = ₹176/kg.</p>
+<p>\[
+\text{H2 revenue} = 52{,}000 \times 1.02 \times 1{,}000 \times 176 = \text{₹}933.5 \text{ crore}
+\]</p>
+<p>Switching to Base (growth 8%, ₹182/kg) gives \(52{,}000 \times 1.08 \times 1{,}000 \times 182 = ₹1{,}022.1\) crore. The same calculation cells serve both cases; only the selector changed.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Nested <code>IF</code> switches</strong> (<code>=IF(S=1,E7,IF(S=2,F7,G7))</code>) work but are hard to audit and extend; replace them with <code>INDEX</code>/<code>XLOOKUP</code>.</li>
+<li><strong>Manual overrides.</strong> Business users often want to override one month in one scenario. Provide an explicit override column (blank = use driver, value = override) with a flag and comment, rather than typing over formulas in the Live column.</li>
+<li><strong>Scenario-specific structure.</strong> If the Downside closes a plant (removing cost lines), keep the line in all scenarios with zero values in the Base; never insert rows that exist in one scenario only.</li>
+<li><strong>Leaving the model in a non-Base state.</strong> Add a "Saved in Base?" check and a workbook-open reminder; Board packs have gone out showing Downside numbers labelled as the forecast.</li>
+<li><strong>Volatile functions.</strong> Avoid <code>OFFSET</code>/<code>INDIRECT</code> for selectors; they recalculate on every change and obscure precedents (Topic 1, c05).</li>
+<li><strong>Sensitivity on top of scenario.</strong> A sensitivity flex (e.g., +₹2/kg) can sit on top of the Live value as <code>=Live + SensFlex</code>, keeping scenario and sensitivity separate (c05).</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>A scenario switch = selector cell + data validation + scenario table + a single Live column used by the model.</li>
+<li><code>CHOOSE</code> suits a few fixed cases; <code>INDEX</code>/<code>XLOOKUP</code> scale and stay consistent; <code>SUMIFS</code>/multi-criteria <code>XLOOKUP</code> suit long-format monthly assumptions.</li>
+<li>Downstream calculations reference only the Live column.</li>
+<li>Validate the selector, display the active scenario on every page and link a check to the master check.</li>
+<li>Use explicit override columns rather than typing over formulas.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-build-a-three-scenario-control-panel-l2">Q1. Build a three-scenario control panel [L2]</h3>
+<p>Build (describe cell by cell) a control panel with <code>SelVer</code> (Budget, Q1F, Q2F) and <code>SelScen</code> (Base, Upside, Downside) selectors using data validation, plus a scenario table for six drivers: store count, footfall per store per day, conversion %, ATV (₹), gross margin %, and rent per sq ft. Write the Live-column formula using <code>XLOOKUP</code> and the alternative using <code>INDEX</code>/<code>MATCH</code>. Add the check cell and the dynamic page header.</p>
+<h3 id="q2-compute-outcomes-under-a-switch-l2">Q2. Compute outcomes under a switch [L2]</h3>
+<p>A retailer's H2 FY26 revenue = stores × footfall per store per day × conversion × ATV × 182 days. Base: 240 stores, 380 footfall, 22%, ₹1,450. Upside: 248, 400, 23%, ₹1,480. Downside: 236, 340, 20%, ₹1,400. (a) Compute H2 revenue for each scenario. (b) If <code>ScenarioNo</code> = 2, write the <code>CHOOSE</code> formula for the conversion cell and state its value. (c) Explain why changing only footfall by −10% in Base would not be a valid Downside.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Multiply all five factors for each scenario; express the result in ₹ crore.</p>
+</blockquote>
+<h3 id="q3-replacing-a-fragile-switch-l3">Q3. Replacing a fragile switch [L3]</h3>
+<p>A model uses <code>=IF($C$2="Base",Inputs!E7,IF($C$2="Upside",Inputs!F7,IF($C$2="Down",Inputs!G7,0)))</code> in 600 cells, and the selector cell is free text. Users report the model "sometimes shows zero EBITDA". Diagnose the issue, propose a replacement design, and explain how you would migrate the 600 cells safely and prove the results are unchanged in each scenario.</p>
+<h3 id="q4-side-by-side-scenario-page-l3">Q4. Side-by-side scenario page [L3]</h3>
+<p>The Board wants a single page showing FY26 revenue, EBITDA and closing cash for Base, Upside and Downside under the Q2 Fcst version. Compare three implementation options (stored scenario snapshots, parallel calculation blocks, Data Table on the scenario number) on accuracy, speed, auditability and risk of stale numbers, and recommend one.</p></section>
+<nav class="pager"><a class="prev" href="S02_Long_Format_Version_Storage_Instead_of_Sheet_per.html">← Long-Format Version Storage Instead of Sheet-per-Version</a><a class="next" href="S04_Version_Locking_Snapshots_Protection_Change_Logs.html">Version Locking: Snapshots, Protection, Change Logs and… →</a></nav>
+</main></div></body></html>

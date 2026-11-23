@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boolean-Array Multi-Condition Sums Without Helper Columns · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S03_Boolean_Array_Multi_Condition_Sums_Without_Helper.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 9</a> <span>›</span> <a href="../index.html">T3 · SUMPRODUCT weighted averages and matrix…</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · SUMPRODUCT weighted averages and matrix math</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Weighted_Average_Cost_of_Debt_Across_Borrowing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S01_Weighted_Average_Cost_of_Debt_Across_Borrowing.html">Weighted Average Cost of Debt Across Borrowing Tranches</a></li><li><a href="S02_Weighted_Average_Inventory_Cost_and_Weighted.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S02_Weighted_Average_Inventory_Cost_and_Weighted.html">Weighted Average Inventory Cost and Weighted Credit Period / DSO</a></li><li><a href="S03_Boolean_Array_Multi_Condition_Sums_Without_Helper.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S03_Boolean_Array_Multi_Condition_Sums_Without_Helper.html">Boolean-Array Multi-Condition Sums Without Helper Columns</a></li><li><a href="S04_Coercing_TRUEFALSE_to_10_Double_Unary_1_and_N.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S04_Coercing_TRUEFALSE_to_10_Double_Unary_1_and_N.html">Coercing TRUE/FALSE to 1/0: Double Unary, ×1 and N()</a></li><li><a href="S05_Cohort_Retention_Matrices_Acquisition_Month_Active.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S05_Cohort_Retention_Matrices_Acquisition_Month_Active.html">Cohort Retention Matrices: Acquisition Month × Active Month</a></li><li><a href="S06_MMULT_and_TRANSPOSE_for_Cost_Pool_Driver.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S06_MMULT_and_TRANSPOSE_for_Cost_Pool_Driver.html">MMULT and TRANSPOSE for Cost-Pool × Driver Allocations</a></li><li><a href="S07_SUMPRODUCT_vs_SUMIFS_Performance_on_Large_Ranges.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/subtopics/S07_SUMPRODUCT_vs_SUMIFS_Performance_on_Large_Ranges.html">SUMPRODUCT vs SUMIFS Performance on Large Ranges</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Pre_Tax_and_Post_Tax_Kd_with_SUMPRODUCT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C01_Pre_Tax_and_Post_Tax_Kd_with_SUMPRODUCT.html">Pre-Tax and Post-Tax Kd with SUMPRODUCT</a></li><li><a href="../concepts/C02_SUMPRODUCT_with_MONTH_and_LEFT_on_Whole_Columns.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C02_SUMPRODUCT_with_MONTH_and_LEFT_on_Whole_Columns.html">SUMPRODUCT with MONTH and LEFT on Whole Columns</a></li><li><a href="../concepts/C03_Comma_Form_SUMPRODUCT_and_Why_Arrays_Must_Be.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C03_Comma_Form_SUMPRODUCT_and_Why_Arrays_Must_Be.html">Comma-Form SUMPRODUCT and Why Arrays Must Be Numeric</a></li><li><a href="../concepts/C04_The_Cohort_Retention_Cell_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C04_The_Cohort_Retention_Cell_Formula.html">The Cohort Retention Cell Formula</a></li><li><a href="../concepts/C05_MMULT_Dimensions_1nnm_Gives_a_1m_Allocation.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C05_MMULT_Dimensions_1nnm_Gives_a_1m_Allocation.html">MMULT Dimensions: (1×n)·(n×m) Gives a 1×m Allocation</a></li><li><a href="../concepts/C06_The_General_Guarded_Weighted_Average_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W09_Advanced_Financial_Formulas_Dynamic/T3_SUMPRODUCT_weighted_averages_and_matrix/concepts/C06_The_General_Guarded_Weighted_Average_Formula.html">The General Guarded Weighted-Average Formula</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Boolean-Array Multi-Condition Sums Without Helper Columns</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Multi-condition sums with boolean arrays and no helper columns, including functions on ranges (<code>MONTH</code>, <code>LEFT</code>)</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>SUMIFS is fast but rigid: its criteria ranges must be raw worksheet ranges, and each criterion must be a simple comparison against a value. Many real reporting conditions are not like that — "April postings of any year", "accounts whose code starts with 5", "rows where the amount exceeds that customer's credit limit", "weekend postings", "narration contains GST but not RCM". Building a helper column for each is slow to maintain and clutters the data. Boolean arrays inside SUMPRODUCT express any such condition in one formula, evaluated row by row over the whole column.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-pattern">The pattern</h3>
+<p>\[
+\text{Result} = \sum_{i} \left( \prod_{k=1}^{K} \mathbf{1}\left[C_k(\text{row}_i)\right] \right) \times v_i
+\]</p>
+<p>where \(C_k\) are the \(K\) conditions evaluated on row \(i\), \(\mathbf{1}[\cdot]\) is 1 when the condition is TRUE and 0 otherwise, and \(v_i\) the value to sum. In Excel:</p>
+<pre><code class="language-excel">=SUMPRODUCT((condition1) * (condition2) * … * values)
+</code></pre>
+<p>Each parenthesised condition returns an array of TRUE/FALSE; multiplying converts them to 1/0 and keeps only rows where every condition is TRUE (AND logic). Multiplying by the value column then leaves the value on qualifying rows and 0 elsewhere; SUMPRODUCT adds them up.</p>
+<h3 id="functions-on-ranges-what-sumifs-cannot-do">Functions on ranges — what SUMIFS cannot do</h3>
+<pre><code class="language-excel">=SUMPRODUCT((MONTH(GL[Date])=4) * (LEFT(GL[Account],1)=&quot;5&quot;) * GL[Amount])
+</code></pre>
+<ul>
+<li><code>MONTH(GL[Date])</code> returns an array of month numbers for every row; <code>=4</code> tests April.</li>
+<li><code>LEFT(GL[Account],1)</code> returns the first character of every code as <strong>text</strong> — this works on numeric codes too, because LEFT converts its argument to text — so the comparison is with <code>"5"</code>, not 5.</li>
+<li>SUMIFS would need helper columns for month and first digit; here none is needed.</li>
+</ul>
+<p>Other useful row-wise functions:</p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Expression</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Specific year</td>
+<td><code>YEAR(GL[Date])=2025</code></td>
+</tr>
+<tr>
+<td>Fiscal quarter Q3 (Oct–Dec)</td>
+<td><code>ROUNDUP((MOD(MONTH(GL[Date])-4,12)+1)/3,0)=3</code></td>
+</tr>
+<tr>
+<td>Weekend posting</td>
+<td><code>WEEKDAY(GL[Date],2)&gt;5</code></td>
+</tr>
+<tr>
+<td>Narration contains "RCM"</td>
+<td><code>ISNUMBER(SEARCH("RCM", GL[Narration]))</code></td>
+</tr>
+<tr>
+<td>Code in 5-series and 6-series</td>
+<td><code>(LEFT(GL[Account],1)="5")+(LEFT(GL[Account],1)="6")</code></td>
+</tr>
+<tr>
+<td>Amount above row's own limit</td>
+<td><code>AR[Balance]&gt;AR[CreditLimit]</code></td>
+</tr>
+<tr>
+<td>Case-sensitive match</td>
+<td><code>EXACT(GL[Ref], "Ab12")</code></td>
+</tr>
+<tr>
+<td>Round amounts</td>
+<td><code>MOD(GL[Amount],100000)=0</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="or-logic">OR logic</h3>
+<p>Add conditions instead of multiplying, and convert the count to a 1/0 flag:</p>
+<pre><code class="language-excel">=SUMPRODUCT(((GL[Dept]=&quot;Sales&quot;)+(GL[Dept]=&quot;Marketing&quot;)&gt;0) * GL[Amount])
+</code></pre>
+<p>The <code>&gt;0</code> matters when OR conditions can overlap (a row satisfying both would otherwise count twice). Mixed AND/OR: <code>(A)*((B)+(C)&gt;0)</code>.</p>
+<h3 id="counting-and-averaging">Counting and averaging</h3>
+<ul>
+<li>Count: <code>=SUMPRODUCT((cond1)*(cond2))</code> — no value column.</li>
+<li>Conditional average: <code>=SUMPRODUCT((cond)*values)/SUMPRODUCT(--(cond))</code> (guard for zero).</li>
+<li>Conditional weighted average: <code>=SUMPRODUCT((cond)*w*x)/SUMPRODUCT((cond)*w)</code>.</li>
+</ul>
+<h3 id="worked-illustration">Worked illustration</h3>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Account</th>
+<th>Dept</th>
+<th>Amount (₹)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12-Apr-2025</td>
+<td>510100</td>
+<td>Plant</td>
+<td>8,40,000</td>
+</tr>
+<tr>
+<td>19-Apr-2025</td>
+<td>640500</td>
+<td>Admin</td>
+<td>2,10,000</td>
+</tr>
+<tr>
+<td>26-Apr-2025</td>
+<td>520300</td>
+<td>Plant</td>
+<td>1,65,000</td>
+</tr>
+<tr>
+<td>03-May-2025</td>
+<td>510100</td>
+<td>Plant</td>
+<td>7,90,000</td>
+</tr>
+<tr>
+<td>14-Apr-2026</td>
+<td>510100</td>
+<td>Plant</td>
+<td>9,05,000</td>
+</tr>
+</tbody>
+</table>
+<p><code>=SUMPRODUCT((MONTH(GL[Date])=4)*(LEFT(GL[Account],1)="5")*GL[Amount])</code> evaluates:</p>
+<ul>
+<li>Month = 4 → {1;1;1;0;1}</li>
+<li>First digit "5" → {1;0;1;1;1}</li>
+<li>Product × Amount → {8,40,000; 0; 1,65,000; 0; 9,05,000}</li>
+<li>Sum = ₹19,10,000.</li>
+</ul>
+<p>Notice the April 2026 row is included: <code>MONTH()=4</code> means April of <em>any</em> year. For April 2025 only, add <code>(YEAR(GL[Date])=2025)</code> — or, better, use a date-range condition <code>(GL[Date]&gt;=DATE(2025,4,1))*(GL[Date]&lt;=DATE(2025,4,30))</code>, at which point SUMIFS could do the job faster.</p>
+<h3 id="when-to-use-sumproduct-vs-sumifs-vs-helper-columns">When to use SUMPRODUCT vs SUMIFS vs helper columns</h3>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Best choice</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Simple equality and range criteria</td>
+<td>SUMIFS</td>
+</tr>
+<tr>
+<td>Function of a column (MONTH, LEFT, SEARCH) used in a few cells</td>
+<td>SUMPRODUCT</td>
+</tr>
+<tr>
+<td>Same derived condition used in hundreds of cells</td>
+<td>helper column (or Power Query column) + SUMIFS</td>
+</tr>
+<tr>
+<td>Row-vs-row comparisons (balance &gt; limit)</td>
+<td>SUMPRODUCT or a helper flag</td>
+</tr>
+<tr>
+<td>Microsoft 365 users only</td>
+<td><code>SUM((cond)*values)</code> also works</td>
+</tr>
+</tbody>
+</table>
+<p>A helper column computed once (e.g. <code>FiscalMonth</code>) and referenced by SUMIFS across a 40 × 12 grid is far faster than 480 SUMPRODUCTs each recomputing MONTH over 2 lakh rows.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Blank dates</strong> — <code>MONTH("")</code> on a blank cell returns 1 (blank is treated as 0, i.e. 00-Jan-1900), so blanks count as January. Add <code>(GL[Date]&lt;&gt;"")</code>.</li>
+<li><strong>Text dates</strong> — <code>MONTH()</code> on a text date that Excel can parse returns a month; on unparseable text it returns <code>#VALUE!</code> and the whole SUMPRODUCT errors.</li>
+<li><strong>Text in the value column</strong> — the <code>*</code> form errors with <code>#VALUE!</code> (see the coercion subtopic); clean the data or use the comma form deliberately.</li>
+<li><strong>Leading zeros</strong> — <code>LEFT</code> on a numeric code drops leading zeros (they are not stored), so codes like 0450 become "4"; standardise codes as text if leading zeros carry meaning.</li>
+<li><strong>Unequal array sizes</strong> give <code>#VALUE!</code>; Table columns avoid the problem.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li><code>SUMPRODUCT((cond1)*(cond2)*values)</code> sums under any row-wise conditions, AND-combined by multiplication.</li>
+<li>Functions on ranges (<code>MONTH</code>, <code>YEAR</code>, <code>LEFT</code>, <code>SEARCH</code>, <code>WEEKDAY</code>) are the main reason to use it over SUMIFS.</li>
+<li><code>LEFT</code> returns text, so compare with <code>"5"</code>; <code>MONTH()=4</code> ignores the year.</li>
+<li>OR logic is addition with <code>&gt;0</code>; counts drop the value column; averages divide two SUMPRODUCTs.</li>
+<li>For conditions reused across a large grid, a helper column plus SUMIFS is faster.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-write-the-conditions-l1">Q1. Write the conditions [L1]</h3>
+<p>From Table <code>GL</code> (Date, Account, Dept, Narration, Amount), write SUMPRODUCT formulas for: (a) Q1 FY26 (Apr–Jun 2025) postings to accounts starting with "6"; (b) weekend postings in March 2026; (c) postings whose narration contains "RCM" in departments other than Admin.</p>
+<h3 id="q2-any-year-trap-l2">Q2. Any-year trap [L2]</h3>
+<p>A management report labelled "April 2025 raw-material cost" uses <code>=SUMPRODUCT((MONTH(GL[Date])=4)*(LEFT(GL[Account],2)="51")*GL[Amount])</code> on a GL Table that now holds FY25 and FY26 data. Identify the error, quantify which rows are wrongly included, and rewrite the formula two ways — one with SUMPRODUCT and one with SUMIFS.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> MONTH strips the year; a date range keeps it.</p>
+</blockquote>
+<h3 id="q3-credit-limit-breach-exposure-l2">Q3. Credit-limit breach exposure [L2]</h3>
+<p>Table <code>Cust</code> has Customer, Segment, Balance, CreditLimit, Overdue90. Write single-cell formulas for: the number of customers above their credit limit; the total excess over limit for the "Distributor" segment; and the total balance of customers that are either above limit or have any amount overdue beyond 90 days.</p>
+<h3 id="q4-fiscal-quarter-without-helpers-l2">Q4. Fiscal quarter without helpers [L2]</h3>
+<p>Write a SUMPRODUCT that sums <code>GL[Amount]</code> for fiscal Q3 (October–December) of FY26 for the 5-series accounts, using only functions on the Date and Account columns. Then explain why, for a 12-quarter × 30-line grid on 3 lakh rows, you would add a helper column instead.</p>
+<h3 id="q5-blank-date-audit-l1">Q5. Blank-date audit [L1]</h3>
+<p>A GL dump has 214 rows with blank dates (opening balance lines). Explain how they affect <code>SUMPRODUCT((MONTH(GL[Date])=1)*GL[Amount])</code> and correct the formula.</p></section>
+<nav class="pager"><a class="prev" href="S02_Weighted_Average_Inventory_Cost_and_Weighted.html">← Weighted Average Inventory Cost and Weighted Credit Period…</a><a class="next" href="S04_Coercing_TRUEFALSE_to_10_Double_Unary_1_and_N.html">Coercing TRUE/FALSE to 1/0: Double Unary, ×1 and N() →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monthly Drop-In Workflow, Archiving and Duplicate-File Detection · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S07_Monthly_Drop_In_Workflow_Archiving_and_Duplicate.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T4 · Folder consolidation pipeline</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Folder consolidation pipeline</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_FolderFiles_and_SharePointFiles_Sources_and_File.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S01_FolderFiles_and_SharePointFiles_Sources_and_File.html">Folder.Files and SharePoint.Files: Sources and File-Scope Filters</a></li><li><a href="S02_Combine_Files_Artefacts_Sample_Parameter_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S02_Combine_Files_Artefacts_Sample_Parameter_and.html">Combine Files Artefacts: Sample, Parameter and Transform Function</a></li><li><a href="S03_Writing_a_Custom_File_Cleaning_Function_by_Hand.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S03_Writing_a_Custom_File_Cleaning_Function_by_Hand.html">Writing a Custom File-Cleaning Function by Hand</a></li><li><a href="S04_Reading_Branch_and_Month_from_the_File_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S04_Reading_Branch_and_Month_from_the_File_Name.html">Reading Branch and Month from the File Name</a></li><li><a href="S05_Schema_Drift_Tolerant_Column_Selection_Across.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S05_Schema_Drift_Tolerant_Column_Selection_Across.html">Schema Drift: Tolerant Column Selection Across Branch Files</a></li><li><a href="S06_Multi_Bank_Statements_One_Function_per_Bank_Then.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S06_Multi_Bank_Statements_One_Function_per_Bank_Then.html">Multi-Bank Statements: One Function per Bank, Then Table.Combine</a></li><li><a href="S07_Monthly_Drop_In_Workflow_Archiving_and_Duplicate.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S07_Monthly_Drop_In_Workflow_Archiving_and_Duplicate.html">Monthly Drop-In Workflow, Archiving and Duplicate-File Detection</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_FolderFiles_Output_Columns_and_Which_to_Trust.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C01_FolderFiles_Output_Columns_and_Which_to_Trust.html">Folder.Files Output Columns and Which to Trust</a></li><li><a href="../concepts/C02_Filtering_by_Extension_and_Excluding_Temp_Files.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C02_Filtering_by_Extension_and_Excluding_Temp_Files.html">Filtering by Extension and Excluding Temp Files</a></li><li><a href="../concepts/C03_The_fxCleanTB_Function_Signature.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C03_The_fxCleanTB_Function_Signature.html">The fxCleanTB Function Signature</a></li><li><a href="../concepts/C04_Invoking_per_File_and_Appending_with_TableCombine.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C04_Invoking_per_File_and_Appending_with_TableCombine.html">Invoking per File and Appending with Table.Combine</a></li><li><a href="../concepts/C05_Tolerant_Column_Selection_with_MissingFieldUseNull.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C05_Tolerant_Column_Selection_with_MissingFieldUseNull.html">Tolerant Column Selection with MissingField.UseNull</a></li><li><a href="../concepts/C06_Parsing_Branch_and_Period_with_Text_Delimiter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C06_Parsing_Branch_and_Period_with_Text_Delimiter.html">Parsing Branch and Period with Text Delimiter Functions</a></li><li><a href="../concepts/C07_Guarding_the_Refresh_Against_One_Bad_File.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C07_Guarding_the_Refresh_Against_One_Bad_File.html">Guarding the Refresh Against One Bad File</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Monthly Drop-In Workflow, Archiving and Duplicate-File Detection</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Monthly drop-in workflow: new file in folder → Refresh All; archiving and duplicate-file detection</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>The promise of a folder pipeline is operational: next month, someone saves the new files into the folder, opens the workbook and clicks <strong>Refresh All</strong>, and the consolidated TB or bank feed updates with no query edits. That promise only holds if the workflow around the folder is designed as carefully as the M — who drops files, what names they use, what happens to last month's files, how duplicates and re-exports are caught, and what the preparer checks before using the output. This is close-process design, familiar from audit work on IT general controls and spreadsheet controls.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-target-workflow">The target workflow</h3>
+<ol>
+<li><strong>Drop.</strong> Branch accountants or treasury save files into the inbox folder (ideally a SharePoint library with restricted write access), using the agreed naming convention.</li>
+<li><strong>Refresh.</strong> The preparer opens the consolidator and runs Data &gt; <strong>Refresh All</strong> (Excel) or Refresh (Power BI Desktop). In the Service, scheduled refresh does this automatically.</li>
+<li><strong>Review controls.</strong> The preparer reviews the FileLog (files, rows, Dr/Cr totals), the RejectedFiles list, the Errors list and the duplicate check — all loaded to a "Controls" sheet.</li>
+<li><strong>Sign-off and archive.</strong> After sign-off, the period's files are either left in place (if the pipeline is cumulative) or moved to an archive folder (if it processes the current period only).</li>
+</ol>
+<h3 id="cumulative-vs-current-period-design">Cumulative vs current-period design</h3>
+<table>
+<thead>
+<tr>
+<th>Design</th>
+<th>Folder contents</th>
+<th>Pipeline behaviour</th>
+<th>When to use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cumulative</td>
+<td>All months of the FY stay in the folder</td>
+<td>Every refresh reprocesses all files; output has all periods</td>
+<td>FY-to-date TBs, trend reports, data models</td>
+</tr>
+<tr>
+<td>Current-period</td>
+<td>Only the open month's files</td>
+<td>Output has one period; prior months are archived</td>
+<td>Monthly BRS where prior months are closed</td>
+</tr>
+<tr>
+<td>Hybrid</td>
+<td>All files, but a <code>ReportPeriod</code> parameter</td>
+<td>Filter the file inventory by parsed period before invoking</td>
+<td>Large histories where reprocessing is slow</td>
+</tr>
+</tbody>
+</table>
+<p>For a 12-month FY with 16 branches, cumulative means 192 files by March — usually fine for CSVs. For years of daily bank files, filter the inventory early on the parsed period so old files are never opened.</p>
+<h3 id="archiving">Archiving</h3>
+<p><code>Folder.Files</code> is recursive, so an <code>Archive</code> subfolder inside the drop folder is still read unless you exclude it:</p>
+<pre><code class="language-m">Active = Table.SelectRows(Source, each not Text.Contains([Folder Path], &quot;\Archive\&quot;))
+</code></pre>
+<p>Safer still: keep the archive outside the drop folder (<code>Close\Inbox\</code> and <code>Close\Archive\FY2025-26\</code>). Archived files should be read-only and never edited; if a closed period must be reopened, the revised file is a new version with its own name and an approval trail.</p>
+<h3 id="duplicate-file-detection">Duplicate-file detection</h3>
+<p>Duplicates arise from re-exports, "(1)" copies from browser downloads, "final"/"v2" naming, and OneDrive conflict copies. Detect at file level on the parsed keys, not on the raw name:</p>
+<pre><code class="language-m">Keys = Table.AddColumn(Parsed, &quot;Key&quot;, each [Branch] &amp; &quot;|&quot; &amp; Text.From([PeriodEnd]), type text),
+DupFiles = Table.SelectRows(
+    Table.Group(Keys, {&quot;Key&quot;}, {{&quot;Files&quot;, each Table.RowCount(_), Int64.Type},
+                                {&quot;Names&quot;, each Text.Combine([Name], &quot;; &quot;), type text}}),
+    each [Files] &gt; 1)
+</code></pre>
+<p>Load <code>DupFiles</code> to the Controls sheet. Two policies are possible:</p>
+<ul>
+<li><strong>Fail closed.</strong> If <code>DupFiles</code> has rows, raise an error in the Combined query so nothing is consolidated until a human removes one file: <code>if Table.RowCount(DupFiles) &gt; 0 then error "Duplicate period files: " &amp; Text.Combine(DupFiles[Names], " / ") else Combined</code>.</li>
+<li><strong>Latest wins.</strong> Keep the most recent version per key using <code>Date modified</code> as a tie-breaker only: group by Key, <code>Table.Max(_, "Date modified")</code>. This is convenient but should be paired with a visible log of which files were superseded.</li>
+</ul>
+<p>Fail-closed is the better default for financial outputs, because "latest" is not necessarily "approved".</p>
+<h3 id="row-level-duplicate-detection">Row-level duplicate detection</h3>
+<p>Even with one file per branch-month, overlapping export date ranges can include the same voucher twice (e.g. a 1-Apr to 5-May export followed by a 1-May to 31-May export). Group the combined data on Branch + VoucherType + VoucherNo + Date + Amount and flag counts above one. For bank feeds, use Bank + AccountNo + TxnDate + Ref + Amount; genuine repeated transactions (two identical ₹500 bank charges on a day) are exactly why the key must include as much identifying detail as the source provides.</p>
+<h3 id="refresh-settings-that-support-the-workflow">Refresh settings that support the workflow</h3>
+<ul>
+<li>In Excel, Query Properties: enable "Refresh data when opening the file" only if users will not be confused by changing numbers; disable "Enable background refresh" so Refresh All completes before the user reviews.</li>
+<li>Keep staging and helper queries connection-only; load only the output and controls.</li>
+<li>In Power BI, the same pipeline refreshes in the Service on a schedule — through a gateway for local folders, directly for SharePoint/OneDrive.</li>
+</ul>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>On 4 May, the folder contains 16 April files. Refresh: FileLog shows 16 files, 41,208 rows, debits ₹311.4 crore, credits ₹311.4 crore. On 9 May, Jaipur re-exports April after a ₹6.2 lakh provision and drops <code>JAI_2025-04_rev.csv</code> without deleting the original. If the name filter is strict (<code>CODE_YYYY-MM.csv</code>), the rev file fails the pattern and lands in RejectedFiles with "Bad name", prompting the preparer to replace the original properly. If the parser is tolerant and reads both as Jaipur April, fail-closed duplicate detection stops the refresh with "Duplicate period files" listing both names. Either way, the problem is visible before anyone uses the numbers. Without these controls, Jaipur's April balances would be included twice and consolidated debits and credits would each rise by roughly the size of Jaipur's TB.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Partially uploaded files.</strong> A file being copied over a slow VPN may be read half-written; schedule refreshes after the upload cut-off and check row counts against the source footer.</li>
+<li><strong>Locked files.</strong> If a source file is open in Excel, <code>Folder.Files</code> may still read it but the lock file appears; the <code>~$</code> filter handles the latter.</li>
+<li><strong>Reopened periods.</strong> Decide who may replace an archived file and how the change is evidenced (version history in SharePoint helps).</li>
+<li><strong>Clock-based logic.</strong> Do not derive "current month" from <code>DateTime.LocalNow()</code>; drive it from a <code>ReportPeriod</code> parameter so refreshes are reproducible.</li>
+<li><strong>User discipline.</strong> The best convention fails if users rename freely; a rejected-files list visible to them is the feedback loop.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>The workflow is drop → Refresh All → review controls → sign-off → archive; design it explicitly.</li>
+<li>Choose cumulative, current-period or hybrid folders deliberately, and exclude archive folders because <code>Folder.Files</code> is recursive.</li>
+<li>Detect duplicates on parsed Branch + Period keys; prefer fail-closed over "latest wins" for financial data.</li>
+<li>Add row-level duplicate checks for overlapping exports, with keys detailed enough to keep genuine repeats.</li>
+<li>Load FileLog, RejectedFiles, Errors and duplicate checks to a Controls sheet reviewed every refresh.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-pick-the-folder-design-l1">Q1. Pick the folder design [L1]</h3>
+<p>For each feed choose cumulative, current-period or hybrid, with a reason: (a) FY-to-date branch TBs for a Power BI P&L; (b) daily bank CSVs for six accounts over three years; (c) monthly BRS where prior months are signed off and frozen.</p>
+<h3 id="q2-fail-closed-duplicate-guard-l2">Q2. Fail-closed duplicate guard [L2]</h3>
+<p>Write the M for a <code>Combined</code> query that returns the appended branch data only when no Branch + Period key appears more than once, and otherwise raises an error listing the conflicting file names.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Group the parsed inventory, filter counts above one, then use <code>if ... then error ... else ...</code>.</p>
+</blockquote>
+<h3 id="q3-overlapping-exports-l2">Q3. Overlapping exports [L2]</h3>
+<p>Branch Lucknow exported its Day Book for 1-Apr-2025 to 5-May-2025 as <code>LKO_2025-04.csv</code> and then 1-May-2025 to 31-May-2025 as <code>LKO_2025-05.csv</code>. Explain the effect on May and April figures in a cumulative pipeline, how a row-level duplicate check would detect it, and the process fix you would propose.</p>
+<h3 id="q4-controls-sheet-for-sign-off-l3">Q4. Controls sheet for sign-off [L3]</h3>
+<p>Design the Controls sheet that a financial controller reviews before using the consolidated TB: list every table on it, the columns of each, the expected "clean" state, and the action required for each kind of exception.</p></section>
+<nav class="pager"><a class="prev" href="S06_Multi_Bank_Statements_One_Function_per_Bank_Then.html">← Multi-Bank Statements: One Function per Bank, Then…</a><a class="next" href="../concepts/C01_FolderFiles_Output_Columns_and_Which_to_Trust.html">Folder.Files Output Columns and Which to Trust →</a></nav>
+</main></div></body></html>

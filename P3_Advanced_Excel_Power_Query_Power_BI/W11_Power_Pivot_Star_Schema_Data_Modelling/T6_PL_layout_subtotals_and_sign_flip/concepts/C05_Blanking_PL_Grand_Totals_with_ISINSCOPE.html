@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blanking P&amp;L Grand Totals with ISINSCOPE · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C05_Blanking_PL_Grand_Totals_with_ISINSCOPE.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T6 · P&amp;L layout, subtotals and sign-flip</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · P&amp;L layout, subtotals and sign-flip</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_The_PL_Layout_Dimension_Lines_Sort_Order_Type_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S01_The_PL_Layout_Dimension_Lines_Sort_Order_Type_and.html">The P&amp;L Layout Dimension: Lines, Sort Order, Type and Sign</a></li><li><a href="../subtopics/S02_Mapping_CoA_to_Layout_Lines_and_Computing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S02_Mapping_CoA_to_Layout_Lines_and_Computing.html">Mapping CoA to Layout Lines and Computing Subtotals by Sort Order</a></li><li><a href="../subtopics/S03_Row_Level_Measure_Dispatch_with_SWITCHTRUE_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S03_Row_Level_Measure_Dispatch_with_SWITCHTRUE_and.html">Row-Level Measure Dispatch with SWITCH(TRUE()) and SELECTEDVALUE</a></li><li><a href="../subtopics/S04_Sign_Convention_Credits_Negative_in_the_GL_Flipped.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S04_Sign_Convention_Credits_Negative_in_the_GL_Flipped.html">Sign Convention: Credits Negative in the GL, Flipped for Presentation</a></li><li><a href="../subtopics/S05_Margin_Rows_GM_EBITDA_EBIT_with_Dynamic_Format.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S05_Margin_Rows_GM_EBITDA_EBIT_with_Dynamic_Format.html">Margin Rows (GM %, EBITDA %, EBIT %) with Dynamic Format Strings</a></li><li><a href="../subtopics/S06_Formatting_the_PL_Matrix_Layout_Spacers_Bold.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S06_Formatting_the_PL_Matrix_Layout_Spacers_Bold.html">Formatting the P&amp;L Matrix: Layout, Spacers, Bold Subtotals, Empty Rows</a></li><li><a href="../subtopics/S07_Alternatives_Calculation_Groups_Field_Parameters.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/subtopics/S07_Alternatives_Calculation_Groups_Field_Parameters.html">Alternatives: Calculation Groups, Field Parameters, Visual Calcs, Excel</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_The_PnL_Dispatcher_Measure_with_SWITCHTRUE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C01_The_PnL_Dispatcher_Measure_with_SWITCHTRUE.html">The PnL Dispatcher Measure with SWITCH(TRUE())</a></li><li><a href="C02_Actual_Signed_Applying_the_CoA_Sign_Factor_Row_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C02_Actual_Signed_Applying_the_CoA_Sign_Factor_Row_by.html">Actual Signed: Applying the CoA Sign Factor Row by Row</a></li><li><a href="C03_The_Subtotal_Measure_Removing_the_Layout_Filter_by.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C03_The_Subtotal_Measure_Removing_the_Layout_Filter_by.html">The Subtotal Measure: Removing the Layout Filter by Sort Order</a></li><li><a href="C04_EBITDA_with_a_Dynamic_Format_String_in_the_PL.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C04_EBITDA_with_a_Dynamic_Format_String_in_the_PL.html">EBITDA % with a Dynamic Format String in the P&amp;L Matrix</a></li><li><a href="C05_Blanking_PL_Grand_Totals_with_ISINSCOPE.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T6_PL_layout_subtotals_and_sign_flip/concepts/C05_Blanking_PL_Grand_Totals_with_ISINSCOPE.html">Blanking P&amp;L Grand Totals with ISINSCOPE</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Blanking P&amp;L Grand Totals with ISINSCOPE</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>IF(ISINSCOPE(Layout[Line]), [PnL])</code> blanks meaningless grand totals in the P&amp;L matrix</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-DAX">PnL (scoped) = IF ( ISINSCOPE ( Layout[Line] ), [PnL] )
+</code></pre>
+<p><code>ISINSCOPE(column)</code> returns TRUE when the column is being used as a grouping level in the current cell of the visual
+(the cell is "inside" a <code>Layout[Line]</code> row) and FALSE at subtotal or grand-total levels where that column is not
+grouped. The measure therefore returns <code>[PnL]</code> on every statement row and BLANK on the matrix's automatic total row.</p>
+<h2 id="explanation">Explanation</h2>
+<p>A P&amp;L built from a layout table already contains its own subtotals (GP, EBITDA, PAT). The matrix's automatic grand total
+row evaluates the measure with <em>no</em> layout filter: everything is in context. What it shows depends on the dispatcher —
+<code>SELECTEDVALUE(Layout[Type])</code> returns BLANK when several types are visible, so <code>[PnL]</code> may already be blank; but a
+measure such as <code>[Actual Signed]</code> or a Budget/Variance column might show a "total" equal to the sum of every account
+(which is PAT in profit-signed form — coincidentally meaningful) or worse, a sum of mixed lines in display-signed form.
+For ratio-heavy statements, any non-blank grand total is noise. Turning off row subtotals in the format pane hides it,
+but a measure-level guard is more robust because it also applies in other visuals, exports and Analyze in Excel.</p>
+<p>Why <code>ISINSCOPE</code> rather than <code>HASONEVALUE</code>:</p>
+<ul>
+<li><code>HASONEVALUE(Layout[Line])</code> is TRUE whenever exactly one line is filtered — including when a slicer selects one line
+  and the matrix shows only a grand total. It cannot tell "a row of the matrix" from "a filtered total".</li>
+<li><code>ISINSCOPE(Layout[Line])</code> tests whether the visual is grouping by that column at the current level — exactly the
+  "am I on a statement row?" question. It is the standard function for level-aware calculations in hierarchies
+  (e.g., showing % of parent only at child levels).</li>
+</ul>
+<p>In a drill-down hierarchy (Layout line → Account), use <code>ISINSCOPE(CoA[AccountName])</code> to detect account level and
+<code>ISINSCOPE(Layout[Line])</code> for line level; the line-level total of a drilled line is then the line's value, while the grand
+total is blank.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Matrix rows <code>Layout[Line]</code>, columns Actual and Budget, row subtotals left on (₹ lakh, profit-signed, display flip on
+expenses):</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th><code>[PnL]</code> Actual</th>
+<th><code>[PnL (scoped)]</code> Actual</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue from operations</td>
+<td>4,100</td>
+<td>4,100</td>
+</tr>
+<tr>
+<td>Cost of materials consumed</td>
+<td>2,380 (display +)</td>
+<td>2,380</td>
+</tr>
+<tr>
+<td>Gross Profit</td>
+<td>1,720</td>
+<td>1,720</td>
+</tr>
+<tr>
+<td>GM %</td>
+<td>42.0%</td>
+<td>42.0%</td>
+</tr>
+<tr>
+<td>Total (automatic)</td>
+<td>blank, or a mixed sum such as 8,200 from a non-dispatcher column</td>
+<td>blank</td>
+</tr>
+</tbody>
+</table>
+<p>The scoped measure guarantees a blank total regardless of how individual column measures behave at the top level.</p>
+<h2 id="connections">Connections</h2>
+<p>Applied on the dispatcher of c01 and s03; complements the matrix settings in s06 (row subtotals off). Topic 3's related
+item on SELECTEDVALUE, HASONEVALUE and ISINSCOPE introduced these context-aware functions. The same pattern blanks
+meaningless totals for non-additive measures elsewhere (DSO by branch, margin by product) and is used in Weeks 17–20 MIS
+packs.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-isinscope-vs-hasonevalue-l1">Q1. ISINSCOPE vs HASONEVALUE [L1]</h3>
+<p>A page has a slicer on <code>Layout[Line]</code> set to "EBITDA" and a card plus a matrix (rows <code>Layout[Line]</code>). State what
+<code>ISINSCOPE(Layout[Line])</code> and <code>HASONEVALUE(Layout[Line])</code> return in the card and in the matrix row and total, and which
+function the P&amp;L measure should use.</p>
+<h3 id="q2-drill-down-totals-l2">Q2. Drill-down totals [L2]</h3>
+<p>The matrix has a hierarchy Layout line → Account, with drill-down expanded on "Other expenses". Write a measure that shows
+values at account and line level, blanks the grand total, and shows the account's share of its line (as a separate
+measure) only at account level.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Test the deeper level first in a SWITCH(TRUE(), …).</p>
+</blockquote>
+<h3 id="q3-when-a-total-is-meaningful-l2">Q3. When a total is meaningful [L2]</h3>
+<p>Explain why, in a profit-signed model, the sum of all account lines across the whole P&amp;L equals PAT, and argue whether the
+matrix should nonetheless show a grand total row. Consider display-flipped expense lines and ratio rows in your answer.</p></section>
+<nav class="pager"><a class="prev" href="C04_EBITDA_with_a_Dynamic_Format_String_in_the_PL.html">← EBITDA % with a Dynamic Format String in the P&amp;L Matrix</a><a class="next" href="../../../W12_Executive_Financial_Dashboards_Automated/index.html">Week 12: Executive Financial Dashboards &amp; Automated… →</a></nav>
+</main></div></body></html>

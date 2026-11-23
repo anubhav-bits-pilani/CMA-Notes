@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scenario Invariance: A Linked Model Balances for Any Input · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C05_Scenario_Invariance_A_Linked_Model_Balances_for.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 4</a> <span>›</span> <a href="../../index.html">Week 15</a> <span>›</span> <a href="../index.html">T5 · Dynamic Stress Testing</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Dynamic Stress Testing</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Toggling_Base_Bull_and_Bear_with_a_Zero_Check_in.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S01_Toggling_Base_Bull_and_Bear_with_a_Zero_Check_in.html">Toggling Base, Bull and Bear with a Zero Check in Every Year</a></li><li><a href="../subtopics/S02_Extreme_Input_Stress_Tests_Growth_Margins_Capex.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S02_Extreme_Input_Stress_Tests_Growth_Margins_Capex.html">Extreme Input Stress Tests: Growth, Margins, Capex and WC Days</a></li><li><a href="../subtopics/S03_Revolver_Behaviour_in_a_Recession_Draw_Within.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S03_Revolver_Behaviour_in_a_Recession_Draw_Within.html">Revolver Behaviour in a Recession: Draw Within Limit, Flag Shortfall</a></li><li><a href="../subtopics/S04_Negative_PBT_Loss_Carry_Forward_No_Negative_Tax.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S04_Negative_PBT_Loss_Carry_Forward_No_Negative_Tax.html">Negative PBT: Loss Carry-Forward, No Negative Tax, DTA Recognition</a></li><li><a href="../subtopics/S05_Dividends_Under_Losses_Floored_at_Zero_Capped_by.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S05_Dividends_Under_Losses_Floored_at_Zero_Capped_by.html">Dividends Under Losses: Floored at Zero, Capped by Profits and Cash</a></li><li><a href="../subtopics/S06_Covenant_Flags_Net_DebtEBITDA_DSCR_and_ICR_Breach.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S06_Covenant_Flags_Net_DebtEBITDA_DSCR_and_ICR_Breach.html">Covenant Flags: Net Debt/EBITDA, DSCR and ICR Breach Years</a></li><li><a href="../subtopics/S07_The_Checks_Dashboard_Balance_Cash_Liquidity_and.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/subtopics/S07_The_Checks_Dashboard_Balance_Cash_Liquidity_and.html">The Checks Dashboard: Balance, Cash, Liquidity and Convergence</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Current_Tax_with_Loss_Set_Off_and_the_Sec_72_Loss.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C01_Current_Tax_with_Loss_Set_Off_and_the_Sec_72_Loss.html">Current Tax with Loss Set-Off and the Sec 72 Loss Corkscrew</a></li><li><a href="C02_Dividend_Floor_and_Cash_Cap_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C02_Dividend_Floor_and_Cash_Cap_Formula.html">Dividend Floor and Cash Cap Formula</a></li><li><a href="C03_The_Binary_Error_Flag_Formula.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C03_The_Binary_Error_Flag_Formula.html">The Binary Error Flag Formula</a></li><li><a href="C04_Goal_Seek_and_Data_Tables_to_Find_Breaking_Points.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C04_Goal_Seek_and_Data_Tables_to_Find_Breaking_Points.html">Goal Seek and Data Tables to Find Breaking Points</a></li><li><a href="C05_Scenario_Invariance_A_Linked_Model_Balances_for.html" data-uid="P4_Integrated_Three_Statement_Financial/W15_Integrating_the_3_Statement_Model/T5_Dynamic_Stress_Testing/concepts/C05_Scenario_Invariance_A_Linked_Model_Balances_for.html">Scenario Invariance: A Linked Model Balances for Any Input</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Scenario Invariance: A Linked Model Balances for Any Input</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Scenario invariance: a correctly linked model balances for any input, not just Base</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<p>Let \( \mathbf{x} \) be any vector of inputs (growth, margins, capex, working capital days, financing assumptions, scenario switch, stress shocks) within the model's valid domain. A model is <strong>scenario-invariant</strong> if:</p>
+<p>\[
+\text{BS check}_t(\mathbf{x}) = 0 \quad \text{for all forecast years } t \text{ and all valid } \mathbf{x}
+\]</p>
+<p>The balance is a property of the model's <strong>structure</strong> (its links), not of any particular set of inputs. Conversely, if there exists any valid \( \mathbf{x} \) with \( \text{BS check}_t(\mathbf{x}) \neq 0 \), the model has a structural error, even if it balances in Base.</p>
+<h2 id="explanation">Explanation</h2>
+<p>Double-entry is an identity. If every BS movement is linked to a CFS line or a non-cash counterpart, the accounting equation holds whatever the numbers are. Inputs change the size of the flows, not whether each flow has a counterpart. So a model that balances only in some cases is not "mostly right". It contains an error that happens to be zero, or to cancel out, for those inputs.</p>
+<p>How a structural error hides in Base:</p>
+<ul>
+<li><strong>Dormant logic:</strong> the error sits in a branch that is not exercised. Revolver draws, tax loss utilisation, dividend floors, DTA recognition and WC release all equal zero in a growing, profitable Base case.</li>
+<li><strong>Coincidental hardcodes:</strong> a typed number equals the Base formula result (Topic 4 s06).</li>
+<li><strong>Offsetting errors:</strong> two errors of +5 and −5 cancel in Base but diverge under another scenario.</li>
+<li><strong>Direction-blind formulas:</strong> <code>ABS</code> or <code>MAX(0, …)</code> on movements gives correct results only while the movement is in one direction.</li>
+</ul>
+<p>Invariance testing therefore needs inputs that <strong>activate every branch</strong>: losses, revolver draws, WC decreases, capex spikes and zero growth. That is why stress tests (s02–s05) go beyond plausible scenarios.</p>
+<p>Invariance concerns the balance check and other <strong>integrity</strong> checks (cash check, convergence). It does not require business outcomes to be good. Negative cash and covenant breaches are valid results. It also does not prove the model is economically right. A model with a wrong tax rate is still invariant. Invariance is necessary for correctness, not sufficient.</p>
+<p>"Valid domain" matters. Growth below −100% (negative revenue) or negative days are outside it. Use input validation to define the domain, then require invariance everywhere inside it.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Ravi Engineering Ltd: three tests of the same model.</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Inputs</th>
+<th>Max abs BS check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base</td>
+<td>Growth 12%, margin 15%</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td>Bear</td>
+<td>Growth −8%, margin 9%</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td>Extreme</td>
+<td>Growth −35%, margin −2%, capex 3×</td>
+<td>18.40</td>
+</tr>
+</tbody>
+</table>
+<p>Base and Bear pass. The extreme case fails, so the model is <strong>not</strong> invariant. Investigation: the extreme case is the first to produce a tax loss. The loss corkscrew credits the DTA on the BS, but the CFS deducts total tax, including the deferred credit, instead of only cash tax. That creates a difference equal to the deferred tax credit (18.40). The error exists in the structure and was dormant in Base and Bear because both had positive PBT. After the fix all three tests show 0.000, and a one-variable data table of growth from −60% to +40% shows a zero check in every row.</p>
+<h2 id="connections">Connections</h2>
+<p>This principle is the purpose of the whole topic. It justifies s01 (toggling scenarios), s02 (extreme inputs) and the data table approach in c04, where every breaking point is valid only if invariance holds at that input. It links back to Topic 4 diagnostics (dormant-branch errors show up as Bear-only or extreme-only imbalances) and forward to Week 16, where valuation sensitivities rely on a model that balances across the grid. It is also the basis of the week's checklist item: show check = 0 across 5 years in Base, Bull, Bear and extreme inputs.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-explain-invariance-l1">Q1. Explain invariance [L1]</h3>
+<p>In three or four sentences, explain to a junior analyst why "it balances in Base" does not prove a model is correctly linked. Give two concrete examples of errors that are invisible in a profitable, growing Base case.</p>
+<h3 id="q2-designing-an-invariance-test-suite-l2">Q2. Designing an invariance test suite [L2]</h3>
+<p>Design a minimum set of six input configurations that together activate every conditional branch in a model containing a revolver with limit, tax loss corkscrew with DTA switch, dividend floor and cash cap, WC days drivers, CWIP capitalisation and a cash sweep on term debt. For each configuration, state which branch it activates and what output you would check.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Map each <code>MAX</code>, <code>MIN</code> and <code>IF</code> in the model to an input that flips it.</p>
+</blockquote>
+<h3 id="q3-offsetting-errors-l2">Q3. Offsetting errors [L2]</h3>
+<p>A model has two errors: the ESOP charge (₹6 crore a year) is not added back in CFO, and the ΔDTL add-back is entered twice. In Base, ΔDTL is exactly ₹6 crore a year. In Bear, ΔDTL is ₹2 crore a year. (a) Compute the BS check in each case for FY26E–FY28E. (b) Explain how this shows the value of scenario invariance testing. (c) State how the reconciliation block from Topic 4 would expose both errors even in Base.</p></section>
+<nav class="pager"><a class="prev" href="C04_Goal_Seek_and_Data_Tables_to_Find_Breaking_Points.html">← Goal Seek and Data Tables to Find Breaking Points</a><a class="next" href="../../T6_Finalizing_Project_4_Model/index.html">Finalizing Project 4 Model →</a></nav>
+</main></div></body></html>

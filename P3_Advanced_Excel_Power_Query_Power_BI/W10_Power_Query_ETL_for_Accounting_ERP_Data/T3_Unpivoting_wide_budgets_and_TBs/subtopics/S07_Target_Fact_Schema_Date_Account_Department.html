@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Target Fact Schema: Date, Account, Department, Scenario, Amount · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S07_Target_Fact_Schema_Date_Account_Department.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T3 · Unpivoting wide budgets and TBs</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Unpivoting wide budgets and TBs</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Wide_Crosstab_vs_Long_Normalised_Data_and_Fact.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S01_Wide_Crosstab_vs_Long_Normalised_Data_and_Fact.html">Wide (Crosstab) vs Long (Normalised) Data and Fact Tables</a></li><li><a href="S02_Unpivot_Other_Columns_vs_Unpivot_Columns_vs_Only.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S02_Unpivot_Other_Columns_vs_Unpivot_Columns_vs_Only.html">Unpivot Other Columns vs Unpivot Columns vs Only Selected</a></li><li><a href="S03_Converting_Month_Header_Text_into_Real_Month_End.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S03_Converting_Month_Header_Text_into_Real_Month_End.html">Converting Month Header Text into Real Month-End Dates</a></li><li><a href="S04_Multi_Row_Headers_Transpose_Fill_Merge_Transpose.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S04_Multi_Row_Headers_Transpose_Fill_Merge_Transpose.html">Multi-Row Headers: Transpose, Fill, Merge, Transpose Back, Unpivot</a></li><li><a href="S05_Unpivoting_TB_Columns_Opening_Debit_Credit_Closing.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S05_Unpivoting_TB_Columns_Opening_Debit_Credit_Closing.html">Unpivoting TB Columns (Opening, Debit, Credit, Closing)</a></li><li><a href="S06_Pivot_Column_as_the_Reverse_of_Unpivot_Including.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S06_Pivot_Column_as_the_Reverse_of_Unpivot_Including.html">Pivot Column as the Reverse of Unpivot, Including Don&#x27;t Aggregate</a></li><li><a href="S07_Target_Fact_Schema_Date_Account_Department.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/subtopics/S07_Target_Fact_Schema_Date_Account_Department.html">Target Fact Schema: Date, Account, Department, Scenario, Amount</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_TableUnpivotOtherColumns_with_Fixed_Identifier.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C01_TableUnpivotOtherColumns_with_Fixed_Identifier.html">Table.UnpivotOtherColumns with Fixed Identifier Columns</a></li><li><a href="../concepts/C02_Month_Label_to_Month_End_Date_with_DateFromText.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C02_Month_Label_to_Month_End_Date_with_DateFromText.html">Month Label to Month-End Date with Date.FromText and Format</a></li><li><a href="../concepts/C03_Multi_Row_Header_Recipe_Transpose_Fill_Combine.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C03_Multi_Row_Header_Recipe_Transpose_Fill_Combine.html">Multi-Row Header Recipe: Transpose, Fill, Combine, Unpivot, Split</a></li><li><a href="../concepts/C04_TablePivot_with_a_Dynamic_Value_List_and_ListSum.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C04_TablePivot_with_a_Dynamic_Value_List_and_ListSum.html">Table.Pivot with a Dynamic Value List and List.Sum</a></li><li><a href="../concepts/C05_Adding_a_Typed_Scenario_Column_Before_Appending_to.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C05_Adding_a_Typed_Scenario_Column_Before_Appending_to.html">Adding a Typed Scenario Column Before Appending to Actuals</a></li><li><a href="../concepts/C06_Unpivot_Drops_Null_Cells_Replace_Nulls_with_Zero.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T3_Unpivoting_wide_budgets_and_TBs/concepts/C06_Unpivot_Drops_Null_Cells_Replace_Nulls_with_Zero.html">Unpivot Drops Null Cells: Replace Nulls with Zero When Needed</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Target Fact Schema: Date, Account, Department, Scenario, Amount</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Target schema: Date, Account, Department, Scenario (Actual/Budget), Amount</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Every unpivot needs a destination. Defining the <strong>target schema</strong> before building transformations keeps all sources — the wide budget, the monthly TBs, the forecast — converging on the same five columns, so they can be appended into one plan-vs-actual fact or modelled as two facts sharing the same dimensions. This is the schema that the Week 11 star schema and Weeks 17–20 budget-vs-actual and rolling-forecast work assume. A stable, documented schema also makes the Saturday assessment's deliverable concrete: a clean fact table and a clean CoA dimension.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="the-columns">The columns</h3>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Definition</th>
+<th>Source examples</th>
+<th>Rules</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Date</strong></td>
+<td><code>type date</code></td>
+<td>Month-end date of the period</td>
+<td>Budget header "Apr-25" → 30-Apr-2025; GL posting date → <code>Date.EndOfMonth</code></td>
+<td>Always month-end (or always month-start) — one convention</td>
+</tr>
+<tr>
+<td><strong>Account</strong></td>
+<td><code>type text</code></td>
+<td>GL account code at the reporting grain</td>
+<td>"610100" from "610100 - Salaries"</td>
+<td>Text, trimmed, matches CoA dimension key exactly</td>
+</tr>
+<tr>
+<td><strong>Department</strong></td>
+<td><code>type text</code></td>
+<td>Department / cost centre code</td>
+<td>Header block "Sales" mapped to "D100"</td>
+<td>Codes, not names, where a master exists; "UNALLOC" for unassigned</td>
+</tr>
+<tr>
+<td><strong>Scenario</strong></td>
+<td><code>type text</code></td>
+<td>Actual, Budget, Forecast (versioned if needed: "Budget FY26 v2", "RF Sep-25")</td>
+<td>Added column for budget and forecast loads</td>
+<td>Controlled list; never null</td>
+</tr>
+<tr>
+<td><strong>Amount</strong></td>
+<td><code>type number</code> / <code>Currency.Type</code></td>
+<td>Signed amount, one sign convention</td>
+<td>Unpivoted value; GL net Dr − Cr</td>
+<td>Dr positive (expenses/assets positive, income negative) or a documented presentation convention</td>
+</tr>
+</tbody>
+</table>
+<p>Optional columns commonly added: <strong>Entity</strong> (company/branch, for multi-entity groups), <strong>Currency</strong>, <strong>Version</strong> (budget iteration), <strong>Source</strong> (file name for lineage), <strong>LoadDate</strong>.</p>
+<h3 id="dimensions-that-go-with-it">Dimensions that go with it</h3>
+<p>The fact holds keys and numbers; descriptions and hierarchies live in dimensions:</p>
+<ul>
+<li><strong>Calendar</strong> (Date): FY label, fiscal month, fiscal quarter, month label — Week 11.</li>
+<li><strong>Chart of Accounts</strong> (Account): name, Schedule III line, P&amp;L/BS group, cost behaviour (fixed/variable), MIS hierarchy.</li>
+<li><strong>Department</strong> (Department): name, function, business unit, region.</li>
+<li><strong>Scenario</strong> (Scenario): sort order, actual/plan flag.</li>
+</ul>
+<p>The Saturday assessment asks you to produce this fact from the multi-tab budget and a clean CoA dimension from the master — with every Account in the fact present in the CoA (no orphan keys).</p>
+<h3 id="conforming-sources-to-the-schema">Conforming sources to the schema</h3>
+<p><strong>Budget (wide workbook, one tab per department)</strong>:</p>
+<ol>
+<li>Read each tab (or each department block).</li>
+<li>Skip headers by condition, promote, remove totals.</li>
+<li>Unpivot months (s02), convert headers to month-end dates (s03).</li>
+<li>Derive Department from the tab name or header block (s04).</li>
+<li>Split "610100 - Salaries" into Account code (Topic 2 c04).</li>
+<li><code>Table.AddColumn(t, "Scenario", each "Budget", type text)</code> (c05).</li>
+<li>Select and order the five columns; type them.</li>
+</ol>
+<p><strong>Actuals (GL lines or monthly TBs)</strong>:</p>
+<ol>
+<li>Clean (Topic 2), compute signed Amount.</li>
+<li><code>Date.EndOfMonth([PostingDate])</code> to bring to month grain; Group By Date, Account, Department summing Amount.</li>
+<li>Add Scenario = "Actual".</li>
+<li>Select the five columns in the same order and types.</li>
+</ol>
+<p>Then either <code>Table.Combine({Actuals, Budget})</code> into a single <strong>Plan-Actual</strong> fact, or load as two facts. One combined fact with a Scenario column makes variance measures simple (<code>CALCULATE(SUM(Fact[Amount]), Fact[Scenario] = "Budget")</code>); two facts are preferable when grains differ (see the edge cases below and the topic-level item on grain alignment).</p>
+<h3 id="selecting-and-ordering-columns-robustly">Selecting and ordering columns robustly</h3>
+<pre><code>Schema = {&quot;Date&quot;, &quot;Account&quot;, &quot;Department&quot;, &quot;Scenario&quot;, &quot;Amount&quot;},
+Final  = Table.TransformColumnTypes(
+           Table.SelectColumns(Conformed, Schema, MissingField.UseNull),
+           {{&quot;Date&quot;, type date}, {&quot;Account&quot;, type text}, {&quot;Department&quot;, type text},
+            {&quot;Scenario&quot;, type text}, {&quot;Amount&quot;, Currency.Type}})
+</code></pre>
+<p><code>Table.Combine</code> aligns columns <strong>by name</strong>, not position; columns present in one table only become null in the other. Consistent names and types are what make appends safe.</p>
+<h3 id="quality-checks-on-the-fact">Quality checks on the fact</h3>
+<ul>
+<li><strong>Completeness</strong>: sum of Amount by Scenario and FY equals source control totals (budget FY Total, TB net).</li>
+<li><strong>Orphans</strong>: Accounts or Departments in the fact not present in dimensions (LeftAnti merge against the CoA).</li>
+<li><strong>Duplicates at grain</strong>: Group By Date, Account, Department, Scenario with Count Rows &gt; 1 (expected for line-level actuals only before grouping).</li>
+<li><strong>Dates</strong>: all month-ends, within the FY range.</li>
+<li><strong>Nulls</strong>: no null keys or Scenario.</li>
+</ul>
+<h3 id="illustration">Illustration</h3>
+<p>Budget tab "Sales" row "610100 - Salaries" with Apr-25 = 12,00,000 becomes (30-Apr-2025, 610100, D100, Budget, 1200000). GL postings to 610100/D100 in April 2025 totalling ₹12,40,000 become (30-Apr-2025, 610100, D100, Actual, 1240000). Appended, a matrix by Scenario shows Actual 12,40,000 vs Budget 12,00,000 and a variance of 40,000 adverse.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Sign convention for budgets</strong>: budget templates usually show revenue positive; actuals with Dr positive show revenue negative. Flip the budget revenue sign during conforming (based on the CoA account type), or flip both for presentation in DAX — never leave them inconsistent.</li>
+<li><strong>Budget at a higher level than actuals</strong> (budget by account group, actuals by ledger) — map actuals up to the budget grain or allocate budget down; document the choice.</li>
+<li><strong>Multiple budget versions</strong>: include Version or encode it in Scenario; avoid overwriting the original budget when a revision arrives.</li>
+<li><strong>Departments in budget but not in the cost-centre master</strong> (new departments) — add to the dimension or map, do not drop.</li>
+<li><strong>Foreign-currency entities</strong>: include Currency and convert at budget rates vs actual rates explicitly.</li>
+<li><strong>Statistical accounts</strong> (headcount, sq ft) in the budget: keep them in a separate fact or flag them so they are not summed with rupees.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Fix the target schema — Date, Account, Department, Scenario, Amount — before building transformations.</li>
+<li>Store month-end dates, text keys matching the dimensions, a controlled Scenario list and signed amounts.</li>
+<li>Conform every source to the same names, order and types; <code>Table.Combine</code> aligns by name.</li>
+<li>Keep descriptions and hierarchies in dimensions (Calendar, CoA, Department, Scenario).</li>
+<li>Validate completeness, orphan keys, duplicates at grain and sign conventions before loading.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-conform-two-sources-l2">Q1. Conform two sources [L2]</h3>
+<p>You have (a) a wide budget with "Account Name - Code" labels (e.g. "Salaries - 610100"), department in the tab name and months "Apr 2025" … "Mar 2026"; (b) GL actual line items with PostingDate, GLAccount, CostCentre, Debit, Credit. Write the conforming steps for each to reach the five-column schema, including the sign treatment.</p>
+<h3 id="q2-orphan-check-l1">Q2. Orphan check [L1]</h3>
+<p>Write the M for a query listing Accounts in the combined fact that are not in the CoA dimension, with their total Amount by Scenario.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> An anti-join returns rows on one side with no match on the other.</p>
+</blockquote>
+<h3 id="q3-grain-mismatch-l2">Q3. Grain mismatch [L2]</h3>
+<p>The budget is prepared by account group (e.g. "Travel" = accounts 620100–620900) and department, while actuals are by ledger account. Propose two designs that allow budget-vs-actual reporting and state the effect on the fact schema.</p>
+<h3 id="q4-sign-policy-l3">Q4. Sign policy [L3]</h3>
+<p>Draft a sign policy for the plan-actual fact covering revenue, expense, asset and liability accounts in both scenarios, where budget templates show all amounts as positive numbers. Explain where in Power Query the flip happens and how it is driven by the CoA.</p>
+<h3 id="q5-interview-one-fact-or-two-l2">Q5. Interview: one fact or two? [L2]</h3>
+<p>An interviewer asks whether you would load actuals and budget as one fact with a Scenario column or as two separate facts. Give a structured answer covering grain, DAX simplicity, refresh and future forecasts.</p></section>
+<nav class="pager"><a class="prev" href="S06_Pivot_Column_as_the_Reverse_of_Unpivot_Including.html">← Pivot Column as the Reverse of Unpivot, Including Don&#x27;t…</a><a class="next" href="../concepts/C01_TableUnpivotOtherColumns_with_Fixed_Identifier.html">Table.UnpivotOtherColumns with Fixed Identifier Columns →</a></nav>
+</main></div></body></html>

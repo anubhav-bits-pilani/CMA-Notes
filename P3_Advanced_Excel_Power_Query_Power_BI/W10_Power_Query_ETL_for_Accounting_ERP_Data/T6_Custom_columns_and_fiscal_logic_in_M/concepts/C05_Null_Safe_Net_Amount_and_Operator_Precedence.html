@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Null-Safe Net Amount and Operator Precedence · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C05_Null_Safe_Net_Amount_and_Operator_Precedence.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T6 · Custom columns and fiscal logic in M</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T6 · Custom columns and fiscal logic in M</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Column_From_Examples_Custom_Column_and_Conditional.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S01_Column_From_Examples_Custom_Column_and_Conditional.html">Column From Examples, Custom Column and Conditional Column</a></li><li><a href="../subtopics/S02_Indian_FY_Attributes_Label_Fiscal_Month_Quarter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S02_Indian_FY_Attributes_Label_Fiscal_Month_Quarter.html">Indian FY Attributes: Label, Fiscal Month, Quarter and Sort Key</a></li><li><a href="../subtopics/S03_Receivable_and_Payable_Ageing_Against_an_As_Of.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S03_Receivable_and_Payable_Ageing_Against_an_As_Of.html">Receivable and Payable Ageing Against an As-Of-Date Parameter</a></li><li><a href="../subtopics/S04_Conditional_Logic_in_M_ifthenelse_andor_and_Null.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S04_Conditional_Logic_in_M_ifthenelse_andor_and_Null.html">Conditional Logic in M: if/then/else, and/or, and Null Coalescing</a></li><li><a href="../subtopics/S05_Type_Ascription_on_New_Columns.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S05_Type_Ascription_on_New_Columns.html">Type Ascription on New Columns</a></li><li><a href="../subtopics/S06_Group_By_Aggregations_for_Summary_Outputs_During.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S06_Group_By_Aggregations_for_Summary_Outputs_During.html">Group By Aggregations for Summary Outputs During Ingestion</a></li><li><a href="../subtopics/S07_Date_Functions_for_Fiscal_and_Ageing_Logic.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/subtopics/S07_Date_Functions_for_Fiscal_and_Ageing_Logic.html">Date Functions for Fiscal and Ageing Logic</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_FY_End_Year_and_FY_Label_Formula.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C01_FY_End_Year_and_FY_Label_Formula.html">FY End Year and FY Label Formula</a></li><li><a href="C02_Fiscal_Month_Number_with_NumberMod.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C02_Fiscal_Month_Number_with_NumberMod.html">Fiscal Month Number with Number.Mod</a></li><li><a href="C03_Fiscal_Quarter_with_NumberIntegerDivide.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C03_Fiscal_Quarter_with_NumberIntegerDivide.html">Fiscal Quarter with Number.IntegerDivide</a></li><li><a href="C04_Ageing_Bucket_Expression_with_DurationDays.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C04_Ageing_Bucket_Expression_with_DurationDays.html">Ageing Bucket Expression with Duration.Days</a></li><li><a href="C05_Null_Safe_Net_Amount_and_Operator_Precedence.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C05_Null_Safe_Net_Amount_and_Operator_Precedence.html">Null-Safe Net Amount and Operator Precedence</a></li><li><a href="C06_TableGroup_by_FY_and_Ledger_with_a_Typed_Sum.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T6_Custom_columns_and_fiscal_logic_in_M/concepts/C06_TableGroup_by_FY_and_Ledger_with_a_Typed_Sum.html">Table.Group by FY and Ledger with a Typed Sum</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Null-Safe Net Amount and Operator Precedence</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> Net amount: <code>([Debit] ?? 0) - ([Credit] ?? 0)</code>; the parentheses matter for operator precedence</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-m">Table.AddColumn(t, &quot;Net&quot;, each ([Debit] ?? 0) - ([Credit] ?? 0), type number)
+</code></pre>
+<ul>
+<li><code>x ?? y</code> (null-coalescing operator) returns <code>x</code> when <code>x</code> is not null, otherwise <code>y</code>.</li>
+<li><code>([Debit] ?? 0)</code> treats a missing debit as zero; likewise for credit.</li>
+<li>Net \(= D - C\), with \(D\) and \(C\) the coalesced debit and credit; positive = net debit, negative = net credit.</li>
+</ul>
+<p>Precedence: <code>??</code> binds <strong>more loosely</strong> than <code>-</code>. Without parentheses,</p>
+<pre><code class="language-m">[Debit] ?? 0 - [Credit] ?? 0
+</code></pre>
+<p>is parsed as <code>[Debit] ?? ((0 - [Credit]) ?? 0)</code>.</p>
+<h2 id="explanation">Explanation</h2>
+<p>Exports from Tally, SAP and bank portals typically leave one of Debit or Credit blank on each row. In M, arithmetic with null returns null: <code>[Debit] - [Credit]</code> is null for every row where either side is blank — which is nearly every row. Those nulls then disappear from sums (List.Sum ignores nulls), so totals look plausible but are wrong.</p>
+<p><code>??</code> fixes the nulls, but its low precedence creates a trap. In the unparenthesised version, if Debit is non-null the whole expression returns Debit and the Credit is never subtracted; if Debit is null, it returns \(0 - \text{Credit}\). The results happen to be right for rows with only one side populated, which is why the bug survives testing — and wrong for any row with both a debit and a credit (common in TB exports with opening/closing or in GL lines with netted entries).</p>
+<p>Related points:</p>
+<ul>
+<li><code>??</code> only replaces null. Empty text "" from a CSV is not null and will error in arithmetic; replace blanks with null or type the columns as numbers first (blank cells become null on conversion).</li>
+<li>The same pattern applies to closing balances: <code>([Opening] ?? 0) + ([Debit] ?? 0) - ([Credit] ?? 0)</code>.</li>
+<li>Older M without <code>??</code> used <code>(if [Debit] = null then 0 else [Debit])</code>, which is equivalent.</li>
+<li>Excel's <code>=A2-B2</code> treats blanks as zero; M does not — a frequent surprise for Excel users.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<table>
+<thead>
+<tr>
+<th>Debit</th>
+<th>Credit</th>
+<th><code>[Debit] - [Credit]</code></th>
+<th>Unparenthesised <code>??</code></th>
+<th><code>([Debit] ?? 0) - ([Credit] ?? 0)</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>50,000</td>
+<td>null</td>
+<td>null</td>
+<td>50,000</td>
+<td>50,000</td>
+</tr>
+<tr>
+<td>null</td>
+<td>20,000</td>
+<td>null</td>
+<td>−20,000</td>
+<td>−20,000</td>
+</tr>
+<tr>
+<td>80,000</td>
+<td>30,000</td>
+<td>50,000</td>
+<td>80,000</td>
+<td>50,000</td>
+</tr>
+<tr>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>Only the last column is right on every row. On a 10,000-row TB where 40 rows have both sides populated, the unparenthesised version overstates net debits by the sum of those 40 credits.</p>
+<h2 id="connections">Connections</h2>
+<p>Subtopic s04 (null semantics and <code>??</code>), s05 (typing as number), topic t5 concept c06 (sign alignment uses the same expression before flipping). In topic t2, the Dr/Cr suffix parser produces a signed amount directly, an alternative to separate Debit/Credit columns. Week 1–4 TB checks (sum of Net = 0) catch errors here.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-evaluate-rows-l1">Q1. Evaluate rows [L1]</h3>
+<p>For rows (Debit, Credit) = (12,000, null), (null, null), (7,500, 2,500) and (null, 9,000), give the result of <code>[Debit] - [Credit]</code>, of <code>[Debit] ?? 0 - [Credit] ?? 0</code> and of the parenthesised form.</p>
+<h3 id="q2-closing-balance-column-l2">Q2. Closing balance column [L2]</h3>
+<p>A TB has Opening (signed, Dr positive), Debit and Credit, any of which may be null or empty text. Write M that cleans empty text to null, types the columns, and adds a Closing column, then a check step that returns the sum of Closing (which should be zero for a balanced TB).</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> <code>Table.ReplaceValue</code> with <code>Replacer.ReplaceValue</code> converts "" to null before typing.</p>
+</blockquote>
+<h3 id="q3-review-comment-l2">Q3. Review comment [L2]</h3>
+<p>In code review you find <code>each [Opening] ?? 0 + [Debit] ?? 0 - [Credit] ?? 0</code>. Write the review comment explaining how M parses it, a concrete example where it fails, and the corrected expression.</p></section>
+<nav class="pager"><a class="prev" href="C04_Ageing_Bucket_Expression_with_DurationDays.html">← Ageing Bucket Expression with Duration.Days</a><a class="next" href="C06_TableGroup_by_FY_and_Ledger_with_a_Typed_Sum.html">Table.Group by FY and Ledger with a Typed Sum →</a></nav>
+</main></div></body></html>

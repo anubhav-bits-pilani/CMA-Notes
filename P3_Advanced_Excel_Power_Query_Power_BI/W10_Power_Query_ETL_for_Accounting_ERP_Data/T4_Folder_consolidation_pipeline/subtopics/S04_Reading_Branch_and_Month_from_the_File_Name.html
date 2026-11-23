@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reading Branch and Month from the File Name · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S04_Reading_Branch_and_Month_from_the_File_Name.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 10</a> <span>›</span> <a href="../index.html">T4 · Folder consolidation pipeline</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T4 · Folder consolidation pipeline</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_FolderFiles_and_SharePointFiles_Sources_and_File.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S01_FolderFiles_and_SharePointFiles_Sources_and_File.html">Folder.Files and SharePoint.Files: Sources and File-Scope Filters</a></li><li><a href="S02_Combine_Files_Artefacts_Sample_Parameter_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S02_Combine_Files_Artefacts_Sample_Parameter_and.html">Combine Files Artefacts: Sample, Parameter and Transform Function</a></li><li><a href="S03_Writing_a_Custom_File_Cleaning_Function_by_Hand.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S03_Writing_a_Custom_File_Cleaning_Function_by_Hand.html">Writing a Custom File-Cleaning Function by Hand</a></li><li><a href="S04_Reading_Branch_and_Month_from_the_File_Name.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S04_Reading_Branch_and_Month_from_the_File_Name.html">Reading Branch and Month from the File Name</a></li><li><a href="S05_Schema_Drift_Tolerant_Column_Selection_Across.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S05_Schema_Drift_Tolerant_Column_Selection_Across.html">Schema Drift: Tolerant Column Selection Across Branch Files</a></li><li><a href="S06_Multi_Bank_Statements_One_Function_per_Bank_Then.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S06_Multi_Bank_Statements_One_Function_per_Bank_Then.html">Multi-Bank Statements: One Function per Bank, Then Table.Combine</a></li><li><a href="S07_Monthly_Drop_In_Workflow_Archiving_and_Duplicate.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/subtopics/S07_Monthly_Drop_In_Workflow_Archiving_and_Duplicate.html">Monthly Drop-In Workflow, Archiving and Duplicate-File Detection</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_FolderFiles_Output_Columns_and_Which_to_Trust.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C01_FolderFiles_Output_Columns_and_Which_to_Trust.html">Folder.Files Output Columns and Which to Trust</a></li><li><a href="../concepts/C02_Filtering_by_Extension_and_Excluding_Temp_Files.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C02_Filtering_by_Extension_and_Excluding_Temp_Files.html">Filtering by Extension and Excluding Temp Files</a></li><li><a href="../concepts/C03_The_fxCleanTB_Function_Signature.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C03_The_fxCleanTB_Function_Signature.html">The fxCleanTB Function Signature</a></li><li><a href="../concepts/C04_Invoking_per_File_and_Appending_with_TableCombine.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C04_Invoking_per_File_and_Appending_with_TableCombine.html">Invoking per File and Appending with Table.Combine</a></li><li><a href="../concepts/C05_Tolerant_Column_Selection_with_MissingFieldUseNull.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C05_Tolerant_Column_Selection_with_MissingFieldUseNull.html">Tolerant Column Selection with MissingField.UseNull</a></li><li><a href="../concepts/C06_Parsing_Branch_and_Period_with_Text_Delimiter.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C06_Parsing_Branch_and_Period_with_Text_Delimiter.html">Parsing Branch and Period with Text Delimiter Functions</a></li><li><a href="../concepts/C07_Guarding_the_Refresh_Against_One_Bad_File.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W10_Power_Query_ETL_for_Accounting_ERP_Data/T4_Folder_consolidation_pipeline/concepts/C07_Guarding_the_Refresh_Against_One_Bad_File.html">Guarding the Refresh Against One Bad File</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>Reading Branch and Month from the File Name</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> Reading Branch and Month from the file name (<code>[Name]</code> / <code>Source.Name</code>)</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Branch trial balances and bank statements rarely contain the branch code or period on every row. Tally's TB export puts "Mumbai Branch" and "1-Apr-2025 to 30-Apr-2025" in caption rows that you deliberately strip off; a bank CSV may show the account number only in the header block. Once files are stacked, the only way to know which rows came from which branch-month is the file name. Branch and Period columns become the dimension keys for consolidation, eliminations, variance analysis and the Calendar relationship in the data model, so parsing them reliably is not cosmetic.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="where-the-name-lives">Where the name lives</h3>
+<p>In <code>Folder.Files</code>, the file name is in <code>[Name]</code> (with extension). The Combine Files UI renames it to <code>Source.Name</code> and expands it alongside the data. In a hand-written pipeline, you parse <code>[Name]</code> on the file inventory <strong>before</strong> invoking the function — parsing 12 file names is cheaper than parsing 30,000 rows — and then either expand or add the parsed values inside each nested table.</p>
+<h3 id="agree-a-naming-convention-first">Agree a naming convention first</h3>
+<p>Parsing is only reliable if names are predictable. A good convention: <code>BRANCHCODE_YYYY-MM.ext</code> (e.g. <code>MUM_2025-04.csv</code>), using a fixed branch code from the branch master and ISO year-month. ISO periods sort correctly as text and parse unambiguously. Bank files: <code>BANK_ACCOUNTLAST4_YYYY-MM.csv</code> (e.g. <code>HDFC_4521_2025-04.csv</code>).</p>
+<h3 id="text-functions-for-parsing">Text functions for parsing</h3>
+<pre><code class="language-m">Parsed = Table.AddColumn(InScope, &quot;Branch&quot;, each Text.BeforeDelimiter([Name], &quot;_&quot;), type text),
+Parsed2 = Table.AddColumn(Parsed, &quot;PeriodText&quot;, each Text.BetweenDelimiters([Name], &quot;_&quot;, &quot;.&quot;), type text),
+Parsed3 = Table.AddColumn(Parsed2, &quot;PeriodEnd&quot;, each
+    Date.EndOfMonth(Date.FromText([PeriodText] &amp; &quot;-01&quot;)), type date)
+</code></pre>
+<ul>
+<li><code>Text.BeforeDelimiter(text, delimiter)</code> returns everything before the first occurrence.</li>
+<li><code>Text.AfterDelimiter(text, delimiter)</code> returns everything after it.</li>
+<li><code>Text.BetweenDelimiters(text, start, end)</code> returns text between the first start delimiter and the next end delimiter after it.</li>
+<li>All three accept an index argument to choose which occurrence: <code>{0, RelativePosition.FromEnd}</code> means the last occurrence. For <code>HDFC_4521_2025-04.csv</code>, the period is <code>Text.BetweenDelimiters([Name], "_", ".", {0, RelativePosition.FromEnd}, 0)</code>, i.e. after the last underscore.</li>
+<li><code>Text.Split([Name], "_")</code> returns a list; <code>{0}</code>, <code>{1}</code> pick parts. Useful when there are several fixed segments.</li>
+</ul>
+<h3 id="converting-the-period-to-a-real-date">Converting the period to a real date</h3>
+<p>Store a real date (month-end is conventional for TB balances; month-start is also used — pick one and document it). Common name formats and conversions:</p>
+<table>
+<thead>
+<tr>
+<th>Name segment</th>
+<th>Conversion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>2025-04</code></td>
+<td><code>Date.EndOfMonth(Date.FromText("2025-04" &amp; "-01"))</code></td>
+</tr>
+<tr>
+<td><code>Apr25</code></td>
+<td><code>Date.EndOfMonth(Date.FromText("01-" &amp; "Apr25", [Format = "dd-MMMyy", Culture = "en-IN"]))</code></td>
+</tr>
+<tr>
+<td><code>042025</code></td>
+<td><code>Date.EndOfMonth(#date(Number.From(Text.End(p, 4)), Number.From(Text.Start(p, 2)), 1))</code></td>
+</tr>
+<tr>
+<td><code>FY26-M01</code></td>
+<td>Map fiscal month 1 to April of FY start year 2025, i.e. <code>Date.AddMonths(#date(2025, 4, 1), m - 1)</code></td>
+</tr>
+</tbody>
+</table>
+<p>Wrap the conversion in <code>try ... otherwise null</code> and flag nulls: a file whose period does not parse must be rejected, not consolidated with a null period.</p>
+<h3 id="validating-against-masters">Validating against masters</h3>
+<p>Branch codes should be checked against a branch master (a small table in the workbook or a SharePoint list):</p>
+<pre><code class="language-m">Checked = Table.AddColumn(Parsed3, &quot;BranchValid&quot;, each List.Contains(BranchMaster[Code], [Branch]), type logical)
+</code></pre>
+<p>Files with <code>BranchValid = false</code> or a null <code>PeriodEnd</code> go to the rejected list. This also catches <code>Mumbai_2025-04.csv</code> vs <code>MUM_2025-04.csv</code> inconsistencies.</p>
+<h3 id="carrying-values-into-the-data">Carrying values into the data</h3>
+<p>After invoking the cleaning function, either expand the nested table (which keeps <code>Branch</code> and <code>PeriodEnd</code> from the inventory row) or add them inside the nested table:</p>
+<pre><code class="language-m">WithData = Table.AddColumn(Checked, &quot;Data&quot;, (f) =&gt;
+    let t = fxCleanTB(f[Content])
+    in  Table.AddColumn(Table.AddColumn(t, &quot;Branch&quot;, each f[Branch], type text),
+                        &quot;PeriodEnd&quot;, each f[PeriodEnd], type date)),
+Combined = Table.Combine(Table.SelectRows(WithData, each [BranchValid])[Data])
+</code></pre>
+<h3 id="cross-checking-against-file-contents">Cross-checking against file contents</h3>
+<p>The strongest control compares the name with the contents. The Tally TB caption "1-Apr-2025 to 30-Apr-2025" can be extracted inside the function (<code>Text.AfterDelimiter(captionRow, "to ")</code>) and returned as a column; a check query flags files where the caption period differs from the name period. This catches the classic error of saving the May export as <code>..._2025-04.csv</code>.</p>
+<h3 id="worked-illustration">Worked illustration</h3>
+<p>File <code>PUN_2025-09.csv</code>: Branch = "PUN", PeriodText = "2025-09", PeriodEnd = 30-Sep-2025. File <code>HDFC_4521_2025-09.csv</code> parsed with first-occurrence <code>Text.BetweenDelimiters</code> would give "4521" (wrong); with the last-occurrence index it gives "2025-09" (right). This is why the convention and the parser must be designed together.</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Spaces and suffixes.</strong> <code>MUM_2025-04 (1).csv</code> or <code>MUM_2025-04_final.csv</code> break the "between underscore and dot" logic; treat them as duplicates or rejects rather than writing ever more tolerant parsers.</li>
+<li><strong>Two-digit years.</strong> <code>Apr25</code> is ambiguous only in theory, but explicitly use the culture and format; never rely on default parsing of <code>04/05</code>.</li>
+<li><strong>Fiscal vs calendar periods.</strong> A name <code>2025-04</code> means April 2025, which is fiscal month 1 of FY2025-26; compute FY attributes from the date, not from the name.</li>
+<li><strong>Folder-based periods.</strong> Some teams use subfolders per month (<code>FY26\M01\</code>); parse <code>[Folder Path]</code> instead, with the same validation.</li>
+<li><strong>Date modified is not a period.</strong> It is the save timestamp; use it only to break ties between versions.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Parse branch and period from <code>[Name]</code> on the file inventory, before invoking the cleaning function.</li>
+<li>Use <code>Text.BeforeDelimiter</code>, <code>Text.AfterDelimiter</code>, <code>Text.BetweenDelimiters</code> (with occurrence indices) or <code>Text.Split</code>.</li>
+<li>Convert the period to a real month-end date with an explicit format and culture, wrapped in <code>try</code>.</li>
+<li>Validate branch codes against a master and reject unparseable names visibly.</li>
+<li>Cross-check the name period against the caption period inside the file.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-parse-the-names-l1">Q1. Parse the names [L1]</h3>
+<p>For each file name, write the M expression that returns the branch code and the month-end date: (a) <code>CHN_2025-11.csv</code>, (b) <code>ICICI_0098_2026-02.csv</code>, (c) <code>JAI-Mar26.csv</code>.</p>
+<h3 id="q2-robust-parser-with-validation-l2">Q2. Robust parser with validation [L2]</h3>
+<p>Write a step that adds <code>Branch</code>, <code>PeriodEnd</code> and <code>Status</code> columns to a file inventory, where <code>Status</code> is "OK", "Unknown branch" (not in <code>BranchMaster[Code]</code>) or "Bad period" (period text does not parse). Assume names follow <code>CODE_YYYY-MM.csv</code>.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Compute the period with <code>try ... otherwise null</code>, then build <code>Status</code> with a nested <code>if</code>.</p>
+</blockquote>
+<h3 id="q3-caption-cross-check-l3">Q3. Caption cross-check [L3]</h3>
+<p>A Tally TB CSV has row 3 reading "1-Oct-2025 to 31-Oct-2025". Design the change to <code>fxCleanTB</code> that returns the caption period end date as a column, and the check query that compares it with the period parsed from the file name. State what the check query should output and who should act on it.</p>
+<h3 id="q4-convention-design-l2">Q4. Convention design [L2]</h3>
+<p>Your company has 22 branches, 5 banks with 9 accounts and monthly GST registers for 4 GSTINs. Propose file-naming conventions for each feed that make parsing unambiguous, and explain why ISO year-month is preferred over "Apr25".</p></section>
+<nav class="pager"><a class="prev" href="S03_Writing_a_Custom_File_Cleaning_Function_by_Hand.html">← Writing a Custom File-Cleaning Function by Hand</a><a class="next" href="S05_Schema_Drift_Tolerant_Column_Selection_Across.html">Schema Drift: Tolerant Column Selection Across Branch Files →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CALCULATE Filter Arguments and Modifiers · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S02_CALCULATE_Filter_Arguments_and_Modifiers.html" data-kind="subtopic">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T3 · Core financial DAX functions</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T3 · Core financial DAX functions</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="S01_Row_Context_Filter_Context_and_Context_Transition.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S01_Row_Context_Filter_Context_and_Context_Transition.html">Row Context, Filter Context and Context Transition</a></li><li><a href="S02_CALCULATE_Filter_Arguments_and_Modifiers.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S02_CALCULATE_Filter_Arguments_and_Modifiers.html">CALCULATE Filter Arguments and Modifiers</a></li><li><a href="S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html">Iterators SUMX and AVERAGEX for Row-Level Maths</a></li><li><a href="S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S04_FILTER_vs_Boolean_Column_Filters_Meaning_and.html">FILTER vs Boolean Column Filters: Meaning and Performance</a></li><li><a href="S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S05_ALL_ALLEXCEPT_and_ALLSELECTED_for_Share_and.html">ALL, ALLEXCEPT and ALLSELECTED for Share and Contribution Analysis</a></li><li><a href="S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S06_RELATED_and_RELATEDTABLE_in_Columns_and_Iterators.html">RELATED and RELATEDTABLE in Columns and Iterators</a></li><li><a href="S07_DIVIDE_Measures_vs_Calculated_Columns_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S07_DIVIDE_Measures_vs_Calculated_Columns_and.html">DIVIDE, Measures vs Calculated Columns, and VAR/RETURN</a></li><li><a href="S08_Explicit_Measures_Display_Folders_and_LakhCrore.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/subtopics/S08_Explicit_Measures_Display_Folders_and_LakhCrore.html">Explicit Measures, Display Folders and ₹ Lakh/Crore Formats</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="../concepts/C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C01_Base_Actual_Measure_and_a_Filtered_Revenue_Measure.html">Base Actual Measure and a Filtered Revenue Measure</a></li><li><a href="../concepts/C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C02_Percentage_of_Total_Opex_with_ALL_on_Cost_Centre.html">Percentage of Total Opex with ALL on Cost Centre</a></li><li><a href="../concepts/C03_Percentage_within_Statement_with_ALLEXCEPT.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C03_Percentage_within_Statement_with_ALLEXCEPT.html">Percentage within Statement with ALLEXCEPT</a></li><li><a href="../concepts/C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C04_FX_Converted_Revenue_with_SUMX_and_RELATED.html">FX-Converted Revenue with SUMX and RELATED</a></li><li><a href="../concepts/C05_Sign_Aware_Variance_with_VAR_and_ABS.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C05_Sign_Aware_Variance_with_VAR_and_ABS.html">Sign-Aware Variance % with VAR and ABS</a></li><li><a href="../concepts/C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C06_KEEPFILTERS_to_Intersect_Rather_Than_Overwrite.html">KEEPFILTERS to Intersect Rather Than Overwrite</a></li><li><a href="../concepts/C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T3_Core_financial_DAX_functions/concepts/C07_DIVIDE_and_Its_BLANK_Default_for_Zero_Denominators.html">DIVIDE and Its BLANK Default for Zero Denominators</a></li></ul></aside>
+<main class="content">
+<div class="kind">Subtopic note</div>
+<h1>CALCULATE Filter Arguments and Modifiers</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Scope:</strong> CALCULATE filter arguments: boolean filters, table filters, and modifiers ALL, REMOVEFILTERS, KEEPFILTERS, USERELATIONSHIP</p>
+</blockquote>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>CALCULATE is the only function that changes filter context, and nearly every finance measure beyond <code>SUM</code> uses it:
+Revenue as Actual filtered to an FS line, % of total, budget on an inactive date, YTD, PY, closing balances. Its
+arguments come in two families — <strong>filters</strong> (which add or replace filters) and <strong>modifiers</strong> (which change how
+filters or relationships behave). Knowing exactly when a filter <em>overwrites</em> the visual's filter, when it
+<em>intersects</em> with it, and when a modifier <em>removes</em> filters is what lets you write a P&amp;L measure that behaves
+correctly in every cell of a matrix.</p>
+<h2 id="core-notes">Core notes</h2>
+<h3 id="evaluation-order-of-calculate">Evaluation order of CALCULATE</h3>
+<p><code>CALCULATE(&lt;expression&gt;, &lt;filter1&gt;, &lt;filter2&gt;, …)</code>:</p>
+<ol>
+<li>Filter arguments are evaluated <strong>in the original (outer) filter context</strong>.</li>
+<li>If CALCULATE is in a row context, <strong>context transition</strong> turns the row into filters.</li>
+<li><strong>Modifiers</strong> (ALL/REMOVEFILTERS, USERELATIONSHIP, CROSSFILTER, KEEPFILTERS) are applied.</li>
+<li>The evaluated filter arguments are applied: each one <strong>replaces</strong> existing filters on the same columns (unless
+   wrapped in KEEPFILTERS); filters on different columns combine with AND.</li>
+<li>The expression is evaluated in the new filter context.</li>
+</ol>
+<h3 id="boolean-filters">Boolean filters</h3>
+<pre><code class="language-DAX">Revenue = CALCULATE ( [Actual], CoA[FSLine] = &quot;Revenue from operations&quot; )
+</code></pre>
+<p>A boolean filter is a predicate on <strong>one column</strong> (since 2021, multiple columns of the same table are allowed in a
+single predicate). DAX rewrites it internally as a table filter:</p>
+<pre><code class="language-DAX">CALCULATE ( [Actual], FILTER ( ALL ( CoA[FSLine] ), CoA[FSLine] = &quot;Revenue from operations&quot; ) )
+</code></pre>
+<p>Because of the <code>ALL(CoA[FSLine])</code>, the boolean filter <strong>overwrites</strong> any existing filter on <code>CoA[FSLine]</code>. In a P&amp;L
+matrix with FSLine on rows, the Revenue measure shows the revenue figure on <em>every</em> row — including "Employee benefits
+expense". That is correct semantics, not a bug; to intersect instead, use KEEPFILTERS (concept c06).</p>
+<p>Rules for boolean filters (per Microsoft documentation): they may reference columns of a <strong>single table</strong>; they
+<strong>cannot reference measures</strong> or use a nested CALCULATE; since 2021 they may contain scalar aggregations such as
+<code>MAX('Date'[Date])</code>, which are evaluated in the outer filter context. To use a measure's value, capture it in a
+variable first:</p>
+<pre><code class="language-DAX">Large Vouchers =
+VAR Threshold = [Materiality Threshold]          -- a measure, evaluated once in the outer context
+RETURN CALCULATE ( [Actual], GL[Amount] &gt; Threshold )
+</code></pre>
+<p>(The predicate <code>GL[Amount] &gt; Threshold</code> filters a fact column — valid, but see s04 on performance.)</p>
+<h3 id="table-filters">Table filters</h3>
+<p>Any table expression can be a filter argument; its columns become filters:</p>
+<pre><code class="language-DAX">Revenue &amp; Other Income =
+CALCULATE ( [Actual], CoA[FSLine] IN { &quot;Revenue from operations&quot;, &quot;Other income&quot; } )
+
+Budget (virtual) =
+CALCULATE ( SUM ( Budget[Amount] ), TREATAS ( VALUES ( 'Date'[MonthEnd] ), Budget[MonthEnd] ) )
+
+Accounts over 1 crore =
+CALCULATE ( [Actual], FILTER ( VALUES ( CoA[AccountKey] ), ABS ( [Actual] ) &gt; 10000000 ) )
+</code></pre>
+<p>The last is a table filter built with FILTER over a dimension's VALUES — necessary because the condition uses a
+measure. Table filters also overwrite filters on the columns they contain; <code>FILTER(VALUES(...))</code> returns only
+currently visible values, so in effect it restricts within the current context.</p>
+<h3 id="all-and-removefilters">ALL and REMOVEFILTERS</h3>
+<ul>
+<li><code>ALL(table)</code> / <code>ALL(column, …)</code> as a CALCULATE modifier <strong>removes</strong> filters from the table or columns.</li>
+<li><code>REMOVEFILTERS(...)</code> is an alias introduced for readability; it can only be used as a CALCULATE modifier (not as a
+  table expression), which makes intent explicit.</li>
+<li><code>ALL</code> used as a <strong>table function</strong> (e.g. in FILTER or COUNTROWS) returns all rows ignoring filters.</li>
+</ul>
+<pre><code class="language-DAX">% of Total Revenue = DIVIDE ( [Revenue], CALCULATE ( [Revenue], REMOVEFILTERS ( Branch ) ) )
+</code></pre>
+<p>ALLEXCEPT and ALLSELECTED are covered in s05.</p>
+<h3 id="keepfilters">KEEPFILTERS</h3>
+<p><code>KEEPFILTERS(&lt;filter&gt;)</code> makes the filter <strong>intersect</strong> with existing filters on the same columns rather than overwrite
+them:</p>
+<pre><code class="language-DAX">Revenue (row-aware) =
+CALCULATE ( [Actual], KEEPFILTERS ( CoA[FSLine] = &quot;Revenue from operations&quot; ) )
+</code></pre>
+<p>On the "Revenue from operations" row it returns revenue; on the "Employee benefits expense" row the intersection is
+empty, so it returns blank. KEEPFILTERS is also used around iterator tables to preserve filters, e.g.
+<code>SUMX(KEEPFILTERS(VALUES(...)), ...)</code>.</p>
+<h3 id="userelationship-and-crossfilter">USERELATIONSHIP (and CROSSFILTER)</h3>
+<p><code>USERELATIONSHIP(col1, col2)</code> activates an inactive relationship for this evaluation (topic 1 c01):</p>
+<pre><code class="language-DAX">Receivables by Due Date =
+CALCULATE ( [Actual], CoA[FSLine] = &quot;Trade receivables&quot;, USERELATIONSHIP ( GL[DueDate], 'Date'[Date] ) )
+</code></pre>
+<p><code>CROSSFILTER</code> (topic 1 c04) changes direction. Both are modifiers, applied before the filter arguments.</p>
+<h3 id="illustration-one-matrix-four-measures">Illustration — one matrix, four measures</h3>
+<p>FY2025-26, rows = FSLine. Revenue from operations −₹500 crore (credit), Other income −₹20 crore, Employee benefits
+₹60 crore (raw signs).</p>
+<table>
+<thead>
+<tr>
+<th>Row (FSLine)</th>
+<th><code>[Actual]</code></th>
+<th><code>CALCULATE([Actual], CoA[FSLine] = "Revenue from operations")</code></th>
+<th>with <code>KEEPFILTERS</code></th>
+<th><code>CALCULATE([Actual], REMOVEFILTERS(CoA))</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue from operations</td>
+<td>−500</td>
+<td>−500</td>
+<td>−500</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Other income</td>
+<td>−20</td>
+<td>−500</td>
+<td>blank</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Employee benefits expense</td>
+<td>60</td>
+<td>−500</td>
+<td>blank</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>The REMOVEFILTERS column shows the same value on every row — the total across <em>all</em> accounts — which for a balanced
+double-entry GL is nil, because every voucher's debits equal its credits. That is why "% of total" measures in finance
+need a narrower denominator (all accounts within the Statement or within income lines), not simply "all CoA".</p>
+<h2 id="edge-cases-judgement-calls">Edge cases &amp; judgement calls</h2>
+<ul>
+<li><strong>Filters on related tables.</strong> A filter on <code>CoA[FSLine]</code> does not remove a filter on <code>CoA[AccountName]</code> placed by
+  the visual. If AccountName is on rows, <code>CALCULATE([Actual], CoA[FSLine] = "Revenue from operations")</code> intersects
+  with the account filter (different column) — revenue accounts show their own revenue; others show blank.</li>
+<li><strong>Sort-by columns.</strong> Removing filters from MonthName without also removing FiscalMonthNo leaves the sort column's
+  filter (topic 2 s04).</li>
+<li><strong>ALL on fact vs dimension.</strong> As a CALCULATE modifier, <code>REMOVEFILTERS(GL)</code> works on the <strong>expanded</strong> GL table —
+  GL plus every dimension reachable through its many-to-one relationships — so it wipes filters on CoA, Date,
+  CostCentre and Branch as well. That is rarely intended. Remove filters on the specific dimension or columns
+  instead (<code>REMOVEFILTERS(CostCentre)</code>).</li>
+<li><strong>Auto REMOVEFILTERS on Date.</strong> Filtering <code>'Date'[Date]</code> in a marked Date table automatically removes other Date
+  filters — why <code>CALCULATE([Actual], 'Date'[Date] &lt;= MAX('Date'[Date]))</code> returns a running total from inception,
+  not within the month.</li>
+</ul>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Filter arguments are evaluated in the outer context, then applied after context transition and modifiers.</li>
+<li>A boolean filter is <code>FILTER(ALL(column), predicate)</code> and overwrites existing filters on that column.</li>
+<li>Table filters (IN lists, TREATAS, FILTER over VALUES) handle multi-value and measure-based conditions.</li>
+<li>ALL/REMOVEFILTERS remove filters; KEEPFILTERS intersects; USERELATIONSHIP and CROSSFILTER alter relationships.</li>
+<li>Remove filters on the dimension columns the visual uses, not on the fact.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-predict-the-matrix-l1">Q1. Predict the matrix [L1]</h3>
+<p>A matrix has CostCentre on rows. Measure <code>Sales Opex = CALCULATE([Actual], CostCentre[Function] = "Sales")</code>. What
+does it show on the row for cost centre "MUM-ADM" (Function = Admin)? What changes with KEEPFILTERS? Explain.</p>
+<h3 id="q2-rewrite-as-filter-l2">Q2. Rewrite as FILTER [L2]</h3>
+<p>Rewrite <code>CALCULATE([Actual], CoA[Statement] = "Profit and Loss", 'Date'[FY] = "FY2025-26")</code> using explicit
+FILTER and ALL, and explain why the visual's filter on <code>'Date'[FY]</code> = "FY2024-25" no longer applies.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Each boolean filter becomes its own table filter over one column.</p>
+</blockquote>
+<h3 id="q3-measure-based-condition-l2">Q3. Measure-based condition [L2]</h3>
+<p>Write a measure that returns the total actual of accounts whose FY2025-26 actual exceeds budget by more than 10%, so
+that it works in a matrix by FSLine. State why a boolean filter cannot express the condition.</p>
+<h3 id="q4-order-of-evaluation-l3">Q4. Order of evaluation [L3]</h3>
+<p>Explain step by step how DAX evaluates <code>CALCULATE([Actual], ALL('Date'), 'Date'[FY] = "FY2024-25")</code> inside a matrix
+cell for March 2026, and contrast with <code>CALCULATE([Actual], 'Date'[FY] = "FY2024-25")</code>.</p>
+<h3 id="q5-due-date-receivables-l2">Q5. Due-date receivables [L2]</h3>
+<p>Write a measure for trade receivables falling due in the selected month, combining a boolean filter on CoA and
+USERELATIONSHIP, and explain the order in which the modifier and the filter are applied.</p></section>
+<nav class="pager"><a class="prev" href="S01_Row_Context_Filter_Context_and_Context_Transition.html">← Row Context, Filter Context and Context Transition</a><a class="next" href="S03_Iterators_SUMX_and_AVERAGEX_for_Row_Level_Maths.html">Iterators SUMX and AVERAGEX for Row-Level Maths →</a></nav>
+</main></div></body></html>

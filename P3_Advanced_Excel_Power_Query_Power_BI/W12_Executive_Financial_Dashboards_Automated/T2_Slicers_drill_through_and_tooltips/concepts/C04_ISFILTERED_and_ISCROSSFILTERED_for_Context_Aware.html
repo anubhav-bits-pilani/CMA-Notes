@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISFILTERED and ISCROSSFILTERED for Context-Aware Labels · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C04_ISFILTERED_and_ISCROSSFILTERED_for_Context_Aware.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 12</a> <span>›</span> <a href="../index.html">T2 · Slicers, drill-through and tooltips</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T2 · Slicers, drill-through and tooltips</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_FY_BU_and_Region_Slicers_Hierarchy_Relative_Date.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S01_FY_BU_and_Region_Slicers_Hierarchy_Relative_Date.html">FY, BU and Region Slicers: Hierarchy, Relative Date and Sync</a></li><li><a href="../subtopics/S02_Edit_Interactions_Filter_vs_Highlight_vs_None.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S02_Edit_Interactions_Filter_vs_Highlight_vs_None.html">Edit Interactions: Filter vs Highlight vs None</a></li><li><a href="../subtopics/S03_Drill_Down_vs_Drill_Through_PL_Hierarchy_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S03_Drill_Down_vs_Drill_Through_PL_Hierarchy_and.html">Drill-Down vs Drill-Through: P&amp;L Hierarchy and Voucher Detail</a></li><li><a href="../subtopics/S04_Drill_Through_Setup_Fields_Keep_All_Filters_Cross.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S04_Drill_Through_Setup_Fields_Keep_All_Filters_Cross.html">Drill-Through Setup: Fields, Keep All Filters, Cross-Report, Back Button</a></li><li><a href="../subtopics/S05_Report_Page_Tooltips_Canvas_Size_Allow_Use_as.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S05_Report_Page_Tooltips_Canvas_Size_Allow_Use_as.html">Report Page Tooltips: Canvas Size, &quot;Allow Use as Tooltip&quot;, Field Tooltips</a></li><li><a href="../subtopics/S06_Bookmarks_Buttons_and_the_Selection_Pane_for_View.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S06_Bookmarks_Buttons_and_the_Selection_Pane_for_View.html">Bookmarks, Buttons and the Selection Pane for View Toggles</a></li><li><a href="../subtopics/S07_Field_Parameters_for_User_Selected_Dimensions_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S07_Field_Parameters_for_User_Selected_Dimensions_and.html">Field Parameters for User-Selected Dimensions and Measures</a></li><li><a href="../subtopics/S08_Visual_Page_and_Report_Filters_and_Top_N_Filters.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/subtopics/S08_Visual_Page_and_Report_Filters_and_Top_N_Filters.html">Visual, Page and Report Filters, and Top N Filters</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Drill_Through_Page_on_Ledger_with_a_Voucher_Detail.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C01_Drill_Through_Page_on_Ledger_with_a_Voucher_Detail.html">Drill-Through Page on Ledger with a Voucher Detail Table</a></li><li><a href="C02_Selected_FY_Measure_for_Dynamic_Titles.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C02_Selected_FY_Measure_for_Dynamic_Titles.html">Selected FY Measure for Dynamic Titles</a></li><li><a href="C03_Field_Parameter_Tables_Built_with_NAMEOF.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C03_Field_Parameter_Tables_Built_with_NAMEOF.html">Field Parameter Tables Built with NAMEOF</a></li><li><a href="C04_ISFILTERED_and_ISCROSSFILTERED_for_Context_Aware.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C04_ISFILTERED_and_ISCROSSFILTERED_for_Context_Aware.html">ISFILTERED and ISCROSSFILTERED for Context-Aware Labels</a></li><li><a href="C05_Slicer_Responsive_Vendor_Ranking_with_RANKX_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W12_Executive_Financial_Dashboards_Automated/T2_Slicers_drill_through_and_tooltips/concepts/C05_Slicer_Responsive_Vendor_Ranking_with_RANKX_and.html">Slicer-Responsive Vendor Ranking with RANKX and ALLSELECTED</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>ISFILTERED and ISCROSSFILTERED for Context-Aware Labels</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>ISFILTERED(BU[BusinessUnit])</code> and <code>ISCROSSFILTERED</code> for context-aware labels and warnings</p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<ul>
+<li><code>ISFILTERED(&lt;column or table&gt;)</code> returns TRUE when the specified column (or any column of the specified table) is
+  <strong>directly</strong> filtered in the current context — by a slicer, filter pane, cross-filter, or a row/column of the
+  visual.</li>
+<li><code>ISCROSSFILTERED(&lt;column or table&gt;)</code> returns TRUE when the column or table is filtered <strong>directly or
+  indirectly</strong> — including filters on other columns of the same table or filters propagated through
+  relationships from other tables.</li>
+</ul>
+<p>So ISFILTERED implies ISCROSSFILTERED, but not the reverse:</p>
+<p>\[
+\text{ISFILTERED}(c) \Rightarrow \text{ISCROSSFILTERED}(c)
+\]</p>
+<pre><code class="language-DAX">BU Label =
+IF ( ISFILTERED ( BU[BusinessUnit] ),
+     &quot;BU: &quot; &amp; CONCATENATEX ( VALUES ( BU[BusinessUnit] ), BU[BusinessUnit], &quot;, &quot; ),
+     &quot;All BUs&quot; )
+</code></pre>
+<h2 id="explanation">Explanation</h2>
+<p>Context-aware labels tell users what they are looking at and warn when the context makes a number misleading:</p>
+<ul>
+<li><strong>Labels.</strong> "All BUs" vs "BU: Agro" in titles and status strips.</li>
+<li><strong>Warnings.</strong> A card "⚠ Region filter active — totals exclude other regions" when <code>ISFILTERED(Region[Region])</code>.</li>
+<li><strong>Guarding measures.</strong> Budget may exist only at BU level, not by vendor. A budget measure can return BLANK when
+  the vendor dimension is filtered, rather than repeating the BU total on every vendor row:
+  <code>IF(ISCROSSFILTERED(Vendor[Name]), BLANK(), [Budget])</code>. ISCROSSFILTERED is appropriate here because a filter on
+  <code>Vendor[Category]</code> also narrows vendors.</li>
+<li><strong>Voucher-table guard.</strong> On the GL Detail page, show the table only when the ledger is filtered:
+  <code>IF(ISFILTERED(CoA[Ledger]), 1, 0)</code> as a visual filter.</li>
+</ul>
+<p>Differences that cause bugs:</p>
+<ul>
+<li>A filter on <code>BU[Region]</code> makes <code>ISFILTERED(BU[BusinessUnit])</code> FALSE but <code>ISCROSSFILTERED(BU[BusinessUnit])</code>
+  TRUE.</li>
+<li>A filter on <code>GL</code> (fact) does not cross-filter <code>BU</code> unless the relationship is bidirectional; dimension columns
+  are filtered by the fact only through bidirectional or CROSSFILTER logic.</li>
+<li><code>ISFILTERED</code> returns TRUE even if the filter selects <em>all</em> values explicitly (e.g. a filter card with everything
+  ticked may or may not be treated as a filter, depending on whether "Select all" was used) — prefer comparing
+  counts if the distinction matters:
+  <code>COUNTROWS(VALUES(BU[BusinessUnit])) &lt; COUNTROWS(ALL(BU[BusinessUnit]))</code>.</li>
+<li>Use <code>ISINSCOPE</code> (not ISFILTERED) to detect the level of a hierarchy in a matrix: a matrix row on BU makes the
+  column filtered in that row, but ISINSCOPE distinguishes the row's grouping level from slicer filters.</li>
+</ul>
+<h2 id="illustration">Illustration</h2>
+<p>Model: <code>BU</code> (BusinessUnit, Region attribute), <code>Vendor</code> (Name, Category), <code>GL</code>. Context: Region slicer = West, no BU
+slicer, matrix rows by Vendor Category.</p>
+<table>
+<thead>
+<tr>
+<th>Expression</th>
+<th>Result</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ISFILTERED(BU[BusinessUnit])</code></td>
+<td>FALSE</td>
+<td>Only BU[Region] filtered directly</td>
+</tr>
+<tr>
+<td><code>ISCROSSFILTERED(BU[BusinessUnit])</code></td>
+<td>TRUE</td>
+<td>Region filter on the same table</td>
+</tr>
+<tr>
+<td><code>ISFILTERED(Vendor[Name])</code></td>
+<td>FALSE</td>
+<td>Rows are on Category</td>
+</tr>
+<tr>
+<td><code>ISCROSSFILTERED(Vendor[Name])</code></td>
+<td>TRUE</td>
+<td>Category row filters vendors</td>
+</tr>
+<tr>
+<td><code>[BU Label]</code></td>
+<td>"All BUs"</td>
+<td>Misleading — should mention West</td>
+</tr>
+</tbody>
+</table>
+<p>Improved label: <code>IF(ISCROSSFILTERED(BU), "BUs in view: " &amp; CONCATENATEX(VALUES(BU[BusinessUnit]), ...), "All
+BUs")</code>.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Concept c02 (dynamic titles) and c05 (ALLSELECTED-based ranking) rely on understanding filter context.</li>
+<li>Subtopic s01 (slicers), s08 (hidden filters), s04 (drill-through guards).</li>
+<li>Week 11 relationships and filter direction determine cross-filter results.</li>
+</ul></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-predict-the-result-l1">Q1. Predict the result [L1]</h3>
+<p>With a slicer on <code>Region[Region]</code> (a separate dimension related to GL) set to South, and no other filters, state
+the result of <code>ISFILTERED(BU[BusinessUnit])</code> and <code>ISCROSSFILTERED(BU[BusinessUnit])</code> with single-direction
+relationships, and explain.</p>
+<h3 id="q2-budget-by-vendor-l2">Q2. Budget by vendor [L2]</h3>
+<p>Budget is held by BU and FSLine only. Write a budget measure that shows budget at BU/FSLine levels but BLANK
+whenever any vendor attribute is filtered or grouped, and a variance measure that respects it.</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> Decide whether direct or indirect filtering should trigger the blank.</p>
+</blockquote>
+<h3 id="q3-warning-strip-l2">Q3. Warning strip [L2]</h3>
+<p>Write a status-strip measure that lists every active filter among FY, BU, Region and Cost Centre, e.g. "Filters: FY
+2025-26 · BU: Agro · Region: West", omitting dimensions not filtered.</p></section>
+<nav class="pager"><a class="prev" href="C03_Field_Parameter_Tables_Built_with_NAMEOF.html">← Field Parameter Tables Built with NAMEOF</a><a class="next" href="C05_Slicer_Responsive_Vendor_Ranking_with_RANKX_and.html">Slicer-Responsive Vendor Ranking with RANKX and ALLSELECTED →</a></nav>
+</main></div></body></html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Average Receivables with AVERAGEX over Month-Ends · CMA → FP&amp;A Notes</title>
+<link rel="stylesheet" href="../../../../assets/notes.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../../../../assets/notes.js"></script>
+</head><body data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C05_Average_Receivables_with_AVERAGEX_over_Month_Ends.html" data-kind="concept">
+<header class="top"><a class="brand" href="../../../../index.html">CMA → FP&amp;A Notes</a><div class="crumbs"><a href="../../../../index.html">Home</a> <span>›</span> <a href="../../../index.html">Phase 3</a> <span>›</span> <a href="../../index.html">Week 11</a> <span>›</span> <a href="../index.html">T5 · Semi-additive balance sheet measures</a></div></header>
+<div class="layout">
+<aside class="side"><div class="side-h"><a href="../index.html">T5 · Semi-additive balance sheet measures</a></div><div class="side-sub">Subtopics</div><ul class="side-links"><li><a href="../subtopics/S01_Additive_Semi_Additive_and_Non_Additive_Financial.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S01_Additive_Semi_Additive_and_Non_Additive_Financial.html">Additive, Semi-Additive and Non-Additive Financial Measures</a></li><li><a href="../subtopics/S02_Snapshot_Facts_vs_Transaction_Facts_for_Balances.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S02_Snapshot_Facts_vs_Transaction_Facts_for_Balances.html">Snapshot Facts vs Transaction Facts for Balances</a></li><li><a href="../subtopics/S03_Closing_Balance_LASTDATE_vs_LASTNONBLANK_vs_a_MAX.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S03_Closing_Balance_LASTDATE_vs_LASTNONBLANK_vs_a_MAX.html">Closing Balance: LASTDATE vs LASTNONBLANK vs a MAX-Date Filter</a></li><li><a href="../subtopics/S04_Cumulative_Balances_from_GL_Movements_Including.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S04_Cumulative_Balances_from_GL_Movements_Including.html">Cumulative Balances from GL Movements, Including Opening Entries</a></li><li><a href="../subtopics/S05_Opening_Balances_with_OPENINGBALANCEMONTH_and.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S05_Opening_Balances_with_OPENINGBALANCEMONTH_and.html">Opening Balances with OPENINGBALANCEMONTH and OPENINGBALANCEYEAR</a></li><li><a href="../subtopics/S06_Average_Balances_for_DSO_Interest_Cost_and_Return.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S06_Average_Balances_for_DSO_Interest_Cost_and_Return.html">Average Balances for DSO, Interest Cost and Return Ratios</a></li><li><a href="../subtopics/S07_Cash_Net_Working_Capital_and_Net_Debt_Measures.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/subtopics/S07_Cash_Net_Working_Capital_and_Net_Debt_Measures.html">Cash, Net Working Capital and Net Debt Measures over Time</a></li></ul><div class="side-sub">Key concepts</div><ul class="side-links"><li><a href="C01_Closing_Balance_with_LASTDATE_on_a_Snapshot_Fact.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C01_Closing_Balance_with_LASTDATE_on_a_Snapshot_Fact.html">Closing Balance with LASTDATE on a Snapshot Fact</a></li><li><a href="C02_LASTNONBLANK_Closing_Balance_at_the_Last_Date_with.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C02_LASTNONBLANK_Closing_Balance_at_the_Last_Date_with.html">LASTNONBLANK: Closing Balance at the Last Date with Data</a></li><li><a href="C03_Cumulative_Balance_with_FILTER_over_ALL_Dates.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C03_Cumulative_Balance_with_FILTER_over_ALL_Dates.html">Cumulative Balance with FILTER over ALL Dates</a></li><li><a href="C04_CLOSINGBALANCEYEAR_and_OPENINGBALANCEYEAR_with_a.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C04_CLOSINGBALANCEYEAR_and_OPENINGBALANCEYEAR_with_a.html">CLOSINGBALANCEYEAR and OPENINGBALANCEYEAR with a March Year-End</a></li><li><a href="C05_Average_Receivables_with_AVERAGEX_over_Month_Ends.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C05_Average_Receivables_with_AVERAGEX_over_Month_Ends.html">Average Receivables with AVERAGEX over Month-Ends</a></li><li><a href="C06_DSO_Measure_from_Average_Receivables_and_Days_in.html" data-uid="P3_Advanced_Excel_Power_Query_Power_BI/W11_Power_Pivot_Star_Schema_Data_Modelling/T5_Semi_additive_balance_sheet_measures/concepts/C06_DSO_Measure_from_Average_Receivables_and_Days_in.html">DSO Measure from Average Receivables and Days in Period</a></li></ul></aside>
+<main class="content">
+<div class="kind">Key concept</div>
+<h1>Average Receivables with AVERAGEX over Month-Ends</h1>
+<label class="studied"><input type="checkbox" class="studied-box"> Mark as studied</label>
+<article class="note"><blockquote>
+<p><strong>Concept:</strong> <code>Avg AR = AVERAGEX(VALUES('Date'[MonthEnd]), [Closing AR])</code></p>
+</blockquote>
+<h2 id="statement">Statement</h2>
+<pre><code class="language-DAX">Avg AR = AVERAGEX ( VALUES ( 'Date'[MonthEnd] ), [Closing AR] )
+</code></pre>
+<p>\[
+\overline{AR}(P) = \frac{1}{n} \sum_{m \in M(P)} AR_{\text{close}}(m)
+\]</p>
+<p>where \(M(P)\) is the set of month-end dates visible in the current period \(P\), \(AR_{\text{close}}(m)\) is the
+closing trade receivables at month-end \(m\), and \(n\) is the number of month-ends in \(M(P)\) for which the closing
+balance is not blank.</p>
+<h2 id="explanation">Explanation</h2>
+<p><code>VALUES('Date'[MonthEnd])</code> returns the distinct month-end dates visible in the filter context: one at month grain, three
+at a quarter, twelve at a full FY. <code>AVERAGEX</code> iterates them; for each, <code>[Closing AR]</code> — being a measure — is evaluated
+with context transition, so the iterated month-end becomes the filter and the closing-balance logic (LASTDATE,
+LASTNONBLANK or cumulative) returns that month's balance. <code>AVERAGEX</code> then averages the results, <strong>skipping blanks</strong> but
+counting zeros.</p>
+<p>Behaviour at each grain:</p>
+<ul>
+<li><strong>Month:</strong> a single point; the average equals the closing balance. If monthly DSO needs an average, use a two-point
+  version (opening + closing ÷ 2).</li>
+<li><strong>Quarter:</strong> average of three month-ends (not including the opening). For a 4-point average add
+  <code>OPENINGBALANCEQUARTER</code>.</li>
+<li><strong>FY:</strong> average of twelve month-ends. For a 13-point average add <code>OPENINGBALANCEYEAR([Closing AR], 'Date'[Date],
+  "3/31")</code> and divide by 13.</li>
+<li><strong>Incomplete FY:</strong> on a snapshot fact, future month-ends return blank and are skipped — the average covers closed
+  months only. On a cumulative fact, future month-ends repeat the latest balance and are <em>not</em> skipped; restrict
+  <code>VALUES('Date'[MonthEnd])</code> to closed months with a filter (<code>'Date'[IsClosedPeriod] = TRUE()</code>) or a cap.</li>
+</ul>
+<p>The pattern generalises to any semi-additive average: average inventory (DIO), average payables (DPO), average capital
+employed (ROCE), average advances (NBFC yield), average headcount (cost per employee).</p>
+<h2 id="illustration">Illustration</h2>
+<p>Trade receivables (₹ lakh) at month-ends of Q3 FY26: October 1,480; November 1,390; December 1,520; opening (30
+September) 1,450.</p>
+<table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Calculation</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Closing AR (Q3)</td>
+<td>31 December</td>
+<td>1,520</td>
+</tr>
+<tr>
+<td><code>Avg AR</code> (3 month-ends)</td>
+<td>(1,480 + 1,390 + 1,520) / 3</td>
+<td>1,463.3</td>
+</tr>
+<tr>
+<td>4-point average</td>
+<td>(1,450 + 1,480 + 1,390 + 1,520) / 4</td>
+<td>1,460.0</td>
+</tr>
+<tr>
+<td>Two-point average</td>
+<td>(1,450 + 1,520) / 2</td>
+<td>1,485.0</td>
+</tr>
+</tbody>
+</table>
+<p>The differences are small here, but for a business that collects heavily at quarter-end (common in B2B with
+quarter-end sales pushes), the closing balance can be 30–40% below the average.</p>
+<h2 id="connections">Connections</h2>
+<p>Explained with other conventions (two-point, 13-point, daily) in s06; consumes the closing measures of s03/c01 and the
+opening functions of s05/c04; feeds DSO in c06 and working-capital days in s07. Weeks 5–8 compute the same averages from
+published statements (usually two-point); Week 14's 3-statement model drives receivables from DSO assumptions applied to
+average or closing balances — know which convention the model uses.</p></article><section class="practice"><h2>Practice Questions</h2><h3 id="q1-grain-behaviour-l1">Q1. Grain behaviour [L1]</h3>
+<p>For the month row December 2025, the Q3 FY26 row and the FY26 row (snapshots closed to 31 December 2025), state how many
+month-ends <code>Avg AR</code> averages and whether future months are included, for a snapshot fact and for a cumulative fact.</p>
+<h3 id="q2-13-point-average-measure-l2">Q2. 13-point average measure [L2]</h3>
+<p>Write a measure for a 13-point average of trade receivables for a full FY, using <code>OPENINGBALANCEYEAR</code> and the
+<code>AVERAGEX</code> pattern, and compute it for: opening 1,200 and month-ends April–March of 1,260, 1,310, 1,180, 1,240, 1,300,
+1,350, 1,480, 1,390, 1,520, 1,410, 1,370, 1,290 (₹ lakh).</p>
+<blockquote class="hint"><p><strong>💡 Hint:</strong> The opening is one extra point; the divisor counts all points actually used.</p>
+</blockquote>
+<h3 id="q3-zero-versus-blank-l2">Q3. Zero versus blank [L2]</h3>
+<p>A newly opened branch has no receivables rows before September 2025 (blank) and a genuine zero balance at 31 December
+2025 after collecting everything. Explain how <code>AVERAGEX</code> treats each month for the FY26 average, and whether the result
+is the figure a regional manager should be judged on.</p></section>
+<nav class="pager"><a class="prev" href="C04_CLOSINGBALANCEYEAR_and_OPENINGBALANCEYEAR_with_a.html">← CLOSINGBALANCEYEAR and OPENINGBALANCEYEAR with a March…</a><a class="next" href="C06_DSO_Measure_from_Average_Receivables_and_Days_in.html">DSO Measure from Average Receivables and Days in Period →</a></nav>
+</main></div></body></html>
